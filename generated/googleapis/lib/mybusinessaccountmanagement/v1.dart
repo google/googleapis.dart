@@ -54,12 +54,16 @@ class MyBusinessAccountManagementApi {
   AccountsResource get accounts => AccountsResource(_requester);
   LocationsResource get locations => LocationsResource(_requester);
 
-  MyBusinessAccountManagementApi(http.Client client,
-      {core.String rootUrl =
-          'https://mybusinessaccountmanagement.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  MyBusinessAccountManagementApi(
+    http.Client client, {
+    core.String rootUrl = 'https://mybusinessaccountmanagement.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class AccountsResource {
@@ -94,10 +98,7 @@ class AccountsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Account> create(
-    Account request, {
-    core.String? $fields,
-  }) async {
+  async.Future<Account> create(Account request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -134,10 +135,7 @@ class AccountsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Account> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Account> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -211,7 +209,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return ListAccountsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified business account.
@@ -337,10 +336,7 @@ class AccountsAdminsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -389,7 +385,8 @@ class AccountsAdminsResource {
       queryParams: queryParams_,
     );
     return ListAccountAdminsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the Admin for the specified Account Admin.
@@ -568,7 +565,8 @@ class AccountsInvitationsResource {
       queryParams: queryParams_,
     );
     return ListInvitationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -695,10 +693,7 @@ class LocationsAdminsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -747,7 +742,8 @@ class LocationsAdminsResource {
       queryParams: queryParams_,
     );
     return ListLocationAdminsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the Admin for the specified location.
@@ -933,8 +929,10 @@ class Account {
           accountNumber: json_['accountNumber'] as core.String?,
           name: json_['name'] as core.String?,
           organizationInfo: json_.containsKey('organizationInfo')
-              ? OrganizationInfo.fromJson(json_['organizationInfo']
-                  as core.Map<core.String, core.dynamic>)
+              ? OrganizationInfo.fromJson(
+                  json_['organizationInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           permissionLevel: json_['permissionLevel'] as core.String?,
           primaryOwner: json_['primaryOwner'] as core.String?,
@@ -1100,11 +1098,14 @@ class Invitation {
           role: json_['role'] as core.String?,
           targetAccount: json_.containsKey('targetAccount')
               ? Account.fromJson(
-                  json_['targetAccount'] as core.Map<core.String, core.dynamic>)
+                  json_['targetAccount'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           targetLocation: json_.containsKey('targetLocation')
-              ? TargetLocation.fromJson(json_['targetLocation']
-                  as core.Map<core.String, core.dynamic>)
+              ? TargetLocation.fromJson(
+                  json_['targetLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           targetType: json_['targetType'] as core.String?,
         );
@@ -1123,15 +1124,16 @@ class ListAccountAdminsResponse {
   /// A collection of Admin instances.
   core.List<Admin>? accountAdmins;
 
-  ListAccountAdminsResponse({
-    this.accountAdmins,
-  });
+  ListAccountAdminsResponse({this.accountAdmins});
 
   ListAccountAdminsResponse.fromJson(core.Map json_)
       : this(
           accountAdmins: (json_['accountAdmins'] as core.List?)
-              ?.map((value) =>
-                  Admin.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Admin.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1155,16 +1157,16 @@ class ListAccountsResponse {
   /// If there are no more accounts, this field is not present in the response.
   core.String? nextPageToken;
 
-  ListAccountsResponse({
-    this.accounts,
-    this.nextPageToken,
-  });
+  ListAccountsResponse({this.accounts, this.nextPageToken});
 
   ListAccountsResponse.fromJson(core.Map json_)
       : this(
           accounts: (json_['accounts'] as core.List?)
-              ?.map((value) => Account.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Account.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1182,15 +1184,16 @@ class ListInvitationsResponse {
   /// The number of invitations listed here cannot exceed 1000.
   core.List<Invitation>? invitations;
 
-  ListInvitationsResponse({
-    this.invitations,
-  });
+  ListInvitationsResponse({this.invitations});
 
   ListInvitationsResponse.fromJson(core.Map json_)
       : this(
           invitations: (json_['invitations'] as core.List?)
-              ?.map((value) => Invitation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Invitation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1204,15 +1207,16 @@ class ListLocationAdminsResponse {
   /// A collection of Admins.
   core.List<Admin>? admins;
 
-  ListLocationAdminsResponse({
-    this.admins,
-  });
+  ListLocationAdminsResponse({this.admins});
 
   ListLocationAdminsResponse.fromJson(core.Map json_)
       : this(
           admins: (json_['admins'] as core.List?)
-              ?.map((value) =>
-                  Admin.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Admin.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1238,17 +1242,14 @@ class OrganizationInfo {
   /// Output only.
   core.String? registeredDomain;
 
-  OrganizationInfo({
-    this.address,
-    this.phoneNumber,
-    this.registeredDomain,
-  });
+  OrganizationInfo({this.address, this.phoneNumber, this.registeredDomain});
 
   OrganizationInfo.fromJson(core.Map json_)
       : this(
           address: json_.containsKey('address')
               ? PostalAddress.fromJson(
-                  json_['address'] as core.Map<core.String, core.dynamic>)
+                  json_['address'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           phoneNumber: json_['phoneNumber'] as core.String?,
           registeredDomain: json_['registeredDomain'] as core.String?,
@@ -1273,7 +1274,7 @@ class OrganizationInfo {
 /// presented with UI elements for input or editing of fields outside countries
 /// where that field is used. For more guidance on how to use this schema, see:
 /// https://support.google.com/business/answer/6397478
-typedef PostalAddress = $PostalAddress00;
+typedef PostalAddress = $PostalAddress;
 
 /// Represents a target location for a pending invitation.
 class TargetLocation {
@@ -1283,10 +1284,7 @@ class TargetLocation {
   /// The name of the location to which the user is invited.
   core.String? locationName;
 
-  TargetLocation({
-    this.address,
-    this.locationName,
-  });
+  TargetLocation({this.address, this.locationName});
 
   TargetLocation.fromJson(core.Map json_)
       : this(
@@ -1308,14 +1306,10 @@ class TransferLocationRequest {
   /// Required.
   core.String? destinationAccount;
 
-  TransferLocationRequest({
-    this.destinationAccount,
-  });
+  TransferLocationRequest({this.destinationAccount});
 
   TransferLocationRequest.fromJson(core.Map json_)
-      : this(
-          destinationAccount: json_['destinationAccount'] as core.String?,
-        );
+      : this(destinationAccount: json_['destinationAccount'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinationAccount != null)

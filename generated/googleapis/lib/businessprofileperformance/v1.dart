@@ -52,12 +52,16 @@ class BusinessProfilePerformanceApi {
 
   LocationsResource get locations => LocationsResource(_requester);
 
-  BusinessProfilePerformanceApi(http.Client client,
-      {core.String rootUrl =
-          'https://businessprofileperformance.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  BusinessProfilePerformanceApi(
+    http.Client client, {
+    core.String rootUrl = 'https://businessprofileperformance.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class LocationsResource {
@@ -153,7 +157,8 @@ class LocationsResource {
       queryParams: queryParams_,
     );
     return FetchMultiDailyMetricsTimeSeriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the values for each date from a given time range that are
@@ -292,19 +297,19 @@ class LocationsResource {
         'dailySubEntityType.dayOfWeek': [dailySubEntityType_dayOfWeek],
       if (dailySubEntityType_timeOfDay_hours != null)
         'dailySubEntityType.timeOfDay.hours': [
-          '${dailySubEntityType_timeOfDay_hours}'
+          '${dailySubEntityType_timeOfDay_hours}',
         ],
       if (dailySubEntityType_timeOfDay_minutes != null)
         'dailySubEntityType.timeOfDay.minutes': [
-          '${dailySubEntityType_timeOfDay_minutes}'
+          '${dailySubEntityType_timeOfDay_minutes}',
         ],
       if (dailySubEntityType_timeOfDay_nanos != null)
         'dailySubEntityType.timeOfDay.nanos': [
-          '${dailySubEntityType_timeOfDay_nanos}'
+          '${dailySubEntityType_timeOfDay_nanos}',
         ],
       if (dailySubEntityType_timeOfDay_seconds != null)
         'dailySubEntityType.timeOfDay.seconds': [
-          '${dailySubEntityType_timeOfDay_seconds}'
+          '${dailySubEntityType_timeOfDay_seconds}',
         ],
       if ($fields != null) 'fields': [$fields],
     };
@@ -318,7 +323,8 @@ class LocationsResource {
       queryParams: queryParams_,
     );
     return GetDailyMetricsTimeSeriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -437,7 +443,8 @@ class LocationsSearchkeywordsImpressionsMonthlyResource {
       queryParams: queryParams_,
     );
     return ListSearchKeywordImpressionsMonthlyResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -494,12 +501,15 @@ class DailyMetricTimeSeries {
       : this(
           dailyMetric: json_['dailyMetric'] as core.String?,
           dailySubEntityType: json_.containsKey('dailySubEntityType')
-              ? DailySubEntityType.fromJson(json_['dailySubEntityType']
-                  as core.Map<core.String, core.dynamic>)
+              ? DailySubEntityType.fromJson(
+                  json_['dailySubEntityType']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           timeSeries: json_.containsKey('timeSeries')
               ? TimeSeries.fromJson(
-                  json_['timeSeries'] as core.Map<core.String, core.dynamic>)
+                  json_['timeSeries'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -533,17 +543,15 @@ class DailySubEntityType {
   /// Eg: 13:34:20 Currently supported DailyMetrics = NONE.
   TimeOfDay? timeOfDay;
 
-  DailySubEntityType({
-    this.dayOfWeek,
-    this.timeOfDay,
-  });
+  DailySubEntityType({this.dayOfWeek, this.timeOfDay});
 
   DailySubEntityType.fromJson(core.Map json_)
       : this(
           dayOfWeek: json_['dayOfWeek'] as core.String?,
           timeOfDay: json_.containsKey('timeOfDay')
               ? TimeOfDay.fromJson(
-                  json_['timeOfDay'] as core.Map<core.String, core.dynamic>)
+                  json_['timeOfDay'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -578,16 +586,14 @@ class DatedValue {
   /// This will not be present when the value is zero.
   core.String? value;
 
-  DatedValue({
-    this.date,
-    this.value,
-  });
+  DatedValue({this.date, this.value});
 
   DatedValue.fromJson(core.Map json_)
       : this(
           date: json_.containsKey('date')
               ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>)
+                  json_['date'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           value: json_['value'] as core.String?,
         );
@@ -603,16 +609,17 @@ class FetchMultiDailyMetricsTimeSeriesResponse {
   /// DailyMetrics and their corresponding time series.
   core.List<MultiDailyMetricTimeSeries>? multiDailyMetricTimeSeries;
 
-  FetchMultiDailyMetricsTimeSeriesResponse({
-    this.multiDailyMetricTimeSeries,
-  });
+  FetchMultiDailyMetricsTimeSeriesResponse({this.multiDailyMetricTimeSeries});
 
   FetchMultiDailyMetricsTimeSeriesResponse.fromJson(core.Map json_)
       : this(
           multiDailyMetricTimeSeries:
               (json_['multiDailyMetricTimeSeries'] as core.List?)
-                  ?.map((value) => MultiDailyMetricTimeSeries.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => MultiDailyMetricTimeSeries.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
         );
 
@@ -627,15 +634,14 @@ class GetDailyMetricsTimeSeriesResponse {
   /// The daily time series.
   TimeSeries? timeSeries;
 
-  GetDailyMetricsTimeSeriesResponse({
-    this.timeSeries,
-  });
+  GetDailyMetricsTimeSeriesResponse({this.timeSeries});
 
   GetDailyMetricsTimeSeriesResponse.fromJson(core.Map json_)
       : this(
           timeSeries: json_.containsKey('timeSeries')
               ? TimeSeries.fromJson(
-                  json_['timeSeries'] as core.Map<core.String, core.dynamic>)
+                  json_['timeSeries'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -652,10 +658,7 @@ class InsightsValue {
   /// Represents the actual value.
   core.String? value;
 
-  InsightsValue({
-    this.threshold,
-    this.value,
-  });
+  InsightsValue({this.threshold, this.value});
 
   InsightsValue.fromJson(core.Map json_)
       : this(
@@ -697,8 +700,11 @@ class ListSearchKeywordImpressionsMonthlyResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           searchKeywordsCounts: (json_['searchKeywordsCounts'] as core.List?)
-              ?.map((value) => SearchKeywordCount.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => SearchKeywordCount.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -714,15 +720,16 @@ class MultiDailyMetricTimeSeries {
   /// List of DailyMetric-TimeSeries pairs.
   core.List<DailyMetricTimeSeries>? dailyMetricTimeSeries;
 
-  MultiDailyMetricTimeSeries({
-    this.dailyMetricTimeSeries,
-  });
+  MultiDailyMetricTimeSeries({this.dailyMetricTimeSeries});
 
   MultiDailyMetricTimeSeries.fromJson(core.Map json_)
       : this(
           dailyMetricTimeSeries: (json_['dailyMetricTimeSeries'] as core.List?)
-              ?.map((value) => DailyMetricTimeSeries.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DailyMetricTimeSeries.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -744,16 +751,14 @@ class SearchKeywordCount {
   /// The lower-cased string that the user entered.
   core.String? searchKeyword;
 
-  SearchKeywordCount({
-    this.insightsValue,
-    this.searchKeyword,
-  });
+  SearchKeywordCount({this.insightsValue, this.searchKeyword});
 
   SearchKeywordCount.fromJson(core.Map json_)
       : this(
           insightsValue: json_.containsKey('insightsValue')
               ? InsightsValue.fromJson(
-                  json_['insightsValue'] as core.Map<core.String, core.dynamic>)
+                  json_['insightsValue'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           searchKeyword: json_['searchKeyword'] as core.String?,
         );
@@ -769,7 +774,7 @@ class SearchKeywordCount {
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef TimeOfDay = $TimeOfDay00;
+typedef TimeOfDay = $TimeOfDay;
 
 /// Represents a timeseries.
 class TimeSeries {
@@ -777,15 +782,16 @@ class TimeSeries {
   /// pair.
   core.List<DatedValue>? datedValues;
 
-  TimeSeries({
-    this.datedValues,
-  });
+  TimeSeries({this.datedValues});
 
   TimeSeries.fromJson(core.Map json_)
       : this(
           datedValues: (json_['datedValues'] as core.List?)
-              ?.map((value) => DatedValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DatedValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 

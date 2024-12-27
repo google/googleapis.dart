@@ -49,11 +49,16 @@ class AdSensePlatformApi {
 
   PlatformsResource get platforms => PlatformsResource(_requester);
 
-  AdSensePlatformApi(http.Client client,
-      {core.String rootUrl = 'https://adsenseplatform.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  AdSensePlatformApi(
+    http.Client client, {
+    core.String rootUrl = 'https://adsenseplatform.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class PlatformsResource {
@@ -114,7 +119,8 @@ class PlatformsAccountsResource {
       queryParams: queryParams_,
     );
     return CloseAccountResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a sub-account.
@@ -176,10 +182,7 @@ class PlatformsAccountsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Account> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Account> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -240,7 +243,8 @@ class PlatformsAccountsResource {
       queryParams: queryParams_,
     );
     return ListAccountsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Looks up information about a sub-account for a specified
@@ -285,7 +289,8 @@ class PlatformsAccountsResource {
       queryParams: queryParams_,
     );
     return LookupAccountResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -403,10 +408,7 @@ class PlatformsAccountsSitesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -440,10 +442,7 @@ class PlatformsAccountsSitesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Site> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Site> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -505,7 +504,8 @@ class PlatformsAccountsSitesResource {
       queryParams: queryParams_,
     );
     return ListSitesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Requests the review of a site.
@@ -548,7 +548,8 @@ class PlatformsAccountsSitesResource {
       queryParams: queryParams_,
     );
     return RequestSiteReviewResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -633,7 +634,8 @@ class Account {
           state: json_['state'] as core.String?,
           timeZone: json_.containsKey('timeZone')
               ? TimeZone.fromJson(
-                  json_['timeZone'] as core.Map<core.String, core.dynamic>)
+                  json_['timeZone'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -773,17 +775,14 @@ class Event {
   /// - "SIGN_UP_VIA_PLATFORM" : Sign up via platform.
   core.String? eventType;
 
-  Event({
-    this.eventInfo,
-    this.eventTime,
-    this.eventType,
-  });
+  Event({this.eventInfo, this.eventTime, this.eventType});
 
   Event.fromJson(core.Map json_)
       : this(
           eventInfo: json_.containsKey('eventInfo')
               ? EventInfo.fromJson(
-                  json_['eventInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['eventInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           eventTime: json_['eventTime'] as core.String?,
           eventType: json_['eventType'] as core.String?,
@@ -808,16 +807,15 @@ class EventInfo {
   /// Required.
   core.String? email;
 
-  EventInfo({
-    this.billingAddress,
-    this.email,
-  });
+  EventInfo({this.billingAddress, this.email});
 
   EventInfo.fromJson(core.Map json_)
       : this(
           billingAddress: json_.containsKey('billingAddress')
-              ? Address.fromJson(json_['billingAddress']
-                  as core.Map<core.String, core.dynamic>)
+              ? Address.fromJson(
+                  json_['billingAddress']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           email: json_['email'] as core.String?,
         );
@@ -842,16 +840,16 @@ class ListAccountsResponse {
   /// "page_token" value to this.
   core.String? nextPageToken;
 
-  ListAccountsResponse({
-    this.accounts,
-    this.nextPageToken,
-  });
+  ListAccountsResponse({this.accounts, this.nextPageToken});
 
   ListAccountsResponse.fromJson(core.Map json_)
       : this(
           accounts: (json_['accounts'] as core.List?)
-              ?.map((value) => Account.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Account.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -873,17 +871,17 @@ class ListSitesResponse {
   /// The sites returned in this list response.
   core.List<Site>? sites;
 
-  ListSitesResponse({
-    this.nextPageToken,
-    this.sites,
-  });
+  ListSitesResponse({this.nextPageToken, this.sites});
 
   ListSitesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           sites: (json_['sites'] as core.List?)
-              ?.map((value) =>
-                  Site.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Site.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -898,14 +896,10 @@ class LookupAccountResponse {
   /// The name of the Account Format: platforms/{platform}/accounts/{account_id}
   core.String? name;
 
-  LookupAccountResponse({
-    this.name,
-  });
+  LookupAccountResponse({this.name});
 
   LookupAccountResponse.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+      : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -950,11 +944,7 @@ class Site {
   /// [if a new site isn't ready](https://support.google.com/adsense/answer/9061852).
   core.String? state;
 
-  Site({
-    this.domain,
-    this.name,
-    this.state,
-  });
+  Site({this.domain, this.name, this.state});
 
   Site.fromJson(core.Map json_)
       : this(

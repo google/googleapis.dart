@@ -6,14 +6,14 @@ import 'package:http/http.dart' as http;
 
 class HttpServerMock extends http.BaseClient {
   late core.Future<http.StreamedResponse> Function(
-      http.BaseRequest, core.Object?) _callback;
+    http.BaseRequest,
+    core.Object?,
+  ) _callback;
   late core.bool _expectJson;
 
   void register(
-    core.Future<http.StreamedResponse> Function(
-      http.BaseRequest,
-      core.Object?,
-    ) callback,
+    core.Future<http.StreamedResponse> Function(http.BaseRequest, core.Object?)
+        callback,
     core.bool expectJson,
   ) {
     _callback = callback;

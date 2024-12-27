@@ -30,12 +30,12 @@ core.List<core.Object?> buildUnnamed0() => [
       {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
       {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
     ];
 
@@ -43,32 +43,14 @@ void checkUnnamed0(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(
-    casted1['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted1['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted1['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
   var casted2 = (o[1]) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(
-    casted2['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted2['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted2['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterSearchResponse = 0;
@@ -79,12 +61,12 @@ api.SearchResponse buildSearchResponse() {
     o.P_context = {
       'list': [1, 2, 3],
       'bool': true,
-      'string': 'foo'
+      'string': 'foo',
     };
     o.P_type = {
       'list': [1, 2, 3],
       'bool': true,
-      'string': 'foo'
+      'string': 'foo',
     };
     o.itemListElement = buildUnnamed0();
   }
@@ -97,86 +79,41 @@ void checkSearchResponse(api.SearchResponse o) {
   if (buildCounterSearchResponse < 3) {
     var casted3 = (o.P_context!) as core.Map;
     unittest.expect(casted3, unittest.hasLength(3));
-    unittest.expect(
-      casted3['list'],
-      unittest.equals([1, 2, 3]),
-    );
-    unittest.expect(
-      casted3['bool'],
-      unittest.equals(true),
-    );
-    unittest.expect(
-      casted3['string'],
-      unittest.equals('foo'),
-    );
+    unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+    unittest.expect(casted3['bool'], unittest.equals(true));
+    unittest.expect(casted3['string'], unittest.equals('foo'));
     var casted4 = (o.P_type!) as core.Map;
     unittest.expect(casted4, unittest.hasLength(3));
-    unittest.expect(
-      casted4['list'],
-      unittest.equals([1, 2, 3]),
-    );
-    unittest.expect(
-      casted4['bool'],
-      unittest.equals(true),
-    );
-    unittest.expect(
-      casted4['string'],
-      unittest.equals('foo'),
-    );
+    unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+    unittest.expect(casted4['bool'], unittest.equals(true));
+    unittest.expect(casted4['string'], unittest.equals('foo'));
     checkUnnamed0(o.itemListElement!);
   }
   buildCounterSearchResponse--;
 }
 
-core.List<core.String> buildUnnamed1() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed1() => ['foo', 'foo'];
 
 void checkUnnamed1(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed2() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed2() => ['foo', 'foo'];
 
 void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed3() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed3() => ['foo', 'foo'];
 
 void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 void main() {
@@ -185,7 +122,8 @@ void main() {
       final o = buildSearchResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SearchResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSearchResponse(od);
     });
   });
@@ -202,85 +140,78 @@ void main() {
       final arg_query = 'foo';
       final arg_types = buildUnnamed3();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 18),
-          unittest.equals('v1/entities:search'),
-        );
-        pathOffset += 18;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 18),
+            unittest.equals('v1/entities:search'),
+          );
+          pathOffset += 18;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['ids']!,
-          unittest.equals(arg_ids),
-        );
-        unittest.expect(
-          queryMap['indent']!.first,
-          unittest.equals('$arg_indent'),
-        );
-        unittest.expect(
-          queryMap['languages']!,
-          unittest.equals(arg_languages),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['limit']!.first),
-          unittest.equals(arg_limit),
-        );
-        unittest.expect(
-          queryMap['prefix']!.first,
-          unittest.equals('$arg_prefix'),
-        );
-        unittest.expect(
-          queryMap['query']!.first,
-          unittest.equals(arg_query),
-        );
-        unittest.expect(
-          queryMap['types']!,
-          unittest.equals(arg_types),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(queryMap['ids']!, unittest.equals(arg_ids));
+          unittest.expect(
+            queryMap['indent']!.first,
+            unittest.equals('$arg_indent'),
+          );
+          unittest.expect(
+            queryMap['languages']!,
+            unittest.equals(arg_languages),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['limit']!.first),
+            unittest.equals(arg_limit),
+          );
+          unittest.expect(
+            queryMap['prefix']!.first,
+            unittest.equals('$arg_prefix'),
+          );
+          unittest.expect(queryMap['query']!.first, unittest.equals(arg_query));
+          unittest.expect(queryMap['types']!, unittest.equals(arg_types));
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildSearchResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSearchResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.search(
-          ids: arg_ids,
-          indent: arg_indent,
-          languages: arg_languages,
-          limit: arg_limit,
-          prefix: arg_prefix,
-          query: arg_query,
-          types: arg_types,
-          $fields: arg_$fields);
+        ids: arg_ids,
+        indent: arg_indent,
+        languages: arg_languages,
+        limit: arg_limit,
+        prefix: arg_prefix,
+        query: arg_query,
+        types: arg_types,
+        $fields: arg_$fields,
+      );
       checkSearchResponse(response as api.SearchResponse);
     });
   });

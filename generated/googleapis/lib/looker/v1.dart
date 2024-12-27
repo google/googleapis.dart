@@ -49,11 +49,16 @@ class LookerApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  LookerApi(http.Client client,
-      {core.String rootUrl = 'https://looker.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  LookerApi(
+    http.Client client, {
+    core.String rootUrl = 'https://looker.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -92,10 +97,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -159,7 +161,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -320,10 +323,7 @@ class ProjectsLocationsInstancesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Instance> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Instance> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -479,7 +479,8 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return ListInstancesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update Instance.
@@ -668,7 +669,8 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -830,7 +832,8 @@ class ProjectsLocationsInstancesBackupsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -912,10 +915,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -951,10 +951,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1016,7 +1013,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1025,9 +1023,7 @@ class AdminSettings {
   /// Email domain allowlist for the instance.
   core.List<core.String>? allowedEmailDomains;
 
-  AdminSettings({
-    this.allowedEmailDomains,
-  });
+  AdminSettings({this.allowedEmailDomains});
 
   AdminSettings.fromJson(core.Map json_)
       : this(
@@ -1069,16 +1065,16 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -1177,17 +1173,14 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1221,10 +1214,7 @@ class CustomDomain {
   /// - "UNKNOWN" : Status is not known.
   core.String? state;
 
-  CustomDomain({
-    this.domain,
-    this.state,
-  });
+  CustomDomain({this.domain, this.state});
 
   CustomDomain.fromJson(core.Map json_)
       : this(
@@ -1267,25 +1257,24 @@ class DenyMaintenancePeriod {
   /// Required.
   TimeOfDay? time;
 
-  DenyMaintenancePeriod({
-    this.endDate,
-    this.startDate,
-    this.time,
-  });
+  DenyMaintenancePeriod({this.endDate, this.startDate, this.time});
 
   DenyMaintenancePeriod.fromJson(core.Map json_)
       : this(
           endDate: json_.containsKey('endDate')
               ? Date.fromJson(
-                  json_['endDate'] as core.Map<core.String, core.dynamic>)
+                  json_['endDate'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           startDate: json_.containsKey('startDate')
               ? Date.fromJson(
-                  json_['startDate'] as core.Map<core.String, core.dynamic>)
+                  json_['startDate'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           time: json_.containsKey('time')
               ? TimeOfDay.fromJson(
-                  json_['time'] as core.Map<core.String, core.dynamic>)
+                  json_['time'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1329,11 +1318,7 @@ class EncryptionConfig {
   /// mode).
   core.String? kmsKeyState;
 
-  EncryptionConfig({
-    this.kmsKeyName,
-    this.kmsKeyNameVersion,
-    this.kmsKeyState,
-  });
+  EncryptionConfig({this.kmsKeyName, this.kmsKeyNameVersion, this.kmsKeyState});
 
   EncryptionConfig.fromJson(core.Map json_)
       : this(
@@ -1356,14 +1341,10 @@ class ExportEncryptionConfig {
   /// Required.
   core.String? kmsKeyName;
 
-  ExportEncryptionConfig({
-    this.kmsKeyName,
-  });
+  ExportEncryptionConfig({this.kmsKeyName});
 
   ExportEncryptionConfig.fromJson(core.Map json_)
-      : this(
-          kmsKeyName: json_['kmsKeyName'] as core.String?,
-        );
+      : this(kmsKeyName: json_['kmsKeyName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
@@ -1385,16 +1366,15 @@ class ExportInstanceRequest {
   /// The URI is in the form `gs://bucketName/folderName`.
   core.String? gcsUri;
 
-  ExportInstanceRequest({
-    this.encryptionConfig,
-    this.gcsUri,
-  });
+  ExportInstanceRequest({this.encryptionConfig, this.gcsUri});
 
   ExportInstanceRequest.fromJson(core.Map json_)
       : this(
           encryptionConfig: json_.containsKey('encryptionConfig')
-              ? ExportEncryptionConfig.fromJson(json_['encryptionConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? ExportEncryptionConfig.fromJson(
+                  json_['encryptionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           gcsUri: json_['gcsUri'] as core.String?,
         );
@@ -1431,14 +1411,10 @@ class ImportInstanceRequest {
   /// `gs://bucketName/folderName`.
   core.String? gcsUri;
 
-  ImportInstanceRequest({
-    this.gcsUri,
-  });
+  ImportInstanceRequest({this.gcsUri});
 
   ImportInstanceRequest.fromJson(core.Map json_)
-      : this(
-          gcsUri: json_['gcsUri'] as core.String?,
-        );
+      : this(gcsUri: json_['gcsUri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcsUri != null) 'gcsUri': gcsUri!,
@@ -1630,22 +1606,28 @@ class Instance {
       : this(
           adminSettings: json_.containsKey('adminSettings')
               ? AdminSettings.fromJson(
-                  json_['adminSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['adminSettings'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           consumerNetwork: json_['consumerNetwork'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           customDomain: json_.containsKey('customDomain')
               ? CustomDomain.fromJson(
-                  json_['customDomain'] as core.Map<core.String, core.dynamic>)
+                  json_['customDomain'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           denyMaintenancePeriod: json_.containsKey('denyMaintenancePeriod')
-              ? DenyMaintenancePeriod.fromJson(json_['denyMaintenancePeriod']
-                  as core.Map<core.String, core.dynamic>)
+              ? DenyMaintenancePeriod.fromJson(
+                  json_['denyMaintenancePeriod']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           egressPublicIp: json_['egressPublicIp'] as core.String?,
           encryptionConfig: json_.containsKey('encryptionConfig')
-              ? EncryptionConfig.fromJson(json_['encryptionConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? EncryptionConfig.fromJson(
+                  json_['encryptionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           fipsEnabled: json_['fipsEnabled'] as core.bool?,
           geminiEnabled: json_['geminiEnabled'] as core.bool?,
@@ -1655,30 +1637,37 @@ class Instance {
               json_.containsKey('lastDenyMaintenancePeriod')
                   ? DenyMaintenancePeriod.fromJson(
                       json_['lastDenyMaintenancePeriod']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           linkedLspProjectNumber:
               json_['linkedLspProjectNumber'] as core.String?,
           lookerUri: json_['lookerUri'] as core.String?,
           lookerVersion: json_['lookerVersion'] as core.String?,
           maintenanceSchedule: json_.containsKey('maintenanceSchedule')
-              ? MaintenanceSchedule.fromJson(json_['maintenanceSchedule']
-                  as core.Map<core.String, core.dynamic>)
+              ? MaintenanceSchedule.fromJson(
+                  json_['maintenanceSchedule']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           maintenanceWindow: json_.containsKey('maintenanceWindow')
-              ? MaintenanceWindow.fromJson(json_['maintenanceWindow']
-                  as core.Map<core.String, core.dynamic>)
+              ? MaintenanceWindow.fromJson(
+                  json_['maintenanceWindow']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           oauthConfig: json_.containsKey('oauthConfig')
               ? OAuthConfig.fromJson(
-                  json_['oauthConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['oauthConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           platformEdition: json_['platformEdition'] as core.String?,
           privateIpEnabled: json_['privateIpEnabled'] as core.bool?,
           pscConfig: json_.containsKey('pscConfig')
               ? PscConfig.fromJson(
-                  json_['pscConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['pscConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           pscEnabled: json_['pscEnabled'] as core.bool?,
           publicIpEnabled: json_['publicIpEnabled'] as core.bool?,
@@ -1687,7 +1676,8 @@ class Instance {
           updateTime: json_['updateTime'] as core.String?,
           userMetadata: json_.containsKey('userMetadata')
               ? UserMetadata.fromJson(
-                  json_['userMetadata'] as core.Map<core.String, core.dynamic>)
+                  json_['userMetadata'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1742,17 +1732,16 @@ class ListInstancesResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListInstancesResponse({
-    this.instances,
-    this.nextPageToken,
-    this.unreachable,
-  });
+  ListInstancesResponse({this.instances, this.nextPageToken, this.unreachable});
 
   ListInstancesResponse.fromJson(core.Map json_)
       : this(
           instances: (json_['instances'] as core.List?)
-              ?.map((value) => Instance.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Instance.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -1775,16 +1764,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1803,17 +1792,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1834,10 +1823,7 @@ class MaintenanceSchedule {
   /// The scheduled start time for the maintenance.
   core.String? startTime;
 
-  MaintenanceSchedule({
-    this.endTime,
-    this.startTime,
-  });
+  MaintenanceSchedule({this.endTime, this.startTime});
 
   MaintenanceSchedule.fromJson(core.Map json_)
       : this(
@@ -1874,17 +1860,15 @@ class MaintenanceWindow {
   /// Required.
   TimeOfDay? startTime;
 
-  MaintenanceWindow({
-    this.dayOfWeek,
-    this.startTime,
-  });
+  MaintenanceWindow({this.dayOfWeek, this.startTime});
 
   MaintenanceWindow.fromJson(core.Map json_)
       : this(
           dayOfWeek: json_['dayOfWeek'] as core.String?,
           startTime: json_.containsKey('startTime')
               ? TimeOfDay.fromJson(
-                  json_['startTime'] as core.Map<core.String, core.dynamic>)
+                  json_['startTime'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1908,10 +1892,7 @@ class OAuthConfig {
   /// field, and thus will not be set in any responses.
   core.String? clientSecret;
 
-  OAuthConfig({
-    this.clientId,
-    this.clientSecret,
-  });
+  OAuthConfig({this.clientId, this.clientSecret});
 
   OAuthConfig.fromJson(core.Map json_)
       : this(
@@ -1968,20 +1949,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -2087,22 +2063,23 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -2149,8 +2126,11 @@ class PscConfig {
           lookerServiceAttachmentUri:
               json_['lookerServiceAttachmentUri'] as core.String?,
           serviceAttachments: (json_['serviceAttachments'] as core.List?)
-              ?.map((value) => ServiceAttachment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ServiceAttachment.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2235,16 +2215,14 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -2275,7 +2253,7 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef TimeOfDay = $TimeOfDay00;
+typedef TimeOfDay = $TimeOfDay;
 
 /// Metadata about users for a Looker instance.
 class UserMetadata {

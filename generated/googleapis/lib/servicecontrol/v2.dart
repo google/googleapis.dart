@@ -53,11 +53,16 @@ class ServiceControlApi {
 
   ServicesResource get services => ServicesResource(_requester);
 
-  ServiceControlApi(http.Client client,
-      {core.String rootUrl = 'https://servicecontrol.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ServiceControlApi(
+    http.Client client, {
+    core.String rootUrl = 'https://servicecontrol.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ServicesResource {
@@ -122,7 +127,8 @@ class ServicesResource {
       queryParams: queryParams_,
     );
     return CheckResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Private Preview.
@@ -179,7 +185,8 @@ class ServicesResource {
       queryParams: queryParams_,
     );
     return ReportResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -211,12 +218,7 @@ class Api {
   /// "v1alpha1".
   core.String? version;
 
-  Api({
-    this.operation,
-    this.protocol,
-    this.service,
-    this.version,
-  });
+  Api({this.operation, this.protocol, this.service, this.version});
 
   Api.fromJson(core.Map json_)
       : this(
@@ -303,34 +305,41 @@ class AttributeContext {
       : this(
           api: json_.containsKey('api')
               ? Api.fromJson(
-                  json_['api'] as core.Map<core.String, core.dynamic>)
+                  json_['api'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           destination: json_.containsKey('destination')
               ? Peer.fromJson(
-                  json_['destination'] as core.Map<core.String, core.dynamic>)
+                  json_['destination'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           extensions: (json_['extensions'] as core.List?)
               ?.map((value) => value as core.Map<core.String, core.dynamic>)
               .toList(),
           origin: json_.containsKey('origin')
               ? Peer.fromJson(
-                  json_['origin'] as core.Map<core.String, core.dynamic>)
+                  json_['origin'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           request: json_.containsKey('request')
               ? Request.fromJson(
-                  json_['request'] as core.Map<core.String, core.dynamic>)
+                  json_['request'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           resource: json_.containsKey('resource')
               ? Resource.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>)
+                  json_['resource'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           response: json_.containsKey('response')
               ? Response.fromJson(
-                  json_['response'] as core.Map<core.String, core.dynamic>)
+                  json_['response'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           source: json_.containsKey('source')
               ? Peer.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -477,12 +486,16 @@ class CheckRequest {
       : this(
           attributes: json_.containsKey('attributes')
               ? AttributeContext.fromJson(
-                  json_['attributes'] as core.Map<core.String, core.dynamic>)
+                  json_['attributes'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           flags: json_['flags'] as core.String?,
           resources: (json_['resources'] as core.List?)
-              ?.map((value) => ResourceInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ResourceInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           serviceConfigId: json_['serviceConfigId'] as core.String?,
         );
@@ -515,27 +528,19 @@ class CheckResponse {
   /// contain additional details about the denial.
   Status? status;
 
-  CheckResponse({
-    this.dynamicMetadata,
-    this.headers,
-    this.status,
-  });
+  CheckResponse({this.dynamicMetadata, this.headers, this.status});
 
   CheckResponse.fromJson(core.Map json_)
       : this(
           dynamicMetadata: json_.containsKey('dynamicMetadata')
               ? json_['dynamicMetadata'] as core.Map<core.String, core.dynamic>
               : null,
-          headers:
-              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          headers: (json_['headers'] as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           status: json_.containsKey('status')
               ? Status.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -574,23 +579,14 @@ class Peer {
   /// physical location where this peer is running.
   core.String? regionCode;
 
-  Peer({
-    this.ip,
-    this.labels,
-    this.port,
-    this.principal,
-    this.regionCode,
-  });
+  Peer({this.ip, this.labels, this.port, this.principal, this.regionCode});
 
   Peer.fromJson(core.Map json_)
       : this(
           ip: json_['ip'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           port: json_['port'] as core.String?,
           principal: json_['principal'] as core.String?,
@@ -621,16 +617,16 @@ class ReportRequest {
   /// configuration.
   core.String? serviceConfigId;
 
-  ReportRequest({
-    this.operations,
-    this.serviceConfigId,
-  });
+  ReportRequest({this.operations, this.serviceConfigId});
 
   ReportRequest.fromJson(core.Map json_)
       : this(
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => AttributeContext.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AttributeContext.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           serviceConfigId: json_['serviceConfigId'] as core.String?,
         );
@@ -651,9 +647,7 @@ class ReportResponse {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? extensions;
 
-  ReportResponse({
-    this.extensions,
-  });
+  ReportResponse({this.extensions});
 
   ReportResponse.fromJson(core.Map json_)
       : this(
@@ -752,15 +746,11 @@ class Request {
       : this(
           auth: json_.containsKey('auth')
               ? Auth.fromJson(
-                  json_['auth'] as core.Map<core.String, core.dynamic>)
+                  json_['auth'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
-          headers:
-              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          headers: (json_['headers'] as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           host: json_['host'] as core.String?,
           id: json_['id'] as core.String?,
           method: json_['method'] as core.String?,
@@ -907,24 +897,16 @@ class Resource {
 
   Resource.fromJson(core.Map json_)
       : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          annotations: (json_['annotations']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           createTime: json_['createTime'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           etag: json_['etag'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           location: json_['location'] as core.String?,
           name: json_['name'] as core.String?,
@@ -1050,13 +1032,8 @@ class Response {
       : this(
           backendLatency: json_['backendLatency'] as core.String?,
           code: json_['code'] as core.String?,
-          headers:
-              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          headers: (json_['headers'] as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           size: json_['size'] as core.String?,
           time: json_['time'] as core.String?,
         );

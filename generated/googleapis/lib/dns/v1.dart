@@ -77,11 +77,16 @@ class DnsApi {
   ResponsePolicyRulesResource get responsePolicyRules =>
       ResponsePolicyRulesResource(_requester);
 
-  DnsApi(http.Client client,
-      {core.String rootUrl = 'https://dns.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DnsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://dns.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ChangesResource {
@@ -255,7 +260,8 @@ class ChangesResource {
       queryParams: queryParams_,
     );
     return ChangesListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -378,7 +384,8 @@ class DnsKeysResource {
       queryParams: queryParams_,
     );
     return DnsKeysListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -497,7 +504,8 @@ class ManagedZoneOperationsResource {
       queryParams: queryParams_,
     );
     return ManagedZoneOperationsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -551,7 +559,8 @@ class ManagedZonesResource {
       queryParams: queryParams_,
     );
     return ManagedZone.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a previously created ManagedZone.
@@ -644,7 +653,8 @@ class ManagedZonesResource {
       queryParams: queryParams_,
     );
     return ManagedZone.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -691,7 +701,8 @@ class ManagedZonesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Enumerates ManagedZones that have been created but not yet deleted.
@@ -742,7 +753,8 @@ class ManagedZonesResource {
       queryParams: queryParams_,
     );
     return ManagedZonesListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Applies a partial update to an existing ManagedZone.
@@ -841,7 +853,8 @@ class ManagedZonesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -891,7 +904,8 @@ class ManagedZonesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing ManagedZone.
@@ -1135,7 +1149,8 @@ class PoliciesResource {
       queryParams: queryParams_,
     );
     return PoliciesListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Applies a partial update to an existing Policy.
@@ -1188,7 +1203,8 @@ class PoliciesResource {
       queryParams: queryParams_,
     );
     return PoliciesPatchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing Policy.
@@ -1241,7 +1257,8 @@ class PoliciesResource {
       queryParams: queryParams_,
     );
     return PoliciesUpdateResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1347,7 +1364,8 @@ class ResourceRecordSetsResource {
       queryParams: queryParams_,
     );
     return ResourceRecordSet.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a previously created ResourceRecordSet.
@@ -1405,7 +1423,8 @@ class ResourceRecordSetsResource {
       queryParams: queryParams_,
     );
     return ResourceRecordSetsDeleteResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Fetches the representation of an existing ResourceRecordSet.
@@ -1463,7 +1482,8 @@ class ResourceRecordSetsResource {
       queryParams: queryParams_,
     );
     return ResourceRecordSet.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Enumerates ResourceRecordSets that you have created but not yet deleted.
@@ -1526,7 +1546,8 @@ class ResourceRecordSetsResource {
       queryParams: queryParams_,
     );
     return ResourceRecordSetsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Applies a partial update to an existing ResourceRecordSet.
@@ -1589,7 +1610,8 @@ class ResourceRecordSetsResource {
       queryParams: queryParams_,
     );
     return ResourceRecordSet.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1643,7 +1665,8 @@ class ResponsePoliciesResource {
       queryParams: queryParams_,
     );
     return ResponsePolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a previously created Response Policy.
@@ -1739,7 +1762,8 @@ class ResponsePoliciesResource {
       queryParams: queryParams_,
     );
     return ResponsePolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Enumerates all Response Policies associated with a project.
@@ -1786,7 +1810,8 @@ class ResponsePoliciesResource {
       queryParams: queryParams_,
     );
     return ResponsePoliciesListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Applies a partial update to an existing Response Policy.
@@ -1839,7 +1864,8 @@ class ResponsePoliciesResource {
       queryParams: queryParams_,
     );
     return ResponsePoliciesPatchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing Response Policy.
@@ -1892,7 +1918,8 @@ class ResponsePoliciesResource {
       queryParams: queryParams_,
     );
     return ResponsePoliciesUpdateResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1953,7 +1980,8 @@ class ResponsePolicyRulesResource {
       queryParams: queryParams_,
     );
     return ResponsePolicyRule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a previously created Response Policy Rule.
@@ -2058,7 +2086,8 @@ class ResponsePolicyRulesResource {
       queryParams: queryParams_,
     );
     return ResponsePolicyRule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Enumerates all Response Policy Rules associated with a project.
@@ -2110,7 +2139,8 @@ class ResponsePolicyRulesResource {
       queryParams: queryParams_,
     );
     return ResponsePolicyRulesListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Applies a partial update to an existing Response Policy Rule.
@@ -2169,7 +2199,8 @@ class ResponsePolicyRulesResource {
       queryParams: queryParams_,
     );
     return ResponsePolicyRulesPatchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing Response Policy Rule.
@@ -2228,7 +2259,8 @@ class ResponsePolicyRulesResource {
       queryParams: queryParams_,
     );
     return ResponsePolicyRulesUpdateResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2281,12 +2313,18 @@ class Change {
   Change.fromJson(core.Map json_)
       : this(
           additions: (json_['additions'] as core.List?)
-              ?.map((value) => ResourceRecordSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ResourceRecordSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           deletions: (json_['deletions'] as core.List?)
-              ?.map((value) => ResourceRecordSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ResourceRecordSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           id: json_['id'] as core.String?,
           isServing: json_['isServing'] as core.bool?,
@@ -2327,17 +2365,16 @@ class ChangesListResponse {
   /// page size.
   core.String? nextPageToken;
 
-  ChangesListResponse({
-    this.changes,
-    this.kind,
-    this.nextPageToken,
-  });
+  ChangesListResponse({this.changes, this.kind, this.nextPageToken});
 
   ChangesListResponse.fromJson(core.Map json_)
       : this(
           changes: (json_['changes'] as core.List?)
-              ?.map((value) =>
-                  Change.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Change.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
@@ -2443,8 +2480,11 @@ class DnsKey {
           creationTime: json_['creationTime'] as core.String?,
           description: json_['description'] as core.String?,
           digests: (json_['digests'] as core.List?)
-              ?.map((value) => DnsKeyDigest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DnsKeyDigest.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           id: json_['id'] as core.String?,
           isActive: json_['isActive'] as core.bool?,
@@ -2483,10 +2523,7 @@ class DnsKeyDigest {
   /// - "sha384"
   core.String? type;
 
-  DnsKeyDigest({
-    this.digest,
-    this.type,
-  });
+  DnsKeyDigest({this.digest, this.type});
 
   DnsKeyDigest.fromJson(core.Map json_)
       : this(
@@ -2530,12 +2567,7 @@ class DnsKeySpec {
   core.String? keyType;
   core.String? kind;
 
-  DnsKeySpec({
-    this.algorithm,
-    this.keyLength,
-    this.keyType,
-    this.kind,
-  });
+  DnsKeySpec({this.algorithm, this.keyLength, this.keyType, this.kind});
 
   DnsKeySpec.fromJson(core.Map json_)
       : this(
@@ -2573,17 +2605,16 @@ class DnsKeysListResponse {
   /// page size.
   core.String? nextPageToken;
 
-  DnsKeysListResponse({
-    this.dnsKeys,
-    this.kind,
-    this.nextPageToken,
-  });
+  DnsKeysListResponse({this.dnsKeys, this.kind, this.nextPageToken});
 
   DnsKeysListResponse.fromJson(core.Map json_)
       : this(
           dnsKeys: (json_['dnsKeys'] as core.List?)
-              ?.map((value) =>
-                  DnsKey.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DnsKey.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
@@ -2643,16 +2674,16 @@ class GoogleIamV1AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  GoogleIamV1AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  GoogleIamV1AuditConfig({this.auditLogConfigs, this.service});
 
   GoogleIamV1AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => GoogleIamV1AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleIamV1AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -2751,17 +2782,14 @@ class GoogleIamV1Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  GoogleIamV1Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  GoogleIamV1Binding({this.condition, this.members, this.role});
 
   GoogleIamV1Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2782,15 +2810,14 @@ class GoogleIamV1GetIamPolicyRequest {
   /// `GetIamPolicy`.
   GoogleIamV1GetPolicyOptions? options;
 
-  GoogleIamV1GetIamPolicyRequest({
-    this.options,
-  });
+  GoogleIamV1GetIamPolicyRequest({this.options});
 
   GoogleIamV1GetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           options: json_.containsKey('options')
               ? GoogleIamV1GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>)
+                  json_['options'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2898,12 +2925,18 @@ class GoogleIamV1Policy {
   GoogleIamV1Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => GoogleIamV1AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleIamV1AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => GoogleIamV1Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleIamV1Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -2932,16 +2965,14 @@ class GoogleIamV1SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  GoogleIamV1SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  GoogleIamV1SetIamPolicyRequest({this.policy, this.updateMask});
 
   GoogleIamV1SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? GoogleIamV1Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -3071,27 +3102,28 @@ class ManagedZone {
           cloudLoggingConfig: json_.containsKey('cloudLoggingConfig')
               ? ManagedZoneCloudLoggingConfig.fromJson(
                   json_['cloudLoggingConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           creationTime: json_['creationTime'] as core.String?,
           description: json_['description'] as core.String?,
           dnsName: json_['dnsName'] as core.String?,
           dnssecConfig: json_.containsKey('dnssecConfig')
               ? ManagedZoneDnsSecConfig.fromJson(
-                  json_['dnssecConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['dnssecConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           forwardingConfig: json_.containsKey('forwardingConfig')
-              ? ManagedZoneForwardingConfig.fromJson(json_['forwardingConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? ManagedZoneForwardingConfig.fromJson(
+                  json_['forwardingConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           nameServerSet: json_['nameServerSet'] as core.String?,
@@ -3100,22 +3132,26 @@ class ManagedZone {
               .toList(),
           peeringConfig: json_.containsKey('peeringConfig')
               ? ManagedZonePeeringConfig.fromJson(
-                  json_['peeringConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['peeringConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           privateVisibilityConfig: json_.containsKey('privateVisibilityConfig')
               ? ManagedZonePrivateVisibilityConfig.fromJson(
                   json_['privateVisibilityConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           reverseLookupConfig: json_.containsKey('reverseLookupConfig')
               ? ManagedZoneReverseLookupConfig.fromJson(
                   json_['reverseLookupConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
               ? ManagedZoneServiceDirectoryConfig.fromJson(
                   json_['serviceDirectoryConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           visibility: json_['visibility'] as core.String?,
         );
@@ -3153,10 +3189,7 @@ class ManagedZoneCloudLoggingConfig {
   core.bool? enableLogging;
   core.String? kind;
 
-  ManagedZoneCloudLoggingConfig({
-    this.enableLogging,
-    this.kind,
-  });
+  ManagedZoneCloudLoggingConfig({this.enableLogging, this.kind});
 
   ManagedZoneCloudLoggingConfig.fromJson(core.Map json_)
       : this(
@@ -3206,8 +3239,11 @@ class ManagedZoneDnsSecConfig {
   ManagedZoneDnsSecConfig.fromJson(core.Map json_)
       : this(
           defaultKeySpecs: (json_['defaultKeySpecs'] as core.List?)
-              ?.map((value) => DnsKeySpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DnsKeySpec.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nonExistence: json_['nonExistence'] as core.String?,
@@ -3231,18 +3267,17 @@ class ManagedZoneForwardingConfig {
   /// is given.
   core.List<ManagedZoneForwardingConfigNameServerTarget>? targetNameServers;
 
-  ManagedZoneForwardingConfig({
-    this.kind,
-    this.targetNameServers,
-  });
+  ManagedZoneForwardingConfig({this.kind, this.targetNameServers});
 
   ManagedZoneForwardingConfig.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           targetNameServers: (json_['targetNameServers'] as core.List?)
-              ?.map((value) =>
-                  ManagedZoneForwardingConfigNameServerTarget.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ManagedZoneForwardingConfigNameServerTarget.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3329,8 +3364,11 @@ class ManagedZoneOperationsListResponse {
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3347,17 +3385,15 @@ class ManagedZonePeeringConfig {
   /// The network with which to peer.
   ManagedZonePeeringConfigTargetNetwork? targetNetwork;
 
-  ManagedZonePeeringConfig({
-    this.kind,
-    this.targetNetwork,
-  });
+  ManagedZonePeeringConfig({this.kind, this.targetNetwork});
 
   ManagedZonePeeringConfig.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           targetNetwork: json_.containsKey('targetNetwork')
               ? ManagedZonePeeringConfigTargetNetwork.fromJson(
-                  json_['targetNetwork'] as core.Map<core.String, core.dynamic>)
+                  json_['targetNetwork'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3420,15 +3456,20 @@ class ManagedZonePrivateVisibilityConfig {
   ManagedZonePrivateVisibilityConfig.fromJson(core.Map json_)
       : this(
           gkeClusters: (json_['gkeClusters'] as core.List?)
-              ?.map((value) =>
-                  ManagedZonePrivateVisibilityConfigGKECluster.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    ManagedZonePrivateVisibilityConfigGKECluster.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           networks: (json_['networks'] as core.List?)
-              ?.map((value) =>
-                  ManagedZonePrivateVisibilityConfigNetwork.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ManagedZonePrivateVisibilityConfigNetwork.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3475,10 +3516,7 @@ class ManagedZonePrivateVisibilityConfigNetwork {
   /// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
   core.String? networkUrl;
 
-  ManagedZonePrivateVisibilityConfigNetwork({
-    this.kind,
-    this.networkUrl,
-  });
+  ManagedZonePrivateVisibilityConfigNetwork({this.kind, this.networkUrl});
 
   ManagedZonePrivateVisibilityConfigNetwork.fromJson(core.Map json_)
       : this(
@@ -3495,14 +3533,10 @@ class ManagedZonePrivateVisibilityConfigNetwork {
 class ManagedZoneReverseLookupConfig {
   core.String? kind;
 
-  ManagedZoneReverseLookupConfig({
-    this.kind,
-  });
+  ManagedZoneReverseLookupConfig({this.kind});
 
   ManagedZoneReverseLookupConfig.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-        );
+      : this(kind: json_['kind'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -3516,17 +3550,15 @@ class ManagedZoneServiceDirectoryConfig {
   /// Contains information about the namespace associated with the zone.
   ManagedZoneServiceDirectoryConfigNamespace? namespace;
 
-  ManagedZoneServiceDirectoryConfig({
-    this.kind,
-    this.namespace,
-  });
+  ManagedZoneServiceDirectoryConfig({this.kind, this.namespace});
 
   ManagedZoneServiceDirectoryConfig.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           namespace: json_.containsKey('namespace')
               ? ManagedZoneServiceDirectoryConfigNamespace.fromJson(
-                  json_['namespace'] as core.Map<core.String, core.dynamic>)
+                  json_['namespace'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3589,18 +3621,17 @@ class ManagedZonesListResponse {
   /// page size.
   core.String? nextPageToken;
 
-  ManagedZonesListResponse({
-    this.kind,
-    this.managedZones,
-    this.nextPageToken,
-  });
+  ManagedZonesListResponse({this.kind, this.managedZones, this.nextPageToken});
 
   ManagedZonesListResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           managedZones: (json_['managedZones'] as core.List?)
-              ?.map((value) => ManagedZone.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ManagedZone.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -3675,7 +3706,8 @@ class Operation {
       : this(
           dnsKeyContext: json_.containsKey('dnsKeyContext')
               ? OperationDnsKeyContext.fromJson(
-                  json_['dnsKeyContext'] as core.Map<core.String, core.dynamic>)
+                  json_['dnsKeyContext'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
@@ -3685,7 +3717,8 @@ class Operation {
           user: json_['user'] as core.String?,
           zoneContext: json_.containsKey('zoneContext')
               ? OperationManagedZoneContext.fromJson(
-                  json_['zoneContext'] as core.Map<core.String, core.dynamic>)
+                  json_['zoneContext'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3708,20 +3741,19 @@ class OperationDnsKeyContext {
   /// The pre-operation DnsKey resource.
   DnsKey? oldValue;
 
-  OperationDnsKeyContext({
-    this.newValue,
-    this.oldValue,
-  });
+  OperationDnsKeyContext({this.newValue, this.oldValue});
 
   OperationDnsKeyContext.fromJson(core.Map json_)
       : this(
           newValue: json_.containsKey('newValue')
               ? DnsKey.fromJson(
-                  json_['newValue'] as core.Map<core.String, core.dynamic>)
+                  json_['newValue'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           oldValue: json_.containsKey('oldValue')
               ? DnsKey.fromJson(
-                  json_['oldValue'] as core.Map<core.String, core.dynamic>)
+                  json_['oldValue'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3738,20 +3770,19 @@ class OperationManagedZoneContext {
   /// The pre-operation ManagedZone resource.
   ManagedZone? oldValue;
 
-  OperationManagedZoneContext({
-    this.newValue,
-    this.oldValue,
-  });
+  OperationManagedZoneContext({this.newValue, this.oldValue});
 
   OperationManagedZoneContext.fromJson(core.Map json_)
       : this(
           newValue: json_.containsKey('newValue')
               ? ManagedZone.fromJson(
-                  json_['newValue'] as core.Map<core.String, core.dynamic>)
+                  json_['newValue'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           oldValue: json_.containsKey('oldValue')
               ? ManagedZone.fromJson(
-                  json_['oldValue'] as core.Map<core.String, core.dynamic>)
+                  json_['oldValue'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3780,19 +3811,18 @@ class PoliciesListResponse {
   /// The policy resources.
   core.List<Policy>? policies;
 
-  PoliciesListResponse({
-    this.kind,
-    this.nextPageToken,
-    this.policies,
-  });
+  PoliciesListResponse({this.kind, this.nextPageToken, this.policies});
 
   PoliciesListResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           policies: (json_['policies'] as core.List?)
-              ?.map((value) =>
-                  Policy.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Policy.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3806,15 +3836,14 @@ class PoliciesListResponse {
 class PoliciesPatchResponse {
   Policy? policy;
 
-  PoliciesPatchResponse({
-    this.policy,
-  });
+  PoliciesPatchResponse({this.policy});
 
   PoliciesPatchResponse.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3826,15 +3855,14 @@ class PoliciesPatchResponse {
 class PoliciesUpdateResponse {
   Policy? policy;
 
-  PoliciesUpdateResponse({
-    this.policy,
-  });
+  PoliciesUpdateResponse({this.policy});
 
   PoliciesUpdateResponse.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3898,7 +3926,8 @@ class Policy {
               json_.containsKey('alternativeNameServerConfig')
                   ? PolicyAlternativeNameServerConfig.fromJson(
                       json_['alternativeNameServerConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           description: json_['description'] as core.String?,
           enableInboundForwarding:
@@ -3908,8 +3937,11 @@ class Policy {
           kind: json_['kind'] as core.String?,
           name: json_['name'] as core.String?,
           networks: (json_['networks'] as core.List?)
-              ?.map((value) => PolicyNetwork.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PolicyNetwork.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3938,18 +3970,18 @@ class PolicyAlternativeNameServerConfig {
   core.List<PolicyAlternativeNameServerConfigTargetNameServer>?
       targetNameServers;
 
-  PolicyAlternativeNameServerConfig({
-    this.kind,
-    this.targetNameServers,
-  });
+  PolicyAlternativeNameServerConfig({this.kind, this.targetNameServers});
 
   PolicyAlternativeNameServerConfig.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           targetNameServers: (json_['targetNameServers'] as core.List?)
-              ?.map((value) =>
-                  PolicyAlternativeNameServerConfigTargetNameServer.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    PolicyAlternativeNameServerConfigTargetNameServer.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -4015,10 +4047,7 @@ class PolicyNetwork {
   /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
   core.String? networkUrl;
 
-  PolicyNetwork({
-    this.kind,
-    this.networkUrl,
-  });
+  PolicyNetwork({this.kind, this.networkUrl});
 
   PolicyNetwork.fromJson(core.Map json_)
       : this(
@@ -4048,12 +4077,7 @@ class Project {
   /// Quotas assigned to this project (output only).
   Quota? quota;
 
-  Project({
-    this.id,
-    this.kind,
-    this.number,
-    this.quota,
-  });
+  Project({this.id, this.kind, this.number, this.quota});
 
   Project.fromJson(core.Map json_)
       : this(
@@ -4062,7 +4086,8 @@ class Project {
           number: json_['number'] as core.String?,
           quota: json_.containsKey('quota')
               ? Quota.fromJson(
-                  json_['quota'] as core.Map<core.String, core.dynamic>)
+                  json_['quota'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -4229,8 +4254,11 @@ class Quota {
           totalRrdataSizePerChange:
               json_['totalRrdataSizePerChange'] as core.int?,
           whitelistedKeySpecs: (json_['whitelistedKeySpecs'] as core.List?)
-              ?.map((value) => DnsKeySpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DnsKeySpec.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -4314,17 +4342,20 @@ class RRSetRoutingPolicy {
       : this(
           geo: json_.containsKey('geo')
               ? RRSetRoutingPolicyGeoPolicy.fromJson(
-                  json_['geo'] as core.Map<core.String, core.dynamic>)
+                  json_['geo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           healthCheck: json_['healthCheck'] as core.String?,
           kind: json_['kind'] as core.String?,
           primaryBackup: json_.containsKey('primaryBackup')
               ? RRSetRoutingPolicyPrimaryBackupPolicy.fromJson(
-                  json_['primaryBackup'] as core.Map<core.String, core.dynamic>)
+                  json_['primaryBackup'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           wrr: json_.containsKey('wrr')
               ? RRSetRoutingPolicyWrrPolicy.fromJson(
-                  json_['wrr'] as core.Map<core.String, core.dynamic>)
+                  json_['wrr'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -4357,19 +4388,17 @@ class RRSetRoutingPolicyGeoPolicy {
   core.List<RRSetRoutingPolicyGeoPolicyGeoPolicyItem>? items;
   core.String? kind;
 
-  RRSetRoutingPolicyGeoPolicy({
-    this.enableFencing,
-    this.items,
-    this.kind,
-  });
+  RRSetRoutingPolicyGeoPolicy({this.enableFencing, this.items, this.kind});
 
   RRSetRoutingPolicyGeoPolicy.fromJson(core.Map json_)
       : this(
           enableFencing: json_['enableFencing'] as core.bool?,
           items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -4416,7 +4445,8 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
           healthCheckedTargets: json_.containsKey('healthCheckedTargets')
               ? RRSetRoutingPolicyHealthCheckTargets.fromJson(
                   json_['healthCheckedTargets']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           kind: json_['kind'] as core.String?,
           location: json_['location'] as core.String?,
@@ -4463,8 +4493,11 @@ class RRSetRoutingPolicyHealthCheckTargets {
               ?.map((value) => value as core.String)
               .toList(),
           internalLoadBalancers: (json_['internalLoadBalancers'] as core.List?)
-              ?.map((value) => RRSetRoutingPolicyLoadBalancerTarget.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RRSetRoutingPolicyLoadBalancerTarget.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -4591,14 +4624,17 @@ class RRSetRoutingPolicyPrimaryBackupPolicy {
   RRSetRoutingPolicyPrimaryBackupPolicy.fromJson(core.Map json_)
       : this(
           backupGeoTargets: json_.containsKey('backupGeoTargets')
-              ? RRSetRoutingPolicyGeoPolicy.fromJson(json_['backupGeoTargets']
-                  as core.Map<core.String, core.dynamic>)
+              ? RRSetRoutingPolicyGeoPolicy.fromJson(
+                  json_['backupGeoTargets']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           kind: json_['kind'] as core.String?,
           primaryTargets: json_.containsKey('primaryTargets')
               ? RRSetRoutingPolicyHealthCheckTargets.fromJson(
                   json_['primaryTargets']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           trickleTraffic: (json_['trickleTraffic'] as core.num?)?.toDouble(),
         );
@@ -4617,17 +4653,16 @@ class RRSetRoutingPolicyWrrPolicy {
   core.List<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>? items;
   core.String? kind;
 
-  RRSetRoutingPolicyWrrPolicy({
-    this.items,
-    this.kind,
-  });
+  RRSetRoutingPolicyWrrPolicy({this.items, this.kind});
 
   RRSetRoutingPolicyWrrPolicy.fromJson(core.Map json_)
       : this(
           items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -4677,7 +4712,8 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
           healthCheckedTargets: json_.containsKey('healthCheckedTargets')
               ? RRSetRoutingPolicyHealthCheckTargets.fromJson(
                   json_['healthCheckedTargets']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           kind: json_['kind'] as core.String?,
           rrdatas: (json_['rrdatas'] as core.List?)
@@ -4745,7 +4781,8 @@ class ResourceRecordSet {
           name: json_['name'] as core.String?,
           routingPolicy: json_.containsKey('routingPolicy')
               ? RRSetRoutingPolicy.fromJson(
-                  json_['routingPolicy'] as core.Map<core.String, core.dynamic>)
+                  json_['routingPolicy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           rrdatas: (json_['rrdatas'] as core.List?)
               ?.map((value) => value as core.String)
@@ -4789,19 +4826,18 @@ class ResourceRecordSetsListResponse {
   /// The resource record set resources.
   core.List<ResourceRecordSet>? rrsets;
 
-  ResourceRecordSetsListResponse({
-    this.kind,
-    this.nextPageToken,
-    this.rrsets,
-  });
+  ResourceRecordSetsListResponse({this.kind, this.nextPageToken, this.rrsets});
 
   ResourceRecordSetsListResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           rrsets: (json_['rrsets'] as core.List?)
-              ?.map((value) => ResourceRecordSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ResourceRecordSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -4828,17 +4864,17 @@ class ResponsePoliciesListResponse {
   /// The Response Policy resources.
   core.List<ResponsePolicy>? responsePolicies;
 
-  ResponsePoliciesListResponse({
-    this.nextPageToken,
-    this.responsePolicies,
-  });
+  ResponsePoliciesListResponse({this.nextPageToken, this.responsePolicies});
 
   ResponsePoliciesListResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           responsePolicies: (json_['responsePolicies'] as core.List?)
-              ?.map((value) => ResponsePolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ResponsePolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -4851,15 +4887,15 @@ class ResponsePoliciesListResponse {
 class ResponsePoliciesPatchResponse {
   ResponsePolicy? responsePolicy;
 
-  ResponsePoliciesPatchResponse({
-    this.responsePolicy,
-  });
+  ResponsePoliciesPatchResponse({this.responsePolicy});
 
   ResponsePoliciesPatchResponse.fromJson(core.Map json_)
       : this(
           responsePolicy: json_.containsKey('responsePolicy')
-              ? ResponsePolicy.fromJson(json_['responsePolicy']
-                  as core.Map<core.String, core.dynamic>)
+              ? ResponsePolicy.fromJson(
+                  json_['responsePolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -4871,15 +4907,15 @@ class ResponsePoliciesPatchResponse {
 class ResponsePoliciesUpdateResponse {
   ResponsePolicy? responsePolicy;
 
-  ResponsePoliciesUpdateResponse({
-    this.responsePolicy,
-  });
+  ResponsePoliciesUpdateResponse({this.responsePolicy});
 
   ResponsePoliciesUpdateResponse.fromJson(core.Map json_)
       : this(
           responsePolicy: json_.containsKey('responsePolicy')
-              ? ResponsePolicy.fromJson(json_['responsePolicy']
-                  as core.Map<core.String, core.dynamic>)
+              ? ResponsePolicy.fromJson(
+                  json_['responsePolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -4925,21 +4961,24 @@ class ResponsePolicy {
       : this(
           description: json_['description'] as core.String?,
           gkeClusters: (json_['gkeClusters'] as core.List?)
-              ?.map((value) => ResponsePolicyGKECluster.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ResponsePolicyGKECluster.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           networks: (json_['networks'] as core.List?)
-              ?.map((value) => ResponsePolicyNetwork.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ResponsePolicyNetwork.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           responsePolicyName: json_['responsePolicyName'] as core.String?,
         );
@@ -4966,10 +5005,7 @@ class ResponsePolicyGKECluster {
   core.String? gkeClusterName;
   core.String? kind;
 
-  ResponsePolicyGKECluster({
-    this.gkeClusterName,
-    this.kind,
-  });
+  ResponsePolicyGKECluster({this.gkeClusterName, this.kind});
 
   ResponsePolicyGKECluster.fromJson(core.Map json_)
       : this(
@@ -4992,10 +5028,7 @@ class ResponsePolicyNetwork {
   /// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
   core.String? networkUrl;
 
-  ResponsePolicyNetwork({
-    this.kind,
-    this.networkUrl,
-  });
+  ResponsePolicyNetwork({this.kind, this.networkUrl});
 
   ResponsePolicyNetwork.fromJson(core.Map json_)
       : this(
@@ -5067,7 +5100,8 @@ class ResponsePolicyRule {
           kind: json_['kind'] as core.String?,
           localData: json_.containsKey('localData')
               ? ResponsePolicyRuleLocalData.fromJson(
-                  json_['localData'] as core.Map<core.String, core.dynamic>)
+                  json_['localData'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           ruleName: json_['ruleName'] as core.String?,
         );
@@ -5087,15 +5121,16 @@ class ResponsePolicyRuleLocalData {
   /// The name must match the dns_name.
   core.List<ResourceRecordSet>? localDatas;
 
-  ResponsePolicyRuleLocalData({
-    this.localDatas,
-  });
+  ResponsePolicyRuleLocalData({this.localDatas});
 
   ResponsePolicyRuleLocalData.fromJson(core.Map json_)
       : this(
           localDatas: (json_['localDatas'] as core.List?)
-              ?.map((value) => ResourceRecordSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ResourceRecordSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -5129,8 +5164,11 @@ class ResponsePolicyRulesListResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           responsePolicyRules: (json_['responsePolicyRules'] as core.List?)
-              ?.map((value) => ResponsePolicyRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ResponsePolicyRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -5144,15 +5182,15 @@ class ResponsePolicyRulesListResponse {
 class ResponsePolicyRulesPatchResponse {
   ResponsePolicyRule? responsePolicyRule;
 
-  ResponsePolicyRulesPatchResponse({
-    this.responsePolicyRule,
-  });
+  ResponsePolicyRulesPatchResponse({this.responsePolicyRule});
 
   ResponsePolicyRulesPatchResponse.fromJson(core.Map json_)
       : this(
           responsePolicyRule: json_.containsKey('responsePolicyRule')
-              ? ResponsePolicyRule.fromJson(json_['responsePolicyRule']
-                  as core.Map<core.String, core.dynamic>)
+              ? ResponsePolicyRule.fromJson(
+                  json_['responsePolicyRule']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -5165,15 +5203,15 @@ class ResponsePolicyRulesPatchResponse {
 class ResponsePolicyRulesUpdateResponse {
   ResponsePolicyRule? responsePolicyRule;
 
-  ResponsePolicyRulesUpdateResponse({
-    this.responsePolicyRule,
-  });
+  ResponsePolicyRulesUpdateResponse({this.responsePolicyRule});
 
   ResponsePolicyRulesUpdateResponse.fromJson(core.Map json_)
       : this(
           responsePolicyRule: json_.containsKey('responsePolicyRule')
-              ? ResponsePolicyRule.fromJson(json_['responsePolicyRule']
-                  as core.Map<core.String, core.dynamic>)
+              ? ResponsePolicyRule.fromJson(
+                  json_['responsePolicyRule']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 

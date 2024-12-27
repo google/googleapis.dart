@@ -65,11 +65,16 @@ class NetworkServicesApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  NetworkServicesApi(http.Client client,
-      {core.String rootUrl = 'https://networkservices.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  NetworkServicesApi(
+    http.Client client, {
+    core.String rootUrl = 'https://networkservices.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -138,10 +143,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -205,7 +207,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -363,7 +366,8 @@ class ProjectsLocationsAuthzExtensionsResource {
       queryParams: queryParams_,
     );
     return AuthzExtension.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists `AuthzExtension` resources in a given project and location.
@@ -420,7 +424,8 @@ class ProjectsLocationsAuthzExtensionsResource {
       queryParams: queryParams_,
     );
     return ListAuthzExtensionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of the specified `AuthzExtension` resource.
@@ -647,7 +652,8 @@ class ProjectsLocationsEdgeCacheKeysetsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -809,7 +815,8 @@ class ProjectsLocationsEdgeCacheOriginsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -971,7 +978,8 @@ class ProjectsLocationsEdgeCacheServicesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1099,7 +1107,8 @@ class ProjectsLocationsEndpointPoliciesResource {
       queryParams: queryParams_,
     );
     return EndpointPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists EndpointPolicies in a given project and location.
@@ -1148,7 +1157,8 @@ class ProjectsLocationsEndpointPoliciesResource {
       queryParams: queryParams_,
     );
     return ListEndpointPoliciesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single EndpointPolicy.
@@ -1313,10 +1323,7 @@ class ProjectsLocationsGatewaysResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Gateway> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Gateway> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1375,7 +1382,8 @@ class ProjectsLocationsGatewaysResource {
       queryParams: queryParams_,
     );
     return ListGatewaysResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single Gateway.
@@ -1470,7 +1478,8 @@ class ProjectsLocationsGatewaysRouteViewsResource {
       queryParams: queryParams_,
     );
     return GatewayRouteView.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists RouteViews
@@ -1519,7 +1528,8 @@ class ProjectsLocationsGatewaysRouteViewsResource {
       queryParams: queryParams_,
     );
     return ListGatewayRouteViewsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1631,10 +1641,7 @@ class ProjectsLocationsGrpcRoutesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GrpcRoute> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<GrpcRoute> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1694,7 +1701,8 @@ class ProjectsLocationsGrpcRoutesResource {
       queryParams: queryParams_,
     );
     return ListGrpcRoutesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single GrpcRoute.
@@ -1856,10 +1864,7 @@ class ProjectsLocationsHttpRoutesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<HttpRoute> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<HttpRoute> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1919,7 +1924,8 @@ class ProjectsLocationsHttpRoutesResource {
       queryParams: queryParams_,
     );
     return ListHttpRoutesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single HttpRoute.
@@ -2128,7 +2134,8 @@ class ProjectsLocationsLbRouteExtensionsResource {
       queryParams: queryParams_,
     );
     return LbRouteExtension.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists `LbRouteExtension` resources in a given project and location.
@@ -2185,7 +2192,8 @@ class ProjectsLocationsLbRouteExtensionsResource {
       queryParams: queryParams_,
     );
     return ListLbRouteExtensionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of the specified `LbRouteExtension` resource.
@@ -2411,7 +2419,8 @@ class ProjectsLocationsLbTrafficExtensionsResource {
       queryParams: queryParams_,
     );
     return LbTrafficExtension.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists `LbTrafficExtension` resources in a given project and location.
@@ -2469,7 +2478,8 @@ class ProjectsLocationsLbTrafficExtensionsResource {
       queryParams: queryParams_,
     );
     return ListLbTrafficExtensionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of the specified `LbTrafficExtension` resource.
@@ -2648,10 +2658,7 @@ class ProjectsLocationsMeshesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Mesh> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Mesh> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2710,7 +2717,8 @@ class ProjectsLocationsMeshesResource {
       queryParams: queryParams_,
     );
     return ListMeshesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single Mesh.
@@ -2805,7 +2813,8 @@ class ProjectsLocationsMeshesRouteViewsResource {
       queryParams: queryParams_,
     );
     return MeshRouteView.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists RouteViews
@@ -2853,7 +2862,8 @@ class ProjectsLocationsMeshesRouteViewsResource {
       queryParams: queryParams_,
     );
     return ListMeshRouteViewsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2935,10 +2945,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2974,10 +2981,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3039,7 +3043,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3167,7 +3172,8 @@ class ProjectsLocationsServiceBindingsResource {
       queryParams: queryParams_,
     );
     return ServiceBinding.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists ServiceBinding in a given project and location.
@@ -3215,7 +3221,8 @@ class ProjectsLocationsServiceBindingsResource {
       queryParams: queryParams_,
     );
     return ListServiceBindingsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3345,7 +3352,8 @@ class ProjectsLocationsServiceLbPoliciesResource {
       queryParams: queryParams_,
     );
     return ServiceLbPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists ServiceLbPolicies in a given project and location.
@@ -3394,7 +3402,8 @@ class ProjectsLocationsServiceLbPoliciesResource {
       queryParams: queryParams_,
     );
     return ListServiceLbPoliciesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single ServiceLbPolicy.
@@ -3557,10 +3566,7 @@ class ProjectsLocationsTcpRoutesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TcpRoute> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<TcpRoute> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3620,7 +3626,8 @@ class ProjectsLocationsTcpRoutesResource {
       queryParams: queryParams_,
     );
     return ListTcpRoutesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single TcpRoute.
@@ -3782,10 +3789,7 @@ class ProjectsLocationsTlsRoutesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TlsRoute> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<TlsRoute> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3845,7 +3849,8 @@ class ProjectsLocationsTlsRoutesResource {
       queryParams: queryParams_,
     );
     return ListTlsRoutesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single TlsRoute.
@@ -4041,7 +4046,8 @@ class ProjectsLocationsWasmPluginsResource {
       queryParams: queryParams_,
     );
     return WasmPlugin.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists `WasmPlugin` resources in a given project and location.
@@ -4091,7 +4097,8 @@ class ProjectsLocationsWasmPluginsResource {
       queryParams: queryParams_,
     );
     return ListWasmPluginsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of the specified `WasmPlugin` resource.
@@ -4279,7 +4286,8 @@ class ProjectsLocationsWasmPluginsVersionsResource {
       queryParams: queryParams_,
     );
     return WasmPluginVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists `WasmPluginVersion` resources in a given project and location.
@@ -4332,7 +4340,8 @@ class ProjectsLocationsWasmPluginsVersionsResource {
       queryParams: queryParams_,
     );
     return ListWasmPluginVersionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4363,16 +4372,16 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -4547,10 +4556,7 @@ class AuthzExtension {
               .toList(),
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           loadBalancingScheme: json_['loadBalancingScheme'] as core.String?,
           metadata: json_.containsKey('metadata')
@@ -4661,17 +4667,14 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -4703,16 +4706,15 @@ class EndpointMatcher {
   /// The matcher is based on node metadata presented by xDS clients.
   EndpointMatcherMetadataLabelMatcher? metadataLabelMatcher;
 
-  EndpointMatcher({
-    this.metadataLabelMatcher,
-  });
+  EndpointMatcher({this.metadataLabelMatcher});
 
   EndpointMatcher.fromJson(core.Map json_)
       : this(
           metadataLabelMatcher: json_.containsKey('metadataLabelMatcher')
               ? EndpointMatcherMetadataLabelMatcher.fromJson(
                   json_['metadataLabelMatcher']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -4765,9 +4767,12 @@ class EndpointMatcherMetadataLabelMatcher {
           metadataLabelMatchCriteria:
               json_['metadataLabelMatchCriteria'] as core.String?,
           metadataLabels: (json_['metadataLabels'] as core.List?)
-              ?.map((value) =>
-                  EndpointMatcherMetadataLabelMatcherMetadataLabels.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    EndpointMatcherMetadataLabelMatcherMetadataLabels.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -4918,21 +4923,22 @@ class EndpointPolicy {
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           endpointMatcher: json_.containsKey('endpointMatcher')
-              ? EndpointMatcher.fromJson(json_['endpointMatcher']
-                  as core.Map<core.String, core.dynamic>)
+              ? EndpointMatcher.fromJson(
+                  json_['endpointMatcher']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           serverTlsPolicy: json_['serverTlsPolicy'] as core.String?,
           trafficPortSelector: json_.containsKey('trafficPortSelector')
-              ? TrafficPortSelector.fromJson(json_['trafficPortSelector']
-                  as core.Map<core.String, core.dynamic>)
+              ? TrafficPortSelector.fromJson(
+                  json_['trafficPortSelector']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           type: json_['type'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -5002,21 +5008,22 @@ class ExtensionChain {
   /// Required.
   core.String? name;
 
-  ExtensionChain({
-    this.extensions,
-    this.matchCondition,
-    this.name,
-  });
+  ExtensionChain({this.extensions, this.matchCondition, this.name});
 
   ExtensionChain.fromJson(core.Map json_)
       : this(
           extensions: (json_['extensions'] as core.List?)
-              ?.map((value) => ExtensionChainExtension.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ExtensionChainExtension.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           matchCondition: json_.containsKey('matchCondition')
-              ? ExtensionChainMatchCondition.fromJson(json_['matchCondition']
-                  as core.Map<core.String, core.dynamic>)
+              ? ExtensionChainMatchCondition.fromJson(
+                  json_['matchCondition']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
         );
@@ -5183,14 +5190,10 @@ class ExtensionChainMatchCondition {
   /// Required.
   core.String? celExpression;
 
-  ExtensionChainMatchCondition({
-    this.celExpression,
-  });
+  ExtensionChainMatchCondition({this.celExpression});
 
   ExtensionChainMatchCondition.fromJson(core.Map json_)
-      : this(
-          celExpression: json_['celExpression'] as core.String?,
-        );
+      : this(celExpression: json_['celExpression'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (celExpression != null) 'celExpression': celExpression!,
@@ -5407,10 +5410,7 @@ class Gateway {
           ipVersion: json_['ipVersion'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           network: json_['network'] as core.String?,
@@ -5620,18 +5620,18 @@ class GrpcRoute {
               .toList(),
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           meshes: (json_['meshes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           name: json_['name'] as core.String?,
           rules: (json_['rules'] as core.List?)
-              ?.map((value) => GrpcRouteRouteRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GrpcRouteRouteRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           selfLink: json_['selfLink'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -5675,10 +5675,7 @@ class GrpcRouteDestination {
   /// Optional.
   core.int? weight;
 
-  GrpcRouteDestination({
-    this.serviceName,
-    this.weight,
-  });
+  GrpcRouteDestination({this.serviceName, this.weight});
 
   GrpcRouteDestination.fromJson(core.Map json_)
       : this(
@@ -5706,20 +5703,19 @@ class GrpcRouteFaultInjectionPolicy {
   /// The specification for injecting delay to client requests.
   GrpcRouteFaultInjectionPolicyDelay? delay;
 
-  GrpcRouteFaultInjectionPolicy({
-    this.abort,
-    this.delay,
-  });
+  GrpcRouteFaultInjectionPolicy({this.abort, this.delay});
 
   GrpcRouteFaultInjectionPolicy.fromJson(core.Map json_)
       : this(
           abort: json_.containsKey('abort')
               ? GrpcRouteFaultInjectionPolicyAbort.fromJson(
-                  json_['abort'] as core.Map<core.String, core.dynamic>)
+                  json_['abort'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           delay: json_.containsKey('delay')
               ? GrpcRouteFaultInjectionPolicyDelay.fromJson(
-                  json_['delay'] as core.Map<core.String, core.dynamic>)
+                  json_['delay'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -5761,11 +5757,7 @@ class GrpcRouteHeaderMatch {
   /// Required.
   core.String? value;
 
-  GrpcRouteHeaderMatch({
-    this.key,
-    this.type,
-    this.value,
-  });
+  GrpcRouteHeaderMatch({this.key, this.type, this.value});
 
   GrpcRouteHeaderMatch.fromJson(core.Map json_)
       : this(
@@ -5864,10 +5856,7 @@ class GrpcRouteRetryPolicy {
   /// header is set to unavailable
   core.List<core.String>? retryConditions;
 
-  GrpcRouteRetryPolicy({
-    this.numRetries,
-    this.retryConditions,
-  });
+  GrpcRouteRetryPolicy({this.numRetries, this.retryConditions});
 
   GrpcRouteRetryPolicy.fromJson(core.Map json_)
       : this(
@@ -5946,23 +5935,29 @@ class GrpcRouteRouteAction {
   GrpcRouteRouteAction.fromJson(core.Map json_)
       : this(
           destinations: (json_['destinations'] as core.List?)
-              ?.map((value) => GrpcRouteDestination.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GrpcRouteDestination.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           faultInjectionPolicy: json_.containsKey('faultInjectionPolicy')
               ? GrpcRouteFaultInjectionPolicy.fromJson(
                   json_['faultInjectionPolicy']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           idleTimeout: json_['idleTimeout'] as core.String?,
           retryPolicy: json_.containsKey('retryPolicy')
               ? GrpcRouteRetryPolicy.fromJson(
-                  json_['retryPolicy'] as core.Map<core.String, core.dynamic>)
+                  json_['retryPolicy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           statefulSessionAffinity: json_.containsKey('statefulSessionAffinity')
               ? GrpcRouteStatefulSessionAffinityPolicy.fromJson(
                   json_['statefulSessionAffinity']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           timeout: json_['timeout'] as core.String?,
         );
@@ -5995,20 +5990,21 @@ class GrpcRouteRouteMatch {
   /// Optional.
   GrpcRouteMethodMatch? method;
 
-  GrpcRouteRouteMatch({
-    this.headers,
-    this.method,
-  });
+  GrpcRouteRouteMatch({this.headers, this.method});
 
   GrpcRouteRouteMatch.fromJson(core.Map json_)
       : this(
           headers: (json_['headers'] as core.List?)
-              ?.map((value) => GrpcRouteHeaderMatch.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GrpcRouteHeaderMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           method: json_.containsKey('method')
               ? GrpcRouteMethodMatch.fromJson(
-                  json_['method'] as core.Map<core.String, core.dynamic>)
+                  json_['method'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6037,20 +6033,21 @@ class GrpcRouteRouteRule {
   /// Optional.
   core.List<GrpcRouteRouteMatch>? matches;
 
-  GrpcRouteRouteRule({
-    this.action,
-    this.matches,
-  });
+  GrpcRouteRouteRule({this.action, this.matches});
 
   GrpcRouteRouteRule.fromJson(core.Map json_)
       : this(
           action: json_.containsKey('action')
               ? GrpcRouteRouteAction.fromJson(
-                  json_['action'] as core.Map<core.String, core.dynamic>)
+                  json_['action'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           matches: (json_['matches'] as core.List?)
-              ?.map((value) => GrpcRouteRouteMatch.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GrpcRouteRouteMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -6182,18 +6179,18 @@ class HttpRoute {
               .toList(),
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           meshes: (json_['meshes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           name: json_['name'] as core.String?,
           rules: (json_['rules'] as core.List?)
-              ?.map((value) => HttpRouteRouteRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => HttpRouteRouteRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           selfLink: json_['selfLink'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -6348,12 +6345,16 @@ class HttpRouteDestination {
   HttpRouteDestination.fromJson(core.Map json_)
       : this(
           requestHeaderModifier: json_.containsKey('requestHeaderModifier')
-              ? HttpRouteHeaderModifier.fromJson(json_['requestHeaderModifier']
-                  as core.Map<core.String, core.dynamic>)
+              ? HttpRouteHeaderModifier.fromJson(
+                  json_['requestHeaderModifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           responseHeaderModifier: json_.containsKey('responseHeaderModifier')
-              ? HttpRouteHeaderModifier.fromJson(json_['responseHeaderModifier']
-                  as core.Map<core.String, core.dynamic>)
+              ? HttpRouteHeaderModifier.fromJson(
+                  json_['responseHeaderModifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           serviceName: json_['serviceName'] as core.String?,
           weight: json_['weight'] as core.int?,
@@ -6383,20 +6384,19 @@ class HttpRouteFaultInjectionPolicy {
   /// The specification for injecting delay to client requests.
   HttpRouteFaultInjectionPolicyDelay? delay;
 
-  HttpRouteFaultInjectionPolicy({
-    this.abort,
-    this.delay,
-  });
+  HttpRouteFaultInjectionPolicy({this.abort, this.delay});
 
   HttpRouteFaultInjectionPolicy.fromJson(core.Map json_)
       : this(
           abort: json_.containsKey('abort')
               ? HttpRouteFaultInjectionPolicyAbort.fromJson(
-                  json_['abort'] as core.Map<core.String, core.dynamic>)
+                  json_['abort'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           delay: json_.containsKey('delay')
               ? HttpRouteFaultInjectionPolicyDelay.fromJson(
-                  json_['delay'] as core.Map<core.String, core.dynamic>)
+                  json_['delay'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6469,7 +6469,8 @@ class HttpRouteHeaderMatch {
           presentMatch: json_['presentMatch'] as core.bool?,
           rangeMatch: json_.containsKey('rangeMatch')
               ? HttpRouteHeaderMatchIntegerRange.fromJson(
-                  json_['rangeMatch'] as core.Map<core.String, core.dynamic>)
+                  json_['rangeMatch'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           regexMatch: json_['regexMatch'] as core.String?,
           suffixMatch: json_['suffixMatch'] as core.String?,
@@ -6495,16 +6496,11 @@ class HttpRouteHeaderMatchIntegerRange {
   /// Start of the range (inclusive)
   core.int? start;
 
-  HttpRouteHeaderMatchIntegerRange({
-    this.end,
-    this.start,
-  });
+  HttpRouteHeaderMatchIntegerRange({this.end, this.start});
 
   HttpRouteHeaderMatchIntegerRange.fromJson(core.Map json_)
       : this(
-          end: json_['end'] as core.int?,
-          start: json_['start'] as core.int?,
-        );
+            end: json_['end'] as core.int?, start: json_['start'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (end != null) 'end': end!,
@@ -6526,28 +6522,18 @@ class HttpRouteHeaderModifier {
   /// name of the header, value is the value of the header.
   core.Map<core.String, core.String>? set;
 
-  HttpRouteHeaderModifier({
-    this.add,
-    this.remove,
-    this.set,
-  });
+  HttpRouteHeaderModifier({this.add, this.remove, this.set});
 
   HttpRouteHeaderModifier.fromJson(core.Map json_)
       : this(
           add: (json_['add'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           remove: (json_['remove'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           set: (json_['set'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
         );
 
@@ -6587,11 +6573,7 @@ class HttpRouteHttpDirectResponse {
   /// Optional.
   core.String? stringBody;
 
-  HttpRouteHttpDirectResponse({
-    this.bytesBody,
-    this.status,
-    this.stringBody,
-  });
+  HttpRouteHttpDirectResponse({this.bytesBody, this.status, this.stringBody});
 
   HttpRouteHttpDirectResponse.fromJson(core.Map json_)
       : this(
@@ -6753,16 +6735,14 @@ class HttpRouteRequestMirrorPolicy {
   /// Optional.
   core.double? mirrorPercent;
 
-  HttpRouteRequestMirrorPolicy({
-    this.destination,
-    this.mirrorPercent,
-  });
+  HttpRouteRequestMirrorPolicy({this.destination, this.mirrorPercent});
 
   HttpRouteRequestMirrorPolicy.fromJson(core.Map json_)
       : this(
           destination: json_.containsKey('destination')
               ? HttpRouteDestination.fromJson(
-                  json_['destination'] as core.Map<core.String, core.dynamic>)
+                  json_['destination'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           mirrorPercent: (json_['mirrorPercent'] as core.num?)?.toDouble(),
         );
@@ -6921,52 +6901,68 @@ class HttpRouteRouteAction {
       : this(
           corsPolicy: json_.containsKey('corsPolicy')
               ? HttpRouteCorsPolicy.fromJson(
-                  json_['corsPolicy'] as core.Map<core.String, core.dynamic>)
+                  json_['corsPolicy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           destinations: (json_['destinations'] as core.List?)
-              ?.map((value) => HttpRouteDestination.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => HttpRouteDestination.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           directResponse: json_.containsKey('directResponse')
-              ? HttpRouteHttpDirectResponse.fromJson(json_['directResponse']
-                  as core.Map<core.String, core.dynamic>)
+              ? HttpRouteHttpDirectResponse.fromJson(
+                  json_['directResponse']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           faultInjectionPolicy: json_.containsKey('faultInjectionPolicy')
               ? HttpRouteFaultInjectionPolicy.fromJson(
                   json_['faultInjectionPolicy']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           idleTimeout: json_['idleTimeout'] as core.String?,
           redirect: json_.containsKey('redirect')
               ? HttpRouteRedirect.fromJson(
-                  json_['redirect'] as core.Map<core.String, core.dynamic>)
+                  json_['redirect'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           requestHeaderModifier: json_.containsKey('requestHeaderModifier')
-              ? HttpRouteHeaderModifier.fromJson(json_['requestHeaderModifier']
-                  as core.Map<core.String, core.dynamic>)
+              ? HttpRouteHeaderModifier.fromJson(
+                  json_['requestHeaderModifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           requestMirrorPolicy: json_.containsKey('requestMirrorPolicy')
               ? HttpRouteRequestMirrorPolicy.fromJson(
                   json_['requestMirrorPolicy']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           responseHeaderModifier: json_.containsKey('responseHeaderModifier')
-              ? HttpRouteHeaderModifier.fromJson(json_['responseHeaderModifier']
-                  as core.Map<core.String, core.dynamic>)
+              ? HttpRouteHeaderModifier.fromJson(
+                  json_['responseHeaderModifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           retryPolicy: json_.containsKey('retryPolicy')
               ? HttpRouteRetryPolicy.fromJson(
-                  json_['retryPolicy'] as core.Map<core.String, core.dynamic>)
+                  json_['retryPolicy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           statefulSessionAffinity: json_.containsKey('statefulSessionAffinity')
               ? HttpRouteStatefulSessionAffinityPolicy.fromJson(
                   json_['statefulSessionAffinity']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           timeout: json_['timeout'] as core.String?,
           urlRewrite: json_.containsKey('urlRewrite')
               ? HttpRouteURLRewrite.fromJson(
-                  json_['urlRewrite'] as core.Map<core.String, core.dynamic>)
+                  json_['urlRewrite'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -7045,14 +7041,20 @@ class HttpRouteRouteMatch {
       : this(
           fullPathMatch: json_['fullPathMatch'] as core.String?,
           headers: (json_['headers'] as core.List?)
-              ?.map((value) => HttpRouteHeaderMatch.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => HttpRouteHeaderMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           ignoreCase: json_['ignoreCase'] as core.bool?,
           prefixMatch: json_['prefixMatch'] as core.String?,
           queryParameters: (json_['queryParameters'] as core.List?)
-              ?.map((value) => HttpRouteQueryParameterMatch.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => HttpRouteQueryParameterMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           regexMatch: json_['regexMatch'] as core.String?,
         );
@@ -7083,20 +7085,21 @@ class HttpRouteRouteRule {
   /// list.
   core.List<HttpRouteRouteMatch>? matches;
 
-  HttpRouteRouteRule({
-    this.action,
-    this.matches,
-  });
+  HttpRouteRouteRule({this.action, this.matches});
 
   HttpRouteRouteRule.fromJson(core.Map json_)
       : this(
           action: json_.containsKey('action')
               ? HttpRouteRouteAction.fromJson(
-                  json_['action'] as core.Map<core.String, core.dynamic>)
+                  json_['action'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           matches: (json_['matches'] as core.List?)
-              ?.map((value) => HttpRouteRouteMatch.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => HttpRouteRouteMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -7129,10 +7132,7 @@ class HttpRouteURLRewrite {
   /// portion of the requests path is replaced by this value.
   core.String? pathPrefixRewrite;
 
-  HttpRouteURLRewrite({
-    this.hostRewrite,
-    this.pathPrefixRewrite,
-  });
+  HttpRouteURLRewrite({this.hostRewrite, this.pathPrefixRewrite});
 
   HttpRouteURLRewrite.fromJson(core.Map json_)
       : this(
@@ -7250,18 +7250,18 @@ class LbRouteExtension {
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           extensionChains: (json_['extensionChains'] as core.List?)
-              ?.map((value) => ExtensionChain.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ExtensionChain.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           forwardingRules: (json_['forwardingRules'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           loadBalancingScheme: json_['loadBalancingScheme'] as core.String?,
           metadata: json_.containsKey('metadata')
@@ -7390,18 +7390,18 @@ class LbTrafficExtension {
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           extensionChains: (json_['extensionChains'] as core.List?)
-              ?.map((value) => ExtensionChain.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ExtensionChain.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           forwardingRules: (json_['forwardingRules'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           loadBalancingScheme: json_['loadBalancingScheme'] as core.String?,
           metadata: json_.containsKey('metadata')
@@ -7445,8 +7445,11 @@ class ListAuthzExtensionsResponse {
   ListAuthzExtensionsResponse.fromJson(core.Map json_)
       : this(
           authzExtensions: (json_['authzExtensions'] as core.List?)
-              ?.map((value) => AuthzExtension.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuthzExtension.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -7473,16 +7476,16 @@ class ListEndpointPoliciesResponse {
   /// `next_page_token` as `page_token`.
   core.String? nextPageToken;
 
-  ListEndpointPoliciesResponse({
-    this.endpointPolicies,
-    this.nextPageToken,
-  });
+  ListEndpointPoliciesResponse({this.endpointPolicies, this.nextPageToken});
 
   ListEndpointPoliciesResponse.fromJson(core.Map json_)
       : this(
           endpointPolicies: (json_['endpointPolicies'] as core.List?)
-              ?.map((value) => EndpointPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => EndpointPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -7503,16 +7506,16 @@ class ListGatewayRouteViewsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListGatewayRouteViewsResponse({
-    this.gatewayRouteViews,
-    this.nextPageToken,
-  });
+  ListGatewayRouteViewsResponse({this.gatewayRouteViews, this.nextPageToken});
 
   ListGatewayRouteViewsResponse.fromJson(core.Map json_)
       : this(
           gatewayRouteViews: (json_['gatewayRouteViews'] as core.List?)
-              ?.map((value) => GatewayRouteView.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GatewayRouteView.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -7538,17 +7541,16 @@ class ListGatewaysResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListGatewaysResponse({
-    this.gateways,
-    this.nextPageToken,
-    this.unreachable,
-  });
+  ListGatewaysResponse({this.gateways, this.nextPageToken, this.unreachable});
 
   ListGatewaysResponse.fromJson(core.Map json_)
       : this(
           gateways: (json_['gateways'] as core.List?)
-              ?.map((value) => Gateway.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Gateway.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -7575,16 +7577,16 @@ class ListGrpcRoutesResponse {
   /// `next_page_token` as `page_token`.
   core.String? nextPageToken;
 
-  ListGrpcRoutesResponse({
-    this.grpcRoutes,
-    this.nextPageToken,
-  });
+  ListGrpcRoutesResponse({this.grpcRoutes, this.nextPageToken});
 
   ListGrpcRoutesResponse.fromJson(core.Map json_)
       : this(
           grpcRoutes: (json_['grpcRoutes'] as core.List?)
-              ?.map((value) => GrpcRoute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GrpcRoute.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -7607,16 +7609,16 @@ class ListHttpRoutesResponse {
   /// `next_page_token` as `page_token`.
   core.String? nextPageToken;
 
-  ListHttpRoutesResponse({
-    this.httpRoutes,
-    this.nextPageToken,
-  });
+  ListHttpRoutesResponse({this.httpRoutes, this.nextPageToken});
 
   ListHttpRoutesResponse.fromJson(core.Map json_)
       : this(
           httpRoutes: (json_['httpRoutes'] as core.List?)
-              ?.map((value) => HttpRoute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => HttpRoute.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -7647,8 +7649,11 @@ class ListLbRouteExtensionsResponse {
   ListLbRouteExtensionsResponse.fromJson(core.Map json_)
       : this(
           lbRouteExtensions: (json_['lbRouteExtensions'] as core.List?)
-              ?.map((value) => LbRouteExtension.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LbRouteExtension.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -7683,8 +7688,11 @@ class ListLbTrafficExtensionsResponse {
   ListLbTrafficExtensionsResponse.fromJson(core.Map json_)
       : this(
           lbTrafficExtensions: (json_['lbTrafficExtensions'] as core.List?)
-              ?.map((value) => LbTrafficExtension.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LbTrafficExtension.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -7708,16 +7716,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -7738,16 +7746,16 @@ class ListMeshRouteViewsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListMeshRouteViewsResponse({
-    this.meshRouteViews,
-    this.nextPageToken,
-  });
+  ListMeshRouteViewsResponse({this.meshRouteViews, this.nextPageToken});
 
   ListMeshRouteViewsResponse.fromJson(core.Map json_)
       : this(
           meshRouteViews: (json_['meshRouteViews'] as core.List?)
-              ?.map((value) => MeshRouteView.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MeshRouteView.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -7770,16 +7778,16 @@ class ListMeshesResponse {
   /// `next_page_token` as `page_token`.
   core.String? nextPageToken;
 
-  ListMeshesResponse({
-    this.meshes,
-    this.nextPageToken,
-  });
+  ListMeshesResponse({this.meshes, this.nextPageToken});
 
   ListMeshesResponse.fromJson(core.Map json_)
       : this(
           meshes: (json_['meshes'] as core.List?)
-              ?.map((value) =>
-                  Mesh.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Mesh.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -7798,17 +7806,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -7830,17 +7838,17 @@ class ListServiceBindingsResponse {
   /// List of ServiceBinding resources.
   core.List<ServiceBinding>? serviceBindings;
 
-  ListServiceBindingsResponse({
-    this.nextPageToken,
-    this.serviceBindings,
-  });
+  ListServiceBindingsResponse({this.nextPageToken, this.serviceBindings});
 
   ListServiceBindingsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           serviceBindings: (json_['serviceBindings'] as core.List?)
-              ?.map((value) => ServiceBinding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ServiceBinding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -7862,17 +7870,17 @@ class ListServiceLbPoliciesResponse {
   /// List of ServiceLbPolicy resources.
   core.List<ServiceLbPolicy>? serviceLbPolicies;
 
-  ListServiceLbPoliciesResponse({
-    this.nextPageToken,
-    this.serviceLbPolicies,
-  });
+  ListServiceLbPoliciesResponse({this.nextPageToken, this.serviceLbPolicies});
 
   ListServiceLbPoliciesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           serviceLbPolicies: (json_['serviceLbPolicies'] as core.List?)
-              ?.map((value) => ServiceLbPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ServiceLbPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -7894,17 +7902,17 @@ class ListTcpRoutesResponse {
   /// List of TcpRoute resources.
   core.List<TcpRoute>? tcpRoutes;
 
-  ListTcpRoutesResponse({
-    this.nextPageToken,
-    this.tcpRoutes,
-  });
+  ListTcpRoutesResponse({this.nextPageToken, this.tcpRoutes});
 
   ListTcpRoutesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           tcpRoutes: (json_['tcpRoutes'] as core.List?)
-              ?.map((value) => TcpRoute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TcpRoute.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -7926,17 +7934,17 @@ class ListTlsRoutesResponse {
   /// List of TlsRoute resources.
   core.List<TlsRoute>? tlsRoutes;
 
-  ListTlsRoutesResponse({
-    this.nextPageToken,
-    this.tlsRoutes,
-  });
+  ListTlsRoutesResponse({this.nextPageToken, this.tlsRoutes});
 
   ListTlsRoutesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           tlsRoutes: (json_['tlsRoutes'] as core.List?)
-              ?.map((value) => TlsRoute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TlsRoute.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -7958,17 +7966,17 @@ class ListWasmPluginVersionsResponse {
   /// List of `WasmPluginVersion` resources.
   core.List<WasmPluginVersion>? wasmPluginVersions;
 
-  ListWasmPluginVersionsResponse({
-    this.nextPageToken,
-    this.wasmPluginVersions,
-  });
+  ListWasmPluginVersionsResponse({this.nextPageToken, this.wasmPluginVersions});
 
   ListWasmPluginVersionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           wasmPluginVersions: (json_['wasmPluginVersions'] as core.List?)
-              ?.map((value) => WasmPluginVersion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => WasmPluginVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -7991,17 +7999,17 @@ class ListWasmPluginsResponse {
   /// List of `WasmPlugin` resources.
   core.List<WasmPlugin>? wasmPlugins;
 
-  ListWasmPluginsResponse({
-    this.nextPageToken,
-    this.wasmPlugins,
-  });
+  ListWasmPluginsResponse({this.nextPageToken, this.wasmPlugins});
 
   ListWasmPluginsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           wasmPlugins: (json_['wasmPlugins'] as core.List?)
-              ?.map((value) => WasmPlugin.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => WasmPlugin.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8099,10 +8107,7 @@ class Mesh {
           interceptionPort: json_['interceptionPort'] as core.int?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           selfLink: json_['selfLink'] as core.String?,
@@ -8221,20 +8226,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -8340,22 +8340,23 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -8431,10 +8432,7 @@ class ServiceBinding {
           description: json_['description'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           service: json_['service'] as core.String?,
@@ -8532,20 +8530,20 @@ class ServiceLbPolicy {
           autoCapacityDrain: json_.containsKey('autoCapacityDrain')
               ? ServiceLbPolicyAutoCapacityDrain.fromJson(
                   json_['autoCapacityDrain']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           failoverConfig: json_.containsKey('failoverConfig')
-              ? ServiceLbPolicyFailoverConfig.fromJson(json_['failoverConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? ServiceLbPolicyFailoverConfig.fromJson(
+                  json_['failoverConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           loadBalancingAlgorithm:
               json_['loadBalancingAlgorithm'] as core.String?,
@@ -8579,14 +8577,10 @@ class ServiceLbPolicyAutoCapacityDrain {
   /// Optional.
   core.bool? enable;
 
-  ServiceLbPolicyAutoCapacityDrain({
-    this.enable,
-  });
+  ServiceLbPolicyAutoCapacityDrain({this.enable});
 
   ServiceLbPolicyAutoCapacityDrain.fromJson(core.Map json_)
-      : this(
-          enable: json_['enable'] as core.bool?,
-        );
+      : this(enable: json_['enable'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enable != null) 'enable': enable!,
@@ -8609,9 +8603,7 @@ class ServiceLbPolicyFailoverConfig {
   /// Optional.
   core.int? failoverHealthThreshold;
 
-  ServiceLbPolicyFailoverConfig({
-    this.failoverHealthThreshold,
-  });
+  ServiceLbPolicyFailoverConfig({this.failoverHealthThreshold});
 
   ServiceLbPolicyFailoverConfig.fromJson(core.Map json_)
       : this(
@@ -8640,16 +8632,14 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -8752,18 +8742,18 @@ class TcpRoute {
               .toList(),
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           meshes: (json_['meshes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           name: json_['name'] as core.String?,
           rules: (json_['rules'] as core.List?)
-              ?.map((value) => TcpRouteRouteRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TcpRouteRouteRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           selfLink: json_['selfLink'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -8820,8 +8810,11 @@ class TcpRouteRouteAction {
   TcpRouteRouteAction.fromJson(core.Map json_)
       : this(
           destinations: (json_['destinations'] as core.List?)
-              ?.map((value) => TcpRouteRouteDestination.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TcpRouteRouteDestination.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           idleTimeout: json_['idleTimeout'] as core.String?,
           originalDestination: json_['originalDestination'] as core.bool?,
@@ -8857,10 +8850,7 @@ class TcpRouteRouteDestination {
   /// Optional.
   core.int? weight;
 
-  TcpRouteRouteDestination({
-    this.serviceName,
-    this.weight,
-  });
+  TcpRouteRouteDestination({this.serviceName, this.weight});
 
   TcpRouteRouteDestination.fromJson(core.Map json_)
       : this(
@@ -8896,10 +8886,7 @@ class TcpRouteRouteMatch {
   /// Required.
   core.String? port;
 
-  TcpRouteRouteMatch({
-    this.address,
-    this.port,
-  });
+  TcpRouteRouteMatch({this.address, this.port});
 
   TcpRouteRouteMatch.fromJson(core.Map json_)
       : this(
@@ -8929,20 +8916,21 @@ class TcpRouteRouteRule {
   /// Optional.
   core.List<TcpRouteRouteMatch>? matches;
 
-  TcpRouteRouteRule({
-    this.action,
-    this.matches,
-  });
+  TcpRouteRouteRule({this.action, this.matches});
 
   TcpRouteRouteRule.fromJson(core.Map json_)
       : this(
           action: json_.containsKey('action')
               ? TcpRouteRouteAction.fromJson(
-                  json_['action'] as core.Map<core.String, core.dynamic>)
+                  json_['action'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           matches: (json_['matches'] as core.List?)
-              ?.map((value) => TcpRouteRouteMatch.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TcpRouteRouteMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -9041,18 +9029,18 @@ class TlsRoute {
               .toList(),
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           meshes: (json_['meshes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           name: json_['name'] as core.String?,
           rules: (json_['rules'] as core.List?)
-              ?.map((value) => TlsRouteRouteRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TlsRouteRouteRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           selfLink: json_['selfLink'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -9090,16 +9078,16 @@ class TlsRouteRouteAction {
   /// Optional.
   core.String? idleTimeout;
 
-  TlsRouteRouteAction({
-    this.destinations,
-    this.idleTimeout,
-  });
+  TlsRouteRouteAction({this.destinations, this.idleTimeout});
 
   TlsRouteRouteAction.fromJson(core.Map json_)
       : this(
           destinations: (json_['destinations'] as core.List?)
-              ?.map((value) => TlsRouteRouteDestination.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TlsRouteRouteDestination.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           idleTimeout: json_['idleTimeout'] as core.String?,
         );
@@ -9126,10 +9114,7 @@ class TlsRouteRouteDestination {
   /// Optional.
   core.int? weight;
 
-  TlsRouteRouteDestination({
-    this.serviceName,
-    this.weight,
-  });
+  TlsRouteRouteDestination({this.serviceName, this.weight});
 
   TlsRouteRouteDestination.fromJson(core.Map json_)
       : this(
@@ -9167,10 +9152,7 @@ class TlsRouteRouteMatch {
   /// Optional.
   core.List<core.String>? sniHost;
 
-  TlsRouteRouteMatch({
-    this.alpn,
-    this.sniHost,
-  });
+  TlsRouteRouteMatch({this.alpn, this.sniHost});
 
   TlsRouteRouteMatch.fromJson(core.Map json_)
       : this(
@@ -9203,20 +9185,21 @@ class TlsRouteRouteRule {
   /// Required.
   core.List<TlsRouteRouteMatch>? matches;
 
-  TlsRouteRouteRule({
-    this.action,
-    this.matches,
-  });
+  TlsRouteRouteRule({this.action, this.matches});
 
   TlsRouteRouteRule.fromJson(core.Map json_)
       : this(
           action: json_.containsKey('action')
               ? TlsRouteRouteAction.fromJson(
-                  json_['action'] as core.Map<core.String, core.dynamic>)
+                  json_['action'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           matches: (json_['matches'] as core.List?)
-              ?.map((value) => TlsRouteRouteMatch.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TlsRouteRouteMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -9237,9 +9220,7 @@ class TrafficPortSelector {
   /// Optional.
   core.List<core.String>? ports;
 
-  TrafficPortSelector({
-    this.ports,
-  });
+  TrafficPortSelector({this.ports});
 
   TrafficPortSelector.fromJson(core.Map json_)
       : this(
@@ -9343,28 +9324,30 @@ class WasmPlugin {
           description: json_['description'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           logConfig: json_.containsKey('logConfig')
               ? WasmPluginLogConfig.fromJson(
-                  json_['logConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['logConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           mainVersionId: json_['mainVersionId'] as core.String?,
           name: json_['name'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
           usedBy: (json_['usedBy'] as core.List?)
-              ?.map((value) => WasmPluginUsedBy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => WasmPluginUsedBy.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           versions:
               (json_['versions'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
               key,
               WasmPluginVersionDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
         );
@@ -9421,11 +9404,7 @@ class WasmPluginLogConfig {
   /// This field can be specified only if logging is enabled for this plugin.
   core.double? sampleRate;
 
-  WasmPluginLogConfig({
-    this.enable,
-    this.minLogLevel,
-    this.sampleRate,
-  });
+  WasmPluginLogConfig({this.enable, this.minLogLevel, this.sampleRate});
 
   WasmPluginLogConfig.fromJson(core.Map json_)
       : this(
@@ -9450,14 +9429,10 @@ class WasmPluginUsedBy {
   /// Output only.
   core.String? name;
 
-  WasmPluginUsedBy({
-    this.name,
-  });
+  WasmPluginUsedBy({this.name});
 
   WasmPluginUsedBy.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+      : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -9568,10 +9543,7 @@ class WasmPluginVersion {
           imageUri: json_['imageUri'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           pluginConfigData: json_['pluginConfigData'] as core.String?,
@@ -9690,10 +9662,7 @@ class WasmPluginVersionDetails {
           imageUri: json_['imageUri'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           pluginConfigData: json_['pluginConfigData'] as core.String?,
           pluginConfigDigest: json_['pluginConfigDigest'] as core.String?,

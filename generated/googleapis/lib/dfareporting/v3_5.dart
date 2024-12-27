@@ -58,11 +58,16 @@ class DfareportingApi {
 
   MediaResource get media => MediaResource(_requester);
 
-  DfareportingApi(http.Client client,
-      {core.String rootUrl = 'https://dfareporting.googleapis.com/',
-      core.String servicePath = 'dfareporting/v3.5/'})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DfareportingApi(
+    http.Client client, {
+    core.String rootUrl = 'https://dfareporting.googleapis.com/',
+    core.String servicePath = 'dfareporting/v3.5/',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class MediaResource {
@@ -130,7 +135,8 @@ class MediaResource {
       uploadOptions: commons.UploadOptions.defaultOptions,
     );
     return CreativeAssetMetadata.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -153,17 +159,15 @@ class ClickTag {
   /// of the creative asset's creativeAssetId.name field.
   core.String? name;
 
-  ClickTag({
-    this.clickThroughUrl,
-    this.eventName,
-    this.name,
-  });
+  ClickTag({this.clickThroughUrl, this.eventName, this.name});
 
   ClickTag.fromJson(core.Map json_)
       : this(
           clickThroughUrl: json_.containsKey('clickThroughUrl')
-              ? CreativeClickThroughUrl.fromJson(json_['clickThroughUrl']
-                  as core.Map<core.String, core.dynamic>)
+              ? CreativeClickThroughUrl.fromJson(
+                  json_['clickThroughUrl']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           eventName: json_['eventName'] as core.String?,
           name: json_['name'] as core.String?,
@@ -273,34 +277,50 @@ class CreativeAssetMetadata {
   CreativeAssetMetadata.fromJson(core.Map json_)
       : this(
           assetIdentifier: json_.containsKey('assetIdentifier')
-              ? CreativeAssetId.fromJson(json_['assetIdentifier']
-                  as core.Map<core.String, core.dynamic>)
+              ? CreativeAssetId.fromJson(
+                  json_['assetIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           clickTags: (json_['clickTags'] as core.List?)
-              ?.map((value) => ClickTag.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ClickTag.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           counterCustomEvents: (json_['counterCustomEvents'] as core.List?)
-              ?.map((value) => CreativeCustomEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CreativeCustomEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           detectedFeatures: (json_['detectedFeatures'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           exitCustomEvents: (json_['exitCustomEvents'] as core.List?)
-              ?.map((value) => CreativeCustomEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CreativeCustomEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           id: json_['id'] as core.String?,
           idDimensionValue: json_.containsKey('idDimensionValue')
-              ? DimensionValue.fromJson(json_['idDimensionValue']
-                  as core.Map<core.String, core.dynamic>)
+              ? DimensionValue.fromJson(
+                  json_['idDimensionValue']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           kind: json_['kind'] as core.String?,
           richMedia: json_['richMedia'] as core.bool?,
           timerCustomEvents: (json_['timerCustomEvents'] as core.List?)
-              ?.map((value) => CreativeCustomEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CreativeCustomEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           warnedValidationRules: (json_['warnedValidationRules'] as core.List?)
               ?.map((value) => value as core.String)
@@ -414,13 +434,17 @@ class CreativeCustomEvent {
           artworkLabel: json_['artworkLabel'] as core.String?,
           artworkType: json_['artworkType'] as core.String?,
           exitClickThroughUrl: json_.containsKey('exitClickThroughUrl')
-              ? CreativeClickThroughUrl.fromJson(json_['exitClickThroughUrl']
-                  as core.Map<core.String, core.dynamic>)
+              ? CreativeClickThroughUrl.fromJson(
+                  json_['exitClickThroughUrl']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           id: json_['id'] as core.String?,
           popupWindowProperties: json_.containsKey('popupWindowProperties')
-              ? PopupWindowProperties.fromJson(json_['popupWindowProperties']
-                  as core.Map<core.String, core.dynamic>)
+              ? PopupWindowProperties.fromJson(
+                  json_['popupWindowProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           targetType: json_['targetType'] as core.String?,
           videoReportingId: json_['videoReportingId'] as core.String?,
@@ -504,11 +528,13 @@ class PopupWindowProperties {
       : this(
           dimension: json_.containsKey('dimension')
               ? Size.fromJson(
-                  json_['dimension'] as core.Map<core.String, core.dynamic>)
+                  json_['dimension'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           offset: json_.containsKey('offset')
               ? OffsetPosition.fromJson(
-                  json_['offset'] as core.Map<core.String, core.dynamic>)
+                  json_['offset'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           positionType: json_['positionType'] as core.String?,
           showAddressBar: json_['showAddressBar'] as core.bool?,

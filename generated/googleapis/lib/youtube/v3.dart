@@ -155,11 +155,16 @@ class YouTubeApi {
   WatermarksResource get watermarks => WatermarksResource(_requester);
   YoutubeResource get youtube => YoutubeResource(_requester);
 
-  YouTubeApi(http.Client client,
-      {core.String rootUrl = 'https://youtube.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  YouTubeApi(
+    http.Client client, {
+    core.String rootUrl = 'https://youtube.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class AbuseReportsResource {
@@ -210,7 +215,8 @@ class AbuseReportsResource {
       queryParams: queryParams_,
     );
     return AbuseReport.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -298,7 +304,8 @@ class ActivitiesResource {
       queryParams: queryParams_,
     );
     return ActivityListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -580,7 +587,8 @@ class CaptionsResource {
       queryParams: queryParams_,
     );
     return CaptionListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing resource.
@@ -765,7 +773,8 @@ class ChannelBannersResource {
       uploadOptions: uploadOptions,
     );
     return ChannelBannerResource.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -899,7 +908,8 @@ class ChannelSectionsResource {
       queryParams: queryParams_,
     );
     return ChannelSection.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -977,7 +987,8 @@ class ChannelSectionsResource {
       queryParams: queryParams_,
     );
     return ChannelSectionListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing resource.
@@ -1038,7 +1049,8 @@ class ChannelSectionsResource {
       queryParams: queryParams_,
     );
     return ChannelSection.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1151,7 +1163,8 @@ class ChannelsResource {
       queryParams: queryParams_,
     );
     return ChannelListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing resource.
@@ -1266,7 +1279,8 @@ class CommentThreadsResource {
       queryParams: queryParams_,
     );
     return CommentThread.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -1370,7 +1384,8 @@ class CommentThreadsResource {
       queryParams: queryParams_,
     );
     return CommentThreadListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1393,10 +1408,7 @@ class CommentsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> delete(
-    core.String id, {
-    core.String? $fields,
-  }) async {
+  async.Future<void> delete(core.String id, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -1524,7 +1536,8 @@ class CommentsResource {
       queryParams: queryParams_,
     );
     return CommentListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Expresses the caller's opinion that one or more comments should be flagged
@@ -1713,7 +1726,8 @@ class I18nLanguagesResource {
       queryParams: queryParams_,
     );
     return I18nLanguageListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1763,7 +1777,8 @@ class I18nRegionsResource {
       queryParams: queryParams_,
     );
     return I18nRegionListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1853,7 +1868,8 @@ class LiveBroadcastsResource {
       queryParams: queryParams_,
     );
     return LiveBroadcast.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete a given broadcast.
@@ -2002,7 +2018,8 @@ class LiveBroadcastsResource {
       queryParams: queryParams_,
     );
     return LiveBroadcast.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Insert cuepoints in a broadcast
@@ -2200,7 +2217,8 @@ class LiveBroadcastsResource {
       queryParams: queryParams_,
     );
     return LiveBroadcastListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Transition a broadcast to a given status.
@@ -2294,7 +2312,8 @@ class LiveBroadcastsResource {
       queryParams: queryParams_,
     );
     return LiveBroadcast.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing broadcast for the authenticated user.
@@ -2384,7 +2403,8 @@ class LiveBroadcastsResource {
       queryParams: queryParams_,
     );
     return LiveBroadcast.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2407,10 +2427,7 @@ class LiveChatBansResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> delete(
-    core.String id, {
-    core.String? $fields,
-  }) async {
+  async.Future<void> delete(core.String id, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -2470,7 +2487,8 @@ class LiveChatBansResource {
       queryParams: queryParams_,
     );
     return LiveChatBan.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2493,10 +2511,7 @@ class LiveChatMessagesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> delete(
-    core.String id, {
-    core.String? $fields,
-  }) async {
+  async.Future<void> delete(core.String id, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -2555,7 +2570,8 @@ class LiveChatMessagesResource {
       queryParams: queryParams_,
     );
     return LiveChatMessage.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -2625,7 +2641,8 @@ class LiveChatMessagesResource {
       queryParams: queryParams_,
     );
     return LiveChatMessageListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Transition a durable chat event.
@@ -2668,7 +2685,8 @@ class LiveChatMessagesResource {
       queryParams: queryParams_,
     );
     return LiveChatMessage.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2691,10 +2709,7 @@ class LiveChatModeratorsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> delete(
-    core.String id, {
-    core.String? $fields,
-  }) async {
+  async.Future<void> delete(core.String id, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -2754,7 +2769,8 @@ class LiveChatModeratorsResource {
       queryParams: queryParams_,
     );
     return LiveChatModerator.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -2812,7 +2828,8 @@ class LiveChatModeratorsResource {
       queryParams: queryParams_,
     );
     return LiveChatModeratorListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2967,7 +2984,8 @@ class LiveStreamsResource {
       queryParams: queryParams_,
     );
     return LiveStream.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieve the list of streams associated with the given channel.
@@ -3065,7 +3083,8 @@ class LiveStreamsResource {
       queryParams: queryParams_,
     );
     return LiveStreamListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing stream for the authenticated user.
@@ -3150,7 +3169,8 @@ class LiveStreamsResource {
       queryParams: queryParams_,
     );
     return LiveStream.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3228,7 +3248,8 @@ class MembersResource {
       queryParams: queryParams_,
     );
     return MemberListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3275,7 +3296,8 @@ class MembershipsLevelsResource {
       queryParams: queryParams_,
     );
     return MembershipsLevelListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3422,7 +3444,8 @@ class PlaylistImagesResource {
       uploadOptions: uploadOptions,
     );
     return PlaylistImage.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -3511,7 +3534,8 @@ class PlaylistImagesResource {
       queryParams: queryParams_,
     );
     return PlaylistImageListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing resource.
@@ -3584,7 +3608,8 @@ class PlaylistImagesResource {
       uploadOptions: uploadOptions,
     );
     return PlaylistImage.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3697,7 +3722,8 @@ class PlaylistItemsResource {
       queryParams: queryParams_,
     );
     return PlaylistItem.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -3781,7 +3807,8 @@ class PlaylistItemsResource {
       queryParams: queryParams_,
     );
     return PlaylistItemListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing resource.
@@ -3851,7 +3878,8 @@ class PlaylistItemsResource {
       queryParams: queryParams_,
     );
     return PlaylistItem.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4090,7 +4118,8 @@ class PlaylistsResource {
       queryParams: queryParams_,
     );
     return PlaylistListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing resource.
@@ -4417,7 +4446,8 @@ class SearchResource {
       queryParams: queryParams_,
     );
     return SearchListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4440,10 +4470,7 @@ class SubscriptionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> delete(
-    core.String id, {
-    core.String? $fields,
-  }) async {
+  async.Future<void> delete(core.String id, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -4502,7 +4529,8 @@ class SubscriptionsResource {
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -4628,7 +4656,8 @@ class SubscriptionsResource {
       queryParams: queryParams_,
     );
     return SubscriptionListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4691,7 +4720,8 @@ class SuperChatEventsResource {
       queryParams: queryParams_,
     );
     return SuperChatEventListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4852,7 +4882,8 @@ class ThirdPartyLinksResource {
       queryParams: queryParams_,
     );
     return ThirdPartyLink.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -4911,7 +4942,8 @@ class ThirdPartyLinksResource {
       queryParams: queryParams_,
     );
     return ThirdPartyLinkListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing resource.
@@ -4962,7 +4994,8 @@ class ThirdPartyLinksResource {
       queryParams: queryParams_,
     );
     return ThirdPartyLink.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5038,7 +5071,8 @@ class ThumbnailsResource {
       uploadOptions: uploadOptions,
     );
     return ThumbnailSetResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5089,7 +5123,8 @@ class VideoAbuseReportReasonsResource {
       queryParams: queryParams_,
     );
     return VideoAbuseReportReasonListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5149,7 +5184,8 @@ class VideoCategoriesResource {
       queryParams: queryParams_,
     );
     return VideoCategoryListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5256,7 +5292,8 @@ class VideosResource {
       queryParams: queryParams_,
     );
     return VideoGetRatingResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Inserts a new resource into this collection.
@@ -5499,7 +5536,8 @@ class VideosResource {
       queryParams: queryParams_,
     );
     return VideoListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Adds a like or dislike rating to a video or removes a rating from a video.
@@ -5841,7 +5879,8 @@ class YoutubeV3Resource {
       queryParams: queryParams_,
     );
     return CommentThread.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5861,17 +5900,24 @@ class AbuseReport {
   AbuseReport.fromJson(core.Map json_)
       : this(
           abuseTypes: (json_['abuseTypes'] as core.List?)
-              ?.map((value) => AbuseType.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AbuseType.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           description: json_['description'] as core.String?,
           relatedEntities: (json_['relatedEntities'] as core.List?)
-              ?.map((value) => RelatedEntity.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RelatedEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           subject: json_.containsKey('subject')
               ? Entity.fromJson(
-                  json_['subject'] as core.Map<core.String, core.dynamic>)
+                  json_['subject'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -5895,10 +5941,7 @@ class AccessPolicy {
   /// not apply.
   core.List<core.String>? exception;
 
-  AccessPolicy({
-    this.allowed,
-    this.exception,
-  });
+  AccessPolicy({this.allowed, this.exception});
 
   AccessPolicy.fromJson(core.Map json_)
       : this(
@@ -5945,26 +5988,23 @@ class Activity {
   /// the activity's type and group ID.
   ActivitySnippet? snippet;
 
-  Activity({
-    this.contentDetails,
-    this.etag,
-    this.id,
-    this.kind,
-    this.snippet,
-  });
+  Activity({this.contentDetails, this.etag, this.id, this.kind, this.snippet});
 
   Activity.fromJson(core.Map json_)
       : this(
           contentDetails: json_.containsKey('contentDetails')
-              ? ActivityContentDetails.fromJson(json_['contentDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? ActivityContentDetails.fromJson(
+                  json_['contentDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           etag: json_['etag'] as core.String?,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? ActivitySnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6060,48 +6100,59 @@ class ActivityContentDetails {
       : this(
           bulletin: json_.containsKey('bulletin')
               ? ActivityContentDetailsBulletin.fromJson(
-                  json_['bulletin'] as core.Map<core.String, core.dynamic>)
+                  json_['bulletin'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           channelItem: json_.containsKey('channelItem')
               ? ActivityContentDetailsChannelItem.fromJson(
-                  json_['channelItem'] as core.Map<core.String, core.dynamic>)
+                  json_['channelItem'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           comment: json_.containsKey('comment')
               ? ActivityContentDetailsComment.fromJson(
-                  json_['comment'] as core.Map<core.String, core.dynamic>)
+                  json_['comment'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           favorite: json_.containsKey('favorite')
               ? ActivityContentDetailsFavorite.fromJson(
-                  json_['favorite'] as core.Map<core.String, core.dynamic>)
+                  json_['favorite'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           like: json_.containsKey('like')
               ? ActivityContentDetailsLike.fromJson(
-                  json_['like'] as core.Map<core.String, core.dynamic>)
+                  json_['like'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           playlistItem: json_.containsKey('playlistItem')
               ? ActivityContentDetailsPlaylistItem.fromJson(
-                  json_['playlistItem'] as core.Map<core.String, core.dynamic>)
+                  json_['playlistItem'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           promotedItem: json_.containsKey('promotedItem')
               ? ActivityContentDetailsPromotedItem.fromJson(
-                  json_['promotedItem'] as core.Map<core.String, core.dynamic>)
+                  json_['promotedItem'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           recommendation: json_.containsKey('recommendation')
               ? ActivityContentDetailsRecommendation.fromJson(
                   json_['recommendation']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           social: json_.containsKey('social')
               ? ActivityContentDetailsSocial.fromJson(
-                  json_['social'] as core.Map<core.String, core.dynamic>)
+                  json_['social'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           subscription: json_.containsKey('subscription')
               ? ActivityContentDetailsSubscription.fromJson(
-                  json_['subscription'] as core.Map<core.String, core.dynamic>)
+                  json_['subscription'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           upload: json_.containsKey('upload')
               ? ActivityContentDetailsUpload.fromJson(
-                  json_['upload'] as core.Map<core.String, core.dynamic>)
+                  json_['upload'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6128,15 +6179,14 @@ class ActivityContentDetailsBulletin {
   /// @mutable youtube.activities.insert
   ResourceId? resourceId;
 
-  ActivityContentDetailsBulletin({
-    this.resourceId,
-  });
+  ActivityContentDetailsBulletin({this.resourceId});
 
   ActivityContentDetailsBulletin.fromJson(core.Map json_)
       : this(
           resourceId: json_.containsKey('resourceId')
               ? ResourceId.fromJson(
-                  json_['resourceId'] as core.Map<core.String, core.dynamic>)
+                  json_['resourceId'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6151,15 +6201,14 @@ class ActivityContentDetailsChannelItem {
   /// that was added to the channel.
   ResourceId? resourceId;
 
-  ActivityContentDetailsChannelItem({
-    this.resourceId,
-  });
+  ActivityContentDetailsChannelItem({this.resourceId});
 
   ActivityContentDetailsChannelItem.fromJson(core.Map json_)
       : this(
           resourceId: json_.containsKey('resourceId')
               ? ResourceId.fromJson(
-                  json_['resourceId'] as core.Map<core.String, core.dynamic>)
+                  json_['resourceId'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6174,15 +6223,14 @@ class ActivityContentDetailsComment {
   /// associated with the comment.
   ResourceId? resourceId;
 
-  ActivityContentDetailsComment({
-    this.resourceId,
-  });
+  ActivityContentDetailsComment({this.resourceId});
 
   ActivityContentDetailsComment.fromJson(core.Map json_)
       : this(
           resourceId: json_.containsKey('resourceId')
               ? ResourceId.fromJson(
-                  json_['resourceId'] as core.Map<core.String, core.dynamic>)
+                  json_['resourceId'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6197,15 +6245,14 @@ class ActivityContentDetailsFavorite {
   /// that was marked as a favorite.
   ResourceId? resourceId;
 
-  ActivityContentDetailsFavorite({
-    this.resourceId,
-  });
+  ActivityContentDetailsFavorite({this.resourceId});
 
   ActivityContentDetailsFavorite.fromJson(core.Map json_)
       : this(
           resourceId: json_.containsKey('resourceId')
               ? ResourceId.fromJson(
-                  json_['resourceId'] as core.Map<core.String, core.dynamic>)
+                  json_['resourceId'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6220,15 +6267,14 @@ class ActivityContentDetailsLike {
   /// resource.
   ResourceId? resourceId;
 
-  ActivityContentDetailsLike({
-    this.resourceId,
-  });
+  ActivityContentDetailsLike({this.resourceId});
 
   ActivityContentDetailsLike.fromJson(core.Map json_)
       : this(
           resourceId: json_.containsKey('resourceId')
               ? ResourceId.fromJson(
-                  json_['resourceId'] as core.Map<core.String, core.dynamic>)
+                  json_['resourceId'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6261,7 +6307,8 @@ class ActivityContentDetailsPlaylistItem {
           playlistItemId: json_['playlistItemId'] as core.String?,
           resourceId: json_.containsKey('resourceId')
               ? ResourceId.fromJson(
-                  json_['resourceId'] as core.Map<core.String, core.dynamic>)
+                  json_['resourceId'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6394,11 +6441,14 @@ class ActivityContentDetailsRecommendation {
           reason: json_['reason'] as core.String?,
           resourceId: json_.containsKey('resourceId')
               ? ResourceId.fromJson(
-                  json_['resourceId'] as core.Map<core.String, core.dynamic>)
+                  json_['resourceId'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           seedResourceId: json_.containsKey('seedResourceId')
-              ? ResourceId.fromJson(json_['seedResourceId']
-                  as core.Map<core.String, core.dynamic>)
+              ? ResourceId.fromJson(
+                  json_['seedResourceId']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6447,7 +6497,8 @@ class ActivityContentDetailsSocial {
           referenceUrl: json_['referenceUrl'] as core.String?,
           resourceId: json_.containsKey('resourceId')
               ? ResourceId.fromJson(
-                  json_['resourceId'] as core.Map<core.String, core.dynamic>)
+                  json_['resourceId'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           type: json_['type'] as core.String?,
         );
@@ -6467,15 +6518,14 @@ class ActivityContentDetailsSubscription {
   /// that the user subscribed to.
   ResourceId? resourceId;
 
-  ActivityContentDetailsSubscription({
-    this.resourceId,
-  });
+  ActivityContentDetailsSubscription({this.resourceId});
 
   ActivityContentDetailsSubscription.fromJson(core.Map json_)
       : this(
           resourceId: json_.containsKey('resourceId')
               ? ResourceId.fromJson(
-                  json_['resourceId'] as core.Map<core.String, core.dynamic>)
+                  json_['resourceId'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6489,14 +6539,10 @@ class ActivityContentDetailsUpload {
   /// The ID that YouTube uses to uniquely identify the uploaded video.
   core.String? videoId;
 
-  ActivityContentDetailsUpload({
-    this.videoId,
-  });
+  ActivityContentDetailsUpload({this.videoId});
 
   ActivityContentDetailsUpload.fromJson(core.Map json_)
-      : this(
-          videoId: json_['videoId'] as core.String?,
-        );
+      : this(videoId: json_['videoId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (videoId != null) 'videoId': videoId!,
@@ -6557,19 +6603,25 @@ class ActivityListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => Activity.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Activity.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           pageInfo: json_.containsKey('pageInfo')
               ? PageInfo.fromJson(
-                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           prevPageToken: json_['prevPageToken'] as core.String?,
           tokenPagination: json_.containsKey('tokenPagination')
-              ? TokenPagination.fromJson(json_['tokenPagination']
-                  as core.Map<core.String, core.dynamic>)
+              ? TokenPagination.fromJson(
+                  json_['tokenPagination']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           visitorId: json_['visitorId'] as core.String?,
         );
@@ -6665,7 +6717,8 @@ class ActivitySnippet {
               : null,
           thumbnails: json_.containsKey('thumbnails')
               ? ThumbnailDetails.fromJson(
-                  json_['thumbnails'] as core.Map<core.String, core.dynamic>)
+                  json_['thumbnails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           title: json_['title'] as core.String?,
           type: json_['type'] as core.String?,
@@ -6702,12 +6755,7 @@ class Caption {
   /// The snippet object contains basic details about the caption.
   CaptionSnippet? snippet;
 
-  Caption({
-    this.etag,
-    this.id,
-    this.kind,
-    this.snippet,
-  });
+  Caption({this.etag, this.id, this.kind, this.snippet});
 
   Caption.fromJson(core.Map json_)
       : this(
@@ -6716,7 +6764,8 @@ class Caption {
           kind: json_['kind'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? CaptionSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6765,8 +6814,11 @@ class CaptionListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => Caption.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Caption.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           visitorId: json_['visitorId'] as core.String?,
@@ -6975,7 +7027,8 @@ class CdnSettings {
           frameRate: json_['frameRate'] as core.String?,
           ingestionInfo: json_.containsKey('ingestionInfo')
               ? IngestionInfo.fromJson(
-                  json_['ingestionInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['ingestionInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           ingestionType: json_['ingestionType'] as core.String?,
           resolution: json_['resolution'] as core.String?,
@@ -7064,23 +7117,32 @@ class Channel {
       : this(
           auditDetails: json_.containsKey('auditDetails')
               ? ChannelAuditDetails.fromJson(
-                  json_['auditDetails'] as core.Map<core.String, core.dynamic>)
+                  json_['auditDetails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           brandingSettings: json_.containsKey('brandingSettings')
-              ? ChannelBrandingSettings.fromJson(json_['brandingSettings']
-                  as core.Map<core.String, core.dynamic>)
+              ? ChannelBrandingSettings.fromJson(
+                  json_['brandingSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           contentDetails: json_.containsKey('contentDetails')
-              ? ChannelContentDetails.fromJson(json_['contentDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? ChannelContentDetails.fromJson(
+                  json_['contentDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           contentOwnerDetails: json_.containsKey('contentOwnerDetails')
-              ? ChannelContentOwnerDetails.fromJson(json_['contentOwnerDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? ChannelContentOwnerDetails.fromJson(
+                  json_['contentOwnerDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           conversionPings: json_.containsKey('conversionPings')
-              ? ChannelConversionPings.fromJson(json_['conversionPings']
-                  as core.Map<core.String, core.dynamic>)
+              ? ChannelConversionPings.fromJson(
+                  json_['conversionPings']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           etag: json_['etag'] as core.String?,
           id: json_['id'] as core.String?,
@@ -7091,24 +7153,29 @@ class Channel {
             (key, value) => core.MapEntry(
               key,
               ChannelLocalization.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           snippet: json_.containsKey('snippet')
               ? ChannelSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           statistics: json_.containsKey('statistics')
               ? ChannelStatistics.fromJson(
-                  json_['statistics'] as core.Map<core.String, core.dynamic>)
+                  json_['statistics'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           status: json_.containsKey('status')
               ? ChannelStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           topicDetails: json_.containsKey('topicDetails')
               ? ChannelTopicDetails.fromJson(
-                  json_['topicDetails'] as core.Map<core.String, core.dynamic>)
+                  json_['topicDetails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -7180,11 +7247,7 @@ class ChannelBannerResource {
   /// The URL of this banner image.
   core.String? url;
 
-  ChannelBannerResource({
-    this.etag,
-    this.kind,
-    this.url,
-  });
+  ChannelBannerResource({this.etag, this.kind, this.url});
 
   ChannelBannerResource.fromJson(core.Map json_)
       : this(
@@ -7220,30 +7283,31 @@ class ChannelBrandingSettings {
   )
   WatchSettings? watch;
 
-  ChannelBrandingSettings({
-    this.channel,
-    this.hints,
-    this.image,
-    this.watch,
-  });
+  ChannelBrandingSettings({this.channel, this.hints, this.image, this.watch});
 
   ChannelBrandingSettings.fromJson(core.Map json_)
       : this(
           channel: json_.containsKey('channel')
               ? ChannelSettings.fromJson(
-                  json_['channel'] as core.Map<core.String, core.dynamic>)
+                  json_['channel'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           hints: (json_['hints'] as core.List?)
-              ?.map((value) => PropertyValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PropertyValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           image: json_.containsKey('image')
               ? ImageSettings.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           watch: json_.containsKey('watch')
               ? WatchSettings.fromJson(
-                  json_['watch'] as core.Map<core.String, core.dynamic>)
+                  json_['watch'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -7325,16 +7389,15 @@ class ChannelContentDetailsRelatedPlaylists {
 class ChannelContentDetails {
   ChannelContentDetailsRelatedPlaylists? relatedPlaylists;
 
-  ChannelContentDetails({
-    this.relatedPlaylists,
-  });
+  ChannelContentDetails({this.relatedPlaylists});
 
   ChannelContentDetails.fromJson(core.Map json_)
       : this(
           relatedPlaylists: json_.containsKey('relatedPlaylists')
               ? ChannelContentDetailsRelatedPlaylists.fromJson(
                   json_['relatedPlaylists']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -7352,10 +7415,7 @@ class ChannelContentOwnerDetails {
   /// The date and time when the channel was linked to the content owner.
   core.DateTime? timeLinked;
 
-  ChannelContentOwnerDetails({
-    this.contentOwner,
-    this.timeLinked,
-  });
+  ChannelContentOwnerDetails({this.contentOwner, this.timeLinked});
 
   ChannelContentOwnerDetails.fromJson(core.Map json_)
       : this(
@@ -7394,10 +7454,7 @@ class ChannelConversionPing {
   /// ping.
   core.String? conversionUrl;
 
-  ChannelConversionPing({
-    this.context,
-    this.conversionUrl,
-  });
+  ChannelConversionPing({this.context, this.conversionUrl});
 
   ChannelConversionPing.fromJson(core.Map json_)
       : this(
@@ -7420,15 +7477,16 @@ class ChannelConversionPings {
   /// identifying the ping.
   core.List<ChannelConversionPing>? pings;
 
-  ChannelConversionPings({
-    this.pings,
-  });
+  ChannelConversionPings({this.pings});
 
   ChannelConversionPings.fromJson(core.Map json_)
       : this(
           pings: (json_['pings'] as core.List?)
-              ?.map((value) => ChannelConversionPing.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ChannelConversionPing.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -7491,19 +7549,25 @@ class ChannelListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => Channel.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Channel.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           pageInfo: json_.containsKey('pageInfo')
               ? PageInfo.fromJson(
-                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           prevPageToken: json_['prevPageToken'] as core.String?,
           tokenPagination: json_.containsKey('tokenPagination')
-              ? TokenPagination.fromJson(json_['tokenPagination']
-                  as core.Map<core.String, core.dynamic>)
+              ? TokenPagination.fromJson(
+                  json_['tokenPagination']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           visitorId: json_['visitorId'] as core.String?,
         );
@@ -7529,10 +7593,7 @@ class ChannelLocalization {
   /// The localized strings for channel's title.
   core.String? title;
 
-  ChannelLocalization({
-    this.description,
-    this.title,
-  });
+  ChannelLocalization({this.description, this.title});
 
   ChannelLocalization.fromJson(core.Map json_)
       : this(
@@ -7628,8 +7689,10 @@ class ChannelSection {
   ChannelSection.fromJson(core.Map json_)
       : this(
           contentDetails: json_.containsKey('contentDetails')
-              ? ChannelSectionContentDetails.fromJson(json_['contentDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? ChannelSectionContentDetails.fromJson(
+                  json_['contentDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           etag: json_['etag'] as core.String?,
           id: json_['id'] as core.String?,
@@ -7640,16 +7703,19 @@ class ChannelSection {
             (key, value) => core.MapEntry(
               key,
               ChannelSectionLocalization.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           snippet: json_.containsKey('snippet')
               ? ChannelSectionSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           targeting: json_.containsKey('targeting')
               ? ChannelSectionTargeting.fromJson(
-                  json_['targeting'] as core.Map<core.String, core.dynamic>)
+                  json_['targeting'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -7674,10 +7740,7 @@ class ChannelSectionContentDetails {
   /// For singlePlaylist, only one playlistId is allowed.
   core.List<core.String>? playlists;
 
-  ChannelSectionContentDetails({
-    this.channels,
-    this.playlists,
-  });
+  ChannelSectionContentDetails({this.channels, this.playlists});
 
   ChannelSectionContentDetails.fromJson(core.Map json_)
       : this(
@@ -7732,8 +7795,11 @@ class ChannelSectionListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => ChannelSection.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ChannelSection.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           visitorId: json_['visitorId'] as core.String?,
@@ -7756,14 +7822,10 @@ class ChannelSectionLocalization {
   )
   core.String? title;
 
-  ChannelSectionLocalization({
-    this.title,
-  });
+  ChannelSectionLocalization({this.title});
 
   ChannelSectionLocalization.fromJson(core.Map json_)
-      : this(
-          title: json_['title'] as core.String?,
-        );
+      : this(title: json_['title'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (title != null) 'title': title!,
@@ -7841,7 +7903,8 @@ class ChannelSectionSnippet {
           defaultLanguage: json_['defaultLanguage'] as core.String?,
           localized: json_.containsKey('localized')
               ? ChannelSectionLocalization.fromJson(
-                  json_['localized'] as core.Map<core.String, core.dynamic>)
+                  json_['localized'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           position: json_['position'] as core.int?,
           style: json_['style'] as core.String?,
@@ -7880,11 +7943,7 @@ class ChannelSectionTargeting {
   )
   core.List<core.String>? regions;
 
-  ChannelSectionTargeting({
-    this.countries,
-    this.languages,
-    this.regions,
-  });
+  ChannelSectionTargeting({this.countries, this.languages, this.regions});
 
   ChannelSectionTargeting.fromJson(core.Map json_)
       : this(
@@ -8089,14 +8148,16 @@ class ChannelSnippet {
           description: json_['description'] as core.String?,
           localized: json_.containsKey('localized')
               ? ChannelLocalization.fromJson(
-                  json_['localized'] as core.Map<core.String, core.dynamic>)
+                  json_['localized'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           publishedAt: json_.containsKey('publishedAt')
               ? core.DateTime.parse(json_['publishedAt'] as core.String)
               : null,
           thumbnails: json_.containsKey('thumbnails')
               ? ThumbnailDetails.fromJson(
-                  json_['thumbnails'] as core.Map<core.String, core.dynamic>)
+                  json_['thumbnails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           title: json_['title'] as core.String?,
         );
@@ -8246,13 +8307,16 @@ class ChannelToStoreLinkDetails {
           billingDetails: json_.containsKey('billingDetails')
               ? ChannelToStoreLinkDetailsBillingDetails.fromJson(
                   json_['billingDetails']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           merchantAffiliateProgramDetails:
               json_.containsKey('merchantAffiliateProgramDetails')
                   ? ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails
-                      .fromJson(json_['merchantAffiliateProgramDetails']
-                          as core.Map<core.String, core.dynamic>)
+                      .fromJson(
+                      json_['merchantAffiliateProgramDetails']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           merchantId: json_['merchantId'] as core.String?,
           storeName: json_['storeName'] as core.String?,
@@ -8279,14 +8343,10 @@ class ChannelToStoreLinkDetailsBillingDetails {
   /// - "billingStatusInactive"
   core.String? billingStatus;
 
-  ChannelToStoreLinkDetailsBillingDetails({
-    this.billingStatus,
-  });
+  ChannelToStoreLinkDetailsBillingDetails({this.billingStatus});
 
   ChannelToStoreLinkDetailsBillingDetails.fromJson(core.Map json_)
-      : this(
-          billingStatus: json_['billingStatus'] as core.String?,
-        );
+      : this(billingStatus: json_['billingStatus'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (billingStatus != null) 'billingStatus': billingStatus!,
@@ -8306,15 +8366,11 @@ class ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails {
   /// paused.
   core.String? status;
 
-  ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails({
-    this.status,
-  });
+  ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails({this.status});
 
   ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails.fromJson(
-      core.Map json_)
-      : this(
-          status: json_['status'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(status: json_['status'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (status != null) 'status': status!,
@@ -8335,10 +8391,7 @@ class ChannelTopicDetails {
   )
   core.List<core.String>? topicIds;
 
-  ChannelTopicDetails({
-    this.topicCategories,
-    this.topicIds,
-  });
+  ChannelTopicDetails({this.topicCategories, this.topicIds});
 
   ChannelTopicDetails.fromJson(core.Map json_)
       : this(
@@ -8372,12 +8425,7 @@ class Comment {
   /// The snippet object contains basic details about the comment.
   CommentSnippet? snippet;
 
-  Comment({
-    this.etag,
-    this.id,
-    this.kind,
-    this.snippet,
-  });
+  Comment({this.etag, this.id, this.kind, this.snippet});
 
   Comment.fromJson(core.Map json_)
       : this(
@@ -8386,7 +8434,8 @@ class Comment {
           kind: json_['kind'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? CommentSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -8449,18 +8498,24 @@ class CommentListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => Comment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Comment.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           pageInfo: json_.containsKey('pageInfo')
               ? PageInfo.fromJson(
-                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           tokenPagination: json_.containsKey('tokenPagination')
-              ? TokenPagination.fromJson(json_['tokenPagination']
-                  as core.Map<core.String, core.dynamic>)
+              ? TokenPagination.fromJson(
+                  json_['tokenPagination']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           visitorId: json_['visitorId'] as core.String?,
         );
@@ -8569,8 +8624,10 @@ class CommentSnippet {
   CommentSnippet.fromJson(core.Map json_)
       : this(
           authorChannelId: json_.containsKey('authorChannelId')
-              ? CommentSnippetAuthorChannelId.fromJson(json_['authorChannelId']
-                  as core.Map<core.String, core.dynamic>)
+              ? CommentSnippetAuthorChannelId.fromJson(
+                  json_['authorChannelId']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           authorChannelUrl: json_['authorChannelUrl'] as core.String?,
           authorDisplayName: json_['authorDisplayName'] as core.String?,
@@ -8641,13 +8698,7 @@ class CommentThread {
   /// also the top level comment.
   CommentThreadSnippet? snippet;
 
-  CommentThread({
-    this.etag,
-    this.id,
-    this.kind,
-    this.replies,
-    this.snippet,
-  });
+  CommentThread({this.etag, this.id, this.kind, this.replies, this.snippet});
 
   CommentThread.fromJson(core.Map json_)
       : this(
@@ -8656,11 +8707,13 @@ class CommentThread {
           kind: json_['kind'] as core.String?,
           replies: json_.containsKey('replies')
               ? CommentThreadReplies.fromJson(
-                  json_['replies'] as core.Map<core.String, core.dynamic>)
+                  json_['replies'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           snippet: json_.containsKey('snippet')
               ? CommentThreadSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -8724,18 +8777,24 @@ class CommentThreadListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => CommentThread.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CommentThread.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           pageInfo: json_.containsKey('pageInfo')
               ? PageInfo.fromJson(
-                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           tokenPagination: json_.containsKey('tokenPagination')
-              ? TokenPagination.fromJson(json_['tokenPagination']
-                  as core.Map<core.String, core.dynamic>)
+              ? TokenPagination.fromJson(
+                  json_['tokenPagination']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           visitorId: json_['visitorId'] as core.String?,
         );
@@ -8761,15 +8820,16 @@ class CommentThreadReplies {
   /// replies.
   core.List<Comment>? comments;
 
-  CommentThreadReplies({
-    this.comments,
-  });
+  CommentThreadReplies({this.comments});
 
   CommentThreadReplies.fromJson(core.Map json_)
       : this(
           comments: (json_['comments'] as core.List?)
-              ?.map((value) => Comment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Comment.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8822,8 +8882,10 @@ class CommentThreadSnippet {
           channelId: json_['channelId'] as core.String?,
           isPublic: json_['isPublic'] as core.bool?,
           topLevelComment: json_.containsKey('topLevelComment')
-              ? Comment.fromJson(json_['topLevelComment']
-                  as core.Map<core.String, core.dynamic>)
+              ? Comment.fromJson(
+                  json_['topLevelComment']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           totalReplyCount: json_['totalReplyCount'] as core.int?,
           videoId: json_['videoId'] as core.String?,
@@ -10100,11 +10162,7 @@ class Entity {
   core.String? typeId;
   core.String? url;
 
-  Entity({
-    this.id,
-    this.typeId,
-    this.url,
-  });
+  Entity({this.id, this.typeId, this.url});
 
   Entity.fromJson(core.Map json_)
       : this(
@@ -10131,11 +10189,7 @@ class GeoPoint {
   /// Longitude in degrees.
   core.double? longitude;
 
-  GeoPoint({
-    this.altitude,
-    this.latitude,
-    this.longitude,
-  });
+  GeoPoint({this.altitude, this.latitude, this.longitude});
 
   GeoPoint.fromJson(core.Map json_)
       : this(
@@ -10169,12 +10223,7 @@ class I18nLanguage {
   /// language code and human-readable name.
   I18nLanguageSnippet? snippet;
 
-  I18nLanguage({
-    this.etag,
-    this.id,
-    this.kind,
-    this.snippet,
-  });
+  I18nLanguage({this.etag, this.id, this.kind, this.snippet});
 
   I18nLanguage.fromJson(core.Map json_)
       : this(
@@ -10183,7 +10232,8 @@ class I18nLanguage {
           kind: json_['kind'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? I18nLanguageSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -10229,8 +10279,11 @@ class I18nLanguageListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => I18nLanguage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => I18nLanguage.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           visitorId: json_['visitorId'] as core.String?,
@@ -10254,10 +10307,7 @@ class I18nLanguageSnippet {
   /// The human-readable name of the language in the language itself.
   core.String? name;
 
-  I18nLanguageSnippet({
-    this.hl,
-    this.name,
-  });
+  I18nLanguageSnippet({this.hl, this.name});
 
   I18nLanguageSnippet.fromJson(core.Map json_)
       : this(
@@ -10288,12 +10338,7 @@ class I18nRegion {
   /// region code and human-readable name.
   I18nRegionSnippet? snippet;
 
-  I18nRegion({
-    this.etag,
-    this.id,
-    this.kind,
-    this.snippet,
-  });
+  I18nRegion({this.etag, this.id, this.kind, this.snippet});
 
   I18nRegion.fromJson(core.Map json_)
       : this(
@@ -10302,7 +10347,8 @@ class I18nRegion {
           kind: json_['kind'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? I18nRegionSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -10354,8 +10400,11 @@ class I18nRegionListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => I18nRegion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => I18nRegion.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           visitorId: json_['visitorId'] as core.String?,
@@ -10379,10 +10428,7 @@ class I18nRegionSnippet {
   /// The human-readable name of the region.
   core.String? name;
 
-  I18nRegionSnippet({
-    this.gl,
-    this.name,
-  });
+  I18nRegionSnippet({this.gl, this.name});
 
   I18nRegionSnippet.fromJson(core.Map json_)
       : this(
@@ -10591,8 +10637,10 @@ class ImageSettings {
   ImageSettings.fromJson(core.Map json_)
       : this(
           backgroundImageUrl: json_.containsKey('backgroundImageUrl')
-              ? LocalizedProperty.fromJson(json_['backgroundImageUrl']
-                  as core.Map<core.String, core.dynamic>)
+              ? LocalizedProperty.fromJson(
+                  json_['backgroundImageUrl']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           bannerExternalUrl: json_['bannerExternalUrl'] as core.String?,
           bannerImageUrl: json_['bannerImageUrl'] as core.String?,
@@ -10621,24 +10669,30 @@ class ImageSettings {
               json_.containsKey('largeBrandedBannerImageImapScript')
                   ? LocalizedProperty.fromJson(
                       json_['largeBrandedBannerImageImapScript']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
-          largeBrandedBannerImageUrl: json_
-                  .containsKey('largeBrandedBannerImageUrl')
-              ? LocalizedProperty.fromJson(json_['largeBrandedBannerImageUrl']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
+          largeBrandedBannerImageUrl:
+              json_.containsKey('largeBrandedBannerImageUrl')
+                  ? LocalizedProperty.fromJson(
+                      json_['largeBrandedBannerImageUrl']
+                          as core.Map<core.String, core.dynamic>,
+                    )
+                  : null,
           smallBrandedBannerImageImapScript:
               json_.containsKey('smallBrandedBannerImageImapScript')
                   ? LocalizedProperty.fromJson(
                       json_['smallBrandedBannerImageImapScript']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
-          smallBrandedBannerImageUrl: json_
-                  .containsKey('smallBrandedBannerImageUrl')
-              ? LocalizedProperty.fromJson(json_['smallBrandedBannerImageUrl']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
+          smallBrandedBannerImageUrl:
+              json_.containsKey('smallBrandedBannerImageUrl')
+                  ? LocalizedProperty.fromJson(
+                      json_['smallBrandedBannerImageUrl']
+                          as core.Map<core.String, core.dynamic>,
+                    )
+                  : null,
           trackingImageUrl: json_['trackingImageUrl'] as core.String?,
           watchIconImageUrl: json_['watchIconImageUrl'] as core.String?,
         );
@@ -10798,12 +10852,14 @@ class InvideoBranding {
           imageUrl: json_['imageUrl'] as core.String?,
           position: json_.containsKey('position')
               ? InvideoPosition.fromJson(
-                  json_['position'] as core.Map<core.String, core.dynamic>)
+                  json_['position'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           targetChannelId: json_['targetChannelId'] as core.String?,
           timing: json_.containsKey('timing')
               ? InvideoTiming.fromJson(
-                  json_['timing'] as core.Map<core.String, core.dynamic>)
+                  json_['timing'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -10833,10 +10889,7 @@ class InvideoPosition {
   /// - "corner"
   core.String? type;
 
-  InvideoPosition({
-    this.cornerPosition,
-    this.type,
-  });
+  InvideoPosition({this.cornerPosition, this.type});
 
   InvideoPosition.fromJson(core.Map json_)
       : this(
@@ -10875,11 +10928,7 @@ class InvideoTiming {
   /// - "offsetFromEnd"
   core.String? type;
 
-  InvideoTiming({
-    this.durationMs,
-    this.offsetMs,
-    this.type,
-  });
+  InvideoTiming({this.durationMs, this.offsetMs, this.type});
 
   InvideoTiming.fromJson(core.Map json_)
       : this(
@@ -10901,14 +10950,10 @@ class LevelDetails {
   /// The name that should be used when referring to this level.
   core.String? displayName;
 
-  LevelDetails({
-    this.displayName,
-  });
+  LevelDetails({this.displayName});
 
   LevelDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-        );
+      : this(displayName: json_['displayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -10967,8 +11012,10 @@ class LiveBroadcast {
   LiveBroadcast.fromJson(core.Map json_)
       : this(
           contentDetails: json_.containsKey('contentDetails')
-              ? LiveBroadcastContentDetails.fromJson(json_['contentDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? LiveBroadcastContentDetails.fromJson(
+                  json_['contentDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           etag: json_['etag'] as core.String?,
           id: json_['id'] as core.String?,
@@ -10976,19 +11023,23 @@ class LiveBroadcast {
           monetizationDetails: json_.containsKey('monetizationDetails')
               ? LiveBroadcastMonetizationDetails.fromJson(
                   json_['monetizationDetails']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           snippet: json_.containsKey('snippet')
               ? LiveBroadcastSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           statistics: json_.containsKey('statistics')
               ? LiveBroadcastStatistics.fromJson(
-                  json_['statistics'] as core.Map<core.String, core.dynamic>)
+                  json_['statistics'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           status: json_.containsKey('status')
               ? LiveBroadcastStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -11174,7 +11225,8 @@ class LiveBroadcastContentDetails {
           boundStreamLastUpdateTimeMs:
               json_.containsKey('boundStreamLastUpdateTimeMs')
                   ? core.DateTime.parse(
-                      json_['boundStreamLastUpdateTimeMs'] as core.String)
+                      json_['boundStreamLastUpdateTimeMs'] as core.String,
+                    )
                   : null,
           closedCaptionsType: json_['closedCaptionsType'] as core.String?,
           enableAutoStart: json_['enableAutoStart'] as core.bool?,
@@ -11189,7 +11241,8 @@ class LiveBroadcastContentDetails {
           mesh: json_['mesh'] as core.String?,
           monitorStream: json_.containsKey('monitorStream')
               ? MonitorStreamInfo.fromJson(
-                  json_['monitorStream'] as core.Map<core.String, core.dynamic>)
+                  json_['monitorStream'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           projection: json_['projection'] as core.String?,
           recordFromStart: json_['recordFromStart'] as core.bool?,
@@ -11279,19 +11332,25 @@ class LiveBroadcastListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => LiveBroadcast.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LiveBroadcast.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           pageInfo: json_.containsKey('pageInfo')
               ? PageInfo.fromJson(
-                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           prevPageToken: json_['prevPageToken'] as core.String?,
           tokenPagination: json_.containsKey('tokenPagination')
-              ? TokenPagination.fromJson(json_['tokenPagination']
-                  as core.Map<core.String, core.dynamic>)
+              ? TokenPagination.fromJson(
+                  json_['tokenPagination']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           visitorId: json_['visitorId'] as core.String?,
         );
@@ -11313,15 +11372,15 @@ class LiveBroadcastListResponse {
 class LiveBroadcastMonetizationDetails {
   CuepointSchedule? cuepointSchedule;
 
-  LiveBroadcastMonetizationDetails({
-    this.cuepointSchedule,
-  });
+  LiveBroadcastMonetizationDetails({this.cuepointSchedule});
 
   LiveBroadcastMonetizationDetails.fromJson(core.Map json_)
       : this(
           cuepointSchedule: json_.containsKey('cuepointSchedule')
-              ? CuepointSchedule.fromJson(json_['cuepointSchedule']
-                  as core.Map<core.String, core.dynamic>)
+              ? CuepointSchedule.fromJson(
+                  json_['cuepointSchedule']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -11418,11 +11477,14 @@ class LiveBroadcastSnippet {
               ? core.DateTime.parse(json_['scheduledEndTime'] as core.String)
               : null,
           scheduledStartTime: json_.containsKey('scheduledStartTime')
-              ? core.DateTime.parse(json_['scheduledStartTime'] as core.String)
+              ? core.DateTime.parse(
+                  json_['scheduledStartTime'] as core.String,
+                )
               : null,
           thumbnails: json_.containsKey('thumbnails')
               ? ThumbnailDetails.fromJson(
-                  json_['thumbnails'] as core.Map<core.String, core.dynamic>)
+                  json_['thumbnails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           title: json_['title'] as core.String?,
         );
@@ -11463,14 +11525,10 @@ class LiveBroadcastStatistics {
   /// broadcast that already ended.
   core.String? concurrentViewers;
 
-  LiveBroadcastStatistics({
-    this.concurrentViewers,
-  });
+  LiveBroadcastStatistics({this.concurrentViewers});
 
   LiveBroadcastStatistics.fromJson(core.Map json_)
-      : this(
-          concurrentViewers: json_['concurrentViewers'] as core.String?,
-        );
+      : this(concurrentViewers: json_['concurrentViewers'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (concurrentViewers != null) 'concurrentViewers': concurrentViewers!,
@@ -11584,12 +11642,7 @@ class LiveChatBan {
   /// The `snippet` object contains basic details about the ban.
   LiveChatBanSnippet? snippet;
 
-  LiveChatBan({
-    this.etag,
-    this.id,
-    this.kind,
-    this.snippet,
-  });
+  LiveChatBan({this.etag, this.id, this.kind, this.snippet});
 
   LiveChatBan.fromJson(core.Map json_)
       : this(
@@ -11598,7 +11651,8 @@ class LiveChatBan {
           kind: json_['kind'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? LiveChatBanSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -11636,8 +11690,10 @@ class LiveChatBanSnippet {
       : this(
           banDurationSeconds: json_['banDurationSeconds'] as core.String?,
           bannedUserDetails: json_.containsKey('bannedUserDetails')
-              ? ChannelProfileDetails.fromJson(json_['bannedUserDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? ChannelProfileDetails.fromJson(
+                  json_['bannedUserDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           liveChatId: json_['liveChatId'] as core.String?,
           type: json_['type'] as core.String?,
@@ -11836,14 +11892,16 @@ class LiveChatMessage {
       : this(
           authorDetails: json_.containsKey('authorDetails')
               ? LiveChatMessageAuthorDetails.fromJson(
-                  json_['authorDetails'] as core.Map<core.String, core.dynamic>)
+                  json_['authorDetails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           etag: json_['etag'] as core.String?,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? LiveChatMessageSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -11919,14 +11977,10 @@ class LiveChatMessageAuthorDetails {
 class LiveChatMessageDeletedDetails {
   core.String? deletedMessageId;
 
-  LiveChatMessageDeletedDetails({
-    this.deletedMessageId,
-  });
+  LiveChatMessageDeletedDetails({this.deletedMessageId});
 
   LiveChatMessageDeletedDetails.fromJson(core.Map json_)
-      : this(
-          deletedMessageId: json_['deletedMessageId'] as core.String?,
-        );
+      : this(deletedMessageId: json_['deletedMessageId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deletedMessageId != null) 'deletedMessageId': deletedMessageId!,
@@ -11989,14 +12043,19 @@ class LiveChatMessageListResponse {
   LiveChatMessageListResponse.fromJson(core.Map json_)
       : this(
           activePollItem: json_.containsKey('activePollItem')
-              ? LiveChatMessage.fromJson(json_['activePollItem']
-                  as core.Map<core.String, core.dynamic>)
+              ? LiveChatMessage.fromJson(
+                  json_['activePollItem']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => LiveChatMessage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LiveChatMessage.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
@@ -12005,12 +12064,15 @@ class LiveChatMessageListResponse {
               : null,
           pageInfo: json_.containsKey('pageInfo')
               ? PageInfo.fromJson(
-                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           pollingIntervalMillis: json_['pollingIntervalMillis'] as core.int?,
           tokenPagination: json_.containsKey('tokenPagination')
-              ? TokenPagination.fromJson(json_['tokenPagination']
-                  as core.Map<core.String, core.dynamic>)
+              ? TokenPagination.fromJson(
+                  json_['tokenPagination']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           visitorId: json_['visitorId'] as core.String?,
         );
@@ -12035,14 +12097,10 @@ class LiveChatMessageListResponse {
 class LiveChatMessageRetractedDetails {
   core.String? retractedMessageId;
 
-  LiveChatMessageRetractedDetails({
-    this.retractedMessageId,
-  });
+  LiveChatMessageRetractedDetails({this.retractedMessageId});
 
   LiveChatMessageRetractedDetails.fromJson(core.Map json_)
-      : this(
-          retractedMessageId: json_['retractedMessageId'] as core.String?,
-        );
+      : this(retractedMessageId: json_['retractedMessageId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (retractedMessageId != null)
@@ -12173,13 +12231,15 @@ class LiveChatMessageSnippet {
           fanFundingEventDetails: json_.containsKey('fanFundingEventDetails')
               ? LiveChatFanFundingEventDetails.fromJson(
                   json_['fanFundingEventDetails']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           giftMembershipReceivedDetails:
               json_.containsKey('giftMembershipReceivedDetails')
                   ? LiveChatGiftMembershipReceivedDetails.fromJson(
                       json_['giftMembershipReceivedDetails']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           hasDisplayContent: json_['hasDisplayContent'] as core.bool?,
           liveChatId: json_['liveChatId'] as core.String?,
@@ -12187,53 +12247,66 @@ class LiveChatMessageSnippet {
               json_.containsKey('memberMilestoneChatDetails')
                   ? LiveChatMemberMilestoneChatDetails.fromJson(
                       json_['memberMilestoneChatDetails']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           membershipGiftingDetails:
               json_.containsKey('membershipGiftingDetails')
                   ? LiveChatMembershipGiftingDetails.fromJson(
                       json_['membershipGiftingDetails']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           messageDeletedDetails: json_.containsKey('messageDeletedDetails')
               ? LiveChatMessageDeletedDetails.fromJson(
                   json_['messageDeletedDetails']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           messageRetractedDetails: json_.containsKey('messageRetractedDetails')
               ? LiveChatMessageRetractedDetails.fromJson(
                   json_['messageRetractedDetails']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           newSponsorDetails: json_.containsKey('newSponsorDetails')
-              ? LiveChatNewSponsorDetails.fromJson(json_['newSponsorDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? LiveChatNewSponsorDetails.fromJson(
+                  json_['newSponsorDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           pollDetails: json_.containsKey('pollDetails')
               ? LiveChatPollDetails.fromJson(
-                  json_['pollDetails'] as core.Map<core.String, core.dynamic>)
+                  json_['pollDetails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           publishedAt: json_.containsKey('publishedAt')
               ? core.DateTime.parse(json_['publishedAt'] as core.String)
               : null,
           superChatDetails: json_.containsKey('superChatDetails')
-              ? LiveChatSuperChatDetails.fromJson(json_['superChatDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? LiveChatSuperChatDetails.fromJson(
+                  json_['superChatDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           superStickerDetails: json_.containsKey('superStickerDetails')
               ? LiveChatSuperStickerDetails.fromJson(
                   json_['superStickerDetails']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           textMessageDetails: json_.containsKey('textMessageDetails')
-              ? LiveChatTextMessageDetails.fromJson(json_['textMessageDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? LiveChatTextMessageDetails.fromJson(
+                  json_['textMessageDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           type: json_['type'] as core.String?,
           userBannedDetails: json_.containsKey('userBannedDetails')
               ? LiveChatUserBannedMessageDetails.fromJson(
                   json_['userBannedDetails']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -12288,12 +12361,7 @@ class LiveChatModerator {
   /// The snippet object contains basic details about the moderator.
   LiveChatModeratorSnippet? snippet;
 
-  LiveChatModerator({
-    this.etag,
-    this.id,
-    this.kind,
-    this.snippet,
-  });
+  LiveChatModerator({this.etag, this.id, this.kind, this.snippet});
 
   LiveChatModerator.fromJson(core.Map json_)
       : this(
@@ -12302,7 +12370,8 @@ class LiveChatModerator {
           kind: json_['kind'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? LiveChatModeratorSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -12370,19 +12439,25 @@ class LiveChatModeratorListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => LiveChatModerator.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LiveChatModerator.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           pageInfo: json_.containsKey('pageInfo')
               ? PageInfo.fromJson(
-                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           prevPageToken: json_['prevPageToken'] as core.String?,
           tokenPagination: json_.containsKey('tokenPagination')
-              ? TokenPagination.fromJson(json_['tokenPagination']
-                  as core.Map<core.String, core.dynamic>)
+              ? TokenPagination.fromJson(
+                  json_['tokenPagination']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           visitorId: json_['visitorId'] as core.String?,
         );
@@ -12407,17 +12482,16 @@ class LiveChatModeratorSnippet {
   /// Details about the moderator.
   ChannelProfileDetails? moderatorDetails;
 
-  LiveChatModeratorSnippet({
-    this.liveChatId,
-    this.moderatorDetails,
-  });
+  LiveChatModeratorSnippet({this.liveChatId, this.moderatorDetails});
 
   LiveChatModeratorSnippet.fromJson(core.Map json_)
       : this(
           liveChatId: json_['liveChatId'] as core.String?,
           moderatorDetails: json_.containsKey('moderatorDetails')
-              ? ChannelProfileDetails.fromJson(json_['moderatorDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? ChannelProfileDetails.fromJson(
+                  json_['moderatorDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -12440,10 +12514,7 @@ class LiveChatNewSponsorDetails {
   /// Membership. In some situations this field isn't filled.
   core.String? memberLevelName;
 
-  LiveChatNewSponsorDetails({
-    this.isUpgrade,
-    this.memberLevelName,
-  });
+  LiveChatNewSponsorDetails({this.isUpgrade, this.memberLevelName});
 
   LiveChatNewSponsorDetails.fromJson(core.Map json_)
       : this(
@@ -12467,16 +12538,14 @@ class LiveChatPollDetails {
   /// - "closed"
   core.String? status;
 
-  LiveChatPollDetails({
-    this.metadata,
-    this.status,
-  });
+  LiveChatPollDetails({this.metadata, this.status});
 
   LiveChatPollDetails.fromJson(core.Map json_)
       : this(
           metadata: json_.containsKey('metadata')
               ? LiveChatPollDetailsPollMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>)
+                  json_['metadata'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           status: json_['status'] as core.String?,
         );
@@ -12492,17 +12561,16 @@ class LiveChatPollDetailsPollMetadata {
   core.List<LiveChatPollDetailsPollMetadataPollOption>? options;
   core.String? questionText;
 
-  LiveChatPollDetailsPollMetadata({
-    this.options,
-    this.questionText,
-  });
+  LiveChatPollDetailsPollMetadata({this.options, this.questionText});
 
   LiveChatPollDetailsPollMetadata.fromJson(core.Map json_)
       : this(
           options: (json_['options'] as core.List?)
-              ?.map((value) =>
-                  LiveChatPollDetailsPollMetadataPollOption.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LiveChatPollDetailsPollMetadataPollOption.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           questionText: json_['questionText'] as core.String?,
         );
@@ -12517,10 +12585,7 @@ class LiveChatPollDetailsPollMetadataPollOption {
   core.String? optionText;
   core.String? tally;
 
-  LiveChatPollDetailsPollMetadataPollOption({
-    this.optionText,
-    this.tally,
-  });
+  LiveChatPollDetailsPollMetadataPollOption({this.optionText, this.tally});
 
   LiveChatPollDetailsPollMetadataPollOption.fromJson(core.Map json_)
       : this(
@@ -12611,8 +12676,10 @@ class LiveChatSuperStickerDetails {
           amountMicros: json_['amountMicros'] as core.String?,
           currency: json_['currency'] as core.String?,
           superStickerMetadata: json_.containsKey('superStickerMetadata')
-              ? SuperStickerMetadata.fromJson(json_['superStickerMetadata']
-                  as core.Map<core.String, core.dynamic>)
+              ? SuperStickerMetadata.fromJson(
+                  json_['superStickerMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           tier: json_['tier'] as core.int?,
         );
@@ -12632,14 +12699,10 @@ class LiveChatTextMessageDetails {
   /// The user's message.
   core.String? messageText;
 
-  LiveChatTextMessageDetails({
-    this.messageText,
-  });
+  LiveChatTextMessageDetails({this.messageText});
 
   LiveChatTextMessageDetails.fromJson(core.Map json_)
-      : this(
-          messageText: json_['messageText'] as core.String?,
-        );
+      : this(messageText: json_['messageText'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (messageText != null) 'messageText': messageText!,
@@ -12672,8 +12735,10 @@ class LiveChatUserBannedMessageDetails {
           banDurationSeconds: json_['banDurationSeconds'] as core.String?,
           banType: json_['banType'] as core.String?,
           bannedUserDetails: json_.containsKey('bannedUserDetails')
-              ? ChannelProfileDetails.fromJson(json_['bannedUserDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? ChannelProfileDetails.fromJson(
+                  json_['bannedUserDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -12730,22 +12795,27 @@ class LiveStream {
       : this(
           cdn: json_.containsKey('cdn')
               ? CdnSettings.fromJson(
-                  json_['cdn'] as core.Map<core.String, core.dynamic>)
+                  json_['cdn'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           contentDetails: json_.containsKey('contentDetails')
-              ? LiveStreamContentDetails.fromJson(json_['contentDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? LiveStreamContentDetails.fromJson(
+                  json_['contentDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           etag: json_['etag'] as core.String?,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? LiveStreamSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           status: json_.containsKey('status')
               ? LiveStreamStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -12856,10 +12926,7 @@ class LiveStreamContentDetails {
   /// the stream.
   core.bool? isReusable;
 
-  LiveStreamContentDetails({
-    this.closedCaptionsIngestionUrl,
-    this.isReusable,
-  });
+  LiveStreamContentDetails({this.closedCaptionsIngestionUrl, this.isReusable});
 
   LiveStreamContentDetails.fromJson(core.Map json_)
       : this(
@@ -12900,8 +12967,11 @@ class LiveStreamHealthStatus {
   LiveStreamHealthStatus.fromJson(core.Map json_)
       : this(
           configurationIssues: (json_['configurationIssues'] as core.List?)
-              ?.map((value) => LiveStreamConfigurationIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LiveStreamConfigurationIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           lastUpdateTimeSeconds: json_['lastUpdateTimeSeconds'] as core.String?,
           status: json_['status'] as core.String?,
@@ -12970,19 +13040,25 @@ class LiveStreamListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => LiveStream.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LiveStream.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           pageInfo: json_.containsKey('pageInfo')
               ? PageInfo.fromJson(
-                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           prevPageToken: json_['prevPageToken'] as core.String?,
           tokenPagination: json_.containsKey('tokenPagination')
-              ? TokenPagination.fromJson(json_['tokenPagination']
-                  as core.Map<core.String, core.dynamic>)
+              ? TokenPagination.fromJson(
+                  json_['tokenPagination']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           visitorId: json_['visitorId'] as core.String?,
         );
@@ -13062,16 +13138,14 @@ class LiveStreamStatus {
   /// - "error"
   core.String? streamStatus;
 
-  LiveStreamStatus({
-    this.healthStatus,
-    this.streamStatus,
-  });
+  LiveStreamStatus({this.healthStatus, this.streamStatus});
 
   LiveStreamStatus.fromJson(core.Map json_)
       : this(
           healthStatus: json_.containsKey('healthStatus')
               ? LiveStreamHealthStatus.fromJson(
-                  json_['healthStatus'] as core.Map<core.String, core.dynamic>)
+                  json_['healthStatus'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           streamStatus: json_['streamStatus'] as core.String?,
         );
@@ -13089,22 +13163,23 @@ class LocalizedProperty {
   LanguageTag? defaultLanguage;
   core.List<LocalizedString>? localized;
 
-  LocalizedProperty({
-    this.default_,
-    this.defaultLanguage,
-    this.localized,
-  });
+  LocalizedProperty({this.default_, this.defaultLanguage, this.localized});
 
   LocalizedProperty.fromJson(core.Map json_)
       : this(
           default_: json_['default'] as core.String?,
           defaultLanguage: json_.containsKey('defaultLanguage')
-              ? LanguageTag.fromJson(json_['defaultLanguage']
-                  as core.Map<core.String, core.dynamic>)
+              ? LanguageTag.fromJson(
+                  json_['defaultLanguage']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           localized: (json_['localized'] as core.List?)
-              ?.map((value) => LocalizedString.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LocalizedString.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -13119,10 +13194,7 @@ class LocalizedString {
   core.String? language;
   core.String? value;
 
-  LocalizedString({
-    this.language,
-    this.value,
-  });
+  LocalizedString({this.language, this.value});
 
   LocalizedString.fromJson(core.Map json_)
       : this(
@@ -13152,11 +13224,7 @@ class Member {
   /// The snippet object contains basic details about the member.
   MemberSnippet? snippet;
 
-  Member({
-    this.etag,
-    this.kind,
-    this.snippet,
-  });
+  Member({this.etag, this.kind, this.snippet});
 
   Member.fromJson(core.Map json_)
       : this(
@@ -13164,7 +13232,8 @@ class Member {
           kind: json_['kind'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? MemberSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -13224,18 +13293,24 @@ class MemberListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  Member.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Member.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           pageInfo: json_.containsKey('pageInfo')
               ? PageInfo.fromJson(
-                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           tokenPagination: json_.containsKey('tokenPagination')
-              ? TokenPagination.fromJson(json_['tokenPagination']
-                  as core.Map<core.String, core.dynamic>)
+              ? TokenPagination.fromJson(
+                  json_['tokenPagination']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           visitorId: json_['visitorId'] as core.String?,
         );
@@ -13273,11 +13348,14 @@ class MemberSnippet {
           creatorChannelId: json_['creatorChannelId'] as core.String?,
           memberDetails: json_.containsKey('memberDetails')
               ? ChannelProfileDetails.fromJson(
-                  json_['memberDetails'] as core.Map<core.String, core.dynamic>)
+                  json_['memberDetails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           membershipsDetails: json_.containsKey('membershipsDetails')
-              ? MembershipsDetails.fromJson(json_['membershipsDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? MembershipsDetails.fromJson(
+                  json_['membershipsDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -13328,13 +13406,18 @@ class MembershipsDetails {
           highestAccessibleLevelDisplayName:
               json_['highestAccessibleLevelDisplayName'] as core.String?,
           membershipsDuration: json_.containsKey('membershipsDuration')
-              ? MembershipsDuration.fromJson(json_['membershipsDuration']
-                  as core.Map<core.String, core.dynamic>)
+              ? MembershipsDuration.fromJson(
+                  json_['membershipsDuration']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           membershipsDurationAtLevels:
               (json_['membershipsDurationAtLevels'] as core.List?)
-                  ?.map((value) => MembershipsDurationAtLevel.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => MembershipsDurationAtLevel.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
         );
 
@@ -13361,10 +13444,7 @@ class MembershipsDuration {
   /// complete months (the time is rounded down to the nearest integer).
   core.int? memberTotalDurationMonths;
 
-  MembershipsDuration({
-    this.memberSince,
-    this.memberTotalDurationMonths,
-  });
+  MembershipsDuration({this.memberSince, this.memberTotalDurationMonths});
 
   MembershipsDuration.fromJson(core.Map json_)
       : this(
@@ -13435,12 +13515,7 @@ class MembershipsLevel {
   /// The snippet object contains basic details about the level.
   MembershipsLevelSnippet? snippet;
 
-  MembershipsLevel({
-    this.etag,
-    this.id,
-    this.kind,
-    this.snippet,
-  });
+  MembershipsLevel({this.etag, this.id, this.kind, this.snippet});
 
   MembershipsLevel.fromJson(core.Map json_)
       : this(
@@ -13449,7 +13524,8 @@ class MembershipsLevel {
           kind: json_['kind'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? MembershipsLevelSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -13498,8 +13574,11 @@ class MembershipsLevelListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => MembershipsLevel.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MembershipsLevel.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           visitorId: json_['visitorId'] as core.String?,
@@ -13521,17 +13600,15 @@ class MembershipsLevelSnippet {
   /// Details about the pricing level.
   LevelDetails? levelDetails;
 
-  MembershipsLevelSnippet({
-    this.creatorChannelId,
-    this.levelDetails,
-  });
+  MembershipsLevelSnippet({this.creatorChannelId, this.levelDetails});
 
   MembershipsLevelSnippet.fromJson(core.Map json_)
       : this(
           creatorChannelId: json_['creatorChannelId'] as core.String?,
           levelDetails: json_.containsKey('levelDetails')
               ? LevelDetails.fromJson(
-                  json_['levelDetails'] as core.Map<core.String, core.dynamic>)
+                  json_['levelDetails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -13593,10 +13670,7 @@ class PageInfo {
   /// The total number of results in the result set.
   core.int? totalResults;
 
-  PageInfo({
-    this.resultsPerPage,
-    this.totalResults,
-  });
+  PageInfo({this.resultsPerPage, this.totalResults});
 
   PageInfo.fromJson(core.Map json_)
       : this(
@@ -13669,8 +13743,10 @@ class Playlist {
   Playlist.fromJson(core.Map json_)
       : this(
           contentDetails: json_.containsKey('contentDetails')
-              ? PlaylistContentDetails.fromJson(json_['contentDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? PlaylistContentDetails.fromJson(
+                  json_['contentDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           etag: json_['etag'] as core.String?,
           id: json_['id'] as core.String?,
@@ -13681,20 +13757,24 @@ class Playlist {
             (key, value) => core.MapEntry(
               key,
               PlaylistLocalization.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           player: json_.containsKey('player')
               ? PlaylistPlayer.fromJson(
-                  json_['player'] as core.Map<core.String, core.dynamic>)
+                  json_['player'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           snippet: json_.containsKey('snippet')
               ? PlaylistSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           status: json_.containsKey('status')
               ? PlaylistStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -13714,14 +13794,10 @@ class PlaylistContentDetails {
   /// The number of videos in the playlist.
   core.int? itemCount;
 
-  PlaylistContentDetails({
-    this.itemCount,
-  });
+  PlaylistContentDetails({this.itemCount});
 
   PlaylistContentDetails.fromJson(core.Map json_)
-      : this(
-          itemCount: json_['itemCount'] as core.int?,
-        );
+      : this(itemCount: json_['itemCount'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (itemCount != null) 'itemCount': itemCount!,
@@ -13738,11 +13814,7 @@ class PlaylistImage {
   core.String? kind;
   PlaylistImageSnippet? snippet;
 
-  PlaylistImage({
-    this.id,
-    this.kind,
-    this.snippet,
-  });
+  PlaylistImage({this.id, this.kind, this.snippet});
 
   PlaylistImage.fromJson(core.Map json_)
       : this(
@@ -13750,7 +13822,8 @@ class PlaylistImage {
           kind: json_['kind'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? PlaylistImageSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -13791,14 +13864,18 @@ class PlaylistImageListResponse {
   PlaylistImageListResponse.fromJson(core.Map json_)
       : this(
           items: (json_['items'] as core.List?)
-              ?.map((value) => PlaylistImage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PlaylistImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           pageInfo: json_.containsKey('pageInfo')
               ? PageInfo.fromJson(
-                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           prevPageToken: json_['prevPageToken'] as core.String?,
         );
@@ -13842,12 +13919,7 @@ class PlaylistImageSnippet {
   /// The image width.
   core.int? width;
 
-  PlaylistImageSnippet({
-    this.height,
-    this.playlistId,
-    this.type,
-    this.width,
-  });
+  PlaylistImageSnippet({this.height, this.playlistId, this.type, this.width});
 
   PlaylistImageSnippet.fromJson(core.Map json_)
       : this(
@@ -13920,19 +13992,23 @@ class PlaylistItem {
   PlaylistItem.fromJson(core.Map json_)
       : this(
           contentDetails: json_.containsKey('contentDetails')
-              ? PlaylistItemContentDetails.fromJson(json_['contentDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? PlaylistItemContentDetails.fromJson(
+                  json_['contentDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           etag: json_['etag'] as core.String?,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? PlaylistItemSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           status: json_.containsKey('status')
               ? PlaylistItemStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -14056,19 +14132,25 @@ class PlaylistItemListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => PlaylistItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PlaylistItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           pageInfo: json_.containsKey('pageInfo')
               ? PageInfo.fromJson(
-                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           prevPageToken: json_['prevPageToken'] as core.String?,
           tokenPagination: json_.containsKey('tokenPagination')
-              ? TokenPagination.fromJson(json_['tokenPagination']
-                  as core.Map<core.String, core.dynamic>)
+              ? TokenPagination.fromJson(
+                  json_['tokenPagination']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           visitorId: json_['visitorId'] as core.String?,
         );
@@ -14159,11 +14241,13 @@ class PlaylistItemSnippet {
               : null,
           resourceId: json_.containsKey('resourceId')
               ? ResourceId.fromJson(
-                  json_['resourceId'] as core.Map<core.String, core.dynamic>)
+                  json_['resourceId'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           thumbnails: json_.containsKey('thumbnails')
               ? ThumbnailDetails.fromJson(
-                  json_['thumbnails'] as core.Map<core.String, core.dynamic>)
+                  json_['thumbnails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           title: json_['title'] as core.String?,
           videoOwnerChannelId: json_['videoOwnerChannelId'] as core.String?,
@@ -14198,14 +14282,10 @@ class PlaylistItemStatus {
   /// - "private"
   core.String? privacyStatus;
 
-  PlaylistItemStatus({
-    this.privacyStatus,
-  });
+  PlaylistItemStatus({this.privacyStatus});
 
   PlaylistItemStatus.fromJson(core.Map json_)
-      : this(
-          privacyStatus: json_['privacyStatus'] as core.String?,
-        );
+      : this(privacyStatus: json_['privacyStatus'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (privacyStatus != null) 'privacyStatus': privacyStatus!,
@@ -14268,19 +14348,25 @@ class PlaylistListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => Playlist.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Playlist.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           pageInfo: json_.containsKey('pageInfo')
               ? PageInfo.fromJson(
-                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           prevPageToken: json_['prevPageToken'] as core.String?,
           tokenPagination: json_.containsKey('tokenPagination')
-              ? TokenPagination.fromJson(json_['tokenPagination']
-                  as core.Map<core.String, core.dynamic>)
+              ? TokenPagination.fromJson(
+                  json_['tokenPagination']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           visitorId: json_['visitorId'] as core.String?,
         );
@@ -14306,10 +14392,7 @@ class PlaylistLocalization {
   /// The localized strings for playlist's title.
   core.String? title;
 
-  PlaylistLocalization({
-    this.description,
-    this.title,
-  });
+  PlaylistLocalization({this.description, this.title});
 
   PlaylistLocalization.fromJson(core.Map json_)
       : this(
@@ -14327,14 +14410,10 @@ class PlaylistPlayer {
   /// An \<iframe\> tag that embeds a player that will play the playlist.
   core.String? embedHtml;
 
-  PlaylistPlayer({
-    this.embedHtml,
-  });
+  PlaylistPlayer({this.embedHtml});
 
   PlaylistPlayer.fromJson(core.Map json_)
-      : this(
-          embedHtml: json_['embedHtml'] as core.String?,
-        );
+      : this(embedHtml: json_['embedHtml'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (embedHtml != null) 'embedHtml': embedHtml!,
@@ -14411,7 +14490,8 @@ class PlaylistSnippet {
           description: json_['description'] as core.String?,
           localized: json_.containsKey('localized')
               ? PlaylistLocalization.fromJson(
-                  json_['localized'] as core.Map<core.String, core.dynamic>)
+                  json_['localized'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           publishedAt: json_.containsKey('publishedAt')
               ? core.DateTime.parse(json_['publishedAt'] as core.String)
@@ -14422,7 +14502,8 @@ class PlaylistSnippet {
           thumbnailVideoId: json_['thumbnailVideoId'] as core.String?,
           thumbnails: json_.containsKey('thumbnails')
               ? ThumbnailDetails.fromJson(
-                  json_['thumbnails'] as core.Map<core.String, core.dynamic>)
+                  json_['thumbnails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           title: json_['title'] as core.String?,
         );
@@ -14456,10 +14537,7 @@ class PlaylistStatus {
   /// - "private"
   core.String? privacyStatus;
 
-  PlaylistStatus({
-    this.podcastStatus,
-    this.privacyStatus,
-  });
+  PlaylistStatus({this.podcastStatus, this.privacyStatus});
 
   PlaylistStatus.fromJson(core.Map json_)
       : this(
@@ -14481,10 +14559,7 @@ class PropertyValue {
   /// The property's value.
   core.String? value;
 
-  PropertyValue({
-    this.property,
-    this.value,
-  });
+  PropertyValue({this.property, this.value});
 
   PropertyValue.fromJson(core.Map json_)
       : this(
@@ -14501,15 +14576,14 @@ class PropertyValue {
 class RelatedEntity {
   Entity? entity;
 
-  RelatedEntity({
-    this.entity,
-  });
+  RelatedEntity({this.entity});
 
   RelatedEntity.fromJson(core.Map json_)
       : this(
           entity: json_.containsKey('entity')
               ? Entity.fromJson(
-                  json_['entity'] as core.Map<core.String, core.dynamic>)
+                  json_['entity'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -14545,12 +14619,7 @@ class ResourceId {
   /// youtube#video.
   core.String? videoId;
 
-  ResourceId({
-    this.channelId,
-    this.kind,
-    this.playlistId,
-    this.videoId,
-  });
+  ResourceId({this.channelId, this.kind, this.playlistId, this.videoId});
 
   ResourceId.fromJson(core.Map json_)
       : this(
@@ -14617,20 +14686,26 @@ class SearchListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => SearchResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => SearchResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           pageInfo: json_.containsKey('pageInfo')
               ? PageInfo.fromJson(
-                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           prevPageToken: json_['prevPageToken'] as core.String?,
           regionCode: json_['regionCode'] as core.String?,
           tokenPagination: json_.containsKey('tokenPagination')
-              ? TokenPagination.fromJson(json_['tokenPagination']
-                  as core.Map<core.String, core.dynamic>)
+              ? TokenPagination.fromJson(
+                  json_['tokenPagination']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           visitorId: json_['visitorId'] as core.String?,
         );
@@ -14674,24 +14749,21 @@ class SearchResult {
   /// video's title and the description will be the video's description.
   SearchResultSnippet? snippet;
 
-  SearchResult({
-    this.etag,
-    this.id,
-    this.kind,
-    this.snippet,
-  });
+  SearchResult({this.etag, this.id, this.kind, this.snippet});
 
   SearchResult.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           id: json_.containsKey('id')
               ? ResourceId.fromJson(
-                  json_['id'] as core.Map<core.String, core.dynamic>)
+                  json_['id'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           kind: json_['kind'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? SearchResultSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -14763,7 +14835,8 @@ class SearchResultSnippet {
               : null,
           thumbnails: json_.containsKey('thumbnails')
               ? ThumbnailDetails.fromJson(
-                  json_['thumbnails'] as core.Map<core.String, core.dynamic>)
+                  json_['thumbnails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           title: json_['title'] as core.String?,
         );
@@ -14822,20 +14895,24 @@ class Subscription {
   Subscription.fromJson(core.Map json_)
       : this(
           contentDetails: json_.containsKey('contentDetails')
-              ? SubscriptionContentDetails.fromJson(json_['contentDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? SubscriptionContentDetails.fromJson(
+                  json_['contentDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           etag: json_['etag'] as core.String?,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? SubscriptionSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           subscriberSnippet: json_.containsKey('subscriberSnippet')
               ? SubscriptionSubscriberSnippet.fromJson(
                   json_['subscriberSnippet']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -14939,19 +15016,25 @@ class SubscriptionListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => Subscription.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Subscription.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           pageInfo: json_.containsKey('pageInfo')
               ? PageInfo.fromJson(
-                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           prevPageToken: json_['prevPageToken'] as core.String?,
           tokenPagination: json_.containsKey('tokenPagination')
-              ? TokenPagination.fromJson(json_['tokenPagination']
-                  as core.Map<core.String, core.dynamic>)
+              ? TokenPagination.fromJson(
+                  json_['tokenPagination']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           visitorId: json_['visitorId'] as core.String?,
         );
@@ -15013,11 +15096,13 @@ class SubscriptionSnippet {
               : null,
           resourceId: json_.containsKey('resourceId')
               ? ResourceId.fromJson(
-                  json_['resourceId'] as core.Map<core.String, core.dynamic>)
+                  json_['resourceId'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           thumbnails: json_.containsKey('thumbnails')
               ? ThumbnailDetails.fromJson(
-                  json_['thumbnails'] as core.Map<core.String, core.dynamic>)
+                  json_['thumbnails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           title: json_['title'] as core.String?,
         );
@@ -15061,7 +15146,8 @@ class SubscriptionSubscriberSnippet {
           description: json_['description'] as core.String?,
           thumbnails: json_.containsKey('thumbnails')
               ? ThumbnailDetails.fromJson(
-                  json_['thumbnails'] as core.Map<core.String, core.dynamic>)
+                  json_['thumbnails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           title: json_['title'] as core.String?,
         );
@@ -15091,12 +15177,7 @@ class SuperChatEvent {
   /// The `snippet` object contains basic details about the Super Chat event.
   SuperChatEventSnippet? snippet;
 
-  SuperChatEvent({
-    this.etag,
-    this.id,
-    this.kind,
-    this.snippet,
-  });
+  SuperChatEvent({this.etag, this.id, this.kind, this.snippet});
 
   SuperChatEvent.fromJson(core.Map json_)
       : this(
@@ -15105,7 +15186,8 @@ class SuperChatEvent {
           kind: json_['kind'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? SuperChatEventSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -15166,18 +15248,24 @@ class SuperChatEventListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => SuperChatEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => SuperChatEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           pageInfo: json_.containsKey('pageInfo')
               ? PageInfo.fromJson(
-                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           tokenPagination: json_.containsKey('tokenPagination')
-              ? TokenPagination.fromJson(json_['tokenPagination']
-                  as core.Map<core.String, core.dynamic>)
+              ? TokenPagination.fromJson(
+                  json_['tokenPagination']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           visitorId: json_['visitorId'] as core.String?,
         );
@@ -15260,12 +15348,16 @@ class SuperChatEventSnippet {
           isSuperStickerEvent: json_['isSuperStickerEvent'] as core.bool?,
           messageType: json_['messageType'] as core.int?,
           superStickerMetadata: json_.containsKey('superStickerMetadata')
-              ? SuperStickerMetadata.fromJson(json_['superStickerMetadata']
-                  as core.Map<core.String, core.dynamic>)
+              ? SuperStickerMetadata.fromJson(
+                  json_['superStickerMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           supporterDetails: json_.containsKey('supporterDetails')
-              ? ChannelProfileDetails.fromJson(json_['supporterDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? ChannelProfileDetails.fromJson(
+                  json_['supporterDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -15300,11 +15392,7 @@ class SuperStickerMetadata {
   /// recognizable characteristic of the sticker.
   core.String? stickerId;
 
-  SuperStickerMetadata({
-    this.altText,
-    this.altTextLanguage,
-    this.stickerId,
-  });
+  SuperStickerMetadata({this.altText, this.altTextLanguage, this.stickerId});
 
   SuperStickerMetadata.fromJson(core.Map json_)
       : this(
@@ -15330,13 +15418,7 @@ class TestItem {
   core.String? id;
   TestItemTestItemSnippet? snippet;
 
-  TestItem({
-    this.etag,
-    this.featuredPart,
-    this.gaia,
-    this.id,
-    this.snippet,
-  });
+  TestItem({this.etag, this.featuredPart, this.gaia, this.id, this.snippet});
 
   TestItem.fromJson(core.Map json_)
       : this(
@@ -15346,7 +15428,8 @@ class TestItem {
           id: json_['id'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? TestItemTestItemSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -15398,11 +15481,13 @@ class ThirdPartyLink {
           linkingToken: json_['linkingToken'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? ThirdPartyLinkSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           status: json_.containsKey('status')
               ? ThirdPartyLinkStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -15425,18 +15510,17 @@ class ThirdPartyLinkListResponse {
   /// Value: the fixed string "youtube#thirdPartyLinkListResponse".
   core.String? kind;
 
-  ThirdPartyLinkListResponse({
-    this.etag,
-    this.items,
-    this.kind,
-  });
+  ThirdPartyLinkListResponse({this.etag, this.items, this.kind});
 
   ThirdPartyLinkListResponse.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => ThirdPartyLink.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ThirdPartyLink.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -15463,16 +15547,15 @@ class ThirdPartyLinkSnippet {
   /// commerce capabilities for that channel on YouTube.
   core.String? type;
 
-  ThirdPartyLinkSnippet({
-    this.channelToStoreLink,
-    this.type,
-  });
+  ThirdPartyLinkSnippet({this.channelToStoreLink, this.type});
 
   ThirdPartyLinkSnippet.fromJson(core.Map json_)
       : this(
           channelToStoreLink: json_.containsKey('channelToStoreLink')
-              ? ChannelToStoreLinkDetails.fromJson(json_['channelToStoreLink']
-                  as core.Map<core.String, core.dynamic>)
+              ? ChannelToStoreLinkDetails.fromJson(
+                  json_['channelToStoreLink']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           type: json_['type'] as core.String?,
         );
@@ -15495,14 +15578,10 @@ class ThirdPartyLinkStatus {
   /// - "linked"
   core.String? linkStatus;
 
-  ThirdPartyLinkStatus({
-    this.linkStatus,
-  });
+  ThirdPartyLinkStatus({this.linkStatus});
 
   ThirdPartyLinkStatus.fromJson(core.Map json_)
-      : this(
-          linkStatus: json_['linkStatus'] as core.String?,
-        );
+      : this(linkStatus: json_['linkStatus'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (linkStatus != null) 'linkStatus': linkStatus!,
@@ -15520,11 +15599,7 @@ class Thumbnail {
   /// (Optional) Width of the thumbnail image.
   core.int? width;
 
-  Thumbnail({
-    this.height,
-    this.url,
-    this.width,
-  });
+  Thumbnail({this.height, this.url, this.width});
 
   Thumbnail.fromJson(core.Map json_)
       : this(
@@ -15569,23 +15644,28 @@ class ThumbnailDetails {
       : this(
           default_: json_.containsKey('default')
               ? Thumbnail.fromJson(
-                  json_['default'] as core.Map<core.String, core.dynamic>)
+                  json_['default'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           high: json_.containsKey('high')
               ? Thumbnail.fromJson(
-                  json_['high'] as core.Map<core.String, core.dynamic>)
+                  json_['high'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           maxres: json_.containsKey('maxres')
               ? Thumbnail.fromJson(
-                  json_['maxres'] as core.Map<core.String, core.dynamic>)
+                  json_['maxres'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           medium: json_.containsKey('medium')
               ? Thumbnail.fromJson(
-                  json_['medium'] as core.Map<core.String, core.dynamic>)
+                  json_['medium'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           standard: json_.containsKey('standard')
               ? Thumbnail.fromJson(
-                  json_['standard'] as core.Map<core.String, core.dynamic>)
+                  json_['standard'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -15635,8 +15715,11 @@ class ThumbnailSetResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => ThumbnailDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ThumbnailDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           visitorId: json_['visitorId'] as core.String?,
@@ -15784,22 +15867,28 @@ class Video {
       : this(
           ageGating: json_.containsKey('ageGating')
               ? VideoAgeGating.fromJson(
-                  json_['ageGating'] as core.Map<core.String, core.dynamic>)
+                  json_['ageGating'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           contentDetails: json_.containsKey('contentDetails')
-              ? VideoContentDetails.fromJson(json_['contentDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? VideoContentDetails.fromJson(
+                  json_['contentDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           etag: json_['etag'] as core.String?,
           fileDetails: json_.containsKey('fileDetails')
               ? VideoFileDetails.fromJson(
-                  json_['fileDetails'] as core.Map<core.String, core.dynamic>)
+                  json_['fileDetails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           liveStreamingDetails: json_.containsKey('liveStreamingDetails')
-              ? VideoLiveStreamingDetails.fromJson(json_['liveStreamingDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? VideoLiveStreamingDetails.fromJson(
+                  json_['liveStreamingDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           localizations:
               (json_['localizations'] as core.Map<core.String, core.dynamic>?)
@@ -15807,54 +15896,70 @@ class Video {
             (key, value) => core.MapEntry(
               key,
               VideoLocalization.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           monetizationDetails: json_.containsKey('monetizationDetails')
-              ? VideoMonetizationDetails.fromJson(json_['monetizationDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? VideoMonetizationDetails.fromJson(
+                  json_['monetizationDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           paidProductPlacementDetails:
               json_.containsKey('paidProductPlacementDetails')
                   ? VideoPaidProductPlacementDetails.fromJson(
                       json_['paidProductPlacementDetails']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           player: json_.containsKey('player')
               ? VideoPlayer.fromJson(
-                  json_['player'] as core.Map<core.String, core.dynamic>)
+                  json_['player'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           processingDetails: json_.containsKey('processingDetails')
-              ? VideoProcessingDetails.fromJson(json_['processingDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? VideoProcessingDetails.fromJson(
+                  json_['processingDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           projectDetails: json_.containsKey('projectDetails')
-              ? VideoProjectDetails.fromJson(json_['projectDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? VideoProjectDetails.fromJson(
+                  json_['projectDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           recordingDetails: json_.containsKey('recordingDetails')
-              ? VideoRecordingDetails.fromJson(json_['recordingDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? VideoRecordingDetails.fromJson(
+                  json_['recordingDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           snippet: json_.containsKey('snippet')
               ? VideoSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           statistics: json_.containsKey('statistics')
               ? VideoStatistics.fromJson(
-                  json_['statistics'] as core.Map<core.String, core.dynamic>)
+                  json_['statistics'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           status: json_.containsKey('status')
               ? VideoStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           suggestions: json_.containsKey('suggestions')
               ? VideoSuggestions.fromJson(
-                  json_['suggestions'] as core.Map<core.String, core.dynamic>)
+                  json_['suggestions'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           topicDetails: json_.containsKey('topicDetails')
               ? VideoTopicDetails.fromJson(
-                  json_['topicDetails'] as core.Map<core.String, core.dynamic>)
+                  json_['topicDetails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -15951,12 +16056,7 @@ class VideoAbuseReportReason {
   /// The `snippet` object contains basic details about the abuse report reason.
   VideoAbuseReportReasonSnippet? snippet;
 
-  VideoAbuseReportReason({
-    this.etag,
-    this.id,
-    this.kind,
-    this.snippet,
-  });
+  VideoAbuseReportReason({this.etag, this.id, this.kind, this.snippet});
 
   VideoAbuseReportReason.fromJson(core.Map json_)
       : this(
@@ -15965,7 +16065,8 @@ class VideoAbuseReportReason {
           kind: json_['kind'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? VideoAbuseReportReasonSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -16014,8 +16115,11 @@ class VideoAbuseReportReasonListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => VideoAbuseReportReason.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => VideoAbuseReportReason.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           visitorId: json_['visitorId'] as core.String?,
@@ -16040,17 +16144,17 @@ class VideoAbuseReportReasonSnippet {
   /// (There might be 0 or more.)
   core.List<VideoAbuseReportSecondaryReason>? secondaryReasons;
 
-  VideoAbuseReportReasonSnippet({
-    this.label,
-    this.secondaryReasons,
-  });
+  VideoAbuseReportReasonSnippet({this.label, this.secondaryReasons});
 
   VideoAbuseReportReasonSnippet.fromJson(core.Map json_)
       : this(
           label: json_['label'] as core.String?,
           secondaryReasons: (json_['secondaryReasons'] as core.List?)
-              ?.map((value) => VideoAbuseReportSecondaryReason.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => VideoAbuseReportSecondaryReason.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -16067,10 +16171,7 @@ class VideoAbuseReportSecondaryReason {
   /// The localized label for this abuse report secondary reason.
   core.String? label;
 
-  VideoAbuseReportSecondaryReason({
-    this.id,
-    this.label,
-  });
+  VideoAbuseReportSecondaryReason({this.id, this.label});
 
   VideoAbuseReportSecondaryReason.fromJson(core.Map json_)
       : this(
@@ -16106,11 +16207,7 @@ class VideoAgeGating {
   /// - "m17Plus"
   core.String? videoGameRating;
 
-  VideoAgeGating({
-    this.alcoholContent,
-    this.restricted,
-    this.videoGameRating,
-  });
+  VideoAgeGating({this.alcoholContent, this.restricted, this.videoGameRating});
 
   VideoAgeGating.fromJson(core.Map json_)
       : this(
@@ -16144,12 +16241,7 @@ class VideoCategory {
   /// including its title.
   VideoCategorySnippet? snippet;
 
-  VideoCategory({
-    this.etag,
-    this.id,
-    this.kind,
-    this.snippet,
-  });
+  VideoCategory({this.etag, this.id, this.kind, this.snippet});
 
   VideoCategory.fromJson(core.Map json_)
       : this(
@@ -16158,7 +16250,8 @@ class VideoCategory {
           kind: json_['kind'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? VideoCategorySnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -16229,19 +16322,25 @@ class VideoCategoryListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => VideoCategory.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => VideoCategory.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           pageInfo: json_.containsKey('pageInfo')
               ? PageInfo.fromJson(
-                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           prevPageToken: json_['prevPageToken'] as core.String?,
           tokenPagination: json_.containsKey('tokenPagination')
-              ? TokenPagination.fromJson(json_['tokenPagination']
-                  as core.Map<core.String, core.dynamic>)
+              ? TokenPagination.fromJson(
+                  json_['tokenPagination']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           visitorId: json_['visitorId'] as core.String?,
         );
@@ -16269,11 +16368,7 @@ class VideoCategorySnippet {
   /// The video category's title.
   core.String? title;
 
-  VideoCategorySnippet({
-    this.assignable,
-    this.channelId,
-    this.title,
-  });
+  VideoCategorySnippet({this.assignable, this.channelId, this.title});
 
   VideoCategorySnippet.fromJson(core.Map json_)
       : this(
@@ -16371,11 +16466,14 @@ class VideoContentDetails {
           caption: json_['caption'] as core.String?,
           contentRating: json_.containsKey('contentRating')
               ? ContentRating.fromJson(
-                  json_['contentRating'] as core.Map<core.String, core.dynamic>)
+                  json_['contentRating'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           countryRestriction: json_.containsKey('countryRestriction')
-              ? AccessPolicy.fromJson(json_['countryRestriction']
-                  as core.Map<core.String, core.dynamic>)
+              ? AccessPolicy.fromJson(
+                  json_['countryRestriction']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           definition: json_['definition'] as core.String?,
           dimension: json_['dimension'] as core.String?,
@@ -16386,7 +16484,8 @@ class VideoContentDetails {
           regionRestriction: json_.containsKey('regionRestriction')
               ? VideoContentDetailsRegionRestriction.fromJson(
                   json_['regionRestriction']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -16423,10 +16522,7 @@ class VideoContentDetailsRegionRestriction {
   /// contains an empty list, the video is viewable in all countries.
   core.List<core.String>? blocked;
 
-  VideoContentDetailsRegionRestriction({
-    this.allowed,
-    this.blocked,
-  });
+  VideoContentDetailsRegionRestriction({this.allowed, this.blocked});
 
   VideoContentDetailsRegionRestriction.fromJson(core.Map json_)
       : this(
@@ -16517,8 +16613,11 @@ class VideoFileDetails {
   VideoFileDetails.fromJson(core.Map json_)
       : this(
           audioStreams: (json_['audioStreams'] as core.List?)
-              ?.map((value) => VideoFileDetailsAudioStream.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => VideoFileDetailsAudioStream.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           bitrateBps: json_['bitrateBps'] as core.String?,
           container: json_['container'] as core.String?,
@@ -16528,8 +16627,11 @@ class VideoFileDetails {
           fileSize: json_['fileSize'] as core.String?,
           fileType: json_['fileType'] as core.String?,
           videoStreams: (json_['videoStreams'] as core.List?)
-              ?.map((value) => VideoFileDetailsVideoStream.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => VideoFileDetailsVideoStream.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -16696,8 +16798,11 @@ class VideoGetRatingResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => VideoRating.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => VideoRating.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           visitorId: json_['visitorId'] as core.String?,
@@ -16766,19 +16871,25 @@ class VideoListResponse {
           etag: json_['etag'] as core.String?,
           eventId: json_['eventId'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  Video.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Video.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           pageInfo: json_.containsKey('pageInfo')
               ? PageInfo.fromJson(
-                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           prevPageToken: json_['prevPageToken'] as core.String?,
           tokenPagination: json_.containsKey('tokenPagination')
-              ? TokenPagination.fromJson(json_['tokenPagination']
-                  as core.Map<core.String, core.dynamic>)
+              ? TokenPagination.fromJson(
+                  json_['tokenPagination']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           visitorId: json_['visitorId'] as core.String?,
         );
@@ -16859,7 +16970,9 @@ class VideoLiveStreamingDetails {
               ? core.DateTime.parse(json_['scheduledEndTime'] as core.String)
               : null,
           scheduledStartTime: json_.containsKey('scheduledStartTime')
-              ? core.DateTime.parse(json_['scheduledStartTime'] as core.String)
+              ? core.DateTime.parse(
+                  json_['scheduledStartTime'] as core.String,
+                )
               : null,
         );
 
@@ -16885,10 +16998,7 @@ class VideoLocalization {
   /// Localized version of the video's title.
   core.String? title;
 
-  VideoLocalization({
-    this.description,
-    this.title,
-  });
+  VideoLocalization({this.description, this.title});
 
   VideoLocalization.fromJson(core.Map json_)
       : this(
@@ -16907,15 +17017,14 @@ class VideoMonetizationDetails {
   /// The value of access indicates whether the video can be monetized or not.
   AccessPolicy? access;
 
-  VideoMonetizationDetails({
-    this.access,
-  });
+  VideoMonetizationDetails({this.access});
 
   VideoMonetizationDetails.fromJson(core.Map json_)
       : this(
           access: json_.containsKey('access')
               ? AccessPolicy.fromJson(
-                  json_['access'] as core.Map<core.String, core.dynamic>)
+                  json_['access'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -16934,9 +17043,7 @@ class VideoPaidProductPlacementDetails {
   /// Studio equivalent: https://screenshot.googleplex.com/4Me79DE6AfT2ktp.png
   core.bool? hasPaidProductPlacement;
 
-  VideoPaidProductPlacementDetails({
-    this.hasPaidProductPlacement,
-  });
+  VideoPaidProductPlacementDetails({this.hasPaidProductPlacement});
 
   VideoPaidProductPlacementDetails.fromJson(core.Map json_)
       : this(
@@ -16960,11 +17067,7 @@ class VideoPlayer {
   /// The embed width
   core.String? embedWidth;
 
-  VideoPlayer({
-    this.embedHeight,
-    this.embedHtml,
-    this.embedWidth,
-  });
+  VideoPlayer({this.embedHeight, this.embedHtml, this.embedWidth});
 
   VideoPlayer.fromJson(core.Map json_)
       : this(
@@ -17072,7 +17175,8 @@ class VideoProcessingDetails {
           processingProgress: json_.containsKey('processingProgress')
               ? VideoProcessingDetailsProcessingProgress.fromJson(
                   json_['processingProgress']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           processingStatus: json_['processingStatus'] as core.String?,
           tagSuggestionsAvailability:
@@ -17168,10 +17272,7 @@ class VideoRating {
   /// The ID that YouTube uses to uniquely identify the video.
   core.String? videoId;
 
-  VideoRating({
-    this.rating,
-    this.videoId,
-  });
+  VideoRating({this.rating, this.videoId});
 
   VideoRating.fromJson(core.Map json_)
       : this(
@@ -17206,7 +17307,8 @@ class VideoRecordingDetails {
       : this(
           location: json_.containsKey('location')
               ? GeoPoint.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>)
+                  json_['location'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           locationDescription: json_['locationDescription'] as core.String?,
           recordingDate: json_.containsKey('recordingDate')
@@ -17310,7 +17412,8 @@ class VideoSnippet {
           liveBroadcastContent: json_['liveBroadcastContent'] as core.String?,
           localized: json_.containsKey('localized')
               ? VideoLocalization.fromJson(
-                  json_['localized'] as core.Map<core.String, core.dynamic>)
+                  json_['localized'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           publishedAt: json_.containsKey('publishedAt')
               ? core.DateTime.parse(json_['publishedAt'] as core.String)
@@ -17320,7 +17423,8 @@ class VideoSnippet {
               .toList(),
           thumbnails: json_.containsKey('thumbnails')
               ? ThumbnailDetails.fromJson(
-                  json_['thumbnails'] as core.Map<core.String, core.dynamic>)
+                  json_['thumbnails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           title: json_['title'] as core.String?,
         );
@@ -17580,8 +17684,11 @@ class VideoSuggestions {
               ?.map((value) => value as core.String)
               .toList(),
           tagSuggestions: (json_['tagSuggestions'] as core.List?)
-              ?.map((value) => VideoSuggestionsTagSuggestion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => VideoSuggestionsTagSuggestion.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -17608,10 +17715,7 @@ class VideoSuggestionsTagSuggestion {
   /// The keyword tag suggested for the video.
   core.String? tag;
 
-  VideoSuggestionsTagSuggestion({
-    this.categoryRestricts,
-    this.tag,
-  });
+  VideoSuggestionsTagSuggestion({this.categoryRestricts, this.tag});
 
   VideoSuggestionsTagSuggestion.fromJson(core.Map json_)
       : this(

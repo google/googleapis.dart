@@ -39,10 +39,7 @@ class $AccessDateRange {
   /// current time in the request's time zone.
   core.String? startDate;
 
-  $AccessDateRange({
-    this.endDate,
-    this.startDate,
-  });
+  $AccessDateRange({this.endDate, this.startDate});
 
   $AccessDateRange.fromJson(core.Map json_)
       : this(
@@ -69,14 +66,10 @@ class $AccessDimension {
   /// referenced by name in `dimensionFilter` and `orderBys`.
   core.String? dimensionName;
 
-  $AccessDimension({
-    this.dimensionName,
-  });
+  $AccessDimension({this.dimensionName});
 
   $AccessDimension.fromJson(core.Map json_)
-      : this(
-          dimensionName: json_['dimensionName'] as core.String?,
-        );
+      : this(dimensionName: json_['dimensionName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimensionName != null) 'dimensionName': dimensionName!,
@@ -91,14 +84,10 @@ class $AccessDimensionHeader {
   /// The dimension's name; for example 'userEmail'.
   core.String? dimensionName;
 
-  $AccessDimensionHeader({
-    this.dimensionName,
-  });
+  $AccessDimensionHeader({this.dimensionName});
 
   $AccessDimensionHeader.fromJson(core.Map json_)
-      : this(
-          dimensionName: json_['dimensionName'] as core.String?,
-        );
+      : this(dimensionName: json_['dimensionName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimensionName != null) 'dimensionName': dimensionName!,
@@ -115,14 +104,10 @@ class $AccessDimensionValue {
   /// For example, this value may be 'France' for the 'country' dimension.
   core.String? value;
 
-  $AccessDimensionValue({
-    this.value,
-  });
+  $AccessDimensionValue({this.value});
 
   $AccessDimensionValue.fromJson(core.Map json_)
-      : this(
-          value: json_['value'] as core.String?,
-        );
+      : this(value: json_['value'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
@@ -142,14 +127,10 @@ class $AccessMetric {
   /// name in `metricFilter` & `orderBys`.
   core.String? metricName;
 
-  $AccessMetric({
-    this.metricName,
-  });
+  $AccessMetric({this.metricName});
 
   $AccessMetric.fromJson(core.Map json_)
-      : this(
-          metricName: json_['metricName'] as core.String?,
-        );
+      : this(metricName: json_['metricName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metricName != null) 'metricName': metricName!,
@@ -164,14 +145,10 @@ class $AccessMetricHeader {
   /// The metric's name; for example 'accessCount'.
   core.String? metricName;
 
-  $AccessMetricHeader({
-    this.metricName,
-  });
+  $AccessMetricHeader({this.metricName});
 
   $AccessMetricHeader.fromJson(core.Map json_)
-      : this(
-          metricName: json_['metricName'] as core.String?,
-        );
+      : this(metricName: json_['metricName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metricName != null) 'metricName': metricName!,
@@ -188,14 +165,10 @@ class $AccessMetricValue {
   /// For example, this value may be '13'.
   core.String? value;
 
-  $AccessMetricValue({
-    this.value,
-  });
+  $AccessMetricValue({this.value});
 
   $AccessMetricValue.fromJson(core.Map json_)
-      : this(
-          value: json_['value'] as core.String?,
-        );
+      : this(value: json_['value'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
@@ -299,14 +272,10 @@ class $AcknowledgeUserDataCollectionRequest {
   /// Required.
   core.String? acknowledgement;
 
-  $AcknowledgeUserDataCollectionRequest({
-    this.acknowledgement,
-  });
+  $AcknowledgeUserDataCollectionRequest({this.acknowledgement});
 
   $AcknowledgeUserDataCollectionRequest.fromJson(core.Map json_)
-      : this(
-          acknowledgement: json_['acknowledgement'] as core.String?,
-        );
+      : this(acknowledgement: json_['acknowledgement'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (acknowledgement != null) 'acknowledgement': acknowledgement!,
@@ -328,10 +297,7 @@ class $Config {
   /// Optional.
   core.String? instructionMessage;
 
-  $Config({
-    this.annotationSpecSet,
-    this.instructionMessage,
-  });
+  $Config({this.annotationSpecSet, this.instructionMessage});
 
   $Config.fromJson(core.Map json_)
       : this(
@@ -362,10 +328,7 @@ class $ConversionEventDefaultConversionValue {
   /// specified event_name where the event "value" parameter is unset.
   core.double? value;
 
-  $ConversionEventDefaultConversionValue({
-    this.currencyCode,
-    this.value,
-  });
+  $ConversionEventDefaultConversionValue({this.currencyCode, this.value});
 
   $ConversionEventDefaultConversionValue.fromJson(core.Map json_)
       : this(
@@ -721,10 +684,7 @@ class $DataStreamAndroidAppStreamData {
   /// Immutable.
   core.String? packageName;
 
-  $DataStreamAndroidAppStreamData({
-    this.firebaseAppId,
-    this.packageName,
-  });
+  $DataStreamAndroidAppStreamData({this.firebaseAppId, this.packageName});
 
   $DataStreamAndroidAppStreamData.fromJson(core.Map json_)
       : this(
@@ -755,10 +715,7 @@ class $DataStreamIosAppStreamData {
   /// Output only.
   core.String? firebaseAppId;
 
-  $DataStreamIosAppStreamData({
-    this.bundleId,
-    this.firebaseAppId,
-  });
+  $DataStreamIosAppStreamData({this.bundleId, this.firebaseAppId});
 
   $DataStreamIosAppStreamData.fromJson(core.Map json_)
       : this(
@@ -837,11 +794,7 @@ class $Date {
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
   core.int? year;
 
-  $Date({
-    this.day,
-    this.month,
-    this.year,
-  });
+  $Date({this.day, this.month, this.year});
 
   $Date.fromJson(core.Map json_)
       : this(
@@ -880,10 +833,7 @@ class $DimensionOrderBy {
   /// below all numeric values.
   core.String? orderType;
 
-  $DimensionOrderBy({
-    this.dimensionName,
-    this.orderType,
-  });
+  $DimensionOrderBy({this.dimensionName, this.orderType});
 
   $DimensionOrderBy.fromJson(core.Map json_)
       : this(
@@ -905,14 +855,10 @@ class $DimensionValue {
   /// Value as a string if the dimension type is a string.
   core.String? value;
 
-  $DimensionValue({
-    this.value,
-  });
+  $DimensionValue({this.value});
 
   $DimensionValue.fromJson(core.Map json_)
-      : this(
-          value: json_['value'] as core.String?,
-        );
+      : this(value: json_['value'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
@@ -995,8 +941,9 @@ class $Empty {
   $Empty();
 
   $Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map json_);
+    // ignore: avoid_unused_constructor_parameters
+    core.Map json_,
+  );
 
   core.Map<core.String, core.dynamic> toJson() => {};
 }
@@ -1010,10 +957,7 @@ class $Entry {
   core.String? key;
   core.String? value;
 
-  $Entry({
-    this.key,
-    this.value,
-  });
+  $Entry({this.key, this.value});
 
   $Entry.fromJson(core.Map json_)
       : this(
@@ -1053,11 +997,7 @@ class $FirebaseLink {
   /// Immutable.
   core.String? project;
 
-  $FirebaseLink({
-    this.createTime,
-    this.name,
-    this.project,
-  });
+  $FirebaseLink({this.createTime, this.name, this.project});
 
   $FirebaseLink.fromJson(core.Map json_)
       : this(
@@ -1167,10 +1107,7 @@ class $InListFilter {
   /// Must be non-empty.
   core.List<core.String>? values;
 
-  $InListFilter({
-    this.caseSensitive,
-    this.values,
-  });
+  $InListFilter({this.caseSensitive, this.values});
 
   $InListFilter.fromJson(core.Map json_)
       : this(
@@ -1206,10 +1143,7 @@ class $KeyEventDefaultValue {
   /// Required.
   core.double? numericValue;
 
-  $KeyEventDefaultValue({
-    this.currencyCode,
-    this.numericValue,
-  });
+  $KeyEventDefaultValue({this.currencyCode, this.numericValue});
 
   $KeyEventDefaultValue.fromJson(core.Map json_)
       : this(
@@ -1270,10 +1204,7 @@ class $Location {
           displayName: json_['displayName'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           locationId: json_['locationId'] as core.String?,
           metadata: json_.containsKey('metadata')
@@ -1317,11 +1248,7 @@ class $MeasurementProtocolSecret {
   /// Output only.
   core.String? secretValue;
 
-  $MeasurementProtocolSecret({
-    this.displayName,
-    this.name,
-    this.secretValue,
-  });
+  $MeasurementProtocolSecret({this.displayName, this.name, this.secretValue});
 
   $MeasurementProtocolSecret.fromJson(core.Map json_)
       : this(
@@ -1346,14 +1273,10 @@ class $MetricOrderBy {
   /// A metric name in the request to order by.
   core.String? metricName;
 
-  $MetricOrderBy({
-    this.metricName,
-  });
+  $MetricOrderBy({this.metricName});
 
   $MetricOrderBy.fromJson(core.Map json_)
-      : this(
-          metricName: json_['metricName'] as core.String?,
-        );
+      : this(metricName: json_['metricName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metricName != null) 'metricName': metricName!,
@@ -1372,10 +1295,7 @@ class $NumericValue {
   /// Integer value
   core.String? int64Value;
 
-  $NumericValue({
-    this.doubleValue,
-    this.int64Value,
-  });
+  $NumericValue({this.doubleValue, this.int64Value});
 
   $NumericValue.fromJson(core.Map json_)
       : this(
@@ -1627,14 +1547,10 @@ class $ProvisionAccountTicketResponse {
   /// The param to be passed in the ToS link.
   core.String? accountTicketId;
 
-  $ProvisionAccountTicketResponse({
-    this.accountTicketId,
-  });
+  $ProvisionAccountTicketResponse({this.accountTicketId});
 
   $ProvisionAccountTicketResponse.fromJson(core.Map json_)
-      : this(
-          accountTicketId: json_['accountTicketId'] as core.String?,
-        );
+      : this(accountTicketId: json_['accountTicketId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountTicketId != null) 'accountTicketId': accountTicketId!,
@@ -1653,10 +1569,7 @@ class $QuotaStatus {
   /// Quota remaining after this request.
   core.int? remaining;
 
-  $QuotaStatus({
-    this.consumed,
-    this.remaining,
-  });
+  $QuotaStatus({this.consumed, this.remaining});
 
   $QuotaStatus.fromJson(core.Map json_)
       : this(
@@ -1688,10 +1601,7 @@ class $SasPortalAssignment {
   /// Required.
   core.String? role;
 
-  $SasPortalAssignment({
-    this.members,
-    this.role,
-  });
+  $SasPortalAssignment({this.members, this.role});
 
   $SasPortalAssignment.fromJson(core.Map json_)
       : this(
@@ -1733,10 +1643,7 @@ class $SasPortalCreateSignedDeviceRequest {
   /// Required.
   core.String? installerId;
 
-  $SasPortalCreateSignedDeviceRequest({
-    this.encodedDevice,
-    this.installerId,
-  });
+  $SasPortalCreateSignedDeviceRequest({this.encodedDevice, this.installerId});
 
   $SasPortalCreateSignedDeviceRequest.fromJson(core.Map json_)
       : this(
@@ -1768,11 +1675,7 @@ class $SasPortalCustomer {
   /// User IDs used by the devices belonging to this customer.
   core.List<core.String>? sasUserIds;
 
-  $SasPortalCustomer({
-    this.displayName,
-    this.name,
-    this.sasUserIds,
-  });
+  $SasPortalCustomer({this.displayName, this.name, this.sasUserIds});
 
   $SasPortalCustomer.fromJson(core.Map json_)
       : this(
@@ -1869,10 +1772,7 @@ class $SasPortalDeviceAirInterface {
   /// Optional.
   core.String? supportedSpec;
 
-  $SasPortalDeviceAirInterface({
-    this.radioTechnology,
-    this.supportedSpec,
-  });
+  $SasPortalDeviceAirInterface({this.radioTechnology, this.supportedSpec});
 
   $SasPortalDeviceAirInterface.fromJson(core.Map json_)
       : this(
@@ -1943,10 +1843,7 @@ class $SasPortalFrequencyRange {
   /// The lowest frequency of the frequency range in MHz.
   core.double? lowFrequencyMhz;
 
-  $SasPortalFrequencyRange({
-    this.highFrequencyMhz,
-    this.lowFrequencyMhz,
-  });
+  $SasPortalFrequencyRange({this.highFrequencyMhz, this.lowFrequencyMhz});
 
   $SasPortalFrequencyRange.fromJson(core.Map json_)
       : this(
@@ -1969,14 +1866,10 @@ class $SasPortalGenerateSecretResponse {
   /// The secret generated by the string and used by ValidateInstaller.
   core.String? secret;
 
-  $SasPortalGenerateSecretResponse({
-    this.secret,
-  });
+  $SasPortalGenerateSecretResponse({this.secret});
 
   $SasPortalGenerateSecretResponse.fromJson(core.Map json_)
-      : this(
-          secret: json_['secret'] as core.String?,
-        );
+      : this(secret: json_['secret'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (secret != null) 'secret': secret!,
@@ -1993,14 +1886,10 @@ class $SasPortalGetPolicyRequest {
   /// Required.
   core.String? resource;
 
-  $SasPortalGetPolicyRequest({
-    this.resource,
-  });
+  $SasPortalGetPolicyRequest({this.resource});
 
   $SasPortalGetPolicyRequest.fromJson(core.Map json_)
-      : this(
-          resource: json_['resource'] as core.String?,
-        );
+      : this(resource: json_['resource'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resource != null) 'resource': resource!,
@@ -2175,14 +2064,10 @@ class $SasPortalMigrateOrganizationRequest {
   /// Required.
   core.String? organizationId;
 
-  $SasPortalMigrateOrganizationRequest({
-    this.organizationId,
-  });
+  $SasPortalMigrateOrganizationRequest({this.organizationId});
 
   $SasPortalMigrateOrganizationRequest.fromJson(core.Map json_)
-      : this(
-          organizationId: json_['organizationId'] as core.String?,
-        );
+      : this(organizationId: json_['organizationId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (organizationId != null) 'organizationId': organizationId!,
@@ -2200,14 +2085,10 @@ class $SasPortalMoveDeploymentRequest {
   /// Required.
   core.String? destination;
 
-  $SasPortalMoveDeploymentRequest({
-    this.destination,
-  });
+  $SasPortalMoveDeploymentRequest({this.destination});
 
   $SasPortalMoveDeploymentRequest.fromJson(core.Map json_)
-      : this(
-          destination: json_['destination'] as core.String?,
-        );
+      : this(destination: json_['destination'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destination != null) 'destination': destination!,
@@ -2225,14 +2106,10 @@ class $SasPortalMoveDeviceRequest {
   /// Required.
   core.String? destination;
 
-  $SasPortalMoveDeviceRequest({
-    this.destination,
-  });
+  $SasPortalMoveDeviceRequest({this.destination});
 
   $SasPortalMoveDeviceRequest.fromJson(core.Map json_)
-      : this(
-          destination: json_['destination'] as core.String?,
-        );
+      : this(destination: json_['destination'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destination != null) 'destination': destination!,
@@ -2250,14 +2127,10 @@ class $SasPortalMoveNodeRequest {
   /// Required.
   core.String? destination;
 
-  $SasPortalMoveNodeRequest({
-    this.destination,
-  });
+  $SasPortalMoveNodeRequest({this.destination});
 
   $SasPortalMoveNodeRequest.fromJson(core.Map json_)
-      : this(
-          destination: json_['destination'] as core.String?,
-        );
+      : this(destination: json_['destination'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destination != null) 'destination': destination!,
@@ -2280,11 +2153,7 @@ class $SasPortalNode {
   /// User ids used by the devices belonging to this node.
   core.List<core.String>? sasUserIds;
 
-  $SasPortalNode({
-    this.displayName,
-    this.name,
-    this.sasUserIds,
-  });
+  $SasPortalNode({this.displayName, this.name, this.sasUserIds});
 
   $SasPortalNode.fromJson(core.Map json_)
       : this(
@@ -2363,10 +2232,7 @@ class $SasPortalOrganization {
   /// Id of organization
   core.String? id;
 
-  $SasPortalOrganization({
-    this.displayName,
-    this.id,
-  });
+  $SasPortalOrganization({this.displayName, this.id});
 
   $SasPortalOrganization.fromJson(core.Map json_)
       : this(
@@ -2437,14 +2303,10 @@ class $SasPortalProvisionDeploymentResponse {
   /// Optional.
   core.String? errorMessage;
 
-  $SasPortalProvisionDeploymentResponse({
-    this.errorMessage,
-  });
+  $SasPortalProvisionDeploymentResponse({this.errorMessage});
 
   $SasPortalProvisionDeploymentResponse.fromJson(core.Map json_)
-      : this(
-          errorMessage: json_['errorMessage'] as core.String?,
-        );
+      : this(errorMessage: json_['errorMessage'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorMessage != null) 'errorMessage': errorMessage!,
@@ -2464,14 +2326,10 @@ class $SasPortalSetupSasAnalyticsRequest {
   /// Optional.
   core.String? userId;
 
-  $SasPortalSetupSasAnalyticsRequest({
-    this.userId,
-  });
+  $SasPortalSetupSasAnalyticsRequest({this.userId});
 
   $SasPortalSetupSasAnalyticsRequest.fromJson(core.Map json_)
-      : this(
-          userId: json_['userId'] as core.String?,
-        );
+      : this(userId: json_['userId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (userId != null) 'userId': userId!,
@@ -2491,10 +2349,7 @@ class $SasPortalTestPermissionsRequest {
   /// Required.
   core.String? resource;
 
-  $SasPortalTestPermissionsRequest({
-    this.permissions,
-    this.resource,
-  });
+  $SasPortalTestPermissionsRequest({this.permissions, this.resource});
 
   $SasPortalTestPermissionsRequest.fromJson(core.Map json_)
       : this(
@@ -2518,9 +2373,7 @@ class $SasPortalTestPermissionsResponse {
   /// A set of permissions that the caller is allowed.
   core.List<core.String>? permissions;
 
-  $SasPortalTestPermissionsResponse({
-    this.permissions,
-  });
+  $SasPortalTestPermissionsResponse({this.permissions});
 
   $SasPortalTestPermissionsResponse.fromJson(core.Map json_)
       : this(
@@ -2560,10 +2413,7 @@ class $SasPortalUpdateSignedDeviceRequest {
   /// Required.
   core.String? installerId;
 
-  $SasPortalUpdateSignedDeviceRequest({
-    this.encodedDevice,
-    this.installerId,
-  });
+  $SasPortalUpdateSignedDeviceRequest({this.encodedDevice, this.installerId});
 
   $SasPortalUpdateSignedDeviceRequest.fromJson(core.Map json_)
       : this(
@@ -2630,9 +2480,7 @@ class $Shared {
   /// An empty list would effectively disable metrics export.
   core.List<core.String>? backends;
 
-  $Shared({
-    this.backends,
-  });
+  $Shared({this.backends});
 
   $Shared.fromJson(core.Map json_)
       : this(
@@ -2678,11 +2526,7 @@ class $Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  $Status({
-    this.code,
-    this.details,
-    this.message,
-  });
+  $Status({this.code, this.details, this.message});
 
   $Status.fromJson(core.Map json_)
       : this(
@@ -2725,11 +2569,7 @@ class $StringFilter {
   /// The string value used for the matching.
   core.String? value;
 
-  $StringFilter({
-    this.caseSensitive,
-    this.matchType,
-    this.value,
-  });
+  $StringFilter({this.caseSensitive, this.matchType, this.value});
 
   $StringFilter.fromJson(core.Map json_)
       : this(

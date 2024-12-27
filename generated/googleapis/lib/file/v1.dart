@@ -54,11 +54,16 @@ class CloudFilestoreApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  CloudFilestoreApi(http.Client client,
-      {core.String rootUrl = 'https://file.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudFilestoreApi(
+    http.Client client, {
+    core.String rootUrl = 'https://file.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -99,10 +104,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -172,7 +174,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -288,10 +291,7 @@ class ProjectsLocationsBackupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Backup> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Backup> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -363,7 +363,8 @@ class ProjectsLocationsBackupsResource {
       queryParams: queryParams_,
     );
     return ListBackupsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the settings of a specific backup.
@@ -536,10 +537,7 @@ class ProjectsLocationsInstancesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Instance> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Instance> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -611,7 +609,8 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return ListInstancesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the settings of a specific instance.
@@ -907,10 +906,7 @@ class ProjectsLocationsInstancesSnapshotsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Snapshot> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Snapshot> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -986,7 +982,8 @@ class ProjectsLocationsInstancesSnapshotsResource {
       queryParams: queryParams_,
     );
     return ListSnapshotsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the settings of a specific snapshot.
@@ -1115,10 +1112,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1154,10 +1148,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1219,7 +1210,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1382,10 +1374,7 @@ class Backup {
           kmsKey: json_['kmsKey'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
@@ -1396,10 +1385,7 @@ class Backup {
           state: json_['state'] as core.String?,
           storageBytes: json_['storageBytes'] as core.String?,
           tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
         );
 
@@ -1474,8 +1460,11 @@ class FileShareConfig {
           capacityGb: json_['capacityGb'] as core.String?,
           name: json_['name'] as core.String?,
           nfsExportOptions: (json_['nfsExportOptions'] as core.List?)
-              ?.map((value) => NfsExportOptions.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => NfsExportOptions.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           sourceBackup: json_['sourceBackup'] as core.String?,
         );
@@ -1495,14 +1484,10 @@ class FixedIOPS {
   /// Required.
   core.String? maxIops;
 
-  FixedIOPS({
-    this.maxIops,
-  });
+  FixedIOPS({this.maxIops});
 
   FixedIOPS.fromJson(core.Map json_)
-      : this(
-          maxIops: json_['maxIops'] as core.String?,
-        );
+      : this(maxIops: json_['maxIops'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxIops != null) 'maxIops': maxIops!,
@@ -1518,14 +1503,10 @@ class IOPSPerTB {
   /// Required.
   core.String? maxIopsPerTb;
 
-  IOPSPerTB({
-    this.maxIopsPerTb,
-  });
+  IOPSPerTB({this.maxIopsPerTb});
 
   IOPSPerTB.fromJson(core.Map json_)
-      : this(
-          maxIopsPerTb: json_['maxIopsPerTb'] as core.String?,
-        );
+      : this(maxIopsPerTb: json_['maxIopsPerTb'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxIopsPerTb != null) 'maxIopsPerTb': maxIopsPerTb!,
@@ -1728,34 +1709,42 @@ class Instance {
           description: json_['description'] as core.String?,
           etag: json_['etag'] as core.String?,
           fileShares: (json_['fileShares'] as core.List?)
-              ?.map((value) => FileShareConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => FileShareConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kmsKeyName: json_['kmsKeyName'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           networks: (json_['networks'] as core.List?)
-              ?.map((value) => NetworkConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => NetworkConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           performanceConfig: json_.containsKey('performanceConfig')
-              ? PerformanceConfig.fromJson(json_['performanceConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? PerformanceConfig.fromJson(
+                  json_['performanceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           performanceLimits: json_.containsKey('performanceLimits')
-              ? PerformanceLimits.fromJson(json_['performanceLimits']
-                  as core.Map<core.String, core.dynamic>)
+              ? PerformanceLimits.fromJson(
+                  json_['performanceLimits']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           protocol: json_['protocol'] as core.String?,
           replication: json_.containsKey('replication')
               ? Replication.fromJson(
-                  json_['replication'] as core.Map<core.String, core.dynamic>)
+                  json_['replication'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
           satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
@@ -1765,10 +1754,7 @@ class Instance {
               ?.map((value) => value as core.String)
               .toList(),
           tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           tier: json_['tier'] as core.String?,
         );
@@ -1823,17 +1809,16 @@ class ListBackupsResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListBackupsResponse({
-    this.backups,
-    this.nextPageToken,
-    this.unreachable,
-  });
+  ListBackupsResponse({this.backups, this.nextPageToken, this.unreachable});
 
   ListBackupsResponse.fromJson(core.Map json_)
       : this(
           backups: (json_['backups'] as core.List?)
-              ?.map((value) =>
-                  Backup.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Backup.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -1869,17 +1854,16 @@ class ListInstancesResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListInstancesResponse({
-    this.instances,
-    this.nextPageToken,
-    this.unreachable,
-  });
+  ListInstancesResponse({this.instances, this.nextPageToken, this.unreachable});
 
   ListInstancesResponse.fromJson(core.Map json_)
       : this(
           instances: (json_['instances'] as core.List?)
-              ?.map((value) => Instance.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Instance.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -1902,16 +1886,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1930,17 +1914,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1965,18 +1949,17 @@ class ListSnapshotsResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListSnapshotsResponse({
-    this.nextPageToken,
-    this.snapshots,
-    this.unreachable,
-  });
+  ListSnapshotsResponse({this.nextPageToken, this.snapshots, this.unreachable});
 
   ListSnapshotsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           snapshots: (json_['snapshots'] as core.List?)
-              ?.map((value) => Snapshot.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Snapshot.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2192,20 +2175,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -2256,20 +2234,19 @@ class PerformanceConfig {
   /// will fail with an `InvalidArgument` error.
   IOPSPerTB? iopsPerTb;
 
-  PerformanceConfig({
-    this.fixedIops,
-    this.iopsPerTb,
-  });
+  PerformanceConfig({this.fixedIops, this.iopsPerTb});
 
   PerformanceConfig.fromJson(core.Map json_)
       : this(
           fixedIops: json_.containsKey('fixedIops')
               ? FixedIOPS.fromJson(
-                  json_['fixedIops'] as core.Map<core.String, core.dynamic>)
+                  json_['fixedIops'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           iopsPerTb: json_.containsKey('iopsPerTb')
               ? IOPSPerTB.fromJson(
-                  json_['iopsPerTb'] as core.Map<core.String, core.dynamic>)
+                  json_['iopsPerTb'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2408,16 +2385,16 @@ class Replication {
   /// as the replication destination instance.
   core.String? role;
 
-  Replication({
-    this.replicas,
-    this.role,
-  });
+  Replication({this.replicas, this.role});
 
   Replication.fromJson(core.Map json_)
       : this(
           replicas: (json_['replicas'] as core.List?)
-              ?.map((value) => ReplicaConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ReplicaConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           role: json_['role'] as core.String?,
         );
@@ -2441,10 +2418,7 @@ class RestoreInstanceRequest {
   /// `projects/{project_number}/locations/{location_id}/backups/{backup_id}`.
   core.String? sourceBackup;
 
-  RestoreInstanceRequest({
-    this.fileShare,
-    this.sourceBackup,
-  });
+  RestoreInstanceRequest({this.fileShare, this.sourceBackup});
 
   RestoreInstanceRequest.fromJson(core.Map json_)
       : this(
@@ -2468,14 +2442,10 @@ class RevertInstanceRequest {
   /// Required.
   core.String? targetSnapshotId;
 
-  RevertInstanceRequest({
-    this.targetSnapshotId,
-  });
+  RevertInstanceRequest({this.targetSnapshotId});
 
   RevertInstanceRequest.fromJson(core.Map json_)
-      : this(
-          targetSnapshotId: json_['targetSnapshotId'] as core.String?,
-        );
+      : this(targetSnapshotId: json_['targetSnapshotId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (targetSnapshotId != null) 'targetSnapshotId': targetSnapshotId!,
@@ -2548,18 +2518,12 @@ class Snapshot {
           filesystemUsedBytes: json_['filesystemUsedBytes'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           state: json_['state'] as core.String?,
           tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
         );
 

@@ -62,11 +62,16 @@ class KeepApi {
   MediaResource get media => MediaResource(_requester);
   NotesResource get notes => NotesResource(_requester);
 
-  KeepApi(http.Client client,
-      {core.String rootUrl = 'https://keep.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  KeepApi(
+    http.Client client, {
+    core.String rootUrl = 'https://keep.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class MediaResource {
@@ -128,7 +133,8 @@ class MediaResource {
     );
     if (downloadOptions.isMetadataDownload) {
       return Attachment.fromJson(
-          response_ as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>,
+      );
     } else {
       return response_ as commons.Media;
     }
@@ -159,10 +165,7 @@ class NotesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Note> create(
-    Note request, {
-    core.String? $fields,
-  }) async {
+  async.Future<Note> create(Note request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -200,10 +203,7 @@ class NotesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -235,10 +235,7 @@ class NotesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Note> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Note> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -307,7 +304,8 @@ class NotesResource {
       queryParams: queryParams_,
     );
     return ListNotesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -360,7 +358,8 @@ class NotesPermissionsResource {
       queryParams: queryParams_,
     );
     return BatchCreatePermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes one or more permissions on the note.
@@ -421,10 +420,7 @@ class Attachment {
   /// The resource name;
   core.String? name;
 
-  Attachment({
-    this.mimeType,
-    this.name,
-  });
+  Attachment({this.mimeType, this.name});
 
   Attachment.fromJson(core.Map json_)
       : this(
@@ -448,15 +444,16 @@ class BatchCreatePermissionsRequest {
   /// The request message specifying the resources to create.
   core.List<CreatePermissionRequest>? requests;
 
-  BatchCreatePermissionsRequest({
-    this.requests,
-  });
+  BatchCreatePermissionsRequest({this.requests});
 
   BatchCreatePermissionsRequest.fromJson(core.Map json_)
       : this(
           requests: (json_['requests'] as core.List?)
-              ?.map((value) => CreatePermissionRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CreatePermissionRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -470,15 +467,16 @@ class BatchCreatePermissionsResponse {
   /// Permissions created.
   core.List<Permission>? permissions;
 
-  BatchCreatePermissionsResponse({
-    this.permissions,
-  });
+  BatchCreatePermissionsResponse({this.permissions});
 
   BatchCreatePermissionsResponse.fromJson(core.Map json_)
       : this(
           permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => Permission.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Permission.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -501,9 +499,7 @@ class BatchDeletePermissionsRequest {
   /// Required.
   core.List<core.String>? names;
 
-  BatchDeletePermissionsRequest({
-    this.names,
-  });
+  BatchDeletePermissionsRequest({this.names});
 
   BatchDeletePermissionsRequest.fromJson(core.Map json_)
       : this(
@@ -533,17 +529,15 @@ class CreatePermissionRequest {
   /// Required.
   Permission? permission;
 
-  CreatePermissionRequest({
-    this.parent,
-    this.permission,
-  });
+  CreatePermissionRequest({this.parent, this.permission});
 
   CreatePermissionRequest.fromJson(core.Map json_)
       : this(
           parent: json_['parent'] as core.String?,
           permission: json_.containsKey('permission')
               ? Permission.fromJson(
-                  json_['permission'] as core.Map<core.String, core.dynamic>)
+                  json_['permission'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -569,14 +563,9 @@ class Group {
   /// The group email.
   core.String? email;
 
-  Group({
-    this.email,
-  });
+  Group({this.email});
 
-  Group.fromJson(core.Map json_)
-      : this(
-          email: json_['email'] as core.String?,
-        );
+  Group.fromJson(core.Map json_) : this(email: json_['email'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
@@ -590,15 +579,16 @@ class ListContent {
   /// The number of items must be less than 1,000.
   core.List<ListItem>? listItems;
 
-  ListContent({
-    this.listItems,
-  });
+  ListContent({this.listItems});
 
   ListContent.fromJson(core.Map json_)
       : this(
           listItems: (json_['listItems'] as core.List?)
-              ?.map((value) => ListItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ListItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -622,22 +612,22 @@ class ListItem {
   /// Length must be less than 1,000 characters.
   TextContent? text;
 
-  ListItem({
-    this.checked,
-    this.childListItems,
-    this.text,
-  });
+  ListItem({this.checked, this.childListItems, this.text});
 
   ListItem.fromJson(core.Map json_)
       : this(
           checked: json_['checked'] as core.bool?,
           childListItems: (json_['childListItems'] as core.List?)
-              ?.map((value) => ListItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ListItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           text: json_.containsKey('text')
               ? TextContent.fromJson(
-                  json_['text'] as core.Map<core.String, core.dynamic>)
+                  json_['text'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -656,17 +646,17 @@ class ListNotesResponse {
   /// A page of notes.
   core.List<Note>? notes;
 
-  ListNotesResponse({
-    this.nextPageToken,
-    this.notes,
-  });
+  ListNotesResponse({this.nextPageToken, this.notes});
 
   ListNotesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           notes: (json_['notes'] as core.List?)
-              ?.map((value) =>
-                  Note.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Note.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -745,18 +735,25 @@ class Note {
   Note.fromJson(core.Map json_)
       : this(
           attachments: (json_['attachments'] as core.List?)
-              ?.map((value) => Attachment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Attachment.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           body: json_.containsKey('body')
               ? Section.fromJson(
-                  json_['body'] as core.Map<core.String, core.dynamic>)
+                  json_['body'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           createTime: json_['createTime'] as core.String?,
           name: json_['name'] as core.String?,
           permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => Permission.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Permission.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           title: json_['title'] as core.String?,
           trashTime: json_['trashTime'] as core.String?,
@@ -843,17 +840,20 @@ class Permission {
           email: json_['email'] as core.String?,
           family: json_.containsKey('family')
               ? Family.fromJson(
-                  json_['family'] as core.Map<core.String, core.dynamic>)
+                  json_['family'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           group: json_.containsKey('group')
               ? Group.fromJson(
-                  json_['group'] as core.Map<core.String, core.dynamic>)
+                  json_['group'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           role: json_['role'] as core.String?,
           user: json_.containsKey('user')
               ? User.fromJson(
-                  json_['user'] as core.Map<core.String, core.dynamic>)
+                  json_['user'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -878,20 +878,19 @@ class Section {
   /// The length of the text content must be less than 20,000 characters.
   TextContent? text;
 
-  Section({
-    this.list,
-    this.text,
-  });
+  Section({this.list, this.text});
 
   Section.fromJson(core.Map json_)
       : this(
           list: json_.containsKey('list')
               ? ListContent.fromJson(
-                  json_['list'] as core.Map<core.String, core.dynamic>)
+                  json_['list'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           text: json_.containsKey('text')
               ? TextContent.fromJson(
-                  json_['text'] as core.Map<core.String, core.dynamic>)
+                  json_['text'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -908,14 +907,10 @@ class TextContent {
   /// The limits on this vary with the specific field using this type.
   core.String? text;
 
-  TextContent({
-    this.text,
-  });
+  TextContent({this.text});
 
   TextContent.fromJson(core.Map json_)
-      : this(
-          text: json_['text'] as core.String?,
-        );
+      : this(text: json_['text'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (text != null) 'text': text!,
@@ -927,14 +922,9 @@ class User {
   /// The user's email.
   core.String? email;
 
-  User({
-    this.email,
-  });
+  User({this.email});
 
-  User.fromJson(core.Map json_)
-      : this(
-          email: json_['email'] as core.String?,
-        );
+  User.fromJson(core.Map json_) : this(email: json_['email'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,

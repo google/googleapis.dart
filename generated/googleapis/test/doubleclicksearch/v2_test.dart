@@ -46,34 +46,13 @@ api.Availability buildAvailability() {
 void checkAvailability(api.Availability o) {
   buildCounterAvailability++;
   if (buildCounterAvailability < 3) {
-    unittest.expect(
-      o.advertiserId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.agencyId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.availabilityTimestamp!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.customerId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.segmentationId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.segmentationName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.segmentationType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.advertiserId!, unittest.equals('foo'));
+    unittest.expect(o.agencyId!, unittest.equals('foo'));
+    unittest.expect(o.availabilityTimestamp!, unittest.equals('foo'));
+    unittest.expect(o.customerId!, unittest.equals('foo'));
+    unittest.expect(o.segmentationId!, unittest.equals('foo'));
+    unittest.expect(o.segmentationName!, unittest.equals('foo'));
+    unittest.expect(o.segmentationType!, unittest.equals('foo'));
   }
   buildCounterAvailability--;
 }
@@ -148,140 +127,41 @@ api.Conversion buildConversion() {
 void checkConversion(api.Conversion o) {
   buildCounterConversion++;
   if (buildCounterConversion < 3) {
-    unittest.expect(
-      o.adGroupId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.adId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.adUserDataConsent!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.advertiserId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.agencyId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.attributionModel!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.campaignId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.channel!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.clickId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.conversionId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.conversionModifiedTimestamp!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.conversionTimestamp!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.countMillis!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.criterionId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.currencyCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.adGroupId!, unittest.equals('foo'));
+    unittest.expect(o.adId!, unittest.equals('foo'));
+    unittest.expect(o.adUserDataConsent!, unittest.equals('foo'));
+    unittest.expect(o.advertiserId!, unittest.equals('foo'));
+    unittest.expect(o.agencyId!, unittest.equals('foo'));
+    unittest.expect(o.attributionModel!, unittest.equals('foo'));
+    unittest.expect(o.campaignId!, unittest.equals('foo'));
+    unittest.expect(o.channel!, unittest.equals('foo'));
+    unittest.expect(o.clickId!, unittest.equals('foo'));
+    unittest.expect(o.conversionId!, unittest.equals('foo'));
+    unittest.expect(o.conversionModifiedTimestamp!, unittest.equals('foo'));
+    unittest.expect(o.conversionTimestamp!, unittest.equals('foo'));
+    unittest.expect(o.countMillis!, unittest.equals('foo'));
+    unittest.expect(o.criterionId!, unittest.equals('foo'));
+    unittest.expect(o.currencyCode!, unittest.equals('foo'));
     checkUnnamed0(o.customDimension!);
     checkUnnamed1(o.customMetric!);
-    unittest.expect(
-      o.customerId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.deviceType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dsConversionId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.engineAccountId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.floodlightOrderId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.inventoryAccountId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.productCountry!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.productGroupId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.productId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.productLanguage!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.quantityMillis!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.revenueMicros!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.segmentationId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.segmentationName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.segmentationType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.state!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.storeId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.customerId!, unittest.equals('foo'));
+    unittest.expect(o.deviceType!, unittest.equals('foo'));
+    unittest.expect(o.dsConversionId!, unittest.equals('foo'));
+    unittest.expect(o.engineAccountId!, unittest.equals('foo'));
+    unittest.expect(o.floodlightOrderId!, unittest.equals('foo'));
+    unittest.expect(o.inventoryAccountId!, unittest.equals('foo'));
+    unittest.expect(o.productCountry!, unittest.equals('foo'));
+    unittest.expect(o.productGroupId!, unittest.equals('foo'));
+    unittest.expect(o.productId!, unittest.equals('foo'));
+    unittest.expect(o.productLanguage!, unittest.equals('foo'));
+    unittest.expect(o.quantityMillis!, unittest.equals('foo'));
+    unittest.expect(o.revenueMicros!, unittest.equals('foo'));
+    unittest.expect(o.segmentationId!, unittest.equals('foo'));
+    unittest.expect(o.segmentationName!, unittest.equals('foo'));
+    unittest.expect(o.segmentationType!, unittest.equals('foo'));
+    unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.storeId!, unittest.equals('foo'));
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterConversion--;
 }
@@ -313,10 +193,7 @@ void checkConversionList(api.ConversionList o) {
   buildCounterConversionList++;
   if (buildCounterConversionList < 3) {
     checkUnnamed2(o.conversion!);
-    unittest.expect(
-      o.kind!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.kind!, unittest.equals('foo'));
   }
   buildCounterConversionList--;
 }
@@ -336,14 +213,8 @@ api.CustomDimension buildCustomDimension() {
 void checkCustomDimension(api.CustomDimension o) {
   buildCounterCustomDimension++;
   if (buildCounterCustomDimension < 3) {
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.value!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.value!, unittest.equals('foo'));
   }
   buildCounterCustomDimension--;
 }
@@ -363,14 +234,8 @@ api.CustomMetric buildCustomMetric() {
 void checkCustomMetric(api.CustomMetric o) {
   buildCounterCustomMetric++;
   if (buildCounterCustomMetric < 3) {
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.value!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.value!, unittest.equals(42.0));
   }
   buildCounterCustomMetric--;
 }
@@ -405,14 +270,8 @@ api.ReportFiles buildReportFiles() {
 void checkReportFiles(api.ReportFiles o) {
   buildCounterReportFiles++;
   if (buildCounterReportFiles < 3) {
-    unittest.expect(
-      o.byteCount!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.url!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.byteCount!, unittest.equals('foo'));
+    unittest.expect(o.url!, unittest.equals('foo'));
   }
   buildCounterReportFiles--;
 }
@@ -462,29 +321,14 @@ void checkReport(api.Report o) {
   buildCounterReport++;
   if (buildCounterReport < 3) {
     checkUnnamed3(o.files!);
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.id!, unittest.equals('foo'));
     unittest.expect(o.isReportReady!, unittest.isTrue);
-    unittest.expect(
-      o.kind!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.kind!, unittest.equals('foo'));
     checkReportRequest(o.request!);
-    unittest.expect(
-      o.rowCount!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.rowCount!, unittest.equals(42));
     checkUnnamed4(o.rows!);
-    unittest.expect(
-      o.statisticsCurrencyCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.statisticsTimeZone!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.statisticsCurrencyCode!, unittest.equals('foo'));
+    unittest.expect(o.statisticsTimeZone!, unittest.equals('foo'));
   }
   buildCounterReport--;
 }
@@ -512,43 +356,16 @@ api.ReportApiColumnSpec buildReportApiColumnSpec() {
 void checkReportApiColumnSpec(api.ReportApiColumnSpec o) {
   buildCounterReportApiColumnSpec++;
   if (buildCounterReportApiColumnSpec < 3) {
-    unittest.expect(
-      o.columnName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.customDimensionName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.customMetricName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.endDate!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.columnName!, unittest.equals('foo'));
+    unittest.expect(o.customDimensionName!, unittest.equals('foo'));
+    unittest.expect(o.customMetricName!, unittest.equals('foo'));
+    unittest.expect(o.endDate!, unittest.equals('foo'));
     unittest.expect(o.groupByColumn!, unittest.isTrue);
-    unittest.expect(
-      o.headerText!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.platformSource!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.productReportPerspective!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.savedColumnName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.startDate!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.headerText!, unittest.equals('foo'));
+    unittest.expect(o.platformSource!, unittest.equals('foo'));
+    unittest.expect(o.productReportPerspective!, unittest.equals('foo'));
+    unittest.expect(o.savedColumnName!, unittest.equals('foo'));
+    unittest.expect(o.startDate!, unittest.equals('foo'));
   }
   buildCounterReportApiColumnSpec--;
 }
@@ -568,12 +385,12 @@ core.List<core.Object?> buildUnnamed6() => [
       {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
       {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
     ];
 
@@ -581,32 +398,14 @@ void checkUnnamed6(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(
-    casted1['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted1['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted1['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
   var casted2 = (o[1]) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(
-    casted2['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted2['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted2['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterReportRequestFilters = 0;
@@ -626,10 +425,7 @@ void checkReportRequestFilters(api.ReportRequestFilters o) {
   buildCounterReportRequestFilters++;
   if (buildCounterReportRequestFilters < 3) {
     checkReportApiColumnSpec(o.column!);
-    unittest.expect(
-      o.operator!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.operator!, unittest.equals('foo'));
     checkUnnamed6(o.values!);
   }
   buildCounterReportRequestFilters--;
@@ -662,10 +458,7 @@ void checkReportRequestOrderBy(api.ReportRequestOrderBy o) {
   buildCounterReportRequestOrderBy++;
   if (buildCounterReportRequestOrderBy < 3) {
     checkReportApiColumnSpec(o.column!);
-    unittest.expect(
-      o.sortOrder!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.sortOrder!, unittest.equals('foo'));
   }
   buildCounterReportRequestOrderBy--;
 }
@@ -701,34 +494,13 @@ api.ReportRequestReportScope buildReportRequestReportScope() {
 void checkReportRequestReportScope(api.ReportRequestReportScope o) {
   buildCounterReportRequestReportScope++;
   if (buildCounterReportRequestReportScope < 3) {
-    unittest.expect(
-      o.adGroupId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.adId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.advertiserId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.agencyId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.campaignId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.engineAccountId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.keywordId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.adGroupId!, unittest.equals('foo'));
+    unittest.expect(o.adId!, unittest.equals('foo'));
+    unittest.expect(o.advertiserId!, unittest.equals('foo'));
+    unittest.expect(o.agencyId!, unittest.equals('foo'));
+    unittest.expect(o.campaignId!, unittest.equals('foo'));
+    unittest.expect(o.engineAccountId!, unittest.equals('foo'));
+    unittest.expect(o.keywordId!, unittest.equals('foo'));
   }
   buildCounterReportRequestReportScope--;
 }
@@ -750,22 +522,10 @@ api.ReportRequestTimeRange buildReportRequestTimeRange() {
 void checkReportRequestTimeRange(api.ReportRequestTimeRange o) {
   buildCounterReportRequestTimeRange++;
   if (buildCounterReportRequestTimeRange < 3) {
-    unittest.expect(
-      o.changedAttributesSinceTimestamp!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.changedMetricsSinceTimestamp!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.endDate!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.startDate!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.changedAttributesSinceTimestamp!, unittest.equals('foo'));
+    unittest.expect(o.changedMetricsSinceTimestamp!, unittest.equals('foo'));
+    unittest.expect(o.endDate!, unittest.equals('foo'));
+    unittest.expect(o.startDate!, unittest.equals('foo'));
   }
   buildCounterReportRequestTimeRange--;
 }
@@ -798,35 +558,17 @@ void checkReportRequest(api.ReportRequest o) {
   buildCounterReportRequest++;
   if (buildCounterReportRequest < 3) {
     checkUnnamed5(o.columns!);
-    unittest.expect(
-      o.downloadFormat!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.downloadFormat!, unittest.equals('foo'));
     checkUnnamed7(o.filters!);
     unittest.expect(o.includeDeletedEntities!, unittest.isTrue);
     unittest.expect(o.includeRemovedEntities!, unittest.isTrue);
-    unittest.expect(
-      o.maxRowsPerFile!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.maxRowsPerFile!, unittest.equals(42));
     checkUnnamed8(o.orderBy!);
     checkReportRequestReportScope(o.reportScope!);
-    unittest.expect(
-      o.reportType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.rowCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.startRow!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.statisticsCurrency!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.reportType!, unittest.equals('foo'));
+    unittest.expect(o.rowCount!, unittest.equals(42));
+    unittest.expect(o.startRow!, unittest.equals(42));
+    unittest.expect(o.statisticsCurrency!, unittest.equals('foo'));
     checkReportRequestTimeRange(o.timeRange!);
     unittest.expect(o.verifySingleTimeZone!, unittest.isTrue);
   }
@@ -838,12 +580,12 @@ api.ReportRow buildReportRow() {
     'a': {
       'list': [1, 2, 3],
       'bool': true,
-      'string': 'foo'
+      'string': 'foo',
     },
     'b': {
       'list': [1, 2, 3],
       'bool': true,
-      'string': 'foo'
+      'string': 'foo',
     },
   };
 }
@@ -852,32 +594,14 @@ void checkReportRow(api.ReportRow o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['a']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(
-    casted3['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted3['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted3['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
   var casted4 = (o['b']!) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(
-    casted4['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted4['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted4['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterSavedColumn = 0;
@@ -896,18 +620,9 @@ api.SavedColumn buildSavedColumn() {
 void checkSavedColumn(api.SavedColumn o) {
   buildCounterSavedColumn++;
   if (buildCounterSavedColumn < 3) {
-    unittest.expect(
-      o.kind!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.savedColumnName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.kind!, unittest.equals('foo'));
+    unittest.expect(o.savedColumnName!, unittest.equals('foo'));
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterSavedColumn--;
 }
@@ -939,10 +654,7 @@ void checkSavedColumnList(api.SavedColumnList o) {
   buildCounterSavedColumnList++;
   if (buildCounterSavedColumnList < 3) {
     checkUnnamed9(o.items!);
-    unittest.expect(
-      o.kind!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.kind!, unittest.equals('foo'));
   }
   buildCounterSavedColumnList--;
 }
@@ -1013,7 +725,8 @@ void main() {
       final o = buildAvailability();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.Availability.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAvailability(od);
     });
   });
@@ -1022,8 +735,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildConversion();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Conversion.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Conversion.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkConversion(od);
     });
   });
@@ -1033,7 +747,8 @@ void main() {
       final o = buildConversionList();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ConversionList.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkConversionList(od);
     });
   });
@@ -1043,7 +758,8 @@ void main() {
       final o = buildCustomDimension();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CustomDimension.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCustomDimension(od);
     });
   });
@@ -1053,7 +769,8 @@ void main() {
       final o = buildCustomMetric();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CustomMetric.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCustomMetric(od);
     });
   });
@@ -1063,7 +780,8 @@ void main() {
       final o = buildIdMappingFile();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.IdMappingFile.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkIdMappingFile(od);
     });
   });
@@ -1073,7 +791,8 @@ void main() {
       final o = buildReportFiles();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ReportFiles.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkReportFiles(od);
     });
   });
@@ -1082,8 +801,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildReport();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Report.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Report.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkReport(od);
     });
   });
@@ -1093,7 +813,8 @@ void main() {
       final o = buildReportApiColumnSpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ReportApiColumnSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkReportApiColumnSpec(od);
     });
   });
@@ -1103,7 +824,8 @@ void main() {
       final o = buildReportRequestFilters();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ReportRequestFilters.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkReportRequestFilters(od);
     });
   });
@@ -1113,7 +835,8 @@ void main() {
       final o = buildReportRequestOrderBy();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ReportRequestOrderBy.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkReportRequestOrderBy(od);
     });
   });
@@ -1123,7 +846,8 @@ void main() {
       final o = buildReportRequestReportScope();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ReportRequestReportScope.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkReportRequestReportScope(od);
     });
   });
@@ -1133,7 +857,8 @@ void main() {
       final o = buildReportRequestTimeRange();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ReportRequestTimeRange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkReportRequestTimeRange(od);
     });
   });
@@ -1143,7 +868,8 @@ void main() {
       final o = buildReportRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ReportRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkReportRequest(od);
     });
   });
@@ -1162,7 +888,8 @@ void main() {
       final o = buildSavedColumn();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SavedColumn.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSavedColumn(od);
     });
   });
@@ -1172,7 +899,8 @@ void main() {
       final o = buildSavedColumnList();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SavedColumnList.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSavedColumnList(od);
     });
   });
@@ -1182,7 +910,8 @@ void main() {
       final o = buildUpdateAvailabilityRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateAvailabilityRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateAvailabilityRequest(od);
     });
   });
@@ -1192,7 +921,8 @@ void main() {
       final o = buildUpdateAvailabilityResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateAvailabilityResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateAvailabilityResponse(od);
     });
   });
@@ -1214,140 +944,133 @@ void main() {
       final arg_criterionId = 'foo';
       final arg_customerId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 28),
-          unittest.equals('doubleclicksearch/v2/agency/'),
-        );
-        pathOffset += 28;
-        index = path.indexOf('/advertiser/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_agencyId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('/advertiser/'),
-        );
-        pathOffset += 12;
-        index = path.indexOf('/engine/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_advertiserId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('/engine/'),
-        );
-        pathOffset += 8;
-        index = path.indexOf('/conversion', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_engineAccountId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/conversion'),
-        );
-        pathOffset += 11;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 28),
+            unittest.equals('doubleclicksearch/v2/agency/'),
+          );
+          pathOffset += 28;
+          index = path.indexOf('/advertiser/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_agencyId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 12),
+            unittest.equals('/advertiser/'),
+          );
+          pathOffset += 12;
+          index = path.indexOf('/engine/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_advertiserId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('/engine/'),
+          );
+          pathOffset += 8;
+          index = path.indexOf('/conversion', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_engineAccountId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('/conversion'),
+          );
+          pathOffset += 11;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['endDate']!.first),
-          unittest.equals(arg_endDate),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['rowCount']!.first),
-          unittest.equals(arg_rowCount),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['startDate']!.first),
-          unittest.equals(arg_startDate),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['startRow']!.first),
-          unittest.equals(arg_startRow),
-        );
-        unittest.expect(
-          queryMap['adGroupId']!.first,
-          unittest.equals(arg_adGroupId),
-        );
-        unittest.expect(
-          queryMap['adId']!.first,
-          unittest.equals(arg_adId),
-        );
-        unittest.expect(
-          queryMap['campaignId']!.first,
-          unittest.equals(arg_campaignId),
-        );
-        unittest.expect(
-          queryMap['criterionId']!.first,
-          unittest.equals(arg_criterionId),
-        );
-        unittest.expect(
-          queryMap['customerId']!.first,
-          unittest.equals(arg_customerId),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['endDate']!.first),
+            unittest.equals(arg_endDate),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['rowCount']!.first),
+            unittest.equals(arg_rowCount),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['startDate']!.first),
+            unittest.equals(arg_startDate),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['startRow']!.first),
+            unittest.equals(arg_startRow),
+          );
+          unittest.expect(
+            queryMap['adGroupId']!.first,
+            unittest.equals(arg_adGroupId),
+          );
+          unittest.expect(queryMap['adId']!.first, unittest.equals(arg_adId));
+          unittest.expect(
+            queryMap['campaignId']!.first,
+            unittest.equals(arg_campaignId),
+          );
+          unittest.expect(
+            queryMap['criterionId']!.first,
+            unittest.equals(arg_criterionId),
+          );
+          unittest.expect(
+            queryMap['customerId']!.first,
+            unittest.equals(arg_customerId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildConversionList());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildConversionList());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.get(
-          arg_agencyId,
-          arg_advertiserId,
-          arg_engineAccountId,
-          arg_endDate,
-          arg_rowCount,
-          arg_startDate,
-          arg_startRow,
-          adGroupId: arg_adGroupId,
-          adId: arg_adId,
-          campaignId: arg_campaignId,
-          criterionId: arg_criterionId,
-          customerId: arg_customerId,
-          $fields: arg_$fields);
+        arg_agencyId,
+        arg_advertiserId,
+        arg_engineAccountId,
+        arg_endDate,
+        arg_rowCount,
+        arg_startDate,
+        arg_startRow,
+        adGroupId: arg_adGroupId,
+        adId: arg_adId,
+        campaignId: arg_campaignId,
+        criterionId: arg_criterionId,
+        customerId: arg_customerId,
+        $fields: arg_$fields,
+      );
       checkConversionList(response as api.ConversionList);
     });
 
@@ -1367,116 +1090,117 @@ void main() {
       final arg_criterionId = 'foo';
       final arg_engineAccountId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 30),
-          unittest.equals('doubleclicksearch/v2/customer/'),
-        );
-        pathOffset += 30;
-        index = path.indexOf('/conversion', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_customerId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/conversion'),
-        );
-        pathOffset += 11;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 30),
+            unittest.equals('doubleclicksearch/v2/customer/'),
+          );
+          pathOffset += 30;
+          index = path.indexOf('/conversion', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_customerId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('/conversion'),
+          );
+          pathOffset += 11;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['endDate']!.first),
-          unittest.equals(arg_endDate),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['rowCount']!.first),
-          unittest.equals(arg_rowCount),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['startDate']!.first),
-          unittest.equals(arg_startDate),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['startRow']!.first),
-          unittest.equals(arg_startRow),
-        );
-        unittest.expect(
-          queryMap['adGroupId']!.first,
-          unittest.equals(arg_adGroupId),
-        );
-        unittest.expect(
-          queryMap['adId']!.first,
-          unittest.equals(arg_adId),
-        );
-        unittest.expect(
-          queryMap['advertiserId']!.first,
-          unittest.equals(arg_advertiserId),
-        );
-        unittest.expect(
-          queryMap['agencyId']!.first,
-          unittest.equals(arg_agencyId),
-        );
-        unittest.expect(
-          queryMap['campaignId']!.first,
-          unittest.equals(arg_campaignId),
-        );
-        unittest.expect(
-          queryMap['criterionId']!.first,
-          unittest.equals(arg_criterionId),
-        );
-        unittest.expect(
-          queryMap['engineAccountId']!.first,
-          unittest.equals(arg_engineAccountId),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['endDate']!.first),
+            unittest.equals(arg_endDate),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['rowCount']!.first),
+            unittest.equals(arg_rowCount),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['startDate']!.first),
+            unittest.equals(arg_startDate),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['startRow']!.first),
+            unittest.equals(arg_startRow),
+          );
+          unittest.expect(
+            queryMap['adGroupId']!.first,
+            unittest.equals(arg_adGroupId),
+          );
+          unittest.expect(queryMap['adId']!.first, unittest.equals(arg_adId));
+          unittest.expect(
+            queryMap['advertiserId']!.first,
+            unittest.equals(arg_advertiserId),
+          );
+          unittest.expect(
+            queryMap['agencyId']!.first,
+            unittest.equals(arg_agencyId),
+          );
+          unittest.expect(
+            queryMap['campaignId']!.first,
+            unittest.equals(arg_campaignId),
+          );
+          unittest.expect(
+            queryMap['criterionId']!.first,
+            unittest.equals(arg_criterionId),
+          );
+          unittest.expect(
+            queryMap['engineAccountId']!.first,
+            unittest.equals(arg_engineAccountId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildConversionList());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.getByCustomerId(arg_customerId, arg_endDate,
-          arg_rowCount, arg_startDate, arg_startRow,
-          adGroupId: arg_adGroupId,
-          adId: arg_adId,
-          advertiserId: arg_advertiserId,
-          agencyId: arg_agencyId,
-          campaignId: arg_campaignId,
-          criterionId: arg_criterionId,
-          engineAccountId: arg_engineAccountId,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildConversionList());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getByCustomerId(
+        arg_customerId,
+        arg_endDate,
+        arg_rowCount,
+        arg_startDate,
+        arg_startRow,
+        adGroupId: arg_adGroupId,
+        adId: arg_adId,
+        advertiserId: arg_advertiserId,
+        agencyId: arg_agencyId,
+        campaignId: arg_campaignId,
+        criterionId: arg_criterionId,
+        engineAccountId: arg_engineAccountId,
+        $fields: arg_$fields,
+      );
       checkConversionList(response as api.ConversionList);
     });
 
@@ -1485,52 +1209,54 @@ void main() {
       final res = api.DoubleclicksearchApi(mock).conversion;
       final arg_request = buildConversionList();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ConversionList.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkConversionList(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ConversionList.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkConversionList(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 31),
-          unittest.equals('doubleclicksearch/v2/conversion'),
-        );
-        pathOffset += 31;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 31),
+            unittest.equals('doubleclicksearch/v2/conversion'),
+          );
+          pathOffset += 31;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildConversionList());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildConversionList());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.insert(arg_request, $fields: arg_$fields);
       checkConversionList(response as api.ConversionList);
     });
@@ -1540,52 +1266,54 @@ void main() {
       final res = api.DoubleclicksearchApi(mock).conversion;
       final arg_request = buildConversionList();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ConversionList.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkConversionList(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ConversionList.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkConversionList(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 31),
-          unittest.equals('doubleclicksearch/v2/conversion'),
-        );
-        pathOffset += 31;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 31),
+            unittest.equals('doubleclicksearch/v2/conversion'),
+          );
+          pathOffset += 31;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildConversionList());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildConversionList());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.update(arg_request, $fields: arg_$fields);
       checkConversionList(response as api.ConversionList);
     });
@@ -1595,56 +1323,63 @@ void main() {
       final res = api.DoubleclicksearchApi(mock).conversion;
       final arg_request = buildUpdateAvailabilityRequest();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.UpdateAvailabilityRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkUpdateAvailabilityRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.UpdateAvailabilityRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkUpdateAvailabilityRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 50),
-          unittest.equals('doubleclicksearch/v2/conversion/updateAvailability'),
-        );
-        pathOffset += 50;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 50),
+            unittest.equals(
+              'doubleclicksearch/v2/conversion/updateAvailability',
+            ),
+          );
+          pathOffset += 50;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildUpdateAvailabilityResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.updateAvailability(arg_request, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildUpdateAvailabilityResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.updateAvailability(
+        arg_request,
+        $fields: arg_$fields,
+      );
       checkUpdateAvailabilityResponse(
-          response as api.UpdateAvailabilityResponse);
+        response as api.UpdateAvailabilityResponse,
+      );
     });
   });
 
@@ -1654,52 +1389,54 @@ void main() {
       final res = api.DoubleclicksearchApi(mock).reports;
       final arg_request_1 = buildReportRequest();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ReportRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkReportRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ReportRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkReportRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 37),
-          unittest.equals('doubleclicksearch/v2/reports/generate'),
-        );
-        pathOffset += 37;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 37),
+            unittest.equals('doubleclicksearch/v2/reports/generate'),
+          );
+          pathOffset += 37;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildReport());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildReport());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.generate(arg_request_1, $fields: arg_$fields);
       checkReport(response as api.Report);
     });
@@ -1709,54 +1446,52 @@ void main() {
       final res = api.DoubleclicksearchApi(mock).reports;
       final arg_reportId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('doubleclicksearch/v2/reports/'),
-        );
-        pathOffset += 29;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_reportId'),
-        );
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 29),
+            unittest.equals('doubleclicksearch/v2/reports/'),
+          );
+          pathOffset += 29;
+          subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+          pathOffset = path.length;
+          unittest.expect(subPart, unittest.equals('$arg_reportId'));
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildReport());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildReport());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.get(arg_reportId, $fields: arg_$fields);
       checkReport(response as api.Report);
     });
@@ -1770,68 +1505,64 @@ void main() {
       final arg_reportId = 'foo';
       final arg_reportFragment = 42;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('doubleclicksearch/v2/reports/'),
-        );
-        pathOffset += 29;
-        index = path.indexOf('/files/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_reportId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 7),
-          unittest.equals('/files/'),
-        );
-        pathOffset += 7;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_reportFragment'),
-        );
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 29),
+            unittest.equals('doubleclicksearch/v2/reports/'),
+          );
+          pathOffset += 29;
+          index = path.indexOf('/files/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_reportId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 7),
+            unittest.equals('/files/'),
+          );
+          pathOffset += 7;
+          subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+          pathOffset = path.length;
+          unittest.expect(subPart, unittest.equals('$arg_reportFragment'));
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = '';
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = '';
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       await res.getFile(arg_reportId, arg_reportFragment, $fields: arg_$fields);
     });
 
@@ -1844,79 +1575,78 @@ void main() {
       final arg_agencyId = 'foo';
       final arg_advertiserId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 28),
-          unittest.equals('doubleclicksearch/v2/agency/'),
-        );
-        pathOffset += 28;
-        index = path.indexOf('/advertiser/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_agencyId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('/advertiser/'),
-        );
-        pathOffset += 12;
-        index = path.indexOf('/idmapping', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_advertiserId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/idmapping'),
-        );
-        pathOffset += 10;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 28),
+            unittest.equals('doubleclicksearch/v2/agency/'),
+          );
+          pathOffset += 28;
+          index = path.indexOf('/advertiser/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_agencyId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 12),
+            unittest.equals('/advertiser/'),
+          );
+          pathOffset += 12;
+          index = path.indexOf('/idmapping', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_advertiserId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 10),
+            unittest.equals('/idmapping'),
+          );
+          pathOffset += 10;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildIdMappingFile());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildIdMappingFile());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.getIdMappingFile(
-          arg_agencyId, arg_advertiserId,
-          $fields: arg_$fields);
+        arg_agencyId,
+        arg_advertiserId,
+        $fields: arg_$fields,
+      );
       checkIdMappingFile(response as api.IdMappingFile);
     });
 
@@ -1925,52 +1655,54 @@ void main() {
       final res = api.DoubleclicksearchApi(mock).reports;
       final arg_request_1 = buildReportRequest();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ReportRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkReportRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ReportRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkReportRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 28),
-          unittest.equals('doubleclicksearch/v2/reports'),
-        );
-        pathOffset += 28;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 28),
+            unittest.equals('doubleclicksearch/v2/reports'),
+          );
+          pathOffset += 28;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildReport());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildReport());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.request(arg_request_1, $fields: arg_$fields);
       checkReport(response as api.Report);
     });
@@ -1983,78 +1715,78 @@ void main() {
       final arg_agencyId = 'foo';
       final arg_advertiserId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 28),
-          unittest.equals('doubleclicksearch/v2/agency/'),
-        );
-        pathOffset += 28;
-        index = path.indexOf('/advertiser/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_agencyId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('/advertiser/'),
-        );
-        pathOffset += 12;
-        index = path.indexOf('/savedcolumns', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_advertiserId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 13),
-          unittest.equals('/savedcolumns'),
-        );
-        pathOffset += 13;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 28),
+            unittest.equals('doubleclicksearch/v2/agency/'),
+          );
+          pathOffset += 28;
+          index = path.indexOf('/advertiser/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_agencyId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 12),
+            unittest.equals('/advertiser/'),
+          );
+          pathOffset += 12;
+          index = path.indexOf('/savedcolumns', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_advertiserId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 13),
+            unittest.equals('/savedcolumns'),
+          );
+          pathOffset += 13;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildSavedColumnList());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.list(arg_agencyId, arg_advertiserId, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSavedColumnList());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_agencyId,
+        arg_advertiserId,
+        $fields: arg_$fields,
+      );
       checkSavedColumnList(response as api.SavedColumnList);
     });
   });

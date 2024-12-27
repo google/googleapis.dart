@@ -68,11 +68,16 @@ class ConnectorsApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ConnectorsApi(http.Client client,
-      {core.String rootUrl = 'https://connectors.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ConnectorsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://connectors.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -119,10 +124,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -173,7 +175,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return RegionalSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the runtimeConfig of a location.
@@ -213,7 +216,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return RuntimeConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -265,7 +269,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update the settings of a region.
@@ -462,7 +467,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return Connection.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets schema metadata of a connection.
@@ -502,7 +508,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return ConnectionSchemaMetadata.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -621,7 +628,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return ListConnectionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// ListenEvent listens to the event.
@@ -663,7 +671,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return ListenEventResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single Connection.
@@ -806,7 +815,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return SearchConnectionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -904,7 +914,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -912,8 +923,8 @@ class ProjectsLocationsConnectionsConnectionSchemaMetadataResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConnectionsConnectionSchemaMetadataResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Get action.
   ///
@@ -1054,7 +1065,8 @@ class ProjectsLocationsConnectionsConnectionSchemaMetadataResource {
       queryParams: queryParams_,
     );
     return ListActionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List entity types.
@@ -1114,7 +1126,8 @@ class ProjectsLocationsConnectionsConnectionSchemaMetadataResource {
       queryParams: queryParams_,
     );
     return ListEntityTypesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Refresh runtime schema of a connection.
@@ -1164,8 +1177,8 @@ class ProjectsLocationsConnectionsEventSubscriptionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConnectionsEventSubscriptionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates a new EventSubscription in a given project,location and
   /// connection.
@@ -1288,7 +1301,8 @@ class ProjectsLocationsConnectionsEventSubscriptionsResource {
       queryParams: queryParams_,
     );
     return EventSubscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List EventSubscriptions in a given project,location and connection.
@@ -1342,7 +1356,8 @@ class ProjectsLocationsConnectionsEventSubscriptionsResource {
       queryParams: queryParams_,
     );
     return ListEventSubscriptionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single EventSubscription.
@@ -1441,8 +1456,8 @@ class ProjectsLocationsConnectionsRuntimeActionSchemasResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConnectionsRuntimeActionSchemasResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// List schema of a runtime actions filtered by action name.
   ///
@@ -1499,7 +1514,8 @@ class ProjectsLocationsConnectionsRuntimeActionSchemasResource {
       queryParams: queryParams_,
     );
     return ListRuntimeActionSchemasResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1507,8 +1523,8 @@ class ProjectsLocationsConnectionsRuntimeEntitySchemasResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConnectionsRuntimeEntitySchemasResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// List schema of a runtime entities filtered by entity name.
   ///
@@ -1560,7 +1576,8 @@ class ProjectsLocationsConnectionsRuntimeEntitySchemasResource {
       queryParams: queryParams_,
     );
     return ListRuntimeEntitySchemasResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1570,7 +1587,8 @@ class ProjectsLocationsCustomConnectorsResource {
   ProjectsLocationsCustomConnectorsCustomConnectorVersionsResource
       get customConnectorVersions =>
           ProjectsLocationsCustomConnectorsCustomConnectorVersionsResource(
-              _requester);
+            _requester,
+          );
 
   ProjectsLocationsCustomConnectorsResource(commons.ApiRequester client)
       : _requester = client;
@@ -1616,7 +1634,8 @@ class ProjectsLocationsCustomConnectorsResource {
       queryParams: queryParams_,
     );
     return ValidateCustomConnectorSpecResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1624,8 +1643,8 @@ class ProjectsLocationsCustomConnectorsCustomConnectorVersionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCustomConnectorsCustomConnectorVersionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Deletes a single CustomConnectorVersion.
   ///
@@ -1933,7 +1952,8 @@ class ProjectsLocationsEndpointAttachmentsResource {
       queryParams: queryParams_,
     );
     return EndpointAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List EndpointAttachments in a given project
@@ -1998,7 +2018,8 @@ class ProjectsLocationsEndpointAttachmentsResource {
       queryParams: queryParams_,
     );
     return ListEndpointAttachmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single EndpointAttachment.
@@ -2151,7 +2172,8 @@ class ProjectsLocationsGlobalCustomConnectorsResource {
   ProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsResource
       get customConnectorVersions =>
           ProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsResource(
-              _requester);
+            _requester,
+          );
 
   ProjectsLocationsGlobalCustomConnectorsResource(commons.ApiRequester client)
       : _requester = client;
@@ -2279,7 +2301,8 @@ class ProjectsLocationsGlobalCustomConnectorsResource {
       queryParams: queryParams_,
     );
     return CustomConnector.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List CustomConnectorVersions in a given project
@@ -2329,7 +2352,8 @@ class ProjectsLocationsGlobalCustomConnectorsResource {
       queryParams: queryParams_,
     );
     return ListCustomConnectorsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a CustomConnector.
@@ -2387,8 +2411,8 @@ class ProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates a new CustomConnectorVersion in a given project and location.
   ///
@@ -2476,7 +2500,8 @@ class ProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsResource {
       queryParams: queryParams_,
     );
     return CustomConnectorVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List CustomConnectorVersions in a given project
@@ -2524,7 +2549,8 @@ class ProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsResource {
       queryParams: queryParams_,
     );
     return ListCustomConnectorVersionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2652,7 +2678,8 @@ class ProjectsLocationsGlobalManagedZonesResource {
       queryParams: queryParams_,
     );
     return ManagedZone.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List ManagedZones in a given project
@@ -2705,7 +2732,8 @@ class ProjectsLocationsGlobalManagedZonesResource {
       queryParams: queryParams_,
     );
     return ListManagedZonesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single ManagedZone.
@@ -2837,10 +2865,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2876,10 +2901,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2941,7 +2963,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2973,10 +2996,7 @@ class ProjectsLocationsProvidersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Provider> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Provider> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3091,7 +3111,8 @@ class ProjectsLocationsProvidersResource {
       queryParams: queryParams_,
     );
     return ListProvidersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -3189,7 +3210,8 @@ class ProjectsLocationsProvidersResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3222,10 +3244,7 @@ class ProjectsLocationsProvidersConnectorsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Connector> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Connector> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3288,7 +3307,8 @@ class ProjectsLocationsProvidersConnectorsResource {
       queryParams: queryParams_,
     );
     return ListConnectorsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3298,11 +3318,12 @@ class ProjectsLocationsProvidersConnectorsVersionsResource {
   ProjectsLocationsProvidersConnectorsVersionsEventtypesResource
       get eventtypes =>
           ProjectsLocationsProvidersConnectorsVersionsEventtypesResource(
-              _requester);
+            _requester,
+          );
 
   ProjectsLocationsProvidersConnectorsVersionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// fetch and return the list of auth config variables required to override
   /// the connection backend auth.
@@ -3349,7 +3370,8 @@ class ProjectsLocationsProvidersConnectorsVersionsResource {
       queryParams: queryParams_,
     );
     return FetchAuthSchemaResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single connector version.
@@ -3398,7 +3420,8 @@ class ProjectsLocationsProvidersConnectorsVersionsResource {
       queryParams: queryParams_,
     );
     return ConnectorVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists Connector Versions in a given project and location.
@@ -3455,7 +3478,8 @@ class ProjectsLocationsProvidersConnectorsVersionsResource {
       queryParams: queryParams_,
     );
     return ListConnectorVersionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3463,8 +3487,8 @@ class ProjectsLocationsProvidersConnectorsVersionsEventtypesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsProvidersConnectorsVersionsEventtypesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets details of a single event type.
   ///
@@ -3486,10 +3510,7 @@ class ProjectsLocationsProvidersConnectorsVersionsEventtypesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<EventType> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<EventType> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3548,7 +3569,8 @@ class ProjectsLocationsProvidersConnectorsVersionsEventtypesResource {
       queryParams: queryParams_,
     );
     return ListEventTypesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3579,16 +3601,16 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -3663,37 +3685,48 @@ class AuthConfig {
   AuthConfig.fromJson(core.Map json_)
       : this(
           additionalVariables: (json_['additionalVariables'] as core.List?)
-              ?.map((value) => ConfigVariable.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ConfigVariable.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           authKey: json_['authKey'] as core.String?,
           authType: json_['authType'] as core.String?,
           oauth2AuthCodeFlow: json_.containsKey('oauth2AuthCodeFlow')
-              ? Oauth2AuthCodeFlow.fromJson(json_['oauth2AuthCodeFlow']
-                  as core.Map<core.String, core.dynamic>)
+              ? Oauth2AuthCodeFlow.fromJson(
+                  json_['oauth2AuthCodeFlow']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           oauth2AuthCodeFlowGoogleManaged:
               json_.containsKey('oauth2AuthCodeFlowGoogleManaged')
                   ? Oauth2AuthCodeFlowGoogleManaged.fromJson(
                       json_['oauth2AuthCodeFlowGoogleManaged']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           oauth2ClientCredentials: json_.containsKey('oauth2ClientCredentials')
               ? Oauth2ClientCredentials.fromJson(
                   json_['oauth2ClientCredentials']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           oauth2JwtBearer: json_.containsKey('oauth2JwtBearer')
-              ? Oauth2JwtBearer.fromJson(json_['oauth2JwtBearer']
-                  as core.Map<core.String, core.dynamic>)
+              ? Oauth2JwtBearer.fromJson(
+                  json_['oauth2JwtBearer']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sshPublicKey: json_.containsKey('sshPublicKey')
               ? SshPublicKey.fromJson(
-                  json_['sshPublicKey'] as core.Map<core.String, core.dynamic>)
+                  json_['sshPublicKey'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           userPassword: json_.containsKey('userPassword')
               ? UserPassword.fromJson(
-                  json_['userPassword'] as core.Map<core.String, core.dynamic>)
+                  json_['userPassword'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3761,8 +3794,11 @@ class AuthConfigTemplate {
           authType: json_['authType'] as core.String?,
           configVariableTemplates:
               (json_['configVariableTemplates'] as core.List?)
-                  ?.map((value) => ConfigVariableTemplate.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => ConfigVariableTemplate.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
@@ -3791,11 +3827,7 @@ class AuthField {
   /// Key of the field.
   core.String? key;
 
-  AuthField({
-    this.dataType,
-    this.description,
-    this.key,
-  });
+  AuthField({this.dataType, this.description, this.key});
 
   AuthField.fromJson(core.Map json_)
       : this(
@@ -3857,7 +3889,8 @@ class AuthObject {
             (key, value) => core.MapEntry(
               key,
               AuthProperty.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           type: json_['type'] as core.String?,
@@ -3883,10 +3916,7 @@ class AuthProperty {
   /// Type of the property.
   core.String? type;
 
-  AuthProperty({
-    this.description,
-    this.type,
-  });
+  AuthProperty({this.description, this.type});
 
   AuthProperty.fromJson(core.Map json_)
       : this(
@@ -3944,8 +3974,11 @@ class AuthSchema {
   AuthSchema.fromJson(core.Map json_)
       : this(
           authFields: (json_['authFields'] as core.List?)
-              ?.map((value) => AuthField.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuthField.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           authKey: json_['authKey'] as core.String?,
           authType: json_['authType'] as core.String?,
@@ -4015,7 +4048,8 @@ class AuthorizationCodeLink {
           clientId: json_['clientId'] as core.String?,
           clientSecret: json_.containsKey('clientSecret')
               ? Secret.fromJson(
-                  json_['clientSecret'] as core.Map<core.String, core.dynamic>)
+                  json_['clientSecret'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           enablePkce: json_['enablePkce'] as core.bool?,
           omitQueryParams: json_['omitQueryParams'] as core.bool?,
@@ -4118,17 +4152,14 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -4181,14 +4212,17 @@ class ConfigVariable {
       : this(
           boolValue: json_['boolValue'] as core.bool?,
           encryptionKeyValue: json_.containsKey('encryptionKeyValue')
-              ? EncryptionKey.fromJson(json_['encryptionKeyValue']
-                  as core.Map<core.String, core.dynamic>)
+              ? EncryptionKey.fromJson(
+                  json_['encryptionKeyValue']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           intValue: json_['intValue'] as core.String?,
           key: json_['key'] as core.String?,
           secretValue: json_.containsKey('secretValue')
               ? Secret.fromJson(
-                  json_['secretValue'] as core.Map<core.String, core.dynamic>)
+                  json_['secretValue'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           stringValue: json_['stringValue'] as core.String?,
         );
@@ -4337,31 +4371,41 @@ class ConfigVariableTemplate {
   ConfigVariableTemplate.fromJson(core.Map json_)
       : this(
           authorizationCodeLink: json_.containsKey('authorizationCodeLink')
-              ? AuthorizationCodeLink.fromJson(json_['authorizationCodeLink']
-                  as core.Map<core.String, core.dynamic>)
+              ? AuthorizationCodeLink.fromJson(
+                  json_['authorizationCodeLink']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           enumOptions: (json_['enumOptions'] as core.List?)
-              ?.map((value) => EnumOption.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => EnumOption.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           enumSource: json_['enumSource'] as core.String?,
           isAdvanced: json_['isAdvanced'] as core.bool?,
           key: json_['key'] as core.String?,
           locationType: json_['locationType'] as core.String?,
           multipleSelectConfig: json_.containsKey('multipleSelectConfig')
-              ? MultipleSelectConfig.fromJson(json_['multipleSelectConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? MultipleSelectConfig.fromJson(
+                  json_['multipleSelectConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           required: json_['required'] as core.bool?,
           requiredCondition: json_.containsKey('requiredCondition')
-              ? LogicalExpression.fromJson(json_['requiredCondition']
-                  as core.Map<core.String, core.dynamic>)
+              ? LogicalExpression.fromJson(
+                  json_['requiredCondition']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           roleGrant: json_.containsKey('roleGrant')
               ? RoleGrant.fromJson(
-                  json_['roleGrant'] as core.Map<core.String, core.dynamic>)
+                  json_['roleGrant'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           state: json_['state'] as core.String?,
           validationRegex: json_['validationRegex'] as core.String?,
@@ -4637,16 +4681,21 @@ class Connection {
           asyncOperationsEnabled: json_['asyncOperationsEnabled'] as core.bool?,
           authConfig: json_.containsKey('authConfig')
               ? AuthConfig.fromJson(
-                  json_['authConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['authConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           authOverrideEnabled: json_['authOverrideEnabled'] as core.bool?,
           billingConfig: json_.containsKey('billingConfig')
               ? BillingConfig.fromJson(
-                  json_['billingConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['billingConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           configVariables: (json_['configVariables'] as core.List?)
-              ?.map((value) => ConfigVariable.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ConfigVariable.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           connectionRevision: json_['connectionRevision'] as core.String?,
           connectorVersion: json_['connectorVersion'] as core.String?,
@@ -4654,59 +4703,69 @@ class Connection {
               json_.containsKey('connectorVersionInfraConfig')
                   ? ConnectorVersionInfraConfig.fromJson(
                       json_['connectorVersionInfraConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           connectorVersionLaunchStage:
               json_['connectorVersionLaunchStage'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           destinationConfigs: (json_['destinationConfigs'] as core.List?)
-              ?.map((value) => DestinationConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DestinationConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           envoyImageLocation: json_['envoyImageLocation'] as core.String?,
           eventingConfig: json_.containsKey('eventingConfig')
-              ? EventingConfig.fromJson(json_['eventingConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? EventingConfig.fromJson(
+                  json_['eventingConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           eventingEnablementType:
               json_['eventingEnablementType'] as core.String?,
           eventingRuntimeData: json_.containsKey('eventingRuntimeData')
-              ? EventingRuntimeData.fromJson(json_['eventingRuntimeData']
-                  as core.Map<core.String, core.dynamic>)
+              ? EventingRuntimeData.fromJson(
+                  json_['eventingRuntimeData']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           host: json_['host'] as core.String?,
           imageLocation: json_['imageLocation'] as core.String?,
           isTrustedTester: json_['isTrustedTester'] as core.bool?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           lockConfig: json_.containsKey('lockConfig')
               ? LockConfig.fromJson(
-                  json_['lockConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['lockConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           logConfig: json_.containsKey('logConfig')
               ? ConnectorsLogConfig.fromJson(
-                  json_['logConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['logConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           nodeConfig: json_.containsKey('nodeConfig')
               ? NodeConfig.fromJson(
-                  json_['nodeConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['nodeConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           serviceAccount: json_['serviceAccount'] as core.String?,
           serviceDirectory: json_['serviceDirectory'] as core.String?,
           sslConfig: json_.containsKey('sslConfig')
               ? SslConfig.fromJson(
-                  json_['sslConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['sslConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           status: json_.containsKey('status')
               ? ConnectionStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           subscriptionType: json_['subscriptionType'] as core.String?,
           suspended: json_['suspended'] as core.bool?,
@@ -4977,23 +5036,23 @@ class Connector {
           displayName: json_['displayName'] as core.String?,
           documentationUri: json_['documentationUri'] as core.String?,
           eventingDetails: json_.containsKey('eventingDetails')
-              ? EventingDetails.fromJson(json_['eventingDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? EventingDetails.fromJson(
+                  json_['eventingDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           externalUri: json_['externalUri'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           launchStage: json_['launchStage'] as core.String?,
           marketplaceConnectorDetails:
               json_.containsKey('marketplaceConnectorDetails')
                   ? MarketplaceConnectorDetails.fromJson(
                       json_['marketplaceConnectorDetails']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           name: json_['name'] as core.String?,
           tags: (json_['tags'] as core.List?)
@@ -5100,7 +5159,8 @@ class ConnectorInfraConfig {
           deploymentModel: json_['deploymentModel'] as core.String?,
           hpaConfig: json_.containsKey('hpaConfig')
               ? HPAConfig.fromJson(
-                  json_['hpaConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['hpaConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           internalclientRatelimitThreshold:
               json_['internalclientRatelimitThreshold'] as core.String?,
@@ -5111,12 +5171,16 @@ class ConnectorInfraConfig {
           provisionCloudSpanner: json_['provisionCloudSpanner'] as core.bool?,
           ratelimitThreshold: json_['ratelimitThreshold'] as core.String?,
           resourceLimits: json_.containsKey('resourceLimits')
-              ? ResourceLimits.fromJson(json_['resourceLimits']
-                  as core.Map<core.String, core.dynamic>)
+              ? ResourceLimits.fromJson(
+                  json_['resourceLimits']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           resourceRequests: json_.containsKey('resourceRequests')
-              ? ResourceRequests.fromJson(json_['resourceRequests']
-                  as core.Map<core.String, core.dynamic>)
+              ? ResourceRequests.fromJson(
+                  json_['resourceRequests']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sharedDeployment: json_['sharedDeployment'] as core.String?,
         );
@@ -5318,33 +5382,48 @@ class ConnectorVersion {
   ConnectorVersion.fromJson(core.Map json_)
       : this(
           authConfigTemplates: (json_['authConfigTemplates'] as core.List?)
-              ?.map((value) => AuthConfigTemplate.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuthConfigTemplate.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           authOverrideEnabled: json_['authOverrideEnabled'] as core.bool?,
           configVariableTemplates:
               (json_['configVariableTemplates'] as core.List?)
-                  ?.map((value) => ConfigVariableTemplate.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => ConfigVariableTemplate.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           connectorInfraConfig: json_.containsKey('connectorInfraConfig')
-              ? ConnectorInfraConfig.fromJson(json_['connectorInfraConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? ConnectorInfraConfig.fromJson(
+                  json_['connectorInfraConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           createTime: json_['createTime'] as core.String?,
           destinationConfigTemplates:
               (json_['destinationConfigTemplates'] as core.List?)
-                  ?.map((value) => DestinationConfigTemplate.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => DestinationConfigTemplate.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           displayName: json_['displayName'] as core.String?,
           egressControlConfig: json_.containsKey('egressControlConfig')
-              ? EgressControlConfig.fromJson(json_['egressControlConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? EgressControlConfig.fromJson(
+                  json_['egressControlConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           eventingConfigTemplate: json_.containsKey('eventingConfigTemplate')
-              ? EventingConfigTemplate.fromJson(json_['eventingConfigTemplate']
-                  as core.Map<core.String, core.dynamic>)
+              ? EventingConfigTemplate.fromJson(
+                  json_['eventingConfigTemplate']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           isAsyncOperationsSupported:
               json_['isAsyncOperationsSupported'] as core.bool?,
@@ -5354,45 +5433,57 @@ class ConnectorVersion {
               json_['isCustomEntitiesSupported'] as core.bool?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           launchStage: json_['launchStage'] as core.String?,
           name: json_['name'] as core.String?,
           releaseVersion: json_['releaseVersion'] as core.String?,
           roleGrant: json_.containsKey('roleGrant')
               ? RoleGrant.fromJson(
-                  json_['roleGrant'] as core.Map<core.String, core.dynamic>)
+                  json_['roleGrant'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           roleGrants: (json_['roleGrants'] as core.List?)
-              ?.map((value) => RoleGrant.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RoleGrant.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           schemaRefreshConfig: json_.containsKey('schemaRefreshConfig')
-              ? SchemaRefreshConfig.fromJson(json_['schemaRefreshConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? SchemaRefreshConfig.fromJson(
+                  json_['schemaRefreshConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sslConfigTemplate: json_.containsKey('sslConfigTemplate')
-              ? SslConfigTemplate.fromJson(json_['sslConfigTemplate']
-                  as core.Map<core.String, core.dynamic>)
+              ? SslConfigTemplate.fromJson(
+                  json_['sslConfigTemplate']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           supportedRuntimeFeatures:
               json_.containsKey('supportedRuntimeFeatures')
                   ? SupportedRuntimeFeatures.fromJson(
                       json_['supportedRuntimeFeatures']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           supportedStandardActions:
               (json_['supportedStandardActions'] as core.List?)
-                  ?.map((value) => StandardAction.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => StandardAction.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           supportedStandardEntities:
               (json_['supportedStandardEntities'] as core.List?)
-                  ?.map((value) => StandardEntity.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => StandardEntity.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           unsupportedConnectionTypes:
               (json_['unsupportedConnectionTypes'] as core.List?)
@@ -5543,7 +5634,8 @@ class ConnectorVersionInfraConfig {
               json_['deploymentModelMigrationState'] as core.String?,
           hpaConfig: json_.containsKey('hpaConfig')
               ? HPAConfig.fromJson(
-                  json_['hpaConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['hpaConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           internalclientRatelimitThreshold:
               json_['internalclientRatelimitThreshold'] as core.String?,
@@ -5551,12 +5643,16 @@ class ConnectorVersionInfraConfig {
               json_['maxInstanceRequestConcurrency'] as core.int?,
           ratelimitThreshold: json_['ratelimitThreshold'] as core.String?,
           resourceLimits: json_.containsKey('resourceLimits')
-              ? ResourceLimits.fromJson(json_['resourceLimits']
-                  as core.Map<core.String, core.dynamic>)
+              ? ResourceLimits.fromJson(
+                  json_['resourceLimits']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           resourceRequests: json_.containsKey('resourceRequests')
-              ? ResourceRequests.fromJson(json_['resourceRequests']
-                  as core.Map<core.String, core.dynamic>)
+              ? ResourceRequests.fromJson(
+                  json_['resourceRequests']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sharedDeployment: json_['sharedDeployment'] as core.String?,
           tlsMigrationState: json_['tlsMigrationState'] as core.String?,
@@ -5690,10 +5786,7 @@ class CustomConnector {
           displayName: json_['displayName'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           logo: json_['logo'] as core.String?,
           name: json_['name'] as core.String?,
@@ -5841,35 +5934,42 @@ class CustomConnectorVersion {
       : this(
           authConfig: json_.containsKey('authConfig')
               ? AuthConfig.fromJson(
-                  json_['authConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['authConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           backendVariableTemplates:
               (json_['backendVariableTemplates'] as core.List?)
-                  ?.map((value) => ConfigVariableTemplate.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => ConfigVariableTemplate.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           createTime: json_['createTime'] as core.String?,
           destinationConfigs: (json_['destinationConfigs'] as core.List?)
-              ?.map((value) => DestinationConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DestinationConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           enableBackendDestinationConfig:
               json_['enableBackendDestinationConfig'] as core.bool?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           partnerMetadata: json_.containsKey('partnerMetadata')
-              ? PartnerMetadata.fromJson(json_['partnerMetadata']
-                  as core.Map<core.String, core.dynamic>)
+              ? PartnerMetadata.fromJson(
+                  json_['partnerMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           publishStatus: json_.containsKey('publishStatus')
               ? PublishStatus.fromJson(
-                  json_['publishStatus'] as core.Map<core.String, core.dynamic>)
+                  json_['publishStatus'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           serviceAccount: json_['serviceAccount'] as core.String?,
           specLocation: json_['specLocation'] as core.String?,
@@ -5916,16 +6016,16 @@ class DestinationConfig {
   /// The key is the destination identifier that is supported by the Connector.
   core.String? key;
 
-  DestinationConfig({
-    this.destinations,
-    this.key,
-  });
+  DestinationConfig({this.destinations, this.key});
 
   DestinationConfig.fromJson(core.Map json_)
       : this(
           destinations: (json_['destinations'] as core.List?)
-              ?.map((value) => Destination.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Destination.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           key: json_['key'] as core.String?,
         );
@@ -6037,17 +6137,16 @@ class EgressControlConfig {
   /// configuration.
   ExtractionRules? extractionRules;
 
-  EgressControlConfig({
-    this.backends,
-    this.extractionRules,
-  });
+  EgressControlConfig({this.backends, this.extractionRules});
 
   EgressControlConfig.fromJson(core.Map json_)
       : this(
           backends: json_['backends'] as core.String?,
           extractionRules: json_.containsKey('extractionRules')
-              ? ExtractionRules.fromJson(json_['extractionRules']
-                  as core.Map<core.String, core.dynamic>)
+              ? ExtractionRules.fromJson(
+                  json_['extractionRules']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6085,10 +6184,7 @@ class EncryptionConfig {
   /// Optional.
   core.String? kmsKeyName;
 
-  EncryptionConfig({
-    this.encryptionType,
-    this.kmsKeyName,
-  });
+  EncryptionConfig({this.encryptionType, this.kmsKeyName});
 
   EncryptionConfig.fromJson(core.Map json_)
       : this(
@@ -6113,17 +6209,17 @@ class EndPoint {
   /// List of Header to be added to the Endpoint.
   core.List<Header>? headers;
 
-  EndPoint({
-    this.endpointUri,
-    this.headers,
-  });
+  EndPoint({this.endpointUri, this.headers});
 
   EndPoint.fromJson(core.Map json_)
       : this(
           endpointUri: json_['endpointUri'] as core.String?,
           headers: (json_['headers'] as core.List?)
-              ?.map((value) =>
-                  Header.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Header.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -6224,10 +6320,7 @@ class EndpointAttachment {
           endpointIp: json_['endpointIp'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           serviceAttachment: json_['serviceAttachment'] as core.String?,
@@ -6261,10 +6354,7 @@ class EnumOption {
   /// Optional.
   core.String? id;
 
-  EnumOption({
-    this.displayName,
-    this.id,
-  });
+  EnumOption({this.displayName, this.id});
 
   EnumOption.fromJson(core.Map json_)
       : this(
@@ -6351,24 +6441,30 @@ class EventSubscription {
           createTime: json_['createTime'] as core.String?,
           destinations: json_.containsKey('destinations')
               ? EventSubscriptionDestination.fromJson(
-                  json_['destinations'] as core.Map<core.String, core.dynamic>)
+                  json_['destinations'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           eventTypeId: json_['eventTypeId'] as core.String?,
           jms: json_.containsKey('jms')
-              ? JMS
-                  .fromJson(json_['jms'] as core.Map<core.String, core.dynamic>)
+              ? JMS.fromJson(
+                  json_['jms'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           status: json_.containsKey('status')
               ? EventSubscriptionStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           subscriber: json_['subscriber'] as core.String?,
           subscriberLink: json_['subscriberLink'] as core.String?,
           triggerConfigVariables:
               (json_['triggerConfigVariables'] as core.List?)
-                  ?.map((value) => ConfigVariable.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => ConfigVariable.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -6418,11 +6514,13 @@ class EventSubscriptionDestination {
       : this(
           endpoint: json_.containsKey('endpoint')
               ? EndPoint.fromJson(
-                  json_['endpoint'] as core.Map<core.String, core.dynamic>)
+                  json_['endpoint'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           gsutil: json_.containsKey('gsutil')
               ? GSUtil.fromJson(
-                  json_['gsutil'] as core.Map<core.String, core.dynamic>)
+                  json_['gsutil'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           serviceAccount: json_['serviceAccount'] as core.String?,
           type: json_['type'] as core.String?,
@@ -6457,10 +6555,7 @@ class EventSubscriptionStatus {
   /// - "ERROR" : EventSubscription is in Error state.
   core.String? state;
 
-  EventSubscriptionStatus({
-    this.description,
-    this.state,
-  });
+  EventSubscriptionStatus({this.description, this.state});
 
   EventSubscriptionStatus.fromJson(core.Map json_)
       : this(
@@ -6629,35 +6724,46 @@ class EventingConfig {
   EventingConfig.fromJson(core.Map json_)
       : this(
           additionalVariables: (json_['additionalVariables'] as core.List?)
-              ?.map((value) => ConfigVariable.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ConfigVariable.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           authConfig: json_.containsKey('authConfig')
               ? AuthConfig.fromJson(
-                  json_['authConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['authConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           deadLetterConfig: json_.containsKey('deadLetterConfig')
-              ? DeadLetterConfig.fromJson(json_['deadLetterConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? DeadLetterConfig.fromJson(
+                  json_['deadLetterConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           enrichmentEnabled: json_['enrichmentEnabled'] as core.bool?,
           eventsListenerIngressEndpoint:
               json_['eventsListenerIngressEndpoint'] as core.String?,
           listenerAuthConfig: json_.containsKey('listenerAuthConfig')
-              ? AuthConfig.fromJson(json_['listenerAuthConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? AuthConfig.fromJson(
+                  json_['listenerAuthConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           privateConnectivityEnabled:
               json_['privateConnectivityEnabled'] as core.bool?,
           proxyDestinationConfig: json_.containsKey('proxyDestinationConfig')
-              ? DestinationConfig.fromJson(json_['proxyDestinationConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? DestinationConfig.fromJson(
+                  json_['proxyDestinationConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           registrationDestinationConfig:
               json_.containsKey('registrationDestinationConfig')
                   ? DestinationConfig.fromJson(
                       json_['registrationDestinationConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
         );
 
@@ -6742,43 +6848,59 @@ class EventingConfigTemplate {
   EventingConfigTemplate.fromJson(core.Map json_)
       : this(
           additionalVariables: (json_['additionalVariables'] as core.List?)
-              ?.map((value) => ConfigVariableTemplate.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ConfigVariableTemplate.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           authConfigTemplates: (json_['authConfigTemplates'] as core.List?)
-              ?.map((value) => AuthConfigTemplate.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuthConfigTemplate.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           autoRefresh: json_['autoRefresh'] as core.bool?,
           autoRegistrationSupported:
               json_['autoRegistrationSupported'] as core.bool?,
           encryptionKeyTemplate: json_.containsKey('encryptionKeyTemplate')
-              ? ConfigVariableTemplate.fromJson(json_['encryptionKeyTemplate']
-                  as core.Map<core.String, core.dynamic>)
+              ? ConfigVariableTemplate.fromJson(
+                  json_['encryptionKeyTemplate']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           enrichmentSupported: json_['enrichmentSupported'] as core.bool?,
           eventListenerType: json_['eventListenerType'] as core.String?,
           isEventingSupported: json_['isEventingSupported'] as core.bool?,
           listenerAuthConfigTemplates:
               (json_['listenerAuthConfigTemplates'] as core.List?)
-                  ?.map((value) => AuthConfigTemplate.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => AuthConfigTemplate.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           proxyDestinationConfig: json_.containsKey('proxyDestinationConfig')
               ? DestinationConfigTemplate.fromJson(
                   json_['proxyDestinationConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           registrationDestinationConfig:
               json_.containsKey('registrationDestinationConfig')
                   ? DestinationConfigTemplate.fromJson(
                       json_['registrationDestinationConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           triggerConfigVariables:
               (json_['triggerConfigVariables'] as core.List?)
-                  ?.map((value) => ConfigVariableTemplate.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => ConfigVariableTemplate.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
         );
 
@@ -6946,15 +7068,19 @@ class EventingRuntimeData {
           eventsListenerPscSa: json_['eventsListenerPscSa'] as core.String?,
           status: json_.containsKey('status')
               ? EventingStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           webhookData: json_.containsKey('webhookData')
               ? WebhookData.fromJson(
-                  json_['webhookData'] as core.Map<core.String, core.dynamic>)
+                  json_['webhookData'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           webhookSubscriptions: json_.containsKey('webhookSubscriptions')
-              ? WebhookSubscriptions.fromJson(json_['webhookSubscriptions']
-                  as core.Map<core.String, core.dynamic>)
+              ? WebhookSubscriptions.fromJson(
+                  json_['webhookSubscriptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -7003,17 +7129,15 @@ class ExtractionRule {
   /// Source on which the rule is applied.
   Source? source;
 
-  ExtractionRule({
-    this.extractionRegex,
-    this.source,
-  });
+  ExtractionRule({this.extractionRegex, this.source});
 
   ExtractionRule.fromJson(core.Map json_)
       : this(
           extractionRegex: json_['extractionRegex'] as core.String?,
           source: json_.containsKey('source')
               ? Source.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -7029,15 +7153,16 @@ class ExtractionRules {
   /// Collection of Extraction Rule.
   core.List<ExtractionRule>? extractionRule;
 
-  ExtractionRules({
-    this.extractionRule,
-  });
+  ExtractionRules({this.extractionRule});
 
   ExtractionRules.fromJson(core.Map json_)
       : this(
           extractionRule: (json_['extractionRule'] as core.List?)
-              ?.map((value) => ExtractionRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ExtractionRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -7057,20 +7182,21 @@ class FetchAuthSchemaResponse {
   /// draft-07 format.
   JsonAuthSchema? jsonSchema;
 
-  FetchAuthSchemaResponse({
-    this.authSchemas,
-    this.jsonSchema,
-  });
+  FetchAuthSchemaResponse({this.authSchemas, this.jsonSchema});
 
   FetchAuthSchemaResponse.fromJson(core.Map json_)
       : this(
           authSchemas: (json_['authSchemas'] as core.List?)
-              ?.map((value) => AuthSchema.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuthSchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           jsonSchema: json_.containsKey('jsonSchema')
               ? JsonAuthSchema.fromJson(
-                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -7191,7 +7317,8 @@ class Field {
           field: json_['field'] as core.String?,
           jsonSchema: json_.containsKey('jsonSchema')
               ? JsonSchema.fromJson(
-                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           key: json_['key'] as core.bool?,
           nullable: json_['nullable'] as core.bool?,
@@ -7269,14 +7396,10 @@ class GSUtil {
   /// Required.
   core.String? gsutilUri;
 
-  GSUtil({
-    this.gsutilUri,
-  });
+  GSUtil({this.gsutilUri});
 
   GSUtil.fromJson(core.Map json_)
-      : this(
-          gsutilUri: json_['gsutilUri'] as core.String?,
-        );
+      : this(gsutilUri: json_['gsutilUri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gsutilUri != null) 'gsutilUri': gsutilUri!,
@@ -7294,10 +7417,7 @@ class Header {
   /// Value of Header.
   core.String? value;
 
-  Header({
-    this.key,
-    this.value,
-  });
+  Header({this.key, this.value});
 
   Header.fromJson(core.Map json_)
       : this(
@@ -7400,7 +7520,8 @@ class InputParameter {
           description: json_['description'] as core.String?,
           jsonSchema: json_.containsKey('jsonSchema')
               ? JsonSchema.fromJson(
-                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           nullable: json_['nullable'] as core.bool?,
           parameter: json_['parameter'] as core.String?,
@@ -7436,10 +7557,7 @@ class JMS {
   /// - "TOPIC" : JMS Topic.
   core.String? type;
 
-  JMS({
-    this.name,
-    this.type,
-  });
+  JMS({this.name, this.type});
 
   JMS.fromJson(core.Map json_)
       : this(
@@ -7461,17 +7579,17 @@ class JsonAuthSchema {
   /// List of AuthObjects.
   core.List<AuthObject>? oneOf;
 
-  JsonAuthSchema({
-    this.P_schema,
-    this.oneOf,
-  });
+  JsonAuthSchema({this.P_schema, this.oneOf});
 
   JsonAuthSchema.fromJson(core.Map json_)
       : this(
           P_schema: json_['\$schema'] as core.String?,
           oneOf: (json_['oneOf'] as core.List?)
-              ?.map((value) => AuthObject.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuthObject.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -7593,7 +7711,8 @@ class JsonSchema {
           format: json_['format'] as core.String?,
           items: json_.containsKey('items')
               ? JsonSchema.fromJson(
-                  json_['items'] as core.Map<core.String, core.dynamic>)
+                  json_['items'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           jdbcType: json_['jdbcType'] as core.String?,
           properties:
@@ -7601,7 +7720,9 @@ class JsonSchema {
                   ?.map(
             (key, value) => core.MapEntry(
               key,
-              JsonSchema.fromJson(value as core.Map<core.String, core.dynamic>),
+              JsonSchema.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           required: (json_['required'] as core.List?)
@@ -7636,16 +7757,16 @@ class ListActionsResponse {
   /// token for next page
   core.String? nextPageToken;
 
-  ListActionsResponse({
-    this.actions,
-    this.nextPageToken,
-  });
+  ListActionsResponse({this.actions, this.nextPageToken});
 
   ListActionsResponse.fromJson(core.Map json_)
       : this(
           actions: (json_['actions'] as core.List?)
-              ?.map((value) => RuntimeActionSchema.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RuntimeActionSchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -7676,8 +7797,11 @@ class ListConnectionsResponse {
   ListConnectionsResponse.fromJson(core.Map json_)
       : this(
           connections: (json_['connections'] as core.List?)
-              ?.map((value) => Connection.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Connection.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -7712,8 +7836,11 @@ class ListConnectorVersionsResponse {
   ListConnectorVersionsResponse.fromJson(core.Map json_)
       : this(
           connectorVersions: (json_['connectorVersions'] as core.List?)
-              ?.map((value) => ConnectorVersion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ConnectorVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -7748,8 +7875,11 @@ class ListConnectorsResponse {
   ListConnectorsResponse.fromJson(core.Map json_)
       : this(
           connectors: (json_['connectors'] as core.List?)
-              ?.map((value) => Connector.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Connector.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -7785,8 +7915,11 @@ class ListCustomConnectorVersionsResponse {
       : this(
           customConnectorVersions:
               (json_['customConnectorVersions'] as core.List?)
-                  ?.map((value) => CustomConnectorVersion.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => CustomConnectorVersion.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -7822,8 +7955,11 @@ class ListCustomConnectorsResponse {
   ListCustomConnectorsResponse.fromJson(core.Map json_)
       : this(
           customConnectors: (json_['customConnectors'] as core.List?)
-              ?.map((value) => CustomConnector.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CustomConnector.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -7858,8 +7994,11 @@ class ListEndpointAttachmentsResponse {
   ListEndpointAttachmentsResponse.fromJson(core.Map json_)
       : this(
           endpointAttachments: (json_['endpointAttachments'] as core.List?)
-              ?.map((value) => EndpointAttachment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => EndpointAttachment.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -7883,16 +8022,16 @@ class ListEntityTypesResponse {
   /// token for next page
   core.String? nextPageToken;
 
-  ListEntityTypesResponse({
-    this.entityTypes,
-    this.nextPageToken,
-  });
+  ListEntityTypesResponse({this.entityTypes, this.nextPageToken});
 
   ListEntityTypesResponse.fromJson(core.Map json_)
       : this(
           entityTypes: (json_['entityTypes'] as core.List?)
-              ?.map((value) => RuntimeEntitySchema.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RuntimeEntitySchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -7923,8 +8062,11 @@ class ListEventSubscriptionsResponse {
   ListEventSubscriptionsResponse.fromJson(core.Map json_)
       : this(
           eventSubscriptions: (json_['eventSubscriptions'] as core.List?)
-              ?.map((value) => EventSubscription.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => EventSubscription.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -7948,16 +8090,16 @@ class ListEventTypesResponse {
   /// Next page token.
   core.String? nextPageToken;
 
-  ListEventTypesResponse({
-    this.eventTypes,
-    this.nextPageToken,
-  });
+  ListEventTypesResponse({this.eventTypes, this.nextPageToken});
 
   ListEventTypesResponse.fromJson(core.Map json_)
       : this(
           eventTypes: (json_['eventTypes'] as core.List?)
-              ?.map((value) => EventType.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => EventType.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -7976,16 +8118,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -8004,16 +8146,16 @@ class ListManagedZonesResponse {
   /// Next page token.
   core.String? nextPageToken;
 
-  ListManagedZonesResponse({
-    this.managedZones,
-    this.nextPageToken,
-  });
+  ListManagedZonesResponse({this.managedZones, this.nextPageToken});
 
   ListManagedZonesResponse.fromJson(core.Map json_)
       : this(
           managedZones: (json_['managedZones'] as core.List?)
-              ?.map((value) => ManagedZone.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ManagedZone.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -8032,17 +8174,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8063,18 +8205,17 @@ class ListProvidersResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListProvidersResponse({
-    this.nextPageToken,
-    this.providers,
-    this.unreachable,
-  });
+  ListProvidersResponse({this.nextPageToken, this.providers, this.unreachable});
 
   ListProvidersResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           providers: (json_['providers'] as core.List?)
-              ?.map((value) => Provider.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Provider.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -8105,8 +8246,11 @@ class ListRuntimeActionSchemasResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           runtimeActionSchemas: (json_['runtimeActionSchemas'] as core.List?)
-              ?.map((value) => RuntimeActionSchema.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RuntimeActionSchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8134,8 +8278,11 @@ class ListRuntimeEntitySchemasResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           runtimeEntitySchemas: (json_['runtimeEntitySchemas'] as core.List?)
-              ?.map((value) => RuntimeEntitySchema.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RuntimeEntitySchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8156,9 +8303,7 @@ class ListenEventRequest {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? payload;
 
-  ListenEventRequest({
-    this.payload,
-  });
+  ListenEventRequest({this.payload});
 
   ListenEventRequest.fromJson(core.Map json_)
       : this(
@@ -8213,12 +8358,18 @@ class LogicalExpression {
   LogicalExpression.fromJson(core.Map json_)
       : this(
           fieldComparisons: (json_['fieldComparisons'] as core.List?)
-              ?.map((value) => FieldComparison.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => FieldComparison.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           logicalExpressions: (json_['logicalExpressions'] as core.List?)
-              ?.map((value) => LogicalExpression.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LogicalExpression.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           logicalOperator: json_['logicalOperator'] as core.String?,
         );
@@ -8296,10 +8447,7 @@ class ManagedZone {
           dns: json_['dns'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           targetProject: json_['targetProject'] as core.String?,
@@ -8388,8 +8536,11 @@ class MultipleSelectConfig {
       : this(
           allowCustomValues: json_['allowCustomValues'] as core.bool?,
           multipleSelectOptions: (json_['multipleSelectOptions'] as core.List?)
-              ?.map((value) => MultipleSelectOption.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MultipleSelectOption.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           valueSeparator: json_['valueSeparator'] as core.String?,
         );
@@ -8463,10 +8614,7 @@ class NetworkConfig {
   /// - "STATIC_IP" : Network egress through static IPs.
   core.String? egressMode;
 
-  NetworkConfig({
-    this.egressIps,
-    this.egressMode,
-  });
+  NetworkConfig({this.egressIps, this.egressMode});
 
   NetworkConfig.fromJson(core.Map json_)
       : this(
@@ -8532,7 +8680,8 @@ class Oauth2AuthCodeFlow {
           clientId: json_['clientId'] as core.String?,
           clientSecret: json_.containsKey('clientSecret')
               ? Secret.fromJson(
-                  json_['clientSecret'] as core.Map<core.String, core.dynamic>)
+                  json_['clientSecret'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           enablePkce: json_['enablePkce'] as core.bool?,
           pkceVerifier: json_['pkceVerifier'] as core.String?,
@@ -8570,17 +8719,15 @@ class Oauth2ClientCredentials {
   /// Secret version reference containing the client secret.
   Secret? clientSecret;
 
-  Oauth2ClientCredentials({
-    this.clientId,
-    this.clientSecret,
-  });
+  Oauth2ClientCredentials({this.clientId, this.clientSecret});
 
   Oauth2ClientCredentials.fromJson(core.Map json_)
       : this(
           clientId: json_['clientId'] as core.String?,
           clientSecret: json_.containsKey('clientSecret')
               ? Secret.fromJson(
-                  json_['clientSecret'] as core.Map<core.String, core.dynamic>)
+                  json_['clientSecret'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -8606,20 +8753,19 @@ class Oauth2JwtBearer {
   /// JwtClaims providers fields to generate the token.
   JwtClaims? jwtClaims;
 
-  Oauth2JwtBearer({
-    this.clientKey,
-    this.jwtClaims,
-  });
+  Oauth2JwtBearer({this.clientKey, this.jwtClaims});
 
   Oauth2JwtBearer.fromJson(core.Map json_)
       : this(
           clientKey: json_.containsKey('clientKey')
               ? Secret.fromJson(
-                  json_['clientKey'] as core.Map<core.String, core.dynamic>)
+                  json_['clientKey'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           jwtClaims: json_.containsKey('jwtClaims')
               ? JwtClaims.fromJson(
-                  json_['jwtClaims'] as core.Map<core.String, core.dynamic>)
+                  json_['jwtClaims'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -8672,20 +8818,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -8946,22 +9087,23 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -9062,10 +9204,7 @@ class Provider {
           externalUri: json_['externalUri'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           launchStage: json_['launchStage'] as core.String?,
           name: json_['name'] as core.String?,
@@ -9095,15 +9234,15 @@ class PublishCustomConnectorVersionRequest {
   /// Required.
   PartnerMetadata? partnerMetadata;
 
-  PublishCustomConnectorVersionRequest({
-    this.partnerMetadata,
-  });
+  PublishCustomConnectorVersionRequest({this.partnerMetadata});
 
   PublishCustomConnectorVersionRequest.fromJson(core.Map json_)
       : this(
           partnerMetadata: json_.containsKey('partnerMetadata')
-              ? PartnerMetadata.fromJson(json_['partnerMetadata']
-                  as core.Map<core.String, core.dynamic>)
+              ? PartnerMetadata.fromJson(
+                  json_['partnerMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -9208,13 +9347,16 @@ class RegionalSettings {
   RegionalSettings.fromJson(core.Map json_)
       : this(
           encryptionConfig: json_.containsKey('encryptionConfig')
-              ? EncryptionConfig.fromJson(json_['encryptionConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? EncryptionConfig.fromJson(
+                  json_['encryptionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           networkConfig: json_.containsKey('networkConfig')
               ? NetworkConfig.fromJson(
-                  json_['networkConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['networkConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           provisioned: json_['provisioned'] as core.bool?,
         );
@@ -9252,10 +9394,7 @@ class Resource {
   /// Resource.
   core.String? type;
 
-  Resource({
-    this.pathTemplate,
-    this.type,
-  });
+  Resource({this.pathTemplate, this.type});
 
   Resource.fromJson(core.Map json_)
       : this(
@@ -9365,7 +9504,8 @@ class ResultMetadata {
           field: json_['field'] as core.String?,
           jsonSchema: json_.containsKey('jsonSchema')
               ? JsonSchema.fromJson(
-                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           nullable: json_['nullable'] as core.bool?,
         );
@@ -9429,7 +9569,8 @@ class RoleGrant {
           principal: json_['principal'] as core.String?,
           resource: json_.containsKey('resource')
               ? Resource.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>)
+                  json_['resource'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           roles: (json_['roles'] as core.List?)
               ?.map((value) => value as core.String)
@@ -9510,21 +9651,31 @@ class RuntimeActionSchema {
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           inputJsonSchema: json_.containsKey('inputJsonSchema')
-              ? JsonSchema.fromJson(json_['inputJsonSchema']
-                  as core.Map<core.String, core.dynamic>)
+              ? JsonSchema.fromJson(
+                  json_['inputJsonSchema']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           inputParameters: (json_['inputParameters'] as core.List?)
-              ?.map((value) => InputParameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => InputParameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           inputSchemaAsString: json_['inputSchemaAsString'] as core.String?,
           resultJsonSchema: json_.containsKey('resultJsonSchema')
-              ? JsonSchema.fromJson(json_['resultJsonSchema']
-                  as core.Map<core.String, core.dynamic>)
+              ? JsonSchema.fromJson(
+                  json_['resultJsonSchema']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           resultMetadata: (json_['resultMetadata'] as core.List?)
-              ?.map((value) => ResultMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ResultMetadata.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           resultSchemaAsString: json_['resultSchemaAsString'] as core.String?,
         );
@@ -9694,12 +9845,16 @@ class RuntimeEntitySchema {
       : this(
           entity: json_['entity'] as core.String?,
           fields: (json_['fields'] as core.List?)
-              ?.map((value) =>
-                  Field.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Field.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           jsonSchema: json_.containsKey('jsonSchema')
               ? JsonSchema.fromJson(
-                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           operations: (json_['operations'] as core.List?)
               ?.map((value) => value as core.String)
@@ -9770,15 +9925,18 @@ class SearchConnectionInstance {
       : this(
           actionSchema: json_.containsKey('actionSchema')
               ? RuntimeActionSchema.fromJson(
-                  json_['actionSchema'] as core.Map<core.String, core.dynamic>)
+                  json_['actionSchema'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           connection: json_.containsKey('connection')
               ? Connection.fromJson(
-                  json_['connection'] as core.Map<core.String, core.dynamic>)
+                  json_['connection'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           entitySchema: json_.containsKey('entitySchema')
               ? RuntimeEntitySchema.fromJson(
-                  json_['entitySchema'] as core.Map<core.String, core.dynamic>)
+                  json_['entitySchema'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -9811,8 +9969,11 @@ class SearchConnectionsResponse {
   SearchConnectionsResponse.fromJson(core.Map json_)
       : this(
           connections: (json_['connections'] as core.List?)
-              ?.map((value) => SearchConnectionInstance.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => SearchConnectionInstance.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -9845,16 +10006,14 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -9889,12 +10048,7 @@ class Settings {
   /// Optional.
   core.bool? vpcsc;
 
-  Settings({
-    this.name,
-    this.payg,
-    this.tenantProjectId,
-    this.vpcsc,
-  });
+  Settings({this.name, this.payg, this.tenantProjectId, this.vpcsc});
 
   Settings.fromJson(core.Map json_)
       : this(
@@ -9925,10 +10079,7 @@ class Source {
   /// - "CONFIG_VARIABLE" : Config Variable source type.
   core.String? sourceType;
 
-  Source({
-    this.fieldId,
-    this.sourceType,
-  });
+  Source({this.fieldId, this.sourceType});
 
   Source.fromJson(core.Map json_)
       : this(
@@ -9970,11 +10121,14 @@ class SshPublicKey {
           certType: json_['certType'] as core.String?,
           sshClientCert: json_.containsKey('sshClientCert')
               ? Secret.fromJson(
-                  json_['sshClientCert'] as core.Map<core.String, core.dynamic>)
+                  json_['sshClientCert'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sshClientCertPass: json_.containsKey('sshClientCertPass')
-              ? Secret.fromJson(json_['sshClientCertPass']
-                  as core.Map<core.String, core.dynamic>)
+              ? Secret.fromJson(
+                  json_['sshClientCertPass']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           username: json_['username'] as core.String?,
         );
@@ -10075,26 +10229,37 @@ class SslConfig {
   SslConfig.fromJson(core.Map json_)
       : this(
           additionalVariables: (json_['additionalVariables'] as core.List?)
-              ?.map((value) => ConfigVariable.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ConfigVariable.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           clientCertType: json_['clientCertType'] as core.String?,
           clientCertificate: json_.containsKey('clientCertificate')
-              ? Secret.fromJson(json_['clientCertificate']
-                  as core.Map<core.String, core.dynamic>)
+              ? Secret.fromJson(
+                  json_['clientCertificate']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           clientPrivateKey: json_.containsKey('clientPrivateKey')
-              ? Secret.fromJson(json_['clientPrivateKey']
-                  as core.Map<core.String, core.dynamic>)
+              ? Secret.fromJson(
+                  json_['clientPrivateKey']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           clientPrivateKeyPass: json_.containsKey('clientPrivateKeyPass')
-              ? Secret.fromJson(json_['clientPrivateKeyPass']
-                  as core.Map<core.String, core.dynamic>)
+              ? Secret.fromJson(
+                  json_['clientPrivateKeyPass']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           privateServerCertificate:
               json_.containsKey('privateServerCertificate')
-                  ? Secret.fromJson(json_['privateServerCertificate']
-                      as core.Map<core.String, core.dynamic>)
+                  ? Secret.fromJson(
+                      json_['privateServerCertificate']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           serverCertType: json_['serverCertType'] as core.String?,
           trustModel: json_['trustModel'] as core.String?,
@@ -10151,8 +10316,11 @@ class SslConfigTemplate {
   SslConfigTemplate.fromJson(core.Map json_)
       : this(
           additionalVariables: (json_['additionalVariables'] as core.List?)
-              ?.map((value) => ConfigVariableTemplate.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ConfigVariableTemplate.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           clientCertType: (json_['clientCertType'] as core.List?)
               ?.map((value) => value as core.String)
@@ -10179,14 +10347,10 @@ class StandardAction {
   /// Name of the standard action.
   core.String? name;
 
-  StandardAction({
-    this.name,
-  });
+  StandardAction({this.name});
 
   StandardAction.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+      : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -10198,14 +10362,10 @@ class StandardEntity {
   /// Name of the standard entity.
   core.String? name;
 
-  StandardEntity({
-    this.name,
-  });
+  StandardEntity({this.name});
 
   StandardEntity.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+      : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -10232,11 +10392,7 @@ class SupportedRuntimeFeatures {
   /// Specifies if the connector supports 'ExecuteSqlQuery' operation.
   core.bool? sqlQuery;
 
-  SupportedRuntimeFeatures({
-    this.actionApis,
-    this.entityApis,
-    this.sqlQuery,
-  });
+  SupportedRuntimeFeatures({this.actionApis, this.entityApis, this.sqlQuery});
 
   SupportedRuntimeFeatures.fromJson(core.Map json_)
       : this(
@@ -10266,16 +10422,14 @@ class UserPassword {
   /// Username.
   core.String? username;
 
-  UserPassword({
-    this.password,
-    this.username,
-  });
+  UserPassword({this.password, this.username});
 
   UserPassword.fromJson(core.Map json_)
       : this(
           password: json_.containsKey('password')
               ? Secret.fromJson(
-                  json_['password'] as core.Map<core.String, core.dynamic>)
+                  json_['password'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           username: json_['username'] as core.String?,
         );
@@ -10337,14 +10491,10 @@ class ValidateCustomConnectorSpecResponse {
   /// The spec is valid if the error message is empty.
   core.String? errorMessage;
 
-  ValidateCustomConnectorSpecResponse({
-    this.errorMessage,
-  });
+  ValidateCustomConnectorSpecResponse({this.errorMessage});
 
   ValidateCustomConnectorSpecResponse.fromJson(core.Map json_)
-      : this(
-          errorMessage: json_['errorMessage'] as core.String?,
-        );
+      : this(errorMessage: json_['errorMessage'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorMessage != null) 'errorMessage': errorMessage!,
@@ -10397,8 +10547,11 @@ class WebhookData {
   WebhookData.fromJson(core.Map json_)
       : this(
           additionalVariables: (json_['additionalVariables'] as core.List?)
-              ?.map((value) => ConfigVariable.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ConfigVariable.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           createTime: json_['createTime'] as core.String?,
           id: json_['id'] as core.String?,
@@ -10425,15 +10578,16 @@ class WebhookSubscriptions {
   /// Output only.
   core.List<WebhookData>? webhookData;
 
-  WebhookSubscriptions({
-    this.webhookData,
-  });
+  WebhookSubscriptions({this.webhookData});
 
   WebhookSubscriptions.fromJson(core.Map json_)
       : this(
           webhookData: (json_['webhookData'] as core.List?)
-              ?.map((value) => WebhookData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => WebhookData.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 

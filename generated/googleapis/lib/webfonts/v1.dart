@@ -43,11 +43,16 @@ class WebfontsApi {
 
   WebfontsResource get webfonts => WebfontsResource(_requester);
 
-  WebfontsApi(http.Client client,
-      {core.String rootUrl = 'https://webfonts.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  WebfontsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://webfonts.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class WebfontsResource {
@@ -111,7 +116,8 @@ class WebfontsResource {
       queryParams: queryParams_,
     );
     return WebfontList.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -126,11 +132,7 @@ class Axis {
   /// tag name.
   core.String? tag;
 
-  Axis({
-    this.end,
-    this.start,
-    this.tag,
-  });
+  Axis({this.end, this.start, this.tag});
 
   Axis.fromJson(core.Map json_)
       : this(
@@ -200,8 +202,11 @@ class Webfont {
   Webfont.fromJson(core.Map json_)
       : this(
           axes: (json_['axes'] as core.List?)
-              ?.map((value) =>
-                  Axis.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Axis.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           category: json_['category'] as core.String?,
           colorCapabilities: (json_['colorCapabilities'] as core.List?)
@@ -209,10 +214,7 @@ class Webfont {
               .toList(),
           family: json_['family'] as core.String?,
           files: (json_['files'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           kind: json_['kind'] as core.String?,
           lastModified: json_['lastModified'] as core.String?,
@@ -250,16 +252,16 @@ class WebfontList {
   /// This kind represents a list of webfont objects in the webfonts service.
   core.String? kind;
 
-  WebfontList({
-    this.items,
-    this.kind,
-  });
+  WebfontList({this.items, this.kind});
 
   WebfontList.fromJson(core.Map json_)
       : this(
           items: (json_['items'] as core.List?)
-              ?.map((value) => Webfont.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Webfont.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );

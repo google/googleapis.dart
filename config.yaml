@@ -42,6 +42,7 @@ packages:
     - apikeys:v2
     - appengine:v1 # https://cloud.google.com/appengine/docs/admin-api/
     - apphub:v1
+    - areainsights:v1
     - artifactregistry:v1
     - assuredworkloads:v1
     - authorizedbuyersmarketplace:v1

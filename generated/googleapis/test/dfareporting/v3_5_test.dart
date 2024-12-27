@@ -43,14 +43,8 @@ void checkClickTag(api.ClickTag o) {
   buildCounterClickTag++;
   if (buildCounterClickTag < 3) {
     checkCreativeClickThroughUrl(o.clickThroughUrl!);
-    unittest.expect(
-      o.eventName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.eventName!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterClickTag--;
 }
@@ -70,22 +64,13 @@ api.CreativeAssetId buildCreativeAssetId() {
 void checkCreativeAssetId(api.CreativeAssetId o) {
   buildCounterCreativeAssetId++;
   if (buildCounterCreativeAssetId < 3) {
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterCreativeAssetId--;
 }
 
-core.List<api.ClickTag> buildUnnamed0() => [
-      buildClickTag(),
-      buildClickTag(),
-    ];
+core.List<api.ClickTag> buildUnnamed0() => [buildClickTag(), buildClickTag()];
 
 void checkUnnamed0(core.List<api.ClickTag> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -104,21 +89,12 @@ void checkUnnamed1(core.List<api.CreativeCustomEvent> o) {
   checkCreativeCustomEvent(o[1]);
 }
 
-core.List<core.String> buildUnnamed2() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed2() => ['foo', 'foo'];
 
 void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.List<api.CreativeCustomEvent> buildUnnamed3() => [
@@ -143,21 +119,12 @@ void checkUnnamed4(core.List<api.CreativeCustomEvent> o) {
   checkCreativeCustomEvent(o[1]);
 }
 
-core.List<core.String> buildUnnamed5() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed5() => ['foo', 'foo'];
 
 void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterCreativeAssetMetadata = 0;
@@ -189,15 +156,9 @@ void checkCreativeAssetMetadata(api.CreativeAssetMetadata o) {
     checkUnnamed1(o.counterCustomEvents!);
     checkUnnamed2(o.detectedFeatures!);
     checkUnnamed3(o.exitCustomEvents!);
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.id!, unittest.equals('foo'));
     checkDimensionValue(o.idDimensionValue!);
-    unittest.expect(
-      o.kind!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.kind!, unittest.equals('foo'));
     unittest.expect(o.richMedia!, unittest.isTrue);
     checkUnnamed4(o.timerCustomEvents!);
     checkUnnamed5(o.warnedValidationRules!);
@@ -221,18 +182,9 @@ api.CreativeClickThroughUrl buildCreativeClickThroughUrl() {
 void checkCreativeClickThroughUrl(api.CreativeClickThroughUrl o) {
   buildCounterCreativeClickThroughUrl++;
   if (buildCounterCreativeClickThroughUrl < 3) {
-    unittest.expect(
-      o.computedClickThroughUrl!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.customClickThroughUrl!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.landingPageId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.computedClickThroughUrl!, unittest.equals('foo'));
+    unittest.expect(o.customClickThroughUrl!, unittest.equals('foo'));
+    unittest.expect(o.landingPageId!, unittest.equals('foo'));
   }
   buildCounterCreativeClickThroughUrl--;
 }
@@ -260,40 +212,16 @@ api.CreativeCustomEvent buildCreativeCustomEvent() {
 void checkCreativeCustomEvent(api.CreativeCustomEvent o) {
   buildCounterCreativeCustomEvent++;
   if (buildCounterCreativeCustomEvent < 3) {
-    unittest.expect(
-      o.advertiserCustomEventId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.advertiserCustomEventName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.advertiserCustomEventType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.artworkLabel!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.artworkType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.advertiserCustomEventId!, unittest.equals('foo'));
+    unittest.expect(o.advertiserCustomEventName!, unittest.equals('foo'));
+    unittest.expect(o.advertiserCustomEventType!, unittest.equals('foo'));
+    unittest.expect(o.artworkLabel!, unittest.equals('foo'));
+    unittest.expect(o.artworkType!, unittest.equals('foo'));
     checkCreativeClickThroughUrl(o.exitClickThroughUrl!);
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.id!, unittest.equals('foo'));
     checkPopupWindowProperties(o.popupWindowProperties!);
-    unittest.expect(
-      o.targetType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.videoReportingId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.targetType!, unittest.equals('foo'));
+    unittest.expect(o.videoReportingId!, unittest.equals('foo'));
   }
   buildCounterCreativeCustomEvent--;
 }
@@ -317,30 +245,12 @@ api.DimensionValue buildDimensionValue() {
 void checkDimensionValue(api.DimensionValue o) {
   buildCounterDimensionValue++;
   if (buildCounterDimensionValue < 3) {
-    unittest.expect(
-      o.dimensionName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.etag!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.kind!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.matchType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.value!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dimensionName!, unittest.equals('foo'));
+    unittest.expect(o.etag!, unittest.equals('foo'));
+    unittest.expect(o.id!, unittest.equals('foo'));
+    unittest.expect(o.kind!, unittest.equals('foo'));
+    unittest.expect(o.matchType!, unittest.equals('foo'));
+    unittest.expect(o.value!, unittest.equals('foo'));
   }
   buildCounterDimensionValue--;
 }
@@ -360,14 +270,8 @@ api.OffsetPosition buildOffsetPosition() {
 void checkOffsetPosition(api.OffsetPosition o) {
   buildCounterOffsetPosition++;
   if (buildCounterOffsetPosition < 3) {
-    unittest.expect(
-      o.left!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.top!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.left!, unittest.equals(42));
+    unittest.expect(o.top!, unittest.equals(42));
   }
   buildCounterOffsetPosition--;
 }
@@ -396,19 +300,13 @@ void checkPopupWindowProperties(api.PopupWindowProperties o) {
   if (buildCounterPopupWindowProperties < 3) {
     checkSize(o.dimension!);
     checkOffsetPosition(o.offset!);
-    unittest.expect(
-      o.positionType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.positionType!, unittest.equals('foo'));
     unittest.expect(o.showAddressBar!, unittest.isTrue);
     unittest.expect(o.showMenuBar!, unittest.isTrue);
     unittest.expect(o.showScrollBar!, unittest.isTrue);
     unittest.expect(o.showStatusBar!, unittest.isTrue);
     unittest.expect(o.showToolBar!, unittest.isTrue);
-    unittest.expect(
-      o.title!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.title!, unittest.equals('foo'));
   }
   buildCounterPopupWindowProperties--;
 }
@@ -431,23 +329,11 @@ api.Size buildSize() {
 void checkSize(api.Size o) {
   buildCounterSize++;
   if (buildCounterSize < 3) {
-    unittest.expect(
-      o.height!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.height!, unittest.equals(42));
     unittest.expect(o.iab!, unittest.isTrue);
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.kind!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.width!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.id!, unittest.equals('foo'));
+    unittest.expect(o.kind!, unittest.equals('foo'));
+    unittest.expect(o.width!, unittest.equals(42));
   }
   buildCounterSize--;
 }
@@ -457,8 +343,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildClickTag();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.ClickTag.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.ClickTag.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkClickTag(od);
     });
   });
@@ -468,7 +355,8 @@ void main() {
       final o = buildCreativeAssetId();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CreativeAssetId.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCreativeAssetId(od);
     });
   });
@@ -478,7 +366,8 @@ void main() {
       final o = buildCreativeAssetMetadata();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CreativeAssetMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCreativeAssetMetadata(od);
     });
   });
@@ -488,7 +377,8 @@ void main() {
       final o = buildCreativeClickThroughUrl();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CreativeClickThroughUrl.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCreativeClickThroughUrl(od);
     });
   });
@@ -498,7 +388,8 @@ void main() {
       final o = buildCreativeCustomEvent();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CreativeCustomEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCreativeCustomEvent(od);
     });
   });
@@ -508,7 +399,8 @@ void main() {
       final o = buildDimensionValue();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DimensionValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDimensionValue(od);
     });
   });
@@ -518,7 +410,8 @@ void main() {
       final o = buildOffsetPosition();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.OffsetPosition.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkOffsetPosition(od);
     });
   });
@@ -528,7 +421,8 @@ void main() {
       final o = buildPopupWindowProperties();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PopupWindowProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPopupWindowProperties(od);
     });
   });
@@ -537,8 +431,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildSize();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Size.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Size.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSize(od);
     });
   });
@@ -554,61 +449,66 @@ void main() {
       final arg_profileId = 'foo';
       final arg_advertiserId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.CreativeAssetMetadata.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkCreativeAssetMetadata(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.CreativeAssetMetadata.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkCreativeAssetMetadata(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 18),
-          unittest.equals('dfareporting/v3.5/'),
-        );
-        pathOffset += 18;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 13),
-          unittest.equals('userprofiles/'),
-        );
-        pathOffset += 13;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 18),
+            unittest.equals('dfareporting/v3.5/'),
+          );
+          pathOffset += 18;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 13),
+            unittest.equals('userprofiles/'),
+          );
+          pathOffset += 13;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildCreativeAssetMetadata());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildCreativeAssetMetadata());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.upload(
-          arg_request, arg_profileId, arg_advertiserId,
-          $fields: arg_$fields);
+        arg_request,
+        arg_profileId,
+        arg_advertiserId,
+        $fields: arg_$fields,
+      );
       checkCreativeAssetMetadata(response as api.CreativeAssetMetadata);
     });
   });

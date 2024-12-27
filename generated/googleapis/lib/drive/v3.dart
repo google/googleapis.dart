@@ -117,11 +117,16 @@ class DriveApi {
   RevisionsResource get revisions => RevisionsResource(_requester);
   TeamdrivesResource get teamdrives => TeamdrivesResource(_requester);
 
-  DriveApi(http.Client client,
-      {core.String rootUrl = 'https://www.googleapis.com/',
-      core.String servicePath = 'drive/v3/'})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DriveApi(
+    http.Client client, {
+    core.String rootUrl = 'https://www.googleapis.com/',
+    core.String servicePath = 'drive/v3/',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class AboutResource {
@@ -150,9 +155,7 @@ class AboutResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<About> get({
-    core.String? $fields,
-  }) async {
+  async.Future<About> get({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -211,7 +214,8 @@ class AccessproposalsResource {
       queryParams: queryParams_,
     );
     return AccessProposal.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List the AccessProposals on a file.
@@ -259,7 +263,8 @@ class AccessproposalsResource {
       queryParams: queryParams_,
     );
     return ListAccessProposalsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Used to approve or deny an Access Proposal.
@@ -331,10 +336,7 @@ class AppsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<App> get(
-    core.String appId, {
-    core.String? $fields,
-  }) async {
+  async.Future<App> get(core.String appId, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -465,7 +467,8 @@ class ChangesResource {
       queryParams: queryParams_,
     );
     return StartPageToken.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the changes for a user or shared drive.
@@ -582,7 +585,8 @@ class ChangesResource {
       queryParams: queryParams_,
     );
     return ChangeList.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Subscribes to changes for a user.
@@ -729,10 +733,7 @@ class ChannelsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> stop(
-    Channel request, {
-    core.String? $fields,
-  }) async {
+  async.Future<void> stop(Channel request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -954,7 +955,8 @@ class CommentsResource {
       queryParams: queryParams_,
     );
     return CommentList.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a comment with patch semantics.
@@ -1163,10 +1165,7 @@ class DrivesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Drive> hide(
-    core.String driveId, {
-    core.String? $fields,
-  }) async {
+  async.Future<Drive> hide(core.String driveId, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1784,7 +1783,8 @@ class FilesResource {
       queryParams: queryParams_,
     );
     return GeneratedIds.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   ///  Gets a file's metadata or content by ID.
@@ -2093,7 +2093,8 @@ class FilesResource {
       queryParams: queryParams_,
     );
     return ModifyLabelsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   ///  Updates a file's metadata and/or content.
@@ -2316,10 +2317,7 @@ class OperationResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> cancel(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<void> cancel(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2352,10 +2350,7 @@ class OperationResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<void> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2395,10 +2390,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2460,7 +2452,8 @@ class OperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2562,7 +2555,8 @@ class PermissionsResource {
       queryParams: queryParams_,
     );
     return Permission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a permission.
@@ -2682,7 +2676,8 @@ class PermissionsResource {
       queryParams: queryParams_,
     );
     return Permission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists a file's or shared drive's permissions.
@@ -2756,7 +2751,8 @@ class PermissionsResource {
       queryParams: queryParams_,
     );
     return PermissionList.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a permission with patch semantics.
@@ -2835,7 +2831,8 @@ class PermissionsResource {
       queryParams: queryParams_,
     );
     return Permission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3194,7 +3191,8 @@ class RevisionsResource {
     );
     if (downloadOptions.isMetadataDownload) {
       return Revision.fromJson(
-          response_ as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>,
+      );
     } else {
       return response_ as commons.Media;
     }
@@ -3243,7 +3241,8 @@ class RevisionsResource {
       queryParams: queryParams_,
     );
     return RevisionList.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a revision with patch semantics.
@@ -3463,7 +3462,8 @@ class TeamdrivesResource {
       queryParams: queryParams_,
     );
     return TeamDriveList.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deprecated: Use `drives.update` instead.
@@ -3523,11 +3523,7 @@ class AboutDriveThemes {
   /// The ID of the theme.
   core.String? id;
 
-  AboutDriveThemes({
-    this.backgroundImageLink,
-    this.colorRgb,
-    this.id,
-  });
+  AboutDriveThemes({this.backgroundImageLink, this.colorRgb, this.id});
 
   AboutDriveThemes.fromJson(core.Map json_)
       : this(
@@ -3612,11 +3608,7 @@ class AboutTeamDriveThemes {
   )
   core.String? id;
 
-  AboutTeamDriveThemes({
-    this.backgroundImageLink,
-    this.colorRgb,
-    this.id,
-  });
+  AboutTeamDriveThemes({this.backgroundImageLink, this.colorRgb, this.id});
 
   AboutTeamDriveThemes.fromJson(core.Map json_)
       : this(
@@ -3709,8 +3701,11 @@ class About {
           canCreateDrives: json_['canCreateDrives'] as core.bool?,
           canCreateTeamDrives: json_['canCreateTeamDrives'] as core.bool?,
           driveThemes: (json_['driveThemes'] as core.List?)
-              ?.map((value) => AboutDriveThemes.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AboutDriveThemes.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           exportFormats:
               (json_['exportFormats'] as core.Map<core.String, core.dynamic>?)
@@ -3736,26 +3731,26 @@ class About {
             ),
           ),
           kind: json_['kind'] as core.String?,
-          maxImportSizes:
-              (json_['maxImportSizes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          maxImportSizes: (json_['maxImportSizes']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           maxUploadSize: json_['maxUploadSize'] as core.String?,
           storageQuota: json_.containsKey('storageQuota')
               ? AboutStorageQuota.fromJson(
-                  json_['storageQuota'] as core.Map<core.String, core.dynamic>)
+                  json_['storageQuota'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           teamDriveThemes: (json_['teamDriveThemes'] as core.List?)
-              ?.map((value) => AboutTeamDriveThemes.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AboutTeamDriveThemes.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           user: json_.containsKey('user')
               ? User.fromJson(
-                  json_['user'] as core.Map<core.String, core.dynamic>)
+                  json_['user'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3820,8 +3815,11 @@ class AccessProposal {
           requestMessage: json_['requestMessage'] as core.String?,
           requesterEmailAddress: json_['requesterEmailAddress'] as core.String?,
           rolesAndViews: (json_['rolesAndViews'] as core.List?)
-              ?.map((value) => AccessProposalRoleAndView.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccessProposalRoleAndView.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3851,10 +3849,7 @@ class AccessProposalRoleAndView {
   /// only supported value.
   core.String? view;
 
-  AccessProposalRoleAndView({
-    this.role,
-    this.view,
-  });
+  AccessProposalRoleAndView({this.role, this.view});
 
   AccessProposalRoleAndView.fromJson(core.Map json_)
       : this(
@@ -3997,8 +3992,11 @@ class App {
           createUrl: json_['createUrl'] as core.String?,
           hasDriveWideScope: json_['hasDriveWideScope'] as core.bool?,
           icons: (json_['icons'] as core.List?)
-              ?.map((value) => AppIcons.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AppIcons.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           id: json_['id'] as core.String?,
           installed: json_['installed'] as core.bool?,
@@ -4079,11 +4077,7 @@ class AppIcons {
   /// Represented as the maximum of the width and height.
   core.int? size;
 
-  AppIcons({
-    this.category,
-    this.iconUrl,
-    this.size,
-  });
+  AppIcons({this.category, this.iconUrl, this.size});
 
   AppIcons.fromJson(core.Map json_)
       : this(
@@ -4120,12 +4114,7 @@ class AppList {
   /// A link back to this list.
   core.String? selfLink;
 
-  AppList({
-    this.defaultAppIds,
-    this.items,
-    this.kind,
-    this.selfLink,
-  });
+  AppList({this.defaultAppIds, this.items, this.kind, this.selfLink});
 
   AppList.fromJson(core.Map json_)
       : this(
@@ -4133,8 +4122,11 @@ class AppList {
               ?.map((value) => value as core.String)
               .toList(),
           items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  App.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => App.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           selfLink: json_['selfLink'] as core.String?,
@@ -4222,19 +4214,22 @@ class Change {
           changeType: json_['changeType'] as core.String?,
           drive: json_.containsKey('drive')
               ? Drive.fromJson(
-                  json_['drive'] as core.Map<core.String, core.dynamic>)
+                  json_['drive'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           driveId: json_['driveId'] as core.String?,
           file: json_.containsKey('file')
               ? File.fromJson(
-                  json_['file'] as core.Map<core.String, core.dynamic>)
+                  json_['file'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           fileId: json_['fileId'] as core.String?,
           kind: json_['kind'] as core.String?,
           removed: json_['removed'] as core.bool?,
           teamDrive: json_.containsKey('teamDrive')
               ? TeamDrive.fromJson(
-                  json_['teamDrive'] as core.Map<core.String, core.dynamic>)
+                  json_['teamDrive'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           teamDriveId: json_['teamDriveId'] as core.String?,
           time: json_.containsKey('time')
@@ -4293,8 +4288,11 @@ class ChangeList {
   ChangeList.fromJson(core.Map json_)
       : this(
           changes: (json_['changes'] as core.List?)
-              ?.map((value) =>
-                  Change.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Change.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           newStartPageToken: json_['newStartPageToken'] as core.String?,
@@ -4326,10 +4324,7 @@ class CommentQuotedFileContent {
   /// This is interpreted as plain text if set through the API.
   core.String? value;
 
-  CommentQuotedFileContent({
-    this.mimeType,
-    this.value,
-  });
+  CommentQuotedFileContent({this.mimeType, this.value});
 
   CommentQuotedFileContent.fromJson(core.Map json_)
       : this(
@@ -4435,7 +4430,8 @@ class Comment {
           anchor: json_['anchor'] as core.String?,
           author: json_.containsKey('author')
               ? User.fromJson(
-                  json_['author'] as core.Map<core.String, core.dynamic>)
+                  json_['author'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           content: json_['content'] as core.String?,
           createdTime: json_.containsKey('createdTime')
@@ -4449,12 +4445,17 @@ class Comment {
               ? core.DateTime.parse(json_['modifiedTime'] as core.String)
               : null,
           quotedFileContent: json_.containsKey('quotedFileContent')
-              ? CommentQuotedFileContent.fromJson(json_['quotedFileContent']
-                  as core.Map<core.String, core.dynamic>)
+              ? CommentQuotedFileContent.fromJson(
+                  json_['quotedFileContent']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           replies: (json_['replies'] as core.List?)
-              ?.map((value) =>
-                  Reply.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Reply.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           resolved: json_['resolved'] as core.bool?,
         );
@@ -4499,17 +4500,16 @@ class CommentList {
   /// added or removed, your expected results might differ.
   core.String? nextPageToken;
 
-  CommentList({
-    this.comments,
-    this.kind,
-    this.nextPageToken,
-  });
+  CommentList({this.comments, this.kind, this.nextPageToken});
 
   CommentList.fromJson(core.Map json_)
       : this(
           comments: (json_['comments'] as core.List?)
-              ?.map((value) => Comment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Comment.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
@@ -4587,8 +4587,10 @@ class ContentRestriction {
           readOnly: json_['readOnly'] as core.bool?,
           reason: json_['reason'] as core.String?,
           restrictingUser: json_.containsKey('restrictingUser')
-              ? User.fromJson(json_['restrictingUser']
-                  as core.Map<core.String, core.dynamic>)
+              ? User.fromJson(
+                  json_['restrictingUser']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           restrictionTime: json_.containsKey('restrictionTime')
               ? core.DateTime.parse(json_['restrictionTime'] as core.String)
@@ -5036,13 +5038,16 @@ class Drive {
   Drive.fromJson(core.Map json_)
       : this(
           backgroundImageFile: json_.containsKey('backgroundImageFile')
-              ? DriveBackgroundImageFile.fromJson(json_['backgroundImageFile']
-                  as core.Map<core.String, core.dynamic>)
+              ? DriveBackgroundImageFile.fromJson(
+                  json_['backgroundImageFile']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           backgroundImageLink: json_['backgroundImageLink'] as core.String?,
           capabilities: json_.containsKey('capabilities')
               ? DriveCapabilities.fromJson(
-                  json_['capabilities'] as core.Map<core.String, core.dynamic>)
+                  json_['capabilities'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           colorRgb: json_['colorRgb'] as core.String?,
           createdTime: json_.containsKey('createdTime')
@@ -5055,7 +5060,8 @@ class Drive {
           orgUnitId: json_['orgUnitId'] as core.String?,
           restrictions: json_.containsKey('restrictions')
               ? DriveRestrictions.fromJson(
-                  json_['restrictions'] as core.Map<core.String, core.dynamic>)
+                  json_['restrictions'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           themeId: json_['themeId'] as core.String?,
         );
@@ -5101,17 +5107,16 @@ class DriveList {
   /// expected results might differ.
   core.String? nextPageToken;
 
-  DriveList({
-    this.drives,
-    this.kind,
-    this.nextPageToken,
-  });
+  DriveList({this.drives, this.kind, this.nextPageToken});
 
   DriveList.fromJson(core.Map json_)
       : this(
           drives: (json_['drives'] as core.List?)
-              ?.map((value) =>
-                  Drive.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Drive.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
@@ -5610,10 +5615,7 @@ class FileContentHintsThumbnail {
   /// The MIME type of the thumbnail.
   core.String? mimeType;
 
-  FileContentHintsThumbnail({
-    this.image,
-    this.mimeType,
-  });
+  FileContentHintsThumbnail({this.image, this.mimeType});
 
   FileContentHintsThumbnail.fromJson(core.Map json_)
       : this(
@@ -5642,17 +5644,15 @@ class FileContentHints {
   /// thumbnail.
   FileContentHintsThumbnail? thumbnail;
 
-  FileContentHints({
-    this.indexableText,
-    this.thumbnail,
-  });
+  FileContentHints({this.indexableText, this.thumbnail});
 
   FileContentHints.fromJson(core.Map json_)
       : this(
           indexableText: json_['indexableText'] as core.String?,
           thumbnail: json_.containsKey('thumbnail')
               ? FileContentHintsThumbnail.fromJson(
-                  json_['thumbnail'] as core.Map<core.String, core.dynamic>)
+                  json_['thumbnail'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -5852,7 +5852,8 @@ class FileImageMediaMetadata {
           lens: json_['lens'] as core.String?,
           location: json_.containsKey('location')
               ? FileImageMediaMetadataLocation.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>)
+                  json_['location'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           maxApertureValue:
               (json_['maxApertureValue'] as core.num?)?.toDouble(),
@@ -5902,15 +5903,16 @@ class FileLabelInfo {
   /// Output only.
   core.List<Label>? labels;
 
-  FileLabelInfo({
-    this.labels,
-  });
+  FileLabelInfo({this.labels});
 
   FileLabelInfo.fromJson(core.Map json_)
       : this(
           labels: (json_['labels'] as core.List?)
-              ?.map((value) =>
-                  Label.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Label.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -6016,11 +6018,7 @@ class FileVideoMediaMetadata {
   /// Output only.
   core.int? width;
 
-  FileVideoMediaMetadata({
-    this.durationMillis,
-    this.height,
-    this.width,
-  });
+  FileVideoMediaMetadata({this.durationMillis, this.height, this.width});
 
   FileVideoMediaMetadata.fromJson(core.Map json_)
       : this(
@@ -6500,25 +6498,25 @@ class File {
 
   File.fromJson(core.Map json_)
       : this(
-          appProperties:
-              (json_['appProperties'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String?,
-            ),
-          ),
+          appProperties: (json_['appProperties']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String?)),
           capabilities: json_.containsKey('capabilities')
               ? FileCapabilities.fromJson(
-                  json_['capabilities'] as core.Map<core.String, core.dynamic>)
+                  json_['capabilities'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           contentHints: json_.containsKey('contentHints')
               ? FileContentHints.fromJson(
-                  json_['contentHints'] as core.Map<core.String, core.dynamic>)
+                  json_['contentHints'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           contentRestrictions: (json_['contentRestrictions'] as core.List?)
-              ?.map((value) => ContentRestriction.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ContentRestriction.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           copyRequiresWriterPermission:
               json_['copyRequiresWriterPermission'] as core.bool?,
@@ -6528,14 +6526,9 @@ class File {
           description: json_['description'] as core.String?,
           driveId: json_['driveId'] as core.String?,
           explicitlyTrashed: json_['explicitlyTrashed'] as core.bool?,
-          exportLinks:
-              (json_['exportLinks'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          exportLinks: (json_['exportLinks']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           fileExtension: json_['fileExtension'] as core.String?,
           folderColorRgb: json_['folderColorRgb'] as core.String?,
           fullFileExtension: json_['fullFileExtension'] as core.String?,
@@ -6546,22 +6539,29 @@ class File {
           iconLink: json_['iconLink'] as core.String?,
           id: json_['id'] as core.String?,
           imageMediaMetadata: json_.containsKey('imageMediaMetadata')
-              ? FileImageMediaMetadata.fromJson(json_['imageMediaMetadata']
-                  as core.Map<core.String, core.dynamic>)
+              ? FileImageMediaMetadata.fromJson(
+                  json_['imageMediaMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           isAppAuthorized: json_['isAppAuthorized'] as core.bool?,
           kind: json_['kind'] as core.String?,
           labelInfo: json_.containsKey('labelInfo')
               ? FileLabelInfo.fromJson(
-                  json_['labelInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['labelInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           lastModifyingUser: json_.containsKey('lastModifyingUser')
-              ? User.fromJson(json_['lastModifyingUser']
-                  as core.Map<core.String, core.dynamic>)
+              ? User.fromJson(
+                  json_['lastModifyingUser']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           linkShareMetadata: json_.containsKey('linkShareMetadata')
-              ? FileLinkShareMetadata.fromJson(json_['linkShareMetadata']
-                  as core.Map<core.String, core.dynamic>)
+              ? FileLinkShareMetadata.fromJson(
+                  json_['linkShareMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           md5Checksum: json_['md5Checksum'] as core.String?,
           mimeType: json_['mimeType'] as core.String?,
@@ -6576,8 +6576,11 @@ class File {
           originalFilename: json_['originalFilename'] as core.String?,
           ownedByMe: json_['ownedByMe'] as core.bool?,
           owners: (json_['owners'] as core.List?)
-              ?.map((value) =>
-                  User.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => User.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           parents: (json_['parents'] as core.List?)
               ?.map((value) => value as core.String)
@@ -6586,17 +6589,15 @@ class File {
               ?.map((value) => value as core.String)
               .toList(),
           permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => Permission.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Permission.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
-          properties:
-              (json_['properties'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String?,
-            ),
-          ),
+          properties: (json_['properties']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String?)),
           quotaBytesUsed: json_['quotaBytesUsed'] as core.String?,
           resourceKey: json_['resourceKey'] as core.String?,
           sha1Checksum: json_['sha1Checksum'] as core.String?,
@@ -6607,11 +6608,14 @@ class File {
               : null,
           sharingUser: json_.containsKey('sharingUser')
               ? User.fromJson(
-                  json_['sharingUser'] as core.Map<core.String, core.dynamic>)
+                  json_['sharingUser'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           shortcutDetails: json_.containsKey('shortcutDetails')
-              ? FileShortcutDetails.fromJson(json_['shortcutDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? FileShortcutDetails.fromJson(
+                  json_['shortcutDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           size: json_['size'] as core.String?,
           spaces: (json_['spaces'] as core.List?)
@@ -6627,12 +6631,15 @@ class File {
               : null,
           trashingUser: json_.containsKey('trashingUser')
               ? User.fromJson(
-                  json_['trashingUser'] as core.Map<core.String, core.dynamic>)
+                  json_['trashingUser'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           version: json_['version'] as core.String?,
           videoMediaMetadata: json_.containsKey('videoMediaMetadata')
-              ? FileVideoMediaMetadata.fromJson(json_['videoMediaMetadata']
-                  as core.Map<core.String, core.dynamic>)
+              ? FileVideoMediaMetadata.fromJson(
+                  json_['videoMediaMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           viewedByMe: json_['viewedByMe'] as core.bool?,
           viewedByMeTime: json_.containsKey('viewedByMeTime')
@@ -6753,18 +6760,16 @@ class FileList {
   /// removed, your expected results might differ.
   core.String? nextPageToken;
 
-  FileList({
-    this.files,
-    this.incompleteSearch,
-    this.kind,
-    this.nextPageToken,
-  });
+  FileList({this.files, this.incompleteSearch, this.kind, this.nextPageToken});
 
   FileList.fromJson(core.Map json_)
       : this(
           files: (json_['files'] as core.List?)
-              ?.map((value) =>
-                  File.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => File.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           incompleteSearch: json_['incompleteSearch'] as core.bool?,
           kind: json_['kind'] as core.String?,
@@ -6792,11 +6797,7 @@ class GeneratedIds {
   /// The type of file that can be created with these IDs.
   core.String? space;
 
-  GeneratedIds({
-    this.ids,
-    this.kind,
-    this.space,
-  });
+  GeneratedIds({this.ids, this.kind, this.space});
 
   GeneratedIds.fromJson(core.Map json_)
       : this(
@@ -6828,12 +6829,7 @@ class Label {
   /// The revision ID of the label.
   core.String? revisionId;
 
-  Label({
-    this.fields,
-    this.id,
-    this.kind,
-    this.revisionId,
-  });
+  Label({this.fields, this.id, this.kind, this.revisionId});
 
   Label.fromJson(core.Map json_)
       : this(
@@ -6917,8 +6913,11 @@ class LabelField {
               ?.map((value) => value as core.String)
               .toList(),
           user: (json_['user'] as core.List?)
-              ?.map((value) =>
-                  User.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => User.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           valueType: json_['valueType'] as core.String?,
         );
@@ -6926,8 +6925,10 @@ class LabelField {
   core.Map<core.String, core.dynamic> toJson() => {
         if (dateString != null)
           'dateString': dateString!
-              .map((value) =>
-                  "${value.year.toString().padLeft(4, '0')}-${value.month.toString().padLeft(2, '0')}-${value.day.toString().padLeft(2, '0')}")
+              .map(
+                (value) =>
+                    "${value.year.toString().padLeft(4, '0')}-${value.month.toString().padLeft(2, '0')}-${value.day.toString().padLeft(2, '0')}",
+              )
               .toList(),
         if (id != null) 'id': id!,
         if (integer != null) 'integer': integer!,
@@ -7007,8 +7008,10 @@ class LabelFieldModification {
         if (kind != null) 'kind': kind!,
         if (setDateValues != null)
           'setDateValues': setDateValues!
-              .map((value) =>
-                  "${value.year.toString().padLeft(4, '0')}-${value.month.toString().padLeft(2, '0')}-${value.day.toString().padLeft(2, '0')}")
+              .map(
+                (value) =>
+                    "${value.year.toString().padLeft(4, '0')}-${value.month.toString().padLeft(2, '0')}-${value.day.toString().padLeft(2, '0')}",
+              )
               .toList(),
         if (setIntegerValues != null) 'setIntegerValues': setIntegerValues!,
         if (setSelectionValues != null)
@@ -7036,18 +7039,17 @@ class LabelList {
   /// removed, your expected results might differ.
   core.String? nextPageToken;
 
-  LabelList({
-    this.kind,
-    this.labels,
-    this.nextPageToken,
-  });
+  LabelList({this.kind, this.labels, this.nextPageToken});
 
   LabelList.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           labels: (json_['labels'] as core.List?)
-              ?.map((value) =>
-                  Label.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Label.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -7086,8 +7088,11 @@ class LabelModification {
   LabelModification.fromJson(core.Map json_)
       : this(
           fieldModifications: (json_['fieldModifications'] as core.List?)
-              ?.map((value) => LabelFieldModification.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LabelFieldModification.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           labelId: json_['labelId'] as core.String?,
@@ -7117,16 +7122,16 @@ class ListAccessProposalsResponse {
   /// pagination should be restarted from the first page of results.
   core.String? nextPageToken;
 
-  ListAccessProposalsResponse({
-    this.accessProposals,
-    this.nextPageToken,
-  });
+  ListAccessProposalsResponse({this.accessProposals, this.nextPageToken});
 
   ListAccessProposalsResponse.fromJson(core.Map json_)
       : this(
           accessProposals: (json_['accessProposals'] as core.List?)
-              ?.map((value) => AccessProposal.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccessProposal.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -7145,17 +7150,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -7176,17 +7181,17 @@ class ModifyLabelsRequest {
   /// The list of modifications to apply to the labels on the file.
   core.List<LabelModification>? labelModifications;
 
-  ModifyLabelsRequest({
-    this.kind,
-    this.labelModifications,
-  });
+  ModifyLabelsRequest({this.kind, this.labelModifications});
 
   ModifyLabelsRequest.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           labelModifications: (json_['labelModifications'] as core.List?)
-              ?.map((value) => LabelModification.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LabelModification.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -7207,17 +7212,17 @@ class ModifyLabelsResponse {
   /// The list of labels which were added or updated by the request.
   core.List<Label>? modifiedLabels;
 
-  ModifyLabelsResponse({
-    this.kind,
-    this.modifiedLabels,
-  });
+  ModifyLabelsResponse({this.kind, this.modifiedLabels});
 
   ModifyLabelsResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           modifiedLabels: (json_['modifiedLabels'] as core.List?)
-              ?.map((value) =>
-                  Label.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Label.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -7270,20 +7275,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -7561,16 +7561,22 @@ class Permission {
           kind: json_['kind'] as core.String?,
           pendingOwner: json_['pendingOwner'] as core.bool?,
           permissionDetails: (json_['permissionDetails'] as core.List?)
-              ?.map((value) => PermissionPermissionDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PermissionPermissionDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           photoLink: json_['photoLink'] as core.String?,
           role: json_['role'] as core.String?,
-          teamDrivePermissionDetails: (json_['teamDrivePermissionDetails']
-                  as core.List?)
-              ?.map((value) => PermissionTeamDrivePermissionDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
+          teamDrivePermissionDetails:
+              (json_['teamDrivePermissionDetails'] as core.List?)
+                  ?.map(
+                    (value) => PermissionTeamDrivePermissionDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
+                  .toList(),
           type: json_['type'] as core.String?,
           view: json_['view'] as core.String?,
         );
@@ -7619,19 +7625,18 @@ class PermissionList {
   /// additional page of results should be fetched.
   core.List<Permission>? permissions;
 
-  PermissionList({
-    this.kind,
-    this.nextPageToken,
-    this.permissions,
-  });
+  PermissionList({this.kind, this.nextPageToken, this.permissions});
 
   PermissionList.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => Permission.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Permission.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -7712,7 +7717,8 @@ class Reply {
           action: json_['action'] as core.String?,
           author: json_.containsKey('author')
               ? User.fromJson(
-                  json_['author'] as core.Map<core.String, core.dynamic>)
+                  json_['author'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           content: json_['content'] as core.String?,
           createdTime: json_.containsKey('createdTime')
@@ -7764,19 +7770,18 @@ class ReplyList {
   /// additional page of results should be fetched.
   core.List<Reply>? replies;
 
-  ReplyList({
-    this.kind,
-    this.nextPageToken,
-    this.replies,
-  });
+  ReplyList({this.kind, this.nextPageToken, this.replies});
 
   ReplyList.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           replies: (json_['replies'] as core.List?)
-              ?.map((value) =>
-                  Reply.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Reply.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -7953,20 +7958,17 @@ class Revision {
 
   Revision.fromJson(core.Map json_)
       : this(
-          exportLinks:
-              (json_['exportLinks'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          exportLinks: (json_['exportLinks']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           id: json_['id'] as core.String?,
           keepForever: json_['keepForever'] as core.bool?,
           kind: json_['kind'] as core.String?,
           lastModifyingUser: json_.containsKey('lastModifyingUser')
-              ? User.fromJson(json_['lastModifyingUser']
-                  as core.Map<core.String, core.dynamic>)
+              ? User.fromJson(
+                  json_['lastModifyingUser']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           md5Checksum: json_['md5Checksum'] as core.String?,
           mimeType: json_['mimeType'] as core.String?,
@@ -8023,19 +8025,18 @@ class RevisionList {
   /// additional page of results should be fetched.
   core.List<Revision>? revisions;
 
-  RevisionList({
-    this.kind,
-    this.nextPageToken,
-    this.revisions,
-  });
+  RevisionList({this.kind, this.nextPageToken, this.revisions});
 
   RevisionList.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           revisions: (json_['revisions'] as core.List?)
-              ?.map((value) => Revision.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Revision.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8057,10 +8058,7 @@ class StartPageToken {
   /// The page token doesn't expire.
   core.String? startPageToken;
 
-  StartPageToken({
-    this.kind,
-    this.startPageToken,
-  });
+  StartPageToken({this.kind, this.startPageToken});
 
   StartPageToken.fromJson(core.Map json_)
       : this(
@@ -8457,12 +8455,14 @@ class TeamDrive {
           backgroundImageFile: json_.containsKey('backgroundImageFile')
               ? TeamDriveBackgroundImageFile.fromJson(
                   json_['backgroundImageFile']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           backgroundImageLink: json_['backgroundImageLink'] as core.String?,
           capabilities: json_.containsKey('capabilities')
               ? TeamDriveCapabilities.fromJson(
-                  json_['capabilities'] as core.Map<core.String, core.dynamic>)
+                  json_['capabilities'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           colorRgb: json_['colorRgb'] as core.String?,
           createdTime: json_.containsKey('createdTime')
@@ -8474,7 +8474,8 @@ class TeamDrive {
           orgUnitId: json_['orgUnitId'] as core.String?,
           restrictions: json_.containsKey('restrictions')
               ? TeamDriveRestrictions.fromJson(
-                  json_['restrictions'] as core.Map<core.String, core.dynamic>)
+                  json_['restrictions'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           themeId: json_['themeId'] as core.String?,
         );
@@ -8519,19 +8520,18 @@ class TeamDriveList {
   /// additional page of results should be fetched.
   core.List<TeamDrive>? teamDrives;
 
-  TeamDriveList({
-    this.kind,
-    this.nextPageToken,
-    this.teamDrives,
-  });
+  TeamDriveList({this.kind, this.nextPageToken, this.teamDrives});
 
   TeamDriveList.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           teamDrives: (json_['teamDrives'] as core.List?)
-              ?.map((value) => TeamDrive.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TeamDrive.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 

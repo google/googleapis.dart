@@ -111,11 +111,16 @@ class WorkspaceEventsApi {
   OperationsResource get operations => OperationsResource(_requester);
   SubscriptionsResource get subscriptions => SubscriptionsResource(_requester);
 
-  WorkspaceEventsApi(http.Client client,
-      {core.String rootUrl = 'https://workspaceevents.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  WorkspaceEventsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://workspaceevents.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class OperationsResource {
@@ -143,10 +148,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -306,7 +308,8 @@ class SubscriptionsResource {
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// [Developer Preview](https://developers.google.com/workspace/preview):
@@ -375,7 +378,8 @@ class SubscriptionsResource {
       queryParams: queryParams_,
     );
     return ListSubscriptionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// [Developer Preview](https://developers.google.com/workspace/preview):
@@ -497,17 +501,17 @@ class ListSubscriptionsResponse {
   /// List of subscriptions.
   core.List<Subscription>? subscriptions;
 
-  ListSubscriptionsResponse({
-    this.nextPageToken,
-    this.subscriptions,
-  });
+  ListSubscriptionsResponse({this.nextPageToken, this.subscriptions});
 
   ListSubscriptionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           subscriptions: (json_['subscriptions'] as core.List?)
-              ?.map((value) => Subscription.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Subscription.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -530,14 +534,10 @@ class NotificationEndpoint {
   /// Immutable.
   core.String? pubsubTopic;
 
-  NotificationEndpoint({
-    this.pubsubTopic,
-  });
+  NotificationEndpoint({this.pubsubTopic});
 
   NotificationEndpoint.fromJson(core.Map json_)
-      : this(
-          pubsubTopic: json_['pubsubTopic'] as core.String?,
-        );
+      : this(pubsubTopic: json_['pubsubTopic'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
@@ -587,20 +587,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -647,10 +642,7 @@ class PayloadOptions {
   /// Optional.
   core.bool? includeResource;
 
-  PayloadOptions({
-    this.fieldMask,
-    this.includeResource,
-  });
+  PayloadOptions({this.fieldMask, this.includeResource});
 
   PayloadOptions.fromJson(core.Map json_)
       : this(
@@ -850,12 +842,16 @@ class Subscription {
           expireTime: json_['expireTime'] as core.String?,
           name: json_['name'] as core.String?,
           notificationEndpoint: json_.containsKey('notificationEndpoint')
-              ? NotificationEndpoint.fromJson(json_['notificationEndpoint']
-                  as core.Map<core.String, core.dynamic>)
+              ? NotificationEndpoint.fromJson(
+                  json_['notificationEndpoint']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           payloadOptions: json_.containsKey('payloadOptions')
-              ? PayloadOptions.fromJson(json_['payloadOptions']
-                  as core.Map<core.String, core.dynamic>)
+              ? PayloadOptions.fromJson(
+                  json_['payloadOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           reconciling: json_['reconciling'] as core.bool?,
           state: json_['state'] as core.String?,

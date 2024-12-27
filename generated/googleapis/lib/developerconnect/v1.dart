@@ -52,11 +52,16 @@ class DeveloperConnectApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  DeveloperConnectApi(http.Client client,
-      {core.String rootUrl = 'https://developerconnect.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DeveloperConnectApi(
+    http.Client client, {
+    core.String rootUrl = 'https://developerconnect.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -95,10 +100,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -162,7 +164,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -343,7 +346,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return FetchGitHubInstallationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// FetchLinkableGitRepositories returns a list of git repositories from an
@@ -394,7 +398,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return FetchLinkableGitRepositoriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single Connection.
@@ -415,10 +420,7 @@ class ProjectsLocationsConnectionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Connection> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Connection> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -431,7 +433,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return Connection.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists Connections in a given project and location.
@@ -485,7 +488,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return ListConnectionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single Connection.
@@ -614,8 +618,8 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConnectionsGitRepositoryLinksResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates a GitRepositoryLink.
   ///
@@ -805,7 +809,8 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
       queryParams: queryParams_,
     );
     return FetchGitRefsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Fetches read token of a given gitRepositoryLink.
@@ -850,7 +855,8 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
       queryParams: queryParams_,
     );
     return FetchReadTokenResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Fetches read/write token of a given gitRepositoryLink.
@@ -896,7 +902,8 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
       queryParams: queryParams_,
     );
     return FetchReadWriteTokenResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single GitRepositoryLink.
@@ -933,7 +940,8 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
       queryParams: queryParams_,
     );
     return GitRepositoryLink.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists GitRepositoryLinks in a given project, location, and connection.
@@ -988,7 +996,8 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
       queryParams: queryParams_,
     );
     return ListGitRepositoryLinksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// ProcessGitLabEnterpriseWebhook is called by the external GitLab Enterprise
@@ -1159,10 +1168,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1198,10 +1204,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1263,7 +1266,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1374,48 +1378,50 @@ class Connection {
 
   Connection.fromJson(core.Map json_)
       : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          annotations: (json_['annotations']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           createTime: json_['createTime'] as core.String?,
           cryptoKeyConfig: json_.containsKey('cryptoKeyConfig')
-              ? CryptoKeyConfig.fromJson(json_['cryptoKeyConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? CryptoKeyConfig.fromJson(
+                  json_['cryptoKeyConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           deleteTime: json_['deleteTime'] as core.String?,
           disabled: json_['disabled'] as core.bool?,
           etag: json_['etag'] as core.String?,
           githubConfig: json_.containsKey('githubConfig')
               ? GitHubConfig.fromJson(
-                  json_['githubConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['githubConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           githubEnterpriseConfig: json_.containsKey('githubEnterpriseConfig')
-              ? GitHubEnterpriseConfig.fromJson(json_['githubEnterpriseConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? GitHubEnterpriseConfig.fromJson(
+                  json_['githubEnterpriseConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           gitlabConfig: json_.containsKey('gitlabConfig')
               ? GitLabConfig.fromJson(
-                  json_['gitlabConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['gitlabConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           gitlabEnterpriseConfig: json_.containsKey('gitlabEnterpriseConfig')
-              ? GitLabEnterpriseConfig.fromJson(json_['gitlabEnterpriseConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? GitLabEnterpriseConfig.fromJson(
+                  json_['gitlabEnterpriseConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           installationState: json_.containsKey('installationState')
-              ? InstallationState.fromJson(json_['installationState']
-                  as core.Map<core.String, core.dynamic>)
+              ? InstallationState.fromJson(
+                  json_['installationState']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           reconciling: json_['reconciling'] as core.bool?,
@@ -1457,14 +1463,10 @@ class CryptoKeyConfig {
   /// Required.
   core.String? keyReference;
 
-  CryptoKeyConfig({
-    this.keyReference,
-  });
+  CryptoKeyConfig({this.keyReference});
 
   CryptoKeyConfig.fromJson(core.Map json_)
-      : this(
-          keyReference: json_['keyReference'] as core.String?,
-        );
+      : this(keyReference: json_['keyReference'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keyReference != null) 'keyReference': keyReference!,
@@ -1485,15 +1487,16 @@ class FetchGitHubInstallationsResponse {
   /// the installations (for GitHub enterprise).
   core.List<Installation>? installations;
 
-  FetchGitHubInstallationsResponse({
-    this.installations,
-  });
+  FetchGitHubInstallationsResponse({this.installations});
 
   FetchGitHubInstallationsResponse.fromJson(core.Map json_)
       : this(
           installations: (json_['installations'] as core.List?)
-              ?.map((value) => Installation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Installation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1522,8 +1525,11 @@ class FetchLinkableGitRepositoriesResponse {
       : this(
           linkableGitRepositories:
               (json_['linkableGitRepositories'] as core.List?)
-                  ?.map((value) => LinkableGitRepository.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => LinkableGitRepository.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1589,8 +1595,10 @@ class GitHubConfig {
       : this(
           appInstallationId: json_['appInstallationId'] as core.String?,
           authorizerCredential: json_.containsKey('authorizerCredential')
-              ? OAuthCredential.fromJson(json_['authorizerCredential']
-                  as core.Map<core.String, core.dynamic>)
+              ? OAuthCredential.fromJson(
+                  json_['authorizerCredential']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           githubApp: json_['githubApp'] as core.String?,
           installationUri: json_['installationUri'] as core.String?,
@@ -1690,8 +1698,10 @@ class GitHubEnterpriseConfig {
               json_['privateKeySecretVersion'] as core.String?,
           serverVersion: json_['serverVersion'] as core.String?,
           serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
-              ? ServiceDirectoryConfig.fromJson(json_['serviceDirectoryConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? ServiceDirectoryConfig.fromJson(
+                  json_['serviceDirectoryConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sslCaCertificate: json_['sslCaCertificate'] as core.String?,
           webhookSecretSecretVersion:
@@ -1752,13 +1762,17 @@ class GitLabConfig {
   GitLabConfig.fromJson(core.Map json_)
       : this(
           authorizerCredential: json_.containsKey('authorizerCredential')
-              ? UserCredential.fromJson(json_['authorizerCredential']
-                  as core.Map<core.String, core.dynamic>)
+              ? UserCredential.fromJson(
+                  json_['authorizerCredential']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           readAuthorizerCredential:
               json_.containsKey('readAuthorizerCredential')
-                  ? UserCredential.fromJson(json_['readAuthorizerCredential']
-                      as core.Map<core.String, core.dynamic>)
+                  ? UserCredential.fromJson(
+                      json_['readAuthorizerCredential']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           webhookSecretSecretVersion:
               json_['webhookSecretSecretVersion'] as core.String?,
@@ -1842,19 +1856,25 @@ class GitLabEnterpriseConfig {
   GitLabEnterpriseConfig.fromJson(core.Map json_)
       : this(
           authorizerCredential: json_.containsKey('authorizerCredential')
-              ? UserCredential.fromJson(json_['authorizerCredential']
-                  as core.Map<core.String, core.dynamic>)
+              ? UserCredential.fromJson(
+                  json_['authorizerCredential']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           hostUri: json_['hostUri'] as core.String?,
           readAuthorizerCredential:
               json_.containsKey('readAuthorizerCredential')
-                  ? UserCredential.fromJson(json_['readAuthorizerCredential']
-                      as core.Map<core.String, core.dynamic>)
+                  ? UserCredential.fromJson(
+                      json_['readAuthorizerCredential']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           serverVersion: json_['serverVersion'] as core.String?,
           serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
-              ? ServiceDirectoryConfig.fromJson(json_['serviceDirectoryConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? ServiceDirectoryConfig.fromJson(
+                  json_['serviceDirectoryConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sslCaCertificate: json_['sslCaCertificate'] as core.String?,
           webhookSecretSecretVersion:
@@ -1953,24 +1973,16 @@ class GitRepositoryLink {
 
   GitRepositoryLink.fromJson(core.Map json_)
       : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          annotations: (json_['annotations']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           cloneUri: json_['cloneUri'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
           etag: json_['etag'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           reconciling: json_['reconciling'] as core.bool?,
@@ -2025,11 +2037,7 @@ class Installation {
   /// Either "user" or "organization".
   core.String? type;
 
-  Installation({
-    this.id,
-    this.name,
-    this.type,
-  });
+  Installation({this.id, this.name, this.type});
 
   Installation.fromJson(core.Map json_)
       : this(
@@ -2057,14 +2065,10 @@ class LinkableGitRepository {
   /// The clone uri of the repository.
   core.String? cloneUri;
 
-  LinkableGitRepository({
-    this.cloneUri,
-  });
+  LinkableGitRepository({this.cloneUri});
 
   LinkableGitRepository.fromJson(core.Map json_)
-      : this(
-          cloneUri: json_['cloneUri'] as core.String?,
-        );
+      : this(cloneUri: json_['cloneUri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloneUri != null) 'cloneUri': cloneUri!,
@@ -2091,8 +2095,11 @@ class ListConnectionsResponse {
   ListConnectionsResponse.fromJson(core.Map json_)
       : this(
           connections: (json_['connections'] as core.List?)
-              ?.map((value) => Connection.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Connection.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -2127,8 +2134,11 @@ class ListGitRepositoryLinksResponse {
   ListGitRepositoryLinksResponse.fromJson(core.Map json_)
       : this(
           gitRepositoryLinks: (json_['gitRepositoryLinks'] as core.List?)
-              ?.map((value) => GitRepositoryLink.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GitRepositoryLink.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -2152,16 +2162,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2180,17 +2190,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2219,10 +2229,7 @@ class OAuthCredential {
   /// Output only.
   core.String? username;
 
-  OAuthCredential({
-    this.oauthTokenSecretVersion,
-    this.username,
-  });
+  OAuthCredential({this.oauthTokenSecretVersion, this.username});
 
   OAuthCredential.fromJson(core.Map json_)
       : this(
@@ -2281,20 +2288,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -2322,15 +2324,14 @@ class ProcessGitHubEnterpriseWebhookRequest {
   /// Required.
   HttpBody? body;
 
-  ProcessGitHubEnterpriseWebhookRequest({
-    this.body,
-  });
+  ProcessGitHubEnterpriseWebhookRequest({this.body});
 
   ProcessGitHubEnterpriseWebhookRequest.fromJson(core.Map json_)
       : this(
           body: json_.containsKey('body')
               ? HttpBody.fromJson(
-                  json_['body'] as core.Map<core.String, core.dynamic>)
+                  json_['body'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2347,15 +2348,14 @@ class ProcessGitLabEnterpriseWebhookRequest {
   /// Required.
   HttpBody? body;
 
-  ProcessGitLabEnterpriseWebhookRequest({
-    this.body,
-  });
+  ProcessGitLabEnterpriseWebhookRequest({this.body});
 
   ProcessGitLabEnterpriseWebhookRequest.fromJson(core.Map json_)
       : this(
           body: json_.containsKey('body')
               ? HttpBody.fromJson(
-                  json_['body'] as core.Map<core.String, core.dynamic>)
+                  json_['body'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2371,15 +2371,14 @@ class ProcessGitLabWebhookRequest {
   /// Required.
   HttpBody? body;
 
-  ProcessGitLabWebhookRequest({
-    this.body,
-  });
+  ProcessGitLabWebhookRequest({this.body});
 
   ProcessGitLabWebhookRequest.fromJson(core.Map json_)
       : this(
           body: json_.containsKey('body')
               ? HttpBody.fromJson(
-                  json_['body'] as core.Map<core.String, core.dynamic>)
+                  json_['body'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2417,10 +2416,7 @@ class UserCredential {
   /// Output only.
   core.String? username;
 
-  UserCredential({
-    this.userTokenSecretVersion,
-    this.username,
-  });
+  UserCredential({this.userTokenSecretVersion, this.username});
 
   UserCredential.fromJson(core.Map json_)
       : this(

@@ -52,11 +52,16 @@ class WebRiskApi {
   ThreatListsResource get threatLists => ThreatListsResource(_requester);
   UrisResource get uris => UrisResource(_requester);
 
-  WebRiskApi(http.Client client,
-      {core.String rootUrl = 'https://webrisk.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  WebRiskApi(
+    http.Client client, {
+    core.String rootUrl = 'https://webrisk.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class HashesResource {
@@ -110,7 +115,8 @@ class HashesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudWebriskV1SearchHashesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -177,7 +183,8 @@ class ProjectsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a long-running operation.
@@ -217,7 +224,8 @@ class ProjectsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the latest state of a long-running operation.
@@ -256,7 +264,8 @@ class ProjectsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -306,7 +315,8 @@ class ProjectsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -363,7 +373,8 @@ class ProjectsSubmissionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudWebriskV1Submission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -450,7 +461,8 @@ class ThreatListsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudWebriskV1ComputeThreatListDiffResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -502,7 +514,8 @@ class UrisResource {
       queryParams: queryParams_,
     );
     return GoogleCloudWebriskV1SearchUrisResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -569,18 +582,21 @@ class GoogleCloudWebriskV1ComputeThreatListDiffResponse {
       : this(
           additions: json_.containsKey('additions')
               ? GoogleCloudWebriskV1ThreatEntryAdditions.fromJson(
-                  json_['additions'] as core.Map<core.String, core.dynamic>)
+                  json_['additions'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           checksum: json_.containsKey('checksum')
               ? GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum
                   .fromJson(
-                      json_['checksum'] as core.Map<core.String, core.dynamic>)
+                  json_['checksum'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           newVersionToken: json_['newVersionToken'] as core.String?,
           recommendedNextDiff: json_['recommendedNextDiff'] as core.String?,
           removals: json_.containsKey('removals')
               ? GoogleCloudWebriskV1ThreatEntryRemovals.fromJson(
-                  json_['removals'] as core.Map<core.String, core.dynamic>)
+                  json_['removals'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           responseType: json_['responseType'] as core.String?,
         );
@@ -626,10 +642,7 @@ class GoogleCloudWebriskV1RawHashes {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  GoogleCloudWebriskV1RawHashes({
-    this.prefixSize,
-    this.rawHashes,
-  });
+  GoogleCloudWebriskV1RawHashes({this.prefixSize, this.rawHashes});
 
   GoogleCloudWebriskV1RawHashes.fromJson(core.Map json_)
       : this(
@@ -719,9 +732,12 @@ class GoogleCloudWebriskV1SearchHashesResponse {
       : this(
           negativeExpireTime: json_['negativeExpireTime'] as core.String?,
           threats: (json_['threats'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudWebriskV1SearchHashesResponseThreatHash.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudWebriskV1SearchHashesResponseThreatHash.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -785,15 +801,14 @@ class GoogleCloudWebriskV1SearchUrisResponse {
   /// This might be empty if the URI is on no list.
   GoogleCloudWebriskV1SearchUrisResponseThreatUri? threat;
 
-  GoogleCloudWebriskV1SearchUrisResponse({
-    this.threat,
-  });
+  GoogleCloudWebriskV1SearchUrisResponse({this.threat});
 
   GoogleCloudWebriskV1SearchUrisResponse.fromJson(core.Map json_)
       : this(
           threat: json_.containsKey('threat')
               ? GoogleCloudWebriskV1SearchUrisResponseThreatUri.fromJson(
-                  json_['threat'] as core.Map<core.String, core.dynamic>)
+                  json_['threat'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -839,14 +854,10 @@ class GoogleCloudWebriskV1Submission {
   /// Required.
   core.String? uri;
 
-  GoogleCloudWebriskV1Submission({
-    this.uri,
-  });
+  GoogleCloudWebriskV1Submission({this.uri});
 
   GoogleCloudWebriskV1Submission.fromJson(core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+      : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
@@ -869,20 +880,21 @@ class GoogleCloudWebriskV1ThreatEntryAdditions {
   /// encoded and stored as encoded_data.
   GoogleCloudWebriskV1RiceDeltaEncoding? riceHashes;
 
-  GoogleCloudWebriskV1ThreatEntryAdditions({
-    this.rawHashes,
-    this.riceHashes,
-  });
+  GoogleCloudWebriskV1ThreatEntryAdditions({this.rawHashes, this.riceHashes});
 
   GoogleCloudWebriskV1ThreatEntryAdditions.fromJson(core.Map json_)
       : this(
           rawHashes: (json_['rawHashes'] as core.List?)
-              ?.map((value) => GoogleCloudWebriskV1RawHashes.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudWebriskV1RawHashes.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           riceHashes: json_.containsKey('riceHashes')
               ? GoogleCloudWebriskV1RiceDeltaEncoding.fromJson(
-                  json_['riceHashes'] as core.Map<core.String, core.dynamic>)
+                  json_['riceHashes'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -905,20 +917,19 @@ class GoogleCloudWebriskV1ThreatEntryRemovals {
   /// encoded_data.
   GoogleCloudWebriskV1RiceDeltaEncoding? riceIndices;
 
-  GoogleCloudWebriskV1ThreatEntryRemovals({
-    this.rawIndices,
-    this.riceIndices,
-  });
+  GoogleCloudWebriskV1ThreatEntryRemovals({this.rawIndices, this.riceIndices});
 
   GoogleCloudWebriskV1ThreatEntryRemovals.fromJson(core.Map json_)
       : this(
           rawIndices: json_.containsKey('rawIndices')
               ? GoogleCloudWebriskV1RawIndices.fromJson(
-                  json_['rawIndices'] as core.Map<core.String, core.dynamic>)
+                  json_['rawIndices'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           riceIndices: json_.containsKey('riceIndices')
               ? GoogleCloudWebriskV1RiceDeltaEncoding.fromJson(
-                  json_['riceIndices'] as core.Map<core.String, core.dynamic>)
+                  json_['riceIndices'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -948,8 +959,11 @@ class GoogleLongrunningListOperationsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1006,7 +1020,8 @@ class GoogleLongrunningOperation {
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>

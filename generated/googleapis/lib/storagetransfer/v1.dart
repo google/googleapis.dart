@@ -58,11 +58,16 @@ class StoragetransferApi {
   TransferOperationsResource get transferOperations =>
       TransferOperationsResource(_requester);
 
-  StoragetransferApi(http.Client client,
-      {core.String rootUrl = 'https://storagetransfer.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  StoragetransferApi(
+    http.Client client, {
+    core.String rootUrl = 'https://storagetransfer.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class GoogleServiceAccountsResource {
@@ -113,7 +118,8 @@ class GoogleServiceAccountsResource {
       queryParams: queryParams_,
     );
     return GoogleServiceAccount.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -201,10 +207,7 @@ class ProjectsAgentPoolsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -236,10 +239,7 @@ class ProjectsAgentPoolsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AgentPool> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<AgentPool> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -305,7 +305,8 @@ class ProjectsAgentPoolsResource {
       queryParams: queryParams_,
     );
     return ListAgentPoolsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing agent pool resource.
@@ -396,7 +397,8 @@ class TransferJobsResource {
       queryParams: queryParams_,
     );
     return TransferJob.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a transfer job.
@@ -479,7 +481,8 @@ class TransferJobsResource {
       queryParams: queryParams_,
     );
     return TransferJob.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists transfer jobs.
@@ -537,7 +540,8 @@ class TransferJobsResource {
       queryParams: queryParams_,
     );
     return ListTransferJobsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a transfer job.
@@ -583,7 +587,8 @@ class TransferJobsResource {
       queryParams: queryParams_,
     );
     return TransferJob.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Starts a new operation for the specified transfer job.
@@ -714,10 +719,7 @@ class TransferOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -796,7 +798,8 @@ class TransferOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Pauses a transfer operation.
@@ -911,18 +914,15 @@ class AgentPool {
   /// and all the resources are scheduled to be cleaned up and freed.
   core.String? state;
 
-  AgentPool({
-    this.bandwidthLimit,
-    this.displayName,
-    this.name,
-    this.state,
-  });
+  AgentPool({this.bandwidthLimit, this.displayName, this.name, this.state});
 
   AgentPool.fromJson(core.Map json_)
       : this(
           bandwidthLimit: json_.containsKey('bandwidthLimit')
-              ? BandwidthLimit.fromJson(json_['bandwidthLimit']
-                  as core.Map<core.String, core.dynamic>)
+              ? BandwidthLimit.fromJson(
+                  json_['bandwidthLimit']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           displayName: json_['displayName'] as core.String?,
           name: json_['name'] as core.String?,
@@ -956,10 +956,7 @@ class AwsAccessKey {
   /// Required.
   core.String? secretAccessKey;
 
-  AwsAccessKey({
-    this.accessKeyId,
-    this.secretAccessKey,
-  });
+  AwsAccessKey({this.accessKeyId, this.secretAccessKey});
 
   AwsAccessKey.fromJson(core.Map json_)
       : this(
@@ -1016,7 +1013,8 @@ class AwsS3CompatibleData {
           region: json_['region'] as core.String?,
           s3Metadata: json_.containsKey('s3Metadata')
               ? S3CompatibleMetadata.fromJson(
-                  json_['s3Metadata'] as core.Map<core.String, core.dynamic>)
+                  json_['s3Metadata'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1110,7 +1108,8 @@ class AwsS3Data {
       : this(
           awsAccessKey: json_.containsKey('awsAccessKey')
               ? AwsAccessKey.fromJson(
-                  json_['awsAccessKey'] as core.Map<core.String, core.dynamic>)
+                  json_['awsAccessKey'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           bucketName: json_['bucketName'] as core.String?,
           cloudfrontDomain: json_['cloudfrontDomain'] as core.String?,
@@ -1191,8 +1190,10 @@ class AzureBlobStorageData {
   AzureBlobStorageData.fromJson(core.Map json_)
       : this(
           azureCredentials: json_.containsKey('azureCredentials')
-              ? AzureCredentials.fromJson(json_['azureCredentials']
-                  as core.Map<core.String, core.dynamic>)
+              ? AzureCredentials.fromJson(
+                  json_['azureCredentials']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           container: json_['container'] as core.String?,
           credentialsSecret: json_['credentialsSecret'] as core.String?,
@@ -1222,14 +1223,10 @@ class AzureCredentials {
   /// Required.
   core.String? sasToken;
 
-  AzureCredentials({
-    this.sasToken,
-  });
+  AzureCredentials({this.sasToken});
 
   AzureCredentials.fromJson(core.Map json_)
-      : this(
-          sasToken: json_['sasToken'] as core.String?,
-        );
+      : this(sasToken: json_['sasToken'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sasToken != null) 'sasToken': sasToken!,
@@ -1242,14 +1239,10 @@ class BandwidthLimit {
   /// in the pool.
   core.String? limitMbps;
 
-  BandwidthLimit({
-    this.limitMbps,
-  });
+  BandwidthLimit({this.limitMbps});
 
   BandwidthLimit.fromJson(core.Map json_)
-      : this(
-          limitMbps: json_['limitMbps'] as core.String?,
-        );
+      : this(limitMbps: json_['limitMbps'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (limitMbps != null) 'limitMbps': limitMbps!,
@@ -1357,11 +1350,7 @@ class GcsData {
   /// Requirements\](/storage/docs/naming#objectnames).
   core.String? path;
 
-  GcsData({
-    this.bucketName,
-    this.managedFolderTransferEnabled,
-    this.path,
-  });
+  GcsData({this.bucketName, this.managedFolderTransferEnabled, this.path});
 
   GcsData.fromJson(core.Map json_)
       : this(
@@ -1387,10 +1376,7 @@ class GoogleServiceAccount {
   /// Unique identifier for the service account.
   core.String? subjectId;
 
-  GoogleServiceAccount({
-    this.accountEmail,
-    this.subjectId,
-  });
+  GoogleServiceAccount({this.accountEmail, this.subjectId});
 
   GoogleServiceAccount.fromJson(core.Map json_)
       : this(
@@ -1414,14 +1400,9 @@ class HdfsData {
   /// Root path to transfer files.
   core.String? path;
 
-  HdfsData({
-    this.path,
-  });
+  HdfsData({this.path});
 
-  HdfsData.fromJson(core.Map json_)
-      : this(
-          path: json_['path'] as core.String?,
-        );
+  HdfsData.fromJson(core.Map json_) : this(path: json_['path'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (path != null) 'path': path!,
@@ -1462,14 +1443,10 @@ class HttpData {
   /// Required.
   core.String? listUrl;
 
-  HttpData({
-    this.listUrl,
-  });
+  HttpData({this.listUrl});
 
   HttpData.fromJson(core.Map json_)
-      : this(
-          listUrl: json_['listUrl'] as core.String?,
-        );
+      : this(listUrl: json_['listUrl'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (listUrl != null) 'listUrl': listUrl!,
@@ -1484,16 +1461,16 @@ class ListAgentPoolsResponse {
   /// The list next page token.
   core.String? nextPageToken;
 
-  ListAgentPoolsResponse({
-    this.agentPools,
-    this.nextPageToken,
-  });
+  ListAgentPoolsResponse({this.agentPools, this.nextPageToken});
 
   ListAgentPoolsResponse.fromJson(core.Map json_)
       : this(
           agentPools: (json_['agentPools'] as core.List?)
-              ?.map((value) => AgentPool.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AgentPool.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1512,17 +1489,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1540,17 +1517,17 @@ class ListTransferJobsResponse {
   /// A list of transfer jobs.
   core.List<TransferJob>? transferJobs;
 
-  ListTransferJobsResponse({
-    this.nextPageToken,
-    this.transferJobs,
-  });
+  ListTransferJobsResponse({this.nextPageToken, this.transferJobs});
 
   ListTransferJobsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           transferJobs: (json_['transferJobs'] as core.List?)
-              ?.map((value) => TransferJob.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TransferJob.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1808,11 +1785,7 @@ class NotificationConfig {
   /// Required.
   core.String? pubsubTopic;
 
-  NotificationConfig({
-    this.eventTypes,
-    this.payloadFormat,
-    this.pubsubTopic,
-  });
+  NotificationConfig({this.eventTypes, this.payloadFormat, this.pubsubTopic});
 
   NotificationConfig.fromJson(core.Map json_)
       : this(
@@ -1998,20 +1971,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -2039,14 +2007,10 @@ class PosixFilesystem {
   /// Root directory path to the filesystem.
   core.String? rootDirectory;
 
-  PosixFilesystem({
-    this.rootDirectory,
-  });
+  PosixFilesystem({this.rootDirectory});
 
   PosixFilesystem.fromJson(core.Map json_)
-      : this(
-          rootDirectory: json_['rootDirectory'] as core.String?,
-        );
+      : this(rootDirectory: json_['rootDirectory'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rootDirectory != null) 'rootDirectory': rootDirectory!,
@@ -2088,19 +2052,25 @@ class ReplicationSpec {
       : this(
           gcsDataSink: json_.containsKey('gcsDataSink')
               ? GcsData.fromJson(
-                  json_['gcsDataSink'] as core.Map<core.String, core.dynamic>)
+                  json_['gcsDataSink'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           gcsDataSource: json_.containsKey('gcsDataSource')
               ? GcsData.fromJson(
-                  json_['gcsDataSource'] as core.Map<core.String, core.dynamic>)
+                  json_['gcsDataSource'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           objectConditions: json_.containsKey('objectConditions')
-              ? ObjectConditions.fromJson(json_['objectConditions']
-                  as core.Map<core.String, core.dynamic>)
+              ? ObjectConditions.fromJson(
+                  json_['objectConditions']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           transferOptions: json_.containsKey('transferOptions')
-              ? TransferOptions.fromJson(json_['transferOptions']
-                  as core.Map<core.String, core.dynamic>)
+              ? TransferOptions.fromJson(
+                  json_['transferOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2122,14 +2092,10 @@ class RunTransferJobRequest {
   /// Required.
   core.String? projectId;
 
-  RunTransferJobRequest({
-    this.projectId,
-  });
+  RunTransferJobRequest({this.projectId});
 
   RunTransferJobRequest.fromJson(core.Map json_)
-      : this(
-          projectId: json_['projectId'] as core.String?,
-        );
+      : this(projectId: json_['projectId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (projectId != null) 'projectId': projectId!,
@@ -2277,20 +2243,27 @@ class Schedule {
       : this(
           endTimeOfDay: json_.containsKey('endTimeOfDay')
               ? TimeOfDay.fromJson(
-                  json_['endTimeOfDay'] as core.Map<core.String, core.dynamic>)
+                  json_['endTimeOfDay'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           repeatInterval: json_['repeatInterval'] as core.String?,
           scheduleEndDate: json_.containsKey('scheduleEndDate')
-              ? Date.fromJson(json_['scheduleEndDate']
-                  as core.Map<core.String, core.dynamic>)
+              ? Date.fromJson(
+                  json_['scheduleEndDate']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           scheduleStartDate: json_.containsKey('scheduleStartDate')
-              ? Date.fromJson(json_['scheduleStartDate']
-                  as core.Map<core.String, core.dynamic>)
+              ? Date.fromJson(
+                  json_['scheduleStartDate']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           startTimeOfDay: json_.containsKey('startTimeOfDay')
-              ? TimeOfDay.fromJson(json_['startTimeOfDay']
-                  as core.Map<core.String, core.dynamic>)
+              ? TimeOfDay.fromJson(
+                  json_['startTimeOfDay']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2317,7 +2290,7 @@ typedef Status = $Status00;
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef TimeOfDay = $TimeOfDay00;
+typedef TimeOfDay = $TimeOfDay;
 
 /// This resource represents the configuration of a transfer job that runs
 /// periodically.
@@ -2434,32 +2407,40 @@ class TransferJob {
           description: json_['description'] as core.String?,
           eventStream: json_.containsKey('eventStream')
               ? EventStream.fromJson(
-                  json_['eventStream'] as core.Map<core.String, core.dynamic>)
+                  json_['eventStream'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           lastModificationTime: json_['lastModificationTime'] as core.String?,
           latestOperationName: json_['latestOperationName'] as core.String?,
           loggingConfig: json_.containsKey('loggingConfig')
               ? LoggingConfig.fromJson(
-                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           notificationConfig: json_.containsKey('notificationConfig')
-              ? NotificationConfig.fromJson(json_['notificationConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? NotificationConfig.fromJson(
+                  json_['notificationConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           projectId: json_['projectId'] as core.String?,
           replicationSpec: json_.containsKey('replicationSpec')
-              ? ReplicationSpec.fromJson(json_['replicationSpec']
-                  as core.Map<core.String, core.dynamic>)
+              ? ReplicationSpec.fromJson(
+                  json_['replicationSpec']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           schedule: json_.containsKey('schedule')
               ? Schedule.fromJson(
-                  json_['schedule'] as core.Map<core.String, core.dynamic>)
+                  json_['schedule'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           status: json_['status'] as core.String?,
           transferSpec: json_.containsKey('transferSpec')
               ? TransferSpec.fromJson(
-                  json_['transferSpec'] as core.Map<core.String, core.dynamic>)
+                  json_['transferSpec'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2493,14 +2474,10 @@ class TransferManifest {
   /// `gs://bucket_name/path/manifest.csv`.
   core.String? location;
 
-  TransferManifest({
-    this.location,
-  });
+  TransferManifest({this.location});
 
   TransferManifest.fromJson(core.Map json_)
-      : this(
-          location: json_['location'] as core.String?,
-        );
+      : this(location: json_['location'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (location != null) 'location': location!,
@@ -2562,8 +2539,10 @@ class TransferOptions {
           deleteObjectsUniqueInSink:
               json_['deleteObjectsUniqueInSink'] as core.bool?,
           metadataOptions: json_.containsKey('metadataOptions')
-              ? MetadataOptions.fromJson(json_['metadataOptions']
-                  as core.Map<core.String, core.dynamic>)
+              ? MetadataOptions.fromJson(
+                  json_['metadataOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           overwriteObjectsAlreadyExistingInSink:
               json_['overwriteObjectsAlreadyExistingInSink'] as core.bool?,
@@ -2670,63 +2649,85 @@ class TransferSpec {
 
   TransferSpec.fromJson(core.Map json_)
       : this(
-          awsS3CompatibleDataSource: json_
-                  .containsKey('awsS3CompatibleDataSource')
-              ? AwsS3CompatibleData.fromJson(json_['awsS3CompatibleDataSource']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
+          awsS3CompatibleDataSource:
+              json_.containsKey('awsS3CompatibleDataSource')
+                  ? AwsS3CompatibleData.fromJson(
+                      json_['awsS3CompatibleDataSource']
+                          as core.Map<core.String, core.dynamic>,
+                    )
+                  : null,
           awsS3DataSource: json_.containsKey('awsS3DataSource')
-              ? AwsS3Data.fromJson(json_['awsS3DataSource']
-                  as core.Map<core.String, core.dynamic>)
+              ? AwsS3Data.fromJson(
+                  json_['awsS3DataSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           azureBlobStorageDataSource:
               json_.containsKey('azureBlobStorageDataSource')
                   ? AzureBlobStorageData.fromJson(
                       json_['azureBlobStorageDataSource']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           gcsDataSink: json_.containsKey('gcsDataSink')
               ? GcsData.fromJson(
-                  json_['gcsDataSink'] as core.Map<core.String, core.dynamic>)
+                  json_['gcsDataSink'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           gcsDataSource: json_.containsKey('gcsDataSource')
               ? GcsData.fromJson(
-                  json_['gcsDataSource'] as core.Map<core.String, core.dynamic>)
+                  json_['gcsDataSource'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           gcsIntermediateDataLocation:
               json_.containsKey('gcsIntermediateDataLocation')
-                  ? GcsData.fromJson(json_['gcsIntermediateDataLocation']
-                      as core.Map<core.String, core.dynamic>)
+                  ? GcsData.fromJson(
+                      json_['gcsIntermediateDataLocation']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           hdfsDataSource: json_.containsKey('hdfsDataSource')
-              ? HdfsData.fromJson(json_['hdfsDataSource']
-                  as core.Map<core.String, core.dynamic>)
+              ? HdfsData.fromJson(
+                  json_['hdfsDataSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           httpDataSource: json_.containsKey('httpDataSource')
-              ? HttpData.fromJson(json_['httpDataSource']
-                  as core.Map<core.String, core.dynamic>)
+              ? HttpData.fromJson(
+                  json_['httpDataSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           objectConditions: json_.containsKey('objectConditions')
-              ? ObjectConditions.fromJson(json_['objectConditions']
-                  as core.Map<core.String, core.dynamic>)
+              ? ObjectConditions.fromJson(
+                  json_['objectConditions']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           posixDataSink: json_.containsKey('posixDataSink')
               ? PosixFilesystem.fromJson(
-                  json_['posixDataSink'] as core.Map<core.String, core.dynamic>)
+                  json_['posixDataSink'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           posixDataSource: json_.containsKey('posixDataSource')
-              ? PosixFilesystem.fromJson(json_['posixDataSource']
-                  as core.Map<core.String, core.dynamic>)
+              ? PosixFilesystem.fromJson(
+                  json_['posixDataSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sinkAgentPoolName: json_['sinkAgentPoolName'] as core.String?,
           sourceAgentPoolName: json_['sourceAgentPoolName'] as core.String?,
           transferManifest: json_.containsKey('transferManifest')
-              ? TransferManifest.fromJson(json_['transferManifest']
-                  as core.Map<core.String, core.dynamic>)
+              ? TransferManifest.fromJson(
+                  json_['transferManifest']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           transferOptions: json_.containsKey('transferOptions')
-              ? TransferOptions.fromJson(json_['transferOptions']
-                  as core.Map<core.String, core.dynamic>)
+              ? TransferOptions.fromJson(
+                  json_['transferOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2792,7 +2793,8 @@ class UpdateTransferJobRequest {
           projectId: json_['projectId'] as core.String?,
           transferJob: json_.containsKey('transferJob')
               ? TransferJob.fromJson(
-                  json_['transferJob'] as core.Map<core.String, core.dynamic>)
+                  json_['transferJob'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateTransferJobFieldMask:
               json_['updateTransferJobFieldMask'] as core.String?,

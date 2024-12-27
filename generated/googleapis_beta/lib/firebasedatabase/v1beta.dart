@@ -65,11 +65,16 @@ class FirebaseRealtimeDatabaseApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  FirebaseRealtimeDatabaseApi(http.Client client,
-      {core.String rootUrl = 'https://firebasedatabase.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  FirebaseRealtimeDatabaseApi(
+    http.Client client, {
+    core.String rootUrl = 'https://firebasedatabase.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -152,7 +157,8 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return DatabaseInstance.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks a DatabaseInstance to be deleted.
@@ -196,7 +202,8 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return DatabaseInstance.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Disables a DatabaseInstance.
@@ -244,7 +251,8 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return DatabaseInstance.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the DatabaseInstance identified by the specified resource name.
@@ -288,7 +296,8 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return DatabaseInstance.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists each DatabaseInstance associated with the specified parent project.
@@ -352,7 +361,8 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return ListDatabaseInstancesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Enables a DatabaseInstance.
@@ -400,7 +410,8 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return DatabaseInstance.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Restores a DatabaseInstance that was previously marked to be deleted.
@@ -450,7 +461,8 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return DatabaseInstance.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -548,16 +560,16 @@ class ListDatabaseInstancesResponse {
   /// should not be persisted.
   core.String? nextPageToken;
 
-  ListDatabaseInstancesResponse({
-    this.instances,
-    this.nextPageToken,
-  });
+  ListDatabaseInstancesResponse({this.instances, this.nextPageToken});
 
   ListDatabaseInstancesResponse.fromJson(core.Map json_)
       : this(
           instances: (json_['instances'] as core.List?)
-              ?.map((value) => DatabaseInstance.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DatabaseInstance.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );

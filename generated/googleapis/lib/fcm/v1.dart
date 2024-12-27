@@ -55,11 +55,16 @@ class FirebaseCloudMessagingApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  FirebaseCloudMessagingApi(http.Client client,
-      {core.String rootUrl = 'https://fcm.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  FirebaseCloudMessagingApi(
+    http.Client client, {
+    core.String rootUrl = 'https://fcm.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -202,19 +207,18 @@ class AndroidConfig {
       : this(
           collapseKey: json_['collapseKey'] as core.String?,
           data: (json_['data'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           directBootOk: json_['directBootOk'] as core.bool?,
           fcmOptions: json_.containsKey('fcmOptions')
               ? AndroidFcmOptions.fromJson(
-                  json_['fcmOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['fcmOptions'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           notification: json_.containsKey('notification')
               ? AndroidNotification.fromJson(
-                  json_['notification'] as core.Map<core.String, core.dynamic>)
+                  json_['notification'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           priority: json_['priority'] as core.String?,
           restrictedPackageName: json_['restrictedPackageName'] as core.String?,
@@ -518,7 +522,8 @@ class AndroidNotification {
           image: json_['image'] as core.String?,
           lightSettings: json_.containsKey('lightSettings')
               ? LightSettings.fromJson(
-                  json_['lightSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['lightSettings'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           localOnly: json_['localOnly'] as core.bool?,
           notificationCount: json_['notificationCount'] as core.int?,
@@ -626,15 +631,11 @@ class ApnsConfig {
       : this(
           fcmOptions: json_.containsKey('fcmOptions')
               ? ApnsFcmOptions.fromJson(
-                  json_['fcmOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['fcmOptions'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
-          headers:
-              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          headers: (json_['headers'] as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           liveActivityToken: json_['liveActivityToken'] as core.String?,
           payload: json_.containsKey('payload')
               ? json_['payload'] as core.Map<core.String, core.dynamic>
@@ -660,10 +661,7 @@ class ApnsFcmOptions {
   /// If present, it will override google.firebase.fcm.v1.Notification.image.
   core.String? image;
 
-  ApnsFcmOptions({
-    this.analyticsLabel,
-    this.image,
-  });
+  ApnsFcmOptions({this.analyticsLabel, this.image});
 
   ApnsFcmOptions.fromJson(core.Map json_)
       : this(
@@ -755,17 +753,14 @@ class LightSettings {
   /// Required.
   core.String? lightOnDuration;
 
-  LightSettings({
-    this.color,
-    this.lightOffDuration,
-    this.lightOnDuration,
-  });
+  LightSettings({this.color, this.lightOffDuration, this.lightOnDuration});
 
   LightSettings.fromJson(core.Map json_)
       : this(
           color: json_.containsKey('color')
               ? Color.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>)
+                  json_['color'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           lightOffDuration: json_['lightOffDuration'] as core.String?,
           lightOnDuration: json_['lightOnDuration'] as core.String?,
@@ -850,33 +845,35 @@ class Message {
       : this(
           android: json_.containsKey('android')
               ? AndroidConfig.fromJson(
-                  json_['android'] as core.Map<core.String, core.dynamic>)
+                  json_['android'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           apns: json_.containsKey('apns')
               ? ApnsConfig.fromJson(
-                  json_['apns'] as core.Map<core.String, core.dynamic>)
+                  json_['apns'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           condition: json_['condition'] as core.String?,
           data: (json_['data'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           fcmOptions: json_.containsKey('fcmOptions')
               ? FcmOptions.fromJson(
-                  json_['fcmOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['fcmOptions'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           notification: json_.containsKey('notification')
               ? Notification.fromJson(
-                  json_['notification'] as core.Map<core.String, core.dynamic>)
+                  json_['notification'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           token: json_['token'] as core.String?,
           topic: json_['topic'] as core.String?,
           webpush: json_.containsKey('webpush')
               ? WebpushConfig.fromJson(
-                  json_['webpush'] as core.Map<core.String, core.dynamic>)
+                  json_['webpush'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -912,11 +909,7 @@ class Notification {
   /// The notification's title.
   core.String? title;
 
-  Notification({
-    this.body,
-    this.image,
-    this.title,
-  });
+  Notification({this.body, this.image, this.title});
 
   Notification.fromJson(core.Map json_)
       : this(
@@ -942,16 +935,14 @@ class SendMessageRequest {
   /// Flag for testing the request without actually delivering the message.
   core.bool? validateOnly;
 
-  SendMessageRequest({
-    this.message,
-    this.validateOnly,
-  });
+  SendMessageRequest({this.message, this.validateOnly});
 
   SendMessageRequest.fromJson(core.Map json_)
       : this(
           message: json_.containsKey('message')
               ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>)
+                  json_['message'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           validateOnly: json_['validateOnly'] as core.bool?,
         );
@@ -990,32 +981,20 @@ class WebpushConfig {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? notification;
 
-  WebpushConfig({
-    this.data,
-    this.fcmOptions,
-    this.headers,
-    this.notification,
-  });
+  WebpushConfig({this.data, this.fcmOptions, this.headers, this.notification});
 
   WebpushConfig.fromJson(core.Map json_)
       : this(
           data: (json_['data'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           fcmOptions: json_.containsKey('fcmOptions')
               ? WebpushFcmOptions.fromJson(
-                  json_['fcmOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['fcmOptions'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
-          headers:
-              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          headers: (json_['headers'] as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           notification: json_.containsKey('notification')
               ? json_['notification'] as core.Map<core.String, core.dynamic>
               : null,
@@ -1039,10 +1018,7 @@ class WebpushFcmOptions {
   /// For all URL values, HTTPS is required.
   core.String? link;
 
-  WebpushFcmOptions({
-    this.analyticsLabel,
-    this.link,
-  });
+  WebpushFcmOptions({this.analyticsLabel, this.link});
 
   WebpushFcmOptions.fromJson(core.Map json_)
       : this(

@@ -52,11 +52,16 @@ class DataprocMetastoreApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  DataprocMetastoreApi(http.Client client,
-      {core.String rootUrl = 'https://metastore.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DataprocMetastoreApi(
+    http.Client client, {
+    core.String rootUrl = 'https://metastore.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -132,7 +137,8 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Alter metadata table properties.
@@ -178,7 +184,8 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a metastore service in a project and location.
@@ -241,7 +248,8 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a single service.
@@ -292,7 +300,8 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Exports metadata from a service.
@@ -336,7 +345,8 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the details of a single service.
@@ -375,7 +385,8 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMetastoreV2Service.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Imports Metadata into a Dataproc Metastore service.
@@ -419,7 +430,8 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists services in a project and location.
@@ -484,7 +496,8 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMetastoreV2ListServicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Move a table to another database.
@@ -529,7 +542,8 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single service.
@@ -592,7 +606,8 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Query Dataproc Metastore metadata.
@@ -636,7 +651,8 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Restores a service from a backup.
@@ -680,7 +696,8 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -750,7 +767,8 @@ class ProjectsLocationsServicesBackupsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a single backup.
@@ -801,7 +819,8 @@ class ProjectsLocationsServicesBackupsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single backup.
@@ -840,7 +859,8 @@ class ProjectsLocationsServicesBackupsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMetastoreV2Backup.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists backups in a service.
@@ -906,7 +926,8 @@ class ProjectsLocationsServicesBackupsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMetastoreV2ListBackupsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -948,17 +969,15 @@ class GoogleCloudMetastoreV2AuxiliaryVersionConfig {
 
   GoogleCloudMetastoreV2AuxiliaryVersionConfig.fromJson(core.Map json_)
       : this(
-          configOverrides:
-              (json_['configOverrides'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          configOverrides: (json_['configOverrides']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           endpoints: (json_['endpoints'] as core.List?)
-              ?.map((value) => GoogleCloudMetastoreV2Endpoint.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudMetastoreV2Endpoint.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           version: json_['version'] as core.String?,
         );
@@ -1033,8 +1052,10 @@ class GoogleCloudMetastoreV2Backup {
               ?.map((value) => value as core.String)
               .toList(),
           serviceRevision: json_.containsKey('serviceRevision')
-              ? GoogleCloudMetastoreV2Service.fromJson(json_['serviceRevision']
-                  as core.Map<core.String, core.dynamic>)
+              ? GoogleCloudMetastoreV2Service.fromJson(
+                  json_['serviceRevision']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           state: json_['state'] as core.String?,
         );
@@ -1076,10 +1097,7 @@ class GoogleCloudMetastoreV2DatabaseDump {
   /// - "AVRO" : Database dump contains Avro files.
   core.String? type;
 
-  GoogleCloudMetastoreV2DatabaseDump({
-    this.gcsUri,
-    this.type,
-  });
+  GoogleCloudMetastoreV2DatabaseDump({this.gcsUri, this.type});
 
   GoogleCloudMetastoreV2DatabaseDump.fromJson(core.Map json_)
       : this(
@@ -1108,10 +1126,7 @@ class GoogleCloudMetastoreV2Endpoint {
   /// Output only.
   core.String? region;
 
-  GoogleCloudMetastoreV2Endpoint({
-    this.endpointUri,
-    this.region,
-  });
+  GoogleCloudMetastoreV2Endpoint({this.endpointUri, this.region});
 
   GoogleCloudMetastoreV2Endpoint.fromJson(core.Map json_)
       : this(
@@ -1189,17 +1204,13 @@ class GoogleCloudMetastoreV2HiveMetastoreConfig {
             (key, value) => core.MapEntry(
               key,
               GoogleCloudMetastoreV2AuxiliaryVersionConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
-          configOverrides:
-              (json_['configOverrides'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          configOverrides: (json_['configOverrides']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           endpointProtocol: json_['endpointProtocol'] as core.String?,
           version: json_['version'] as core.String?,
         );
@@ -1248,7 +1259,8 @@ class GoogleCloudMetastoreV2ImportMetadataRequest {
       : this(
           databaseDump: json_.containsKey('databaseDump')
               ? GoogleCloudMetastoreV2DatabaseDump.fromJson(
-                  json_['databaseDump'] as core.Map<core.String, core.dynamic>)
+                  json_['databaseDump'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           description: json_['description'] as core.String?,
           requestId: json_['requestId'] as core.String?,
@@ -1286,8 +1298,11 @@ class GoogleCloudMetastoreV2ListBackupsResponse {
   GoogleCloudMetastoreV2ListBackupsResponse.fromJson(core.Map json_)
       : this(
           backups: (json_['backups'] as core.List?)
-              ?.map((value) => GoogleCloudMetastoreV2Backup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudMetastoreV2Backup.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -1325,8 +1340,11 @@ class GoogleCloudMetastoreV2ListServicesResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           services: (json_['services'] as core.List?)
-              ?.map((value) => GoogleCloudMetastoreV2Service.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudMetastoreV2Service.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1348,16 +1366,15 @@ class GoogleCloudMetastoreV2MetadataIntegration {
   /// Optional.
   GoogleCloudMetastoreV2DataCatalogConfig? dataCatalogConfig;
 
-  GoogleCloudMetastoreV2MetadataIntegration({
-    this.dataCatalogConfig,
-  });
+  GoogleCloudMetastoreV2MetadataIntegration({this.dataCatalogConfig});
 
   GoogleCloudMetastoreV2MetadataIntegration.fromJson(core.Map json_)
       : this(
           dataCatalogConfig: json_.containsKey('dataCatalogConfig')
               ? GoogleCloudMetastoreV2DataCatalogConfig.fromJson(
                   json_['dataCatalogConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1383,14 +1400,10 @@ class GoogleCloudMetastoreV2ScalingConfig {
   /// Optional.
   core.int? scalingFactor;
 
-  GoogleCloudMetastoreV2ScalingConfig({
-    this.scalingFactor,
-  });
+  GoogleCloudMetastoreV2ScalingConfig({this.scalingFactor});
 
   GoogleCloudMetastoreV2ScalingConfig.fromJson(core.Map json_)
-      : this(
-          scalingFactor: json_['scalingFactor'] as core.int?,
-        );
+      : this(scalingFactor: json_['scalingFactor'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (scalingFactor != null) 'scalingFactor': scalingFactor!,
@@ -1458,7 +1471,8 @@ class GoogleCloudMetastoreV2ScheduledBackup {
           enabled: json_['enabled'] as core.bool?,
           latestBackup: json_.containsKey('latestBackup')
               ? GoogleCloudMetastoreV2LatestBackup.fromJson(
-                  json_['latestBackup'] as core.Map<core.String, core.dynamic>)
+                  json_['latestBackup'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           nextScheduledTime: json_['nextScheduledTime'] as core.String?,
           timeZone: json_['timeZone'] as core.String?,
@@ -1587,38 +1601,43 @@ class GoogleCloudMetastoreV2Service {
           encryptionConfig: json_.containsKey('encryptionConfig')
               ? GoogleCloudMetastoreV2EncryptionConfig.fromJson(
                   json_['encryptionConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           endpoints: (json_['endpoints'] as core.List?)
-              ?.map((value) => GoogleCloudMetastoreV2Endpoint.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudMetastoreV2Endpoint.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           hiveMetastoreConfig: json_.containsKey('hiveMetastoreConfig')
               ? GoogleCloudMetastoreV2HiveMetastoreConfig.fromJson(
                   json_['hiveMetastoreConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           metadataIntegration: json_.containsKey('metadataIntegration')
               ? GoogleCloudMetastoreV2MetadataIntegration.fromJson(
                   json_['metadataIntegration']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           scalingConfig: json_.containsKey('scalingConfig')
               ? GoogleCloudMetastoreV2ScalingConfig.fromJson(
-                  json_['scalingConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['scalingConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           scheduledBackup: json_.containsKey('scheduledBackup')
               ? GoogleCloudMetastoreV2ScheduledBackup.fromJson(
                   json_['scheduledBackup']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           state: json_['state'] as core.String?,
           stateMessage: json_['stateMessage'] as core.String?,
@@ -1703,7 +1722,8 @@ class GoogleLongrunningOperation {
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>

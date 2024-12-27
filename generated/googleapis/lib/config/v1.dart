@@ -55,11 +55,16 @@ class ConfigApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ConfigApi(http.Client client,
-      {core.String rootUrl = 'https://config.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ConfigApi(
+    http.Client client, {
+    core.String rootUrl = 'https://config.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -102,10 +107,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -169,7 +171,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -452,10 +455,7 @@ class ProjectsLocationsDeploymentsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Deployment> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Deployment> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -468,7 +468,8 @@ class ProjectsLocationsDeploymentsResource {
       queryParams: queryParams_,
     );
     return Deployment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -639,7 +640,8 @@ class ProjectsLocationsDeploymentsResource {
       queryParams: queryParams_,
     );
     return ListDeploymentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Locks a deployment.
@@ -843,7 +845,8 @@ class ProjectsLocationsDeploymentsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Unlocks a locked deployment.
@@ -960,10 +963,7 @@ class ProjectsLocationsDeploymentsRevisionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Revision> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Revision> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1044,7 +1044,8 @@ class ProjectsLocationsDeploymentsRevisionsResource {
       queryParams: queryParams_,
     );
     return ListRevisionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1052,8 +1053,8 @@ class ProjectsLocationsDeploymentsRevisionsResourcesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsDeploymentsRevisionsResourcesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets details about a Resource deployed by Infra Manager.
   ///
@@ -1074,10 +1075,7 @@ class ProjectsLocationsDeploymentsRevisionsResourcesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Resource> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Resource> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1155,7 +1153,8 @@ class ProjectsLocationsDeploymentsRevisionsResourcesResource {
       queryParams: queryParams_,
     );
     return ListResourcesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1237,10 +1236,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1276,10 +1272,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1341,7 +1334,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1503,7 +1497,8 @@ class ProjectsLocationsPreviewsResource {
       queryParams: queryParams_,
     );
     return ExportPreviewResultResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details about a Preview.
@@ -1525,10 +1520,7 @@ class ProjectsLocationsPreviewsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Preview> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Preview> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1608,7 +1600,8 @@ class ProjectsLocationsPreviewsResource {
       queryParams: queryParams_,
     );
     return ListPreviewsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1653,7 +1646,8 @@ class ProjectsLocationsTerraformVersionsResource {
       queryParams: queryParams_,
     );
     return TerraformVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists TerraformVersions in a given project and location.
@@ -1717,7 +1711,8 @@ class ProjectsLocationsTerraformVersionsResource {
       queryParams: queryParams_,
     );
     return ListTerraformVersionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1736,11 +1731,7 @@ class ApplyResults {
   /// Map of output name to output info.
   core.Map<core.String, TerraformOutput>? outputs;
 
-  ApplyResults({
-    this.artifacts,
-    this.content,
-    this.outputs,
-  });
+  ApplyResults({this.artifacts, this.content, this.outputs});
 
   ApplyResults.fromJson(core.Map json_)
       : this(
@@ -1751,7 +1742,8 @@ class ApplyResults {
             (key, value) => core.MapEntry(
               key,
               TerraformOutput.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
         );
@@ -1790,16 +1782,16 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -1898,17 +1890,14 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1934,14 +1923,10 @@ class DeleteStatefileRequest {
   /// Required.
   core.String? lockId;
 
-  DeleteStatefileRequest({
-    this.lockId,
-  });
+  DeleteStatefileRequest({this.lockId});
 
   DeleteStatefileRequest.fromJson(core.Map json_)
-      : this(
-          lockId: json_['lockId'] as core.String?,
-        );
+      : this(lockId: json_['lockId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (lockId != null) 'lockId': lockId!,
@@ -2176,21 +2161,17 @@ class Deployment {
 
   Deployment.fromJson(core.Map json_)
       : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          annotations: (json_['annotations']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           artifactsGcsBucket: json_['artifactsGcsBucket'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           deleteBuild: json_['deleteBuild'] as core.String?,
           deleteLogs: json_['deleteLogs'] as core.String?,
           deleteResults: json_.containsKey('deleteResults')
               ? ApplyResults.fromJson(
-                  json_['deleteResults'] as core.Map<core.String, core.dynamic>)
+                  json_['deleteResults'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           errorCode: json_['errorCode'] as core.String?,
           errorLogs: json_['errorLogs'] as core.String?,
@@ -2198,10 +2179,7 @@ class Deployment {
               json_['importExistingResources'] as core.bool?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           latestRevision: json_['latestRevision'] as core.String?,
           lockState: json_['lockState'] as core.String?,
@@ -2211,12 +2189,17 @@ class Deployment {
           state: json_['state'] as core.String?,
           stateDetail: json_['stateDetail'] as core.String?,
           terraformBlueprint: json_.containsKey('terraformBlueprint')
-              ? TerraformBlueprint.fromJson(json_['terraformBlueprint']
-                  as core.Map<core.String, core.dynamic>)
+              ? TerraformBlueprint.fromJson(
+                  json_['terraformBlueprint']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           tfErrors: (json_['tfErrors'] as core.List?)
-              ?.map((value) => TerraformError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TerraformError.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           tfVersion: json_['tfVersion'] as core.String?,
           tfVersionConstraint: json_['tfVersionConstraint'] as core.String?,
@@ -2275,14 +2258,10 @@ class ExportDeploymentStatefileRequest {
   /// Optional.
   core.bool? draft;
 
-  ExportDeploymentStatefileRequest({
-    this.draft,
-  });
+  ExportDeploymentStatefileRequest({this.draft});
 
   ExportDeploymentStatefileRequest.fromJson(core.Map json_)
-      : this(
-          draft: json_['draft'] as core.bool?,
-        );
+      : this(draft: json_['draft'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (draft != null) 'draft': draft!,
@@ -2301,15 +2280,14 @@ class ExportPreviewResultResponse {
   /// Output only.
   PreviewResult? result;
 
-  ExportPreviewResultResponse({
-    this.result,
-  });
+  ExportPreviewResultResponse({this.result});
 
   ExportPreviewResultResponse.fromJson(core.Map json_)
       : this(
           result: json_.containsKey('result')
               ? PreviewResult.fromJson(
-                  json_['result'] as core.Map<core.String, core.dynamic>)
+                  json_['result'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2362,11 +2340,7 @@ class GitSource {
   /// Optional.
   core.String? repo;
 
-  GitSource({
-    this.directory,
-    this.ref,
-    this.repo,
-  });
+  GitSource({this.directory, this.ref, this.repo});
 
   GitSource.fromJson(core.Map json_)
       : this(
@@ -2390,14 +2364,10 @@ class ImportStatefileRequest {
   /// Required.
   core.String? lockId;
 
-  ImportStatefileRequest({
-    this.lockId,
-  });
+  ImportStatefileRequest({this.lockId});
 
   ImportStatefileRequest.fromJson(core.Map json_)
-      : this(
-          lockId: json_['lockId'] as core.String?,
-        );
+      : this(lockId: json_['lockId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (lockId != null) 'lockId': lockId!,
@@ -2424,8 +2394,11 @@ class ListDeploymentsResponse {
   ListDeploymentsResponse.fromJson(core.Map json_)
       : this(
           deployments: (json_['deployments'] as core.List?)
-              ?.map((value) => Deployment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Deployment.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -2448,16 +2421,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2476,17 +2449,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2510,18 +2483,17 @@ class ListPreviewsResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListPreviewsResponse({
-    this.nextPageToken,
-    this.previews,
-    this.unreachable,
-  });
+  ListPreviewsResponse({this.nextPageToken, this.previews, this.unreachable});
 
   ListPreviewsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           previews: (json_['previews'] as core.List?)
-              ?.map((value) => Preview.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Preview.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2552,18 +2524,17 @@ class ListResourcesResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListResourcesResponse({
-    this.nextPageToken,
-    this.resources,
-    this.unreachable,
-  });
+  ListResourcesResponse({this.nextPageToken, this.resources, this.unreachable});
 
   ListResourcesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           resources: (json_['resources'] as core.List?)
-              ?.map((value) => Resource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Resource.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2594,18 +2565,17 @@ class ListRevisionsResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListRevisionsResponse({
-    this.nextPageToken,
-    this.revisions,
-    this.unreachable,
-  });
+  ListRevisionsResponse({this.nextPageToken, this.revisions, this.unreachable});
 
   ListRevisionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           revisions: (json_['revisions'] as core.List?)
-              ?.map((value) => Revision.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Revision.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2641,8 +2611,11 @@ class ListTerraformVersionsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           terraformVersions: (json_['terraformVersions'] as core.List?)
-              ?.map((value) => TerraformVersion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TerraformVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2754,20 +2727,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -2873,22 +2841,23 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -3097,14 +3066,9 @@ class Preview {
 
   Preview.fromJson(core.Map json_)
       : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          annotations: (json_['annotations']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           artifactsGcsBucket: json_['artifactsGcsBucket'] as core.String?,
           build: json_['build'] as core.String?,
           createTime: json_['createTime'] as core.String?,
@@ -3113,31 +3077,36 @@ class Preview {
           errorLogs: json_['errorLogs'] as core.String?,
           errorStatus: json_.containsKey('errorStatus')
               ? Status.fromJson(
-                  json_['errorStatus'] as core.Map<core.String, core.dynamic>)
+                  json_['errorStatus'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           logs: json_['logs'] as core.String?,
           name: json_['name'] as core.String?,
           previewArtifacts: json_.containsKey('previewArtifacts')
-              ? PreviewArtifacts.fromJson(json_['previewArtifacts']
-                  as core.Map<core.String, core.dynamic>)
+              ? PreviewArtifacts.fromJson(
+                  json_['previewArtifacts']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           previewMode: json_['previewMode'] as core.String?,
           serviceAccount: json_['serviceAccount'] as core.String?,
           state: json_['state'] as core.String?,
           terraformBlueprint: json_.containsKey('terraformBlueprint')
-              ? TerraformBlueprint.fromJson(json_['terraformBlueprint']
-                  as core.Map<core.String, core.dynamic>)
+              ? TerraformBlueprint.fromJson(
+                  json_['terraformBlueprint']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           tfErrors: (json_['tfErrors'] as core.List?)
-              ?.map((value) => TerraformError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TerraformError.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           tfVersion: json_['tfVersion'] as core.String?,
           tfVersionConstraint: json_['tfVersionConstraint'] as core.String?,
@@ -3187,10 +3156,7 @@ class PreviewArtifacts {
   /// Output only.
   core.String? content;
 
-  PreviewArtifacts({
-    this.artifacts,
-    this.content,
-  });
+  PreviewArtifacts({this.artifacts, this.content});
 
   PreviewArtifacts.fromJson(core.Map json_)
       : this(
@@ -3216,10 +3182,7 @@ class PreviewResult {
   /// Output only.
   core.String? jsonSignedUri;
 
-  PreviewResult({
-    this.binarySignedUri,
-    this.jsonSignedUri,
-  });
+  PreviewResult({this.binarySignedUri, this.jsonSignedUri});
 
   PreviewResult.fromJson(core.Map json_)
       : this(
@@ -3299,7 +3262,8 @@ class Resource {
             (key, value) => core.MapEntry(
               key,
               ResourceCAIInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           intent: json_['intent'] as core.String?,
@@ -3307,7 +3271,8 @@ class Resource {
           state: json_['state'] as core.String?,
           terraformInfo: json_.containsKey('terraformInfo')
               ? ResourceTerraformInfo.fromJson(
-                  json_['terraformInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['terraformInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3326,14 +3291,10 @@ class ResourceCAIInfo {
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   core.String? fullResourceName;
 
-  ResourceCAIInfo({
-    this.fullResourceName,
-  });
+  ResourceCAIInfo({this.fullResourceName});
 
   ResourceCAIInfo.fromJson(core.Map json_)
-      : this(
-          fullResourceName: json_['fullResourceName'] as core.String?,
-        );
+      : this(fullResourceName: json_['fullResourceName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
@@ -3352,11 +3313,7 @@ class ResourceTerraformInfo {
   /// TF resource type
   core.String? type;
 
-  ResourceTerraformInfo({
-    this.address,
-    this.id,
-    this.type,
-  });
+  ResourceTerraformInfo({this.address, this.id, this.type});
 
   ResourceTerraformInfo.fromJson(core.Map json_)
       : this(
@@ -3569,7 +3526,8 @@ class Revision {
           action: json_['action'] as core.String?,
           applyResults: json_.containsKey('applyResults')
               ? ApplyResults.fromJson(
-                  json_['applyResults'] as core.Map<core.String, core.dynamic>)
+                  json_['applyResults'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           build: json_['build'] as core.String?,
           createTime: json_['createTime'] as core.String?,
@@ -3586,12 +3544,17 @@ class Revision {
           state: json_['state'] as core.String?,
           stateDetail: json_['stateDetail'] as core.String?,
           terraformBlueprint: json_.containsKey('terraformBlueprint')
-              ? TerraformBlueprint.fromJson(json_['terraformBlueprint']
-                  as core.Map<core.String, core.dynamic>)
+              ? TerraformBlueprint.fromJson(
+                  json_['terraformBlueprint']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           tfErrors: (json_['tfErrors'] as core.List?)
-              ?.map((value) => TerraformError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TerraformError.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           tfVersion: json_['tfVersion'] as core.String?,
           tfVersionConstraint: json_['tfVersionConstraint'] as core.String?,
@@ -3642,16 +3605,14 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -3669,14 +3630,10 @@ class Statefile {
   /// Output only.
   core.String? signedUri;
 
-  Statefile({
-    this.signedUri,
-  });
+  Statefile({this.signedUri});
 
   Statefile.fromJson(core.Map json_)
-      : this(
-          signedUri: json_['signedUri'] as core.String?,
-        );
+      : this(signedUri: json_['signedUri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (signedUri != null) 'signedUri': signedUri!,
@@ -3709,18 +3666,15 @@ class TerraformBlueprint {
   /// Optional.
   core.Map<core.String, TerraformVariable>? inputValues;
 
-  TerraformBlueprint({
-    this.gcsSource,
-    this.gitSource,
-    this.inputValues,
-  });
+  TerraformBlueprint({this.gcsSource, this.gitSource, this.inputValues});
 
   TerraformBlueprint.fromJson(core.Map json_)
       : this(
           gcsSource: json_['gcsSource'] as core.String?,
           gitSource: json_.containsKey('gitSource')
               ? GitSource.fromJson(
-                  json_['gitSource'] as core.Map<core.String, core.dynamic>)
+                  json_['gitSource'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           inputValues:
               (json_['inputValues'] as core.Map<core.String, core.dynamic>?)
@@ -3728,7 +3682,8 @@ class TerraformBlueprint {
             (key, value) => core.MapEntry(
               key,
               TerraformVariable.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
         );
@@ -3771,7 +3726,8 @@ class TerraformError {
       : this(
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           errorDescription: json_['errorDescription'] as core.String?,
           httpResponseCode: json_['httpResponseCode'] as core.int?,
@@ -3798,16 +3754,11 @@ class TerraformOutput {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? value;
 
-  TerraformOutput({
-    this.sensitive,
-    this.value,
-  });
+  TerraformOutput({this.sensitive, this.value});
 
   TerraformOutput.fromJson(core.Map json_)
       : this(
-          sensitive: json_['sensitive'] as core.bool?,
-          value: json_['value'],
-        );
+            sensitive: json_['sensitive'] as core.bool?, value: json_['value']);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sensitive != null) 'sensitive': sensitive!,
@@ -3825,14 +3776,10 @@ class TerraformVariable {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? inputValue;
 
-  TerraformVariable({
-    this.inputValue,
-  });
+  TerraformVariable({this.inputValue});
 
   TerraformVariable.fromJson(core.Map json_)
-      : this(
-          inputValue: json_['inputValue'],
-        );
+      : this(inputValue: json_['inputValue']);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (inputValue != null) 'inputValue': inputValue!,
@@ -3913,14 +3860,10 @@ class UnlockDeploymentRequest {
   /// Required.
   core.String? lockId;
 
-  UnlockDeploymentRequest({
-    this.lockId,
-  });
+  UnlockDeploymentRequest({this.lockId});
 
   UnlockDeploymentRequest.fromJson(core.Map json_)
-      : this(
-          lockId: json_['lockId'] as core.String?,
-        );
+      : this(lockId: json_['lockId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (lockId != null) 'lockId': lockId!,

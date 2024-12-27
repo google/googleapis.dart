@@ -55,11 +55,16 @@ class RecaptchaEnterpriseApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  RecaptchaEnterpriseApi(http.Client client,
-      {core.String rootUrl = 'https://recaptchaenterprise.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  RecaptchaEnterpriseApi(
+    http.Client client, {
+    core.String rootUrl = 'https://recaptchaenterprise.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -127,7 +132,8 @@ class ProjectsAssessmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates an Assessment of the likelihood an event is legitimate.
@@ -169,7 +175,8 @@ class ProjectsAssessmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1Assessment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -221,7 +228,8 @@ class ProjectsFirewallpoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified firewall policy.
@@ -258,7 +266,8 @@ class ProjectsFirewallpoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the specified firewall policy.
@@ -295,7 +304,8 @@ class ProjectsFirewallpoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all firewall policies that belong to a project.
@@ -344,7 +354,9 @@ class ProjectsFirewallpoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+        .fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified firewall policy.
@@ -391,7 +403,8 @@ class ProjectsFirewallpoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Reorders all firewall policies.
@@ -436,7 +449,9 @@ class ProjectsFirewallpoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+        .fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -489,7 +504,8 @@ class ProjectsKeysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a new reCAPTCHA Enterprise key.
@@ -531,7 +547,8 @@ class ProjectsKeysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1Key.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified key.
@@ -568,7 +585,8 @@ class ProjectsKeysResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the specified key.
@@ -605,7 +623,8 @@ class ProjectsKeysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1Key.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get some aggregated metrics for a Key.
@@ -644,7 +663,8 @@ class ProjectsKeysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1Metrics.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all keys that belong to a project.
@@ -691,7 +711,8 @@ class ProjectsKeysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1ListKeysResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all IP overrides for a key.
@@ -742,7 +763,8 @@ class ProjectsKeysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Migrates an existing key from reCAPTCHA to reCAPTCHA Enterprise.
@@ -789,7 +811,8 @@ class ProjectsKeysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1Key.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified key.
@@ -836,7 +859,8 @@ class ProjectsKeysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1Key.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Removes an IP override from a key.
@@ -885,7 +909,8 @@ class ProjectsKeysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the secret key related to the specified public key.
@@ -911,10 +936,7 @@ class ProjectsKeysResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse>
-      retrieveLegacySecretKey(
-    core.String key, {
-    core.String? $fields,
-  }) async {
+      retrieveLegacySecretKey(core.String key, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -928,7 +950,9 @@ class ProjectsKeysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+        .fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -984,7 +1008,9 @@ class ProjectsRelatedaccountgroupmembershipsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+        .fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1049,7 +1075,9 @@ class ProjectsRelatedaccountgroupsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+        .fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1111,7 +1139,9 @@ class ProjectsRelatedaccountgroupsMembershipsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+        .fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1122,13 +1152,11 @@ class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment {
   /// Output only.
   core.List<core.String>? labels;
 
-  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment({
-    this.labels,
-  });
+  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment({this.labels});
 
   GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           labels: (json_['labels'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -1198,12 +1226,16 @@ class GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo {
   });
 
   GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           endpoints: (json_['endpoints'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           languageCode: json_['languageCode'] as core.String?,
           latestVerificationResult:
@@ -1227,16 +1259,15 @@ class GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest {
   /// Required.
   GoogleCloudRecaptchaenterpriseV1IpOverrideData? ipOverrideData;
 
-  GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest({
-    this.ipOverrideData,
-  });
+  GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest({this.ipOverrideData});
 
   GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest.fromJson(core.Map json_)
       : this(
           ipOverrideData: json_.containsKey('ipOverrideData')
               ? GoogleCloudRecaptchaenterpriseV1IpOverrideData.fromJson(
                   json_['ipOverrideData']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1363,8 +1394,8 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
   });
 
   GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           accountId: json_['accountId'] as core.String?,
           annotation: json_['annotation'] as core.String?,
           hashedAccountId: json_['hashedAccountId'] as core.String?,
@@ -1374,7 +1405,8 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
           transactionEvent: json_.containsKey('transactionEvent')
               ? GoogleCloudRecaptchaenterpriseV1TransactionEvent.fromJson(
                   json_['transactionEvent']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1534,59 +1566,75 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
           accountDefenderAssessment:
               json_.containsKey('accountDefenderAssessment')
                   ? GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment
-                      .fromJson(json_['accountDefenderAssessment']
-                          as core.Map<core.String, core.dynamic>)
+                      .fromJson(
+                      json_['accountDefenderAssessment']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           accountVerification: json_.containsKey('accountVerification')
               ? GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo
-                  .fromJson(json_['accountVerification']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['accountVerification']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           assessmentEnvironment: json_.containsKey('assessmentEnvironment')
               ? GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment.fromJson(
                   json_['assessmentEnvironment']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           event: json_.containsKey('event')
               ? GoogleCloudRecaptchaenterpriseV1Event.fromJson(
-                  json_['event'] as core.Map<core.String, core.dynamic>)
+                  json_['event'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           firewallPolicyAssessment:
               json_.containsKey('firewallPolicyAssessment')
                   ? GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment
-                      .fromJson(json_['firewallPolicyAssessment']
-                          as core.Map<core.String, core.dynamic>)
+                      .fromJson(
+                      json_['firewallPolicyAssessment']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           fraudPreventionAssessment:
               json_.containsKey('fraudPreventionAssessment')
                   ? GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment
-                      .fromJson(json_['fraudPreventionAssessment']
-                          as core.Map<core.String, core.dynamic>)
+                      .fromJson(
+                      json_['fraudPreventionAssessment']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           fraudSignals: json_.containsKey('fraudSignals')
               ? GoogleCloudRecaptchaenterpriseV1FraudSignals.fromJson(
-                  json_['fraudSignals'] as core.Map<core.String, core.dynamic>)
+                  json_['fraudSignals'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           phoneFraudAssessment: json_.containsKey('phoneFraudAssessment')
               ? GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment.fromJson(
                   json_['phoneFraudAssessment']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           privatePasswordLeakVerification: json_
                   .containsKey('privatePasswordLeakVerification')
               ? GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification
-                  .fromJson(json_['privatePasswordLeakVerification']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['privatePasswordLeakVerification']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           riskAnalysis: json_.containsKey('riskAnalysis')
               ? GoogleCloudRecaptchaenterpriseV1RiskAnalysis.fromJson(
-                  json_['riskAnalysis'] as core.Map<core.String, core.dynamic>)
+                  json_['riskAnalysis'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           tokenProperties: json_.containsKey('tokenProperties')
               ? GoogleCloudRecaptchaenterpriseV1TokenProperties.fromJson(
                   json_['tokenProperties']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1726,8 +1774,8 @@ class GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo {
   });
 
   GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           emailAddress: json_['emailAddress'] as core.String?,
           lastVerificationTime: json_['lastVerificationTime'] as core.String?,
           phoneNumber: json_['phoneNumber'] as core.String?,
@@ -1900,12 +1948,14 @@ class GoogleCloudRecaptchaenterpriseV1Event {
           transactionData: json_.containsKey('transactionData')
               ? GoogleCloudRecaptchaenterpriseV1TransactionData.fromJson(
                   json_['transactionData']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           userAgent: json_['userAgent'] as core.String?,
           userInfo: json_.containsKey('userInfo')
               ? GoogleCloudRecaptchaenterpriseV1UserInfo.fromJson(
-                  json_['userInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['userInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           userIpAddress: json_['userIpAddress'] as core.String?,
           wafTokenAssessment: json_['wafTokenAssessment'] as core.bool?,
@@ -1978,32 +2028,39 @@ class GoogleCloudRecaptchaenterpriseV1FirewallAction {
           allow: json_.containsKey('allow')
               ? GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction
                   .fromJson(
-                      json_['allow'] as core.Map<core.String, core.dynamic>)
+                  json_['allow'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           block: json_.containsKey('block')
               ? GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction
                   .fromJson(
-                      json_['block'] as core.Map<core.String, core.dynamic>)
+                  json_['block'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           includeRecaptchaScript: json_.containsKey('includeRecaptchaScript')
               ? GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction
-                  .fromJson(json_['includeRecaptchaScript']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['includeRecaptchaScript']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           redirect: json_.containsKey('redirect')
               ? GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction
                   .fromJson(
-                      json_['redirect'] as core.Map<core.String, core.dynamic>)
+                  json_['redirect'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           setHeader: json_.containsKey('setHeader')
               ? GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction
                   .fromJson(
-                      json_['setHeader'] as core.Map<core.String, core.dynamic>)
+                  json_['setHeader'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           substitute: json_.containsKey('substitute')
               ? GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction
-                  .fromJson(json_['substitute']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['substitute'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2058,8 +2115,8 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction {
   });
 
   GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           key: json_['key'] as core.String?,
           value: json_['value'] as core.String?,
         );
@@ -2081,15 +2138,11 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction {
   /// Optional.
   core.String? path;
 
-  GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction({
-    this.path,
-  });
+  GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction({this.path});
 
   GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction.fromJson(
-      core.Map json_)
-      : this(
-          path: json_['path'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(path: json_['path'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (path != null) 'path': path!,
@@ -2157,9 +2210,12 @@ class GoogleCloudRecaptchaenterpriseV1FirewallPolicy {
   GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(core.Map json_)
       : this(
           actions: (json_['actions'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRecaptchaenterpriseV1FirewallAction.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudRecaptchaenterpriseV1FirewallAction.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           condition: json_['condition'] as core.String?,
           description: json_['description'] as core.String?,
@@ -2198,16 +2254,18 @@ class GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment {
   });
 
   GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           firewallPolicy: json_.containsKey('firewallPolicy')
               ? GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
                   json_['firewallPolicy']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2254,22 +2312,28 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
   });
 
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           behavioralTrustVerdict: json_.containsKey('behavioralTrustVerdict')
               ? GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict
-                  .fromJson(json_['behavioralTrustVerdict']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['behavioralTrustVerdict']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           cardTestingVerdict: json_.containsKey('cardTestingVerdict')
               ? GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict
-                  .fromJson(json_['cardTestingVerdict']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['cardTestingVerdict']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           stolenInstrumentVerdict: json_.containsKey('stolenInstrumentVerdict')
               ? GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict
-                  .fromJson(json_['stolenInstrumentVerdict']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['stolenInstrumentVerdict']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           transactionRisk: (json_['transactionRisk'] as core.num?)?.toDouble(),
         );
@@ -2300,10 +2364,8 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVe
   });
 
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict.fromJson(
-      core.Map json_)
-      : this(
-          trust: (json_['trust'] as core.num?)?.toDouble(),
-        );
+    core.Map json_,
+  ) : this(trust: (json_['trust'] as core.num?)?.toDouble());
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (trust != null) 'trust': trust!,
@@ -2326,10 +2388,8 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdic
   });
 
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict.fromJson(
-      core.Map json_)
-      : this(
-          risk: (json_['risk'] as core.num?)?.toDouble(),
-        );
+    core.Map json_,
+  ) : this(risk: (json_['risk'] as core.num?)?.toDouble());
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (risk != null) 'risk': risk!,
@@ -2351,10 +2411,8 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentV
   });
 
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict.fromJson(
-      core.Map json_)
-      : this(
-          risk: (json_['risk'] as core.num?)?.toDouble(),
-        );
+    core.Map json_,
+  ) : this(risk: (json_['risk'] as core.num?)?.toDouble());
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (risk != null) 'risk': risk!,
@@ -2382,13 +2440,15 @@ class GoogleCloudRecaptchaenterpriseV1FraudSignals {
       : this(
           cardSignals: json_.containsKey('cardSignals')
               ? GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals
-                  .fromJson(json_['cardSignals']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['cardSignals'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           userSignals: json_.containsKey('userSignals')
               ? GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals
-                  .fromJson(json_['userSignals']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['userSignals'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2405,13 +2465,11 @@ class GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals {
   /// Output only.
   core.List<core.String>? cardLabels;
 
-  GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals({
-    this.cardLabels,
-  });
+  GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals({this.cardLabels});
 
   GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           cardLabels: (json_['cardLabels'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -2443,8 +2501,8 @@ class GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals {
   });
 
   GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           activeDaysLowerBound: json_['activeDaysLowerBound'] as core.int?,
           syntheticRisk: (json_['syntheticRisk'] as core.num?)?.toDouble(),
         );
@@ -2495,7 +2553,8 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
           appleDeveloperId: json_.containsKey('appleDeveloperId')
               ? GoogleCloudRecaptchaenterpriseV1AppleDeveloperId.fromJson(
                   json_['appleDeveloperId']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2528,10 +2587,7 @@ class GoogleCloudRecaptchaenterpriseV1IpOverrideData {
   /// 0.9 for all valid assessments.
   core.String? overrideType;
 
-  GoogleCloudRecaptchaenterpriseV1IpOverrideData({
-    this.ip,
-    this.overrideType,
-  });
+  GoogleCloudRecaptchaenterpriseV1IpOverrideData({this.ip, this.overrideType});
 
   GoogleCloudRecaptchaenterpriseV1IpOverrideData.fromJson(core.Map json_)
       : this(
@@ -2612,39 +2668,42 @@ class GoogleCloudRecaptchaenterpriseV1Key {
           androidSettings: json_.containsKey('androidSettings')
               ? GoogleCloudRecaptchaenterpriseV1AndroidKeySettings.fromJson(
                   json_['androidSettings']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           createTime: json_['createTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           expressSettings: json_.containsKey('expressSettings')
               ? GoogleCloudRecaptchaenterpriseV1ExpressKeySettings.fromJson(
                   json_['expressSettings']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           iosSettings: json_.containsKey('iosSettings')
               ? GoogleCloudRecaptchaenterpriseV1IOSKeySettings.fromJson(
-                  json_['iosSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['iosSettings'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           testingOptions: json_.containsKey('testingOptions')
               ? GoogleCloudRecaptchaenterpriseV1TestingOptions.fromJson(
                   json_['testingOptions']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           wafSettings: json_.containsKey('wafSettings')
               ? GoogleCloudRecaptchaenterpriseV1WafSettings.fromJson(
-                  json_['wafSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['wafSettings'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           webSettings: json_.containsKey('webSettings')
               ? GoogleCloudRecaptchaenterpriseV1WebKeySettings.fromJson(
-                  json_['webSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['webSettings'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2678,12 +2737,15 @@ class GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse {
   });
 
   GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           firewallPolicies: (json_['firewallPolicies'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2710,12 +2772,15 @@ class GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse {
   });
 
   GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           ipOverrides: (json_['ipOverrides'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRecaptchaenterpriseV1IpOverrideData.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudRecaptchaenterpriseV1IpOverrideData.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2744,8 +2809,11 @@ class GoogleCloudRecaptchaenterpriseV1ListKeysResponse {
   GoogleCloudRecaptchaenterpriseV1ListKeysResponse.fromJson(core.Map json_)
       : this(
           keys: (json_['keys'] as core.List?)
-              ?.map((value) => GoogleCloudRecaptchaenterpriseV1Key.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudRecaptchaenterpriseV1Key.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2773,15 +2841,19 @@ class GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse
   });
 
   GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          relatedAccountGroupMemberships: (json_[
-                  'relatedAccountGroupMemberships'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
+          relatedAccountGroupMemberships:
+              (json_['relatedAccountGroupMemberships'] as core.List?)
+                  ?.map(
+                    (value) =>
+                        GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership
+                            .fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2808,13 +2880,16 @@ class GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse {
   });
 
   GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           relatedAccountGroups: (json_['relatedAccountGroups'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup
+                    .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2860,15 +2935,21 @@ class GoogleCloudRecaptchaenterpriseV1Metrics {
   GoogleCloudRecaptchaenterpriseV1Metrics.fromJson(core.Map json_)
       : this(
           challengeMetrics: (json_['challengeMetrics'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRecaptchaenterpriseV1ChallengeMetrics.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudRecaptchaenterpriseV1ChallengeMetrics.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           name: json_['name'] as core.String?,
           scoreMetrics: (json_['scoreMetrics'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRecaptchaenterpriseV1ScoreMetrics.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudRecaptchaenterpriseV1ScoreMetrics.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           startTime: json_['startTime'] as core.String?,
         );
@@ -2896,14 +2977,10 @@ class GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest {
   /// Optional.
   core.bool? skipBillingCheck;
 
-  GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest({
-    this.skipBillingCheck,
-  });
+  GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest({this.skipBillingCheck});
 
   GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest.fromJson(core.Map json_)
-      : this(
-          skipBillingCheck: json_['skipBillingCheck'] as core.bool?,
-        );
+      : this(skipBillingCheck: json_['skipBillingCheck'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (skipBillingCheck != null) 'skipBillingCheck': skipBillingCheck!,
@@ -2926,7 +3003,8 @@ class GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment {
           smsTollFraudVerdict: json_.containsKey('smsTollFraudVerdict')
               ? GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict.fromJson(
                   json_['smsTollFraudVerdict']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3000,8 +3078,8 @@ class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification {
   });
 
   GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           encryptedLeakMatchPrefixes:
               (json_['encryptedLeakMatchPrefixes'] as core.List?)
                   ?.map((value) => value as core.String)
@@ -3034,14 +3112,10 @@ class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup {
   /// Required.
   core.String? name;
 
-  GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup({
-    this.name,
-  });
+  GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup({this.name});
 
   GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+      : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -3088,8 +3162,8 @@ class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership {
   });
 
   GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           accountId: json_['accountId'] as core.String?,
           hashedAccountId: json_['hashedAccountId'] as core.String?,
           name: json_['name'] as core.String?,
@@ -3114,12 +3188,13 @@ class GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest {
   });
 
   GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           ipOverrideData: json_.containsKey('ipOverrideData')
               ? GoogleCloudRecaptchaenterpriseV1IpOverrideData.fromJson(
                   json_['ipOverrideData']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3141,13 +3216,11 @@ class GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest {
   /// Required.
   core.List<core.String>? names;
 
-  GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest({
-    this.names,
-  });
+  GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest({this.names});
 
   GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           names: (json_['names'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -3178,10 +3251,8 @@ class GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse {
   });
 
   GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse.fromJson(
-      core.Map json_)
-      : this(
-          legacySecretKey: json_['legacySecretKey'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(legacySecretKey: json_['legacySecretKey'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (legacySecretKey != null) 'legacySecretKey': legacySecretKey!,
@@ -3258,20 +3329,13 @@ class GoogleCloudRecaptchaenterpriseV1ScoreDistribution {
   /// buckets is on order of a few dozen, but typically much lower (ie. 10).
   core.Map<core.String, core.String>? scoreBuckets;
 
-  GoogleCloudRecaptchaenterpriseV1ScoreDistribution({
-    this.scoreBuckets,
-  });
+  GoogleCloudRecaptchaenterpriseV1ScoreDistribution({this.scoreBuckets});
 
   GoogleCloudRecaptchaenterpriseV1ScoreDistribution.fromJson(core.Map json_)
       : this(
-          scoreBuckets:
-              (json_['scoreBuckets'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          scoreBuckets: (json_['scoreBuckets']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3304,13 +3368,15 @@ class GoogleCloudRecaptchaenterpriseV1ScoreMetrics {
             (key, value) => core.MapEntry(
               key,
               GoogleCloudRecaptchaenterpriseV1ScoreDistribution.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           overallMetrics: json_.containsKey('overallMetrics')
               ? GoogleCloudRecaptchaenterpriseV1ScoreDistribution.fromJson(
                   json_['overallMetrics']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3378,8 +3444,8 @@ class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsReques
   });
 
   GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           accountId: json_['accountId'] as core.String?,
           hashedAccountId: json_['hashedAccountId'] as core.String?,
           pageSize: json_['pageSize'] as core.int?,
@@ -3411,15 +3477,19 @@ class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRespon
   });
 
   GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          relatedAccountGroupMemberships: (json_[
-                  'relatedAccountGroupMemberships'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
+          relatedAccountGroupMemberships:
+              (json_['relatedAccountGroupMemberships'] as core.List?)
+                  ?.map(
+                    (value) =>
+                        GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership
+                            .fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3689,37 +3759,47 @@ class GoogleCloudRecaptchaenterpriseV1TransactionData {
           billingAddress: json_.containsKey('billingAddress')
               ? GoogleCloudRecaptchaenterpriseV1TransactionDataAddress.fromJson(
                   json_['billingAddress']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           cardBin: json_['cardBin'] as core.String?,
           cardLastFour: json_['cardLastFour'] as core.String?,
           currencyCode: json_['currencyCode'] as core.String?,
           gatewayInfo: json_.containsKey('gatewayInfo')
               ? GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo
-                  .fromJson(json_['gatewayInfo']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['gatewayInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRecaptchaenterpriseV1TransactionDataItem.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudRecaptchaenterpriseV1TransactionDataItem
+                    .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           merchants: (json_['merchants'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRecaptchaenterpriseV1TransactionDataUser.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudRecaptchaenterpriseV1TransactionDataUser
+                    .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           paymentMethod: json_['paymentMethod'] as core.String?,
           shippingAddress: json_.containsKey('shippingAddress')
               ? GoogleCloudRecaptchaenterpriseV1TransactionDataAddress.fromJson(
                   json_['shippingAddress']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           shippingValue: (json_['shippingValue'] as core.num?)?.toDouble(),
           transactionId: json_['transactionId'] as core.String?,
           user: json_.containsKey('user')
               ? GoogleCloudRecaptchaenterpriseV1TransactionDataUser.fromJson(
-                  json_['user'] as core.Map<core.String, core.dynamic>)
+                  json_['user'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           value: (json_['value'] as core.num?)?.toDouble(),
         );
@@ -3786,8 +3866,8 @@ class GoogleCloudRecaptchaenterpriseV1TransactionDataAddress {
   });
 
   GoogleCloudRecaptchaenterpriseV1TransactionDataAddress.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           address: (json_['address'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -3841,8 +3921,8 @@ class GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo {
   });
 
   GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           avsResponseCode: json_['avsResponseCode'] as core.String?,
           cvvResponseCode: json_['cvvResponseCode'] as core.String?,
           gatewayResponseCode: json_['gatewayResponseCode'] as core.String?,
@@ -4167,8 +4247,11 @@ class GoogleCloudRecaptchaenterpriseV1UserInfo {
           accountId: json_['accountId'] as core.String?,
           createAccountTime: json_['createAccountTime'] as core.String?,
           userIds: (json_['userIds'] as core.List?)
-              ?.map((value) => GoogleCloudRecaptchaenterpriseV1UserId.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudRecaptchaenterpriseV1UserId.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 

@@ -63,11 +63,16 @@ class CloudTraceApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  CloudTraceApi(http.Client client,
-      {core.String rootUrl = 'https://cloudtrace.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudTraceApi(
+    http.Client client, {
+    core.String rootUrl = 'https://cloudtrace.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -195,20 +200,19 @@ class Annotation {
   /// The maximum length for the description is 256 bytes.
   TruncatableString? description;
 
-  Annotation({
-    this.attributes,
-    this.description,
-  });
+  Annotation({this.attributes, this.description});
 
   Annotation.fromJson(core.Map json_)
       : this(
           attributes: json_.containsKey('attributes')
               ? Attributes.fromJson(
-                  json_['attributes'] as core.Map<core.String, core.dynamic>)
+                  json_['attributes'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           description: json_.containsKey('description')
               ? TruncatableString.fromJson(
-                  json_['description'] as core.Map<core.String, core.dynamic>)
+                  json_['description'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -229,11 +233,7 @@ class AttributeValue {
   /// A string up to 256 bytes long.
   TruncatableString? stringValue;
 
-  AttributeValue({
-    this.boolValue,
-    this.intValue,
-    this.stringValue,
-  });
+  AttributeValue({this.boolValue, this.intValue, this.stringValue});
 
   AttributeValue.fromJson(core.Map json_)
       : this(
@@ -241,7 +241,8 @@ class AttributeValue {
           intValue: json_['intValue'] as core.String?,
           stringValue: json_.containsKey('stringValue')
               ? TruncatableString.fromJson(
-                  json_['stringValue'] as core.Map<core.String, core.dynamic>)
+                  json_['stringValue'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -270,10 +271,7 @@ class Attributes {
   /// valid.
   core.int? droppedAttributesCount;
 
-  Attributes({
-    this.attributeMap,
-    this.droppedAttributesCount,
-  });
+  Attributes({this.attributeMap, this.droppedAttributesCount});
 
   Attributes.fromJson(core.Map json_)
       : this(
@@ -283,7 +281,8 @@ class Attributes {
             (key, value) => core.MapEntry(
               key,
               AttributeValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           droppedAttributesCount: json_['droppedAttributesCount'] as core.int?,
@@ -306,15 +305,16 @@ class BatchWriteSpansRequest {
   /// Required.
   core.List<Span>? spans;
 
-  BatchWriteSpansRequest({
-    this.spans,
-  });
+  BatchWriteSpansRequest({this.spans});
 
   BatchWriteSpansRequest.fromJson(core.Map json_)
       : this(
           spans: (json_['spans'] as core.List?)
-              ?.map((value) =>
-                  Span.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Span.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -356,18 +356,14 @@ class Link {
   /// - "PARENT_LINKED_SPAN" : The linked span is a parent of the current span.
   core.String? type;
 
-  Link({
-    this.attributes,
-    this.spanId,
-    this.traceId,
-    this.type,
-  });
+  Link({this.attributes, this.spanId, this.traceId, this.type});
 
   Link.fromJson(core.Map json_)
       : this(
           attributes: json_.containsKey('attributes')
               ? Attributes.fromJson(
-                  json_['attributes'] as core.Map<core.String, core.dynamic>)
+                  json_['attributes'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           spanId: json_['spanId'] as core.String?,
           traceId: json_['traceId'] as core.String?,
@@ -393,17 +389,17 @@ class Links {
   /// A collection of links.
   core.List<Link>? link;
 
-  Links({
-    this.droppedLinksCount,
-    this.link,
-  });
+  Links({this.droppedLinksCount, this.link});
 
   Links.fromJson(core.Map json_)
       : this(
           droppedLinksCount: json_['droppedLinksCount'] as core.int?,
           link: (json_['link'] as core.List?)
-              ?.map((value) =>
-                  Link.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Link.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -472,20 +468,19 @@ class Module {
   /// libc.so, sharedlib.so (up to 256 bytes).
   TruncatableString? module;
 
-  Module({
-    this.buildId,
-    this.module,
-  });
+  Module({this.buildId, this.module});
 
   Module.fromJson(core.Map json_)
       : this(
           buildId: json_.containsKey('buildId')
               ? TruncatableString.fromJson(
-                  json_['buildId'] as core.Map<core.String, core.dynamic>)
+                  json_['buildId'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           module: json_.containsKey('module')
               ? TruncatableString.fromJson(
-                  json_['module'] as core.Map<core.String, core.dynamic>)
+                  json_['module'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -638,17 +633,20 @@ class Span {
       : this(
           attributes: json_.containsKey('attributes')
               ? Attributes.fromJson(
-                  json_['attributes'] as core.Map<core.String, core.dynamic>)
+                  json_['attributes'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           childSpanCount: json_['childSpanCount'] as core.int?,
           displayName: json_.containsKey('displayName')
               ? TruncatableString.fromJson(
-                  json_['displayName'] as core.Map<core.String, core.dynamic>)
+                  json_['displayName'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           endTime: json_['endTime'] as core.String?,
           links: json_.containsKey('links')
               ? Links.fromJson(
-                  json_['links'] as core.Map<core.String, core.dynamic>)
+                  json_['links'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           parentSpanId: json_['parentSpanId'] as core.String?,
@@ -658,16 +656,19 @@ class Span {
           spanKind: json_['spanKind'] as core.String?,
           stackTrace: json_.containsKey('stackTrace')
               ? StackTrace.fromJson(
-                  json_['stackTrace'] as core.Map<core.String, core.dynamic>)
+                  json_['stackTrace'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           startTime: json_['startTime'] as core.String?,
           status: json_.containsKey('status')
               ? Status.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           timeEvents: json_.containsKey('timeEvents')
               ? TimeEvents.fromJson(
-                  json_['timeEvents'] as core.Map<core.String, core.dynamic>)
+                  json_['timeEvents'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -736,24 +737,30 @@ class StackFrame {
           columnNumber: json_['columnNumber'] as core.String?,
           fileName: json_.containsKey('fileName')
               ? TruncatableString.fromJson(
-                  json_['fileName'] as core.Map<core.String, core.dynamic>)
+                  json_['fileName'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           functionName: json_.containsKey('functionName')
               ? TruncatableString.fromJson(
-                  json_['functionName'] as core.Map<core.String, core.dynamic>)
+                  json_['functionName'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           lineNumber: json_['lineNumber'] as core.String?,
           loadModule: json_.containsKey('loadModule')
               ? Module.fromJson(
-                  json_['loadModule'] as core.Map<core.String, core.dynamic>)
+                  json_['loadModule'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           originalFunctionName: json_.containsKey('originalFunctionName')
-              ? TruncatableString.fromJson(json_['originalFunctionName']
-                  as core.Map<core.String, core.dynamic>)
+              ? TruncatableString.fromJson(
+                  json_['originalFunctionName']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sourceVersion: json_.containsKey('sourceVersion')
               ? TruncatableString.fromJson(
-                  json_['sourceVersion'] as core.Map<core.String, core.dynamic>)
+                  json_['sourceVersion'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -780,17 +787,17 @@ class StackFrames {
   /// Stack frames in this call stack.
   core.List<StackFrame>? frame;
 
-  StackFrames({
-    this.droppedFramesCount,
-    this.frame,
-  });
+  StackFrames({this.droppedFramesCount, this.frame});
 
   StackFrames.fromJson(core.Map json_)
       : this(
           droppedFramesCount: json_['droppedFramesCount'] as core.int?,
           frame: (json_['frame'] as core.List?)
-              ?.map((value) => StackFrame.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => StackFrame.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -817,16 +824,14 @@ class StackTrace {
   /// request can refer to that stack trace by only setting `stackTraceHashId`.
   core.String? stackTraceHashId;
 
-  StackTrace({
-    this.stackFrames,
-    this.stackTraceHashId,
-  });
+  StackTrace({this.stackFrames, this.stackTraceHashId});
 
   StackTrace.fromJson(core.Map json_)
       : this(
           stackFrames: json_.containsKey('stackFrames')
               ? StackFrames.fromJson(
-                  json_['stackFrames'] as core.Map<core.String, core.dynamic>)
+                  json_['stackFrames'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           stackTraceHashId: json_['stackTraceHashId'] as core.String?,
         );
@@ -857,21 +862,19 @@ class TimeEvent {
   /// The timestamp indicating the time the event occurred.
   core.String? time;
 
-  TimeEvent({
-    this.annotation,
-    this.messageEvent,
-    this.time,
-  });
+  TimeEvent({this.annotation, this.messageEvent, this.time});
 
   TimeEvent.fromJson(core.Map json_)
       : this(
           annotation: json_.containsKey('annotation')
               ? Annotation.fromJson(
-                  json_['annotation'] as core.Map<core.String, core.dynamic>)
+                  json_['annotation'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           messageEvent: json_.containsKey('messageEvent')
               ? MessageEvent.fromJson(
-                  json_['messageEvent'] as core.Map<core.String, core.dynamic>)
+                  json_['messageEvent'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           time: json_['time'] as core.String?,
         );
@@ -915,8 +918,11 @@ class TimeEvents {
           droppedMessageEventsCount:
               json_['droppedMessageEventsCount'] as core.int?,
           timeEvent: (json_['timeEvent'] as core.List?)
-              ?.map((value) => TimeEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TimeEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 

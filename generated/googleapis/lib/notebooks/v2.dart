@@ -50,11 +50,16 @@ class AIPlatformNotebooksApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  AIPlatformNotebooksApi(http.Client client,
-      {core.String rootUrl = 'https://notebooks.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  AIPlatformNotebooksApi(
+    http.Client client, {
+    core.String rootUrl = 'https://notebooks.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -93,10 +98,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -160,7 +162,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -207,7 +210,8 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return CheckInstanceUpgradabilityResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a new Instance in a given project and location.
@@ -361,10 +365,7 @@ class ProjectsLocationsInstancesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Instance> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Instance> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -528,7 +529,8 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return ListInstancesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// UpdateInstance updates an Instance.
@@ -975,7 +977,8 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Upgrades a notebook instance to the latest version.
@@ -1143,10 +1146,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1182,10 +1182,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1247,7 +1244,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1284,10 +1282,7 @@ class AcceleratorConfig {
   /// Workstations.
   core.String? type;
 
-  AcceleratorConfig({
-    this.coreCount,
-    this.type,
-  });
+  AcceleratorConfig({this.coreCount, this.type});
 
   AcceleratorConfig.fromJson(core.Map json_)
       : this(
@@ -1311,14 +1306,10 @@ class AccessConfig {
   /// same region as the zone of the instance.
   core.String? externalIp;
 
-  AccessConfig({
-    this.externalIp,
-  });
+  AccessConfig({this.externalIp});
 
   AccessConfig.fromJson(core.Map json_)
-      : this(
-          externalIp: json_['externalIp'] as core.String?,
-        );
+      : this(externalIp: json_['externalIp'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (externalIp != null) 'externalIp': externalIp!,
@@ -1405,17 +1396,14 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1472,12 +1460,7 @@ class BootDisk {
   /// Optional.
   core.String? kmsKey;
 
-  BootDisk({
-    this.diskEncryption,
-    this.diskSizeGb,
-    this.diskType,
-    this.kmsKey,
-  });
+  BootDisk({this.diskEncryption, this.diskSizeGb, this.diskType, this.kmsKey});
 
   BootDisk.fromJson(core.Map json_)
       : this(
@@ -1518,25 +1501,27 @@ class Config {
   /// Output only.
   SupportedValues? supportedValues;
 
-  Config({
-    this.availableImages,
-    this.defaultValues,
-    this.supportedValues,
-  });
+  Config({this.availableImages, this.defaultValues, this.supportedValues});
 
   Config.fromJson(core.Map json_)
       : this(
           availableImages: (json_['availableImages'] as core.List?)
-              ?.map((value) => ImageRelease.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ImageRelease.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           defaultValues: json_.containsKey('defaultValues')
               ? DefaultValues.fromJson(
-                  json_['defaultValues'] as core.Map<core.String, core.dynamic>)
+                  json_['defaultValues'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           supportedValues: json_.containsKey('supportedValues')
-              ? SupportedValues.fromJson(json_['supportedValues']
-                  as core.Map<core.String, core.dynamic>)
+              ? SupportedValues.fromJson(
+                  json_['supportedValues']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1564,10 +1549,7 @@ class ContainerImage {
   /// Optional.
   core.String? tag;
 
-  ContainerImage({
-    this.repository,
-    this.tag,
-  });
+  ContainerImage({this.repository, this.tag});
 
   ContainerImage.fromJson(core.Map json_)
       : this(
@@ -1625,12 +1607,7 @@ class DataDisk {
   /// Optional.
   core.String? kmsKey;
 
-  DataDisk({
-    this.diskEncryption,
-    this.diskSizeGb,
-    this.diskType,
-    this.kmsKey,
-  });
+  DataDisk({this.diskEncryption, this.diskSizeGb, this.diskType, this.kmsKey});
 
   DataDisk.fromJson(core.Map json_)
       : this(
@@ -1655,14 +1632,10 @@ class DefaultValues {
   /// Output only.
   core.String? machineType;
 
-  DefaultValues({
-    this.machineType,
-  });
+  DefaultValues({this.machineType});
 
   DefaultValues.fromJson(core.Map json_)
-      : this(
-          machineType: json_['machineType'] as core.String?,
-        );
+      : this(machineType: json_['machineType'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (machineType != null) 'machineType': machineType!,
@@ -1681,16 +1654,15 @@ class DiagnoseInstanceRequest {
   /// Optional.
   core.int? timeoutMinutes;
 
-  DiagnoseInstanceRequest({
-    this.diagnosticConfig,
-    this.timeoutMinutes,
-  });
+  DiagnoseInstanceRequest({this.diagnosticConfig, this.timeoutMinutes});
 
   DiagnoseInstanceRequest.fromJson(core.Map json_)
       : this(
           diagnosticConfig: json_.containsKey('diagnosticConfig')
-              ? DiagnosticConfig.fromJson(json_['diagnosticConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? DiagnosticConfig.fromJson(
+                  json_['diagnosticConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           timeoutMinutes: json_['timeoutMinutes'] as core.int?,
         );
@@ -1809,21 +1781,12 @@ class Event {
   /// indicates that the instance had metadata that needs to be modified.
   core.String? type;
 
-  Event({
-    this.details,
-    this.reportTime,
-    this.type,
-  });
+  Event({this.details, this.reportTime, this.type});
 
   Event.fromJson(core.Map json_)
       : this(
-          details:
-              (json_['details'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          details: (json_['details'] as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           reportTime: json_['reportTime'] as core.String?,
           type: json_['type'] as core.String?,
         );
@@ -1873,10 +1836,7 @@ class GPUDriverConfig {
   /// Optional.
   core.bool? enableGpuDriver;
 
-  GPUDriverConfig({
-    this.customGpuDriverPath,
-    this.enableGpuDriver,
-  });
+  GPUDriverConfig({this.customGpuDriverPath, this.enableGpuDriver});
 
   GPUDriverConfig.fromJson(core.Map json_)
       : this(
@@ -2011,54 +1971,69 @@ class GceSetup {
   GceSetup.fromJson(core.Map json_)
       : this(
           acceleratorConfigs: (json_['acceleratorConfigs'] as core.List?)
-              ?.map((value) => AcceleratorConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AcceleratorConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           bootDisk: json_.containsKey('bootDisk')
               ? BootDisk.fromJson(
-                  json_['bootDisk'] as core.Map<core.String, core.dynamic>)
+                  json_['bootDisk'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           containerImage: json_.containsKey('containerImage')
-              ? ContainerImage.fromJson(json_['containerImage']
-                  as core.Map<core.String, core.dynamic>)
+              ? ContainerImage.fromJson(
+                  json_['containerImage']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dataDisks: (json_['dataDisks'] as core.List?)
-              ?.map((value) => DataDisk.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DataDisk.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           disablePublicIp: json_['disablePublicIp'] as core.bool?,
           enableIpForwarding: json_['enableIpForwarding'] as core.bool?,
           gpuDriverConfig: json_.containsKey('gpuDriverConfig')
-              ? GPUDriverConfig.fromJson(json_['gpuDriverConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? GPUDriverConfig.fromJson(
+                  json_['gpuDriverConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           machineType: json_['machineType'] as core.String?,
-          metadata:
-              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           minCpuPlatform: json_['minCpuPlatform'] as core.String?,
           networkInterfaces: (json_['networkInterfaces'] as core.List?)
-              ?.map((value) => NetworkInterface.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => NetworkInterface.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           serviceAccounts: (json_['serviceAccounts'] as core.List?)
-              ?.map((value) => ServiceAccount.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ServiceAccount.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           shieldedInstanceConfig: json_.containsKey('shieldedInstanceConfig')
-              ? ShieldedInstanceConfig.fromJson(json_['shieldedInstanceConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? ShieldedInstanceConfig.fromJson(
+                  json_['shieldedInstanceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           tags: (json_['tags'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           vmImage: json_.containsKey('vmImage')
               ? VmImage.fromJson(
-                  json_['vmImage'] as core.Map<core.String, core.dynamic>)
+                  json_['vmImage'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2096,10 +2071,7 @@ class ImageRelease {
   /// Output only.
   core.String? releaseName;
 
-  ImageRelease({
-    this.imageName,
-    this.releaseName,
-  });
+  ImageRelease({this.imageName, this.releaseName});
 
   ImageRelease.fromJson(core.Map json_)
       : this(
@@ -2275,16 +2247,12 @@ class Instance {
               json_['enableThirdPartyIdentity'] as core.bool?,
           gceSetup: json_.containsKey('gceSetup')
               ? GceSetup.fromJson(
-                  json_['gceSetup'] as core.Map<core.String, core.dynamic>)
+                  json_['gceSetup'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
-          healthInfo:
-              (json_['healthInfo'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          healthInfo: (json_['healthInfo']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           healthState: json_['healthState'] as core.String?,
           id: json_['id'] as core.String?,
           instanceOwners: (json_['instanceOwners'] as core.List?)
@@ -2292,10 +2260,7 @@ class Instance {
               .toList(),
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           proxyUri: json_['proxyUri'] as core.String?,
@@ -2305,8 +2270,11 @@ class Instance {
           thirdPartyProxyUrl: json_['thirdPartyProxyUrl'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
           upgradeHistory: (json_['upgradeHistory'] as core.List?)
-              ?.map((value) => UpgradeHistoryEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => UpgradeHistoryEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2350,17 +2318,16 @@ class ListInstancesResponse {
   /// will only contain either instances or unreachables,
   core.List<core.String>? unreachable;
 
-  ListInstancesResponse({
-    this.instances,
-    this.nextPageToken,
-    this.unreachable,
-  });
+  ListInstancesResponse({this.instances, this.nextPageToken, this.unreachable});
 
   ListInstancesResponse.fromJson(core.Map json_)
       : this(
           instances: (json_['instances'] as core.List?)
-              ?.map((value) => Instance.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Instance.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -2383,16 +2350,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2411,17 +2378,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2481,8 +2448,11 @@ class NetworkInterface {
   NetworkInterface.fromJson(core.Map json_)
       : this(
           accessConfigs: (json_['accessConfigs'] as core.List?)
-              ?.map((value) => AccessConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccessConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           network: json_['network'] as core.String?,
           nicType: json_['nicType'] as core.String?,
@@ -2540,20 +2510,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -2656,17 +2621,16 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
       : this(
           bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -2693,16 +2657,14 @@ class ReportInstanceInfoSystemRequest {
   /// Required.
   core.String? vmId;
 
-  ReportInstanceInfoSystemRequest({
-    this.event,
-    this.vmId,
-  });
+  ReportInstanceInfoSystemRequest({this.event, this.vmId});
 
   ReportInstanceInfoSystemRequest.fromJson(core.Map json_)
       : this(
           event: json_.containsKey('event')
               ? Event.fromJson(
-                  json_['event'] as core.Map<core.String, core.dynamic>)
+                  json_['event'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           vmId: json_['vmId'] as core.String?,
         );
@@ -2732,20 +2694,19 @@ class ResizeDiskRequest {
   /// Required.
   DataDisk? dataDisk;
 
-  ResizeDiskRequest({
-    this.bootDisk,
-    this.dataDisk,
-  });
+  ResizeDiskRequest({this.bootDisk, this.dataDisk});
 
   ResizeDiskRequest.fromJson(core.Map json_)
       : this(
           bootDisk: json_.containsKey('bootDisk')
               ? BootDisk.fromJson(
-                  json_['bootDisk'] as core.Map<core.String, core.dynamic>)
+                  json_['bootDisk'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dataDisk: json_.containsKey('dataDisk')
               ? DataDisk.fromJson(
-                  json_['dataDisk'] as core.Map<core.String, core.dynamic>)
+                  json_['dataDisk'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2760,15 +2721,14 @@ class RestoreInstanceRequest {
   /// Snapshot to be used for restore.
   Snapshot? snapshot;
 
-  RestoreInstanceRequest({
-    this.snapshot,
-  });
+  RestoreInstanceRequest({this.snapshot});
 
   RestoreInstanceRequest.fromJson(core.Map json_)
       : this(
           snapshot: json_.containsKey('snapshot')
               ? Snapshot.fromJson(
-                  json_['snapshot'] as core.Map<core.String, core.dynamic>)
+                  json_['snapshot'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2791,10 +2751,7 @@ class RollbackInstanceRequest {
   /// Required.
   core.String? targetSnapshot;
 
-  RollbackInstanceRequest({
-    this.revisionId,
-    this.targetSnapshot,
-  });
+  RollbackInstanceRequest({this.revisionId, this.targetSnapshot});
 
   RollbackInstanceRequest.fromJson(core.Map json_)
       : this(
@@ -2822,10 +2779,7 @@ class ServiceAccount {
   /// Output only.
   core.List<core.String>? scopes;
 
-  ServiceAccount({
-    this.email,
-    this.scopes,
-  });
+  ServiceAccount({this.email, this.scopes});
 
   ServiceAccount.fromJson(core.Map json_)
       : this(
@@ -2850,15 +2804,14 @@ class SetIamPolicyRequest {
   /// reject them.
   Policy? policy;
 
-  SetIamPolicyRequest({
-    this.policy,
-  });
+  SetIamPolicyRequest({this.policy});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2936,10 +2889,7 @@ class Snapshot {
   /// Required.
   core.String? snapshotId;
 
-  Snapshot({
-    this.projectId,
-    this.snapshotId,
-  });
+  Snapshot({this.projectId, this.snapshotId});
 
   Snapshot.fromJson(core.Map json_)
       : this(
@@ -2980,10 +2930,7 @@ class SupportedValues {
   /// Output only.
   core.List<core.String>? machineTypes;
 
-  SupportedValues({
-    this.acceleratorTypes,
-    this.machineTypes,
-  });
+  SupportedValues({this.acceleratorTypes, this.machineTypes});
 
   SupportedValues.fromJson(core.Map json_)
       : this(
@@ -3130,11 +3077,7 @@ class VmImage {
   /// Required.
   core.String? project;
 
-  VmImage({
-    this.family,
-    this.name,
-    this.project,
-  });
+  VmImage({this.family, this.name, this.project});
 
   VmImage.fromJson(core.Map json_)
       : this(

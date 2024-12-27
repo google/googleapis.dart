@@ -43,11 +43,16 @@ class TravelImpactModelApi {
 
   FlightsResource get flights => FlightsResource(_requester);
 
-  TravelImpactModelApi(http.Client client,
-      {core.String rootUrl = 'https://travelimpactmodel.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  TravelImpactModelApi(
+    http.Client client, {
+    core.String rootUrl = 'https://travelimpactmodel.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class FlightsResource {
@@ -101,7 +106,8 @@ class FlightsResource {
       queryParams: queryParams_,
     );
     return ComputeFlightEmissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -112,15 +118,16 @@ class ComputeFlightEmissionsRequest {
   /// Required.
   core.List<Flight>? flights;
 
-  ComputeFlightEmissionsRequest({
-    this.flights,
-  });
+  ComputeFlightEmissionsRequest({this.flights});
 
   ComputeFlightEmissionsRequest.fromJson(core.Map json_)
       : this(
           flights: (json_['flights'] as core.List?)
-              ?.map((value) =>
-                  Flight.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Flight.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -138,20 +145,21 @@ class ComputeFlightEmissionsResponse {
   /// response were computed.
   ModelVersion? modelVersion;
 
-  ComputeFlightEmissionsResponse({
-    this.flightEmissions,
-    this.modelVersion,
-  });
+  ComputeFlightEmissionsResponse({this.flightEmissions, this.modelVersion});
 
   ComputeFlightEmissionsResponse.fromJson(core.Map json_)
       : this(
           flightEmissions: (json_['flightEmissions'] as core.List?)
-              ?.map((value) => FlightWithEmissions.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => FlightWithEmissions.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           modelVersion: json_.containsKey('modelVersion')
               ? ModelVersion.fromJson(
-                  json_['modelVersion'] as core.Map<core.String, core.dynamic>)
+                  json_['modelVersion'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -264,7 +272,8 @@ class Flight {
       : this(
           departureDate: json_.containsKey('departureDate')
               ? Date.fromJson(
-                  json_['departureDate'] as core.Map<core.String, core.dynamic>)
+                  json_['departureDate'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           destination: json_['destination'] as core.String?,
           flightNumber: json_['flightNumber'] as core.int?,
@@ -301,20 +310,20 @@ class FlightWithEmissions {
   /// Required.
   Flight? flight;
 
-  FlightWithEmissions({
-    this.emissionsGramsPerPax,
-    this.flight,
-  });
+  FlightWithEmissions({this.emissionsGramsPerPax, this.flight});
 
   FlightWithEmissions.fromJson(core.Map json_)
       : this(
           emissionsGramsPerPax: json_.containsKey('emissionsGramsPerPax')
-              ? EmissionsGramsPerPax.fromJson(json_['emissionsGramsPerPax']
-                  as core.Map<core.String, core.dynamic>)
+              ? EmissionsGramsPerPax.fromJson(
+                  json_['emissionsGramsPerPax']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           flight: json_.containsKey('flight')
               ? Flight.fromJson(
-                  json_['flight'] as core.Map<core.String, core.dynamic>)
+                  json_['flight'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -350,12 +359,7 @@ class ModelVersion {
   /// inaccuracies in the model implementation.
   core.int? patch;
 
-  ModelVersion({
-    this.dated,
-    this.major,
-    this.minor,
-    this.patch,
-  });
+  ModelVersion({this.dated, this.major, this.minor, this.patch});
 
   ModelVersion.fromJson(core.Map json_)
       : this(

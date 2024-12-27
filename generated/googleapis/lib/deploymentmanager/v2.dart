@@ -74,11 +74,16 @@ class DeploymentManagerApi {
   ResourcesResource get resources => ResourcesResource(_requester);
   TypesResource get types => TypesResource(_requester);
 
-  DeploymentManagerApi(http.Client client,
-      {core.String rootUrl = 'https://deploymentmanager.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DeploymentManagerApi(
+    http.Client client, {
+    core.String rootUrl = 'https://deploymentmanager.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class DeploymentsResource {
@@ -235,7 +240,8 @@ class DeploymentsResource {
       queryParams: queryParams_,
     );
     return Deployment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -458,7 +464,8 @@ class DeploymentsResource {
       queryParams: queryParams_,
     );
     return DeploymentsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Patches a deployment and all of the resources described by the deployment
@@ -699,7 +706,8 @@ class DeploymentsResource {
       queryParams: queryParams_,
     );
     return TestPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a deployment and all of the resources described by the deployment
@@ -945,7 +953,8 @@ class ManifestsResource {
       queryParams: queryParams_,
     );
     return ManifestsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1097,7 +1106,8 @@ class OperationsResource {
       queryParams: queryParams_,
     );
     return OperationsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1261,7 +1271,8 @@ class ResourcesResource {
       queryParams: queryParams_,
     );
     return ResourcesListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1366,7 +1377,8 @@ class TypesResource {
       queryParams: queryParams_,
     );
     return TypesListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1397,16 +1409,16 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -1505,17 +1517,14 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1593,14 +1602,10 @@ class ConfigFile {
   /// The contents of the file.
   core.String? content;
 
-  ConfigFile({
-    this.content,
-  });
+  ConfigFile({this.content});
 
   ConfigFile.fromJson(core.Map json_)
-      : this(
-          content: json_['content'] as core.String?,
-        );
+      : this(content: json_['content'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
@@ -1615,10 +1620,7 @@ class DebugInfo {
   /// The stack trace entries indicating where the error occurred.
   core.List<core.String>? stackEntries;
 
-  DebugInfo({
-    this.detail,
-    this.stackEntries,
-  });
+  DebugInfo({this.detail, this.stackEntries});
 
   DebugInfo.fromJson(core.Map json_)
       : this(
@@ -1738,23 +1740,29 @@ class Deployment {
           id: json_['id'] as core.String?,
           insertTime: json_['insertTime'] as core.String?,
           labels: (json_['labels'] as core.List?)
-              ?.map((value) => DeploymentLabelEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DeploymentLabelEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           manifest: json_['manifest'] as core.String?,
           name: json_['name'] as core.String?,
           operation: json_.containsKey('operation')
               ? Operation.fromJson(
-                  json_['operation'] as core.Map<core.String, core.dynamic>)
+                  json_['operation'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           selfLink: json_['selfLink'] as core.String?,
           target: json_.containsKey('target')
               ? TargetConfiguration.fromJson(
-                  json_['target'] as core.Map<core.String, core.dynamic>)
+                  json_['target'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           update: json_.containsKey('update')
               ? DeploymentUpdate.fromJson(
-                  json_['update'] as core.Map<core.String, core.dynamic>)
+                  json_['update'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -1800,18 +1808,17 @@ class DeploymentUpdate {
   /// Output only.
   core.String? manifest;
 
-  DeploymentUpdate({
-    this.description,
-    this.labels,
-    this.manifest,
-  });
+  DeploymentUpdate({this.description, this.labels, this.manifest});
 
   DeploymentUpdate.fromJson(core.Map json_)
       : this(
           description: json_['description'] as core.String?,
           labels: (json_['labels'] as core.List?)
-              ?.map((value) => DeploymentUpdateLabelEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DeploymentUpdateLabelEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           manifest: json_['manifest'] as core.String?,
         );
@@ -1846,14 +1853,10 @@ class DeploymentsCancelPreviewRequest {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  DeploymentsCancelPreviewRequest({
-    this.fingerprint,
-  });
+  DeploymentsCancelPreviewRequest({this.fingerprint});
 
   DeploymentsCancelPreviewRequest.fromJson(core.Map json_)
-      : this(
-          fingerprint: json_['fingerprint'] as core.String?,
-        );
+      : this(fingerprint: json_['fingerprint'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fingerprint != null) 'fingerprint': fingerprint!,
@@ -1873,16 +1876,16 @@ class DeploymentsListResponse {
   /// Output only.
   core.String? nextPageToken;
 
-  DeploymentsListResponse({
-    this.deployments,
-    this.nextPageToken,
-  });
+  DeploymentsListResponse({this.deployments, this.nextPageToken});
 
   DeploymentsListResponse.fromJson(core.Map json_)
       : this(
           deployments: (json_['deployments'] as core.List?)
-              ?.map((value) => Deployment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Deployment.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1913,14 +1916,10 @@ class DeploymentsStopRequest {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  DeploymentsStopRequest({
-    this.fingerprint,
-  });
+  DeploymentsStopRequest({this.fingerprint});
 
   DeploymentsStopRequest.fromJson(core.Map json_)
-      : this(
-          fingerprint: json_['fingerprint'] as core.String?,
-        );
+      : this(fingerprint: json_['fingerprint'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fingerprint != null) 'fingerprint': fingerprint!,
@@ -1994,13 +1993,17 @@ class GlobalSetPolicyRequest {
   GlobalSetPolicyRequest.fromJson(core.Map json_)
       : this(
           bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -2022,15 +2025,16 @@ class Help {
   /// URL(s) pointing to additional information on handling the current error.
   core.List<HelpLink>? links;
 
-  Help({
-    this.links,
-  });
+  Help({this.links});
 
   Help.fromJson(core.Map json_)
       : this(
           links: (json_['links'] as core.List?)
-              ?.map((value) => HelpLink.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => HelpLink.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2049,10 +2053,7 @@ class ImportFile {
   /// The name of the file.
   core.String? name;
 
-  ImportFile({
-    this.content,
-    this.name,
-  });
+  ImportFile({this.content, this.name});
 
   ImportFile.fromJson(core.Map json_)
       : this(
@@ -2072,9 +2073,7 @@ class InstancesBulkInsertOperationMetadata {
   /// Example key: zones/us-central1-a
   core.Map<core.String, BulkInsertOperationStatus>? perLocationStatus;
 
-  InstancesBulkInsertOperationMetadata({
-    this.perLocationStatus,
-  });
+  InstancesBulkInsertOperationMetadata({this.perLocationStatus});
 
   InstancesBulkInsertOperationMetadata.fromJson(core.Map json_)
       : this(
@@ -2084,7 +2083,8 @@ class InstancesBulkInsertOperationMetadata {
             (key, value) => core.MapEntry(
               key,
               BulkInsertOperationStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
         );
@@ -2163,13 +2163,17 @@ class Manifest {
       : this(
           config: json_.containsKey('config')
               ? ConfigFile.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>)
+                  json_['config'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           expandedConfig: json_['expandedConfig'] as core.String?,
           id: json_['id'] as core.String?,
           imports: (json_['imports'] as core.List?)
-              ?.map((value) => ImportFile.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ImportFile.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           insertTime: json_['insertTime'] as core.String?,
           layout: json_['layout'] as core.String?,
@@ -2208,16 +2212,16 @@ class ManifestsListResponse {
   /// Output only.
   core.String? nextPageToken;
 
-  ManifestsListResponse({
-    this.manifests,
-    this.nextPageToken,
-  });
+  ManifestsListResponse({this.manifests, this.nextPageToken});
 
   ManifestsListResponse.fromJson(core.Map json_)
       : this(
           manifests: (json_['manifests'] as core.List?)
-              ?.map((value) => Manifest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Manifest.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2245,19 +2249,24 @@ class OperationErrorErrorsErrorDetails {
       : this(
           errorInfo: json_.containsKey('errorInfo')
               ? ErrorInfo.fromJson(
-                  json_['errorInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['errorInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           help: json_.containsKey('help')
               ? Help.fromJson(
-                  json_['help'] as core.Map<core.String, core.dynamic>)
+                  json_['help'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           localizedMessage: json_.containsKey('localizedMessage')
-              ? LocalizedMessage.fromJson(json_['localizedMessage']
-                  as core.Map<core.String, core.dynamic>)
+              ? LocalizedMessage.fromJson(
+                  json_['localizedMessage']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           quotaInfo: json_.containsKey('quotaInfo')
               ? QuotaExceededInfo.fromJson(
-                  json_['quotaInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['quotaInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2322,11 +2331,15 @@ class OperationErrorErrors {
           code: json_['code'] as core.String?,
           debugInfo: json_.containsKey('debugInfo')
               ? DebugInfo.fromJson(
-                  json_['debugInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['debugInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           errorDetails: (json_['errorDetails'] as core.List?)
-              ?.map((value) => OperationErrorErrorsErrorDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => OperationErrorErrorsErrorDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           location: json_['location'] as core.String?,
           message: json_['message'] as core.String?,
@@ -2352,15 +2365,16 @@ class OperationError {
   /// Output only.
   core.List<OperationErrorErrors>? errors;
 
-  OperationError({
-    this.errors,
-  });
+  OperationError({this.errors});
 
   OperationError.fromJson(core.Map json_)
       : this(
           errors: (json_['errors'] as core.List?)
-              ?.map((value) => OperationErrorErrors.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => OperationErrorErrors.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2387,10 +2401,7 @@ class OperationWarningsData {
   /// Output only.
   core.String? value;
 
-  OperationWarningsData({
-    this.key,
-    this.value,
-  });
+  OperationWarningsData({this.key, this.value});
 
   OperationWarningsData.fromJson(core.Map json_)
       : this(
@@ -2503,18 +2514,17 @@ class OperationWarnings {
   /// Output only.
   core.String? message;
 
-  OperationWarnings({
-    this.code,
-    this.data,
-    this.message,
-  });
+  OperationWarnings({this.code, this.data, this.message});
 
   OperationWarnings.fromJson(core.Map json_)
       : this(
           code: json_['code'] as core.String?,
           data: (json_['data'] as core.List?)
-              ?.map((value) => OperationWarningsData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => OperationWarningsData.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           message: json_['message'] as core.String?,
         );
@@ -2750,7 +2760,8 @@ class Operation {
           endTime: json_['endTime'] as core.String?,
           error: json_.containsKey('error')
               ? OperationError.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           httpErrorMessage: json_['httpErrorMessage'] as core.String?,
           httpErrorStatusCode: json_['httpErrorStatusCode'] as core.int?,
@@ -2760,7 +2771,8 @@ class Operation {
               json_.containsKey('instancesBulkInsertOperationMetadata')
                   ? InstancesBulkInsertOperationMetadata.fromJson(
                       json_['instancesBulkInsertOperationMetadata']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           kind: json_['kind'] as core.String?,
           name: json_['name'] as core.String?,
@@ -2774,7 +2786,8 @@ class Operation {
               json_.containsKey('setCommonInstanceMetadataOperationMetadata')
                   ? SetCommonInstanceMetadataOperationMetadata.fromJson(
                       json_['setCommonInstanceMetadataOperationMetadata']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           startTime: json_['startTime'] as core.String?,
           status: json_['status'] as core.String?,
@@ -2783,8 +2796,11 @@ class Operation {
           targetLink: json_['targetLink'] as core.String?,
           user: json_['user'] as core.String?,
           warnings: (json_['warnings'] as core.List?)
-              ?.map((value) => OperationWarnings.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => OperationWarnings.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           zone: json_['zone'] as core.String?,
         );
@@ -2838,17 +2854,17 @@ class OperationsListResponse {
   /// Output only.
   core.List<Operation>? operations;
 
-  OperationsListResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  OperationsListResponse({this.nextPageToken, this.operations});
 
   OperationsListResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2944,22 +2960,23 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -3013,14 +3030,9 @@ class QuotaExceededInfo {
 
   QuotaExceededInfo.fromJson(core.Map json_)
       : this(
-          dimensions:
-              (json_['dimensions'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          dimensions: (json_['dimensions']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           futureLimit: (json_['futureLimit'] as core.num?)?.toDouble(),
           limit: (json_['limit'] as core.num?)?.toDouble(),
           limitName: json_['limitName'] as core.String?,
@@ -3056,10 +3068,7 @@ class ResourceWarningsData {
   /// Output only.
   core.String? value;
 
-  ResourceWarningsData({
-    this.key,
-    this.value,
-  });
+  ResourceWarningsData({this.key, this.value});
 
   ResourceWarningsData.fromJson(core.Map json_)
       : this(
@@ -3172,18 +3181,17 @@ class ResourceWarnings {
   /// Output only.
   core.String? message;
 
-  ResourceWarnings({
-    this.code,
-    this.data,
-    this.message,
-  });
+  ResourceWarnings({this.code, this.data, this.message});
 
   ResourceWarnings.fromJson(core.Map json_)
       : this(
           code: json_['code'] as core.String?,
           data: (json_['data'] as core.List?)
-              ?.map((value) => ResourceWarningsData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ResourceWarningsData.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           message: json_['message'] as core.String?,
         );
@@ -3278,7 +3286,8 @@ class Resource {
       : this(
           accessControl: json_.containsKey('accessControl')
               ? ResourceAccessControl.fromJson(
-                  json_['accessControl'] as core.Map<core.String, core.dynamic>)
+                  json_['accessControl'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           finalProperties: json_['finalProperties'] as core.String?,
           id: json_['id'] as core.String?,
@@ -3289,13 +3298,17 @@ class Resource {
           type: json_['type'] as core.String?,
           update: json_.containsKey('update')
               ? ResourceUpdate.fromJson(
-                  json_['update'] as core.Map<core.String, core.dynamic>)
+                  json_['update'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateTime: json_['updateTime'] as core.String?,
           url: json_['url'] as core.String?,
           warnings: (json_['warnings'] as core.List?)
-              ?.map((value) => ResourceWarnings.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ResourceWarnings.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3320,14 +3333,10 @@ class ResourceAccessControl {
   /// The GCP IAM Policy to set on the resource.
   core.String? gcpIamPolicy;
 
-  ResourceAccessControl({
-    this.gcpIamPolicy,
-  });
+  ResourceAccessControl({this.gcpIamPolicy});
 
   ResourceAccessControl.fromJson(core.Map json_)
-      : this(
-          gcpIamPolicy: json_['gcpIamPolicy'] as core.String?,
-        );
+      : this(gcpIamPolicy: json_['gcpIamPolicy'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcpIamPolicy != null) 'gcpIamPolicy': gcpIamPolicy!,
@@ -3351,19 +3360,24 @@ class ResourceUpdateErrorErrorsErrorDetails {
       : this(
           errorInfo: json_.containsKey('errorInfo')
               ? ErrorInfo.fromJson(
-                  json_['errorInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['errorInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           help: json_.containsKey('help')
               ? Help.fromJson(
-                  json_['help'] as core.Map<core.String, core.dynamic>)
+                  json_['help'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           localizedMessage: json_.containsKey('localizedMessage')
-              ? LocalizedMessage.fromJson(json_['localizedMessage']
-                  as core.Map<core.String, core.dynamic>)
+              ? LocalizedMessage.fromJson(
+                  json_['localizedMessage']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           quotaInfo: json_.containsKey('quotaInfo')
               ? QuotaExceededInfo.fromJson(
-                  json_['quotaInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['quotaInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3428,11 +3442,15 @@ class ResourceUpdateErrorErrors {
           code: json_['code'] as core.String?,
           debugInfo: json_.containsKey('debugInfo')
               ? DebugInfo.fromJson(
-                  json_['debugInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['debugInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           errorDetails: (json_['errorDetails'] as core.List?)
-              ?.map((value) => ResourceUpdateErrorErrorsErrorDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ResourceUpdateErrorErrorsErrorDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           location: json_['location'] as core.String?,
           message: json_['message'] as core.String?,
@@ -3458,15 +3476,16 @@ class ResourceUpdateError {
   /// Output only.
   core.List<ResourceUpdateErrorErrors>? errors;
 
-  ResourceUpdateError({
-    this.errors,
-  });
+  ResourceUpdateError({this.errors});
 
   ResourceUpdateError.fromJson(core.Map json_)
       : this(
           errors: (json_['errors'] as core.List?)
-              ?.map((value) => ResourceUpdateErrorErrors.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ResourceUpdateErrorErrors.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3493,10 +3512,7 @@ class ResourceUpdateWarningsData {
   /// Output only.
   core.String? value;
 
-  ResourceUpdateWarningsData({
-    this.key,
-    this.value,
-  });
+  ResourceUpdateWarningsData({this.key, this.value});
 
   ResourceUpdateWarningsData.fromJson(core.Map json_)
       : this(
@@ -3609,18 +3625,17 @@ class ResourceUpdateWarnings {
   /// Output only.
   core.String? message;
 
-  ResourceUpdateWarnings({
-    this.code,
-    this.data,
-    this.message,
-  });
+  ResourceUpdateWarnings({this.code, this.data, this.message});
 
   ResourceUpdateWarnings.fromJson(core.Map json_)
       : this(
           code: json_['code'] as core.String?,
           data: (json_['data'] as core.List?)
-              ?.map((value) => ResourceUpdateWarningsData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ResourceUpdateWarningsData.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           message: json_['message'] as core.String?,
         );
@@ -3710,11 +3725,13 @@ class ResourceUpdate {
       : this(
           accessControl: json_.containsKey('accessControl')
               ? ResourceAccessControl.fromJson(
-                  json_['accessControl'] as core.Map<core.String, core.dynamic>)
+                  json_['accessControl'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           error: json_.containsKey('error')
               ? ResourceUpdateError.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           finalProperties: json_['finalProperties'] as core.String?,
           intent: json_['intent'] as core.String?,
@@ -3722,8 +3739,11 @@ class ResourceUpdate {
           properties: json_['properties'] as core.String?,
           state: json_['state'] as core.String?,
           warnings: (json_['warnings'] as core.List?)
-              ?.map((value) => ResourceUpdateWarnings.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ResourceUpdateWarnings.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3748,17 +3768,17 @@ class ResourcesListResponse {
   /// Resources contained in this list response.
   core.List<Resource>? resources;
 
-  ResourcesListResponse({
-    this.nextPageToken,
-    this.resources,
-  });
+  ResourcesListResponse({this.nextPageToken, this.resources});
 
   ResourcesListResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           resources: (json_['resources'] as core.List?)
-              ?.map((value) => Resource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Resource.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3797,7 +3817,9 @@ class SetCommonInstanceMetadataOperationMetadata {
             (key, value) => core.MapEntry(
               key,
               SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo
-                  .fromJson(value as core.Map<core.String, core.dynamic>),
+                  .fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
         );
@@ -3836,11 +3858,12 @@ class SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo {
   });
 
   SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           state: json_['state'] as core.String?,
         );
@@ -3870,20 +3893,21 @@ class TargetConfiguration {
   /// might import a text file in order to use the file in a template.
   core.List<ImportFile>? imports;
 
-  TargetConfiguration({
-    this.config,
-    this.imports,
-  });
+  TargetConfiguration({this.config, this.imports});
 
   TargetConfiguration.fromJson(core.Map json_)
       : this(
           config: json_.containsKey('config')
               ? ConfigFile.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>)
+                  json_['config'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           imports: (json_['imports'] as core.List?)
-              ?.map((value) => ImportFile.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ImportFile.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3919,13 +3943,7 @@ class Type {
   /// Output only.
   core.String? selfLink;
 
-  Type({
-    this.id,
-    this.insertTime,
-    this.name,
-    this.operation,
-    this.selfLink,
-  });
+  Type({this.id, this.insertTime, this.name, this.operation, this.selfLink});
 
   Type.fromJson(core.Map json_)
       : this(
@@ -3934,7 +3952,8 @@ class Type {
           name: json_['name'] as core.String?,
           operation: json_.containsKey('operation')
               ? Operation.fromJson(
-                  json_['operation'] as core.Map<core.String, core.dynamic>)
+                  json_['operation'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           selfLink: json_['selfLink'] as core.String?,
         );
@@ -3958,17 +3977,17 @@ class TypesListResponse {
   /// Output only.
   core.List<Type>? types;
 
-  TypesListResponse({
-    this.nextPageToken,
-    this.types,
-  });
+  TypesListResponse({this.nextPageToken, this.types});
 
   TypesListResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           types: (json_['types'] as core.List?)
-              ?.map((value) =>
-                  Type.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Type.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 

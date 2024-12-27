@@ -86,11 +86,16 @@ class PolicySimulatorApi {
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  PolicySimulatorApi(http.Client client,
-      {core.String rootUrl = 'https://policysimulator.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  PolicySimulatorApi(
+    http.Client client, {
+    core.String rootUrl = 'https://policysimulator.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class FoldersResource {
@@ -123,16 +128,16 @@ class FoldersLocationsOrgPolicyViolationsPreviewsResource {
               _requester);
 
   FoldersLocationsOrgPolicyViolationsPreviewsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 }
 
 class FoldersLocationsOrgPolicyViolationsPreviewsOperationsResource {
   final commons.ApiRequester _requester;
 
   FoldersLocationsOrgPolicyViolationsPreviewsOperationsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets the latest state of a long-running operation.
   ///
@@ -171,7 +176,8 @@ class FoldersLocationsOrgPolicyViolationsPreviewsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -226,7 +232,8 @@ class FoldersLocationsReplaysResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the specified Replay.
@@ -270,7 +277,8 @@ class FoldersLocationsReplaysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPolicysimulatorV1Replay.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -317,7 +325,8 @@ class FoldersLocationsReplaysOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -368,7 +377,8 @@ class FoldersLocationsReplaysOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -430,7 +440,8 @@ class FoldersLocationsReplaysResultsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPolicysimulatorV1ListReplayResultsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -475,7 +486,8 @@ class OperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -525,7 +537,8 @@ class OperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -557,19 +570,20 @@ class OrganizationsLocationsOrgPolicyViolationsPreviewsResource {
   OrganizationsLocationsOrgPolicyViolationsPreviewsOperationsResource
       get operations =>
           OrganizationsLocationsOrgPolicyViolationsPreviewsOperationsResource(
-              _requester);
+            _requester,
+          );
 
   OrganizationsLocationsOrgPolicyViolationsPreviewsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 }
 
 class OrganizationsLocationsOrgPolicyViolationsPreviewsOperationsResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsOrgPolicyViolationsPreviewsOperationsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets the latest state of a long-running operation.
   ///
@@ -608,7 +622,8 @@ class OrganizationsLocationsOrgPolicyViolationsPreviewsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -663,7 +678,8 @@ class OrganizationsLocationsReplaysResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the specified Replay.
@@ -707,7 +723,8 @@ class OrganizationsLocationsReplaysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPolicysimulatorV1Replay.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -754,7 +771,8 @@ class OrganizationsLocationsReplaysOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -805,7 +823,8 @@ class OrganizationsLocationsReplaysOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -867,7 +886,8 @@ class OrganizationsLocationsReplaysResultsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPolicysimulatorV1ListReplayResultsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -898,19 +918,20 @@ class ProjectsLocationsOrgPolicyViolationsPreviewsResource {
   ProjectsLocationsOrgPolicyViolationsPreviewsOperationsResource
       get operations =>
           ProjectsLocationsOrgPolicyViolationsPreviewsOperationsResource(
-              _requester);
+            _requester,
+          );
 
   ProjectsLocationsOrgPolicyViolationsPreviewsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 }
 
 class ProjectsLocationsOrgPolicyViolationsPreviewsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOrgPolicyViolationsPreviewsOperationsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets the latest state of a long-running operation.
   ///
@@ -949,7 +970,8 @@ class ProjectsLocationsOrgPolicyViolationsPreviewsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1004,7 +1026,8 @@ class ProjectsLocationsReplaysResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the specified Replay.
@@ -1048,7 +1071,8 @@ class ProjectsLocationsReplaysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPolicysimulatorV1Replay.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1095,7 +1119,8 @@ class ProjectsLocationsReplaysOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -1146,7 +1171,8 @@ class ProjectsLocationsReplaysOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1208,7 +1234,8 @@ class ProjectsLocationsReplaysResultsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPolicysimulatorV1ListReplayResultsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1267,11 +1294,13 @@ class GoogleCloudPolicysimulatorV1AccessStateDiff {
           accessChange: json_['accessChange'] as core.String?,
           baseline: json_.containsKey('baseline')
               ? GoogleCloudPolicysimulatorV1ExplainedAccess.fromJson(
-                  json_['baseline'] as core.Map<core.String, core.dynamic>)
+                  json_['baseline'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           simulated: json_.containsKey('simulated')
               ? GoogleCloudPolicysimulatorV1ExplainedAccess.fromJson(
-                  json_['simulated'] as core.Map<core.String, core.dynamic>)
+                  json_['simulated'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1385,7 +1414,8 @@ class GoogleCloudPolicysimulatorV1BindingExplanation {
           access: json_['access'] as core.String?,
           condition: json_.containsKey('condition')
               ? GoogleTypeExpr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           memberships:
               (json_['memberships'] as core.Map<core.String, core.dynamic>?)
@@ -1393,7 +1423,9 @@ class GoogleCloudPolicysimulatorV1BindingExplanation {
             (key, value) => core.MapEntry(
               key,
               GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership
-                  .fromJson(value as core.Map<core.String, core.dynamic>),
+                  .fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           relevance: json_['relevance'] as core.String?,
@@ -1448,8 +1480,8 @@ class GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership {
   });
 
   GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           membership: json_['membership'] as core.String?,
           relevance: json_['relevance'] as core.String?,
         );
@@ -1497,13 +1529,18 @@ class GoogleCloudPolicysimulatorV1ExplainedAccess {
       : this(
           accessState: json_['accessState'] as core.String?,
           errors: (json_['errors'] as core.List?)
-              ?.map((value) => GoogleRpcStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleRpcStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           policies: (json_['policies'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudPolicysimulatorV1ExplainedPolicy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudPolicysimulatorV1ExplainedPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1582,14 +1619,18 @@ class GoogleCloudPolicysimulatorV1ExplainedPolicy {
       : this(
           access: json_['access'] as core.String?,
           bindingExplanations: (json_['bindingExplanations'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudPolicysimulatorV1BindingExplanation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudPolicysimulatorV1BindingExplanation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           fullResourceName: json_['fullResourceName'] as core.String?,
           policy: json_.containsKey('policy')
               ? GoogleIamV1Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           relevance: json_['relevance'] as core.String?,
         );
@@ -1624,9 +1665,11 @@ class GoogleCloudPolicysimulatorV1ListReplayResultsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           replayResults: (json_['replayResults'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudPolicysimulatorV1ReplayResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudPolicysimulatorV1ReplayResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1681,13 +1724,15 @@ class GoogleCloudPolicysimulatorV1Replay {
       : this(
           config: json_.containsKey('config')
               ? GoogleCloudPolicysimulatorV1ReplayConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>)
+                  json_['config'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           resultsSummary: json_.containsKey('resultsSummary')
               ? GoogleCloudPolicysimulatorV1ReplayResultsSummary.fromJson(
                   json_['resultsSummary']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           state: json_['state'] as core.String?,
         );
@@ -1738,7 +1783,8 @@ class GoogleCloudPolicysimulatorV1ReplayConfig {
             (key, value) => core.MapEntry(
               key,
               GoogleIamV1Policy.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
         );
@@ -1763,15 +1809,14 @@ class GoogleCloudPolicysimulatorV1ReplayDiff {
   /// field.
   GoogleCloudPolicysimulatorV1AccessStateDiff? accessDiff;
 
-  GoogleCloudPolicysimulatorV1ReplayDiff({
-    this.accessDiff,
-  });
+  GoogleCloudPolicysimulatorV1ReplayDiff({this.accessDiff});
 
   GoogleCloudPolicysimulatorV1ReplayDiff.fromJson(core.Map json_)
       : this(
           accessDiff: json_.containsKey('accessDiff')
               ? GoogleCloudPolicysimulatorV1AccessStateDiff.fromJson(
-                  json_['accessDiff'] as core.Map<core.String, core.dynamic>)
+                  json_['accessDiff'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1831,19 +1876,23 @@ class GoogleCloudPolicysimulatorV1ReplayResult {
       : this(
           accessTuple: json_.containsKey('accessTuple')
               ? GoogleCloudPolicysimulatorV1AccessTuple.fromJson(
-                  json_['accessTuple'] as core.Map<core.String, core.dynamic>)
+                  json_['accessTuple'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           diff: json_.containsKey('diff')
               ? GoogleCloudPolicysimulatorV1ReplayDiff.fromJson(
-                  json_['diff'] as core.Map<core.String, core.dynamic>)
+                  json_['diff'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           lastSeenDate: json_.containsKey('lastSeenDate')
               ? GoogleTypeDate.fromJson(
-                  json_['lastSeenDate'] as core.Map<core.String, core.dynamic>)
+                  json_['lastSeenDate'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           parent: json_['parent'] as core.String?,
@@ -1897,11 +1946,13 @@ class GoogleCloudPolicysimulatorV1ReplayResultsSummary {
           logCount: json_['logCount'] as core.int?,
           newestDate: json_.containsKey('newestDate')
               ? GoogleTypeDate.fromJson(
-                  json_['newestDate'] as core.Map<core.String, core.dynamic>)
+                  json_['newestDate'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           oldestDate: json_.containsKey('oldestDate')
               ? GoogleTypeDate.fromJson(
-                  json_['oldestDate'] as core.Map<core.String, core.dynamic>)
+                  json_['oldestDate'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           unchangedCount: json_['unchangedCount'] as core.int?,
         );
@@ -1943,16 +1994,16 @@ class GoogleIamV1AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  GoogleIamV1AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  GoogleIamV1AuditConfig({this.auditLogConfigs, this.service});
 
   GoogleIamV1AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => GoogleIamV1AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleIamV1AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -2051,17 +2102,14 @@ class GoogleIamV1Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  GoogleIamV1Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  GoogleIamV1Binding({this.condition, this.members, this.role});
 
   GoogleIamV1Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? GoogleTypeExpr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2172,12 +2220,18 @@ class GoogleIamV1Policy {
   GoogleIamV1Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => GoogleIamV1AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleIamV1AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => GoogleIamV1Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleIamV1Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -2208,8 +2262,11 @@ class GoogleLongrunningListOperationsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2275,7 +2332,8 @@ class GoogleLongrunningOperation {
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>

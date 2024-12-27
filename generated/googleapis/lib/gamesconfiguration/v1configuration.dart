@@ -51,11 +51,16 @@ class GamesConfigurationApi {
   LeaderboardConfigurationsResource get leaderboardConfigurations =>
       LeaderboardConfigurationsResource(_requester);
 
-  GamesConfigurationApi(http.Client client,
-      {core.String rootUrl = 'https://gamesconfiguration.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  GamesConfigurationApi(
+    http.Client client, {
+    core.String rootUrl = 'https://gamesconfiguration.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class AchievementConfigurationsResource {
@@ -130,7 +135,8 @@ class AchievementConfigurationsResource {
       queryParams: queryParams_,
     );
     return AchievementConfiguration.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Insert a new achievement configuration in this application.
@@ -173,7 +179,8 @@ class AchievementConfigurationsResource {
       queryParams: queryParams_,
     );
     return AchievementConfiguration.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of the achievement configurations in this application.
@@ -221,7 +228,8 @@ class AchievementConfigurationsResource {
       queryParams: queryParams_,
     );
     return AchievementConfigurationListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update the metadata of the achievement configuration with the given ID.
@@ -262,7 +270,8 @@ class AchievementConfigurationsResource {
       queryParams: queryParams_,
     );
     return AchievementConfiguration.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -338,7 +347,8 @@ class LeaderboardConfigurationsResource {
       queryParams: queryParams_,
     );
     return LeaderboardConfiguration.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Insert a new leaderboard configuration in this application.
@@ -381,7 +391,8 @@ class LeaderboardConfigurationsResource {
       queryParams: queryParams_,
     );
     return LeaderboardConfiguration.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of the leaderboard configurations in this application.
@@ -429,7 +440,8 @@ class LeaderboardConfigurationsResource {
       queryParams: queryParams_,
     );
     return LeaderboardConfigurationListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update the metadata of the leaderboard configuration with the given ID.
@@ -470,7 +482,8 @@ class LeaderboardConfigurationsResource {
       queryParams: queryParams_,
     );
     return LeaderboardConfiguration.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -529,14 +542,16 @@ class AchievementConfiguration {
           achievementType: json_['achievementType'] as core.String?,
           draft: json_.containsKey('draft')
               ? AchievementConfigurationDetail.fromJson(
-                  json_['draft'] as core.Map<core.String, core.dynamic>)
+                  json_['draft'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           id: json_['id'] as core.String?,
           initialState: json_['initialState'] as core.String?,
           kind: json_['kind'] as core.String?,
           published: json_.containsKey('published')
               ? AchievementConfigurationDetail.fromJson(
-                  json_['published'] as core.Map<core.String, core.dynamic>)
+                  json_['published'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           stepsToUnlock: json_['stepsToUnlock'] as core.int?,
           token: json_['token'] as core.String?,
@@ -594,13 +609,15 @@ class AchievementConfigurationDetail {
       : this(
           description: json_.containsKey('description')
               ? LocalizedStringBundle.fromJson(
-                  json_['description'] as core.Map<core.String, core.dynamic>)
+                  json_['description'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           iconUrl: json_['iconUrl'] as core.String?,
           kind: json_['kind'] as core.String?,
           name: json_.containsKey('name')
               ? LocalizedStringBundle.fromJson(
-                  json_['name'] as core.Map<core.String, core.dynamic>)
+                  json_['name'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           pointValue: json_['pointValue'] as core.int?,
           sortRank: json_['sortRank'] as core.int?,
@@ -639,8 +656,11 @@ class AchievementConfigurationListResponse {
   AchievementConfigurationListResponse.fromJson(core.Map json_)
       : this(
           items: (json_['items'] as core.List?)
-              ?.map((value) => AchievementConfiguration.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AchievementConfiguration.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
@@ -694,27 +714,33 @@ class GamesNumberAffixConfiguration {
       : this(
           few: json_.containsKey('few')
               ? LocalizedStringBundle.fromJson(
-                  json_['few'] as core.Map<core.String, core.dynamic>)
+                  json_['few'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           many: json_.containsKey('many')
               ? LocalizedStringBundle.fromJson(
-                  json_['many'] as core.Map<core.String, core.dynamic>)
+                  json_['many'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           one: json_.containsKey('one')
               ? LocalizedStringBundle.fromJson(
-                  json_['one'] as core.Map<core.String, core.dynamic>)
+                  json_['one'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           other: json_.containsKey('other')
               ? LocalizedStringBundle.fromJson(
-                  json_['other'] as core.Map<core.String, core.dynamic>)
+                  json_['other'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           two: json_.containsKey('two')
               ? LocalizedStringBundle.fromJson(
-                  json_['two'] as core.Map<core.String, core.dynamic>)
+                  json_['two'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           zero: json_.containsKey('zero')
               ? LocalizedStringBundle.fromJson(
-                  json_['zero'] as core.Map<core.String, core.dynamic>)
+                  json_['zero'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -770,7 +796,8 @@ class GamesNumberFormatConfiguration {
           numberFormatType: json_['numberFormatType'] as core.String?,
           suffix: json_.containsKey('suffix')
               ? GamesNumberAffixConfiguration.fromJson(
-                  json_['suffix'] as core.Map<core.String, core.dynamic>)
+                  json_['suffix'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -830,13 +857,15 @@ class LeaderboardConfiguration {
       : this(
           draft: json_.containsKey('draft')
               ? LeaderboardConfigurationDetail.fromJson(
-                  json_['draft'] as core.Map<core.String, core.dynamic>)
+                  json_['draft'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           published: json_.containsKey('published')
               ? LeaderboardConfigurationDetail.fromJson(
-                  json_['published'] as core.Map<core.String, core.dynamic>)
+                  json_['published'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           scoreMax: json_['scoreMax'] as core.String?,
           scoreMin: json_['scoreMin'] as core.String?,
@@ -894,11 +923,13 @@ class LeaderboardConfigurationDetail {
           kind: json_['kind'] as core.String?,
           name: json_.containsKey('name')
               ? LocalizedStringBundle.fromJson(
-                  json_['name'] as core.Map<core.String, core.dynamic>)
+                  json_['name'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           scoreFormat: json_.containsKey('scoreFormat')
               ? GamesNumberFormatConfiguration.fromJson(
-                  json_['scoreFormat'] as core.Map<core.String, core.dynamic>)
+                  json_['scoreFormat'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sortRank: json_['sortRank'] as core.int?,
         );
@@ -935,8 +966,11 @@ class LeaderboardConfigurationListResponse {
   LeaderboardConfigurationListResponse.fromJson(core.Map json_)
       : this(
           items: (json_['items'] as core.List?)
-              ?.map((value) => LeaderboardConfiguration.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LeaderboardConfiguration.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
@@ -962,11 +996,7 @@ class LocalizedString {
   /// The string value.
   core.String? value;
 
-  LocalizedString({
-    this.kind,
-    this.locale,
-    this.value,
-  });
+  LocalizedString({this.kind, this.locale, this.value});
 
   LocalizedString.fromJson(core.Map json_)
       : this(
@@ -993,17 +1023,17 @@ class LocalizedStringBundle {
   /// The locale strings.
   core.List<LocalizedString>? translations;
 
-  LocalizedStringBundle({
-    this.kind,
-    this.translations,
-  });
+  LocalizedStringBundle({this.kind, this.translations});
 
   LocalizedStringBundle.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           translations: (json_['translations'] as core.List?)
-              ?.map((value) => LocalizedString.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LocalizedString.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 

@@ -60,11 +60,16 @@ class ContainerApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ContainerApi(http.Client client,
-      {core.String rootUrl = 'https://container.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ContainerApi(
+    http.Client client, {
+    core.String rootUrl = 'https://container.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -150,7 +155,8 @@ class ProjectsAggregatedUsableSubnetworksResource {
       queryParams: queryParams_,
     );
     return ListUsableSubnetworksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -211,7 +217,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ServerConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -263,7 +270,8 @@ class ProjectsLocationsClustersResource {
       queryParams: queryParams_,
     );
     return CheckAutopilotCompatibilityResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Completes master IP rotation.
@@ -511,7 +519,8 @@ class ProjectsLocationsClustersResource {
       queryParams: queryParams_,
     );
     return GetJSONWebKeysResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all clusters owned by a project in either the specified zone or all
@@ -563,7 +572,8 @@ class ProjectsLocationsClustersResource {
       queryParams: queryParams_,
     );
     return ListClustersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the addons for a specific cluster.
@@ -1359,7 +1369,8 @@ class ProjectsLocationsClustersNodePoolsResource {
       queryParams: queryParams_,
     );
     return ListNodePoolsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Rolls back a previously Aborted or Failed NodePool upgrade.
@@ -1631,7 +1642,8 @@ class ProjectsLocationsClustersWellKnownResource {
       queryParams: queryParams_,
     );
     return GetOpenIDConfigResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1788,7 +1800,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1851,7 +1864,8 @@ class ProjectsZonesResource {
       queryParams: queryParams_,
     );
     return ServerConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2264,7 +2278,8 @@ class ProjectsZonesClustersResource {
       queryParams: queryParams_,
     );
     return ListClustersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the locations for a specific cluster.
@@ -3152,7 +3167,8 @@ class ProjectsZonesClustersNodePoolsResource {
       queryParams: queryParams_,
     );
     return ListNodePoolsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Rolls back a previously Aborted or Failed NodePool upgrade.
@@ -3583,7 +3599,8 @@ class ProjectsZonesOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3626,12 +3643,15 @@ class AcceleratorConfig {
               json_.containsKey('gpuDriverInstallationConfig')
                   ? GPUDriverInstallationConfig.fromJson(
                       json_['gpuDriverInstallationConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           gpuPartitionSize: json_['gpuPartitionSize'] as core.String?,
           gpuSharingConfig: json_.containsKey('gpuSharingConfig')
-              ? GPUSharingConfig.fromJson(json_['gpuSharingConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? GPUSharingConfig.fromJson(
+                  json_['gpuSharingConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3654,10 +3674,7 @@ class AdditionalNodeNetworkConfig {
   /// Name of the subnetwork where the additional interface belongs
   core.String? subnetwork;
 
-  AdditionalNodeNetworkConfig({
-    this.network,
-    this.subnetwork,
-  });
+  AdditionalNodeNetworkConfig({this.network, this.subnetwork});
 
   AdditionalNodeNetworkConfig.fromJson(core.Map json_)
       : this(
@@ -3698,8 +3715,10 @@ class AdditionalPodNetworkConfig {
   AdditionalPodNetworkConfig.fromJson(core.Map json_)
       : this(
           maxPodsPerNode: json_.containsKey('maxPodsPerNode')
-              ? MaxPodsConstraint.fromJson(json_['maxPodsPerNode']
-                  as core.Map<core.String, core.dynamic>)
+              ? MaxPodsConstraint.fromJson(
+                  json_['maxPodsPerNode']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           networkAttachment: json_['networkAttachment'] as core.String?,
           secondaryPodRange: json_['secondaryPodRange'] as core.String?,
@@ -3726,16 +3745,16 @@ class AdditionalPodRangesConfig {
   /// ahead.
   core.List<core.String>? podRangeNames;
 
-  AdditionalPodRangesConfig({
-    this.podRangeInfo,
-    this.podRangeNames,
-  });
+  AdditionalPodRangesConfig({this.podRangeInfo, this.podRangeNames});
 
   AdditionalPodRangesConfig.fromJson(core.Map json_)
       : this(
           podRangeInfo: (json_['podRangeInfo'] as core.List?)
-              ?.map((value) => RangeInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RangeInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           podRangeNames: (json_['podRangeNames'] as core.List?)
               ?.map((value) => value as core.String)
@@ -3833,68 +3852,92 @@ class AddonsConfig {
   AddonsConfig.fromJson(core.Map json_)
       : this(
           cloudRunConfig: json_.containsKey('cloudRunConfig')
-              ? CloudRunConfig.fromJson(json_['cloudRunConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? CloudRunConfig.fromJson(
+                  json_['cloudRunConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           configConnectorConfig: json_.containsKey('configConnectorConfig')
-              ? ConfigConnectorConfig.fromJson(json_['configConnectorConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? ConfigConnectorConfig.fromJson(
+                  json_['configConnectorConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dnsCacheConfig: json_.containsKey('dnsCacheConfig')
-              ? DnsCacheConfig.fromJson(json_['dnsCacheConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? DnsCacheConfig.fromJson(
+                  json_['dnsCacheConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           gcePersistentDiskCsiDriverConfig:
               json_.containsKey('gcePersistentDiskCsiDriverConfig')
                   ? GcePersistentDiskCsiDriverConfig.fromJson(
                       json_['gcePersistentDiskCsiDriverConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           gcpFilestoreCsiDriverConfig:
               json_.containsKey('gcpFilestoreCsiDriverConfig')
                   ? GcpFilestoreCsiDriverConfig.fromJson(
                       json_['gcpFilestoreCsiDriverConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           gcsFuseCsiDriverConfig: json_.containsKey('gcsFuseCsiDriverConfig')
-              ? GcsFuseCsiDriverConfig.fromJson(json_['gcsFuseCsiDriverConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? GcsFuseCsiDriverConfig.fromJson(
+                  json_['gcsFuseCsiDriverConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           gkeBackupAgentConfig: json_.containsKey('gkeBackupAgentConfig')
-              ? GkeBackupAgentConfig.fromJson(json_['gkeBackupAgentConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? GkeBackupAgentConfig.fromJson(
+                  json_['gkeBackupAgentConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           horizontalPodAutoscaling:
               json_.containsKey('horizontalPodAutoscaling')
                   ? HorizontalPodAutoscaling.fromJson(
                       json_['horizontalPodAutoscaling']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           httpLoadBalancing: json_.containsKey('httpLoadBalancing')
-              ? HttpLoadBalancing.fromJson(json_['httpLoadBalancing']
-                  as core.Map<core.String, core.dynamic>)
+              ? HttpLoadBalancing.fromJson(
+                  json_['httpLoadBalancing']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           kubernetesDashboard: json_.containsKey('kubernetesDashboard')
-              ? KubernetesDashboard.fromJson(json_['kubernetesDashboard']
-                  as core.Map<core.String, core.dynamic>)
+              ? KubernetesDashboard.fromJson(
+                  json_['kubernetesDashboard']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           networkPolicyConfig: json_.containsKey('networkPolicyConfig')
-              ? NetworkPolicyConfig.fromJson(json_['networkPolicyConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? NetworkPolicyConfig.fromJson(
+                  json_['networkPolicyConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           parallelstoreCsiDriverConfig:
               json_.containsKey('parallelstoreCsiDriverConfig')
                   ? ParallelstoreCsiDriverConfig.fromJson(
                       json_['parallelstoreCsiDriverConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           rayOperatorConfig: json_.containsKey('rayOperatorConfig')
-              ? RayOperatorConfig.fromJson(json_['rayOperatorConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? RayOperatorConfig.fromJson(
+                  json_['rayOperatorConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           statefulHaConfig: json_.containsKey('statefulHaConfig')
-              ? StatefulHAConfig.fromJson(json_['statefulHaConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? StatefulHAConfig.fromJson(
+                  json_['statefulHaConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -4004,10 +4047,7 @@ class AuthenticatorGroupsConfig {
   /// Only relevant if enabled = true.
   core.String? securityGroup;
 
-  AuthenticatorGroupsConfig({
-    this.enabled,
-    this.securityGroup,
-  });
+  AuthenticatorGroupsConfig({this.enabled, this.securityGroup});
 
   AuthenticatorGroupsConfig.fromJson(core.Map json_)
       : this(
@@ -4037,10 +4077,7 @@ class AutoUpgradeOptions {
   /// Output only.
   core.String? description;
 
-  AutoUpgradeOptions({
-    this.autoUpgradeStartTime,
-    this.description,
-  });
+  AutoUpgradeOptions({this.autoUpgradeStartTime, this.description});
 
   AutoUpgradeOptions.fromJson(core.Map json_)
       : this(
@@ -4063,17 +4100,16 @@ class Autopilot {
   /// WorkloadPolicyConfig is the configuration related to GCW workload policy
   WorkloadPolicyConfig? workloadPolicyConfig;
 
-  Autopilot({
-    this.enabled,
-    this.workloadPolicyConfig,
-  });
+  Autopilot({this.enabled, this.workloadPolicyConfig});
 
   Autopilot.fromJson(core.Map json_)
       : this(
           enabled: json_['enabled'] as core.bool?,
           workloadPolicyConfig: json_.containsKey('workloadPolicyConfig')
-              ? WorkloadPolicyConfig.fromJson(json_['workloadPolicyConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? WorkloadPolicyConfig.fromJson(
+                  json_['workloadPolicyConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -4235,7 +4271,8 @@ class AutoprovisioningNodePoolDefaults {
               json_['insecureKubeletReadonlyPortEnabled'] as core.bool?,
           management: json_.containsKey('management')
               ? NodeManagement.fromJson(
-                  json_['management'] as core.Map<core.String, core.dynamic>)
+                  json_['management'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           minCpuPlatform: json_['minCpuPlatform'] as core.String?,
           oauthScopes: (json_['oauthScopes'] as core.List?)
@@ -4243,12 +4280,16 @@ class AutoprovisioningNodePoolDefaults {
               .toList(),
           serviceAccount: json_['serviceAccount'] as core.String?,
           shieldedInstanceConfig: json_.containsKey('shieldedInstanceConfig')
-              ? ShieldedInstanceConfig.fromJson(json_['shieldedInstanceConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? ShieldedInstanceConfig.fromJson(
+                  json_['shieldedInstanceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           upgradeSettings: json_.containsKey('upgradeSettings')
-              ? UpgradeSettings.fromJson(json_['upgradeSettings']
-                  as core.Map<core.String, core.dynamic>)
+              ? UpgradeSettings.fromJson(
+                  json_['upgradeSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -4282,10 +4323,7 @@ class BestEffortProvisioning {
   /// stockout issue has been resolved.
   core.int? minProvisionNodes;
 
-  BestEffortProvisioning({
-    this.enabled,
-    this.minProvisionNodes,
-  });
+  BestEffortProvisioning({this.enabled, this.minProvisionNodes});
 
   BestEffortProvisioning.fromJson(core.Map json_)
       : this(
@@ -4304,14 +4342,10 @@ class BigQueryDestination {
   /// The ID of a BigQuery Dataset.
   core.String? datasetId;
 
-  BigQueryDestination({
-    this.datasetId,
-  });
+  BigQueryDestination({this.datasetId});
 
   BigQueryDestination.fromJson(core.Map json_)
-      : this(
-          datasetId: json_['datasetId'] as core.String?,
-        );
+      : this(datasetId: json_['datasetId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (datasetId != null) 'datasetId': datasetId!,
@@ -4341,10 +4375,7 @@ class BinaryAuthorization {
   /// This is equivalent to setting the enabled boolean to true.
   core.String? evaluationMode;
 
-  BinaryAuthorization({
-    this.enabled,
-    this.evaluationMode,
-  });
+  BinaryAuthorization({this.enabled, this.evaluationMode});
 
   BinaryAuthorization.fromJson(core.Map json_)
       : this(
@@ -4435,17 +4466,16 @@ class BlueGreenSettings {
   /// Standard policy for the blue-green upgrade.
   StandardRolloutPolicy? standardRolloutPolicy;
 
-  BlueGreenSettings({
-    this.nodePoolSoakDuration,
-    this.standardRolloutPolicy,
-  });
+  BlueGreenSettings({this.nodePoolSoakDuration, this.standardRolloutPolicy});
 
   BlueGreenSettings.fromJson(core.Map json_)
       : this(
           nodePoolSoakDuration: json_['nodePoolSoakDuration'] as core.String?,
           standardRolloutPolicy: json_.containsKey('standardRolloutPolicy')
-              ? StandardRolloutPolicy.fromJson(json_['standardRolloutPolicy']
-                  as core.Map<core.String, core.dynamic>)
+              ? StandardRolloutPolicy.fromJson(
+                  json_['standardRolloutPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -4546,7 +4576,8 @@ class CertificateAuthorityDomainConfig {
               json_.containsKey('gcpSecretManagerCertificateConfig')
                   ? GCPSecretManagerCertificateConfig.fromJson(
                       json_['gcpSecretManagerCertificateConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
         );
 
@@ -4566,16 +4597,16 @@ class CheckAutopilotCompatibilityResponse {
   /// The summary of the autopilot compatibility response.
   core.String? summary;
 
-  CheckAutopilotCompatibilityResponse({
-    this.issues,
-    this.summary,
-  });
+  CheckAutopilotCompatibilityResponse({this.issues, this.summary});
 
   CheckAutopilotCompatibilityResponse.fromJson(core.Map json_)
       : this(
           issues: (json_['issues'] as core.List?)
-              ?.map((value) => AutopilotCompatibilityIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AutopilotCompatibilityIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           summary: json_['summary'] as core.String?,
         );
@@ -4594,10 +4625,7 @@ class CidrBlock {
   /// display_name is an optional field for users to identify CIDR blocks.
   core.String? displayName;
 
-  CidrBlock({
-    this.cidrBlock,
-    this.displayName,
-  });
+  CidrBlock({this.cidrBlock, this.displayName});
 
   CidrBlock.fromJson(core.Map json_)
       : this(
@@ -4616,9 +4644,7 @@ class ClientCertificateConfig {
   /// Issue a client certificate.
   core.bool? issueClientCertificate;
 
-  ClientCertificateConfig({
-    this.issueClientCertificate,
-  });
+  ClientCertificateConfig({this.issueClientCertificate});
 
   ClientCertificateConfig.fromJson(core.Map json_)
       : this(
@@ -4646,10 +4672,7 @@ class CloudRunConfig {
   /// Run.
   core.String? loadBalancerType;
 
-  CloudRunConfig({
-    this.disabled,
-    this.loadBalancerType,
-  });
+  CloudRunConfig({this.disabled, this.loadBalancerType});
 
   CloudRunConfig.fromJson(core.Map json_)
       : this(
@@ -5194,85 +5217,111 @@ class Cluster {
       : this(
           addonsConfig: json_.containsKey('addonsConfig')
               ? AddonsConfig.fromJson(
-                  json_['addonsConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['addonsConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           authenticatorGroupsConfig:
               json_.containsKey('authenticatorGroupsConfig')
                   ? AuthenticatorGroupsConfig.fromJson(
                       json_['authenticatorGroupsConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           autopilot: json_.containsKey('autopilot')
               ? Autopilot.fromJson(
-                  json_['autopilot'] as core.Map<core.String, core.dynamic>)
+                  json_['autopilot'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           autoscaling: json_.containsKey('autoscaling')
               ? ClusterAutoscaling.fromJson(
-                  json_['autoscaling'] as core.Map<core.String, core.dynamic>)
+                  json_['autoscaling'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           binaryAuthorization: json_.containsKey('binaryAuthorization')
-              ? BinaryAuthorization.fromJson(json_['binaryAuthorization']
-                  as core.Map<core.String, core.dynamic>)
+              ? BinaryAuthorization.fromJson(
+                  json_['binaryAuthorization']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           clusterIpv4Cidr: json_['clusterIpv4Cidr'] as core.String?,
           compliancePostureConfig: json_.containsKey('compliancePostureConfig')
               ? CompliancePostureConfig.fromJson(
                   json_['compliancePostureConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           conditions: (json_['conditions'] as core.List?)
-              ?.map((value) => StatusCondition.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => StatusCondition.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           confidentialNodes: json_.containsKey('confidentialNodes')
-              ? ConfidentialNodes.fromJson(json_['confidentialNodes']
-                  as core.Map<core.String, core.dynamic>)
+              ? ConfidentialNodes.fromJson(
+                  json_['confidentialNodes']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           controlPlaneEndpointsConfig:
               json_.containsKey('controlPlaneEndpointsConfig')
                   ? ControlPlaneEndpointsConfig.fromJson(
                       json_['controlPlaneEndpointsConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           costManagementConfig: json_.containsKey('costManagementConfig')
-              ? CostManagementConfig.fromJson(json_['costManagementConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? CostManagementConfig.fromJson(
+                  json_['costManagementConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           createTime: json_['createTime'] as core.String?,
           currentMasterVersion: json_['currentMasterVersion'] as core.String?,
           currentNodeCount: json_['currentNodeCount'] as core.int?,
           currentNodeVersion: json_['currentNodeVersion'] as core.String?,
           databaseEncryption: json_.containsKey('databaseEncryption')
-              ? DatabaseEncryption.fromJson(json_['databaseEncryption']
-                  as core.Map<core.String, core.dynamic>)
+              ? DatabaseEncryption.fromJson(
+                  json_['databaseEncryption']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           defaultMaxPodsConstraint:
               json_.containsKey('defaultMaxPodsConstraint')
-                  ? MaxPodsConstraint.fromJson(json_['defaultMaxPodsConstraint']
-                      as core.Map<core.String, core.dynamic>)
+                  ? MaxPodsConstraint.fromJson(
+                      json_['defaultMaxPodsConstraint']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           description: json_['description'] as core.String?,
           enableK8sBetaApis: json_.containsKey('enableK8sBetaApis')
-              ? K8sBetaAPIConfig.fromJson(json_['enableK8sBetaApis']
-                  as core.Map<core.String, core.dynamic>)
+              ? K8sBetaAPIConfig.fromJson(
+                  json_['enableK8sBetaApis']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           enableKubernetesAlpha: json_['enableKubernetesAlpha'] as core.bool?,
           enableTpu: json_['enableTpu'] as core.bool?,
           endpoint: json_['endpoint'] as core.String?,
           enterpriseConfig: json_.containsKey('enterpriseConfig')
-              ? EnterpriseConfig.fromJson(json_['enterpriseConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? EnterpriseConfig.fromJson(
+                  json_['enterpriseConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           etag: json_['etag'] as core.String?,
           expireTime: json_['expireTime'] as core.String?,
           fleet: json_.containsKey('fleet')
               ? Fleet.fromJson(
-                  json_['fleet'] as core.Map<core.String, core.dynamic>)
+                  json_['fleet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           id: json_['id'] as core.String?,
           identityServiceConfig: json_.containsKey('identityServiceConfig')
-              ? IdentityServiceConfig.fromJson(json_['identityServiceConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? IdentityServiceConfig.fromJson(
+                  json_['identityServiceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           initialClusterVersion: json_['initialClusterVersion'] as core.String?,
           initialNodeCount: json_['initialNodeCount'] as core.int?,
@@ -5280,13 +5329,16 @@ class Cluster {
               ?.map((value) => value as core.String)
               .toList(),
           ipAllocationPolicy: json_.containsKey('ipAllocationPolicy')
-              ? IPAllocationPolicy.fromJson(json_['ipAllocationPolicy']
-                  as core.Map<core.String, core.dynamic>)
+              ? IPAllocationPolicy.fromJson(
+                  json_['ipAllocationPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labelFingerprint: json_['labelFingerprint'] as core.String?,
           legacyAbac: json_.containsKey('legacyAbac')
               ? LegacyAbac.fromJson(
-                  json_['legacyAbac'] as core.Map<core.String, core.dynamic>)
+                  json_['legacyAbac'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           location: json_['location'] as core.String?,
           locations: (json_['locations'] as core.List?)
@@ -5294,124 +5346,160 @@ class Cluster {
               .toList(),
           loggingConfig: json_.containsKey('loggingConfig')
               ? LoggingConfig.fromJson(
-                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           loggingService: json_['loggingService'] as core.String?,
           maintenancePolicy: json_.containsKey('maintenancePolicy')
-              ? MaintenancePolicy.fromJson(json_['maintenancePolicy']
-                  as core.Map<core.String, core.dynamic>)
+              ? MaintenancePolicy.fromJson(
+                  json_['maintenancePolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           masterAuth: json_.containsKey('masterAuth')
               ? MasterAuth.fromJson(
-                  json_['masterAuth'] as core.Map<core.String, core.dynamic>)
+                  json_['masterAuth'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           masterAuthorizedNetworksConfig:
               json_.containsKey('masterAuthorizedNetworksConfig')
                   ? MasterAuthorizedNetworksConfig.fromJson(
                       json_['masterAuthorizedNetworksConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           meshCertificates: json_.containsKey('meshCertificates')
-              ? MeshCertificates.fromJson(json_['meshCertificates']
-                  as core.Map<core.String, core.dynamic>)
+              ? MeshCertificates.fromJson(
+                  json_['meshCertificates']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           monitoringConfig: json_.containsKey('monitoringConfig')
-              ? MonitoringConfig.fromJson(json_['monitoringConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? MonitoringConfig.fromJson(
+                  json_['monitoringConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           monitoringService: json_['monitoringService'] as core.String?,
           name: json_['name'] as core.String?,
           network: json_['network'] as core.String?,
           networkConfig: json_.containsKey('networkConfig')
               ? NetworkConfig.fromJson(
-                  json_['networkConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['networkConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           networkPolicy: json_.containsKey('networkPolicy')
               ? NetworkPolicy.fromJson(
-                  json_['networkPolicy'] as core.Map<core.String, core.dynamic>)
+                  json_['networkPolicy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           nodeConfig: json_.containsKey('nodeConfig')
               ? NodeConfig.fromJson(
-                  json_['nodeConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['nodeConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           nodeIpv4CidrSize: json_['nodeIpv4CidrSize'] as core.int?,
           nodePoolAutoConfig: json_.containsKey('nodePoolAutoConfig')
-              ? NodePoolAutoConfig.fromJson(json_['nodePoolAutoConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? NodePoolAutoConfig.fromJson(
+                  json_['nodePoolAutoConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           nodePoolDefaults: json_.containsKey('nodePoolDefaults')
-              ? NodePoolDefaults.fromJson(json_['nodePoolDefaults']
-                  as core.Map<core.String, core.dynamic>)
+              ? NodePoolDefaults.fromJson(
+                  json_['nodePoolDefaults']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           nodePools: (json_['nodePools'] as core.List?)
-              ?.map((value) => NodePool.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => NodePool.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           notificationConfig: json_.containsKey('notificationConfig')
-              ? NotificationConfig.fromJson(json_['notificationConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? NotificationConfig.fromJson(
+                  json_['notificationConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           parentProductConfig: json_.containsKey('parentProductConfig')
-              ? ParentProductConfig.fromJson(json_['parentProductConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? ParentProductConfig.fromJson(
+                  json_['parentProductConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           privateClusterConfig: json_.containsKey('privateClusterConfig')
-              ? PrivateClusterConfig.fromJson(json_['privateClusterConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? PrivateClusterConfig.fromJson(
+                  json_['privateClusterConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           rbacBindingConfig: json_.containsKey('rbacBindingConfig')
-              ? RBACBindingConfig.fromJson(json_['rbacBindingConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? RBACBindingConfig.fromJson(
+                  json_['rbacBindingConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           releaseChannel: json_.containsKey('releaseChannel')
-              ? ReleaseChannel.fromJson(json_['releaseChannel']
-                  as core.Map<core.String, core.dynamic>)
+              ? ReleaseChannel.fromJson(
+                  json_['releaseChannel']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
-          resourceLabels:
-              (json_['resourceLabels'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          resourceLabels: (json_['resourceLabels']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           resourceUsageExportConfig:
               json_.containsKey('resourceUsageExportConfig')
                   ? ResourceUsageExportConfig.fromJson(
                       json_['resourceUsageExportConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
           satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           secretManagerConfig: json_.containsKey('secretManagerConfig')
-              ? SecretManagerConfig.fromJson(json_['secretManagerConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? SecretManagerConfig.fromJson(
+                  json_['secretManagerConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           securityPostureConfig: json_.containsKey('securityPostureConfig')
-              ? SecurityPostureConfig.fromJson(json_['securityPostureConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? SecurityPostureConfig.fromJson(
+                  json_['securityPostureConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           selfLink: json_['selfLink'] as core.String?,
           servicesIpv4Cidr: json_['servicesIpv4Cidr'] as core.String?,
           shieldedNodes: json_.containsKey('shieldedNodes')
               ? ShieldedNodes.fromJson(
-                  json_['shieldedNodes'] as core.Map<core.String, core.dynamic>)
+                  json_['shieldedNodes'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           status: json_['status'] as core.String?,
           statusMessage: json_['statusMessage'] as core.String?,
           subnetwork: json_['subnetwork'] as core.String?,
           tpuIpv4CidrBlock: json_['tpuIpv4CidrBlock'] as core.String?,
           userManagedKeysConfig: json_.containsKey('userManagedKeysConfig')
-              ? UserManagedKeysConfig.fromJson(json_['userManagedKeysConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? UserManagedKeysConfig.fromJson(
+                  json_['userManagedKeysConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           verticalPodAutoscaling: json_.containsKey('verticalPodAutoscaling')
-              ? VerticalPodAutoscaling.fromJson(json_['verticalPodAutoscaling']
-                  as core.Map<core.String, core.dynamic>)
+              ? VerticalPodAutoscaling.fromJson(
+                  json_['verticalPodAutoscaling']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           workloadIdentityConfig: json_.containsKey('workloadIdentityConfig')
-              ? WorkloadIdentityConfig.fromJson(json_['workloadIdentityConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? WorkloadIdentityConfig.fromJson(
+                  json_['workloadIdentityConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           zone: json_['zone'] as core.String?,
         );
@@ -5564,14 +5652,18 @@ class ClusterAutoscaling {
               json_.containsKey('autoprovisioningNodePoolDefaults')
                   ? AutoprovisioningNodePoolDefaults.fromJson(
                       json_['autoprovisioningNodePoolDefaults']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           autoscalingProfile: json_['autoscalingProfile'] as core.String?,
           enableNodeAutoprovisioning:
               json_['enableNodeAutoprovisioning'] as core.bool?,
           resourceLimits: (json_['resourceLimits'] as core.List?)
-              ?.map((value) => ResourceLimit.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ResourceLimit.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -5596,9 +5688,7 @@ class ClusterNetworkPerformanceConfig {
   /// - "TIER_1" : Higher bandwidth, actual values based on VM size.
   core.String? totalEgressBandwidthTier;
 
-  ClusterNetworkPerformanceConfig({
-    this.totalEgressBandwidthTier,
-  });
+  ClusterNetworkPerformanceConfig({this.totalEgressBandwidthTier});
 
   ClusterNetworkPerformanceConfig.fromJson(core.Map json_)
       : this(
@@ -6006,73 +6096,93 @@ class ClusterUpdate {
               json_.containsKey('additionalPodRangesConfig')
                   ? AdditionalPodRangesConfig.fromJson(
                       json_['additionalPodRangesConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredAddonsConfig: json_.containsKey('desiredAddonsConfig')
-              ? AddonsConfig.fromJson(json_['desiredAddonsConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? AddonsConfig.fromJson(
+                  json_['desiredAddonsConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           desiredAuthenticatorGroupsConfig:
               json_.containsKey('desiredAuthenticatorGroupsConfig')
                   ? AuthenticatorGroupsConfig.fromJson(
                       json_['desiredAuthenticatorGroupsConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredAutopilotWorkloadPolicyConfig:
               json_.containsKey('desiredAutopilotWorkloadPolicyConfig')
                   ? WorkloadPolicyConfig.fromJson(
                       json_['desiredAutopilotWorkloadPolicyConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
-          desiredBinaryAuthorization: json_
-                  .containsKey('desiredBinaryAuthorization')
-              ? BinaryAuthorization.fromJson(json_['desiredBinaryAuthorization']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          desiredClusterAutoscaling: json_
-                  .containsKey('desiredClusterAutoscaling')
-              ? ClusterAutoscaling.fromJson(json_['desiredClusterAutoscaling']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
+          desiredBinaryAuthorization:
+              json_.containsKey('desiredBinaryAuthorization')
+                  ? BinaryAuthorization.fromJson(
+                      json_['desiredBinaryAuthorization']
+                          as core.Map<core.String, core.dynamic>,
+                    )
+                  : null,
+          desiredClusterAutoscaling:
+              json_.containsKey('desiredClusterAutoscaling')
+                  ? ClusterAutoscaling.fromJson(
+                      json_['desiredClusterAutoscaling']
+                          as core.Map<core.String, core.dynamic>,
+                    )
+                  : null,
           desiredCompliancePostureConfig:
               json_.containsKey('desiredCompliancePostureConfig')
                   ? CompliancePostureConfig.fromJson(
                       json_['desiredCompliancePostureConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredContainerdConfig: json_.containsKey('desiredContainerdConfig')
-              ? ContainerdConfig.fromJson(json_['desiredContainerdConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? ContainerdConfig.fromJson(
+                  json_['desiredContainerdConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           desiredControlPlaneEndpointsConfig:
               json_.containsKey('desiredControlPlaneEndpointsConfig')
                   ? ControlPlaneEndpointsConfig.fromJson(
                       json_['desiredControlPlaneEndpointsConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredCostManagementConfig:
               json_.containsKey('desiredCostManagementConfig')
                   ? CostManagementConfig.fromJson(
                       json_['desiredCostManagementConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
-          desiredDatabaseEncryption: json_
-                  .containsKey('desiredDatabaseEncryption')
-              ? DatabaseEncryption.fromJson(json_['desiredDatabaseEncryption']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
+          desiredDatabaseEncryption:
+              json_.containsKey('desiredDatabaseEncryption')
+                  ? DatabaseEncryption.fromJson(
+                      json_['desiredDatabaseEncryption']
+                          as core.Map<core.String, core.dynamic>,
+                    )
+                  : null,
           desiredDatapathProvider:
               json_['desiredDatapathProvider'] as core.String?,
           desiredDefaultEnablePrivateNodes:
               json_['desiredDefaultEnablePrivateNodes'] as core.bool?,
           desiredDefaultSnatStatus:
               json_.containsKey('desiredDefaultSnatStatus')
-                  ? DefaultSnatStatus.fromJson(json_['desiredDefaultSnatStatus']
-                      as core.Map<core.String, core.dynamic>)
+                  ? DefaultSnatStatus.fromJson(
+                      json_['desiredDefaultSnatStatus']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredDnsConfig: json_.containsKey('desiredDnsConfig')
-              ? DNSConfig.fromJson(json_['desiredDnsConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? DNSConfig.fromJson(
+                  json_['desiredDnsConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           desiredEnableCiliumClusterwideNetworkPolicy:
               json_['desiredEnableCiliumClusterwideNetworkPolicy']
@@ -6086,25 +6196,32 @@ class ClusterUpdate {
           desiredEnterpriseConfig: json_.containsKey('desiredEnterpriseConfig')
               ? DesiredEnterpriseConfig.fromJson(
                   json_['desiredEnterpriseConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           desiredFleet: json_.containsKey('desiredFleet')
               ? Fleet.fromJson(
-                  json_['desiredFleet'] as core.Map<core.String, core.dynamic>)
+                  json_['desiredFleet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           desiredGatewayApiConfig: json_.containsKey('desiredGatewayApiConfig')
-              ? GatewayAPIConfig.fromJson(json_['desiredGatewayApiConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? GatewayAPIConfig.fromJson(
+                  json_['desiredGatewayApiConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           desiredGcfsConfig: json_.containsKey('desiredGcfsConfig')
-              ? GcfsConfig.fromJson(json_['desiredGcfsConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? GcfsConfig.fromJson(
+                  json_['desiredGcfsConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           desiredIdentityServiceConfig:
               json_.containsKey('desiredIdentityServiceConfig')
                   ? IdentityServiceConfig.fromJson(
                       json_['desiredIdentityServiceConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredImageType: json_['desiredImageType'] as core.String?,
           desiredInTransitEncryptionConfig:
@@ -6113,40 +6230,51 @@ class ClusterUpdate {
               json_.containsKey('desiredIntraNodeVisibilityConfig')
                   ? IntraNodeVisibilityConfig.fromJson(
                       json_['desiredIntraNodeVisibilityConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredK8sBetaApis: json_.containsKey('desiredK8sBetaApis')
-              ? K8sBetaAPIConfig.fromJson(json_['desiredK8sBetaApis']
-                  as core.Map<core.String, core.dynamic>)
+              ? K8sBetaAPIConfig.fromJson(
+                  json_['desiredK8sBetaApis']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           desiredL4ilbSubsettingConfig:
               json_.containsKey('desiredL4ilbSubsettingConfig')
                   ? ILBSubsettingConfig.fromJson(
                       json_['desiredL4ilbSubsettingConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredLocations: (json_['desiredLocations'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           desiredLoggingConfig: json_.containsKey('desiredLoggingConfig')
-              ? LoggingConfig.fromJson(json_['desiredLoggingConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? LoggingConfig.fromJson(
+                  json_['desiredLoggingConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           desiredLoggingService: json_['desiredLoggingService'] as core.String?,
           desiredMasterAuthorizedNetworksConfig:
               json_.containsKey('desiredMasterAuthorizedNetworksConfig')
                   ? MasterAuthorizedNetworksConfig.fromJson(
                       json_['desiredMasterAuthorizedNetworksConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredMasterVersion: json_['desiredMasterVersion'] as core.String?,
           desiredMeshCertificates: json_.containsKey('desiredMeshCertificates')
-              ? MeshCertificates.fromJson(json_['desiredMeshCertificates']
-                  as core.Map<core.String, core.dynamic>)
+              ? MeshCertificates.fromJson(
+                  json_['desiredMeshCertificates']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           desiredMonitoringConfig: json_.containsKey('desiredMonitoringConfig')
-              ? MonitoringConfig.fromJson(json_['desiredMonitoringConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? MonitoringConfig.fromJson(
+                  json_['desiredMonitoringConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           desiredMonitoringService:
               json_['desiredMonitoringService'] as core.String?,
@@ -6154,131 +6282,164 @@ class ClusterUpdate {
               json_.containsKey('desiredNetworkPerformanceConfig')
                   ? ClusterNetworkPerformanceConfig.fromJson(
                       json_['desiredNetworkPerformanceConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredNodeKubeletConfig:
               json_.containsKey('desiredNodeKubeletConfig')
-                  ? NodeKubeletConfig.fromJson(json_['desiredNodeKubeletConfig']
-                      as core.Map<core.String, core.dynamic>)
+                  ? NodeKubeletConfig.fromJson(
+                      json_['desiredNodeKubeletConfig']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredNodePoolAutoConfigKubeletConfig:
               json_.containsKey('desiredNodePoolAutoConfigKubeletConfig')
                   ? NodeKubeletConfig.fromJson(
                       json_['desiredNodePoolAutoConfigKubeletConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredNodePoolAutoConfigLinuxNodeConfig:
               json_.containsKey('desiredNodePoolAutoConfigLinuxNodeConfig')
                   ? LinuxNodeConfig.fromJson(
                       json_['desiredNodePoolAutoConfigLinuxNodeConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredNodePoolAutoConfigNetworkTags:
               json_.containsKey('desiredNodePoolAutoConfigNetworkTags')
                   ? NetworkTags.fromJson(
                       json_['desiredNodePoolAutoConfigNetworkTags']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredNodePoolAutoConfigResourceManagerTags:
               json_.containsKey('desiredNodePoolAutoConfigResourceManagerTags')
                   ? ResourceManagerTags.fromJson(
                       json_['desiredNodePoolAutoConfigResourceManagerTags']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
-          desiredNodePoolAutoscaling: json_
-                  .containsKey('desiredNodePoolAutoscaling')
-              ? NodePoolAutoscaling.fromJson(json_['desiredNodePoolAutoscaling']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
+          desiredNodePoolAutoscaling:
+              json_.containsKey('desiredNodePoolAutoscaling')
+                  ? NodePoolAutoscaling.fromJson(
+                      json_['desiredNodePoolAutoscaling']
+                          as core.Map<core.String, core.dynamic>,
+                    )
+                  : null,
           desiredNodePoolId: json_['desiredNodePoolId'] as core.String?,
           desiredNodePoolLoggingConfig:
               json_.containsKey('desiredNodePoolLoggingConfig')
                   ? NodePoolLoggingConfig.fromJson(
                       json_['desiredNodePoolLoggingConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredNodeVersion: json_['desiredNodeVersion'] as core.String?,
-          desiredNotificationConfig: json_
-                  .containsKey('desiredNotificationConfig')
-              ? NotificationConfig.fromJson(json_['desiredNotificationConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          desiredParentProductConfig: json_
-                  .containsKey('desiredParentProductConfig')
-              ? ParentProductConfig.fromJson(json_['desiredParentProductConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
+          desiredNotificationConfig:
+              json_.containsKey('desiredNotificationConfig')
+                  ? NotificationConfig.fromJson(
+                      json_['desiredNotificationConfig']
+                          as core.Map<core.String, core.dynamic>,
+                    )
+                  : null,
+          desiredParentProductConfig:
+              json_.containsKey('desiredParentProductConfig')
+                  ? ParentProductConfig.fromJson(
+                      json_['desiredParentProductConfig']
+                          as core.Map<core.String, core.dynamic>,
+                    )
+                  : null,
           desiredPrivateClusterConfig:
               json_.containsKey('desiredPrivateClusterConfig')
                   ? PrivateClusterConfig.fromJson(
                       json_['desiredPrivateClusterConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredPrivateIpv6GoogleAccess:
               json_['desiredPrivateIpv6GoogleAccess'] as core.String?,
           desiredRbacBindingConfig:
               json_.containsKey('desiredRbacBindingConfig')
-                  ? RBACBindingConfig.fromJson(json_['desiredRbacBindingConfig']
-                      as core.Map<core.String, core.dynamic>)
+                  ? RBACBindingConfig.fromJson(
+                      json_['desiredRbacBindingConfig']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredReleaseChannel: json_.containsKey('desiredReleaseChannel')
-              ? ReleaseChannel.fromJson(json_['desiredReleaseChannel']
-                  as core.Map<core.String, core.dynamic>)
+              ? ReleaseChannel.fromJson(
+                  json_['desiredReleaseChannel']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           desiredResourceUsageExportConfig:
               json_.containsKey('desiredResourceUsageExportConfig')
                   ? ResourceUsageExportConfig.fromJson(
                       json_['desiredResourceUsageExportConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
-          desiredSecretManagerConfig: json_
-                  .containsKey('desiredSecretManagerConfig')
-              ? SecretManagerConfig.fromJson(json_['desiredSecretManagerConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
+          desiredSecretManagerConfig:
+              json_.containsKey('desiredSecretManagerConfig')
+                  ? SecretManagerConfig.fromJson(
+                      json_['desiredSecretManagerConfig']
+                          as core.Map<core.String, core.dynamic>,
+                    )
+                  : null,
           desiredSecurityPostureConfig:
               json_.containsKey('desiredSecurityPostureConfig')
                   ? SecurityPostureConfig.fromJson(
                       json_['desiredSecurityPostureConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredServiceExternalIpsConfig:
               json_.containsKey('desiredServiceExternalIpsConfig')
                   ? ServiceExternalIPsConfig.fromJson(
                       json_['desiredServiceExternalIpsConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredShieldedNodes: json_.containsKey('desiredShieldedNodes')
-              ? ShieldedNodes.fromJson(json_['desiredShieldedNodes']
-                  as core.Map<core.String, core.dynamic>)
+              ? ShieldedNodes.fromJson(
+                  json_['desiredShieldedNodes']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           desiredStackType: json_['desiredStackType'] as core.String?,
           desiredVerticalPodAutoscaling:
               json_.containsKey('desiredVerticalPodAutoscaling')
                   ? VerticalPodAutoscaling.fromJson(
                       json_['desiredVerticalPodAutoscaling']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           desiredWorkloadIdentityConfig:
               json_.containsKey('desiredWorkloadIdentityConfig')
                   ? WorkloadIdentityConfig.fromJson(
                       json_['desiredWorkloadIdentityConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           enableK8sBetaApis: json_.containsKey('enableK8sBetaApis')
-              ? K8sBetaAPIConfig.fromJson(json_['enableK8sBetaApis']
-                  as core.Map<core.String, core.dynamic>)
+              ? K8sBetaAPIConfig.fromJson(
+                  json_['enableK8sBetaApis']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           etag: json_['etag'] as core.String?,
           removedAdditionalPodRangesConfig:
               json_.containsKey('removedAdditionalPodRangesConfig')
                   ? AdditionalPodRangesConfig.fromJson(
                       json_['removedAdditionalPodRangesConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           userManagedKeysConfig: json_.containsKey('userManagedKeysConfig')
-              ? UserManagedKeysConfig.fromJson(json_['userManagedKeysConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? UserManagedKeysConfig.fromJson(
+                  json_['userManagedKeysConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6496,16 +6657,16 @@ class CompliancePostureConfig {
   /// - "ENABLED" : Enables Compliance Posture features on the cluster.
   core.String? mode;
 
-  CompliancePostureConfig({
-    this.complianceStandards,
-    this.mode,
-  });
+  CompliancePostureConfig({this.complianceStandards, this.mode});
 
   CompliancePostureConfig.fromJson(core.Map json_)
       : this(
           complianceStandards: (json_['complianceStandards'] as core.List?)
-              ?.map((value) => ComplianceStandard.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ComplianceStandard.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           mode: json_['mode'] as core.String?,
         );
@@ -6526,14 +6687,10 @@ class ConfidentialNodes {
   /// Whether Confidential Nodes feature is enabled.
   core.bool? enabled;
 
-  ConfidentialNodes({
-    this.enabled,
-  });
+  ConfidentialNodes({this.enabled});
 
   ConfidentialNodes.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -6545,14 +6702,10 @@ class ConfigConnectorConfig {
   /// Whether Cloud Connector is enabled for this cluster.
   core.bool? enabled;
 
-  ConfigConnectorConfig({
-    this.enabled,
-  });
+  ConfigConnectorConfig({this.enabled});
 
   ConfigConnectorConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -6567,14 +6720,10 @@ class ConsumptionMeteringConfig {
   /// consumption records.
   core.bool? enabled;
 
-  ConsumptionMeteringConfig({
-    this.enabled,
-  });
+  ConsumptionMeteringConfig({this.enabled});
 
   ConsumptionMeteringConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -6587,9 +6736,7 @@ class ContainerdConfig {
   /// private container registries.
   PrivateRegistryAccessConfig? privateRegistryAccessConfig;
 
-  ContainerdConfig({
-    this.privateRegistryAccessConfig,
-  });
+  ContainerdConfig({this.privateRegistryAccessConfig});
 
   ContainerdConfig.fromJson(core.Map json_)
       : this(
@@ -6597,7 +6744,8 @@ class ContainerdConfig {
               json_.containsKey('privateRegistryAccessConfig')
                   ? PrivateRegistryAccessConfig.fromJson(
                       json_['privateRegistryAccessConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
         );
 
@@ -6615,20 +6763,21 @@ class ControlPlaneEndpointsConfig {
   /// IP endpoints configuration.
   IPEndpointsConfig? ipEndpointsConfig;
 
-  ControlPlaneEndpointsConfig({
-    this.dnsEndpointConfig,
-    this.ipEndpointsConfig,
-  });
+  ControlPlaneEndpointsConfig({this.dnsEndpointConfig, this.ipEndpointsConfig});
 
   ControlPlaneEndpointsConfig.fromJson(core.Map json_)
       : this(
           dnsEndpointConfig: json_.containsKey('dnsEndpointConfig')
-              ? DNSEndpointConfig.fromJson(json_['dnsEndpointConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? DNSEndpointConfig.fromJson(
+                  json_['dnsEndpointConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           ipEndpointsConfig: json_.containsKey('ipEndpointsConfig')
-              ? IPEndpointsConfig.fromJson(json_['ipEndpointsConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? IPEndpointsConfig.fromJson(
+                  json_['ipEndpointsConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6643,14 +6792,10 @@ class CostManagementConfig {
   /// Whether the feature is enabled or not.
   core.bool? enabled;
 
-  CostManagementConfig({
-    this.enabled,
-  });
+  CostManagementConfig({this.enabled});
 
   CostManagementConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -6693,18 +6838,14 @@ class CreateClusterRequest {
   )
   core.String? zone;
 
-  CreateClusterRequest({
-    this.cluster,
-    this.parent,
-    this.projectId,
-    this.zone,
-  });
+  CreateClusterRequest({this.cluster, this.parent, this.projectId, this.zone});
 
   CreateClusterRequest.fromJson(core.Map json_)
       : this(
           cluster: json_.containsKey('cluster')
               ? Cluster.fromJson(
-                  json_['cluster'] as core.Map<core.String, core.dynamic>)
+                  json_['cluster'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           parent: json_['parent'] as core.String?,
           projectId: json_['projectId'] as core.String?,
@@ -6778,7 +6919,8 @@ class CreateNodePoolRequest {
           clusterId: json_['clusterId'] as core.String?,
           nodePool: json_.containsKey('nodePool')
               ? NodePool.fromJson(
-                  json_['nodePool'] as core.Map<core.String, core.dynamic>)
+                  json_['nodePool'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           parent: json_['parent'] as core.String?,
           projectId: json_['projectId'] as core.String?,
@@ -6863,10 +7005,7 @@ class DNSEndpointConfig {
   /// Output only.
   core.String? endpoint;
 
-  DNSEndpointConfig({
-    this.allowExternalTraffic,
-    this.endpoint,
-  });
+  DNSEndpointConfig({this.allowExternalTraffic, this.endpoint});
 
   DNSEndpointConfig.fromJson(core.Map json_)
       : this(
@@ -6898,10 +7037,7 @@ class DailyMaintenanceWindow {
   /// format "HH:MM", where HH : \[00-23\] and MM : \[00-59\] GMT.
   core.String? startTime;
 
-  DailyMaintenanceWindow({
-    this.duration,
-    this.startTime,
-  });
+  DailyMaintenanceWindow({this.duration, this.startTime});
 
   DailyMaintenanceWindow.fromJson(core.Map json_)
       : this(
@@ -6979,8 +7115,11 @@ class DatabaseEncryption {
               .toList(),
           keyName: json_['keyName'] as core.String?,
           lastOperationErrors: (json_['lastOperationErrors'] as core.List?)
-              ?.map((value) => OperationError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => OperationError.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           state: json_['state'] as core.String?,
         );
@@ -7001,14 +7140,10 @@ class DefaultSnatStatus {
   /// Disables cluster default sNAT rules.
   core.bool? disabled;
 
-  DefaultSnatStatus({
-    this.disabled,
-  });
+  DefaultSnatStatus({this.disabled});
 
   DefaultSnatStatus.fromJson(core.Map json_)
-      : this(
-          disabled: json_['disabled'] as core.bool?,
-        );
+      : this(disabled: json_['disabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
@@ -7025,14 +7160,10 @@ class DesiredEnterpriseConfig {
   /// - "ENTERPRISE" : ENTERPRISE indicates a GKE Enterprise cluster.
   core.String? desiredTier;
 
-  DesiredEnterpriseConfig({
-    this.desiredTier,
-  });
+  DesiredEnterpriseConfig({this.desiredTier});
 
   DesiredEnterpriseConfig.fromJson(core.Map json_)
-      : this(
-          desiredTier: json_['desiredTier'] as core.String?,
-        );
+      : this(desiredTier: json_['desiredTier'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (desiredTier != null) 'desiredTier': desiredTier!,
@@ -7044,14 +7175,10 @@ class DnsCacheConfig {
   /// Whether NodeLocal DNSCache is enabled for this cluster.
   core.bool? enabled;
 
-  DnsCacheConfig({
-    this.enabled,
-  });
+  DnsCacheConfig({this.enabled});
 
   DnsCacheConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -7086,10 +7213,7 @@ class EnterpriseConfig {
   /// - "ENTERPRISE" : ENTERPRISE indicates a GKE Enterprise cluster.
   core.String? desiredTier;
 
-  EnterpriseConfig({
-    this.clusterTier,
-    this.desiredTier,
-  });
+  EnterpriseConfig({this.clusterTier, this.desiredTier});
 
   EnterpriseConfig.fromJson(core.Map json_)
       : this(
@@ -7123,14 +7247,10 @@ class EphemeralStorageLocalSsdConfig {
   /// for more info.
   core.int? localSsdCount;
 
-  EphemeralStorageLocalSsdConfig({
-    this.localSsdCount,
-  });
+  EphemeralStorageLocalSsdConfig({this.localSsdCount});
 
   EphemeralStorageLocalSsdConfig.fromJson(core.Map json_)
-      : this(
-          localSsdCount: json_['localSsdCount'] as core.int?,
-        );
+      : this(localSsdCount: json_['localSsdCount'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (localSsdCount != null) 'localSsdCount': localSsdCount!,
@@ -7142,14 +7262,10 @@ class FastSocket {
   /// Whether Fast Socket features are enabled in the node pool.
   core.bool? enabled;
 
-  FastSocket({
-    this.enabled,
-  });
+  FastSocket({this.enabled});
 
   FastSocket.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -7165,9 +7281,7 @@ class Filter {
   /// Event types to allowlist.
   core.List<core.String>? eventType;
 
-  Filter({
-    this.eventType,
-  });
+  Filter({this.eventType});
 
   Filter.fromJson(core.Map json_)
       : this(
@@ -7201,11 +7315,7 @@ class Fleet {
   /// This field cannot be changed after the cluster has been registered.
   core.String? project;
 
-  Fleet({
-    this.membership,
-    this.preRegistered,
-    this.project,
-  });
+  Fleet({this.membership, this.preRegistered, this.project});
 
   Fleet.fromJson(core.Map json_)
       : this(
@@ -7230,14 +7340,10 @@ class GCPSecretManagerCertificateConfig {
   /// Version can be fixed (e.g. "2") or "latest"
   core.String? secretUri;
 
-  GCPSecretManagerCertificateConfig({
-    this.secretUri,
-  });
+  GCPSecretManagerCertificateConfig({this.secretUri});
 
   GCPSecretManagerCertificateConfig.fromJson(core.Map json_)
-      : this(
-          secretUri: json_['secretUri'] as core.String?,
-        );
+      : this(secretUri: json_['secretUri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (secretUri != null) 'secretUri': secretUri!,
@@ -7257,14 +7363,10 @@ class GPUDriverInstallationConfig {
   /// - "LATEST" : "Latest" GPU driver in COS.
   core.String? gpuDriverVersion;
 
-  GPUDriverInstallationConfig({
-    this.gpuDriverVersion,
-  });
+  GPUDriverInstallationConfig({this.gpuDriverVersion});
 
   GPUDriverInstallationConfig.fromJson(core.Map json_)
-      : this(
-          gpuDriverVersion: json_['gpuDriverVersion'] as core.String?,
-        );
+      : this(gpuDriverVersion: json_['gpuDriverVersion'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gpuDriverVersion != null) 'gpuDriverVersion': gpuDriverVersion!,
@@ -7284,10 +7386,7 @@ class GPUSharingConfig {
   /// The max number of containers that can share a physical GPU.
   core.String? maxSharedClientsPerGpu;
 
-  GPUSharingConfig({
-    this.gpuSharingStrategy,
-    this.maxSharedClientsPerGpu,
-  });
+  GPUSharingConfig({this.gpuSharingStrategy, this.maxSharedClientsPerGpu});
 
   GPUSharingConfig.fromJson(core.Map json_)
       : this(
@@ -7316,14 +7415,10 @@ class GatewayAPIConfig {
   /// installed
   core.String? channel;
 
-  GatewayAPIConfig({
-    this.channel,
-  });
+  GatewayAPIConfig({this.channel});
 
   GatewayAPIConfig.fromJson(core.Map json_)
-      : this(
-          channel: json_['channel'] as core.String?,
-        );
+      : this(channel: json_['channel'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channel != null) 'channel': channel!,
@@ -7335,14 +7430,10 @@ class GcePersistentDiskCsiDriverConfig {
   /// Whether the Compute Engine PD CSI driver is enabled for this cluster.
   core.bool? enabled;
 
-  GcePersistentDiskCsiDriverConfig({
-    this.enabled,
-  });
+  GcePersistentDiskCsiDriverConfig({this.enabled});
 
   GcePersistentDiskCsiDriverConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -7355,14 +7446,10 @@ class GcfsConfig {
   /// Whether to use GCFS.
   core.bool? enabled;
 
-  GcfsConfig({
-    this.enabled,
-  });
+  GcfsConfig({this.enabled});
 
   GcfsConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -7374,14 +7461,10 @@ class GcpFilestoreCsiDriverConfig {
   /// Whether the GCP Filestore CSI driver is enabled for this cluster.
   core.bool? enabled;
 
-  GcpFilestoreCsiDriverConfig({
-    this.enabled,
-  });
+  GcpFilestoreCsiDriverConfig({this.enabled});
 
   GcpFilestoreCsiDriverConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -7393,14 +7476,10 @@ class GcsFuseCsiDriverConfig {
   /// Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
   core.bool? enabled;
 
-  GcsFuseCsiDriverConfig({
-    this.enabled,
-  });
+  GcsFuseCsiDriverConfig({this.enabled});
 
   GcsFuseCsiDriverConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -7417,20 +7496,21 @@ class GetJSONWebKeysResponse {
   /// requests.
   core.List<Jwk>? keys;
 
-  GetJSONWebKeysResponse({
-    this.cacheHeader,
-    this.keys,
-  });
+  GetJSONWebKeysResponse({this.cacheHeader, this.keys});
 
   GetJSONWebKeysResponse.fromJson(core.Map json_)
       : this(
           cacheHeader: json_.containsKey('cacheHeader')
               ? HttpCacheControlResponseHeader.fromJson(
-                  json_['cacheHeader'] as core.Map<core.String, core.dynamic>)
+                  json_['cacheHeader'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           keys: (json_['keys'] as core.List?)
-              ?.map((value) =>
-                  Jwk.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Jwk.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -7484,7 +7564,8 @@ class GetOpenIDConfigResponse {
       : this(
           cacheHeader: json_.containsKey('cacheHeader')
               ? HttpCacheControlResponseHeader.fromJson(
-                  json_['cacheHeader'] as core.Map<core.String, core.dynamic>)
+                  json_['cacheHeader'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           claimsSupported: (json_['claims_supported'] as core.List?)
               ?.map((value) => value as core.String)
@@ -7529,14 +7610,10 @@ class GkeBackupAgentConfig {
   /// Whether the Backup for GKE agent is enabled for this cluster.
   core.bool? enabled;
 
-  GkeBackupAgentConfig({
-    this.enabled,
-  });
+  GkeBackupAgentConfig({this.enabled});
 
   GkeBackupAgentConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -7553,14 +7630,10 @@ class HorizontalPodAutoscaling {
   /// Monitoring.
   core.bool? disabled;
 
-  HorizontalPodAutoscaling({
-    this.disabled,
-  });
+  HorizontalPodAutoscaling({this.disabled});
 
   HorizontalPodAutoscaling.fromJson(core.Map json_)
-      : this(
-          disabled: json_['disabled'] as core.bool?,
-        );
+      : this(disabled: json_['disabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
@@ -7578,11 +7651,7 @@ class HttpCacheControlResponseHeader {
   /// 14.21 response cache expires, in RFC 1123 date format
   core.String? expires;
 
-  HttpCacheControlResponseHeader({
-    this.age,
-    this.directive,
-    this.expires,
-  });
+  HttpCacheControlResponseHeader({this.age, this.directive, this.expires});
 
   HttpCacheControlResponseHeader.fromJson(core.Map json_)
       : this(
@@ -7607,14 +7676,10 @@ class HttpLoadBalancing {
   /// balancers.
   core.bool? disabled;
 
-  HttpLoadBalancing({
-    this.disabled,
-  });
+  HttpLoadBalancing({this.disabled});
 
   HttpLoadBalancing.fromJson(core.Map json_)
-      : this(
-          disabled: json_['disabled'] as core.bool?,
-        );
+      : this(disabled: json_['disabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
@@ -7633,10 +7698,7 @@ class HugepagesConfig {
   /// Optional.
   core.int? hugepageSize2m;
 
-  HugepagesConfig({
-    this.hugepageSize1g,
-    this.hugepageSize2m,
-  });
+  HugepagesConfig({this.hugepageSize1g, this.hugepageSize2m});
 
   HugepagesConfig.fromJson(core.Map json_)
       : this(
@@ -7656,14 +7718,10 @@ class ILBSubsettingConfig {
   /// Enables l4 ILB subsetting for this cluster.
   core.bool? enabled;
 
-  ILBSubsettingConfig({
-    this.enabled,
-  });
+  ILBSubsettingConfig({this.enabled});
 
   ILBSubsettingConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -7859,7 +7917,8 @@ class IPAllocationPolicy {
               json_.containsKey('additionalPodRangesConfig')
                   ? AdditionalPodRangesConfig.fromJson(
                       json_['additionalPodRangesConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           clusterIpv4Cidr: json_['clusterIpv4Cidr'] as core.String?,
           clusterIpv4CidrBlock: json_['clusterIpv4CidrBlock'] as core.String?,
@@ -7876,7 +7935,8 @@ class IPAllocationPolicy {
               json_.containsKey('podCidrOverprovisionConfig')
                   ? PodCIDROverprovisionConfig.fromJson(
                       json_['podCidrOverprovisionConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           servicesIpv4Cidr: json_['servicesIpv4Cidr'] as core.String?,
           servicesIpv4CidrBlock: json_['servicesIpv4CidrBlock'] as core.String?,
@@ -7987,7 +8047,8 @@ class IPEndpointsConfig {
               json_.containsKey('authorizedNetworksConfig')
                   ? MasterAuthorizedNetworksConfig.fromJson(
                       json_['authorizedNetworksConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           enablePublicEndpoint: json_['enablePublicEndpoint'] as core.bool?,
           enabled: json_['enabled'] as core.bool?,
@@ -8018,14 +8079,10 @@ class IdentityServiceConfig {
   /// Whether to enable the Identity Service component
   core.bool? enabled;
 
-  IdentityServiceConfig({
-    this.enabled,
-  });
+  IdentityServiceConfig({this.enabled});
 
   IdentityServiceConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -8038,14 +8095,10 @@ class IntraNodeVisibilityConfig {
   /// Enables intra node visibility for this cluster.
   core.bool? enabled;
 
-  IntraNodeVisibilityConfig({
-    this.enabled,
-  });
+  IntraNodeVisibilityConfig({this.enabled});
 
   IntraNodeVisibilityConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -8124,9 +8177,7 @@ class K8sBetaAPIConfig {
   /// Enabled k8s beta APIs.
   core.List<core.String>? enabledApis;
 
-  K8sBetaAPIConfig({
-    this.enabledApis,
-  });
+  K8sBetaAPIConfig({this.enabledApis});
 
   K8sBetaAPIConfig.fromJson(core.Map json_)
       : this(
@@ -8145,14 +8196,10 @@ class KubernetesDashboard {
   /// Whether the Kubernetes Dashboard is enabled for this cluster.
   core.bool? disabled;
 
-  KubernetesDashboard({
-    this.disabled,
-  });
+  KubernetesDashboard({this.disabled});
 
   KubernetesDashboard.fromJson(core.Map json_)
-      : this(
-          disabled: json_['disabled'] as core.bool?,
-        );
+      : this(disabled: json_['disabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
@@ -8169,14 +8216,10 @@ class LegacyAbac {
   /// provided by the RBAC configuration or IAM.
   core.bool? enabled;
 
-  LegacyAbac({
-    this.enabled,
-  });
+  LegacyAbac({this.enabled});
 
   LegacyAbac.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -8211,26 +8254,18 @@ class LinuxNodeConfig {
   /// net.ipv4.tcp_tw_reuse kernel.shmmni kernel.shmmax kernel.shmall
   core.Map<core.String, core.String>? sysctls;
 
-  LinuxNodeConfig({
-    this.cgroupMode,
-    this.hugepages,
-    this.sysctls,
-  });
+  LinuxNodeConfig({this.cgroupMode, this.hugepages, this.sysctls});
 
   LinuxNodeConfig.fromJson(core.Map json_)
       : this(
           cgroupMode: json_['cgroupMode'] as core.String?,
           hugepages: json_.containsKey('hugepages')
               ? HugepagesConfig.fromJson(
-                  json_['hugepages'] as core.Map<core.String, core.dynamic>)
+                  json_['hugepages'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
-          sysctls:
-              (json_['sysctls'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          sysctls: (json_['sysctls'] as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8250,16 +8285,16 @@ class ListClustersResponse {
   /// those zones.
   core.List<core.String>? missingZones;
 
-  ListClustersResponse({
-    this.clusters,
-    this.missingZones,
-  });
+  ListClustersResponse({this.clusters, this.missingZones});
 
   ListClustersResponse.fromJson(core.Map json_)
       : this(
           clusters: (json_['clusters'] as core.List?)
-              ?.map((value) => Cluster.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Cluster.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           missingZones: (json_['missingZones'] as core.List?)
               ?.map((value) => value as core.String)
@@ -8277,15 +8312,16 @@ class ListNodePoolsResponse {
   /// A list of node pools for a cluster.
   core.List<NodePool>? nodePools;
 
-  ListNodePoolsResponse({
-    this.nodePools,
-  });
+  ListNodePoolsResponse({this.nodePools});
 
   ListNodePoolsResponse.fromJson(core.Map json_)
       : this(
           nodePools: (json_['nodePools'] as core.List?)
-              ?.map((value) => NodePool.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => NodePool.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8303,10 +8339,7 @@ class ListOperationsResponse {
   /// A list of operations in the project in the specified zone.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.missingZones,
-    this.operations,
-  });
+  ListOperationsResponse({this.missingZones, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
@@ -8314,8 +8347,11 @@ class ListOperationsResponse {
               ?.map((value) => value as core.String)
               .toList(),
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8338,17 +8374,17 @@ class ListUsableSubnetworksResponse {
   /// A list of usable subnetworks in the specified network project.
   core.List<UsableSubnetwork>? subnetworks;
 
-  ListUsableSubnetworksResponse({
-    this.nextPageToken,
-    this.subnetworks,
-  });
+  ListUsableSubnetworksResponse({this.nextPageToken, this.subnetworks});
 
   ListUsableSubnetworksResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           subnetworks: (json_['subnetworks'] as core.List?)
-              ?.map((value) => UsableSubnetwork.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => UsableSubnetwork.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8379,14 +8415,10 @@ class LocalNvmeSsdBlockConfig {
   /// for more info.
   core.int? localSsdCount;
 
-  LocalNvmeSsdBlockConfig({
-    this.localSsdCount,
-  });
+  LocalNvmeSsdBlockConfig({this.localSsdCount});
 
   LocalNvmeSsdBlockConfig.fromJson(core.Map json_)
-      : this(
-          localSsdCount: json_['localSsdCount'] as core.int?,
-        );
+      : this(localSsdCount: json_['localSsdCount'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (localSsdCount != null) 'localSsdCount': localSsdCount!,
@@ -8400,9 +8432,7 @@ class LoggingComponentConfig {
   /// An empty set would disable all logging.
   core.List<core.String>? enableComponents;
 
-  LoggingComponentConfig({
-    this.enableComponents,
-  });
+  LoggingComponentConfig({this.enableComponents});
 
   LoggingComponentConfig.fromJson(core.Map json_)
       : this(
@@ -8421,15 +8451,15 @@ class LoggingConfig {
   /// Logging components configuration
   LoggingComponentConfig? componentConfig;
 
-  LoggingConfig({
-    this.componentConfig,
-  });
+  LoggingConfig({this.componentConfig});
 
   LoggingConfig.fromJson(core.Map json_)
       : this(
           componentConfig: json_.containsKey('componentConfig')
-              ? LoggingComponentConfig.fromJson(json_['componentConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? LoggingComponentConfig.fromJson(
+                  json_['componentConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -8447,14 +8477,10 @@ class LoggingVariantConfig {
   /// - "MAX_THROUGHPUT" : maximum logging throughput variant.
   core.String? variant;
 
-  LoggingVariantConfig({
-    this.variant,
-  });
+  LoggingVariantConfig({this.variant});
 
   LoggingVariantConfig.fromJson(core.Map json_)
-      : this(
-          variant: json_['variant'] as core.String?,
-        );
+      : this(variant: json_['variant'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (variant != null) 'variant': variant!,
@@ -8476,14 +8502,10 @@ class MaintenanceExclusionOptions {
   /// Only control plane patches are allowed.
   core.String? scope;
 
-  MaintenanceExclusionOptions({
-    this.scope,
-  });
+  MaintenanceExclusionOptions({this.scope});
 
   MaintenanceExclusionOptions.fromJson(core.Map json_)
-      : this(
-          scope: json_['scope'] as core.String?,
-        );
+      : this(scope: json_['scope'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (scope != null) 'scope': scope!,
@@ -8504,17 +8526,15 @@ class MaintenancePolicy {
   /// Specifies the maintenance window in which maintenance may be performed.
   MaintenanceWindow? window;
 
-  MaintenancePolicy({
-    this.resourceVersion,
-    this.window,
-  });
+  MaintenancePolicy({this.resourceVersion, this.window});
 
   MaintenancePolicy.fromJson(core.Map json_)
       : this(
           resourceVersion: json_['resourceVersion'] as core.String?,
           window: json_.containsKey('window')
               ? MaintenanceWindow.fromJson(
-                  json_['window'] as core.Map<core.String, core.dynamic>)
+                  json_['window'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -8550,20 +8570,26 @@ class MaintenanceWindow {
   MaintenanceWindow.fromJson(core.Map json_)
       : this(
           dailyMaintenanceWindow: json_.containsKey('dailyMaintenanceWindow')
-              ? DailyMaintenanceWindow.fromJson(json_['dailyMaintenanceWindow']
-                  as core.Map<core.String, core.dynamic>)
+              ? DailyMaintenanceWindow.fromJson(
+                  json_['dailyMaintenanceWindow']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           maintenanceExclusions: (json_['maintenanceExclusions']
                   as core.Map<core.String, core.dynamic>?)
               ?.map(
             (key, value) => core.MapEntry(
               key,
-              TimeWindow.fromJson(value as core.Map<core.String, core.dynamic>),
+              TimeWindow.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           recurringWindow: json_.containsKey('recurringWindow')
-              ? RecurringTimeWindow.fromJson(json_['recurringWindow']
-                  as core.Map<core.String, core.dynamic>)
+              ? RecurringTimeWindow.fromJson(
+                  json_['recurringWindow']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -8582,14 +8608,10 @@ class ManagedPrometheusConfig {
   /// Enable Managed Collection.
   core.bool? enabled;
 
-  ManagedPrometheusConfig({
-    this.enabled,
-  });
+  ManagedPrometheusConfig({this.enabled});
 
   ManagedPrometheusConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -8668,7 +8690,8 @@ class MasterAuth {
           clientCertificateConfig: json_.containsKey('clientCertificateConfig')
               ? ClientCertificateConfig.fromJson(
                   json_['clientCertificateConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           clientKey: json_['clientKey'] as core.String?,
           clusterCaCertificate: json_['clusterCaCertificate'] as core.String?,
@@ -8718,8 +8741,11 @@ class MasterAuthorizedNetworksConfig {
   MasterAuthorizedNetworksConfig.fromJson(core.Map json_)
       : this(
           cidrBlocks: (json_['cidrBlocks'] as core.List?)
-              ?.map((value) => CidrBlock.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CidrBlock.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           enabled: json_['enabled'] as core.bool?,
           gcpPublicCidrsAccessEnabled:
@@ -8744,14 +8770,10 @@ class MaxPodsConstraint {
   /// Constraint enforced on the max num of pods per node.
   core.String? maxPodsPerNode;
 
-  MaxPodsConstraint({
-    this.maxPodsPerNode,
-  });
+  MaxPodsConstraint({this.maxPodsPerNode});
 
   MaxPodsConstraint.fromJson(core.Map json_)
-      : this(
-          maxPodsPerNode: json_['maxPodsPerNode'] as core.String?,
-        );
+      : this(maxPodsPerNode: json_['maxPodsPerNode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxPodsPerNode != null) 'maxPodsPerNode': maxPodsPerNode!,
@@ -8768,14 +8790,10 @@ class MeshCertificates {
   /// (workload_pool must be non-empty).
   core.bool? enableCertificates;
 
-  MeshCertificates({
-    this.enableCertificates,
-  });
+  MeshCertificates({this.enableCertificates});
 
   MeshCertificates.fromJson(core.Map json_)
-      : this(
-          enableCertificates: json_['enableCertificates'] as core.bool?,
-        );
+      : this(enableCertificates: json_['enableCertificates'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enableCertificates != null)
@@ -8799,12 +8817,7 @@ class Metric {
   /// For metrics with custom values (ratios, visual progress, etc.).
   core.String? stringValue;
 
-  Metric({
-    this.doubleValue,
-    this.intValue,
-    this.name,
-    this.stringValue,
-  });
+  Metric({this.doubleValue, this.intValue, this.name, this.stringValue});
 
   Metric.fromJson(core.Map json_)
       : this(
@@ -8829,9 +8842,7 @@ class MonitoringComponentConfig {
   /// An empty set would disable all monitoring.
   core.List<core.String>? enableComponents;
 
-  MonitoringComponentConfig({
-    this.enableComponents,
-  });
+  MonitoringComponentConfig({this.enableComponents});
 
   MonitoringComponentConfig.fromJson(core.Map json_)
       : this(
@@ -8868,16 +8879,20 @@ class MonitoringConfig {
               json_.containsKey('advancedDatapathObservabilityConfig')
                   ? AdvancedDatapathObservabilityConfig.fromJson(
                       json_['advancedDatapathObservabilityConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           componentConfig: json_.containsKey('componentConfig')
-              ? MonitoringComponentConfig.fromJson(json_['componentConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? MonitoringComponentConfig.fromJson(
+                  json_['componentConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           managedPrometheusConfig: json_.containsKey('managedPrometheusConfig')
               ? ManagedPrometheusConfig.fromJson(
                   json_['managedPrometheusConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -9019,12 +9034,15 @@ class NetworkConfig {
           defaultEnablePrivateNodes:
               json_['defaultEnablePrivateNodes'] as core.bool?,
           defaultSnatStatus: json_.containsKey('defaultSnatStatus')
-              ? DefaultSnatStatus.fromJson(json_['defaultSnatStatus']
-                  as core.Map<core.String, core.dynamic>)
+              ? DefaultSnatStatus.fromJson(
+                  json_['defaultSnatStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dnsConfig: json_.containsKey('dnsConfig')
               ? DNSConfig.fromJson(
-                  json_['dnsConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['dnsConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           enableCiliumClusterwideNetworkPolicy:
               json_['enableCiliumClusterwideNetworkPolicy'] as core.bool?,
@@ -9035,8 +9053,10 @@ class NetworkConfig {
           enableL4ilbSubsetting: json_['enableL4ilbSubsetting'] as core.bool?,
           enableMultiNetworking: json_['enableMultiNetworking'] as core.bool?,
           gatewayApiConfig: json_.containsKey('gatewayApiConfig')
-              ? GatewayAPIConfig.fromJson(json_['gatewayApiConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? GatewayAPIConfig.fromJson(
+                  json_['gatewayApiConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           inTransitEncryptionConfig:
               json_['inTransitEncryptionConfig'] as core.String?,
@@ -9045,7 +9065,8 @@ class NetworkConfig {
               json_.containsKey('networkPerformanceConfig')
                   ? ClusterNetworkPerformanceConfig.fromJson(
                       json_['networkPerformanceConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           privateIpv6GoogleAccess:
               json_['privateIpv6GoogleAccess'] as core.String?,
@@ -9053,7 +9074,8 @@ class NetworkConfig {
               json_.containsKey('serviceExternalIpsConfig')
                   ? ServiceExternalIPsConfig.fromJson(
                       json_['serviceExternalIpsConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           subnetwork: json_['subnetwork'] as core.String?,
         );
@@ -9097,9 +9119,7 @@ class NetworkPerformanceConfig {
   /// - "TIER_1" : Higher bandwidth, actual values based on VM size.
   core.String? totalEgressBandwidthTier;
 
-  NetworkPerformanceConfig({
-    this.totalEgressBandwidthTier,
-  });
+  NetworkPerformanceConfig({this.totalEgressBandwidthTier});
 
   NetworkPerformanceConfig.fromJson(core.Map json_)
       : this(
@@ -9126,10 +9146,7 @@ class NetworkPolicy {
   /// - "CALICO" : Tigera (Calico Felix).
   core.String? provider;
 
-  NetworkPolicy({
-    this.enabled,
-    this.provider,
-  });
+  NetworkPolicy({this.enabled, this.provider});
 
   NetworkPolicy.fromJson(core.Map json_)
       : this(
@@ -9151,14 +9168,10 @@ class NetworkPolicyConfig {
   /// Whether NetworkPolicy is enabled for this cluster.
   core.bool? disabled;
 
-  NetworkPolicyConfig({
-    this.disabled,
-  });
+  NetworkPolicyConfig({this.disabled});
 
   NetworkPolicyConfig.fromJson(core.Map json_)
-      : this(
-          disabled: json_['disabled'] as core.bool?,
-        );
+      : this(disabled: json_['disabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
@@ -9171,9 +9184,7 @@ class NetworkTags {
   /// List of network tags.
   core.List<core.String>? tags;
 
-  NetworkTags({
-    this.tags,
-  });
+  NetworkTags({this.tags});
 
   NetworkTags.fromJson(core.Map json_)
       : this(
@@ -9203,11 +9214,7 @@ class NodeAffinity {
   /// Values for NodeAffinity.
   core.List<core.String>? values;
 
-  NodeAffinity({
-    this.key,
-    this.operator,
-    this.values,
-  });
+  NodeAffinity({this.key, this.operator, this.values});
 
   NodeAffinity.fromJson(core.Map json_)
       : this(
@@ -9527,22 +9534,30 @@ class NodeConfig {
   NodeConfig.fromJson(core.Map json_)
       : this(
           accelerators: (json_['accelerators'] as core.List?)
-              ?.map((value) => AcceleratorConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AcceleratorConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           advancedMachineFeatures: json_.containsKey('advancedMachineFeatures')
               ? AdvancedMachineFeatures.fromJson(
                   json_['advancedMachineFeatures']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           bootDiskKmsKey: json_['bootDiskKmsKey'] as core.String?,
           confidentialNodes: json_.containsKey('confidentialNodes')
-              ? ConfidentialNodes.fromJson(json_['confidentialNodes']
-                  as core.Map<core.String, core.dynamic>)
+              ? ConfidentialNodes.fromJson(
+                  json_['confidentialNodes']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           containerdConfig: json_.containsKey('containerdConfig')
-              ? ContainerdConfig.fromJson(json_['containerdConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? ContainerdConfig.fromJson(
+                  json_['containerdConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           diskSizeGb: json_['diskSizeGb'] as core.int?,
           diskType: json_['diskType'] as core.String?,
@@ -9553,57 +9568,58 @@ class NodeConfig {
               json_.containsKey('ephemeralStorageLocalSsdConfig')
                   ? EphemeralStorageLocalSsdConfig.fromJson(
                       json_['ephemeralStorageLocalSsdConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           fastSocket: json_.containsKey('fastSocket')
               ? FastSocket.fromJson(
-                  json_['fastSocket'] as core.Map<core.String, core.dynamic>)
+                  json_['fastSocket'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           gcfsConfig: json_.containsKey('gcfsConfig')
               ? GcfsConfig.fromJson(
-                  json_['gcfsConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['gcfsConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           gvnic: json_.containsKey('gvnic')
               ? VirtualNIC.fromJson(
-                  json_['gvnic'] as core.Map<core.String, core.dynamic>)
+                  json_['gvnic'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           imageType: json_['imageType'] as core.String?,
           kubeletConfig: json_.containsKey('kubeletConfig')
               ? NodeKubeletConfig.fromJson(
-                  json_['kubeletConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['kubeletConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           linuxNodeConfig: json_.containsKey('linuxNodeConfig')
-              ? LinuxNodeConfig.fromJson(json_['linuxNodeConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? LinuxNodeConfig.fromJson(
+                  json_['linuxNodeConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           localNvmeSsdBlockConfig: json_.containsKey('localNvmeSsdBlockConfig')
               ? LocalNvmeSsdBlockConfig.fromJson(
                   json_['localNvmeSsdBlockConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           localSsdCount: json_['localSsdCount'] as core.int?,
           localSsdEncryptionMode:
               json_['localSsdEncryptionMode'] as core.String?,
           loggingConfig: json_.containsKey('loggingConfig')
               ? NodePoolLoggingConfig.fromJson(
-                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           machineType: json_['machineType'] as core.String?,
           maxRunDuration: json_['maxRunDuration'] as core.String?,
-          metadata:
-              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           minCpuPlatform: json_['minCpuPlatform'] as core.String?,
           nodeGroup: json_['nodeGroup'] as core.String?,
           oauthScopes: (json_['oauthScopes'] as core.List?)
@@ -9611,43 +9627,51 @@ class NodeConfig {
               .toList(),
           preemptible: json_['preemptible'] as core.bool?,
           reservationAffinity: json_.containsKey('reservationAffinity')
-              ? ReservationAffinity.fromJson(json_['reservationAffinity']
-                  as core.Map<core.String, core.dynamic>)
+              ? ReservationAffinity.fromJson(
+                  json_['reservationAffinity']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
-          resourceLabels:
-              (json_['resourceLabels'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          resourceLabels: (json_['resourceLabels']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           resourceManagerTags: json_.containsKey('resourceManagerTags')
-              ? ResourceManagerTags.fromJson(json_['resourceManagerTags']
-                  as core.Map<core.String, core.dynamic>)
+              ? ResourceManagerTags.fromJson(
+                  json_['resourceManagerTags']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sandboxConfig: json_.containsKey('sandboxConfig')
               ? SandboxConfig.fromJson(
-                  json_['sandboxConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['sandboxConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           secondaryBootDiskUpdateStrategy:
               json_.containsKey('secondaryBootDiskUpdateStrategy')
                   ? SecondaryBootDiskUpdateStrategy.fromJson(
                       json_['secondaryBootDiskUpdateStrategy']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           secondaryBootDisks: (json_['secondaryBootDisks'] as core.List?)
-              ?.map((value) => SecondaryBootDisk.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => SecondaryBootDisk.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           serviceAccount: json_['serviceAccount'] as core.String?,
           shieldedInstanceConfig: json_.containsKey('shieldedInstanceConfig')
-              ? ShieldedInstanceConfig.fromJson(json_['shieldedInstanceConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? ShieldedInstanceConfig.fromJson(
+                  json_['shieldedInstanceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           soleTenantConfig: json_.containsKey('soleTenantConfig')
-              ? SoleTenantConfig.fromJson(json_['soleTenantConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? SoleTenantConfig.fromJson(
+                  json_['soleTenantConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           spot: json_['spot'] as core.bool?,
           storagePools: (json_['storagePools'] as core.List?)
@@ -9657,16 +9681,23 @@ class NodeConfig {
               ?.map((value) => value as core.String)
               .toList(),
           taints: (json_['taints'] as core.List?)
-              ?.map((value) => NodeTaint.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => NodeTaint.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           windowsNodeConfig: json_.containsKey('windowsNodeConfig')
-              ? WindowsNodeConfig.fromJson(json_['windowsNodeConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? WindowsNodeConfig.fromJson(
+                  json_['windowsNodeConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           workloadMetadataConfig: json_.containsKey('workloadMetadataConfig')
-              ? WorkloadMetadataConfig.fromJson(json_['workloadMetadataConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? WorkloadMetadataConfig.fromJson(
+                  json_['workloadMetadataConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -9755,20 +9786,26 @@ class NodeConfigDefaults {
   NodeConfigDefaults.fromJson(core.Map json_)
       : this(
           containerdConfig: json_.containsKey('containerdConfig')
-              ? ContainerdConfig.fromJson(json_['containerdConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? ContainerdConfig.fromJson(
+                  json_['containerdConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           gcfsConfig: json_.containsKey('gcfsConfig')
               ? GcfsConfig.fromJson(
-                  json_['gcfsConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['gcfsConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           loggingConfig: json_.containsKey('loggingConfig')
               ? NodePoolLoggingConfig.fromJson(
-                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           nodeKubeletConfig: json_.containsKey('nodeKubeletConfig')
-              ? NodeKubeletConfig.fromJson(json_['nodeKubeletConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? NodeKubeletConfig.fromJson(
+                  json_['nodeKubeletConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -9875,19 +9912,17 @@ class NodeManagement {
   /// Specifies the Auto Upgrade knobs for the node pool.
   AutoUpgradeOptions? upgradeOptions;
 
-  NodeManagement({
-    this.autoRepair,
-    this.autoUpgrade,
-    this.upgradeOptions,
-  });
+  NodeManagement({this.autoRepair, this.autoUpgrade, this.upgradeOptions});
 
   NodeManagement.fromJson(core.Map json_)
       : this(
           autoRepair: json_['autoRepair'] as core.bool?,
           autoUpgrade: json_['autoUpgrade'] as core.bool?,
           upgradeOptions: json_.containsKey('upgradeOptions')
-              ? AutoUpgradeOptions.fromJson(json_['upgradeOptions']
-                  as core.Map<core.String, core.dynamic>)
+              ? AutoUpgradeOptions.fromJson(
+                  json_['upgradeOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -9984,13 +10019,19 @@ class NodeNetworkConfig {
       : this(
           additionalNodeNetworkConfigs:
               (json_['additionalNodeNetworkConfigs'] as core.List?)
-                  ?.map((value) => AdditionalNodeNetworkConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => AdditionalNodeNetworkConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           additionalPodNetworkConfigs:
               (json_['additionalPodNetworkConfigs'] as core.List?)
-                  ?.map((value) => AdditionalPodNetworkConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => AdditionalPodNetworkConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           createPodRange: json_['createPodRange'] as core.bool?,
           enablePrivateNodes: json_['enablePrivateNodes'] as core.bool?,
@@ -9998,13 +10039,15 @@ class NodeNetworkConfig {
               json_.containsKey('networkPerformanceConfig')
                   ? NetworkPerformanceConfig.fromJson(
                       json_['networkPerformanceConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           podCidrOverprovisionConfig:
               json_.containsKey('podCidrOverprovisionConfig')
                   ? PodCIDROverprovisionConfig.fromJson(
                       json_['podCidrOverprovisionConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           podIpv4CidrBlock: json_['podIpv4CidrBlock'] as core.String?,
           podIpv4RangeUtilization:
@@ -10192,19 +10235,26 @@ class NodePool {
       : this(
           autoscaling: json_.containsKey('autoscaling')
               ? NodePoolAutoscaling.fromJson(
-                  json_['autoscaling'] as core.Map<core.String, core.dynamic>)
+                  json_['autoscaling'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           bestEffortProvisioning: json_.containsKey('bestEffortProvisioning')
-              ? BestEffortProvisioning.fromJson(json_['bestEffortProvisioning']
-                  as core.Map<core.String, core.dynamic>)
+              ? BestEffortProvisioning.fromJson(
+                  json_['bestEffortProvisioning']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           conditions: (json_['conditions'] as core.List?)
-              ?.map((value) => StatusCondition.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => StatusCondition.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           config: json_.containsKey('config')
               ? NodeConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>)
+                  json_['config'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           etag: json_['etag'] as core.String?,
           initialNodeCount: json_['initialNodeCount'] as core.int?,
@@ -10216,36 +10266,47 @@ class NodePool {
               .toList(),
           management: json_.containsKey('management')
               ? NodeManagement.fromJson(
-                  json_['management'] as core.Map<core.String, core.dynamic>)
+                  json_['management'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           maxPodsConstraint: json_.containsKey('maxPodsConstraint')
-              ? MaxPodsConstraint.fromJson(json_['maxPodsConstraint']
-                  as core.Map<core.String, core.dynamic>)
+              ? MaxPodsConstraint.fromJson(
+                  json_['maxPodsConstraint']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           networkConfig: json_.containsKey('networkConfig')
               ? NodeNetworkConfig.fromJson(
-                  json_['networkConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['networkConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           placementPolicy: json_.containsKey('placementPolicy')
-              ? PlacementPolicy.fromJson(json_['placementPolicy']
-                  as core.Map<core.String, core.dynamic>)
+              ? PlacementPolicy.fromJson(
+                  json_['placementPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           podIpv4CidrSize: json_['podIpv4CidrSize'] as core.int?,
           queuedProvisioning: json_.containsKey('queuedProvisioning')
-              ? QueuedProvisioning.fromJson(json_['queuedProvisioning']
-                  as core.Map<core.String, core.dynamic>)
+              ? QueuedProvisioning.fromJson(
+                  json_['queuedProvisioning']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           selfLink: json_['selfLink'] as core.String?,
           status: json_['status'] as core.String?,
           statusMessage: json_['statusMessage'] as core.String?,
           updateInfo: json_.containsKey('updateInfo')
               ? UpdateInfo.fromJson(
-                  json_['updateInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['updateInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           upgradeSettings: json_.containsKey('upgradeSettings')
-              ? UpgradeSettings.fromJson(json_['upgradeSettings']
-                  as core.Map<core.String, core.dynamic>)
+              ? UpgradeSettings.fromJson(
+                  json_['upgradeSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           version: json_['version'] as core.String?,
         );
@@ -10311,20 +10372,27 @@ class NodePoolAutoConfig {
   NodePoolAutoConfig.fromJson(core.Map json_)
       : this(
           linuxNodeConfig: json_.containsKey('linuxNodeConfig')
-              ? LinuxNodeConfig.fromJson(json_['linuxNodeConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? LinuxNodeConfig.fromJson(
+                  json_['linuxNodeConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           networkTags: json_.containsKey('networkTags')
               ? NetworkTags.fromJson(
-                  json_['networkTags'] as core.Map<core.String, core.dynamic>)
+                  json_['networkTags'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           nodeKubeletConfig: json_.containsKey('nodeKubeletConfig')
-              ? NodeKubeletConfig.fromJson(json_['nodeKubeletConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? NodeKubeletConfig.fromJson(
+                  json_['nodeKubeletConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           resourceManagerTags: json_.containsKey('resourceManagerTags')
-              ? ResourceManagerTags.fromJson(json_['resourceManagerTags']
-                  as core.Map<core.String, core.dynamic>)
+              ? ResourceManagerTags.fromJson(
+                  json_['resourceManagerTags']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -10417,15 +10485,15 @@ class NodePoolDefaults {
   /// Subset of NodeConfig message that has defaults.
   NodeConfigDefaults? nodeConfigDefaults;
 
-  NodePoolDefaults({
-    this.nodeConfigDefaults,
-  });
+  NodePoolDefaults({this.nodeConfigDefaults});
 
   NodePoolDefaults.fromJson(core.Map json_)
       : this(
           nodeConfigDefaults: json_.containsKey('nodeConfigDefaults')
-              ? NodeConfigDefaults.fromJson(json_['nodeConfigDefaults']
-                  as core.Map<core.String, core.dynamic>)
+              ? NodeConfigDefaults.fromJson(
+                  json_['nodeConfigDefaults']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -10440,15 +10508,14 @@ class NodePoolLoggingConfig {
   /// Logging variant configuration.
   LoggingVariantConfig? variantConfig;
 
-  NodePoolLoggingConfig({
-    this.variantConfig,
-  });
+  NodePoolLoggingConfig({this.variantConfig});
 
   NodePoolLoggingConfig.fromJson(core.Map json_)
       : this(
           variantConfig: json_.containsKey('variantConfig')
               ? LoggingVariantConfig.fromJson(
-                  json_['variantConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['variantConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -10478,11 +10545,7 @@ class NodeTaint {
   /// Value for taint.
   core.String? value;
 
-  NodeTaint({
-    this.effect,
-    this.key,
-    this.value,
-  });
+  NodeTaint({this.effect, this.key, this.value});
 
   NodeTaint.fromJson(core.Map json_)
       : this(
@@ -10504,15 +10567,16 @@ class NodeTaints {
   /// List of node taints.
   core.List<NodeTaint>? taints;
 
-  NodeTaints({
-    this.taints,
-  });
+  NodeTaints({this.taints});
 
   NodeTaints.fromJson(core.Map json_)
       : this(
           taints: (json_['taints'] as core.List?)
-              ?.map((value) => NodeTaint.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => NodeTaint.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -10526,15 +10590,14 @@ class NotificationConfig {
   /// Notification config for Pub/Sub.
   PubSub? pubsub;
 
-  NotificationConfig({
-    this.pubsub,
-  });
+  NotificationConfig({this.pubsub});
 
   NotificationConfig.fromJson(core.Map json_)
       : this(
           pubsub: json_.containsKey('pubsub')
               ? PubSub.fromJson(
-                  json_['pubsub'] as core.Map<core.String, core.dynamic>)
+                  json_['pubsub'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -10756,25 +10819,33 @@ class Operation {
   Operation.fromJson(core.Map json_)
       : this(
           clusterConditions: (json_['clusterConditions'] as core.List?)
-              ?.map((value) => StatusCondition.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => StatusCondition.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           detail: json_['detail'] as core.String?,
           endTime: json_['endTime'] as core.String?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           location: json_['location'] as core.String?,
           name: json_['name'] as core.String?,
           nodepoolConditions: (json_['nodepoolConditions'] as core.List?)
-              ?.map((value) => StatusCondition.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => StatusCondition.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           operationType: json_['operationType'] as core.String?,
           progress: json_.containsKey('progress')
               ? OperationProgress.fromJson(
-                  json_['progress'] as core.Map<core.String, core.dynamic>)
+                  json_['progress'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           selfLink: json_['selfLink'] as core.String?,
           startTime: json_['startTime'] as core.String?,
@@ -10816,11 +10887,7 @@ class OperationError {
   /// Time when the CloudKMS error was seen.
   core.String? timestamp;
 
-  OperationError({
-    this.errorMessage,
-    this.keyName,
-    this.timestamp,
-  });
+  OperationError({this.errorMessage, this.keyName, this.timestamp});
 
   OperationError.fromJson(core.Map json_)
       : this(
@@ -10863,23 +10930,24 @@ class OperationProgress {
   /// - "ABORTING" : The operation is aborting.
   core.String? status;
 
-  OperationProgress({
-    this.metrics,
-    this.name,
-    this.stages,
-    this.status,
-  });
+  OperationProgress({this.metrics, this.name, this.stages, this.status});
 
   OperationProgress.fromJson(core.Map json_)
       : this(
           metrics: (json_['metrics'] as core.List?)
-              ?.map((value) =>
-                  Metric.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Metric.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           name: json_['name'] as core.String?,
           stages: (json_['stages'] as core.List?)
-              ?.map((value) => OperationProgress.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => OperationProgress.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           status: json_['status'] as core.String?,
         );
@@ -10898,14 +10966,10 @@ class ParallelstoreCsiDriverConfig {
   /// cluster.
   core.bool? enabled;
 
-  ParallelstoreCsiDriverConfig({
-    this.enabled,
-  });
+  ParallelstoreCsiDriverConfig({this.enabled});
 
   ParallelstoreCsiDriverConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -10924,19 +10988,13 @@ class ParentProductConfig {
   /// Name of the parent product associated with the cluster.
   core.String? productName;
 
-  ParentProductConfig({
-    this.labels,
-    this.productName,
-  });
+  ParentProductConfig({this.labels, this.productName});
 
   ParentProductConfig.fromJson(core.Map json_)
       : this(
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           productName: json_['productName'] as core.String?,
         );
@@ -10971,11 +11029,7 @@ class PlacementPolicy {
   /// domain to ensure low communication latency.
   core.String? type;
 
-  PlacementPolicy({
-    this.policyName,
-    this.tpuTopology,
-    this.type,
-  });
+  PlacementPolicy({this.policyName, this.tpuTopology, this.type});
 
   PlacementPolicy.fromJson(core.Map json_)
       : this(
@@ -10998,14 +11052,10 @@ class PodCIDROverprovisionConfig {
   /// Note: Pod CIDR overprovisioning is enabled by default.
   core.bool? disable;
 
-  PodCIDROverprovisionConfig({
-    this.disable,
-  });
+  PodCIDROverprovisionConfig({this.disable});
 
   PodCIDROverprovisionConfig.fromJson(core.Map json_)
-      : this(
-          disable: json_['disable'] as core.bool?,
-        );
+      : this(disable: json_['disable'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disable != null) 'disable': disable!,
@@ -11110,7 +11160,8 @@ class PrivateClusterConfig {
               json_.containsKey('masterGlobalAccessConfig')
                   ? PrivateClusterMasterGlobalAccessConfig.fromJson(
                       json_['masterGlobalAccessConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           masterIpv4CidrBlock: json_['masterIpv4CidrBlock'] as core.String?,
           peeringName: json_['peeringName'] as core.String?,
@@ -11142,14 +11193,10 @@ class PrivateClusterMasterGlobalAccessConfig {
   /// Whenever master is accessible globally or not.
   core.bool? enabled;
 
-  PrivateClusterMasterGlobalAccessConfig({
-    this.enabled,
-  });
+  PrivateClusterMasterGlobalAccessConfig({this.enabled});
 
   PrivateClusterMasterGlobalAccessConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -11174,8 +11221,11 @@ class PrivateRegistryAccessConfig {
       : this(
           certificateAuthorityDomainConfig:
               (json_['certificateAuthorityDomainConfig'] as core.List?)
-                  ?.map((value) => CertificateAuthorityDomainConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => CertificateAuthorityDomainConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           enabled: json_['enabled'] as core.bool?,
         );
@@ -11203,18 +11253,15 @@ class PubSub {
   /// Format is `projects/{project}/topics/{topic}`.
   core.String? topic;
 
-  PubSub({
-    this.enabled,
-    this.filter,
-    this.topic,
-  });
+  PubSub({this.enabled, this.filter, this.topic});
 
   PubSub.fromJson(core.Map json_)
       : this(
           enabled: json_['enabled'] as core.bool?,
           filter: json_.containsKey('filter')
               ? Filter.fromJson(
-                  json_['filter'] as core.Map<core.String, core.dynamic>)
+                  json_['filter'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           topic: json_['topic'] as core.String?,
         );
@@ -11233,14 +11280,10 @@ class QueuedProvisioning {
   /// API.
   core.bool? enabled;
 
-  QueuedProvisioning({
-    this.enabled,
-  });
+  QueuedProvisioning({this.enabled});
 
   QueuedProvisioning.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -11293,10 +11336,7 @@ class RangeInfo {
   /// Output only.
   core.double? utilization;
 
-  RangeInfo({
-    this.rangeName,
-    this.utilization,
-  });
+  RangeInfo({this.rangeName, this.utilization});
 
   RangeInfo.fromJson(core.Map json_)
       : this(
@@ -11315,14 +11355,10 @@ class RayClusterLoggingConfig {
   /// Enable log collection for Ray clusters.
   core.bool? enabled;
 
-  RayClusterLoggingConfig({
-    this.enabled,
-  });
+  RayClusterLoggingConfig({this.enabled});
 
   RayClusterLoggingConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -11335,14 +11371,10 @@ class RayClusterMonitoringConfig {
   /// Enable metrics collection for Ray clusters.
   core.bool? enabled;
 
-  RayClusterMonitoringConfig({
-    this.enabled,
-  });
+  RayClusterMonitoringConfig({this.enabled});
 
   RayClusterMonitoringConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -11376,13 +11408,15 @@ class RayOperatorConfig {
           rayClusterLoggingConfig: json_.containsKey('rayClusterLoggingConfig')
               ? RayClusterLoggingConfig.fromJson(
                   json_['rayClusterLoggingConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           rayClusterMonitoringConfig:
               json_.containsKey('rayClusterMonitoringConfig')
                   ? RayClusterMonitoringConfig.fromJson(
                       json_['rayClusterMonitoringConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
         );
 
@@ -11420,17 +11454,15 @@ class RecurringTimeWindow {
   /// The window of the first recurrence.
   TimeWindow? window;
 
-  RecurringTimeWindow({
-    this.recurrence,
-    this.window,
-  });
+  RecurringTimeWindow({this.recurrence, this.window});
 
   RecurringTimeWindow.fromJson(core.Map json_)
       : this(
           recurrence: json_['recurrence'] as core.String?,
           window: json_.containsKey('window')
               ? TimeWindow.fromJson(
-                  json_['window'] as core.Map<core.String, core.dynamic>)
+                  json_['window'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -11463,14 +11495,10 @@ class ReleaseChannel {
   /// production.
   core.String? channel;
 
-  ReleaseChannel({
-    this.channel,
-  });
+  ReleaseChannel({this.channel});
 
   ReleaseChannel.fromJson(core.Map json_)
-      : this(
-          channel: json_['channel'] as core.String?,
-        );
+      : this(channel: json_['channel'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channel != null) 'channel': channel!,
@@ -11554,11 +11582,7 @@ class ReservationAffinity {
   /// Corresponds to the label value(s) of reservation resource(s).
   core.List<core.String>? values;
 
-  ReservationAffinity({
-    this.consumeReservationType,
-    this.key,
-    this.values,
-  });
+  ReservationAffinity({this.consumeReservationType, this.key, this.values});
 
   ReservationAffinity.fromJson(core.Map json_)
       : this(
@@ -11595,11 +11619,7 @@ class ResourceLimit {
   /// Resource name "cpu", "memory" or gpu-specific string.
   core.String? resourceType;
 
-  ResourceLimit({
-    this.maximum,
-    this.minimum,
-    this.resourceType,
-  });
+  ResourceLimit({this.maximum, this.minimum, this.resourceType});
 
   ResourceLimit.fromJson(core.Map json_)
       : this(
@@ -11630,17 +11650,12 @@ class ResourceManagerTags {
   /// `{project_id}/{tag_key_name}={tag_value_name}`
   core.Map<core.String, core.String>? tags;
 
-  ResourceManagerTags({
-    this.tags,
-  });
+  ResourceManagerTags({this.tags});
 
   ResourceManagerTags.fromJson(core.Map json_)
       : this(
           tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
         );
 
@@ -11672,14 +11687,17 @@ class ResourceUsageExportConfig {
   ResourceUsageExportConfig.fromJson(core.Map json_)
       : this(
           bigqueryDestination: json_.containsKey('bigqueryDestination')
-              ? BigQueryDestination.fromJson(json_['bigqueryDestination']
-                  as core.Map<core.String, core.dynamic>)
+              ? BigQueryDestination.fromJson(
+                  json_['bigqueryDestination']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           consumptionMeteringConfig:
               json_.containsKey('consumptionMeteringConfig')
                   ? ConsumptionMeteringConfig.fromJson(
                       json_['consumptionMeteringConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           enableNetworkEgressMetering:
               json_['enableNetworkEgressMetering'] as core.bool?,
@@ -11792,14 +11810,10 @@ class SandboxConfig {
   /// - "GVISOR" : Run sandbox using gvisor.
   core.String? type;
 
-  SandboxConfig({
-    this.type,
-  });
+  SandboxConfig({this.type});
 
   SandboxConfig.fromJson(core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-        );
+      : this(type: json_['type'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -11819,10 +11833,7 @@ class SecondaryBootDisk {
   /// secondary boot disk as a container image cache.
   core.String? mode;
 
-  SecondaryBootDisk({
-    this.diskImage,
-    this.mode,
-  });
+  SecondaryBootDisk({this.diskImage, this.mode});
 
   SecondaryBootDisk.fromJson(core.Map json_)
       : this(
@@ -11845,14 +11856,10 @@ class SecretManagerConfig {
   /// Enable/Disable Secret Manager Config.
   core.bool? enabled;
 
-  SecretManagerConfig({
-    this.enabled,
-  });
+  SecretManagerConfig({this.enabled});
 
   SecretManagerConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -11895,8 +11902,11 @@ class ServerConfig {
   ServerConfig.fromJson(core.Map json_)
       : this(
           channels: (json_['channels'] as core.List?)
-              ?.map((value) => ReleaseChannelConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ReleaseChannelConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           defaultClusterVersion: json_['defaultClusterVersion'] as core.String?,
           defaultImageType: json_['defaultImageType'] as core.String?,
@@ -11928,14 +11938,10 @@ class ServiceExternalIPsConfig {
   /// Whether Services with ExternalIPs field are allowed or not.
   core.bool? enabled;
 
-  ServiceExternalIPsConfig({
-    this.enabled,
-  });
+  ServiceExternalIPsConfig({this.enabled});
 
   ServiceExternalIPsConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -12000,7 +12006,8 @@ class SetAddonsConfigRequest {
       : this(
           addonsConfig: json_.containsKey('addonsConfig')
               ? AddonsConfig.fromJson(
-                  json_['addonsConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['addonsConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           clusterId: json_['clusterId'] as core.String?,
           name: json_['name'] as core.String?,
@@ -12090,14 +12097,9 @@ class SetLabelsRequest {
           labelFingerprint: json_['labelFingerprint'] as core.String?,
           name: json_['name'] as core.String?,
           projectId: json_['projectId'] as core.String?,
-          resourceLabels:
-              (json_['resourceLabels'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          resourceLabels: (json_['resourceLabels']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           zone: json_['zone'] as core.String?,
         );
 
@@ -12388,8 +12390,10 @@ class SetMaintenancePolicyRequest {
       : this(
           clusterId: json_['clusterId'] as core.String?,
           maintenancePolicy: json_.containsKey('maintenancePolicy')
-              ? MaintenancePolicy.fromJson(json_['maintenancePolicy']
-                  as core.Map<core.String, core.dynamic>)
+              ? MaintenancePolicy.fromJson(
+                  json_['maintenancePolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           projectId: json_['projectId'] as core.String?,
@@ -12480,7 +12484,8 @@ class SetMasterAuthRequest {
           projectId: json_['projectId'] as core.String?,
           update: json_.containsKey('update')
               ? MasterAuth.fromJson(
-                  json_['update'] as core.Map<core.String, core.dynamic>)
+                  json_['update'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           zone: json_['zone'] as core.String?,
         );
@@ -12634,7 +12639,8 @@ class SetNetworkPolicyRequest {
           name: json_['name'] as core.String?,
           networkPolicy: json_.containsKey('networkPolicy')
               ? NetworkPolicy.fromJson(
-                  json_['networkPolicy'] as core.Map<core.String, core.dynamic>)
+                  json_['networkPolicy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           projectId: json_['projectId'] as core.String?,
           zone: json_['zone'] as core.String?,
@@ -12719,7 +12725,8 @@ class SetNodePoolAutoscalingRequest {
       : this(
           autoscaling: json_.containsKey('autoscaling')
               ? NodePoolAutoscaling.fromJson(
-                  json_['autoscaling'] as core.Map<core.String, core.dynamic>)
+                  json_['autoscaling'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           clusterId: json_['clusterId'] as core.String?,
           name: json_['name'] as core.String?,
@@ -12810,7 +12817,8 @@ class SetNodePoolManagementRequest {
           clusterId: json_['clusterId'] as core.String?,
           management: json_.containsKey('management')
               ? NodeManagement.fromJson(
-                  json_['management'] as core.Map<core.String, core.dynamic>)
+                  json_['management'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           nodePoolId: json_['nodePoolId'] as core.String?,
@@ -12955,14 +12963,10 @@ class ShieldedNodes {
   /// Whether Shielded Nodes features are enabled on all nodes in this cluster.
   core.bool? enabled;
 
-  ShieldedNodes({
-    this.enabled,
-  });
+  ShieldedNodes({this.enabled});
 
   ShieldedNodes.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -12975,15 +12979,16 @@ class SoleTenantConfig {
   /// NodeAffinities used to match to a shared sole tenant node group.
   core.List<NodeAffinity>? nodeAffinities;
 
-  SoleTenantConfig({
-    this.nodeAffinities,
-  });
+  SoleTenantConfig({this.nodeAffinities});
 
   SoleTenantConfig.fromJson(core.Map json_)
       : this(
           nodeAffinities: (json_['nodeAffinities'] as core.List?)
-              ?.map((value) => NodeAffinity.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => NodeAffinity.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -13103,14 +13108,10 @@ class StatefulHAConfig {
   /// Whether the Stateful HA add-on is enabled for this cluster.
   core.bool? enabled;
 
-  StatefulHAConfig({
-    this.enabled,
-  });
+  StatefulHAConfig({this.enabled});
 
   StatefulHAConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -13235,11 +13236,7 @@ class StatusCondition {
   /// Human-friendly representation of the condition
   core.String? message;
 
-  StatusCondition({
-    this.canonicalCode,
-    this.code,
-    this.message,
-  });
+  StatusCondition({this.canonicalCode, this.code, this.message});
 
   StatusCondition.fromJson(core.Map json_)
       : this(
@@ -13269,11 +13266,7 @@ class TimeWindow {
   /// The time that the window first starts.
   core.String? startTime;
 
-  TimeWindow({
-    this.endTime,
-    this.maintenanceExclusionOptions,
-    this.startTime,
-  });
+  TimeWindow({this.endTime, this.maintenanceExclusionOptions, this.startTime});
 
   TimeWindow.fromJson(core.Map json_)
       : this(
@@ -13282,7 +13275,8 @@ class TimeWindow {
               json_.containsKey('maintenanceExclusionOptions')
                   ? MaintenanceExclusionOptions.fromJson(
                       json_['maintenanceExclusionOptions']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           startTime: json_['startTime'] as core.String?,
         );
@@ -13355,7 +13349,8 @@ class UpdateClusterRequest {
           projectId: json_['projectId'] as core.String?,
           update: json_.containsKey('update')
               ? ClusterUpdate.fromJson(
-                  json_['update'] as core.Map<core.String, core.dynamic>)
+                  json_['update'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           zone: json_['zone'] as core.String?,
         );
@@ -13375,15 +13370,14 @@ class UpdateInfo {
   /// Information of a blue-green upgrade.
   BlueGreenInfo? blueGreenInfo;
 
-  UpdateInfo({
-    this.blueGreenInfo,
-  });
+  UpdateInfo({this.blueGreenInfo});
 
   UpdateInfo.fromJson(core.Map json_)
       : this(
           blueGreenInfo: json_.containsKey('blueGreenInfo')
               ? BlueGreenInfo.fromJson(
-                  json_['blueGreenInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['blueGreenInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -13712,97 +13706,128 @@ class UpdateNodePoolRequest {
   UpdateNodePoolRequest.fromJson(core.Map json_)
       : this(
           accelerators: (json_['accelerators'] as core.List?)
-              ?.map((value) => AcceleratorConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AcceleratorConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           clusterId: json_['clusterId'] as core.String?,
           confidentialNodes: json_.containsKey('confidentialNodes')
-              ? ConfidentialNodes.fromJson(json_['confidentialNodes']
-                  as core.Map<core.String, core.dynamic>)
+              ? ConfidentialNodes.fromJson(
+                  json_['confidentialNodes']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           containerdConfig: json_.containsKey('containerdConfig')
-              ? ContainerdConfig.fromJson(json_['containerdConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? ContainerdConfig.fromJson(
+                  json_['containerdConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           diskSizeGb: json_['diskSizeGb'] as core.String?,
           diskType: json_['diskType'] as core.String?,
           etag: json_['etag'] as core.String?,
           fastSocket: json_.containsKey('fastSocket')
               ? FastSocket.fromJson(
-                  json_['fastSocket'] as core.Map<core.String, core.dynamic>)
+                  json_['fastSocket'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           gcfsConfig: json_.containsKey('gcfsConfig')
               ? GcfsConfig.fromJson(
-                  json_['gcfsConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['gcfsConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           gvnic: json_.containsKey('gvnic')
               ? VirtualNIC.fromJson(
-                  json_['gvnic'] as core.Map<core.String, core.dynamic>)
+                  json_['gvnic'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           imageType: json_['imageType'] as core.String?,
           kubeletConfig: json_.containsKey('kubeletConfig')
               ? NodeKubeletConfig.fromJson(
-                  json_['kubeletConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['kubeletConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labels: json_.containsKey('labels')
               ? NodeLabels.fromJson(
-                  json_['labels'] as core.Map<core.String, core.dynamic>)
+                  json_['labels'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           linuxNodeConfig: json_.containsKey('linuxNodeConfig')
-              ? LinuxNodeConfig.fromJson(json_['linuxNodeConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? LinuxNodeConfig.fromJson(
+                  json_['linuxNodeConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           locations: (json_['locations'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           loggingConfig: json_.containsKey('loggingConfig')
               ? NodePoolLoggingConfig.fromJson(
-                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           machineType: json_['machineType'] as core.String?,
           maxRunDuration: json_['maxRunDuration'] as core.String?,
           name: json_['name'] as core.String?,
           nodeNetworkConfig: json_.containsKey('nodeNetworkConfig')
-              ? NodeNetworkConfig.fromJson(json_['nodeNetworkConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? NodeNetworkConfig.fromJson(
+                  json_['nodeNetworkConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           nodePoolId: json_['nodePoolId'] as core.String?,
           nodeVersion: json_['nodeVersion'] as core.String?,
           projectId: json_['projectId'] as core.String?,
           queuedProvisioning: json_.containsKey('queuedProvisioning')
-              ? QueuedProvisioning.fromJson(json_['queuedProvisioning']
-                  as core.Map<core.String, core.dynamic>)
+              ? QueuedProvisioning.fromJson(
+                  json_['queuedProvisioning']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           resourceLabels: json_.containsKey('resourceLabels')
-              ? ResourceLabels.fromJson(json_['resourceLabels']
-                  as core.Map<core.String, core.dynamic>)
+              ? ResourceLabels.fromJson(
+                  json_['resourceLabels']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           resourceManagerTags: json_.containsKey('resourceManagerTags')
-              ? ResourceManagerTags.fromJson(json_['resourceManagerTags']
-                  as core.Map<core.String, core.dynamic>)
+              ? ResourceManagerTags.fromJson(
+                  json_['resourceManagerTags']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           storagePools: (json_['storagePools'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           tags: json_.containsKey('tags')
               ? NetworkTags.fromJson(
-                  json_['tags'] as core.Map<core.String, core.dynamic>)
+                  json_['tags'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           taints: json_.containsKey('taints')
               ? NodeTaints.fromJson(
-                  json_['taints'] as core.Map<core.String, core.dynamic>)
+                  json_['taints'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           upgradeSettings: json_.containsKey('upgradeSettings')
-              ? UpgradeSettings.fromJson(json_['upgradeSettings']
-                  as core.Map<core.String, core.dynamic>)
+              ? UpgradeSettings.fromJson(
+                  json_['upgradeSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           windowsNodeConfig: json_.containsKey('windowsNodeConfig')
-              ? WindowsNodeConfig.fromJson(json_['windowsNodeConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? WindowsNodeConfig.fromJson(
+                  json_['windowsNodeConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           workloadMetadataConfig: json_.containsKey('workloadMetadataConfig')
-              ? WorkloadMetadataConfig.fromJson(json_['workloadMetadataConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? WorkloadMetadataConfig.fromJson(
+                  json_['workloadMetadataConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           zone: json_['zone'] as core.String?,
         );
@@ -13914,8 +13939,10 @@ class UpgradeSettings {
   UpgradeSettings.fromJson(core.Map json_)
       : this(
           blueGreenSettings: json_.containsKey('blueGreenSettings')
-              ? BlueGreenSettings.fromJson(json_['blueGreenSettings']
-                  as core.Map<core.String, core.dynamic>)
+              ? BlueGreenSettings.fromJson(
+                  json_['blueGreenSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           maxSurge: json_['maxSurge'] as core.int?,
           maxUnavailable: json_['maxUnavailable'] as core.int?,
@@ -13969,8 +13996,11 @@ class UsableSubnetwork {
           ipCidrRange: json_['ipCidrRange'] as core.String?,
           network: json_['network'] as core.String?,
           secondaryIpRanges: (json_['secondaryIpRanges'] as core.List?)
-              ?.map((value) => UsableSubnetworkSecondaryRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => UsableSubnetworkSecondaryRange.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           statusMessage: json_['statusMessage'] as core.String?,
           subnetwork: json_['subnetwork'] as core.String?,
@@ -14124,14 +14154,10 @@ class VerticalPodAutoscaling {
   /// Enables vertical pod autoscaling.
   core.bool? enabled;
 
-  VerticalPodAutoscaling({
-    this.enabled,
-  });
+  VerticalPodAutoscaling({this.enabled});
 
   VerticalPodAutoscaling.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -14143,14 +14169,10 @@ class VirtualNIC {
   /// Whether gVNIC features are enabled in the node pool.
   core.bool? enabled;
 
-  VirtualNIC({
-    this.enabled,
-  });
+  VirtualNIC({this.enabled});
 
   VirtualNIC.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -14171,14 +14193,10 @@ class WindowsNodeConfig {
   /// Windows Servercore Base Image
   core.String? osVersion;
 
-  WindowsNodeConfig({
-    this.osVersion,
-  });
+  WindowsNodeConfig({this.osVersion});
 
   WindowsNodeConfig.fromJson(core.Map json_)
-      : this(
-          osVersion: json_['osVersion'] as core.String?,
-        );
+      : this(osVersion: json_['osVersion'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (osVersion != null) 'osVersion': osVersion!,
@@ -14191,14 +14209,10 @@ class WorkloadIdentityConfig {
   /// The workload pool to attach all Kubernetes service accounts to.
   core.String? workloadPool;
 
-  WorkloadIdentityConfig({
-    this.workloadPool,
-  });
+  WorkloadIdentityConfig({this.workloadPool});
 
   WorkloadIdentityConfig.fromJson(core.Map json_)
-      : this(
-          workloadPool: json_['workloadPool'] as core.String?,
-        );
+      : this(workloadPool: json_['workloadPool'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (workloadPool != null) 'workloadPool': workloadPool!,
@@ -14220,14 +14234,10 @@ class WorkloadMetadataConfig {
   /// Identity is enabled at the cluster level.
   core.String? mode;
 
-  WorkloadMetadataConfig({
-    this.mode,
-  });
+  WorkloadMetadataConfig({this.mode});
 
   WorkloadMetadataConfig.fromJson(core.Map json_)
-      : this(
-          mode: json_['mode'] as core.String?,
-        );
+      : this(mode: json_['mode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mode != null) 'mode': mode!,
@@ -14239,14 +14249,10 @@ class WorkloadPolicyConfig {
   /// If true, workloads can use NET_ADMIN capability.
   core.bool? allowNetAdmin;
 
-  WorkloadPolicyConfig({
-    this.allowNetAdmin,
-  });
+  WorkloadPolicyConfig({this.allowNetAdmin});
 
   WorkloadPolicyConfig.fromJson(core.Map json_)
-      : this(
-          allowNetAdmin: json_['allowNetAdmin'] as core.bool?,
-        );
+      : this(allowNetAdmin: json_['allowNetAdmin'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowNetAdmin != null) 'allowNetAdmin': allowNetAdmin!,

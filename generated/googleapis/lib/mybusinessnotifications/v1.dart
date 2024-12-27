@@ -48,11 +48,16 @@ class MyBusinessNotificationSettingsApi {
 
   AccountsResource get accounts => AccountsResource(_requester);
 
-  MyBusinessNotificationSettingsApi(http.Client client,
-      {core.String rootUrl = 'https://mybusinessnotifications.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  MyBusinessNotificationSettingsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://mybusinessnotifications.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class AccountsResource {
@@ -94,7 +99,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return NotificationSetting.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the pubsub notification setting for the account informing Google
@@ -147,7 +153,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return NotificationSetting.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -180,11 +187,7 @@ class NotificationSetting {
   /// Optional.
   core.String? pubsubTopic;
 
-  NotificationSetting({
-    this.name,
-    this.notificationTypes,
-    this.pubsubTopic,
-  });
+  NotificationSetting({this.name, this.notificationTypes, this.pubsubTopic});
 
   NotificationSetting.fromJson(core.Map json_)
       : this(

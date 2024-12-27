@@ -56,11 +56,16 @@ class CloudResourceManagerApi {
   FoldersResource get folders => FoldersResource(_requester);
   OperationsResource get operations => OperationsResource(_requester);
 
-  CloudResourceManagerApi(http.Client client,
-      {core.String rootUrl = 'https://cloudresourcemanager.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudResourceManagerApi(
+    http.Client client, {
+    core.String rootUrl = 'https://cloudresourcemanager.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class FoldersResource {
@@ -151,10 +156,7 @@ class FoldersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Folder> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Folder> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -191,10 +193,7 @@ class FoldersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Folder> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Folder> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -315,7 +314,8 @@ class FoldersResource {
       queryParams: queryParams_,
     );
     return ListFoldersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Moves a Folder under a new resource parent.
@@ -469,7 +469,8 @@ class FoldersResource {
       queryParams: queryParams_,
     );
     return SearchFoldersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on a Folder, replacing any existing policy.
@@ -566,7 +567,8 @@ class FoldersResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Cancels the deletion request for a Folder.
@@ -643,10 +645,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -689,16 +688,16 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -797,17 +796,14 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -916,10 +912,7 @@ class Folder {
           name: json_['name'] as core.String?,
           parent: json_['parent'] as core.String?,
           tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
         );
 
@@ -939,15 +932,14 @@ class GetIamPolicyRequest {
   /// `GetIamPolicy`.
   GetPolicyOptions? options;
 
-  GetIamPolicyRequest({
-    this.options,
-  });
+  GetIamPolicyRequest({this.options});
 
   GetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           options: json_.containsKey('options')
               ? GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>)
+                  json_['options'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -969,16 +961,16 @@ class ListFoldersResponse {
   /// indicates from where listing should continue.
   core.String? nextPageToken;
 
-  ListFoldersResponse({
-    this.folders,
-    this.nextPageToken,
-  });
+  ListFoldersResponse({this.folders, this.nextPageToken});
 
   ListFoldersResponse.fromJson(core.Map json_)
       : this(
           folders: (json_['folders'] as core.List?)
-              ?.map((value) =>
-                  Folder.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Folder.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -999,14 +991,10 @@ class MoveFolderRequest {
   /// Required.
   core.String? destinationParent;
 
-  MoveFolderRequest({
-    this.destinationParent,
-  });
+  MoveFolderRequest({this.destinationParent});
 
   MoveFolderRequest.fromJson(core.Map json_)
-      : this(
-          destinationParent: json_['destinationParent'] as core.String?,
-        );
+      : this(destinationParent: json_['destinationParent'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinationParent != null) 'destinationParent': destinationParent!,
@@ -1056,20 +1044,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -1175,22 +1158,23 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -1238,11 +1222,7 @@ class SearchFoldersRequest {
   /// with display names that include both "Test" and "String".
   core.String? query;
 
-  SearchFoldersRequest({
-    this.pageSize,
-    this.pageToken,
-    this.query,
-  });
+  SearchFoldersRequest({this.pageSize, this.pageToken, this.query});
 
   SearchFoldersRequest.fromJson(core.Map json_)
       : this(
@@ -1269,16 +1249,16 @@ class SearchFoldersResponse {
   /// indicates from where searching should continue.
   core.String? nextPageToken;
 
-  SearchFoldersResponse({
-    this.folders,
-    this.nextPageToken,
-  });
+  SearchFoldersResponse({this.folders, this.nextPageToken});
 
   SearchFoldersResponse.fromJson(core.Map json_)
       : this(
           folders: (json_['folders'] as core.List?)
-              ?.map((value) =>
-                  Folder.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Folder.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1304,16 +1284,14 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );

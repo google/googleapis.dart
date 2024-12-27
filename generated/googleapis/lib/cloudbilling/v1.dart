@@ -68,11 +68,16 @@ class CloudbillingApi {
   ProjectsResource get projects => ProjectsResource(_requester);
   ServicesResource get services => ServicesResource(_requester);
 
-  CloudbillingApi(http.Client client,
-      {core.String rootUrl = 'https://cloudbilling.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudbillingApi(
+    http.Client client, {
+    core.String rootUrl = 'https://cloudbilling.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class BillingAccountsResource {
@@ -137,7 +142,8 @@ class BillingAccountsResource {
       queryParams: queryParams_,
     );
     return BillingAccount.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets information about a billing account.
@@ -177,7 +183,8 @@ class BillingAccountsResource {
       queryParams: queryParams_,
     );
     return BillingAccount.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a billing account.
@@ -296,7 +303,8 @@ class BillingAccountsResource {
       queryParams: queryParams_,
     );
     return ListBillingAccountsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Changes which parent organization a billing account belongs to.
@@ -340,7 +348,8 @@ class BillingAccountsResource {
       queryParams: queryParams_,
     );
     return BillingAccount.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a billing account's fields.
@@ -392,7 +401,8 @@ class BillingAccountsResource {
       queryParams: queryParams_,
     );
     return BillingAccount.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy for a billing account.
@@ -489,7 +499,8 @@ class BillingAccountsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -551,7 +562,8 @@ class BillingAccountsProjectsResource {
       queryParams: queryParams_,
     );
     return ListProjectBillingInfoResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -613,7 +625,8 @@ class BillingAccountsSubAccountsResource {
       queryParams: queryParams_,
     );
     return BillingAccount.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the billing accounts that the current authenticated user has
@@ -675,7 +688,8 @@ class BillingAccountsSubAccountsResource {
       queryParams: queryParams_,
     );
     return ListBillingAccountsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -746,7 +760,8 @@ class OrganizationsBillingAccountsResource {
       queryParams: queryParams_,
     );
     return BillingAccount.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the billing accounts that the current authenticated user has
@@ -808,7 +823,8 @@ class OrganizationsBillingAccountsResource {
       queryParams: queryParams_,
     );
     return ListBillingAccountsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Changes which parent organization a billing account belongs to.
@@ -857,7 +873,8 @@ class OrganizationsBillingAccountsResource {
       queryParams: queryParams_,
     );
     return BillingAccount.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -906,7 +923,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return ProjectBillingInfo.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets or updates the billing account associated with a project.
@@ -975,7 +993,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return ProjectBillingInfo.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1025,7 +1044,8 @@ class ServicesResource {
       queryParams: queryParams_,
     );
     return ListServicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1102,7 +1122,8 @@ class ServicesSkusResource {
       queryParams: queryParams_,
     );
     return ListSkusResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1176,16 +1197,16 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -1375,17 +1396,14 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1481,10 +1499,7 @@ class GeoTaxonomy {
   /// "us-west2" and "us-east1".
   core.String? type;
 
-  GeoTaxonomy({
-    this.regions,
-    this.type,
-  });
+  GeoTaxonomy({this.regions, this.type});
 
   GeoTaxonomy.fromJson(core.Map json_)
       : this(
@@ -1512,16 +1527,16 @@ class ListBillingAccountsResponse {
   /// more results to retrieve.
   core.String? nextPageToken;
 
-  ListBillingAccountsResponse({
-    this.billingAccounts,
-    this.nextPageToken,
-  });
+  ListBillingAccountsResponse({this.billingAccounts, this.nextPageToken});
 
   ListBillingAccountsResponse.fromJson(core.Map json_)
       : this(
           billingAccounts: (json_['billingAccounts'] as core.List?)
-              ?.map((value) => BillingAccount.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => BillingAccount.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1545,17 +1560,17 @@ class ListProjectBillingInfoResponse {
   /// associated with the billing account.
   core.List<ProjectBillingInfo>? projectBillingInfo;
 
-  ListProjectBillingInfoResponse({
-    this.nextPageToken,
-    this.projectBillingInfo,
-  });
+  ListProjectBillingInfoResponse({this.nextPageToken, this.projectBillingInfo});
 
   ListProjectBillingInfoResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           projectBillingInfo: (json_['projectBillingInfo'] as core.List?)
-              ?.map((value) => ProjectBillingInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ProjectBillingInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1578,17 +1593,17 @@ class ListServicesResponse {
   /// A list of services.
   core.List<Service>? services;
 
-  ListServicesResponse({
-    this.nextPageToken,
-    this.services,
-  });
+  ListServicesResponse({this.nextPageToken, this.services});
 
   ListServicesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           services: (json_['services'] as core.List?)
-              ?.map((value) => Service.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Service.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1610,17 +1625,17 @@ class ListSkusResponse {
   /// The list of public SKUs of the given service.
   core.List<Sku>? skus;
 
-  ListSkusResponse({
-    this.nextPageToken,
-    this.skus,
-  });
+  ListSkusResponse({this.nextPageToken, this.skus});
 
   ListSkusResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           skus: (json_['skus'] as core.List?)
-              ?.map((value) =>
-                  Sku.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Sku.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1642,14 +1657,10 @@ class MoveBillingAccountRequest {
   /// Required.
   core.String? destinationParent;
 
-  MoveBillingAccountRequest({
-    this.destinationParent,
-  });
+  MoveBillingAccountRequest({this.destinationParent});
 
   MoveBillingAccountRequest.fromJson(core.Map json_)
-      : this(
-          destinationParent: json_['destinationParent'] as core.String?,
-        );
+      : this(destinationParent: json_['destinationParent'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinationParent != null) 'destinationParent': destinationParent!,
@@ -1742,22 +1753,23 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -1841,8 +1853,11 @@ class PricingExpression {
           baseUnitDescription: json_['baseUnitDescription'] as core.String?,
           displayQuantity: (json_['displayQuantity'] as core.num?)?.toDouble(),
           tieredRates: (json_['tieredRates'] as core.List?)
-              ?.map((value) => TierRate.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TierRate.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           usageUnit: json_['usageUnit'] as core.String?,
           usageUnitDescription: json_['usageUnitDescription'] as core.String?,
@@ -1907,15 +1922,19 @@ class PricingInfo {
   PricingInfo.fromJson(core.Map json_)
       : this(
           aggregationInfo: json_.containsKey('aggregationInfo')
-              ? AggregationInfo.fromJson(json_['aggregationInfo']
-                  as core.Map<core.String, core.dynamic>)
+              ? AggregationInfo.fromJson(
+                  json_['aggregationInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           currencyConversionRate:
               (json_['currencyConversionRate'] as core.num?)?.toDouble(),
           effectiveTime: json_['effectiveTime'] as core.String?,
           pricingExpression: json_.containsKey('pricingExpression')
-              ? PricingExpression.fromJson(json_['pricingExpression']
-                  as core.Map<core.String, core.dynamic>)
+              ? PricingExpression.fromJson(
+                  json_['pricingExpression']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           summary: json_['summary'] as core.String?,
         );
@@ -2051,16 +2070,14 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -2122,17 +2139,22 @@ class Sku {
       : this(
           category: json_.containsKey('category')
               ? Category.fromJson(
-                  json_['category'] as core.Map<core.String, core.dynamic>)
+                  json_['category'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           description: json_['description'] as core.String?,
           geoTaxonomy: json_.containsKey('geoTaxonomy')
               ? GeoTaxonomy.fromJson(
-                  json_['geoTaxonomy'] as core.Map<core.String, core.dynamic>)
+                  json_['geoTaxonomy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           pricingInfo: (json_['pricingInfo'] as core.List?)
-              ?.map((value) => PricingInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PricingInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           serviceProviderName: json_['serviceProviderName'] as core.String?,
           serviceRegions: (json_['serviceRegions'] as core.List?)
@@ -2173,10 +2195,7 @@ class TierRate {
   /// Example: unit_price of amount $10 indicates that each unit will cost $10.
   Money? unitPrice;
 
-  TierRate({
-    this.startUsageAmount,
-    this.unitPrice,
-  });
+  TierRate({this.startUsageAmount, this.unitPrice});
 
   TierRate.fromJson(core.Map json_)
       : this(
@@ -2184,7 +2203,8 @@ class TierRate {
               (json_['startUsageAmount'] as core.num?)?.toDouble(),
           unitPrice: json_.containsKey('unitPrice')
               ? Money.fromJson(
-                  json_['unitPrice'] as core.Map<core.String, core.dynamic>)
+                  json_['unitPrice'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 

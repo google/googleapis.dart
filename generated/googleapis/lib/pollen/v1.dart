@@ -50,11 +50,16 @@ class PollenApi {
   ForecastResource get forecast => ForecastResource(_requester);
   MapTypesResource get mapTypes => MapTypesResource(_requester);
 
-  PollenApi(http.Client client,
-      {core.String rootUrl = 'https://pollen.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  PollenApi(
+    http.Client client, {
+    core.String rootUrl = 'https://pollen.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ForecastResource {
@@ -136,7 +141,8 @@ class ForecastResource {
       queryParams: queryParams_,
     );
     return LookupForecastResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -294,25 +300,28 @@ class DayInfo {
   /// affecting the location specified in the request.
   core.List<PollenTypeInfo>? pollenTypeInfo;
 
-  DayInfo({
-    this.date,
-    this.plantInfo,
-    this.pollenTypeInfo,
-  });
+  DayInfo({this.date, this.plantInfo, this.pollenTypeInfo});
 
   DayInfo.fromJson(core.Map json_)
       : this(
           date: json_.containsKey('date')
               ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>)
+                  json_['date'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           plantInfo: (json_['plantInfo'] as core.List?)
-              ?.map((value) => PlantInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PlantInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           pollenTypeInfo: (json_['pollenTypeInfo'] as core.List?)
-              ?.map((value) => PollenTypeInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PollenTypeInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -392,7 +401,8 @@ class IndexInfo {
           code: json_['code'] as core.String?,
           color: json_.containsKey('color')
               ? Color.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>)
+                  json_['color'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           displayName: json_['displayName'] as core.String?,
           indexDescription: json_['indexDescription'] as core.String?,
@@ -428,17 +438,16 @@ class LookupForecastResponse {
   /// the request resides in a disputed territory.
   core.String? regionCode;
 
-  LookupForecastResponse({
-    this.dailyInfo,
-    this.nextPageToken,
-    this.regionCode,
-  });
+  LookupForecastResponse({this.dailyInfo, this.nextPageToken, this.regionCode});
 
   LookupForecastResponse.fromJson(core.Map json_)
       : this(
           dailyInfo: (json_['dailyInfo'] as core.List?)
-              ?.map((value) => DayInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DayInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           regionCode: json_['regionCode'] as core.String?,
@@ -589,11 +598,14 @@ class PlantInfo {
           inSeason: json_['inSeason'] as core.bool?,
           indexInfo: json_.containsKey('indexInfo')
               ? IndexInfo.fromJson(
-                  json_['indexInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['indexInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           plantDescription: json_.containsKey('plantDescription')
-              ? PlantDescription.fromJson(json_['plantDescription']
-                  as core.Map<core.String, core.dynamic>)
+              ? PlantDescription.fromJson(
+                  json_['plantDescription']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -652,7 +664,8 @@ class PollenTypeInfo {
           inSeason: json_['inSeason'] as core.bool?,
           indexInfo: json_.containsKey('indexInfo')
               ? IndexInfo.fromJson(
-                  json_['indexInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['indexInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 

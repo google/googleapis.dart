@@ -53,20 +53,14 @@ void checkAccessibility(api.Accessibility o) {
       o.mobilityAccessibleElevatorException!,
       unittest.equals('foo'),
     );
-    unittest.expect(
-      o.mobilityAccessibleException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.mobilityAccessibleException!, unittest.equals('foo'));
     unittest.expect(o.mobilityAccessibleParking!, unittest.isTrue);
     unittest.expect(
       o.mobilityAccessibleParkingException!,
       unittest.equals('foo'),
     );
     unittest.expect(o.mobilityAccessiblePool!, unittest.isTrue);
-    unittest.expect(
-      o.mobilityAccessiblePoolException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.mobilityAccessiblePoolException!, unittest.equals('foo'));
   }
   buildCounterAccessibility--;
 }
@@ -119,90 +113,39 @@ void checkActivities(api.Activities o) {
   buildCounterActivities++;
   if (buildCounterActivities < 3) {
     unittest.expect(o.beachAccess!, unittest.isTrue);
-    unittest.expect(
-      o.beachAccessException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.beachAccessException!, unittest.equals('foo'));
     unittest.expect(o.beachFront!, unittest.isTrue);
-    unittest.expect(
-      o.beachFrontException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.beachFrontException!, unittest.equals('foo'));
     unittest.expect(o.bicycleRental!, unittest.isTrue);
-    unittest.expect(
-      o.bicycleRentalException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.bicycleRentalException!, unittest.equals('foo'));
     unittest.expect(o.boutiqueStores!, unittest.isTrue);
-    unittest.expect(
-      o.boutiqueStoresException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.boutiqueStoresException!, unittest.equals('foo'));
     unittest.expect(o.casino!, unittest.isTrue);
-    unittest.expect(
-      o.casinoException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.casinoException!, unittest.equals('foo'));
     unittest.expect(o.freeBicycleRental!, unittest.isTrue);
-    unittest.expect(
-      o.freeBicycleRentalException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.freeBicycleRentalException!, unittest.equals('foo'));
     unittest.expect(o.freeWatercraftRental!, unittest.isTrue);
-    unittest.expect(
-      o.freeWatercraftRentalException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.freeWatercraftRentalException!, unittest.equals('foo'));
     unittest.expect(o.gameRoom!, unittest.isTrue);
-    unittest.expect(
-      o.gameRoomException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.gameRoomException!, unittest.equals('foo'));
     unittest.expect(o.golf!, unittest.isTrue);
-    unittest.expect(
-      o.golfException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.golfException!, unittest.equals('foo'));
     unittest.expect(o.horsebackRiding!, unittest.isTrue);
-    unittest.expect(
-      o.horsebackRidingException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.horsebackRidingException!, unittest.equals('foo'));
     unittest.expect(o.nightclub!, unittest.isTrue);
-    unittest.expect(
-      o.nightclubException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nightclubException!, unittest.equals('foo'));
     unittest.expect(o.privateBeach!, unittest.isTrue);
-    unittest.expect(
-      o.privateBeachException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.privateBeachException!, unittest.equals('foo'));
     unittest.expect(o.scuba!, unittest.isTrue);
-    unittest.expect(
-      o.scubaException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.scubaException!, unittest.equals('foo'));
     unittest.expect(o.snorkeling!, unittest.isTrue);
-    unittest.expect(
-      o.snorkelingException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.snorkelingException!, unittest.equals('foo'));
     unittest.expect(o.tennis!, unittest.isTrue);
-    unittest.expect(
-      o.tennisException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.tennisException!, unittest.equals('foo'));
     unittest.expect(o.waterSkiing!, unittest.isTrue);
-    unittest.expect(
-      o.waterSkiingException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.waterSkiingException!, unittest.equals('foo'));
     unittest.expect(o.watercraftRental!, unittest.isTrue);
-    unittest.expect(
-      o.watercraftRentalException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.watercraftRentalException!, unittest.equals('foo'));
   }
   buildCounterActivities--;
 }
@@ -227,23 +170,11 @@ void checkBusiness(api.Business o) {
   buildCounterBusiness++;
   if (buildCounterBusiness < 3) {
     unittest.expect(o.businessCenter!, unittest.isTrue);
-    unittest.expect(
-      o.businessCenterException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.businessCenterException!, unittest.equals('foo'));
     unittest.expect(o.meetingRooms!, unittest.isTrue);
-    unittest.expect(
-      o.meetingRoomsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.meetingRoomsCountException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.meetingRoomsException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.meetingRoomsCount!, unittest.equals(42));
+    unittest.expect(o.meetingRoomsCountException!, unittest.equals('foo'));
+    unittest.expect(o.meetingRoomsException!, unittest.equals('foo'));
   }
   buildCounterBusiness--;
 }
@@ -270,25 +201,16 @@ void checkConnectivity(api.Connectivity o) {
   buildCounterConnectivity++;
   if (buildCounterConnectivity < 3) {
     unittest.expect(o.freeWifi!, unittest.isTrue);
-    unittest.expect(
-      o.freeWifiException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.freeWifiException!, unittest.equals('foo'));
     unittest.expect(o.publicAreaWifiAvailable!, unittest.isTrue);
     unittest.expect(
       o.publicAreaWifiAvailableException!,
       unittest.equals('foo'),
     );
     unittest.expect(o.publicInternetTerminal!, unittest.isTrue);
-    unittest.expect(
-      o.publicInternetTerminalException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.publicInternetTerminalException!, unittest.equals('foo'));
     unittest.expect(o.wifiAvailable!, unittest.isTrue);
-    unittest.expect(
-      o.wifiAvailableException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.wifiAvailableException!, unittest.equals('foo'));
   }
   buildCounterConnectivity--;
 }
@@ -310,14 +232,8 @@ void checkEcoCertification(api.EcoCertification o) {
   buildCounterEcoCertification++;
   if (buildCounterEcoCertification < 3) {
     unittest.expect(o.awarded!, unittest.isTrue);
-    unittest.expect(
-      o.awardedException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.ecoCertificate!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.awardedException!, unittest.equals('foo'));
+    unittest.expect(o.ecoCertificate!, unittest.equals('foo'));
   }
   buildCounterEcoCertification--;
 }
@@ -360,7 +276,9 @@ void checkEnergyEfficiency(api.EnergyEfficiency o) {
       unittest.equals('foo'),
     );
     unittest.expect(
-        o.energyEfficientHeatingAndCoolingSystems!, unittest.isTrue);
+      o.energyEfficientHeatingAndCoolingSystems!,
+      unittest.isTrue,
+    );
     unittest.expect(
       o.energyEfficientHeatingAndCoolingSystemsException!,
       unittest.equals('foo'),
@@ -376,10 +294,7 @@ void checkEnergyEfficiency(api.EnergyEfficiency o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.greenBuildingDesign!, unittest.isTrue);
-    unittest.expect(
-      o.greenBuildingDesignException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.greenBuildingDesignException!, unittest.equals('foo'));
     unittest.expect(o.independentOrganizationAuditsEnergyUse!, unittest.isTrue);
     unittest.expect(
       o.independentOrganizationAuditsEnergyUseException!,
@@ -470,25 +385,13 @@ void checkFamilies(api.Families o) {
   buildCounterFamilies++;
   if (buildCounterFamilies < 3) {
     unittest.expect(o.babysitting!, unittest.isTrue);
-    unittest.expect(
-      o.babysittingException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.babysittingException!, unittest.equals('foo'));
     unittest.expect(o.kidsActivities!, unittest.isTrue);
-    unittest.expect(
-      o.kidsActivitiesException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.kidsActivitiesException!, unittest.equals('foo'));
     unittest.expect(o.kidsClub!, unittest.isTrue);
-    unittest.expect(
-      o.kidsClubException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.kidsClubException!, unittest.equals('foo'));
     unittest.expect(o.kidsFriendly!, unittest.isTrue);
-    unittest.expect(
-      o.kidsFriendlyException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.kidsFriendlyException!, unittest.equals('foo'));
   }
   buildCounterFamilies--;
 }
@@ -531,68 +434,32 @@ void checkFoodAndDrink(api.FoodAndDrink o) {
   buildCounterFoodAndDrink++;
   if (buildCounterFoodAndDrink < 3) {
     unittest.expect(o.bar!, unittest.isTrue);
-    unittest.expect(
-      o.barException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.barException!, unittest.equals('foo'));
     unittest.expect(o.breakfastAvailable!, unittest.isTrue);
-    unittest.expect(
-      o.breakfastAvailableException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.breakfastAvailableException!, unittest.equals('foo'));
     unittest.expect(o.breakfastBuffet!, unittest.isTrue);
-    unittest.expect(
-      o.breakfastBuffetException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.breakfastBuffetException!, unittest.equals('foo'));
     unittest.expect(o.buffet!, unittest.isTrue);
-    unittest.expect(
-      o.buffetException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.buffetException!, unittest.equals('foo'));
     unittest.expect(o.dinnerBuffet!, unittest.isTrue);
-    unittest.expect(
-      o.dinnerBuffetException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dinnerBuffetException!, unittest.equals('foo'));
     unittest.expect(o.freeBreakfast!, unittest.isTrue);
-    unittest.expect(
-      o.freeBreakfastException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.freeBreakfastException!, unittest.equals('foo'));
     unittest.expect(o.restaurant!, unittest.isTrue);
-    unittest.expect(
-      o.restaurantException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.restaurantsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.restaurantsCountException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.restaurantException!, unittest.equals('foo'));
+    unittest.expect(o.restaurantsCount!, unittest.equals(42));
+    unittest.expect(o.restaurantsCountException!, unittest.equals('foo'));
     unittest.expect(o.roomService!, unittest.isTrue);
-    unittest.expect(
-      o.roomServiceException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.roomServiceException!, unittest.equals('foo'));
     unittest.expect(o.tableService!, unittest.isTrue);
-    unittest.expect(
-      o.tableServiceException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.tableServiceException!, unittest.equals('foo'));
     unittest.expect(o.twentyFourHourRoomService!, unittest.isTrue);
     unittest.expect(
       o.twentyFourHourRoomServiceException!,
       unittest.equals('foo'),
     );
     unittest.expect(o.vendingMachine!, unittest.isTrue);
-    unittest.expect(
-      o.vendingMachineException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.vendingMachineException!, unittest.equals('foo'));
   }
   buildCounterFoodAndDrink--;
 }
@@ -610,13 +477,11 @@ api.GetGoogleUpdatedLodgingResponse buildGetGoogleUpdatedLodgingResponse() {
 }
 
 void checkGetGoogleUpdatedLodgingResponse(
-    api.GetGoogleUpdatedLodgingResponse o) {
+  api.GetGoogleUpdatedLodgingResponse o,
+) {
   buildCounterGetGoogleUpdatedLodgingResponse++;
   if (buildCounterGetGoogleUpdatedLodgingResponse < 3) {
-    unittest.expect(
-      o.diffMask!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.diffMask!, unittest.equals('foo'));
     checkLodging(o.lodging!);
   }
   buildCounterGetGoogleUpdatedLodgingResponse--;
@@ -656,83 +521,38 @@ void checkGuestUnitFeatures(api.GuestUnitFeatures o) {
   buildCounterGuestUnitFeatures++;
   if (buildCounterGuestUnitFeatures < 3) {
     unittest.expect(o.bungalowOrVilla!, unittest.isTrue);
-    unittest.expect(
-      o.bungalowOrVillaException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.bungalowOrVillaException!, unittest.equals('foo'));
     unittest.expect(o.connectingUnitAvailable!, unittest.isTrue);
     unittest.expect(
       o.connectingUnitAvailableException!,
       unittest.equals('foo'),
     );
     unittest.expect(o.executiveFloor!, unittest.isTrue);
-    unittest.expect(
-      o.executiveFloorException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.maxAdultOccupantsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.maxAdultOccupantsCountException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.maxChildOccupantsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.maxChildOccupantsCountException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.maxOccupantsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.maxOccupantsCountException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.executiveFloorException!, unittest.equals('foo'));
+    unittest.expect(o.maxAdultOccupantsCount!, unittest.equals(42));
+    unittest.expect(o.maxAdultOccupantsCountException!, unittest.equals('foo'));
+    unittest.expect(o.maxChildOccupantsCount!, unittest.equals(42));
+    unittest.expect(o.maxChildOccupantsCountException!, unittest.equals('foo'));
+    unittest.expect(o.maxOccupantsCount!, unittest.equals(42));
+    unittest.expect(o.maxOccupantsCountException!, unittest.equals('foo'));
     unittest.expect(o.privateHome!, unittest.isTrue);
-    unittest.expect(
-      o.privateHomeException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.privateHomeException!, unittest.equals('foo'));
     unittest.expect(o.suite!, unittest.isTrue);
-    unittest.expect(
-      o.suiteException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.tier!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.tierException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.suiteException!, unittest.equals('foo'));
+    unittest.expect(o.tier!, unittest.equals('foo'));
+    unittest.expect(o.tierException!, unittest.equals('foo'));
     checkLivingArea(o.totalLivingAreas!);
     checkViewsFromUnit(o.views!);
   }
   buildCounterGuestUnitFeatures--;
 }
 
-core.List<core.String> buildUnnamed0() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed0() => ['foo', 'foo'];
 
 void checkUnnamed0(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterGuestUnitType = 0;
@@ -753,10 +573,7 @@ void checkGuestUnitType(api.GuestUnitType o) {
   if (buildCounterGuestUnitType < 3) {
     checkUnnamed0(o.codes!);
     checkGuestUnitFeatures(o.features!);
-    unittest.expect(
-      o.label!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.label!, unittest.equals('foo'));
   }
   buildCounterGuestUnitType--;
 }
@@ -808,20 +625,11 @@ void checkHousekeeping(api.Housekeeping o) {
   buildCounterHousekeeping++;
   if (buildCounterHousekeeping < 3) {
     unittest.expect(o.dailyHousekeeping!, unittest.isTrue);
-    unittest.expect(
-      o.dailyHousekeepingException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dailyHousekeepingException!, unittest.equals('foo'));
     unittest.expect(o.housekeepingAvailable!, unittest.isTrue);
-    unittest.expect(
-      o.housekeepingAvailableException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.housekeepingAvailableException!, unittest.equals('foo'));
     unittest.expect(o.turndownService!, unittest.isTrue);
-    unittest.expect(
-      o.turndownServiceException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.turndownServiceException!, unittest.equals('foo'));
   }
   buildCounterHousekeeping--;
 }
@@ -855,12 +663,11 @@ void checkIncreasedFoodSafety(api.IncreasedFoodSafety o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.disposableFlatware!, unittest.isTrue);
+    unittest.expect(o.disposableFlatwareException!, unittest.equals('foo'));
     unittest.expect(
-      o.disposableFlatwareException!,
-      unittest.equals('foo'),
+      o.foodPreparationAndServingAdditionalSafety!,
+      unittest.isTrue,
     );
-    unittest.expect(
-        o.foodPreparationAndServingAdditionalSafety!, unittest.isTrue);
     unittest.expect(
       o.foodPreparationAndServingAdditionalSafetyException!,
       unittest.equals('foo'),
@@ -871,10 +678,7 @@ void checkIncreasedFoodSafety(api.IncreasedFoodSafety o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.singleUseFoodMenus!, unittest.isTrue);
-    unittest.expect(
-      o.singleUseFoodMenusException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.singleUseFoodMenusException!, unittest.equals('foo'));
   }
   buildCounterIncreasedFoodSafety--;
 }
@@ -895,15 +699,9 @@ api.LanguageSpoken buildLanguageSpoken() {
 void checkLanguageSpoken(api.LanguageSpoken o) {
   buildCounterLanguageSpoken++;
   if (buildCounterLanguageSpoken < 3) {
-    unittest.expect(
-      o.languageCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
     unittest.expect(o.spoken!, unittest.isTrue);
-    unittest.expect(
-      o.spokenException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.spokenException!, unittest.equals('foo'));
   }
   buildCounterLanguageSpoken--;
 }
@@ -965,10 +763,7 @@ void checkLivingAreaAccessibility(api.LivingAreaAccessibility o) {
   buildCounterLivingAreaAccessibility++;
   if (buildCounterLivingAreaAccessibility < 3) {
     unittest.expect(o.adaCompliantUnit!, unittest.isTrue);
-    unittest.expect(
-      o.adaCompliantUnitException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.adaCompliantUnitException!, unittest.equals('foo'));
     unittest.expect(o.hearingAccessibleDoorbell!, unittest.isTrue);
     unittest.expect(
       o.hearingAccessibleDoorbellException!,
@@ -980,10 +775,7 @@ void checkLivingAreaAccessibility(api.LivingAreaAccessibility o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.hearingAccessibleUnit!, unittest.isTrue);
-    unittest.expect(
-      o.hearingAccessibleUnitException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.hearingAccessibleUnitException!, unittest.equals('foo'));
     unittest.expect(o.mobilityAccessibleBathtub!, unittest.isTrue);
     unittest.expect(
       o.mobilityAccessibleBathtubException!,
@@ -1000,10 +792,7 @@ void checkLivingAreaAccessibility(api.LivingAreaAccessibility o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.mobilityAccessibleUnit!, unittest.isTrue);
-    unittest.expect(
-      o.mobilityAccessibleUnitException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.mobilityAccessibleUnitException!, unittest.equals('foo'));
   }
   buildCounterLivingAreaAccessibility--;
 }
@@ -1054,85 +843,37 @@ void checkLivingAreaEating(api.LivingAreaEating o) {
   buildCounterLivingAreaEating++;
   if (buildCounterLivingAreaEating < 3) {
     unittest.expect(o.coffeeMaker!, unittest.isTrue);
-    unittest.expect(
-      o.coffeeMakerException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.coffeeMakerException!, unittest.equals('foo'));
     unittest.expect(o.cookware!, unittest.isTrue);
-    unittest.expect(
-      o.cookwareException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.cookwareException!, unittest.equals('foo'));
     unittest.expect(o.dishwasher!, unittest.isTrue);
-    unittest.expect(
-      o.dishwasherException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dishwasherException!, unittest.equals('foo'));
     unittest.expect(o.indoorGrill!, unittest.isTrue);
-    unittest.expect(
-      o.indoorGrillException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.indoorGrillException!, unittest.equals('foo'));
     unittest.expect(o.kettle!, unittest.isTrue);
-    unittest.expect(
-      o.kettleException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.kettleException!, unittest.equals('foo'));
     unittest.expect(o.kitchenAvailable!, unittest.isTrue);
-    unittest.expect(
-      o.kitchenAvailableException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.kitchenAvailableException!, unittest.equals('foo'));
     unittest.expect(o.microwave!, unittest.isTrue);
-    unittest.expect(
-      o.microwaveException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.microwaveException!, unittest.equals('foo'));
     unittest.expect(o.minibar!, unittest.isTrue);
-    unittest.expect(
-      o.minibarException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.minibarException!, unittest.equals('foo'));
     unittest.expect(o.outdoorGrill!, unittest.isTrue);
-    unittest.expect(
-      o.outdoorGrillException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.outdoorGrillException!, unittest.equals('foo'));
     unittest.expect(o.oven!, unittest.isTrue);
-    unittest.expect(
-      o.ovenException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.ovenException!, unittest.equals('foo'));
     unittest.expect(o.refrigerator!, unittest.isTrue);
-    unittest.expect(
-      o.refrigeratorException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.refrigeratorException!, unittest.equals('foo'));
     unittest.expect(o.sink!, unittest.isTrue);
-    unittest.expect(
-      o.sinkException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.sinkException!, unittest.equals('foo'));
     unittest.expect(o.snackbar!, unittest.isTrue);
-    unittest.expect(
-      o.snackbarException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.snackbarException!, unittest.equals('foo'));
     unittest.expect(o.stove!, unittest.isTrue);
-    unittest.expect(
-      o.stoveException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.stoveException!, unittest.equals('foo'));
     unittest.expect(o.teaStation!, unittest.isTrue);
-    unittest.expect(
-      o.teaStationException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.teaStationException!, unittest.equals('foo'));
     unittest.expect(o.toaster!, unittest.isTrue);
-    unittest.expect(
-      o.toasterException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.toasterException!, unittest.equals('foo'));
   }
   buildCounterLivingAreaEating--;
 }
@@ -1191,105 +932,45 @@ void checkLivingAreaFeatures(api.LivingAreaFeatures o) {
   buildCounterLivingAreaFeatures++;
   if (buildCounterLivingAreaFeatures < 3) {
     unittest.expect(o.airConditioning!, unittest.isTrue);
-    unittest.expect(
-      o.airConditioningException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.airConditioningException!, unittest.equals('foo'));
     unittest.expect(o.bathtub!, unittest.isTrue);
-    unittest.expect(
-      o.bathtubException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.bathtubException!, unittest.equals('foo'));
     unittest.expect(o.bidet!, unittest.isTrue);
-    unittest.expect(
-      o.bidetException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.bidetException!, unittest.equals('foo'));
     unittest.expect(o.dryer!, unittest.isTrue);
-    unittest.expect(
-      o.dryerException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dryerException!, unittest.equals('foo'));
     unittest.expect(o.electronicRoomKey!, unittest.isTrue);
-    unittest.expect(
-      o.electronicRoomKeyException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.electronicRoomKeyException!, unittest.equals('foo'));
     unittest.expect(o.fireplace!, unittest.isTrue);
-    unittest.expect(
-      o.fireplaceException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fireplaceException!, unittest.equals('foo'));
     unittest.expect(o.hairdryer!, unittest.isTrue);
-    unittest.expect(
-      o.hairdryerException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.hairdryerException!, unittest.equals('foo'));
     unittest.expect(o.heating!, unittest.isTrue);
-    unittest.expect(
-      o.heatingException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.heatingException!, unittest.equals('foo'));
     unittest.expect(o.inunitSafe!, unittest.isTrue);
-    unittest.expect(
-      o.inunitSafeException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.inunitSafeException!, unittest.equals('foo'));
     unittest.expect(o.inunitWifiAvailable!, unittest.isTrue);
-    unittest.expect(
-      o.inunitWifiAvailableException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.inunitWifiAvailableException!, unittest.equals('foo'));
     unittest.expect(o.ironingEquipment!, unittest.isTrue);
-    unittest.expect(
-      o.ironingEquipmentException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.ironingEquipmentException!, unittest.equals('foo'));
     unittest.expect(o.payPerViewMovies!, unittest.isTrue);
-    unittest.expect(
-      o.payPerViewMoviesException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.payPerViewMoviesException!, unittest.equals('foo'));
     unittest.expect(o.privateBathroom!, unittest.isTrue);
-    unittest.expect(
-      o.privateBathroomException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.privateBathroomException!, unittest.equals('foo'));
     unittest.expect(o.shower!, unittest.isTrue);
-    unittest.expect(
-      o.showerException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.showerException!, unittest.equals('foo'));
     unittest.expect(o.toilet!, unittest.isTrue);
-    unittest.expect(
-      o.toiletException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.toiletException!, unittest.equals('foo'));
     unittest.expect(o.tv!, unittest.isTrue);
     unittest.expect(o.tvCasting!, unittest.isTrue);
-    unittest.expect(
-      o.tvCastingException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.tvException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.tvCastingException!, unittest.equals('foo'));
+    unittest.expect(o.tvException!, unittest.equals('foo'));
     unittest.expect(o.tvStreaming!, unittest.isTrue);
-    unittest.expect(
-      o.tvStreamingException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.tvStreamingException!, unittest.equals('foo'));
     unittest.expect(o.universalPowerAdapters!, unittest.isTrue);
-    unittest.expect(
-      o.universalPowerAdaptersException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.universalPowerAdaptersException!, unittest.equals('foo'));
     unittest.expect(o.washer!, unittest.isTrue);
-    unittest.expect(
-      o.washerException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.washerException!, unittest.equals('foo'));
   }
   buildCounterLivingAreaFeatures--;
 }
@@ -1320,38 +1001,17 @@ void checkLivingAreaLayout(api.LivingAreaLayout o) {
   buildCounterLivingAreaLayout++;
   if (buildCounterLivingAreaLayout < 3) {
     unittest.expect(o.balcony!, unittest.isTrue);
-    unittest.expect(
-      o.balconyException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.livingAreaSqMeters!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.livingAreaSqMetersException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.balconyException!, unittest.equals('foo'));
+    unittest.expect(o.livingAreaSqMeters!, unittest.equals(42.0));
+    unittest.expect(o.livingAreaSqMetersException!, unittest.equals('foo'));
     unittest.expect(o.loft!, unittest.isTrue);
-    unittest.expect(
-      o.loftException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.loftException!, unittest.equals('foo'));
     unittest.expect(o.nonSmoking!, unittest.isTrue);
-    unittest.expect(
-      o.nonSmokingException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nonSmokingException!, unittest.equals('foo'));
     unittest.expect(o.patio!, unittest.isTrue);
-    unittest.expect(
-      o.patioException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.patioException!, unittest.equals('foo'));
     unittest.expect(o.stairs!, unittest.isTrue);
-    unittest.expect(
-      o.stairsException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.stairsException!, unittest.equals('foo'));
   }
   buildCounterLivingAreaLayout--;
 }
@@ -1397,106 +1057,34 @@ api.LivingAreaSleeping buildLivingAreaSleeping() {
 void checkLivingAreaSleeping(api.LivingAreaSleeping o) {
   buildCounterLivingAreaSleeping++;
   if (buildCounterLivingAreaSleeping < 3) {
-    unittest.expect(
-      o.bedsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.bedsCountException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.bunkBedsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.bunkBedsCountException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.cribsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.cribsCountException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.doubleBedsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.doubleBedsCountException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.bedsCount!, unittest.equals(42));
+    unittest.expect(o.bedsCountException!, unittest.equals('foo'));
+    unittest.expect(o.bunkBedsCount!, unittest.equals(42));
+    unittest.expect(o.bunkBedsCountException!, unittest.equals('foo'));
+    unittest.expect(o.cribsCount!, unittest.equals(42));
+    unittest.expect(o.cribsCountException!, unittest.equals('foo'));
+    unittest.expect(o.doubleBedsCount!, unittest.equals(42));
+    unittest.expect(o.doubleBedsCountException!, unittest.equals('foo'));
     unittest.expect(o.featherPillows!, unittest.isTrue);
-    unittest.expect(
-      o.featherPillowsException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.featherPillowsException!, unittest.equals('foo'));
     unittest.expect(o.hypoallergenicBedding!, unittest.isTrue);
-    unittest.expect(
-      o.hypoallergenicBeddingException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.kingBedsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.kingBedsCountException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.hypoallergenicBeddingException!, unittest.equals('foo'));
+    unittest.expect(o.kingBedsCount!, unittest.equals(42));
+    unittest.expect(o.kingBedsCountException!, unittest.equals('foo'));
     unittest.expect(o.memoryFoamPillows!, unittest.isTrue);
-    unittest.expect(
-      o.memoryFoamPillowsException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.otherBedsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.otherBedsCountException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.queenBedsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.queenBedsCountException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.rollAwayBedsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.rollAwayBedsCountException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.singleOrTwinBedsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.singleOrTwinBedsCountException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sofaBedsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.sofaBedsCountException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.memoryFoamPillowsException!, unittest.equals('foo'));
+    unittest.expect(o.otherBedsCount!, unittest.equals(42));
+    unittest.expect(o.otherBedsCountException!, unittest.equals('foo'));
+    unittest.expect(o.queenBedsCount!, unittest.equals(42));
+    unittest.expect(o.queenBedsCountException!, unittest.equals('foo'));
+    unittest.expect(o.rollAwayBedsCount!, unittest.equals(42));
+    unittest.expect(o.rollAwayBedsCountException!, unittest.equals('foo'));
+    unittest.expect(o.singleOrTwinBedsCount!, unittest.equals(42));
+    unittest.expect(o.singleOrTwinBedsCountException!, unittest.equals('foo'));
+    unittest.expect(o.sofaBedsCount!, unittest.equals(42));
+    unittest.expect(o.sofaBedsCountException!, unittest.equals('foo'));
     unittest.expect(o.syntheticPillows!, unittest.isTrue);
-    unittest.expect(
-      o.syntheticPillowsException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.syntheticPillowsException!, unittest.equals('foo'));
   }
   buildCounterLivingAreaSleeping--;
 }
@@ -1560,10 +1148,7 @@ void checkLodging(api.Lodging o) {
     checkHealthAndSafety(o.healthAndSafety!);
     checkHousekeeping(o.housekeeping!);
     checkLodgingMetadata(o.metadata!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
     checkParking(o.parking!);
     checkPets(o.pets!);
     checkPolicies(o.policies!);
@@ -1592,10 +1177,7 @@ api.LodgingMetadata buildLodgingMetadata() {
 void checkLodgingMetadata(api.LodgingMetadata o) {
   buildCounterLodgingMetadata++;
   if (buildCounterLodgingMetadata < 3) {
-    unittest.expect(
-      o.updateTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
   buildCounterLodgingMetadata--;
 }
@@ -1633,10 +1215,7 @@ void checkMinimizedContact(api.MinimizedContact o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.digitalGuestRoomKeys!, unittest.isTrue);
-    unittest.expect(
-      o.digitalGuestRoomKeysException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.digitalGuestRoomKeysException!, unittest.equals('foo'));
     unittest.expect(o.housekeepingScheduledRequestOnly!, unittest.isTrue);
     unittest.expect(
       o.housekeepingScheduledRequestOnlyException!,
@@ -1658,10 +1237,7 @@ void checkMinimizedContact(api.MinimizedContact o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.roomBookingsBuffer!, unittest.isTrue);
-    unittest.expect(
-      o.roomBookingsBufferException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.roomBookingsBufferException!, unittest.equals('foo'));
   }
   buildCounterMinimizedContact--;
 }
@@ -1699,35 +1275,17 @@ void checkParking(api.Parking o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.freeParking!, unittest.isTrue);
-    unittest.expect(
-      o.freeParkingException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.freeParkingException!, unittest.equals('foo'));
     unittest.expect(o.freeSelfParking!, unittest.isTrue);
-    unittest.expect(
-      o.freeSelfParkingException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.freeSelfParkingException!, unittest.equals('foo'));
     unittest.expect(o.freeValetParking!, unittest.isTrue);
-    unittest.expect(
-      o.freeValetParkingException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.freeValetParkingException!, unittest.equals('foo'));
     unittest.expect(o.parkingAvailable!, unittest.isTrue);
-    unittest.expect(
-      o.parkingAvailableException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.parkingAvailableException!, unittest.equals('foo'));
     unittest.expect(o.selfParkingAvailable!, unittest.isTrue);
-    unittest.expect(
-      o.selfParkingAvailableException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.selfParkingAvailableException!, unittest.equals('foo'));
     unittest.expect(o.valetParkingAvailable!, unittest.isTrue);
-    unittest.expect(
-      o.valetParkingAvailableException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.valetParkingAvailableException!, unittest.equals('foo'));
   }
   buildCounterParking--;
 }
@@ -1756,30 +1314,15 @@ void checkPaymentOptions(api.PaymentOptions o) {
   buildCounterPaymentOptions++;
   if (buildCounterPaymentOptions < 3) {
     unittest.expect(o.cash!, unittest.isTrue);
-    unittest.expect(
-      o.cashException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.cashException!, unittest.equals('foo'));
     unittest.expect(o.cheque!, unittest.isTrue);
-    unittest.expect(
-      o.chequeException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.chequeException!, unittest.equals('foo'));
     unittest.expect(o.creditCard!, unittest.isTrue);
-    unittest.expect(
-      o.creditCardException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.creditCardException!, unittest.equals('foo'));
     unittest.expect(o.debitCard!, unittest.isTrue);
-    unittest.expect(
-      o.debitCardException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.debitCardException!, unittest.equals('foo'));
     unittest.expect(o.mobileNfc!, unittest.isTrue);
-    unittest.expect(
-      o.mobileNfcException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.mobileNfcException!, unittest.equals('foo'));
   }
   buildCounterPaymentOptions--;
 }
@@ -1811,10 +1354,7 @@ void checkPersonalProtection(api.PersonalProtection o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.faceMaskRequired!, unittest.isTrue);
-    unittest.expect(
-      o.faceMaskRequiredException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.faceMaskRequiredException!, unittest.equals('foo'));
     unittest.expect(o.guestRoomHygieneKitsAvailable!, unittest.isTrue);
     unittest.expect(
       o.guestRoomHygieneKitsAvailableException!,
@@ -1851,25 +1391,13 @@ void checkPets(api.Pets o) {
   buildCounterPets++;
   if (buildCounterPets < 3) {
     unittest.expect(o.catsAllowed!, unittest.isTrue);
-    unittest.expect(
-      o.catsAllowedException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.catsAllowedException!, unittest.equals('foo'));
     unittest.expect(o.dogsAllowed!, unittest.isTrue);
-    unittest.expect(
-      o.dogsAllowedException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dogsAllowedException!, unittest.equals('foo'));
     unittest.expect(o.petsAllowed!, unittest.isTrue);
-    unittest.expect(
-      o.petsAllowedException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.petsAllowedException!, unittest.equals('foo'));
     unittest.expect(o.petsAllowedFree!, unittest.isTrue);
-    unittest.expect(
-      o.petsAllowedFreeException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.petsAllowedFreeException!, unittest.equals('foo'));
   }
   buildCounterPets--;
 }
@@ -1908,10 +1436,7 @@ void checkPhysicalDistancing(api.PhysicalDistancing o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.safetyDividers!, unittest.isTrue);
-    unittest.expect(
-      o.safetyDividersException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.safetyDividersException!, unittest.equals('foo'));
     unittest.expect(o.sharedAreasLimitedOccupancy!, unittest.isTrue);
     unittest.expect(
       o.sharedAreasLimitedOccupancyException!,
@@ -1957,52 +1482,22 @@ void checkPolicies(api.Policies o) {
   buildCounterPolicies++;
   if (buildCounterPolicies < 3) {
     unittest.expect(o.allInclusiveAvailable!, unittest.isTrue);
-    unittest.expect(
-      o.allInclusiveAvailableException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.allInclusiveAvailableException!, unittest.equals('foo'));
     unittest.expect(o.allInclusiveOnly!, unittest.isTrue);
-    unittest.expect(
-      o.allInclusiveOnlyException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.allInclusiveOnlyException!, unittest.equals('foo'));
     checkTimeOfDay(o.checkinTime!);
-    unittest.expect(
-      o.checkinTimeException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.checkinTimeException!, unittest.equals('foo'));
     checkTimeOfDay(o.checkoutTime!);
-    unittest.expect(
-      o.checkoutTimeException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.checkoutTimeException!, unittest.equals('foo'));
     unittest.expect(o.kidsStayFree!, unittest.isTrue);
-    unittest.expect(
-      o.kidsStayFreeException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.maxChildAge!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.maxChildAgeException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.maxKidsStayFreeCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.maxKidsStayFreeCountException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.kidsStayFreeException!, unittest.equals('foo'));
+    unittest.expect(o.maxChildAge!, unittest.equals(42));
+    unittest.expect(o.maxChildAgeException!, unittest.equals('foo'));
+    unittest.expect(o.maxKidsStayFreeCount!, unittest.equals(42));
+    unittest.expect(o.maxKidsStayFreeCountException!, unittest.equals('foo'));
     checkPaymentOptions(o.paymentOptions!);
     unittest.expect(o.smokeFreeProperty!, unittest.isTrue);
-    unittest.expect(
-      o.smokeFreePropertyException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.smokeFreePropertyException!, unittest.equals('foo'));
   }
   buildCounterPolicies--;
 }
@@ -2049,84 +1544,33 @@ void checkPools(api.Pools o) {
   buildCounterPools++;
   if (buildCounterPools < 3) {
     unittest.expect(o.adultPool!, unittest.isTrue);
-    unittest.expect(
-      o.adultPoolException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.adultPoolException!, unittest.equals('foo'));
     unittest.expect(o.hotTub!, unittest.isTrue);
-    unittest.expect(
-      o.hotTubException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.hotTubException!, unittest.equals('foo'));
     unittest.expect(o.indoorPool!, unittest.isTrue);
-    unittest.expect(
-      o.indoorPoolException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.indoorPoolsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.indoorPoolsCountException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.indoorPoolException!, unittest.equals('foo'));
+    unittest.expect(o.indoorPoolsCount!, unittest.equals(42));
+    unittest.expect(o.indoorPoolsCountException!, unittest.equals('foo'));
     unittest.expect(o.lazyRiver!, unittest.isTrue);
-    unittest.expect(
-      o.lazyRiverException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.lazyRiverException!, unittest.equals('foo'));
     unittest.expect(o.lifeguard!, unittest.isTrue);
-    unittest.expect(
-      o.lifeguardException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.lifeguardException!, unittest.equals('foo'));
     unittest.expect(o.outdoorPool!, unittest.isTrue);
-    unittest.expect(
-      o.outdoorPoolException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.outdoorPoolsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.outdoorPoolsCountException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.outdoorPoolException!, unittest.equals('foo'));
+    unittest.expect(o.outdoorPoolsCount!, unittest.equals(42));
+    unittest.expect(o.outdoorPoolsCountException!, unittest.equals('foo'));
     unittest.expect(o.pool!, unittest.isTrue);
-    unittest.expect(
-      o.poolException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.poolsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.poolsCountException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.poolException!, unittest.equals('foo'));
+    unittest.expect(o.poolsCount!, unittest.equals(42));
+    unittest.expect(o.poolsCountException!, unittest.equals('foo'));
     unittest.expect(o.wadingPool!, unittest.isTrue);
-    unittest.expect(
-      o.wadingPoolException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.wadingPoolException!, unittest.equals('foo'));
     unittest.expect(o.waterPark!, unittest.isTrue);
-    unittest.expect(
-      o.waterParkException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.waterParkException!, unittest.equals('foo'));
     unittest.expect(o.waterslide!, unittest.isTrue);
-    unittest.expect(
-      o.waterslideException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.waterslideException!, unittest.equals('foo'));
     unittest.expect(o.wavePool!, unittest.isTrue);
-    unittest.expect(
-      o.wavePoolException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.wavePoolException!, unittest.equals('foo'));
   }
   buildCounterPools--;
 }
@@ -2152,38 +1596,14 @@ api.Property buildProperty() {
 void checkProperty(api.Property o) {
   buildCounterProperty++;
   if (buildCounterProperty < 3) {
-    unittest.expect(
-      o.builtYear!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.builtYearException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.floorsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.floorsCountException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.lastRenovatedYear!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.lastRenovatedYearException!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.roomsCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.roomsCountException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.builtYear!, unittest.equals(42));
+    unittest.expect(o.builtYearException!, unittest.equals('foo'));
+    unittest.expect(o.floorsCount!, unittest.equals(42));
+    unittest.expect(o.floorsCountException!, unittest.equals('foo'));
+    unittest.expect(o.lastRenovatedYear!, unittest.equals(42));
+    unittest.expect(o.lastRenovatedYearException!, unittest.equals('foo'));
+    unittest.expect(o.roomsCount!, unittest.equals(42));
+    unittest.expect(o.roomsCountException!, unittest.equals('foo'));
   }
   buildCounterProperty--;
 }
@@ -2238,66 +1658,33 @@ void checkServices(api.Services o) {
   buildCounterServices++;
   if (buildCounterServices < 3) {
     unittest.expect(o.baggageStorage!, unittest.isTrue);
-    unittest.expect(
-      o.baggageStorageException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.baggageStorageException!, unittest.equals('foo'));
     unittest.expect(o.concierge!, unittest.isTrue);
-    unittest.expect(
-      o.conciergeException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.conciergeException!, unittest.equals('foo'));
     unittest.expect(o.convenienceStore!, unittest.isTrue);
-    unittest.expect(
-      o.convenienceStoreException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.convenienceStoreException!, unittest.equals('foo'));
     unittest.expect(o.currencyExchange!, unittest.isTrue);
-    unittest.expect(
-      o.currencyExchangeException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.currencyExchangeException!, unittest.equals('foo'));
     unittest.expect(o.elevator!, unittest.isTrue);
-    unittest.expect(
-      o.elevatorException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.elevatorException!, unittest.equals('foo'));
     unittest.expect(o.frontDesk!, unittest.isTrue);
-    unittest.expect(
-      o.frontDeskException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.frontDeskException!, unittest.equals('foo'));
     unittest.expect(o.fullServiceLaundry!, unittest.isTrue);
-    unittest.expect(
-      o.fullServiceLaundryException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fullServiceLaundryException!, unittest.equals('foo'));
     unittest.expect(o.giftShop!, unittest.isTrue);
-    unittest.expect(
-      o.giftShopException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.giftShopException!, unittest.equals('foo'));
     checkUnnamed2(o.languagesSpoken!);
     unittest.expect(o.selfServiceLaundry!, unittest.isTrue);
-    unittest.expect(
-      o.selfServiceLaundryException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.selfServiceLaundryException!, unittest.equals('foo'));
     unittest.expect(o.socialHour!, unittest.isTrue);
-    unittest.expect(
-      o.socialHourException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.socialHourException!, unittest.equals('foo'));
     unittest.expect(o.twentyFourHourFrontDesk!, unittest.isTrue);
     unittest.expect(
       o.twentyFourHourFrontDeskException!,
       unittest.equals('foo'),
     );
     unittest.expect(o.wakeUpCalls!, unittest.isTrue);
-    unittest.expect(
-      o.wakeUpCallsException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.wakeUpCallsException!, unittest.equals('foo'));
   }
   buildCounterServices--;
 }
@@ -2358,23 +1745,11 @@ api.SustainabilityCertifications buildSustainabilityCertifications() {
 void checkSustainabilityCertifications(api.SustainabilityCertifications o) {
   buildCounterSustainabilityCertifications++;
   if (buildCounterSustainabilityCertifications < 3) {
-    unittest.expect(
-      o.breeamCertification!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.breeamCertificationException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.breeamCertification!, unittest.equals('foo'));
+    unittest.expect(o.breeamCertificationException!, unittest.equals('foo'));
     checkUnnamed3(o.ecoCertifications!);
-    unittest.expect(
-      o.leedCertification!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.leedCertificationException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.leedCertification!, unittest.equals('foo'));
+    unittest.expect(o.leedCertificationException!, unittest.equals('foo'));
   }
   buildCounterSustainabilityCertifications--;
 }
@@ -2409,20 +1784,14 @@ void checkSustainableSourcing(api.SustainableSourcing o) {
   buildCounterSustainableSourcing++;
   if (buildCounterSustainableSourcing < 3) {
     unittest.expect(o.ecoFriendlyToiletries!, unittest.isTrue);
-    unittest.expect(
-      o.ecoFriendlyToiletriesException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.ecoFriendlyToiletriesException!, unittest.equals('foo'));
     unittest.expect(o.locallySourcedFoodAndBeverages!, unittest.isTrue);
     unittest.expect(
       o.locallySourcedFoodAndBeveragesException!,
       unittest.equals('foo'),
     );
     unittest.expect(o.organicCageFreeEggs!, unittest.isTrue);
-    unittest.expect(
-      o.organicCageFreeEggsException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.organicCageFreeEggsException!, unittest.equals('foo'));
     unittest.expect(o.organicFoodAndBeverages!, unittest.isTrue);
     unittest.expect(
       o.organicFoodAndBeveragesException!,
@@ -2439,15 +1808,9 @@ void checkSustainableSourcing(api.SustainableSourcing o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.veganMeals!, unittest.isTrue);
-    unittest.expect(
-      o.veganMealsException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.veganMealsException!, unittest.equals('foo'));
     unittest.expect(o.vegetarianMeals!, unittest.isTrue);
-    unittest.expect(
-      o.vegetarianMealsException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.vegetarianMealsException!, unittest.equals('foo'));
   }
   buildCounterSustainableSourcing--;
 }
@@ -2469,22 +1832,10 @@ api.TimeOfDay buildTimeOfDay() {
 void checkTimeOfDay(api.TimeOfDay o) {
   buildCounterTimeOfDay++;
   if (buildCounterTimeOfDay < 3) {
-    unittest.expect(
-      o.hours!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.minutes!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.nanos!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.seconds!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.hours!, unittest.equals(42));
+    unittest.expect(o.minutes!, unittest.equals(42));
+    unittest.expect(o.nanos!, unittest.equals(42));
+    unittest.expect(o.seconds!, unittest.equals(42));
   }
   buildCounterTimeOfDay--;
 }
@@ -2517,40 +1868,19 @@ void checkTransportation(api.Transportation o) {
   buildCounterTransportation++;
   if (buildCounterTransportation < 3) {
     unittest.expect(o.airportShuttle!, unittest.isTrue);
-    unittest.expect(
-      o.airportShuttleException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.airportShuttleException!, unittest.equals('foo'));
     unittest.expect(o.carRentalOnProperty!, unittest.isTrue);
-    unittest.expect(
-      o.carRentalOnPropertyException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.carRentalOnPropertyException!, unittest.equals('foo'));
     unittest.expect(o.freeAirportShuttle!, unittest.isTrue);
-    unittest.expect(
-      o.freeAirportShuttleException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.freeAirportShuttleException!, unittest.equals('foo'));
     unittest.expect(o.freePrivateCarService!, unittest.isTrue);
-    unittest.expect(
-      o.freePrivateCarServiceException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.freePrivateCarServiceException!, unittest.equals('foo'));
     unittest.expect(o.localShuttle!, unittest.isTrue);
-    unittest.expect(
-      o.localShuttleException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.localShuttleException!, unittest.equals('foo'));
     unittest.expect(o.privateCarService!, unittest.isTrue);
-    unittest.expect(
-      o.privateCarServiceException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.privateCarServiceException!, unittest.equals('foo'));
     unittest.expect(o.transfer!, unittest.isTrue);
-    unittest.expect(
-      o.transferException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.transferException!, unittest.equals('foo'));
   }
   buildCounterTransportation--;
 }
@@ -2585,45 +1915,21 @@ void checkViewsFromUnit(api.ViewsFromUnit o) {
   buildCounterViewsFromUnit++;
   if (buildCounterViewsFromUnit < 3) {
     unittest.expect(o.beachView!, unittest.isTrue);
-    unittest.expect(
-      o.beachViewException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.beachViewException!, unittest.equals('foo'));
     unittest.expect(o.cityView!, unittest.isTrue);
-    unittest.expect(
-      o.cityViewException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.cityViewException!, unittest.equals('foo'));
     unittest.expect(o.gardenView!, unittest.isTrue);
-    unittest.expect(
-      o.gardenViewException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.gardenViewException!, unittest.equals('foo'));
     unittest.expect(o.lakeView!, unittest.isTrue);
-    unittest.expect(
-      o.lakeViewException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.lakeViewException!, unittest.equals('foo'));
     unittest.expect(o.landmarkView!, unittest.isTrue);
-    unittest.expect(
-      o.landmarkViewException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.landmarkViewException!, unittest.equals('foo'));
     unittest.expect(o.oceanView!, unittest.isTrue);
-    unittest.expect(
-      o.oceanViewException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.oceanViewException!, unittest.equals('foo'));
     unittest.expect(o.poolView!, unittest.isTrue);
-    unittest.expect(
-      o.poolViewException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.poolViewException!, unittest.equals('foo'));
     unittest.expect(o.valleyView!, unittest.isTrue);
-    unittest.expect(
-      o.valleyViewException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.valleyViewException!, unittest.equals('foo'));
   }
   buildCounterViewsFromUnit--;
 }
@@ -2679,15 +1985,9 @@ void checkWasteReduction(api.WasteReduction o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.compostsExcessFood!, unittest.isTrue);
-    unittest.expect(
-      o.compostsExcessFoodException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.compostsExcessFoodException!, unittest.equals('foo'));
     unittest.expect(o.donatesExcessFood!, unittest.isTrue);
-    unittest.expect(
-      o.donatesExcessFoodException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.donatesExcessFoodException!, unittest.equals('foo'));
     unittest.expect(o.foodWasteReductionProgram!, unittest.isTrue);
     unittest.expect(
       o.foodWasteReductionProgramException!,
@@ -2709,10 +2009,7 @@ void checkWasteReduction(api.WasteReduction o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.recyclingProgram!, unittest.isTrue);
-    unittest.expect(
-      o.recyclingProgramException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.recyclingProgramException!, unittest.equals('foo'));
     unittest.expect(o.refillableToiletryContainers!, unittest.isTrue);
     unittest.expect(
       o.refillableToiletryContainersException!,
@@ -2739,10 +2036,7 @@ void checkWasteReduction(api.WasteReduction o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.soapDonationProgram!, unittest.isTrue);
-    unittest.expect(
-      o.soapDonationProgramException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.soapDonationProgramException!, unittest.equals('foo'));
     unittest.expect(o.toiletryDonationProgram!, unittest.isTrue);
     unittest.expect(
       o.toiletryDonationProgramException!,
@@ -2788,30 +2082,15 @@ void checkWaterConservation(api.WaterConservation o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.linenReuseProgram!, unittest.isTrue);
-    unittest.expect(
-      o.linenReuseProgramException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.linenReuseProgramException!, unittest.equals('foo'));
     unittest.expect(o.towelReuseProgram!, unittest.isTrue);
-    unittest.expect(
-      o.towelReuseProgramException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.towelReuseProgramException!, unittest.equals('foo'));
     unittest.expect(o.waterSavingShowers!, unittest.isTrue);
-    unittest.expect(
-      o.waterSavingShowersException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.waterSavingShowersException!, unittest.equals('foo'));
     unittest.expect(o.waterSavingSinks!, unittest.isTrue);
-    unittest.expect(
-      o.waterSavingSinksException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.waterSavingSinksException!, unittest.equals('foo'));
     unittest.expect(o.waterSavingToilets!, unittest.isTrue);
-    unittest.expect(
-      o.waterSavingToiletsException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.waterSavingToiletsException!, unittest.equals('foo'));
   }
   buildCounterWaterConservation--;
 }
@@ -2852,60 +2131,27 @@ void checkWellness(api.Wellness o) {
   buildCounterWellness++;
   if (buildCounterWellness < 3) {
     unittest.expect(o.doctorOnCall!, unittest.isTrue);
-    unittest.expect(
-      o.doctorOnCallException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.doctorOnCallException!, unittest.equals('foo'));
     unittest.expect(o.ellipticalMachine!, unittest.isTrue);
-    unittest.expect(
-      o.ellipticalMachineException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.ellipticalMachineException!, unittest.equals('foo'));
     unittest.expect(o.fitnessCenter!, unittest.isTrue);
-    unittest.expect(
-      o.fitnessCenterException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fitnessCenterException!, unittest.equals('foo'));
     unittest.expect(o.freeFitnessCenter!, unittest.isTrue);
-    unittest.expect(
-      o.freeFitnessCenterException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.freeFitnessCenterException!, unittest.equals('foo'));
     unittest.expect(o.freeWeights!, unittest.isTrue);
-    unittest.expect(
-      o.freeWeightsException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.freeWeightsException!, unittest.equals('foo'));
     unittest.expect(o.massage!, unittest.isTrue);
-    unittest.expect(
-      o.massageException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.massageException!, unittest.equals('foo'));
     unittest.expect(o.salon!, unittest.isTrue);
-    unittest.expect(
-      o.salonException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.salonException!, unittest.equals('foo'));
     unittest.expect(o.sauna!, unittest.isTrue);
-    unittest.expect(
-      o.saunaException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.saunaException!, unittest.equals('foo'));
     unittest.expect(o.spa!, unittest.isTrue);
-    unittest.expect(
-      o.spaException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.spaException!, unittest.equals('foo'));
     unittest.expect(o.treadmill!, unittest.isTrue);
-    unittest.expect(
-      o.treadmillException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.treadmillException!, unittest.equals('foo'));
     unittest.expect(o.weightMachine!, unittest.isTrue);
-    unittest.expect(
-      o.weightMachineException!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.weightMachineException!, unittest.equals('foo'));
   }
   buildCounterWellness--;
 }
@@ -2916,7 +2162,8 @@ void main() {
       final o = buildAccessibility();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.Accessibility.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAccessibility(od);
     });
   });
@@ -2925,8 +2172,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildActivities();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Activities.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Activities.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkActivities(od);
     });
   });
@@ -2935,8 +2183,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildBusiness();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Business.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Business.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBusiness(od);
     });
   });
@@ -2946,7 +2195,8 @@ void main() {
       final o = buildConnectivity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.Connectivity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkConnectivity(od);
     });
   });
@@ -2956,7 +2206,8 @@ void main() {
       final o = buildEcoCertification();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.EcoCertification.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkEcoCertification(od);
     });
   });
@@ -2966,7 +2217,8 @@ void main() {
       final o = buildEnergyEfficiency();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.EnergyEfficiency.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkEnergyEfficiency(od);
     });
   });
@@ -2976,7 +2228,8 @@ void main() {
       final o = buildEnhancedCleaning();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.EnhancedCleaning.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkEnhancedCleaning(od);
     });
   });
@@ -2985,8 +2238,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildFamilies();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Families.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Families.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkFamilies(od);
     });
   });
@@ -2996,7 +2250,8 @@ void main() {
       final o = buildFoodAndDrink();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.FoodAndDrink.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkFoodAndDrink(od);
     });
   });
@@ -3006,7 +2261,8 @@ void main() {
       final o = buildGetGoogleUpdatedLodgingResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GetGoogleUpdatedLodgingResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGetGoogleUpdatedLodgingResponse(od);
     });
   });
@@ -3016,7 +2272,8 @@ void main() {
       final o = buildGuestUnitFeatures();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GuestUnitFeatures.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGuestUnitFeatures(od);
     });
   });
@@ -3026,7 +2283,8 @@ void main() {
       final o = buildGuestUnitType();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GuestUnitType.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGuestUnitType(od);
     });
   });
@@ -3036,7 +2294,8 @@ void main() {
       final o = buildHealthAndSafety();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.HealthAndSafety.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkHealthAndSafety(od);
     });
   });
@@ -3046,7 +2305,8 @@ void main() {
       final o = buildHousekeeping();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.Housekeeping.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkHousekeeping(od);
     });
   });
@@ -3056,7 +2316,8 @@ void main() {
       final o = buildIncreasedFoodSafety();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.IncreasedFoodSafety.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkIncreasedFoodSafety(od);
     });
   });
@@ -3066,7 +2327,8 @@ void main() {
       final o = buildLanguageSpoken();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LanguageSpoken.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkLanguageSpoken(od);
     });
   });
@@ -3075,8 +2337,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildLivingArea();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.LivingArea.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.LivingArea.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkLivingArea(od);
     });
   });
@@ -3086,7 +2349,8 @@ void main() {
       final o = buildLivingAreaAccessibility();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LivingAreaAccessibility.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkLivingAreaAccessibility(od);
     });
   });
@@ -3096,7 +2360,8 @@ void main() {
       final o = buildLivingAreaEating();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LivingAreaEating.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkLivingAreaEating(od);
     });
   });
@@ -3106,7 +2371,8 @@ void main() {
       final o = buildLivingAreaFeatures();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LivingAreaFeatures.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkLivingAreaFeatures(od);
     });
   });
@@ -3116,7 +2382,8 @@ void main() {
       final o = buildLivingAreaLayout();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LivingAreaLayout.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkLivingAreaLayout(od);
     });
   });
@@ -3126,7 +2393,8 @@ void main() {
       final o = buildLivingAreaSleeping();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LivingAreaSleeping.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkLivingAreaSleeping(od);
     });
   });
@@ -3135,8 +2403,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildLodging();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Lodging.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Lodging.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkLodging(od);
     });
   });
@@ -3146,7 +2415,8 @@ void main() {
       final o = buildLodgingMetadata();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LodgingMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkLodgingMetadata(od);
     });
   });
@@ -3156,7 +2426,8 @@ void main() {
       final o = buildMinimizedContact();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.MinimizedContact.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkMinimizedContact(od);
     });
   });
@@ -3165,8 +2436,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildParking();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Parking.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Parking.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkParking(od);
     });
   });
@@ -3176,7 +2448,8 @@ void main() {
       final o = buildPaymentOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PaymentOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPaymentOptions(od);
     });
   });
@@ -3186,7 +2459,8 @@ void main() {
       final o = buildPersonalProtection();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PersonalProtection.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPersonalProtection(od);
     });
   });
@@ -3195,8 +2469,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildPets();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Pets.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Pets.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPets(od);
     });
   });
@@ -3206,7 +2481,8 @@ void main() {
       final o = buildPhysicalDistancing();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PhysicalDistancing.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPhysicalDistancing(od);
     });
   });
@@ -3215,8 +2491,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildPolicies();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Policies.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Policies.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPolicies(od);
     });
   });
@@ -3225,8 +2502,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildPools();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Pools.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Pools.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPools(od);
     });
   });
@@ -3235,8 +2513,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildProperty();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Property.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Property.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkProperty(od);
     });
   });
@@ -3245,8 +2524,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildServices();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Services.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Services.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkServices(od);
     });
   });
@@ -3256,7 +2536,8 @@ void main() {
       final o = buildSustainability();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.Sustainability.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSustainability(od);
     });
   });
@@ -3266,7 +2547,8 @@ void main() {
       final o = buildSustainabilityCertifications();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SustainabilityCertifications.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSustainabilityCertifications(od);
     });
   });
@@ -3276,7 +2558,8 @@ void main() {
       final o = buildSustainableSourcing();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SustainableSourcing.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSustainableSourcing(od);
     });
   });
@@ -3285,8 +2568,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildTimeOfDay();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.TimeOfDay.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.TimeOfDay.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTimeOfDay(od);
     });
   });
@@ -3296,7 +2580,8 @@ void main() {
       final o = buildTransportation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.Transportation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTransportation(od);
     });
   });
@@ -3306,7 +2591,8 @@ void main() {
       final o = buildViewsFromUnit();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ViewsFromUnit.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkViewsFromUnit(od);
     });
   });
@@ -3316,7 +2602,8 @@ void main() {
       final o = buildWasteReduction();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.WasteReduction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkWasteReduction(od);
     });
   });
@@ -3326,7 +2613,8 @@ void main() {
       final o = buildWaterConservation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.WaterConservation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkWaterConservation(od);
     });
   });
@@ -3335,8 +2623,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildWellness();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Wellness.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Wellness.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkWellness(od);
     });
   });
@@ -3348,55 +2637,59 @@ void main() {
       final arg_name = 'foo';
       final arg_readMask = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['readMask']!.first,
-          unittest.equals(arg_readMask),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['readMask']!.first,
+            unittest.equals(arg_readMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildLodging());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.getLodging(arg_name,
-          readMask: arg_readMask, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildLodging());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getLodging(
+        arg_name,
+        readMask: arg_readMask,
+        $fields: arg_$fields,
+      );
       checkLodging(response as api.Lodging);
     });
 
@@ -3407,59 +2700,65 @@ void main() {
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.Lodging.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkLodging(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.Lodging.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkLodging(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['updateMask']!.first,
-          unittest.equals(arg_updateMask),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildLodging());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.updateLodging(arg_request, arg_name,
-          updateMask: arg_updateMask, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildLodging());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.updateLodging(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
       checkLodging(response as api.Lodging);
     });
   });
@@ -3471,58 +2770,64 @@ void main() {
       final arg_name = 'foo';
       final arg_readMask = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['readMask']!.first,
-          unittest.equals(arg_readMask),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['readMask']!.first,
+            unittest.equals(arg_readMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildGetGoogleUpdatedLodgingResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.getGoogleUpdated(arg_name,
-          readMask: arg_readMask, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGetGoogleUpdatedLodgingResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getGoogleUpdated(
+        arg_name,
+        readMask: arg_readMask,
+        $fields: arg_$fields,
+      );
       checkGetGoogleUpdatedLodgingResponse(
-          response as api.GetGoogleUpdatedLodgingResponse);
+        response as api.GetGoogleUpdatedLodgingResponse,
+      );
     });
   });
 }

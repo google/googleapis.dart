@@ -47,11 +47,16 @@ class BlockchainNodeEngineApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  BlockchainNodeEngineApi(http.Client client,
-      {core.String rootUrl = 'https://blockchainnodeengine.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  BlockchainNodeEngineApi(
+    http.Client client, {
+    core.String rootUrl = 'https://blockchainnodeengine.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -90,10 +95,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -157,7 +159,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -313,7 +316,8 @@ class ProjectsLocationsBlockchainNodesResource {
       queryParams: queryParams_,
     );
     return BlockchainNode.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists blockchain nodes in a given project and location.
@@ -367,7 +371,8 @@ class ProjectsLocationsBlockchainNodesResource {
       queryParams: queryParams_,
     );
     return ListBlockchainNodesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single blockchain node.
@@ -489,7 +494,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a long-running operation.
@@ -530,7 +536,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the latest state of a long-running operation.
@@ -554,10 +561,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -619,7 +623,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -709,20 +714,21 @@ class BlockchainNode {
       : this(
           blockchainType: json_['blockchainType'] as core.String?,
           connectionInfo: json_.containsKey('connectionInfo')
-              ? ConnectionInfo.fromJson(json_['connectionInfo']
-                  as core.Map<core.String, core.dynamic>)
+              ? ConnectionInfo.fromJson(
+                  json_['connectionInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           createTime: json_['createTime'] as core.String?,
           ethereumDetails: json_.containsKey('ethereumDetails')
-              ? EthereumDetails.fromJson(json_['ethereumDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? EthereumDetails.fromJson(
+                  json_['ethereumDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           privateServiceConnectEnabled:
@@ -761,16 +767,14 @@ class ConnectionInfo {
   /// Output only.
   core.String? serviceAttachment;
 
-  ConnectionInfo({
-    this.endpointInfo,
-    this.serviceAttachment,
-  });
+  ConnectionInfo({this.endpointInfo, this.serviceAttachment});
 
   ConnectionInfo.fromJson(core.Map json_)
       : this(
           endpointInfo: json_.containsKey('endpointInfo')
               ? EndpointInfo.fromJson(
-                  json_['endpointInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['endpointInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           serviceAttachment: json_['serviceAttachment'] as core.String?,
         );
@@ -794,10 +798,7 @@ class EndpointInfo {
   /// Output only.
   core.String? websocketsApiEndpoint;
 
-  EndpointInfo({
-    this.jsonRpcApiEndpoint,
-    this.websocketsApiEndpoint,
-  });
+  EndpointInfo({this.jsonRpcApiEndpoint, this.websocketsApiEndpoint});
 
   EndpointInfo.fromJson(core.Map json_)
       : this(
@@ -913,8 +914,10 @@ class EthereumDetails {
   EthereumDetails.fromJson(core.Map json_)
       : this(
           additionalEndpoints: json_.containsKey('additionalEndpoints')
-              ? EthereumEndpoints.fromJson(json_['additionalEndpoints']
-                  as core.Map<core.String, core.dynamic>)
+              ? EthereumEndpoints.fromJson(
+                  json_['additionalEndpoints']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           apiEnableAdmin: json_['apiEnableAdmin'] as core.bool?,
           apiEnableDebug: json_['apiEnableDebug'] as core.bool?,
@@ -922,13 +925,16 @@ class EthereumDetails {
           executionClient: json_['executionClient'] as core.String?,
           gethDetails: json_.containsKey('gethDetails')
               ? GethDetails.fromJson(
-                  json_['gethDetails'] as core.Map<core.String, core.dynamic>)
+                  json_['gethDetails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           network: json_['network'] as core.String?,
           nodeType: json_['nodeType'] as core.String?,
           validatorConfig: json_.containsKey('validatorConfig')
-              ? ValidatorConfig.fromJson(json_['validatorConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? ValidatorConfig.fromJson(
+                  json_['validatorConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1018,9 +1024,7 @@ class GethDetails {
   /// more details.
   core.String? garbageCollectionMode;
 
-  GethDetails({
-    this.garbageCollectionMode,
-  });
+  GethDetails({this.garbageCollectionMode});
 
   GethDetails.fromJson(core.Map json_)
       : this(
@@ -1061,8 +1065,11 @@ class ListBlockchainNodesResponse {
   ListBlockchainNodesResponse.fromJson(core.Map json_)
       : this(
           blockchainNodes: (json_['blockchainNodes'] as core.List?)
-              ?.map((value) => BlockchainNode.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => BlockchainNode.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -1085,16 +1092,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1113,17 +1120,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1179,20 +1186,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>

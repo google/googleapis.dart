@@ -42,26 +42,14 @@ api.Axis buildAxis() {
 void checkAxis(api.Axis o) {
   buildCounterAxis++;
   if (buildCounterAxis < 3) {
-    unittest.expect(
-      o.end!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.start!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.tag!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.end!, unittest.equals(42.0));
+    unittest.expect(o.start!, unittest.equals(42.0));
+    unittest.expect(o.tag!, unittest.equals('foo'));
   }
   buildCounterAxis--;
 }
 
-core.List<api.Axis> buildUnnamed0() => [
-      buildAxis(),
-      buildAxis(),
-    ];
+core.List<api.Axis> buildUnnamed0() => [buildAxis(), buildAxis()];
 
 void checkUnnamed0(core.List<api.Axis> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -69,72 +57,36 @@ void checkUnnamed0(core.List<api.Axis> o) {
   checkAxis(o[1]);
 }
 
-core.List<core.String> buildUnnamed1() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed1() => ['foo', 'foo'];
 
 void checkUnnamed1(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, core.String> buildUnnamed2() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.Map<core.String, core.String> buildUnnamed2() => {'x': 'foo', 'y': 'foo'};
 
 void checkUnnamed2(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed3() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed3() => ['foo', 'foo'];
 
 void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed4() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed4() => ['foo', 'foo'];
 
 void checkUnnamed4(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterWebfont = 0;
@@ -162,42 +114,21 @@ void checkWebfont(api.Webfont o) {
   buildCounterWebfont++;
   if (buildCounterWebfont < 3) {
     checkUnnamed0(o.axes!);
-    unittest.expect(
-      o.category!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.category!, unittest.equals('foo'));
     checkUnnamed1(o.colorCapabilities!);
-    unittest.expect(
-      o.family!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.family!, unittest.equals('foo'));
     checkUnnamed2(o.files!);
-    unittest.expect(
-      o.kind!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.lastModified!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.menu!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.kind!, unittest.equals('foo'));
+    unittest.expect(o.lastModified!, unittest.equals('foo'));
+    unittest.expect(o.menu!, unittest.equals('foo'));
     checkUnnamed3(o.subsets!);
     checkUnnamed4(o.variants!);
-    unittest.expect(
-      o.version!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.version!, unittest.equals('foo'));
   }
   buildCounterWebfont--;
 }
 
-core.List<api.Webfont> buildUnnamed5() => [
-      buildWebfont(),
-      buildWebfont(),
-    ];
+core.List<api.Webfont> buildUnnamed5() => [buildWebfont(), buildWebfont()];
 
 void checkUnnamed5(core.List<api.Webfont> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -221,46 +152,25 @@ void checkWebfontList(api.WebfontList o) {
   buildCounterWebfontList++;
   if (buildCounterWebfontList < 3) {
     checkUnnamed5(o.items!);
-    unittest.expect(
-      o.kind!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.kind!, unittest.equals('foo'));
   }
   buildCounterWebfontList--;
 }
 
-core.List<core.String> buildUnnamed6() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed6() => ['foo', 'foo'];
 
 void checkUnnamed6(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed7() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed7() => ['foo', 'foo'];
 
 void checkUnnamed7(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 void main() {
@@ -268,8 +178,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildAxis();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Axis.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Axis.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAxis(od);
     });
   });
@@ -278,8 +189,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildWebfont();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Webfont.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Webfont.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkWebfont(od);
     });
   });
@@ -289,7 +201,8 @@ void main() {
       final o = buildWebfontList();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.WebfontList.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkWebfontList(od);
     });
   });
@@ -303,70 +216,66 @@ void main() {
       final arg_sort = 'foo';
       final arg_subset = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('v1/webfonts'),
-        );
-        pathOffset += 11;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('v1/webfonts'),
+          );
+          pathOffset += 11;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['capability']!,
-          unittest.equals(arg_capability),
-        );
-        unittest.expect(
-          queryMap['family']!,
-          unittest.equals(arg_family),
-        );
-        unittest.expect(
-          queryMap['sort']!.first,
-          unittest.equals(arg_sort),
-        );
-        unittest.expect(
-          queryMap['subset']!.first,
-          unittest.equals(arg_subset),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['capability']!,
+            unittest.equals(arg_capability),
+          );
+          unittest.expect(queryMap['family']!, unittest.equals(arg_family));
+          unittest.expect(queryMap['sort']!.first, unittest.equals(arg_sort));
+          unittest.expect(
+            queryMap['subset']!.first,
+            unittest.equals(arg_subset),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildWebfontList());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildWebfontList());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.list(
-          capability: arg_capability,
-          family: arg_family,
-          sort: arg_sort,
-          subset: arg_subset,
-          $fields: arg_$fields);
+        capability: arg_capability,
+        family: arg_family,
+        sort: arg_sort,
+        subset: arg_subset,
+        $fields: arg_$fields,
+      );
       checkWebfontList(response as api.WebfontList);
     });
   });

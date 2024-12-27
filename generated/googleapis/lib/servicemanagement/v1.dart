@@ -69,11 +69,16 @@ class ServiceManagementApi {
   OperationsResource get operations => OperationsResource(_requester);
   ServicesResource get services => ServicesResource(_requester);
 
-  ServiceManagementApi(http_1.Client client,
-      {core.String rootUrl = 'https://servicemanagement.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ServiceManagementApi(
+    http_1.Client client, {
+    core.String rootUrl = 'https://servicemanagement.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class OperationsResource {
@@ -101,10 +106,7 @@ class OperationsResource {
   ///
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -177,7 +179,8 @@ class OperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -317,7 +320,8 @@ class ServicesResource {
       queryParams: queryParams_,
     );
     return GenerateConfigReportResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a managed service.
@@ -356,7 +360,8 @@ class ServicesResource {
       queryParams: queryParams_,
     );
     return ManagedService.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a service configuration (version) for a managed service.
@@ -512,7 +517,8 @@ class ServicesResource {
       queryParams: queryParams_,
     );
     return ListServicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -608,7 +614,8 @@ class ServicesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Revives a previously deleted managed service.
@@ -805,7 +812,8 @@ class ServicesConfigsResource {
       queryParams: queryParams_,
     );
     return ListServiceConfigsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a new service configuration (version) for a managed service based
@@ -1005,7 +1013,8 @@ class ServicesConsumersResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1159,7 +1168,8 @@ class ServicesRolloutsResource {
       queryParams: queryParams_,
     );
     return ListServiceRolloutsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1170,14 +1180,10 @@ class Advice {
   /// be taken to mitigate any implied risks.
   core.String? description;
 
-  Advice({
-    this.description,
-  });
+  Advice({this.description});
 
   Advice.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-        );
+      : this(description: json_['description'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -1251,21 +1257,31 @@ class Api {
   Api.fromJson(core.Map json_)
       : this(
           methods: (json_['methods'] as core.List?)
-              ?.map((value) =>
-                  Method.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Method.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           mixins: (json_['mixins'] as core.List?)
-              ?.map((value) =>
-                  Mixin.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Mixin.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           name: json_['name'] as core.String?,
           options: (json_['options'] as core.List?)
-              ?.map((value) =>
-                  Option.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Option.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           sourceContext: json_.containsKey('sourceContext')
               ? SourceContext.fromJson(
-                  json_['sourceContext'] as core.Map<core.String, core.dynamic>)
+                  json_['sourceContext'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           syntax: json_['syntax'] as core.String?,
           version: json_['version'] as core.String?,
@@ -1309,16 +1325,16 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -1417,8 +1433,11 @@ class AuthProvider {
           issuer: json_['issuer'] as core.String?,
           jwksUri: json_['jwksUri'] as core.String?,
           jwtLocations: (json_['jwtLocations'] as core.List?)
-              ?.map((value) => JwtLocation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => JwtLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1454,20 +1473,23 @@ class Authentication {
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<AuthenticationRule>? rules;
 
-  Authentication({
-    this.providers,
-    this.rules,
-  });
+  Authentication({this.providers, this.rules});
 
   Authentication.fromJson(core.Map json_)
       : this(
           providers: (json_['providers'] as core.List?)
-              ?.map((value) => AuthProvider.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuthProvider.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           rules: (json_['rules'] as core.List?)
-              ?.map((value) => AuthenticationRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuthenticationRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1513,11 +1535,15 @@ class AuthenticationRule {
           allowWithoutCredential: json_['allowWithoutCredential'] as core.bool?,
           oauth: json_.containsKey('oauth')
               ? OAuthRequirements.fromJson(
-                  json_['oauth'] as core.Map<core.String, core.dynamic>)
+                  json_['oauth'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           requirements: (json_['requirements'] as core.List?)
-              ?.map((value) => AuthRequirement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuthRequirement.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           selector: json_['selector'] as core.String?,
         );
@@ -1538,15 +1564,16 @@ class Backend {
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<BackendRule>? rules;
 
-  Backend({
-    this.rules,
-  });
+  Backend({this.rules});
 
   Backend.fromJson(core.Map json_)
       : this(
           rules: (json_['rules'] as core.List?)
-              ?.map((value) => BackendRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => BackendRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1675,7 +1702,8 @@ class BackendRule {
             (key, value) => core.MapEntry(
               key,
               BackendRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           pathTranslation: json_['pathTranslation'] as core.String?,
@@ -1723,15 +1751,16 @@ class Billing {
   /// one consumer destination.
   core.List<BillingDestination>? consumerDestinations;
 
-  Billing({
-    this.consumerDestinations,
-  });
+  Billing({this.consumerDestinations});
 
   Billing.fromJson(core.Map json_)
       : this(
           consumerDestinations: (json_['consumerDestinations'] as core.List?)
-              ?.map((value) => BillingDestination.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => BillingDestination.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1754,10 +1783,7 @@ class BillingDestination {
   /// The type must be defined in Service.monitored_resources section.
   core.String? monitoredResource;
 
-  BillingDestination({
-    this.metrics,
-    this.monitoredResource,
-  });
+  BillingDestination({this.metrics, this.monitoredResource});
 
   BillingDestination.fromJson(core.Map json_)
       : this(
@@ -1853,17 +1879,14 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1891,15 +1914,16 @@ class ChangeReport {
   /// visibility.rules\[selector='LibraryService.CreateBook'\].restriction
   core.List<ConfigChange>? configChanges;
 
-  ChangeReport({
-    this.configChanges,
-  });
+  ChangeReport({this.configChanges});
 
   ChangeReport.fromJson(core.Map json_)
       : this(
           configChanges: (json_['configChanges'] as core.List?)
-              ?.map((value) => ConfigChange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ConfigChange.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1998,37 +2022,47 @@ class ClientLibrarySettings {
       : this(
           cppSettings: json_.containsKey('cppSettings')
               ? CppSettings.fromJson(
-                  json_['cppSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['cppSettings'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dotnetSettings: json_.containsKey('dotnetSettings')
-              ? DotnetSettings.fromJson(json_['dotnetSettings']
-                  as core.Map<core.String, core.dynamic>)
+              ? DotnetSettings.fromJson(
+                  json_['dotnetSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           goSettings: json_.containsKey('goSettings')
               ? GoSettings.fromJson(
-                  json_['goSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['goSettings'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           javaSettings: json_.containsKey('javaSettings')
               ? JavaSettings.fromJson(
-                  json_['javaSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['javaSettings'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           launchStage: json_['launchStage'] as core.String?,
           nodeSettings: json_.containsKey('nodeSettings')
               ? NodeSettings.fromJson(
-                  json_['nodeSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['nodeSettings'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           phpSettings: json_.containsKey('phpSettings')
               ? PhpSettings.fromJson(
-                  json_['phpSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['phpSettings'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           pythonSettings: json_.containsKey('pythonSettings')
-              ? PythonSettings.fromJson(json_['pythonSettings']
-                  as core.Map<core.String, core.dynamic>)
+              ? PythonSettings.fromJson(
+                  json_['pythonSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           restNumericEnums: json_['restNumericEnums'] as core.bool?,
           rubySettings: json_.containsKey('rubySettings')
               ? RubySettings.fromJson(
-                  json_['rubySettings'] as core.Map<core.String, core.dynamic>)
+                  json_['rubySettings'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           version: json_['version'] as core.String?,
         );
@@ -2080,7 +2114,8 @@ class CommonLanguageSettings {
               json_.containsKey('selectiveGapicGeneration')
                   ? SelectiveGapicGeneration.fromJson(
                       json_['selectiveGapicGeneration']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
         );
 
@@ -2150,8 +2185,11 @@ class ConfigChange {
   ConfigChange.fromJson(core.Map json_)
       : this(
           advices: (json_['advices'] as core.List?)
-              ?.map((value) =>
-                  Advice.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Advice.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           changeType: json_['changeType'] as core.String?,
           element: json_['element'] as core.String?,
@@ -2201,11 +2239,7 @@ class ConfigFile {
   /// least one file of type FILE_DESCRIPTOR_SET_PROTO is included.
   core.String? fileType;
 
-  ConfigFile({
-    this.fileContents,
-    this.filePath,
-    this.fileType,
-  });
+  ConfigFile({this.fileContents, this.filePath, this.fileType});
 
   ConfigFile.fromJson(core.Map json_)
       : this(
@@ -2234,16 +2268,16 @@ class ConfigSource {
   /// If empty, the server may choose to generate one instead.
   core.String? id;
 
-  ConfigSource({
-    this.files,
-    this.id,
-  });
+  ConfigSource({this.files, this.id});
 
   ConfigSource.fromJson(core.Map json_)
       : this(
           files: (json_['files'] as core.List?)
-              ?.map((value) => ConfigFile.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ConfigFile.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           id: json_['id'] as core.String?,
         );
@@ -2275,15 +2309,16 @@ class Context {
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<ContextRule>? rules;
 
-  Context({
-    this.rules,
-  });
+  Context({this.rules});
 
   Context.fromJson(core.Map json_)
       : this(
           rules: (json_['rules'] as core.List?)
-              ?.map((value) => ContextRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ContextRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2370,17 +2405,17 @@ class Control {
   /// Defines policies applying to the API methods of the service.
   core.List<MethodPolicy>? methodPolicies;
 
-  Control({
-    this.environment,
-    this.methodPolicies,
-  });
+  Control({this.environment, this.methodPolicies});
 
   Control.fromJson(core.Map json_)
       : this(
           environment: json_['environment'] as core.String?,
           methodPolicies: (json_['methodPolicies'] as core.List?)
-              ?.map((value) => MethodPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MethodPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2395,15 +2430,14 @@ class CppSettings {
   /// Some settings.
   CommonLanguageSettings? common;
 
-  CppSettings({
-    this.common,
-  });
+  CppSettings({this.common});
 
   CppSettings.fromJson(core.Map json_)
       : this(
           common: json_.containsKey('common')
               ? CommonLanguageSettings.fromJson(
-                  json_['common'] as core.Map<core.String, core.dynamic>)
+                  json_['common'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2426,16 +2460,16 @@ class CustomError {
   /// The list of custom error detail types, e.g. 'google.foo.v1.CustomError'.
   core.List<core.String>? types;
 
-  CustomError({
-    this.rules,
-    this.types,
-  });
+  CustomError({this.rules, this.types});
 
   CustomError.fromJson(core.Map json_)
       : this(
           rules: (json_['rules'] as core.List?)
-              ?.map((value) => CustomErrorRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CustomErrorRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           types: (json_['types'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2461,10 +2495,7 @@ class CustomErrorRule {
   /// Refer to selector for syntax details.
   core.String? selector;
 
-  CustomErrorRule({
-    this.isErrorType,
-    this.selector,
-  });
+  CustomErrorRule({this.isErrorType, this.selector});
 
   CustomErrorRule.fromJson(core.Map json_)
       : this(
@@ -2486,10 +2517,7 @@ class CustomHttpPattern {
   /// The path matched by this custom verb.
   core.String? path;
 
-  CustomHttpPattern({
-    this.kind,
-    this.path,
-  });
+  CustomHttpPattern({this.kind, this.path});
 
   CustomHttpPattern.fromJson(core.Map json_)
       : this(
@@ -2523,11 +2551,7 @@ class Diagnostic {
   /// Message describing the error or warning.
   core.String? message;
 
-  Diagnostic({
-    this.kind,
-    this.location,
-    this.message,
-  });
+  Diagnostic({this.kind, this.location, this.message});
 
   Diagnostic.fromJson(core.Map json_)
       : this(
@@ -2636,16 +2660,25 @@ class Documentation {
           documentationRootUrl: json_['documentationRootUrl'] as core.String?,
           overview: json_['overview'] as core.String?,
           pages: (json_['pages'] as core.List?)
-              ?.map((value) =>
-                  Page.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Page.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           rules: (json_['rules'] as core.List?)
-              ?.map((value) => DocumentationRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DocumentationRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           sectionOverrides: (json_['sectionOverrides'] as core.List?)
-              ?.map((value) =>
-                  Page.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Page.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           serviceRootUrl: json_['serviceRootUrl'] as core.String?,
           summary: json_['summary'] as core.String?,
@@ -2716,7 +2749,8 @@ class DotnetSettings {
       : this(
           common: json_.containsKey('common')
               ? CommonLanguageSettings.fromJson(
-                  json_['common'] as core.Map<core.String, core.dynamic>)
+                  json_['common'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           forcedNamespaceAliases:
               (json_['forcedNamespaceAliases'] as core.List?)
@@ -2730,20 +2764,10 @@ class DotnetSettings {
               .toList(),
           renamedResources: (json_['renamedResources']
                   as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          renamedServices:
-              (json_['renamedServices'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          renamedServices: (json_['renamedServices']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2811,17 +2835,24 @@ class Enum {
       : this(
           edition: json_['edition'] as core.String?,
           enumvalue: (json_['enumvalue'] as core.List?)
-              ?.map((value) => EnumValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => EnumValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           name: json_['name'] as core.String?,
           options: (json_['options'] as core.List?)
-              ?.map((value) =>
-                  Option.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Option.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           sourceContext: json_.containsKey('sourceContext')
               ? SourceContext.fromJson(
-                  json_['sourceContext'] as core.Map<core.String, core.dynamic>)
+                  json_['sourceContext'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           syntax: json_['syntax'] as core.String?,
         );
@@ -2847,19 +2878,18 @@ class EnumValue {
   /// Protocol buffer options.
   core.List<Option>? options;
 
-  EnumValue({
-    this.name,
-    this.number,
-    this.options,
-  });
+  EnumValue({this.name, this.number, this.options});
 
   EnumValue.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
           number: json_['number'] as core.int?,
           options: (json_['options'] as core.List?)
-              ?.map((value) =>
-                  Option.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Option.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3017,8 +3047,11 @@ class Field {
           number: json_['number'] as core.int?,
           oneofIndex: json_['oneofIndex'] as core.int?,
           options: (json_['options'] as core.List?)
-              ?.map((value) =>
-                  Option.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Option.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           packed: json_['packed'] as core.bool?,
           typeUrl: json_['typeUrl'] as core.String?,
@@ -3068,11 +3101,7 @@ class FieldPolicy {
   /// field paths, such as "foo.bar" or "foo.bar,foo.baz".
   core.String? selector;
 
-  FieldPolicy({
-    this.resourcePermission,
-    this.resourceType,
-    this.selector,
-  });
+  FieldPolicy({this.resourcePermission, this.resourceType, this.selector});
 
   FieldPolicy.fromJson(core.Map json_)
       : this(
@@ -3115,10 +3144,7 @@ class GenerateConfigReportRequest {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? oldConfig;
 
-  GenerateConfigReportRequest({
-    this.newConfig,
-    this.oldConfig,
-  });
+  GenerateConfigReportRequest({this.newConfig, this.oldConfig});
 
   GenerateConfigReportRequest.fromJson(core.Map json_)
       : this(
@@ -3162,12 +3188,18 @@ class GenerateConfigReportResponse {
   GenerateConfigReportResponse.fromJson(core.Map json_)
       : this(
           changeReports: (json_['changeReports'] as core.List?)
-              ?.map((value) => ChangeReport.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ChangeReport.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           diagnostics: (json_['diagnostics'] as core.List?)
-              ?.map((value) => Diagnostic.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Diagnostic.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           id: json_['id'] as core.String?,
           serviceName: json_['serviceName'] as core.String?,
@@ -3187,15 +3219,14 @@ class GetIamPolicyRequest {
   /// `GetIamPolicy`.
   GetPolicyOptions? options;
 
-  GetIamPolicyRequest({
-    this.options,
-  });
+  GetIamPolicyRequest({this.options});
 
   GetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           options: json_.containsKey('options')
               ? GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>)
+                  json_['options'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3219,25 +3250,18 @@ class GoSettings {
   /// renamed_services: Publisher: TopicAdmin
   core.Map<core.String, core.String>? renamedServices;
 
-  GoSettings({
-    this.common,
-    this.renamedServices,
-  });
+  GoSettings({this.common, this.renamedServices});
 
   GoSettings.fromJson(core.Map json_)
       : this(
           common: json_.containsKey('common')
               ? CommonLanguageSettings.fromJson(
-                  json_['common'] as core.Map<core.String, core.dynamic>)
+                  json_['common'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
-          renamedServices:
-              (json_['renamedServices'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          renamedServices: (json_['renamedServices']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3264,18 +3288,18 @@ class Http {
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<HttpRule>? rules;
 
-  Http({
-    this.fullyDecodeReservedExpansion,
-    this.rules,
-  });
+  Http({this.fullyDecodeReservedExpansion, this.rules});
 
   Http.fromJson(core.Map json_)
       : this(
           fullyDecodeReservedExpansion:
               json_['fullyDecodeReservedExpansion'] as core.bool?,
           rules: (json_['rules'] as core.List?)
-              ?.map((value) => HttpRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => HttpRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3503,13 +3527,17 @@ class HttpRule {
   HttpRule.fromJson(core.Map json_)
       : this(
           additionalBindings: (json_['additionalBindings'] as core.List?)
-              ?.map((value) => HttpRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => HttpRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           body: json_['body'] as core.String?,
           custom: json_.containsKey('custom')
               ? CustomHttpPattern.fromJson(
-                  json_['custom'] as core.Map<core.String, core.dynamic>)
+                  json_['custom'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           delete: json_['delete'] as core.String?,
           get: json_['get'] as core.String?,
@@ -3561,27 +3589,19 @@ class JavaSettings {
   /// TopicAdmin - google.pubsub.v1.Subscriber: SubscriptionAdmin
   core.Map<core.String, core.String>? serviceClassNames;
 
-  JavaSettings({
-    this.common,
-    this.libraryPackage,
-    this.serviceClassNames,
-  });
+  JavaSettings({this.common, this.libraryPackage, this.serviceClassNames});
 
   JavaSettings.fromJson(core.Map json_)
       : this(
           common: json_.containsKey('common')
               ? CommonLanguageSettings.fromJson(
-                  json_['common'] as core.Map<core.String, core.dynamic>)
+                  json_['common'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           libraryPackage: json_['libraryPackage'] as core.String?,
           serviceClassNames: (json_['serviceClassNames']
                   as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3605,17 +3625,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3633,17 +3653,17 @@ class ListServiceConfigsResponse {
   /// The list of service configuration resources.
   core.List<Service>? serviceConfigs;
 
-  ListServiceConfigsResponse({
-    this.nextPageToken,
-    this.serviceConfigs,
-  });
+  ListServiceConfigsResponse({this.nextPageToken, this.serviceConfigs});
 
   ListServiceConfigsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           serviceConfigs: (json_['serviceConfigs'] as core.List?)
-              ?.map((value) => Service.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Service.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3661,17 +3681,17 @@ class ListServiceRolloutsResponse {
   /// The list of rollout resources.
   core.List<Rollout>? rollouts;
 
-  ListServiceRolloutsResponse({
-    this.nextPageToken,
-    this.rollouts,
-  });
+  ListServiceRolloutsResponse({this.nextPageToken, this.rollouts});
 
   ListServiceRolloutsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           rollouts: (json_['rollouts'] as core.List?)
-              ?.map((value) => Rollout.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Rollout.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3689,17 +3709,17 @@ class ListServicesResponse {
   /// The returned services will only have the name field set.
   core.List<ManagedService>? services;
 
-  ListServicesResponse({
-    this.nextPageToken,
-    this.services,
-  });
+  ListServicesResponse({this.nextPageToken, this.services});
 
   ListServicesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           services: (json_['services'] as core.List?)
-              ?.map((value) => ManagedService.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ManagedService.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3740,20 +3760,18 @@ class LogDescriptor {
   /// \[/_-.\].
   core.String? name;
 
-  LogDescriptor({
-    this.description,
-    this.displayName,
-    this.labels,
-    this.name,
-  });
+  LogDescriptor({this.description, this.displayName, this.labels, this.name});
 
   LogDescriptor.fromJson(core.Map json_)
       : this(
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           labels: (json_['labels'] as core.List?)
-              ?.map((value) => LabelDescriptor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LabelDescriptor.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           name: json_['name'] as core.String?,
         );
@@ -3794,20 +3812,23 @@ class Logging {
   /// producer destination.
   core.List<LoggingDestination>? producerDestinations;
 
-  Logging({
-    this.consumerDestinations,
-    this.producerDestinations,
-  });
+  Logging({this.consumerDestinations, this.producerDestinations});
 
   Logging.fromJson(core.Map json_)
       : this(
           consumerDestinations: (json_['consumerDestinations'] as core.List?)
-              ?.map((value) => LoggingDestination.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LoggingDestination.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           producerDestinations: (json_['producerDestinations'] as core.List?)
-              ?.map((value) => LoggingDestination.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LoggingDestination.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3834,10 +3855,7 @@ class LoggingDestination {
   /// The type must be defined in the Service.monitored_resources section.
   core.String? monitoredResource;
 
-  LoggingDestination({
-    this.logs,
-    this.monitoredResource,
-  });
+  LoggingDestination({this.logs, this.monitoredResource});
 
   LoggingDestination.fromJson(core.Map json_)
       : this(
@@ -3919,10 +3937,7 @@ class ManagedService {
   /// for naming requirements.
   core.String? serviceName;
 
-  ManagedService({
-    this.producerProjectId,
-    this.serviceName,
-  });
+  ManagedService({this.producerProjectId, this.serviceName});
 
   ManagedService.fromJson(core.Map json_)
       : this(
@@ -3977,8 +3992,11 @@ class Method {
       : this(
           name: json_['name'] as core.String?,
           options: (json_['options'] as core.List?)
-              ?.map((value) =>
-                  Option.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Option.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           requestStreaming: json_['requestStreaming'] as core.bool?,
           requestTypeUrl: json_['requestTypeUrl'] as core.String?,
@@ -4011,16 +4029,16 @@ class MethodPolicy {
   /// config compiler .
   core.String? selector;
 
-  MethodPolicy({
-    this.requestPolicies,
-    this.selector,
-  });
+  MethodPolicy({this.requestPolicies, this.selector});
 
   MethodPolicy.fromJson(core.Map json_)
       : this(
           requestPolicies: (json_['requestPolicies'] as core.List?)
-              ?.map((value) => FieldPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => FieldPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           selector: json_['selector'] as core.String?,
         );
@@ -4062,11 +4080,7 @@ class MethodSettings {
   /// for CreateFolder...
   core.String? selector;
 
-  MethodSettings({
-    this.autoPopulatedFields,
-    this.longRunning,
-    this.selector,
-  });
+  MethodSettings({this.autoPopulatedFields, this.longRunning, this.selector});
 
   MethodSettings.fromJson(core.Map json_)
       : this(
@@ -4075,7 +4089,8 @@ class MethodSettings {
               .toList(),
           longRunning: json_.containsKey('longRunning')
               ? LongRunning.fromJson(
-                  json_['longRunning'] as core.Map<core.String, core.dynamic>)
+                  json_['longRunning'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           selector: json_['selector'] as core.String?,
         );
@@ -4277,13 +4292,17 @@ class MetricDescriptor {
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           labels: (json_['labels'] as core.List?)
-              ?.map((value) => LabelDescriptor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LabelDescriptor.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           launchStage: json_['launchStage'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? MetricDescriptorMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>)
+                  json_['metadata'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metricKind: json_['metricKind'] as core.String?,
           monitoredResourceTypes:
@@ -4544,8 +4563,11 @@ class MonitoredResourceDescriptor {
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           labels: (json_['labels'] as core.List?)
-              ?.map((value) => LabelDescriptor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LabelDescriptor.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           launchStage: json_['launchStage'] as core.String?,
           name: json_['name'] as core.String?,
@@ -4606,20 +4628,23 @@ class Monitoring {
   /// in the Monitoring configuration.
   core.List<MonitoringDestination>? producerDestinations;
 
-  Monitoring({
-    this.consumerDestinations,
-    this.producerDestinations,
-  });
+  Monitoring({this.consumerDestinations, this.producerDestinations});
 
   Monitoring.fromJson(core.Map json_)
       : this(
           consumerDestinations: (json_['consumerDestinations'] as core.List?)
-              ?.map((value) => MonitoringDestination.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MonitoringDestination.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           producerDestinations: (json_['producerDestinations'] as core.List?)
-              ?.map((value) => MonitoringDestination.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MonitoringDestination.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -4640,15 +4665,14 @@ class NodeSettings {
   /// Some settings.
   CommonLanguageSettings? common;
 
-  NodeSettings({
-    this.common,
-  });
+  NodeSettings({this.common});
 
   NodeSettings.fromJson(core.Map json_)
       : this(
           common: json_.containsKey('common')
               ? CommonLanguageSettings.fromJson(
-                  json_['common'] as core.Map<core.String, core.dynamic>)
+                  json_['common'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -4717,20 +4741,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -4782,19 +4801,18 @@ class Page {
   /// docset.
   core.List<Page>? subpages;
 
-  Page({
-    this.content,
-    this.name,
-    this.subpages,
-  });
+  Page({this.content, this.name, this.subpages});
 
   Page.fromJson(core.Map json_)
       : this(
           content: json_['content'] as core.String?,
           name: json_['name'] as core.String?,
           subpages: (json_['subpages'] as core.List?)
-              ?.map((value) =>
-                  Page.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Page.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -4810,15 +4828,14 @@ class PhpSettings {
   /// Some settings.
   CommonLanguageSettings? common;
 
-  PhpSettings({
-    this.common,
-  });
+  PhpSettings({this.common});
 
   PhpSettings.fromJson(core.Map json_)
       : this(
           common: json_.containsKey('common')
               ? CommonLanguageSettings.fromJson(
-                  json_['common'] as core.Map<core.String, core.dynamic>)
+                  json_['common'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -4913,22 +4930,23 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -5032,12 +5050,18 @@ class Publishing {
           documentationUri: json_['documentationUri'] as core.String?,
           githubLabel: json_['githubLabel'] as core.String?,
           librarySettings: (json_['librarySettings'] as core.List?)
-              ?.map((value) => ClientLibrarySettings.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ClientLibrarySettings.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           methodSettings: (json_['methodSettings'] as core.List?)
-              ?.map((value) => MethodSettings.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MethodSettings.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           newIssueUri: json_['newIssueUri'] as core.String?,
           organization: json_['organization'] as core.String?,
@@ -5073,20 +5097,20 @@ class PythonSettings {
   /// Experimental features to be included during client library generation.
   ExperimentalFeatures? experimentalFeatures;
 
-  PythonSettings({
-    this.common,
-    this.experimentalFeatures,
-  });
+  PythonSettings({this.common, this.experimentalFeatures});
 
   PythonSettings.fromJson(core.Map json_)
       : this(
           common: json_.containsKey('common')
               ? CommonLanguageSettings.fromJson(
-                  json_['common'] as core.Map<core.String, core.dynamic>)
+                  json_['common'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           experimentalFeatures: json_.containsKey('experimentalFeatures')
-              ? ExperimentalFeatures.fromJson(json_['experimentalFeatures']
-                  as core.Map<core.String, core.dynamic>)
+              ? ExperimentalFeatures.fromJson(
+                  json_['experimentalFeatures']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -5128,20 +5152,23 @@ class Quota {
   /// or more metrics.
   core.List<MetricRule>? metricRules;
 
-  Quota({
-    this.limits,
-    this.metricRules,
-  });
+  Quota({this.limits, this.metricRules});
 
   Quota.fromJson(core.Map json_)
       : this(
           limits: (json_['limits'] as core.List?)
-              ?.map((value) => QuotaLimit.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => QuotaLimit.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           metricRules: (json_['metricRules'] as core.List?)
-              ?.map((value) => MetricRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MetricRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -5231,15 +5258,19 @@ class Rollout {
           createTime: json_['createTime'] as core.String?,
           createdBy: json_['createdBy'] as core.String?,
           deleteServiceStrategy: json_.containsKey('deleteServiceStrategy')
-              ? DeleteServiceStrategy.fromJson(json_['deleteServiceStrategy']
-                  as core.Map<core.String, core.dynamic>)
+              ? DeleteServiceStrategy.fromJson(
+                  json_['deleteServiceStrategy']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           rolloutId: json_['rolloutId'] as core.String?,
           serviceName: json_['serviceName'] as core.String?,
           status: json_['status'] as core.String?,
           trafficPercentStrategy: json_.containsKey('trafficPercentStrategy')
-              ? TrafficPercentStrategy.fromJson(json_['trafficPercentStrategy']
-                  as core.Map<core.String, core.dynamic>)
+              ? TrafficPercentStrategy.fromJson(
+                  json_['trafficPercentStrategy']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -5261,15 +5292,14 @@ class RubySettings {
   /// Some settings.
   CommonLanguageSettings? common;
 
-  RubySettings({
-    this.common,
-  });
+  RubySettings({this.common});
 
   RubySettings.fromJson(core.Map json_)
       : this(
           common: json_.containsKey('common')
               ? CommonLanguageSettings.fromJson(
-                  json_['common'] as core.Map<core.String, core.dynamic>)
+                  json_['common'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -5285,9 +5315,7 @@ class SelectiveGapicGeneration {
   /// on public client surfaces.
   core.List<core.String>? methods;
 
-  SelectiveGapicGeneration({
-    this.methods,
-  });
+  SelectiveGapicGeneration({this.methods});
 
   SelectiveGapicGeneration.fromJson(core.Map json_)
       : this(
@@ -5480,101 +5508,142 @@ class Service {
   Service.fromJson(core.Map json_)
       : this(
           apis: (json_['apis'] as core.List?)
-              ?.map((value) =>
-                  Api.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Api.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           authentication: json_.containsKey('authentication')
-              ? Authentication.fromJson(json_['authentication']
-                  as core.Map<core.String, core.dynamic>)
+              ? Authentication.fromJson(
+                  json_['authentication']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           backend: json_.containsKey('backend')
               ? Backend.fromJson(
-                  json_['backend'] as core.Map<core.String, core.dynamic>)
+                  json_['backend'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           billing: json_.containsKey('billing')
               ? Billing.fromJson(
-                  json_['billing'] as core.Map<core.String, core.dynamic>)
+                  json_['billing'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           configVersion: json_['configVersion'] as core.int?,
           context: json_.containsKey('context')
               ? Context.fromJson(
-                  json_['context'] as core.Map<core.String, core.dynamic>)
+                  json_['context'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           control: json_.containsKey('control')
               ? Control.fromJson(
-                  json_['control'] as core.Map<core.String, core.dynamic>)
+                  json_['control'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           customError: json_.containsKey('customError')
               ? CustomError.fromJson(
-                  json_['customError'] as core.Map<core.String, core.dynamic>)
+                  json_['customError'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           documentation: json_.containsKey('documentation')
               ? Documentation.fromJson(
-                  json_['documentation'] as core.Map<core.String, core.dynamic>)
+                  json_['documentation'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           endpoints: (json_['endpoints'] as core.List?)
-              ?.map((value) => Endpoint.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Endpoint.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           enums: (json_['enums'] as core.List?)
-              ?.map((value) =>
-                  Enum.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Enum.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           http: json_.containsKey('http')
               ? Http.fromJson(
-                  json_['http'] as core.Map<core.String, core.dynamic>)
+                  json_['http'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           id: json_['id'] as core.String?,
           logging: json_.containsKey('logging')
               ? Logging.fromJson(
-                  json_['logging'] as core.Map<core.String, core.dynamic>)
+                  json_['logging'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           logs: (json_['logs'] as core.List?)
-              ?.map((value) => LogDescriptor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LogDescriptor.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           metrics: (json_['metrics'] as core.List?)
-              ?.map((value) => MetricDescriptor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MetricDescriptor.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           monitoredResources: (json_['monitoredResources'] as core.List?)
-              ?.map((value) => MonitoredResourceDescriptor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MonitoredResourceDescriptor.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           monitoring: json_.containsKey('monitoring')
               ? Monitoring.fromJson(
-                  json_['monitoring'] as core.Map<core.String, core.dynamic>)
+                  json_['monitoring'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           producerProjectId: json_['producerProjectId'] as core.String?,
           publishing: json_.containsKey('publishing')
               ? Publishing.fromJson(
-                  json_['publishing'] as core.Map<core.String, core.dynamic>)
+                  json_['publishing'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           quota: json_.containsKey('quota')
               ? Quota.fromJson(
-                  json_['quota'] as core.Map<core.String, core.dynamic>)
+                  json_['quota'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sourceInfo: json_.containsKey('sourceInfo')
               ? SourceInfo.fromJson(
-                  json_['sourceInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['sourceInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           systemParameters: json_.containsKey('systemParameters')
-              ? SystemParameters.fromJson(json_['systemParameters']
-                  as core.Map<core.String, core.dynamic>)
+              ? SystemParameters.fromJson(
+                  json_['systemParameters']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           systemTypes: (json_['systemTypes'] as core.List?)
-              ?.map((value) =>
-                  Type.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Type.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           title: json_['title'] as core.String?,
           types: (json_['types'] as core.List?)
-              ?.map((value) =>
-                  Type.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Type.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           usage: json_.containsKey('usage')
               ? Usage.fromJson(
-                  json_['usage'] as core.Map<core.String, core.dynamic>)
+                  json_['usage'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -5626,16 +5695,14 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -5658,9 +5725,7 @@ class SourceInfo {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object?>>? sourceFiles;
 
-  SourceInfo({
-    this.sourceFiles,
-  });
+  SourceInfo({this.sourceFiles});
 
   SourceInfo.fromJson(core.Map json_)
       : this(
@@ -5697,16 +5762,14 @@ class SubmitConfigSourceRequest {
   /// Optional.
   core.bool? validateOnly;
 
-  SubmitConfigSourceRequest({
-    this.configSource,
-    this.validateOnly,
-  });
+  SubmitConfigSourceRequest({this.configSource, this.validateOnly});
 
   SubmitConfigSourceRequest.fromJson(core.Map json_)
       : this(
           configSource: json_.containsKey('configSource')
               ? ConfigSource.fromJson(
-                  json_['configSource'] as core.Map<core.String, core.dynamic>)
+                  json_['configSource'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           validateOnly: json_['validateOnly'] as core.bool?,
         );
@@ -5737,11 +5800,7 @@ class SystemParameter {
   /// It is case sensitive.
   core.String? urlQueryParameter;
 
-  SystemParameter({
-    this.httpHeader,
-    this.name,
-    this.urlQueryParameter,
-  });
+  SystemParameter({this.httpHeader, this.name, this.urlQueryParameter});
 
   SystemParameter.fromJson(core.Map json_)
       : this(
@@ -5774,16 +5833,16 @@ class SystemParameterRule {
   /// details.
   core.String? selector;
 
-  SystemParameterRule({
-    this.parameters,
-    this.selector,
-  });
+  SystemParameterRule({this.parameters, this.selector});
 
   SystemParameterRule.fromJson(core.Map json_)
       : this(
           parameters: (json_['parameters'] as core.List?)
-              ?.map((value) => SystemParameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => SystemParameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           selector: json_['selector'] as core.String?,
         );
@@ -5815,15 +5874,16 @@ class SystemParameters {
   /// "last one wins" order.
   core.List<SystemParameterRule>? rules;
 
-  SystemParameters({
-    this.rules,
-  });
+  SystemParameters({this.rules});
 
   SystemParameters.fromJson(core.Map json_)
       : this(
           rules: (json_['rules'] as core.List?)
-              ?.map((value) => SystemParameterRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => SystemParameterRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -5856,19 +5916,14 @@ class TrafficPercentStrategy {
   /// must be greater than 0.0 and the sum must equal to 100.0.
   core.Map<core.String, core.double>? percentages;
 
-  TrafficPercentStrategy({
-    this.percentages,
-  });
+  TrafficPercentStrategy({this.percentages});
 
   TrafficPercentStrategy.fromJson(core.Map json_)
       : this(
           percentages:
               (json_['percentages'] as core.Map<core.String, core.dynamic>?)
                   ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              (value as core.num).toDouble(),
-            ),
+            (key, value) => core.MapEntry(key, (value as core.num).toDouble()),
           ),
         );
 
@@ -5918,20 +5973,27 @@ class Type {
       : this(
           edition: json_['edition'] as core.String?,
           fields: (json_['fields'] as core.List?)
-              ?.map((value) =>
-                  Field.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Field.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           name: json_['name'] as core.String?,
           oneofs: (json_['oneofs'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           options: (json_['options'] as core.List?)
-              ?.map((value) =>
-                  Option.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Option.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           sourceContext: json_.containsKey('sourceContext')
               ? SourceContext.fromJson(
-                  json_['sourceContext'] as core.Map<core.String, core.dynamic>)
+                  json_['sourceContext'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           syntax: json_['syntax'] as core.String?,
         );
@@ -5975,11 +6037,7 @@ class Usage {
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<UsageRule>? rules;
 
-  Usage({
-    this.producerNotificationChannel,
-    this.requirements,
-    this.rules,
-  });
+  Usage({this.producerNotificationChannel, this.requirements, this.rules});
 
   Usage.fromJson(core.Map json_)
       : this(
@@ -5989,8 +6047,11 @@ class Usage {
               ?.map((value) => value as core.String)
               .toList(),
           rules: (json_['rules'] as core.List?)
-              ?.map((value) => UsageRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => UsageRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 

@@ -83,11 +83,16 @@ class CloudDataplexApi {
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  CloudDataplexApi(http.Client client,
-      {core.String rootUrl = 'https://dataplex.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudDataplexApi(
+    http.Client client, {
+    core.String rootUrl = 'https://dataplex.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class OrganizationsResource {
@@ -172,7 +177,8 @@ class OrganizationsLocationsEncryptionConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -220,7 +226,8 @@ class OrganizationsLocationsEncryptionConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -271,7 +278,8 @@ class OrganizationsLocationsEncryptionConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -353,10 +361,7 @@ class OrganizationsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -408,7 +413,8 @@ class OrganizationsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -459,7 +465,8 @@ class OrganizationsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -535,7 +542,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudLocationLocation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -587,7 +595,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudLocationListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Looks up a single Entry by name using the permission on the source
@@ -659,7 +668,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Entry.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Searches for Entries matching the given query and scope.
@@ -726,7 +736,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1SearchEntriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -785,7 +796,8 @@ class ProjectsLocationsAspectTypesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an AspectType.
@@ -829,7 +841,8 @@ class ProjectsLocationsAspectTypesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets an AspectType.
@@ -867,7 +880,8 @@ class ProjectsLocationsAspectTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1AspectType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -925,7 +939,8 @@ class ProjectsLocationsAspectTypesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists AspectType resources in a project and location.
@@ -989,7 +1004,8 @@ class ProjectsLocationsAspectTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListAspectTypesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an AspectType.
@@ -1042,7 +1058,8 @@ class ProjectsLocationsAspectTypesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1090,7 +1107,8 @@ class ProjectsLocationsAspectTypesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1141,7 +1159,8 @@ class ProjectsLocationsAspectTypesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1204,7 +1223,8 @@ class ProjectsLocationsDataAttributeBindingsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a DataAttributeBinding resource.
@@ -1252,7 +1272,8 @@ class ProjectsLocationsDataAttributeBindingsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a DataAttributeBinding resource.
@@ -1290,7 +1311,8 @@ class ProjectsLocationsDataAttributeBindingsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1DataAttributeBinding.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -1348,7 +1370,8 @@ class ProjectsLocationsDataAttributeBindingsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists DataAttributeBinding resources in a project and location.
@@ -1412,7 +1435,8 @@ class ProjectsLocationsDataAttributeBindingsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListDataAttributeBindingsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a DataAttributeBinding resource.
@@ -1465,7 +1489,8 @@ class ProjectsLocationsDataAttributeBindingsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1513,7 +1538,8 @@ class ProjectsLocationsDataAttributeBindingsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1564,7 +1590,8 @@ class ProjectsLocationsDataAttributeBindingsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1629,7 +1656,8 @@ class ProjectsLocationsDataScansResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a DataScan resource.
@@ -1675,7 +1703,8 @@ class ProjectsLocationsDataScansResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Generates recommended data quality rules based on the results of a data
@@ -1724,7 +1753,8 @@ class ProjectsLocationsDataScansResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1GenerateDataQualityRulesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a DataScan resource.
@@ -1772,7 +1802,8 @@ class ProjectsLocationsDataScansResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1DataScan.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -1830,7 +1861,8 @@ class ProjectsLocationsDataScansResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists DataScans.
@@ -1891,7 +1923,8 @@ class ProjectsLocationsDataScansResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListDataScansResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a DataScan resource.
@@ -1946,7 +1979,8 @@ class ProjectsLocationsDataScansResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Runs an on-demand execution of a DataScan
@@ -1991,7 +2025,8 @@ class ProjectsLocationsDataScansResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1RunDataScanResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2039,7 +2074,8 @@ class ProjectsLocationsDataScansResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -2090,7 +2126,8 @@ class ProjectsLocationsDataScansResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2146,7 +2183,8 @@ class ProjectsLocationsDataScansJobsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1GenerateDataQualityRulesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a DataScanJob resource.
@@ -2196,7 +2234,8 @@ class ProjectsLocationsDataScansJobsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1DataScanJob.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists DataScanJobs under the given DataScan.
@@ -2262,7 +2301,8 @@ class ProjectsLocationsDataScansJobsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListDataScanJobsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2327,7 +2367,8 @@ class ProjectsLocationsDataTaxonomiesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a DataTaxonomy resource.
@@ -2373,7 +2414,8 @@ class ProjectsLocationsDataTaxonomiesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a DataTaxonomy resource.
@@ -2411,7 +2453,8 @@ class ProjectsLocationsDataTaxonomiesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1DataTaxonomy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -2469,7 +2512,8 @@ class ProjectsLocationsDataTaxonomiesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists DataTaxonomy resources in a project and location.
@@ -2529,7 +2573,8 @@ class ProjectsLocationsDataTaxonomiesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListDataTaxonomiesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a DataTaxonomy resource.
@@ -2582,7 +2627,8 @@ class ProjectsLocationsDataTaxonomiesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2630,7 +2676,8 @@ class ProjectsLocationsDataTaxonomiesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -2681,7 +2728,8 @@ class ProjectsLocationsDataTaxonomiesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2743,7 +2791,8 @@ class ProjectsLocationsDataTaxonomiesAttributesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a Data Attribute resource.
@@ -2787,7 +2836,8 @@ class ProjectsLocationsDataTaxonomiesAttributesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a Data Attribute resource.
@@ -2825,7 +2875,8 @@ class ProjectsLocationsDataTaxonomiesAttributesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1DataAttribute.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -2883,7 +2934,8 @@ class ProjectsLocationsDataTaxonomiesAttributesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists Data Attribute resources in a DataTaxonomy.
@@ -2943,7 +2995,8 @@ class ProjectsLocationsDataTaxonomiesAttributesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListDataAttributesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a DataAttribute resource.
@@ -2996,7 +3049,8 @@ class ProjectsLocationsDataTaxonomiesAttributesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -3044,7 +3098,8 @@ class ProjectsLocationsDataTaxonomiesAttributesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -3095,7 +3150,8 @@ class ProjectsLocationsDataTaxonomiesAttributesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3157,7 +3213,8 @@ class ProjectsLocationsEntryGroupsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an EntryGroup.
@@ -3201,7 +3258,8 @@ class ProjectsLocationsEntryGroupsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets an EntryGroup.
@@ -3239,7 +3297,8 @@ class ProjectsLocationsEntryGroupsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1EntryGroup.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -3297,7 +3356,8 @@ class ProjectsLocationsEntryGroupsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists EntryGroup resources in a project and location.
@@ -3357,7 +3417,8 @@ class ProjectsLocationsEntryGroupsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListEntryGroupsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an EntryGroup.
@@ -3410,7 +3471,8 @@ class ProjectsLocationsEntryGroupsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -3458,7 +3520,8 @@ class ProjectsLocationsEntryGroupsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -3509,7 +3572,8 @@ class ProjectsLocationsEntryGroupsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3575,7 +3639,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Entry.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an Entry.
@@ -3613,7 +3678,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Entry.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets an Entry.Caution: The BigQuery metadata that is stored in Dataplex
@@ -3680,7 +3746,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Entry.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists Entries within an EntryGroup.
@@ -3745,7 +3812,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListEntriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an Entry.
@@ -3820,7 +3888,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Entry.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3885,7 +3954,8 @@ class ProjectsLocationsEntryLinkTypesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -3933,7 +4003,8 @@ class ProjectsLocationsEntryLinkTypesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -3984,7 +4055,8 @@ class ProjectsLocationsEntryLinkTypesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4043,7 +4115,8 @@ class ProjectsLocationsEntryTypesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an EntryType.
@@ -4087,7 +4160,8 @@ class ProjectsLocationsEntryTypesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets an EntryType.
@@ -4125,7 +4199,8 @@ class ProjectsLocationsEntryTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1EntryType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -4183,7 +4258,8 @@ class ProjectsLocationsEntryTypesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists EntryType resources in a project and location.
@@ -4247,7 +4323,8 @@ class ProjectsLocationsEntryTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListEntryTypesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an EntryType.
@@ -4300,7 +4377,8 @@ class ProjectsLocationsEntryTypesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -4348,7 +4426,8 @@ class ProjectsLocationsEntryTypesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -4399,7 +4478,8 @@ class ProjectsLocationsEntryTypesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4469,7 +4549,8 @@ class ProjectsLocationsGlossariesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -4517,7 +4598,8 @@ class ProjectsLocationsGlossariesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -4568,7 +4650,8 @@ class ProjectsLocationsGlossariesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4633,7 +4716,8 @@ class ProjectsLocationsGlossariesCategoriesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -4681,7 +4765,8 @@ class ProjectsLocationsGlossariesCategoriesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -4732,7 +4817,8 @@ class ProjectsLocationsGlossariesCategoriesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4797,7 +4883,8 @@ class ProjectsLocationsGlossariesTermsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -4845,7 +4932,8 @@ class ProjectsLocationsGlossariesTermsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -4896,7 +4984,8 @@ class ProjectsLocationsGlossariesTermsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4961,7 +5050,8 @@ class ProjectsLocationsGovernanceRulesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -5009,7 +5099,8 @@ class ProjectsLocationsGovernanceRulesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -5060,7 +5151,8 @@ class ProjectsLocationsGovernanceRulesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5137,7 +5229,8 @@ class ProjectsLocationsLakesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a lake resource.
@@ -5177,7 +5270,8 @@ class ProjectsLocationsLakesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a lake resource.
@@ -5215,7 +5309,8 @@ class ProjectsLocationsLakesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Lake.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -5273,7 +5368,8 @@ class ProjectsLocationsLakesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists lake resources in a project and location.
@@ -5333,7 +5429,8 @@ class ProjectsLocationsLakesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListLakesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a lake resource.
@@ -5385,7 +5482,8 @@ class ProjectsLocationsLakesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -5433,7 +5531,8 @@ class ProjectsLocationsLakesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -5484,7 +5583,8 @@ class ProjectsLocationsLakesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5543,7 +5643,8 @@ class ProjectsLocationsLakesActionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListActionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5598,7 +5699,8 @@ class ProjectsLocationsLakesContentResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Content.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete a content.
@@ -5620,10 +5722,7 @@ class ProjectsLocationsLakesContentResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5682,7 +5781,8 @@ class ProjectsLocationsLakesContentResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Content.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a contentitem resource.
@@ -5742,7 +5842,8 @@ class ProjectsLocationsLakesContentResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List content.
@@ -5801,7 +5902,8 @@ class ProjectsLocationsLakesContentResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListContentResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update a content.
@@ -5856,7 +5958,8 @@ class ProjectsLocationsLakesContentResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Content.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified contentitem resource.
@@ -5904,7 +6007,8 @@ class ProjectsLocationsLakesContentResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the caller's permissions on a resource.
@@ -5956,7 +6060,8 @@ class ProjectsLocationsLakesContentResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6011,7 +6116,8 @@ class ProjectsLocationsLakesContentitemsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Content.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete a content.
@@ -6033,10 +6139,7 @@ class ProjectsLocationsLakesContentitemsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6095,7 +6198,8 @@ class ProjectsLocationsLakesContentitemsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Content.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a contentitem resource.
@@ -6155,7 +6259,8 @@ class ProjectsLocationsLakesContentitemsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List content.
@@ -6214,7 +6319,8 @@ class ProjectsLocationsLakesContentitemsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListContentResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update a content.
@@ -6269,7 +6375,8 @@ class ProjectsLocationsLakesContentitemsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Content.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified contentitem resource.
@@ -6317,7 +6424,8 @@ class ProjectsLocationsLakesContentitemsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the caller's permissions on a resource.
@@ -6369,7 +6477,8 @@ class ProjectsLocationsLakesContentitemsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6434,7 +6543,8 @@ class ProjectsLocationsLakesEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete the environment resource.
@@ -6475,7 +6585,8 @@ class ProjectsLocationsLakesEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get environment resource.
@@ -6513,7 +6624,8 @@ class ProjectsLocationsLakesEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Environment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -6571,7 +6683,8 @@ class ProjectsLocationsLakesEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists environments under the given lake.
@@ -6631,7 +6744,8 @@ class ProjectsLocationsLakesEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListEnvironmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update the environment resource.
@@ -6684,7 +6798,8 @@ class ProjectsLocationsLakesEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -6732,7 +6847,8 @@ class ProjectsLocationsLakesEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -6783,7 +6899,8 @@ class ProjectsLocationsLakesEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6791,8 +6908,8 @@ class ProjectsLocationsLakesEnvironmentsSessionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsLakesEnvironmentsSessionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Lists session resources in an environment.
   ///
@@ -6853,7 +6970,8 @@ class ProjectsLocationsLakesEnvironmentsSessionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListSessionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6915,7 +7033,8 @@ class ProjectsLocationsLakesTasksResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete the task resource.
@@ -6953,7 +7072,8 @@ class ProjectsLocationsLakesTasksResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get task resource.
@@ -6991,7 +7111,8 @@ class ProjectsLocationsLakesTasksResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Task.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -7049,7 +7170,8 @@ class ProjectsLocationsLakesTasksResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists tasks under the given lake.
@@ -7109,7 +7231,8 @@ class ProjectsLocationsLakesTasksResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListTasksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update the task resource.
@@ -7162,7 +7285,8 @@ class ProjectsLocationsLakesTasksResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Run an on demand execution of a Task.
@@ -7205,7 +7329,8 @@ class ProjectsLocationsLakesTasksResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1RunTaskResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -7253,7 +7378,8 @@ class ProjectsLocationsLakesTasksResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -7304,7 +7430,8 @@ class ProjectsLocationsLakesTasksResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -7391,7 +7518,8 @@ class ProjectsLocationsLakesTasksJobsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Job.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists Jobs under the given task.
@@ -7443,7 +7571,8 @@ class ProjectsLocationsLakesTasksJobsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListJobsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -7515,7 +7644,8 @@ class ProjectsLocationsLakesZonesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a zone resource.
@@ -7555,7 +7685,8 @@ class ProjectsLocationsLakesZonesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a zone resource.
@@ -7593,7 +7724,8 @@ class ProjectsLocationsLakesZonesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Zone.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -7651,7 +7783,8 @@ class ProjectsLocationsLakesZonesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists zone resources in a lake.
@@ -7711,7 +7844,8 @@ class ProjectsLocationsLakesZonesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListZonesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a zone resource.
@@ -7763,7 +7897,8 @@ class ProjectsLocationsLakesZonesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -7811,7 +7946,8 @@ class ProjectsLocationsLakesZonesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -7862,7 +7998,8 @@ class ProjectsLocationsLakesZonesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -7921,7 +8058,8 @@ class ProjectsLocationsLakesZonesActionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListActionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -7987,7 +8125,8 @@ class ProjectsLocationsLakesZonesAssetsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an asset resource.
@@ -8028,7 +8167,8 @@ class ProjectsLocationsLakesZonesAssetsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves an asset resource.
@@ -8066,7 +8206,8 @@ class ProjectsLocationsLakesZonesAssetsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Asset.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -8124,7 +8265,8 @@ class ProjectsLocationsLakesZonesAssetsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists asset resources in a zone.
@@ -8184,7 +8326,8 @@ class ProjectsLocationsLakesZonesAssetsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListAssetsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an asset resource.
@@ -8237,7 +8380,8 @@ class ProjectsLocationsLakesZonesAssetsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -8285,7 +8429,8 @@ class ProjectsLocationsLakesZonesAssetsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -8336,7 +8481,8 @@ class ProjectsLocationsLakesZonesAssetsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -8395,7 +8541,8 @@ class ProjectsLocationsLakesZonesAssetsActionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListActionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -8453,7 +8600,8 @@ class ProjectsLocationsLakesZonesEntitiesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Entity.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete a metadata entity.
@@ -8544,7 +8692,8 @@ class ProjectsLocationsLakesZonesEntitiesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Entity.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List metadata entities in a zone.
@@ -8614,7 +8763,8 @@ class ProjectsLocationsLakesZonesEntitiesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListEntitiesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update a metadata entity.
@@ -8664,7 +8814,8 @@ class ProjectsLocationsLakesZonesEntitiesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Entity.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -8672,8 +8823,8 @@ class ProjectsLocationsLakesZonesEntitiesPartitionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsLakesZonesEntitiesPartitionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Create a metadata partition.
   ///
@@ -8720,7 +8871,8 @@ class ProjectsLocationsLakesZonesEntitiesPartitionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Partition.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete a metadata partition.
@@ -8803,7 +8955,8 @@ class ProjectsLocationsLakesZonesEntitiesPartitionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Partition.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List metadata partitions of an entity.
@@ -8868,7 +9021,8 @@ class ProjectsLocationsLakesZonesEntitiesPartitionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListPartitionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -8977,7 +9131,8 @@ class ProjectsLocationsMetadataJobsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a metadata job.
@@ -9015,7 +9170,8 @@ class ProjectsLocationsMetadataJobsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1MetadataJob.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists metadata jobs.
@@ -9076,7 +9232,8 @@ class ProjectsLocationsMetadataJobsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListMetadataJobsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -9158,10 +9315,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9213,7 +9367,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -9263,7 +9418,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -9383,44 +9539,52 @@ class GoogleCloudDataplexV1Action {
                   .containsKey('failedSecurityPolicyApply')
               ? GoogleCloudDataplexV1ActionFailedSecurityPolicyApply.fromJson(
                   json_['failedSecurityPolicyApply']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           incompatibleDataSchema: json_.containsKey('incompatibleDataSchema')
               ? GoogleCloudDataplexV1ActionIncompatibleDataSchema.fromJson(
                   json_['incompatibleDataSchema']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           invalidDataFormat: json_.containsKey('invalidDataFormat')
               ? GoogleCloudDataplexV1ActionInvalidDataFormat.fromJson(
                   json_['invalidDataFormat']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           invalidDataOrganization: json_.containsKey('invalidDataOrganization')
               ? GoogleCloudDataplexV1ActionInvalidDataOrganization.fromJson(
                   json_['invalidDataOrganization']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           invalidDataPartition: json_.containsKey('invalidDataPartition')
               ? GoogleCloudDataplexV1ActionInvalidDataPartition.fromJson(
                   json_['invalidDataPartition']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           issue: json_['issue'] as core.String?,
           lake: json_['lake'] as core.String?,
           missingData: json_.containsKey('missingData')
               ? GoogleCloudDataplexV1ActionMissingData.fromJson(
-                  json_['missingData'] as core.Map<core.String, core.dynamic>)
+                  json_['missingData'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           missingResource: json_.containsKey('missingResource')
               ? GoogleCloudDataplexV1ActionMissingResource.fromJson(
                   json_['missingResource']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           unauthorizedResource: json_.containsKey('unauthorizedResource')
               ? GoogleCloudDataplexV1ActionUnauthorizedResource.fromJson(
                   json_['unauthorizedResource']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           zone: json_['zone'] as core.String?,
         );
@@ -9462,14 +9626,10 @@ class GoogleCloudDataplexV1ActionFailedSecurityPolicyApply {
   /// Populated for a lake or zone resource only.
   core.String? asset;
 
-  GoogleCloudDataplexV1ActionFailedSecurityPolicyApply({
-    this.asset,
-  });
+  GoogleCloudDataplexV1ActionFailedSecurityPolicyApply({this.asset});
 
   GoogleCloudDataplexV1ActionFailedSecurityPolicyApply.fromJson(core.Map json_)
-      : this(
-          asset: json_['asset'] as core.String?,
-        );
+      : this(asset: json_['asset'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (asset != null) 'asset': asset!,
@@ -9581,14 +9741,10 @@ class GoogleCloudDataplexV1ActionInvalidDataPartition {
   /// - "HIVE_STYLE_KEYS" : Hive style partition definition (curated zone only).
   core.String? expectedStructure;
 
-  GoogleCloudDataplexV1ActionInvalidDataPartition({
-    this.expectedStructure,
-  });
+  GoogleCloudDataplexV1ActionInvalidDataPartition({this.expectedStructure});
 
   GoogleCloudDataplexV1ActionInvalidDataPartition.fromJson(core.Map json_)
-      : this(
-          expectedStructure: json_['expectedStructure'] as core.String?,
-        );
+      : this(expectedStructure: json_['expectedStructure'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expectedStructure != null) 'expectedStructure': expectedStructure!,
@@ -9656,7 +9812,8 @@ class GoogleCloudDataplexV1Aspect {
       : this(
           aspectSource: json_.containsKey('aspectSource')
               ? GoogleCloudDataplexV1AspectSource.fromJson(
-                  json_['aspectSource'] as core.Map<core.String, core.dynamic>)
+                  json_['aspectSource'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           aspectType: json_['aspectType'] as core.String?,
           createTime: json_['createTime'] as core.String?,
@@ -9804,7 +9961,8 @@ class GoogleCloudDataplexV1AspectType {
       : this(
           authorization: json_.containsKey('authorization')
               ? GoogleCloudDataplexV1AspectTypeAuthorization.fromJson(
-                  json_['authorization'] as core.Map<core.String, core.dynamic>)
+                  json_['authorization'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
@@ -9812,15 +9970,13 @@ class GoogleCloudDataplexV1AspectType {
           etag: json_['etag'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           metadataTemplate: json_.containsKey('metadataTemplate')
               ? GoogleCloudDataplexV1AspectTypeMetadataTemplate.fromJson(
                   json_['metadataTemplate']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           transferStatus: json_['transferStatus'] as core.String?,
@@ -9852,9 +10008,7 @@ class GoogleCloudDataplexV1AspectTypeAuthorization {
   /// Immutable.
   core.String? alternateUsePermission;
 
-  GoogleCloudDataplexV1AspectTypeAuthorization({
-    this.alternateUsePermission,
-  });
+  GoogleCloudDataplexV1AspectTypeAuthorization({this.alternateUsePermission});
 
   GoogleCloudDataplexV1AspectTypeAuthorization.fromJson(core.Map json_)
       : this(
@@ -9978,33 +10132,44 @@ class GoogleCloudDataplexV1AspectTypeMetadataTemplate {
       : this(
           annotations: json_.containsKey('annotations')
               ? GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations
-                  .fromJson(json_['annotations']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['annotations'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           arrayItems: json_.containsKey('arrayItems')
               ? GoogleCloudDataplexV1AspectTypeMetadataTemplate.fromJson(
-                  json_['arrayItems'] as core.Map<core.String, core.dynamic>)
+                  json_['arrayItems'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           constraints: json_.containsKey('constraints')
               ? GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints
-                  .fromJson(json_['constraints']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['constraints'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           enumValues: (json_['enumValues'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           index: json_['index'] as core.int?,
           mapItems: json_.containsKey('mapItems')
               ? GoogleCloudDataplexV1AspectTypeMetadataTemplate.fromJson(
-                  json_['mapItems'] as core.Map<core.String, core.dynamic>)
+                  json_['mapItems'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           recordFields: (json_['recordFields'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDataplexV1AspectTypeMetadataTemplate.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDataplexV1AspectTypeMetadataTemplate.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           type: json_['type'] as core.String?,
           typeId: json_['typeId'] as core.String?,
@@ -10079,8 +10244,8 @@ class GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations {
   });
 
   GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           deprecated: json_['deprecated'] as core.String?,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
@@ -10108,15 +10273,11 @@ class GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints {
   /// Optional.
   core.bool? required;
 
-  GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints({
-    this.required,
-  });
+  GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints({this.required});
 
   GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints.fromJson(
-      core.Map json_)
-      : this(
-          required: json_['required'] as core.bool?,
-        );
+    core.Map json_,
+  ) : this(required: json_['required'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (required != null) 'required': required!,
@@ -10151,8 +10312,8 @@ class GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue {
   });
 
   GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           deprecated: json_['deprecated'] as core.String?,
           index: json_['index'] as core.int?,
           name: json_['name'] as core.String?,
@@ -10270,35 +10431,37 @@ class GoogleCloudDataplexV1Asset {
           description: json_['description'] as core.String?,
           discoverySpec: json_.containsKey('discoverySpec')
               ? GoogleCloudDataplexV1AssetDiscoverySpec.fromJson(
-                  json_['discoverySpec'] as core.Map<core.String, core.dynamic>)
+                  json_['discoverySpec'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           discoveryStatus: json_.containsKey('discoveryStatus')
               ? GoogleCloudDataplexV1AssetDiscoveryStatus.fromJson(
                   json_['discoveryStatus']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           displayName: json_['displayName'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           resourceSpec: json_.containsKey('resourceSpec')
               ? GoogleCloudDataplexV1AssetResourceSpec.fromJson(
-                  json_['resourceSpec'] as core.Map<core.String, core.dynamic>)
+                  json_['resourceSpec'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           resourceStatus: json_.containsKey('resourceStatus')
               ? GoogleCloudDataplexV1AssetResourceStatus.fromJson(
                   json_['resourceStatus']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           securityStatus: json_.containsKey('securityStatus')
               ? GoogleCloudDataplexV1AssetSecurityStatus.fromJson(
                   json_['securityStatus']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           state: json_['state'] as core.String?,
           uid: json_['uid'] as core.String?,
@@ -10386,7 +10549,8 @@ class GoogleCloudDataplexV1AssetDiscoverySpec {
       : this(
           csvOptions: json_.containsKey('csvOptions')
               ? GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions.fromJson(
-                  json_['csvOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['csvOptions'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           enabled: json_['enabled'] as core.bool?,
           excludePatterns: (json_['excludePatterns'] as core.List?)
@@ -10397,7 +10561,8 @@ class GoogleCloudDataplexV1AssetDiscoverySpec {
               .toList(),
           jsonOptions: json_.containsKey('jsonOptions')
               ? GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions.fromJson(
-                  json_['jsonOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['jsonOptions'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           schedule: json_['schedule'] as core.String?,
         );
@@ -10464,7 +10629,8 @@ class GoogleCloudDataplexV1AssetDiscoveryStatus {
           state: json_['state'] as core.String?,
           stats: json_.containsKey('stats')
               ? GoogleCloudDataplexV1AssetDiscoveryStatusStats.fromJson(
-                  json_['stats'] as core.Map<core.String, core.dynamic>)
+                  json_['stats'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -10770,20 +10936,19 @@ class GoogleCloudDataplexV1Content {
           description: json_['description'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           notebook: json_.containsKey('notebook')
               ? GoogleCloudDataplexV1ContentNotebook.fromJson(
-                  json_['notebook'] as core.Map<core.String, core.dynamic>)
+                  json_['notebook'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           path: json_['path'] as core.String?,
           sqlScript: json_.containsKey('sqlScript')
               ? GoogleCloudDataplexV1ContentSqlScript.fromJson(
-                  json_['sqlScript'] as core.Map<core.String, core.dynamic>)
+                  json_['sqlScript'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -10813,14 +10978,10 @@ class GoogleCloudDataplexV1ContentNotebook {
   /// - "PYTHON3" : Python 3 Kernel.
   core.String? kernelType;
 
-  GoogleCloudDataplexV1ContentNotebook({
-    this.kernelType,
-  });
+  GoogleCloudDataplexV1ContentNotebook({this.kernelType});
 
   GoogleCloudDataplexV1ContentNotebook.fromJson(core.Map json_)
-      : this(
-          kernelType: json_['kernelType'] as core.String?,
-        );
+      : this(kernelType: json_['kernelType'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kernelType != null) 'kernelType': kernelType!,
@@ -10837,14 +10998,10 @@ class GoogleCloudDataplexV1ContentSqlScript {
   /// - "SPARK" : Spark SQL Query.
   core.String? engine;
 
-  GoogleCloudDataplexV1ContentSqlScript({
-    this.engine,
-  });
+  GoogleCloudDataplexV1ContentSqlScript({this.engine});
 
   GoogleCloudDataplexV1ContentSqlScript.fromJson(core.Map json_)
-      : this(
-          engine: json_['engine'] as core.String?,
-        );
+      : this(engine: json_['engine'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (engine != null) 'engine': engine!,
@@ -10866,9 +11023,7 @@ class GoogleCloudDataplexV1DataAccessSpec {
   /// Optional.
   core.List<core.String>? readers;
 
-  GoogleCloudDataplexV1DataAccessSpec({
-    this.readers,
-  });
+  GoogleCloudDataplexV1DataAccessSpec({this.readers});
 
   GoogleCloudDataplexV1DataAccessSpec.fromJson(core.Map json_)
       : this(
@@ -10981,24 +11136,23 @@ class GoogleCloudDataplexV1DataAttribute {
           dataAccessSpec: json_.containsKey('dataAccessSpec')
               ? GoogleCloudDataplexV1DataAccessSpec.fromJson(
                   json_['dataAccessSpec']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           etag: json_['etag'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           parentId: json_['parentId'] as core.String?,
           resourceAccessSpec: json_.containsKey('resourceAccessSpec')
               ? GoogleCloudDataplexV1ResourceAccessSpec.fromJson(
                   json_['resourceAccessSpec']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -11121,16 +11275,16 @@ class GoogleCloudDataplexV1DataAttributeBinding {
           etag: json_['etag'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           paths: (json_['paths'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDataplexV1DataAttributeBindingPath.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDataplexV1DataAttributeBindingPath.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           resource: json_['resource'] as core.String?,
           uid: json_['uid'] as core.String?,
@@ -11172,10 +11326,7 @@ class GoogleCloudDataplexV1DataAttributeBindingPath {
   /// Required.
   core.String? name;
 
-  GoogleCloudDataplexV1DataAttributeBindingPath({
-    this.attributes,
-    this.name,
-  });
+  GoogleCloudDataplexV1DataAttributeBindingPath({this.attributes, this.name});
 
   GoogleCloudDataplexV1DataAttributeBindingPath.fromJson(core.Map json_)
       : this(
@@ -11199,16 +11350,16 @@ class GoogleCloudDataplexV1DataDiscoveryResult {
   GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing?
       bigqueryPublishing;
 
-  GoogleCloudDataplexV1DataDiscoveryResult({
-    this.bigqueryPublishing,
-  });
+  GoogleCloudDataplexV1DataDiscoveryResult({this.bigqueryPublishing});
 
   GoogleCloudDataplexV1DataDiscoveryResult.fromJson(core.Map json_)
       : this(
           bigqueryPublishing: json_.containsKey('bigqueryPublishing')
               ? GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing
-                  .fromJson(json_['bigqueryPublishing']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['bigqueryPublishing']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -11228,15 +11379,11 @@ class GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing {
   /// Output only.
   core.String? dataset;
 
-  GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing({
-    this.dataset,
-  });
+  GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing({this.dataset});
 
   GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing.fromJson(
-      core.Map json_)
-      : this(
-          dataset: json_['dataset'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(dataset: json_['dataset'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataset != null) 'dataset': dataset!,
@@ -11264,12 +11411,15 @@ class GoogleCloudDataplexV1DataDiscoverySpec {
           bigqueryPublishingConfig: json_
                   .containsKey('bigqueryPublishingConfig')
               ? GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig
-                  .fromJson(json_['bigqueryPublishingConfig']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['bigqueryPublishingConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           storageConfig: json_.containsKey('storageConfig')
               ? GoogleCloudDataplexV1DataDiscoverySpecStorageConfig.fromJson(
-                  json_['storageConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['storageConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -11310,8 +11460,8 @@ class GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig {
   });
 
   GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           connection: json_['connection'] as core.String?,
           tableType: json_['tableType'] as core.String?,
         );
@@ -11366,8 +11516,9 @@ class GoogleCloudDataplexV1DataDiscoverySpecStorageConfig {
       : this(
           csvOptions: json_.containsKey('csvOptions')
               ? GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions
-                  .fromJson(json_['csvOptions']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['csvOptions'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           excludePatterns: (json_['excludePatterns'] as core.List?)
               ?.map((value) => value as core.String)
@@ -11377,8 +11528,9 @@ class GoogleCloudDataplexV1DataDiscoverySpecStorageConfig {
               .toList(),
           jsonOptions: json_.containsKey('jsonOptions')
               ? GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions
-                  .fromJson(json_['jsonOptions']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['jsonOptions'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -11436,8 +11588,8 @@ class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions {
   });
 
   GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           delimiter: json_['delimiter'] as core.String?,
           encoding: json_['encoding'] as core.String?,
           headerRows: json_['headerRows'] as core.int?,
@@ -11478,8 +11630,8 @@ class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions {
   });
 
   GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           encoding: json_['encoding'] as core.String?,
           typeInferenceDisabled: json_['typeInferenceDisabled'] as core.bool?,
         );
@@ -11521,17 +11673,21 @@ class GoogleCloudDataplexV1DataProfileResult {
       : this(
           postScanActionsResult: json_.containsKey('postScanActionsResult')
               ? GoogleCloudDataplexV1DataProfileResultPostScanActionsResult
-                  .fromJson(json_['postScanActionsResult']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['postScanActionsResult']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           profile: json_.containsKey('profile')
               ? GoogleCloudDataplexV1DataProfileResultProfile.fromJson(
-                  json_['profile'] as core.Map<core.String, core.dynamic>)
+                  json_['profile'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           rowCount: json_['rowCount'] as core.String?,
           scannedData: json_.containsKey('scannedData')
               ? GoogleCloudDataplexV1ScannedData.fromJson(
-                  json_['scannedData'] as core.Map<core.String, core.dynamic>)
+                  json_['scannedData'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -11557,12 +11713,14 @@ class GoogleCloudDataplexV1DataProfileResultPostScanActionsResult {
   });
 
   GoogleCloudDataplexV1DataProfileResultPostScanActionsResult.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           bigqueryExportResult: json_.containsKey('bigqueryExportResult')
               ? GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult
-                  .fromJson(json_['bigqueryExportResult']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['bigqueryExportResult']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -11581,16 +11739,17 @@ class GoogleCloudDataplexV1DataProfileResultProfile {
   /// List of fields with structural and profile information for each field.
   core.List<GoogleCloudDataplexV1DataProfileResultProfileField>? fields;
 
-  GoogleCloudDataplexV1DataProfileResultProfile({
-    this.fields,
-  });
+  GoogleCloudDataplexV1DataProfileResultProfile({this.fields});
 
   GoogleCloudDataplexV1DataProfileResultProfile.fromJson(core.Map json_)
       : this(
           fields: (json_['fields'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDataplexV1DataProfileResultProfileField.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDataplexV1DataProfileResultProfileField.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -11635,7 +11794,8 @@ class GoogleCloudDataplexV1DataProfileResultProfileField {
           profile: json_.containsKey('profile')
               ? GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo
                   .fromJson(
-                      json_['profile'] as core.Map<core.String, core.dynamic>)
+                  json_['profile'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           type: json_['type'] as core.String?,
         );
@@ -11692,29 +11852,37 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo {
   });
 
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           distinctRatio: (json_['distinctRatio'] as core.num?)?.toDouble(),
           doubleProfile: json_.containsKey('doubleProfile')
               ? GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo
-                  .fromJson(json_['doubleProfile']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['doubleProfile'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           integerProfile: json_.containsKey('integerProfile')
               ? GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo
-                  .fromJson(json_['integerProfile']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['integerProfile']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           nullRatio: (json_['nullRatio'] as core.num?)?.toDouble(),
           stringProfile: json_.containsKey('stringProfile')
               ? GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo
-                  .fromJson(json_['stringProfile']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['stringProfile'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           topNValues: (json_['topNValues'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -11773,8 +11941,8 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldIn
   });
 
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           average: (json_['average'] as core.num?)?.toDouble(),
           max: (json_['max'] as core.num?)?.toDouble(),
           min: (json_['min'] as core.num?)?.toDouble(),
@@ -11839,8 +12007,8 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldI
   });
 
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           average: (json_['average'] as core.num?)?.toDouble(),
           max: json_['max'] as core.String?,
           min: json_['min'] as core.String?,
@@ -11878,8 +12046,8 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldIn
   });
 
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           averageLength: (json_['averageLength'] as core.num?)?.toDouble(),
           maxLength: json_['maxLength'] as core.String?,
           minLength: json_['minLength'] as core.String?,
@@ -11911,8 +12079,8 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue {
   });
 
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           count: json_['count'] as core.String?,
           ratio: (json_['ratio'] as core.num?)?.toDouble(),
           value: json_['value'] as core.String?,
@@ -11975,16 +12143,19 @@ class GoogleCloudDataplexV1DataProfileSpec {
       : this(
           excludeFields: json_.containsKey('excludeFields')
               ? GoogleCloudDataplexV1DataProfileSpecSelectedFields.fromJson(
-                  json_['excludeFields'] as core.Map<core.String, core.dynamic>)
+                  json_['excludeFields'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           includeFields: json_.containsKey('includeFields')
               ? GoogleCloudDataplexV1DataProfileSpecSelectedFields.fromJson(
-                  json_['includeFields'] as core.Map<core.String, core.dynamic>)
+                  json_['includeFields'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           postScanActions: json_.containsKey('postScanActions')
               ? GoogleCloudDataplexV1DataProfileSpecPostScanActions.fromJson(
                   json_['postScanActions']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           rowFilter: json_['rowFilter'] as core.String?,
           samplingPercent: (json_['samplingPercent'] as core.num?)?.toDouble(),
@@ -12007,16 +12178,16 @@ class GoogleCloudDataplexV1DataProfileSpecPostScanActions {
   GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport?
       bigqueryExport;
 
-  GoogleCloudDataplexV1DataProfileSpecPostScanActions({
-    this.bigqueryExport,
-  });
+  GoogleCloudDataplexV1DataProfileSpecPostScanActions({this.bigqueryExport});
 
   GoogleCloudDataplexV1DataProfileSpecPostScanActions.fromJson(core.Map json_)
       : this(
           bigqueryExport: json_.containsKey('bigqueryExport')
               ? GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport
-                  .fromJson(json_['bigqueryExport']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['bigqueryExport']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -12040,10 +12211,8 @@ class GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport {
   });
 
   GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport.fromJson(
-      core.Map json_)
-      : this(
-          resultsTable: json_['resultsTable'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(resultsTable: json_['resultsTable'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resultsTable != null) 'resultsTable': resultsTable!,
@@ -12061,9 +12230,7 @@ class GoogleCloudDataplexV1DataProfileSpecSelectedFields {
   /// Optional.
   core.List<core.String>? fieldNames;
 
-  GoogleCloudDataplexV1DataProfileSpecSelectedFields({
-    this.fieldNames,
-  });
+  GoogleCloudDataplexV1DataProfileSpecSelectedFields({this.fieldNames});
 
   GoogleCloudDataplexV1DataProfileSpecSelectedFields.fromJson(core.Map json_)
       : this(
@@ -12092,10 +12259,7 @@ class GoogleCloudDataplexV1DataQualityColumnResult {
   /// Output only.
   core.double? score;
 
-  GoogleCloudDataplexV1DataQualityColumnResult({
-    this.column,
-    this.score,
-  });
+  GoogleCloudDataplexV1DataQualityColumnResult({this.column, this.score});
 
   GoogleCloudDataplexV1DataQualityColumnResult.fromJson(core.Map json_)
       : this(
@@ -12118,14 +12282,10 @@ class GoogleCloudDataplexV1DataQualityDimension {
   /// "VALIDITY", "UNIQUENESS", "FRESHNESS", "VOLUME"
   core.String? name;
 
-  GoogleCloudDataplexV1DataQualityDimension({
-    this.name,
-  });
+  GoogleCloudDataplexV1DataQualityDimension({this.name});
 
   GoogleCloudDataplexV1DataQualityDimension.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+      : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -12160,7 +12320,8 @@ class GoogleCloudDataplexV1DataQualityDimensionResult {
       : this(
           dimension: json_.containsKey('dimension')
               ? GoogleCloudDataplexV1DataQualityDimension.fromJson(
-                  json_['dimension'] as core.Map<core.String, core.dynamic>)
+                  json_['dimension'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           passed: json_['passed'] as core.bool?,
           score: (json_['score'] as core.num?)?.toDouble(),
@@ -12225,30 +12386,41 @@ class GoogleCloudDataplexV1DataQualityResult {
   GoogleCloudDataplexV1DataQualityResult.fromJson(core.Map json_)
       : this(
           columns: (json_['columns'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDataplexV1DataQualityColumnResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDataplexV1DataQualityColumnResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           dimensions: (json_['dimensions'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDataplexV1DataQualityDimensionResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDataplexV1DataQualityDimensionResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           passed: json_['passed'] as core.bool?,
           postScanActionsResult: json_.containsKey('postScanActionsResult')
               ? GoogleCloudDataplexV1DataQualityResultPostScanActionsResult
-                  .fromJson(json_['postScanActionsResult']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['postScanActionsResult']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           rowCount: json_['rowCount'] as core.String?,
           rules: (json_['rules'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDataplexV1DataQualityRuleResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1DataQualityRuleResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           scannedData: json_.containsKey('scannedData')
               ? GoogleCloudDataplexV1ScannedData.fromJson(
-                  json_['scannedData'] as core.Map<core.String, core.dynamic>)
+                  json_['scannedData'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           score: (json_['score'] as core.num?)?.toDouble(),
         );
@@ -12279,12 +12451,14 @@ class GoogleCloudDataplexV1DataQualityResultPostScanActionsResult {
   });
 
   GoogleCloudDataplexV1DataQualityResultPostScanActionsResult.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           bigqueryExportResult: json_.containsKey('bigqueryExportResult')
               ? GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult
-                  .fromJson(json_['bigqueryExportResult']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['bigqueryExportResult']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -12423,50 +12597,63 @@ class GoogleCloudDataplexV1DataQualityRule {
           nonNullExpectation: json_.containsKey('nonNullExpectation')
               ? GoogleCloudDataplexV1DataQualityRuleNonNullExpectation.fromJson(
                   json_['nonNullExpectation']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           rangeExpectation: json_.containsKey('rangeExpectation')
               ? GoogleCloudDataplexV1DataQualityRuleRangeExpectation.fromJson(
                   json_['rangeExpectation']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           regexExpectation: json_.containsKey('regexExpectation')
               ? GoogleCloudDataplexV1DataQualityRuleRegexExpectation.fromJson(
                   json_['regexExpectation']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           rowConditionExpectation: json_.containsKey('rowConditionExpectation')
               ? GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation
-                  .fromJson(json_['rowConditionExpectation']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['rowConditionExpectation']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           setExpectation: json_.containsKey('setExpectation')
               ? GoogleCloudDataplexV1DataQualityRuleSetExpectation.fromJson(
                   json_['setExpectation']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sqlAssertion: json_.containsKey('sqlAssertion')
               ? GoogleCloudDataplexV1DataQualityRuleSqlAssertion.fromJson(
-                  json_['sqlAssertion'] as core.Map<core.String, core.dynamic>)
+                  json_['sqlAssertion'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           statisticRangeExpectation: json_
                   .containsKey('statisticRangeExpectation')
               ? GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation
-                  .fromJson(json_['statisticRangeExpectation']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['statisticRangeExpectation']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           suspended: json_['suspended'] as core.bool?,
           tableConditionExpectation: json_
                   .containsKey('tableConditionExpectation')
               ? GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation
-                  .fromJson(json_['tableConditionExpectation']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['tableConditionExpectation']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           threshold: (json_['threshold'] as core.num?)?.toDouble(),
           uniquenessExpectation: json_.containsKey('uniquenessExpectation')
               ? GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation
-                  .fromJson(json_['uniquenessExpectation']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['uniquenessExpectation']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -12560,14 +12747,10 @@ class GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
   /// Optional.
   core.String? regex;
 
-  GoogleCloudDataplexV1DataQualityRuleRegexExpectation({
-    this.regex,
-  });
+  GoogleCloudDataplexV1DataQualityRuleRegexExpectation({this.regex});
 
   GoogleCloudDataplexV1DataQualityRuleRegexExpectation.fromJson(core.Map json_)
-      : this(
-          regex: json_['regex'] as core.String?,
-        );
+      : this(regex: json_['regex'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (regex != null) 'regex': regex!,
@@ -12633,7 +12816,8 @@ class GoogleCloudDataplexV1DataQualityRuleResult {
           passedCount: json_['passedCount'] as core.String?,
           rule: json_.containsKey('rule')
               ? GoogleCloudDataplexV1DataQualityRule.fromJson(
-                  json_['rule'] as core.Map<core.String, core.dynamic>)
+                  json_['rule'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -12662,9 +12846,7 @@ class GoogleCloudDataplexV1DataQualityRuleSetExpectation {
   /// Optional.
   core.List<core.String>? values;
 
-  GoogleCloudDataplexV1DataQualityRuleSetExpectation({
-    this.values,
-  });
+  GoogleCloudDataplexV1DataQualityRuleSetExpectation({this.values});
 
   GoogleCloudDataplexV1DataQualityRuleSetExpectation.fromJson(core.Map json_)
       : this(
@@ -12695,14 +12877,10 @@ class GoogleCloudDataplexV1DataQualityRuleSqlAssertion {
   /// Optional.
   core.String? sqlStatement;
 
-  GoogleCloudDataplexV1DataQualityRuleSqlAssertion({
-    this.sqlStatement,
-  });
+  GoogleCloudDataplexV1DataQualityRuleSqlAssertion({this.sqlStatement});
 
   GoogleCloudDataplexV1DataQualityRuleSqlAssertion.fromJson(core.Map json_)
-      : this(
-          sqlStatement: json_['sqlStatement'] as core.String?,
-        );
+      : this(sqlStatement: json_['sqlStatement'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sqlStatement != null) 'sqlStatement': sqlStatement!,
@@ -12761,8 +12939,8 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
   });
 
   GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           maxValue: json_['maxValue'] as core.String?,
           minValue: json_['minValue'] as core.String?,
           statistic: json_['statistic'] as core.String?,
@@ -12832,12 +13010,16 @@ class GoogleCloudDataplexV1DataQualitySpec {
           postScanActions: json_.containsKey('postScanActions')
               ? GoogleCloudDataplexV1DataQualitySpecPostScanActions.fromJson(
                   json_['postScanActions']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           rowFilter: json_['rowFilter'] as core.String?,
           rules: (json_['rules'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1DataQualityRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1DataQualityRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           samplingPercent: (json_['samplingPercent'] as core.num?)?.toDouble(),
         );
@@ -12874,13 +13056,17 @@ class GoogleCloudDataplexV1DataQualitySpecPostScanActions {
       : this(
           bigqueryExport: json_.containsKey('bigqueryExport')
               ? GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport
-                  .fromJson(json_['bigqueryExport']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['bigqueryExport']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           notificationReport: json_.containsKey('notificationReport')
               ? GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport
-                  .fromJson(json_['notificationReport']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['notificationReport']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -12906,10 +13092,8 @@ class GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport {
   });
 
   GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport.fromJson(
-      core.Map json_)
-      : this(
-          resultsTable: json_['resultsTable'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(resultsTable: json_['resultsTable'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resultsTable != null) 'resultsTable': resultsTable!,
@@ -12959,27 +13143,33 @@ class GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport {
   });
 
   GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           jobEndTrigger: json_.containsKey('jobEndTrigger')
               ? GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger
-                  .fromJson(json_['jobEndTrigger']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['jobEndTrigger'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           jobFailureTrigger: json_.containsKey('jobFailureTrigger')
               ? GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger
-                  .fromJson(json_['jobFailureTrigger']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['jobFailureTrigger']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           recipients: json_.containsKey('recipients')
               ? GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients
-                  .fromJson(json_['recipients']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['recipients'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           scoreThresholdTrigger: json_.containsKey('scoreThresholdTrigger')
               ? GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger
-                  .fromJson(json_['scoreThresholdTrigger']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['scoreThresholdTrigger']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -13000,13 +13190,11 @@ class GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients {
   /// Optional.
   core.List<core.String>? emails;
 
-  GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients({
-    this.emails,
-  });
+  GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients({this.emails});
 
   GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           emails: (json_['emails'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -13030,10 +13218,8 @@ class GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger {
   });
 
   GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger.fromJson(
-      core.Map json_)
-      : this(
-          scoreThreshold: (json_['scoreThreshold'] as core.num?)?.toDouble(),
-        );
+    core.Map json_,
+  ) : this(scoreThreshold: (json_['scoreThreshold'] as core.num?)?.toDouble());
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (scoreThreshold != null) 'scoreThreshold': scoreThreshold!,
@@ -13182,55 +13368,61 @@ class GoogleCloudDataplexV1DataScan {
           createTime: json_['createTime'] as core.String?,
           data: json_.containsKey('data')
               ? GoogleCloudDataplexV1DataSource.fromJson(
-                  json_['data'] as core.Map<core.String, core.dynamic>)
+                  json_['data'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dataDiscoveryResult: json_.containsKey('dataDiscoveryResult')
               ? GoogleCloudDataplexV1DataDiscoveryResult.fromJson(
                   json_['dataDiscoveryResult']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dataDiscoverySpec: json_.containsKey('dataDiscoverySpec')
               ? GoogleCloudDataplexV1DataDiscoverySpec.fromJson(
                   json_['dataDiscoverySpec']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dataProfileResult: json_.containsKey('dataProfileResult')
               ? GoogleCloudDataplexV1DataProfileResult.fromJson(
                   json_['dataProfileResult']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dataProfileSpec: json_.containsKey('dataProfileSpec')
               ? GoogleCloudDataplexV1DataProfileSpec.fromJson(
                   json_['dataProfileSpec']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dataQualityResult: json_.containsKey('dataQualityResult')
               ? GoogleCloudDataplexV1DataQualityResult.fromJson(
                   json_['dataQualityResult']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dataQualitySpec: json_.containsKey('dataQualitySpec')
               ? GoogleCloudDataplexV1DataQualitySpec.fromJson(
                   json_['dataQualitySpec']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           executionSpec: json_.containsKey('executionSpec')
               ? GoogleCloudDataplexV1DataScanExecutionSpec.fromJson(
-                  json_['executionSpec'] as core.Map<core.String, core.dynamic>)
+                  json_['executionSpec'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           executionStatus: json_.containsKey('executionStatus')
               ? GoogleCloudDataplexV1DataScanExecutionStatus.fromJson(
                   json_['executionStatus']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           state: json_['state'] as core.String?,
@@ -13278,17 +13470,15 @@ class GoogleCloudDataplexV1DataScanExecutionSpec {
   /// Optional.
   GoogleCloudDataplexV1Trigger? trigger;
 
-  GoogleCloudDataplexV1DataScanExecutionSpec({
-    this.field,
-    this.trigger,
-  });
+  GoogleCloudDataplexV1DataScanExecutionSpec({this.field, this.trigger});
 
   GoogleCloudDataplexV1DataScanExecutionSpec.fromJson(core.Map json_)
       : this(
           field: json_['field'] as core.String?,
           trigger: json_.containsKey('trigger')
               ? GoogleCloudDataplexV1Trigger.fromJson(
-                  json_['trigger'] as core.Map<core.String, core.dynamic>)
+                  json_['trigger'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -13450,32 +13640,38 @@ class GoogleCloudDataplexV1DataScanJob {
           dataDiscoveryResult: json_.containsKey('dataDiscoveryResult')
               ? GoogleCloudDataplexV1DataDiscoveryResult.fromJson(
                   json_['dataDiscoveryResult']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dataDiscoverySpec: json_.containsKey('dataDiscoverySpec')
               ? GoogleCloudDataplexV1DataDiscoverySpec.fromJson(
                   json_['dataDiscoverySpec']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dataProfileResult: json_.containsKey('dataProfileResult')
               ? GoogleCloudDataplexV1DataProfileResult.fromJson(
                   json_['dataProfileResult']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dataProfileSpec: json_.containsKey('dataProfileSpec')
               ? GoogleCloudDataplexV1DataProfileSpec.fromJson(
                   json_['dataProfileSpec']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dataQualityResult: json_.containsKey('dataQualityResult')
               ? GoogleCloudDataplexV1DataQualityResult.fromJson(
                   json_['dataQualityResult']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dataQualitySpec: json_.containsKey('dataQualitySpec')
               ? GoogleCloudDataplexV1DataQualitySpec.fromJson(
                   json_['dataQualitySpec']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           endTime: json_['endTime'] as core.String?,
           message: json_['message'] as core.String?,
@@ -13524,10 +13720,7 @@ class GoogleCloudDataplexV1DataSource {
   /// Immutable.
   core.String? resource;
 
-  GoogleCloudDataplexV1DataSource({
-    this.entity,
-    this.resource,
-  });
+  GoogleCloudDataplexV1DataSource({this.entity, this.resource});
 
   GoogleCloudDataplexV1DataSource.fromJson(core.Map json_)
       : this(
@@ -13624,10 +13817,7 @@ class GoogleCloudDataplexV1DataTaxonomy {
           etag: json_['etag'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           uid: json_['uid'] as core.String?,
@@ -13806,13 +13996,15 @@ class GoogleCloudDataplexV1Entity {
       : this(
           access: json_.containsKey('access')
               ? GoogleCloudDataplexV1StorageAccess.fromJson(
-                  json_['access'] as core.Map<core.String, core.dynamic>)
+                  json_['access'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           asset: json_['asset'] as core.String?,
           catalogEntry: json_['catalogEntry'] as core.String?,
           compatibility: json_.containsKey('compatibility')
               ? GoogleCloudDataplexV1EntityCompatibilityStatus.fromJson(
-                  json_['compatibility'] as core.Map<core.String, core.dynamic>)
+                  json_['compatibility'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           createTime: json_['createTime'] as core.String?,
           dataPath: json_['dataPath'] as core.String?,
@@ -13822,13 +14014,15 @@ class GoogleCloudDataplexV1Entity {
           etag: json_['etag'] as core.String?,
           format: json_.containsKey('format')
               ? GoogleCloudDataplexV1StorageFormat.fromJson(
-                  json_['format'] as core.Map<core.String, core.dynamic>)
+                  json_['format'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           id: json_['id'] as core.String?,
           name: json_['name'] as core.String?,
           schema: json_.containsKey('schema')
               ? GoogleCloudDataplexV1Schema.fromJson(
-                  json_['schema'] as core.Map<core.String, core.dynamic>)
+                  json_['schema'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           system: json_['system'] as core.String?,
           type: json_['type'] as core.String?,
@@ -13880,12 +14074,14 @@ class GoogleCloudDataplexV1EntityCompatibilityStatus {
           bigquery: json_.containsKey('bigquery')
               ? GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility
                   .fromJson(
-                      json_['bigquery'] as core.Map<core.String, core.dynamic>)
+                  json_['bigquery'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           hiveMetastore: json_.containsKey('hiveMetastore')
               ? GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility
-                  .fromJson(json_['hiveMetastore']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['hiveMetastore'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -13915,8 +14111,8 @@ class GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility {
   });
 
   GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           compatible: json_['compatible'] as core.bool?,
           reason: json_['reason'] as core.String?,
         );
@@ -14002,13 +14198,15 @@ class GoogleCloudDataplexV1Entry {
             (key, value) => core.MapEntry(
               key,
               GoogleCloudDataplexV1Aspect.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           createTime: json_['createTime'] as core.String?,
           entrySource: json_.containsKey('entrySource')
               ? GoogleCloudDataplexV1EntrySource.fromJson(
-                  json_['entrySource'] as core.Map<core.String, core.dynamic>)
+                  json_['entrySource'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           entryType: json_['entryType'] as core.String?,
           fullyQualifiedName: json_['fullyQualifiedName'] as core.String?,
@@ -14112,10 +14310,7 @@ class GoogleCloudDataplexV1EntryGroup {
           etag: json_['etag'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           transferStatus: json_['transferStatus'] as core.String?,
@@ -14210,19 +14405,18 @@ class GoogleCloudDataplexV1EntrySource {
   GoogleCloudDataplexV1EntrySource.fromJson(core.Map json_)
       : this(
           ancestors: (json_['ancestors'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDataplexV1EntrySourceAncestor.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1EntrySourceAncestor.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           location: json_['location'] as core.String?,
           platform: json_['platform'] as core.String?,
@@ -14258,10 +14452,7 @@ class GoogleCloudDataplexV1EntrySourceAncestor {
   /// Optional.
   core.String? type;
 
-  GoogleCloudDataplexV1EntrySourceAncestor({
-    this.name,
-    this.type,
-  });
+  GoogleCloudDataplexV1EntrySourceAncestor({this.name, this.type});
 
   GoogleCloudDataplexV1EntrySourceAncestor.fromJson(core.Map json_)
       : this(
@@ -14369,7 +14560,8 @@ class GoogleCloudDataplexV1EntryType {
       : this(
           authorization: json_.containsKey('authorization')
               ? GoogleCloudDataplexV1EntryTypeAuthorization.fromJson(
-                  json_['authorization'] as core.Map<core.String, core.dynamic>)
+                  json_['authorization'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
@@ -14377,17 +14569,16 @@ class GoogleCloudDataplexV1EntryType {
           etag: json_['etag'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           platform: json_['platform'] as core.String?,
           requiredAspects: (json_['requiredAspects'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDataplexV1EntryTypeAspectInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1EntryTypeAspectInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           system: json_['system'] as core.String?,
           typeAliases: (json_['typeAliases'] as core.List?)
@@ -14418,14 +14609,10 @@ class GoogleCloudDataplexV1EntryTypeAspectInfo {
   /// Required aspect type for the entry type.
   core.String? type;
 
-  GoogleCloudDataplexV1EntryTypeAspectInfo({
-    this.type,
-  });
+  GoogleCloudDataplexV1EntryTypeAspectInfo({this.type});
 
   GoogleCloudDataplexV1EntryTypeAspectInfo.fromJson(core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-        );
+      : this(type: json_['type'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -14441,9 +14628,7 @@ class GoogleCloudDataplexV1EntryTypeAuthorization {
   /// Immutable.
   core.String? alternateUsePermission;
 
-  GoogleCloudDataplexV1EntryTypeAuthorization({
-    this.alternateUsePermission,
-  });
+  GoogleCloudDataplexV1EntryTypeAuthorization({this.alternateUsePermission});
 
   GoogleCloudDataplexV1EntryTypeAuthorization.fromJson(core.Map json_)
       : this(
@@ -14552,28 +14737,29 @@ class GoogleCloudDataplexV1Environment {
           displayName: json_['displayName'] as core.String?,
           endpoints: json_.containsKey('endpoints')
               ? GoogleCloudDataplexV1EnvironmentEndpoints.fromJson(
-                  json_['endpoints'] as core.Map<core.String, core.dynamic>)
+                  json_['endpoints'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           infrastructureSpec: json_.containsKey('infrastructureSpec')
               ? GoogleCloudDataplexV1EnvironmentInfrastructureSpec.fromJson(
                   json_['infrastructureSpec']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           sessionSpec: json_.containsKey('sessionSpec')
               ? GoogleCloudDataplexV1EnvironmentSessionSpec.fromJson(
-                  json_['sessionSpec'] as core.Map<core.String, core.dynamic>)
+                  json_['sessionSpec'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sessionStatus: json_.containsKey('sessionStatus')
               ? GoogleCloudDataplexV1EnvironmentSessionStatus.fromJson(
-                  json_['sessionStatus'] as core.Map<core.String, core.dynamic>)
+                  json_['sessionStatus'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           state: json_['state'] as core.String?,
           uid: json_['uid'] as core.String?,
@@ -14609,10 +14795,7 @@ class GoogleCloudDataplexV1EnvironmentEndpoints {
   /// Output only.
   core.String? sql;
 
-  GoogleCloudDataplexV1EnvironmentEndpoints({
-    this.notebooks,
-    this.sql,
-  });
+  GoogleCloudDataplexV1EnvironmentEndpoints({this.notebooks, this.sql});
 
   GoogleCloudDataplexV1EnvironmentEndpoints.fromJson(core.Map json_)
       : this(
@@ -14648,12 +14831,14 @@ class GoogleCloudDataplexV1EnvironmentInfrastructureSpec {
           compute: json_.containsKey('compute')
               ? GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources
                   .fromJson(
-                      json_['compute'] as core.Map<core.String, core.dynamic>)
+                  json_['compute'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           osImage: json_.containsKey('osImage')
               ? GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime
                   .fromJson(
-                      json_['osImage'] as core.Map<core.String, core.dynamic>)
+                  json_['osImage'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -14691,8 +14876,8 @@ class GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources {
   });
 
   GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           diskSizeGb: json_['diskSizeGb'] as core.int?,
           maxNodeCount: json_['maxNodeCount'] as core.int?,
           nodeCount: json_['nodeCount'] as core.int?,
@@ -14745,20 +14930,15 @@ class GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime {
   });
 
   GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           imageVersion: json_['imageVersion'] as core.String?,
           javaLibraries: (json_['javaLibraries'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          properties:
-              (json_['properties'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          properties: (json_['properties']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           pythonPackages: (json_['pythonPackages'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -14816,14 +14996,10 @@ class GoogleCloudDataplexV1EnvironmentSessionStatus {
   /// Output only.
   core.bool? active;
 
-  GoogleCloudDataplexV1EnvironmentSessionStatus({
-    this.active,
-  });
+  GoogleCloudDataplexV1EnvironmentSessionStatus({this.active});
 
   GoogleCloudDataplexV1EnvironmentSessionStatus.fromJson(core.Map json_)
-      : this(
-          active: json_['active'] as core.bool?,
-        );
+      : this(active: json_['active'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (active != null) 'active': active!,
@@ -14839,15 +15015,16 @@ class GoogleCloudDataplexV1GenerateDataQualityRulesResponse {
   /// data profiling scan.
   core.List<GoogleCloudDataplexV1DataQualityRule>? rule;
 
-  GoogleCloudDataplexV1GenerateDataQualityRulesResponse({
-    this.rule,
-  });
+  GoogleCloudDataplexV1GenerateDataQualityRulesResponse({this.rule});
 
   GoogleCloudDataplexV1GenerateDataQualityRulesResponse.fromJson(core.Map json_)
       : this(
           rule: (json_['rule'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1DataQualityRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1DataQualityRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -14956,14 +15133,12 @@ class GoogleCloudDataplexV1Job {
           endTime: json_['endTime'] as core.String?,
           executionSpec: json_.containsKey('executionSpec')
               ? GoogleCloudDataplexV1TaskExecutionSpec.fromJson(
-                  json_['executionSpec'] as core.Map<core.String, core.dynamic>)
+                  json_['executionSpec'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           message: json_['message'] as core.String?,
           name: json_['name'] as core.String?,
@@ -15096,26 +15271,26 @@ class GoogleCloudDataplexV1Lake {
       : this(
           assetStatus: json_.containsKey('assetStatus')
               ? GoogleCloudDataplexV1AssetStatus.fromJson(
-                  json_['assetStatus'] as core.Map<core.String, core.dynamic>)
+                  json_['assetStatus'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           metastore: json_.containsKey('metastore')
               ? GoogleCloudDataplexV1LakeMetastore.fromJson(
-                  json_['metastore'] as core.Map<core.String, core.dynamic>)
+                  json_['metastore'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metastoreStatus: json_.containsKey('metastoreStatus')
               ? GoogleCloudDataplexV1LakeMetastoreStatus.fromJson(
                   json_['metastoreStatus']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           serviceAccount: json_['serviceAccount'] as core.String?,
@@ -15150,14 +15325,10 @@ class GoogleCloudDataplexV1LakeMetastore {
   /// Optional.
   core.String? service;
 
-  GoogleCloudDataplexV1LakeMetastore({
-    this.service,
-  });
+  GoogleCloudDataplexV1LakeMetastore({this.service});
 
   GoogleCloudDataplexV1LakeMetastore.fromJson(core.Map json_)
-      : this(
-          service: json_['service'] as core.String?,
-        );
+      : this(service: json_['service'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (service != null) 'service': service!,
@@ -15216,16 +15387,16 @@ class GoogleCloudDataplexV1ListActionsResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  GoogleCloudDataplexV1ListActionsResponse({
-    this.actions,
-    this.nextPageToken,
-  });
+  GoogleCloudDataplexV1ListActionsResponse({this.actions, this.nextPageToken});
 
   GoogleCloudDataplexV1ListActionsResponse.fromJson(core.Map json_)
       : this(
           actions: (json_['actions'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1Action.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1Action.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -15257,8 +15428,11 @@ class GoogleCloudDataplexV1ListAspectTypesResponse {
   GoogleCloudDataplexV1ListAspectTypesResponse.fromJson(core.Map json_)
       : this(
           aspectTypes: (json_['aspectTypes'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1AspectType.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1AspectType.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachableLocations: (json_['unreachableLocations'] as core.List?)
@@ -15283,16 +15457,16 @@ class GoogleCloudDataplexV1ListAssetsResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  GoogleCloudDataplexV1ListAssetsResponse({
-    this.assets,
-    this.nextPageToken,
-  });
+  GoogleCloudDataplexV1ListAssetsResponse({this.assets, this.nextPageToken});
 
   GoogleCloudDataplexV1ListAssetsResponse.fromJson(core.Map json_)
       : this(
           assets: (json_['assets'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1Asset.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1Asset.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -15312,16 +15486,16 @@ class GoogleCloudDataplexV1ListContentResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  GoogleCloudDataplexV1ListContentResponse({
-    this.content,
-    this.nextPageToken,
-  });
+  GoogleCloudDataplexV1ListContentResponse({this.content, this.nextPageToken});
 
   GoogleCloudDataplexV1ListContentResponse.fromJson(core.Map json_)
       : this(
           content: (json_['content'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1Content.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1Content.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -15351,12 +15525,14 @@ class GoogleCloudDataplexV1ListDataAttributeBindingsResponse {
   });
 
   GoogleCloudDataplexV1ListDataAttributeBindingsResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           dataAttributeBindings: (json_['dataAttributeBindings'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDataplexV1DataAttributeBinding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1DataAttributeBinding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachableLocations: (json_['unreachableLocations'] as core.List?)
@@ -15394,8 +15570,11 @@ class GoogleCloudDataplexV1ListDataAttributesResponse {
   GoogleCloudDataplexV1ListDataAttributesResponse.fromJson(core.Map json_)
       : this(
           dataAttributes: (json_['dataAttributes'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1DataAttribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1DataAttribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachableLocations: (json_['unreachableLocations'] as core.List?)
@@ -15428,8 +15607,11 @@ class GoogleCloudDataplexV1ListDataScanJobsResponse {
   GoogleCloudDataplexV1ListDataScanJobsResponse.fromJson(core.Map json_)
       : this(
           dataScanJobs: (json_['dataScanJobs'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1DataScanJob.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1DataScanJob.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -15461,8 +15643,11 @@ class GoogleCloudDataplexV1ListDataScansResponse {
   GoogleCloudDataplexV1ListDataScansResponse.fromJson(core.Map json_)
       : this(
           dataScans: (json_['dataScans'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1DataScan.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1DataScan.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -15498,8 +15683,11 @@ class GoogleCloudDataplexV1ListDataTaxonomiesResponse {
   GoogleCloudDataplexV1ListDataTaxonomiesResponse.fromJson(core.Map json_)
       : this(
           dataTaxonomies: (json_['dataTaxonomies'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1DataTaxonomy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1DataTaxonomy.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachableLocations: (json_['unreachableLocations'] as core.List?)
@@ -15532,8 +15720,11 @@ class GoogleCloudDataplexV1ListEntitiesResponse {
   GoogleCloudDataplexV1ListEntitiesResponse.fromJson(core.Map json_)
       : this(
           entities: (json_['entities'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1Entity.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1Entity.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -15553,16 +15744,16 @@ class GoogleCloudDataplexV1ListEntriesResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  GoogleCloudDataplexV1ListEntriesResponse({
-    this.entries,
-    this.nextPageToken,
-  });
+  GoogleCloudDataplexV1ListEntriesResponse({this.entries, this.nextPageToken});
 
   GoogleCloudDataplexV1ListEntriesResponse.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1Entry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1Entry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -15594,8 +15785,11 @@ class GoogleCloudDataplexV1ListEntryGroupsResponse {
   GoogleCloudDataplexV1ListEntryGroupsResponse.fromJson(core.Map json_)
       : this(
           entryGroups: (json_['entryGroups'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1EntryGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1EntryGroup.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachableLocations: (json_['unreachableLocations'] as core.List?)
@@ -15632,8 +15826,11 @@ class GoogleCloudDataplexV1ListEntryTypesResponse {
   GoogleCloudDataplexV1ListEntryTypesResponse.fromJson(core.Map json_)
       : this(
           entryTypes: (json_['entryTypes'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1EntryType.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1EntryType.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachableLocations: (json_['unreachableLocations'] as core.List?)
@@ -15666,8 +15863,11 @@ class GoogleCloudDataplexV1ListEnvironmentsResponse {
   GoogleCloudDataplexV1ListEnvironmentsResponse.fromJson(core.Map json_)
       : this(
           environments: (json_['environments'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1Environment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1Environment.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -15687,16 +15887,16 @@ class GoogleCloudDataplexV1ListJobsResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  GoogleCloudDataplexV1ListJobsResponse({
-    this.jobs,
-    this.nextPageToken,
-  });
+  GoogleCloudDataplexV1ListJobsResponse({this.jobs, this.nextPageToken});
 
   GoogleCloudDataplexV1ListJobsResponse.fromJson(core.Map json_)
       : this(
           jobs: (json_['jobs'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1Job.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1Job.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -15728,8 +15928,11 @@ class GoogleCloudDataplexV1ListLakesResponse {
   GoogleCloudDataplexV1ListLakesResponse.fromJson(core.Map json_)
       : this(
           lakes: (json_['lakes'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1Lake.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1Lake.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachableLocations: (json_['unreachableLocations'] as core.List?)
@@ -15767,8 +15970,11 @@ class GoogleCloudDataplexV1ListMetadataJobsResponse {
   GoogleCloudDataplexV1ListMetadataJobsResponse.fromJson(core.Map json_)
       : this(
           metadataJobs: (json_['metadataJobs'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1MetadataJob.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1MetadataJob.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachableLocations: (json_['unreachableLocations'] as core.List?)
@@ -15802,8 +16008,11 @@ class GoogleCloudDataplexV1ListPartitionsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           partitions: (json_['partitions'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1Partition.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1Partition.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -15831,8 +16040,11 @@ class GoogleCloudDataplexV1ListSessionsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           sessions: (json_['sessions'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1Session.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1Session.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -15864,8 +16076,11 @@ class GoogleCloudDataplexV1ListTasksResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           tasks: (json_['tasks'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1Task.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1Task.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           unreachableLocations: (json_['unreachableLocations'] as core.List?)
               ?.map((value) => value as core.String)
@@ -15889,17 +16104,17 @@ class GoogleCloudDataplexV1ListZonesResponse {
   /// Zones under the given parent lake.
   core.List<GoogleCloudDataplexV1Zone>? zones;
 
-  GoogleCloudDataplexV1ListZonesResponse({
-    this.nextPageToken,
-    this.zones,
-  });
+  GoogleCloudDataplexV1ListZonesResponse({this.nextPageToken, this.zones});
 
   GoogleCloudDataplexV1ListZonesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           zones: (json_['zones'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1Zone.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1Zone.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -15981,23 +16196,23 @@ class GoogleCloudDataplexV1MetadataJob {
           createTime: json_['createTime'] as core.String?,
           importResult: json_.containsKey('importResult')
               ? GoogleCloudDataplexV1MetadataJobImportJobResult.fromJson(
-                  json_['importResult'] as core.Map<core.String, core.dynamic>)
+                  json_['importResult'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           importSpec: json_.containsKey('importSpec')
               ? GoogleCloudDataplexV1MetadataJobImportJobSpec.fromJson(
-                  json_['importSpec'] as core.Map<core.String, core.dynamic>)
+                  json_['importSpec'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           status: json_.containsKey('status')
               ? GoogleCloudDataplexV1MetadataJobStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           type: json_['type'] as core.String?,
           uid: json_['uid'] as core.String?,
@@ -16184,7 +16399,8 @@ class GoogleCloudDataplexV1MetadataJobImportJobSpec {
           scope: json_.containsKey('scope')
               ? GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope
                   .fromJson(
-                      json_['scope'] as core.Map<core.String, core.dynamic>)
+                  json_['scope'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sourceCreateTime: json_['sourceCreateTime'] as core.String?,
           sourceStorageUri: json_['sourceStorageUri'] as core.String?,
@@ -16246,8 +16462,8 @@ class GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope {
   });
 
   GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           aspectTypes: (json_['aspectTypes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -16435,15 +16651,14 @@ class GoogleCloudDataplexV1RunDataScanResponse {
   /// DataScanJob created by RunDataScan request.
   GoogleCloudDataplexV1DataScanJob? job;
 
-  GoogleCloudDataplexV1RunDataScanResponse({
-    this.job,
-  });
+  GoogleCloudDataplexV1RunDataScanResponse({this.job});
 
   GoogleCloudDataplexV1RunDataScanResponse.fromJson(core.Map json_)
       : this(
           job: json_.containsKey('job')
               ? GoogleCloudDataplexV1DataScanJob.fromJson(
-                  json_['job'] as core.Map<core.String, core.dynamic>)
+                  json_['job'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -16477,25 +16692,16 @@ class GoogleCloudDataplexV1RunTaskRequest {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
-  GoogleCloudDataplexV1RunTaskRequest({
-    this.args,
-    this.labels,
-  });
+  GoogleCloudDataplexV1RunTaskRequest({this.args, this.labels});
 
   GoogleCloudDataplexV1RunTaskRequest.fromJson(core.Map json_)
       : this(
           args: (json_['args'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
         );
 
@@ -16509,15 +16715,14 @@ class GoogleCloudDataplexV1RunTaskResponse {
   /// Jobs created by RunTask API.
   GoogleCloudDataplexV1Job? job;
 
-  GoogleCloudDataplexV1RunTaskResponse({
-    this.job,
-  });
+  GoogleCloudDataplexV1RunTaskResponse({this.job});
 
   GoogleCloudDataplexV1RunTaskResponse.fromJson(core.Map json_)
       : this(
           job: json_.containsKey('job')
               ? GoogleCloudDataplexV1Job.fromJson(
-                  json_['job'] as core.Map<core.String, core.dynamic>)
+                  json_['job'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -16531,16 +16736,15 @@ class GoogleCloudDataplexV1ScannedData {
   /// The range denoted by values of an incremental field
   GoogleCloudDataplexV1ScannedDataIncrementalField? incrementalField;
 
-  GoogleCloudDataplexV1ScannedData({
-    this.incrementalField,
-  });
+  GoogleCloudDataplexV1ScannedData({this.incrementalField});
 
   GoogleCloudDataplexV1ScannedData.fromJson(core.Map json_)
       : this(
           incrementalField: json_.containsKey('incrementalField')
               ? GoogleCloudDataplexV1ScannedDataIncrementalField.fromJson(
                   json_['incrementalField']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -16631,13 +16835,18 @@ class GoogleCloudDataplexV1Schema {
   GoogleCloudDataplexV1Schema.fromJson(core.Map json_)
       : this(
           fields: (json_['fields'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1SchemaSchemaField.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1SchemaSchemaField.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           partitionFields: (json_['partitionFields'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDataplexV1SchemaPartitionField.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1SchemaPartitionField.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           partitionStyle: json_['partitionStyle'] as core.String?,
           userManaged: json_['userManaged'] as core.bool?,
@@ -16687,10 +16896,7 @@ class GoogleCloudDataplexV1SchemaPartitionField {
   /// - "NULL" : Null field that does not have values.
   core.String? type;
 
-  GoogleCloudDataplexV1SchemaPartitionField({
-    this.name,
-    this.type,
-  });
+  GoogleCloudDataplexV1SchemaPartitionField({this.name, this.type});
 
   GoogleCloudDataplexV1SchemaPartitionField.fromJson(core.Map json_)
       : this(
@@ -16772,8 +16978,11 @@ class GoogleCloudDataplexV1SchemaSchemaField {
       : this(
           description: json_['description'] as core.String?,
           fields: (json_['fields'] as core.List?)
-              ?.map((value) => GoogleCloudDataplexV1SchemaSchemaField.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1SchemaSchemaField.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           mode: json_['mode'] as core.String?,
           name: json_['name'] as core.String?,
@@ -16818,9 +17027,11 @@ class GoogleCloudDataplexV1SearchEntriesResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           results: (json_['results'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDataplexV1SearchEntriesResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDataplexV1SearchEntriesResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           totalSize: json_['totalSize'] as core.int?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -16862,12 +17073,14 @@ class GoogleCloudDataplexV1SearchEntriesResult {
       : this(
           dataplexEntry: json_.containsKey('dataplexEntry')
               ? GoogleCloudDataplexV1Entry.fromJson(
-                  json_['dataplexEntry'] as core.Map<core.String, core.dynamic>)
+                  json_['dataplexEntry'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           linkedResource: json_['linkedResource'] as core.String?,
           snippets: json_.containsKey('snippets')
               ? GoogleCloudDataplexV1SearchEntriesResultSnippets.fromJson(
-                  json_['snippets'] as core.Map<core.String, core.dynamic>)
+                  json_['snippets'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -16887,15 +17100,14 @@ class GoogleCloudDataplexV1SearchEntriesResultSnippets {
   )
   GoogleCloudDataplexV1Entry? dataplexEntry;
 
-  GoogleCloudDataplexV1SearchEntriesResultSnippets({
-    this.dataplexEntry,
-  });
+  GoogleCloudDataplexV1SearchEntriesResultSnippets({this.dataplexEntry});
 
   GoogleCloudDataplexV1SearchEntriesResultSnippets.fromJson(core.Map json_)
       : this(
           dataplexEntry: json_.containsKey('dataplexEntry')
               ? GoogleCloudDataplexV1Entry.fromJson(
-                  json_['dataplexEntry'] as core.Map<core.String, core.dynamic>)
+                  json_['dataplexEntry'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -16970,14 +17182,10 @@ class GoogleCloudDataplexV1StorageAccess {
   /// APIs.
   core.String? read;
 
-  GoogleCloudDataplexV1StorageAccess({
-    this.read,
-  });
+  GoogleCloudDataplexV1StorageAccess({this.read});
 
   GoogleCloudDataplexV1StorageAccess.fromJson(core.Map json_)
-      : this(
-          read: json_['read'] as core.String?,
-        );
+      : this(read: json_['read'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (read != null) 'read': read!,
@@ -17061,16 +17269,19 @@ class GoogleCloudDataplexV1StorageFormat {
           compressionFormat: json_['compressionFormat'] as core.String?,
           csv: json_.containsKey('csv')
               ? GoogleCloudDataplexV1StorageFormatCsvOptions.fromJson(
-                  json_['csv'] as core.Map<core.String, core.dynamic>)
+                  json_['csv'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           format: json_['format'] as core.String?,
           iceberg: json_.containsKey('iceberg')
               ? GoogleCloudDataplexV1StorageFormatIcebergOptions.fromJson(
-                  json_['iceberg'] as core.Map<core.String, core.dynamic>)
+                  json_['iceberg'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           json: json_.containsKey('json')
               ? GoogleCloudDataplexV1StorageFormatJsonOptions.fromJson(
-                  json_['json'] as core.Map<core.String, core.dynamic>)
+                  json_['json'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           mimeType: json_['mimeType'] as core.String?,
         );
@@ -17149,14 +17360,10 @@ class GoogleCloudDataplexV1StorageFormatIcebergOptions {
   /// Optional.
   core.String? metadataLocation;
 
-  GoogleCloudDataplexV1StorageFormatIcebergOptions({
-    this.metadataLocation,
-  });
+  GoogleCloudDataplexV1StorageFormatIcebergOptions({this.metadataLocation});
 
   GoogleCloudDataplexV1StorageFormatIcebergOptions.fromJson(core.Map json_)
-      : this(
-          metadataLocation: json_['metadataLocation'] as core.String?,
-        );
+      : this(metadataLocation: json_['metadataLocation'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metadataLocation != null) 'metadataLocation': metadataLocation!,
@@ -17173,14 +17380,10 @@ class GoogleCloudDataplexV1StorageFormatJsonOptions {
   /// Optional.
   core.String? encoding;
 
-  GoogleCloudDataplexV1StorageFormatJsonOptions({
-    this.encoding,
-  });
+  GoogleCloudDataplexV1StorageFormatJsonOptions({this.encoding});
 
   GoogleCloudDataplexV1StorageFormatJsonOptions.fromJson(core.Map json_)
-      : this(
-          encoding: json_['encoding'] as core.String?,
-        );
+      : this(encoding: json_['encoding'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (encoding != null) 'encoding': encoding!,
@@ -17284,33 +17487,35 @@ class GoogleCloudDataplexV1Task {
           displayName: json_['displayName'] as core.String?,
           executionSpec: json_.containsKey('executionSpec')
               ? GoogleCloudDataplexV1TaskExecutionSpec.fromJson(
-                  json_['executionSpec'] as core.Map<core.String, core.dynamic>)
+                  json_['executionSpec'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           executionStatus: json_.containsKey('executionStatus')
               ? GoogleCloudDataplexV1TaskExecutionStatus.fromJson(
                   json_['executionStatus']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           notebook: json_.containsKey('notebook')
               ? GoogleCloudDataplexV1TaskNotebookTaskConfig.fromJson(
-                  json_['notebook'] as core.Map<core.String, core.dynamic>)
+                  json_['notebook'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           spark: json_.containsKey('spark')
               ? GoogleCloudDataplexV1TaskSparkTaskConfig.fromJson(
-                  json_['spark'] as core.Map<core.String, core.dynamic>)
+                  json_['spark'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           state: json_['state'] as core.String?,
           triggerSpec: json_.containsKey('triggerSpec')
               ? GoogleCloudDataplexV1TaskTriggerSpec.fromJson(
-                  json_['triggerSpec'] as core.Map<core.String, core.dynamic>)
+                  json_['triggerSpec'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -17388,10 +17593,7 @@ class GoogleCloudDataplexV1TaskExecutionSpec {
   GoogleCloudDataplexV1TaskExecutionSpec.fromJson(core.Map json_)
       : this(
           args: (json_['args'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           kmsKey: json_['kmsKey'] as core.String?,
           maxJobExecutionLifetime:
@@ -17422,16 +17624,14 @@ class GoogleCloudDataplexV1TaskExecutionStatus {
   /// Output only.
   core.String? updateTime;
 
-  GoogleCloudDataplexV1TaskExecutionStatus({
-    this.latestJob,
-    this.updateTime,
-  });
+  GoogleCloudDataplexV1TaskExecutionStatus({this.latestJob, this.updateTime});
 
   GoogleCloudDataplexV1TaskExecutionStatus.fromJson(core.Map json_)
       : this(
           latestJob: json_.containsKey('latestJob')
               ? GoogleCloudDataplexV1Job.fromJson(
-                  json_['latestJob'] as core.Map<core.String, core.dynamic>)
+                  json_['latestJob'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -17465,16 +17665,20 @@ class GoogleCloudDataplexV1TaskInfrastructureSpec {
           batch: json_.containsKey('batch')
               ? GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources
                   .fromJson(
-                      json_['batch'] as core.Map<core.String, core.dynamic>)
+                  json_['batch'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           containerImage: json_.containsKey('containerImage')
               ? GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime
-                  .fromJson(json_['containerImage']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['containerImage']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           vpcNetwork: json_.containsKey('vpcNetwork')
               ? GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork.fromJson(
-                  json_['vpcNetwork'] as core.Map<core.String, core.dynamic>)
+                  json_['vpcNetwork'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -17508,8 +17712,8 @@ class GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources {
   });
 
   GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           executorsCount: json_['executorsCount'] as core.int?,
           maxExecutorsCount: json_['maxExecutorsCount'] as core.int?,
         );
@@ -17562,20 +17766,15 @@ class GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime {
   });
 
   GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           image: json_['image'] as core.String?,
           javaJars: (json_['javaJars'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          properties:
-              (json_['properties'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          properties: (json_['properties']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           pythonPackages: (json_['pythonPackages'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -17679,7 +17878,8 @@ class GoogleCloudDataplexV1TaskNotebookTaskConfig {
           infrastructureSpec: json_.containsKey('infrastructureSpec')
               ? GoogleCloudDataplexV1TaskInfrastructureSpec.fromJson(
                   json_['infrastructureSpec']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           notebook: json_['notebook'] as core.String?,
         );
@@ -17767,7 +17967,8 @@ class GoogleCloudDataplexV1TaskSparkTaskConfig {
           infrastructureSpec: json_.containsKey('infrastructureSpec')
               ? GoogleCloudDataplexV1TaskInfrastructureSpec.fromJson(
                   json_['infrastructureSpec']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           mainClass: json_['mainClass'] as core.String?,
           mainJarFileUri: json_['mainJarFileUri'] as core.String?,
@@ -17869,20 +18070,19 @@ class GoogleCloudDataplexV1Trigger {
   /// The scan is scheduled to run periodically.
   GoogleCloudDataplexV1TriggerSchedule? schedule;
 
-  GoogleCloudDataplexV1Trigger({
-    this.onDemand,
-    this.schedule,
-  });
+  GoogleCloudDataplexV1Trigger({this.onDemand, this.schedule});
 
   GoogleCloudDataplexV1Trigger.fromJson(core.Map json_)
       : this(
           onDemand: json_.containsKey('onDemand')
               ? GoogleCloudDataplexV1TriggerOnDemand.fromJson(
-                  json_['onDemand'] as core.Map<core.String, core.dynamic>)
+                  json_['onDemand'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           schedule: json_.containsKey('schedule')
               ? GoogleCloudDataplexV1TriggerSchedule.fromJson(
-                  json_['schedule'] as core.Map<core.String, core.dynamic>)
+                  json_['schedule'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -17910,14 +18110,10 @@ class GoogleCloudDataplexV1TriggerSchedule {
   /// Required.
   core.String? cron;
 
-  GoogleCloudDataplexV1TriggerSchedule({
-    this.cron,
-  });
+  GoogleCloudDataplexV1TriggerSchedule({this.cron});
 
   GoogleCloudDataplexV1TriggerSchedule.fromJson(core.Map json_)
-      : this(
-          cron: json_['cron'] as core.String?,
-        );
+      : this(cron: json_['cron'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cron != null) 'cron': cron!,
@@ -18028,26 +18224,26 @@ class GoogleCloudDataplexV1Zone {
       : this(
           assetStatus: json_.containsKey('assetStatus')
               ? GoogleCloudDataplexV1AssetStatus.fromJson(
-                  json_['assetStatus'] as core.Map<core.String, core.dynamic>)
+                  json_['assetStatus'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           discoverySpec: json_.containsKey('discoverySpec')
               ? GoogleCloudDataplexV1ZoneDiscoverySpec.fromJson(
-                  json_['discoverySpec'] as core.Map<core.String, core.dynamic>)
+                  json_['discoverySpec'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           displayName: json_['displayName'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           resourceSpec: json_.containsKey('resourceSpec')
               ? GoogleCloudDataplexV1ZoneResourceSpec.fromJson(
-                  json_['resourceSpec'] as core.Map<core.String, core.dynamic>)
+                  json_['resourceSpec'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           state: json_['state'] as core.String?,
           type: json_['type'] as core.String?,
@@ -18135,7 +18331,8 @@ class GoogleCloudDataplexV1ZoneDiscoverySpec {
       : this(
           csvOptions: json_.containsKey('csvOptions')
               ? GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions.fromJson(
-                  json_['csvOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['csvOptions'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           enabled: json_['enabled'] as core.bool?,
           excludePatterns: (json_['excludePatterns'] as core.List?)
@@ -18146,7 +18343,8 @@ class GoogleCloudDataplexV1ZoneDiscoverySpec {
               .toList(),
           jsonOptions: json_.containsKey('jsonOptions')
               ? GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions.fromJson(
-                  json_['jsonOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['jsonOptions'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           schedule: json_['schedule'] as core.String?,
         );
@@ -18182,14 +18380,10 @@ class GoogleCloudDataplexV1ZoneResourceSpec {
   /// location.
   core.String? locationType;
 
-  GoogleCloudDataplexV1ZoneResourceSpec({
-    this.locationType,
-  });
+  GoogleCloudDataplexV1ZoneResourceSpec({this.locationType});
 
   GoogleCloudDataplexV1ZoneResourceSpec.fromJson(core.Map json_)
-      : this(
-          locationType: json_['locationType'] as core.String?,
-        );
+      : this(locationType: json_['locationType'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (locationType != null) 'locationType': locationType!,
@@ -18212,8 +18406,11 @@ class GoogleCloudLocationListLocationsResponse {
   GoogleCloudLocationListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map((value) => GoogleCloudLocationLocation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudLocationLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -18254,16 +18451,16 @@ class GoogleIamV1AuditConfig {
   /// is a special value that covers all services.
   core.String? service;
 
-  GoogleIamV1AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  GoogleIamV1AuditConfig({this.auditLogConfigs, this.service});
 
   GoogleIamV1AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => GoogleIamV1AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleIamV1AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -18361,17 +18558,14 @@ class GoogleIamV1Binding {
   /// (https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  GoogleIamV1Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  GoogleIamV1Binding({this.condition, this.members, this.role});
 
   GoogleIamV1Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? GoogleTypeExpr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -18480,12 +18674,18 @@ class GoogleIamV1Policy {
   GoogleIamV1Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => GoogleIamV1AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleIamV1AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => GoogleIamV1Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleIamV1Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -18514,16 +18714,14 @@ class GoogleIamV1SetIamPolicyRequest {
   /// following default mask is used:paths: "bindings, etag"
   core.String? updateMask;
 
-  GoogleIamV1SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  GoogleIamV1SetIamPolicyRequest({this.policy, this.updateMask});
 
   GoogleIamV1SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? GoogleIamV1Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -18560,8 +18758,11 @@ class GoogleLongrunningListOperationsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -18627,7 +18828,8 @@ class GoogleLongrunningOperation {
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>

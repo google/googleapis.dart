@@ -53,11 +53,16 @@ class ServiceDirectoryApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ServiceDirectoryApi(http.Client client,
-      {core.String rootUrl = 'https://servicedirectory.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ServiceDirectoryApi(
+    http.Client client, {
+    core.String rootUrl = 'https://servicedirectory.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -94,10 +99,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -161,7 +163,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -244,10 +247,7 @@ class ProjectsLocationsNamespacesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -280,10 +280,7 @@ class ProjectsLocationsNamespacesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Namespace> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Namespace> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -413,7 +410,8 @@ class ProjectsLocationsNamespacesResource {
       queryParams: queryParams_,
     );
     return ListNamespacesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a namespace.
@@ -549,7 +547,8 @@ class ProjectsLocationsNamespacesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -633,10 +632,7 @@ class ProjectsLocationsNamespacesServicesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -669,10 +665,7 @@ class ProjectsLocationsNamespacesServicesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Service> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Service> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -804,7 +797,8 @@ class ProjectsLocationsNamespacesServicesResource {
       queryParams: queryParams_,
     );
     return ListServicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a service.
@@ -894,7 +888,8 @@ class ProjectsLocationsNamespacesServicesResource {
       queryParams: queryParams_,
     );
     return ResolveServiceResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the IAM Policy for a resource (namespace or service only).
@@ -984,7 +979,8 @@ class ProjectsLocationsNamespacesServicesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -992,8 +988,8 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsNamespacesServicesEndpointsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates an endpoint, and returns the new endpoint.
   ///
@@ -1064,10 +1060,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1100,10 +1093,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Endpoint> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Endpoint> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1193,7 +1183,8 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
       queryParams: queryParams_,
     );
     return ListEndpointsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an endpoint.
@@ -1324,17 +1315,14 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1427,14 +1415,9 @@ class Endpoint {
   Endpoint.fromJson(core.Map json_)
       : this(
           address: json_['address'] as core.String?,
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          annotations: (json_['annotations']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           name: json_['name'] as core.String?,
           network: json_['network'] as core.String?,
           port: json_['port'] as core.int?,
@@ -1477,15 +1460,14 @@ class GetIamPolicyRequest {
   /// `GetIamPolicy`.
   GetPolicyOptions? options;
 
-  GetIamPolicyRequest({
-    this.options,
-  });
+  GetIamPolicyRequest({this.options});
 
   GetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           options: json_.containsKey('options')
               ? GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>)
+                  json_['options'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1506,16 +1488,16 @@ class ListEndpointsResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  ListEndpointsResponse({
-    this.endpoints,
-    this.nextPageToken,
-  });
+  ListEndpointsResponse({this.endpoints, this.nextPageToken});
 
   ListEndpointsResponse.fromJson(core.Map json_)
       : this(
           endpoints: (json_['endpoints'] as core.List?)
-              ?.map((value) => Endpoint.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Endpoint.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1534,16 +1516,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1563,16 +1545,16 @@ class ListNamespacesResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  ListNamespacesResponse({
-    this.namespaces,
-    this.nextPageToken,
-  });
+  ListNamespacesResponse({this.namespaces, this.nextPageToken});
 
   ListNamespacesResponse.fromJson(core.Map json_)
       : this(
           namespaces: (json_['namespaces'] as core.List?)
-              ?.map((value) => Namespace.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Namespace.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1592,17 +1574,17 @@ class ListServicesResponse {
   /// The list of services.
   core.List<Service>? services;
 
-  ListServicesResponse({
-    this.nextPageToken,
-    this.services,
-  });
+  ListServicesResponse({this.nextPageToken, this.services});
 
   ListServicesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           services: (json_['services'] as core.List?)
-              ?.map((value) => Service.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Service.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1639,20 +1621,13 @@ class Namespace {
   /// Output only.
   core.String? uid;
 
-  Namespace({
-    this.labels,
-    this.name,
-    this.uid,
-  });
+  Namespace({this.labels, this.name, this.uid});
 
   Namespace.fromJson(core.Map json_)
       : this(
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           uid: json_['uid'] as core.String?,
@@ -1748,17 +1723,16 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
       : this(
           bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -1811,10 +1785,7 @@ class ResolveServiceRequest {
   /// Optional.
   core.int? maxEndpoints;
 
-  ResolveServiceRequest({
-    this.endpointFilter,
-    this.maxEndpoints,
-  });
+  ResolveServiceRequest({this.endpointFilter, this.maxEndpoints});
 
   ResolveServiceRequest.fromJson(core.Map json_)
       : this(
@@ -1832,15 +1803,14 @@ class ResolveServiceRequest {
 class ResolveServiceResponse {
   Service? service;
 
-  ResolveServiceResponse({
-    this.service,
-  });
+  ResolveServiceResponse({this.service});
 
   ResolveServiceResponse.fromJson(core.Map json_)
       : this(
           service: json_.containsKey('service')
               ? Service.fromJson(
-                  json_['service'] as core.Map<core.String, core.dynamic>)
+                  json_['service'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1892,26 +1862,19 @@ class Service {
   /// Output only.
   core.String? uid;
 
-  Service({
-    this.annotations,
-    this.endpoints,
-    this.name,
-    this.uid,
-  });
+  Service({this.annotations, this.endpoints, this.name, this.uid});
 
   Service.fromJson(core.Map json_)
       : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          annotations: (json_['annotations']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           endpoints: (json_['endpoints'] as core.List?)
-              ?.map((value) => Endpoint.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Endpoint.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           name: json_['name'] as core.String?,
           uid: json_['uid'] as core.String?,
@@ -1934,15 +1897,14 @@ class SetIamPolicyRequest {
   /// reject them.
   Policy? policy;
 
-  SetIamPolicyRequest({
-    this.policy,
-  });
+  SetIamPolicyRequest({this.policy});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 

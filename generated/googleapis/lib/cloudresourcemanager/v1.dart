@@ -62,11 +62,16 @@ class CloudResourceManagerApi {
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  CloudResourceManagerApi(http.Client client,
-      {core.String rootUrl = 'https://cloudresourcemanager.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudResourceManagerApi(
+    http.Client client, {
+    core.String rootUrl = 'https://cloudresourcemanager.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class FoldersResource {
@@ -247,7 +252,8 @@ class FoldersResource {
       queryParams: queryParams_,
     );
     return ListAvailableOrgPolicyConstraintsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the `Policies` set for a particular resource.
@@ -288,7 +294,8 @@ class FoldersResource {
       queryParams: queryParams_,
     );
     return ListOrgPoliciesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified `Policy` on the resource.
@@ -362,10 +369,7 @@ class LiensResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Lien> create(
-    Lien request, {
-    core.String? $fields,
-  }) async {
+  async.Future<Lien> create(Lien request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -403,10 +407,7 @@ class LiensResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -442,10 +443,7 @@ class LiensResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Lien> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Lien> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -512,7 +510,8 @@ class LiensResource {
       queryParams: queryParams_,
     );
     return ListLiensResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -541,10 +540,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -641,7 +637,8 @@ class OrganizationsResource {
       queryParams: queryParams_,
     );
     return Organization.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the effective `Policy` on a resource.
@@ -825,7 +822,8 @@ class OrganizationsResource {
       queryParams: queryParams_,
     );
     return ListAvailableOrgPolicyConstraintsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the `Policies` set for a particular resource.
@@ -866,7 +864,8 @@ class OrganizationsResource {
       queryParams: queryParams_,
     );
     return ListOrgPoliciesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Searches Organization resources that are visible to the user and satisfy
@@ -909,7 +908,8 @@ class OrganizationsResource {
       queryParams: queryParams_,
     );
     return SearchOrganizationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on an Organization resource.
@@ -1050,7 +1050,8 @@ class OrganizationsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1270,7 +1271,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return GetAncestryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the effective `Policy` on a resource.
@@ -1492,7 +1494,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return ListProjectsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists `Constraints` that could be applied on the specified resource.
@@ -1536,7 +1539,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return ListAvailableOrgPolicyConstraintsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the `Policies` set for a particular resource.
@@ -1577,7 +1581,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return ListOrgPoliciesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the IAM access control policy for the specified Project.
@@ -1748,7 +1753,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Restores the Project identified by the specified `project_id` (for
@@ -1844,15 +1850,14 @@ class Ancestor {
   /// Resource id of the ancestor.
   ResourceId? resourceId;
 
-  Ancestor({
-    this.resourceId,
-  });
+  Ancestor({this.resourceId});
 
   Ancestor.fromJson(core.Map json_)
       : this(
           resourceId: json_.containsKey('resourceId')
               ? ResourceId.fromJson(
-                  json_['resourceId'] as core.Map<core.String, core.dynamic>)
+                  json_['resourceId'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1888,16 +1893,16 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -1996,17 +2001,14 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2048,10 +2050,7 @@ class ClearOrgPolicyRequest {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  ClearOrgPolicyRequest({
-    this.constraint,
-    this.etag,
-  });
+  ClearOrgPolicyRequest({this.constraint, this.etag});
 
   ClearOrgPolicyRequest.fromJson(core.Map json_)
       : this(
@@ -2131,15 +2130,19 @@ class Constraint {
   Constraint.fromJson(core.Map json_)
       : this(
           booleanConstraint: json_.containsKey('booleanConstraint')
-              ? BooleanConstraint.fromJson(json_['booleanConstraint']
-                  as core.Map<core.String, core.dynamic>)
+              ? BooleanConstraint.fromJson(
+                  json_['booleanConstraint']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           constraintDefault: json_['constraintDefault'] as core.String?,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           listConstraint: json_.containsKey('listConstraint')
-              ? ListConstraint.fromJson(json_['listConstraint']
-                  as core.Map<core.String, core.dynamic>)
+              ? ListConstraint.fromJson(
+                  json_['listConstraint']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           version: json_['version'] as core.int?,
@@ -2195,15 +2198,16 @@ class GetAncestryResponse {
   /// parent, etc..
   core.List<Ancestor>? ancestor;
 
-  GetAncestryResponse({
-    this.ancestor,
-  });
+  GetAncestryResponse({this.ancestor});
 
   GetAncestryResponse.fromJson(core.Map json_)
       : this(
           ancestor: (json_['ancestor'] as core.List?)
-              ?.map((value) => Ancestor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Ancestor.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2217,14 +2221,10 @@ class GetEffectiveOrgPolicyRequest {
   /// The name of the `Constraint` to compute the effective `Policy`.
   core.String? constraint;
 
-  GetEffectiveOrgPolicyRequest({
-    this.constraint,
-  });
+  GetEffectiveOrgPolicyRequest({this.constraint});
 
   GetEffectiveOrgPolicyRequest.fromJson(core.Map json_)
-      : this(
-          constraint: json_['constraint'] as core.String?,
-        );
+      : this(constraint: json_['constraint'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (constraint != null) 'constraint': constraint!,
@@ -2237,15 +2237,14 @@ class GetIamPolicyRequest {
   /// `GetIamPolicy`.
   GetPolicyOptions? options;
 
-  GetIamPolicyRequest({
-    this.options,
-  });
+  GetIamPolicyRequest({this.options});
 
   GetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           options: json_.containsKey('options')
               ? GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>)
+                  json_['options'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2259,14 +2258,10 @@ class GetOrgPolicyRequest {
   /// Name of the `Constraint` to get the `Policy`.
   core.String? constraint;
 
-  GetOrgPolicyRequest({
-    this.constraint,
-  });
+  GetOrgPolicyRequest({this.constraint});
 
   GetOrgPolicyRequest.fromJson(core.Map json_)
-      : this(
-          constraint: json_['constraint'] as core.String?,
-        );
+      : this(constraint: json_['constraint'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (constraint != null) 'constraint': constraint!,
@@ -2306,8 +2301,11 @@ class ListAvailableOrgPolicyConstraintsResponse {
   ListAvailableOrgPolicyConstraintsResponse.fromJson(core.Map json_)
       : this(
           constraints: (json_['constraints'] as core.List?)
-              ?.map((value) => Constraint.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Constraint.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2334,10 +2332,7 @@ class ListConstraint {
   /// 'folders/123' folder.
   core.bool? supportsUnder;
 
-  ListConstraint({
-    this.suggestedValue,
-    this.supportsUnder,
-  });
+  ListConstraint({this.suggestedValue, this.supportsUnder});
 
   ListConstraint.fromJson(core.Map json_)
       : this(
@@ -2360,16 +2355,16 @@ class ListLiensResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  ListLiensResponse({
-    this.liens,
-    this.nextPageToken,
-  });
+  ListLiensResponse({this.liens, this.nextPageToken});
 
   ListLiensResponse.fromJson(core.Map json_)
       : this(
           liens: (json_['liens'] as core.List?)
-              ?.map((value) =>
-                  Lien.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Lien.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2398,17 +2393,17 @@ class ListOrgPoliciesResponse {
   /// It will be empty if no `Policies` are set.
   core.List<OrgPolicy>? policies;
 
-  ListOrgPoliciesResponse({
-    this.nextPageToken,
-    this.policies,
-  });
+  ListOrgPoliciesResponse({this.nextPageToken, this.policies});
 
   ListOrgPoliciesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           policies: (json_['policies'] as core.List?)
-              ?.map((value) => OrgPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => OrgPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2459,17 +2454,17 @@ class ListProjectsResponse {
   /// This list can be paginated.
   core.List<Project>? projects;
 
-  ListProjectsResponse({
-    this.nextPageToken,
-    this.projects,
-  });
+  ListProjectsResponse({this.nextPageToken, this.projects});
 
   ListProjectsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           projects: (json_['projects'] as core.List?)
-              ?.map((value) => Project.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Project.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2522,20 +2517,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -2622,17 +2612,21 @@ class OrgPolicy {
       : this(
           booleanPolicy: json_.containsKey('booleanPolicy')
               ? BooleanPolicy.fromJson(
-                  json_['booleanPolicy'] as core.Map<core.String, core.dynamic>)
+                  json_['booleanPolicy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           constraint: json_['constraint'] as core.String?,
           etag: json_['etag'] as core.String?,
           listPolicy: json_.containsKey('listPolicy')
               ? ListPolicy.fromJson(
-                  json_['listPolicy'] as core.Map<core.String, core.dynamic>)
+                  json_['listPolicy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           restoreDefault: json_.containsKey('restoreDefault')
-              ? RestoreDefault.fromJson(json_['restoreDefault']
-                  as core.Map<core.String, core.dynamic>)
+              ? RestoreDefault.fromJson(
+                  json_['restoreDefault']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateTime: json_['updateTime'] as core.String?,
           version: json_['version'] as core.int?,
@@ -2706,7 +2700,8 @@ class Organization {
           name: json_['name'] as core.String?,
           owner: json_.containsKey('owner')
               ? OrganizationOwner.fromJson(
-                  json_['owner'] as core.Map<core.String, core.dynamic>)
+                  json_['owner'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2728,14 +2723,10 @@ class OrganizationOwner {
   /// The G Suite customer id used in the Directory API.
   core.String? directoryCustomerId;
 
-  OrganizationOwner({
-    this.directoryCustomerId,
-  });
+  OrganizationOwner({this.directoryCustomerId});
 
   OrganizationOwner.fromJson(core.Map json_)
-      : this(
-          directoryCustomerId: json_['directoryCustomerId'] as core.String?,
-        );
+      : this(directoryCustomerId: json_['directoryCustomerId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (directoryCustomerId != null)
@@ -2829,22 +2820,23 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -2947,24 +2939,19 @@ class Project {
           createTime: json_['createTime'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           lifecycleState: json_['lifecycleState'] as core.String?,
           name: json_['name'] as core.String?,
           parent: json_.containsKey('parent')
               ? ResourceId.fromJson(
-                  json_['parent'] as core.Map<core.String, core.dynamic>)
+                  json_['parent'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           projectId: json_['projectId'] as core.String?,
           projectNumber: json_['projectNumber'] as core.String?,
           tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
         );
 
@@ -2997,10 +2984,7 @@ class ResourceId {
   /// At present, the valid types are: "organization", "folder", and "project".
   core.String? type;
 
-  ResourceId({
-    this.id,
-    this.type,
-  });
+  ResourceId({this.id, this.type});
 
   ResourceId.fromJson(core.Map json_)
       : this(
@@ -3053,11 +3037,7 @@ class SearchOrganizationsRequest {
   /// This field is optional.
   core.String? pageToken;
 
-  SearchOrganizationsRequest({
-    this.filter,
-    this.pageSize,
-    this.pageToken,
-  });
+  SearchOrganizationsRequest({this.filter, this.pageSize, this.pageToken});
 
   SearchOrganizationsRequest.fromJson(core.Map json_)
       : this(
@@ -3087,17 +3067,17 @@ class SearchOrganizationsResponse {
   /// paginated.
   core.List<Organization>? organizations;
 
-  SearchOrganizationsResponse({
-    this.nextPageToken,
-    this.organizations,
-  });
+  SearchOrganizationsResponse({this.nextPageToken, this.organizations});
 
   SearchOrganizationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           organizations: (json_['organizations'] as core.List?)
-              ?.map((value) => Organization.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Organization.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3122,16 +3102,14 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -3147,15 +3125,14 @@ class SetOrgPolicyRequest {
   /// `Policy` to set on the resource.
   OrgPolicy? policy;
 
-  SetOrgPolicyRequest({
-    this.policy,
-  });
+  SetOrgPolicyRequest({this.policy});
 
   SetOrgPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? OrgPolicy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 

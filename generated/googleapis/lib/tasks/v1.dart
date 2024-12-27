@@ -50,11 +50,16 @@ class TasksApi {
   TasklistsResource get tasklists => TasklistsResource(_requester);
   TasksResource get tasks => TasksResource(_requester);
 
-  TasksApi(http.Client client,
-      {core.String rootUrl = 'https://tasks.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  TasksApi(
+    http.Client client, {
+    core.String rootUrl = 'https://tasks.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class TasklistsResource {
@@ -319,10 +324,7 @@ class TasksResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> clear(
-    core.String tasklist, {
-    core.String? $fields,
-  }) async {
+  async.Future<void> clear(core.String tasklist, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -780,13 +782,16 @@ class AssignmentInfo {
   AssignmentInfo.fromJson(core.Map json_)
       : this(
           driveResourceInfo: json_.containsKey('driveResourceInfo')
-              ? DriveResourceInfo.fromJson(json_['driveResourceInfo']
-                  as core.Map<core.String, core.dynamic>)
+              ? DriveResourceInfo.fromJson(
+                  json_['driveResourceInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           linkToTask: json_['linkToTask'] as core.String?,
           spaceInfo: json_.containsKey('spaceInfo')
               ? SpaceInfo.fromJson(
-                  json_['spaceInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['spaceInfo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           surfaceType: json_['surfaceType'] as core.String?,
         );
@@ -815,10 +820,7 @@ class DriveResourceInfo {
   /// Output only.
   core.String? resourceKey;
 
-  DriveResourceInfo({
-    this.driveFileId,
-    this.resourceKey,
-  });
+  DriveResourceInfo({this.driveFileId, this.resourceKey});
 
   DriveResourceInfo.fromJson(core.Map json_)
       : this(
@@ -841,14 +843,10 @@ class SpaceInfo {
   /// Output only.
   core.String? space;
 
-  SpaceInfo({
-    this.space,
-  });
+  SpaceInfo({this.space});
 
   SpaceInfo.fromJson(core.Map json_)
-      : this(
-          space: json_['space'] as core.String?,
-        );
+      : this(space: json_['space'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (space != null) 'space': space!,
@@ -867,11 +865,7 @@ class TaskLinks {
   /// Type of the link, e.g. "email".
   core.String? type;
 
-  TaskLinks({
-    this.description,
-    this.link,
-    this.type,
-  });
+  TaskLinks({this.description, this.link, this.type});
 
   TaskLinks.fromJson(core.Map json_)
       : this(
@@ -1022,8 +1016,10 @@ class Task {
   Task.fromJson(core.Map json_)
       : this(
           assignmentInfo: json_.containsKey('assignmentInfo')
-              ? AssignmentInfo.fromJson(json_['assignmentInfo']
-                  as core.Map<core.String, core.dynamic>)
+              ? AssignmentInfo.fromJson(
+                  json_['assignmentInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           completed: json_['completed'] as core.String?,
           deleted: json_['deleted'] as core.bool?,
@@ -1033,8 +1029,11 @@ class Task {
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           links: (json_['links'] as core.List?)
-              ?.map((value) => TaskLinks.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TaskLinks.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           notes: json_['notes'] as core.String?,
           parent: json_['parent'] as core.String?,
@@ -1142,19 +1141,17 @@ class TaskLists {
   /// Token that can be used to request the next page of this result.
   core.String? nextPageToken;
 
-  TaskLists({
-    this.etag,
-    this.items,
-    this.kind,
-    this.nextPageToken,
-  });
+  TaskLists({this.etag, this.items, this.kind, this.nextPageToken});
 
   TaskLists.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => TaskList.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TaskList.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
@@ -1183,19 +1180,17 @@ class Tasks {
   /// Token used to access the next page of this result.
   core.String? nextPageToken;
 
-  Tasks({
-    this.etag,
-    this.items,
-    this.kind,
-    this.nextPageToken,
-  });
+  Tasks({this.etag, this.items, this.kind, this.nextPageToken});
 
   Tasks.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  Task.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Task.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,

@@ -47,11 +47,16 @@ class CivicInfoApi {
   RepresentativesResource get representatives =>
       RepresentativesResource(_requester);
 
-  CivicInfoApi(http.Client client,
-      {core.String rootUrl = 'https://civicinfo.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CivicInfoApi(
+    http.Client client, {
+    core.String rootUrl = 'https://civicinfo.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class DivisionsResource {
@@ -92,7 +97,8 @@ class DivisionsResource {
       queryParams: queryParams_,
     );
     return DivisionByAddressResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Searches for political divisions by their natural name or OCD ID.
@@ -132,7 +138,8 @@ class DivisionsResource {
       queryParams: queryParams_,
     );
     return DivisionSearchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -176,7 +183,8 @@ class ElectionsResource {
       queryParams: queryParams_,
     );
     return ElectionsQueryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Looks up information relevant to a voter based on the voter's registered
@@ -242,7 +250,8 @@ class ElectionsResource {
       queryParams: queryParams_,
     );
     return VoterInfoResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -304,7 +313,8 @@ class RepresentativesResource {
       queryParams: queryParams_,
     );
     return RepresentativeInfoResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Looks up representative information for a single geographic division.
@@ -360,7 +370,8 @@ class RepresentativesResource {
       queryParams: queryParams_,
     );
     return RepresentativeInfoData.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -392,19 +403,26 @@ class AdministrationRegion {
 
   AdministrationRegion.fromJson(core.Map json_)
       : this(
-          electionAdministrationBody: json_
-                  .containsKey('electionAdministrationBody')
-              ? AdministrativeBody.fromJson(json_['electionAdministrationBody']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
+          electionAdministrationBody:
+              json_.containsKey('electionAdministrationBody')
+                  ? AdministrativeBody.fromJson(
+                      json_['electionAdministrationBody']
+                          as core.Map<core.String, core.dynamic>,
+                    )
+                  : null,
           localJurisdiction: json_.containsKey('local_jurisdiction')
-              ? AdministrationRegion.fromJson(json_['local_jurisdiction']
-                  as core.Map<core.String, core.dynamic>)
+              ? AdministrationRegion.fromJson(
+                  json_['local_jurisdiction']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           sources: (json_['sources'] as core.List?)
-              ?.map((value) =>
-                  Source.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Source.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -496,15 +514,20 @@ class AdministrativeBody {
           absenteeVotingInfoUrl: json_['absenteeVotingInfoUrl'] as core.String?,
           ballotInfoUrl: json_['ballotInfoUrl'] as core.String?,
           correspondenceAddress: json_.containsKey('correspondenceAddress')
-              ? SimpleAddressType.fromJson(json_['correspondenceAddress']
-                  as core.Map<core.String, core.dynamic>)
+              ? SimpleAddressType.fromJson(
+                  json_['correspondenceAddress']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           electionInfoUrl: json_['electionInfoUrl'] as core.String?,
           electionNoticeText: json_['electionNoticeText'] as core.String?,
           electionNoticeUrl: json_['electionNoticeUrl'] as core.String?,
           electionOfficials: (json_['electionOfficials'] as core.List?)
-              ?.map((value) => ElectionOfficial.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ElectionOfficial.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           electionRegistrationConfirmationUrl:
               json_['electionRegistrationConfirmationUrl'] as core.String?,
@@ -514,8 +537,10 @@ class AdministrativeBody {
           hoursOfOperation: json_['hoursOfOperation'] as core.String?,
           name: json_['name'] as core.String?,
           physicalAddress: json_.containsKey('physicalAddress')
-              ? SimpleAddressType.fromJson(json_['physicalAddress']
-                  as core.Map<core.String, core.dynamic>)
+              ? SimpleAddressType.fromJson(
+                  json_['physicalAddress']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           voterServices: (json_['voter_services'] as core.List?)
               ?.map((value) => value as core.String)
@@ -595,8 +620,11 @@ class Candidate {
       : this(
           candidateUrl: json_['candidateUrl'] as core.String?,
           channels: (json_['channels'] as core.List?)
-              ?.map((value) => Channel.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Channel.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           email: json_['email'] as core.String?,
           name: json_['name'] as core.String?,
@@ -630,10 +658,7 @@ class Channel {
   /// Facebook, Twitter
   core.String? type;
 
-  Channel({
-    this.id,
-    this.type,
-  });
+  Channel({this.id, this.type});
 
   Channel.fromJson(core.Map json_)
       : this(
@@ -794,12 +819,16 @@ class Contest {
           ballotPlacement: json_['ballotPlacement'] as core.String?,
           ballotTitle: json_['ballotTitle'] as core.String?,
           candidates: (json_['candidates'] as core.List?)
-              ?.map((value) => Candidate.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Candidate.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           district: json_.containsKey('district')
               ? ElectoralDistrict.fromJson(
-                  json_['district'] as core.Map<core.String, core.dynamic>)
+                  json_['district'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           electorateSpecifications:
               json_['electorateSpecifications'] as core.String?,
@@ -833,8 +862,11 @@ class Contest {
               ?.map((value) => value as core.String)
               .toList(),
           sources: (json_['sources'] as core.List?)
-              ?.map((value) =>
-                  Source.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Source.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           special: json_['special'] as core.String?,
           type: json_['type'] as core.String?,
@@ -881,10 +913,7 @@ class DivisionByAddressResponse {
   /// The normalized version of the requested address.
   SimpleAddressType? normalizedInput;
 
-  DivisionByAddressResponse({
-    this.divisions,
-    this.normalizedInput,
-  });
+  DivisionByAddressResponse({this.divisions, this.normalizedInput});
 
   DivisionByAddressResponse.fromJson(core.Map json_)
       : this(
@@ -893,12 +922,15 @@ class DivisionByAddressResponse {
             (key, value) => core.MapEntry(
               key,
               GeographicDivision.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           normalizedInput: json_.containsKey('normalizedInput')
-              ? SimpleAddressType.fromJson(json_['normalizedInput']
-                  as core.Map<core.String, core.dynamic>)
+              ? SimpleAddressType.fromJson(
+                  json_['normalizedInput']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -916,17 +948,17 @@ class DivisionSearchResponse {
   core.String? kind;
   core.List<DivisionSearchResult>? results;
 
-  DivisionSearchResponse({
-    this.kind,
-    this.results,
-  });
+  DivisionSearchResponse({this.kind, this.results});
 
   DivisionSearchResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           results: (json_['results'] as core.List?)
-              ?.map((value) => DivisionSearchResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DivisionSearchResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -953,11 +985,7 @@ class DivisionSearchResult {
   /// The unique Open Civic Data identifier for this division
   core.String? ocdId;
 
-  DivisionSearchResult({
-    this.aliases,
-    this.name,
-    this.ocdId,
-  });
+  DivisionSearchResult({this.aliases, this.name, this.ocdId});
 
   DivisionSearchResult.fromJson(core.Map json_)
       : this(
@@ -1081,16 +1109,16 @@ class ElectionsQueryResponse {
   /// Value: the fixed string "civicinfo#electionsQueryResponse".
   core.String? kind;
 
-  ElectionsQueryResponse({
-    this.elections,
-    this.kind,
-  });
+  ElectionsQueryResponse({this.elections, this.kind});
 
   ElectionsQueryResponse.fromJson(core.Map json_)
       : this(
           elections: (json_['elections'] as core.List?)
-              ?.map((value) => Election.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Election.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -1134,11 +1162,7 @@ class ElectoralDistrict {
   /// - "national"
   core.String? scope;
 
-  ElectoralDistrict({
-    this.id,
-    this.name,
-    this.scope,
-  });
+  ElectoralDistrict({this.id, this.name, this.scope});
 
   ElectoralDistrict.fromJson(core.Map json_)
       : this(
@@ -1178,11 +1202,7 @@ class GeographicDivision {
   /// request.
   core.List<core.int>? officeIndices;
 
-  GeographicDivision({
-    this.alsoKnownAs,
-    this.name,
-    this.officeIndices,
-  });
+  GeographicDivision({this.alsoKnownAs, this.name, this.officeIndices});
 
   GeographicDivision.fromJson(core.Map json_)
       : this(
@@ -1259,8 +1279,11 @@ class Office {
               ?.map((value) => value as core.String)
               .toList(),
           sources: (json_['sources'] as core.List?)
-              ?.map((value) =>
-                  Source.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Source.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1314,12 +1337,18 @@ class Official {
   Official.fromJson(core.Map json_)
       : this(
           address: (json_['address'] as core.List?)
-              ?.map((value) => SimpleAddressType.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => SimpleAddressType.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           channels: (json_['channels'] as core.List?)
-              ?.map((value) => Channel.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Channel.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           emails: (json_['emails'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1414,7 +1443,8 @@ class PollingLocation {
       : this(
           address: json_.containsKey('address')
               ? SimpleAddressType.fromJson(
-                  json_['address'] as core.Map<core.String, core.dynamic>)
+                  json_['address'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           endDate: json_['endDate'] as core.String?,
           latitude: (json_['latitude'] as core.num?)?.toDouble(),
@@ -1423,8 +1453,11 @@ class PollingLocation {
           notes: json_['notes'] as core.String?,
           pollingHours: json_['pollingHours'] as core.String?,
           sources: (json_['sources'] as core.List?)
-              ?.map((value) =>
-                  Source.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Source.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           startDate: json_['startDate'] as core.String?,
           voterServices: json_['voterServices'] as core.String?,
@@ -1587,11 +1620,7 @@ class RepresentativeInfoData {
   /// Will only be present if includeOffices was true in the request.
   core.List<Official>? officials;
 
-  RepresentativeInfoData({
-    this.divisions,
-    this.offices,
-    this.officials,
-  });
+  RepresentativeInfoData({this.divisions, this.offices, this.officials});
 
   RepresentativeInfoData.fromJson(core.Map json_)
       : this(
@@ -1600,16 +1629,23 @@ class RepresentativeInfoData {
             (key, value) => core.MapEntry(
               key,
               GeographicDivision.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           offices: (json_['offices'] as core.List?)
-              ?.map((value) =>
-                  Office.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Office.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           officials: (json_['officials'] as core.List?)
-              ?.map((value) => Official.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Official.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1659,21 +1695,30 @@ class RepresentativeInfoResponse {
             (key, value) => core.MapEntry(
               key,
               GeographicDivision.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           kind: json_['kind'] as core.String?,
           normalizedInput: json_.containsKey('normalizedInput')
-              ? SimpleAddressType.fromJson(json_['normalizedInput']
-                  as core.Map<core.String, core.dynamic>)
+              ? SimpleAddressType.fromJson(
+                  json_['normalizedInput']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           offices: (json_['offices'] as core.List?)
-              ?.map((value) =>
-                  Office.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Office.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           officials: (json_['officials'] as core.List?)
-              ?.map((value) => Official.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Official.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1749,10 +1794,7 @@ class Source {
   /// Whether this data comes from an official government source.
   core.bool? official;
 
-  Source({
-    this.name,
-    this.official,
-  });
+  Source({this.name, this.official});
 
   Source.fromJson(core.Map json_)
       : this(
@@ -1844,43 +1886,67 @@ class VoterInfoResponse {
   VoterInfoResponse.fromJson(core.Map json_)
       : this(
           contests: (json_['contests'] as core.List?)
-              ?.map((value) => Contest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Contest.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           dropOffLocations: (json_['dropOffLocations'] as core.List?)
-              ?.map((value) => PollingLocation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PollingLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           earlyVoteSites: (json_['earlyVoteSites'] as core.List?)
-              ?.map((value) => PollingLocation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PollingLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           election: json_.containsKey('election')
               ? Election.fromJson(
-                  json_['election'] as core.Map<core.String, core.dynamic>)
+                  json_['election'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           kind: json_['kind'] as core.String?,
           mailOnly: json_['mailOnly'] as core.bool?,
           normalizedInput: json_.containsKey('normalizedInput')
-              ? SimpleAddressType.fromJson(json_['normalizedInput']
-                  as core.Map<core.String, core.dynamic>)
+              ? SimpleAddressType.fromJson(
+                  json_['normalizedInput']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           otherElections: (json_['otherElections'] as core.List?)
-              ?.map((value) => Election.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Election.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           pollingLocations: (json_['pollingLocations'] as core.List?)
-              ?.map((value) => PollingLocation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PollingLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           precinctId: json_['precinctId'] as core.String?,
           precincts: (json_['precincts'] as core.List?)
-              ?.map((value) => Precinct.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Precinct.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           state: (json_['state'] as core.List?)
-              ?.map((value) => AdministrationRegion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AdministrationRegion.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 

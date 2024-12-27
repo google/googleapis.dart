@@ -34,17 +34,17 @@ api.Bin buildBin() {
     o.density = {
       'list': [1, 2, 3],
       'bool': true,
-      'string': 'foo'
+      'string': 'foo',
     };
     o.end = {
       'list': [1, 2, 3],
       'bool': true,
-      'string': 'foo'
+      'string': 'foo',
     };
     o.start = {
       'list': [1, 2, 3],
       'bool': true,
-      'string': 'foo'
+      'string': 'foo',
     };
   }
   buildCounterBin--;
@@ -56,46 +56,19 @@ void checkBin(api.Bin o) {
   if (buildCounterBin < 3) {
     var casted1 = (o.density!) as core.Map;
     unittest.expect(casted1, unittest.hasLength(3));
-    unittest.expect(
-      casted1['list'],
-      unittest.equals([1, 2, 3]),
-    );
-    unittest.expect(
-      casted1['bool'],
-      unittest.equals(true),
-    );
-    unittest.expect(
-      casted1['string'],
-      unittest.equals('foo'),
-    );
+    unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+    unittest.expect(casted1['bool'], unittest.equals(true));
+    unittest.expect(casted1['string'], unittest.equals('foo'));
     var casted2 = (o.end!) as core.Map;
     unittest.expect(casted2, unittest.hasLength(3));
-    unittest.expect(
-      casted2['list'],
-      unittest.equals([1, 2, 3]),
-    );
-    unittest.expect(
-      casted2['bool'],
-      unittest.equals(true),
-    );
-    unittest.expect(
-      casted2['string'],
-      unittest.equals('foo'),
-    );
+    unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+    unittest.expect(casted2['bool'], unittest.equals(true));
+    unittest.expect(casted2['string'], unittest.equals('foo'));
     var casted3 = (o.start!) as core.Map;
     unittest.expect(casted3, unittest.hasLength(3));
-    unittest.expect(
-      casted3['list'],
-      unittest.equals([1, 2, 3]),
-    );
-    unittest.expect(
-      casted3['bool'],
-      unittest.equals(true),
-    );
-    unittest.expect(
-      casted3['string'],
-      unittest.equals('foo'),
-    );
+    unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+    unittest.expect(casted3['bool'], unittest.equals(true));
+    unittest.expect(casted3['string'], unittest.equals('foo'));
   }
   buildCounterBin--;
 }
@@ -137,37 +110,19 @@ api.Date buildDate() {
 void checkDate(api.Date o) {
   buildCounterDate++;
   if (buildCounterDate < 3) {
-    unittest.expect(
-      o.day!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.month!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.year!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.day!, unittest.equals(42));
+    unittest.expect(o.month!, unittest.equals(42));
+    unittest.expect(o.year!, unittest.equals(42));
   }
   buildCounterDate--;
 }
 
-core.List<core.double> buildUnnamed0() => [
-      42.0,
-      42.0,
-    ];
+core.List<core.double> buildUnnamed0() => [42.0, 42.0];
 
 void checkUnnamed0(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals(42.0),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals(42.0),
-  );
+  unittest.expect(o[0], unittest.equals(42.0));
+  unittest.expect(o[1], unittest.equals(42.0));
 }
 
 core.int buildCounterFractionTimeseries = 0;
@@ -205,18 +160,9 @@ api.HistoryKey buildHistoryKey() {
 void checkHistoryKey(api.HistoryKey o) {
   buildCounterHistoryKey++;
   if (buildCounterHistoryKey < 3) {
-    unittest.expect(
-      o.formFactor!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.origin!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.url!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.formFactor!, unittest.equals('foo'));
+    unittest.expect(o.origin!, unittest.equals('foo'));
+    unittest.expect(o.url!, unittest.equals('foo'));
   }
   buildCounterHistoryKey--;
 }
@@ -283,47 +229,23 @@ api.Key buildKey() {
 void checkKey(api.Key o) {
   buildCounterKey++;
   if (buildCounterKey < 3) {
-    unittest.expect(
-      o.effectiveConnectionType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.formFactor!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.origin!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.url!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.effectiveConnectionType!, unittest.equals('foo'));
+    unittest.expect(o.formFactor!, unittest.equals('foo'));
+    unittest.expect(o.origin!, unittest.equals('foo'));
+    unittest.expect(o.url!, unittest.equals('foo'));
   }
   buildCounterKey--;
 }
 
-core.Map<core.String, core.double> buildUnnamed3() => {
-      'x': 42.0,
-      'y': 42.0,
-    };
+core.Map<core.String, core.double> buildUnnamed3() => {'x': 42.0, 'y': 42.0};
 
 void checkUnnamed3(core.Map<core.String, core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals(42.0),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals(42.0),
-  );
+  unittest.expect(o['x']!, unittest.equals(42.0));
+  unittest.expect(o['y']!, unittest.equals(42.0));
 }
 
-core.List<api.Bin> buildUnnamed4() => [
-      buildBin(),
-      buildBin(),
-    ];
+core.List<api.Bin> buildUnnamed4() => [buildBin(), buildBin()];
 
 void checkUnnamed4(core.List<api.Bin> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -407,7 +329,7 @@ api.Percentiles buildPercentiles() {
     o.p75 = {
       'list': [1, 2, 3],
       'bool': true,
-      'string': 'foo'
+      'string': 'foo',
     };
   }
   buildCounterPercentiles--;
@@ -419,37 +341,19 @@ void checkPercentiles(api.Percentiles o) {
   if (buildCounterPercentiles < 3) {
     var casted4 = (o.p75!) as core.Map;
     unittest.expect(casted4, unittest.hasLength(3));
-    unittest.expect(
-      casted4['list'],
-      unittest.equals([1, 2, 3]),
-    );
-    unittest.expect(
-      casted4['bool'],
-      unittest.equals(true),
-    );
-    unittest.expect(
-      casted4['string'],
-      unittest.equals('foo'),
-    );
+    unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+    unittest.expect(casted4['bool'], unittest.equals(true));
+    unittest.expect(casted4['string'], unittest.equals('foo'));
   }
   buildCounterPercentiles--;
 }
 
-core.List<core.String> buildUnnamed7() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed7() => ['foo', 'foo'];
 
 void checkUnnamed7(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterQueryHistoryRequest = 0;
@@ -469,19 +373,10 @@ api.QueryHistoryRequest buildQueryHistoryRequest() {
 void checkQueryHistoryRequest(api.QueryHistoryRequest o) {
   buildCounterQueryHistoryRequest++;
   if (buildCounterQueryHistoryRequest < 3) {
-    unittest.expect(
-      o.formFactor!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.formFactor!, unittest.equals('foo'));
     checkUnnamed7(o.metrics!);
-    unittest.expect(
-      o.origin!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.url!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.origin!, unittest.equals('foo'));
+    unittest.expect(o.url!, unittest.equals('foo'));
   }
   buildCounterQueryHistoryRequest--;
 }
@@ -507,21 +402,12 @@ void checkQueryHistoryResponse(api.QueryHistoryResponse o) {
   buildCounterQueryHistoryResponse--;
 }
 
-core.List<core.String> buildUnnamed8() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed8() => ['foo', 'foo'];
 
 void checkUnnamed8(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterQueryRequest = 0;
@@ -542,23 +428,11 @@ api.QueryRequest buildQueryRequest() {
 void checkQueryRequest(api.QueryRequest o) {
   buildCounterQueryRequest++;
   if (buildCounterQueryRequest < 3) {
-    unittest.expect(
-      o.effectiveConnectionType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.formFactor!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.effectiveConnectionType!, unittest.equals('foo'));
+    unittest.expect(o.formFactor!, unittest.equals('foo'));
     checkUnnamed8(o.metrics!);
-    unittest.expect(
-      o.origin!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.url!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.origin!, unittest.equals('foo'));
+    unittest.expect(o.url!, unittest.equals('foo'));
   }
   buildCounterQueryRequest--;
 }
@@ -618,21 +492,12 @@ void checkRecord(api.Record o) {
   buildCounterRecord--;
 }
 
-core.List<core.double> buildUnnamed10() => [
-      42.0,
-      42.0,
-    ];
+core.List<core.double> buildUnnamed10() => [42.0, 42.0];
 
 void checkUnnamed10(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals(42.0),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals(42.0),
-  );
+  unittest.expect(o[0], unittest.equals(42.0));
+  unittest.expect(o[1], unittest.equals(42.0));
 }
 
 core.int buildCounterTimeseriesBin = 0;
@@ -644,12 +509,12 @@ api.TimeseriesBin buildTimeseriesBin() {
     o.end = {
       'list': [1, 2, 3],
       'bool': true,
-      'string': 'foo'
+      'string': 'foo',
     };
     o.start = {
       'list': [1, 2, 3],
       'bool': true,
-      'string': 'foo'
+      'string': 'foo',
     };
   }
   buildCounterTimeseriesBin--;
@@ -662,32 +527,14 @@ void checkTimeseriesBin(api.TimeseriesBin o) {
     checkUnnamed10(o.densities!);
     var casted5 = (o.end!) as core.Map;
     unittest.expect(casted5, unittest.hasLength(3));
-    unittest.expect(
-      casted5['list'],
-      unittest.equals([1, 2, 3]),
-    );
-    unittest.expect(
-      casted5['bool'],
-      unittest.equals(true),
-    );
-    unittest.expect(
-      casted5['string'],
-      unittest.equals('foo'),
-    );
+    unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+    unittest.expect(casted5['bool'], unittest.equals(true));
+    unittest.expect(casted5['string'], unittest.equals('foo'));
     var casted6 = (o.start!) as core.Map;
     unittest.expect(casted6, unittest.hasLength(3));
-    unittest.expect(
-      casted6['list'],
-      unittest.equals([1, 2, 3]),
-    );
-    unittest.expect(
-      casted6['bool'],
-      unittest.equals(true),
-    );
-    unittest.expect(
-      casted6['string'],
-      unittest.equals('foo'),
-    );
+    unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+    unittest.expect(casted6['bool'], unittest.equals(true));
+    unittest.expect(casted6['string'], unittest.equals('foo'));
   }
   buildCounterTimeseriesBin--;
 }
@@ -696,12 +543,12 @@ core.List<core.Object?> buildUnnamed11() => [
       {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
       {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
     ];
 
@@ -709,32 +556,14 @@ void checkUnnamed11(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o[0]) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(
-    casted7['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted7['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted7['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted7['bool'], unittest.equals(true));
+  unittest.expect(casted7['string'], unittest.equals('foo'));
   var casted8 = (o[1]) as core.Map;
   unittest.expect(casted8, unittest.hasLength(3));
-  unittest.expect(
-    casted8['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted8['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted8['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted8['bool'], unittest.equals(true));
+  unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterTimeseriesPercentiles = 0;
@@ -771,14 +600,8 @@ api.UrlNormalization buildUrlNormalization() {
 void checkUrlNormalization(api.UrlNormalization o) {
   buildCounterUrlNormalization++;
   if (buildCounterUrlNormalization < 3) {
-    unittest.expect(
-      o.normalizedUrl!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.originalUrl!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.normalizedUrl!, unittest.equals('foo'));
+    unittest.expect(o.originalUrl!, unittest.equals('foo'));
   }
   buildCounterUrlNormalization--;
 }
@@ -798,7 +621,8 @@ void main() {
       final o = buildCollectionPeriod();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CollectionPeriod.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCollectionPeriod(od);
     });
   });
@@ -807,8 +631,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildDate();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Date.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Date.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDate(od);
     });
   });
@@ -818,7 +643,8 @@ void main() {
       final o = buildFractionTimeseries();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.FractionTimeseries.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkFractionTimeseries(od);
     });
   });
@@ -827,8 +653,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildHistoryKey();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.HistoryKey.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.HistoryKey.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkHistoryKey(od);
     });
   });
@@ -838,7 +665,8 @@ void main() {
       final o = buildHistoryRecord();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.HistoryRecord.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkHistoryRecord(od);
     });
   });
@@ -856,8 +684,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildMetric();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Metric.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Metric.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkMetric(od);
     });
   });
@@ -867,7 +696,8 @@ void main() {
       final o = buildMetricTimeseries();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.MetricTimeseries.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkMetricTimeseries(od);
     });
   });
@@ -877,7 +707,8 @@ void main() {
       final o = buildPercentiles();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.Percentiles.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPercentiles(od);
     });
   });
@@ -887,7 +718,8 @@ void main() {
       final o = buildQueryHistoryRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.QueryHistoryRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkQueryHistoryRequest(od);
     });
   });
@@ -897,7 +729,8 @@ void main() {
       final o = buildQueryHistoryResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.QueryHistoryResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkQueryHistoryResponse(od);
     });
   });
@@ -907,7 +740,8 @@ void main() {
       final o = buildQueryRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.QueryRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkQueryRequest(od);
     });
   });
@@ -917,7 +751,8 @@ void main() {
       final o = buildQueryResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.QueryResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkQueryResponse(od);
     });
   });
@@ -926,8 +761,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildRecord();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Record.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Record.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkRecord(od);
     });
   });
@@ -937,7 +773,8 @@ void main() {
       final o = buildTimeseriesBin();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TimeseriesBin.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTimeseriesBin(od);
     });
   });
@@ -947,7 +784,8 @@ void main() {
       final o = buildTimeseriesPercentiles();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TimeseriesPercentiles.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTimeseriesPercentiles(od);
     });
   });
@@ -957,7 +795,8 @@ void main() {
       final o = buildUrlNormalization();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UrlNormalization.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUrlNormalization(od);
     });
   });
@@ -968,54 +807,58 @@ void main() {
       final res = api.ChromeUXReportApi(mock).records;
       final arg_request = buildQueryHistoryRequest();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.QueryHistoryRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkQueryHistoryRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.QueryHistoryRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkQueryHistoryRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('v1/records:queryHistoryRecord'),
-        );
-        pathOffset += 29;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 29),
+            unittest.equals('v1/records:queryHistoryRecord'),
+          );
+          pathOffset += 29;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildQueryHistoryResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.queryHistoryRecord(arg_request, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildQueryHistoryResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.queryHistoryRecord(
+        arg_request,
+        $fields: arg_$fields,
+      );
       checkQueryHistoryResponse(response as api.QueryHistoryResponse);
     });
 
@@ -1024,52 +867,54 @@ void main() {
       final res = api.ChromeUXReportApi(mock).records;
       final arg_request = buildQueryRequest();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.QueryRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkQueryRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.QueryRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkQueryRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 22),
-          unittest.equals('v1/records:queryRecord'),
-        );
-        pathOffset += 22;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 22),
+            unittest.equals('v1/records:queryRecord'),
+          );
+          pathOffset += 22;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildQueryResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildQueryResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.queryRecord(arg_request, $fields: arg_$fields);
       checkQueryResponse(response as api.QueryResponse);
     });

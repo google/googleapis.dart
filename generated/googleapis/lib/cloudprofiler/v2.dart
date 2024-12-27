@@ -55,11 +55,16 @@ class CloudProfilerApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  CloudProfilerApi(http.Client client,
-      {core.String rootUrl = 'https://cloudprofiler.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudProfilerApi(
+    http.Client client, {
+    core.String rootUrl = 'https://cloudprofiler.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -221,7 +226,8 @@ class ProjectsProfilesResource {
       queryParams: queryParams_,
     );
     return ListProfilesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// UpdateProfile updates the profile bytes and labels on the profile resource
@@ -291,16 +297,14 @@ class CreateProfileRequest {
   /// One or more profile types that the agent is capable of providing.
   core.List<core.String>? profileType;
 
-  CreateProfileRequest({
-    this.deployment,
-    this.profileType,
-  });
+  CreateProfileRequest({this.deployment, this.profileType});
 
   CreateProfileRequest.fromJson(core.Map json_)
       : this(
           deployment: json_.containsKey('deployment')
               ? Deployment.fromJson(
-                  json_['deployment'] as core.Map<core.String, core.dynamic>)
+                  json_['deployment'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           profileType: (json_['profileType'] as core.List?)
               ?.map((value) => value as core.String)
@@ -341,20 +345,13 @@ class Deployment {
   /// regex: `^[a-z0-9]([-a-z0-9_.]{0,253}[a-z0-9])?$`.
   core.String? target;
 
-  Deployment({
-    this.labels,
-    this.projectId,
-    this.target,
-  });
+  Deployment({this.labels, this.projectId, this.target});
 
   Deployment.fromJson(core.Map json_)
       : this(
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           projectId: json_['projectId'] as core.String?,
           target: json_['target'] as core.String?,
@@ -396,8 +393,11 @@ class ListProfilesResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           profiles: (json_['profiles'] as core.List?)
-              ?.map((value) => Profile.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Profile.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           skippedProfiles: json_['skippedProfiles'] as core.int?,
         );
@@ -490,15 +490,13 @@ class Profile {
       : this(
           deployment: json_.containsKey('deployment')
               ? Deployment.fromJson(
-                  json_['deployment'] as core.Map<core.String, core.dynamic>)
+                  json_['deployment'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           duration: json_['duration'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           profileBytes: json_['profileBytes'] as core.String?,

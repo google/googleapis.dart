@@ -115,11 +115,16 @@ class DialogflowApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  DialogflowApi(http.Client client,
-      {core.String rootUrl = 'https://dialogflow.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DialogflowApi(
+    http.Client client, {
+    core.String rootUrl = 'https://dialogflow.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -183,7 +188,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified agent.
@@ -220,7 +226,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Agent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates/updates the specified agent.
@@ -269,7 +276,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Agent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -337,7 +345,8 @@ class ProjectsAgentResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the fulfillment.
@@ -374,7 +383,8 @@ class ProjectsAgentResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Fulfillment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets agent validation result.
@@ -423,7 +433,8 @@ class ProjectsAgentResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ValidationResult.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Imports the specified agent from a ZIP file.
@@ -483,7 +494,8 @@ class ProjectsAgentResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Restores the specified agent from a ZIP file.
@@ -542,7 +554,8 @@ class ProjectsAgentResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of agents.
@@ -594,7 +607,8 @@ class ProjectsAgentResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SearchAgentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Trains the specified agent.
@@ -647,7 +661,8 @@ class ProjectsAgentResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the fulfillment.
@@ -696,7 +711,8 @@ class ProjectsAgentResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Fulfillment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -760,7 +776,8 @@ class ProjectsAgentEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates/Creates multiple entity types in the specified agent.
@@ -812,7 +829,8 @@ class ProjectsAgentEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates an entity type in the specified agent.
@@ -865,7 +883,8 @@ class ProjectsAgentEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2EntityType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified entity type.
@@ -906,7 +925,8 @@ class ProjectsAgentEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified entity type.
@@ -950,7 +970,8 @@ class ProjectsAgentEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2EntityType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all entity types in the specified agent.
@@ -1004,7 +1025,8 @@ class ProjectsAgentEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListEntityTypesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified entity type.
@@ -1062,7 +1084,8 @@ class ProjectsAgentEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2EntityType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1123,7 +1146,8 @@ class ProjectsAgentEntityTypesEntitiesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes entities in the specified entity type.
@@ -1177,7 +1201,8 @@ class ProjectsAgentEntityTypesEntitiesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates or creates multiple entities in the specified entity type.
@@ -1232,7 +1257,8 @@ class ProjectsAgentEntityTypesEntitiesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1290,7 +1316,8 @@ class ProjectsAgentEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Environment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified agent environment.
@@ -1329,7 +1356,8 @@ class ProjectsAgentEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified agent environment.
@@ -1368,7 +1396,8 @@ class ProjectsAgentEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Environment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the history of the specified environment.
@@ -1417,7 +1446,8 @@ class ProjectsAgentEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2EnvironmentHistory.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all non-default environments of the specified agent.
@@ -1464,7 +1494,8 @@ class ProjectsAgentEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListEnvironmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified agent environment.
@@ -1519,7 +1550,7 @@ class ProjectsAgentEnvironmentsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (allowLoadToDraftAndDiscardChanges != null)
         'allowLoadToDraftAndDiscardChanges': [
-          '${allowLoadToDraftAndDiscardChanges}'
+          '${allowLoadToDraftAndDiscardChanges}',
         ],
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1534,7 +1565,8 @@ class ProjectsAgentEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Environment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1608,7 +1640,8 @@ class ProjectsAgentEnvironmentsIntentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListIntentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1671,7 +1704,8 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Processes a natural language query and returns structured, actionable data
@@ -1736,7 +1770,8 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2DetectIntentResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1744,8 +1779,8 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
   final commons.ApiRequester _requester;
 
   ProjectsAgentEnvironmentsUsersSessionsContextsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates a context.
   ///
@@ -1792,7 +1827,8 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Context.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified context.
@@ -1833,7 +1869,8 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified context.
@@ -1874,7 +1911,8 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Context.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all contexts in the specified session.
@@ -1925,7 +1963,8 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListContextsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified context.
@@ -1980,7 +2019,8 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Context.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1988,8 +2028,8 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
   final commons.ApiRequester _requester;
 
   ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates a session entity type.
   ///
@@ -2039,7 +2079,8 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SessionEntityType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified session entity type.
@@ -2084,7 +2125,8 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified session entity type.
@@ -2129,7 +2171,8 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SessionEntityType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all session entity types in the specified session.
@@ -2184,7 +2227,8 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListSessionEntityTypesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified session entity type.
@@ -2240,7 +2284,8 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SessionEntityType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2301,7 +2346,8 @@ class ProjectsAgentIntentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates/Creates multiple intents in the specified agent.
@@ -2353,7 +2399,8 @@ class ProjectsAgentIntentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates an intent in the specified agent.
@@ -2415,7 +2462,8 @@ class ProjectsAgentIntentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Intent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified intent and its direct or indirect followup intents.
@@ -2457,7 +2505,8 @@ class ProjectsAgentIntentsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified intent.
@@ -2510,7 +2559,8 @@ class ProjectsAgentIntentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Intent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all intents in the specified agent.
@@ -2577,7 +2627,8 @@ class ProjectsAgentIntentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListIntentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified intent.
@@ -2644,7 +2695,8 @@ class ProjectsAgentIntentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Intent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2696,7 +2748,8 @@ class ProjectsAgentKnowledgeBasesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2KnowledgeBase.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified knowledge base.
@@ -2738,7 +2791,8 @@ class ProjectsAgentKnowledgeBasesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified knowledge base.
@@ -2775,7 +2829,8 @@ class ProjectsAgentKnowledgeBasesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2KnowledgeBase.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all knowledge bases of the specified agent.
@@ -2838,7 +2893,8 @@ class ProjectsAgentKnowledgeBasesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListKnowledgeBasesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified knowledge base.
@@ -2886,7 +2942,8 @@ class ProjectsAgentKnowledgeBasesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2KnowledgeBase.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2940,7 +2997,8 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified document.
@@ -2984,7 +3042,8 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified document.
@@ -3022,7 +3081,8 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Document.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all documents of the knowledge base.
@@ -3082,7 +3142,8 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListDocumentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified document.
@@ -3137,7 +3198,8 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Reloads the specified document from its specified source, content_uri or
@@ -3191,7 +3253,8 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3243,7 +3306,8 @@ class ProjectsAgentSessionsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Processes a natural language query and returns structured, actionable data
@@ -3307,7 +3371,8 @@ class ProjectsAgentSessionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2DetectIntentResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3361,7 +3426,8 @@ class ProjectsAgentSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Context.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified context.
@@ -3402,7 +3468,8 @@ class ProjectsAgentSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified context.
@@ -3443,7 +3510,8 @@ class ProjectsAgentSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Context.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all contexts in the specified session.
@@ -3493,7 +3561,8 @@ class ProjectsAgentSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListContextsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified context.
@@ -3548,7 +3617,8 @@ class ProjectsAgentSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Context.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3605,7 +3675,8 @@ class ProjectsAgentSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SessionEntityType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified session entity type.
@@ -3650,7 +3721,8 @@ class ProjectsAgentSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified session entity type.
@@ -3695,7 +3767,8 @@ class ProjectsAgentSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SessionEntityType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all session entity types in the specified session.
@@ -3749,7 +3822,8 @@ class ProjectsAgentSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListSessionEntityTypesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified session entity type.
@@ -3805,7 +3879,8 @@ class ProjectsAgentSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SessionEntityType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3856,7 +3931,8 @@ class ProjectsAgentVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Version.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete the specified agent version.
@@ -3893,7 +3969,8 @@ class ProjectsAgentVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified agent version.
@@ -3930,7 +4007,8 @@ class ProjectsAgentVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Version.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all versions of the specified agent.
@@ -3977,7 +4055,8 @@ class ProjectsAgentVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListVersionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified agent version.
@@ -4028,7 +4107,8 @@ class ProjectsAgentVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Version.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4092,7 +4172,8 @@ class ProjectsAnswerRecordsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListAnswerRecordsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified answer record.
@@ -4138,7 +4219,8 @@ class ProjectsAnswerRecordsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2AnswerRecord.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4182,7 +4264,8 @@ class ProjectsConversationDatasetsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ConversationDataset.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Import data into the specified conversation dataset.
@@ -4232,7 +4315,8 @@ class ProjectsConversationDatasetsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all conversation datasets in the specified project and
@@ -4282,7 +4366,8 @@ class ProjectsConversationDatasetsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListConversationDatasetsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4340,7 +4425,8 @@ class ProjectsConversationModelsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a model.
@@ -4383,7 +4469,8 @@ class ProjectsConversationModelsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deploys a model.
@@ -4434,7 +4521,8 @@ class ProjectsConversationModelsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets conversation model.
@@ -4471,7 +4559,8 @@ class ProjectsConversationModelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ConversationModel.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists conversation models.
@@ -4518,7 +4607,8 @@ class ProjectsConversationModelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListConversationModelsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Undeploys a model.
@@ -4569,7 +4659,8 @@ class ProjectsConversationModelsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4614,7 +4705,8 @@ class ProjectsConversationModelsEvaluationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ConversationModelEvaluation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists evaluations of a conversation model.
@@ -4663,7 +4755,9 @@ class ProjectsConversationModelsEvaluationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListConversationModelEvaluationsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+        .fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4722,7 +4816,8 @@ class ProjectsConversationProfilesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a conversation profile in the specified project.
@@ -4769,7 +4864,8 @@ class ProjectsConversationProfilesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ConversationProfile.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified conversation profile.
@@ -4806,7 +4902,8 @@ class ProjectsConversationProfilesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified conversation profile.
@@ -4843,7 +4940,8 @@ class ProjectsConversationProfilesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ConversationProfile.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all conversation profiles in the specified project.
@@ -4892,7 +4990,8 @@ class ProjectsConversationProfilesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListConversationProfilesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified conversation profile.
@@ -4942,7 +5041,8 @@ class ProjectsConversationProfilesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ConversationProfile.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Adds or updates a suggestion feature in a conversation profile.
@@ -4999,7 +5099,8 @@ class ProjectsConversationProfilesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5057,7 +5158,8 @@ class ProjectsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Conversation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a new conversation.
@@ -5121,7 +5223,8 @@ class ProjectsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Conversation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specific conversation.
@@ -5158,7 +5261,8 @@ class ProjectsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Conversation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all conversations in the specified project.
@@ -5213,7 +5317,8 @@ class ProjectsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListConversationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5281,7 +5386,8 @@ class ProjectsConversationsMessagesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListMessagesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5340,7 +5446,8 @@ class ProjectsConversationsParticipantsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2AnalyzeContentResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a new participant in a conversation.
@@ -5382,7 +5489,8 @@ class ProjectsConversationsParticipantsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Participant.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a conversation participant.
@@ -5420,7 +5528,8 @@ class ProjectsConversationsParticipantsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Participant.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all participants in the specified conversation.
@@ -5467,7 +5576,8 @@ class ProjectsConversationsParticipantsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListParticipantsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified participant.
@@ -5514,7 +5624,8 @@ class ProjectsConversationsParticipantsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Participant.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5522,8 +5633,8 @@ class ProjectsConversationsParticipantsSuggestionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsConversationsParticipantsSuggestionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets suggested articles for a participant based on specific historical
   /// messages.
@@ -5567,7 +5678,8 @@ class ProjectsConversationsParticipantsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SuggestArticlesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets suggested faq answers for a participant based on specific historical
@@ -5614,7 +5726,8 @@ class ProjectsConversationsParticipantsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SuggestFaqAnswersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets knowledge assist suggestions based on historical messages.
@@ -5660,7 +5773,8 @@ class ProjectsConversationsParticipantsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets smart replies for a participant based on specific historical
@@ -5707,7 +5821,8 @@ class ProjectsConversationsParticipantsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SuggestSmartRepliesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5759,7 +5874,8 @@ class ProjectsConversationsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SearchKnowledgeResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Suggests summary for a conversation based on specific historical messages.
@@ -5808,7 +5924,8 @@ class ProjectsConversationsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SuggestConversationSummaryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5867,7 +5984,8 @@ class ProjectsGeneratorsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Generator.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists generators.
@@ -5914,7 +6032,8 @@ class ProjectsGeneratorsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListGeneratorsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5966,7 +6085,8 @@ class ProjectsKnowledgeBasesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2KnowledgeBase.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified knowledge base.
@@ -6008,7 +6128,8 @@ class ProjectsKnowledgeBasesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified knowledge base.
@@ -6045,7 +6166,8 @@ class ProjectsKnowledgeBasesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2KnowledgeBase.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all knowledge bases of the specified agent.
@@ -6108,7 +6230,8 @@ class ProjectsKnowledgeBasesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListKnowledgeBasesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified knowledge base.
@@ -6156,7 +6279,8 @@ class ProjectsKnowledgeBasesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2KnowledgeBase.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6210,7 +6334,8 @@ class ProjectsKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified document.
@@ -6254,7 +6379,8 @@ class ProjectsKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Exports a smart messaging candidate document into the specified
@@ -6303,7 +6429,8 @@ class ProjectsKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified document.
@@ -6341,7 +6468,8 @@ class ProjectsKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Document.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates documents by importing data from external sources.
@@ -6391,7 +6519,8 @@ class ProjectsKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all documents of the knowledge base.
@@ -6451,7 +6580,8 @@ class ProjectsKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListDocumentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified document.
@@ -6506,7 +6636,8 @@ class ProjectsKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Reloads the specified document from its specified source, content_uri or
@@ -6560,7 +6691,8 @@ class ProjectsKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6628,7 +6760,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets information about a location.
@@ -6664,7 +6797,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudLocationLocation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified agent.
@@ -6701,7 +6835,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Agent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets location-level encryption key specification.
@@ -6738,7 +6873,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2EncryptionSpec.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -6790,7 +6926,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudLocationListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates/updates the specified agent.
@@ -6839,7 +6976,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Agent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6906,7 +7044,8 @@ class ProjectsLocationsAgentResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the fulfillment.
@@ -6944,7 +7083,8 @@ class ProjectsLocationsAgentResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Fulfillment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets agent validation result.
@@ -6993,7 +7133,8 @@ class ProjectsLocationsAgentResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ValidationResult.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Imports the specified agent from a ZIP file.
@@ -7053,7 +7194,8 @@ class ProjectsLocationsAgentResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Restores the specified agent from a ZIP file.
@@ -7112,7 +7254,8 @@ class ProjectsLocationsAgentResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of agents.
@@ -7164,7 +7307,8 @@ class ProjectsLocationsAgentResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SearchAgentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Trains the specified agent.
@@ -7217,7 +7361,8 @@ class ProjectsLocationsAgentResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the fulfillment.
@@ -7267,7 +7412,8 @@ class ProjectsLocationsAgentResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Fulfillment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -7331,7 +7477,8 @@ class ProjectsLocationsAgentEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates/Creates multiple entity types in the specified agent.
@@ -7383,7 +7530,8 @@ class ProjectsLocationsAgentEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates an entity type in the specified agent.
@@ -7436,7 +7584,8 @@ class ProjectsLocationsAgentEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2EntityType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified entity type.
@@ -7478,7 +7627,8 @@ class ProjectsLocationsAgentEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified entity type.
@@ -7523,7 +7673,8 @@ class ProjectsLocationsAgentEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2EntityType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all entity types in the specified agent.
@@ -7577,7 +7728,8 @@ class ProjectsLocationsAgentEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListEntityTypesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified entity type.
@@ -7636,7 +7788,8 @@ class ProjectsLocationsAgentEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2EntityType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -7698,7 +7851,8 @@ class ProjectsLocationsAgentEntityTypesEntitiesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes entities in the specified entity type.
@@ -7753,7 +7907,8 @@ class ProjectsLocationsAgentEntityTypesEntitiesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates or creates multiple entities in the specified entity type.
@@ -7809,7 +7964,8 @@ class ProjectsLocationsAgentEntityTypesEntitiesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -7867,7 +8023,8 @@ class ProjectsLocationsAgentEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Environment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified agent environment.
@@ -7907,7 +8064,8 @@ class ProjectsLocationsAgentEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified agent environment.
@@ -7947,7 +8105,8 @@ class ProjectsLocationsAgentEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Environment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the history of the specified environment.
@@ -7997,7 +8156,8 @@ class ProjectsLocationsAgentEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2EnvironmentHistory.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all non-default environments of the specified agent.
@@ -8044,7 +8204,8 @@ class ProjectsLocationsAgentEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListEnvironmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified agent environment.
@@ -8100,7 +8261,7 @@ class ProjectsLocationsAgentEnvironmentsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (allowLoadToDraftAndDiscardChanges != null)
         'allowLoadToDraftAndDiscardChanges': [
-          '${allowLoadToDraftAndDiscardChanges}'
+          '${allowLoadToDraftAndDiscardChanges}',
         ],
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -8115,7 +8276,8 @@ class ProjectsLocationsAgentEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Environment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -8190,7 +8352,8 @@ class ProjectsLocationsAgentEnvironmentsIntentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListIntentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -8210,15 +8373,17 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsResource {
   ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource
       get contexts =>
           ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource(
-              _requester);
+            _requester,
+          );
   ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource
       get entityTypes =>
           ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource(
-              _requester);
+            _requester,
+          );
 
   ProjectsLocationsAgentEnvironmentsUsersSessionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Deletes all active contexts in the specified session.
   ///
@@ -8258,7 +8423,8 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Processes a natural language query and returns structured, actionable data
@@ -8323,7 +8489,8 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2DetectIntentResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -8331,8 +8498,8 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates a context.
   ///
@@ -8379,7 +8546,8 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Context.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified context.
@@ -8420,7 +8588,8 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified context.
@@ -8461,7 +8630,8 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Context.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all contexts in the specified session.
@@ -8512,7 +8682,8 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListContextsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified context.
@@ -8567,7 +8738,8 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Context.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -8575,8 +8747,8 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates a session entity type.
   ///
@@ -8626,7 +8798,8 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SessionEntityType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified session entity type.
@@ -8671,7 +8844,8 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified session entity type.
@@ -8716,7 +8890,8 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SessionEntityType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all session entity types in the specified session.
@@ -8771,7 +8946,8 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListSessionEntityTypesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified session entity type.
@@ -8827,7 +9003,8 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SessionEntityType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -8888,7 +9065,8 @@ class ProjectsLocationsAgentIntentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates/Creates multiple intents in the specified agent.
@@ -8940,7 +9118,8 @@ class ProjectsLocationsAgentIntentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates an intent in the specified agent.
@@ -9002,7 +9181,8 @@ class ProjectsLocationsAgentIntentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Intent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified intent and its direct or indirect followup intents.
@@ -9045,7 +9225,8 @@ class ProjectsLocationsAgentIntentsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified intent.
@@ -9099,7 +9280,8 @@ class ProjectsLocationsAgentIntentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Intent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all intents in the specified agent.
@@ -9166,7 +9348,8 @@ class ProjectsLocationsAgentIntentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListIntentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified intent.
@@ -9234,7 +9417,8 @@ class ProjectsLocationsAgentIntentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Intent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -9287,7 +9471,8 @@ class ProjectsLocationsAgentSessionsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Processes a natural language query and returns structured, actionable data
@@ -9352,7 +9537,8 @@ class ProjectsLocationsAgentSessionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2DetectIntentResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -9407,7 +9593,8 @@ class ProjectsLocationsAgentSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Context.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified context.
@@ -9448,7 +9635,8 @@ class ProjectsLocationsAgentSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified context.
@@ -9489,7 +9677,8 @@ class ProjectsLocationsAgentSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Context.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all contexts in the specified session.
@@ -9540,7 +9729,8 @@ class ProjectsLocationsAgentSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListContextsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified context.
@@ -9595,7 +9785,8 @@ class ProjectsLocationsAgentSessionsContextsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Context.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -9653,7 +9844,8 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SessionEntityType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified session entity type.
@@ -9698,7 +9890,8 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified session entity type.
@@ -9743,7 +9936,8 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SessionEntityType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all session entity types in the specified session.
@@ -9798,7 +9992,8 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListSessionEntityTypesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified session entity type.
@@ -9854,7 +10049,8 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SessionEntityType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -9905,7 +10101,8 @@ class ProjectsLocationsAgentVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Version.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete the specified agent version.
@@ -9943,7 +10140,8 @@ class ProjectsLocationsAgentVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified agent version.
@@ -9981,7 +10179,8 @@ class ProjectsLocationsAgentVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Version.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all versions of the specified agent.
@@ -10028,7 +10227,8 @@ class ProjectsLocationsAgentVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListVersionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified agent version.
@@ -10080,7 +10280,8 @@ class ProjectsLocationsAgentVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Version.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -10144,7 +10345,8 @@ class ProjectsLocationsAnswerRecordsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListAnswerRecordsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified answer record.
@@ -10191,7 +10393,8 @@ class ProjectsLocationsAnswerRecordsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2AnswerRecord.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -10247,7 +10450,8 @@ class ProjectsLocationsConversationDatasetsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified conversation dataset.
@@ -10291,7 +10495,8 @@ class ProjectsLocationsConversationDatasetsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified conversation dataset.
@@ -10329,7 +10534,8 @@ class ProjectsLocationsConversationDatasetsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ConversationDataset.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Import data into the specified conversation dataset.
@@ -10380,7 +10586,8 @@ class ProjectsLocationsConversationDatasetsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all conversation datasets in the specified project and
@@ -10430,7 +10637,8 @@ class ProjectsLocationsConversationDatasetsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListConversationDatasetsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -10488,7 +10696,8 @@ class ProjectsLocationsConversationModelsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a model.
@@ -10532,7 +10741,8 @@ class ProjectsLocationsConversationModelsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deploys a model.
@@ -10584,7 +10794,8 @@ class ProjectsLocationsConversationModelsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets conversation model.
@@ -10622,7 +10833,8 @@ class ProjectsLocationsConversationModelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ConversationModel.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists conversation models.
@@ -10669,7 +10881,8 @@ class ProjectsLocationsConversationModelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListConversationModelsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Undeploys a model.
@@ -10721,7 +10934,8 @@ class ProjectsLocationsConversationModelsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -10729,8 +10943,8 @@ class ProjectsLocationsConversationModelsEvaluationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConversationModelsEvaluationsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates evaluation of a conversation model.
   ///
@@ -10772,7 +10986,8 @@ class ProjectsLocationsConversationModelsEvaluationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets an evaluation of conversation model.
@@ -10810,7 +11025,8 @@ class ProjectsLocationsConversationModelsEvaluationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ConversationModelEvaluation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists evaluations of a conversation model.
@@ -10860,7 +11076,9 @@ class ProjectsLocationsConversationModelsEvaluationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListConversationModelEvaluationsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+        .fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -10920,7 +11138,8 @@ class ProjectsLocationsConversationProfilesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a conversation profile in the specified project.
@@ -10967,7 +11186,8 @@ class ProjectsLocationsConversationProfilesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ConversationProfile.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified conversation profile.
@@ -11005,7 +11225,8 @@ class ProjectsLocationsConversationProfilesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified conversation profile.
@@ -11043,7 +11264,8 @@ class ProjectsLocationsConversationProfilesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ConversationProfile.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all conversation profiles in the specified project.
@@ -11092,7 +11314,8 @@ class ProjectsLocationsConversationProfilesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListConversationProfilesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified conversation profile.
@@ -11143,7 +11366,8 @@ class ProjectsLocationsConversationProfilesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ConversationProfile.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Adds or updates a suggestion feature in a conversation profile.
@@ -11201,7 +11425,8 @@ class ProjectsLocationsConversationProfilesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -11260,7 +11485,8 @@ class ProjectsLocationsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Conversation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a new conversation.
@@ -11324,7 +11550,8 @@ class ProjectsLocationsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Conversation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specific conversation.
@@ -11362,7 +11589,8 @@ class ProjectsLocationsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Conversation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all conversations in the specified project.
@@ -11417,7 +11645,8 @@ class ProjectsLocationsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListConversationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -11486,7 +11715,8 @@ class ProjectsLocationsConversationsMessagesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListMessagesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -11499,8 +11729,8 @@ class ProjectsLocationsConversationsParticipantsResource {
               _requester);
 
   ProjectsLocationsConversationsParticipantsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Adds a text (chat, for example), or audio (phone recording, for example)
   /// message from a participant into the conversation.
@@ -11548,7 +11778,8 @@ class ProjectsLocationsConversationsParticipantsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2AnalyzeContentResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a new participant in a conversation.
@@ -11591,7 +11822,8 @@ class ProjectsLocationsConversationsParticipantsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Participant.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a conversation participant.
@@ -11629,7 +11861,8 @@ class ProjectsLocationsConversationsParticipantsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Participant.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all participants in the specified conversation.
@@ -11677,7 +11910,8 @@ class ProjectsLocationsConversationsParticipantsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListParticipantsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified participant.
@@ -11724,7 +11958,8 @@ class ProjectsLocationsConversationsParticipantsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Participant.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -11732,8 +11967,8 @@ class ProjectsLocationsConversationsParticipantsSuggestionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConversationsParticipantsSuggestionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets suggested articles for a participant based on specific historical
   /// messages.
@@ -11777,7 +12012,8 @@ class ProjectsLocationsConversationsParticipantsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SuggestArticlesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets suggested faq answers for a participant based on specific historical
@@ -11824,7 +12060,8 @@ class ProjectsLocationsConversationsParticipantsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SuggestFaqAnswersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets knowledge assist suggestions based on historical messages.
@@ -11870,7 +12107,8 @@ class ProjectsLocationsConversationsParticipantsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets smart replies for a participant based on specific historical
@@ -11917,7 +12155,8 @@ class ProjectsLocationsConversationsParticipantsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SuggestSmartRepliesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -11970,7 +12209,8 @@ class ProjectsLocationsConversationsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SearchKnowledgeResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Suggests summary for a conversation based on specific historical messages.
@@ -12020,7 +12260,8 @@ class ProjectsLocationsConversationsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SuggestConversationSummaryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -12075,7 +12316,8 @@ class ProjectsLocationsEncryptionSpecResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -12135,7 +12377,8 @@ class ProjectsLocationsGeneratorsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Generator.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a generator.
@@ -12173,7 +12416,8 @@ class ProjectsLocationsGeneratorsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a generator.
@@ -12211,7 +12455,8 @@ class ProjectsLocationsGeneratorsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Generator.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists generators.
@@ -12258,7 +12503,8 @@ class ProjectsLocationsGeneratorsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListGeneratorsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a generator.
@@ -12305,7 +12551,8 @@ class ProjectsLocationsGeneratorsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Generator.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -12357,7 +12604,8 @@ class ProjectsLocationsKnowledgeBasesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2KnowledgeBase.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified knowledge base.
@@ -12400,7 +12648,8 @@ class ProjectsLocationsKnowledgeBasesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified knowledge base.
@@ -12438,7 +12687,8 @@ class ProjectsLocationsKnowledgeBasesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2KnowledgeBase.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all knowledge bases of the specified agent.
@@ -12501,7 +12751,8 @@ class ProjectsLocationsKnowledgeBasesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListKnowledgeBasesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified knowledge base.
@@ -12550,7 +12801,8 @@ class ProjectsLocationsKnowledgeBasesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2KnowledgeBase.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -12605,7 +12857,8 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified document.
@@ -12649,7 +12902,8 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Exports a smart messaging candidate document into the specified
@@ -12698,7 +12952,8 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the specified document.
@@ -12736,7 +12991,8 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Document.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates documents by importing data from external sources.
@@ -12787,7 +13043,8 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of all documents of the knowledge base.
@@ -12848,7 +13105,8 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2ListDocumentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified document.
@@ -12903,7 +13161,8 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Reloads the specified document from its specified source, content_uri or
@@ -12957,7 +13216,8 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -13010,7 +13270,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the latest state of a long-running operation.
@@ -13050,7 +13311,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -13100,7 +13362,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -13154,7 +13417,8 @@ class ProjectsLocationsStatelessSuggestionResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2GenerateStatelessSuggestionResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -13208,7 +13472,8 @@ class ProjectsLocationsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2GenerateStatelessSummaryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get answers for the given query based on knowledge documents.
@@ -13251,7 +13516,8 @@ class ProjectsLocationsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SearchKnowledgeResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -13302,7 +13568,8 @@ class ProjectsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the latest state of a long-running operation.
@@ -13341,7 +13608,8 @@ class ProjectsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -13391,7 +13659,8 @@ class ProjectsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -13445,7 +13714,8 @@ class ProjectsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2GenerateStatelessSummaryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get answers for the given query based on knowledge documents.
@@ -13488,7 +13758,8 @@ class ProjectsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SearchKnowledgeResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -13745,18 +14016,24 @@ class GoogleCloudDialogflowV2AgentAssistantFeedback {
           documentEfficiency: json_['documentEfficiency'] as core.String?,
           knowledgeAssistFeedback: json_.containsKey('knowledgeAssistFeedback')
               ? GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback
-                  .fromJson(json_['knowledgeAssistFeedback']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['knowledgeAssistFeedback']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           knowledgeSearchFeedback: json_.containsKey('knowledgeSearchFeedback')
               ? GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback
-                  .fromJson(json_['knowledgeSearchFeedback']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['knowledgeSearchFeedback']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           summarizationFeedback: json_.containsKey('summarizationFeedback')
               ? GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback
-                  .fromJson(json_['summarizationFeedback']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['summarizationFeedback']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -13795,8 +14072,8 @@ class GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback {
   });
 
   GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           answerCopied: json_['answerCopied'] as core.bool?,
           clickedUris: (json_['clickedUris'] as core.List?)
               ?.map((value) => value as core.String)
@@ -13829,8 +14106,8 @@ class GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback {
   });
 
   GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           answerCopied: json_['answerCopied'] as core.bool?,
           clickedUris: (json_['clickedUris'] as core.List?)
               ?.map((value) => value as core.String)
@@ -13867,19 +14144,14 @@ class GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback {
   });
 
   GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           startTime: json_['startTime'] as core.String?,
           submitTime: json_['submitTime'] as core.String?,
           summaryText: json_['summaryText'] as core.String?,
-          textSections:
-              (json_['textSections'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          textSections: (json_['textSections']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13918,16 +14190,19 @@ class GoogleCloudDialogflowV2AgentAssistantRecord {
           articleSuggestionAnswer: json_.containsKey('articleSuggestionAnswer')
               ? GoogleCloudDialogflowV2ArticleAnswer.fromJson(
                   json_['articleSuggestionAnswer']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dialogflowAssistAnswer: json_.containsKey('dialogflowAssistAnswer')
               ? GoogleCloudDialogflowV2DialogflowAssistAnswer.fromJson(
                   json_['dialogflowAssistAnswer']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           faqAnswer: json_.containsKey('faqAnswer')
               ? GoogleCloudDialogflowV2FaqAnswer.fromJson(
-                  json_['faqAnswer'] as core.Map<core.String, core.dynamic>)
+                  json_['faqAnswer'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -13997,33 +14272,39 @@ class GoogleCloudDialogflowV2AnalyzeContentRequest {
           assistQueryParams: json_.containsKey('assistQueryParams')
               ? GoogleCloudDialogflowV2AssistQueryParameters.fromJson(
                   json_['assistQueryParams']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           cxParameters: json_.containsKey('cxParameters')
               ? json_['cxParameters'] as core.Map<core.String, core.dynamic>
               : null,
           eventInput: json_.containsKey('eventInput')
               ? GoogleCloudDialogflowV2EventInput.fromJson(
-                  json_['eventInput'] as core.Map<core.String, core.dynamic>)
+                  json_['eventInput'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           queryParams: json_.containsKey('queryParams')
               ? GoogleCloudDialogflowV2QueryParameters.fromJson(
-                  json_['queryParams'] as core.Map<core.String, core.dynamic>)
+                  json_['queryParams'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           replyAudioConfig: json_.containsKey('replyAudioConfig')
               ? GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
                   json_['replyAudioConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           requestId: json_['requestId'] as core.String?,
           suggestionInput: json_.containsKey('suggestionInput')
               ? GoogleCloudDialogflowV2SuggestionInput.fromJson(
                   json_['suggestionInput']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           textInput: json_.containsKey('textInput')
               ? GoogleCloudDialogflowV2TextInput.fromJson(
-                  json_['textInput'] as core.Map<core.String, core.dynamic>)
+                  json_['textInput'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -14108,30 +14389,40 @@ class GoogleCloudDialogflowV2AnalyzeContentResponse {
           automatedAgentReply: json_.containsKey('automatedAgentReply')
               ? GoogleCloudDialogflowV2AutomatedAgentReply.fromJson(
                   json_['automatedAgentReply']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dtmfParameters: json_.containsKey('dtmfParameters')
               ? GoogleCloudDialogflowV2DtmfParameters.fromJson(
                   json_['dtmfParameters']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
-          endUserSuggestionResults: (json_['endUserSuggestionResults']
-                  as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2SuggestionResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          humanAgentSuggestionResults: (json_['humanAgentSuggestionResults']
-                  as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2SuggestionResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
+          endUserSuggestionResults:
+              (json_['endUserSuggestionResults'] as core.List?)
+                  ?.map(
+                    (value) => GoogleCloudDialogflowV2SuggestionResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
+                  .toList(),
+          humanAgentSuggestionResults:
+              (json_['humanAgentSuggestionResults'] as core.List?)
+                  ?.map(
+                    (value) => GoogleCloudDialogflowV2SuggestionResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
+                  .toList(),
           message: json_.containsKey('message')
               ? GoogleCloudDialogflowV2Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>)
+                  json_['message'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           replyAudio: json_.containsKey('replyAudio')
               ? GoogleCloudDialogflowV2OutputAudio.fromJson(
-                  json_['replyAudio'] as core.Map<core.String, core.dynamic>)
+                  json_['replyAudio'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           replyText: json_['replyText'] as core.String?,
         );
@@ -14245,7 +14536,8 @@ class GoogleCloudDialogflowV2AnswerFeedback {
               json_.containsKey('agentAssistantDetailFeedback')
                   ? GoogleCloudDialogflowV2AgentAssistantFeedback.fromJson(
                       json_['agentAssistantDetailFeedback']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           clickTime: json_['clickTime'] as core.String?,
           clicked: json_['clicked'] as core.bool?,
@@ -14310,12 +14602,14 @@ class GoogleCloudDialogflowV2AnswerRecord {
           agentAssistantRecord: json_.containsKey('agentAssistantRecord')
               ? GoogleCloudDialogflowV2AgentAssistantRecord.fromJson(
                   json_['agentAssistantRecord']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           answerFeedback: json_.containsKey('answerFeedback')
               ? GoogleCloudDialogflowV2AnswerFeedback.fromJson(
                   json_['answerFeedback']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
         );
@@ -14367,13 +14661,8 @@ class GoogleCloudDialogflowV2ArticleAnswer {
       : this(
           answerRecord: json_['answerRecord'] as core.String?,
           confidence: (json_['confidence'] as core.num?)?.toDouble(),
-          metadata:
-              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           snippets: (json_['snippets'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -14410,9 +14699,7 @@ class GoogleCloudDialogflowV2ArticleSuggestionModelMetadata {
   });
 
   GoogleCloudDialogflowV2ArticleSuggestionModelMetadata.fromJson(core.Map json_)
-      : this(
-          trainingModelType: json_['trainingModelType'] as core.String?,
-        );
+      : this(trainingModelType: json_['trainingModelType'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (trainingModelType != null) 'trainingModelType': trainingModelType!,
@@ -14433,20 +14720,13 @@ class GoogleCloudDialogflowV2AssistQueryParameters {
   /// documents_metadata_filters { key: "user" value: "agent" } ```
   core.Map<core.String, core.String>? documentsMetadataFilters;
 
-  GoogleCloudDialogflowV2AssistQueryParameters({
-    this.documentsMetadataFilters,
-  });
+  GoogleCloudDialogflowV2AssistQueryParameters({this.documentsMetadataFilters});
 
   GoogleCloudDialogflowV2AssistQueryParameters.fromJson(core.Map json_)
       : this(
           documentsMetadataFilters: (json_['documentsMetadataFilters']
                   as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14481,10 +14761,7 @@ class GoogleCloudDialogflowV2AutomatedAgentConfig {
   /// Optional.
   core.String? sessionTtl;
 
-  GoogleCloudDialogflowV2AutomatedAgentConfig({
-    this.agent,
-    this.sessionTtl,
-  });
+  GoogleCloudDialogflowV2AutomatedAgentConfig({this.agent, this.sessionTtl});
 
   GoogleCloudDialogflowV2AutomatedAgentConfig.fromJson(core.Map json_)
       : this(
@@ -14541,7 +14818,8 @@ class GoogleCloudDialogflowV2AutomatedAgentReply {
           detectIntentResponse: json_.containsKey('detectIntentResponse')
               ? GoogleCloudDialogflowV2DetectIntentResponse.fromJson(
                   json_['detectIntentResponse']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -14579,8 +14857,11 @@ class GoogleCloudDialogflowV2BatchCreateEntitiesRequest {
   GoogleCloudDialogflowV2BatchCreateEntitiesRequest.fromJson(core.Map json_)
       : this(
           entities: (json_['entities'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           languageCode: json_['languageCode'] as core.String?,
         );
@@ -14638,9 +14919,7 @@ class GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest {
   /// Required.
   core.List<core.String>? entityTypeNames;
 
-  GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest({
-    this.entityTypeNames,
-  });
+  GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest({this.entityTypeNames});
 
   GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest.fromJson(core.Map json_)
       : this(
@@ -14663,15 +14942,16 @@ class GoogleCloudDialogflowV2BatchDeleteIntentsRequest {
   /// Required.
   core.List<GoogleCloudDialogflowV2Intent>? intents;
 
-  GoogleCloudDialogflowV2BatchDeleteIntentsRequest({
-    this.intents,
-  });
+  GoogleCloudDialogflowV2BatchDeleteIntentsRequest({this.intents});
 
   GoogleCloudDialogflowV2BatchDeleteIntentsRequest.fromJson(core.Map json_)
       : this(
           intents: (json_['intents'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2Intent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2Intent.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -14710,8 +14990,11 @@ class GoogleCloudDialogflowV2BatchUpdateEntitiesRequest {
   GoogleCloudDialogflowV2BatchUpdateEntitiesRequest.fromJson(core.Map json_)
       : this(
           entities: (json_['entities'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           languageCode: json_['languageCode'] as core.String?,
           updateMask: json_['updateMask'] as core.String?,
@@ -14762,7 +15045,8 @@ class GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest {
           entityTypeBatchInline: json_.containsKey('entityTypeBatchInline')
               ? GoogleCloudDialogflowV2EntityTypeBatch.fromJson(
                   json_['entityTypeBatchInline']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           entityTypeBatchUri: json_['entityTypeBatchUri'] as core.String?,
           languageCode: json_['languageCode'] as core.String?,
@@ -14826,7 +15110,8 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsRequest {
           intentBatchInline: json_.containsKey('intentBatchInline')
               ? GoogleCloudDialogflowV2IntentBatch.fromJson(
                   json_['intentBatchInline']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           intentBatchUri: json_['intentBatchUri'] as core.String?,
           intentView: json_['intentView'] as core.String?,
@@ -14879,8 +15164,8 @@ class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest {
   });
 
   GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           participantRole: json_['participantRole'] as core.String?,
           suggestionFeatureType: json_['suggestionFeatureType'] as core.String?,
         );
@@ -15062,7 +15347,8 @@ class GoogleCloudDialogflowV2Conversation {
           name: json_['name'] as core.String?,
           phoneNumber: json_.containsKey('phoneNumber')
               ? GoogleCloudDialogflowV2ConversationPhoneNumber.fromJson(
-                  json_['phoneNumber'] as core.Map<core.String, core.dynamic>)
+                  json_['phoneNumber'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           startTime: json_['startTime'] as core.String?,
         );
@@ -15086,15 +15372,16 @@ class GoogleCloudDialogflowV2ConversationContext {
   /// Optional.
   core.List<GoogleCloudDialogflowV2MessageEntry>? messageEntries;
 
-  GoogleCloudDialogflowV2ConversationContext({
-    this.messageEntries,
-  });
+  GoogleCloudDialogflowV2ConversationContext({this.messageEntries});
 
   GoogleCloudDialogflowV2ConversationContext.fromJson(core.Map json_)
       : this(
           messageEntries: (json_['messageEntries'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2MessageEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2MessageEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -15179,14 +15466,16 @@ class GoogleCloudDialogflowV2ConversationDataset {
           conversationInfo: json_.containsKey('conversationInfo')
               ? GoogleCloudDialogflowV2ConversationInfo.fromJson(
                   json_['conversationInfo']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           inputConfig: json_.containsKey('inputConfig')
               ? GoogleCloudDialogflowV2InputConfig.fromJson(
-                  json_['inputConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['inputConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
@@ -15216,14 +15505,10 @@ class GoogleCloudDialogflowV2ConversationInfo {
   /// Optional.
   core.String? languageCode;
 
-  GoogleCloudDialogflowV2ConversationInfo({
-    this.languageCode,
-  });
+  GoogleCloudDialogflowV2ConversationInfo({this.languageCode});
 
   GoogleCloudDialogflowV2ConversationInfo.fromJson(core.Map json_)
-      : this(
-          languageCode: json_['languageCode'] as core.String?,
-        );
+      : this(languageCode: json_['languageCode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
@@ -15318,12 +15603,16 @@ class GoogleCloudDialogflowV2ConversationModel {
                   .containsKey('articleSuggestionModelMetadata')
               ? GoogleCloudDialogflowV2ArticleSuggestionModelMetadata.fromJson(
                   json_['articleSuggestionModelMetadata']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           createTime: json_['createTime'] as core.String?,
           datasets: (json_['datasets'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2InputDataset.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2InputDataset.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           displayName: json_['displayName'] as core.String?,
           languageCode: json_['languageCode'] as core.String?,
@@ -15333,7 +15622,8 @@ class GoogleCloudDialogflowV2ConversationModel {
           smartReplyModelMetadata: json_.containsKey('smartReplyModelMetadata')
               ? GoogleCloudDialogflowV2SmartReplyModelMetadata.fromJson(
                   json_['smartReplyModelMetadata']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           state: json_['state'] as core.String?,
         );
@@ -15417,7 +15707,8 @@ class GoogleCloudDialogflowV2ConversationModelEvaluation {
           evaluationConfig: json_.containsKey('evaluationConfig')
               ? GoogleCloudDialogflowV2EvaluationConfig.fromJson(
                   json_['evaluationConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           rawHumanEvalTemplateCsv:
@@ -15425,7 +15716,8 @@ class GoogleCloudDialogflowV2ConversationModelEvaluation {
           smartReplyMetrics: json_.containsKey('smartReplyMetrics')
               ? GoogleCloudDialogflowV2SmartReplyMetrics.fromJson(
                   json_['smartReplyMetrics']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -15449,14 +15741,10 @@ class GoogleCloudDialogflowV2ConversationPhoneNumber {
   /// Output only.
   core.String? phoneNumber;
 
-  GoogleCloudDialogflowV2ConversationPhoneNumber({
-    this.phoneNumber,
-  });
+  GoogleCloudDialogflowV2ConversationPhoneNumber({this.phoneNumber});
 
   GoogleCloudDialogflowV2ConversationPhoneNumber.fromJson(core.Map json_)
-      : this(
-          phoneNumber: json_['phoneNumber'] as core.String?,
-        );
+      : this(phoneNumber: json_['phoneNumber'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
@@ -15510,6 +15798,16 @@ class GoogleCloudDialogflowV2ConversationProfile {
   /// Event will be sent in format of ConversationEvent
   GoogleCloudDialogflowV2NotificationConfig? newMessageEventNotificationConfig;
 
+  /// Configuration for publishing transcription intermediate results.
+  ///
+  /// Event will be sent in format of ConversationEvent. If configured, the
+  /// following information will be populated as ConversationEvent Pub/Sub
+  /// message attributes: - "participant_id" - "participant_role" - "message_id"
+  ///
+  /// Optional.
+  GoogleCloudDialogflowV2NotificationConfig?
+      newRecognitionResultNotificationConfig;
+
   /// Configuration for publishing conversation lifecycle events.
   GoogleCloudDialogflowV2NotificationConfig? notificationConfig;
 
@@ -15549,6 +15847,7 @@ class GoogleCloudDialogflowV2ConversationProfile {
     this.loggingConfig,
     this.name,
     this.newMessageEventNotificationConfig,
+    this.newRecognitionResultNotificationConfig,
     this.notificationConfig,
     this.securitySettings,
     this.sttConfig,
@@ -15562,7 +15861,8 @@ class GoogleCloudDialogflowV2ConversationProfile {
           automatedAgentConfig: json_.containsKey('automatedAgentConfig')
               ? GoogleCloudDialogflowV2AutomatedAgentConfig.fromJson(
                   json_['automatedAgentConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           createTime: json_['createTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
@@ -15570,39 +15870,53 @@ class GoogleCloudDialogflowV2ConversationProfile {
               json_.containsKey('humanAgentAssistantConfig')
                   ? GoogleCloudDialogflowV2HumanAgentAssistantConfig.fromJson(
                       json_['humanAgentAssistantConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           humanAgentHandoffConfig: json_.containsKey('humanAgentHandoffConfig')
               ? GoogleCloudDialogflowV2HumanAgentHandoffConfig.fromJson(
                   json_['humanAgentHandoffConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           languageCode: json_['languageCode'] as core.String?,
           loggingConfig: json_.containsKey('loggingConfig')
               ? GoogleCloudDialogflowV2LoggingConfig.fromJson(
-                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           newMessageEventNotificationConfig:
               json_.containsKey('newMessageEventNotificationConfig')
                   ? GoogleCloudDialogflowV2NotificationConfig.fromJson(
                       json_['newMessageEventNotificationConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
+                  : null,
+          newRecognitionResultNotificationConfig:
+              json_.containsKey('newRecognitionResultNotificationConfig')
+                  ? GoogleCloudDialogflowV2NotificationConfig.fromJson(
+                      json_['newRecognitionResultNotificationConfig']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           notificationConfig: json_.containsKey('notificationConfig')
               ? GoogleCloudDialogflowV2NotificationConfig.fromJson(
                   json_['notificationConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           securitySettings: json_['securitySettings'] as core.String?,
           sttConfig: json_.containsKey('sttConfig')
               ? GoogleCloudDialogflowV2SpeechToTextConfig.fromJson(
-                  json_['sttConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['sttConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           timeZone: json_['timeZone'] as core.String?,
           ttsConfig: json_.containsKey('ttsConfig')
               ? GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromJson(
-                  json_['ttsConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['ttsConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -15622,6 +15936,9 @@ class GoogleCloudDialogflowV2ConversationProfile {
         if (newMessageEventNotificationConfig != null)
           'newMessageEventNotificationConfig':
               newMessageEventNotificationConfig!,
+        if (newRecognitionResultNotificationConfig != null)
+          'newRecognitionResultNotificationConfig':
+              newRecognitionResultNotificationConfig!,
         if (notificationConfig != null)
           'notificationConfig': notificationConfig!,
         if (securitySettings != null) 'securitySettings': securitySettings!,
@@ -15645,13 +15962,14 @@ class GoogleCloudDialogflowV2CreateConversationModelEvaluationRequest {
   });
 
   GoogleCloudDialogflowV2CreateConversationModelEvaluationRequest.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           conversationModelEvaluation:
               json_.containsKey('conversationModelEvaluation')
                   ? GoogleCloudDialogflowV2ConversationModelEvaluation.fromJson(
                       json_['conversationModelEvaluation']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
         );
 
@@ -15719,16 +16037,19 @@ class GoogleCloudDialogflowV2DetectIntentRequest {
           outputAudioConfig: json_.containsKey('outputAudioConfig')
               ? GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
                   json_['outputAudioConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           outputAudioConfigMask: json_['outputAudioConfigMask'] as core.String?,
           queryInput: json_.containsKey('queryInput')
               ? GoogleCloudDialogflowV2QueryInput.fromJson(
-                  json_['queryInput'] as core.Map<core.String, core.dynamic>)
+                  json_['queryInput'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           queryParams: json_.containsKey('queryParams')
               ? GoogleCloudDialogflowV2QueryParameters.fromJson(
-                  json_['queryParams'] as core.Map<core.String, core.dynamic>)
+                  json_['queryParams'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -15793,16 +16114,19 @@ class GoogleCloudDialogflowV2DetectIntentResponse {
           outputAudioConfig: json_.containsKey('outputAudioConfig')
               ? GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
                   json_['outputAudioConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           queryResult: json_.containsKey('queryResult')
               ? GoogleCloudDialogflowV2QueryResult.fromJson(
-                  json_['queryResult'] as core.Map<core.String, core.dynamic>)
+                  json_['queryResult'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           responseId: json_['responseId'] as core.String?,
           webhookStatus: json_.containsKey('webhookStatus')
               ? GoogleRpcStatus.fromJson(
-                  json_['webhookStatus'] as core.Map<core.String, core.dynamic>)
+                  json_['webhookStatus'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -15839,11 +16163,13 @@ class GoogleCloudDialogflowV2DialogflowAssistAnswer {
           intentSuggestion: json_.containsKey('intentSuggestion')
               ? GoogleCloudDialogflowV2IntentSuggestion.fromJson(
                   json_['intentSuggestion']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           queryResult: json_.containsKey('queryResult')
               ? GoogleCloudDialogflowV2QueryResult.fromJson(
-                  json_['queryResult'] as core.Map<core.String, core.dynamic>)
+                  json_['queryResult'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -15978,15 +16304,11 @@ class GoogleCloudDialogflowV2Document {
           latestReloadStatus: json_.containsKey('latestReloadStatus')
               ? GoogleCloudDialogflowV2DocumentReloadStatus.fromJson(
                   json_['latestReloadStatus']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
-          metadata:
-              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           mimeType: json_['mimeType'] as core.String?,
           name: json_['name'] as core.String?,
           rawContent: json_['rawContent'] as core.String?,
@@ -16019,16 +16341,14 @@ class GoogleCloudDialogflowV2DocumentReloadStatus {
   /// have succeeded.
   core.String? time;
 
-  GoogleCloudDialogflowV2DocumentReloadStatus({
-    this.status,
-    this.time,
-  });
+  GoogleCloudDialogflowV2DocumentReloadStatus({this.status, this.time});
 
   GoogleCloudDialogflowV2DocumentReloadStatus.fromJson(core.Map json_)
       : this(
           status: json_.containsKey('status')
               ? GoogleRpcStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           time: json_['time'] as core.String?,
         );
@@ -16044,14 +16364,10 @@ class GoogleCloudDialogflowV2DtmfParameters {
   /// Indicates whether DTMF input can be handled in the next request.
   core.bool? acceptsDtmfInput;
 
-  GoogleCloudDialogflowV2DtmfParameters({
-    this.acceptsDtmfInput,
-  });
+  GoogleCloudDialogflowV2DtmfParameters({this.acceptsDtmfInput});
 
   GoogleCloudDialogflowV2DtmfParameters.fromJson(core.Map json_)
-      : this(
-          acceptsDtmfInput: json_['acceptsDtmfInput'] as core.bool?,
-        );
+      : this(acceptsDtmfInput: json_['acceptsDtmfInput'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (acceptsDtmfInput != null) 'acceptsDtmfInput': acceptsDtmfInput!,
@@ -16079,10 +16395,7 @@ class GoogleCloudDialogflowV2EncryptionSpec {
   /// Immutable.
   core.String? name;
 
-  GoogleCloudDialogflowV2EncryptionSpec({
-    this.kmsKey,
-    this.name,
-  });
+  GoogleCloudDialogflowV2EncryptionSpec({this.kmsKey, this.name});
 
   GoogleCloudDialogflowV2EncryptionSpec.fromJson(core.Map json_)
       : this(
@@ -16168,8 +16481,11 @@ class GoogleCloudDialogflowV2EntityType {
           displayName: json_['displayName'] as core.String?,
           enableFuzzyExtraction: json_['enableFuzzyExtraction'] as core.bool?,
           entities: (json_['entities'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           name: json_['name'] as core.String?,
@@ -16191,15 +16507,16 @@ class GoogleCloudDialogflowV2EntityTypeBatch {
   /// A collection of entity types.
   core.List<GoogleCloudDialogflowV2EntityType>? entityTypes;
 
-  GoogleCloudDialogflowV2EntityTypeBatch({
-    this.entityTypes,
-  });
+  GoogleCloudDialogflowV2EntityTypeBatch({this.entityTypes});
 
   GoogleCloudDialogflowV2EntityTypeBatch.fromJson(core.Map json_)
       : this(
           entityTypes: (json_['entityTypes'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2EntityType.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2EntityType.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -16230,10 +16547,7 @@ class GoogleCloudDialogflowV2EntityTypeEntity {
   /// Required.
   core.String? value;
 
-  GoogleCloudDialogflowV2EntityTypeEntity({
-    this.synonyms,
-    this.value,
-  });
+  GoogleCloudDialogflowV2EntityTypeEntity({this.synonyms, this.value});
 
   GoogleCloudDialogflowV2EntityTypeEntity.fromJson(core.Map json_)
       : this(
@@ -16332,14 +16646,16 @@ class GoogleCloudDialogflowV2Environment {
           description: json_['description'] as core.String?,
           fulfillment: json_.containsKey('fulfillment')
               ? GoogleCloudDialogflowV2Fulfillment.fromJson(
-                  json_['fulfillment'] as core.Map<core.String, core.dynamic>)
+                  json_['fulfillment'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           state: json_['state'] as core.String?,
           textToSpeechSettings: json_.containsKey('textToSpeechSettings')
               ? GoogleCloudDialogflowV2TextToSpeechSettings.fromJson(
                   json_['textToSpeechSettings']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -16390,9 +16706,12 @@ class GoogleCloudDialogflowV2EnvironmentHistory {
   GoogleCloudDialogflowV2EnvironmentHistory.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2EnvironmentHistoryEntry.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2EnvironmentHistoryEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           parent: json_['parent'] as core.String?,
@@ -16458,18 +16777,25 @@ class GoogleCloudDialogflowV2EvaluationConfig {
   GoogleCloudDialogflowV2EvaluationConfig.fromJson(core.Map json_)
       : this(
           datasets: (json_['datasets'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2InputDataset.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2InputDataset.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           smartComposeConfig: json_.containsKey('smartComposeConfig')
               ? GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig
-                  .fromJson(json_['smartComposeConfig']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['smartComposeConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           smartReplyConfig: json_.containsKey('smartReplyConfig')
               ? GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig
-                  .fromJson(json_['smartReplyConfig']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['smartReplyConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -16505,8 +16831,8 @@ class GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig {
   });
 
   GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           allowlistDocument: json_['allowlistDocument'] as core.String?,
           maxResultCount: json_['maxResultCount'] as core.int?,
         );
@@ -16541,8 +16867,8 @@ class GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig {
   });
 
   GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           allowlistDocument: json_['allowlistDocument'] as core.String?,
           maxResultCount: json_['maxResultCount'] as core.int?,
         );
@@ -16631,14 +16957,10 @@ class GoogleCloudDialogflowV2ExportAgentRequest {
   /// Required.
   core.String? agentUri;
 
-  GoogleCloudDialogflowV2ExportAgentRequest({
-    this.agentUri,
-  });
+  GoogleCloudDialogflowV2ExportAgentRequest({this.agentUri});
 
   GoogleCloudDialogflowV2ExportAgentRequest.fromJson(core.Map json_)
-      : this(
-          agentUri: json_['agentUri'] as core.String?,
-        );
+      : this(agentUri: json_['agentUri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentUri != null) 'agentUri': agentUri!,
@@ -16670,7 +16992,8 @@ class GoogleCloudDialogflowV2ExportDocumentRequest {
           gcsDestination: json_.containsKey('gcsDestination')
               ? GoogleCloudDialogflowV2GcsDestination.fromJson(
                   json_['gcsDestination']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           smartMessagingPartialUpdate:
               json_['smartMessagingPartialUpdate'] as core.bool?,
@@ -16724,13 +17047,8 @@ class GoogleCloudDialogflowV2FaqAnswer {
           answer: json_['answer'] as core.String?,
           answerRecord: json_['answerRecord'] as core.String?,
           confidence: (json_['confidence'] as core.num?)?.toDouble(),
-          metadata:
-              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           question: json_['question'] as core.String?,
           source: json_['source'] as core.String?,
         );
@@ -16782,24 +17100,23 @@ class GoogleCloudDialogflowV2FewShotExample {
           conversationContext: json_.containsKey('conversationContext')
               ? GoogleCloudDialogflowV2ConversationContext.fromJson(
                   json_['conversationContext']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
-          extraInfo:
-              (json_['extraInfo'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          extraInfo: (json_['extraInfo']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           output: json_.containsKey('output')
               ? GoogleCloudDialogflowV2GeneratorSuggestion.fromJson(
-                  json_['output'] as core.Map<core.String, core.dynamic>)
+                  json_['output'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           summarizationSectionList:
               json_.containsKey('summarizationSectionList')
                   ? GoogleCloudDialogflowV2SummarizationSectionList.fromJson(
                       json_['summarizationSectionList']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
         );
 
@@ -16865,14 +17182,17 @@ class GoogleCloudDialogflowV2Fulfillment {
           displayName: json_['displayName'] as core.String?,
           enabled: json_['enabled'] as core.bool?,
           features: (json_['features'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2FulfillmentFeature.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2FulfillmentFeature.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           genericWebService: json_.containsKey('genericWebService')
               ? GoogleCloudDialogflowV2FulfillmentGenericWebService.fromJson(
                   json_['genericWebService']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
         );
@@ -16894,14 +17214,10 @@ class GoogleCloudDialogflowV2FulfillmentFeature {
   /// - "SMALLTALK" : Fulfillment is enabled for SmallTalk.
   core.String? type;
 
-  GoogleCloudDialogflowV2FulfillmentFeature({
-    this.type,
-  });
+  GoogleCloudDialogflowV2FulfillmentFeature({this.type});
 
   GoogleCloudDialogflowV2FulfillmentFeature.fromJson(core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-        );
+      : this(type: json_['type'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -16961,14 +17277,9 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebService {
       : this(
           isCloudFunction: json_['isCloudFunction'] as core.bool?,
           password: json_['password'] as core.String?,
-          requestHeaders:
-              (json_['requestHeaders'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          requestHeaders: (json_['requestHeaders']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           uri: json_['uri'] as core.String?,
           username: json_['username'] as core.String?,
         );
@@ -16991,14 +17302,10 @@ class GoogleCloudDialogflowV2GcsDestination {
   /// "write-permission" to the bucket.
   core.String? uri;
 
-  GoogleCloudDialogflowV2GcsDestination({
-    this.uri,
-  });
+  GoogleCloudDialogflowV2GcsDestination({this.uri});
 
   GoogleCloudDialogflowV2GcsDestination.fromJson(core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+      : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
@@ -17015,9 +17322,7 @@ class GoogleCloudDialogflowV2GcsSources {
   /// Required.
   core.List<core.String>? uris;
 
-  GoogleCloudDialogflowV2GcsSources({
-    this.uris,
-  });
+  GoogleCloudDialogflowV2GcsSources({this.uris});
 
   GoogleCloudDialogflowV2GcsSources.fromJson(core.Map json_)
       : this(
@@ -17064,16 +17369,18 @@ class GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest {
   });
 
   GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           conversationContext: json_.containsKey('conversationContext')
               ? GoogleCloudDialogflowV2ConversationContext.fromJson(
                   json_['conversationContext']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           generator: json_.containsKey('generator')
               ? GoogleCloudDialogflowV2Generator.fromJson(
-                  json_['generator'] as core.Map<core.String, core.dynamic>)
+                  json_['generator'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           generatorName: json_['generatorName'] as core.String?,
           triggerEvents: (json_['triggerEvents'] as core.List?)
@@ -17102,12 +17409,13 @@ class GoogleCloudDialogflowV2GenerateStatelessSuggestionResponse {
   });
 
   GoogleCloudDialogflowV2GenerateStatelessSuggestionResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           generatorSuggestion: json_.containsKey('generatorSuggestion')
               ? GoogleCloudDialogflowV2GeneratorSuggestion.fromJson(
                   json_['generatorSuggestion']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -17159,19 +17467,22 @@ class GoogleCloudDialogflowV2GenerateStatelessSummaryRequest {
   });
 
   GoogleCloudDialogflowV2GenerateStatelessSummaryRequest.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           conversationProfile: json_.containsKey('conversationProfile')
               ? GoogleCloudDialogflowV2ConversationProfile.fromJson(
                   json_['conversationProfile']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           latestMessage: json_['latestMessage'] as core.String?,
           maxContextSize: json_['maxContextSize'] as core.int?,
           statelessConversation: json_.containsKey('statelessConversation')
               ? GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation
-                  .fromJson(json_['statelessConversation']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['statelessConversation']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -17203,11 +17514,14 @@ class GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation 
   });
 
   GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           messages: (json_['messages'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2Message.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2Message.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -17242,14 +17556,15 @@ class GoogleCloudDialogflowV2GenerateStatelessSummaryResponse {
   });
 
   GoogleCloudDialogflowV2GenerateStatelessSummaryResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           contextSize: json_['contextSize'] as core.int?,
           latestMessage: json_['latestMessage'] as core.String?,
           summary: json_.containsKey('summary')
               ? GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary
                   .fromJson(
-                      json_['summary'] as core.Map<core.String, core.dynamic>)
+                  json_['summary'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -17283,18 +17598,13 @@ class GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary {
   });
 
   GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           baselineModelVersion: json_['baselineModelVersion'] as core.String?,
           text: json_['text'] as core.String?,
-          textSections:
-              (json_['textSections'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          textSections: (json_['textSections']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17369,13 +17679,15 @@ class GoogleCloudDialogflowV2Generator {
           inferenceParameter: json_.containsKey('inferenceParameter')
               ? GoogleCloudDialogflowV2InferenceParameter.fromJson(
                   json_['inferenceParameter']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           summarizationContext: json_.containsKey('summarizationContext')
               ? GoogleCloudDialogflowV2SummarizationContext.fromJson(
                   json_['summarizationContext']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           triggerEvent: json_['triggerEvent'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -17401,16 +17713,15 @@ class GoogleCloudDialogflowV2GeneratorSuggestion {
   /// Optional.
   GoogleCloudDialogflowV2SummarySuggestion? summarySuggestion;
 
-  GoogleCloudDialogflowV2GeneratorSuggestion({
-    this.summarySuggestion,
-  });
+  GoogleCloudDialogflowV2GeneratorSuggestion({this.summarySuggestion});
 
   GoogleCloudDialogflowV2GeneratorSuggestion.fromJson(core.Map json_)
       : this(
           summarySuggestion: json_.containsKey('summarySuggestion')
               ? GoogleCloudDialogflowV2SummarySuggestion.fromJson(
                   json_['summarySuggestion']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -17450,24 +17761,31 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfig {
       : this(
           endUserSuggestionConfig: json_.containsKey('endUserSuggestionConfig')
               ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig
-                  .fromJson(json_['endUserSuggestionConfig']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['endUserSuggestionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           humanAgentSuggestionConfig: json_
                   .containsKey('humanAgentSuggestionConfig')
               ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig
-                  .fromJson(json_['humanAgentSuggestionConfig']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['humanAgentSuggestionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           messageAnalysisConfig: json_.containsKey('messageAnalysisConfig')
               ? GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig
-                  .fromJson(json_['messageAnalysisConfig']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['messageAnalysisConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           notificationConfig: json_.containsKey('notificationConfig')
               ? GoogleCloudDialogflowV2NotificationConfig.fromJson(
                   json_['notificationConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -17505,8 +17823,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig {
   });
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           baselineModelVersion: json_['baselineModelVersion'] as core.String?,
           model: json_['model'] as core.String?,
         );
@@ -17529,10 +17847,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig 
   });
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig.fromJson(
-      core.Map json_)
-      : this(
-          recentSentencesCount: json_['recentSentencesCount'] as core.int?,
-        );
+    core.Map json_,
+  ) : this(recentSentencesCount: json_['recentSentencesCount'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (recentSentencesCount != null)
@@ -17572,8 +17888,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig {
   });
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           enableEntityExtraction: json_['enableEntityExtraction'] as core.bool?,
           enableSentimentAnalysis:
               json_['enableSentimentAnalysis'] as core.bool?,
@@ -17633,14 +17949,18 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
   });
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           disableHighLatencyFeaturesSyncDelivery:
               json_['disableHighLatencyFeaturesSyncDelivery'] as core.bool?,
           featureConfigs: (json_['featureConfigs'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           generators: (json_['generators'] as core.List?)
               ?.map((value) => value as core.String)
@@ -17733,18 +18053,22 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
   });
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           conversationModelConfig: json_.containsKey('conversationModelConfig')
               ? GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig
-                  .fromJson(json_['conversationModelConfig']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['conversationModelConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           conversationProcessConfig: json_
                   .containsKey('conversationProcessConfig')
               ? GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig
-                  .fromJson(json_['conversationProcessConfig']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['conversationProcessConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           disableAgentQueryLogging:
               json_['disableAgentQueryLogging'] as core.bool?,
@@ -17758,19 +18082,23 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
               json_['enableQuerySuggestionWhenNoAnswer'] as core.bool?,
           queryConfig: json_.containsKey('queryConfig')
               ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig
-                  .fromJson(json_['queryConfig']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['queryConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           suggestionFeature: json_.containsKey('suggestionFeature')
               ? GoogleCloudDialogflowV2SuggestionFeature.fromJson(
                   json_['suggestionFeature']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           suggestionTriggerSettings: json_
                   .containsKey('suggestionTriggerSettings')
               ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings
-                  .fromJson(json_['suggestionTriggerSettings']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['suggestionTriggerSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -17871,37 +18199,46 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
   });
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           confidenceThreshold:
               (json_['confidenceThreshold'] as core.num?)?.toDouble(),
           contextFilterSettings: json_.containsKey('contextFilterSettings')
               ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings
-                  .fromJson(json_['contextFilterSettings']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['contextFilterSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           contextSize: json_['contextSize'] as core.int?,
           dialogflowQuerySource: json_.containsKey('dialogflowQuerySource')
               ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource
-                  .fromJson(json_['dialogflowQuerySource']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['dialogflowQuerySource']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           documentQuerySource: json_.containsKey('documentQuerySource')
               ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource
-                  .fromJson(json_['documentQuerySource']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['documentQuerySource']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           knowledgeBaseQuerySource: json_
                   .containsKey('knowledgeBaseQuerySource')
               ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource
-                  .fromJson(json_['knowledgeBaseQuerySource']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['knowledgeBaseQuerySource']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           maxResults: json_['maxResults'] as core.int?,
           sections: json_.containsKey('sections')
               ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections
                   .fromJson(
-                      json_['sections'] as core.Map<core.String, core.dynamic>)
+                  json_['sections'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -17942,8 +18279,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigConte
   });
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           dropHandoffMessages: json_['dropHandoffMessages'] as core.bool?,
           dropIvrMessages: json_['dropIvrMessages'] as core.bool?,
           dropVirtualAgentMessages:
@@ -17984,13 +18321,15 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialo
   });
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           agent: json_['agent'] as core.String?,
           humanAgentSideConfig: json_.containsKey('humanAgentSideConfig')
               ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig
-                  .fromJson(json_['humanAgentSideConfig']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['humanAgentSideConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -18016,10 +18355,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialo
   });
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig.fromJson(
-      core.Map json_)
-      : this(
-          agent: json_['agent'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(agent: json_['agent'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (agent != null) 'agent': agent!,
@@ -18043,8 +18380,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocum
   });
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           documents: (json_['documents'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -18072,8 +18409,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowl
   });
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           knowledgeBases: (json_['knowledgeBases'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -18102,8 +18439,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSecti
   });
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           sectionTypes: (json_['sectionTypes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -18128,8 +18465,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings 
   });
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           noSmalltalk: json_['noSmalltalk'] as core.bool?,
           onlyEndUser: json_['onlyEndUser'] as core.bool?,
         );
@@ -18163,14 +18500,18 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfig {
       : this(
           livePersonConfig: json_.containsKey('livePersonConfig')
               ? GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig
-                  .fromJson(json_['livePersonConfig']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['livePersonConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           salesforceLiveAgentConfig: json_
                   .containsKey('salesforceLiveAgentConfig')
               ? GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig
-                  .fromJson(json_['salesforceLiveAgentConfig']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['salesforceLiveAgentConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -18195,10 +18536,8 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig {
   });
 
   GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig.fromJson(
-      core.Map json_)
-      : this(
-          accountNumber: json_['accountNumber'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(accountNumber: json_['accountNumber'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountNumber != null) 'accountNumber': accountNumber!,
@@ -18240,8 +18579,8 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig {
   });
 
   GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           buttonId: json_['buttonId'] as core.String?,
           deploymentId: json_['deploymentId'] as core.String?,
           endpointDomain: json_['endpointDomain'] as core.String?,
@@ -18277,10 +18616,7 @@ class GoogleCloudDialogflowV2ImportAgentRequest {
   /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
   core.String? agentUri;
 
-  GoogleCloudDialogflowV2ImportAgentRequest({
-    this.agentContent,
-    this.agentUri,
-  });
+  GoogleCloudDialogflowV2ImportAgentRequest({this.agentContent, this.agentUri});
 
   GoogleCloudDialogflowV2ImportAgentRequest.fromJson(core.Map json_)
       : this(
@@ -18301,15 +18637,14 @@ class GoogleCloudDialogflowV2ImportConversationDataRequest {
   /// Required.
   GoogleCloudDialogflowV2InputConfig? inputConfig;
 
-  GoogleCloudDialogflowV2ImportConversationDataRequest({
-    this.inputConfig,
-  });
+  GoogleCloudDialogflowV2ImportConversationDataRequest({this.inputConfig});
 
   GoogleCloudDialogflowV2ImportConversationDataRequest.fromJson(core.Map json_)
       : this(
           inputConfig: json_.containsKey('inputConfig')
               ? GoogleCloudDialogflowV2InputConfig.fromJson(
-                  json_['inputConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['inputConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -18349,13 +18684,8 @@ class GoogleCloudDialogflowV2ImportDocumentTemplate {
           knowledgeTypes: (json_['knowledgeTypes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          metadata:
-              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           mimeType: json_['mimeType'] as core.String?,
         );
 
@@ -18397,11 +18727,13 @@ class GoogleCloudDialogflowV2ImportDocumentsRequest {
           documentTemplate: json_.containsKey('documentTemplate')
               ? GoogleCloudDialogflowV2ImportDocumentTemplate.fromJson(
                   json_['documentTemplate']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           gcsSource: json_.containsKey('gcsSource')
               ? GoogleCloudDialogflowV2GcsSources.fromJson(
-                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           importGcsCustomMetadata:
               json_['importGcsCustomMetadata'] as core.bool?,
@@ -18494,17 +18826,16 @@ class GoogleCloudDialogflowV2InitializeEncryptionSpecRequest {
   /// Required.
   GoogleCloudDialogflowV2EncryptionSpec? encryptionSpec;
 
-  GoogleCloudDialogflowV2InitializeEncryptionSpecRequest({
-    this.encryptionSpec,
-  });
+  GoogleCloudDialogflowV2InitializeEncryptionSpecRequest({this.encryptionSpec});
 
   GoogleCloudDialogflowV2InitializeEncryptionSpecRequest.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudDialogflowV2EncryptionSpec.fromJson(
                   json_['encryptionSpec']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -18701,8 +19032,11 @@ class GoogleCloudDialogflowV2InputAudioConfig {
           sampleRateHertz: json_['sampleRateHertz'] as core.int?,
           singleUtterance: json_['singleUtterance'] as core.bool?,
           speechContexts: (json_['speechContexts'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2SpeechContext.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2SpeechContext.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -18735,15 +19069,14 @@ class GoogleCloudDialogflowV2InputConfig {
   /// which will be read as one conversation per file.
   GoogleCloudDialogflowV2GcsSources? gcsSource;
 
-  GoogleCloudDialogflowV2InputConfig({
-    this.gcsSource,
-  });
+  GoogleCloudDialogflowV2InputConfig({this.gcsSource});
 
   GoogleCloudDialogflowV2InputConfig.fromJson(core.Map json_)
       : this(
           gcsSource: json_.containsKey('gcsSource')
               ? GoogleCloudDialogflowV2GcsSources.fromJson(
-                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -18763,14 +19096,10 @@ class GoogleCloudDialogflowV2InputDataset {
   /// Required.
   core.String? dataset;
 
-  GoogleCloudDialogflowV2InputDataset({
-    this.dataset,
-  });
+  GoogleCloudDialogflowV2InputDataset({this.dataset});
 
   GoogleCloudDialogflowV2InputDataset.fromJson(core.Map json_)
-      : this(
-          dataset: json_['dataset'] as core.String?,
-        );
+      : this(dataset: json_['dataset'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataset != null) 'dataset': dataset!,
@@ -18979,9 +19308,12 @@ class GoogleCloudDialogflowV2Intent {
               ?.map((value) => value as core.String)
               .toList(),
           followupIntentInfo: (json_['followupIntentInfo'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2IntentFollowupIntentInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2IntentFollowupIntentInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           inputContextNames: (json_['inputContextNames'] as core.List?)
               ?.map((value) => value as core.String)
@@ -18989,18 +19321,27 @@ class GoogleCloudDialogflowV2Intent {
           isFallback: json_['isFallback'] as core.bool?,
           liveAgentHandoff: json_['liveAgentHandoff'] as core.bool?,
           messages: (json_['messages'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2IntentMessage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2IntentMessage.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           mlDisabled: json_['mlDisabled'] as core.bool?,
           name: json_['name'] as core.String?,
           outputContexts: (json_['outputContexts'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2Context.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2Context.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           parameters: (json_['parameters'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2IntentParameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2IntentParameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           parentFollowupIntentName:
               json_['parentFollowupIntentName'] as core.String?,
@@ -19009,9 +19350,11 @@ class GoogleCloudDialogflowV2Intent {
           rootFollowupIntentName:
               json_['rootFollowupIntentName'] as core.String?,
           trainingPhrases: (json_['trainingPhrases'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2IntentTrainingPhrase.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2IntentTrainingPhrase.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           webhookState: json_['webhookState'] as core.String?,
         );
@@ -19049,15 +19392,16 @@ class GoogleCloudDialogflowV2IntentBatch {
   /// A collection of intents.
   core.List<GoogleCloudDialogflowV2Intent>? intents;
 
-  GoogleCloudDialogflowV2IntentBatch({
-    this.intents,
-  });
+  GoogleCloudDialogflowV2IntentBatch({this.intents});
 
   GoogleCloudDialogflowV2IntentBatch.fromJson(core.Map json_)
       : this(
           intents: (json_['intents'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2Intent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2Intent.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -19188,38 +19532,46 @@ class GoogleCloudDialogflowV2IntentMessage {
       : this(
           basicCard: json_.containsKey('basicCard')
               ? GoogleCloudDialogflowV2IntentMessageBasicCard.fromJson(
-                  json_['basicCard'] as core.Map<core.String, core.dynamic>)
+                  json_['basicCard'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           browseCarouselCard: json_.containsKey('browseCarouselCard')
               ? GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard.fromJson(
                   json_['browseCarouselCard']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           card: json_.containsKey('card')
               ? GoogleCloudDialogflowV2IntentMessageCard.fromJson(
-                  json_['card'] as core.Map<core.String, core.dynamic>)
+                  json_['card'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           carouselSelect: json_.containsKey('carouselSelect')
               ? GoogleCloudDialogflowV2IntentMessageCarouselSelect.fromJson(
                   json_['carouselSelect']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           image: json_.containsKey('image')
               ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           linkOutSuggestion: json_.containsKey('linkOutSuggestion')
               ? GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion.fromJson(
                   json_['linkOutSuggestion']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           listSelect: json_.containsKey('listSelect')
               ? GoogleCloudDialogflowV2IntentMessageListSelect.fromJson(
-                  json_['listSelect'] as core.Map<core.String, core.dynamic>)
+                  json_['listSelect'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           mediaContent: json_.containsKey('mediaContent')
               ? GoogleCloudDialogflowV2IntentMessageMediaContent.fromJson(
-                  json_['mediaContent'] as core.Map<core.String, core.dynamic>)
+                  json_['mediaContent'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           payload: json_.containsKey('payload')
               ? json_['payload'] as core.Map<core.String, core.dynamic>
@@ -19227,24 +19579,29 @@ class GoogleCloudDialogflowV2IntentMessage {
           platform: json_['platform'] as core.String?,
           quickReplies: json_.containsKey('quickReplies')
               ? GoogleCloudDialogflowV2IntentMessageQuickReplies.fromJson(
-                  json_['quickReplies'] as core.Map<core.String, core.dynamic>)
+                  json_['quickReplies'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           simpleResponses: json_.containsKey('simpleResponses')
               ? GoogleCloudDialogflowV2IntentMessageSimpleResponses.fromJson(
                   json_['simpleResponses']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           suggestions: json_.containsKey('suggestions')
               ? GoogleCloudDialogflowV2IntentMessageSuggestions.fromJson(
-                  json_['suggestions'] as core.Map<core.String, core.dynamic>)
+                  json_['suggestions'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           tableCard: json_.containsKey('tableCard')
               ? GoogleCloudDialogflowV2IntentMessageTableCard.fromJson(
-                  json_['tableCard'] as core.Map<core.String, core.dynamic>)
+                  json_['tableCard'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           text: json_.containsKey('text')
               ? GoogleCloudDialogflowV2IntentMessageText.fromJson(
-                  json_['text'] as core.Map<core.String, core.dynamic>)
+                  json_['text'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -19308,14 +19665,18 @@ class GoogleCloudDialogflowV2IntentMessageBasicCard {
   GoogleCloudDialogflowV2IntentMessageBasicCard.fromJson(core.Map json_)
       : this(
           buttons: (json_['buttons'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2IntentMessageBasicCardButton.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2IntentMessageBasicCardButton
+                    .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           formattedText: json_['formattedText'] as core.String?,
           image: json_.containsKey('image')
               ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           subtitle: json_['subtitle'] as core.String?,
           title: json_['title'] as core.String?,
@@ -19352,8 +19713,9 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButton {
       : this(
           openUriAction: json_.containsKey('openUriAction')
               ? GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction
-                  .fromJson(json_['openUriAction']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['openUriAction'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           title: json_['title'] as core.String?,
         );
@@ -19371,15 +19733,11 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction {
   /// Required.
   core.String? uri;
 
-  GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction({
-    this.uri,
-  });
+  GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction({this.uri});
 
   GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction.fromJson(
-      core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
@@ -19427,13 +19785,17 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
   });
 
   GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           imageDisplayOptions: json_['imageDisplayOptions'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -19487,18 +19849,20 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
   });
 
   GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           description: json_['description'] as core.String?,
           footer: json_['footer'] as core.String?,
           image: json_.containsKey('image')
               ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           openUriAction: json_.containsKey('openUriAction')
               ? GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
-                  .fromJson(json_['openUriAction']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['openUriAction'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           title: json_['title'] as core.String?,
         );
@@ -19537,8 +19901,8 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
   });
 
   GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           url: json_['url'] as core.String?,
           urlTypeHint: json_['urlTypeHint'] as core.String?,
         );
@@ -19581,9 +19945,12 @@ class GoogleCloudDialogflowV2IntentMessageCard {
   GoogleCloudDialogflowV2IntentMessageCard.fromJson(core.Map json_)
       : this(
           buttons: (json_['buttons'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2IntentMessageCardButton.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2IntentMessageCardButton.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           imageUri: json_['imageUri'] as core.String?,
           subtitle: json_['subtitle'] as core.String?,
@@ -19610,10 +19977,7 @@ class GoogleCloudDialogflowV2IntentMessageCardButton {
   /// Optional.
   core.String? text;
 
-  GoogleCloudDialogflowV2IntentMessageCardButton({
-    this.postback,
-    this.text,
-  });
+  GoogleCloudDialogflowV2IntentMessageCardButton({this.postback, this.text});
 
   GoogleCloudDialogflowV2IntentMessageCardButton.fromJson(core.Map json_)
       : this(
@@ -19634,16 +19998,18 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelect {
   /// Required.
   core.List<GoogleCloudDialogflowV2IntentMessageCarouselSelectItem>? items;
 
-  GoogleCloudDialogflowV2IntentMessageCarouselSelect({
-    this.items,
-  });
+  GoogleCloudDialogflowV2IntentMessageCarouselSelect({this.items});
 
   GoogleCloudDialogflowV2IntentMessageCarouselSelect.fromJson(core.Map json_)
       : this(
           items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2IntentMessageCarouselSelectItem
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2IntentMessageCarouselSelectItem
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -19682,16 +20048,18 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelectItem {
   });
 
   GoogleCloudDialogflowV2IntentMessageCarouselSelectItem.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           description: json_['description'] as core.String?,
           image: json_.containsKey('image')
               ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           info: json_.containsKey('info')
               ? GoogleCloudDialogflowV2IntentMessageSelectItemInfo.fromJson(
-                  json_['info'] as core.Map<core.String, core.dynamic>)
+                  json_['info'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           title: json_['title'] as core.String?,
         );
@@ -19826,9 +20194,12 @@ class GoogleCloudDialogflowV2IntentMessageListSelect {
   GoogleCloudDialogflowV2IntentMessageListSelect.fromJson(core.Map json_)
       : this(
           items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2IntentMessageListSelectItem.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2IntentMessageListSelectItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           subtitle: json_['subtitle'] as core.String?,
           title: json_['title'] as core.String?,
@@ -19875,11 +20246,13 @@ class GoogleCloudDialogflowV2IntentMessageListSelectItem {
           description: json_['description'] as core.String?,
           image: json_.containsKey('image')
               ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           info: json_.containsKey('info')
               ? GoogleCloudDialogflowV2IntentMessageSelectItemInfo.fromJson(
-                  json_['info'] as core.Map<core.String, core.dynamic>)
+                  json_['info'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           title: json_['title'] as core.String?,
         );
@@ -19917,9 +20290,13 @@ class GoogleCloudDialogflowV2IntentMessageMediaContent {
   GoogleCloudDialogflowV2IntentMessageMediaContent.fromJson(core.Map json_)
       : this(
           mediaObjects: (json_['mediaObjects'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           mediaType: json_['mediaType'] as core.String?,
         );
@@ -19966,17 +20343,19 @@ class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
   });
 
   GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           contentUrl: json_['contentUrl'] as core.String?,
           description: json_['description'] as core.String?,
           icon: json_.containsKey('icon')
               ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
-                  json_['icon'] as core.Map<core.String, core.dynamic>)
+                  json_['icon'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           largeImage: json_.containsKey('largeImage')
               ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
-                  json_['largeImage'] as core.Map<core.String, core.dynamic>)
+                  json_['largeImage'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
         );
@@ -20034,10 +20413,7 @@ class GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
   /// Optional.
   core.List<core.String>? synonyms;
 
-  GoogleCloudDialogflowV2IntentMessageSelectItemInfo({
-    this.key,
-    this.synonyms,
-  });
+  GoogleCloudDialogflowV2IntentMessageSelectItemInfo({this.key, this.synonyms});
 
   GoogleCloudDialogflowV2IntentMessageSelectItemInfo.fromJson(core.Map json_)
       : this(
@@ -20103,16 +20479,17 @@ class GoogleCloudDialogflowV2IntentMessageSimpleResponses {
   core.List<GoogleCloudDialogflowV2IntentMessageSimpleResponse>?
       simpleResponses;
 
-  GoogleCloudDialogflowV2IntentMessageSimpleResponses({
-    this.simpleResponses,
-  });
+  GoogleCloudDialogflowV2IntentMessageSimpleResponses({this.simpleResponses});
 
   GoogleCloudDialogflowV2IntentMessageSimpleResponses.fromJson(core.Map json_)
       : this(
           simpleResponses: (json_['simpleResponses'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2IntentMessageSimpleResponse.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2IntentMessageSimpleResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -20129,14 +20506,10 @@ class GoogleCloudDialogflowV2IntentMessageSuggestion {
   /// Required.
   core.String? title;
 
-  GoogleCloudDialogflowV2IntentMessageSuggestion({
-    this.title,
-  });
+  GoogleCloudDialogflowV2IntentMessageSuggestion({this.title});
 
   GoogleCloudDialogflowV2IntentMessageSuggestion.fromJson(core.Map json_)
-      : this(
-          title: json_['title'] as core.String?,
-        );
+      : this(title: json_['title'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (title != null) 'title': title!,
@@ -20150,16 +20523,17 @@ class GoogleCloudDialogflowV2IntentMessageSuggestions {
   /// Required.
   core.List<GoogleCloudDialogflowV2IntentMessageSuggestion>? suggestions;
 
-  GoogleCloudDialogflowV2IntentMessageSuggestions({
-    this.suggestions,
-  });
+  GoogleCloudDialogflowV2IntentMessageSuggestions({this.suggestions});
 
   GoogleCloudDialogflowV2IntentMessageSuggestions.fromJson(core.Map json_)
       : this(
           suggestions: (json_['suggestions'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2IntentMessageSuggestion.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2IntentMessageSuggestion.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -20213,23 +20587,33 @@ class GoogleCloudDialogflowV2IntentMessageTableCard {
   GoogleCloudDialogflowV2IntentMessageTableCard.fromJson(core.Map json_)
       : this(
           buttons: (json_['buttons'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2IntentMessageBasicCardButton.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2IntentMessageBasicCardButton
+                    .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           columnProperties: (json_['columnProperties'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2IntentMessageColumnProperties.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2IntentMessageColumnProperties
+                    .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           image: json_.containsKey('image')
               ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           rows: (json_['rows'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2IntentMessageTableCardRow.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2IntentMessageTableCardRow.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           subtitle: json_['subtitle'] as core.String?,
           title: json_['title'] as core.String?,
@@ -20252,14 +20636,10 @@ class GoogleCloudDialogflowV2IntentMessageTableCardCell {
   /// Required.
   core.String? text;
 
-  GoogleCloudDialogflowV2IntentMessageTableCardCell({
-    this.text,
-  });
+  GoogleCloudDialogflowV2IntentMessageTableCardCell({this.text});
 
   GoogleCloudDialogflowV2IntentMessageTableCardCell.fromJson(core.Map json_)
-      : this(
-          text: json_['text'] as core.String?,
-        );
+      : this(text: json_['text'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (text != null) 'text': text!,
@@ -20286,9 +20666,12 @@ class GoogleCloudDialogflowV2IntentMessageTableCardRow {
   GoogleCloudDialogflowV2IntentMessageTableCardRow.fromJson(core.Map json_)
       : this(
           cells: (json_['cells'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2IntentMessageTableCardCell.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2IntentMessageTableCardCell.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           dividerAfter: json_['dividerAfter'] as core.bool?,
         );
@@ -20306,9 +20689,7 @@ class GoogleCloudDialogflowV2IntentMessageText {
   /// Optional.
   core.List<core.String>? text;
 
-  GoogleCloudDialogflowV2IntentMessageText({
-    this.text,
-  });
+  GoogleCloudDialogflowV2IntentMessageText({this.text});
 
   GoogleCloudDialogflowV2IntentMessageText.fromJson(core.Map json_)
       : this(
@@ -20508,9 +20889,12 @@ class GoogleCloudDialogflowV2IntentTrainingPhrase {
       : this(
           name: json_['name'] as core.String?,
           parts: (json_['parts'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2IntentTrainingPhrasePart.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2IntentTrainingPhrasePart.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           timesAddedCount: json_['timesAddedCount'] as core.int?,
           type: json_['type'] as core.String?,
@@ -20608,13 +20992,17 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswer {
           answerRecord: json_['answerRecord'] as core.String?,
           suggestedQuery: json_.containsKey('suggestedQuery')
               ? GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery
-                  .fromJson(json_['suggestedQuery']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['suggestedQuery']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           suggestedQueryAnswer: json_.containsKey('suggestedQueryAnswer')
               ? GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer
-                  .fromJson(json_['suggestedQueryAnswer']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['suggestedQueryAnswer']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -20648,18 +21036,21 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer {
   });
 
   GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           answerText: json_['answerText'] as core.String?,
           faqSource: json_.containsKey('faqSource')
               ? GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource
                   .fromJson(
-                      json_['faqSource'] as core.Map<core.String, core.dynamic>)
+                  json_['faqSource'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           generativeSource: json_.containsKey('generativeSource')
               ? GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource
-                  .fromJson(json_['generativeSource']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['generativeSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -20680,10 +21071,8 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource {
   });
 
   GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource.fromJson(
-      core.Map json_)
-      : this(
-          question: json_['question'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(question: json_['question'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (question != null) 'question': question!,
@@ -20703,12 +21092,16 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourc
   });
 
   GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           snippets: (json_['snippets'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -20742,8 +21135,8 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourc
   });
 
   GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
@@ -20765,15 +21158,11 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery {
   /// Suggested query text.
   core.String? queryText;
 
-  GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery({
-    this.queryText,
-  });
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery({this.queryText});
 
   GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery.fromJson(
-      core.Map json_)
-      : this(
-          queryText: json_['queryText'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(queryText: json_['queryText'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (queryText != null) 'queryText': queryText!,
@@ -20852,8 +21241,11 @@ class GoogleCloudDialogflowV2ListAnswerRecordsResponse {
   GoogleCloudDialogflowV2ListAnswerRecordsResponse.fromJson(core.Map json_)
       : this(
           answerRecords: (json_['answerRecords'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2AnswerRecord.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2AnswerRecord.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -20884,8 +21276,11 @@ class GoogleCloudDialogflowV2ListContextsResponse {
   GoogleCloudDialogflowV2ListContextsResponse.fromJson(core.Map json_)
       : this(
           contexts: (json_['contexts'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2Context.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2Context.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -20911,12 +21306,14 @@ class GoogleCloudDialogflowV2ListConversationDatasetsResponse {
   });
 
   GoogleCloudDialogflowV2ListConversationDatasetsResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           conversationDatasets: (json_['conversationDatasets'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2ConversationDataset.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2ConversationDataset.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -20944,13 +21341,16 @@ class GoogleCloudDialogflowV2ListConversationModelEvaluationsResponse {
   });
 
   GoogleCloudDialogflowV2ListConversationModelEvaluationsResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           conversationModelEvaluations: (json_['conversationModelEvaluations']
                   as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2ConversationModelEvaluation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2ConversationModelEvaluation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -20979,9 +21379,11 @@ class GoogleCloudDialogflowV2ListConversationModelsResponse {
   GoogleCloudDialogflowV2ListConversationModelsResponse.fromJson(core.Map json_)
       : this(
           conversationModels: (json_['conversationModels'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2ConversationModel.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2ConversationModel.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -21011,12 +21413,14 @@ class GoogleCloudDialogflowV2ListConversationProfilesResponse {
   });
 
   GoogleCloudDialogflowV2ListConversationProfilesResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           conversationProfiles: (json_['conversationProfiles'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2ConversationProfile.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2ConversationProfile.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -21048,8 +21452,11 @@ class GoogleCloudDialogflowV2ListConversationsResponse {
   GoogleCloudDialogflowV2ListConversationsResponse.fromJson(core.Map json_)
       : this(
           conversations: (json_['conversations'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2Conversation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2Conversation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -21077,8 +21484,11 @@ class GoogleCloudDialogflowV2ListDocumentsResponse {
   GoogleCloudDialogflowV2ListDocumentsResponse.fromJson(core.Map json_)
       : this(
           documents: (json_['documents'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2Document.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2Document.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -21109,8 +21519,11 @@ class GoogleCloudDialogflowV2ListEntityTypesResponse {
   GoogleCloudDialogflowV2ListEntityTypesResponse.fromJson(core.Map json_)
       : this(
           entityTypes: (json_['entityTypes'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2EntityType.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2EntityType.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -21141,8 +21554,11 @@ class GoogleCloudDialogflowV2ListEnvironmentsResponse {
   GoogleCloudDialogflowV2ListEnvironmentsResponse.fromJson(core.Map json_)
       : this(
           environments: (json_['environments'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2Environment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2Environment.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -21170,8 +21586,11 @@ class GoogleCloudDialogflowV2ListGeneratorsResponse {
   GoogleCloudDialogflowV2ListGeneratorsResponse.fromJson(core.Map json_)
       : this(
           generators: (json_['generators'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2Generator.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2Generator.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -21202,8 +21621,11 @@ class GoogleCloudDialogflowV2ListIntentsResponse {
   GoogleCloudDialogflowV2ListIntentsResponse.fromJson(core.Map json_)
       : this(
           intents: (json_['intents'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2Intent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2Intent.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -21231,8 +21653,11 @@ class GoogleCloudDialogflowV2ListKnowledgeBasesResponse {
   GoogleCloudDialogflowV2ListKnowledgeBasesResponse.fromJson(core.Map json_)
       : this(
           knowledgeBases: (json_['knowledgeBases'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2KnowledgeBase.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2KnowledgeBase.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -21264,8 +21689,11 @@ class GoogleCloudDialogflowV2ListMessagesResponse {
   GoogleCloudDialogflowV2ListMessagesResponse.fromJson(core.Map json_)
       : this(
           messages: (json_['messages'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2Message.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2Message.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -21297,8 +21725,11 @@ class GoogleCloudDialogflowV2ListParticipantsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           participants: (json_['participants'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2Participant.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2Participant.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -21329,9 +21760,11 @@ class GoogleCloudDialogflowV2ListSessionEntityTypesResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           sessionEntityTypes: (json_['sessionEntityTypes'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2SessionEntityType.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2SessionEntityType.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -21363,8 +21796,11 @@ class GoogleCloudDialogflowV2ListVersionsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           versions: (json_['versions'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2Version.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2Version.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -21381,9 +21817,7 @@ class GoogleCloudDialogflowV2LoggingConfig {
   /// protos.
   core.bool? enableStackdriverLogging;
 
-  GoogleCloudDialogflowV2LoggingConfig({
-    this.enableStackdriverLogging,
-  });
+  GoogleCloudDialogflowV2LoggingConfig({this.enableStackdriverLogging});
 
   GoogleCloudDialogflowV2LoggingConfig.fromJson(core.Map json_)
       : this(
@@ -21476,7 +21910,8 @@ class GoogleCloudDialogflowV2Message {
           messageAnnotation: json_.containsKey('messageAnnotation')
               ? GoogleCloudDialogflowV2MessageAnnotation.fromJson(
                   json_['messageAnnotation']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           participant: json_['participant'] as core.String?,
@@ -21485,7 +21920,8 @@ class GoogleCloudDialogflowV2Message {
           sentimentAnalysis: json_.containsKey('sentimentAnalysis')
               ? GoogleCloudDialogflowV2SentimentAnalysisResult.fromJson(
                   json_['sentimentAnalysis']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -21514,18 +21950,17 @@ class GoogleCloudDialogflowV2MessageAnnotation {
   /// \[AnnotatedMessagePart.text\].
   core.List<GoogleCloudDialogflowV2AnnotatedMessagePart>? parts;
 
-  GoogleCloudDialogflowV2MessageAnnotation({
-    this.containEntities,
-    this.parts,
-  });
+  GoogleCloudDialogflowV2MessageAnnotation({this.containEntities, this.parts});
 
   GoogleCloudDialogflowV2MessageAnnotation.fromJson(core.Map json_)
       : this(
           containEntities: json_['containEntities'] as core.bool?,
           parts: (json_['parts'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2AnnotatedMessagePart.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2AnnotatedMessagePart.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -21611,10 +22046,7 @@ class GoogleCloudDialogflowV2NotificationConfig {
   /// Service Agent` role for the topic. Format: `projects//locations//topics/`.
   core.String? topic;
 
-  GoogleCloudDialogflowV2NotificationConfig({
-    this.messageFormat,
-    this.topic,
-  });
+  GoogleCloudDialogflowV2NotificationConfig({this.messageFormat, this.topic});
 
   GoogleCloudDialogflowV2NotificationConfig.fromJson(core.Map json_)
       : this(
@@ -21642,17 +22074,15 @@ class GoogleCloudDialogflowV2OutputAudio {
   /// Instructs the speech synthesizer how to generate the speech audio.
   GoogleCloudDialogflowV2OutputAudioConfig? config;
 
-  GoogleCloudDialogflowV2OutputAudio({
-    this.audio,
-    this.config,
-  });
+  GoogleCloudDialogflowV2OutputAudio({this.audio, this.config});
 
   GoogleCloudDialogflowV2OutputAudio.fromJson(core.Map json_)
       : this(
           audio: json_['audio'] as core.String?,
           config: json_.containsKey('config')
               ? GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>)
+                  json_['config'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -21713,7 +22143,8 @@ class GoogleCloudDialogflowV2OutputAudioConfig {
           synthesizeSpeechConfig: json_.containsKey('synthesizeSpeechConfig')
               ? GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromJson(
                   json_['synthesizeSpeechConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -21802,12 +22233,7 @@ class GoogleCloudDialogflowV2Participant {
       : this(
           documentsMetadataFilters: (json_['documentsMetadataFilters']
                   as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           name: json_['name'] as core.String?,
           obfuscatedExternalUserId:
               json_['obfuscatedExternalUserId'] as core.String?,
@@ -21845,25 +22271,24 @@ class GoogleCloudDialogflowV2QueryInput {
   /// Text length must not exceed 256 character for virtual agent interactions.
   GoogleCloudDialogflowV2TextInput? text;
 
-  GoogleCloudDialogflowV2QueryInput({
-    this.audioConfig,
-    this.event,
-    this.text,
-  });
+  GoogleCloudDialogflowV2QueryInput({this.audioConfig, this.event, this.text});
 
   GoogleCloudDialogflowV2QueryInput.fromJson(core.Map json_)
       : this(
           audioConfig: json_.containsKey('audioConfig')
               ? GoogleCloudDialogflowV2InputAudioConfig.fromJson(
-                  json_['audioConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['audioConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           event: json_.containsKey('event')
               ? GoogleCloudDialogflowV2EventInput.fromJson(
-                  json_['event'] as core.Map<core.String, core.dynamic>)
+                  json_['event'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           text: json_.containsKey('text')
               ? GoogleCloudDialogflowV2TextInput.fromJson(
-                  json_['text'] as core.Map<core.String, core.dynamic>)
+                  json_['text'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -21949,12 +22374,16 @@ class GoogleCloudDialogflowV2QueryParameters {
   GoogleCloudDialogflowV2QueryParameters.fromJson(core.Map json_)
       : this(
           contexts: (json_['contexts'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2Context.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2Context.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           geoLocation: json_.containsKey('geoLocation')
               ? GoogleTypeLatLng.fromJson(
-                  json_['geoLocation'] as core.Map<core.String, core.dynamic>)
+                  json_['geoLocation'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           payload: json_.containsKey('payload')
               ? json_['payload'] as core.Map<core.String, core.dynamic>
@@ -21965,22 +22394,20 @@ class GoogleCloudDialogflowV2QueryParameters {
                   .containsKey('sentimentAnalysisRequestConfig')
               ? GoogleCloudDialogflowV2SentimentAnalysisRequestConfig.fromJson(
                   json_['sentimentAnalysisRequestConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sessionEntityTypes: (json_['sessionEntityTypes'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2SessionEntityType.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2SessionEntityType.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           timeZone: json_['timeZone'] as core.String?,
-          webhookHeaders:
-              (json_['webhookHeaders'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          webhookHeaders: (json_['webhookHeaders']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -22145,20 +22572,27 @@ class GoogleCloudDialogflowV2QueryResult {
               ? json_['diagnosticInfo'] as core.Map<core.String, core.dynamic>
               : null,
           fulfillmentMessages: (json_['fulfillmentMessages'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2IntentMessage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2IntentMessage.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           fulfillmentText: json_['fulfillmentText'] as core.String?,
           intent: json_.containsKey('intent')
               ? GoogleCloudDialogflowV2Intent.fromJson(
-                  json_['intent'] as core.Map<core.String, core.dynamic>)
+                  json_['intent'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           intentDetectionConfidence:
               (json_['intentDetectionConfidence'] as core.num?)?.toDouble(),
           languageCode: json_['languageCode'] as core.String?,
           outputContexts: (json_['outputContexts'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2Context.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2Context.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           parameters: json_.containsKey('parameters')
               ? json_['parameters'] as core.Map<core.String, core.dynamic>
@@ -22167,7 +22601,8 @@ class GoogleCloudDialogflowV2QueryResult {
           sentimentAnalysisResult: json_.containsKey('sentimentAnalysisResult')
               ? GoogleCloudDialogflowV2SentimentAnalysisResult.fromJson(
                   json_['sentimentAnalysisResult']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           speechRecognitionConfidence:
               (json_['speechRecognitionConfidence'] as core.num?)?.toDouble(),
@@ -22308,8 +22743,11 @@ class GoogleCloudDialogflowV2SearchAgentsResponse {
   GoogleCloudDialogflowV2SearchAgentsResponse.fromJson(core.Map json_)
       : this(
           agents: (json_['agents'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2Agent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2Agent.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -22355,9 +22793,13 @@ class GoogleCloudDialogflowV2SearchKnowledgeAnswer {
           answer: json_['answer'] as core.String?,
           answerRecord: json_['answerRecord'] as core.String?,
           answerSources: (json_['answerSources'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           answerType: json_['answerType'] as core.String?,
         );
@@ -22395,8 +22837,8 @@ class GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource {
   });
 
   GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
@@ -22520,13 +22962,15 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequest {
           parent: json_['parent'] as core.String?,
           query: json_.containsKey('query')
               ? GoogleCloudDialogflowV2TextInput.fromJson(
-                  json_['query'] as core.Map<core.String, core.dynamic>)
+                  json_['query'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           querySource: json_['querySource'] as core.String?,
           searchConfig: json_.containsKey('searchConfig')
               ? GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig
-                  .fromJson(json_['searchConfig']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['searchConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sessionId: json_['sessionId'] as core.String?,
         );
@@ -22568,17 +23012,25 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig {
   });
 
   GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           boostSpecs: (json_['boostSpecs'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           filterSpecs: (json_['filterSpecs'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -22612,15 +23064,19 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs {
   });
 
   GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           dataStores: (json_['dataStores'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           spec: (json_['spec'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -22652,12 +23108,16 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSp
   });
 
   GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           conditionBoostSpecs: (json_['conditionBoostSpecs'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -22710,13 +23170,15 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSp
   });
 
   GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           boost: (json_['boost'] as core.num?)?.toDouble(),
           boostControlSpec: json_.containsKey('boostControlSpec')
               ? GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec
-                  .fromJson(json_['boostControlSpec']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['boostControlSpec']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           condition: json_['condition'] as core.String?,
         );
@@ -22789,13 +23251,17 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSp
   });
 
   GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           attributeType: json_['attributeType'] as core.String?,
           controlPoints: (json_['controlPoints'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           fieldName: json_['fieldName'] as core.String?,
           interpolationType: json_['interpolationType'] as core.String?,
@@ -22841,8 +23307,8 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs {
   });
 
   GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           dataStores: (json_['dataStores'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -22872,9 +23338,12 @@ class GoogleCloudDialogflowV2SearchKnowledgeResponse {
   GoogleCloudDialogflowV2SearchKnowledgeResponse.fromJson(core.Map json_)
       : this(
           answers: (json_['answers'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2SearchKnowledgeAnswer.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2SearchKnowledgeAnswer.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           rewrittenQuery: json_['rewrittenQuery'] as core.String?,
         );
@@ -22929,16 +23398,15 @@ class GoogleCloudDialogflowV2SentimentAnalysisResult {
   /// The sentiment analysis result for `query_text`.
   GoogleCloudDialogflowV2Sentiment? queryTextSentiment;
 
-  GoogleCloudDialogflowV2SentimentAnalysisResult({
-    this.queryTextSentiment,
-  });
+  GoogleCloudDialogflowV2SentimentAnalysisResult({this.queryTextSentiment});
 
   GoogleCloudDialogflowV2SentimentAnalysisResult.fromJson(core.Map json_)
       : this(
           queryTextSentiment: json_.containsKey('queryTextSentiment')
               ? GoogleCloudDialogflowV2Sentiment.fromJson(
                   json_['queryTextSentiment']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -23003,8 +23471,11 @@ class GoogleCloudDialogflowV2SessionEntityType {
   GoogleCloudDialogflowV2SessionEntityType.fromJson(core.Map json_)
       : this(
           entities: (json_['entities'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           entityOverrideMode: json_['entityOverrideMode'] as core.String?,
           name: json_['name'] as core.String?,
@@ -23046,13 +23517,15 @@ class GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest {
   });
 
   GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           participantRole: json_['participantRole'] as core.String?,
           suggestionFeatureConfig: json_.containsKey('suggestionFeatureConfig')
               ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig
-                  .fromJson(json_['suggestionFeatureConfig']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['suggestionFeatureConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -23125,9 +23598,12 @@ class GoogleCloudDialogflowV2SmartReplyMetrics {
               (json_['allowlistCoverage'] as core.num?)?.toDouble(),
           conversationCount: json_['conversationCount'] as core.String?,
           topNMetrics: (json_['topNMetrics'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics
+                    .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -23153,10 +23629,7 @@ class GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics {
   /// Value ranges from 0.0 to 1.0 inclusive.
   core.double? recall;
 
-  GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics({
-    this.n,
-    this.recall,
-  });
+  GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics({this.n, this.recall});
 
   GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics.fromJson(core.Map json_)
       : this(
@@ -23184,14 +23657,10 @@ class GoogleCloudDialogflowV2SmartReplyModelMetadata {
   /// - "SMART_REPLY_BERT_MODEL" : ModelType smart reply bert model.
   core.String? trainingModelType;
 
-  GoogleCloudDialogflowV2SmartReplyModelMetadata({
-    this.trainingModelType,
-  });
+  GoogleCloudDialogflowV2SmartReplyModelMetadata({this.trainingModelType});
 
   GoogleCloudDialogflowV2SmartReplyModelMetadata.fromJson(core.Map json_)
-      : this(
-          trainingModelType: json_['trainingModelType'] as core.String?,
-        );
+      : this(trainingModelType: json_['trainingModelType'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (trainingModelType != null) 'trainingModelType': trainingModelType!,
@@ -23224,10 +23693,7 @@ class GoogleCloudDialogflowV2SpeechContext {
   /// Optional.
   core.List<core.String>? phrases;
 
-  GoogleCloudDialogflowV2SpeechContext({
-    this.boost,
-    this.phrases,
-  });
+  GoogleCloudDialogflowV2SpeechContext({this.boost, this.phrases});
 
   GoogleCloudDialogflowV2SpeechContext.fromJson(core.Map json_)
       : this(
@@ -23428,7 +23894,8 @@ class GoogleCloudDialogflowV2SuggestArticlesRequest {
           assistQueryParams: json_.containsKey('assistQueryParams')
               ? GoogleCloudDialogflowV2AssistQueryParameters.fromJson(
                   json_['assistQueryParams']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           contextSize: json_['contextSize'] as core.int?,
           latestMessage: json_['latestMessage'] as core.String?,
@@ -23468,8 +23935,11 @@ class GoogleCloudDialogflowV2SuggestArticlesResponse {
   GoogleCloudDialogflowV2SuggestArticlesResponse.fromJson(core.Map json_)
       : this(
           articleAnswers: (json_['articleAnswers'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2ArticleAnswer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2ArticleAnswer.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           contextSize: json_['contextSize'] as core.int?,
           latestMessage: json_['latestMessage'] as core.String?,
@@ -23515,12 +23985,13 @@ class GoogleCloudDialogflowV2SuggestConversationSummaryRequest {
   });
 
   GoogleCloudDialogflowV2SuggestConversationSummaryRequest.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           assistQueryParams: json_.containsKey('assistQueryParams')
               ? GoogleCloudDialogflowV2AssistQueryParameters.fromJson(
                   json_['assistQueryParams']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           contextSize: json_['contextSize'] as core.int?,
           latestMessage: json_['latestMessage'] as core.String?,
@@ -23559,14 +24030,15 @@ class GoogleCloudDialogflowV2SuggestConversationSummaryResponse {
   });
 
   GoogleCloudDialogflowV2SuggestConversationSummaryResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           contextSize: json_['contextSize'] as core.int?,
           latestMessage: json_['latestMessage'] as core.String?,
           summary: json_.containsKey('summary')
               ? GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary
                   .fromJson(
-                      json_['summary'] as core.Map<core.String, core.dynamic>)
+                  json_['summary'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -23606,19 +24078,14 @@ class GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary {
   });
 
   GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           answerRecord: json_['answerRecord'] as core.String?,
           baselineModelVersion: json_['baselineModelVersion'] as core.String?,
           text: json_['text'] as core.String?,
-          textSections:
-              (json_['textSections'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          textSections: (json_['textSections']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -23662,7 +24129,8 @@ class GoogleCloudDialogflowV2SuggestFaqAnswersRequest {
           assistQueryParams: json_.containsKey('assistQueryParams')
               ? GoogleCloudDialogflowV2AssistQueryParameters.fromJson(
                   json_['assistQueryParams']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           contextSize: json_['contextSize'] as core.int?,
           latestMessage: json_['latestMessage'] as core.String?,
@@ -23703,8 +24171,11 @@ class GoogleCloudDialogflowV2SuggestFaqAnswersResponse {
       : this(
           contextSize: json_['contextSize'] as core.int?,
           faqAnswers: (json_['faqAnswers'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2FaqAnswer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2FaqAnswer.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           latestMessage: json_['latestMessage'] as core.String?,
         );
@@ -23797,7 +24268,8 @@ class GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse {
           knowledgeAssistAnswer: json_.containsKey('knowledgeAssistAnswer')
               ? GoogleCloudDialogflowV2KnowledgeAssistAnswer.fromJson(
                   json_['knowledgeAssistAnswer']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           latestMessage: json_['latestMessage'] as core.String?,
         );
@@ -23842,7 +24314,8 @@ class GoogleCloudDialogflowV2SuggestSmartRepliesRequest {
           currentTextInput: json_.containsKey('currentTextInput')
               ? GoogleCloudDialogflowV2TextInput.fromJson(
                   json_['currentTextInput']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           latestMessage: json_['latestMessage'] as core.String?,
         );
@@ -23888,8 +24361,11 @@ class GoogleCloudDialogflowV2SuggestSmartRepliesResponse {
           contextSize: json_['contextSize'] as core.int?,
           latestMessage: json_['latestMessage'] as core.String?,
           smartReplyAnswers: (json_['smartReplyAnswers'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2SmartReplyAnswer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2SmartReplyAnswer.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -23917,14 +24393,10 @@ class GoogleCloudDialogflowV2SuggestionFeature {
   /// generation.
   core.String? type;
 
-  GoogleCloudDialogflowV2SuggestionFeature({
-    this.type,
-  });
+  GoogleCloudDialogflowV2SuggestionFeature({this.type});
 
   GoogleCloudDialogflowV2SuggestionFeature.fromJson(core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-        );
+      : this(type: json_['type'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -23942,14 +24414,10 @@ class GoogleCloudDialogflowV2SuggestionInput {
   /// Required.
   core.String? answerRecord;
 
-  GoogleCloudDialogflowV2SuggestionInput({
-    this.answerRecord,
-  });
+  GoogleCloudDialogflowV2SuggestionInput({this.answerRecord});
 
   GoogleCloudDialogflowV2SuggestionInput.fromJson(core.Map json_)
-      : this(
-          answerRecord: json_['answerRecord'] as core.String?,
-        );
+      : this(answerRecord: json_['answerRecord'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (answerRecord != null) 'answerRecord': answerRecord!,
@@ -23989,30 +24457,35 @@ class GoogleCloudDialogflowV2SuggestionResult {
       : this(
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           suggestArticlesResponse: json_.containsKey('suggestArticlesResponse')
               ? GoogleCloudDialogflowV2SuggestArticlesResponse.fromJson(
                   json_['suggestArticlesResponse']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           suggestFaqAnswersResponse:
               json_.containsKey('suggestFaqAnswersResponse')
                   ? GoogleCloudDialogflowV2SuggestFaqAnswersResponse.fromJson(
                       json_['suggestFaqAnswersResponse']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           suggestKnowledgeAssistResponse: json_
                   .containsKey('suggestKnowledgeAssistResponse')
               ? GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse.fromJson(
                   json_['suggestKnowledgeAssistResponse']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           suggestSmartRepliesResponse:
               json_.containsKey('suggestSmartRepliesResponse')
                   ? GoogleCloudDialogflowV2SuggestSmartRepliesResponse.fromJson(
                       json_['suggestSmartRepliesResponse']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
         );
 
@@ -24068,14 +24541,19 @@ class GoogleCloudDialogflowV2SummarizationContext {
   GoogleCloudDialogflowV2SummarizationContext.fromJson(core.Map json_)
       : this(
           fewShotExamples: (json_['fewShotExamples'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2FewShotExample.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2FewShotExample.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           outputLanguageCode: json_['outputLanguageCode'] as core.String?,
           summarizationSections: (json_['summarizationSections'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2SummarizationSection.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2SummarizationSection.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           version: json_['version'] as core.String?,
         );
@@ -24153,16 +24631,16 @@ class GoogleCloudDialogflowV2SummarizationSectionList {
   /// Optional.
   core.List<GoogleCloudDialogflowV2SummarizationSection>? summarizationSections;
 
-  GoogleCloudDialogflowV2SummarizationSectionList({
-    this.summarizationSections,
-  });
+  GoogleCloudDialogflowV2SummarizationSectionList({this.summarizationSections});
 
   GoogleCloudDialogflowV2SummarizationSectionList.fromJson(core.Map json_)
       : this(
           summarizationSections: (json_['summarizationSections'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2SummarizationSection.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2SummarizationSection.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -24180,16 +24658,18 @@ class GoogleCloudDialogflowV2SummarySuggestion {
   core.List<GoogleCloudDialogflowV2SummarySuggestionSummarySection>?
       summarySections;
 
-  GoogleCloudDialogflowV2SummarySuggestion({
-    this.summarySections,
-  });
+  GoogleCloudDialogflowV2SummarySuggestion({this.summarySections});
 
   GoogleCloudDialogflowV2SummarySuggestion.fromJson(core.Map json_)
       : this(
           summarySections: (json_['summarySections'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDialogflowV2SummarySuggestionSummarySection
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudDialogflowV2SummarySuggestionSummarySection
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -24216,8 +24696,8 @@ class GoogleCloudDialogflowV2SummarySuggestionSummarySection {
   });
 
   GoogleCloudDialogflowV2SummarySuggestionSummarySection.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           section: json_['section'] as core.String?,
           summary: json_['summary'] as core.String?,
         );
@@ -24290,7 +24770,8 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
           speakingRate: (json_['speakingRate'] as core.num?)?.toDouble(),
           voice: json_.containsKey('voice')
               ? GoogleCloudDialogflowV2VoiceSelectionParams.fromJson(
-                  json_['voice'] as core.Map<core.String, core.dynamic>)
+                  json_['voice'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           volumeGainDb: (json_['volumeGainDb'] as core.num?)?.toDouble(),
         );
@@ -24325,10 +24806,7 @@ class GoogleCloudDialogflowV2TextInput {
   /// Required.
   core.String? text;
 
-  GoogleCloudDialogflowV2TextInput({
-    this.languageCode,
-    this.text,
-  });
+  GoogleCloudDialogflowV2TextInput({this.languageCode, this.text});
 
   GoogleCloudDialogflowV2TextInput.fromJson(core.Map json_)
       : this(
@@ -24410,7 +24888,8 @@ class GoogleCloudDialogflowV2TextToSpeechSettings {
             (key, value) => core.MapEntry(
               key,
               GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
         );
@@ -24484,15 +24963,16 @@ class GoogleCloudDialogflowV2ValidationResult {
   /// Contains all validation errors.
   core.List<GoogleCloudDialogflowV2ValidationError>? validationErrors;
 
-  GoogleCloudDialogflowV2ValidationResult({
-    this.validationErrors,
-  });
+  GoogleCloudDialogflowV2ValidationResult({this.validationErrors});
 
   GoogleCloudDialogflowV2ValidationResult.fromJson(core.Map json_)
       : this(
           validationErrors: (json_['validationErrors'] as core.List?)
-              ?.map((value) => GoogleCloudDialogflowV2ValidationError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudDialogflowV2ValidationError.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -24607,10 +25087,7 @@ class GoogleCloudDialogflowV2VoiceSelectionParams {
   /// - "SSML_VOICE_GENDER_NEUTRAL" : A gender-neutral voice.
   core.String? ssmlGender;
 
-  GoogleCloudDialogflowV2VoiceSelectionParams({
-    this.name,
-    this.ssmlGender,
-  });
+  GoogleCloudDialogflowV2VoiceSelectionParams({this.name, this.ssmlGender});
 
   GoogleCloudDialogflowV2VoiceSelectionParams.fromJson(core.Map json_)
       : this(
@@ -24640,8 +25117,11 @@ class GoogleCloudLocationListLocationsResponse {
   GoogleCloudLocationListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map((value) => GoogleCloudLocationLocation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudLocationLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -24672,8 +25152,11 @@ class GoogleLongrunningListOperationsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -24739,7 +25222,8 @@ class GoogleLongrunningOperation {
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>

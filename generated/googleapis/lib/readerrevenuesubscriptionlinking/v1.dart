@@ -44,12 +44,17 @@ class SubscriptionLinkingApi {
 
   PublicationsResource get publications => PublicationsResource(_requester);
 
-  SubscriptionLinkingApi(http.Client client,
-      {core.String rootUrl =
-          'https://readerrevenuesubscriptionlinking.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  SubscriptionLinkingApi(
+    http.Client client, {
+    core.String rootUrl =
+        'https://readerrevenuesubscriptionlinking.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class PublicationsResource {
@@ -113,7 +118,8 @@ class PublicationsReadersResource {
       queryParams: queryParams_,
     );
     return DeleteReaderResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a reader of a publication.
@@ -136,10 +142,7 @@ class PublicationsReadersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Reader> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Reader> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -192,7 +195,8 @@ class PublicationsReadersResource {
       queryParams: queryParams_,
     );
     return ReaderEntitlements.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the reader entitlements for a publication reader.
@@ -244,7 +248,8 @@ class PublicationsReadersResource {
       queryParams: queryParams_,
     );
     return ReaderEntitlements.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -320,10 +325,7 @@ class Reader {
   /// Output only.
   core.String? name;
 
-  Reader({
-    this.createTime,
-    this.name,
-  });
+  Reader({this.createTime, this.name});
 
   Reader.fromJson(core.Map json_)
       : this(
@@ -347,16 +349,16 @@ class ReaderEntitlements {
   /// Output only.
   core.String? name;
 
-  ReaderEntitlements({
-    this.entitlements,
-    this.name,
-  });
+  ReaderEntitlements({this.entitlements, this.name});
 
   ReaderEntitlements.fromJson(core.Map json_)
       : this(
           entitlements: (json_['entitlements'] as core.List?)
-              ?.map((value) => Entitlement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Entitlement.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           name: json_['name'] as core.String?,
         );

@@ -65,11 +65,16 @@ class ReportsApi {
   UserUsageReportResource get userUsageReport =>
       UserUsageReportResource(_requester);
 
-  ReportsApi(http.Client client,
-      {core.String rootUrl = 'https://admin.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ReportsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://admin.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ActivitiesResource {
@@ -305,7 +310,8 @@ class ActivitiesResource {
       queryParams: queryParams_,
     );
     return Activities.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Start receiving notifications for account activities.
@@ -559,10 +565,7 @@ class ChannelsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> stop(
-    Channel request, {
-    core.String? $fields,
-  }) async {
+  async.Future<void> stop(Channel request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -659,7 +662,8 @@ class CustomerUsageReportsResource {
       queryParams: queryParams_,
     );
     return UsageReports.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -784,7 +788,8 @@ class EntityUsageReportsResource {
       queryParams: queryParams_,
     );
     return UsageReports.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -921,7 +926,8 @@ class UserUsageReportResource {
       queryParams: queryParams_,
     );
     return UsageReports.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -944,19 +950,17 @@ class Activities {
   /// string.
   core.String? nextPageToken;
 
-  Activities({
-    this.etag,
-    this.items,
-    this.kind,
-    this.nextPageToken,
-  });
+  Activities({this.etag, this.items, this.kind, this.nextPageToken});
 
   Activities.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => Activity.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Activity.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
@@ -992,12 +996,7 @@ class ActivityActor {
   /// may be the number 105250506097979753968 which acts as a placeholder ID.
   core.String? profileId;
 
-  ActivityActor({
-    this.callerType,
-    this.email,
-    this.key,
-    this.profileId,
-  });
+  ActivityActor({this.callerType, this.email, this.key, this.profileId});
 
   ActivityActor.fromJson(core.Map json_)
       : this(
@@ -1024,15 +1023,16 @@ class ActivityEventsParametersMessageValue {
   /// Parameter values
   core.List<NestedParameter>? parameter;
 
-  ActivityEventsParametersMessageValue({
-    this.parameter,
-  });
+  ActivityEventsParametersMessageValue({this.parameter});
 
   ActivityEventsParametersMessageValue.fromJson(core.Map json_)
       : this(
           parameter: (json_['parameter'] as core.List?)
-              ?.map((value) => NestedParameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => NestedParameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1045,15 +1045,16 @@ class ActivityEventsParametersMultiMessageValue {
   /// Parameter values
   core.List<NestedParameter>? parameter;
 
-  ActivityEventsParametersMultiMessageValue({
-    this.parameter,
-  });
+  ActivityEventsParametersMultiMessageValue({this.parameter});
 
   ActivityEventsParametersMultiMessageValue.fromJson(core.Map json_)
       : this(
           parameter: (json_['parameter'] as core.List?)
-              ?.map((value) => NestedParameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => NestedParameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1108,15 +1109,18 @@ class ActivityEventsParameters {
           intValue: json_['intValue'] as core.String?,
           messageValue: json_.containsKey('messageValue')
               ? ActivityEventsParametersMessageValue.fromJson(
-                  json_['messageValue'] as core.Map<core.String, core.dynamic>)
+                  json_['messageValue'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           multiIntValue: (json_['multiIntValue'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           multiMessageValue: (json_['multiMessageValue'] as core.List?)
-              ?.map((value) =>
-                  ActivityEventsParametersMultiMessageValue.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ActivityEventsParametersMultiMessageValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           multiValue: (json_['multiValue'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1165,18 +1169,17 @@ class ActivityEvents {
   /// `applicationName`.
   core.String? type;
 
-  ActivityEvents({
-    this.name,
-    this.parameters,
-    this.type,
-  });
+  ActivityEvents({this.name, this.parameters, this.type});
 
   ActivityEvents.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
           parameters: (json_['parameters'] as core.List?)
-              ?.map((value) => ActivityEventsParameters.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ActivityEventsParameters.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           type: json_['type'] as core.String?,
         );
@@ -1280,16 +1283,21 @@ class Activity {
       : this(
           actor: json_.containsKey('actor')
               ? ActivityActor.fromJson(
-                  json_['actor'] as core.Map<core.String, core.dynamic>)
+                  json_['actor'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           etag: json_['etag'] as core.String?,
           events: (json_['events'] as core.List?)
-              ?.map((value) => ActivityEvents.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ActivityEvents.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           id: json_.containsKey('id')
               ? ActivityId.fromJson(
-                  json_['id'] as core.Map<core.String, core.dynamic>)
+                  json_['id'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           ipAddress: json_['ipAddress'] as core.String?,
           kind: json_['kind'] as core.String?,
@@ -1376,10 +1384,7 @@ class Channel {
           kind: json_['kind'] as core.String?,
           params:
               (json_['params'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           payload: json_['payload'] as core.bool?,
           resourceId: json_['resourceId'] as core.String?,
@@ -1622,26 +1627,24 @@ class UsageReport {
   /// Output only.
   core.List<UsageReportParameters>? parameters;
 
-  UsageReport({
-    this.date,
-    this.entity,
-    this.etag,
-    this.kind,
-    this.parameters,
-  });
+  UsageReport({this.date, this.entity, this.etag, this.kind, this.parameters});
 
   UsageReport.fromJson(core.Map json_)
       : this(
           date: json_['date'] as core.String?,
           entity: json_.containsKey('entity')
               ? UsageReportEntity.fromJson(
-                  json_['entity'] as core.Map<core.String, core.dynamic>)
+                  json_['entity'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           etag: json_['etag'] as core.String?,
           kind: json_['kind'] as core.String?,
           parameters: (json_['parameters'] as core.List?)
-              ?.map((value) => UsageReportParameters.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => UsageReportParameters.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1663,10 +1666,7 @@ class UsageReportsWarningsData {
   /// warning.
   core.String? value;
 
-  UsageReportsWarningsData({
-    this.key,
-    this.value,
-  });
+  UsageReportsWarningsData({this.key, this.value});
 
   UsageReportsWarningsData.fromJson(core.Map json_)
       : this(
@@ -1698,18 +1698,17 @@ class UsageReportsWarnings {
   /// again after a few hours.
   core.String? message;
 
-  UsageReportsWarnings({
-    this.code,
-    this.data,
-    this.message,
-  });
+  UsageReportsWarnings({this.code, this.data, this.message});
 
   UsageReportsWarnings.fromJson(core.Map json_)
       : this(
           code: json_['code'] as core.String?,
           data: (json_['data'] as core.List?)
-              ?.map((value) => UsageReportsWarningsData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => UsageReportsWarningsData.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           message: json_['message'] as core.String?,
         );
@@ -1757,12 +1756,18 @@ class UsageReports {
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           usageReports: (json_['usageReports'] as core.List?)
-              ?.map((value) => UsageReport.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => UsageReport.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           warnings: (json_['warnings'] as core.List?)
-              ?.map((value) => UsageReportsWarnings.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => UsageReportsWarnings.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 

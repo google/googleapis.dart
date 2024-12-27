@@ -54,11 +54,16 @@ class RapidMigrationAssessmentApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  RapidMigrationAssessmentApi(http.Client client,
-      {core.String rootUrl = 'https://rapidmigrationassessment.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  RapidMigrationAssessmentApi(
+    http.Client client, {
+    core.String rootUrl = 'https://rapidmigrationassessment.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -99,10 +104,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -166,7 +168,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -238,10 +241,7 @@ class ProjectsLocationsAnnotationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Annotation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Annotation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -254,7 +254,8 @@ class ProjectsLocationsAnnotationsResource {
       queryParams: queryParams_,
     );
     return Annotation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -383,10 +384,7 @@ class ProjectsLocationsCollectorsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Collector> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Collector> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -452,7 +450,8 @@ class ProjectsLocationsCollectorsResource {
       queryParams: queryParams_,
     );
     return ListCollectorsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single Collector.
@@ -720,10 +719,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -759,10 +755,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -824,7 +817,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -867,10 +861,7 @@ class Annotation {
           createTime: json_['createTime'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           type: json_['type'] as core.String?,
@@ -993,14 +984,12 @@ class Collector {
           expectedAssetCount: json_['expectedAssetCount'] as core.String?,
           guestOsScan: json_.containsKey('guestOsScan')
               ? GuestOsScan.fromJson(
-                  json_['guestOsScan'] as core.Map<core.String, core.dynamic>)
+                  json_['guestOsScan'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           serviceAccount: json_['serviceAccount'] as core.String?,
@@ -1008,7 +997,8 @@ class Collector {
           updateTime: json_['updateTime'] as core.String?,
           vsphereScan: json_.containsKey('vsphereScan')
               ? VSphereScan.fromJson(
-                  json_['vsphereScan'] as core.Map<core.String, core.dynamic>)
+                  json_['vsphereScan'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1045,14 +1035,10 @@ class GuestOsScan {
   /// reference to the corresponding Guest OS Scan in MC Source.
   core.String? coreSource;
 
-  GuestOsScan({
-    this.coreSource,
-  });
+  GuestOsScan({this.coreSource});
 
   GuestOsScan.fromJson(core.Map json_)
-      : this(
-          coreSource: json_['coreSource'] as core.String?,
-        );
+      : this(coreSource: json_['coreSource'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (coreSource != null) 'coreSource': coreSource!,
@@ -1079,8 +1065,11 @@ class ListCollectorsResponse {
   ListCollectorsResponse.fromJson(core.Map json_)
       : this(
           collectors: (json_['collectors'] as core.List?)
-              ?.map((value) => Collector.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Collector.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -1103,16 +1092,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1131,17 +1120,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1197,20 +1186,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -1253,14 +1237,10 @@ class VSphereScan {
   /// reference to the corresponding VSphere Scan in MC Source.
   core.String? coreSource;
 
-  VSphereScan({
-    this.coreSource,
-  });
+  VSphereScan({this.coreSource});
 
   VSphereScan.fromJson(core.Map json_)
-      : this(
-          coreSource: json_['coreSource'] as core.String?,
-        );
+      : this(coreSource: json_['coreSource'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (coreSource != null) 'coreSource': coreSource!,

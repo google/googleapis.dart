@@ -58,11 +58,16 @@ class ClouderrorreportingApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ClouderrorreportingApi(http.Client client,
-      {core.String rootUrl = 'https://clouderrorreporting.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ClouderrorreportingApi(
+    http.Client client, {
+    core.String rootUrl = 'https://clouderrorreporting.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -118,7 +123,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return DeleteEventsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -221,7 +227,8 @@ class ProjectsEventsResource {
       queryParams: queryParams_,
     );
     return ListEventsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Report an individual error event and record the event to a log.
@@ -279,7 +286,8 @@ class ProjectsEventsResource {
       queryParams: queryParams_,
     );
     return ReportErrorEventResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -431,7 +439,8 @@ class ProjectsGroupStatsResource {
       queryParams: queryParams_,
     );
     return ListGroupStatsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -486,7 +495,8 @@ class ProjectsGroupsResource {
       queryParams: queryParams_,
     );
     return ErrorGroup.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Replace the data for the specified group.
@@ -541,7 +551,8 @@ class ProjectsGroupsResource {
       queryParams: queryParams_,
     );
     return ErrorGroup.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -598,7 +609,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return DeleteEventsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -702,7 +714,8 @@ class ProjectsLocationsEventsResource {
       queryParams: queryParams_,
     );
     return ListEventsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -855,7 +868,8 @@ class ProjectsLocationsGroupStatsResource {
       queryParams: queryParams_,
     );
     return ListGroupStatsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -912,7 +926,8 @@ class ProjectsLocationsGroupsResource {
       queryParams: queryParams_,
     );
     return ErrorGroup.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Replace the data for the specified group.
@@ -968,7 +983,8 @@ class ProjectsLocationsGroupsResource {
       queryParams: queryParams_,
     );
     return ErrorGroup.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1016,15 +1032,21 @@ class ErrorContext {
       : this(
           httpRequest: json_.containsKey('httpRequest')
               ? HttpRequestContext.fromJson(
-                  json_['httpRequest'] as core.Map<core.String, core.dynamic>)
+                  json_['httpRequest'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           reportLocation: json_.containsKey('reportLocation')
-              ? SourceLocation.fromJson(json_['reportLocation']
-                  as core.Map<core.String, core.dynamic>)
+              ? SourceLocation.fromJson(
+                  json_['reportLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sourceReferences: (json_['sourceReferences'] as core.List?)
-              ?.map((value) => SourceReference.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => SourceReference.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           user: json_['user'] as core.String?,
         );
@@ -1054,24 +1076,22 @@ class ErrorEvent {
   /// The `ServiceContext` for which this error was reported.
   ServiceContext? serviceContext;
 
-  ErrorEvent({
-    this.context,
-    this.eventTime,
-    this.message,
-    this.serviceContext,
-  });
+  ErrorEvent({this.context, this.eventTime, this.message, this.serviceContext});
 
   ErrorEvent.fromJson(core.Map json_)
       : this(
           context: json_.containsKey('context')
               ? ErrorContext.fromJson(
-                  json_['context'] as core.Map<core.String, core.dynamic>)
+                  json_['context'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           eventTime: json_['eventTime'] as core.String?,
           message: json_['message'] as core.String?,
           serviceContext: json_.containsKey('serviceContext')
-              ? ServiceContext.fromJson(json_['serviceContext']
-                  as core.Map<core.String, core.dynamic>)
+              ? ServiceContext.fromJson(
+                  json_['serviceContext']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1143,8 +1163,11 @@ class ErrorGroup {
           name: json_['name'] as core.String?,
           resolutionStatus: json_['resolutionStatus'] as core.String?,
           trackingIssues: (json_['trackingIssues'] as core.List?)
-              ?.map((value) => TrackingIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TrackingIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1230,25 +1253,34 @@ class ErrorGroupStats {
   ErrorGroupStats.fromJson(core.Map json_)
       : this(
           affectedServices: (json_['affectedServices'] as core.List?)
-              ?.map((value) => ServiceContext.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ServiceContext.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           affectedUsersCount: json_['affectedUsersCount'] as core.String?,
           count: json_['count'] as core.String?,
           firstSeenTime: json_['firstSeenTime'] as core.String?,
           group: json_.containsKey('group')
               ? ErrorGroup.fromJson(
-                  json_['group'] as core.Map<core.String, core.dynamic>)
+                  json_['group'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           lastSeenTime: json_['lastSeenTime'] as core.String?,
           numAffectedServices: json_['numAffectedServices'] as core.int?,
           representative: json_.containsKey('representative')
-              ? ErrorEvent.fromJson(json_['representative']
-                  as core.Map<core.String, core.dynamic>)
+              ? ErrorEvent.fromJson(
+                  json_['representative']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           timedCounts: (json_['timedCounts'] as core.List?)
-              ?.map((value) => TimedCount.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TimedCount.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1348,8 +1380,11 @@ class ListEventsResponse {
   ListEventsResponse.fromJson(core.Map json_)
       : this(
           errorEvents: (json_['errorEvents'] as core.List?)
-              ?.map((value) => ErrorEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ErrorEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           timeRangeBegin: json_['timeRangeBegin'] as core.String?,
@@ -1390,8 +1425,11 @@ class ListGroupStatsResponse {
   ListGroupStatsResponse.fromJson(core.Map json_)
       : this(
           errorGroupStats: (json_['errorGroupStats'] as core.List?)
-              ?.map((value) => ErrorGroupStats.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ErrorGroupStats.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           timeRangeBegin: json_['timeRangeBegin'] as core.String?,
@@ -1469,13 +1507,16 @@ class ReportedErrorEvent {
       : this(
           context: json_.containsKey('context')
               ? ErrorContext.fromJson(
-                  json_['context'] as core.Map<core.String, core.dynamic>)
+                  json_['context'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           eventTime: json_['eventTime'] as core.String?,
           message: json_['message'] as core.String?,
           serviceContext: json_.containsKey('serviceContext')
-              ? ServiceContext.fromJson(json_['serviceContext']
-                  as core.Map<core.String, core.dynamic>)
+              ? ServiceContext.fromJson(
+                  json_['serviceContext']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1515,11 +1556,7 @@ class ServiceContext {
   /// the app.
   core.String? version;
 
-  ServiceContext({
-    this.resourceType,
-    this.service,
-    this.version,
-  });
+  ServiceContext({this.resourceType, this.service, this.version});
 
   ServiceContext.fromJson(core.Map json_)
       : this(
@@ -1557,11 +1594,7 @@ class SourceLocation {
   /// 0 indicates that the line number is unknown.
   core.int? lineNumber;
 
-  SourceLocation({
-    this.filePath,
-    this.functionName,
-    this.lineNumber,
-  });
+  SourceLocation({this.filePath, this.functionName, this.lineNumber});
 
   SourceLocation.fromJson(core.Map json_)
       : this(
@@ -1592,10 +1625,7 @@ class SourceReference {
   /// Example (git): "0035781c50ec7aa23385dc841529ce8a4b70db1b"
   core.String? revisionId;
 
-  SourceReference({
-    this.repository,
-    this.revisionId,
-  });
+  SourceReference({this.repository, this.revisionId});
 
   SourceReference.fromJson(core.Map json_)
       : this(
@@ -1623,11 +1653,7 @@ class TimedCount {
   /// Start of the time period to which `count` refers (included).
   core.String? startTime;
 
-  TimedCount({
-    this.count,
-    this.endTime,
-    this.startTime,
-  });
+  TimedCount({this.count, this.endTime, this.startTime});
 
   TimedCount.fromJson(core.Map json_)
       : this(
@@ -1650,14 +1676,10 @@ class TrackingIssue {
   /// Example: `https://github.com/user/project/issues/4`
   core.String? url;
 
-  TrackingIssue({
-    this.url,
-  });
+  TrackingIssue({this.url});
 
   TrackingIssue.fromJson(core.Map json_)
-      : this(
-          url: json_['url'] as core.String?,
-        );
+      : this(url: json_['url'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,

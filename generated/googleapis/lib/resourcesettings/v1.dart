@@ -58,11 +58,16 @@ class ResourceSettingsApi {
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ResourceSettingsApi(http.Client client,
-      {core.String rootUrl = 'https://resourcesettings.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ResourceSettingsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://resourcesettings.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class FoldersResource {
@@ -134,7 +139,8 @@ class FoldersSettingsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudResourcesettingsV1Setting.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the settings that are available on the Cloud resource `parent`.
@@ -197,7 +203,8 @@ class FoldersSettingsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudResourcesettingsV1ListSettingsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a specified setting.
@@ -255,7 +262,8 @@ class FoldersSettingsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudResourcesettingsV1Setting.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -330,7 +338,8 @@ class OrganizationsSettingsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudResourcesettingsV1Setting.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the settings that are available on the Cloud resource `parent`.
@@ -393,7 +402,8 @@ class OrganizationsSettingsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudResourcesettingsV1ListSettingsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a specified setting.
@@ -451,7 +461,8 @@ class OrganizationsSettingsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudResourcesettingsV1Setting.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -524,7 +535,8 @@ class ProjectsSettingsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudResourcesettingsV1Setting.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the settings that are available on the Cloud resource `parent`.
@@ -587,7 +599,8 @@ class ProjectsSettingsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudResourcesettingsV1ListSettingsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a specified setting.
@@ -645,7 +658,8 @@ class ProjectsSettingsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudResourcesettingsV1Setting.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -668,8 +682,11 @@ class GoogleCloudResourcesettingsV1ListSettingsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           settings: (json_['settings'] as core.List?)
-              ?.map((value) => GoogleCloudResourcesettingsV1Setting.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleCloudResourcesettingsV1Setting.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -735,16 +752,19 @@ class GoogleCloudResourcesettingsV1Setting {
           effectiveValue: json_.containsKey('effectiveValue')
               ? GoogleCloudResourcesettingsV1Value.fromJson(
                   json_['effectiveValue']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           etag: json_['etag'] as core.String?,
           localValue: json_.containsKey('localValue')
               ? GoogleCloudResourcesettingsV1Value.fromJson(
-                  json_['localValue'] as core.Map<core.String, core.dynamic>)
+                  json_['localValue'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? GoogleCloudResourcesettingsV1SettingMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>)
+                  json_['metadata'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
         );
@@ -801,7 +821,8 @@ class GoogleCloudResourcesettingsV1SettingMetadata {
           dataType: json_['dataType'] as core.String?,
           defaultValue: json_.containsKey('defaultValue')
               ? GoogleCloudResourcesettingsV1Value.fromJson(
-                  json_['defaultValue'] as core.Map<core.String, core.dynamic>)
+                  json_['defaultValue'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
@@ -852,17 +873,20 @@ class GoogleCloudResourcesettingsV1Value {
           durationValue: json_['durationValue'] as core.String?,
           enumValue: json_.containsKey('enumValue')
               ? GoogleCloudResourcesettingsV1ValueEnumValue.fromJson(
-                  json_['enumValue'] as core.Map<core.String, core.dynamic>)
+                  json_['enumValue'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           stringMapValue: json_.containsKey('stringMapValue')
               ? GoogleCloudResourcesettingsV1ValueStringMap.fromJson(
                   json_['stringMapValue']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           stringSetValue: json_.containsKey('stringSetValue')
               ? GoogleCloudResourcesettingsV1ValueStringSet.fromJson(
                   json_['stringSetValue']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           stringValue: json_['stringValue'] as core.String?,
         );
@@ -885,14 +909,10 @@ class GoogleCloudResourcesettingsV1ValueEnumValue {
   /// The value of this enum
   core.String? value;
 
-  GoogleCloudResourcesettingsV1ValueEnumValue({
-    this.value,
-  });
+  GoogleCloudResourcesettingsV1ValueEnumValue({this.value});
 
   GoogleCloudResourcesettingsV1ValueEnumValue.fromJson(core.Map json_)
-      : this(
-          value: json_['value'] as core.String?,
-        );
+      : this(value: json_['value'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
@@ -908,19 +928,12 @@ class GoogleCloudResourcesettingsV1ValueStringMap {
   /// The key-value pairs in the map
   core.Map<core.String, core.String>? mappings;
 
-  GoogleCloudResourcesettingsV1ValueStringMap({
-    this.mappings,
-  });
+  GoogleCloudResourcesettingsV1ValueStringMap({this.mappings});
 
   GoogleCloudResourcesettingsV1ValueStringMap.fromJson(core.Map json_)
       : this(
-          mappings:
-              (json_['mappings'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          mappings: (json_['mappings'] as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -936,9 +949,7 @@ class GoogleCloudResourcesettingsV1ValueStringSet {
   /// The strings in the set
   core.List<core.String>? values;
 
-  GoogleCloudResourcesettingsV1ValueStringSet({
-    this.values,
-  });
+  GoogleCloudResourcesettingsV1ValueStringSet({this.values});
 
   GoogleCloudResourcesettingsV1ValueStringSet.fromJson(core.Map json_)
       : this(

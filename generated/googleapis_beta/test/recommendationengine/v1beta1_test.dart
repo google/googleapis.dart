@@ -30,12 +30,12 @@ core.Map<core.String, core.Object?> buildUnnamed0() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
     };
 
@@ -43,32 +43,14 @@ void checkUnnamed0(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(
-    casted1['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted1['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted1['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
   var casted2 = (o['y']!) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(
-    casted2['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted2['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted2['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object?>> buildUnnamed1() => [
@@ -98,14 +80,8 @@ api.GoogleApiHttpBody buildGoogleApiHttpBody() {
 void checkGoogleApiHttpBody(api.GoogleApiHttpBody o) {
   buildCounterGoogleApiHttpBody++;
   if (buildCounterGoogleApiHttpBody < 3) {
-    unittest.expect(
-      o.contentType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.data!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.contentType!, unittest.equals('foo'));
+    unittest.expect(o.data!, unittest.equals('foo'));
     checkUnnamed1(o.extensions!);
   }
   buildCounterGoogleApiHttpBody--;
@@ -128,29 +104,15 @@ api.GoogleCloudRecommendationengineV1beta1BigQuerySource
 }
 
 void checkGoogleCloudRecommendationengineV1beta1BigQuerySource(
-    api.GoogleCloudRecommendationengineV1beta1BigQuerySource o) {
+  api.GoogleCloudRecommendationengineV1beta1BigQuerySource o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1BigQuerySource++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1BigQuerySource < 3) {
-    unittest.expect(
-      o.dataSchema!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.datasetId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.gcsStagingDir!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.projectId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.tableId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dataSchema!, unittest.equals('foo'));
+    unittest.expect(o.datasetId!, unittest.equals('foo'));
+    unittest.expect(o.gcsStagingDir!, unittest.equals('foo'));
+    unittest.expect(o.projectId!, unittest.equals('foo'));
+    unittest.expect(o.tableId!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1BigQuerySource--;
 }
@@ -172,23 +134,16 @@ api.GoogleCloudRecommendationengineV1beta1Catalog
 }
 
 void checkGoogleCloudRecommendationengineV1beta1Catalog(
-    api.GoogleCloudRecommendationengineV1beta1Catalog o) {
+  api.GoogleCloudRecommendationengineV1beta1Catalog o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1Catalog++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1Catalog < 3) {
     checkGoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig(
-        o.catalogItemLevelConfig!);
-    unittest.expect(
-      o.defaultEventStoreId!,
-      unittest.equals('foo'),
+      o.catalogItemLevelConfig!,
     );
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.defaultEventStoreId!, unittest.equals('foo'));
+    unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1Catalog--;
 }
@@ -200,7 +155,8 @@ core.List<api.GoogleCloudRecommendationengineV1beta1CatalogItem>
         ];
 
 void checkUnnamed2(
-    core.List<api.GoogleCloudRecommendationengineV1beta1CatalogItem> o) {
+  core.List<api.GoogleCloudRecommendationengineV1beta1CatalogItem> o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1CatalogItem(o[0]);
   checkGoogleCloudRecommendationengineV1beta1CatalogItem(o[1]);
@@ -221,7 +177,8 @@ api.GoogleCloudRecommendationengineV1beta1CatalogInlineSource
 }
 
 void checkGoogleCloudRecommendationengineV1beta1CatalogInlineSource(
-    api.GoogleCloudRecommendationengineV1beta1CatalogInlineSource o) {
+  api.GoogleCloudRecommendationengineV1beta1CatalogInlineSource o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1CatalogInlineSource++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1CatalogInlineSource <
       3) {
@@ -238,30 +195,22 @@ core.List<
         ];
 
 void checkUnnamed3(
-    core.List<
-            api
-            .GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>
-        o) {
+  core.List<
+          api
+          .GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>
+      o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy(o[0]);
   checkGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy(o[1]);
 }
 
-core.List<core.String> buildUnnamed4() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed4() => ['foo', 'foo'];
 
 void checkUnnamed4(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudRecommendationengineV1beta1CatalogItem = 0;
@@ -286,53 +235,31 @@ api.GoogleCloudRecommendationengineV1beta1CatalogItem
 }
 
 void checkGoogleCloudRecommendationengineV1beta1CatalogItem(
-    api.GoogleCloudRecommendationengineV1beta1CatalogItem o) {
+  api.GoogleCloudRecommendationengineV1beta1CatalogItem o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1CatalogItem++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1CatalogItem < 3) {
     checkUnnamed3(o.categoryHierarchies!);
-    unittest.expect(
-      o.description!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(o.id!, unittest.equals('foo'));
     checkGoogleCloudRecommendationengineV1beta1FeatureMap(o.itemAttributes!);
-    unittest.expect(
-      o.itemGroupId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.languageCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.itemGroupId!, unittest.equals('foo'));
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
     checkGoogleCloudRecommendationengineV1beta1ProductCatalogItem(
-        o.productMetadata!);
-    checkUnnamed4(o.tags!);
-    unittest.expect(
-      o.title!,
-      unittest.equals('foo'),
+      o.productMetadata!,
     );
+    checkUnnamed4(o.tags!);
+    unittest.expect(o.title!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1CatalogItem--;
 }
 
-core.List<core.String> buildUnnamed5() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed5() => ['foo', 'foo'];
 
 void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int
@@ -352,7 +279,8 @@ api.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy
 }
 
 void checkGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy(
-    api.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy o) {
+  api.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy <
       3) {
@@ -378,18 +306,13 @@ api.GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig
 }
 
 void checkGoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig(
-    api.GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig o) {
+  api.GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig <
       3) {
-    unittest.expect(
-      o.eventItemLevel!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.predictItemLevel!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.eventItemLevel!, unittest.equals('foo'));
+    unittest.expect(o.predictItemLevel!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig--;
 }
@@ -411,33 +334,27 @@ api.GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequ
   return o;
 }
 
-void checkGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest(
-    api.GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest
-        o) {
+void
+    checkGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest(
+  api.GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest
+      o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest <
       3) {
     checkGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(
-        o.predictionApiKeyRegistration!);
+      o.predictionApiKeyRegistration!,
+    );
   }
   buildCounterGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest--;
 }
 
-core.List<core.String> buildUnnamed6() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed6() => ['foo', 'foo'];
 
 void checkUnnamed6(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudRecommendationengineV1beta1EventDetail = 0;
@@ -458,27 +375,16 @@ api.GoogleCloudRecommendationengineV1beta1EventDetail
 }
 
 void checkGoogleCloudRecommendationengineV1beta1EventDetail(
-    api.GoogleCloudRecommendationengineV1beta1EventDetail o) {
+  api.GoogleCloudRecommendationengineV1beta1EventDetail o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1EventDetail++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1EventDetail < 3) {
     checkGoogleCloudRecommendationengineV1beta1FeatureMap(o.eventAttributes!);
     checkUnnamed6(o.experimentIds!);
-    unittest.expect(
-      o.pageViewId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.recommendationToken!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.referrerUri!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.uri!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.pageViewId!, unittest.equals('foo'));
+    unittest.expect(o.recommendationToken!, unittest.equals('foo'));
+    unittest.expect(o.referrerUri!, unittest.equals('foo'));
+    unittest.expect(o.uri!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1EventDetail--;
 }
@@ -493,9 +399,10 @@ core.Map<core.String,
         };
 
 void checkUnnamed7(
-    core.Map<core.String,
-            api.GoogleCloudRecommendationengineV1beta1FeatureMapStringList>
-        o) {
+  core.Map<core.String,
+          api.GoogleCloudRecommendationengineV1beta1FeatureMapStringList>
+      o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1FeatureMapStringList(o['x']!);
   checkGoogleCloudRecommendationengineV1beta1FeatureMapStringList(o['y']!);
@@ -509,9 +416,10 @@ core.Map<core.String,
         };
 
 void checkUnnamed8(
-    core.Map<core.String,
-            api.GoogleCloudRecommendationengineV1beta1FeatureMapFloatList>
-        o) {
+  core.Map<core.String,
+          api.GoogleCloudRecommendationengineV1beta1FeatureMapFloatList>
+      o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1FeatureMapFloatList(o['x']!);
   checkGoogleCloudRecommendationengineV1beta1FeatureMapFloatList(o['y']!);
@@ -531,7 +439,8 @@ api.GoogleCloudRecommendationengineV1beta1FeatureMap
 }
 
 void checkGoogleCloudRecommendationengineV1beta1FeatureMap(
-    api.GoogleCloudRecommendationengineV1beta1FeatureMap o) {
+  api.GoogleCloudRecommendationengineV1beta1FeatureMap o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1FeatureMap++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1FeatureMap < 3) {
     checkUnnamed7(o.categoricalFeatures!);
@@ -540,21 +449,12 @@ void checkGoogleCloudRecommendationengineV1beta1FeatureMap(
   buildCounterGoogleCloudRecommendationengineV1beta1FeatureMap--;
 }
 
-core.List<core.double> buildUnnamed9() => [
-      42.0,
-      42.0,
-    ];
+core.List<core.double> buildUnnamed9() => [42.0, 42.0];
 
 void checkUnnamed9(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals(42.0),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals(42.0),
-  );
+  unittest.expect(o[0], unittest.equals(42.0));
+  unittest.expect(o[1], unittest.equals(42.0));
 }
 
 core.int buildCounterGoogleCloudRecommendationengineV1beta1FeatureMapFloatList =
@@ -572,7 +472,8 @@ api.GoogleCloudRecommendationengineV1beta1FeatureMapFloatList
 }
 
 void checkGoogleCloudRecommendationengineV1beta1FeatureMapFloatList(
-    api.GoogleCloudRecommendationengineV1beta1FeatureMapFloatList o) {
+  api.GoogleCloudRecommendationengineV1beta1FeatureMapFloatList o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1FeatureMapFloatList++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1FeatureMapFloatList <
       3) {
@@ -581,21 +482,12 @@ void checkGoogleCloudRecommendationengineV1beta1FeatureMapFloatList(
   buildCounterGoogleCloudRecommendationengineV1beta1FeatureMapFloatList--;
 }
 
-core.List<core.String> buildUnnamed10() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed10() => ['foo', 'foo'];
 
 void checkUnnamed10(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int
@@ -613,7 +505,8 @@ api.GoogleCloudRecommendationengineV1beta1FeatureMapStringList
 }
 
 void checkGoogleCloudRecommendationengineV1beta1FeatureMapStringList(
-    api.GoogleCloudRecommendationengineV1beta1FeatureMapStringList o) {
+  api.GoogleCloudRecommendationengineV1beta1FeatureMapStringList o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1FeatureMapStringList++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1FeatureMapStringList <
       3) {
@@ -622,21 +515,12 @@ void checkGoogleCloudRecommendationengineV1beta1FeatureMapStringList(
   buildCounterGoogleCloudRecommendationengineV1beta1FeatureMapStringList--;
 }
 
-core.List<core.String> buildUnnamed11() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed11() => ['foo', 'foo'];
 
 void checkUnnamed11(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudRecommendationengineV1beta1GcsSource = 0;
@@ -653,14 +537,12 @@ api.GoogleCloudRecommendationengineV1beta1GcsSource
 }
 
 void checkGoogleCloudRecommendationengineV1beta1GcsSource(
-    api.GoogleCloudRecommendationengineV1beta1GcsSource o) {
+  api.GoogleCloudRecommendationengineV1beta1GcsSource o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1GcsSource++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1GcsSource < 3) {
     checkUnnamed11(o.inputUris!);
-    unittest.expect(
-      o.jsonSchema!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.jsonSchema!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1GcsSource--;
 }
@@ -680,21 +562,13 @@ api.GoogleCloudRecommendationengineV1beta1Image
 }
 
 void checkGoogleCloudRecommendationengineV1beta1Image(
-    api.GoogleCloudRecommendationengineV1beta1Image o) {
+  api.GoogleCloudRecommendationengineV1beta1Image o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1Image++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1Image < 3) {
-    unittest.expect(
-      o.height!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.uri!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.width!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.height!, unittest.equals(42));
+    unittest.expect(o.uri!, unittest.equals('foo'));
+    unittest.expect(o.width!, unittest.equals(42));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1Image--;
 }
@@ -720,21 +594,17 @@ api.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest
 }
 
 void checkGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest(
-    api.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest o) {
+  api.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest <
       3) {
     checkGoogleCloudRecommendationengineV1beta1ImportErrorsConfig(
-        o.errorsConfig!);
+      o.errorsConfig!,
+    );
     checkGoogleCloudRecommendationengineV1beta1InputConfig(o.inputConfig!);
-    unittest.expect(
-      o.requestId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.updateMask!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.requestId!, unittest.equals('foo'));
+    unittest.expect(o.updateMask!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest--;
 }
@@ -754,14 +624,12 @@ api.GoogleCloudRecommendationengineV1beta1ImportErrorsConfig
 }
 
 void checkGoogleCloudRecommendationengineV1beta1ImportErrorsConfig(
-    api.GoogleCloudRecommendationengineV1beta1ImportErrorsConfig o) {
+  api.GoogleCloudRecommendationengineV1beta1ImportErrorsConfig o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1ImportErrorsConfig++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1ImportErrorsConfig <
       3) {
-    unittest.expect(
-      o.gcsPrefix!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.gcsPrefix!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1ImportErrorsConfig--;
 }
@@ -785,17 +653,16 @@ api.GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest
 }
 
 void checkGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest(
-    api.GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest o) {
+  api.GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest <
       3) {
     checkGoogleCloudRecommendationengineV1beta1ImportErrorsConfig(
-        o.errorsConfig!);
-    checkGoogleCloudRecommendationengineV1beta1InputConfig(o.inputConfig!);
-    unittest.expect(
-      o.requestId!,
-      unittest.equals('foo'),
+      o.errorsConfig!,
     );
+    checkGoogleCloudRecommendationengineV1beta1InputConfig(o.inputConfig!);
+    unittest.expect(o.requestId!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest--;
 }
@@ -819,16 +686,20 @@ api.GoogleCloudRecommendationengineV1beta1InputConfig
 }
 
 void checkGoogleCloudRecommendationengineV1beta1InputConfig(
-    api.GoogleCloudRecommendationengineV1beta1InputConfig o) {
+  api.GoogleCloudRecommendationengineV1beta1InputConfig o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1InputConfig++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1InputConfig < 3) {
     checkGoogleCloudRecommendationengineV1beta1BigQuerySource(
-        o.bigQuerySource!);
+      o.bigQuerySource!,
+    );
     checkGoogleCloudRecommendationengineV1beta1CatalogInlineSource(
-        o.catalogInlineSource!);
+      o.catalogInlineSource!,
+    );
     checkGoogleCloudRecommendationengineV1beta1GcsSource(o.gcsSource!);
     checkGoogleCloudRecommendationengineV1beta1UserEventInlineSource(
-        o.userEventInlineSource!);
+      o.userEventInlineSource!,
+    );
   }
   buildCounterGoogleCloudRecommendationengineV1beta1InputConfig--;
 }
@@ -840,7 +711,8 @@ core.List<api.GoogleCloudRecommendationengineV1beta1CatalogItem>
         ];
 
 void checkUnnamed12(
-    core.List<api.GoogleCloudRecommendationengineV1beta1CatalogItem> o) {
+  core.List<api.GoogleCloudRecommendationengineV1beta1CatalogItem> o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1CatalogItem(o[0]);
   checkGoogleCloudRecommendationengineV1beta1CatalogItem(o[1]);
@@ -864,15 +736,13 @@ api.GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse
 }
 
 void checkGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse(
-    api.GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse o) {
+  api.GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse <
       3) {
     checkUnnamed12(o.catalogItems!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse--;
 }
@@ -884,7 +754,8 @@ core.List<api.GoogleCloudRecommendationengineV1beta1Catalog> buildUnnamed13() =>
     ];
 
 void checkUnnamed13(
-    core.List<api.GoogleCloudRecommendationengineV1beta1Catalog> o) {
+  core.List<api.GoogleCloudRecommendationengineV1beta1Catalog> o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1Catalog(o[0]);
   checkGoogleCloudRecommendationengineV1beta1Catalog(o[1]);
@@ -906,15 +777,13 @@ api.GoogleCloudRecommendationengineV1beta1ListCatalogsResponse
 }
 
 void checkGoogleCloudRecommendationengineV1beta1ListCatalogsResponse(
-    api.GoogleCloudRecommendationengineV1beta1ListCatalogsResponse o) {
+  api.GoogleCloudRecommendationengineV1beta1ListCatalogsResponse o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1ListCatalogsResponse++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1ListCatalogsResponse <
       3) {
     checkUnnamed13(o.catalogs!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1ListCatalogsResponse--;
 }
@@ -927,10 +796,11 @@ core.List<
         ];
 
 void checkUnnamed14(
-    core.List<
-            api
-            .GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration>
-        o) {
+  core.List<
+          api
+          .GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration>
+      o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(o[0]);
   checkGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(o[1]);
@@ -953,16 +823,15 @@ api.GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsRespo
   return o;
 }
 
-void checkGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse(
-    api.GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse
-        o) {
+void
+    checkGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse(
+  api.GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse
+      o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse <
       3) {
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
     checkUnnamed14(o.predictionApiKeyRegistrations!);
   }
   buildCounterGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse--;
@@ -975,7 +844,8 @@ core.List<api.GoogleCloudRecommendationengineV1beta1UserEvent>
         ];
 
 void checkUnnamed15(
-    core.List<api.GoogleCloudRecommendationengineV1beta1UserEvent> o) {
+  core.List<api.GoogleCloudRecommendationengineV1beta1UserEvent> o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1UserEvent(o[0]);
   checkGoogleCloudRecommendationengineV1beta1UserEvent(o[1]);
@@ -998,46 +868,35 @@ api.GoogleCloudRecommendationengineV1beta1ListUserEventsResponse
 }
 
 void checkGoogleCloudRecommendationengineV1beta1ListUserEventsResponse(
-    api.GoogleCloudRecommendationengineV1beta1ListUserEventsResponse o) {
+  api.GoogleCloudRecommendationengineV1beta1ListUserEventsResponse o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1ListUserEventsResponse++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1ListUserEventsResponse <
       3) {
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
     checkUnnamed15(o.userEvents!);
   }
   buildCounterGoogleCloudRecommendationengineV1beta1ListUserEventsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed16() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.Map<core.String, core.String> buildUnnamed16() => {'x': 'foo', 'y': 'foo'};
 
 void checkUnnamed16(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object?> buildUnnamed17() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
     };
 
@@ -1045,32 +904,14 @@ void checkUnnamed17(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(
-    casted3['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted3['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted3['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
   var casted4 = (o['y']!) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(
-    casted4['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted4['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted4['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudRecommendationengineV1beta1PredictRequest = 0;
@@ -1092,56 +933,39 @@ api.GoogleCloudRecommendationengineV1beta1PredictRequest
 }
 
 void checkGoogleCloudRecommendationengineV1beta1PredictRequest(
-    api.GoogleCloudRecommendationengineV1beta1PredictRequest o) {
+  api.GoogleCloudRecommendationengineV1beta1PredictRequest o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1PredictRequest++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1PredictRequest < 3) {
     unittest.expect(o.dryRun!, unittest.isTrue);
-    unittest.expect(
-      o.filter!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.filter!, unittest.equals('foo'));
     checkUnnamed16(o.labels!);
-    unittest.expect(
-      o.pageSize!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.pageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.pageSize!, unittest.equals(42));
+    unittest.expect(o.pageToken!, unittest.equals('foo'));
     checkUnnamed17(o.params!);
     checkGoogleCloudRecommendationengineV1beta1UserEvent(o.userEvent!);
   }
   buildCounterGoogleCloudRecommendationengineV1beta1PredictRequest--;
 }
 
-core.List<core.String> buildUnnamed18() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed18() => ['foo', 'foo'];
 
 void checkUnnamed18(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object?> buildUnnamed19() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
     };
 
@@ -1149,32 +973,14 @@ void checkUnnamed19(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(
-    casted5['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted5['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted5['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5['bool'], unittest.equals(true));
+  unittest.expect(casted5['string'], unittest.equals('foo'));
   var casted6 = (o['y']!) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(
-    casted6['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted6['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted6['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6['bool'], unittest.equals(true));
+  unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
 core.List<
@@ -1186,15 +992,18 @@ core.List<
         ];
 
 void checkUnnamed20(
-    core.List<
-            api
-            .GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>
-        o) {
+  core.List<
+          api
+          .GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>
+      o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult(
-      o[0]);
+    o[0],
+  );
   checkGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult(
-      o[1]);
+    o[1],
+  );
 }
 
 core.int buildCounterGoogleCloudRecommendationengineV1beta1PredictResponse = 0;
@@ -1215,20 +1024,15 @@ api.GoogleCloudRecommendationengineV1beta1PredictResponse
 }
 
 void checkGoogleCloudRecommendationengineV1beta1PredictResponse(
-    api.GoogleCloudRecommendationengineV1beta1PredictResponse o) {
+  api.GoogleCloudRecommendationengineV1beta1PredictResponse o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1PredictResponse++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1PredictResponse < 3) {
     unittest.expect(o.dryRun!, unittest.isTrue);
     checkUnnamed18(o.itemsMissingInCatalog!);
     checkUnnamed19(o.metadata!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.recommendationToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    unittest.expect(o.recommendationToken!, unittest.equals('foo'));
     checkUnnamed20(o.results!);
   }
   buildCounterGoogleCloudRecommendationengineV1beta1PredictResponse--;
@@ -1238,12 +1042,12 @@ core.Map<core.String, core.Object?> buildUnnamed21() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
     };
 
@@ -1251,32 +1055,14 @@ void checkUnnamed21(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(
-    casted7['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted7['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted7['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted7['bool'], unittest.equals(true));
+  unittest.expect(casted7['string'], unittest.equals('foo'));
   var casted8 = (o['y']!) as core.Map;
   unittest.expect(casted8, unittest.hasLength(3));
-  unittest.expect(
-    casted8['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted8['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted8['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted8['bool'], unittest.equals(true));
+  unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
 core.int
@@ -1297,15 +1083,12 @@ api.GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult
 }
 
 void checkGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult(
-    api.GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult
-        o) {
+  api.GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult <
       3) {
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.id!, unittest.equals('foo'));
     checkUnnamed21(o.itemMetadata!);
   }
   buildCounterGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult--;
@@ -1328,33 +1111,22 @@ api.GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration
 }
 
 void checkGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(
-    api.GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration o) {
+  api.GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration <
       3) {
-    unittest.expect(
-      o.apiKey!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.apiKey!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration--;
 }
 
-core.Map<core.String, core.double> buildUnnamed22() => {
-      'x': 42.0,
-      'y': 42.0,
-    };
+core.Map<core.String, core.double> buildUnnamed22() => {'x': 42.0, 'y': 42.0};
 
 void checkUnnamed22(core.Map<core.String, core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals(42.0),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals(42.0),
-  );
+  unittest.expect(o['x']!, unittest.equals(42.0));
+  unittest.expect(o['y']!, unittest.equals(42.0));
 }
 
 core.List<api.GoogleCloudRecommendationengineV1beta1Image> buildUnnamed23() => [
@@ -1363,7 +1135,8 @@ core.List<api.GoogleCloudRecommendationengineV1beta1Image> buildUnnamed23() => [
     ];
 
 void checkUnnamed23(
-    core.List<api.GoogleCloudRecommendationengineV1beta1Image> o) {
+  core.List<api.GoogleCloudRecommendationengineV1beta1Image> o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1Image(o[0]);
   checkGoogleCloudRecommendationengineV1beta1Image(o[1]);
@@ -1393,32 +1166,23 @@ api.GoogleCloudRecommendationengineV1beta1ProductCatalogItem
 }
 
 void checkGoogleCloudRecommendationengineV1beta1ProductCatalogItem(
-    api.GoogleCloudRecommendationengineV1beta1ProductCatalogItem o) {
+  api.GoogleCloudRecommendationengineV1beta1ProductCatalogItem o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1ProductCatalogItem++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1ProductCatalogItem <
       3) {
-    unittest.expect(
-      o.availableQuantity!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.canonicalProductUri!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.availableQuantity!, unittest.equals('foo'));
+    unittest.expect(o.canonicalProductUri!, unittest.equals('foo'));
     checkUnnamed22(o.costs!);
-    unittest.expect(
-      o.currencyCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.currencyCode!, unittest.equals('foo'));
     checkGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice(
-        o.exactPrice!);
+      o.exactPrice!,
+    );
     checkUnnamed23(o.images!);
     checkGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange(
-        o.priceRange!);
-    unittest.expect(
-      o.stockState!,
-      unittest.equals('foo'),
+      o.priceRange!,
     );
+    unittest.expect(o.stockState!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1ProductCatalogItem--;
 }
@@ -1441,18 +1205,13 @@ api.GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice
 }
 
 void checkGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice(
-    api.GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice o) {
+  api.GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice <
       3) {
-    unittest.expect(
-      o.displayPrice!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.originalPrice!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.displayPrice!, unittest.equals(42.0));
+    unittest.expect(o.originalPrice!, unittest.equals(42.0));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice--;
 }
@@ -1475,18 +1234,13 @@ api.GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange
 }
 
 void checkGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange(
-    api.GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange o) {
+  api.GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange <
       3) {
-    unittest.expect(
-      o.max!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.min!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.max!, unittest.equals(42.0));
+    unittest.expect(o.min!, unittest.equals(42.0));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange--;
 }
@@ -1511,38 +1265,18 @@ api.GoogleCloudRecommendationengineV1beta1ProductDetail
 }
 
 void checkGoogleCloudRecommendationengineV1beta1ProductDetail(
-    api.GoogleCloudRecommendationengineV1beta1ProductDetail o) {
+  api.GoogleCloudRecommendationengineV1beta1ProductDetail o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1ProductDetail++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1ProductDetail < 3) {
-    unittest.expect(
-      o.availableQuantity!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.currencyCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.displayPrice!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.availableQuantity!, unittest.equals(42));
+    unittest.expect(o.currencyCode!, unittest.equals('foo'));
+    unittest.expect(o.displayPrice!, unittest.equals(42.0));
+    unittest.expect(o.id!, unittest.equals('foo'));
     checkGoogleCloudRecommendationengineV1beta1FeatureMap(o.itemAttributes!);
-    unittest.expect(
-      o.originalPrice!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.quantity!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.stockState!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.originalPrice!, unittest.equals(42.0));
+    unittest.expect(o.quantity!, unittest.equals(42));
+    unittest.expect(o.stockState!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1ProductDetail--;
 }
@@ -1555,10 +1289,11 @@ core.List<
         ];
 
 void checkUnnamed24(
-    core.List<
-            api
-            .GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>
-        o) {
+  core.List<
+          api
+          .GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>
+      o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy(o[0]);
   checkGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy(o[1]);
@@ -1571,7 +1306,8 @@ core.List<api.GoogleCloudRecommendationengineV1beta1ProductDetail>
         ];
 
 void checkUnnamed25(
-    core.List<api.GoogleCloudRecommendationengineV1beta1ProductDetail> o) {
+  core.List<api.GoogleCloudRecommendationengineV1beta1ProductDetail> o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1ProductDetail(o[0]);
   checkGoogleCloudRecommendationengineV1beta1ProductDetail(o[1]);
@@ -1598,62 +1334,37 @@ api.GoogleCloudRecommendationengineV1beta1ProductEventDetail
 }
 
 void checkGoogleCloudRecommendationengineV1beta1ProductEventDetail(
-    api.GoogleCloudRecommendationengineV1beta1ProductEventDetail o) {
+  api.GoogleCloudRecommendationengineV1beta1ProductEventDetail o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1ProductEventDetail++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1ProductEventDetail <
       3) {
-    unittest.expect(
-      o.cartId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.listId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.cartId!, unittest.equals('foo'));
+    unittest.expect(o.listId!, unittest.equals('foo'));
     checkUnnamed24(o.pageCategories!);
     checkUnnamed25(o.productDetails!);
     checkGoogleCloudRecommendationengineV1beta1PurchaseTransaction(
-        o.purchaseTransaction!);
-    unittest.expect(
-      o.searchQuery!,
-      unittest.equals('foo'),
+      o.purchaseTransaction!,
     );
+    unittest.expect(o.searchQuery!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1ProductEventDetail--;
 }
 
-core.Map<core.String, core.double> buildUnnamed26() => {
-      'x': 42.0,
-      'y': 42.0,
-    };
+core.Map<core.String, core.double> buildUnnamed26() => {'x': 42.0, 'y': 42.0};
 
 void checkUnnamed26(core.Map<core.String, core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals(42.0),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals(42.0),
-  );
+  unittest.expect(o['x']!, unittest.equals(42.0));
+  unittest.expect(o['y']!, unittest.equals(42.0));
 }
 
-core.Map<core.String, core.double> buildUnnamed27() => {
-      'x': 42.0,
-      'y': 42.0,
-    };
+core.Map<core.String, core.double> buildUnnamed27() => {'x': 42.0, 'y': 42.0};
 
 void checkUnnamed27(core.Map<core.String, core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals(42.0),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals(42.0),
-  );
+  unittest.expect(o['x']!, unittest.equals(42.0));
+  unittest.expect(o['y']!, unittest.equals(42.0));
 }
 
 core.int buildCounterGoogleCloudRecommendationengineV1beta1PurchaseTransaction =
@@ -1675,23 +1386,15 @@ api.GoogleCloudRecommendationengineV1beta1PurchaseTransaction
 }
 
 void checkGoogleCloudRecommendationengineV1beta1PurchaseTransaction(
-    api.GoogleCloudRecommendationengineV1beta1PurchaseTransaction o) {
+  api.GoogleCloudRecommendationengineV1beta1PurchaseTransaction o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1PurchaseTransaction++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1PurchaseTransaction <
       3) {
     checkUnnamed26(o.costs!);
-    unittest.expect(
-      o.currencyCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.revenue!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.currencyCode!, unittest.equals('foo'));
+    unittest.expect(o.id!, unittest.equals('foo'));
+    unittest.expect(o.revenue!, unittest.equals(42.0));
     checkUnnamed27(o.taxes!);
   }
   buildCounterGoogleCloudRecommendationengineV1beta1PurchaseTransaction--;
@@ -1714,14 +1417,12 @@ api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest
 }
 
 void checkGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest(
-    api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest o) {
+  api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest <
       3) {
-    unittest.expect(
-      o.filter!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.filter!, unittest.equals('foo'));
     unittest.expect(o.force!, unittest.isTrue);
   }
   buildCounterGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest--;
@@ -1743,14 +1444,12 @@ api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest
 }
 
 void checkGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest(
-    api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest o) {
+  api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest <
       3) {
-    unittest.expect(
-      o.userEventRejoinScope!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.userEventRejoinScope!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest--;
 }
@@ -1774,24 +1473,17 @@ api.GoogleCloudRecommendationengineV1beta1UserEvent
 }
 
 void checkGoogleCloudRecommendationengineV1beta1UserEvent(
-    api.GoogleCloudRecommendationengineV1beta1UserEvent o) {
+  api.GoogleCloudRecommendationengineV1beta1UserEvent o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1UserEvent++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1UserEvent < 3) {
     checkGoogleCloudRecommendationengineV1beta1EventDetail(o.eventDetail!);
-    unittest.expect(
-      o.eventSource!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.eventTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.eventType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.eventSource!, unittest.equals('foo'));
+    unittest.expect(o.eventTime!, unittest.equals('foo'));
+    unittest.expect(o.eventType!, unittest.equals('foo'));
     checkGoogleCloudRecommendationengineV1beta1ProductEventDetail(
-        o.productEventDetail!);
+      o.productEventDetail!,
+    );
     checkGoogleCloudRecommendationengineV1beta1UserInfo(o.userInfo!);
   }
   buildCounterGoogleCloudRecommendationengineV1beta1UserEvent--;
@@ -1804,7 +1496,8 @@ core.List<api.GoogleCloudRecommendationengineV1beta1UserEvent>
         ];
 
 void checkUnnamed28(
-    core.List<api.GoogleCloudRecommendationengineV1beta1UserEvent> o) {
+  core.List<api.GoogleCloudRecommendationengineV1beta1UserEvent> o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1UserEvent(o[0]);
   checkGoogleCloudRecommendationengineV1beta1UserEvent(o[1]);
@@ -1825,7 +1518,8 @@ api.GoogleCloudRecommendationengineV1beta1UserEventInlineSource
 }
 
 void checkGoogleCloudRecommendationengineV1beta1UserEventInlineSource(
-    api.GoogleCloudRecommendationengineV1beta1UserEventInlineSource o) {
+  api.GoogleCloudRecommendationengineV1beta1UserEventInlineSource o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1UserEventInlineSource++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1UserEventInlineSource <
       3) {
@@ -1851,26 +1545,15 @@ api.GoogleCloudRecommendationengineV1beta1UserInfo
 }
 
 void checkGoogleCloudRecommendationengineV1beta1UserInfo(
-    api.GoogleCloudRecommendationengineV1beta1UserInfo o) {
+  api.GoogleCloudRecommendationengineV1beta1UserInfo o,
+) {
   buildCounterGoogleCloudRecommendationengineV1beta1UserInfo++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1UserInfo < 3) {
     unittest.expect(o.directUserRequest!, unittest.isTrue);
-    unittest.expect(
-      o.ipAddress!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.userAgent!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.userId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.visitorId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.ipAddress!, unittest.equals('foo'));
+    unittest.expect(o.userAgent!, unittest.equals('foo'));
+    unittest.expect(o.userId!, unittest.equals('foo'));
+    unittest.expect(o.visitorId!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRecommendationengineV1beta1UserInfo--;
 }
@@ -1900,13 +1583,11 @@ api.GoogleLongrunningListOperationsResponse
 }
 
 void checkGoogleLongrunningListOperationsResponse(
-    api.GoogleLongrunningListOperationsResponse o) {
+  api.GoogleLongrunningListOperationsResponse o,
+) {
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
     checkUnnamed29(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
@@ -1916,12 +1597,12 @@ core.Map<core.String, core.Object?> buildUnnamed30() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
     };
 
@@ -1929,44 +1610,26 @@ void checkUnnamed30(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
-  unittest.expect(
-    casted9['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted9['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted9['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted9['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted9['bool'], unittest.equals(true));
+  unittest.expect(casted9['string'], unittest.equals('foo'));
   var casted10 = (o['y']!) as core.Map;
   unittest.expect(casted10, unittest.hasLength(3));
-  unittest.expect(
-    casted10['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted10['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted10['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted10['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted10['bool'], unittest.equals(true));
+  unittest.expect(casted10['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object?> buildUnnamed31() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
     };
 
@@ -1974,32 +1637,14 @@ void checkUnnamed31(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted11 = (o['x']!) as core.Map;
   unittest.expect(casted11, unittest.hasLength(3));
-  unittest.expect(
-    casted11['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted11['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted11['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted11['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted11['bool'], unittest.equals(true));
+  unittest.expect(casted11['string'], unittest.equals('foo'));
   var casted12 = (o['y']!) as core.Map;
   unittest.expect(casted12, unittest.hasLength(3));
-  unittest.expect(
-    casted12['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted12['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted12['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted12['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted12['bool'], unittest.equals(true));
+  unittest.expect(casted12['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleLongrunningOperation = 0;
@@ -2023,10 +1668,7 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
     checkUnnamed30(o.metadata!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
     checkUnnamed31(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
@@ -2051,12 +1693,12 @@ core.Map<core.String, core.Object?> buildUnnamed32() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo'
+        'string': 'foo',
       },
     };
 
@@ -2064,32 +1706,14 @@ void checkUnnamed32(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted13 = (o['x']!) as core.Map;
   unittest.expect(casted13, unittest.hasLength(3));
-  unittest.expect(
-    casted13['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted13['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted13['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted13['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted13['bool'], unittest.equals(true));
+  unittest.expect(casted13['string'], unittest.equals('foo'));
   var casted14 = (o['y']!) as core.Map;
   unittest.expect(casted14, unittest.hasLength(3));
-  unittest.expect(
-    casted14['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted14['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted14['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted14['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted14['bool'], unittest.equals(true));
+  unittest.expect(casted14['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object?>> buildUnnamed33() => [
@@ -2119,15 +1743,9 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
 void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
-    unittest.expect(
-      o.code!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.code!, unittest.equals(42));
     checkUnnamed33(o.details!);
-    unittest.expect(
-      o.message!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterGoogleRpcStatus--;
 }
@@ -2138,483 +1756,607 @@ void main() {
       final o = buildGoogleApiHttpBody();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleApiHttpBody.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleApiHttpBody(od);
     });
   });
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1BigQuerySource', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudRecommendationengineV1beta1BigQuerySource();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1BigQuerySource.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1BigQuerySource(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1Catalog',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudRecommendationengineV1beta1Catalog();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudRecommendationengineV1beta1Catalog.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1Catalog(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1BigQuerySource',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudRecommendationengineV1beta1BigQuerySource();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1BigQuerySource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1BigQuerySource(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1CatalogInlineSource',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1CatalogInlineSource();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudRecommendationengineV1beta1CatalogInlineSource
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1CatalogInlineSource(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1CatalogItem',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudRecommendationengineV1beta1CatalogItem();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1CatalogItem(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1Catalog',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudRecommendationengineV1beta1Catalog();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleCloudRecommendationengineV1beta1Catalog.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1Catalog(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy(
-          od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1CatalogInlineSource',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1CatalogInlineSource();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleCloudRecommendationengineV1beta1CatalogInlineSource
+            .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1CatalogInlineSource(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1CatalogItem',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudRecommendationengineV1beta1CatalogItem();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1CatalogItem(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest(
-          od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1EventDetail',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudRecommendationengineV1beta1EventDetail();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudRecommendationengineV1beta1EventDetail.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1EventDetail(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1FeatureMap',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudRecommendationengineV1beta1FeatureMap();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudRecommendationengineV1beta1FeatureMap.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1FeatureMap(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy
+                .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1FeatureMapFloatList',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1FeatureMapFloatList();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudRecommendationengineV1beta1FeatureMapFloatList
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1FeatureMapFloatList(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig
+                .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1FeatureMapStringList',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1FeatureMapStringList();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudRecommendationengineV1beta1FeatureMapStringList
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1FeatureMapStringList(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest
+                .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest(
+          od,
+        );
+      });
+    },
+  );
 
-  unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1GcsSource',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudRecommendationengineV1beta1GcsSource();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudRecommendationengineV1beta1GcsSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1GcsSource(od);
-    });
-  });
+  unittest.group(
+    'obj-schema-GoogleCloudRecommendationengineV1beta1EventDetail',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudRecommendationengineV1beta1EventDetail();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1EventDetail.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1EventDetail(od);
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudRecommendationengineV1beta1FeatureMap',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudRecommendationengineV1beta1FeatureMap();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1FeatureMap.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1FeatureMap(od);
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudRecommendationengineV1beta1FeatureMapFloatList',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1FeatureMapFloatList();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleCloudRecommendationengineV1beta1FeatureMapFloatList
+            .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1FeatureMapFloatList(od);
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudRecommendationengineV1beta1FeatureMapStringList',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1FeatureMapStringList();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1FeatureMapStringList
+                .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1FeatureMapStringList(od);
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudRecommendationengineV1beta1GcsSource',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudRecommendationengineV1beta1GcsSource();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleCloudRecommendationengineV1beta1GcsSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1GcsSource(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1Image', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudRecommendationengineV1beta1Image();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleCloudRecommendationengineV1beta1Image.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleCloudRecommendationengineV1beta1Image(od);
     });
   });
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest
+                .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1ImportErrorsConfig',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudRecommendationengineV1beta1ImportErrorsConfig();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1ImportErrorsConfig.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1ImportErrorsConfig(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1ImportErrorsConfig',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1ImportErrorsConfig();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleCloudRecommendationengineV1beta1ImportErrorsConfig
+            .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1ImportErrorsConfig(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1InputConfig',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudRecommendationengineV1beta1InputConfig();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudRecommendationengineV1beta1InputConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1InputConfig(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest
+                .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1InputConfig',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudRecommendationengineV1beta1InputConfig();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1InputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1InputConfig(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1ListCatalogsResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1ListCatalogsResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudRecommendationengineV1beta1ListCatalogsResponse
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1ListCatalogsResponse(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse
+                .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse(
-          od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1ListCatalogsResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1ListCatalogsResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ListCatalogsResponse
+                .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1ListCatalogsResponse(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1ListUserEventsResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1ListUserEventsResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1ListUserEventsResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1ListUserEventsResponse(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse
+                .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1PredictRequest', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudRecommendationengineV1beta1PredictRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1PredictRequest.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1PredictRequest(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1ListUserEventsResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1ListUserEventsResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ListUserEventsResponse
+                .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1ListUserEventsResponse(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1PredictResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudRecommendationengineV1beta1PredictResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1PredictResponse.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1PredictResponse(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1PredictRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudRecommendationengineV1beta1PredictRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1PredictRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1PredictRequest(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult(
-          od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1PredictResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudRecommendationengineV1beta1PredictResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1PredictResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1PredictResponse(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(
-          od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult
+                .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1ProductCatalogItem',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudRecommendationengineV1beta1ProductCatalogItem();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1ProductCatalogItem.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1ProductCatalogItem(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration
+                .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice(
-          od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1ProductCatalogItem',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1ProductCatalogItem();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleCloudRecommendationengineV1beta1ProductCatalogItem
+            .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1ProductCatalogItem(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange(
-          od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice
+                .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1ProductDetail', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudRecommendationengineV1beta1ProductDetail();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1ProductDetail.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1ProductDetail(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange
+                .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1ProductEventDetail',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudRecommendationengineV1beta1ProductEventDetail();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1ProductEventDetail.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1ProductEventDetail(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1ProductDetail',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudRecommendationengineV1beta1ProductDetail();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ProductDetail.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1ProductDetail(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1PurchaseTransaction',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1PurchaseTransaction();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudRecommendationengineV1beta1PurchaseTransaction
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1PurchaseTransaction(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1ProductEventDetail',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1ProductEventDetail();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleCloudRecommendationengineV1beta1ProductEventDetail
+            .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1ProductEventDetail(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1PurchaseTransaction',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1PurchaseTransaction();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleCloudRecommendationengineV1beta1PurchaseTransaction
+            .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1PurchaseTransaction(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1UserEvent',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudRecommendationengineV1beta1UserEvent();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudRecommendationengineV1beta1UserEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1UserEvent(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest
+                .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1UserEventInlineSource',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1UserEventInlineSource();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudRecommendationengineV1beta1UserEventInlineSource
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1UserEventInlineSource(od);
-    });
-  });
+    'obj-schema-GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest
+                .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest(od);
+      });
+    },
+  );
 
-  unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1UserInfo',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudRecommendationengineV1beta1UserInfo();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudRecommendationengineV1beta1UserInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1UserInfo(od);
-    });
-  });
+  unittest.group(
+    'obj-schema-GoogleCloudRecommendationengineV1beta1UserEvent',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudRecommendationengineV1beta1UserEvent();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleCloudRecommendationengineV1beta1UserEvent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1UserEvent(od);
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudRecommendationengineV1beta1UserEventInlineSource',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecommendationengineV1beta1UserEventInlineSource();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1UserEventInlineSource
+                .fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1UserEventInlineSource(od);
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudRecommendationengineV1beta1UserInfo',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudRecommendationengineV1beta1UserInfo();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleCloudRecommendationengineV1beta1UserInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecommendationengineV1beta1UserInfo(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleLongrunningListOperationsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleLongrunningListOperationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleLongrunningListOperationsResponse(od);
     });
   });
@@ -2624,7 +2366,8 @@ void main() {
       final o = buildGoogleLongrunningOperation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleLongrunningOperation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleLongrunningOperation(od);
     });
   });
@@ -2634,7 +2377,8 @@ void main() {
       final o = buildGoogleProtobufEmpty();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleProtobufEmpty.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleProtobufEmpty(od);
     });
   });
@@ -2644,7 +2388,8 @@ void main() {
       final o = buildGoogleRpcStatus();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleRpcStatus.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleRpcStatus(od);
     });
   });
@@ -2657,64 +2402,70 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('v1beta1/'),
+          );
+          pathOffset += 8;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(
-            buildGoogleCloudRecommendationengineV1beta1ListCatalogsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
-      checkGoogleCloudRecommendationengineV1beta1ListCatalogsResponse(response
-          as api.GoogleCloudRecommendationengineV1beta1ListCatalogsResponse);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudRecommendationengineV1beta1ListCatalogsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkGoogleCloudRecommendationengineV1beta1ListCatalogsResponse(
+        response
+            as api.GoogleCloudRecommendationengineV1beta1ListCatalogsResponse,
+      );
     });
 
     unittest.test('method--patch', () async {
@@ -2724,1293 +2475,1366 @@ void main() {
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleCloudRecommendationengineV1beta1Catalog.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudRecommendationengineV1beta1Catalog(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj =
+              api.GoogleCloudRecommendationengineV1beta1Catalog.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudRecommendationengineV1beta1Catalog(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('v1beta1/'),
+          );
+          pathOffset += 8;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['updateMask']!.first,
-          unittest.equals(arg_updateMask),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildGoogleCloudRecommendationengineV1beta1Catalog());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.patch(arg_request, arg_name,
-          updateMask: arg_updateMask, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudRecommendationengineV1beta1Catalog(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudRecommendationengineV1beta1Catalog(
-          response as api.GoogleCloudRecommendationengineV1beta1Catalog);
+        response as api.GoogleCloudRecommendationengineV1beta1Catalog,
+      );
     });
   });
 
   unittest.group('resource-ProjectsLocationsCatalogsCatalogItemsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res = api.RecommendationsAIApi(mock)
-          .projects
-          .locations
-          .catalogs
-          .catalogItems;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.catalogItems;
       final arg_request =
           buildGoogleCloudRecommendationengineV1beta1CatalogItem();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
-                json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudRecommendationengineV1beta1CatalogItem(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj =
+              api.GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudRecommendationengineV1beta1CatalogItem(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('v1beta1/'),
+          );
+          pathOffset += 8;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildGoogleCloudRecommendationengineV1beta1CatalogItem());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudRecommendationengineV1beta1CatalogItem(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudRecommendationengineV1beta1CatalogItem(
-          response as api.GoogleCloudRecommendationengineV1beta1CatalogItem);
+        response as api.GoogleCloudRecommendationengineV1beta1CatalogItem,
+      );
     });
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res = api.RecommendationsAIApi(mock)
-          .projects
-          .locations
-          .catalogs
-          .catalogItems;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.catalogItems;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('v1beta1/'),
+          );
+          pathOffset += 8;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleProtobufEmpty());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleProtobufEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res = api.RecommendationsAIApi(mock)
-          .projects
-          .locations
-          .catalogs
-          .catalogItems;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.catalogItems;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('v1beta1/'),
+          );
+          pathOffset += 8;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildGoogleCloudRecommendationengineV1beta1CatalogItem());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudRecommendationengineV1beta1CatalogItem(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGoogleCloudRecommendationengineV1beta1CatalogItem(
-          response as api.GoogleCloudRecommendationengineV1beta1CatalogItem);
+        response as api.GoogleCloudRecommendationengineV1beta1CatalogItem,
+      );
     });
 
     unittest.test('method--import', () async {
       final mock = HttpServerMock();
-      final res = api.RecommendationsAIApi(mock)
-          .projects
-          .locations
-          .catalogs
-          .catalogItems;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.catalogItems;
       final arg_request =
           buildGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest
-                .fromJson(json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest(
-            obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj =
+              api.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest
+                  .fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest(
+            obj,
+          );
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('v1beta1/'),
+          );
+          pathOffset += 8;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleLongrunningOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.import(arg_request, arg_parent, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleLongrunningOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.import(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
       checkGoogleLongrunningOperation(
-          response as api.GoogleLongrunningOperation);
+        response as api.GoogleLongrunningOperation,
+      );
     });
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res = api.RecommendationsAIApi(mock)
-          .projects
-          .locations
-          .catalogs
-          .catalogItems;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.catalogItems;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('v1beta1/'),
+          );
+          pathOffset += 8;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['filter']!.first,
-          unittest.equals(arg_filter),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(
-            buildGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
-          filter: arg_filter,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        filter: arg_filter,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse(
-          response as api
-              .GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse);
+        response as api
+            .GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse,
+      );
     });
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res = api.RecommendationsAIApi(mock)
-          .projects
-          .locations
-          .catalogs
-          .catalogItems;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.catalogItems;
       final arg_request =
           buildGoogleCloudRecommendationengineV1beta1CatalogItem();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
-                json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudRecommendationengineV1beta1CatalogItem(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj =
+              api.GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudRecommendationengineV1beta1CatalogItem(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('v1beta1/'),
+          );
+          pathOffset += 8;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['updateMask']!.first,
-          unittest.equals(arg_updateMask),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildGoogleCloudRecommendationengineV1beta1CatalogItem());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.patch(arg_request, arg_name,
-          updateMask: arg_updateMask, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudRecommendationengineV1beta1CatalogItem(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudRecommendationengineV1beta1CatalogItem(
-          response as api.GoogleCloudRecommendationengineV1beta1CatalogItem);
+        response as api.GoogleCloudRecommendationengineV1beta1CatalogItem,
+      );
     });
   });
 
   unittest.group(
-      'resource-ProjectsLocationsCatalogsEventStoresOperationsResource', () {
-    unittest.test('method--get', () async {
-      final mock = HttpServerMock();
-      final res = api.RecommendationsAIApi(mock)
-          .projects
-          .locations
-          .catalogs
-          .eventStores
-          .operations;
-      final arg_name = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
+    'resource-ProjectsLocationsCatalogsEventStoresOperationsResource',
+    () {
+      unittest.test('method--get', () async {
+        final mock = HttpServerMock();
+        final res = api.RecommendationsAIApi(
+          mock,
+        ).projects.locations.catalogs.eventStores.operations;
+        final arg_name = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
             );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleLongrunningOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.get(arg_name, $fields: arg_$fields);
-      checkGoogleLongrunningOperation(
-          response as api.GoogleLongrunningOperation);
-    });
-
-    unittest.test('method--list', () async {
-      final mock = HttpServerMock();
-      final res = api.RecommendationsAIApi(mock)
-          .projects
-          .locations
-          .catalogs
-          .eventStores
-          .operations;
-      final arg_name = 'foo';
-      final arg_filter = 'foo';
-      final arg_pageSize = 42;
-      final arg_pageToken = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 8),
+              unittest.equals('v1beta1/'),
             );
-          }
-        }
-        unittest.expect(
-          queryMap['filter']!.first,
-          unittest.equals(arg_filter),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+            pathOffset += 8;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildGoogleLongrunningListOperationsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_name,
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(buildGoogleLongrunningOperation());
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.get(arg_name, $fields: arg_$fields);
+        checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation,
+        );
+      });
+
+      unittest.test('method--list', () async {
+        final mock = HttpServerMock();
+        final res = api.RecommendationsAIApi(
+          mock,
+        ).projects.locations.catalogs.eventStores.operations;
+        final arg_name = 'foo';
+        final arg_filter = 'foo';
+        final arg_pageSize = 42;
+        final arg_pageToken = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 8),
+              unittest.equals('v1beta1/'),
+            );
+            pathOffset += 8;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['filter']!.first,
+              unittest.equals(arg_filter),
+            );
+            unittest.expect(
+              core.int.parse(queryMap['pageSize']!.first),
+              unittest.equals(arg_pageSize),
+            );
+            unittest.expect(
+              queryMap['pageToken']!.first,
+              unittest.equals(arg_pageToken),
+            );
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildGoogleLongrunningListOperationsResponse(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.list(
+          arg_name,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
-          $fields: arg_$fields);
-      checkGoogleLongrunningListOperationsResponse(
-          response as api.GoogleLongrunningListOperationsResponse);
-    });
-  });
+          $fields: arg_$fields,
+        );
+        checkGoogleLongrunningListOperationsResponse(
+          response as api.GoogleLongrunningListOperationsResponse,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'resource-ProjectsLocationsCatalogsEventStoresPlacementsResource', () {
-    unittest.test('method--predict', () async {
-      final mock = HttpServerMock();
-      final res = api.RecommendationsAIApi(mock)
-          .projects
-          .locations
-          .catalogs
-          .eventStores
-          .placements;
-      final arg_request =
-          buildGoogleCloudRecommendationengineV1beta1PredictRequest();
-      final arg_name = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleCloudRecommendationengineV1beta1PredictRequest.fromJson(
-                json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudRecommendationengineV1beta1PredictRequest(obj);
-
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
+    'resource-ProjectsLocationsCatalogsEventStoresPlacementsResource',
+    () {
+      unittest.test('method--predict', () async {
+        final mock = HttpServerMock();
+        final res = api.RecommendationsAIApi(
+          mock,
+        ).projects.locations.catalogs.eventStores.placements;
+        final arg_request =
+            buildGoogleCloudRecommendationengineV1beta1PredictRequest();
+        final arg_name = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final obj = api.GoogleCloudRecommendationengineV1beta1PredictRequest
+                .fromJson(
+              json as core.Map<core.String, core.dynamic>,
             );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+            checkGoogleCloudRecommendationengineV1beta1PredictRequest(obj);
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(
-            buildGoogleCloudRecommendationengineV1beta1PredictResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.predict(arg_request, arg_name, $fields: arg_$fields);
-      checkGoogleCloudRecommendationengineV1beta1PredictResponse(response
-          as api.GoogleCloudRecommendationengineV1beta1PredictResponse);
-    });
-  });
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 8),
+              unittest.equals('v1beta1/'),
+            );
+            pathOffset += 8;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildGoogleCloudRecommendationengineV1beta1PredictResponse(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.predict(
+          arg_request,
+          arg_name,
+          $fields: arg_$fields,
+        );
+        checkGoogleCloudRecommendationengineV1beta1PredictResponse(
+          response as api.GoogleCloudRecommendationengineV1beta1PredictResponse,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'resource-ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource',
-      () {
-    unittest.test('method--create', () async {
-      final mock = HttpServerMock();
-      final res = api.RecommendationsAIApi(mock)
-          .projects
-          .locations
-          .catalogs
-          .eventStores
-          .predictionApiKeyRegistrations;
-      final arg_request =
-          buildGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest();
-      final arg_parent = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest
-                .fromJson(json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest(
-            obj);
-
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
+    'resource-ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource',
+    () {
+      unittest.test('method--create', () async {
+        final mock = HttpServerMock();
+        final res = api.RecommendationsAIApi(mock)
+            .projects
+            .locations
+            .catalogs
+            .eventStores
+            .predictionApiKeyRegistrations;
+        final arg_request =
+            buildGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest();
+        final arg_parent = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final obj =
+                api.GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest
+                    .fromJson(
+              json as core.Map<core.String, core.dynamic>,
             );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+            checkGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest(
+              obj,
+            );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(
-            buildGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.create(arg_request, arg_parent, $fields: arg_$fields);
-      checkGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 8),
+              unittest.equals('v1beta1/'),
+            );
+            pathOffset += 8;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.create(
+          arg_request,
+          arg_parent,
+          $fields: arg_$fields,
+        );
+        checkGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(
           response as api
-              .GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration);
-    });
-
-    unittest.test('method--delete', () async {
-      final mock = HttpServerMock();
-      final res = api.RecommendationsAIApi(mock)
-          .projects
-          .locations
-          .catalogs
-          .eventStores
-          .predictionApiKeyRegistrations;
-      final arg_name = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
+              .GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration,
         );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      });
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
+      unittest.test('method--delete', () async {
+        final mock = HttpServerMock();
+        final res = api.RecommendationsAIApi(mock)
+            .projects
+            .locations
+            .catalogs
+            .eventStores
+            .predictionApiKeyRegistrations;
+        final arg_name = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
             );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleProtobufEmpty());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.delete(arg_name, $fields: arg_$fields);
-      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-    });
-
-    unittest.test('method--list', () async {
-      final mock = HttpServerMock();
-      final res = api.RecommendationsAIApi(mock)
-          .projects
-          .locations
-          .catalogs
-          .eventStores
-          .predictionApiKeyRegistrations;
-      final arg_parent = 'foo';
-      final arg_pageSize = 42;
-      final arg_pageToken = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 8),
+              unittest.equals('v1beta1/'),
             );
-          }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+            pathOffset += 8;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(
-            buildGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(buildGoogleProtobufEmpty());
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.delete(arg_name, $fields: arg_$fields);
+        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
+      });
+
+      unittest.test('method--list', () async {
+        final mock = HttpServerMock();
+        final res = api.RecommendationsAIApi(mock)
+            .projects
+            .locations
+            .catalogs
+            .eventStores
+            .predictionApiKeyRegistrations;
+        final arg_parent = 'foo';
+        final arg_pageSize = 42;
+        final arg_pageToken = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 8),
+              unittest.equals('v1beta1/'),
+            );
+            pathOffset += 8;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              core.int.parse(queryMap['pageSize']!.first),
+              unittest.equals(arg_pageSize),
+            );
+            unittest.expect(
+              queryMap['pageToken']!.first,
+              unittest.equals(arg_pageToken),
+            );
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.list(
+          arg_parent,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
-          $fields: arg_$fields);
-      checkGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse(
+          $fields: arg_$fields,
+        );
+        checkGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse(
           response as api
-              .GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse);
-    });
-  });
+              .GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse,
+        );
+      });
+    },
+  );
 
   unittest.group(
       'resource-ProjectsLocationsCatalogsEventStoresUserEventsResource', () {
     unittest.test('method--collect', () async {
       final mock = HttpServerMock();
-      final res = api.RecommendationsAIApi(mock)
-          .projects
-          .locations
-          .catalogs
-          .eventStores
-          .userEvents;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.eventStores.userEvents;
       final arg_parent = 'foo';
       final arg_ets = 'foo';
       final arg_uri = 'foo';
       final arg_userEvent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('v1beta1/'),
+          );
+          pathOffset += 8;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['ets']!.first,
-          unittest.equals(arg_ets),
-        );
-        unittest.expect(
-          queryMap['uri']!.first,
-          unittest.equals(arg_uri),
-        );
-        unittest.expect(
-          queryMap['userEvent']!.first,
-          unittest.equals(arg_userEvent),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(queryMap['ets']!.first, unittest.equals(arg_ets));
+          unittest.expect(queryMap['uri']!.first, unittest.equals(arg_uri));
+          unittest.expect(
+            queryMap['userEvent']!.first,
+            unittest.equals(arg_userEvent),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleApiHttpBody());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.collect(arg_parent,
-          ets: arg_ets,
-          uri: arg_uri,
-          userEvent: arg_userEvent,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleApiHttpBody());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.collect(
+        arg_parent,
+        ets: arg_ets,
+        uri: arg_uri,
+        userEvent: arg_userEvent,
+        $fields: arg_$fields,
+      );
       checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
     });
 
     unittest.test('method--import', () async {
       final mock = HttpServerMock();
-      final res = api.RecommendationsAIApi(mock)
-          .projects
-          .locations
-          .catalogs
-          .eventStores
-          .userEvents;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.eventStores.userEvents;
       final arg_request =
           buildGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest
-                .fromJson(json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj =
+              api.GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest
+                  .fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest(
+            obj,
+          );
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('v1beta1/'),
+          );
+          pathOffset += 8;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleLongrunningOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.import(arg_request, arg_parent, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleLongrunningOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.import(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
       checkGoogleLongrunningOperation(
-          response as api.GoogleLongrunningOperation);
+        response as api.GoogleLongrunningOperation,
+      );
     });
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res = api.RecommendationsAIApi(mock)
-          .projects
-          .locations
-          .catalogs
-          .eventStores
-          .userEvents;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.eventStores.userEvents;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('v1beta1/'),
+          );
+          pathOffset += 8;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['filter']!.first,
-          unittest.equals(arg_filter),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(
-            buildGoogleCloudRecommendationengineV1beta1ListUserEventsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
-          filter: arg_filter,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
-      checkGoogleCloudRecommendationengineV1beta1ListUserEventsResponse(response
-          as api.GoogleCloudRecommendationengineV1beta1ListUserEventsResponse);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudRecommendationengineV1beta1ListUserEventsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        filter: arg_filter,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkGoogleCloudRecommendationengineV1beta1ListUserEventsResponse(
+        response
+            as api.GoogleCloudRecommendationengineV1beta1ListUserEventsResponse,
+      );
     });
 
     unittest.test('method--purge', () async {
       final mock = HttpServerMock();
-      final res = api.RecommendationsAIApi(mock)
-          .projects
-          .locations
-          .catalogs
-          .eventStores
-          .userEvents;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.eventStores.userEvents;
       final arg_request =
           buildGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest
-                .fromJson(json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj =
+              api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest
+                  .fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest(
+            obj,
+          );
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('v1beta1/'),
+          );
+          pathOffset += 8;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleLongrunningOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.purge(arg_request, arg_parent, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleLongrunningOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.purge(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
       checkGoogleLongrunningOperation(
-          response as api.GoogleLongrunningOperation);
+        response as api.GoogleLongrunningOperation,
+      );
     });
 
     unittest.test('method--rejoin', () async {
       final mock = HttpServerMock();
-      final res = api.RecommendationsAIApi(mock)
-          .projects
-          .locations
-          .catalogs
-          .eventStores
-          .userEvents;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.eventStores.userEvents;
       final arg_request =
           buildGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest
-                .fromJson(json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj =
+              api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest
+                  .fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest(
+            obj,
+          );
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('v1beta1/'),
+          );
+          pathOffset += 8;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleLongrunningOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.rejoin(arg_request, arg_parent, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleLongrunningOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.rejoin(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
       checkGoogleLongrunningOperation(
-          response as api.GoogleLongrunningOperation);
+        response as api.GoogleLongrunningOperation,
+      );
     });
 
     unittest.test('method--write', () async {
       final mock = HttpServerMock();
-      final res = api.RecommendationsAIApi(mock)
-          .projects
-          .locations
-          .catalogs
-          .eventStores
-          .userEvents;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.eventStores.userEvents;
       final arg_request =
           buildGoogleCloudRecommendationengineV1beta1UserEvent();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleCloudRecommendationengineV1beta1UserEvent.fromJson(
-                json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudRecommendationengineV1beta1UserEvent(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj =
+              api.GoogleCloudRecommendationengineV1beta1UserEvent.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudRecommendationengineV1beta1UserEvent(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('v1beta1/'),
+          );
+          pathOffset += 8;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildGoogleCloudRecommendationengineV1beta1UserEvent());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.write(arg_request, arg_parent, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudRecommendationengineV1beta1UserEvent(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.write(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudRecommendationengineV1beta1UserEvent(
-          response as api.GoogleCloudRecommendationengineV1beta1UserEvent);
+        response as api.GoogleCloudRecommendationengineV1beta1UserEvent,
+      );
     });
   });
 
@@ -4021,52 +3845,54 @@ void main() {
           api.RecommendationsAIApi(mock).projects.locations.catalogs.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('v1beta1/'),
+          );
+          pathOffset += 8;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleLongrunningOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleLongrunningOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGoogleLongrunningOperation(
-          response as api.GoogleLongrunningOperation);
+        response as api.GoogleLongrunningOperation,
+      );
     });
 
     unittest.test('method--list', () async {
@@ -4078,69 +3904,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1beta1/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('v1beta1/'),
+          );
+          pathOffset += 8;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['filter']!.first,
-          unittest.equals(arg_filter),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildGoogleLongrunningListOperationsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_name,
-          filter: arg_filter,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleLongrunningListOperationsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_name,
+        filter: arg_filter,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
       checkGoogleLongrunningListOperationsResponse(
-          response as api.GoogleLongrunningListOperationsResponse);
+        response as api.GoogleLongrunningListOperationsResponse,
+      );
     });
   });
 }

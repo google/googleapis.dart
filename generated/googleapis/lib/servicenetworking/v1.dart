@@ -65,11 +65,16 @@ class ServiceNetworkingApi {
   OperationsResource get operations => OperationsResource(_requester);
   ServicesResource get services => ServicesResource(_requester);
 
-  ServiceNetworkingApi(http.Client client,
-      {core.String rootUrl = 'https://servicenetworking.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ServiceNetworkingApi(
+    http.Client client, {
+    core.String rootUrl = 'https://servicenetworking.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class OperationsResource {
@@ -147,10 +152,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -185,10 +187,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -250,7 +249,8 @@ class OperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -502,7 +502,8 @@ class ServicesResource {
       queryParams: queryParams_,
     );
     return ValidateConsumerConfigResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -653,7 +654,8 @@ class ServicesConnectionsResource {
       queryParams: queryParams_,
     );
     return ListConnectionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the allocated ranges that are assigned to a connection.
@@ -815,7 +817,8 @@ class ServicesDnsRecordSetsResource {
       queryParams: queryParams_,
     );
     return DnsRecordSet.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Producers can use this method to retrieve a list of available DNS
@@ -867,7 +870,8 @@ class ServicesDnsRecordSetsResource {
       queryParams: queryParams_,
     );
     return ListDnsRecordSetsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Service producers can use this method to remove DNS record sets from
@@ -1134,7 +1138,8 @@ class ServicesProjectsGlobalNetworksResource {
       queryParams: queryParams_,
     );
     return ConsumerConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Consumers use this method to find out the state of VPC Service Controls.
@@ -1180,7 +1185,8 @@ class ServicesProjectsGlobalNetworksResource {
       queryParams: queryParams_,
     );
     return VpcServiceControls.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Service producers use this method to update the configuration of their
@@ -1283,7 +1289,8 @@ class ServicesProjectsGlobalNetworksDnsZonesResource {
       queryParams: queryParams_,
     );
     return GetDnsZoneResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// * Service producers can use this method to retrieve a list of available
@@ -1331,7 +1338,8 @@ class ServicesProjectsGlobalNetworksDnsZonesResource {
       queryParams: queryParams_,
     );
     return ListDnsZonesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1339,8 +1347,8 @@ class ServicesProjectsGlobalNetworksPeeredDnsDomainsResource {
   final commons.ApiRequester _requester;
 
   ServicesProjectsGlobalNetworksPeeredDnsDomainsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates a peered DNS domain which sends requests for records in given
   /// namespace originating in the service producer VPC network to the consumer
@@ -1478,7 +1486,8 @@ class ServicesProjectsGlobalNetworksPeeredDnsDomainsResource {
       queryParams: queryParams_,
     );
     return ListPeeredDnsDomainsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1558,18 +1567,15 @@ class AddDnsRecordSetRequest {
   /// Required.
   core.String? zone;
 
-  AddDnsRecordSetRequest({
-    this.consumerNetwork,
-    this.dnsRecordSet,
-    this.zone,
-  });
+  AddDnsRecordSetRequest({this.consumerNetwork, this.dnsRecordSet, this.zone});
 
   AddDnsRecordSetRequest.fromJson(core.Map json_)
       : this(
           consumerNetwork: json_['consumerNetwork'] as core.String?,
           dnsRecordSet: json_.containsKey('dnsRecordSet')
               ? DnsRecordSet.fromJson(
-                  json_['dnsRecordSet'] as core.Map<core.String, core.dynamic>)
+                  json_['dnsRecordSet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           zone: json_['zone'] as core.String?,
         );
@@ -1610,11 +1616,7 @@ class AddDnsZoneRequest {
   /// Required.
   core.String? name;
 
-  AddDnsZoneRequest({
-    this.consumerNetwork,
-    this.dnsSuffix,
-    this.name,
-  });
+  AddDnsZoneRequest({this.consumerNetwork, this.dnsSuffix, this.name});
 
   AddDnsZoneRequest.fromJson(core.Map json_)
       : this(
@@ -1646,17 +1648,17 @@ class AddRolesRequest {
   /// Required.
   core.List<PolicyBinding>? policyBinding;
 
-  AddRolesRequest({
-    this.consumerNetwork,
-    this.policyBinding,
-  });
+  AddRolesRequest({this.consumerNetwork, this.policyBinding});
 
   AddRolesRequest.fromJson(core.Map json_)
       : this(
           consumerNetwork: json_['consumerNetwork'] as core.String?,
           policyBinding: (json_['policyBinding'] as core.List?)
-              ?.map((value) => PolicyBinding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PolicyBinding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1895,8 +1897,11 @@ class AddSubnetworkRequest {
               .toList(),
           role: json_['role'] as core.String?,
           secondaryIpRangeSpecs: (json_['secondaryIpRangeSpecs'] as core.List?)
-              ?.map((value) => SecondaryIpRangeSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => SecondaryIpRangeSpec.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           skipRequestedAddressValidation:
               json_['skipRequestedAddressValidation'] as core.bool?,
@@ -1956,11 +1961,7 @@ class CloudSQLConfig {
   /// The project number of the Cloud SQL umbrella project.
   core.String? umbrellaProject;
 
-  CloudSQLConfig({
-    this.service,
-    this.umbrellaNetwork,
-    this.umbrellaProject,
-  });
+  CloudSQLConfig({this.service, this.umbrellaNetwork, this.umbrellaProject});
 
   CloudSQLConfig.fromJson(core.Map json_)
       : this(
@@ -2119,8 +2120,11 @@ class ConsumerConfig {
   ConsumerConfig.fromJson(core.Map json_)
       : this(
           cloudsqlConfigs: (json_['cloudsqlConfigs'] as core.List?)
-              ?.map((value) => CloudSQLConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CloudSQLConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           consumerExportCustomRoutes:
               json_['consumerExportCustomRoutes'] as core.bool?,
@@ -2140,9 +2144,13 @@ class ConsumerConfig {
               json_['producerImportSubnetRoutesWithPublicIp'] as core.bool?,
           producerNetwork: json_['producerNetwork'] as core.String?,
           reservedRanges: (json_['reservedRanges'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudServicenetworkingV1ConsumerConfigReservedRange
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudServicenetworkingV1ConsumerConfigReservedRange
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           usedIpRanges: (json_['usedIpRanges'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2192,14 +2200,10 @@ class ConsumerProject {
   /// Required.
   core.String? projectNum;
 
-  ConsumerProject({
-    this.projectNum,
-  });
+  ConsumerProject({this.projectNum});
 
   ConsumerProject.fromJson(core.Map json_)
-      : this(
-          projectNum: json_['projectNum'] as core.String?,
-        );
+      : this(projectNum: json_['projectNum'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (projectNum != null) 'projectNum': projectNum!,
@@ -2219,14 +2223,10 @@ class DeleteConnectionRequest {
   /// Required.
   core.String? consumerNetwork;
 
-  DeleteConnectionRequest({
-    this.consumerNetwork,
-  });
+  DeleteConnectionRequest({this.consumerNetwork});
 
   DeleteConnectionRequest.fromJson(core.Map json_)
-      : this(
-          consumerNetwork: json_['consumerNetwork'] as core.String?,
-        );
+      : this(consumerNetwork: json_['consumerNetwork'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
@@ -2261,12 +2261,7 @@ class DnsRecordSet {
   /// Required.
   core.String? type;
 
-  DnsRecordSet({
-    this.data,
-    this.domain,
-    this.ttl,
-    this.type,
-  });
+  DnsRecordSet({this.data, this.domain, this.ttl, this.type});
 
   DnsRecordSet.fromJson(core.Map json_)
       : this(
@@ -2300,10 +2295,7 @@ class DnsZone {
   /// lowercase letters, digits or dashes.
   core.String? name;
 
-  DnsZone({
-    this.dnsSuffix,
-    this.name,
-  });
+  DnsZone({this.dnsSuffix, this.name});
 
   DnsZone.fromJson(core.Map json_)
       : this(
@@ -2327,20 +2319,21 @@ class DnsZonePair {
   /// The private DNS zone in the shared producer host project.
   DnsZone? producerPrivateZone;
 
-  DnsZonePair({
-    this.consumerPeeringZone,
-    this.producerPrivateZone,
-  });
+  DnsZonePair({this.consumerPeeringZone, this.producerPrivateZone});
 
   DnsZonePair.fromJson(core.Map json_)
       : this(
           consumerPeeringZone: json_.containsKey('consumerPeeringZone')
-              ? DnsZone.fromJson(json_['consumerPeeringZone']
-                  as core.Map<core.String, core.dynamic>)
+              ? DnsZone.fromJson(
+                  json_['consumerPeeringZone']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           producerPrivateZone: json_.containsKey('producerPrivateZone')
-              ? DnsZone.fromJson(json_['producerPrivateZone']
-                  as core.Map<core.String, core.dynamic>)
+              ? DnsZone.fromJson(
+                  json_['producerPrivateZone']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2372,20 +2365,21 @@ class GetDnsZoneResponse {
   /// The private DNS zone created in the shared producer host project.
   DnsZone? producerPrivateZone;
 
-  GetDnsZoneResponse({
-    this.consumerPeeringZone,
-    this.producerPrivateZone,
-  });
+  GetDnsZoneResponse({this.consumerPeeringZone, this.producerPrivateZone});
 
   GetDnsZoneResponse.fromJson(core.Map json_)
       : this(
           consumerPeeringZone: json_.containsKey('consumerPeeringZone')
-              ? DnsZone.fromJson(json_['consumerPeeringZone']
-                  as core.Map<core.String, core.dynamic>)
+              ? DnsZone.fromJson(
+                  json_['consumerPeeringZone']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           producerPrivateZone: json_.containsKey('producerPrivateZone')
-              ? DnsZone.fromJson(json_['producerPrivateZone']
-                  as core.Map<core.String, core.dynamic>)
+              ? DnsZone.fromJson(
+                  json_['producerPrivateZone']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2419,8 +2413,8 @@ class GoogleCloudServicenetworkingV1ConsumerConfigReservedRange {
   });
 
   GoogleCloudServicenetworkingV1ConsumerConfigReservedRange.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           address: json_['address'] as core.String?,
           ipPrefixLength: json_['ipPrefixLength'] as core.int?,
           name: json_['name'] as core.String?,
@@ -2439,15 +2433,16 @@ class ListConnectionsResponse {
   /// The list of Connections.
   core.List<Connection>? connections;
 
-  ListConnectionsResponse({
-    this.connections,
-  });
+  ListConnectionsResponse({this.connections});
 
   ListConnectionsResponse.fromJson(core.Map json_)
       : this(
           connections: (json_['connections'] as core.List?)
-              ?.map((value) => Connection.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Connection.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2461,15 +2456,16 @@ class ListDnsRecordSetsResponse {
   /// DNS record Set Resource
   core.List<DnsRecordSet>? dnsRecordSets;
 
-  ListDnsRecordSetsResponse({
-    this.dnsRecordSets,
-  });
+  ListDnsRecordSetsResponse({this.dnsRecordSets});
 
   ListDnsRecordSetsResponse.fromJson(core.Map json_)
       : this(
           dnsRecordSets: (json_['dnsRecordSets'] as core.List?)
-              ?.map((value) => DnsRecordSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DnsRecordSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2485,15 +2481,16 @@ class ListDnsZonesResponse {
   /// matching peering zones in the consumer project..
   core.List<DnsZonePair>? dnsZonePairs;
 
-  ListDnsZonesResponse({
-    this.dnsZonePairs,
-  });
+  ListDnsZonesResponse({this.dnsZonePairs});
 
   ListDnsZonesResponse.fromJson(core.Map json_)
       : this(
           dnsZonePairs: (json_['dnsZonePairs'] as core.List?)
-              ?.map((value) => DnsZonePair.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DnsZonePair.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2510,17 +2507,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2535,15 +2532,16 @@ class ListPeeredDnsDomainsResponse {
   /// The list of peered DNS domains.
   core.List<PeeredDnsDomain>? peeredDnsDomains;
 
-  ListPeeredDnsDomainsResponse({
-    this.peeredDnsDomains,
-  });
+  ListPeeredDnsDomainsResponse({this.peeredDnsDomains});
 
   ListPeeredDnsDomainsResponse.fromJson(core.Map json_)
       : this(
           peeredDnsDomains: (json_['peeredDnsDomains'] as core.List?)
-              ?.map((value) => PeeredDnsDomain.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PeeredDnsDomain.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2595,20 +2593,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -2643,10 +2636,7 @@ class PeeredDnsDomain {
   /// only contain lowercase letters, digits or dashes.
   core.String? name;
 
-  PeeredDnsDomain({
-    this.dnsSuffix,
-    this.name,
-  });
+  PeeredDnsDomain({this.dnsSuffix, this.name});
 
   PeeredDnsDomain.fromJson(core.Map json_)
       : this(
@@ -2687,10 +2677,7 @@ class PolicyBinding {
   /// Required.
   core.String? role;
 
-  PolicyBinding({
-    this.member,
-    this.role,
-  });
+  PolicyBinding({this.member, this.role});
 
   PolicyBinding.fromJson(core.Map json_)
       : this(
@@ -2764,8 +2751,11 @@ class RangeReservation {
                   ?.map((value) => value as core.int)
                   .toList(),
           subnetworkCandidates: (json_['subnetworkCandidates'] as core.List?)
-              ?.map((value) => Subnetwork.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Subnetwork.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2816,7 +2806,8 @@ class RemoveDnsRecordSetRequest {
           consumerNetwork: json_['consumerNetwork'] as core.String?,
           dnsRecordSet: json_.containsKey('dnsRecordSet')
               ? DnsRecordSet.fromJson(
-                  json_['dnsRecordSet'] as core.Map<core.String, core.dynamic>)
+                  json_['dnsRecordSet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           zone: json_['zone'] as core.String?,
         );
@@ -2846,10 +2837,7 @@ class RemoveDnsZoneRequest {
   /// Required.
   core.String? name;
 
-  RemoveDnsZoneRequest({
-    this.consumerNetwork,
-    this.name,
-  });
+  RemoveDnsZoneRequest({this.consumerNetwork, this.name});
 
   RemoveDnsZoneRequest.fromJson(core.Map json_)
       : this(
@@ -2882,10 +2870,7 @@ class SearchRangeRequest {
   /// number, as in '12345' {network} is network name.
   core.String? network;
 
-  SearchRangeRequest({
-    this.ipPrefixLength,
-    this.network,
-  });
+  SearchRangeRequest({this.ipPrefixLength, this.network});
 
   SearchRangeRequest.fromJson(core.Map json_)
       : this(
@@ -2906,10 +2891,7 @@ class SecondaryIpRange {
   /// Name of the secondary IP range.
   core.String? rangeName;
 
-  SecondaryIpRange({
-    this.ipCidrRange,
-    this.rangeName,
-  });
+  SecondaryIpRange({this.ipCidrRange, this.rangeName});
 
   SecondaryIpRange.fromJson(core.Map json_)
       : this(
@@ -3037,8 +3019,11 @@ class Subnetwork {
           outsideAllocation: json_['outsideAllocation'] as core.bool?,
           region: json_['region'] as core.String?,
           secondaryIpRanges: (json_['secondaryIpRanges'] as core.List?)
-              ?.map((value) => SecondaryIpRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => SecondaryIpRange.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3061,15 +3046,15 @@ class UpdateConsumerConfigRequest {
   /// Required.
   ConsumerConfig? consumerConfig;
 
-  UpdateConsumerConfigRequest({
-    this.consumerConfig,
-  });
+  UpdateConsumerConfigRequest({this.consumerConfig});
 
   UpdateConsumerConfigRequest.fromJson(core.Map json_)
       : this(
           consumerConfig: json_.containsKey('consumerConfig')
-              ? ConsumerConfig.fromJson(json_['consumerConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? ConsumerConfig.fromJson(
+                  json_['consumerConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3120,12 +3105,16 @@ class UpdateDnsRecordSetRequest {
       : this(
           consumerNetwork: json_['consumerNetwork'] as core.String?,
           existingDnsRecordSet: json_.containsKey('existingDnsRecordSet')
-              ? DnsRecordSet.fromJson(json_['existingDnsRecordSet']
-                  as core.Map<core.String, core.dynamic>)
+              ? DnsRecordSet.fromJson(
+                  json_['existingDnsRecordSet']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           newDnsRecordSet: json_.containsKey('newDnsRecordSet')
-              ? DnsRecordSet.fromJson(json_['newDnsRecordSet']
-                  as core.Map<core.String, core.dynamic>)
+              ? DnsRecordSet.fromJson(
+                  json_['newDnsRecordSet']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           zone: json_['zone'] as core.String?,
         );
@@ -3186,12 +3175,16 @@ class ValidateConsumerConfigRequest {
               json_['checkServiceNetworkingUsePermission'] as core.bool?,
           consumerNetwork: json_['consumerNetwork'] as core.String?,
           consumerProject: json_.containsKey('consumerProject')
-              ? ConsumerProject.fromJson(json_['consumerProject']
-                  as core.Map<core.String, core.dynamic>)
+              ? ConsumerProject.fromJson(
+                  json_['consumerProject']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           rangeReservation: json_.containsKey('rangeReservation')
-              ? RangeReservation.fromJson(json_['rangeReservation']
-                  as core.Map<core.String, core.dynamic>)
+              ? RangeReservation.fromJson(
+                  json_['rangeReservation']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           validateNetwork: json_['validateNetwork'] as core.bool?,
         );
@@ -3256,8 +3249,11 @@ class ValidateConsumerConfigResponse {
       : this(
           existingSubnetworkCandidates:
               (json_['existingSubnetworkCandidates'] as core.List?)
-                  ?.map((value) => Subnetwork.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => Subnetwork.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           isValid: json_['isValid'] as core.bool?,
           validationError: json_['validationError'] as core.String?,
@@ -3283,14 +3279,10 @@ class VpcServiceControls {
   /// Output only.
   core.bool? enabled;
 
-  VpcServiceControls({
-    this.enabled,
-  });
+  VpcServiceControls({this.enabled});
 
   VpcServiceControls.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,

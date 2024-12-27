@@ -115,11 +115,16 @@ class ScriptApi {
   ProjectsResource get projects => ProjectsResource(_requester);
   ScriptsResource get scripts => ScriptsResource(_requester);
 
-  ScriptApi(http.Client client,
-      {core.String rootUrl = 'https://script.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ScriptApi(
+    http.Client client, {
+    core.String rootUrl = 'https://script.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProcessesResource {
@@ -227,7 +232,8 @@ class ProcessesResource {
       queryParams: queryParams_,
     );
     return ListUserProcessesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List information about a script's executed processes, such as process type
@@ -321,7 +327,8 @@ class ProcessesResource {
       queryParams: queryParams_,
     );
     return ListScriptProcessesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -589,7 +596,8 @@ class ProjectsDeploymentsResource {
       queryParams: queryParams_,
     );
     return Deployment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a deployment of an Apps Script project.
@@ -670,7 +678,8 @@ class ProjectsDeploymentsResource {
       queryParams: queryParams_,
     );
     return Deployment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the deployments of an Apps Script project.
@@ -717,7 +726,8 @@ class ProjectsDeploymentsResource {
       queryParams: queryParams_,
     );
     return ListDeploymentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a deployment of an Apps Script project.
@@ -763,7 +773,8 @@ class ProjectsDeploymentsResource {
       queryParams: queryParams_,
     );
     return Deployment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -897,7 +908,8 @@ class ProjectsVersionsResource {
       queryParams: queryParams_,
     );
     return ListVersionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -974,16 +986,16 @@ class Content {
   /// The script project's Drive ID.
   core.String? scriptId;
 
-  Content({
-    this.files,
-    this.scriptId,
-  });
+  Content({this.files, this.scriptId});
 
   Content.fromJson(core.Map json_)
       : this(
           files: (json_['files'] as core.List?)
-              ?.map((value) =>
-                  File.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => File.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           scriptId: json_['scriptId'] as core.String?,
         );
@@ -1007,10 +1019,7 @@ class CreateProjectRequest {
   /// The title for the project.
   core.String? title;
 
-  CreateProjectRequest({
-    this.parentId,
-    this.title,
-  });
+  CreateProjectRequest({this.parentId, this.title});
 
   CreateProjectRequest.fromJson(core.Map json_)
       : this(
@@ -1048,13 +1057,18 @@ class Deployment {
   Deployment.fromJson(core.Map json_)
       : this(
           deploymentConfig: json_.containsKey('deploymentConfig')
-              ? DeploymentConfig.fromJson(json_['deploymentConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? DeploymentConfig.fromJson(
+                  json_['deploymentConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           deploymentId: json_['deploymentId'] as core.String?,
           entryPoints: (json_['entryPoints'] as core.List?)
-              ?.map((value) => EntryPoint.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => EntryPoint.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -1131,27 +1145,25 @@ class EntryPoint {
   /// An entry point specification for web apps.
   GoogleAppsScriptTypeWebAppEntryPoint? webApp;
 
-  EntryPoint({
-    this.addOn,
-    this.entryPointType,
-    this.executionApi,
-    this.webApp,
-  });
+  EntryPoint({this.addOn, this.entryPointType, this.executionApi, this.webApp});
 
   EntryPoint.fromJson(core.Map json_)
       : this(
           addOn: json_.containsKey('addOn')
               ? GoogleAppsScriptTypeAddOnEntryPoint.fromJson(
-                  json_['addOn'] as core.Map<core.String, core.dynamic>)
+                  json_['addOn'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           entryPointType: json_['entryPointType'] as core.String?,
           executionApi: json_.containsKey('executionApi')
               ? GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(
-                  json_['executionApi'] as core.Map<core.String, core.dynamic>)
+                  json_['executionApi'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           webApp: json_.containsKey('webApp')
               ? GoogleAppsScriptTypeWebAppEntryPoint.fromJson(
-                  json_['webApp'] as core.Map<core.String, core.dynamic>)
+                  json_['webApp'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1294,11 +1306,14 @@ class File {
           createTime: json_['createTime'] as core.String?,
           functionSet: json_.containsKey('functionSet')
               ? GoogleAppsScriptTypeFunctionSet.fromJson(
-                  json_['functionSet'] as core.Map<core.String, core.dynamic>)
+                  json_['functionSet'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           lastModifyUser: json_.containsKey('lastModifyUser')
-              ? GoogleAppsScriptTypeUser.fromJson(json_['lastModifyUser']
-                  as core.Map<core.String, core.dynamic>)
+              ? GoogleAppsScriptTypeUser.fromJson(
+                  json_['lastModifyUser']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           source: json_['source'] as core.String?,
@@ -1385,14 +1400,10 @@ class GoogleAppsScriptTypeExecutionApiConfig {
   /// or executable.
   core.String? access;
 
-  GoogleAppsScriptTypeExecutionApiConfig({
-    this.access,
-  });
+  GoogleAppsScriptTypeExecutionApiConfig({this.access});
 
   GoogleAppsScriptTypeExecutionApiConfig.fromJson(core.Map json_)
-      : this(
-          access: json_['access'] as core.String?,
-        );
+      : this(access: json_['access'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
@@ -1404,16 +1415,15 @@ class GoogleAppsScriptTypeExecutionApiEntryPoint {
   /// The entry point's configuration.
   GoogleAppsScriptTypeExecutionApiConfig? entryPointConfig;
 
-  GoogleAppsScriptTypeExecutionApiEntryPoint({
-    this.entryPointConfig,
-  });
+  GoogleAppsScriptTypeExecutionApiEntryPoint({this.entryPointConfig});
 
   GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(core.Map json_)
       : this(
           entryPointConfig: json_.containsKey('entryPointConfig')
               ? GoogleAppsScriptTypeExecutionApiConfig.fromJson(
                   json_['entryPointConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1430,10 +1440,7 @@ class GoogleAppsScriptTypeFunction {
   /// The ordered list of parameter names of the function in the script project.
   core.List<core.String>? parameters;
 
-  GoogleAppsScriptTypeFunction({
-    this.name,
-    this.parameters,
-  });
+  GoogleAppsScriptTypeFunction({this.name, this.parameters});
 
   GoogleAppsScriptTypeFunction.fromJson(core.Map json_)
       : this(
@@ -1456,15 +1463,16 @@ class GoogleAppsScriptTypeFunctionSet {
   /// A list of functions composing the set.
   core.List<GoogleAppsScriptTypeFunction>? values;
 
-  GoogleAppsScriptTypeFunctionSet({
-    this.values,
-  });
+  GoogleAppsScriptTypeFunctionSet({this.values});
 
   GoogleAppsScriptTypeFunctionSet.fromJson(core.Map json_)
       : this(
           values: (json_['values'] as core.List?)
-              ?.map((value) => GoogleAppsScriptTypeFunction.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleAppsScriptTypeFunction.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1585,12 +1593,7 @@ class GoogleAppsScriptTypeUser {
   /// The user's photo.
   core.String? photoUrl;
 
-  GoogleAppsScriptTypeUser({
-    this.domain,
-    this.email,
-    this.name,
-    this.photoUrl,
-  });
+  GoogleAppsScriptTypeUser({this.domain, this.email, this.name, this.photoUrl});
 
   GoogleAppsScriptTypeUser.fromJson(core.Map json_)
       : this(
@@ -1631,10 +1634,7 @@ class GoogleAppsScriptTypeWebAppConfig {
   /// Note that this is not necessarily the owner of the script project.
   core.String? executeAs;
 
-  GoogleAppsScriptTypeWebAppConfig({
-    this.access,
-    this.executeAs,
-  });
+  GoogleAppsScriptTypeWebAppConfig({this.access, this.executeAs});
 
   GoogleAppsScriptTypeWebAppConfig.fromJson(core.Map json_)
       : this(
@@ -1656,17 +1656,15 @@ class GoogleAppsScriptTypeWebAppEntryPoint {
   /// The URL for the web application.
   core.String? url;
 
-  GoogleAppsScriptTypeWebAppEntryPoint({
-    this.entryPointConfig,
-    this.url,
-  });
+  GoogleAppsScriptTypeWebAppEntryPoint({this.entryPointConfig, this.url});
 
   GoogleAppsScriptTypeWebAppEntryPoint.fromJson(core.Map json_)
       : this(
           entryPointConfig: json_.containsKey('entryPointConfig')
               ? GoogleAppsScriptTypeWebAppConfig.fromJson(
                   json_['entryPointConfig']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           url: json_['url'] as core.String?,
         );
@@ -1686,16 +1684,16 @@ class ListDeploymentsResponse {
   /// results.
   core.String? nextPageToken;
 
-  ListDeploymentsResponse({
-    this.deployments,
-    this.nextPageToken,
-  });
+  ListDeploymentsResponse({this.deployments, this.nextPageToken});
 
   ListDeploymentsResponse.fromJson(core.Map json_)
       : this(
           deployments: (json_['deployments'] as core.List?)
-              ?.map((value) => Deployment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Deployment.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1716,17 +1714,17 @@ class ListScriptProcessesResponse {
   /// List of processes matching request parameters.
   core.List<GoogleAppsScriptTypeProcess>? processes;
 
-  ListScriptProcessesResponse({
-    this.nextPageToken,
-    this.processes,
-  });
+  ListScriptProcessesResponse({this.nextPageToken, this.processes});
 
   ListScriptProcessesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           processes: (json_['processes'] as core.List?)
-              ?.map((value) => GoogleAppsScriptTypeProcess.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleAppsScriptTypeProcess.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1746,17 +1744,17 @@ class ListUserProcessesResponse {
   /// List of processes matching request parameters.
   core.List<GoogleAppsScriptTypeProcess>? processes;
 
-  ListUserProcessesResponse({
-    this.nextPageToken,
-    this.processes,
-  });
+  ListUserProcessesResponse({this.nextPageToken, this.processes});
 
   ListUserProcessesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           processes: (json_['processes'] as core.List?)
-              ?.map((value) => GoogleAppsScriptTypeProcess.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleAppsScriptTypeProcess.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1776,17 +1774,17 @@ class ListVersionsResponse {
   /// The list of versions.
   core.List<Version>? versions;
 
-  ListVersionsResponse({
-    this.nextPageToken,
-    this.versions,
-  });
+  ListVersionsResponse({this.nextPageToken, this.versions});
 
   ListVersionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           versions: (json_['versions'] as core.List?)
-              ?.map((value) => Version.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Version.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1808,25 +1806,30 @@ class Metrics {
   /// Number of total executions.
   core.List<MetricsValue>? totalExecutions;
 
-  Metrics({
-    this.activeUsers,
-    this.failedExecutions,
-    this.totalExecutions,
-  });
+  Metrics({this.activeUsers, this.failedExecutions, this.totalExecutions});
 
   Metrics.fromJson(core.Map json_)
       : this(
           activeUsers: (json_['activeUsers'] as core.List?)
-              ?.map((value) => MetricsValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MetricsValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           failedExecutions: (json_['failedExecutions'] as core.List?)
-              ?.map((value) => MetricsValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MetricsValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           totalExecutions: (json_['totalExecutions'] as core.List?)
-              ?.map((value) => MetricsValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MetricsValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1848,11 +1851,7 @@ class MetricsValue {
   /// Indicates the number of executions counted.
   core.String? value;
 
-  MetricsValue({
-    this.endTime,
-    this.startTime,
-    this.value,
-  });
+  MetricsValue({this.endTime, this.startTime, this.value});
 
   MetricsValue.fromJson(core.Map json_)
       : this(
@@ -1909,18 +1908,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.response,
-  });
+  Operation({this.done, this.error, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
@@ -1975,11 +1971,14 @@ class Project {
           createTime: json_['createTime'] as core.String?,
           creator: json_.containsKey('creator')
               ? GoogleAppsScriptTypeUser.fromJson(
-                  json_['creator'] as core.Map<core.String, core.dynamic>)
+                  json_['creator'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           lastModifyUser: json_.containsKey('lastModifyUser')
-              ? GoogleAppsScriptTypeUser.fromJson(json_['lastModifyUser']
-                  as core.Map<core.String, core.dynamic>)
+              ? GoogleAppsScriptTypeUser.fromJson(
+                  json_['lastModifyUser']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           parentId: json_['parentId'] as core.String?,
           scriptId: json_['scriptId'] as core.String?,
@@ -2022,11 +2021,7 @@ class Status {
   /// or localized by the client.
   core.String? message;
 
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
+  Status({this.code, this.details, this.message});
 
   Status.fromJson(core.Map json_)
       : this(
@@ -2049,15 +2044,15 @@ class UpdateDeploymentRequest {
   /// The deployment configuration.
   DeploymentConfig? deploymentConfig;
 
-  UpdateDeploymentRequest({
-    this.deploymentConfig,
-  });
+  UpdateDeploymentRequest({this.deploymentConfig});
 
   UpdateDeploymentRequest.fromJson(core.Map json_)
       : this(
           deploymentConfig: json_.containsKey('deploymentConfig')
-              ? DeploymentConfig.fromJson(json_['deploymentConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? DeploymentConfig.fromJson(
+                  json_['deploymentConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 

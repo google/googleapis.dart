@@ -63,11 +63,16 @@ class SearchConsoleApi {
   UrlTestingToolsResource get urlTestingTools =>
       UrlTestingToolsResource(_requester);
 
-  SearchConsoleApi(http.Client client,
-      {core.String rootUrl = 'https://searchconsole.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  SearchConsoleApi(
+    http.Client client, {
+    core.String rootUrl = 'https://searchconsole.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class SearchanalyticsResource {
@@ -121,7 +126,8 @@ class SearchanalyticsResource {
       queryParams: queryParams_,
     );
     return SearchAnalyticsQueryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -213,7 +219,8 @@ class SitemapsResource {
       queryParams: queryParams_,
     );
     return WmxSitemap.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the \[sitemaps-entries\](/webmaster-tools/v3/sitemaps) submitted for
@@ -258,7 +265,8 @@ class SitemapsResource {
       queryParams: queryParams_,
     );
     return SitemapsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Submits a sitemap for a site.
@@ -321,10 +329,7 @@ class SitesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> add(
-    core.String siteUrl, {
-    core.String? $fields,
-  }) async {
+  async.Future<void> add(core.String siteUrl, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -354,10 +359,7 @@ class SitesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> delete(
-    core.String siteUrl, {
-    core.String? $fields,
-  }) async {
+  async.Future<void> delete(core.String siteUrl, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -389,10 +391,7 @@ class SitesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<WmxSite> get(
-    core.String siteUrl, {
-    core.String? $fields,
-  }) async {
+  async.Future<WmxSite> get(core.String siteUrl, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -421,9 +420,7 @@ class SitesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SitesListResponse> list({
-    core.String? $fields,
-  }) async {
+  async.Future<SitesListResponse> list({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -436,7 +433,8 @@ class SitesResource {
       queryParams: queryParams_,
     );
     return SitesListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -488,7 +486,8 @@ class UrlInspectionIndexResource {
       queryParams: queryParams_,
     );
     return InspectUrlIndexResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -541,7 +540,8 @@ class UrlTestingToolsMobileFriendlyTestResource {
       queryParams: queryParams_,
     );
     return RunMobileFriendlyTestResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -638,8 +638,11 @@ class AmpInspectionResult {
           ampUrl: json_['ampUrl'] as core.String?,
           indexingState: json_['indexingState'] as core.String?,
           issues: (json_['issues'] as core.List?)
-              ?.map((value) => AmpIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AmpIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           lastCrawlTime: json_['lastCrawlTime'] as core.String?,
           pageFetchState: json_['pageFetchState'] as core.String?,
@@ -672,10 +675,7 @@ class AmpIssue {
   /// - "ERROR" : Error.
   core.String? severity;
 
-  AmpIssue({
-    this.issueMessage,
-    this.severity,
-  });
+  AmpIssue({this.issueMessage, this.severity});
 
   AmpIssue.fromJson(core.Map json_)
       : this(
@@ -752,11 +752,7 @@ class ApiDimensionFilter {
   /// - "EXCLUDING_REGEX"
   core.String? operator;
 
-  ApiDimensionFilter({
-    this.dimension,
-    this.expression,
-    this.operator,
-  });
+  ApiDimensionFilter({this.dimension, this.expression, this.operator});
 
   ApiDimensionFilter.fromJson(core.Map json_)
       : this(
@@ -785,16 +781,16 @@ class ApiDimensionFilterGroup {
   /// - "AND"
   core.String? groupType;
 
-  ApiDimensionFilterGroup({
-    this.filters,
-    this.groupType,
-  });
+  ApiDimensionFilterGroup({this.filters, this.groupType});
 
   ApiDimensionFilterGroup.fromJson(core.Map json_)
       : this(
           filters: (json_['filters'] as core.List?)
-              ?.map((value) => ApiDimensionFilter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ApiDimensionFilter.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           groupType: json_['groupType'] as core.String?,
         );
@@ -810,14 +806,10 @@ class BlockedResource {
   /// URL of the blocked resource.
   core.String? url;
 
-  BlockedResource({
-    this.url,
-  });
+  BlockedResource({this.url});
 
   BlockedResource.fromJson(core.Map json_)
-      : this(
-          url: json_['url'] as core.String?,
-        );
+      : this(url: json_['url'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
@@ -832,16 +824,16 @@ class DetectedItems {
   /// Rich Results type
   core.String? richResultType;
 
-  DetectedItems({
-    this.items,
-    this.richResultType,
-  });
+  DetectedItems({this.items, this.richResultType});
 
   DetectedItems.fromJson(core.Map json_)
       : this(
           items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  Item.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Item.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           richResultType: json_['richResultType'] as core.String?,
         );
@@ -869,10 +861,7 @@ class Image {
   /// The mime-type of the image data.
   core.String? mimeType;
 
-  Image({
-    this.data,
-    this.mimeType,
-  });
+  Image({this.data, this.mimeType});
 
   Image.fromJson(core.Map json_)
       : this(
@@ -1057,11 +1046,7 @@ class InspectUrlIndexRequest {
   /// Required.
   core.String? siteUrl;
 
-  InspectUrlIndexRequest({
-    this.inspectionUrl,
-    this.languageCode,
-    this.siteUrl,
-  });
+  InspectUrlIndexRequest({this.inspectionUrl, this.languageCode, this.siteUrl});
 
   InspectUrlIndexRequest.fromJson(core.Map json_)
       : this(
@@ -1082,15 +1067,15 @@ class InspectUrlIndexResponse {
   /// URL inspection results.
   UrlInspectionResult? inspectionResult;
 
-  InspectUrlIndexResponse({
-    this.inspectionResult,
-  });
+  InspectUrlIndexResponse({this.inspectionResult});
 
   InspectUrlIndexResponse.fromJson(core.Map json_)
       : this(
           inspectionResult: json_.containsKey('inspectionResult')
-              ? UrlInspectionResult.fromJson(json_['inspectionResult']
-                  as core.Map<core.String, core.dynamic>)
+              ? UrlInspectionResult.fromJson(
+                  json_['inspectionResult']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1107,16 +1092,16 @@ class Item {
   /// The user-provided name of this item.
   core.String? name;
 
-  Item({
-    this.issues,
-    this.name,
-  });
+  Item({this.issues, this.name});
 
   Item.fromJson(core.Map json_)
       : this(
           issues: (json_['issues'] as core.List?)
-              ?.map((value) => RichResultsIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RichResultsIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           name: json_['name'] as core.String?,
         );
@@ -1150,14 +1135,10 @@ class MobileFriendlyIssue {
   /// [Learn more](https://support.google.com/webmasters/answer/6352293#touch_elements_too_close).
   core.String? rule;
 
-  MobileFriendlyIssue({
-    this.rule,
-  });
+  MobileFriendlyIssue({this.rule});
 
   MobileFriendlyIssue.fromJson(core.Map json_)
-      : this(
-          rule: json_['rule'] as core.String?,
-        );
+      : this(rule: json_['rule'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rule != null) 'rule': rule!,
@@ -1180,16 +1161,16 @@ class MobileUsabilityInspectionResult {
   /// Console.
   core.String? verdict;
 
-  MobileUsabilityInspectionResult({
-    this.issues,
-    this.verdict,
-  });
+  MobileUsabilityInspectionResult({this.issues, this.verdict});
 
   MobileUsabilityInspectionResult.fromJson(core.Map json_)
       : this(
           issues: (json_['issues'] as core.List?)
-              ?.map((value) => MobileUsabilityIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MobileUsabilityIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           verdict: json_['verdict'] as core.String?,
         );
@@ -1233,11 +1214,7 @@ class MobileUsabilityIssue {
   /// - "ERROR" : Error.
   core.String? severity;
 
-  MobileUsabilityIssue({
-    this.issueType,
-    this.message,
-    this.severity,
-  });
+  MobileUsabilityIssue({this.issueType, this.message, this.severity});
 
   MobileUsabilityIssue.fromJson(core.Map json_)
       : this(
@@ -1258,15 +1235,15 @@ class ResourceIssue {
   /// Describes a blocked resource issue.
   BlockedResource? blockedResource;
 
-  ResourceIssue({
-    this.blockedResource,
-  });
+  ResourceIssue({this.blockedResource});
 
   ResourceIssue.fromJson(core.Map json_)
       : this(
           blockedResource: json_.containsKey('blockedResource')
-              ? BlockedResource.fromJson(json_['blockedResource']
-                  as core.Map<core.String, core.dynamic>)
+              ? BlockedResource.fromJson(
+                  json_['blockedResource']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1295,16 +1272,16 @@ class RichResultsInspectionResult {
   /// Console.
   core.String? verdict;
 
-  RichResultsInspectionResult({
-    this.detectedItems,
-    this.verdict,
-  });
+  RichResultsInspectionResult({this.detectedItems, this.verdict});
 
   RichResultsInspectionResult.fromJson(core.Map json_)
       : this(
           detectedItems: (json_['detectedItems'] as core.List?)
-              ?.map((value) => DetectedItems.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DetectedItems.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           verdict: json_['verdict'] as core.String?,
         );
@@ -1331,10 +1308,7 @@ class RichResultsIssue {
   /// - "ERROR" : Error.
   core.String? severity;
 
-  RichResultsIssue({
-    this.issueMessage,
-    this.severity,
-  });
+  RichResultsIssue({this.issueMessage, this.severity});
 
   RichResultsIssue.fromJson(core.Map json_)
       : this(
@@ -1358,10 +1332,7 @@ class RunMobileFriendlyTestRequest {
   /// URL for inspection.
   core.String? url;
 
-  RunMobileFriendlyTestRequest({
-    this.requestScreenshot,
-    this.url,
-  });
+  RunMobileFriendlyTestRequest({this.requestScreenshot, this.url});
 
   RunMobileFriendlyTestRequest.fromJson(core.Map json_)
       : this(
@@ -1410,20 +1381,28 @@ class RunMobileFriendlyTestResponse {
       : this(
           mobileFriendliness: json_['mobileFriendliness'] as core.String?,
           mobileFriendlyIssues: (json_['mobileFriendlyIssues'] as core.List?)
-              ?.map((value) => MobileFriendlyIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MobileFriendlyIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           resourceIssues: (json_['resourceIssues'] as core.List?)
-              ?.map((value) => ResourceIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ResourceIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           screenshot: json_.containsKey('screenshot')
               ? Image.fromJson(
-                  json_['screenshot'] as core.Map<core.String, core.dynamic>)
+                  json_['screenshot'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           testStatus: json_.containsKey('testStatus')
               ? TestStatus.fromJson(
-                  json_['testStatus'] as core.Map<core.String, core.dynamic>)
+                  json_['testStatus'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1552,8 +1531,11 @@ class SearchAnalyticsQueryRequest {
           aggregationType: json_['aggregationType'] as core.String?,
           dataState: json_['dataState'] as core.String?,
           dimensionFilterGroups: (json_['dimensionFilterGroups'] as core.List?)
-              ?.map((value) => ApiDimensionFilterGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ApiDimensionFilterGroup.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           dimensions: (json_['dimensions'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1597,18 +1579,18 @@ class SearchAnalyticsQueryResponse {
   /// A list of rows grouped by the key values in the order given in the query.
   core.List<ApiDataRow>? rows;
 
-  SearchAnalyticsQueryResponse({
-    this.responseAggregationType,
-    this.rows,
-  });
+  SearchAnalyticsQueryResponse({this.responseAggregationType, this.rows});
 
   SearchAnalyticsQueryResponse.fromJson(core.Map json_)
       : this(
           responseAggregationType:
               json_['responseAggregationType'] as core.String?,
           rows: (json_['rows'] as core.List?)
-              ?.map((value) => ApiDataRow.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ApiDataRow.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1625,15 +1607,16 @@ class SitemapsListResponse {
   /// [sitemap](https://support.google.com/webmasters/answer/156184).
   core.List<WmxSitemap>? sitemap;
 
-  SitemapsListResponse({
-    this.sitemap,
-  });
+  SitemapsListResponse({this.sitemap});
 
   SitemapsListResponse.fromJson(core.Map json_)
       : this(
           sitemap: (json_['sitemap'] as core.List?)
-              ?.map((value) => WmxSitemap.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => WmxSitemap.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1650,15 +1633,16 @@ class SitesListResponse {
   /// [Permissions in Search Console](https://support.google.com/webmasters/answer/2451999).
   core.List<WmxSite>? siteEntry;
 
-  SitesListResponse({
-    this.siteEntry,
-  });
+  SitesListResponse({this.siteEntry});
 
   SitesListResponse.fromJson(core.Map json_)
       : this(
           siteEntry: (json_['siteEntry'] as core.List?)
-              ?.map((value) => WmxSite.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => WmxSite.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1686,10 +1670,7 @@ class TestStatus {
   /// protected.
   core.String? status;
 
-  TestStatus({
-    this.details,
-    this.status,
-  });
+  TestStatus({this.details, this.status});
 
   TestStatus.fromJson(core.Map json_)
       : this(
@@ -1736,21 +1717,27 @@ class UrlInspectionResult {
       : this(
           ampResult: json_.containsKey('ampResult')
               ? AmpInspectionResult.fromJson(
-                  json_['ampResult'] as core.Map<core.String, core.dynamic>)
+                  json_['ampResult'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           indexStatusResult: json_.containsKey('indexStatusResult')
-              ? IndexStatusInspectionResult.fromJson(json_['indexStatusResult']
-                  as core.Map<core.String, core.dynamic>)
+              ? IndexStatusInspectionResult.fromJson(
+                  json_['indexStatusResult']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           inspectionResultLink: json_['inspectionResultLink'] as core.String?,
           mobileUsabilityResult: json_.containsKey('mobileUsabilityResult')
               ? MobileUsabilityInspectionResult.fromJson(
                   json_['mobileUsabilityResult']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           richResultsResult: json_.containsKey('richResultsResult')
-              ? RichResultsInspectionResult.fromJson(json_['richResultsResult']
-                  as core.Map<core.String, core.dynamic>)
+              ? RichResultsInspectionResult.fromJson(
+                  json_['richResultsResult']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1784,10 +1771,7 @@ class WmxSite {
   /// The URL of the site.
   core.String? siteUrl;
 
-  WmxSite({
-    this.permissionLevel,
-    this.siteUrl,
-  });
+  WmxSite({this.permissionLevel, this.siteUrl});
 
   WmxSite.fromJson(core.Map json_)
       : this(
@@ -1865,8 +1849,11 @@ class WmxSitemap {
   WmxSitemap.fromJson(core.Map json_)
       : this(
           contents: (json_['contents'] as core.List?)
-              ?.map((value) => WmxSitemapContent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => WmxSitemapContent.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           errors: json_['errors'] as core.String?,
           isPending: json_['isPending'] as core.bool?,
@@ -1917,11 +1904,7 @@ class WmxSitemapContent {
   /// - "DATA_FEED_ELEMENT" : Unsupported content type.
   core.String? type;
 
-  WmxSitemapContent({
-    this.indexed,
-    this.submitted,
-    this.type,
-  });
+  WmxSitemapContent({this.indexed, this.submitted, this.type});
 
   WmxSitemapContent.fromJson(core.Map json_)
       : this(

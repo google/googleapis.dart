@@ -44,11 +44,16 @@ class CloudSecurityTokenApi {
 
   V1Resource get v1 => V1Resource(_requester);
 
-  CloudSecurityTokenApi(http.Client client,
-      {core.String rootUrl = 'https://sts.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudSecurityTokenApi(
+    http.Client client, {
+    core.String rootUrl = 'https://sts.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class V1Resource {
@@ -97,7 +102,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return GoogleIdentityStsV1ExchangeTokenResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 

@@ -46,11 +46,16 @@ class LibraryagentApi {
 
   ShelvesResource get shelves => ShelvesResource(_requester);
 
-  LibraryagentApi(http.Client client,
-      {core.String rootUrl = 'https://libraryagent.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  LibraryagentApi(
+    http.Client client, {
+    core.String rootUrl = 'https://libraryagent.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ShelvesResource {
@@ -95,7 +100,8 @@ class ShelvesResource {
       queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1Shelf.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists shelves.
@@ -142,7 +148,8 @@ class ShelvesResource {
       queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -188,7 +195,8 @@ class ShelvesBooksResource {
       queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1Book.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a book.
@@ -226,7 +234,8 @@ class ShelvesBooksResource {
       queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1Book.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists books in a shelf.
@@ -277,7 +286,8 @@ class ShelvesBooksResource {
       queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1ListBooksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Return a book to the library.
@@ -317,7 +327,8 @@ class ShelvesBooksResource {
       queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1Book.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -380,8 +391,11 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
   GoogleExampleLibraryagentV1ListBooksResponse.fromJson(core.Map json_)
       : this(
           books: (json_['books'] as core.List?)
-              ?.map((value) => GoogleExampleLibraryagentV1Book.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleExampleLibraryagentV1Book.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -413,8 +427,11 @@ class GoogleExampleLibraryagentV1ListShelvesResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           shelves: (json_['shelves'] as core.List?)
-              ?.map((value) => GoogleExampleLibraryagentV1Shelf.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleExampleLibraryagentV1Shelf.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -437,10 +454,7 @@ class GoogleExampleLibraryagentV1Shelf {
   /// The theme of the shelf
   core.String? theme;
 
-  GoogleExampleLibraryagentV1Shelf({
-    this.name,
-    this.theme,
-  });
+  GoogleExampleLibraryagentV1Shelf({this.name, this.theme});
 
   GoogleExampleLibraryagentV1Shelf.fromJson(core.Map json_)
       : this(

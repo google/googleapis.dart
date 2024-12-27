@@ -50,11 +50,16 @@ class FcmdataApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  FcmdataApi(http.Client client,
-      {core.String rootUrl = 'https://fcmdata.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  FcmdataApi(
+    http.Client client, {
+    core.String rootUrl = 'https://fcmdata.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -133,7 +138,8 @@ class ProjectsAndroidAppsDeliveryDataResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -168,11 +174,13 @@ class GoogleFirebaseFcmDataV1beta1AndroidDeliveryData {
           appId: json_['appId'] as core.String?,
           data: json_.containsKey('data')
               ? GoogleFirebaseFcmDataV1beta1Data.fromJson(
-                  json_['data'] as core.Map<core.String, core.dynamic>)
+                  json_['data'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           date: json_.containsKey('date')
               ? GoogleTypeDate.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>)
+                  json_['date'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -230,24 +238,30 @@ class GoogleFirebaseFcmDataV1beta1Data {
           deliveryPerformancePercents:
               json_.containsKey('deliveryPerformancePercents')
                   ? GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents
-                      .fromJson(json_['deliveryPerformancePercents']
-                          as core.Map<core.String, core.dynamic>)
+                      .fromJson(
+                      json_['deliveryPerformancePercents']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           messageInsightPercents: json_.containsKey('messageInsightPercents')
               ? GoogleFirebaseFcmDataV1beta1MessageInsightPercents.fromJson(
                   json_['messageInsightPercents']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           messageOutcomePercents: json_.containsKey('messageOutcomePercents')
               ? GoogleFirebaseFcmDataV1beta1MessageOutcomePercents.fromJson(
                   json_['messageOutcomePercents']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           proxyNotificationInsightPercents:
               json_.containsKey('proxyNotificationInsightPercents')
                   ? GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents
-                      .fromJson(json_['proxyNotificationInsightPercents']
-                          as core.Map<core.String, core.dynamic>)
+                      .fromJson(
+                      json_['proxyNotificationInsightPercents']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
         );
 
@@ -317,8 +331,8 @@ class GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents {
   });
 
   GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           delayedDeviceDoze:
               (json_['delayedDeviceDoze'] as core.num?)?.toDouble(),
           delayedDeviceOffline:
@@ -362,12 +376,15 @@ class GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse {
   });
 
   GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           androidDeliveryData: (json_['androidDeliveryData'] as core.List?)
-              ?.map((value) =>
-                  GoogleFirebaseFcmDataV1beta1AndroidDeliveryData.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleFirebaseFcmDataV1beta1AndroidDeliveryData.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -391,9 +408,7 @@ class GoogleFirebaseFcmDataV1beta1MessageInsightPercents {
   /// [documentation for setting message priority](https://firebase.google.com/docs/cloud-messaging/android/message-priority).
   core.double? priorityLowered;
 
-  GoogleFirebaseFcmDataV1beta1MessageInsightPercents({
-    this.priorityLowered,
-  });
+  GoogleFirebaseFcmDataV1beta1MessageInsightPercents({this.priorityLowered});
 
   GoogleFirebaseFcmDataV1beta1MessageInsightPercents.fromJson(core.Map json_)
       : this(
@@ -542,8 +557,8 @@ class GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents {
   });
 
   GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           failed: (json_['failed'] as core.num?)?.toDouble(),
           proxied: (json_['proxied'] as core.num?)?.toDouble(),
           skippedNotThrottled:

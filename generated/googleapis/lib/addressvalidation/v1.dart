@@ -61,11 +61,16 @@ class AddressValidationApi {
 
   V1Resource get v1 => V1Resource(_requester);
 
-  AddressValidationApi(http.Client client,
-      {core.String rootUrl = 'https://addressvalidation.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  AddressValidationApi(
+    http.Client client, {
+    core.String rootUrl = 'https://addressvalidation.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class V1Resource {
@@ -114,7 +119,9 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+        .fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Validates an address.
@@ -152,7 +159,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return GoogleMapsAddressvalidationV1ValidateAddressResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -185,20 +193,19 @@ class GoogleGeoTypeViewport {
   /// Required.
   GoogleTypeLatLng? low;
 
-  GoogleGeoTypeViewport({
-    this.high,
-    this.low,
-  });
+  GoogleGeoTypeViewport({this.high, this.low});
 
   GoogleGeoTypeViewport.fromJson(core.Map json_)
       : this(
           high: json_.containsKey('high')
               ? GoogleTypeLatLng.fromJson(
-                  json_['high'] as core.Map<core.String, core.dynamic>)
+                  json_['high'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           low: json_.containsKey('low')
               ? GoogleTypeLatLng.fromJson(
-                  json_['low'] as core.Map<core.String, core.dynamic>)
+                  json_['low'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -277,9 +284,12 @@ class GoogleMapsAddressvalidationV1Address {
   GoogleMapsAddressvalidationV1Address.fromJson(core.Map json_)
       : this(
           addressComponents: (json_['addressComponents'] as core.List?)
-              ?.map((value) =>
-                  GoogleMapsAddressvalidationV1AddressComponent.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleMapsAddressvalidationV1AddressComponent.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           formattedAddress: json_['formattedAddress'] as core.String?,
           missingComponentTypes: (json_['missingComponentTypes'] as core.List?)
@@ -287,7 +297,8 @@ class GoogleMapsAddressvalidationV1Address {
               .toList(),
           postalAddress: json_.containsKey('postalAddress')
               ? GoogleTypePostalAddress.fromJson(
-                  json_['postalAddress'] as core.Map<core.String, core.dynamic>)
+                  json_['postalAddress'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           unconfirmedComponentTypes:
               (json_['unconfirmedComponentTypes'] as core.List?)
@@ -378,7 +389,8 @@ class GoogleMapsAddressvalidationV1AddressComponent {
       : this(
           componentName: json_.containsKey('componentName')
               ? GoogleMapsAddressvalidationV1ComponentName.fromJson(
-                  json_['componentName'] as core.Map<core.String, core.dynamic>)
+                  json_['componentName'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           componentType: json_['componentType'] as core.String?,
           confirmationLevel: json_['confirmationLevel'] as core.String?,
@@ -452,10 +464,7 @@ class GoogleMapsAddressvalidationV1ComponentName {
   /// For example, "5th Avenue" for a street name or "1253" for a street number.
   core.String? text;
 
-  GoogleMapsAddressvalidationV1ComponentName({
-    this.languageCode,
-    this.text,
-  });
+  GoogleMapsAddressvalidationV1ComponentName({this.languageCode, this.text});
 
   GoogleMapsAddressvalidationV1ComponentName.fromJson(core.Map json_)
       : this(
@@ -520,13 +529,15 @@ class GoogleMapsAddressvalidationV1Geocode {
       : this(
           bounds: json_.containsKey('bounds')
               ? GoogleGeoTypeViewport.fromJson(
-                  json_['bounds'] as core.Map<core.String, core.dynamic>)
+                  json_['bounds'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           featureSizeMeters:
               (json_['featureSizeMeters'] as core.num?)?.toDouble(),
           location: json_.containsKey('location')
               ? GoogleTypeLatLng.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>)
+                  json_['location'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           placeId: json_['placeId'] as core.String?,
           placeTypes: (json_['placeTypes'] as core.List?)
@@ -534,7 +545,8 @@ class GoogleMapsAddressvalidationV1Geocode {
               .toList(),
           plusCode: json_.containsKey('plusCode')
               ? GoogleMapsAddressvalidationV1PlusCode.fromJson(
-                  json_['plusCode'] as core.Map<core.String, core.dynamic>)
+                  json_['plusCode'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -624,8 +636,8 @@ class GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest {
   });
 
   GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           conclusion: json_['conclusion'] as core.String?,
           responseId: json_['responseId'] as core.String?,
         );
@@ -1026,7 +1038,8 @@ class GoogleMapsAddressvalidationV1UspsData {
           standardizedAddress: json_.containsKey('standardizedAddress')
               ? GoogleMapsAddressvalidationV1UspsAddress.fromJson(
                   json_['standardizedAddress']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           suitelinkFootnote: json_['suitelinkFootnote'] as core.String?,
         );
@@ -1171,13 +1184,15 @@ class GoogleMapsAddressvalidationV1ValidateAddressRequest {
       : this(
           address: json_.containsKey('address')
               ? GoogleTypePostalAddress.fromJson(
-                  json_['address'] as core.Map<core.String, core.dynamic>)
+                  json_['address'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           enableUspsCass: json_['enableUspsCass'] as core.bool?,
           languageOptions: json_.containsKey('languageOptions')
               ? GoogleMapsAddressvalidationV1LanguageOptions.fromJson(
                   json_['languageOptions']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           previousResponseId: json_['previousResponseId'] as core.String?,
           sessionToken: json_['sessionToken'] as core.String?,
@@ -1214,7 +1229,8 @@ class GoogleMapsAddressvalidationV1ValidateAddressResponse {
           responseId: json_['responseId'] as core.String?,
           result: json_.containsKey('result')
               ? GoogleMapsAddressvalidationV1ValidationResult.fromJson(
-                  json_['result'] as core.Map<core.String, core.dynamic>)
+                  json_['result'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1287,28 +1303,34 @@ class GoogleMapsAddressvalidationV1ValidationResult {
       : this(
           address: json_.containsKey('address')
               ? GoogleMapsAddressvalidationV1Address.fromJson(
-                  json_['address'] as core.Map<core.String, core.dynamic>)
+                  json_['address'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           englishLatinAddress: json_.containsKey('englishLatinAddress')
               ? GoogleMapsAddressvalidationV1Address.fromJson(
                   json_['englishLatinAddress']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           geocode: json_.containsKey('geocode')
               ? GoogleMapsAddressvalidationV1Geocode.fromJson(
-                  json_['geocode'] as core.Map<core.String, core.dynamic>)
+                  json_['geocode'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? GoogleMapsAddressvalidationV1AddressMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>)
+                  json_['metadata'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           uspsData: json_.containsKey('uspsData')
               ? GoogleMapsAddressvalidationV1UspsData.fromJson(
-                  json_['uspsData'] as core.Map<core.String, core.dynamic>)
+                  json_['uspsData'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           verdict: json_.containsKey('verdict')
               ? GoogleMapsAddressvalidationV1Verdict.fromJson(
-                  json_['verdict'] as core.Map<core.String, core.dynamic>)
+                  json_['verdict'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1471,4 +1493,4 @@ typedef GoogleTypeLatLng = $LatLng;
 /// presented with UI elements for input or editing of fields outside countries
 /// where that field is used. For more guidance on how to use this schema, see:
 /// https://support.google.com/business/answer/6397478
-typedef GoogleTypePostalAddress = $PostalAddress00;
+typedef GoogleTypePostalAddress = $PostalAddress;

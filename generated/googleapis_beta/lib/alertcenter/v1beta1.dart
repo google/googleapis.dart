@@ -53,11 +53,16 @@ class AlertCenterApi {
   AlertsResource get alerts => AlertsResource(_requester);
   V1beta1Resource get v1beta1 => V1beta1Resource(_requester);
 
-  AlertCenterApi(http.Client client,
-      {core.String rootUrl = 'https://alertcenter.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  AlertCenterApi(
+    http.Client client, {
+    core.String rootUrl = 'https://alertcenter.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class AlertsResource {
@@ -101,7 +106,8 @@ class AlertsResource {
       queryParams: queryParams_,
     );
     return BatchDeleteAlertsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Performs batch undelete operation on alerts.
@@ -138,7 +144,8 @@ class AlertsResource {
       queryParams: queryParams_,
     );
     return BatchUndeleteAlertsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks the specified alert for deletion.
@@ -277,7 +284,8 @@ class AlertsResource {
       queryParams: queryParams_,
     );
     return AlertMetadata.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the alerts.
@@ -345,7 +353,8 @@ class AlertsResource {
       queryParams: queryParams_,
     );
     return ListAlertsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Restores, or "undeletes", an alert that was marked for deletion within the
@@ -451,7 +460,8 @@ class AlertsFeedbackResource {
       queryParams: queryParams_,
     );
     return AlertFeedback.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the feedback for an alert.
@@ -507,7 +517,8 @@ class AlertsFeedbackResource {
       queryParams: queryParams_,
     );
     return ListAlertFeedbackResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -723,7 +734,8 @@ class Alert {
           etag: json_['etag'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? AlertMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>)
+                  json_['metadata'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           securityInvestigationToolLink:
               json_['securityInvestigationToolLink'] as core.String?,
@@ -914,10 +926,7 @@ class BatchDeleteAlertsRequest {
   /// Optional.
   core.String? customerId;
 
-  BatchDeleteAlertsRequest({
-    this.alertId,
-    this.customerId,
-  });
+  BatchDeleteAlertsRequest({this.alertId, this.customerId});
 
   BatchDeleteAlertsRequest.fromJson(core.Map json_)
       : this(
@@ -941,10 +950,7 @@ class BatchDeleteAlertsResponse {
   /// The successful list of alert IDs.
   core.List<core.String>? successAlertIds;
 
-  BatchDeleteAlertsResponse({
-    this.failedAlertStatus,
-    this.successAlertIds,
-  });
+  BatchDeleteAlertsResponse({this.failedAlertStatus, this.successAlertIds});
 
   BatchDeleteAlertsResponse.fromJson(core.Map json_)
       : this(
@@ -984,10 +990,7 @@ class BatchUndeleteAlertsRequest {
   /// Optional.
   core.String? customerId;
 
-  BatchUndeleteAlertsRequest({
-    this.alertId,
-    this.customerId,
-  });
+  BatchUndeleteAlertsRequest({this.alertId, this.customerId});
 
   BatchUndeleteAlertsRequest.fromJson(core.Map json_)
       : this(
@@ -1011,10 +1014,7 @@ class BatchUndeleteAlertsResponse {
   /// The successful list of alert IDs.
   core.List<core.String>? successAlertIds;
 
-  BatchUndeleteAlertsResponse({
-    this.failedAlertStatus,
-    this.successAlertIds,
-  });
+  BatchUndeleteAlertsResponse({this.failedAlertStatus, this.successAlertIds});
 
   BatchUndeleteAlertsResponse.fromJson(core.Map json_)
       : this(
@@ -1058,10 +1058,7 @@ class CloudPubsubTopic {
   /// [Topic](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic).
   core.String? topicName;
 
-  CloudPubsubTopic({
-    this.payloadFormat,
-    this.topicName,
-  });
+  CloudPubsubTopic({this.payloadFormat, this.topicName});
 
   CloudPubsubTopic.fromJson(core.Map json_)
       : this(
@@ -1090,15 +1087,16 @@ class ListAlertFeedbackResponse {
   /// Feedback entries for each alert are ordered by creation time descending.
   core.List<AlertFeedback>? feedback;
 
-  ListAlertFeedbackResponse({
-    this.feedback,
-  });
+  ListAlertFeedbackResponse({this.feedback});
 
   ListAlertFeedbackResponse.fromJson(core.Map json_)
       : this(
           feedback: (json_['feedback'] as core.List?)
-              ?.map((value) => AlertFeedback.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AlertFeedback.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1119,16 +1117,16 @@ class ListAlertsResponse {
   /// to get alerts continuing from last result of the current list call.
   core.String? nextPageToken;
 
-  ListAlertsResponse({
-    this.alerts,
-    this.nextPageToken,
-  });
+  ListAlertsResponse({this.alerts, this.nextPageToken});
 
   ListAlertsResponse.fromJson(core.Map json_)
       : this(
           alerts: (json_['alerts'] as core.List?)
-              ?.map((value) =>
-                  Alert.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Alert.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1147,15 +1145,15 @@ class Notification {
   /// A Google Cloud Pub/sub topic destination.
   CloudPubsubTopic? cloudPubsubTopic;
 
-  Notification({
-    this.cloudPubsubTopic,
-  });
+  Notification({this.cloudPubsubTopic});
 
   Notification.fromJson(core.Map json_)
       : this(
           cloudPubsubTopic: json_.containsKey('cloudPubsubTopic')
-              ? CloudPubsubTopic.fromJson(json_['cloudPubsubTopic']
-                  as core.Map<core.String, core.dynamic>)
+              ? CloudPubsubTopic.fromJson(
+                  json_['cloudPubsubTopic']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1169,15 +1167,16 @@ class Settings {
   /// The list of notifications.
   core.List<Notification>? notifications;
 
-  Settings({
-    this.notifications,
-  });
+  Settings({this.notifications});
 
   Settings.fromJson(core.Map json_)
       : this(
           notifications: (json_['notifications'] as core.List?)
-              ?.map((value) => Notification.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Notification.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1207,14 +1206,10 @@ class UndeleteAlertRequest {
   /// Optional.
   core.String? customerId;
 
-  UndeleteAlertRequest({
-    this.customerId,
-  });
+  UndeleteAlertRequest({this.customerId});
 
   UndeleteAlertRequest.fromJson(core.Map json_)
-      : this(
-          customerId: json_['customerId'] as core.String?,
-        );
+      : this(customerId: json_['customerId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customerId != null) 'customerId': customerId!,

@@ -101,30 +101,12 @@ api.Groups buildGroups() {
 void checkGroups(api.Groups o) {
   buildCounterGroups++;
   if (buildCounterGroups < 3) {
-    unittest.expect(
-      o.allowExternalMembers!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.allowGoogleCommunication!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.allowWebPosting!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.archiveOnly!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.customFooterText!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.customReplyTo!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.allowExternalMembers!, unittest.equals('foo'));
+    unittest.expect(o.allowGoogleCommunication!, unittest.equals('foo'));
+    unittest.expect(o.allowWebPosting!, unittest.equals('foo'));
+    unittest.expect(o.archiveOnly!, unittest.equals('foo'));
+    unittest.expect(o.customFooterText!, unittest.equals('foo'));
+    unittest.expect(o.customReplyTo!, unittest.equals('foo'));
     unittest.expect(
       o.customRolesEnabledForSettingsToBeMerged!,
       unittest.equals('foo'),
@@ -133,158 +115,44 @@ void checkGroups(api.Groups o) {
       o.defaultMessageDenyNotificationText!,
       unittest.equals('foo'),
     );
-    unittest.expect(
-      o.defaultSender!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.description!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.email!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.enableCollaborativeInbox!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.favoriteRepliesOnTop!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.includeCustomFooter!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.includeInGlobalAddressList!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.isArchived!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.kind!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.maxMessageBytes!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.membersCanPostAsTheGroup!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.messageDisplayFont!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.messageModerationLevel!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.primaryLanguage!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.replyTo!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sendMessageDenyNotification!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.showInGroupDirectory!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.spamModerationLevel!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanAdd!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanAddReferences!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanApproveMembers!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanApproveMessages!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanAssignTopics!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanAssistContent!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanBanUsers!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanContactOwner!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanDeleteAnyPost!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanDeleteTopics!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanDiscoverGroup!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanEnterFreeFormTags!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanHideAbuse!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanInvite!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanJoin!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanLeaveGroup!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanLockTopics!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanMakeTopicsSticky!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanMarkDuplicate!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.defaultSender!, unittest.equals('foo'));
+    unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(o.email!, unittest.equals('foo'));
+    unittest.expect(o.enableCollaborativeInbox!, unittest.equals('foo'));
+    unittest.expect(o.favoriteRepliesOnTop!, unittest.equals('foo'));
+    unittest.expect(o.includeCustomFooter!, unittest.equals('foo'));
+    unittest.expect(o.includeInGlobalAddressList!, unittest.equals('foo'));
+    unittest.expect(o.isArchived!, unittest.equals('foo'));
+    unittest.expect(o.kind!, unittest.equals('foo'));
+    unittest.expect(o.maxMessageBytes!, unittest.equals(42));
+    unittest.expect(o.membersCanPostAsTheGroup!, unittest.equals('foo'));
+    unittest.expect(o.messageDisplayFont!, unittest.equals('foo'));
+    unittest.expect(o.messageModerationLevel!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.primaryLanguage!, unittest.equals('foo'));
+    unittest.expect(o.replyTo!, unittest.equals('foo'));
+    unittest.expect(o.sendMessageDenyNotification!, unittest.equals('foo'));
+    unittest.expect(o.showInGroupDirectory!, unittest.equals('foo'));
+    unittest.expect(o.spamModerationLevel!, unittest.equals('foo'));
+    unittest.expect(o.whoCanAdd!, unittest.equals('foo'));
+    unittest.expect(o.whoCanAddReferences!, unittest.equals('foo'));
+    unittest.expect(o.whoCanApproveMembers!, unittest.equals('foo'));
+    unittest.expect(o.whoCanApproveMessages!, unittest.equals('foo'));
+    unittest.expect(o.whoCanAssignTopics!, unittest.equals('foo'));
+    unittest.expect(o.whoCanAssistContent!, unittest.equals('foo'));
+    unittest.expect(o.whoCanBanUsers!, unittest.equals('foo'));
+    unittest.expect(o.whoCanContactOwner!, unittest.equals('foo'));
+    unittest.expect(o.whoCanDeleteAnyPost!, unittest.equals('foo'));
+    unittest.expect(o.whoCanDeleteTopics!, unittest.equals('foo'));
+    unittest.expect(o.whoCanDiscoverGroup!, unittest.equals('foo'));
+    unittest.expect(o.whoCanEnterFreeFormTags!, unittest.equals('foo'));
+    unittest.expect(o.whoCanHideAbuse!, unittest.equals('foo'));
+    unittest.expect(o.whoCanInvite!, unittest.equals('foo'));
+    unittest.expect(o.whoCanJoin!, unittest.equals('foo'));
+    unittest.expect(o.whoCanLeaveGroup!, unittest.equals('foo'));
+    unittest.expect(o.whoCanLockTopics!, unittest.equals('foo'));
+    unittest.expect(o.whoCanMakeTopicsSticky!, unittest.equals('foo'));
+    unittest.expect(o.whoCanMarkDuplicate!, unittest.equals('foo'));
     unittest.expect(
       o.whoCanMarkFavoriteReplyOnAnyTopic!,
       unittest.equals('foo'),
@@ -293,62 +161,23 @@ void checkGroups(api.Groups o) {
       o.whoCanMarkFavoriteReplyOnOwnTopic!,
       unittest.equals('foo'),
     );
-    unittest.expect(
-      o.whoCanMarkNoResponseNeeded!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanModerateContent!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanModerateMembers!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanModifyMembers!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanModifyTagsAndCategories!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanMoveTopicsIn!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanMoveTopicsOut!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanPostAnnouncements!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanPostMessage!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanTakeTopics!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanUnassignTopic!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.whoCanMarkNoResponseNeeded!, unittest.equals('foo'));
+    unittest.expect(o.whoCanModerateContent!, unittest.equals('foo'));
+    unittest.expect(o.whoCanModerateMembers!, unittest.equals('foo'));
+    unittest.expect(o.whoCanModifyMembers!, unittest.equals('foo'));
+    unittest.expect(o.whoCanModifyTagsAndCategories!, unittest.equals('foo'));
+    unittest.expect(o.whoCanMoveTopicsIn!, unittest.equals('foo'));
+    unittest.expect(o.whoCanMoveTopicsOut!, unittest.equals('foo'));
+    unittest.expect(o.whoCanPostAnnouncements!, unittest.equals('foo'));
+    unittest.expect(o.whoCanPostMessage!, unittest.equals('foo'));
+    unittest.expect(o.whoCanTakeTopics!, unittest.equals('foo'));
+    unittest.expect(o.whoCanUnassignTopic!, unittest.equals('foo'));
     unittest.expect(
       o.whoCanUnmarkFavoriteReplyOnAnyTopic!,
       unittest.equals('foo'),
     );
-    unittest.expect(
-      o.whoCanViewGroup!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.whoCanViewMembership!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.whoCanViewGroup!, unittest.equals('foo'));
+    unittest.expect(o.whoCanViewMembership!, unittest.equals('foo'));
   }
   buildCounterGroups--;
 }
@@ -358,8 +187,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildGroups();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Groups.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Groups.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGroups(od);
     });
   });
@@ -370,43 +200,44 @@ void main() {
       final res = api.GroupssettingsApi(mock).groups;
       final arg_groupUniqueId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGroups());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGroups());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.get(arg_groupUniqueId, $fields: arg_$fields);
       checkGroups(response as api.Groups);
     });
@@ -417,49 +248,54 @@ void main() {
       final arg_request = buildGroups();
       final arg_groupUniqueId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.Groups.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkGroups(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.Groups.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGroups(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGroups());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.patch(arg_request, arg_groupUniqueId, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGroups());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_groupUniqueId,
+        $fields: arg_$fields,
+      );
       checkGroups(response as api.Groups);
     });
 
@@ -469,49 +305,54 @@ void main() {
       final arg_request = buildGroups();
       final arg_groupUniqueId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.Groups.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkGroups(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.Groups.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGroups(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGroups());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.update(arg_request, arg_groupUniqueId,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGroups());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.update(
+        arg_request,
+        arg_groupUniqueId,
+        $fields: arg_$fields,
+      );
       checkGroups(response as api.Groups);
     });
   });

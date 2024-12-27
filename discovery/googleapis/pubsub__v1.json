@@ -100,7 +100,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240918",
+    "revision": "20241212",
     "rootUrl": "https://pubsub.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Pub/Sub API",
@@ -1658,7 +1658,7 @@
             "type": "object"
         },
         "AnalyticsHubSubscriptionInfo": {
-            "description": "Information about an associated Analytics Hub subscription (https://cloud.google.com/bigquery/docs/analytics-hub-manage-subscriptions).",
+            "description": "Information about an associated [Analytics Hub subscription](https://cloud.google.com/bigquery/docs/analytics-hub-manage-subscriptions).",
             "id": "AnalyticsHubSubscriptionInfo",
             "properties": {
                 "listing": {

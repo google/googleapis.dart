@@ -50,11 +50,16 @@ class PostmasterToolsApi {
 
   DomainsResource get domains => DomainsResource(_requester);
 
-  PostmasterToolsApi(http.Client client,
-      {core.String rootUrl = 'https://gmailpostmastertools.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  PostmasterToolsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://gmailpostmastertools.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class DomainsResource {
@@ -86,10 +91,7 @@ class DomainsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Domain> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Domain> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -148,7 +150,8 @@ class DomainsResource {
       queryParams: queryParams_,
     );
     return ListDomainsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -195,7 +198,8 @@ class DomainsTrafficStatsResource {
       queryParams: queryParams_,
     );
     return TrafficStats.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List traffic statistics for all available days.
@@ -280,7 +284,8 @@ class DomainsTrafficStatsResource {
       queryParams: queryParams_,
     );
     return ListTrafficStatsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -327,11 +332,7 @@ class DeliveryError {
   /// [PTR record](https://support.google.com/domains/answer/3251147#ptr).
   core.String? errorType;
 
-  DeliveryError({
-    this.errorClass,
-    this.errorRatio,
-    this.errorType,
-  });
+  DeliveryError({this.errorClass, this.errorRatio, this.errorType});
 
   DeliveryError.fromJson(core.Map json_)
       : this(
@@ -374,11 +375,7 @@ class Domain {
   /// other domain owners.
   core.String? permission;
 
-  Domain({
-    this.createTime,
-    this.name,
-    this.permission,
-  });
+  Domain({this.createTime, this.name, this.permission});
 
   Domain.fromJson(core.Map json_)
       : this(
@@ -404,10 +401,7 @@ class FeedbackLoop {
   /// number of inboxed messages with that identifier.
   core.double? spamRatio;
 
-  FeedbackLoop({
-    this.id,
-    this.spamRatio,
-  });
+  FeedbackLoop({this.id, this.spamRatio});
 
   FeedbackLoop.fromJson(core.Map json_)
       : this(
@@ -452,11 +446,7 @@ class IpReputation {
   /// A sample of IPs in this reputation category.
   core.List<core.String>? sampleIps;
 
-  IpReputation({
-    this.ipCount,
-    this.reputation,
-    this.sampleIps,
-  });
+  IpReputation({this.ipCount, this.reputation, this.sampleIps});
 
   IpReputation.fromJson(core.Map json_)
       : this(
@@ -483,16 +473,16 @@ class ListDomainsResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  ListDomainsResponse({
-    this.domains,
-    this.nextPageToken,
-  });
+  ListDomainsResponse({this.domains, this.nextPageToken});
 
   ListDomainsResponse.fromJson(core.Map json_)
       : this(
           domains: (json_['domains'] as core.List?)
-              ?.map((value) =>
-                  Domain.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Domain.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -512,17 +502,17 @@ class ListTrafficStatsResponse {
   /// The list of TrafficStats.
   core.List<TrafficStats>? trafficStats;
 
-  ListTrafficStatsResponse({
-    this.nextPageToken,
-    this.trafficStats,
-  });
+  ListTrafficStatsResponse({this.nextPageToken, this.trafficStats});
 
   ListTrafficStatsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           trafficStats: (json_['trafficStats'] as core.List?)
-              ?.map((value) => TrafficStats.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TrafficStats.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -660,8 +650,11 @@ class TrafficStats {
   TrafficStats.fromJson(core.Map json_)
       : this(
           deliveryErrors: (json_['deliveryErrors'] as core.List?)
-              ?.map((value) => DeliveryError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DeliveryError.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           dkimSuccessRatio:
               (json_['dkimSuccessRatio'] as core.num?)?.toDouble(),
@@ -671,15 +664,21 @@ class TrafficStats {
           inboundEncryptionRatio:
               (json_['inboundEncryptionRatio'] as core.num?)?.toDouble(),
           ipReputations: (json_['ipReputations'] as core.List?)
-              ?.map((value) => IpReputation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => IpReputation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           name: json_['name'] as core.String?,
           outboundEncryptionRatio:
               (json_['outboundEncryptionRatio'] as core.num?)?.toDouble(),
           spammyFeedbackLoops: (json_['spammyFeedbackLoops'] as core.List?)
-              ?.map((value) => FeedbackLoop.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => FeedbackLoop.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           spfSuccessRatio: (json_['spfSuccessRatio'] as core.num?)?.toDouble(),
           userReportedSpamRatio:

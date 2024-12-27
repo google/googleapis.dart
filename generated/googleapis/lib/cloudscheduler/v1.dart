@@ -51,11 +51,16 @@ class CloudSchedulerApi {
   OperationsResource get operations => OperationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  CloudSchedulerApi(http.Client client,
-      {core.String rootUrl = 'https://cloudscheduler.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudSchedulerApi(
+    http.Client client, {
+    core.String rootUrl = 'https://cloudscheduler.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class OperationsResource {
@@ -133,10 +138,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -171,10 +173,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -236,7 +235,8 @@ class OperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -274,10 +274,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -341,7 +338,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -411,10 +409,7 @@ class ProjectsLocationsJobsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -448,10 +443,7 @@ class ProjectsLocationsJobsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Job> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Job> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -514,7 +506,8 @@ class ProjectsLocationsJobsResource {
       queryParams: queryParams_,
     );
     return ListJobsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a job.
@@ -803,17 +796,14 @@ class AppEngineHttpTarget {
   AppEngineHttpTarget.fromJson(core.Map json_)
       : this(
           appEngineRouting: json_.containsKey('appEngineRouting')
-              ? AppEngineRouting.fromJson(json_['appEngineRouting']
-                  as core.Map<core.String, core.dynamic>)
+              ? AppEngineRouting.fromJson(
+                  json_['appEngineRouting']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           body: json_['body'] as core.String?,
-          headers:
-              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          headers: (json_['headers'] as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           httpMethod: json_['httpMethod'] as core.String?,
           relativeUri: json_['relativeUri'] as core.String?,
         );
@@ -888,12 +878,7 @@ class AppEngineRouting {
   /// when the job is attempted.
   core.String? version;
 
-  AppEngineRouting({
-    this.host,
-    this.instance,
-    this.service,
-    this.version,
-  });
+  AppEngineRouting({this.host, this.instance, this.service, this.version});
 
   AppEngineRouting.fromJson(core.Map json_)
       : this(
@@ -1020,21 +1005,18 @@ class HttpTarget {
   HttpTarget.fromJson(core.Map json_)
       : this(
           body: json_['body'] as core.String?,
-          headers:
-              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          headers: (json_['headers'] as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           httpMethod: json_['httpMethod'] as core.String?,
           oauthToken: json_.containsKey('oauthToken')
               ? OAuthToken.fromJson(
-                  json_['oauthToken'] as core.Map<core.String, core.dynamic>)
+                  json_['oauthToken'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           oidcToken: json_.containsKey('oidcToken')
               ? OidcToken.fromJson(
-                  json_['oidcToken'] as core.Map<core.String, core.dynamic>)
+                  json_['oidcToken'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           uri: json_['uri'] as core.String?,
         );
@@ -1191,31 +1173,37 @@ class Job {
   Job.fromJson(core.Map json_)
       : this(
           appEngineHttpTarget: json_.containsKey('appEngineHttpTarget')
-              ? AppEngineHttpTarget.fromJson(json_['appEngineHttpTarget']
-                  as core.Map<core.String, core.dynamic>)
+              ? AppEngineHttpTarget.fromJson(
+                  json_['appEngineHttpTarget']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           attemptDeadline: json_['attemptDeadline'] as core.String?,
           description: json_['description'] as core.String?,
           httpTarget: json_.containsKey('httpTarget')
               ? HttpTarget.fromJson(
-                  json_['httpTarget'] as core.Map<core.String, core.dynamic>)
+                  json_['httpTarget'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           lastAttemptTime: json_['lastAttemptTime'] as core.String?,
           name: json_['name'] as core.String?,
           pubsubTarget: json_.containsKey('pubsubTarget')
               ? PubsubTarget.fromJson(
-                  json_['pubsubTarget'] as core.Map<core.String, core.dynamic>)
+                  json_['pubsubTarget'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           retryConfig: json_.containsKey('retryConfig')
               ? RetryConfig.fromJson(
-                  json_['retryConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['retryConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           schedule: json_['schedule'] as core.String?,
           scheduleTime: json_['scheduleTime'] as core.String?,
           state: json_['state'] as core.String?,
           status: json_.containsKey('status')
               ? Status.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           timeZone: json_['timeZone'] as core.String?,
           userUpdateTime: json_['userUpdateTime'] as core.String?,
@@ -1253,16 +1241,16 @@ class ListJobsResponse {
   /// valid for only 2 hours.
   core.String? nextPageToken;
 
-  ListJobsResponse({
-    this.jobs,
-    this.nextPageToken,
-  });
+  ListJobsResponse({this.jobs, this.nextPageToken});
 
   ListJobsResponse.fromJson(core.Map json_)
       : this(
           jobs: (json_['jobs'] as core.List?)
-              ?.map((value) =>
-                  Job.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Job.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1281,16 +1269,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1309,17 +1297,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1351,10 +1339,7 @@ class OAuthToken {
   /// must have iam.serviceAccounts.actAs permission for the service account.
   core.String? serviceAccountEmail;
 
-  OAuthToken({
-    this.scope,
-    this.serviceAccountEmail,
-  });
+  OAuthToken({this.scope, this.serviceAccountEmail});
 
   OAuthToken.fromJson(core.Map json_)
       : this(
@@ -1387,10 +1372,7 @@ class OidcToken {
   /// must have iam.serviceAccounts.actAs permission for the service account.
   core.String? serviceAccountEmail;
 
-  OidcToken({
-    this.audience,
-    this.serviceAccountEmail,
-  });
+  OidcToken({this.audience, this.serviceAccountEmail});
 
   OidcToken.fromJson(core.Map json_)
       : this(
@@ -1448,20 +1430,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -1518,22 +1495,13 @@ class PubsubTarget {
   /// Required.
   core.String? topicName;
 
-  PubsubTarget({
-    this.attributes,
-    this.data,
-    this.topicName,
-  });
+  PubsubTarget({this.attributes, this.data, this.topicName});
 
   PubsubTarget.fromJson(core.Map json_)
       : this(
-          attributes:
-              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          attributes: (json_['attributes']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           data: json_['data'] as core.String?,
           topicName: json_['topicName'] as core.String?,
         );

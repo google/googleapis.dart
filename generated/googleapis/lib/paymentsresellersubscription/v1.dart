@@ -48,12 +48,17 @@ class PaymentsResellerSubscriptionApi {
 
   PartnersResource get partners => PartnersResource(_requester);
 
-  PaymentsResellerSubscriptionApi(http.Client client,
-      {core.String rootUrl =
-          'https://paymentsresellersubscription.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  PaymentsResellerSubscriptionApi(
+    http.Client client, {
+    core.String rootUrl =
+        'https://paymentsresellersubscription.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class PartnersResource {
@@ -141,7 +146,9 @@ class PartnersProductsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+        .fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -197,7 +204,9 @@ class PartnersPromotionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+        .fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the promotions, such as free trial, that can be used by the
@@ -268,7 +277,9 @@ class PartnersPromotionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+        .fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -324,7 +335,9 @@ class PartnersSubscriptionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+        .fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Used by partners to create a subscription for their customers.
@@ -377,7 +390,8 @@ class PartnersSubscriptionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Used by partners to entitle a previously provisioned subscription to the
@@ -427,7 +441,9 @@ class PartnersSubscriptionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+        .fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// \[Opt-in only\] Most partners should be on auto-extend by default.
@@ -477,7 +493,9 @@ class PartnersSubscriptionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+        .fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Used by partners to get a subscription by id.
@@ -517,7 +535,8 @@ class PartnersSubscriptionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Used by partners to provision a subscription for their customers.
@@ -572,7 +591,8 @@ class PartnersSubscriptionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Revokes the pending cancellation of a subscription, which is currently in
@@ -624,7 +644,9 @@ class PartnersSubscriptionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+        .fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -684,7 +706,9 @@ class PartnersUserSessionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+        .fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -762,8 +786,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           cancelImmediately: json_['cancelImmediately'] as core.bool?,
           cancellationReason: json_['cancellationReason'] as core.String?,
         );
@@ -785,11 +809,12 @@ class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           subscription: json_.containsKey('subscription')
               ? GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
-                  json_['subscription'] as core.Map<core.String, core.dynamic>)
+                  json_['subscription'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -826,12 +851,13 @@ class GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           parent: json_['parent'] as core.String?,
           subscription: json_.containsKey('subscription')
               ? GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
-                  json_['subscription'] as core.Map<core.String, core.dynamic>)
+                  json_['subscription'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           subscriptionId: json_['subscriptionId'] as core.String?,
         );
@@ -857,10 +883,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Duration {
   /// - "HOUR" : Unit of an hour. It is used for testing.
   core.String? unit;
 
-  GoogleCloudPaymentsResellerSubscriptionV1Duration({
-    this.count,
-    this.unit,
-  });
+  GoogleCloudPaymentsResellerSubscriptionV1Duration({this.count, this.unit});
 
   GoogleCloudPaymentsResellerSubscriptionV1Duration.fromJson(core.Map json_)
       : this(
@@ -887,10 +910,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent.fromJson(
-      core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -916,14 +937,18 @@ class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest.fromJson(
-      core.Map json_)
-      : this(
-          lineItemEntitlementDetails: (json_['lineItemEntitlementDetails']
-                  as core.List?)
-              ?.map((value) =>
-                  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
+    core.Map json_,
+  ) : this(
+          lineItemEntitlementDetails:
+              (json_['lineItemEntitlementDetails'] as core.List?)
+                  ?.map(
+                    (value) =>
+                        GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails
+                            .fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -954,8 +979,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineIte
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           lineItemIndex: json_['lineItemIndex'] as core.int?,
           products: (json_['products'] as core.List?)
               ?.map((value) => value as core.String)
@@ -978,11 +1003,12 @@ class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           subscription: json_.containsKey('subscription')
               ? GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
-                  json_['subscription'] as core.Map<core.String, core.dynamic>)
+                  json_['subscription'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1020,11 +1046,12 @@ class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           extension: json_.containsKey('extension')
               ? GoogleCloudPaymentsResellerSubscriptionV1Extension.fromJson(
-                  json_['extension'] as core.Map<core.String, core.dynamic>)
+                  json_['extension'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           requestId: json_['requestId'] as core.String?,
         );
@@ -1067,8 +1094,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           cycleEndTime: json_['cycleEndTime'] as core.String?,
           freeTrialEndTime: json_['freeTrialEndTime'] as core.String?,
           renewalTime: json_['renewalTime'] as core.String?,
@@ -1102,7 +1129,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1Extension {
       : this(
           duration: json_.containsKey('duration')
               ? GoogleCloudPaymentsResellerSubscriptionV1Duration.fromJson(
-                  json_['duration'] as core.Map<core.String, core.dynamic>)
+                  json_['duration'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           partnerUserToken: json_['partnerUserToken'] as core.String?,
         );
@@ -1156,8 +1184,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           filter: json_['filter'] as core.String?,
           pageSize: json_['pageSize'] as core.int?,
           pageToken: json_['pageToken'] as core.String?,
@@ -1186,13 +1214,16 @@ class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           promotions: (json_['promotions'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudPaymentsResellerSubscriptionV1Promotion.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudPaymentsResellerSubscriptionV1Promotion.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1215,8 +1246,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           billingCycleCountLimit:
               json_['billingCycleCountLimit'] as core.String?,
         );
@@ -1237,11 +1268,12 @@ class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           intentPayload: json_.containsKey('intentPayload')
               ? GoogleCloudPaymentsResellerSubscriptionV1IntentPayload.fromJson(
-                  json_['intentPayload'] as core.Map<core.String, core.dynamic>)
+                  json_['intentPayload'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1263,11 +1295,12 @@ class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           userSession: json_.containsKey('userSession')
               ? GoogleCloudPaymentsResellerSubscriptionV1UserSession.fromJson(
-                  json_['userSession'] as core.Map<core.String, core.dynamic>)
+                  json_['userSession'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1319,8 +1352,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           campaigns: (json_['campaigns'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -1353,17 +1386,19 @@ class GoogleCloudPaymentsResellerSubscriptionV1IntentPayload {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1IntentPayload.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           createIntent: json_.containsKey('createIntent')
               ? GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent
-                  .fromJson(json_['createIntent']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['createIntent'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           entitleIntent: json_.containsKey('entitleIntent')
               ? GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent
-                  .fromJson(json_['entitleIntent']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['entitleIntent'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1389,13 +1424,16 @@ class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           products: (json_['products'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudPaymentsResellerSubscriptionV1Product.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudPaymentsResellerSubscriptionV1Product.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1421,13 +1459,16 @@ class GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           promotions: (json_['promotions'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudPaymentsResellerSubscriptionV1Promotion.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudPaymentsResellerSubscriptionV1Promotion.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1537,19 +1578,26 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
       : this(
           bundleDetails: json_.containsKey('bundleDetails')
               ? ProductBundleDetails.fromJson(
-                  json_['bundleDetails'] as core.Map<core.String, core.dynamic>)
+                  json_['bundleDetails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           finiteBillingCycleDetails: json_
                   .containsKey('finiteBillingCycleDetails')
               ? GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails
-                  .fromJson(json_['finiteBillingCycleDetails']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['finiteBillingCycleDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           priceConfigs: (json_['priceConfigs'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           productType: json_['productType'] as core.String?,
           regionCodes: (json_['regionCodes'] as core.List?)
@@ -1559,11 +1607,15 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
               json_.containsKey('subscriptionBillingCycleDuration')
                   ? GoogleCloudPaymentsResellerSubscriptionV1Duration.fromJson(
                       json_['subscriptionBillingCycleDuration']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           titles: (json_['titles'] as core.List?)
-              ?.map((value) => GoogleTypeLocalizedText.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleTypeLocalizedText.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1595,10 +1647,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement.fromJson(
-      core.Map json_)
-      : this(
-          product: json_['product'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(product: json_['product'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (product != null) 'product': product!,
@@ -1621,17 +1671,21 @@ class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1ProductPayload.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           googleOnePayload: json_.containsKey('googleOnePayload')
               ? GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload
-                  .fromJson(json_['googleOnePayload']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['googleOnePayload']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           youtubePayload: json_.containsKey('youtubePayload')
               ? GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload
-                  .fromJson(json_['youtubePayload']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['youtubePayload']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1661,11 +1715,12 @@ class GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           amount: json_.containsKey('amount')
               ? GoogleCloudPaymentsResellerSubscriptionV1Amount.fromJson(
-                  json_['amount'] as core.Map<core.String, core.dynamic>)
+                  json_['amount'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           regionCode: json_['regionCode'] as core.String?,
         );
@@ -1760,13 +1815,16 @@ class GoogleCloudPaymentsResellerSubscriptionV1Promotion {
           freeTrialDuration: json_.containsKey('freeTrialDuration')
               ? GoogleCloudPaymentsResellerSubscriptionV1Duration.fromJson(
                   json_['freeTrialDuration']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           introductoryPricingDetails: json_
                   .containsKey('introductoryPricingDetails')
               ? GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails
-                  .fromJson(json_['introductoryPricingDetails']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['introductoryPricingDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           promotionType: json_['promotionType'] as core.String?,
@@ -1775,8 +1833,11 @@ class GoogleCloudPaymentsResellerSubscriptionV1Promotion {
               .toList(),
           startTime: json_['startTime'] as core.String?,
           titles: (json_['titles'] as core.List?)
-              ?.map((value) => GoogleTypeLocalizedText.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleTypeLocalizedText.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1809,14 +1870,18 @@ class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetai
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails.fromJson(
-      core.Map json_)
-      : this(
-          introductoryPricingSpecs: (json_['introductoryPricingSpecs']
-                  as core.List?)
-              ?.map((value) =>
-                  GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
+    core.Map json_,
+  ) : this(
+          introductoryPricingSpecs:
+              (json_['introductoryPricingSpecs'] as core.List?)
+                  ?.map(
+                    (value) =>
+                        GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec
+                            .fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1861,12 +1926,13 @@ class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetai
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           discountAmount: json_.containsKey('discountAmount')
               ? GoogleCloudPaymentsResellerSubscriptionV1Amount.fromJson(
                   json_['discountAmount']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           discountRatioMicros: json_['discountRatioMicros'] as core.String?,
           recurrenceCount: json_['recurrenceCount'] as core.int?,
@@ -1905,8 +1971,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           endTime: json_['endTime'] as core.String?,
           startTime: json_['startTime'] as core.String?,
         );
@@ -2131,22 +2197,30 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
       : this(
           cancellationDetails: json_.containsKey('cancellationDetails')
               ? GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails
-                  .fromJson(json_['cancellationDetails']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['cancellationDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           createTime: json_['createTime'] as core.String?,
           cycleEndTime: json_['cycleEndTime'] as core.String?,
           endUserEntitled: json_['endUserEntitled'] as core.bool?,
           freeTrialEndTime: json_['freeTrialEndTime'] as core.String?,
           lineItems: (json_['lineItems'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           migrationDetails: json_.containsKey('migrationDetails')
               ? GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails
-                  .fromJson(json_['migrationDetails']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['migrationDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           partnerUserToken: json_['partnerUserToken'] as core.String?,
@@ -2155,9 +2229,13 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
               ?.map((value) => value as core.String)
               .toList(),
           promotionSpecs: (json_['promotionSpecs'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           promotions: (json_['promotions'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2168,14 +2246,17 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
           serviceLocation: json_.containsKey('serviceLocation')
               ? GoogleCloudPaymentsResellerSubscriptionV1Location.fromJson(
                   json_['serviceLocation']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           state: json_['state'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
           upgradeDowngradeDetails: json_.containsKey('upgradeDowngradeDetails')
               ? GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails
-                  .fromJson(json_['upgradeDowngradeDetails']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['upgradeDowngradeDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2236,10 +2317,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails.fromJson(
-      core.Map json_)
-      : this(
-          reason: json_['reason'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(reason: json_['reason'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (reason != null) 'reason': reason!,
@@ -2370,43 +2449,55 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           amount: json_.containsKey('amount')
               ? GoogleCloudPaymentsResellerSubscriptionV1Amount.fromJson(
-                  json_['amount'] as core.Map<core.String, core.dynamic>)
+                  json_['amount'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           bundleDetails: json_.containsKey('bundleDetails')
               ? SubscriptionLineItemBundleDetails.fromJson(
-                  json_['bundleDetails'] as core.Map<core.String, core.dynamic>)
+                  json_['bundleDetails'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           description: json_['description'] as core.String?,
           finiteBillingCycleDetails: json_
                   .containsKey('finiteBillingCycleDetails')
               ? GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails
-                  .fromJson(json_['finiteBillingCycleDetails']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['finiteBillingCycleDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           lineItemFreeTrialEndTime:
               json_['lineItemFreeTrialEndTime'] as core.String?,
           lineItemIndex: json_['lineItemIndex'] as core.int?,
-          lineItemPromotionSpecs: (json_['lineItemPromotionSpecs']
-                  as core.List?)
-              ?.map((value) =>
-                  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
+          lineItemPromotionSpecs:
+              (json_['lineItemPromotionSpecs'] as core.List?)
+                  ?.map(
+                    (value) =>
+                        GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec
+                            .fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
+                  .toList(),
           oneTimeRecurrenceDetails: json_
                   .containsKey('oneTimeRecurrenceDetails')
               ? GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails
-                  .fromJson(json_['oneTimeRecurrenceDetails']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['oneTimeRecurrenceDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           product: json_['product'] as core.String?,
           productPayload: json_.containsKey('productPayload')
               ? GoogleCloudPaymentsResellerSubscriptionV1ProductPayload
-                  .fromJson(json_['productPayload']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['productPayload']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           recurrenceType: json_['recurrenceType'] as core.String?,
           state: json_['state'] as core.String?,
@@ -2452,8 +2543,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetails
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           product: json_['product'] as core.String?,
           userAccountLinkedTime: json_['userAccountLinkedTime'] as core.String?,
         );
@@ -2477,11 +2568,12 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurr
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           servicePeriod: json_.containsKey('servicePeriod')
               ? GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod.fromJson(
-                  json_['servicePeriod'] as core.Map<core.String, core.dynamic>)
+                  json_['servicePeriod'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2502,8 +2594,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           migratedSubscriptionId:
               json_['migratedSubscriptionId'] as core.String?,
         );
@@ -2553,18 +2645,21 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           freeTrialDuration: json_.containsKey('freeTrialDuration')
               ? GoogleCloudPaymentsResellerSubscriptionV1Duration.fromJson(
                   json_['freeTrialDuration']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           introductoryPricingDetails: json_
                   .containsKey('introductoryPricingDetails')
               ? GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails
-                  .fromJson(json_['introductoryPricingDetails']
-                      as core.Map<core.String, core.dynamic>)
+                  .fromJson(
+                  json_['introductoryPricingDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           promotion: json_['promotion'] as core.String?,
           type: json_['type'] as core.String?,
@@ -2608,8 +2703,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetai
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           billingCycleSpec: json_['billingCycleSpec'] as core.String?,
           previousSubscriptionId:
               json_['previousSubscriptionId'] as core.String?,
@@ -2636,11 +2731,12 @@ class GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           subscription: json_.containsKey('subscription')
               ? GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
-                  json_['subscription'] as core.Map<core.String, core.dynamic>)
+                  json_['subscription'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2725,8 +2821,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload {
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           accessEndTime: json_['accessEndTime'] as core.String?,
           partnerEligibilityIds: (json_['partnerEligibilityIds'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2762,17 +2858,18 @@ class ProductBundleDetails {
   /// incrementally activated.
   core.String? entitlementMode;
 
-  ProductBundleDetails({
-    this.bundleElements,
-    this.entitlementMode,
-  });
+  ProductBundleDetails({this.bundleElements, this.entitlementMode});
 
   ProductBundleDetails.fromJson(core.Map json_)
       : this(
           bundleElements: (json_['bundleElements'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           entitlementMode: json_['entitlementMode'] as core.String?,
         );
@@ -2792,16 +2889,18 @@ class SubscriptionLineItemBundleDetails {
           GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails>?
       bundleElementDetails;
 
-  SubscriptionLineItemBundleDetails({
-    this.bundleElementDetails,
-  });
+  SubscriptionLineItemBundleDetails({this.bundleElementDetails});
 
   SubscriptionLineItemBundleDetails.fromJson(core.Map json_)
       : this(
           bundleElementDetails: (json_['bundleElementDetails'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails
+                        .fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 

@@ -53,11 +53,16 @@ class CloudMemorystoreForMemcachedApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  CloudMemorystoreForMemcachedApi(http.Client client,
-      {core.String rootUrl = 'https://memcache.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudMemorystoreForMemcachedApi(
+    http.Client client, {
+    core.String rootUrl = 'https://memcache.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -96,10 +101,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -163,7 +165,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -325,10 +328,7 @@ class ProjectsLocationsInstancesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Instance> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Instance> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -401,7 +401,8 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return ListInstancesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing Instance in a given project and location.
@@ -668,10 +669,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -707,10 +705,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -772,7 +767,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -787,10 +783,7 @@ class ApplyParametersRequest {
   /// Nodes to which the instance-level parameter group is applied.
   core.List<core.String>? nodeIds;
 
-  ApplyParametersRequest({
-    this.applyAll,
-    this.nodeIds,
-  });
+  ApplyParametersRequest({this.applyAll, this.nodeIds});
 
   ApplyParametersRequest.fromJson(core.Map json_)
       : this(
@@ -857,8 +850,11 @@ class GoogleCloudMemcacheV1MaintenancePolicy {
           updateTime: json_['updateTime'] as core.String?,
           weeklyMaintenanceWindow:
               (json_['weeklyMaintenanceWindow'] as core.List?)
-                  ?.map((value) => WeeklyMaintenanceWindow.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => WeeklyMaintenanceWindow.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
         );
 
@@ -883,14 +879,10 @@ class GoogleCloudMemcacheV1UpgradeInstanceRequest {
   /// - "MEMCACHE_1_6_15" : Memcached 1.6.15 version.
   core.String? memcacheVersion;
 
-  GoogleCloudMemcacheV1UpgradeInstanceRequest({
-    this.memcacheVersion,
-  });
+  GoogleCloudMemcacheV1UpgradeInstanceRequest({this.memcacheVersion});
 
   GoogleCloudMemcacheV1UpgradeInstanceRequest.fromJson(core.Map json_)
-      : this(
-          memcacheVersion: json_['memcacheVersion'] as core.String?,
-        );
+      : this(memcacheVersion: json_['memcacheVersion'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (memcacheVersion != null) 'memcacheVersion': memcacheVersion!,
@@ -1074,40 +1066,48 @@ class Instance {
           discoveryEndpoint: json_['discoveryEndpoint'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           instanceMessages: (json_['instanceMessages'] as core.List?)
-              ?.map((value) => InstanceMessage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => InstanceMessage.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           maintenancePolicy: json_.containsKey('maintenancePolicy')
               ? GoogleCloudMemcacheV1MaintenancePolicy.fromJson(
                   json_['maintenancePolicy']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           maintenanceSchedule: json_.containsKey('maintenanceSchedule')
-              ? MaintenanceSchedule.fromJson(json_['maintenanceSchedule']
-                  as core.Map<core.String, core.dynamic>)
+              ? MaintenanceSchedule.fromJson(
+                  json_['maintenanceSchedule']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           memcacheFullVersion: json_['memcacheFullVersion'] as core.String?,
           memcacheNodes: (json_['memcacheNodes'] as core.List?)
-              ?.map((value) =>
-                  Node.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Node.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           memcacheVersion: json_['memcacheVersion'] as core.String?,
           name: json_['name'] as core.String?,
           nodeConfig: json_.containsKey('nodeConfig')
               ? NodeConfig.fromJson(
-                  json_['nodeConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['nodeConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           nodeCount: json_['nodeCount'] as core.int?,
           parameters: json_.containsKey('parameters')
               ? MemcacheParameters.fromJson(
-                  json_['parameters'] as core.Map<core.String, core.dynamic>)
+                  json_['parameters'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           reservedIpRangeId: (json_['reservedIpRangeId'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1159,10 +1159,7 @@ class InstanceMessage {
   /// Message on memcached instance which will be exposed to users.
   core.String? message;
 
-  InstanceMessage({
-    this.code,
-    this.message,
-  });
+  InstanceMessage({this.code, this.message});
 
   InstanceMessage.fromJson(core.Map json_)
       : this(
@@ -1192,17 +1189,16 @@ class ListInstancesResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListInstancesResponse({
-    this.instances,
-    this.nextPageToken,
-    this.unreachable,
-  });
+  ListInstancesResponse({this.instances, this.nextPageToken, this.unreachable});
 
   ListInstancesResponse.fromJson(core.Map json_)
       : this(
           instances: (json_['instances'] as core.List?)
-              ?.map((value) => Instance.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Instance.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -1225,16 +1221,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1253,17 +1249,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1329,20 +1325,14 @@ class MemcacheParameters {
   /// User defined set of parameters to use in the memcached process.
   core.Map<core.String, core.String>? params;
 
-  MemcacheParameters({
-    this.id,
-    this.params,
-  });
+  MemcacheParameters({this.id, this.params});
 
   MemcacheParameters.fromJson(core.Map json_)
       : this(
           id: json_['id'] as core.String?,
           params:
               (json_['params'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
         );
 
@@ -1427,7 +1417,8 @@ class Node {
           nodeId: json_['nodeId'] as core.String?,
           parameters: json_.containsKey('parameters')
               ? MemcacheParameters.fromJson(
-                  json_['parameters'] as core.Map<core.String, core.dynamic>)
+                  json_['parameters'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           port: json_['port'] as core.int?,
           state: json_['state'] as core.String?,
@@ -1459,10 +1450,7 @@ class NodeConfig {
   /// Required.
   core.int? memorySizeMb;
 
-  NodeConfig({
-    this.cpuCount,
-    this.memorySizeMb,
-  });
+  NodeConfig({this.cpuCount, this.memorySizeMb});
 
   NodeConfig.fromJson(core.Map json_)
       : this(
@@ -1519,20 +1507,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -1572,10 +1555,7 @@ class RescheduleMaintenanceRequest {
   /// `2012-11-15T16:19:00.094Z`.
   core.String? scheduleTime;
 
-  RescheduleMaintenanceRequest({
-    this.rescheduleType,
-    this.scheduleTime,
-  });
+  RescheduleMaintenanceRequest({this.rescheduleType, this.scheduleTime});
 
   RescheduleMaintenanceRequest.fromJson(core.Map json_)
       : this(
@@ -1603,7 +1583,7 @@ typedef Status = $Status00;
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef TimeOfDay = $TimeOfDay00;
+typedef TimeOfDay = $TimeOfDay;
 
 /// Request for UpdateParameters.
 class UpdateParametersRequest {
@@ -1615,16 +1595,14 @@ class UpdateParametersRequest {
   /// Required.
   core.String? updateMask;
 
-  UpdateParametersRequest({
-    this.parameters,
-    this.updateMask,
-  });
+  UpdateParametersRequest({this.parameters, this.updateMask});
 
   UpdateParametersRequest.fromJson(core.Map json_)
       : this(
           parameters: json_.containsKey('parameters')
               ? MemcacheParameters.fromJson(
-                  json_['parameters'] as core.Map<core.String, core.dynamic>)
+                  json_['parameters'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -1661,11 +1639,7 @@ class WeeklyMaintenanceWindow {
   /// Required.
   TimeOfDay? startTime;
 
-  WeeklyMaintenanceWindow({
-    this.day,
-    this.duration,
-    this.startTime,
-  });
+  WeeklyMaintenanceWindow({this.day, this.duration, this.startTime});
 
   WeeklyMaintenanceWindow.fromJson(core.Map json_)
       : this(
@@ -1673,7 +1647,8 @@ class WeeklyMaintenanceWindow {
           duration: json_['duration'] as core.String?,
           startTime: json_.containsKey('startTime')
               ? TimeOfDay.fromJson(
-                  json_['startTime'] as core.Map<core.String, core.dynamic>)
+                  json_['startTime'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 

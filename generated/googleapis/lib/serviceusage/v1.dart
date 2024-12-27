@@ -62,11 +62,16 @@ class ServiceUsageApi {
   OperationsResource get operations => OperationsResource(_requester);
   ServicesResource get services => ServicesResource(_requester);
 
-  ServiceUsageApi(http.Client client,
-      {core.String rootUrl = 'https://serviceusage.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ServiceUsageApi(
+    http.Client client, {
+    core.String rootUrl = 'https://serviceusage.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class OperationsResource {
@@ -144,10 +149,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -182,10 +184,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -247,7 +246,8 @@ class OperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -347,7 +347,8 @@ class ServicesResource {
       queryParams: queryParams_,
     );
     return BatchGetServicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Disable a service so that it can no longer be used with a project.
@@ -480,7 +481,8 @@ class ServicesResource {
       queryParams: queryParams_,
     );
     return GoogleApiServiceusageV1Service.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List all services available to the specified project, and the current
@@ -542,7 +544,8 @@ class ServicesResource {
       queryParams: queryParams_,
     );
     return ListServicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -613,21 +616,31 @@ class Api {
   Api.fromJson(core.Map json_)
       : this(
           methods: (json_['methods'] as core.List?)
-              ?.map((value) =>
-                  Method.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Method.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           mixins: (json_['mixins'] as core.List?)
-              ?.map((value) =>
-                  Mixin.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Mixin.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           name: json_['name'] as core.String?,
           options: (json_['options'] as core.List?)
-              ?.map((value) =>
-                  Option.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Option.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           sourceContext: json_.containsKey('sourceContext')
               ? SourceContext.fromJson(
-                  json_['sourceContext'] as core.Map<core.String, core.dynamic>)
+                  json_['sourceContext'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           syntax: json_['syntax'] as core.String?,
           version: json_['version'] as core.String?,
@@ -724,8 +737,11 @@ class AuthProvider {
           issuer: json_['issuer'] as core.String?,
           jwksUri: json_['jwksUri'] as core.String?,
           jwtLocations: (json_['jwtLocations'] as core.List?)
-              ?.map((value) => JwtLocation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => JwtLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -761,20 +777,23 @@ class Authentication {
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<AuthenticationRule>? rules;
 
-  Authentication({
-    this.providers,
-    this.rules,
-  });
+  Authentication({this.providers, this.rules});
 
   Authentication.fromJson(core.Map json_)
       : this(
           providers: (json_['providers'] as core.List?)
-              ?.map((value) => AuthProvider.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuthProvider.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           rules: (json_['rules'] as core.List?)
-              ?.map((value) => AuthenticationRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuthenticationRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -820,11 +839,15 @@ class AuthenticationRule {
           allowWithoutCredential: json_['allowWithoutCredential'] as core.bool?,
           oauth: json_.containsKey('oauth')
               ? OAuthRequirements.fromJson(
-                  json_['oauth'] as core.Map<core.String, core.dynamic>)
+                  json_['oauth'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           requirements: (json_['requirements'] as core.List?)
-              ?.map((value) => AuthRequirement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuthRequirement.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           selector: json_['selector'] as core.String?,
         );
@@ -849,9 +872,7 @@ class BatchEnableServicesRequest {
   /// no state changes will occur.
   core.List<core.String>? serviceIds;
 
-  BatchEnableServicesRequest({
-    this.serviceIds,
-  });
+  BatchEnableServicesRequest({this.serviceIds});
 
   BatchEnableServicesRequest.fromJson(core.Map json_)
       : this(
@@ -870,15 +891,16 @@ class BatchGetServicesResponse {
   /// The requested Service states.
   core.List<GoogleApiServiceusageV1Service>? services;
 
-  BatchGetServicesResponse({
-    this.services,
-  });
+  BatchGetServicesResponse({this.services});
 
   BatchGetServicesResponse.fromJson(core.Map json_)
       : this(
           services: (json_['services'] as core.List?)
-              ?.map((value) => GoogleApiServiceusageV1Service.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleApiServiceusageV1Service.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1024,16 +1046,25 @@ class Documentation {
           documentationRootUrl: json_['documentationRootUrl'] as core.String?,
           overview: json_['overview'] as core.String?,
           pages: (json_['pages'] as core.List?)
-              ?.map((value) =>
-                  Page.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Page.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           rules: (json_['rules'] as core.List?)
-              ?.map((value) => DocumentationRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DocumentationRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           sectionOverrides: (json_['sectionOverrides'] as core.List?)
-              ?.map((value) =>
-                  Page.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Page.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           serviceRootUrl: json_['serviceRootUrl'] as core.String?,
           summary: json_['summary'] as core.String?,
@@ -1124,7 +1155,8 @@ class GoogleApiServiceusageV1Service {
       : this(
           config: json_.containsKey('config')
               ? GoogleApiServiceusageV1ServiceConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>)
+                  json_['config'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           parent: json_['parent'] as core.String?,
@@ -1202,38 +1234,53 @@ class GoogleApiServiceusageV1ServiceConfig {
   GoogleApiServiceusageV1ServiceConfig.fromJson(core.Map json_)
       : this(
           apis: (json_['apis'] as core.List?)
-              ?.map((value) =>
-                  Api.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Api.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           authentication: json_.containsKey('authentication')
-              ? Authentication.fromJson(json_['authentication']
-                  as core.Map<core.String, core.dynamic>)
+              ? Authentication.fromJson(
+                  json_['authentication']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           documentation: json_.containsKey('documentation')
               ? Documentation.fromJson(
-                  json_['documentation'] as core.Map<core.String, core.dynamic>)
+                  json_['documentation'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           endpoints: (json_['endpoints'] as core.List?)
-              ?.map((value) => Endpoint.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Endpoint.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           monitoredResources: (json_['monitoredResources'] as core.List?)
-              ?.map((value) => MonitoredResourceDescriptor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MonitoredResourceDescriptor.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           monitoring: json_.containsKey('monitoring')
               ? Monitoring.fromJson(
-                  json_['monitoring'] as core.Map<core.String, core.dynamic>)
+                  json_['monitoring'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           quota: json_.containsKey('quota')
               ? Quota.fromJson(
-                  json_['quota'] as core.Map<core.String, core.dynamic>)
+                  json_['quota'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           title: json_['title'] as core.String?,
           usage: json_.containsKey('usage')
               ? Usage.fromJson(
-                  json_['usage'] as core.Map<core.String, core.dynamic>)
+                  json_['usage'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1266,17 +1313,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1294,17 +1341,17 @@ class ListServicesResponse {
   /// The available services for the requested project.
   core.List<GoogleApiServiceusageV1Service>? services;
 
-  ListServicesResponse({
-    this.nextPageToken,
-    this.services,
-  });
+  ListServicesResponse({this.nextPageToken, this.services});
 
   ListServicesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           services: (json_['services'] as core.List?)
-              ?.map((value) => GoogleApiServiceusageV1Service.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleApiServiceusageV1Service.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1355,8 +1402,11 @@ class Method {
       : this(
           name: json_['name'] as core.String?,
           options: (json_['options'] as core.List?)
-              ?.map((value) =>
-                  Option.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Option.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           requestStreaming: json_['requestStreaming'] as core.bool?,
           requestTypeUrl: json_['requestTypeUrl'] as core.String?,
@@ -1523,8 +1573,11 @@ class MonitoredResourceDescriptor {
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           labels: (json_['labels'] as core.List?)
-              ?.map((value) => LabelDescriptor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LabelDescriptor.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           launchStage: json_['launchStage'] as core.String?,
           name: json_['name'] as core.String?,
@@ -1585,20 +1638,23 @@ class Monitoring {
   /// in the Monitoring configuration.
   core.List<MonitoringDestination>? producerDestinations;
 
-  Monitoring({
-    this.consumerDestinations,
-    this.producerDestinations,
-  });
+  Monitoring({this.consumerDestinations, this.producerDestinations});
 
   Monitoring.fromJson(core.Map json_)
       : this(
           consumerDestinations: (json_['consumerDestinations'] as core.List?)
-              ?.map((value) => MonitoringDestination.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MonitoringDestination.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           producerDestinations: (json_['producerDestinations'] as core.List?)
-              ?.map((value) => MonitoringDestination.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MonitoringDestination.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1674,20 +1730,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -1739,19 +1790,18 @@ class Page {
   /// docset.
   core.List<Page>? subpages;
 
-  Page({
-    this.content,
-    this.name,
-    this.subpages,
-  });
+  Page({this.content, this.name, this.subpages});
 
   Page.fromJson(core.Map json_)
       : this(
           content: json_['content'] as core.String?,
           name: json_['name'] as core.String?,
           subpages: (json_['subpages'] as core.List?)
-              ?.map((value) =>
-                  Page.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Page.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1793,20 +1843,23 @@ class Quota {
   /// or more metrics.
   core.List<MetricRule>? metricRules;
 
-  Quota({
-    this.limits,
-    this.metricRules,
-  });
+  Quota({this.limits, this.metricRules});
 
   Quota.fromJson(core.Map json_)
       : this(
           limits: (json_['limits'] as core.List?)
-              ?.map((value) => QuotaLimit.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => QuotaLimit.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           metricRules: (json_['metricRules'] as core.List?)
-              ?.map((value) => MetricRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MetricRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1864,11 +1917,7 @@ class Usage {
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<UsageRule>? rules;
 
-  Usage({
-    this.producerNotificationChannel,
-    this.requirements,
-    this.rules,
-  });
+  Usage({this.producerNotificationChannel, this.requirements, this.rules});
 
   Usage.fromJson(core.Map json_)
       : this(
@@ -1878,8 +1927,11 @@ class Usage {
               ?.map((value) => value as core.String)
               .toList(),
           rules: (json_['rules'] as core.List?)
-              ?.map((value) => UsageRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => UsageRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 

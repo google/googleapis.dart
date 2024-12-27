@@ -44,11 +44,16 @@ class TrafficDirectorServiceApi {
 
   DiscoveryResource get discovery => DiscoveryResource(_requester);
 
-  TrafficDirectorServiceApi(http.Client client,
-      {core.String rootUrl = 'https://trafficdirector.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  TrafficDirectorServiceApi(
+    http.Client client, {
+    core.String rootUrl = 'https://trafficdirector.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class DiscoveryResource {
@@ -88,7 +93,8 @@ class DiscoveryResource {
       queryParams: queryParams_,
     );
     return ClientStatusResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -101,25 +107,25 @@ class Address {
   Pipe? pipe;
   SocketAddress? socketAddress;
 
-  Address({
-    this.envoyInternalAddress,
-    this.pipe,
-    this.socketAddress,
-  });
+  Address({this.envoyInternalAddress, this.pipe, this.socketAddress});
 
   Address.fromJson(core.Map json_)
       : this(
           envoyInternalAddress: json_.containsKey('envoyInternalAddress')
-              ? EnvoyInternalAddress.fromJson(json_['envoyInternalAddress']
-                  as core.Map<core.String, core.dynamic>)
+              ? EnvoyInternalAddress.fromJson(
+                  json_['envoyInternalAddress']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           pipe: json_.containsKey('pipe')
               ? Pipe.fromJson(
-                  json_['pipe'] as core.Map<core.String, core.dynamic>)
+                  json_['pipe'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           socketAddress: json_.containsKey('socketAddress')
               ? SocketAddress.fromJson(
-                  json_['socketAddress'] as core.Map<core.String, core.dynamic>)
+                  json_['socketAddress'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -146,10 +152,7 @@ class BuildVersion {
   /// SemVer version of extension.
   SemanticVersion? version;
 
-  BuildVersion({
-    this.metadata,
-    this.version,
-  });
+  BuildVersion({this.metadata, this.version});
 
   BuildVersion.fromJson(core.Map json_)
       : this(
@@ -158,7 +161,8 @@ class BuildVersion {
               : null,
           version: json_.containsKey('version')
               ? SemanticVersion.fromJson(
-                  json_['version'] as core.Map<core.String, core.dynamic>)
+                  json_['version'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -201,16 +205,23 @@ class ClientConfig {
       : this(
           clientScope: json_['clientScope'] as core.String?,
           genericXdsConfigs: (json_['genericXdsConfigs'] as core.List?)
-              ?.map((value) => GenericXdsConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GenericXdsConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           node: json_.containsKey('node')
               ? Node.fromJson(
-                  json_['node'] as core.Map<core.String, core.dynamic>)
+                  json_['node'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           xdsConfig: (json_['xdsConfig'] as core.List?)
-              ?.map((value) => PerXdsConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PerXdsConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -250,11 +261,15 @@ class ClientStatusRequest {
               json_['excludeResourceContents'] as core.bool?,
           node: json_.containsKey('node')
               ? Node.fromJson(
-                  json_['node'] as core.Map<core.String, core.dynamic>)
+                  json_['node'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           nodeMatchers: (json_['nodeMatchers'] as core.List?)
-              ?.map((value) => NodeMatcher.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => NodeMatcher.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -270,15 +285,16 @@ class ClientStatusResponse {
   /// Client configs for the clients specified in the ClientStatusRequest.
   core.List<ClientConfig>? config;
 
-  ClientStatusResponse({
-    this.config,
-  });
+  ClientStatusResponse({this.config});
 
   ClientStatusResponse.fromJson(core.Map json_)
       : this(
           config: (json_['config'] as core.List?)
-              ?.map((value) => ClientConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ClientConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -326,17 +342,26 @@ class ClustersConfigDump {
   ClustersConfigDump.fromJson(core.Map json_)
       : this(
           dynamicActiveClusters: (json_['dynamicActiveClusters'] as core.List?)
-              ?.map((value) => DynamicCluster.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DynamicCluster.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           dynamicWarmingClusters:
               (json_['dynamicWarmingClusters'] as core.List?)
-                  ?.map((value) => DynamicCluster.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => DynamicCluster.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           staticClusters: (json_['staticClusters'] as core.List?)
-              ?.map((value) => StaticCluster.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => StaticCluster.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           versionInfo: json_['versionInfo'] as core.String?,
         );
@@ -362,18 +387,13 @@ class ClustersConfigDump {
 class ContextParams {
   core.Map<core.String, core.String>? params;
 
-  ContextParams({
-    this.params,
-  });
+  ContextParams({this.params});
 
   ContextParams.fromJson(core.Map json_)
       : this(
           params:
               (json_['params'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
         );
 
@@ -393,17 +413,15 @@ class DoubleMatcher {
   /// Note: The range is using half-open interval semantics \[start, end).
   DoubleRange? range;
 
-  DoubleMatcher({
-    this.exact,
-    this.range,
-  });
+  DoubleMatcher({this.exact, this.range});
 
   DoubleMatcher.fromJson(core.Map json_)
       : this(
           exact: (json_['exact'] as core.num?)?.toDouble(),
           range: json_.containsKey('range')
               ? DoubleRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -479,7 +497,8 @@ class DynamicCluster {
               : null,
           errorState: json_.containsKey('errorState')
               ? UpdateFailureState.fromJson(
-                  json_['errorState'] as core.Map<core.String, core.dynamic>)
+                  json_['errorState'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           lastUpdated: json_['lastUpdated'] as core.String?,
           versionInfo: json_['versionInfo'] as core.String?,
@@ -554,7 +573,8 @@ class DynamicEndpointConfig {
               : null,
           errorState: json_.containsKey('errorState')
               ? UpdateFailureState.fromJson(
-                  json_['errorState'] as core.Map<core.String, core.dynamic>)
+                  json_['errorState'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           lastUpdated: json_['lastUpdated'] as core.String?,
           versionInfo: json_['versionInfo'] as core.String?,
@@ -636,21 +656,25 @@ class DynamicListener {
       : this(
           activeState: json_.containsKey('activeState')
               ? DynamicListenerState.fromJson(
-                  json_['activeState'] as core.Map<core.String, core.dynamic>)
+                  json_['activeState'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           clientStatus: json_['clientStatus'] as core.String?,
           drainingState: json_.containsKey('drainingState')
               ? DynamicListenerState.fromJson(
-                  json_['drainingState'] as core.Map<core.String, core.dynamic>)
+                  json_['drainingState'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           errorState: json_.containsKey('errorState')
               ? UpdateFailureState.fromJson(
-                  json_['errorState'] as core.Map<core.String, core.dynamic>)
+                  json_['errorState'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           warmingState: json_.containsKey('warmingState')
               ? DynamicListenerState.fromJson(
-                  json_['warmingState'] as core.Map<core.String, core.dynamic>)
+                  json_['warmingState'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -722,7 +746,8 @@ class DynamicRouteConfig {
           clientStatus: json_['clientStatus'] as core.String?,
           errorState: json_.containsKey('errorState')
               ? UpdateFailureState.fromJson(
-                  json_['errorState'] as core.Map<core.String, core.dynamic>)
+                  json_['errorState'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           lastUpdated: json_['lastUpdated'] as core.String?,
           routeConfig: json_.containsKey('routeConfig')
@@ -800,7 +825,8 @@ class DynamicScopedRouteConfigs {
           clientStatus: json_['clientStatus'] as core.String?,
           errorState: json_.containsKey('errorState')
               ? UpdateFailureState.fromJson(
-                  json_['errorState'] as core.Map<core.String, core.dynamic>)
+                  json_['errorState'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           lastUpdated: json_['lastUpdated'] as core.String?,
           name: json_['name'] as core.String?,
@@ -842,12 +868,18 @@ class EndpointsConfigDump {
       : this(
           dynamicEndpointConfigs:
               (json_['dynamicEndpointConfigs'] as core.List?)
-                  ?.map((value) => DynamicEndpointConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => DynamicEndpointConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           staticEndpointConfigs: (json_['staticEndpointConfigs'] as core.List?)
-              ?.map((value) => StaticEndpointConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => StaticEndpointConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -874,10 +906,7 @@ class EnvoyInternalAddress {
   /// Specifies the :ref:`name ` of the internal listener.
   core.String? serverListenerName;
 
-  EnvoyInternalAddress({
-    this.endpointId,
-    this.serverListenerName,
-  });
+  EnvoyInternalAddress({this.endpointId, this.serverListenerName});
 
   EnvoyInternalAddress.fromJson(core.Map json_)
       : this(
@@ -949,7 +978,8 @@ class Extension {
               .toList(),
           version: json_.containsKey('version')
               ? BuildVersion.fromJson(
-                  json_['version'] as core.Map<core.String, core.dynamic>)
+                  json_['version'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1055,7 +1085,8 @@ class GenericXdsConfig {
           configStatus: json_['configStatus'] as core.String?,
           errorState: json_.containsKey('errorState')
               ? UpdateFailureState.fromJson(
-                  json_['errorState'] as core.Map<core.String, core.dynamic>)
+                  json_['errorState'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           isStaticResource: json_['isStaticResource'] as core.bool?,
           lastUpdated: json_['lastUpdated'] as core.String?,
@@ -1112,14 +1143,10 @@ class GoogleRE2 {
   )
   core.int? maxProgramSize;
 
-  GoogleRE2({
-    this.maxProgramSize,
-  });
+  GoogleRE2({this.maxProgramSize});
 
   GoogleRE2.fromJson(core.Map json_)
-      : this(
-          maxProgramSize: json_['maxProgramSize'] as core.int?,
-        );
+      : this(maxProgramSize: json_['maxProgramSize'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxProgramSize != null) 'maxProgramSize': maxProgramSize!,
@@ -1134,15 +1161,14 @@ class ListMatcher {
   /// specified.
   ValueMatcher? oneOf;
 
-  ListMatcher({
-    this.oneOf,
-  });
+  ListMatcher({this.oneOf});
 
   ListMatcher.fromJson(core.Map json_)
       : this(
           oneOf: json_.containsKey('oneOf')
               ? ValueMatcher.fromJson(
-                  json_['oneOf'] as core.Map<core.String, core.dynamic>)
+                  json_['oneOf'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1179,12 +1205,18 @@ class ListenersConfigDump {
   ListenersConfigDump.fromJson(core.Map json_)
       : this(
           dynamicListeners: (json_['dynamicListeners'] as core.List?)
-              ?.map((value) => DynamicListener.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DynamicListener.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           staticListeners: (json_['staticListeners'] as core.List?)
-              ?.map((value) => StaticListener.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => StaticListener.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           versionInfo: json_['versionInfo'] as core.String?,
         );
@@ -1305,28 +1337,38 @@ class Node {
             (key, value) => core.MapEntry(
               key,
               ContextParams.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           extensions: (json_['extensions'] as core.List?)
-              ?.map((value) => Extension.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Extension.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           id: json_['id'] as core.String?,
           listeningAddresses: (json_['listeningAddresses'] as core.List?)
-              ?.map((value) => Address.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Address.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           locality: json_.containsKey('locality')
               ? Locality.fromJson(
-                  json_['locality'] as core.Map<core.String, core.dynamic>)
+                  json_['locality'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           userAgentBuildVersion: json_.containsKey('userAgentBuildVersion')
-              ? BuildVersion.fromJson(json_['userAgentBuildVersion']
-                  as core.Map<core.String, core.dynamic>)
+              ? BuildVersion.fromJson(
+                  json_['userAgentBuildVersion']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           userAgentName: json_['userAgentName'] as core.String?,
           userAgentVersion: json_['userAgentVersion'] as core.String?,
@@ -1359,20 +1401,21 @@ class NodeMatcher {
   /// Specifies match criteria on the node metadata.
   core.List<StructMatcher>? nodeMetadatas;
 
-  NodeMatcher({
-    this.nodeId,
-    this.nodeMetadatas,
-  });
+  NodeMatcher({this.nodeId, this.nodeMetadatas});
 
   NodeMatcher.fromJson(core.Map json_)
       : this(
           nodeId: json_.containsKey('nodeId')
               ? StringMatcher.fromJson(
-                  json_['nodeId'] as core.Map<core.String, core.dynamic>)
+                  json_['nodeId'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           nodeMetadatas: (json_['nodeMetadatas'] as core.List?)
-              ?.map((value) => StructMatcher.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => StructMatcher.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1389,15 +1432,16 @@ typedef NullMatch = $Empty;
 class OrMatcher {
   core.List<ValueMatcher>? valueMatchers;
 
-  OrMatcher({
-    this.valueMatchers,
-  });
+  OrMatcher({this.valueMatchers});
 
   OrMatcher.fromJson(core.Map json_)
       : this(
           valueMatchers: (json_['valueMatchers'] as core.List?)
-              ?.map((value) => ValueMatcher.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ValueMatcher.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1468,23 +1512,31 @@ class PerXdsConfig {
           clientStatus: json_['clientStatus'] as core.String?,
           clusterConfig: json_.containsKey('clusterConfig')
               ? ClustersConfigDump.fromJson(
-                  json_['clusterConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['clusterConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           endpointConfig: json_.containsKey('endpointConfig')
-              ? EndpointsConfigDump.fromJson(json_['endpointConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? EndpointsConfigDump.fromJson(
+                  json_['endpointConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           listenerConfig: json_.containsKey('listenerConfig')
-              ? ListenersConfigDump.fromJson(json_['listenerConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? ListenersConfigDump.fromJson(
+                  json_['listenerConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           routeConfig: json_.containsKey('routeConfig')
               ? RoutesConfigDump.fromJson(
-                  json_['routeConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['routeConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           scopedRouteConfig: json_.containsKey('scopedRouteConfig')
-              ? ScopedRoutesConfigDump.fromJson(json_['scopedRouteConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? ScopedRoutesConfigDump.fromJson(
+                  json_['scopedRouteConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           status: json_['status'] as core.String?,
         );
@@ -1516,16 +1568,14 @@ class RegexMatcher {
   /// matched against the full string, not as a partial match.
   core.String? regex;
 
-  RegexMatcher({
-    this.googleRe2,
-    this.regex,
-  });
+  RegexMatcher({this.googleRe2, this.regex});
 
   RegexMatcher.fromJson(core.Map json_)
       : this(
           googleRe2: json_.containsKey('googleRe2')
               ? GoogleRE2.fromJson(
-                  json_['googleRe2'] as core.Map<core.String, core.dynamic>)
+                  json_['googleRe2'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           regex: json_['regex'] as core.String?,
         );
@@ -1551,20 +1601,23 @@ class RoutesConfigDump {
   /// The statically loaded route configs.
   core.List<StaticRouteConfig>? staticRouteConfigs;
 
-  RoutesConfigDump({
-    this.dynamicRouteConfigs,
-    this.staticRouteConfigs,
-  });
+  RoutesConfigDump({this.dynamicRouteConfigs, this.staticRouteConfigs});
 
   RoutesConfigDump.fromJson(core.Map json_)
       : this(
           dynamicRouteConfigs: (json_['dynamicRouteConfigs'] as core.List?)
-              ?.map((value) => DynamicRouteConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DynamicRouteConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           staticRouteConfigs: (json_['staticRouteConfigs'] as core.List?)
-              ?.map((value) => StaticRouteConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => StaticRouteConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1599,13 +1652,19 @@ class ScopedRoutesConfigDump {
       : this(
           dynamicScopedRouteConfigs:
               (json_['dynamicScopedRouteConfigs'] as core.List?)
-                  ?.map((value) => DynamicScopedRouteConfigs.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => DynamicScopedRouteConfigs.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           inlineScopedRouteConfigs:
               (json_['inlineScopedRouteConfigs'] as core.List?)
-                  ?.map((value) => InlineScopedRouteConfigs.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => InlineScopedRouteConfigs.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
         );
 
@@ -1709,10 +1768,7 @@ class StaticEndpointConfig {
   /// updated.
   core.String? lastUpdated;
 
-  StaticEndpointConfig({
-    this.endpointConfig,
-    this.lastUpdated,
-  });
+  StaticEndpointConfig({this.endpointConfig, this.lastUpdated});
 
   StaticEndpointConfig.fromJson(core.Map json_)
       : this(
@@ -1790,14 +1846,16 @@ class StringMatcher {
           contains: json_['contains'] as core.String?,
           custom: json_.containsKey('custom')
               ? TypedExtensionConfig.fromJson(
-                  json_['custom'] as core.Map<core.String, core.dynamic>)
+                  json_['custom'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           exact: json_['exact'] as core.String?,
           ignoreCase: json_['ignoreCase'] as core.bool?,
           prefix: json_['prefix'] as core.String?,
           safeRegex: json_.containsKey('safeRegex')
               ? RegexMatcher.fromJson(
-                  json_['safeRegex'] as core.Map<core.String, core.dynamic>)
+                  json_['safeRegex'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           suffix: json_['suffix'] as core.String?,
         );
@@ -1836,20 +1894,21 @@ class StructMatcher {
   /// this value.
   ValueMatcher? value;
 
-  StructMatcher({
-    this.path,
-    this.value,
-  });
+  StructMatcher({this.path, this.value});
 
   StructMatcher.fromJson(core.Map json_)
       : this(
           path: (json_['path'] as core.List?)
-              ?.map((value) => PathSegment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PathSegment.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           value: json_.containsKey('value')
               ? ValueMatcher.fromJson(
-                  json_['value'] as core.Map<core.String, core.dynamic>)
+                  json_['value'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1879,10 +1938,7 @@ class TypedExtensionConfig {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? typedConfig;
 
-  TypedExtensionConfig({
-    this.name,
-    this.typedConfig,
-  });
+  TypedExtensionConfig({this.name, this.typedConfig});
 
   TypedExtensionConfig.fromJson(core.Map json_)
       : this(
@@ -1997,24 +2053,29 @@ class ValueMatcher {
           boolMatch: json_['boolMatch'] as core.bool?,
           doubleMatch: json_.containsKey('doubleMatch')
               ? DoubleMatcher.fromJson(
-                  json_['doubleMatch'] as core.Map<core.String, core.dynamic>)
+                  json_['doubleMatch'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           listMatch: json_.containsKey('listMatch')
               ? ListMatcher.fromJson(
-                  json_['listMatch'] as core.Map<core.String, core.dynamic>)
+                  json_['listMatch'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           nullMatch: json_.containsKey('nullMatch')
               ? NullMatch.fromJson(
-                  json_['nullMatch'] as core.Map<core.String, core.dynamic>)
+                  json_['nullMatch'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           orMatch: json_.containsKey('orMatch')
               ? OrMatcher.fromJson(
-                  json_['orMatch'] as core.Map<core.String, core.dynamic>)
+                  json_['orMatch'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           presentMatch: json_['presentMatch'] as core.bool?,
           stringMatch: json_.containsKey('stringMatch')
               ? StringMatcher.fromJson(
-                  json_['stringMatch'] as core.Map<core.String, core.dynamic>)
+                  json_['stringMatch'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 

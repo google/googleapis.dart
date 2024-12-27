@@ -50,11 +50,16 @@ class SafebrowsingApi {
 
   HashesResource get hashes => HashesResource(_requester);
 
-  SafebrowsingApi(http.Client client,
-      {core.String rootUrl = 'https://safebrowsing.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  SafebrowsingApi(
+    http.Client client, {
+    core.String rootUrl = 'https://safebrowsing.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class HashesResource {
@@ -104,7 +109,8 @@ class HashesResource {
       queryParams: queryParams_,
     );
     return GoogleSecuritySafebrowsingV5SearchHashesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -127,18 +133,18 @@ class GoogleSecuritySafebrowsingV5FullHash {
   core.List<GoogleSecuritySafebrowsingV5FullHashFullHashDetail>?
       fullHashDetails;
 
-  GoogleSecuritySafebrowsingV5FullHash({
-    this.fullHash,
-    this.fullHashDetails,
-  });
+  GoogleSecuritySafebrowsingV5FullHash({this.fullHash, this.fullHashDetails});
 
   GoogleSecuritySafebrowsingV5FullHash.fromJson(core.Map json_)
       : this(
           fullHash: json_['fullHash'] as core.String?,
           fullHashDetails: (json_['fullHashDetails'] as core.List?)
-              ?.map((value) =>
-                  GoogleSecuritySafebrowsingV5FullHashFullHashDetail.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    GoogleSecuritySafebrowsingV5FullHashFullHashDetail.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -256,8 +262,11 @@ class GoogleSecuritySafebrowsingV5SearchHashesResponse {
       : this(
           cacheDuration: json_['cacheDuration'] as core.String?,
           fullHashes: (json_['fullHashes'] as core.List?)
-              ?.map((value) => GoogleSecuritySafebrowsingV5FullHash.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GoogleSecuritySafebrowsingV5FullHash.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 

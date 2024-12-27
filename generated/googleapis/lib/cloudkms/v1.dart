@@ -64,11 +64,16 @@ class CloudKMSApi {
   FoldersResource get folders => FoldersResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  CloudKMSApi(http.Client client,
-      {core.String rootUrl = 'https://cloudkms.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudKMSApi(
+    http.Client client, {
+    core.String rootUrl = 'https://cloudkms.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class FoldersResource {
@@ -110,7 +115,8 @@ class FoldersResource {
       queryParams: queryParams_,
     );
     return AutokeyConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the AutokeyConfig for a folder.
@@ -163,7 +169,8 @@ class FoldersResource {
       queryParams: queryParams_,
     );
     return AutokeyConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -211,7 +218,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return ShowEffectiveAutokeyConfigResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -272,7 +280,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GenerateRandomBytesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets information about a location.
@@ -292,10 +301,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -394,7 +400,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the EkmConfig singleton resource for a given project and location.
@@ -598,7 +605,8 @@ class ProjectsLocationsEkmConfigResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -652,7 +660,8 @@ class ProjectsLocationsEkmConnectionsResource {
       queryParams: queryParams_,
     );
     return EkmConnection.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns metadata for a given EkmConnection.
@@ -689,7 +698,8 @@ class ProjectsLocationsEkmConnectionsResource {
       queryParams: queryParams_,
     );
     return EkmConnection.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -809,7 +819,8 @@ class ProjectsLocationsEkmConnectionsResource {
       queryParams: queryParams_,
     );
     return ListEkmConnectionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an EkmConnection's metadata.
@@ -856,7 +867,8 @@ class ProjectsLocationsEkmConnectionsResource {
       queryParams: queryParams_,
     );
     return EkmConnection.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -954,7 +966,8 @@ class ProjectsLocationsEkmConnectionsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Verifies that Cloud KMS can successfully connect to the external key
@@ -996,7 +1009,8 @@ class ProjectsLocationsEkmConnectionsResource {
       queryParams: queryParams_,
     );
     return VerifyConnectivityResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1077,10 +1091,7 @@ class ProjectsLocationsKeyHandlesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<KeyHandle> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<KeyHandle> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1147,7 +1158,8 @@ class ProjectsLocationsKeyHandlesResource {
       queryParams: queryParams_,
     );
     return ListKeyHandlesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1226,10 +1238,7 @@ class ProjectsLocationsKeyRingsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<KeyRing> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<KeyRing> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1360,7 +1369,8 @@ class ProjectsLocationsKeyRingsResource {
       queryParams: queryParams_,
     );
     return ListKeyRingsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1458,7 +1468,8 @@ class ProjectsLocationsKeyRingsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1572,7 +1583,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       queryParams: queryParams_,
     );
     return DecryptResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Encrypts data, so that it can only be recovered by a call to Decrypt.
@@ -1618,7 +1630,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       queryParams: queryParams_,
     );
     return EncryptResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns metadata for a given CryptoKey, as well as its primary
@@ -1640,10 +1653,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CryptoKey> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<CryptoKey> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1785,7 +1795,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       queryParams: queryParams_,
     );
     return ListCryptoKeysResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update a CryptoKey.
@@ -1929,7 +1940,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update the version of a CryptoKey that will be used in Encrypt.
@@ -1980,8 +1992,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Decrypts data that was encrypted with a public key retrieved from
   /// GetPublicKey corresponding to a CryptoKeyVersion with CryptoKey.purpose
@@ -2025,7 +2037,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: queryParams_,
     );
     return AsymmetricDecryptResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Signs data using a CryptoKeyVersion with CryptoKey.purpose
@@ -2070,7 +2083,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: queryParams_,
     );
     return AsymmetricSignResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Create a new CryptoKeyVersion in a CryptoKey.
@@ -2116,7 +2130,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: queryParams_,
     );
     return CryptoKeyVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Schedule a CryptoKeyVersion for destruction.
@@ -2165,7 +2180,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: queryParams_,
     );
     return CryptoKeyVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns metadata for a given CryptoKeyVersion.
@@ -2202,7 +2218,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: queryParams_,
     );
     return CryptoKeyVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the public key for the given CryptoKeyVersion.
@@ -2290,7 +2307,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: queryParams_,
     );
     return CryptoKeyVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists CryptoKeyVersions.
@@ -2363,7 +2381,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: queryParams_,
     );
     return ListCryptoKeyVersionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Signs data using a CryptoKeyVersion with CryptoKey.purpose MAC, producing
@@ -2407,7 +2426,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: queryParams_,
     );
     return MacSignResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Verifies MAC tag using a CryptoKeyVersion with CryptoKey.purpose MAC, and
@@ -2452,7 +2472,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: queryParams_,
     );
     return MacVerifyResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update a CryptoKeyVersion's metadata.
@@ -2504,7 +2525,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: queryParams_,
     );
     return CryptoKeyVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Decrypts data that was originally encrypted using a raw cryptographic
@@ -2550,7 +2572,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: queryParams_,
     );
     return RawDecryptResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Encrypts data using portable cryptographic primitives.
@@ -2596,7 +2619,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: queryParams_,
     );
     return RawEncryptResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Restore a CryptoKeyVersion in the DESTROY_SCHEDULED state.
@@ -2641,7 +2665,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: queryParams_,
     );
     return CryptoKeyVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2718,10 +2743,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ImportJob> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<ImportJob> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2853,7 +2875,8 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       queryParams: queryParams_,
     );
     return ListImportJobsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2951,7 +2974,8 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2982,10 +3006,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3033,10 +3054,7 @@ class AsymmetricDecryptRequest {
   /// Optional.
   core.String? ciphertextCrc32c;
 
-  AsymmetricDecryptRequest({
-    this.ciphertext,
-    this.ciphertextCrc32c,
-  });
+  AsymmetricDecryptRequest({this.ciphertext, this.ciphertextCrc32c});
 
   AsymmetricDecryptRequest.fromJson(core.Map json_)
       : this(
@@ -3192,7 +3210,8 @@ class AsymmetricSignRequest {
           dataCrc32c: json_['dataCrc32c'] as core.String?,
           digest: json_.containsKey('digest')
               ? Digest.fromJson(
-                  json_['digest'] as core.Map<core.String, core.dynamic>)
+                  json_['digest'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           digestCrc32c: json_['digestCrc32c'] as core.String?,
         );
@@ -3326,16 +3345,16 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -3389,11 +3408,7 @@ class AutokeyConfig {
   /// reset to its default uninitialized state.
   core.String? state;
 
-  AutokeyConfig({
-    this.keyProject,
-    this.name,
-    this.state,
-  });
+  AutokeyConfig({this.keyProject, this.name, this.state});
 
   AutokeyConfig.fromJson(core.Map json_)
       : this(
@@ -3489,17 +3504,14 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -3769,26 +3781,27 @@ class CryptoKey {
               json_.containsKey('keyAccessJustificationsPolicy')
                   ? KeyAccessJustificationsPolicy.fromJson(
                       json_['keyAccessJustificationsPolicy']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           nextRotationTime: json_['nextRotationTime'] as core.String?,
           primary: json_.containsKey('primary')
               ? CryptoKeyVersion.fromJson(
-                  json_['primary'] as core.Map<core.String, core.dynamic>)
+                  json_['primary'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           purpose: json_['purpose'] as core.String?,
           rotationPeriod: json_['rotationPeriod'] as core.String?,
           versionTemplate: json_.containsKey('versionTemplate')
-              ? CryptoKeyVersionTemplate.fromJson(json_['versionTemplate']
-                  as core.Map<core.String, core.dynamic>)
+              ? CryptoKeyVersionTemplate.fromJson(
+                  json_['versionTemplate']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -4047,7 +4060,8 @@ class CryptoKeyVersion {
           algorithm: json_['algorithm'] as core.String?,
           attestation: json_.containsKey('attestation')
               ? KeyOperationAttestation.fromJson(
-                  json_['attestation'] as core.Map<core.String, core.dynamic>)
+                  json_['attestation'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           createTime: json_['createTime'] as core.String?,
           destroyEventTime: json_['destroyEventTime'] as core.String?,
@@ -4058,7 +4072,8 @@ class CryptoKeyVersion {
               json_.containsKey('externalProtectionLevelOptions')
                   ? ExternalProtectionLevelOptions.fromJson(
                       json_['externalProtectionLevelOptions']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           generateTime: json_['generateTime'] as core.String?,
           generationFailureReason:
@@ -4285,11 +4300,7 @@ class Digest {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  Digest({
-    this.sha256,
-    this.sha384,
-    this.sha512,
-  });
+  Digest({this.sha256, this.sha384, this.sha512});
 
   Digest.fromJson(core.Map json_)
       : this(
@@ -4322,10 +4333,7 @@ class EkmConfig {
   /// Output only.
   core.String? name;
 
-  EkmConfig({
-    this.defaultEkmConnection,
-    this.name,
-  });
+  EkmConfig({this.defaultEkmConnection, this.name});
 
   EkmConfig.fromJson(core.Map json_)
       : this(
@@ -4419,8 +4427,11 @@ class EkmConnection {
           keyManagementMode: json_['keyManagementMode'] as core.String?,
           name: json_['name'] as core.String?,
           serviceResolvers: (json_['serviceResolvers'] as core.List?)
-              ?.map((value) => ServiceResolver.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ServiceResolver.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -4677,10 +4688,7 @@ class GenerateRandomBytesRequest {
   /// backend.
   core.String? protectionLevel;
 
-  GenerateRandomBytesRequest({
-    this.lengthBytes,
-    this.protectionLevel,
-  });
+  GenerateRandomBytesRequest({this.lengthBytes, this.protectionLevel});
 
   GenerateRandomBytesRequest.fromJson(core.Map json_)
       : this(
@@ -4719,10 +4727,7 @@ class GenerateRandomBytesResponse {
   /// to uint32 in languages that support this type.
   core.String? dataCrc32c;
 
-  GenerateRandomBytesResponse({
-    this.data,
-    this.dataCrc32c,
-  });
+  GenerateRandomBytesResponse({this.data, this.dataCrc32c});
 
   GenerateRandomBytesResponse.fromJson(core.Map json_)
       : this(
@@ -5051,7 +5056,8 @@ class ImportJob {
       : this(
           attestation: json_.containsKey('attestation')
               ? KeyOperationAttestation.fromJson(
-                  json_['attestation'] as core.Map<core.String, core.dynamic>)
+                  json_['attestation'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           createTime: json_['createTime'] as core.String?,
           expireEventTime: json_['expireEventTime'] as core.String?,
@@ -5062,7 +5068,8 @@ class ImportJob {
           protectionLevel: json_['protectionLevel'] as core.String?,
           publicKey: json_.containsKey('publicKey')
               ? WrappingPublicKey.fromJson(
-                  json_['publicKey'] as core.Map<core.String, core.dynamic>)
+                  json_['publicKey'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           state: json_['state'] as core.String?,
         );
@@ -5114,11 +5121,7 @@ class KeyHandle {
   /// Required.
   core.String? resourceTypeSelector;
 
-  KeyHandle({
-    this.kmsKey,
-    this.name,
-    this.resourceTypeSelector,
-  });
+  KeyHandle({this.kmsKey, this.name, this.resourceTypeSelector});
 
   KeyHandle.fromJson(core.Map json_)
       : this(
@@ -5170,17 +5173,14 @@ class KeyOperationAttestation {
   /// This is a new format introduced in Cavium's version 3.2-08.
   core.String? format;
 
-  KeyOperationAttestation({
-    this.certChains,
-    this.content,
-    this.format,
-  });
+  KeyOperationAttestation({this.certChains, this.content, this.format});
 
   KeyOperationAttestation.fromJson(core.Map json_)
       : this(
           certChains: json_.containsKey('certChains')
               ? CertificateChains.fromJson(
-                  json_['certChains'] as core.Map<core.String, core.dynamic>)
+                  json_['certChains'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           content: json_['content'] as core.String?,
           format: json_['format'] as core.String?,
@@ -5206,10 +5206,7 @@ class KeyRing {
   /// Output only.
   core.String? name;
 
-  KeyRing({
-    this.createTime,
-    this.name,
-  });
+  KeyRing({this.createTime, this.name});
 
   KeyRing.fromJson(core.Map json_)
       : this(
@@ -5246,8 +5243,11 @@ class ListCryptoKeyVersionsResponse {
   ListCryptoKeyVersionsResponse.fromJson(core.Map json_)
       : this(
           cryptoKeyVersions: (json_['cryptoKeyVersions'] as core.List?)
-              ?.map((value) => CryptoKeyVersion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CryptoKeyVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
@@ -5274,17 +5274,16 @@ class ListCryptoKeysResponse {
   /// The total number of CryptoKeys that matched the query.
   core.int? totalSize;
 
-  ListCryptoKeysResponse({
-    this.cryptoKeys,
-    this.nextPageToken,
-    this.totalSize,
-  });
+  ListCryptoKeysResponse({this.cryptoKeys, this.nextPageToken, this.totalSize});
 
   ListCryptoKeysResponse.fromJson(core.Map json_)
       : this(
           cryptoKeys: (json_['cryptoKeys'] as core.List?)
-              ?.map((value) => CryptoKey.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CryptoKey.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
@@ -5320,8 +5319,11 @@ class ListEkmConnectionsResponse {
   ListEkmConnectionsResponse.fromJson(core.Map json_)
       : this(
           ekmConnections: (json_['ekmConnections'] as core.List?)
-              ?.map((value) => EkmConnection.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => EkmConnection.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
@@ -5348,17 +5350,16 @@ class ListImportJobsResponse {
   /// The total number of ImportJobs that matched the query.
   core.int? totalSize;
 
-  ListImportJobsResponse({
-    this.importJobs,
-    this.nextPageToken,
-    this.totalSize,
-  });
+  ListImportJobsResponse({this.importJobs, this.nextPageToken, this.totalSize});
 
   ListImportJobsResponse.fromJson(core.Map json_)
       : this(
           importJobs: (json_['importJobs'] as core.List?)
-              ?.map((value) => ImportJob.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ImportJob.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
@@ -5382,16 +5383,16 @@ class ListKeyHandlesResponse {
   /// page of results.
   core.String? nextPageToken;
 
-  ListKeyHandlesResponse({
-    this.keyHandles,
-    this.nextPageToken,
-  });
+  ListKeyHandlesResponse({this.keyHandles, this.nextPageToken});
 
   ListKeyHandlesResponse.fromJson(core.Map json_)
       : this(
           keyHandles: (json_['keyHandles'] as core.List?)
-              ?.map((value) => KeyHandle.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => KeyHandle.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -5416,17 +5417,16 @@ class ListKeyRingsResponse {
   /// The total number of KeyRings that matched the query.
   core.int? totalSize;
 
-  ListKeyRingsResponse({
-    this.keyRings,
-    this.nextPageToken,
-    this.totalSize,
-  });
+  ListKeyRingsResponse({this.keyRings, this.nextPageToken, this.totalSize});
 
   ListKeyRingsResponse.fromJson(core.Map json_)
       : this(
           keyRings: (json_['keyRings'] as core.List?)
-              ?.map((value) => KeyRing.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => KeyRing.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
@@ -5447,16 +5447,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -5502,10 +5502,7 @@ class MacSignRequest {
   /// Optional.
   core.String? dataCrc32c;
 
-  MacSignRequest({
-    this.data,
-    this.dataCrc32c,
-  });
+  MacSignRequest({this.data, this.dataCrc32c});
 
   MacSignRequest.fromJson(core.Map json_)
       : this(
@@ -5655,12 +5652,7 @@ class MacVerifyRequest {
   /// Optional.
   core.String? macCrc32c;
 
-  MacVerifyRequest({
-    this.data,
-    this.dataCrc32c,
-    this.mac,
-    this.macCrc32c,
-  });
+  MacVerifyRequest({this.data, this.dataCrc32c, this.mac, this.macCrc32c});
 
   MacVerifyRequest.fromJson(core.Map json_)
       : this(
@@ -5805,20 +5797,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -5924,22 +5911,23 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -6688,8 +6676,11 @@ class ServiceResolver {
           endpointFilter: json_['endpointFilter'] as core.String?,
           hostname: json_['hostname'] as core.String?,
           serverCertificates: (json_['serverCertificates'] as core.List?)
-              ?.map((value) => Certificate.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Certificate.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           serviceDirectoryService:
               json_['serviceDirectoryService'] as core.String?,
@@ -6720,16 +6711,14 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -6746,14 +6735,10 @@ class ShowEffectiveAutokeyConfigResponse {
   /// ancestry.
   core.String? keyProject;
 
-  ShowEffectiveAutokeyConfigResponse({
-    this.keyProject,
-  });
+  ShowEffectiveAutokeyConfigResponse({this.keyProject});
 
   ShowEffectiveAutokeyConfigResponse.fromJson(core.Map json_)
-      : this(
-          keyProject: json_['keyProject'] as core.String?,
-        );
+      : this(keyProject: json_['keyProject'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keyProject != null) 'keyProject': keyProject!,
@@ -6782,14 +6767,10 @@ class UpdateCryptoKeyPrimaryVersionRequest {
   /// Required.
   core.String? cryptoKeyVersionId;
 
-  UpdateCryptoKeyPrimaryVersionRequest({
-    this.cryptoKeyVersionId,
-  });
+  UpdateCryptoKeyPrimaryVersionRequest({this.cryptoKeyVersionId});
 
   UpdateCryptoKeyPrimaryVersionRequest.fromJson(core.Map json_)
-      : this(
-          cryptoKeyVersionId: json_['cryptoKeyVersionId'] as core.String?,
-        );
+      : this(cryptoKeyVersionId: json_['cryptoKeyVersionId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cryptoKeyVersionId != null)
@@ -6814,14 +6795,10 @@ class WrappingPublicKey {
   /// [Textual Encoding of Subject Public Key Info](https://tools.ietf.org/html/rfc7468#section-13).
   core.String? pem;
 
-  WrappingPublicKey({
-    this.pem,
-  });
+  WrappingPublicKey({this.pem});
 
   WrappingPublicKey.fromJson(core.Map json_)
-      : this(
-          pem: json_['pem'] as core.String?,
-        );
+      : this(pem: json_['pem'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pem != null) 'pem': pem!,

@@ -124,11 +124,16 @@ class ShoppingContentApi {
   ShoppingadsprogramResource get shoppingadsprogram =>
       ShoppingadsprogramResource(_requester);
 
-  ShoppingContentApi(http.Client client,
-      {core.String rootUrl = 'https://shoppingcontent.googleapis.com/',
-      core.String servicePath = 'content/v2.1/'})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ShoppingContentApi(
+    http.Client client, {
+    core.String rootUrl = 'https://shoppingcontent.googleapis.com/',
+    core.String servicePath = 'content/v2.1/',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class AccountsResource {
@@ -171,7 +176,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return AccountsAuthInfoResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Claims the website of a Merchant Center sub-account.
@@ -224,7 +230,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return AccountsClaimWebsiteResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves, inserts, updates, and deletes multiple Merchant Center
@@ -262,7 +269,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return AccountsCustomBatchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a Merchant Center sub-account.
@@ -443,7 +451,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return AccountsLinkResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the sub-accounts in your Merchant Center account.
@@ -506,7 +515,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return AccountsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of accounts linked to your Merchant Center account.
@@ -559,7 +569,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return AccountsListLinksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Request verification code to start phone verification.
@@ -607,7 +618,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return RequestPhoneVerificationResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a Merchant Center account.
@@ -702,7 +714,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return AccountsUpdateLabelsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Validates verification code to verify phone number for the account.
@@ -754,7 +767,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return VerifyPhoneNumberResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -806,7 +820,8 @@ class AccountsCredentialsResource {
       queryParams: queryParams_,
     );
     return AccountCredentials.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -852,7 +867,8 @@ class AccountsLabelsResource {
       queryParams: queryParams_,
     );
     return AccountLabel.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a label and removes it from all accounts to which it was assigned.
@@ -939,7 +955,8 @@ class AccountsLabelsResource {
       queryParams: queryParams_,
     );
     return ListAccountLabelsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a label.
@@ -985,7 +1002,8 @@ class AccountsLabelsResource {
       queryParams: queryParams_,
     );
     return AccountLabel.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1034,7 +1052,8 @@ class AccountsReturncarrierResource {
       queryParams: queryParams_,
     );
     return AccountReturnCarrier.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete a return carrier in the merchant account.
@@ -1111,7 +1130,8 @@ class AccountsReturncarrierResource {
       queryParams: queryParams_,
     );
     return ListAccountReturnCarrierResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a return carrier in the merchant account.
@@ -1159,7 +1179,8 @@ class AccountsReturncarrierResource {
       queryParams: queryParams_,
     );
     return AccountReturnCarrier.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1202,7 +1223,8 @@ class AccountstatusesResource {
       queryParams: queryParams_,
     );
     return AccountstatusesCustomBatchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the status of a Merchant Center account.
@@ -1251,7 +1273,8 @@ class AccountstatusesResource {
       queryParams: queryParams_,
     );
     return AccountStatus.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the statuses of the sub-accounts in your Merchant Center account.
@@ -1306,7 +1329,8 @@ class AccountstatusesResource {
       queryParams: queryParams_,
     );
     return AccountstatusesListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1350,7 +1374,8 @@ class AccounttaxResource {
       queryParams: queryParams_,
     );
     return AccounttaxCustomBatchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the tax settings of the account.
@@ -1393,7 +1418,8 @@ class AccounttaxResource {
       queryParams: queryParams_,
     );
     return AccountTax.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the tax settings of the sub-accounts in your Merchant Center
@@ -1439,7 +1465,8 @@ class AccounttaxResource {
       queryParams: queryParams_,
     );
     return AccounttaxListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the tax settings of the account.
@@ -1489,7 +1516,8 @@ class AccounttaxResource {
       queryParams: queryParams_,
     );
     return AccountTax.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1540,7 +1568,8 @@ class CollectionsResource {
       queryParams: queryParams_,
     );
     return Collection.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a collection from your Merchant Center account.
@@ -1620,7 +1649,8 @@ class CollectionsResource {
       queryParams: queryParams_,
     );
     return Collection.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the collections in your Merchant Center account.
@@ -1671,7 +1701,8 @@ class CollectionsResource {
       queryParams: queryParams_,
     );
     return ListCollectionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1719,7 +1750,8 @@ class CollectionstatusesResource {
       queryParams: queryParams_,
     );
     return CollectionStatus.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the statuses of the collections in your Merchant Center account.
@@ -1767,7 +1799,8 @@ class CollectionstatusesResource {
       queryParams: queryParams_,
     );
     return ListCollectionStatusesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1814,7 +1847,8 @@ class ConversionsourcesResource {
       queryParams: queryParams_,
     );
     return ConversionSource.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Archives an existing conversion source.
@@ -1897,7 +1931,8 @@ class ConversionsourcesResource {
       queryParams: queryParams_,
     );
     return ConversionSource.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the list of conversion sources the caller has access to.
@@ -1949,7 +1984,8 @@ class ConversionsourcesResource {
       queryParams: queryParams_,
     );
     return ListConversionSourcesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates information of an existing conversion source.
@@ -2000,7 +2036,8 @@ class ConversionsourcesResource {
       queryParams: queryParams_,
     );
     return ConversionSource.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Re-enables an archived conversion source.
@@ -2142,7 +2179,8 @@ class CssesResource {
       queryParams: queryParams_,
     );
     return ListCssesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates labels that are assigned to a CSS domain by its CSS group.
@@ -2231,7 +2269,8 @@ class DatafeedsResource {
       queryParams: queryParams_,
     );
     return DatafeedsCustomBatchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a datafeed configuration from your Merchant Center account.
@@ -2316,7 +2355,8 @@ class DatafeedsResource {
       queryParams: queryParams_,
     );
     return DatafeedsFetchNowResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a datafeed configuration from your Merchant Center account.
@@ -2441,7 +2481,8 @@ class DatafeedsResource {
       queryParams: queryParams_,
     );
     return DatafeedsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a datafeed configuration of your Merchant Center account.
@@ -2531,7 +2572,8 @@ class DatafeedstatusesResource {
       queryParams: queryParams_,
     );
     return DatafeedstatusesCustomBatchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the status of a datafeed from your Merchant Center account.
@@ -2594,7 +2636,8 @@ class DatafeedstatusesResource {
       queryParams: queryParams_,
     );
     return DatafeedStatus.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the statuses of the datafeeds in your Merchant Center account.
@@ -2639,7 +2682,8 @@ class DatafeedstatusesResource {
       queryParams: queryParams_,
     );
     return DatafeedstatusesListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2688,7 +2732,8 @@ class FreelistingsprogramResource {
       queryParams: queryParams_,
     );
     return FreeListingsProgramStatus.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Requests a review of free listings in a specific region.
@@ -2809,7 +2854,8 @@ class FreelistingsprogramCheckoutsettingsResource {
       queryParams: queryParams_,
     );
     return CheckoutSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Enrolls merchant in `Checkout` program.
@@ -2850,7 +2896,8 @@ class FreelistingsprogramCheckoutsettingsResource {
       queryParams: queryParams_,
     );
     return CheckoutSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2894,7 +2941,8 @@ class LiasettingsResource {
       queryParams: queryParams_,
     );
     return LiasettingsCustomBatchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the LIA settings of the account.
@@ -2937,7 +2985,8 @@ class LiasettingsResource {
       queryParams: queryParams_,
     );
     return LiaSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the list of accessible Business Profiles.
@@ -2982,7 +3031,8 @@ class LiasettingsResource {
       queryParams: queryParams_,
     );
     return LiasettingsGetAccessibleGmbAccountsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the LIA settings of the sub-accounts in your Merchant Center
@@ -3028,7 +3078,8 @@ class LiasettingsResource {
       queryParams: queryParams_,
     );
     return LiasettingsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the list of POS data providers that have active settings for the
@@ -3061,7 +3112,8 @@ class LiasettingsResource {
       queryParams: queryParams_,
     );
     return LiasettingsListPosDataProvidersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Requests access to a specified Business Profile.
@@ -3109,7 +3161,8 @@ class LiasettingsResource {
       queryParams: queryParams_,
     );
     return LiasettingsRequestGmbAccessResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Requests inventory validation for the specified country.
@@ -3158,7 +3211,8 @@ class LiasettingsResource {
       queryParams: queryParams_,
     );
     return LiasettingsRequestInventoryVerificationResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the inventory verification contract for the specified country.
@@ -3219,7 +3273,8 @@ class LiasettingsResource {
       queryParams: queryParams_,
     );
     return LiasettingsSetInventoryVerificationContactResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the omnichannel experience for the specified country.
@@ -3286,7 +3341,8 @@ class LiasettingsResource {
       queryParams: queryParams_,
     );
     return LiaOmnichannelExperience.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the POS data provider for the specified country.
@@ -3344,7 +3400,8 @@ class LiasettingsResource {
       queryParams: queryParams_,
     );
     return LiasettingsSetPosDataProviderResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the LIA settings of the account.
@@ -3394,7 +3451,8 @@ class LiasettingsResource {
       queryParams: queryParams_,
     );
     return LiaSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3438,7 +3496,8 @@ class LocalinventoryResource {
       queryParams: queryParams_,
     );
     return LocalinventoryCustomBatchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the local inventory of a product in your Merchant Center account.
@@ -3486,7 +3545,8 @@ class LocalinventoryResource {
       queryParams: queryParams_,
     );
     return LocalInventory.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3550,7 +3610,8 @@ class MerchantsupportResource {
       queryParams: queryParams_,
     );
     return RenderAccountIssuesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Provide a list of issues for merchant's product with a support content and
@@ -3614,7 +3675,8 @@ class MerchantsupportResource {
       queryParams: queryParams_,
     );
     return RenderProductIssuesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Start an action.
@@ -3670,7 +3732,8 @@ class MerchantsupportResource {
       queryParams: queryParams_,
     );
     return TriggerActionResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3719,7 +3782,8 @@ class OrdertrackingsignalsResource {
       queryParams: queryParams_,
     );
     return OrderTrackingSignal.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3762,7 +3826,8 @@ class PosResource {
       queryParams: queryParams_,
     );
     return PosCustomBatchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a store for the given merchant.
@@ -3939,7 +4004,8 @@ class PosResource {
       queryParams: queryParams_,
     );
     return PosInventoryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the stores of the target merchant.
@@ -3980,7 +4046,8 @@ class PosResource {
       queryParams: queryParams_,
     );
     return PosListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Submit a sale event for the given merchant.
@@ -4026,7 +4093,8 @@ class PosResource {
       queryParams: queryParams_,
     );
     return PosSaleResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4074,7 +4142,8 @@ class ProductdeliverytimeResource {
       queryParams: queryParams_,
     );
     return ProductDeliveryTime.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the delivery time of a product.
@@ -4155,7 +4224,8 @@ class ProductdeliverytimeResource {
       queryParams: queryParams_,
     );
     return ProductDeliveryTime.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4198,7 +4268,8 @@ class ProductsResource {
       queryParams: queryParams_,
     );
     return ProductsCustomBatchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a product from your Merchant Center account.
@@ -4378,7 +4449,8 @@ class ProductsResource {
       queryParams: queryParams_,
     );
     return ProductsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing product in your Merchant Center account.
@@ -4478,7 +4550,8 @@ class ProductstatusesResource {
       queryParams: queryParams_,
     );
     return ProductstatusesCustomBatchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the status of a product from your Merchant Center account.
@@ -4524,7 +4597,8 @@ class ProductstatusesResource {
       queryParams: queryParams_,
     );
     return ProductStatus.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the statuses of the products in your Merchant Center account.
@@ -4575,7 +4649,8 @@ class ProductstatusesResource {
       queryParams: queryParams_,
     );
     return ProductstatusesListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4727,7 +4802,8 @@ class PromotionsResource {
       queryParams: queryParams_,
     );
     return ListPromotionResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4771,7 +4847,8 @@ class PubsubnotificationsettingsResource {
       queryParams: queryParams_,
     );
     return PubsubNotificationSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Register a Merchant Center account for pubsub notifications.
@@ -4814,7 +4891,8 @@ class PubsubnotificationsettingsResource {
       queryParams: queryParams_,
     );
     return PubsubNotificationSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4868,7 +4946,8 @@ class QuotasResource {
       queryParams: queryParams_,
     );
     return ListMethodQuotasResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4928,7 +5007,8 @@ class RecommendationsResource {
       queryParams: queryParams_,
     );
     return GenerateRecommendationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Reports an interaction on a recommendation for a merchant.
@@ -5011,7 +5091,8 @@ class RegionalinventoryResource {
       queryParams: queryParams_,
     );
     return RegionalinventoryCustomBatchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the regional inventory of a product in your Merchant Center
@@ -5063,7 +5144,8 @@ class RegionalinventoryResource {
       queryParams: queryParams_,
     );
     return RegionalInventory.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5241,7 +5323,8 @@ class RegionsResource {
       queryParams: queryParams_,
     );
     return ListRegionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a region definition in your Merchant Center account.
@@ -5339,7 +5422,8 @@ class ReportsResource {
       queryParams: queryParams_,
     );
     return SearchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5382,7 +5466,8 @@ class ReturnaddressResource {
       queryParams: queryParams_,
     );
     return ReturnaddressCustomBatchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a return address for the given Merchant Center account.
@@ -5460,7 +5545,8 @@ class ReturnaddressResource {
       queryParams: queryParams_,
     );
     return ReturnAddress.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Inserts a return address for the Merchant Center account.
@@ -5500,7 +5586,8 @@ class ReturnaddressResource {
       queryParams: queryParams_,
     );
     return ReturnAddress.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the return addresses of the Merchant Center account.
@@ -5549,7 +5636,8 @@ class ReturnaddressResource {
       queryParams: queryParams_,
     );
     return ReturnaddressListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5592,7 +5680,8 @@ class ReturnpolicyResource {
       queryParams: queryParams_,
     );
     return ReturnpolicyCustomBatchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a return policy for the given Merchant Center account.
@@ -5670,7 +5759,8 @@ class ReturnpolicyResource {
       queryParams: queryParams_,
     );
     return ReturnPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Inserts a return policy for the Merchant Center account.
@@ -5710,7 +5800,8 @@ class ReturnpolicyResource {
       queryParams: queryParams_,
     );
     return ReturnPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the return policies of the Merchant Center account.
@@ -5745,7 +5836,8 @@ class ReturnpolicyResource {
       queryParams: queryParams_,
     );
     return ReturnpolicyListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5792,7 +5884,8 @@ class ReturnpolicyonlineResource {
       queryParams: queryParams_,
     );
     return ReturnPolicyOnline.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an existing return policy.
@@ -5871,7 +5964,8 @@ class ReturnpolicyonlineResource {
       queryParams: queryParams_,
     );
     return ReturnPolicyOnline.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all existing return policies.
@@ -5907,7 +6001,8 @@ class ReturnpolicyonlineResource {
       queryParams: queryParams_,
     );
     return ListReturnPolicyOnlineResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing return policy.
@@ -5953,7 +6048,8 @@ class ReturnpolicyonlineResource {
       queryParams: queryParams_,
     );
     return ReturnPolicyOnline.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5997,7 +6093,8 @@ class ShippingsettingsResource {
       queryParams: queryParams_,
     );
     return ShippingsettingsCustomBatchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the shipping settings of the account.
@@ -6040,7 +6137,8 @@ class ShippingsettingsResource {
       queryParams: queryParams_,
     );
     return ShippingSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves supported carriers and carrier services for an account.
@@ -6061,10 +6159,8 @@ class ShippingsettingsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ShippingsettingsGetSupportedCarriersResponse>
-      getsupportedcarriers(
-    core.String merchantId, {
-    core.String? $fields,
-  }) async {
+      getsupportedcarriers(core.String merchantId,
+          {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6077,7 +6173,8 @@ class ShippingsettingsResource {
       queryParams: queryParams_,
     );
     return ShippingsettingsGetSupportedCarriersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves supported holidays for an account.
@@ -6098,10 +6195,8 @@ class ShippingsettingsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ShippingsettingsGetSupportedHolidaysResponse>
-      getsupportedholidays(
-    core.String merchantId, {
-    core.String? $fields,
-  }) async {
+      getsupportedholidays(core.String merchantId,
+          {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6114,7 +6209,8 @@ class ShippingsettingsResource {
       queryParams: queryParams_,
     );
     return ShippingsettingsGetSupportedHolidaysResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves supported pickup services for an account.
@@ -6152,7 +6248,8 @@ class ShippingsettingsResource {
       queryParams: queryParams_,
     );
     return ShippingsettingsGetSupportedPickupServicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the shipping settings of the sub-accounts in your Merchant Center
@@ -6198,7 +6295,8 @@ class ShippingsettingsResource {
       queryParams: queryParams_,
     );
     return ShippingsettingsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the shipping settings of the account.
@@ -6248,7 +6346,8 @@ class ShippingsettingsResource {
       queryParams: queryParams_,
     );
     return ShippingSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6293,7 +6392,8 @@ class ShoppingadsprogramResource {
       queryParams: queryParams_,
     );
     return ShoppingAdsProgramStatus.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Requests a review of Shopping ads in a specific region.
@@ -6451,35 +6551,46 @@ class Account {
       : this(
           accountManagement: json_['accountManagement'] as core.String?,
           adsLinks: (json_['adsLinks'] as core.List?)
-              ?.map((value) => AccountAdsLink.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccountAdsLink.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           adultContent: json_['adultContent'] as core.bool?,
           automaticImprovements: json_.containsKey('automaticImprovements')
               ? AccountAutomaticImprovements.fromJson(
                   json_['automaticImprovements']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           automaticLabelIds: (json_['automaticLabelIds'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           businessIdentity: json_.containsKey('businessIdentity')
-              ? AccountBusinessIdentity.fromJson(json_['businessIdentity']
-                  as core.Map<core.String, core.dynamic>)
+              ? AccountBusinessIdentity.fromJson(
+                  json_['businessIdentity']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           businessInformation: json_.containsKey('businessInformation')
-              ? AccountBusinessInformation.fromJson(json_['businessInformation']
-                  as core.Map<core.String, core.dynamic>)
+              ? AccountBusinessInformation.fromJson(
+                  json_['businessInformation']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           conversionSettings: json_.containsKey('conversionSettings')
-              ? AccountConversionSettings.fromJson(json_['conversionSettings']
-                  as core.Map<core.String, core.dynamic>)
+              ? AccountConversionSettings.fromJson(
+                  json_['conversionSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           cssId: json_['cssId'] as core.String?,
           googleMyBusinessLink: json_.containsKey('googleMyBusinessLink')
               ? AccountGoogleMyBusinessLink.fromJson(
                   json_['googleMyBusinessLink']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
@@ -6489,13 +6600,19 @@ class Account {
           name: json_['name'] as core.String?,
           sellerId: json_['sellerId'] as core.String?,
           users: (json_['users'] as core.List?)
-              ?.map((value) => AccountUser.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccountUser.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           websiteUrl: json_['websiteUrl'] as core.String?,
           youtubeChannelLinks: (json_['youtubeChannelLinks'] as core.List?)
-              ?.map((value) => AccountYouTubeChannelLink.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccountYouTubeChannelLink.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -6597,10 +6714,7 @@ class AccountAdsLink {
   /// Acceptable values are: - "`active`" - "`pending`"
   core.String? status;
 
-  AccountAdsLink({
-    this.adsId,
-    this.status,
-  });
+  AccountAdsLink({this.adsId, this.status});
 
   AccountAdsLink.fromJson(core.Map json_)
       : this(
@@ -6661,17 +6775,21 @@ class AccountAutomaticImprovements {
   AccountAutomaticImprovements.fromJson(core.Map json_)
       : this(
           imageImprovements: json_.containsKey('imageImprovements')
-              ? AccountImageImprovements.fromJson(json_['imageImprovements']
-                  as core.Map<core.String, core.dynamic>)
+              ? AccountImageImprovements.fromJson(
+                  json_['imageImprovements']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           itemUpdates: json_.containsKey('itemUpdates')
               ? AccountItemUpdates.fromJson(
-                  json_['itemUpdates'] as core.Map<core.String, core.dynamic>)
+                  json_['itemUpdates'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           shippingImprovements: json_.containsKey('shippingImprovements')
               ? AccountShippingImprovements.fromJson(
                   json_['shippingImprovements']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6747,24 +6865,29 @@ class AccountBusinessIdentity {
       : this(
           blackOwned: json_.containsKey('blackOwned')
               ? AccountIdentityType.fromJson(
-                  json_['blackOwned'] as core.Map<core.String, core.dynamic>)
+                  json_['blackOwned'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           includeForPromotions: json_['includeForPromotions'] as core.bool?,
           latinoOwned: json_.containsKey('latinoOwned')
               ? AccountIdentityType.fromJson(
-                  json_['latinoOwned'] as core.Map<core.String, core.dynamic>)
+                  json_['latinoOwned'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           smallBusiness: json_.containsKey('smallBusiness')
               ? AccountIdentityType.fromJson(
-                  json_['smallBusiness'] as core.Map<core.String, core.dynamic>)
+                  json_['smallBusiness'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           veteranOwned: json_.containsKey('veteranOwned')
               ? AccountIdentityType.fromJson(
-                  json_['veteranOwned'] as core.Map<core.String, core.dynamic>)
+                  json_['veteranOwned'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           womenOwned: json_.containsKey('womenOwned')
               ? AccountIdentityType.fromJson(
-                  json_['womenOwned'] as core.Map<core.String, core.dynamic>)
+                  json_['womenOwned'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6821,11 +6944,14 @@ class AccountBusinessInformation {
       : this(
           address: json_.containsKey('address')
               ? AccountAddress.fromJson(
-                  json_['address'] as core.Map<core.String, core.dynamic>)
+                  json_['address'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           customerService: json_.containsKey('customerService')
-              ? AccountCustomerService.fromJson(json_['customerService']
-                  as core.Map<core.String, core.dynamic>)
+              ? AccountCustomerService.fromJson(
+                  json_['customerService']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           koreanBusinessRegistrationNumber:
               json_['koreanBusinessRegistrationNumber'] as core.String?,
@@ -6854,9 +6980,7 @@ class AccountConversionSettings {
   /// \[auto-tagging\](https://support.google.com/merchants/answer/11127659).
   core.bool? freeListingsAutoTaggingEnabled;
 
-  AccountConversionSettings({
-    this.freeListingsAutoTaggingEnabled,
-  });
+  AccountConversionSettings({this.freeListingsAutoTaggingEnabled});
 
   AccountConversionSettings.fromJson(core.Map json_)
       : this(
@@ -6888,11 +7012,7 @@ class AccountCredentials {
   /// integration on behalf of the merchant.
   core.String? purpose;
 
-  AccountCredentials({
-    this.accessToken,
-    this.expiresIn,
-    this.purpose,
-  });
+  AccountCredentials({this.accessToken, this.expiresIn, this.purpose});
 
   AccountCredentials.fromJson(core.Map json_)
       : this(
@@ -6918,11 +7038,7 @@ class AccountCustomerService {
   /// Customer service URL.
   core.String? url;
 
-  AccountCustomerService({
-    this.email,
-    this.phoneNumber,
-    this.url,
-  });
+  AccountCustomerService({this.email, this.phoneNumber, this.url});
 
   AccountCustomerService.fromJson(core.Map json_)
       : this(
@@ -6958,11 +7074,7 @@ class AccountGoogleMyBusinessLink {
   /// Acceptable values are: - "`active`" - "`pending`"
   core.String? status;
 
-  AccountGoogleMyBusinessLink({
-    this.gmbAccountId,
-    this.gmbEmail,
-    this.status,
-  });
+  AccountGoogleMyBusinessLink({this.gmbAccountId, this.gmbEmail, this.status});
 
   AccountGoogleMyBusinessLink.fromJson(core.Map json_)
       : this(
@@ -6986,10 +7098,7 @@ class AccountIdentifier {
   /// The merchant account ID, set for individual accounts and subaccounts.
   core.String? merchantId;
 
-  AccountIdentifier({
-    this.aggregatorId,
-    this.merchantId,
-  });
+  AccountIdentifier({this.aggregatorId, this.merchantId});
 
   AccountIdentifier.fromJson(core.Map json_)
       : this(
@@ -7012,14 +7121,10 @@ class AccountIdentityType {
   /// Optional.
   core.bool? selfIdentified;
 
-  AccountIdentityType({
-    this.selfIdentified,
-  });
+  AccountIdentityType({this.selfIdentified});
 
   AccountIdentityType.fromJson(core.Map json_)
-      : this(
-          selfIdentified: json_['selfIdentified'] as core.bool?,
-        );
+      : this(selfIdentified: json_['selfIdentified'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (selfIdentified != null) 'selfIdentified': selfIdentified!,
@@ -7061,7 +7166,8 @@ class AccountImageImprovements {
               json_.containsKey('accountImageImprovementsSettings')
                   ? AccountImageImprovementsSettings.fromJson(
                       json_['accountImageImprovementsSettings']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           effectiveAllowAutomaticImageImprovements:
               json_['effectiveAllowAutomaticImageImprovements'] as core.bool?,
@@ -7081,9 +7187,7 @@ class AccountImageImprovementsSettings {
   /// Enables automatic image improvements.
   core.bool? allowAutomaticImageImprovements;
 
-  AccountImageImprovementsSettings({
-    this.allowAutomaticImageImprovements,
-  });
+  AccountImageImprovementsSettings({this.allowAutomaticImageImprovements});
 
   AccountImageImprovementsSettings.fromJson(core.Map json_)
       : this(
@@ -7174,12 +7278,16 @@ class AccountIssue {
   AccountIssue.fromJson(core.Map json_)
       : this(
           actions: (json_['actions'] as core.List?)
-              ?.map((value) =>
-                  Action.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Action.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           impact: json_.containsKey('impact')
               ? AccountIssueImpact.fromJson(
-                  json_['impact'] as core.Map<core.String, core.dynamic>)
+                  json_['impact'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           prerenderedContent: json_['prerenderedContent'] as core.String?,
           title: json_['title'] as core.String?,
@@ -7226,17 +7334,16 @@ class AccountIssueImpact {
   /// Resolving these issues is recommended, but not required.
   core.String? severity;
 
-  AccountIssueImpact({
-    this.breakdowns,
-    this.message,
-    this.severity,
-  });
+  AccountIssueImpact({this.breakdowns, this.message, this.severity});
 
   AccountIssueImpact.fromJson(core.Map json_)
       : this(
           breakdowns: (json_['breakdowns'] as core.List?)
-              ?.map((value) => Breakdown.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Breakdown.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           message: json_['message'] as core.String?,
           severity: json_['severity'] as core.String?,
@@ -7314,7 +7421,8 @@ class AccountItemUpdates {
               json_.containsKey('accountItemUpdatesSettings')
                   ? AccountItemUpdatesSettings.fromJson(
                       json_['accountItemUpdatesSettings']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           effectiveAllowAvailabilityUpdates:
               json_['effectiveAllowAvailabilityUpdates'] as core.bool?,
@@ -7518,9 +7626,7 @@ class AccountShippingImprovements {
   /// Enables automatic shipping improvements.
   core.bool? allowShippingImprovements;
 
-  AccountShippingImprovements({
-    this.allowShippingImprovements,
-  });
+  AccountShippingImprovements({this.allowShippingImprovements});
 
   AccountShippingImprovements.fromJson(core.Map json_)
       : this(
@@ -7574,14 +7680,20 @@ class AccountStatus {
       : this(
           accountId: json_['accountId'] as core.String?,
           accountLevelIssues: (json_['accountLevelIssues'] as core.List?)
-              ?.map((value) => AccountStatusAccountLevelIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccountStatusAccountLevelIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           accountManagement: json_['accountManagement'] as core.String?,
           kind: json_['kind'] as core.String?,
           products: (json_['products'] as core.List?)
-              ?.map((value) => AccountStatusProducts.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccountStatusProducts.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           websiteClaimed: json_['websiteClaimed'] as core.bool?,
         );
@@ -7748,12 +7860,16 @@ class AccountStatusProducts {
           country: json_['country'] as core.String?,
           destination: json_['destination'] as core.String?,
           itemLevelIssues: (json_['itemLevelIssues'] as core.List?)
-              ?.map((value) => AccountStatusItemLevelIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccountStatusItemLevelIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           statistics: json_.containsKey('statistics')
               ? AccountStatusStatistics.fromJson(
-                  json_['statistics'] as core.Map<core.String, core.dynamic>)
+                  json_['statistics'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -7822,19 +7938,18 @@ class AccountTax {
   /// no rules is equivalent to not charging tax at all.
   core.List<AccountTaxTaxRule>? rules;
 
-  AccountTax({
-    this.accountId,
-    this.kind,
-    this.rules,
-  });
+  AccountTax({this.accountId, this.kind, this.rules});
 
   AccountTax.fromJson(core.Map json_)
       : this(
           accountId: json_['accountId'] as core.String?,
           kind: json_['kind'] as core.String?,
           rules: (json_['rules'] as core.List?)
-              ?.map((value) => AccountTaxTaxRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccountTaxTaxRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -7964,10 +8079,7 @@ class AccountYouTubeChannelLink {
   /// if it was pending.
   core.String? status;
 
-  AccountYouTubeChannelLink({
-    this.channelId,
-    this.status,
-  });
+  AccountYouTubeChannelLink({this.channelId, this.status});
 
   AccountYouTubeChannelLink.fromJson(core.Map json_)
       : this(
@@ -7994,16 +8106,16 @@ class AccountsAuthInfoResponse {
   /// Value: the fixed string "`content#accountsAuthInfoResponse`".
   core.String? kind;
 
-  AccountsAuthInfoResponse({
-    this.accountIdentifiers,
-    this.kind,
-  });
+  AccountsAuthInfoResponse({this.accountIdentifiers, this.kind});
 
   AccountsAuthInfoResponse.fromJson(core.Map json_)
       : this(
           accountIdentifiers: (json_['accountIdentifiers'] as core.List?)
-              ?.map((value) => AccountIdentifier.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccountIdentifier.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -8021,14 +8133,10 @@ class AccountsClaimWebsiteResponse {
   /// Value: the fixed string "`content#accountsClaimWebsiteResponse`".
   core.String? kind;
 
-  AccountsClaimWebsiteResponse({
-    this.kind,
-  });
+  AccountsClaimWebsiteResponse({this.kind});
 
   AccountsClaimWebsiteResponse.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-        );
+      : this(kind: json_['kind'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -8039,15 +8147,16 @@ class AccountsCustomBatchRequest {
   /// The request entries to be processed in the batch.
   core.List<AccountsCustomBatchRequestEntry>? entries;
 
-  AccountsCustomBatchRequest({
-    this.entries,
-  });
+  AccountsCustomBatchRequest({this.entries});
 
   AccountsCustomBatchRequest.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => AccountsCustomBatchRequestEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccountsCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8119,7 +8228,8 @@ class AccountsCustomBatchRequestEntry {
       : this(
           account: json_.containsKey('account')
               ? Account.fromJson(
-                  json_['account'] as core.Map<core.String, core.dynamic>)
+                  json_['account'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           accountId: json_['accountId'] as core.String?,
           batchId: json_['batchId'] as core.int?,
@@ -8129,7 +8239,8 @@ class AccountsCustomBatchRequestEntry {
               .toList(),
           linkRequest: json_.containsKey('linkRequest')
               ? AccountsCustomBatchRequestEntryLinkRequest.fromJson(
-                  json_['linkRequest'] as core.Map<core.String, core.dynamic>)
+                  json_['linkRequest'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           merchantId: json_['merchantId'] as core.String?,
           method: json_['method'] as core.String?,
@@ -8208,16 +8319,16 @@ class AccountsCustomBatchResponse {
   /// Value: the fixed string "`content#accountsCustomBatchResponse`".
   core.String? kind;
 
-  AccountsCustomBatchResponse({
-    this.entries,
-    this.kind,
-  });
+  AccountsCustomBatchResponse({this.entries, this.kind});
 
   AccountsCustomBatchResponse.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => AccountsCustomBatchResponseEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccountsCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -8259,12 +8370,14 @@ class AccountsCustomBatchResponseEntry {
       : this(
           account: json_.containsKey('account')
               ? Account.fromJson(
-                  json_['account'] as core.Map<core.String, core.dynamic>)
+                  json_['account'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           batchId: json_['batchId'] as core.int?,
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           kind: json_['kind'] as core.String?,
         );
@@ -8320,7 +8433,8 @@ class AccountsLinkRequest {
               json_.containsKey('eCommercePlatformLinkInfo')
                   ? ECommercePlatformLinkInfo.fromJson(
                       json_['eCommercePlatformLinkInfo']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           linkType: json_['linkType'] as core.String?,
           linkedAccountId: json_['linkedAccountId'] as core.String?,
@@ -8328,7 +8442,8 @@ class AccountsLinkRequest {
               json_.containsKey('paymentServiceProviderLinkInfo')
                   ? PaymentServiceProviderLinkInfo.fromJson(
                       json_['paymentServiceProviderLinkInfo']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           services: (json_['services'] as core.List?)
               ?.map((value) => value as core.String)
@@ -8353,14 +8468,10 @@ class AccountsLinkResponse {
   /// Value: the fixed string "`content#accountsLinkResponse`".
   core.String? kind;
 
-  AccountsLinkResponse({
-    this.kind,
-  });
+  AccountsLinkResponse({this.kind});
 
   AccountsLinkResponse.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-        );
+      : this(kind: json_['kind'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -8379,18 +8490,17 @@ class AccountsListLinksResponse {
   /// The token for the retrieval of the next page of links.
   core.String? nextPageToken;
 
-  AccountsListLinksResponse({
-    this.kind,
-    this.links,
-    this.nextPageToken,
-  });
+  AccountsListLinksResponse({this.kind, this.links, this.nextPageToken});
 
   AccountsListLinksResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           links: (json_['links'] as core.List?)
-              ?.map((value) => LinkedAccount.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LinkedAccount.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -8412,19 +8522,18 @@ class AccountsListResponse {
   core.String? nextPageToken;
   core.List<Account>? resources;
 
-  AccountsListResponse({
-    this.kind,
-    this.nextPageToken,
-    this.resources,
-  });
+  AccountsListResponse({this.kind, this.nextPageToken, this.resources});
 
   AccountsListResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           resources: (json_['resources'] as core.List?)
-              ?.map((value) => Account.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Account.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8439,9 +8548,7 @@ class AccountsUpdateLabelsRequest {
   /// The IDs of labels that should be assigned to the account.
   core.List<core.String>? labelIds;
 
-  AccountsUpdateLabelsRequest({
-    this.labelIds,
-  });
+  AccountsUpdateLabelsRequest({this.labelIds});
 
   AccountsUpdateLabelsRequest.fromJson(core.Map json_)
       : this(
@@ -8461,14 +8568,10 @@ class AccountsUpdateLabelsResponse {
   /// Value: the fixed string "`content#accountsUpdateLabelsResponse`".
   core.String? kind;
 
-  AccountsUpdateLabelsResponse({
-    this.kind,
-  });
+  AccountsUpdateLabelsResponse({this.kind});
 
   AccountsUpdateLabelsResponse.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-        );
+      : this(kind: json_['kind'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -8479,15 +8582,16 @@ class AccountstatusesCustomBatchRequest {
   /// The request entries to be processed in the batch.
   core.List<AccountstatusesCustomBatchRequestEntry>? entries;
 
-  AccountstatusesCustomBatchRequest({
-    this.entries,
-  });
+  AccountstatusesCustomBatchRequest({this.entries});
 
   AccountstatusesCustomBatchRequest.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => AccountstatusesCustomBatchRequestEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccountstatusesCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8553,16 +8657,16 @@ class AccountstatusesCustomBatchResponse {
   /// Value: the fixed string "`content#accountstatusesCustomBatchResponse`".
   core.String? kind;
 
-  AccountstatusesCustomBatchResponse({
-    this.entries,
-    this.kind,
-  });
+  AccountstatusesCustomBatchResponse({this.entries, this.kind});
 
   AccountstatusesCustomBatchResponse.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => AccountstatusesCustomBatchResponseEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccountstatusesCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -8598,12 +8702,14 @@ class AccountstatusesCustomBatchResponseEntry {
       : this(
           accountStatus: json_.containsKey('accountStatus')
               ? AccountStatus.fromJson(
-                  json_['accountStatus'] as core.Map<core.String, core.dynamic>)
+                  json_['accountStatus'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           batchId: json_['batchId'] as core.int?,
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -8624,19 +8730,18 @@ class AccountstatusesListResponse {
   core.String? nextPageToken;
   core.List<AccountStatus>? resources;
 
-  AccountstatusesListResponse({
-    this.kind,
-    this.nextPageToken,
-    this.resources,
-  });
+  AccountstatusesListResponse({this.kind, this.nextPageToken, this.resources});
 
   AccountstatusesListResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           resources: (json_['resources'] as core.List?)
-              ?.map((value) => AccountStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccountStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8651,15 +8756,16 @@ class AccounttaxCustomBatchRequest {
   /// The request entries to be processed in the batch.
   core.List<AccounttaxCustomBatchRequestEntry>? entries;
 
-  AccounttaxCustomBatchRequest({
-    this.entries,
-  });
+  AccounttaxCustomBatchRequest({this.entries});
 
   AccounttaxCustomBatchRequest.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => AccounttaxCustomBatchRequestEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccounttaxCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8702,7 +8808,8 @@ class AccounttaxCustomBatchRequestEntry {
           accountId: json_['accountId'] as core.String?,
           accountTax: json_.containsKey('accountTax')
               ? AccountTax.fromJson(
-                  json_['accountTax'] as core.Map<core.String, core.dynamic>)
+                  json_['accountTax'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           batchId: json_['batchId'] as core.int?,
           merchantId: json_['merchantId'] as core.String?,
@@ -8727,16 +8834,16 @@ class AccounttaxCustomBatchResponse {
   /// Value: the fixed string "`content#accounttaxCustomBatchResponse`".
   core.String? kind;
 
-  AccounttaxCustomBatchResponse({
-    this.entries,
-    this.kind,
-  });
+  AccounttaxCustomBatchResponse({this.entries, this.kind});
 
   AccounttaxCustomBatchResponse.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => AccounttaxCustomBatchResponseEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccounttaxCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -8776,12 +8883,14 @@ class AccounttaxCustomBatchResponseEntry {
       : this(
           accountTax: json_.containsKey('accountTax')
               ? AccountTax.fromJson(
-                  json_['accountTax'] as core.Map<core.String, core.dynamic>)
+                  json_['accountTax'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           batchId: json_['batchId'] as core.int?,
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           kind: json_['kind'] as core.String?,
         );
@@ -8804,19 +8913,18 @@ class AccounttaxListResponse {
   core.String? nextPageToken;
   core.List<AccountTax>? resources;
 
-  AccounttaxListResponse({
-    this.kind,
-    this.nextPageToken,
-    this.resources,
-  });
+  AccounttaxListResponse({this.kind, this.nextPageToken, this.resources});
 
   AccounttaxListResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           resources: (json_['resources'] as core.List?)
-              ?.map((value) => AccountTax.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccountTax.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8881,22 +8989,31 @@ class Action {
   Action.fromJson(core.Map json_)
       : this(
           builtinSimpleAction: json_.containsKey('builtinSimpleAction')
-              ? BuiltInSimpleAction.fromJson(json_['builtinSimpleAction']
-                  as core.Map<core.String, core.dynamic>)
+              ? BuiltInSimpleAction.fromJson(
+                  json_['builtinSimpleAction']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           builtinUserInputAction: json_.containsKey('builtinUserInputAction')
-              ? BuiltInUserInputAction.fromJson(json_['builtinUserInputAction']
-                  as core.Map<core.String, core.dynamic>)
+              ? BuiltInUserInputAction.fromJson(
+                  json_['builtinUserInputAction']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           buttonLabel: json_['buttonLabel'] as core.String?,
           externalAction: json_.containsKey('externalAction')
-              ? ExternalAction.fromJson(json_['externalAction']
-                  as core.Map<core.String, core.dynamic>)
+              ? ExternalAction.fromJson(
+                  json_['externalAction']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           isAvailable: json_['isAvailable'] as core.bool?,
           reasons: (json_['reasons'] as core.List?)
-              ?.map((value) => ActionReason.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ActionReason.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8968,17 +9085,22 @@ class ActionFlow {
           dialogButtonLabel: json_['dialogButtonLabel'] as core.String?,
           dialogCallout: json_.containsKey('dialogCallout')
               ? Callout.fromJson(
-                  json_['dialogCallout'] as core.Map<core.String, core.dynamic>)
+                  json_['dialogCallout'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dialogMessage: json_.containsKey('dialogMessage')
               ? TextWithTooltip.fromJson(
-                  json_['dialogMessage'] as core.Map<core.String, core.dynamic>)
+                  json_['dialogMessage'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dialogTitle: json_['dialogTitle'] as core.String?,
           id: json_['id'] as core.String?,
           inputs: (json_['inputs'] as core.List?)
-              ?.map((value) => InputField.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => InputField.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           label: json_['label'] as core.String?,
         );
@@ -9006,17 +9128,17 @@ class ActionInput {
   /// Required.
   core.List<InputValue>? inputValues;
 
-  ActionInput({
-    this.actionFlowId,
-    this.inputValues,
-  });
+  ActionInput({this.actionFlowId, this.inputValues});
 
   ActionInput.fromJson(core.Map json_)
       : this(
           actionFlowId: json_['actionFlowId'] as core.String?,
           inputValues: (json_['inputValues'] as core.List?)
-              ?.map((value) => InputValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => InputValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -9051,17 +9173,14 @@ class ActionReason {
   /// days to complete."
   core.String? message;
 
-  ActionReason({
-    this.action,
-    this.detail,
-    this.message,
-  });
+  ActionReason({this.action, this.detail, this.message});
 
   ActionReason.fromJson(core.Map json_)
       : this(
           action: json_.containsKey('action')
               ? Action.fromJson(
-                  json_['action'] as core.Map<core.String, core.dynamic>)
+                  json_['action'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           detail: json_['detail'] as core.String?,
           message: json_['message'] as core.String?,
@@ -9147,10 +9266,7 @@ class AlternateDisputeResolution {
   /// [external body](https://support.google.com/european-union-digital-services-act-redress-options/answer/13535501).
   core.String? uri;
 
-  AlternateDisputeResolution({
-    this.label,
-    this.uri,
-  });
+  AlternateDisputeResolution({this.label, this.uri});
 
   AlternateDisputeResolution.fromJson(core.Map json_)
       : this(
@@ -9209,8 +9325,11 @@ class AttributionSettings {
               json_['attributionLookbackWindowInDays'] as core.int?,
           attributionModel: json_['attributionModel'] as core.String?,
           conversionType: (json_['conversionType'] as core.List?)
-              ?.map((value) => AttributionSettingsConversionType.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AttributionSettingsConversionType.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -9235,10 +9354,7 @@ class AttributionSettingsConversionType {
   /// Output only.
   core.String? name;
 
-  AttributionSettingsConversionType({
-    this.includeInReporting,
-    this.name,
-  });
+  AttributionSettingsConversionType({this.includeInReporting, this.name});
 
   AttributionSettingsConversionType.fromJson(core.Map json_)
       : this(
@@ -9362,7 +9478,8 @@ class BestSellers {
           relativeDemandChange: json_['relativeDemandChange'] as core.String?,
           reportDate: json_.containsKey('reportDate')
               ? Date.fromJson(
-                  json_['reportDate'] as core.Map<core.String, core.dynamic>)
+                  json_['reportDate'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           reportGranularity: json_['reportGranularity'] as core.String?,
         );
@@ -9390,14 +9507,9 @@ class Brand {
   /// Name of the brand.
   core.String? name;
 
-  Brand({
-    this.name,
-  });
+  Brand({this.name});
 
-  Brand.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+  Brand.fromJson(core.Map json_) : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -9421,10 +9533,7 @@ class Breakdown {
   /// make it expandable.
   core.List<BreakdownRegion>? regions;
 
-  Breakdown({
-    this.details,
-    this.regions,
-  });
+  Breakdown({this.details, this.regions});
 
   Breakdown.fromJson(core.Map json_)
       : this(
@@ -9432,8 +9541,11 @@ class Breakdown {
               ?.map((value) => value as core.String)
               .toList(),
           regions: (json_['regions'] as core.List?)
-              ?.map((value) => BreakdownRegion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => BreakdownRegion.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -9455,10 +9567,7 @@ class BreakdownRegion {
   /// in other languages.
   core.String? name;
 
-  BreakdownRegion({
-    this.code,
-    this.name,
-  });
+  BreakdownRegion({this.code, this.name});
 
   BreakdownRegion.fromJson(core.Map json_)
       : this(
@@ -9524,18 +9633,15 @@ class BuiltInSimpleAction {
   /// national authority.
   core.String? type;
 
-  BuiltInSimpleAction({
-    this.additionalContent,
-    this.attributeCode,
-    this.type,
-  });
+  BuiltInSimpleAction({this.additionalContent, this.attributeCode, this.type});
 
   BuiltInSimpleAction.fromJson(core.Map json_)
       : this(
           additionalContent: json_.containsKey('additionalContent')
               ? BuiltInSimpleActionAdditionalContent.fromJson(
                   json_['additionalContent']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           attributeCode: json_['attributeCode'] as core.String?,
           type: json_['type'] as core.String?,
@@ -9556,10 +9662,7 @@ class BuiltInSimpleActionAdditionalContent {
   /// Title of the additional content;
   core.String? title;
 
-  BuiltInSimpleActionAdditionalContent({
-    this.paragraphs,
-    this.title,
-  });
+  BuiltInSimpleActionAdditionalContent({this.paragraphs, this.title});
 
   BuiltInSimpleActionAdditionalContent.fromJson(core.Map json_)
       : this(
@@ -9595,17 +9698,17 @@ class BuiltInUserInputAction {
   /// be processed.
   core.List<ActionFlow>? flows;
 
-  BuiltInUserInputAction({
-    this.actionContext,
-    this.flows,
-  });
+  BuiltInUserInputAction({this.actionContext, this.flows});
 
   BuiltInUserInputAction.fromJson(core.Map json_)
       : this(
           actionContext: json_['actionContext'] as core.String?,
           flows: (json_['flows'] as core.List?)
-              ?.map((value) => ActionFlow.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ActionFlow.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -9621,9 +9724,7 @@ class BusinessDayConfig {
   /// May not be empty.
   core.List<core.String>? businessDays;
 
-  BusinessDayConfig({
-    this.businessDays,
-  });
+  BusinessDayConfig({this.businessDays});
 
   BusinessDayConfig.fromJson(core.Map json_)
       : this(
@@ -9660,16 +9761,14 @@ class Callout {
   /// of previously requested action or cooldown for re-review.
   core.String? styleHint;
 
-  Callout({
-    this.fullMessage,
-    this.styleHint,
-  });
+  Callout({this.fullMessage, this.styleHint});
 
   Callout.fromJson(core.Map json_)
       : this(
           fullMessage: json_.containsKey('fullMessage')
               ? TextWithTooltip.fromJson(
-                  json_['fullMessage'] as core.Map<core.String, core.dynamic>)
+                  json_['fullMessage'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           styleHint: json_['styleHint'] as core.String?,
         );
@@ -9730,8 +9829,10 @@ class CarrierRate {
           carrierName: json_['carrierName'] as core.String?,
           carrierService: json_['carrierService'] as core.String?,
           flatAdjustment: json_.containsKey('flatAdjustment')
-              ? Price.fromJson(json_['flatAdjustment']
-                  as core.Map<core.String, core.dynamic>)
+              ? Price.fromJson(
+                  json_['flatAdjustment']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           originPostalCode: json_['originPostalCode'] as core.String?,
@@ -9773,12 +9874,7 @@ class CarriersCarrier {
   /// CarrierRate.carrierService.
   core.List<core.String>? services;
 
-  CarriersCarrier({
-    this.country,
-    this.eddServices,
-    this.name,
-    this.services,
-  });
+  CarriersCarrier({this.country, this.eddServices, this.name, this.services});
 
   CarriersCarrier.fromJson(core.Map json_)
       : this(
@@ -9901,15 +9997,18 @@ class CheckoutSettings {
               json_['effectiveEnrollmentState'] as core.String?,
           effectiveReviewState: json_['effectiveReviewState'] as core.String?,
           effectiveUriSettings: json_.containsKey('effectiveUriSettings')
-              ? UrlSettings.fromJson(json_['effectiveUriSettings']
-                  as core.Map<core.String, core.dynamic>)
+              ? UrlSettings.fromJson(
+                  json_['effectiveUriSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           enrollmentState: json_['enrollmentState'] as core.String?,
           merchantId: json_['merchantId'] as core.String?,
           reviewState: json_['reviewState'] as core.String?,
           uriSettings: json_.containsKey('uriSettings')
               ? UrlSettings.fromJson(
-                  json_['uriSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['uriSettings'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -10118,8 +10217,11 @@ class Collection {
           customLabel3: json_['customLabel3'] as core.String?,
           customLabel4: json_['customLabel4'] as core.String?,
           featuredProduct: (json_['featuredProduct'] as core.List?)
-              ?.map((value) => CollectionFeaturedProduct.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CollectionFeaturedProduct.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           headline: (json_['headline'] as core.List?)
               ?.map((value) => value as core.String)
@@ -10168,11 +10270,7 @@ class CollectionFeaturedProduct {
   /// Required.
   core.double? y;
 
-  CollectionFeaturedProduct({
-    this.offerId,
-    this.x,
-    this.y,
-  });
+  CollectionFeaturedProduct({this.offerId, this.x, this.y});
 
   CollectionFeaturedProduct.fromJson(core.Map json_)
       : this(
@@ -10223,13 +10321,19 @@ class CollectionStatus {
       : this(
           collectionLevelIssuses:
               (json_['collectionLevelIssuses'] as core.List?)
-                  ?.map((value) => CollectionStatusItemLevelIssue.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => CollectionStatusItemLevelIssue.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           creationDate: json_['creationDate'] as core.String?,
           destinationStatuses: (json_['destinationStatuses'] as core.List?)
-              ?.map((value) => CollectionStatusDestinationStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CollectionStatusDestinationStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           id: json_['id'] as core.String?,
           lastUpdateDate: json_['lastUpdateDate'] as core.String?,
@@ -10506,7 +10610,8 @@ class CompetitiveVisibility {
           countryCode: json_['countryCode'] as core.String?,
           date: json_.containsKey('date')
               ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>)
+                  json_['date'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           domain: json_['domain'] as core.String?,
           higherPositionRate:
@@ -10599,14 +10704,17 @@ class ConversionSource {
           conversionSourceId: json_['conversionSourceId'] as core.String?,
           expireTime: json_['expireTime'] as core.String?,
           googleAnalyticsLink: json_.containsKey('googleAnalyticsLink')
-              ? GoogleAnalyticsLink.fromJson(json_['googleAnalyticsLink']
-                  as core.Map<core.String, core.dynamic>)
+              ? GoogleAnalyticsLink.fromJson(
+                  json_['googleAnalyticsLink']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           merchantCenterDestination:
               json_.containsKey('merchantCenterDestination')
                   ? MerchantCenterDestination.fromJson(
                       json_['merchantCenterDestination']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           state: json_['state'] as core.String?,
         );
@@ -10708,17 +10816,16 @@ class CustomAttribute {
   /// The value of the attribute.
   core.String? value;
 
-  CustomAttribute({
-    this.groupValues,
-    this.name,
-    this.value,
-  });
+  CustomAttribute({this.groupValues, this.name, this.value});
 
   CustomAttribute.fromJson(core.Map json_)
       : this(
           groupValues: (json_['groupValues'] as core.List?)
-              ?.map((value) => CustomAttribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CustomAttribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           name: json_['name'] as core.String?,
           value: json_['value'] as core.String?,
@@ -10749,11 +10856,7 @@ class CutoffTime {
   /// List of identifiers. Required.
   core.String? timezone;
 
-  CutoffTime({
-    this.hour,
-    this.minute,
-    this.timezone,
-  });
+  CutoffTime({this.hour, this.minute, this.timezone});
 
   CutoffTime.fromJson(core.Map json_)
       : this(
@@ -10833,19 +10936,24 @@ class Datafeed {
           contentType: json_['contentType'] as core.String?,
           fetchSchedule: json_.containsKey('fetchSchedule')
               ? DatafeedFetchSchedule.fromJson(
-                  json_['fetchSchedule'] as core.Map<core.String, core.dynamic>)
+                  json_['fetchSchedule'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           fileName: json_['fileName'] as core.String?,
           format: json_.containsKey('format')
               ? DatafeedFormat.fromJson(
-                  json_['format'] as core.Map<core.String, core.dynamic>)
+                  json_['format'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           name: json_['name'] as core.String?,
           targets: (json_['targets'] as core.List?)
-              ?.map((value) => DatafeedTarget.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DatafeedTarget.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -10965,11 +11073,7 @@ class DatafeedFormat {
   /// feeds. Acceptable values are: - "`normal character`" - "`value quoting`"
   core.String? quotingMode;
 
-  DatafeedFormat({
-    this.columnDelimiter,
-    this.fileEncoding,
-    this.quotingMode,
-  });
+  DatafeedFormat({this.columnDelimiter, this.fileEncoding, this.quotingMode});
 
   DatafeedFormat.fromJson(core.Map json_)
       : this(
@@ -11050,8 +11154,11 @@ class DatafeedStatus {
           country: json_['country'] as core.String?,
           datafeedId: json_['datafeedId'] as core.String?,
           errors: (json_['errors'] as core.List?)
-              ?.map((value) => DatafeedStatusError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DatafeedStatusError.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           feedLabel: json_['feedLabel'] as core.String?,
           itemsTotal: json_['itemsTotal'] as core.String?,
@@ -11061,8 +11168,11 @@ class DatafeedStatus {
           lastUploadDate: json_['lastUploadDate'] as core.String?,
           processingStatus: json_['processingStatus'] as core.String?,
           warnings: (json_['warnings'] as core.List?)
-              ?.map((value) => DatafeedStatusError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DatafeedStatusError.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -11095,20 +11205,18 @@ class DatafeedStatusError {
   /// The error message, for example, "Invalid price".
   core.String? message;
 
-  DatafeedStatusError({
-    this.code,
-    this.count,
-    this.examples,
-    this.message,
-  });
+  DatafeedStatusError({this.code, this.count, this.examples, this.message});
 
   DatafeedStatusError.fromJson(core.Map json_)
       : this(
           code: json_['code'] as core.String?,
           count: json_['count'] as core.String?,
           examples: (json_['examples'] as core.List?)
-              ?.map((value) => DatafeedStatusExample.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DatafeedStatusExample.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           message: json_['message'] as core.String?,
         );
@@ -11132,11 +11240,7 @@ class DatafeedStatusExample {
   /// The problematic value.
   core.String? value;
 
-  DatafeedStatusExample({
-    this.itemId,
-    this.lineNumber,
-    this.value,
-  });
+  DatafeedStatusExample({this.itemId, this.lineNumber, this.value});
 
   DatafeedStatusExample.fromJson(core.Map json_)
       : this(
@@ -11236,15 +11340,16 @@ class DatafeedsCustomBatchRequest {
   /// The request entries to be processed in the batch.
   core.List<DatafeedsCustomBatchRequestEntry>? entries;
 
-  DatafeedsCustomBatchRequest({
-    this.entries,
-  });
+  DatafeedsCustomBatchRequest({this.entries});
 
   DatafeedsCustomBatchRequest.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => DatafeedsCustomBatchRequestEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DatafeedsCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -11286,7 +11391,8 @@ class DatafeedsCustomBatchRequestEntry {
           batchId: json_['batchId'] as core.int?,
           datafeed: json_.containsKey('datafeed')
               ? Datafeed.fromJson(
-                  json_['datafeed'] as core.Map<core.String, core.dynamic>)
+                  json_['datafeed'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           datafeedId: json_['datafeedId'] as core.String?,
           merchantId: json_['merchantId'] as core.String?,
@@ -11311,16 +11417,16 @@ class DatafeedsCustomBatchResponse {
   /// Value: the fixed string "`content#datafeedsCustomBatchResponse`".
   core.String? kind;
 
-  DatafeedsCustomBatchResponse({
-    this.entries,
-    this.kind,
-  });
+  DatafeedsCustomBatchResponse({this.entries, this.kind});
 
   DatafeedsCustomBatchResponse.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => DatafeedsCustomBatchResponseEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DatafeedsCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -11346,22 +11452,20 @@ class DatafeedsCustomBatchResponseEntry {
   /// *Note:* Schema errors fail the whole request.
   Errors? errors;
 
-  DatafeedsCustomBatchResponseEntry({
-    this.batchId,
-    this.datafeed,
-    this.errors,
-  });
+  DatafeedsCustomBatchResponseEntry({this.batchId, this.datafeed, this.errors});
 
   DatafeedsCustomBatchResponseEntry.fromJson(core.Map json_)
       : this(
           batchId: json_['batchId'] as core.int?,
           datafeed: json_.containsKey('datafeed')
               ? Datafeed.fromJson(
-                  json_['datafeed'] as core.Map<core.String, core.dynamic>)
+                  json_['datafeed'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -11378,14 +11482,10 @@ class DatafeedsFetchNowResponse {
   /// Value: the fixed string "`content#datafeedsFetchNowResponse`".
   core.String? kind;
 
-  DatafeedsFetchNowResponse({
-    this.kind,
-  });
+  DatafeedsFetchNowResponse({this.kind});
 
   DatafeedsFetchNowResponse.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-        );
+      : this(kind: json_['kind'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -11402,19 +11502,18 @@ class DatafeedsListResponse {
   core.String? nextPageToken;
   core.List<Datafeed>? resources;
 
-  DatafeedsListResponse({
-    this.kind,
-    this.nextPageToken,
-    this.resources,
-  });
+  DatafeedsListResponse({this.kind, this.nextPageToken, this.resources});
 
   DatafeedsListResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           resources: (json_['resources'] as core.List?)
-              ?.map((value) => Datafeed.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Datafeed.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -11429,15 +11528,16 @@ class DatafeedstatusesCustomBatchRequest {
   /// The request entries to be processed in the batch.
   core.List<DatafeedstatusesCustomBatchRequestEntry>? entries;
 
-  DatafeedstatusesCustomBatchRequest({
-    this.entries,
-  });
+  DatafeedstatusesCustomBatchRequest({this.entries});
 
   DatafeedstatusesCustomBatchRequest.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => DatafeedstatusesCustomBatchRequestEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DatafeedstatusesCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -11524,17 +11624,16 @@ class DatafeedstatusesCustomBatchResponse {
   /// Value: the fixed string "`content#datafeedstatusesCustomBatchResponse`".
   core.String? kind;
 
-  DatafeedstatusesCustomBatchResponse({
-    this.entries,
-    this.kind,
-  });
+  DatafeedstatusesCustomBatchResponse({this.entries, this.kind});
 
   DatafeedstatusesCustomBatchResponse.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) =>
-                  DatafeedstatusesCustomBatchResponseEntry.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DatafeedstatusesCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -11570,12 +11669,15 @@ class DatafeedstatusesCustomBatchResponseEntry {
       : this(
           batchId: json_['batchId'] as core.int?,
           datafeedStatus: json_.containsKey('datafeedStatus')
-              ? DatafeedStatus.fromJson(json_['datafeedStatus']
-                  as core.Map<core.String, core.dynamic>)
+              ? DatafeedStatus.fromJson(
+                  json_['datafeedStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -11596,19 +11698,18 @@ class DatafeedstatusesListResponse {
   core.String? nextPageToken;
   core.List<DatafeedStatus>? resources;
 
-  DatafeedstatusesListResponse({
-    this.kind,
-    this.nextPageToken,
-    this.resources,
-  });
+  DatafeedstatusesListResponse({this.kind, this.nextPageToken, this.resources});
 
   DatafeedstatusesListResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           resources: (json_['resources'] as core.List?)
-              ?.map((value) => DatafeedStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DatafeedStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -11731,7 +11832,8 @@ class DateTime {
           seconds: json_['seconds'] as core.int?,
           timeZone: json_.containsKey('timeZone')
               ? TimeZone.fromJson(
-                  json_['timeZone'] as core.Map<core.String, core.dynamic>)
+                  json_['timeZone'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           utcOffset: json_['utcOffset'] as core.String?,
           year: json_['year'] as core.int?,
@@ -11779,18 +11881,16 @@ class DeliveryArea {
   /// (for example, `"NY"`, `"NSW"`, `"03"`).
   core.String? regionCode;
 
-  DeliveryArea({
-    this.countryCode,
-    this.postalCodeRange,
-    this.regionCode,
-  });
+  DeliveryArea({this.countryCode, this.postalCodeRange, this.regionCode});
 
   DeliveryArea.fromJson(core.Map json_)
       : this(
           countryCode: json_['countryCode'] as core.String?,
           postalCodeRange: json_.containsKey('postalCodeRange')
-              ? DeliveryAreaPostalCodeRange.fromJson(json_['postalCodeRange']
-                  as core.Map<core.String, core.dynamic>)
+              ? DeliveryAreaPostalCodeRange.fromJson(
+                  json_['postalCodeRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           regionCode: json_['regionCode'] as core.String?,
         );
@@ -11825,10 +11925,7 @@ class DeliveryAreaPostalCodeRange {
   /// being all the postal codes matching `firstPostalCode`.
   core.String? lastPostalCode;
 
-  DeliveryAreaPostalCodeRange({
-    this.firstPostalCode,
-    this.lastPostalCode,
-  });
+  DeliveryAreaPostalCodeRange({this.firstPostalCode, this.lastPostalCode});
 
   DeliveryAreaPostalCodeRange.fromJson(core.Map json_)
       : this(
@@ -11920,16 +12017,22 @@ class DeliveryTime {
       : this(
           cutoffTime: json_.containsKey('cutoffTime')
               ? CutoffTime.fromJson(
-                  json_['cutoffTime'] as core.Map<core.String, core.dynamic>)
+                  json_['cutoffTime'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
-          handlingBusinessDayConfig: json_
-                  .containsKey('handlingBusinessDayConfig')
-              ? BusinessDayConfig.fromJson(json_['handlingBusinessDayConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
+          handlingBusinessDayConfig:
+              json_.containsKey('handlingBusinessDayConfig')
+                  ? BusinessDayConfig.fromJson(
+                      json_['handlingBusinessDayConfig']
+                          as core.Map<core.String, core.dynamic>,
+                    )
+                  : null,
           holidayCutoffs: (json_['holidayCutoffs'] as core.List?)
-              ?.map((value) => HolidayCutoff.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => HolidayCutoff.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           maxHandlingTimeInDays: json_['maxHandlingTimeInDays'] as core.int?,
           maxTransitTimeInDays: json_['maxTransitTimeInDays'] as core.int?,
@@ -11937,17 +12040,24 @@ class DeliveryTime {
           minTransitTimeInDays: json_['minTransitTimeInDays'] as core.int?,
           transitBusinessDayConfig:
               json_.containsKey('transitBusinessDayConfig')
-                  ? BusinessDayConfig.fromJson(json_['transitBusinessDayConfig']
-                      as core.Map<core.String, core.dynamic>)
+                  ? BusinessDayConfig.fromJson(
+                      json_['transitBusinessDayConfig']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           transitTimeTable: json_.containsKey('transitTimeTable')
-              ? TransitTable.fromJson(json_['transitTimeTable']
-                  as core.Map<core.String, core.dynamic>)
+              ? TransitTable.fromJson(
+                  json_['transitTimeTable']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           warehouseBasedDeliveryTimes:
               (json_['warehouseBasedDeliveryTimes'] as core.List?)
-                  ?.map((value) => WarehouseBasedDeliveryTime.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => WarehouseBasedDeliveryTime.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
         );
 
@@ -11982,10 +12092,7 @@ class Distance {
   /// The distance represented as a number.
   core.String? value;
 
-  Distance({
-    this.unit,
-    this.value,
-  });
+  Distance({this.unit, this.value});
 
   Distance.fromJson(core.Map json_)
       : this(
@@ -12004,14 +12111,10 @@ class ECommercePlatformLinkInfo {
   /// The id used by the third party service provider to identify the merchant.
   core.String? externalAccountId;
 
-  ECommercePlatformLinkInfo({
-    this.externalAccountId,
-  });
+  ECommercePlatformLinkInfo({this.externalAccountId});
 
   ECommercePlatformLinkInfo.fromJson(core.Map json_)
-      : this(
-          externalAccountId: json_['externalAccountId'] as core.String?,
-        );
+      : this(externalAccountId: json_['externalAccountId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (externalAccountId != null) 'externalAccountId': externalAccountId!,
@@ -12029,11 +12132,7 @@ class Error {
   /// The error code.
   core.String? reason;
 
-  Error({
-    this.domain,
-    this.message,
-    this.reason,
-  });
+  Error({this.domain, this.message, this.reason});
 
   Error.fromJson(core.Map json_)
       : this(
@@ -12060,18 +12159,17 @@ class Errors {
   /// The message of the first error in `errors`.
   core.String? message;
 
-  Errors({
-    this.code,
-    this.errors,
-    this.message,
-  });
+  Errors({this.code, this.errors, this.message});
 
   Errors.fromJson(core.Map json_)
       : this(
           code: json_['code'] as core.int?,
           errors: (json_['errors'] as core.List?)
-              ?.map((value) =>
-                  Error.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Error.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           message: json_['message'] as core.String?,
         );
@@ -12110,10 +12208,7 @@ class ExternalAction {
   /// can perform the action.
   core.String? uri;
 
-  ExternalAction({
-    this.type,
-    this.uri,
-  });
+  ExternalAction({this.type, this.uri});
 
   ExternalAction.fromJson(core.Map json_)
       : this(
@@ -12147,17 +12242,17 @@ class FreeListingsProgramStatus {
   /// in `regionCodes`.
   core.List<FreeListingsProgramStatusRegionStatus>? regionStatuses;
 
-  FreeListingsProgramStatus({
-    this.globalState,
-    this.regionStatuses,
-  });
+  FreeListingsProgramStatus({this.globalState, this.regionStatuses});
 
   FreeListingsProgramStatus.fromJson(core.Map json_)
       : this(
           globalState: json_['globalState'] as core.String?,
           regionStatuses: (json_['regionStatuses'] as core.List?)
-              ?.map((value) => FreeListingsProgramStatusRegionStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => FreeListingsProgramStatusRegionStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -12276,8 +12371,10 @@ class FreeListingsProgramStatusRegionStatus {
           reviewIneligibilityReasonDetails:
               json_.containsKey('reviewIneligibilityReasonDetails')
                   ? FreeListingsProgramStatusReviewIneligibilityReasonDetails
-                      .fromJson(json_['reviewIneligibilityReasonDetails']
-                          as core.Map<core.String, core.dynamic>)
+                      .fromJson(
+                      json_['reviewIneligibilityReasonDetails']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           reviewIssues: (json_['reviewIssues'] as core.List?)
               ?.map((value) => value as core.String)
@@ -12322,17 +12419,16 @@ class FreeShippingThreshold {
   /// Required.
   Price? priceThreshold;
 
-  FreeShippingThreshold({
-    this.country,
-    this.priceThreshold,
-  });
+  FreeShippingThreshold({this.country, this.priceThreshold});
 
   FreeShippingThreshold.fromJson(core.Map json_)
       : this(
           country: json_['country'] as core.String?,
           priceThreshold: json_.containsKey('priceThreshold')
-              ? Price.fromJson(json_['priceThreshold']
-                  as core.Map<core.String, core.dynamic>)
+              ? Price.fromJson(
+                  json_['priceThreshold']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -12356,16 +12452,16 @@ class GenerateRecommendationsResponse {
   /// Output only.
   core.String? responseToken;
 
-  GenerateRecommendationsResponse({
-    this.recommendations,
-    this.responseToken,
-  });
+  GenerateRecommendationsResponse({this.recommendations, this.responseToken});
 
   GenerateRecommendationsResponse.fromJson(core.Map json_)
       : this(
           recommendations: (json_['recommendations'] as core.List?)
-              ?.map((value) => Recommendation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Recommendation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           responseToken: json_['responseToken'] as core.String?,
         );
@@ -12383,17 +12479,17 @@ class GmbAccounts {
   /// A list of Business Profiles which are available to the merchant.
   core.List<GmbAccountsGmbAccount>? gmbAccounts;
 
-  GmbAccounts({
-    this.accountId,
-    this.gmbAccounts,
-  });
+  GmbAccounts({this.accountId, this.gmbAccounts});
 
   GmbAccounts.fromJson(core.Map json_)
       : this(
           accountId: json_['accountId'] as core.String?,
           gmbAccounts: (json_['gmbAccounts'] as core.List?)
-              ?.map((value) => GmbAccountsGmbAccount.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GmbAccountsGmbAccount.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -12416,12 +12512,7 @@ class GmbAccountsGmbAccount {
   /// The type of the Business Profile (User or Business).
   core.String? type;
 
-  GmbAccountsGmbAccount({
-    this.email,
-    this.listingCount,
-    this.name,
-    this.type,
-  });
+  GmbAccountsGmbAccount({this.email, this.listingCount, this.name, this.type});
 
   GmbAccountsGmbAccount.fromJson(core.Map json_)
       : this(
@@ -12466,8 +12557,10 @@ class GoogleAnalyticsLink {
   GoogleAnalyticsLink.fromJson(core.Map json_)
       : this(
           attributionSettings: json_.containsKey('attributionSettings')
-              ? AttributionSettings.fromJson(json_['attributionSettings']
-                  as core.Map<core.String, core.dynamic>)
+              ? AttributionSettings.fromJson(
+                  json_['attributionSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           propertyId: json_['propertyId'] as core.String?,
           propertyName: json_['propertyName'] as core.String?,
@@ -12536,8 +12629,11 @@ class Headers {
   Headers.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map((value) => LocationIdSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LocationIdSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           numberOfItems: (json_['numberOfItems'] as core.List?)
               ?.map((value) => value as core.String)
@@ -12546,12 +12642,18 @@ class Headers {
               ?.map((value) => value as core.String)
               .toList(),
           prices: (json_['prices'] as core.List?)
-              ?.map((value) =>
-                  Price.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Price.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           weights: (json_['weights'] as core.List?)
-              ?.map((value) =>
-                  Weight.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Weight.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -12742,21 +12844,25 @@ class InputField {
       : this(
           checkboxInput: json_.containsKey('checkboxInput')
               ? InputFieldCheckboxInput.fromJson(
-                  json_['checkboxInput'] as core.Map<core.String, core.dynamic>)
+                  json_['checkboxInput'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           choiceInput: json_.containsKey('choiceInput')
               ? InputFieldChoiceInput.fromJson(
-                  json_['choiceInput'] as core.Map<core.String, core.dynamic>)
+                  json_['choiceInput'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           id: json_['id'] as core.String?,
           label: json_.containsKey('label')
               ? TextWithTooltip.fromJson(
-                  json_['label'] as core.Map<core.String, core.dynamic>)
+                  json_['label'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           required: json_['required'] as core.bool?,
           textInput: json_.containsKey('textInput')
               ? InputFieldTextInput.fromJson(
-                  json_['textInput'] as core.Map<core.String, core.dynamic>)
+                  json_['textInput'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -12795,15 +12901,16 @@ class InputFieldChoiceInput {
   /// Only one option can be selected.
   core.List<InputFieldChoiceInputChoiceInputOption>? options;
 
-  InputFieldChoiceInput({
-    this.options,
-  });
+  InputFieldChoiceInput({this.options});
 
   InputFieldChoiceInput.fromJson(core.Map json_)
       : this(
           options: (json_['options'] as core.List?)
-              ?.map((value) => InputFieldChoiceInputChoiceInputOption.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => InputFieldChoiceInputChoiceInputOption.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -12836,13 +12943,16 @@ class InputFieldChoiceInputChoiceInputOption {
   InputFieldChoiceInputChoiceInputOption.fromJson(core.Map json_)
       : this(
           additionalInput: json_.containsKey('additionalInput')
-              ? InputField.fromJson(json_['additionalInput']
-                  as core.Map<core.String, core.dynamic>)
+              ? InputField.fromJson(
+                  json_['additionalInput']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           id: json_['id'] as core.String?,
           label: json_.containsKey('label')
               ? TextWithTooltip.fromJson(
-                  json_['label'] as core.Map<core.String, core.dynamic>)
+                  json_['label'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -12895,8 +13005,10 @@ class InputFieldTextInput {
   InputFieldTextInput.fromJson(core.Map json_)
       : this(
           additionalInfo: json_.containsKey('additionalInfo')
-              ? TextWithTooltip.fromJson(json_['additionalInfo']
-                  as core.Map<core.String, core.dynamic>)
+              ? TextWithTooltip.fromJson(
+                  json_['additionalInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           ariaLabel: json_['ariaLabel'] as core.String?,
           formatInfo: json_['formatInfo'] as core.String?,
@@ -12939,16 +13051,21 @@ class InputValue {
           checkboxInputValue: json_.containsKey('checkboxInputValue')
               ? InputValueCheckboxInputValue.fromJson(
                   json_['checkboxInputValue']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           choiceInputValue: json_.containsKey('choiceInputValue')
-              ? InputValueChoiceInputValue.fromJson(json_['choiceInputValue']
-                  as core.Map<core.String, core.dynamic>)
+              ? InputValueChoiceInputValue.fromJson(
+                  json_['choiceInputValue']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           inputFieldId: json_['inputFieldId'] as core.String?,
           textInputValue: json_.containsKey('textInputValue')
-              ? InputValueTextInputValue.fromJson(json_['textInputValue']
-                  as core.Map<core.String, core.dynamic>)
+              ? InputValueTextInputValue.fromJson(
+                  json_['textInputValue']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -12970,14 +13087,10 @@ class InputValueCheckboxInputValue {
   /// Required.
   core.bool? value;
 
-  InputValueCheckboxInputValue({
-    this.value,
-  });
+  InputValueCheckboxInputValue({this.value});
 
   InputValueCheckboxInputValue.fromJson(core.Map json_)
-      : this(
-          value: json_['value'] as core.bool?,
-        );
+      : this(value: json_['value'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
@@ -12991,14 +13104,10 @@ class InputValueChoiceInputValue {
   /// Required.
   core.String? choiceInputOptionId;
 
-  InputValueChoiceInputValue({
-    this.choiceInputOptionId,
-  });
+  InputValueChoiceInputValue({this.choiceInputOptionId});
 
   InputValueChoiceInputValue.fromJson(core.Map json_)
-      : this(
-          choiceInputOptionId: json_['choiceInputOptionId'] as core.String?,
-        );
+      : this(choiceInputOptionId: json_['choiceInputOptionId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (choiceInputOptionId != null)
@@ -13013,14 +13122,10 @@ class InputValueTextInputValue {
   /// Required.
   core.String? value;
 
-  InputValueTextInputValue({
-    this.value,
-  });
+  InputValueTextInputValue({this.value});
 
   InputValueTextInputValue.fromJson(core.Map json_)
-      : this(
-          value: json_['value'] as core.String?,
-        );
+      : this(value: json_['value'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
@@ -13036,15 +13141,14 @@ class InsertCheckoutSettingsRequest {
   /// Required.
   UrlSettings? uriSettings;
 
-  InsertCheckoutSettingsRequest({
-    this.uriSettings,
-  });
+  InsertCheckoutSettingsRequest({this.uriSettings});
 
   InsertCheckoutSettingsRequest.fromJson(core.Map json_)
       : this(
           uriSettings: json_.containsKey('uriSettings')
               ? UrlSettings.fromJson(
-                  json_['uriSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['uriSettings'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -13076,23 +13180,20 @@ class Installment {
   /// The number of installments the buyer has to pay.
   core.String? months;
 
-  Installment({
-    this.amount,
-    this.creditType,
-    this.downpayment,
-    this.months,
-  });
+  Installment({this.amount, this.creditType, this.downpayment, this.months});
 
   Installment.fromJson(core.Map json_)
       : this(
           amount: json_.containsKey('amount')
               ? Price.fromJson(
-                  json_['amount'] as core.Map<core.String, core.dynamic>)
+                  json_['amount'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           creditType: json_['creditType'] as core.String?,
           downpayment: json_.containsKey('downpayment')
               ? Price.fromJson(
-                  json_['downpayment'] as core.Map<core.String, core.dynamic>)
+                  json_['downpayment'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           months: json_['months'] as core.String?,
         );
@@ -13110,9 +13211,7 @@ class LabelIds {
   /// The list of label IDs.
   core.List<core.String>? labelIds;
 
-  LabelIds({
-    this.labelIds,
-  });
+  LabelIds({this.labelIds});
 
   LabelIds.fromJson(core.Map json_)
       : this(
@@ -13135,10 +13234,7 @@ class LiaAboutPageSettings {
   /// The URL for the About page.
   core.String? url;
 
-  LiaAboutPageSettings({
-    this.status,
-    this.url,
-  });
+  LiaAboutPageSettings({this.status, this.url});
 
   LiaAboutPageSettings.fromJson(core.Map json_)
       : this(
@@ -13194,26 +13290,34 @@ class LiaCountrySettings {
       : this(
           about: json_.containsKey('about')
               ? LiaAboutPageSettings.fromJson(
-                  json_['about'] as core.Map<core.String, core.dynamic>)
+                  json_['about'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           country: json_['country'] as core.String?,
           hostedLocalStorefrontActive:
               json_['hostedLocalStorefrontActive'] as core.bool?,
           inventory: json_.containsKey('inventory')
               ? LiaInventorySettings.fromJson(
-                  json_['inventory'] as core.Map<core.String, core.dynamic>)
+                  json_['inventory'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           omnichannelExperience: json_.containsKey('omnichannelExperience')
-              ? LiaOmnichannelExperience.fromJson(json_['omnichannelExperience']
-                  as core.Map<core.String, core.dynamic>)
+              ? LiaOmnichannelExperience.fromJson(
+                  json_['omnichannelExperience']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           onDisplayToOrder: json_.containsKey('onDisplayToOrder')
-              ? LiaOnDisplayToOrderSettings.fromJson(json_['onDisplayToOrder']
-                  as core.Map<core.String, core.dynamic>)
+              ? LiaOnDisplayToOrderSettings.fromJson(
+                  json_['onDisplayToOrder']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           posDataProvider: json_.containsKey('posDataProvider')
-              ? LiaPosDataProvider.fromJson(json_['posDataProvider']
-                  as core.Map<core.String, core.dynamic>)
+              ? LiaPosDataProvider.fromJson(
+                  json_['posDataProvider']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           storePickupActive: json_['storePickupActive'] as core.bool?,
         );
@@ -13298,11 +13402,7 @@ class LiaOmnichannelExperience {
   /// Acceptable values are: - "`pickupToday`" - "`pickupLater`"
   core.List<core.String>? pickupTypes;
 
-  LiaOmnichannelExperience({
-    this.country,
-    this.lsfType,
-    this.pickupTypes,
-  });
+  LiaOmnichannelExperience({this.country, this.lsfType, this.pickupTypes});
 
   LiaOmnichannelExperience.fromJson(core.Map json_)
       : this(
@@ -13329,10 +13429,7 @@ class LiaOnDisplayToOrderSettings {
   /// Acceptable values are: - "`active`" - "`inactive`" - "`pending`"
   core.String? status;
 
-  LiaOnDisplayToOrderSettings({
-    this.shippingCostPolicyUrl,
-    this.status,
-  });
+  LiaOnDisplayToOrderSettings({this.shippingCostPolicyUrl, this.status});
 
   LiaOnDisplayToOrderSettings.fromJson(core.Map json_)
       : this(
@@ -13354,10 +13451,7 @@ class LiaPosDataProvider {
   /// The account ID by which this merchant is known to the POS data provider.
   core.String? posExternalAccountId;
 
-  LiaPosDataProvider({
-    this.posDataProviderId,
-    this.posExternalAccountId,
-  });
+  LiaPosDataProvider({this.posDataProviderId, this.posExternalAccountId});
 
   LiaPosDataProvider.fromJson(core.Map json_)
       : this(
@@ -13389,18 +13483,17 @@ class LiaSettings {
   /// Value: the fixed string "`content#liaSettings`"
   core.String? kind;
 
-  LiaSettings({
-    this.accountId,
-    this.countrySettings,
-    this.kind,
-  });
+  LiaSettings({this.accountId, this.countrySettings, this.kind});
 
   LiaSettings.fromJson(core.Map json_)
       : this(
           accountId: json_['accountId'] as core.String?,
           countrySettings: (json_['countrySettings'] as core.List?)
-              ?.map((value) => LiaCountrySettings.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LiaCountrySettings.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -13416,15 +13509,16 @@ class LiasettingsCustomBatchRequest {
   /// The request entries to be processed in the batch.
   core.List<LiasettingsCustomBatchRequestEntry>? entries;
 
-  LiasettingsCustomBatchRequest({
-    this.entries,
-  });
+  LiasettingsCustomBatchRequest({this.entries});
 
   LiasettingsCustomBatchRequest.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => LiasettingsCustomBatchRequestEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LiasettingsCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -13513,13 +13607,16 @@ class LiasettingsCustomBatchRequestEntry {
           gmbEmail: json_['gmbEmail'] as core.String?,
           liaSettings: json_.containsKey('liaSettings')
               ? LiaSettings.fromJson(
-                  json_['liaSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['liaSettings'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           merchantId: json_['merchantId'] as core.String?,
           method: json_['method'] as core.String?,
           omnichannelExperience: json_.containsKey('omnichannelExperience')
-              ? LiaOmnichannelExperience.fromJson(json_['omnichannelExperience']
-                  as core.Map<core.String, core.dynamic>)
+              ? LiaOmnichannelExperience.fromJson(
+                  json_['omnichannelExperience']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           posDataProviderId: json_['posDataProviderId'] as core.String?,
           posExternalAccountId: json_['posExternalAccountId'] as core.String?,
@@ -13552,16 +13649,16 @@ class LiasettingsCustomBatchResponse {
   /// Value: the fixed string "`content#liasettingsCustomBatchResponse`".
   core.String? kind;
 
-  LiasettingsCustomBatchResponse({
-    this.entries,
-    this.kind,
-  });
+  LiasettingsCustomBatchResponse({this.entries, this.kind});
 
   LiasettingsCustomBatchResponse.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => LiasettingsCustomBatchResponseEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LiasettingsCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -13611,24 +13708,32 @@ class LiasettingsCustomBatchResponseEntry {
           batchId: json_['batchId'] as core.int?,
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           gmbAccounts: json_.containsKey('gmbAccounts')
               ? GmbAccounts.fromJson(
-                  json_['gmbAccounts'] as core.Map<core.String, core.dynamic>)
+                  json_['gmbAccounts'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           kind: json_['kind'] as core.String?,
           liaSettings: json_.containsKey('liaSettings')
               ? LiaSettings.fromJson(
-                  json_['liaSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['liaSettings'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           omnichannelExperience: json_.containsKey('omnichannelExperience')
-              ? LiaOmnichannelExperience.fromJson(json_['omnichannelExperience']
-                  as core.Map<core.String, core.dynamic>)
+              ? LiaOmnichannelExperience.fromJson(
+                  json_['omnichannelExperience']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           posDataProviders: (json_['posDataProviders'] as core.List?)
-              ?.map((value) => PosDataProviders.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PosDataProviders.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -13667,8 +13772,11 @@ class LiasettingsGetAccessibleGmbAccountsResponse {
       : this(
           accountId: json_['accountId'] as core.String?,
           gmbAccounts: (json_['gmbAccounts'] as core.List?)
-              ?.map((value) => GmbAccountsGmbAccount.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GmbAccountsGmbAccount.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -13690,17 +13798,17 @@ class LiasettingsListPosDataProvidersResponse {
   /// The list of POS data providers for each eligible country
   core.List<PosDataProviders>? posDataProviders;
 
-  LiasettingsListPosDataProvidersResponse({
-    this.kind,
-    this.posDataProviders,
-  });
+  LiasettingsListPosDataProvidersResponse({this.kind, this.posDataProviders});
 
   LiasettingsListPosDataProvidersResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           posDataProviders: (json_['posDataProviders'] as core.List?)
-              ?.map((value) => PosDataProviders.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PosDataProviders.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -13720,19 +13828,18 @@ class LiasettingsListResponse {
   core.String? nextPageToken;
   core.List<LiaSettings>? resources;
 
-  LiasettingsListResponse({
-    this.kind,
-    this.nextPageToken,
-    this.resources,
-  });
+  LiasettingsListResponse({this.kind, this.nextPageToken, this.resources});
 
   LiasettingsListResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           resources: (json_['resources'] as core.List?)
-              ?.map((value) => LiaSettings.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LiaSettings.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -13749,14 +13856,10 @@ class LiasettingsRequestGmbAccessResponse {
   /// Value: the fixed string "`content#liasettingsRequestGmbAccessResponse`".
   core.String? kind;
 
-  LiasettingsRequestGmbAccessResponse({
-    this.kind,
-  });
+  LiasettingsRequestGmbAccessResponse({this.kind});
 
   LiasettingsRequestGmbAccessResponse.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-        );
+      : this(kind: json_['kind'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -13770,14 +13873,10 @@ class LiasettingsRequestInventoryVerificationResponse {
   /// "`content#liasettingsRequestInventoryVerificationResponse`".
   core.String? kind;
 
-  LiasettingsRequestInventoryVerificationResponse({
-    this.kind,
-  });
+  LiasettingsRequestInventoryVerificationResponse({this.kind});
 
   LiasettingsRequestInventoryVerificationResponse.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-        );
+      : this(kind: json_['kind'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -13791,14 +13890,10 @@ class LiasettingsSetInventoryVerificationContactResponse {
   /// "`content#liasettingsSetInventoryVerificationContactResponse`".
   core.String? kind;
 
-  LiasettingsSetInventoryVerificationContactResponse({
-    this.kind,
-  });
+  LiasettingsSetInventoryVerificationContactResponse({this.kind});
 
   LiasettingsSetInventoryVerificationContactResponse.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-        );
+      : this(kind: json_['kind'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -13811,14 +13906,10 @@ class LiasettingsSetPosDataProviderResponse {
   /// Value: the fixed string "`content#liasettingsSetPosDataProviderResponse`".
   core.String? kind;
 
-  LiasettingsSetPosDataProviderResponse({
-    this.kind,
-  });
+  LiasettingsSetPosDataProviderResponse({this.kind});
 
   LiasettingsSetPosDataProviderResponse.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-        );
+      : this(kind: json_['kind'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -13837,10 +13928,7 @@ class LinkService {
   /// "`pending`"
   core.String? status;
 
-  LinkService({
-    this.service,
-    this.status,
-  });
+  LinkService({this.service, this.status});
 
   LinkService.fromJson(core.Map json_)
       : this(
@@ -13861,17 +13949,17 @@ class LinkedAccount {
   /// List of provided services.
   core.List<LinkService>? services;
 
-  LinkedAccount({
-    this.linkedAccountId,
-    this.services,
-  });
+  LinkedAccount({this.linkedAccountId, this.services});
 
   LinkedAccount.fromJson(core.Map json_)
       : this(
           linkedAccountId: json_['linkedAccountId'] as core.String?,
           services: (json_['services'] as core.List?)
-              ?.map((value) => LinkService.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LinkService.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -13891,16 +13979,16 @@ class ListAccountLabelsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListAccountLabelsResponse({
-    this.accountLabels,
-    this.nextPageToken,
-  });
+  ListAccountLabelsResponse({this.accountLabels, this.nextPageToken});
 
   ListAccountLabelsResponse.fromJson(core.Map json_)
       : this(
           accountLabels: (json_['accountLabels'] as core.List?)
-              ?.map((value) => AccountLabel.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccountLabel.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -13916,15 +14004,16 @@ class ListAccountReturnCarrierResponse {
   /// List of all available account return carriers for the merchant.
   core.List<AccountReturnCarrier>? accountReturnCarriers;
 
-  ListAccountReturnCarrierResponse({
-    this.accountReturnCarriers,
-  });
+  ListAccountReturnCarrierResponse({this.accountReturnCarriers});
 
   ListAccountReturnCarrierResponse.fromJson(core.Map json_)
       : this(
           accountReturnCarriers: (json_['accountReturnCarriers'] as core.List?)
-              ?.map((value) => AccountReturnCarrier.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccountReturnCarrier.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -13944,17 +14033,17 @@ class ListCollectionStatusesResponse {
   /// The collectionstatuses listed.
   core.List<CollectionStatus>? resources;
 
-  ListCollectionStatusesResponse({
-    this.nextPageToken,
-    this.resources,
-  });
+  ListCollectionStatusesResponse({this.nextPageToken, this.resources});
 
   ListCollectionStatusesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           resources: (json_['resources'] as core.List?)
-              ?.map((value) => CollectionStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CollectionStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -13974,17 +14063,17 @@ class ListCollectionsResponse {
   /// The collections listed.
   core.List<Collection>? resources;
 
-  ListCollectionsResponse({
-    this.nextPageToken,
-    this.resources,
-  });
+  ListCollectionsResponse({this.nextPageToken, this.resources});
 
   ListCollectionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           resources: (json_['resources'] as core.List?)
-              ?.map((value) => Collection.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Collection.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -14002,16 +14091,16 @@ class ListConversionSourcesResponse {
   /// Token to be used to fetch the next results page.
   core.String? nextPageToken;
 
-  ListConversionSourcesResponse({
-    this.conversionSources,
-    this.nextPageToken,
-  });
+  ListConversionSourcesResponse({this.conversionSources, this.nextPageToken});
 
   ListConversionSourcesResponse.fromJson(core.Map json_)
       : this(
           conversionSources: (json_['conversionSources'] as core.List?)
-              ?.map((value) => ConversionSource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ConversionSource.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -14032,16 +14121,16 @@ class ListCssesResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListCssesResponse({
-    this.csses,
-    this.nextPageToken,
-  });
+  ListCssesResponse({this.csses, this.nextPageToken});
 
   ListCssesResponse.fromJson(core.Map json_)
       : this(
           csses: (json_['csses'] as core.List?)
-              ?.map((value) =>
-                  Css.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Css.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -14062,16 +14151,16 @@ class ListMethodQuotasResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListMethodQuotasResponse({
-    this.methodQuotas,
-    this.nextPageToken,
-  });
+  ListMethodQuotasResponse({this.methodQuotas, this.nextPageToken});
 
   ListMethodQuotasResponse.fromJson(core.Map json_)
       : this(
           methodQuotas: (json_['methodQuotas'] as core.List?)
-              ?.map((value) => MethodQuota.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MethodQuota.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -14092,17 +14181,17 @@ class ListPromotionResponse {
   /// List of all available promotions for the merchant.
   core.List<Promotion>? promotions;
 
-  ListPromotionResponse({
-    this.nextPageToken,
-    this.promotions,
-  });
+  ListPromotionResponse({this.nextPageToken, this.promotions});
 
   ListPromotionResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           promotions: (json_['promotions'] as core.List?)
-              ?.map((value) => Promotion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Promotion.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -14122,17 +14211,17 @@ class ListRegionsResponse {
   /// The regions from the specified merchant.
   core.List<Region>? regions;
 
-  ListRegionsResponse({
-    this.nextPageToken,
-    this.regions,
-  });
+  ListRegionsResponse({this.nextPageToken, this.regions});
 
   ListRegionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           regions: (json_['regions'] as core.List?)
-              ?.map((value) =>
-                  Region.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Region.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -14147,15 +14236,16 @@ class ListReturnPolicyOnlineResponse {
   /// The retrieved return policies.
   core.List<ReturnPolicyOnline>? returnPolicies;
 
-  ListReturnPolicyOnlineResponse({
-    this.returnPolicies,
-  });
+  ListReturnPolicyOnlineResponse({this.returnPolicies});
 
   ListReturnPolicyOnlineResponse.fromJson(core.Map json_)
       : this(
           returnPolicies: (json_['returnPolicies'] as core.List?)
-              ?.map((value) => ReturnPolicyOnline.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ReturnPolicyOnline.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -14245,8 +14335,11 @@ class LocalInventory {
       : this(
           availability: json_['availability'] as core.String?,
           customAttributes: (json_['customAttributes'] as core.List?)
-              ?.map((value) => CustomAttribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CustomAttribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           instoreProductLocation:
               json_['instoreProductLocation'] as core.String?,
@@ -14255,12 +14348,14 @@ class LocalInventory {
           pickupSla: json_['pickupSla'] as core.String?,
           price: json_.containsKey('price')
               ? Price.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>)
+                  json_['price'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           quantity: json_['quantity'] as core.int?,
           salePrice: json_.containsKey('salePrice')
               ? Price.fromJson(
-                  json_['salePrice'] as core.Map<core.String, core.dynamic>)
+                  json_['salePrice'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           salePriceEffectiveDate:
               json_['salePriceEffectiveDate'] as core.String?,
@@ -14288,15 +14383,16 @@ class LocalinventoryCustomBatchRequest {
   /// The request entries to be processed in the batch.
   core.List<LocalinventoryCustomBatchRequestEntry>? entries;
 
-  LocalinventoryCustomBatchRequest({
-    this.entries,
-  });
+  LocalinventoryCustomBatchRequest({this.entries});
 
   LocalinventoryCustomBatchRequest.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => LocalinventoryCustomBatchRequestEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LocalinventoryCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -14336,8 +14432,10 @@ class LocalinventoryCustomBatchRequestEntry {
       : this(
           batchId: json_['batchId'] as core.int?,
           localInventory: json_.containsKey('localInventory')
-              ? LocalInventory.fromJson(json_['localInventory']
-                  as core.Map<core.String, core.dynamic>)
+              ? LocalInventory.fromJson(
+                  json_['localInventory']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           merchantId: json_['merchantId'] as core.String?,
           method: json_['method'] as core.String?,
@@ -14362,16 +14460,16 @@ class LocalinventoryCustomBatchResponse {
   /// Value: the fixed string "`content#localinventoryCustomBatchResponse`".
   core.String? kind;
 
-  LocalinventoryCustomBatchResponse({
-    this.entries,
-    this.kind,
-  });
+  LocalinventoryCustomBatchResponse({this.entries, this.kind});
 
   LocalinventoryCustomBatchResponse.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => LocalinventoryCustomBatchResponseEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LocalinventoryCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -14408,7 +14506,8 @@ class LocalinventoryCustomBatchResponseEntry {
           batchId: json_['batchId'] as core.int?,
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           kind: json_['kind'] as core.String?,
         );
@@ -14426,9 +14525,7 @@ class LocationIdSet {
   /// They must all be of the same location type (for example, state).
   core.List<core.String>? locationIds;
 
-  LocationIdSet({
-    this.locationIds,
-  });
+  LocationIdSet({this.locationIds});
 
   LocationIdSet.fromJson(core.Map json_)
       : this(
@@ -14513,15 +14610,18 @@ class LoyaltyProgram {
   LoyaltyProgram.fromJson(core.Map json_)
       : this(
           cashbackForFutureUse: json_.containsKey('cashbackForFutureUse')
-              ? Price.fromJson(json_['cashbackForFutureUse']
-                  as core.Map<core.String, core.dynamic>)
+              ? Price.fromJson(
+                  json_['cashbackForFutureUse']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           loyaltyPoints: json_['loyaltyPoints'] as core.String?,
           memberPriceEffectiveDate:
               json_['memberPriceEffectiveDate'] as core.String?,
           price: json_.containsKey('price')
               ? Price.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>)
+                  json_['price'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           programLabel: json_['programLabel'] as core.String?,
           shippingLabel: json_['shippingLabel'] as core.String?,
@@ -14581,8 +14681,10 @@ class MerchantCenterDestination {
   MerchantCenterDestination.fromJson(core.Map json_)
       : this(
           attributionSettings: json_.containsKey('attributionSettings')
-              ? AttributionSettings.fromJson(json_['attributionSettings']
-                  as core.Map<core.String, core.dynamic>)
+              ? AttributionSettings.fromJson(
+                  json_['attributionSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           currencyCode: json_['currencyCode'] as core.String?,
           destinationId: json_['destinationId'] as core.String?,
@@ -14941,16 +15043,16 @@ class Metrics {
 class MinimumOrderValueTable {
   core.List<MinimumOrderValueTableStoreCodeSetWithMov>? storeCodeSetWithMovs;
 
-  MinimumOrderValueTable({
-    this.storeCodeSetWithMovs,
-  });
+  MinimumOrderValueTable({this.storeCodeSetWithMovs});
 
   MinimumOrderValueTable.fromJson(core.Map json_)
       : this(
           storeCodeSetWithMovs: (json_['storeCodeSetWithMovs'] as core.List?)
-              ?.map((value) =>
-                  MinimumOrderValueTableStoreCodeSetWithMov.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MinimumOrderValueTableStoreCodeSetWithMov.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -14973,10 +15075,7 @@ class MinimumOrderValueTableStoreCodeSetWithMov {
   /// The minimum order value for the given stores.
   Price? value;
 
-  MinimumOrderValueTableStoreCodeSetWithMov({
-    this.storeCodes,
-    this.value,
-  });
+  MinimumOrderValueTableStoreCodeSetWithMov({this.storeCodes, this.value});
 
   MinimumOrderValueTableStoreCodeSetWithMov.fromJson(core.Map json_)
       : this(
@@ -14985,7 +15084,8 @@ class MinimumOrderValueTableStoreCodeSetWithMov {
               .toList(),
           value: json_.containsKey('value')
               ? Price.fromJson(
-                  json_['value'] as core.Map<core.String, core.dynamic>)
+                  json_['value'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -15071,31 +15171,44 @@ class OrderTrackingSignal {
   OrderTrackingSignal.fromJson(core.Map json_)
       : this(
           customerShippingFee: json_.containsKey('customerShippingFee')
-              ? PriceAmount.fromJson(json_['customerShippingFee']
-                  as core.Map<core.String, core.dynamic>)
+              ? PriceAmount.fromJson(
+                  json_['customerShippingFee']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           deliveryPostalCode: json_['deliveryPostalCode'] as core.String?,
           deliveryRegionCode: json_['deliveryRegionCode'] as core.String?,
           lineItems: (json_['lineItems'] as core.List?)
-              ?.map((value) => OrderTrackingSignalLineItemDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => OrderTrackingSignalLineItemDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           merchantId: json_['merchantId'] as core.String?,
           orderCreatedTime: json_.containsKey('orderCreatedTime')
-              ? DateTime.fromJson(json_['orderCreatedTime']
-                  as core.Map<core.String, core.dynamic>)
+              ? DateTime.fromJson(
+                  json_['orderCreatedTime']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           orderId: json_['orderId'] as core.String?,
           orderTrackingSignalId: json_['orderTrackingSignalId'] as core.String?,
           shipmentLineItemMapping:
               (json_['shipmentLineItemMapping'] as core.List?)
-                  ?.map((value) =>
-                      OrderTrackingSignalShipmentLineItemMapping.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) =>
+                        OrderTrackingSignalShipmentLineItemMapping.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           shippingInfo: (json_['shippingInfo'] as core.List?)
-              ?.map((value) => OrderTrackingSignalShippingInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => OrderTrackingSignalShippingInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -15337,27 +15450,34 @@ class OrderTrackingSignalShippingInfo {
   OrderTrackingSignalShippingInfo.fromJson(core.Map json_)
       : this(
           actualDeliveryTime: json_.containsKey('actualDeliveryTime')
-              ? DateTime.fromJson(json_['actualDeliveryTime']
-                  as core.Map<core.String, core.dynamic>)
+              ? DateTime.fromJson(
+                  json_['actualDeliveryTime']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           carrierName: json_['carrierName'] as core.String?,
           carrierServiceName: json_['carrierServiceName'] as core.String?,
           earliestDeliveryPromiseTime:
               json_.containsKey('earliestDeliveryPromiseTime')
-                  ? DateTime.fromJson(json_['earliestDeliveryPromiseTime']
-                      as core.Map<core.String, core.dynamic>)
+                  ? DateTime.fromJson(
+                      json_['earliestDeliveryPromiseTime']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           latestDeliveryPromiseTime:
               json_.containsKey('latestDeliveryPromiseTime')
-                  ? DateTime.fromJson(json_['latestDeliveryPromiseTime']
-                      as core.Map<core.String, core.dynamic>)
+                  ? DateTime.fromJson(
+                      json_['latestDeliveryPromiseTime']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           originPostalCode: json_['originPostalCode'] as core.String?,
           originRegionCode: json_['originRegionCode'] as core.String?,
           shipmentId: json_['shipmentId'] as core.String?,
           shippedTime: json_.containsKey('shippedTime')
               ? DateTime.fromJson(
-                  json_['shippedTime'] as core.Map<core.String, core.dynamic>)
+                  json_['shippedTime'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           shippingStatus: json_['shippingStatus'] as core.String?,
           trackingId: json_['trackingId'] as core.String?,
@@ -15421,10 +15541,7 @@ class PickupCarrierService {
   /// Required.
   core.String? serviceName;
 
-  PickupCarrierService({
-    this.carrierName,
-    this.serviceName,
-  });
+  PickupCarrierService({this.carrierName, this.serviceName});
 
   PickupCarrierService.fromJson(core.Map json_)
       : this(
@@ -15478,15 +15595,16 @@ class PosCustomBatchRequest {
   /// The request entries to be processed in the batch.
   core.List<PosCustomBatchRequestEntry>? entries;
 
-  PosCustomBatchRequest({
-    this.entries,
-  });
+  PosCustomBatchRequest({this.entries});
 
   PosCustomBatchRequest.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => PosCustomBatchRequestEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PosCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -15547,17 +15665,20 @@ class PosCustomBatchRequestEntry {
           batchId: json_['batchId'] as core.int?,
           inventory: json_.containsKey('inventory')
               ? PosInventory.fromJson(
-                  json_['inventory'] as core.Map<core.String, core.dynamic>)
+                  json_['inventory'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           merchantId: json_['merchantId'] as core.String?,
           method: json_['method'] as core.String?,
           sale: json_.containsKey('sale')
               ? PosSale.fromJson(
-                  json_['sale'] as core.Map<core.String, core.dynamic>)
+                  json_['sale'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           store: json_.containsKey('store')
               ? PosStore.fromJson(
-                  json_['store'] as core.Map<core.String, core.dynamic>)
+                  json_['store'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           storeCode: json_['storeCode'] as core.String?,
           targetMerchantId: json_['targetMerchantId'] as core.String?,
@@ -15584,16 +15705,16 @@ class PosCustomBatchResponse {
   /// Value: the fixed string "`content#posCustomBatchResponse`".
   core.String? kind;
 
-  PosCustomBatchResponse({
-    this.entries,
-    this.kind,
-  });
+  PosCustomBatchResponse({this.entries, this.kind});
 
   PosCustomBatchResponse.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => PosCustomBatchResponseEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PosCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -15639,20 +15760,24 @@ class PosCustomBatchResponseEntry {
           batchId: json_['batchId'] as core.int?,
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           inventory: json_.containsKey('inventory')
               ? PosInventory.fromJson(
-                  json_['inventory'] as core.Map<core.String, core.dynamic>)
+                  json_['inventory'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           kind: json_['kind'] as core.String?,
           sale: json_.containsKey('sale')
               ? PosSale.fromJson(
-                  json_['sale'] as core.Map<core.String, core.dynamic>)
+                  json_['sale'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           store: json_.containsKey('store')
               ? PosStore.fromJson(
-                  json_['store'] as core.Map<core.String, core.dynamic>)
+                  json_['store'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -15673,17 +15798,17 @@ class PosDataProviders {
   /// A list of POS data providers.
   core.List<PosDataProvidersPosDataProvider>? posDataProviders;
 
-  PosDataProviders({
-    this.country,
-    this.posDataProviders,
-  });
+  PosDataProviders({this.country, this.posDataProviders});
 
   PosDataProviders.fromJson(core.Map json_)
       : this(
           country: json_['country'] as core.String?,
           posDataProviders: (json_['posDataProviders'] as core.List?)
-              ?.map((value) => PosDataProvidersPosDataProvider.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PosDataProvidersPosDataProvider.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -15814,7 +15939,8 @@ class PosInventory {
           pickupSla: json_['pickupSla'] as core.String?,
           price: json_.containsKey('price')
               ? Price.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>)
+                  json_['price'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           quantity: json_['quantity'] as core.String?,
           storeCode: json_['storeCode'] as core.String?,
@@ -15920,7 +16046,8 @@ class PosInventoryRequest {
           pickupSla: json_['pickupSla'] as core.String?,
           price: json_.containsKey('price')
               ? Price.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>)
+                  json_['price'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           quantity: json_['quantity'] as core.String?,
           storeCode: json_['storeCode'] as core.String?,
@@ -16032,7 +16159,8 @@ class PosInventoryResponse {
           pickupSla: json_['pickupSla'] as core.String?,
           price: json_.containsKey('price')
               ? Price.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>)
+                  json_['price'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           quantity: json_['quantity'] as core.String?,
           storeCode: json_['storeCode'] as core.String?,
@@ -16062,17 +16190,17 @@ class PosListResponse {
   core.String? kind;
   core.List<PosStore>? resources;
 
-  PosListResponse({
-    this.kind,
-    this.resources,
-  });
+  PosListResponse({this.kind, this.resources});
 
   PosListResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           resources: (json_['resources'] as core.List?)
-              ?.map((value) => PosStore.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PosStore.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -16156,7 +16284,8 @@ class PosSale {
           kind: json_['kind'] as core.String?,
           price: json_.containsKey('price')
               ? Price.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>)
+                  json_['price'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           quantity: json_['quantity'] as core.String?,
           saleId: json_['saleId'] as core.String?,
@@ -16245,7 +16374,8 @@ class PosSaleRequest {
           itemId: json_['itemId'] as core.String?,
           price: json_.containsKey('price')
               ? Price.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>)
+                  json_['price'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           quantity: json_['quantity'] as core.String?,
           saleId: json_['saleId'] as core.String?,
@@ -16340,7 +16470,8 @@ class PosSaleResponse {
           kind: json_['kind'] as core.String?,
           price: json_.containsKey('price')
               ? Price.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>)
+                  json_['price'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           quantity: json_['quantity'] as core.String?,
           saleId: json_['saleId'] as core.String?,
@@ -16491,19 +16622,18 @@ class PostalCodeGroup {
   /// Required.
   core.List<PostalCodeRange>? postalCodeRanges;
 
-  PostalCodeGroup({
-    this.country,
-    this.name,
-    this.postalCodeRanges,
-  });
+  PostalCodeGroup({this.country, this.name, this.postalCodeRanges});
 
   PostalCodeGroup.fromJson(core.Map json_)
       : this(
           country: json_['country'] as core.String?,
           name: json_['name'] as core.String?,
           postalCodeRanges: (json_['postalCodeRanges'] as core.List?)
-              ?.map((value) => PostalCodeRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PostalCodeRange.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -16532,10 +16662,7 @@ class PostalCodeRange {
   /// codes matching `postalCodeRangeBegin`.
   core.String? postalCodeRangeEnd;
 
-  PostalCodeRange({
-    this.postalCodeRangeBegin,
-    this.postalCodeRangeEnd,
-  });
+  PostalCodeRange({this.postalCodeRangeBegin, this.postalCodeRangeEnd});
 
   PostalCodeRange.fromJson(core.Map json_)
       : this(
@@ -17143,6 +17270,11 @@ class Product {
   /// an item with an associated subscription contract.
   ProductSubscriptionCost? subscriptionCost;
 
+  /// The list of sustainability incentive programs.
+  ///
+  /// Optional.
+  core.List<ProductSustainabilityIncentive>? sustainabilityIncentives;
+
   /// The CLDR territory code for the item's country of sale.
   ///
   /// Required.
@@ -17266,6 +17398,7 @@ class Product {
     this.structuredDescription,
     this.structuredTitle,
     this.subscriptionCost,
+    this.sustainabilityIncentives,
     this.targetCountry,
     this.taxCategory,
     this.taxes,
@@ -17290,33 +17423,46 @@ class Product {
           adult: json_['adult'] as core.bool?,
           ageGroup: json_['ageGroup'] as core.String?,
           autoPricingMinPrice: json_.containsKey('autoPricingMinPrice')
-              ? Price.fromJson(json_['autoPricingMinPrice']
-                  as core.Map<core.String, core.dynamic>)
+              ? Price.fromJson(
+                  json_['autoPricingMinPrice']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           availability: json_['availability'] as core.String?,
           availabilityDate: json_['availabilityDate'] as core.String?,
           brand: json_['brand'] as core.String?,
           canonicalLink: json_['canonicalLink'] as core.String?,
           certifications: (json_['certifications'] as core.List?)
-              ?.map((value) => ProductCertification.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ProductCertification.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           channel: json_['channel'] as core.String?,
           cloudExportAdditionalProperties:
               (json_['cloudExportAdditionalProperties'] as core.List?)
-                  ?.map((value) => CloudExportAdditionalProperties.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => CloudExportAdditionalProperties.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           color: json_['color'] as core.String?,
           condition: json_['condition'] as core.String?,
           contentLanguage: json_['contentLanguage'] as core.String?,
           costOfGoodsSold: json_.containsKey('costOfGoodsSold')
-              ? Price.fromJson(json_['costOfGoodsSold']
-                  as core.Map<core.String, core.dynamic>)
+              ? Price.fromJson(
+                  json_['costOfGoodsSold']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           customAttributes: (json_['customAttributes'] as core.List?)
-              ?.map((value) => CustomAttribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CustomAttribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           customLabel0: json_['customLabel0'] as core.String?,
           customLabel1: json_['customLabel1'] as core.String?,
@@ -17340,8 +17486,11 @@ class Product {
           externalSellerId: json_['externalSellerId'] as core.String?,
           feedLabel: json_['feedLabel'] as core.String?,
           freeShippingThreshold: (json_['freeShippingThreshold'] as core.List?)
-              ?.map((value) => FreeShippingThreshold.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => FreeShippingThreshold.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           gender: json_['gender'] as core.String?,
           googleProductCategory: json_['googleProductCategory'] as core.String?,
@@ -17354,7 +17503,8 @@ class Product {
               .toList(),
           installment: json_.containsKey('installment')
               ? Installment.fromJson(
-                  json_['installment'] as core.Map<core.String, core.dynamic>)
+                  json_['installment'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           isBundle: json_['isBundle'] as core.bool?,
           itemGroupId: json_['itemGroupId'] as core.String?,
@@ -17365,12 +17515,17 @@ class Product {
           link: json_['link'] as core.String?,
           linkTemplate: json_['linkTemplate'] as core.String?,
           loyaltyProgram: json_.containsKey('loyaltyProgram')
-              ? LoyaltyProgram.fromJson(json_['loyaltyProgram']
-                  as core.Map<core.String, core.dynamic>)
+              ? LoyaltyProgram.fromJson(
+                  json_['loyaltyProgram']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           loyaltyPrograms: (json_['loyaltyPrograms'] as core.List?)
-              ?.map((value) => LoyaltyProgram.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => LoyaltyProgram.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           material: json_['material'] as core.String?,
           maxEnergyEfficiencyClass:
@@ -17390,64 +17545,83 @@ class Product {
           pickupSla: json_['pickupSla'] as core.String?,
           price: json_.containsKey('price')
               ? Price.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>)
+                  json_['price'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           productDetails: (json_['productDetails'] as core.List?)
-              ?.map((value) => ProductProductDetail.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ProductProductDetail.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           productHeight: json_.containsKey('productHeight')
               ? ProductDimension.fromJson(
-                  json_['productHeight'] as core.Map<core.String, core.dynamic>)
+                  json_['productHeight'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           productHighlights: (json_['productHighlights'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           productLength: json_.containsKey('productLength')
               ? ProductDimension.fromJson(
-                  json_['productLength'] as core.Map<core.String, core.dynamic>)
+                  json_['productLength'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           productTypes: (json_['productTypes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           productWeight: json_.containsKey('productWeight')
               ? ProductWeight.fromJson(
-                  json_['productWeight'] as core.Map<core.String, core.dynamic>)
+                  json_['productWeight'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           productWidth: json_.containsKey('productWidth')
               ? ProductDimension.fromJson(
-                  json_['productWidth'] as core.Map<core.String, core.dynamic>)
+                  json_['productWidth'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           promotionIds: (json_['promotionIds'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           salePrice: json_.containsKey('salePrice')
               ? Price.fromJson(
-                  json_['salePrice'] as core.Map<core.String, core.dynamic>)
+                  json_['salePrice'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           salePriceEffectiveDate:
               json_['salePriceEffectiveDate'] as core.String?,
           sellOnGoogleQuantity: json_['sellOnGoogleQuantity'] as core.String?,
           shipping: (json_['shipping'] as core.List?)
-              ?.map((value) => ProductShipping.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ProductShipping.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           shippingHeight: json_.containsKey('shippingHeight')
-              ? ProductShippingDimension.fromJson(json_['shippingHeight']
-                  as core.Map<core.String, core.dynamic>)
+              ? ProductShippingDimension.fromJson(
+                  json_['shippingHeight']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           shippingLabel: json_['shippingLabel'] as core.String?,
           shippingLength: json_.containsKey('shippingLength')
-              ? ProductShippingDimension.fromJson(json_['shippingLength']
-                  as core.Map<core.String, core.dynamic>)
+              ? ProductShippingDimension.fromJson(
+                  json_['shippingLength']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           shippingWeight: json_.containsKey('shippingWeight')
-              ? ProductShippingWeight.fromJson(json_['shippingWeight']
-                  as core.Map<core.String, core.dynamic>)
+              ? ProductShippingWeight.fromJson(
+                  json_['shippingWeight']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           shippingWidth: json_.containsKey('shippingWidth')
               ? ProductShippingDimension.fromJson(
-                  json_['shippingWidth'] as core.Map<core.String, core.dynamic>)
+                  json_['shippingWidth'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           shoppingAdsExcludedCountries:
               (json_['shoppingAdsExcludedCountries'] as core.List?)
@@ -17462,32 +17636,51 @@ class Product {
           structuredDescription: json_.containsKey('structuredDescription')
               ? ProductStructuredDescription.fromJson(
                   json_['structuredDescription']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           structuredTitle: json_.containsKey('structuredTitle')
-              ? ProductStructuredTitle.fromJson(json_['structuredTitle']
-                  as core.Map<core.String, core.dynamic>)
+              ? ProductStructuredTitle.fromJson(
+                  json_['structuredTitle']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           subscriptionCost: json_.containsKey('subscriptionCost')
-              ? ProductSubscriptionCost.fromJson(json_['subscriptionCost']
-                  as core.Map<core.String, core.dynamic>)
+              ? ProductSubscriptionCost.fromJson(
+                  json_['subscriptionCost']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
+          sustainabilityIncentives:
+              (json_['sustainabilityIncentives'] as core.List?)
+                  ?.map(
+                    (value) => ProductSustainabilityIncentive.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
+                  .toList(),
           targetCountry: json_['targetCountry'] as core.String?,
           taxCategory: json_['taxCategory'] as core.String?,
           taxes: (json_['taxes'] as core.List?)
-              ?.map((value) => ProductTax.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ProductTax.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           title: json_['title'] as core.String?,
           transitTimeLabel: json_['transitTimeLabel'] as core.String?,
           unitPricingBaseMeasure: json_.containsKey('unitPricingBaseMeasure')
               ? ProductUnitPricingBaseMeasure.fromJson(
                   json_['unitPricingBaseMeasure']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           unitPricingMeasure: json_.containsKey('unitPricingMeasure')
-              ? ProductUnitPricingMeasure.fromJson(json_['unitPricingMeasure']
-                  as core.Map<core.String, core.dynamic>)
+              ? ProductUnitPricingMeasure.fromJson(
+                  json_['unitPricingMeasure']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           virtualModelLink: json_['virtualModelLink'] as core.String?,
         );
@@ -17605,6 +17798,8 @@ class Product {
           'structuredDescription': structuredDescription!,
         if (structuredTitle != null) 'structuredTitle': structuredTitle!,
         if (subscriptionCost != null) 'subscriptionCost': subscriptionCost!,
+        if (sustainabilityIncentives != null)
+          'sustainabilityIncentives': sustainabilityIncentives!,
         if (targetCountry != null) 'targetCountry': targetCountry!,
         if (taxCategory != null) 'taxCategory': taxCategory!,
         if (taxes != null) 'taxes': taxes!,
@@ -17800,20 +17995,21 @@ class ProductDeliveryTime {
   /// Required.
   ProductId? productId;
 
-  ProductDeliveryTime({
-    this.areaDeliveryTimes,
-    this.productId,
-  });
+  ProductDeliveryTime({this.areaDeliveryTimes, this.productId});
 
   ProductDeliveryTime.fromJson(core.Map json_)
       : this(
           areaDeliveryTimes: (json_['areaDeliveryTimes'] as core.List?)
-              ?.map((value) => ProductDeliveryTimeAreaDeliveryTime.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ProductDeliveryTimeAreaDeliveryTime.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           productId: json_.containsKey('productId')
               ? ProductId.fromJson(
-                  json_['productId'] as core.Map<core.String, core.dynamic>)
+                  json_['productId'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -17836,20 +18032,19 @@ class ProductDeliveryTimeAreaDeliveryTime {
   /// Required.
   ProductDeliveryTimeAreaDeliveryTimeDeliveryTime? deliveryTime;
 
-  ProductDeliveryTimeAreaDeliveryTime({
-    this.deliveryArea,
-    this.deliveryTime,
-  });
+  ProductDeliveryTimeAreaDeliveryTime({this.deliveryArea, this.deliveryTime});
 
   ProductDeliveryTimeAreaDeliveryTime.fromJson(core.Map json_)
       : this(
           deliveryArea: json_.containsKey('deliveryArea')
               ? DeliveryArea.fromJson(
-                  json_['deliveryArea'] as core.Map<core.String, core.dynamic>)
+                  json_['deliveryArea'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           deliveryTime: json_.containsKey('deliveryTime')
               ? ProductDeliveryTimeAreaDeliveryTimeDeliveryTime.fromJson(
-                  json_['deliveryTime'] as core.Map<core.String, core.dynamic>)
+                  json_['deliveryTime'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -17931,10 +18126,7 @@ class ProductDimension {
   /// Required.
   core.double? value;
 
-  ProductDimension({
-    this.unit,
-    this.value,
-  });
+  ProductDimension({this.unit, this.value});
 
   ProductDimension.fromJson(core.Map json_)
       : this(
@@ -17954,14 +18146,10 @@ class ProductId {
   /// `channel:contentLanguage:targetCountry:offerId`.
   core.String? productId;
 
-  ProductId({
-    this.productId,
-  });
+  ProductId({this.productId});
 
   ProductId.fromJson(core.Map json_)
-      : this(
-          productId: json_['productId'] as core.String?,
-        );
+      : this(productId: json_['productId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (productId != null) 'productId': productId!,
@@ -18047,12 +18235,16 @@ class ProductIssue {
   ProductIssue.fromJson(core.Map json_)
       : this(
           actions: (json_['actions'] as core.List?)
-              ?.map((value) =>
-                  Action.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Action.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           impact: json_.containsKey('impact')
               ? ProductIssueImpact.fromJson(
-                  json_['impact'] as core.Map<core.String, core.dynamic>)
+                  json_['impact'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           prerenderedContent: json_['prerenderedContent'] as core.String?,
           title: json_['title'] as core.String?,
@@ -18099,17 +18291,16 @@ class ProductIssueImpact {
   /// Resolving these issues is recommended, but not required.
   core.String? severity;
 
-  ProductIssueImpact({
-    this.breakdowns,
-    this.message,
-    this.severity,
-  });
+  ProductIssueImpact({this.breakdowns, this.message, this.severity});
 
   ProductIssueImpact.fromJson(core.Map json_)
       : this(
           breakdowns: (json_['breakdowns'] as core.List?)
-              ?.map((value) => Breakdown.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Breakdown.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           message: json_['message'] as core.String?,
           severity: json_['severity'] as core.String?,
@@ -18209,7 +18400,8 @@ class ProductShipping {
           postalCode: json_['postalCode'] as core.String?,
           price: json_.containsKey('price')
               ? Price.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>)
+                  json_['price'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           region: json_['region'] as core.String?,
           service: json_['service'] as core.String?,
@@ -18238,10 +18430,7 @@ class ProductShippingDimension {
   /// item.
   core.double? value;
 
-  ProductShippingDimension({
-    this.unit,
-    this.value,
-  });
+  ProductShippingDimension({this.unit, this.value});
 
   ProductShippingDimension.fromJson(core.Map json_)
       : this(
@@ -18262,10 +18451,7 @@ class ProductShippingWeight {
   /// The weight of the product used to calculate the shipping cost of the item.
   core.double? value;
 
-  ProductShippingWeight({
-    this.unit,
-    this.value,
-  });
+  ProductShippingWeight({this.unit, this.value});
 
   ProductShippingWeight.fromJson(core.Map json_)
       : this(
@@ -18327,13 +18513,19 @@ class ProductStatus {
       : this(
           creationDate: json_['creationDate'] as core.String?,
           destinationStatuses: (json_['destinationStatuses'] as core.List?)
-              ?.map((value) => ProductStatusDestinationStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ProductStatusDestinationStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           googleExpirationDate: json_['googleExpirationDate'] as core.String?,
           itemLevelIssues: (json_['itemLevelIssues'] as core.List?)
-              ?.map((value) => ProductStatusItemLevelIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ProductStatusItemLevelIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           lastUpdateDate: json_['lastUpdateDate'] as core.String?,
@@ -18502,10 +18694,7 @@ class ProductStructuredDescription {
   /// Optional.
   core.String? digitalSourceType;
 
-  ProductStructuredDescription({
-    this.content,
-    this.digitalSourceType,
-  });
+  ProductStructuredDescription({this.content, this.digitalSourceType});
 
   ProductStructuredDescription.fromJson(core.Map json_)
       : this(
@@ -18538,10 +18727,7 @@ class ProductStructuredTitle {
   /// Optional.
   core.String? digitalSourceType;
 
-  ProductStructuredTitle({
-    this.content,
-    this.digitalSourceType,
-  });
+  ProductStructuredTitle({this.content, this.digitalSourceType});
 
   ProductStructuredTitle.fromJson(core.Map json_)
       : this(
@@ -18567,17 +18753,14 @@ class ProductSubscriptionCost {
   /// The number of subscription periods the buyer has to pay.
   core.String? periodLength;
 
-  ProductSubscriptionCost({
-    this.amount,
-    this.period,
-    this.periodLength,
-  });
+  ProductSubscriptionCost({this.amount, this.period, this.periodLength});
 
   ProductSubscriptionCost.fromJson(core.Map json_)
       : this(
           amount: json_.containsKey('amount')
               ? Price.fromJson(
-                  json_['amount'] as core.Map<core.String, core.dynamic>)
+                  json_['amount'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           period: json_['period'] as core.String?,
           periodLength: json_['periodLength'] as core.String?,
@@ -18587,6 +18770,54 @@ class ProductSubscriptionCost {
         if (amount != null) 'amount': amount!,
         if (period != null) 'period': period!,
         if (periodLength != null) 'periodLength': periodLength!,
+      };
+}
+
+/// Information regarding sustainability related incentive programs such as
+/// rebates or tax relief.
+class ProductSustainabilityIncentive {
+  /// The fixed amount of the incentive.
+  ///
+  /// Optional.
+  Price? amount;
+
+  /// The percentage of the sale price that the incentive is applied to.
+  ///
+  /// Optional.
+  core.double? percentage;
+
+  /// Sustainability incentive program.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified or unknown sustainability incentive
+  /// type.
+  /// - "EV_TAX_CREDIT" : Program offering tax liability reductions for electric
+  /// vehicles and, in some countries, plug-in hybrids. These reductions can be
+  /// based on a specific amount or a percentage of the sale price.
+  /// - "EV_PRICE_DISCOUNT" : A subsidy program, often called an environmental
+  /// bonus, provides a purchase grant for electric vehicles and, in some
+  /// countries, plug-in hybrids. The grant amount may be a fixed sum or a
+  /// percentage of the sale price.
+  core.String? type;
+
+  ProductSustainabilityIncentive({this.amount, this.percentage, this.type});
+
+  ProductSustainabilityIncentive.fromJson(core.Map json_)
+      : this(
+          amount: json_.containsKey('amount')
+              ? Price.fromJson(
+                  json_['amount'] as core.Map<core.String, core.dynamic>,
+                )
+              : null,
+          percentage: (json_['percentage'] as core.num?)?.toDouble(),
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (amount != null) 'amount': amount!,
+        if (percentage != null) 'percentage': percentage!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -18651,10 +18882,7 @@ class ProductUnitPricingBaseMeasure {
   /// The denominator of the unit price.
   core.String? value;
 
-  ProductUnitPricingBaseMeasure({
-    this.unit,
-    this.value,
-  });
+  ProductUnitPricingBaseMeasure({this.unit, this.value});
 
   ProductUnitPricingBaseMeasure.fromJson(core.Map json_)
       : this(
@@ -18675,10 +18903,7 @@ class ProductUnitPricingMeasure {
   /// The measure of an item.
   core.double? value;
 
-  ProductUnitPricingMeasure({
-    this.unit,
-    this.value,
-  });
+  ProductUnitPricingMeasure({this.unit, this.value});
 
   ProductUnitPricingMeasure.fromJson(core.Map json_)
       : this(
@@ -18880,8 +19105,10 @@ class ProductView {
           creationTime: json_['creationTime'] as core.String?,
           currencyCode: json_['currencyCode'] as core.String?,
           expirationDate: json_.containsKey('expirationDate')
-              ? Date.fromJson(json_['expirationDate']
-                  as core.Map<core.String, core.dynamic>)
+              ? Date.fromJson(
+                  json_['expirationDate']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           gtin: (json_['gtin'] as core.List?)
               ?.map((value) => value as core.String)
@@ -18889,8 +19116,11 @@ class ProductView {
           id: json_['id'] as core.String?,
           itemGroupId: json_['itemGroupId'] as core.String?,
           itemIssues: (json_['itemIssues'] as core.List?)
-              ?.map((value) => ProductViewItemIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ProductViewItemIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           languageCode: json_['languageCode'] as core.String?,
           offerId: json_['offerId'] as core.String?,
@@ -18956,22 +19186,20 @@ class ProductViewItemIssue {
   /// Item issue severity.
   ProductViewItemIssueItemIssueSeverity? severity;
 
-  ProductViewItemIssue({
-    this.issueType,
-    this.resolution,
-    this.severity,
-  });
+  ProductViewItemIssue({this.issueType, this.resolution, this.severity});
 
   ProductViewItemIssue.fromJson(core.Map json_)
       : this(
           issueType: json_.containsKey('issueType')
               ? ProductViewItemIssueItemIssueType.fromJson(
-                  json_['issueType'] as core.Map<core.String, core.dynamic>)
+                  json_['issueType'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           resolution: json_['resolution'] as core.String?,
           severity: json_.containsKey('severity')
               ? ProductViewItemIssueItemIssueSeverity.fromJson(
-                  json_['severity'] as core.Map<core.String, core.dynamic>)
+                  json_['severity'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -19042,12 +19270,15 @@ class ProductViewItemIssueItemIssueSeverity {
   ProductViewItemIssueItemIssueSeverity.fromJson(core.Map json_)
       : this(
           aggregatedSeverity: json_['aggregatedSeverity'] as core.String?,
-          severityPerDestination:
-              (json_['severityPerDestination'] as core.List?)
-                  ?.map((value) =>
-                      ProductViewItemIssueIssueSeverityPerDestination.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList(),
+          severityPerDestination: (json_['severityPerDestination']
+                  as core.List?)
+              ?.map(
+                (value) =>
+                    ProductViewItemIssueIssueSeverityPerDestination.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19066,10 +19297,7 @@ class ProductViewItemIssueItemIssueType {
   /// Error code of the issue.
   core.String? code;
 
-  ProductViewItemIssueItemIssueType({
-    this.canonicalAttribute,
-    this.code,
-  });
+  ProductViewItemIssueItemIssueType({this.canonicalAttribute, this.code});
 
   ProductViewItemIssueItemIssueType.fromJson(core.Map json_)
       : this(
@@ -19099,10 +19327,7 @@ class ProductWeight {
   /// Required.
   core.double? value;
 
-  ProductWeight({
-    this.unit,
-    this.value,
-  });
+  ProductWeight({this.unit, this.value});
 
   ProductWeight.fromJson(core.Map json_)
       : this(
@@ -19120,15 +19345,16 @@ class ProductsCustomBatchRequest {
   /// The request entries to be processed in the batch.
   core.List<ProductsCustomBatchRequestEntry>? entries;
 
-  ProductsCustomBatchRequest({
-    this.entries,
-  });
+  ProductsCustomBatchRequest({this.entries});
 
   ProductsCustomBatchRequest.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => ProductsCustomBatchRequestEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ProductsCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -19198,7 +19424,8 @@ class ProductsCustomBatchRequestEntry {
           method: json_['method'] as core.String?,
           product: json_.containsKey('product')
               ? Product.fromJson(
-                  json_['product'] as core.Map<core.String, core.dynamic>)
+                  json_['product'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           productId: json_['productId'] as core.String?,
           updateMask: json_['updateMask'] as core.String?,
@@ -19224,16 +19451,16 @@ class ProductsCustomBatchResponse {
   /// Value: the fixed string "`content#productsCustomBatchResponse`".
   core.String? kind;
 
-  ProductsCustomBatchResponse({
-    this.entries,
-    this.kind,
-  });
+  ProductsCustomBatchResponse({this.entries, this.kind});
 
   ProductsCustomBatchResponse.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => ProductsCustomBatchResponseEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ProductsCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -19276,12 +19503,14 @@ class ProductsCustomBatchResponseEntry {
           batchId: json_['batchId'] as core.int?,
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           kind: json_['kind'] as core.String?,
           product: json_.containsKey('product')
               ? Product.fromJson(
-                  json_['product'] as core.Map<core.String, core.dynamic>)
+                  json_['product'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -19303,19 +19532,18 @@ class ProductsListResponse {
   core.String? nextPageToken;
   core.List<Product>? resources;
 
-  ProductsListResponse({
-    this.kind,
-    this.nextPageToken,
-    this.resources,
-  });
+  ProductsListResponse({this.kind, this.nextPageToken, this.resources});
 
   ProductsListResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           resources: (json_['resources'] as core.List?)
-              ?.map((value) => Product.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Product.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -19330,15 +19558,16 @@ class ProductstatusesCustomBatchRequest {
   /// The request entries to be processed in the batch.
   core.List<ProductstatusesCustomBatchRequestEntry>? entries;
 
-  ProductstatusesCustomBatchRequest({
-    this.entries,
-  });
+  ProductstatusesCustomBatchRequest({this.entries});
 
   ProductstatusesCustomBatchRequest.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => ProductstatusesCustomBatchRequestEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ProductstatusesCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -19414,16 +19643,16 @@ class ProductstatusesCustomBatchResponse {
   /// Value: the fixed string "`content#productstatusesCustomBatchResponse`".
   core.String? kind;
 
-  ProductstatusesCustomBatchResponse({
-    this.entries,
-    this.kind,
-  });
+  ProductstatusesCustomBatchResponse({this.entries, this.kind});
 
   ProductstatusesCustomBatchResponse.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => ProductstatusesCustomBatchResponseEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ProductstatusesCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -19467,12 +19696,14 @@ class ProductstatusesCustomBatchResponseEntry {
           batchId: json_['batchId'] as core.int?,
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           kind: json_['kind'] as core.String?,
           productStatus: json_.containsKey('productStatus')
               ? ProductStatus.fromJson(
-                  json_['productStatus'] as core.Map<core.String, core.dynamic>)
+                  json_['productStatus'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -19494,19 +19725,18 @@ class ProductstatusesListResponse {
   core.String? nextPageToken;
   core.List<ProductStatus>? resources;
 
-  ProductstatusesListResponse({
-    this.kind,
-    this.nextPageToken,
-    this.resources,
-  });
+  ProductstatusesListResponse({this.kind, this.nextPageToken, this.resources});
 
   ProductstatusesListResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           resources: (json_['resources'] as core.List?)
-              ?.map((value) => ProductStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ProductStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -19805,7 +20035,8 @@ class Promotion {
           freeGiftItemId: json_['freeGiftItemId'] as core.String?,
           freeGiftValue: json_.containsKey('freeGiftValue')
               ? PriceAmount.fromJson(
-                  json_['freeGiftValue'] as core.Map<core.String, core.dynamic>)
+                  json_['freeGiftValue'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           genericRedemptionCode: json_['genericRedemptionCode'] as core.String?,
           getThisQuantityDiscounted:
@@ -19826,22 +20057,28 @@ class Promotion {
           limitQuantity: json_['limitQuantity'] as core.int?,
           limitValue: json_.containsKey('limitValue')
               ? PriceAmount.fromJson(
-                  json_['limitValue'] as core.Map<core.String, core.dynamic>)
+                  json_['limitValue'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           longTitle: json_['longTitle'] as core.String?,
           minimumPurchaseAmount: json_.containsKey('minimumPurchaseAmount')
-              ? PriceAmount.fromJson(json_['minimumPurchaseAmount']
-                  as core.Map<core.String, core.dynamic>)
+              ? PriceAmount.fromJson(
+                  json_['minimumPurchaseAmount']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           minimumPurchaseQuantity:
               json_['minimumPurchaseQuantity'] as core.int?,
           moneyBudget: json_.containsKey('moneyBudget')
               ? PriceAmount.fromJson(
-                  json_['moneyBudget'] as core.Map<core.String, core.dynamic>)
+                  json_['moneyBudget'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           moneyOffAmount: json_.containsKey('moneyOffAmount')
-              ? PriceAmount.fromJson(json_['moneyOffAmount']
-                  as core.Map<core.String, core.dynamic>)
+              ? PriceAmount.fromJson(
+                  json_['moneyOffAmount']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           offerType: json_['offerType'] as core.String?,
           orderLimit: json_['orderLimit'] as core.int?,
@@ -19860,20 +20097,26 @@ class Promotion {
           promotionDisplayDates: json_['promotionDisplayDates'] as core.String?,
           promotionDisplayTimePeriod:
               json_.containsKey('promotionDisplayTimePeriod')
-                  ? TimePeriod.fromJson(json_['promotionDisplayTimePeriod']
-                      as core.Map<core.String, core.dynamic>)
+                  ? TimePeriod.fromJson(
+                      json_['promotionDisplayTimePeriod']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           promotionEffectiveDates:
               json_['promotionEffectiveDates'] as core.String?,
           promotionEffectiveTimePeriod:
               json_.containsKey('promotionEffectiveTimePeriod')
-                  ? TimePeriod.fromJson(json_['promotionEffectiveTimePeriod']
-                      as core.Map<core.String, core.dynamic>)
+                  ? TimePeriod.fromJson(
+                      json_['promotionEffectiveTimePeriod']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           promotionId: json_['promotionId'] as core.String?,
           promotionStatus: json_.containsKey('promotionStatus')
-              ? PromotionPromotionStatus.fromJson(json_['promotionStatus']
-                  as core.Map<core.String, core.dynamic>)
+              ? PromotionPromotionStatus.fromJson(
+                  json_['promotionStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           promotionUrl: json_['promotionUrl'] as core.String?,
           redemptionChannel: (json_['redemptionChannel'] as core.List?)
@@ -19982,14 +20225,19 @@ class PromotionPromotionStatus {
       : this(
           creationDate: json_['creationDate'] as core.String?,
           destinationStatuses: (json_['destinationStatuses'] as core.List?)
-              ?.map((value) =>
-                  PromotionPromotionStatusDestinationStatus.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PromotionPromotionStatusDestinationStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           lastUpdateDate: json_['lastUpdateDate'] as core.String?,
           promotionIssue: (json_['promotionIssue'] as core.List?)
-              ?.map((value) => PromotionPromotionStatusPromotionIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PromotionPromotionStatusPromotionIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -20019,10 +20267,7 @@ class PromotionPromotionStatusDestinationStatus {
   /// but the active date is in the future.
   core.String? status;
 
-  PromotionPromotionStatusDestinationStatus({
-    this.destination,
-    this.status,
-  });
+  PromotionPromotionStatusDestinationStatus({this.destination, this.status});
 
   PromotionPromotionStatusDestinationStatus.fromJson(core.Map json_)
       : this(
@@ -20044,10 +20289,7 @@ class PromotionPromotionStatusPromotionIssue {
   /// Explanation of the issue.
   core.String? detail;
 
-  PromotionPromotionStatusPromotionIssue({
-    this.code,
-    this.detail,
-  });
+  PromotionPromotionStatusPromotionIssue({this.code, this.detail});
 
   PromotionPromotionStatusPromotionIssue.fromJson(core.Map json_)
       : this(
@@ -20149,21 +20391,29 @@ class RateGroup {
                   ?.map((value) => value as core.String)
                   .toList(),
           carrierRates: (json_['carrierRates'] as core.List?)
-              ?.map((value) => CarrierRate.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CarrierRate.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           mainTable: json_.containsKey('mainTable')
               ? Table.fromJson(
-                  json_['mainTable'] as core.Map<core.String, core.dynamic>)
+                  json_['mainTable'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           singleValue: json_.containsKey('singleValue')
               ? Value.fromJson(
-                  json_['singleValue'] as core.Map<core.String, core.dynamic>)
+                  json_['singleValue'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           subtables: (json_['subtables'] as core.List?)
-              ?.map((value) =>
-                  Table.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Table.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -20287,21 +20537,32 @@ class Recommendation {
       : this(
           additionalCallToAction:
               (json_['additionalCallToAction'] as core.List?)
-                  ?.map((value) => RecommendationCallToAction.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => RecommendationCallToAction.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           additionalDescriptions:
               (json_['additionalDescriptions'] as core.List?)
-                  ?.map((value) => RecommendationDescription.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => RecommendationDescription.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           creative: (json_['creative'] as core.List?)
-              ?.map((value) => RecommendationCreative.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RecommendationCreative.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           defaultCallToAction: json_.containsKey('defaultCallToAction')
-              ? RecommendationCallToAction.fromJson(json_['defaultCallToAction']
-                  as core.Map<core.String, core.dynamic>)
+              ? RecommendationCallToAction.fromJson(
+                  json_['defaultCallToAction']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           defaultDescription: json_['defaultDescription'] as core.String?,
           numericalImpact: json_['numericalImpact'] as core.int?,
@@ -20367,11 +20628,7 @@ class RecommendationCallToAction {
   /// Optional.
   core.String? uri;
 
-  RecommendationCallToAction({
-    this.intent,
-    this.localizedText,
-    this.uri,
-  });
+  RecommendationCallToAction({this.intent, this.localizedText, this.uri});
 
   RecommendationCallToAction.fromJson(core.Map json_)
       : this(
@@ -20401,10 +20658,7 @@ class RecommendationCreative {
   /// URL of the creative.
   core.String? uri;
 
-  RecommendationCreative({
-    this.type,
-    this.uri,
-  });
+  RecommendationCreative({this.type, this.uri});
 
   RecommendationCreative.fromJson(core.Map json_)
       : this(
@@ -20435,10 +20689,7 @@ class RecommendationDescription {
   /// - "LONG" : Long description.
   core.String? type;
 
-  RecommendationDescription({
-    this.text,
-    this.type,
-  });
+  RecommendationDescription({this.text, this.type});
 
   RecommendationDescription.fromJson(core.Map json_)
       : this(
@@ -20504,12 +20755,15 @@ class Region {
           displayName: json_['displayName'] as core.String?,
           geotargetArea: json_.containsKey('geotargetArea')
               ? RegionGeoTargetArea.fromJson(
-                  json_['geotargetArea'] as core.Map<core.String, core.dynamic>)
+                  json_['geotargetArea'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           merchantId: json_['merchantId'] as core.String?,
           postalCodeArea: json_.containsKey('postalCodeArea')
-              ? RegionPostalCodeArea.fromJson(json_['postalCodeArea']
-                  as core.Map<core.String, core.dynamic>)
+              ? RegionPostalCodeArea.fromJson(
+                  json_['postalCodeArea']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           regionId: json_['regionId'] as core.String?,
           regionalInventoryEligible:
@@ -20539,9 +20793,7 @@ class RegionGeoTargetArea {
   /// Required.
   core.List<core.String>? geotargetCriteriaIds;
 
-  RegionGeoTargetArea({
-    this.geotargetCriteriaIds,
-  });
+  RegionGeoTargetArea({this.geotargetCriteriaIds});
 
   RegionGeoTargetArea.fromJson(core.Map json_)
       : this(
@@ -20571,16 +20823,16 @@ class RegionPostalCodeArea {
   /// Required.
   core.String? regionCode;
 
-  RegionPostalCodeArea({
-    this.postalCodes,
-    this.regionCode,
-  });
+  RegionPostalCodeArea({this.postalCodes, this.regionCode});
 
   RegionPostalCodeArea.fromJson(core.Map json_)
       : this(
           postalCodes: (json_['postalCodes'] as core.List?)
-              ?.map((value) => RegionPostalCodeAreaPostalCodeRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RegionPostalCodeAreaPostalCodeRange.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           regionCode: json_['regionCode'] as core.String?,
         );
@@ -20614,10 +20866,7 @@ class RegionPostalCodeAreaPostalCodeRange {
   /// Optional.
   core.String? end;
 
-  RegionPostalCodeAreaPostalCodeRange({
-    this.begin,
-    this.end,
-  });
+  RegionPostalCodeAreaPostalCodeRange({this.begin, this.end});
 
   RegionPostalCodeAreaPostalCodeRange.fromJson(core.Map json_)
       : this(
@@ -20681,18 +20930,23 @@ class RegionalInventory {
       : this(
           availability: json_['availability'] as core.String?,
           customAttributes: (json_['customAttributes'] as core.List?)
-              ?.map((value) => CustomAttribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CustomAttribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           price: json_.containsKey('price')
               ? Price.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>)
+                  json_['price'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           regionId: json_['regionId'] as core.String?,
           salePrice: json_.containsKey('salePrice')
               ? Price.fromJson(
-                  json_['salePrice'] as core.Map<core.String, core.dynamic>)
+                  json_['salePrice'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           salePriceEffectiveDate:
               json_['salePriceEffectiveDate'] as core.String?,
@@ -20714,16 +20968,16 @@ class RegionalinventoryCustomBatchRequest {
   /// The request entries to be processed in the batch.
   core.List<RegionalinventoryCustomBatchRequestEntry>? entries;
 
-  RegionalinventoryCustomBatchRequest({
-    this.entries,
-  });
+  RegionalinventoryCustomBatchRequest({this.entries});
 
   RegionalinventoryCustomBatchRequest.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) =>
-                  RegionalinventoryCustomBatchRequestEntry.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RegionalinventoryCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -20766,8 +21020,10 @@ class RegionalinventoryCustomBatchRequestEntry {
           method: json_['method'] as core.String?,
           productId: json_['productId'] as core.String?,
           regionalInventory: json_.containsKey('regionalInventory')
-              ? RegionalInventory.fromJson(json_['regionalInventory']
-                  as core.Map<core.String, core.dynamic>)
+              ? RegionalInventory.fromJson(
+                  json_['regionalInventory']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -20789,17 +21045,16 @@ class RegionalinventoryCustomBatchResponse {
   /// Value: the fixed string "`content#regionalinventoryCustomBatchResponse`".
   core.String? kind;
 
-  RegionalinventoryCustomBatchResponse({
-    this.entries,
-    this.kind,
-  });
+  RegionalinventoryCustomBatchResponse({this.entries, this.kind});
 
   RegionalinventoryCustomBatchResponse.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) =>
-                  RegionalinventoryCustomBatchResponseEntry.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RegionalinventoryCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -20841,12 +21096,15 @@ class RegionalinventoryCustomBatchResponseEntry {
           batchId: json_['batchId'] as core.int?,
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           kind: json_['kind'] as core.String?,
           regionalInventory: json_.containsKey('regionalInventory')
-              ? RegionalInventory.fromJson(json_['regionalInventory']
-                  as core.Map<core.String, core.dynamic>)
+              ? RegionalInventory.fromJson(
+                  json_['regionalInventory']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -20879,10 +21137,7 @@ class RenderAccountIssuesResponse {
   /// be rendered.
   core.List<AccountIssue>? issues;
 
-  RenderAccountIssuesResponse({
-    this.alternateDisputeResolution,
-    this.issues,
-  });
+  RenderAccountIssuesResponse({this.alternateDisputeResolution, this.issues});
 
   RenderAccountIssuesResponse.fromJson(core.Map json_)
       : this(
@@ -20890,11 +21145,15 @@ class RenderAccountIssuesResponse {
               json_.containsKey('alternateDisputeResolution')
                   ? AlternateDisputeResolution.fromJson(
                       json_['alternateDisputeResolution']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           issues: (json_['issues'] as core.List?)
-              ?.map((value) => AccountIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AccountIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -20926,10 +21185,7 @@ class RenderProductIssuesResponse {
   /// be rendered.
   core.List<ProductIssue>? issues;
 
-  RenderProductIssuesResponse({
-    this.alternateDisputeResolution,
-    this.issues,
-  });
+  RenderProductIssuesResponse({this.alternateDisputeResolution, this.issues});
 
   RenderProductIssuesResponse.fromJson(core.Map json_)
       : this(
@@ -20937,11 +21193,15 @@ class RenderProductIssuesResponse {
               json_.containsKey('alternateDisputeResolution')
                   ? AlternateDisputeResolution.fromJson(
                       json_['alternateDisputeResolution']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           issues: (json_['issues'] as core.List?)
-              ?.map((value) => ProductIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ProductIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -21087,43 +21347,56 @@ class ReportRow {
       : this(
           bestSellers: json_.containsKey('bestSellers')
               ? BestSellers.fromJson(
-                  json_['bestSellers'] as core.Map<core.String, core.dynamic>)
+                  json_['bestSellers'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           brand: json_.containsKey('brand')
               ? Brand.fromJson(
-                  json_['brand'] as core.Map<core.String, core.dynamic>)
+                  json_['brand'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           competitiveVisibility: json_.containsKey('competitiveVisibility')
-              ? CompetitiveVisibility.fromJson(json_['competitiveVisibility']
-                  as core.Map<core.String, core.dynamic>)
+              ? CompetitiveVisibility.fromJson(
+                  json_['competitiveVisibility']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metrics: json_.containsKey('metrics')
               ? Metrics.fromJson(
-                  json_['metrics'] as core.Map<core.String, core.dynamic>)
+                  json_['metrics'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           priceCompetitiveness: json_.containsKey('priceCompetitiveness')
-              ? PriceCompetitiveness.fromJson(json_['priceCompetitiveness']
-                  as core.Map<core.String, core.dynamic>)
+              ? PriceCompetitiveness.fromJson(
+                  json_['priceCompetitiveness']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           priceInsights: json_.containsKey('priceInsights')
               ? PriceInsights.fromJson(
-                  json_['priceInsights'] as core.Map<core.String, core.dynamic>)
+                  json_['priceInsights'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           productCluster: json_.containsKey('productCluster')
-              ? ProductCluster.fromJson(json_['productCluster']
-                  as core.Map<core.String, core.dynamic>)
+              ? ProductCluster.fromJson(
+                  json_['productCluster']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           productView: json_.containsKey('productView')
               ? ProductView.fromJson(
-                  json_['productView'] as core.Map<core.String, core.dynamic>)
+                  json_['productView'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           segments: json_.containsKey('segments')
               ? Segments.fromJson(
-                  json_['segments'] as core.Map<core.String, core.dynamic>)
+                  json_['segments'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           topicTrends: json_.containsKey('topicTrends')
               ? TopicTrends.fromJson(
-                  json_['topicTrends'] as core.Map<core.String, core.dynamic>)
+                  json_['topicTrends'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -21202,14 +21475,10 @@ class RequestPhoneVerificationResponse {
   /// The verification ID to use in subsequent calls to `verifyphonenumber`.
   core.String? verificationId;
 
-  RequestPhoneVerificationResponse({
-    this.verificationId,
-  });
+  RequestPhoneVerificationResponse({this.verificationId});
 
   RequestPhoneVerificationResponse.fromJson(core.Map json_)
-      : this(
-          verificationId: json_['verificationId'] as core.String?,
-        );
+      : this(verificationId: json_['verificationId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (verificationId != null) 'verificationId': verificationId!,
@@ -21267,7 +21536,8 @@ class ReturnAddress {
       : this(
           address: json_.containsKey('address')
               ? ReturnAddressAddress.fromJson(
-                  json_['address'] as core.Map<core.String, core.dynamic>)
+                  json_['address'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           country: json_['country'] as core.String?,
           kind: json_['kind'] as core.String?,
@@ -21408,16 +21678,22 @@ class ReturnPolicy {
               .toList(),
           policy: json_.containsKey('policy')
               ? ReturnPolicyPolicy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           returnPolicyId: json_['returnPolicyId'] as core.String?,
           returnShippingFee: json_.containsKey('returnShippingFee')
-              ? Price.fromJson(json_['returnShippingFee']
-                  as core.Map<core.String, core.dynamic>)
+              ? Price.fromJson(
+                  json_['returnShippingFee']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           seasonalOverrides: (json_['seasonalOverrides'] as core.List?)
-              ?.map((value) => ReturnPolicySeasonalOverride.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ReturnPolicySeasonalOverride.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -21517,11 +21793,13 @@ class ReturnPolicyOnline {
           name: json_['name'] as core.String?,
           policy: json_.containsKey('policy')
               ? ReturnPolicyOnlinePolicy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           restockingFee: json_.containsKey('restockingFee')
               ? ReturnPolicyOnlineRestockingFee.fromJson(
-                  json_['restockingFee'] as core.Map<core.String, core.dynamic>)
+                  json_['restockingFee'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           returnMethods: (json_['returnMethods'] as core.List?)
               ?.map((value) => value as core.String)
@@ -21530,9 +21808,12 @@ class ReturnPolicyOnline {
           returnPolicyUri: json_['returnPolicyUri'] as core.String?,
           returnReasonCategoryInfo:
               (json_['returnReasonCategoryInfo'] as core.List?)
-                  ?.map((value) =>
-                      ReturnPolicyOnlineReturnReasonCategoryInfo.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) =>
+                        ReturnPolicyOnlineReturnReasonCategoryInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
         );
 
@@ -21568,10 +21849,7 @@ class ReturnPolicyOnlinePolicy {
   /// - "LIFETIME_RETURNS" : Life time returns.
   core.String? type;
 
-  ReturnPolicyOnlinePolicy({
-    this.days,
-    this.type,
-  });
+  ReturnPolicyOnlinePolicy({this.days, this.type});
 
   ReturnPolicyOnlinePolicy.fromJson(core.Map json_)
       : this(
@@ -21597,16 +21875,14 @@ class ReturnPolicyOnlineRestockingFee {
   /// 15,000,000 means 15% of the total price would be charged.
   core.int? microPercent;
 
-  ReturnPolicyOnlineRestockingFee({
-    this.fixedFee,
-    this.microPercent,
-  });
+  ReturnPolicyOnlineRestockingFee({this.fixedFee, this.microPercent});
 
   ReturnPolicyOnlineRestockingFee.fromJson(core.Map json_)
       : this(
           fixedFee: json_.containsKey('fixedFee')
               ? PriceAmount.fromJson(
-                  json_['fixedFee'] as core.Map<core.String, core.dynamic>)
+                  json_['fixedFee'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           microPercent: json_['microPercent'] as core.int?,
         );
@@ -21654,7 +21930,8 @@ class ReturnPolicyOnlineReturnReasonCategoryInfo {
           returnShippingFee: json_.containsKey('returnShippingFee')
               ? ReturnPolicyOnlineReturnShippingFee.fromJson(
                   json_['returnShippingFee']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -21685,16 +21962,14 @@ class ReturnPolicyOnlineReturnShippingFee {
   /// shipping fee.
   core.String? type;
 
-  ReturnPolicyOnlineReturnShippingFee({
-    this.fixedFee,
-    this.type,
-  });
+  ReturnPolicyOnlineReturnShippingFee({this.fixedFee, this.type});
 
   ReturnPolicyOnlineReturnShippingFee.fromJson(core.Map json_)
       : this(
           fixedFee: json_.containsKey('fixedFee')
               ? PriceAmount.fromJson(
-                  json_['fixedFee'] as core.Map<core.String, core.dynamic>)
+                  json_['fixedFee'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           type: json_['type'] as core.String?,
         );
@@ -21735,11 +22010,7 @@ class ReturnPolicyPolicy {
   /// "`noReturns`" - "`numberOfDaysAfterDelivery`"
   core.String? type;
 
-  ReturnPolicyPolicy({
-    this.lastReturnDate,
-    this.numberOfDays,
-    this.type,
-  });
+  ReturnPolicyPolicy({this.lastReturnDate, this.numberOfDays, this.type});
 
   ReturnPolicyPolicy.fromJson(core.Map json_)
       : this(
@@ -21793,7 +22064,8 @@ class ReturnPolicySeasonalOverride {
           name: json_['name'] as core.String?,
           policy: json_.containsKey('policy')
               ? ReturnPolicyPolicy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           startDate: json_['startDate'] as core.String?,
         );
@@ -21810,15 +22082,16 @@ class ReturnaddressCustomBatchRequest {
   /// The request entries to be processed in the batch.
   core.List<ReturnaddressCustomBatchRequestEntry>? entries;
 
-  ReturnaddressCustomBatchRequest({
-    this.entries,
-  });
+  ReturnaddressCustomBatchRequest({this.entries});
 
   ReturnaddressCustomBatchRequest.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => ReturnaddressCustomBatchRequestEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ReturnaddressCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -21864,7 +22137,8 @@ class ReturnaddressCustomBatchRequestEntry {
           method: json_['method'] as core.String?,
           returnAddress: json_.containsKey('returnAddress')
               ? ReturnAddress.fromJson(
-                  json_['returnAddress'] as core.Map<core.String, core.dynamic>)
+                  json_['returnAddress'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           returnAddressId: json_['returnAddressId'] as core.String?,
         );
@@ -21887,16 +22161,16 @@ class ReturnaddressCustomBatchResponse {
   /// Value: the fixed string "`content#returnaddressCustomBatchResponse`".
   core.String? kind;
 
-  ReturnaddressCustomBatchResponse({
-    this.entries,
-    this.kind,
-  });
+  ReturnaddressCustomBatchResponse({this.entries, this.kind});
 
   ReturnaddressCustomBatchResponse.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => ReturnaddressCustomBatchResponseEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ReturnaddressCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -21934,12 +22208,14 @@ class ReturnaddressCustomBatchResponseEntry {
           batchId: json_['batchId'] as core.int?,
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           kind: json_['kind'] as core.String?,
           returnAddress: json_.containsKey('returnAddress')
               ? ReturnAddress.fromJson(
-                  json_['returnAddress'] as core.Map<core.String, core.dynamic>)
+                  json_['returnAddress'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -21961,19 +22237,18 @@ class ReturnaddressListResponse {
   core.String? nextPageToken;
   core.List<ReturnAddress>? resources;
 
-  ReturnaddressListResponse({
-    this.kind,
-    this.nextPageToken,
-    this.resources,
-  });
+  ReturnaddressListResponse({this.kind, this.nextPageToken, this.resources});
 
   ReturnaddressListResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           resources: (json_['resources'] as core.List?)
-              ?.map((value) => ReturnAddress.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ReturnAddress.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -21988,15 +22263,16 @@ class ReturnpolicyCustomBatchRequest {
   /// The request entries to be processed in the batch.
   core.List<ReturnpolicyCustomBatchRequestEntry>? entries;
 
-  ReturnpolicyCustomBatchRequest({
-    this.entries,
-  });
+  ReturnpolicyCustomBatchRequest({this.entries});
 
   ReturnpolicyCustomBatchRequest.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => ReturnpolicyCustomBatchRequestEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ReturnpolicyCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -22042,7 +22318,8 @@ class ReturnpolicyCustomBatchRequestEntry {
           method: json_['method'] as core.String?,
           returnPolicy: json_.containsKey('returnPolicy')
               ? ReturnPolicy.fromJson(
-                  json_['returnPolicy'] as core.Map<core.String, core.dynamic>)
+                  json_['returnPolicy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           returnPolicyId: json_['returnPolicyId'] as core.String?,
         );
@@ -22065,16 +22342,16 @@ class ReturnpolicyCustomBatchResponse {
   /// Value: the fixed string "`content#returnpolicyCustomBatchResponse`".
   core.String? kind;
 
-  ReturnpolicyCustomBatchResponse({
-    this.entries,
-    this.kind,
-  });
+  ReturnpolicyCustomBatchResponse({this.entries, this.kind});
 
   ReturnpolicyCustomBatchResponse.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => ReturnpolicyCustomBatchResponseEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ReturnpolicyCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -22112,12 +22389,14 @@ class ReturnpolicyCustomBatchResponseEntry {
           batchId: json_['batchId'] as core.int?,
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           kind: json_['kind'] as core.String?,
           returnPolicy: json_.containsKey('returnPolicy')
               ? ReturnPolicy.fromJson(
-                  json_['returnPolicy'] as core.Map<core.String, core.dynamic>)
+                  json_['returnPolicy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -22136,17 +22415,17 @@ class ReturnpolicyListResponse {
   core.String? kind;
   core.List<ReturnPolicy>? resources;
 
-  ReturnpolicyListResponse({
-    this.kind,
-    this.resources,
-  });
+  ReturnpolicyListResponse({this.kind, this.resources});
 
   ReturnpolicyListResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           resources: (json_['resources'] as core.List?)
-              ?.map((value) => ReturnPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ReturnPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -22163,15 +22442,16 @@ class Row {
   /// length of 1 for one-dimensional tables. Required.
   core.List<Value>? cells;
 
-  Row({
-    this.cells,
-  });
+  Row({this.cells});
 
   Row.fromJson(core.Map json_)
       : this(
           cells: (json_['cells'] as core.List?)
-              ?.map((value) =>
-                  Value.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Value.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -22203,11 +22483,7 @@ class SearchRequest {
   /// Required.
   core.String? query;
 
-  SearchRequest({
-    this.pageSize,
-    this.pageToken,
-    this.query,
-  });
+  SearchRequest({this.pageSize, this.pageToken, this.query});
 
   SearchRequest.fromJson(core.Map json_)
       : this(
@@ -22233,17 +22509,17 @@ class SearchResponse {
   /// Rows that matched the search query.
   core.List<ReportRow>? results;
 
-  SearchResponse({
-    this.nextPageToken,
-    this.results,
-  });
+  SearchResponse({this.nextPageToken, this.results});
 
   SearchResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           results: (json_['results'] as core.List?)
-              ?.map((value) => ReportRow.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ReportRow.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -22408,7 +22684,8 @@ class Segments {
           customerCountryCode: json_['customerCountryCode'] as core.String?,
           date: json_.containsKey('date')
               ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>)
+                  json_['date'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           offerId: json_['offerId'] as core.String?,
           productTypeL1: json_['productTypeL1'] as core.String?,
@@ -22420,7 +22697,8 @@ class Segments {
           title: json_['title'] as core.String?,
           week: json_.containsKey('week')
               ? Date.fromJson(
-                  json_['week'] as core.Map<core.String, core.dynamic>)
+                  json_['week'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -22543,30 +22821,40 @@ class Service {
           deliveryCountry: json_['deliveryCountry'] as core.String?,
           deliveryTime: json_.containsKey('deliveryTime')
               ? DeliveryTime.fromJson(
-                  json_['deliveryTime'] as core.Map<core.String, core.dynamic>)
+                  json_['deliveryTime'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           eligibility: json_['eligibility'] as core.String?,
           minimumOrderValue: json_.containsKey('minimumOrderValue')
-              ? Price.fromJson(json_['minimumOrderValue']
-                  as core.Map<core.String, core.dynamic>)
+              ? Price.fromJson(
+                  json_['minimumOrderValue']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           minimumOrderValueTable: json_.containsKey('minimumOrderValueTable')
-              ? MinimumOrderValueTable.fromJson(json_['minimumOrderValueTable']
-                  as core.Map<core.String, core.dynamic>)
+              ? MinimumOrderValueTable.fromJson(
+                  json_['minimumOrderValueTable']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           pickupService: json_.containsKey('pickupService')
               ? PickupCarrierService.fromJson(
-                  json_['pickupService'] as core.Map<core.String, core.dynamic>)
+                  json_['pickupService'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           rateGroups: (json_['rateGroups'] as core.List?)
-              ?.map((value) => RateGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RateGroup.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           shipmentType: json_['shipmentType'] as core.String?,
           storeConfig: json_.containsKey('storeConfig')
               ? ServiceStoreConfig.fromJson(
-                  json_['storeConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['storeConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -22626,11 +22914,13 @@ class ServiceStoreConfig {
       : this(
           cutoffConfig: json_.containsKey('cutoffConfig')
               ? ServiceStoreConfigCutoffConfig.fromJson(
-                  json_['cutoffConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['cutoffConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           serviceRadius: json_.containsKey('serviceRadius')
               ? Distance.fromJson(
-                  json_['serviceRadius'] as core.Map<core.String, core.dynamic>)
+                  json_['serviceRadius'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           storeCodes: (json_['storeCodes'] as core.List?)
               ?.map((value) => value as core.String)
@@ -22680,7 +22970,8 @@ class ServiceStoreConfigCutoffConfig {
           localCutoffTime: json_.containsKey('localCutoffTime')
               ? ServiceStoreConfigCutoffConfigLocalCutoffTime.fromJson(
                   json_['localCutoffTime']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           noDeliveryPostCutoff: json_['noDeliveryPostCutoff'] as core.bool?,
           storeCloseOffsetHours: json_['storeCloseOffsetHours'] as core.String?,
@@ -22703,10 +22994,7 @@ class ServiceStoreConfigCutoffConfigLocalCutoffTime {
   /// Minute local delivery orders must be placed by to process the same day.
   core.String? minute;
 
-  ServiceStoreConfigCutoffConfigLocalCutoffTime({
-    this.hour,
-    this.minute,
-  });
+  ServiceStoreConfigCutoffConfigLocalCutoffTime({this.hour, this.minute});
 
   ServiceStoreConfigCutoffConfigLocalCutoffTime.fromJson(core.Map json_)
       : this(
@@ -22756,16 +23044,25 @@ class ShippingSettings {
       : this(
           accountId: json_['accountId'] as core.String?,
           postalCodeGroups: (json_['postalCodeGroups'] as core.List?)
-              ?.map((value) => PostalCodeGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PostalCodeGroup.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           services: (json_['services'] as core.List?)
-              ?.map((value) => Service.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Service.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           warehouses: (json_['warehouses'] as core.List?)
-              ?.map((value) => Warehouse.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Warehouse.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -22781,15 +23078,16 @@ class ShippingsettingsCustomBatchRequest {
   /// The request entries to be processed in the batch.
   core.List<ShippingsettingsCustomBatchRequestEntry>? entries;
 
-  ShippingsettingsCustomBatchRequest({
-    this.entries,
-  });
+  ShippingsettingsCustomBatchRequest({this.entries});
 
   ShippingsettingsCustomBatchRequest.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) => ShippingsettingsCustomBatchRequestEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ShippingsettingsCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -22834,8 +23132,10 @@ class ShippingsettingsCustomBatchRequestEntry {
           merchantId: json_['merchantId'] as core.String?,
           method: json_['method'] as core.String?,
           shippingSettings: json_.containsKey('shippingSettings')
-              ? ShippingSettings.fromJson(json_['shippingSettings']
-                  as core.Map<core.String, core.dynamic>)
+              ? ShippingSettings.fromJson(
+                  json_['shippingSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -22857,17 +23157,16 @@ class ShippingsettingsCustomBatchResponse {
   /// Value: the fixed string "`content#shippingsettingsCustomBatchResponse`".
   core.String? kind;
 
-  ShippingsettingsCustomBatchResponse({
-    this.entries,
-    this.kind,
-  });
+  ShippingsettingsCustomBatchResponse({this.entries, this.kind});
 
   ShippingsettingsCustomBatchResponse.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map((value) =>
-                  ShippingsettingsCustomBatchResponseEntry.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ShippingsettingsCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -22909,12 +23208,15 @@ class ShippingsettingsCustomBatchResponseEntry {
           batchId: json_['batchId'] as core.int?,
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           kind: json_['kind'] as core.String?,
           shippingSettings: json_.containsKey('shippingSettings')
-              ? ShippingSettings.fromJson(json_['shippingSettings']
-                  as core.Map<core.String, core.dynamic>)
+              ? ShippingSettings.fromJson(
+                  json_['shippingSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -22938,16 +23240,16 @@ class ShippingsettingsGetSupportedCarriersResponse {
   /// "`content#shippingsettingsGetSupportedCarriersResponse`".
   core.String? kind;
 
-  ShippingsettingsGetSupportedCarriersResponse({
-    this.carriers,
-    this.kind,
-  });
+  ShippingsettingsGetSupportedCarriersResponse({this.carriers, this.kind});
 
   ShippingsettingsGetSupportedCarriersResponse.fromJson(core.Map json_)
       : this(
           carriers: (json_['carriers'] as core.List?)
-              ?.map((value) => CarriersCarrier.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CarriersCarrier.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -22970,16 +23272,16 @@ class ShippingsettingsGetSupportedHolidaysResponse {
   /// "`content#shippingsettingsGetSupportedHolidaysResponse`".
   core.String? kind;
 
-  ShippingsettingsGetSupportedHolidaysResponse({
-    this.holidays,
-    this.kind,
-  });
+  ShippingsettingsGetSupportedHolidaysResponse({this.holidays, this.kind});
 
   ShippingsettingsGetSupportedHolidaysResponse.fromJson(core.Map json_)
       : this(
           holidays: (json_['holidays'] as core.List?)
-              ?.map((value) => HolidaysHoliday.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => HolidaysHoliday.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -23011,8 +23313,11 @@ class ShippingsettingsGetSupportedPickupServicesResponse {
       : this(
           kind: json_['kind'] as core.String?,
           pickupServices: (json_['pickupServices'] as core.List?)
-              ?.map((value) => PickupServicesPickupService.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PickupServicesPickupService.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -23032,19 +23337,18 @@ class ShippingsettingsListResponse {
   core.String? nextPageToken;
   core.List<ShippingSettings>? resources;
 
-  ShippingsettingsListResponse({
-    this.kind,
-    this.nextPageToken,
-    this.resources,
-  });
+  ShippingsettingsListResponse({this.kind, this.nextPageToken, this.resources});
 
   ShippingsettingsListResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           resources: (json_['resources'] as core.List?)
-              ?.map((value) => ShippingSettings.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ShippingSettings.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -23075,17 +23379,17 @@ class ShoppingAdsProgramStatus {
   /// in `regionCodes`.
   core.List<ShoppingAdsProgramStatusRegionStatus>? regionStatuses;
 
-  ShoppingAdsProgramStatus({
-    this.globalState,
-    this.regionStatuses,
-  });
+  ShoppingAdsProgramStatus({this.globalState, this.regionStatuses});
 
   ShoppingAdsProgramStatus.fromJson(core.Map json_)
       : this(
           globalState: json_['globalState'] as core.String?,
           regionStatuses: (json_['regionStatuses'] as core.List?)
-              ?.map((value) => ShoppingAdsProgramStatusRegionStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ShoppingAdsProgramStatusRegionStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -23204,8 +23508,10 @@ class ShoppingAdsProgramStatusRegionStatus {
           reviewIneligibilityReasonDetails:
               json_.containsKey('reviewIneligibilityReasonDetails')
                   ? ShoppingAdsProgramStatusReviewIneligibilityReasonDetails
-                      .fromJson(json_['reviewIneligibilityReasonDetails']
-                          as core.Map<core.String, core.dynamic>)
+                      .fromJson(
+                      json_['reviewIneligibilityReasonDetails']
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           reviewIssues: (json_['reviewIssues'] as core.List?)
               ?.map((value) => value as core.String)
@@ -23255,27 +23561,27 @@ class Table {
   /// Must have the same length as `rowHeaders`. Required.
   core.List<Row>? rows;
 
-  Table({
-    this.columnHeaders,
-    this.name,
-    this.rowHeaders,
-    this.rows,
-  });
+  Table({this.columnHeaders, this.name, this.rowHeaders, this.rows});
 
   Table.fromJson(core.Map json_)
       : this(
           columnHeaders: json_.containsKey('columnHeaders')
               ? Headers.fromJson(
-                  json_['columnHeaders'] as core.Map<core.String, core.dynamic>)
+                  json_['columnHeaders'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           rowHeaders: json_.containsKey('rowHeaders')
               ? Headers.fromJson(
-                  json_['rowHeaders'] as core.Map<core.String, core.dynamic>)
+                  json_['rowHeaders'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           rows: (json_['rows'] as core.List?)
-              ?.map((value) =>
-                  Row.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Row.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -23334,10 +23640,7 @@ class TimePeriod {
   /// The starting timestamp.
   core.String? startTime;
 
-  TimePeriod({
-    this.endTime,
-    this.startTime,
-  });
+  TimePeriod({this.endTime, this.startTime});
 
   TimePeriod.fromJson(core.Map json_)
       : this(
@@ -23434,7 +23737,8 @@ class TopicTrends {
           customerCountryCode: json_['customerCountryCode'] as core.String?,
           date: json_.containsKey('date')
               ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>)
+                  json_['date'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           last120DaysSearchInterest:
               (json_['last120DaysSearchInterest'] as core.num?)?.toDouble(),
@@ -23484,11 +23788,7 @@ class TransitTable {
   /// "electronics", "all other labels"]`.
   core.List<core.String>? transitTimeLabels;
 
-  TransitTable({
-    this.postalCodeGroupNames,
-    this.rows,
-    this.transitTimeLabels,
-  });
+  TransitTable({this.postalCodeGroupNames, this.rows, this.transitTimeLabels});
 
   TransitTable.fromJson(core.Map json_)
       : this(
@@ -23496,8 +23796,11 @@ class TransitTable {
               ?.map((value) => value as core.String)
               .toList(),
           rows: (json_['rows'] as core.List?)
-              ?.map((value) => TransitTableTransitTimeRow.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TransitTableTransitTimeRow.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           transitTimeLabels: (json_['transitTimeLabels'] as core.List?)
               ?.map((value) => value as core.String)
@@ -23515,16 +23818,16 @@ class TransitTable {
 class TransitTableTransitTimeRow {
   core.List<TransitTableTransitTimeRowTransitTimeValue>? values;
 
-  TransitTableTransitTimeRow({
-    this.values,
-  });
+  TransitTableTransitTimeRow({this.values});
 
   TransitTableTransitTimeRow.fromJson(core.Map json_)
       : this(
           values: (json_['values'] as core.List?)
-              ?.map((value) =>
-                  TransitTableTransitTimeRowTransitTimeValue.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TransitTableTransitTimeRowTransitTimeValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -23576,17 +23879,15 @@ class TriggerActionPayload {
   /// Required.
   ActionInput? actionInput;
 
-  TriggerActionPayload({
-    this.actionContext,
-    this.actionInput,
-  });
+  TriggerActionPayload({this.actionContext, this.actionInput});
 
   TriggerActionPayload.fromJson(core.Map json_)
       : this(
           actionContext: json_['actionContext'] as core.String?,
           actionInput: json_.containsKey('actionInput')
               ? ActionInput.fromJson(
-                  json_['actionInput'] as core.Map<core.String, core.dynamic>)
+                  json_['actionInput'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -23601,14 +23902,10 @@ class TriggerActionResponse {
   /// The message for merchant.
   core.String? message;
 
-  TriggerActionResponse({
-    this.message,
-  });
+  TriggerActionResponse({this.message});
 
   TriggerActionResponse.fromJson(core.Map json_)
-      : this(
-          message: json_['message'] as core.String?,
-        );
+      : this(message: json_['message'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (message != null) 'message': message!,
@@ -23634,10 +23931,7 @@ class UrlSettings {
   /// the merchant checkout page with the item in the cart.
   core.String? checkoutUriTemplate;
 
-  UrlSettings({
-    this.cartUriTemplate,
-    this.checkoutUriTemplate,
-  });
+  UrlSettings({this.cartUriTemplate, this.checkoutUriTemplate});
 
   UrlSettings.fromJson(core.Map json_)
       : this(
@@ -23698,7 +23992,8 @@ class Value {
           carrierRateName: json_['carrierRateName'] as core.String?,
           flatRate: json_.containsKey('flatRate')
               ? Price.fromJson(
-                  json_['flatRate'] as core.Map<core.String, core.dynamic>)
+                  json_['flatRate'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           noShipping: json_['noShipping'] as core.bool?,
           pricePercentage: json_['pricePercentage'] as core.String?,
@@ -23758,14 +24053,10 @@ class VerifyPhoneNumberResponse {
   /// This phone number can only be replaced by another verified phone number.
   core.String? verifiedPhoneNumber;
 
-  VerifyPhoneNumberResponse({
-    this.verifiedPhoneNumber,
-  });
+  VerifyPhoneNumberResponse({this.verifiedPhoneNumber});
 
   VerifyPhoneNumberResponse.fromJson(core.Map json_)
-      : this(
-          verifiedPhoneNumber: json_['verifiedPhoneNumber'] as core.String?,
-        );
+      : this(verifiedPhoneNumber: json_['verifiedPhoneNumber'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (verifiedPhoneNumber != null)
@@ -23820,18 +24111,23 @@ class Warehouse {
   Warehouse.fromJson(core.Map json_)
       : this(
           businessDayConfig: json_.containsKey('businessDayConfig')
-              ? BusinessDayConfig.fromJson(json_['businessDayConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? BusinessDayConfig.fromJson(
+                  json_['businessDayConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           cutoffTime: json_.containsKey('cutoffTime')
               ? WarehouseCutoffTime.fromJson(
-                  json_['cutoffTime'] as core.Map<core.String, core.dynamic>)
+                  json_['cutoffTime'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           handlingDays: json_['handlingDays'] as core.String?,
           name: json_['name'] as core.String?,
           shippingAddress: json_.containsKey('shippingAddress')
-              ? Address.fromJson(json_['shippingAddress']
-                  as core.Map<core.String, core.dynamic>)
+              ? Address.fromJson(
+                  json_['shippingAddress']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -23940,10 +24236,7 @@ class WarehouseCutoffTime {
   /// Required.
   core.int? minute;
 
-  WarehouseCutoffTime({
-    this.hour,
-    this.minute,
-  });
+  WarehouseCutoffTime({this.hour, this.minute});
 
   WarehouseCutoffTime.fromJson(core.Map json_)
       : this(
@@ -23972,10 +24265,7 @@ class Weight {
   /// Required.
   core.String? value;
 
-  Weight({
-    this.unit,
-    this.value,
-  });
+  Weight({this.unit, this.value});
 
   Weight.fromJson(core.Map json_)
       : this(

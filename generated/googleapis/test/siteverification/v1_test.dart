@@ -40,17 +40,12 @@ api.SiteVerificationWebResourceGettokenRequestSite
 }
 
 void checkSiteVerificationWebResourceGettokenRequestSite(
-    api.SiteVerificationWebResourceGettokenRequestSite o) {
+  api.SiteVerificationWebResourceGettokenRequestSite o,
+) {
   buildCounterSiteVerificationWebResourceGettokenRequestSite++;
   if (buildCounterSiteVerificationWebResourceGettokenRequestSite < 3) {
-    unittest.expect(
-      o.identifier!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.identifier!, unittest.equals('foo'));
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterSiteVerificationWebResourceGettokenRequestSite--;
 }
@@ -69,14 +64,12 @@ api.SiteVerificationWebResourceGettokenRequest
 }
 
 void checkSiteVerificationWebResourceGettokenRequest(
-    api.SiteVerificationWebResourceGettokenRequest o) {
+  api.SiteVerificationWebResourceGettokenRequest o,
+) {
   buildCounterSiteVerificationWebResourceGettokenRequest++;
   if (buildCounterSiteVerificationWebResourceGettokenRequest < 3) {
     checkSiteVerificationWebResourceGettokenRequestSite(o.site!);
-    unittest.expect(
-      o.verificationMethod!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.verificationMethod!, unittest.equals('foo'));
   }
   buildCounterSiteVerificationWebResourceGettokenRequest--;
 }
@@ -95,17 +88,12 @@ api.SiteVerificationWebResourceGettokenResponse
 }
 
 void checkSiteVerificationWebResourceGettokenResponse(
-    api.SiteVerificationWebResourceGettokenResponse o) {
+  api.SiteVerificationWebResourceGettokenResponse o,
+) {
   buildCounterSiteVerificationWebResourceGettokenResponse++;
   if (buildCounterSiteVerificationWebResourceGettokenResponse < 3) {
-    unittest.expect(
-      o.method!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.token!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.method!, unittest.equals('foo'));
+    unittest.expect(o.token!, unittest.equals('foo'));
   }
   buildCounterSiteVerificationWebResourceGettokenResponse--;
 }
@@ -134,7 +122,8 @@ api.SiteVerificationWebResourceListResponse
 }
 
 void checkSiteVerificationWebResourceListResponse(
-    api.SiteVerificationWebResourceListResponse o) {
+  api.SiteVerificationWebResourceListResponse o,
+) {
   buildCounterSiteVerificationWebResourceListResponse++;
   if (buildCounterSiteVerificationWebResourceListResponse < 3) {
     checkUnnamed0(o.items!);
@@ -142,21 +131,12 @@ void checkSiteVerificationWebResourceListResponse(
   buildCounterSiteVerificationWebResourceListResponse--;
 }
 
-core.List<core.String> buildUnnamed1() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed1() => ['foo', 'foo'];
 
 void checkUnnamed1(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterSiteVerificationWebResourceResourceSite = 0;
@@ -173,17 +153,12 @@ api.SiteVerificationWebResourceResourceSite
 }
 
 void checkSiteVerificationWebResourceResourceSite(
-    api.SiteVerificationWebResourceResourceSite o) {
+  api.SiteVerificationWebResourceResourceSite o,
+) {
   buildCounterSiteVerificationWebResourceResourceSite++;
   if (buildCounterSiteVerificationWebResourceResourceSite < 3) {
-    unittest.expect(
-      o.identifier!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.identifier!, unittest.equals('foo'));
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterSiteVerificationWebResourceResourceSite--;
 }
@@ -203,13 +178,11 @@ api.SiteVerificationWebResourceResource
 }
 
 void checkSiteVerificationWebResourceResource(
-    api.SiteVerificationWebResourceResource o) {
+  api.SiteVerificationWebResourceResource o,
+) {
   buildCounterSiteVerificationWebResourceResource++;
   if (buildCounterSiteVerificationWebResourceResource < 3) {
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.id!, unittest.equals('foo'));
     checkUnnamed1(o.owners!);
     checkSiteVerificationWebResourceResourceSite(o.site!);
   }
@@ -217,23 +190,27 @@ void checkSiteVerificationWebResourceResource(
 }
 
 void main() {
-  unittest.group('obj-schema-SiteVerificationWebResourceGettokenRequestSite',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildSiteVerificationWebResourceGettokenRequestSite();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.SiteVerificationWebResourceGettokenRequestSite.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkSiteVerificationWebResourceGettokenRequestSite(od);
-    });
-  });
+  unittest.group(
+    'obj-schema-SiteVerificationWebResourceGettokenRequestSite',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildSiteVerificationWebResourceGettokenRequestSite();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.SiteVerificationWebResourceGettokenRequestSite.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkSiteVerificationWebResourceGettokenRequestSite(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-SiteVerificationWebResourceGettokenRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSiteVerificationWebResourceGettokenRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SiteVerificationWebResourceGettokenRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSiteVerificationWebResourceGettokenRequest(od);
     });
   });
@@ -243,7 +220,8 @@ void main() {
       final o = buildSiteVerificationWebResourceGettokenResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SiteVerificationWebResourceGettokenResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSiteVerificationWebResourceGettokenResponse(od);
     });
   });
@@ -253,7 +231,8 @@ void main() {
       final o = buildSiteVerificationWebResourceListResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SiteVerificationWebResourceListResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSiteVerificationWebResourceListResponse(od);
     });
   });
@@ -263,7 +242,8 @@ void main() {
       final o = buildSiteVerificationWebResourceResourceSite();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SiteVerificationWebResourceResourceSite.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSiteVerificationWebResourceResourceSite(od);
     });
   });
@@ -273,7 +253,8 @@ void main() {
       final o = buildSiteVerificationWebResourceResource();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SiteVerificationWebResourceResource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSiteVerificationWebResourceResource(od);
     });
   });
@@ -284,59 +265,57 @@ void main() {
       final res = api.SiteVerificationApi(mock).webResource;
       final arg_id = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('siteVerification/v1/'),
-        );
-        pathOffset += 20;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('webResource/'),
-        );
-        pathOffset += 12;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 20),
+            unittest.equals('siteVerification/v1/'),
+          );
+          pathOffset += 20;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 12),
+            unittest.equals('webResource/'),
+          );
+          pathOffset += 12;
+          subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+          pathOffset = path.length;
+          unittest.expect(subPart, unittest.equals('$arg_id'));
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = '';
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = '';
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       await res.delete(arg_id, $fields: arg_$fields);
     });
 
@@ -345,63 +324,63 @@ void main() {
       final res = api.SiteVerificationApi(mock).webResource;
       final arg_id = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('siteVerification/v1/'),
-        );
-        pathOffset += 20;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('webResource/'),
-        );
-        pathOffset += 12;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 20),
+            unittest.equals('siteVerification/v1/'),
+          );
+          pathOffset += 20;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 12),
+            unittest.equals('webResource/'),
+          );
+          pathOffset += 12;
+          subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+          pathOffset = path.length;
+          unittest.expect(subPart, unittest.equals('$arg_id'));
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildSiteVerificationWebResourceResource());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildSiteVerificationWebResourceResource(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.get(arg_id, $fields: arg_$fields);
       checkSiteVerificationWebResourceResource(
-          response as api.SiteVerificationWebResourceResource);
+        response as api.SiteVerificationWebResourceResource,
+      );
     });
 
     unittest.test('method--getToken', () async {
@@ -409,61 +388,65 @@ void main() {
       final res = api.SiteVerificationApi(mock).webResource;
       final arg_request = buildSiteVerificationWebResourceGettokenRequest();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.SiteVerificationWebResourceGettokenRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkSiteVerificationWebResourceGettokenRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SiteVerificationWebResourceGettokenRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSiteVerificationWebResourceGettokenRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('siteVerification/v1/'),
-        );
-        pathOffset += 20;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 5),
-          unittest.equals('token'),
-        );
-        pathOffset += 5;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 20),
+            unittest.equals('siteVerification/v1/'),
+          );
+          pathOffset += 20;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 5),
+            unittest.equals('token'),
+          );
+          pathOffset += 5;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildSiteVerificationWebResourceGettokenResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildSiteVerificationWebResourceGettokenResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.getToken(arg_request, $fields: arg_$fields);
       checkSiteVerificationWebResourceGettokenResponse(
-          response as api.SiteVerificationWebResourceGettokenResponse);
+        response as api.SiteVerificationWebResourceGettokenResponse,
+      );
     });
 
     unittest.test('method--insert', () async {
@@ -472,123 +455,133 @@ void main() {
       final arg_request = buildSiteVerificationWebResourceResource();
       final arg_verificationMethod = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.SiteVerificationWebResourceResource.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkSiteVerificationWebResourceResource(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SiteVerificationWebResourceResource.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSiteVerificationWebResourceResource(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('siteVerification/v1/'),
-        );
-        pathOffset += 20;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('webResource'),
-        );
-        pathOffset += 11;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 20),
+            unittest.equals('siteVerification/v1/'),
+          );
+          pathOffset += 20;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('webResource'),
+          );
+          pathOffset += 11;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['verificationMethod']!.first,
-          unittest.equals(arg_verificationMethod),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['verificationMethod']!.first,
+            unittest.equals(arg_verificationMethod),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildSiteVerificationWebResourceResource());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.insert(arg_request, arg_verificationMethod,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildSiteVerificationWebResourceResource(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.insert(
+        arg_request,
+        arg_verificationMethod,
+        $fields: arg_$fields,
+      );
       checkSiteVerificationWebResourceResource(
-          response as api.SiteVerificationWebResourceResource);
+        response as api.SiteVerificationWebResourceResource,
+      );
     });
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.SiteVerificationApi(mock).webResource;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('siteVerification/v1/'),
-        );
-        pathOffset += 20;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('webResource'),
-        );
-        pathOffset += 11;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 20),
+            unittest.equals('siteVerification/v1/'),
+          );
+          pathOffset += 20;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('webResource'),
+          );
+          pathOffset += 11;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildSiteVerificationWebResourceListResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildSiteVerificationWebResourceListResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.list($fields: arg_$fields);
       checkSiteVerificationWebResourceListResponse(
-          response as api.SiteVerificationWebResourceListResponse);
+        response as api.SiteVerificationWebResourceListResponse,
+      );
     });
 
     unittest.test('method--patch', () async {
@@ -597,68 +590,72 @@ void main() {
       final arg_request = buildSiteVerificationWebResourceResource();
       final arg_id = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.SiteVerificationWebResourceResource.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkSiteVerificationWebResourceResource(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SiteVerificationWebResourceResource.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSiteVerificationWebResourceResource(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('siteVerification/v1/'),
-        );
-        pathOffset += 20;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('webResource/'),
-        );
-        pathOffset += 12;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 20),
+            unittest.equals('siteVerification/v1/'),
+          );
+          pathOffset += 20;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 12),
+            unittest.equals('webResource/'),
+          );
+          pathOffset += 12;
+          subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+          pathOffset = path.length;
+          unittest.expect(subPart, unittest.equals('$arg_id'));
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildSiteVerificationWebResourceResource());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.patch(arg_request, arg_id, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildSiteVerificationWebResourceResource(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_id,
+        $fields: arg_$fields,
+      );
       checkSiteVerificationWebResourceResource(
-          response as api.SiteVerificationWebResourceResource);
+        response as api.SiteVerificationWebResourceResource,
+      );
     });
 
     unittest.test('method--update', () async {
@@ -667,68 +664,72 @@ void main() {
       final arg_request = buildSiteVerificationWebResourceResource();
       final arg_id = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.SiteVerificationWebResourceResource.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkSiteVerificationWebResourceResource(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SiteVerificationWebResourceResource.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSiteVerificationWebResourceResource(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('siteVerification/v1/'),
-        );
-        pathOffset += 20;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('webResource/'),
-        );
-        pathOffset += 12;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 20),
+            unittest.equals('siteVerification/v1/'),
+          );
+          pathOffset += 20;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 12),
+            unittest.equals('webResource/'),
+          );
+          pathOffset += 12;
+          subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+          pathOffset = path.length;
+          unittest.expect(subPart, unittest.equals('$arg_id'));
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildSiteVerificationWebResourceResource());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.update(arg_request, arg_id, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildSiteVerificationWebResourceResource(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.update(
+        arg_request,
+        arg_id,
+        $fields: arg_$fields,
+      );
       checkSiteVerificationWebResourceResource(
-          response as api.SiteVerificationWebResourceResource);
+        response as api.SiteVerificationWebResourceResource,
+      );
     });
   });
 }

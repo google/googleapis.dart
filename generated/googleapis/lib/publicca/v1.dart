@@ -54,11 +54,16 @@ class PublicCertificateAuthorityApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  PublicCertificateAuthorityApi(http.Client client,
-      {core.String rootUrl = 'https://publicca.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  PublicCertificateAuthorityApi(
+    http.Client client, {
+    core.String rootUrl = 'https://publicca.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -126,7 +131,8 @@ class ProjectsLocationsExternalAccountKeysResource {
       queryParams: queryParams_,
     );
     return ExternalAccountKey.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -163,11 +169,7 @@ class ExternalAccountKey {
   /// Output only.
   core.String? name;
 
-  ExternalAccountKey({
-    this.b64MacKey,
-    this.keyId,
-    this.name,
-  });
+  ExternalAccountKey({this.b64MacKey, this.keyId, this.name});
 
   ExternalAccountKey.fromJson(core.Map json_)
       : this(

@@ -56,11 +56,16 @@ class DatabaseMigrationServiceApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  DatabaseMigrationServiceApi(http.Client client,
-      {core.String rootUrl = 'https://datamigration.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DatabaseMigrationServiceApi(
+    http.Client client, {
+    core.String rootUrl = 'https://datamigration.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -132,7 +137,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return FetchStaticIpsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets information about a location.
@@ -152,10 +158,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -219,7 +222,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -381,7 +385,8 @@ class ProjectsLocationsConnectionProfilesResource {
       queryParams: queryParams_,
     );
     return ConnectionProfile.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -508,7 +513,8 @@ class ProjectsLocationsConnectionProfilesResource {
       queryParams: queryParams_,
     );
     return ListConnectionProfilesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update the configuration of a single connection profile.
@@ -673,7 +679,8 @@ class ProjectsLocationsConnectionProfilesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -962,7 +969,8 @@ class ProjectsLocationsConversionWorkspacesResource {
       queryParams: queryParams_,
     );
     return DescribeConversionWorkspaceRevisionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Describes the database entities tree for a specific conversion workspace
@@ -1064,7 +1072,8 @@ class ProjectsLocationsConversionWorkspacesResource {
       queryParams: queryParams_,
     );
     return DescribeDatabaseEntitiesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single conversion workspace.
@@ -1101,7 +1110,8 @@ class ProjectsLocationsConversionWorkspacesResource {
       queryParams: queryParams_,
     );
     return ConversionWorkspace.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -1222,7 +1232,8 @@ class ProjectsLocationsConversionWorkspacesResource {
       queryParams: queryParams_,
     );
     return ListConversionWorkspacesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single conversion workspace.
@@ -1382,7 +1393,8 @@ class ProjectsLocationsConversionWorkspacesResource {
       queryParams: queryParams_,
     );
     return SearchBackgroundJobsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Imports a snapshot of the source database into the conversion workspace.
@@ -1523,7 +1535,8 @@ class ProjectsLocationsConversionWorkspacesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1531,8 +1544,8 @@ class ProjectsLocationsConversionWorkspacesMappingRulesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConversionWorkspacesMappingRulesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates a new mapping rule for a given conversion workspace.
   ///
@@ -1586,7 +1599,8 @@ class ProjectsLocationsConversionWorkspacesMappingRulesResource {
       queryParams: queryParams_,
     );
     return MappingRule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a single mapping rule.
@@ -1671,7 +1685,8 @@ class ProjectsLocationsConversionWorkspacesMappingRulesResource {
       queryParams: queryParams_,
     );
     return MappingRule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Imports the mapping rules for a given conversion workspace.
@@ -1769,7 +1784,8 @@ class ProjectsLocationsConversionWorkspacesMappingRulesResource {
       queryParams: queryParams_,
     );
     return ListMappingRulesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2058,7 +2074,8 @@ class ProjectsLocationsMigrationJobsResource {
       queryParams: queryParams_,
     );
     return TcpProxyScript.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single migration job.
@@ -2095,7 +2112,8 @@ class ProjectsLocationsMigrationJobsResource {
       queryParams: queryParams_,
     );
     return MigrationJob.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -2221,7 +2239,8 @@ class ProjectsLocationsMigrationJobsResource {
       queryParams: queryParams_,
     );
     return ListMigrationJobsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single migration job.
@@ -2583,7 +2602,8 @@ class ProjectsLocationsMigrationJobsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Verify a migration job, making sure the destination can reach the source
@@ -2669,7 +2689,8 @@ class ProjectsLocationsMigrationJobsObjectsResource {
       queryParams: queryParams_,
     );
     return MigrationJobObject.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -2777,7 +2798,8 @@ class ProjectsLocationsMigrationJobsObjectsResource {
       queryParams: queryParams_,
     );
     return ListMigrationJobObjectsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Use this method to look up a migration job object by its source object
@@ -2821,7 +2843,8 @@ class ProjectsLocationsMigrationJobsObjectsResource {
       queryParams: queryParams_,
     );
     return MigrationJobObject.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2919,7 +2942,8 @@ class ProjectsLocationsMigrationJobsObjectsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3001,10 +3025,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3040,10 +3061,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3105,7 +3123,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3251,7 +3270,8 @@ class ProjectsLocationsPrivateConnectionsResource {
       queryParams: queryParams_,
     );
     return PrivateConnection.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -3372,7 +3392,8 @@ class ProjectsLocationsPrivateConnectionsResource {
       queryParams: queryParams_,
     );
     return ListPrivateConnectionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -3470,7 +3491,8 @@ class ProjectsLocationsPrivateConnectionsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3487,17 +3509,15 @@ class AlloyDbConnectionProfile {
   /// Immutable.
   AlloyDbSettings? settings;
 
-  AlloyDbConnectionProfile({
-    this.clusterId,
-    this.settings,
-  });
+  AlloyDbConnectionProfile({this.clusterId, this.settings});
 
   AlloyDbConnectionProfile.fromJson(core.Map json_)
       : this(
           clusterId: json_['clusterId'] as core.String?,
           settings: json_.containsKey('settings')
               ? AlloyDbSettings.fromJson(
-                  json_['settings'] as core.Map<core.String, core.dynamic>)
+                  json_['settings'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3569,24 +3589,25 @@ class AlloyDbSettings {
       : this(
           databaseVersion: json_['databaseVersion'] as core.String?,
           encryptionConfig: json_.containsKey('encryptionConfig')
-              ? EncryptionConfig.fromJson(json_['encryptionConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? EncryptionConfig.fromJson(
+                  json_['encryptionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           initialUser: json_.containsKey('initialUser')
               ? UserPassword.fromJson(
-                  json_['initialUser'] as core.Map<core.String, core.dynamic>)
+                  json_['initialUser'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           primaryInstanceSettings: json_.containsKey('primaryInstanceSettings')
               ? PrimaryInstanceSettings.fromJson(
                   json_['primaryInstanceSettings']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           vpcNetwork: json_['vpcNetwork'] as core.String?,
         );
@@ -3659,15 +3680,14 @@ class ApplyHash {
   /// Optional.
   Empty? uuidFromBytes;
 
-  ApplyHash({
-    this.uuidFromBytes,
-  });
+  ApplyHash({this.uuidFromBytes});
 
   ApplyHash.fromJson(core.Map json_)
       : this(
           uuidFromBytes: json_.containsKey('uuidFromBytes')
               ? Empty.fromJson(
-                  json_['uuidFromBytes'] as core.Map<core.String, core.dynamic>)
+                  json_['uuidFromBytes'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3688,10 +3708,7 @@ class ApplyJobDetails {
   /// Output only.
   core.String? filter;
 
-  ApplyJobDetails({
-    this.connectionProfile,
-    this.filter,
-  });
+  ApplyJobDetails({this.connectionProfile, this.filter});
 
   ApplyJobDetails.fromJson(core.Map json_)
       : this(
@@ -3712,14 +3729,10 @@ class AssignSpecificValue {
   /// Required.
   core.String? value;
 
-  AssignSpecificValue({
-    this.value,
-  });
+  AssignSpecificValue({this.value});
 
   AssignSpecificValue.fromJson(core.Map json_)
-      : this(
-          value: json_['value'] as core.String?,
-        );
+      : this(value: json_['value'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
@@ -3753,16 +3766,16 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -3788,14 +3801,10 @@ class AuthorizedNetwork {
   /// Optional.
   core.String? cidrRange;
 
-  AuthorizedNetwork({
-    this.cidrRange,
-  });
+  AuthorizedNetwork({this.cidrRange});
 
   AuthorizedNetwork.fromJson(core.Map json_)
-      : this(
-          cidrRange: json_['cidrRange'] as core.String?,
-        );
+      : this(cidrRange: json_['cidrRange'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cidrRange != null) 'cidrRange': cidrRange!,
@@ -3885,26 +3894,34 @@ class BackgroundJobLogEntry {
   BackgroundJobLogEntry.fromJson(core.Map json_)
       : this(
           applyJobDetails: json_.containsKey('applyJobDetails')
-              ? ApplyJobDetails.fromJson(json_['applyJobDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? ApplyJobDetails.fromJson(
+                  json_['applyJobDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           completionComment: json_['completionComment'] as core.String?,
           completionState: json_['completionState'] as core.String?,
           convertJobDetails: json_.containsKey('convertJobDetails')
-              ? ConvertJobDetails.fromJson(json_['convertJobDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? ConvertJobDetails.fromJson(
+                  json_['convertJobDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           finishTime: json_['finishTime'] as core.String?,
           id: json_['id'] as core.String?,
           importRulesJobDetails: json_.containsKey('importRulesJobDetails')
-              ? ImportRulesJobDetails.fromJson(json_['importRulesJobDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? ImportRulesJobDetails.fromJson(
+                  json_['importRulesJobDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           jobType: json_['jobType'] as core.String?,
           requestAutocommit: json_['requestAutocommit'] as core.bool?,
           seedJobDetails: json_.containsKey('seedJobDetails')
-              ? SeedJobDetails.fromJson(json_['seedJobDetails']
-                  as core.Map<core.String, core.dynamic>)
+              ? SeedJobDetails.fromJson(
+                  json_['seedJobDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           startTime: json_['startTime'] as core.String?,
         );
@@ -3933,20 +3950,21 @@ class BinaryLogParser {
   /// Use Oracle ASM.
   OracleAsmLogFileAccess? oracleAsmLogFileAccess;
 
-  BinaryLogParser({
-    this.logFileDirectories,
-    this.oracleAsmLogFileAccess,
-  });
+  BinaryLogParser({this.logFileDirectories, this.oracleAsmLogFileAccess});
 
   BinaryLogParser.fromJson(core.Map json_)
       : this(
           logFileDirectories: json_.containsKey('logFileDirectories')
-              ? LogFileDirectories.fromJson(json_['logFileDirectories']
-                  as core.Map<core.String, core.dynamic>)
+              ? LogFileDirectories.fromJson(
+                  json_['logFileDirectories']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           oracleAsmLogFileAccess: json_.containsKey('oracleAsmLogFileAccess')
-              ? OracleAsmLogFileAccess.fromJson(json_['oracleAsmLogFileAccess']
-                  as core.Map<core.String, core.dynamic>)
+              ? OracleAsmLogFileAccess.fromJson(
+                  json_['oracleAsmLogFileAccess']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -4038,17 +4056,14 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -4113,7 +4128,8 @@ class CloudSqlConnectionProfile {
           publicIp: json_['publicIp'] as core.String?,
           settings: json_.containsKey('settings')
               ? CloudSqlSettings.fromJson(
-                  json_['settings'] as core.Map<core.String, core.dynamic>)
+                  json_['settings'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -4342,25 +4358,23 @@ class CloudSqlSettings {
           cmekKeyName: json_['cmekKeyName'] as core.String?,
           collation: json_['collation'] as core.String?,
           dataCacheConfig: json_.containsKey('dataCacheConfig')
-              ? DataCacheConfig.fromJson(json_['dataCacheConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? DataCacheConfig.fromJson(
+                  json_['dataCacheConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dataDiskSizeGb: json_['dataDiskSizeGb'] as core.String?,
           dataDiskType: json_['dataDiskType'] as core.String?,
-          databaseFlags:
-              (json_['databaseFlags'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          databaseFlags: (json_['databaseFlags']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           databaseVersion: json_['databaseVersion'] as core.String?,
           databaseVersionName: json_['databaseVersionName'] as core.String?,
           edition: json_['edition'] as core.String?,
           ipConfig: json_.containsKey('ipConfig')
               ? SqlIpConfig.fromJson(
-                  json_['ipConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['ipConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           rootPassword: json_['rootPassword'] as core.String?,
           rootPasswordSet: json_['rootPasswordSet'] as core.bool?,
@@ -4369,14 +4383,9 @@ class CloudSqlSettings {
           storageAutoResizeLimit:
               json_['storageAutoResizeLimit'] as core.String?,
           tier: json_['tier'] as core.String?,
-          userLabels:
-              (json_['userLabels'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          userLabels: (json_['userLabels']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           zone: json_['zone'] as core.String?,
         );
 
@@ -4548,14 +4557,10 @@ class CommitConversionWorkspaceRequest {
   /// Optional.
   core.String? commitName;
 
-  CommitConversionWorkspaceRequest({
-    this.commitName,
-  });
+  CommitConversionWorkspaceRequest({this.commitName});
 
   CommitConversionWorkspaceRequest.fromJson(core.Map json_)
-      : this(
-          commitName: json_['commitName'] as core.String?,
-        );
+      : this(commitName: json_['commitName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commitName != null) 'commitName': commitName!,
@@ -4608,16 +4613,22 @@ class ConditionalColumnSetValue {
               ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
               : null,
           sourceNumericFilter: json_.containsKey('sourceNumericFilter')
-              ? SourceNumericFilter.fromJson(json_['sourceNumericFilter']
-                  as core.Map<core.String, core.dynamic>)
+              ? SourceNumericFilter.fromJson(
+                  json_['sourceNumericFilter']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sourceTextFilter: json_.containsKey('sourceTextFilter')
-              ? SourceTextFilter.fromJson(json_['sourceTextFilter']
-                  as core.Map<core.String, core.dynamic>)
+              ? SourceTextFilter.fromJson(
+                  json_['sourceTextFilter']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           valueTransformation: json_.containsKey('valueTransformation')
-              ? ValueTransformation.fromJson(json_['valueTransformation']
-                  as core.Map<core.String, core.dynamic>)
+              ? ValueTransformation.fromJson(
+                  json_['valueTransformation']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -4739,43 +4750,47 @@ class ConnectionProfile {
       : this(
           alloydb: json_.containsKey('alloydb')
               ? AlloyDbConnectionProfile.fromJson(
-                  json_['alloydb'] as core.Map<core.String, core.dynamic>)
+                  json_['alloydb'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           cloudsql: json_.containsKey('cloudsql')
               ? CloudSqlConnectionProfile.fromJson(
-                  json_['cloudsql'] as core.Map<core.String, core.dynamic>)
+                  json_['cloudsql'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           createTime: json_['createTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           mysql: json_.containsKey('mysql')
               ? MySqlConnectionProfile.fromJson(
-                  json_['mysql'] as core.Map<core.String, core.dynamic>)
+                  json_['mysql'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           oracle: json_.containsKey('oracle')
               ? OracleConnectionProfile.fromJson(
-                  json_['oracle'] as core.Map<core.String, core.dynamic>)
+                  json_['oracle'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           postgresql: json_.containsKey('postgresql')
               ? PostgreSqlConnectionProfile.fromJson(
-                  json_['postgresql'] as core.Map<core.String, core.dynamic>)
+                  json_['postgresql'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           provider: json_['provider'] as core.String?,
           role: json_['role'] as core.String?,
           sqlserver: json_.containsKey('sqlserver')
               ? SqlServerConnectionProfile.fromJson(
-                  json_['sqlserver'] as core.Map<core.String, core.dynamic>)
+                  json_['sqlserver'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           state: json_['state'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -4953,24 +4968,21 @@ class ConversionWorkspace {
           createTime: json_['createTime'] as core.String?,
           destination: json_.containsKey('destination')
               ? DatabaseEngineInfo.fromJson(
-                  json_['destination'] as core.Map<core.String, core.dynamic>)
+                  json_['destination'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           displayName: json_['displayName'] as core.String?,
-          globalSettings:
-              (json_['globalSettings'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          globalSettings: (json_['globalSettings']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           hasUncommittedChanges: json_['hasUncommittedChanges'] as core.bool?,
           latestCommitId: json_['latestCommitId'] as core.String?,
           latestCommitTime: json_['latestCommitTime'] as core.String?,
           name: json_['name'] as core.String?,
           source: json_.containsKey('source')
               ? DatabaseEngineInfo.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -4998,10 +5010,7 @@ class ConversionWorkspaceInfo {
   /// The resource name (URI) of the conversion workspace.
   core.String? name;
 
-  ConversionWorkspaceInfo({
-    this.commitId,
-    this.name,
-  });
+  ConversionWorkspaceInfo({this.commitId, this.name});
 
   ConversionWorkspaceInfo.fromJson(core.Map json_)
       : this(
@@ -5067,14 +5076,10 @@ class ConvertJobDetails {
   /// Output only.
   core.String? filter;
 
-  ConvertJobDetails({
-    this.filter,
-  });
+  ConvertJobDetails({this.filter});
 
   ConvertJobDetails.fromJson(core.Map json_)
-      : this(
-          filter: json_['filter'] as core.String?,
-        );
+      : this(filter: json_['filter'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filter != null) 'filter': filter!,
@@ -5095,14 +5100,10 @@ class ConvertRowIdToColumn {
   /// Required.
   core.bool? onlyIfNoPrimaryKey;
 
-  ConvertRowIdToColumn({
-    this.onlyIfNoPrimaryKey,
-  });
+  ConvertRowIdToColumn({this.onlyIfNoPrimaryKey});
 
   ConvertRowIdToColumn.fromJson(core.Map json_)
-      : this(
-          onlyIfNoPrimaryKey: json_['onlyIfNoPrimaryKey'] as core.bool?,
-        );
+      : this(onlyIfNoPrimaryKey: json_['onlyIfNoPrimaryKey'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (onlyIfNoPrimaryKey != null)
@@ -5122,14 +5123,10 @@ class DataCacheConfig {
   /// Optional.
   core.bool? dataCacheEnabled;
 
-  DataCacheConfig({
-    this.dataCacheEnabled,
-  });
+  DataCacheConfig({this.dataCacheEnabled});
 
   DataCacheConfig.fromJson(core.Map json_)
-      : this(
-          dataCacheEnabled: json_['dataCacheEnabled'] as core.bool?,
-        );
+      : this(dataCacheEnabled: json_['dataCacheEnabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataCacheEnabled != null) 'dataCacheEnabled': dataCacheEnabled!,
@@ -5155,10 +5152,7 @@ class DatabaseEngineInfo {
   /// Required.
   core.String? version;
 
-  DatabaseEngineInfo({
-    this.engine,
-    this.version,
-  });
+  DatabaseEngineInfo({this.engine, this.version});
 
   DatabaseEngineInfo.fromJson(core.Map json_)
       : this(
@@ -5288,63 +5282,87 @@ class DatabaseEntity {
       : this(
           database: json_.containsKey('database')
               ? DatabaseInstanceEntity.fromJson(
-                  json_['database'] as core.Map<core.String, core.dynamic>)
+                  json_['database'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           databaseFunction: json_.containsKey('databaseFunction')
-              ? FunctionEntity.fromJson(json_['databaseFunction']
-                  as core.Map<core.String, core.dynamic>)
+              ? FunctionEntity.fromJson(
+                  json_['databaseFunction']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           databasePackage: json_.containsKey('databasePackage')
-              ? PackageEntity.fromJson(json_['databasePackage']
-                  as core.Map<core.String, core.dynamic>)
+              ? PackageEntity.fromJson(
+                  json_['databasePackage']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           entityDdl: (json_['entityDdl'] as core.List?)
-              ?.map((value) => EntityDdl.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => EntityDdl.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           entityType: json_['entityType'] as core.String?,
           issues: (json_['issues'] as core.List?)
-              ?.map((value) => EntityIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => EntityIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           mappings: (json_['mappings'] as core.List?)
-              ?.map((value) => EntityMapping.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => EntityMapping.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           materializedView: json_.containsKey('materializedView')
-              ? MaterializedViewEntity.fromJson(json_['materializedView']
-                  as core.Map<core.String, core.dynamic>)
+              ? MaterializedViewEntity.fromJson(
+                  json_['materializedView']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           parentEntity: json_['parentEntity'] as core.String?,
           schema: json_.containsKey('schema')
               ? SchemaEntity.fromJson(
-                  json_['schema'] as core.Map<core.String, core.dynamic>)
+                  json_['schema'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sequence: json_.containsKey('sequence')
               ? SequenceEntity.fromJson(
-                  json_['sequence'] as core.Map<core.String, core.dynamic>)
+                  json_['sequence'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           shortName: json_['shortName'] as core.String?,
           storedProcedure: json_.containsKey('storedProcedure')
-              ? StoredProcedureEntity.fromJson(json_['storedProcedure']
-                  as core.Map<core.String, core.dynamic>)
+              ? StoredProcedureEntity.fromJson(
+                  json_['storedProcedure']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           synonym: json_.containsKey('synonym')
               ? SynonymEntity.fromJson(
-                  json_['synonym'] as core.Map<core.String, core.dynamic>)
+                  json_['synonym'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           table: json_.containsKey('table')
               ? TableEntity.fromJson(
-                  json_['table'] as core.Map<core.String, core.dynamic>)
+                  json_['table'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           tree: json_['tree'] as core.String?,
           udt: json_.containsKey('udt')
               ? UDTEntity.fromJson(
-                  json_['udt'] as core.Map<core.String, core.dynamic>)
+                  json_['udt'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           view: json_.containsKey('view')
               ? ViewEntity.fromJson(
-                  json_['view'] as core.Map<core.String, core.dynamic>)
+                  json_['view'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -5395,10 +5413,7 @@ class DatabaseType {
   /// - "ALLOYDB" : AlloyDB for PostgreSQL is the source instance provider.
   core.String? provider;
 
-  DatabaseType({
-    this.engine,
-    this.provider,
-  });
+  DatabaseType({this.engine, this.provider});
 
   DatabaseType.fromJson(core.Map json_)
       : this(
@@ -5420,15 +5435,16 @@ class DescribeConversionWorkspaceRevisionsResponse {
   /// The list of conversion workspace revisions.
   core.List<ConversionWorkspace>? revisions;
 
-  DescribeConversionWorkspaceRevisionsResponse({
-    this.revisions,
-  });
+  DescribeConversionWorkspaceRevisionsResponse({this.revisions});
 
   DescribeConversionWorkspaceRevisionsResponse.fromJson(core.Map json_)
       : this(
           revisions: (json_['revisions'] as core.List?)
-              ?.map((value) => ConversionWorkspace.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ConversionWorkspace.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -5447,16 +5463,16 @@ class DescribeDatabaseEntitiesResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  DescribeDatabaseEntitiesResponse({
-    this.databaseEntities,
-    this.nextPageToken,
-  });
+  DescribeDatabaseEntitiesResponse({this.databaseEntities, this.nextPageToken});
 
   DescribeDatabaseEntitiesResponse.fromJson(core.Map json_)
       : this(
           databaseEntities: (json_['databaseEntities'] as core.List?)
-              ?.map((value) => DatabaseEntity.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DatabaseEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -5490,10 +5506,7 @@ class DoubleComparisonFilter {
   /// than the Compare value.
   core.String? valueComparison;
 
-  DoubleComparisonFilter({
-    this.value,
-    this.valueComparison,
-  });
+  DoubleComparisonFilter({this.value, this.valueComparison});
 
   DoubleComparisonFilter.fromJson(core.Map json_)
       : this(
@@ -5515,10 +5528,7 @@ class DumpFlag {
   /// The value of the flag.
   core.String? value;
 
-  DumpFlag({
-    this.name,
-    this.value,
-  });
+  DumpFlag({this.name, this.value});
 
   DumpFlag.fromJson(core.Map json_)
       : this(
@@ -5537,15 +5547,16 @@ class DumpFlags {
   /// The flags for the initial dump.
   core.List<DumpFlag>? dumpFlags;
 
-  DumpFlags({
-    this.dumpFlags,
-  });
+  DumpFlags({this.dumpFlags});
 
   DumpFlags.fromJson(core.Map json_)
       : this(
           dumpFlags: (json_['dumpFlags'] as core.List?)
-              ?.map((value) => DumpFlag.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DumpFlag.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -5701,7 +5712,8 @@ class EntityIssue {
           message: json_['message'] as core.String?,
           position: json_.containsKey('position')
               ? Position.fromJson(
-                  json_['position'] as core.Map<core.String, core.dynamic>)
+                  json_['position'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           severity: json_['severity'] as core.String?,
           type: json_['type'] as core.String?,
@@ -5794,8 +5806,11 @@ class EntityMapping {
           draftEntity: json_['draftEntity'] as core.String?,
           draftType: json_['draftType'] as core.String?,
           mappingLog: (json_['mappingLog'] as core.List?)
-              ?.map((value) => EntityMappingLogEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => EntityMappingLogEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           sourceEntity: json_['sourceEntity'] as core.String?,
           sourceType: json_['sourceType'] as core.String?,
@@ -5853,14 +5868,10 @@ class EntityMove {
   /// Required.
   core.String? newSchema;
 
-  EntityMove({
-    this.newSchema,
-  });
+  EntityMove({this.newSchema});
 
   EntityMove.fromJson(core.Map json_)
-      : this(
-          newSchema: json_['newSchema'] as core.String?,
-        );
+      : this(newSchema: json_['newSchema'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (newSchema != null) 'newSchema': newSchema!,
@@ -5897,10 +5908,7 @@ class FetchStaticIpsResponse {
   /// List of static IPs.
   core.List<core.String>? staticIps;
 
-  FetchStaticIpsResponse({
-    this.nextPageToken,
-    this.staticIps,
-  });
+  FetchStaticIpsResponse({this.nextPageToken, this.staticIps});
 
   FetchStaticIpsResponse.fromJson(core.Map json_)
       : this(
@@ -5932,10 +5940,7 @@ class FilterTableColumns {
   /// Optional.
   core.List<core.String>? includeColumns;
 
-  FilterTableColumns({
-    this.excludeColumns,
-    this.includeColumns,
-  });
+  FilterTableColumns({this.excludeColumns, this.includeColumns});
 
   FilterTableColumns.fromJson(core.Map json_)
       : this(
@@ -5967,10 +5972,7 @@ class FunctionEntity {
   /// The SQL code which creates the function.
   core.String? sqlCode;
 
-  FunctionEntity({
-    this.customFeatures,
-    this.sqlCode,
-  });
+  FunctionEntity({this.customFeatures, this.sqlCode});
 
   FunctionEntity.fromJson(core.Map json_)
       : this(
@@ -6013,13 +6015,17 @@ class GenerateSshScriptRequest {
       : this(
           vm: json_['vm'] as core.String?,
           vmCreationConfig: json_.containsKey('vmCreationConfig')
-              ? VmCreationConfig.fromJson(json_['vmCreationConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? VmCreationConfig.fromJson(
+                  json_['vmCreationConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           vmPort: json_['vmPort'] as core.int?,
           vmSelectionConfig: json_.containsKey('vmSelectionConfig')
-              ? VmSelectionConfig.fromJson(json_['vmSelectionConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? VmSelectionConfig.fromJson(
+                  json_['vmSelectionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6119,8 +6125,11 @@ class ImportMappingRulesRequest {
       : this(
           autoCommit: json_['autoCommit'] as core.bool?,
           rulesFiles: (json_['rulesFiles'] as core.List?)
-              ?.map((value) => RulesFile.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RulesFile.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           rulesFormat: json_['rulesFormat'] as core.String?,
         );
@@ -6150,10 +6159,7 @@ class ImportRulesJobDetails {
   /// Output only.
   core.List<core.String>? files;
 
-  ImportRulesJobDetails({
-    this.fileFormat,
-    this.files,
-  });
+  ImportRulesJobDetails({this.fileFormat, this.files});
 
   ImportRulesJobDetails.fromJson(core.Map json_)
       : this(
@@ -6264,8 +6270,11 @@ class InstanceNetworkConfig {
       : this(
           authorizedExternalNetworks:
               (json_['authorizedExternalNetworks'] as core.List?)
-                  ?.map((value) => AuthorizedNetwork.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => AuthorizedNetwork.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
           enableOutboundPublicIp: json_['enableOutboundPublicIp'] as core.bool?,
           enablePublicIp: json_['enablePublicIp'] as core.bool?,
@@ -6303,10 +6312,7 @@ class IntComparisonFilter {
   /// than the Compare value.
   core.String? valueComparison;
 
-  IntComparisonFilter({
-    this.value,
-    this.valueComparison,
-  });
+  IntComparisonFilter({this.value, this.valueComparison});
 
   IntComparisonFilter.fromJson(core.Map json_)
       : this(
@@ -6342,8 +6348,11 @@ class ListConnectionProfilesResponse {
   ListConnectionProfilesResponse.fromJson(core.Map json_)
       : this(
           connectionProfiles: (json_['connectionProfiles'] as core.List?)
-              ?.map((value) => ConnectionProfile.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ConnectionProfile.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -6381,8 +6390,11 @@ class ListConversionWorkspacesResponse {
   ListConversionWorkspacesResponse.fromJson(core.Map json_)
       : this(
           conversionWorkspaces: (json_['conversionWorkspaces'] as core.List?)
-              ?.map((value) => ConversionWorkspace.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ConversionWorkspace.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -6406,16 +6418,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -6436,16 +6448,16 @@ class ListMappingRulesResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListMappingRulesResponse({
-    this.mappingRules,
-    this.nextPageToken,
-  });
+  ListMappingRulesResponse({this.mappingRules, this.nextPageToken});
 
   ListMappingRulesResponse.fromJson(core.Map json_)
       : this(
           mappingRules: (json_['mappingRules'] as core.List?)
-              ?.map((value) => MappingRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MappingRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -6472,8 +6484,11 @@ class ListMigrationJobObjectsResponse {
   ListMigrationJobObjectsResponse.fromJson(core.Map json_)
       : this(
           migrationJobObjects: (json_['migrationJobObjects'] as core.List?)
-              ?.map((value) => MigrationJobObject.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MigrationJobObject.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -6507,8 +6522,11 @@ class ListMigrationJobsResponse {
   ListMigrationJobsResponse.fromJson(core.Map json_)
       : this(
           migrationJobs: (json_['migrationJobs'] as core.List?)
-              ?.map((value) => MigrationJob.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MigrationJob.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -6531,17 +6549,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -6574,8 +6592,11 @@ class ListPrivateConnectionsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           privateConnections: (json_['privateConnections'] as core.List?)
-              ?.map((value) => PrivateConnection.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PrivateConnection.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -6607,15 +6628,15 @@ class LookupMigrationJobObjectRequest {
   /// Required.
   SourceObjectIdentifier? sourceObjectIdentifier;
 
-  LookupMigrationJobObjectRequest({
-    this.sourceObjectIdentifier,
-  });
+  LookupMigrationJobObjectRequest({this.sourceObjectIdentifier});
 
   LookupMigrationJobObjectRequest.fromJson(core.Map json_)
       : this(
           sourceObjectIdentifier: json_.containsKey('sourceObjectIdentifier')
-              ? SourceObjectIdentifier.fromJson(json_['sourceObjectIdentifier']
-                  as core.Map<core.String, core.dynamic>)
+              ? SourceObjectIdentifier.fromJson(
+                  json_['sourceObjectIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6790,34 +6811,44 @@ class MappingRule {
               json_.containsKey('conditionalColumnSetValue')
                   ? ConditionalColumnSetValue.fromJson(
                       json_['conditionalColumnSetValue']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           convertRowidColumn: json_.containsKey('convertRowidColumn')
-              ? ConvertRowIdToColumn.fromJson(json_['convertRowidColumn']
-                  as core.Map<core.String, core.dynamic>)
+              ? ConvertRowIdToColumn.fromJson(
+                  json_['convertRowidColumn']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           displayName: json_['displayName'] as core.String?,
           entityMove: json_.containsKey('entityMove')
               ? EntityMove.fromJson(
-                  json_['entityMove'] as core.Map<core.String, core.dynamic>)
+                  json_['entityMove'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           filter: json_.containsKey('filter')
               ? MappingRuleFilter.fromJson(
-                  json_['filter'] as core.Map<core.String, core.dynamic>)
+                  json_['filter'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           filterTableColumns: json_.containsKey('filterTableColumns')
-              ? FilterTableColumns.fromJson(json_['filterTableColumns']
-                  as core.Map<core.String, core.dynamic>)
+              ? FilterTableColumns.fromJson(
+                  json_['filterTableColumns']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           multiColumnDataTypeChange:
               json_.containsKey('multiColumnDataTypeChange')
                   ? MultiColumnDatatypeChange.fromJson(
                       json_['multiColumnDataTypeChange']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           multiEntityRename: json_.containsKey('multiEntityRename')
-              ? MultiEntityRename.fromJson(json_['multiEntityRename']
-                  as core.Map<core.String, core.dynamic>)
+              ? MultiEntityRename.fromJson(
+                  json_['multiEntityRename']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           revisionCreateTime: json_['revisionCreateTime'] as core.String?,
@@ -6825,24 +6856,34 @@ class MappingRule {
           ruleOrder: json_['ruleOrder'] as core.String?,
           ruleScope: json_['ruleScope'] as core.String?,
           setTablePrimaryKey: json_.containsKey('setTablePrimaryKey')
-              ? SetTablePrimaryKey.fromJson(json_['setTablePrimaryKey']
-                  as core.Map<core.String, core.dynamic>)
+              ? SetTablePrimaryKey.fromJson(
+                  json_['setTablePrimaryKey']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           singleColumnChange: json_.containsKey('singleColumnChange')
-              ? SingleColumnChange.fromJson(json_['singleColumnChange']
-                  as core.Map<core.String, core.dynamic>)
+              ? SingleColumnChange.fromJson(
+                  json_['singleColumnChange']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           singleEntityRename: json_.containsKey('singleEntityRename')
-              ? SingleEntityRename.fromJson(json_['singleEntityRename']
-                  as core.Map<core.String, core.dynamic>)
+              ? SingleEntityRename.fromJson(
+                  json_['singleEntityRename']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           singlePackageChange: json_.containsKey('singlePackageChange')
-              ? SinglePackageChange.fromJson(json_['singlePackageChange']
-                  as core.Map<core.String, core.dynamic>)
+              ? SinglePackageChange.fromJson(
+                  json_['singlePackageChange']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sourceSqlChange: json_.containsKey('sourceSqlChange')
-              ? SourceSqlChange.fromJson(json_['sourceSqlChange']
-                  as core.Map<core.String, core.dynamic>)
+              ? SourceSqlChange.fromJson(
+                  json_['sourceSqlChange']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           state: json_['state'] as core.String?,
         );
@@ -6962,11 +7003,7 @@ class MaterializedViewEntity {
   /// The SQL code which creates the view.
   core.String? sqlCode;
 
-  MaterializedViewEntity({
-    this.customFeatures,
-    this.indices,
-    this.sqlCode,
-  });
+  MaterializedViewEntity({this.customFeatures, this.indices, this.sqlCode});
 
   MaterializedViewEntity.fromJson(core.Map json_)
       : this(
@@ -6974,8 +7011,11 @@ class MaterializedViewEntity {
               ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
               : null,
           indices: (json_['indices'] as core.List?)
-              ?.map((value) => IndexEntity.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => IndexEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           sqlCode: json_['sqlCode'] as core.String?,
         );
@@ -7209,19 +7249,24 @@ class MigrationJob {
       : this(
           cmekKeyName: json_['cmekKeyName'] as core.String?,
           conversionWorkspace: json_.containsKey('conversionWorkspace')
-              ? ConversionWorkspaceInfo.fromJson(json_['conversionWorkspace']
-                  as core.Map<core.String, core.dynamic>)
+              ? ConversionWorkspaceInfo.fromJson(
+                  json_['conversionWorkspace']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           createTime: json_['createTime'] as core.String?,
           destination: json_['destination'] as core.String?,
           destinationDatabase: json_.containsKey('destinationDatabase')
-              ? DatabaseType.fromJson(json_['destinationDatabase']
-                  as core.Map<core.String, core.dynamic>)
+              ? DatabaseType.fromJson(
+                  json_['destinationDatabase']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           displayName: json_['displayName'] as core.String?,
           dumpFlags: json_.containsKey('dumpFlags')
               ? DumpFlags.fromJson(
-                  json_['dumpFlags'] as core.Map<core.String, core.dynamic>)
+                  json_['dumpFlags'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dumpPath: json_['dumpPath'] as core.String?,
           dumpType: json_['dumpType'] as core.String?,
@@ -7229,55 +7274,67 @@ class MigrationJob {
           endTime: json_['endTime'] as core.String?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           filter: json_['filter'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           objectsConfig: json_.containsKey('objectsConfig')
               ? MigrationJobObjectsConfig.fromJson(
-                  json_['objectsConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['objectsConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           oracleToPostgresConfig: json_.containsKey('oracleToPostgresConfig')
-              ? OracleToPostgresConfig.fromJson(json_['oracleToPostgresConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? OracleToPostgresConfig.fromJson(
+                  json_['oracleToPostgresConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           performanceConfig: json_.containsKey('performanceConfig')
-              ? PerformanceConfig.fromJson(json_['performanceConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? PerformanceConfig.fromJson(
+                  json_['performanceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           phase: json_['phase'] as core.String?,
           reverseSshConnectivity: json_.containsKey('reverseSshConnectivity')
-              ? ReverseSshConnectivity.fromJson(json_['reverseSshConnectivity']
-                  as core.Map<core.String, core.dynamic>)
+              ? ReverseSshConnectivity.fromJson(
+                  json_['reverseSshConnectivity']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           source: json_['source'] as core.String?,
           sourceDatabase: json_.containsKey('sourceDatabase')
-              ? DatabaseType.fromJson(json_['sourceDatabase']
-                  as core.Map<core.String, core.dynamic>)
+              ? DatabaseType.fromJson(
+                  json_['sourceDatabase']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sqlserverHomogeneousMigrationJobConfig:
               json_.containsKey('sqlserverHomogeneousMigrationJobConfig')
                   ? SqlServerHomogeneousMigrationJobConfig.fromJson(
                       json_['sqlserverHomogeneousMigrationJobConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           state: json_['state'] as core.String?,
           staticIpConnectivity: json_.containsKey('staticIpConnectivity')
-              ? StaticIpConnectivity.fromJson(json_['staticIpConnectivity']
-                  as core.Map<core.String, core.dynamic>)
+              ? StaticIpConnectivity.fromJson(
+                  json_['staticIpConnectivity']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           type: json_['type'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
           vpcPeeringConnectivity: json_.containsKey('vpcPeeringConnectivity')
-              ? VpcPeeringConnectivity.fromJson(json_['vpcPeeringConnectivity']
-                  as core.Map<core.String, core.dynamic>)
+              ? VpcPeeringConnectivity.fromJson(
+                  json_['vpcPeeringConnectivity']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -7388,13 +7445,15 @@ class MigrationJobObject {
           createTime: json_['createTime'] as core.String?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           phase: json_['phase'] as core.String?,
           sourceObject: json_.containsKey('sourceObject')
               ? SourceObjectIdentifier.fromJson(
-                  json_['sourceObject'] as core.Map<core.String, core.dynamic>)
+                  json_['sourceObject'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           state: json_['state'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -7416,15 +7475,15 @@ class MigrationJobObjectsConfig {
   /// The list of the migration job objects.
   SourceObjectsConfig? sourceObjectsConfig;
 
-  MigrationJobObjectsConfig({
-    this.sourceObjectsConfig,
-  });
+  MigrationJobObjectsConfig({this.sourceObjectsConfig});
 
   MigrationJobObjectsConfig.fromJson(core.Map json_)
       : this(
           sourceObjectsConfig: json_.containsKey('sourceObjectsConfig')
-              ? SourceObjectsConfig.fromJson(json_['sourceObjectsConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? SourceObjectsConfig.fromJson(
+                  json_['sourceObjectsConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -7523,12 +7582,16 @@ class MultiColumnDatatypeChange {
           overrideScale: json_['overrideScale'] as core.int?,
           sourceDataTypeFilter: json_['sourceDataTypeFilter'] as core.String?,
           sourceNumericFilter: json_.containsKey('sourceNumericFilter')
-              ? SourceNumericFilter.fromJson(json_['sourceNumericFilter']
-                  as core.Map<core.String, core.dynamic>)
+              ? SourceNumericFilter.fromJson(
+                  json_['sourceNumericFilter']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sourceTextFilter: json_.containsKey('sourceTextFilter')
-              ? SourceTextFilter.fromJson(json_['sourceTextFilter']
-                  as core.Map<core.String, core.dynamic>)
+              ? SourceTextFilter.fromJson(
+                  json_['sourceTextFilter']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -7582,10 +7645,7 @@ class MultiEntityRename {
   /// case.
   core.String? sourceNameTransformation;
 
-  MultiEntityRename({
-    this.newNamePattern,
-    this.sourceNameTransformation,
-  });
+  MultiEntityRename({this.newNamePattern, this.sourceNameTransformation});
 
   MultiEntityRename.fromJson(core.Map json_)
       : this(
@@ -7661,7 +7721,8 @@ class MySqlConnectionProfile {
           port: json_['port'] as core.int?,
           ssl: json_.containsKey('ssl')
               ? SslConfig.fromJson(
-                  json_['ssl'] as core.Map<core.String, core.dynamic>)
+                  json_['ssl'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           username: json_['username'] as core.String?,
         );
@@ -7720,20 +7781,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -7811,7 +7867,8 @@ class OracleAsmConfig {
           port: json_['port'] as core.int?,
           ssl: json_.containsKey('ssl')
               ? SslConfig.fromJson(
-                  json_['ssl'] as core.Map<core.String, core.dynamic>)
+                  json_['ssl'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           username: json_['username'] as core.String?,
         );
@@ -7909,29 +7966,36 @@ class OracleConnectionProfile {
           forwardSshConnectivity: json_.containsKey('forwardSshConnectivity')
               ? ForwardSshTunnelConnectivity.fromJson(
                   json_['forwardSshConnectivity']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           host: json_['host'] as core.String?,
           oracleAsmConfig: json_.containsKey('oracleAsmConfig')
-              ? OracleAsmConfig.fromJson(json_['oracleAsmConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? OracleAsmConfig.fromJson(
+                  json_['oracleAsmConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           password: json_['password'] as core.String?,
           passwordSet: json_['passwordSet'] as core.bool?,
           port: json_['port'] as core.int?,
           privateConnectivity: json_.containsKey('privateConnectivity')
-              ? PrivateConnectivity.fromJson(json_['privateConnectivity']
-                  as core.Map<core.String, core.dynamic>)
+              ? PrivateConnectivity.fromJson(
+                  json_['privateConnectivity']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           ssl: json_.containsKey('ssl')
               ? SslConfig.fromJson(
-                  json_['ssl'] as core.Map<core.String, core.dynamic>)
+                  json_['ssl'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           staticServiceIpConnectivity:
               json_.containsKey('staticServiceIpConnectivity')
                   ? StaticServiceIpConnectivity.fromJson(
                       json_['staticServiceIpConnectivity']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           username: json_['username'] as core.String?,
         );
@@ -7996,13 +8060,16 @@ class OracleSourceConfig {
   OracleSourceConfig.fromJson(core.Map json_)
       : this(
           binaryLogParser: json_.containsKey('binaryLogParser')
-              ? BinaryLogParser.fromJson(json_['binaryLogParser']
-                  as core.Map<core.String, core.dynamic>)
+              ? BinaryLogParser.fromJson(
+                  json_['binaryLogParser']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           cdcStartPosition: json_['cdcStartPosition'] as core.String?,
           logMiner: json_.containsKey('logMiner')
               ? LogMiner.fromJson(
-                  json_['logMiner'] as core.Map<core.String, core.dynamic>)
+                  json_['logMiner'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           maxConcurrentCdcConnections:
               json_['maxConcurrentCdcConnections'] as core.int?,
@@ -8044,14 +8111,17 @@ class OracleToPostgresConfig {
   OracleToPostgresConfig.fromJson(core.Map json_)
       : this(
           oracleSourceConfig: json_.containsKey('oracleSourceConfig')
-              ? OracleSourceConfig.fromJson(json_['oracleSourceConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? OracleSourceConfig.fromJson(
+                  json_['oracleSourceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           postgresDestinationConfig:
               json_.containsKey('postgresDestinationConfig')
                   ? PostgresDestinationConfig.fromJson(
                       json_['postgresDestinationConfig']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
         );
 
@@ -8080,11 +8150,7 @@ class PackageEntity {
   /// The SQL code which creates the package.
   core.String? packageSqlCode;
 
-  PackageEntity({
-    this.customFeatures,
-    this.packageBody,
-    this.packageSqlCode,
-  });
+  PackageEntity({this.customFeatures, this.packageBody, this.packageSqlCode});
 
   PackageEntity.fromJson(core.Map json_)
       : this(
@@ -8113,14 +8179,10 @@ class PerformanceConfig {
   /// - "MAX" : Maximum parallel level.
   core.String? dumpParallelLevel;
 
-  PerformanceConfig({
-    this.dumpParallelLevel,
-  });
+  PerformanceConfig({this.dumpParallelLevel});
 
   PerformanceConfig.fromJson(core.Map json_)
-      : this(
-          dumpParallelLevel: json_['dumpParallelLevel'] as core.String?,
-        );
+      : this(dumpParallelLevel: json_['dumpParallelLevel'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dumpParallelLevel != null) 'dumpParallelLevel': dumpParallelLevel!,
@@ -8215,22 +8277,23 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -8258,12 +8321,7 @@ class Position {
   /// Issue offset
   core.int? offset;
 
-  Position({
-    this.column,
-    this.length,
-    this.line,
-    this.offset,
-  });
+  Position({this.column, this.length, this.line, this.offset});
 
   Position.fromJson(core.Map json_)
       : this(
@@ -8381,15 +8439,19 @@ class PostgreSqlConnectionProfile {
               json_.containsKey('privateServiceConnectConnectivity')
                   ? PrivateServiceConnectConnectivity.fromJson(
                       json_['privateServiceConnectConnectivity']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           ssl: json_.containsKey('ssl')
               ? SslConfig.fromJson(
-                  json_['ssl'] as core.Map<core.String, core.dynamic>)
+                  json_['ssl'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           staticIpConnectivity: json_.containsKey('staticIpConnectivity')
-              ? StaticIpConnectivity.fromJson(json_['staticIpConnectivity']
-                  as core.Map<core.String, core.dynamic>)
+              ? StaticIpConnectivity.fromJson(
+                  json_['staticIpConnectivity']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           username: json_['username'] as core.String?,
         );
@@ -8499,29 +8561,24 @@ class PrimaryInstanceSettings {
 
   PrimaryInstanceSettings.fromJson(core.Map json_)
       : this(
-          databaseFlags:
-              (json_['databaseFlags'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          databaseFlags: (json_['databaseFlags']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           id: json_['id'] as core.String?,
           instanceNetworkConfig: json_.containsKey('instanceNetworkConfig')
-              ? InstanceNetworkConfig.fromJson(json_['instanceNetworkConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? InstanceNetworkConfig.fromJson(
+                  json_['instanceNetworkConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           machineConfig: json_.containsKey('machineConfig')
               ? MachineConfig.fromJson(
-                  json_['machineConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['machineConfig'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           outboundPublicIpAddresses:
               (json_['outboundPublicIpAddresses'] as core.List?)
@@ -8610,21 +8667,21 @@ class PrivateConnection {
           displayName: json_['displayName'] as core.String?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           state: json_['state'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
           vpcPeeringConfig: json_.containsKey('vpcPeeringConfig')
-              ? VpcPeeringConfig.fromJson(json_['vpcPeeringConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? VpcPeeringConfig.fromJson(
+                  json_['vpcPeeringConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -8647,14 +8704,10 @@ class PrivateConnectivity {
   /// Required.
   core.String? privateConnection;
 
-  PrivateConnectivity({
-    this.privateConnection,
-  });
+  PrivateConnectivity({this.privateConnection});
 
   PrivateConnectivity.fromJson(core.Map json_)
-      : this(
-          privateConnection: json_['privateConnection'] as core.String?,
-        );
+      : this(privateConnection: json_['privateConnection'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (privateConnection != null) 'privateConnection': privateConnection!,
@@ -8670,14 +8723,10 @@ class PrivateServiceConnectConnectivity {
   /// Required.
   core.String? serviceAttachment;
 
-  PrivateServiceConnectConnectivity({
-    this.serviceAttachment,
-  });
+  PrivateServiceConnectConnectivity({this.serviceAttachment});
 
   PrivateServiceConnectConnectivity.fromJson(core.Map json_)
-      : this(
-          serviceAttachment: json_['serviceAttachment'] as core.String?,
-        );
+      : this(serviceAttachment: json_['serviceAttachment'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
@@ -8691,15 +8740,14 @@ class PromoteMigrationJobRequest {
   /// Optional.
   MigrationJobObjectsConfig? objectsFilter;
 
-  PromoteMigrationJobRequest({
-    this.objectsFilter,
-  });
+  PromoteMigrationJobRequest({this.objectsFilter});
 
   PromoteMigrationJobRequest.fromJson(core.Map json_)
       : this(
           objectsFilter: json_.containsKey('objectsFilter')
               ? MigrationJobObjectsConfig.fromJson(
-                  json_['objectsFilter'] as core.Map<core.String, core.dynamic>)
+                  json_['objectsFilter'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -8738,7 +8786,8 @@ class RestartMigrationJobRequest {
       : this(
           objectsFilter: json_.containsKey('objectsFilter')
               ? MigrationJobObjectsConfig.fromJson(
-                  json_['objectsFilter'] as core.Map<core.String, core.dynamic>)
+                  json_['objectsFilter'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           restartFailedObjects: json_['restartFailedObjects'] as core.bool?,
           skipValidation: json_['skipValidation'] as core.bool?,
@@ -8761,14 +8810,10 @@ class ResumeMigrationJobRequest {
   /// Optional.
   core.bool? skipValidation;
 
-  ResumeMigrationJobRequest({
-    this.skipValidation,
-  });
+  ResumeMigrationJobRequest({this.skipValidation});
 
   ResumeMigrationJobRequest.fromJson(core.Map json_)
-      : this(
-          skipValidation: json_['skipValidation'] as core.bool?,
-        );
+      : this(skipValidation: json_['skipValidation'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (skipValidation != null) 'skipValidation': skipValidation!,
@@ -8802,12 +8847,7 @@ class ReverseSshConnectivity {
   /// The name of the VPC to peer with the Cloud SQL private network.
   core.String? vpc;
 
-  ReverseSshConnectivity({
-    this.vm,
-    this.vmIp,
-    this.vmPort,
-    this.vpc,
-  });
+  ReverseSshConnectivity({this.vm, this.vmIp, this.vmPort, this.vpc});
 
   ReverseSshConnectivity.fromJson(core.Map json_)
       : this(
@@ -8839,14 +8879,10 @@ class RoundToScale {
   /// Required.
   core.int? scale;
 
-  RoundToScale({
-    this.scale,
-  });
+  RoundToScale({this.scale});
 
   RoundToScale.fromJson(core.Map json_)
-      : this(
-          scale: json_['scale'] as core.int?,
-        );
+      : this(scale: json_['scale'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (scale != null) 'scale': scale!,
@@ -8868,10 +8904,7 @@ class RulesFile {
   /// Required.
   core.String? rulesSourceFilename;
 
-  RulesFile({
-    this.rulesContent,
-    this.rulesSourceFilename,
-  });
+  RulesFile({this.rulesContent, this.rulesSourceFilename});
 
   RulesFile.fromJson(core.Map json_)
       : this(
@@ -8900,15 +8933,16 @@ class SearchBackgroundJobsResponse {
   /// The list of conversion workspace mapping rules.
   core.List<BackgroundJobLogEntry>? jobs;
 
-  SearchBackgroundJobsResponse({
-    this.jobs,
-  });
+  SearchBackgroundJobsResponse({this.jobs});
 
   SearchBackgroundJobsResponse.fromJson(core.Map json_)
       : this(
           jobs: (json_['jobs'] as core.List?)
-              ?.map((value) => BackgroundJobLogEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => BackgroundJobLogEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8964,14 +8998,10 @@ class SeedJobDetails {
   /// Output only.
   core.String? connectionProfile;
 
-  SeedJobDetails({
-    this.connectionProfile,
-  });
+  SeedJobDetails({this.connectionProfile});
 
   SeedJobDetails.fromJson(core.Map json_)
-      : this(
-          connectionProfile: json_['connectionProfile'] as core.String?,
-        );
+      : this(connectionProfile: json_['connectionProfile'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (connectionProfile != null) 'connectionProfile': connectionProfile!,
@@ -9084,16 +9114,14 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -9120,10 +9148,7 @@ class SetTablePrimaryKey {
   /// Required.
   core.List<core.String>? primaryKeyColumns;
 
-  SetTablePrimaryKey({
-    this.primaryKey,
-    this.primaryKeyColumns,
-  });
+  SetTablePrimaryKey({this.primaryKey, this.primaryKeyColumns});
 
   SetTablePrimaryKey.fromJson(core.Map json_)
       : this(
@@ -9299,14 +9324,10 @@ class SingleEntityRename {
   /// Required.
   core.String? newName;
 
-  SingleEntityRename({
-    this.newName,
-  });
+  SingleEntityRename({this.newName});
 
   SingleEntityRename.fromJson(core.Map json_)
-      : this(
-          newName: json_['newName'] as core.String?,
-        );
+      : this(newName: json_['newName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (newName != null) 'newName': newName!,
@@ -9328,10 +9349,7 @@ class SinglePackageChange {
   /// Optional.
   core.String? packageDescription;
 
-  SinglePackageChange({
-    this.packageBody,
-    this.packageDescription,
-  });
+  SinglePackageChange({this.packageBody, this.packageDescription});
 
   SinglePackageChange.fromJson(core.Map json_)
       : this(
@@ -9425,15 +9443,15 @@ class SourceObjectConfig {
   /// The object identifier.
   SourceObjectIdentifier? objectIdentifier;
 
-  SourceObjectConfig({
-    this.objectIdentifier,
-  });
+  SourceObjectConfig({this.objectIdentifier});
 
   SourceObjectConfig.fromJson(core.Map json_)
       : this(
           objectIdentifier: json_.containsKey('objectIdentifier')
-              ? SourceObjectIdentifier.fromJson(json_['objectIdentifier']
-                  as core.Map<core.String, core.dynamic>)
+              ? SourceObjectIdentifier.fromJson(
+                  json_['objectIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -9459,10 +9477,7 @@ class SourceObjectIdentifier {
   /// - "DATABASE" : The migration job object is a database.
   core.String? type;
 
-  SourceObjectIdentifier({
-    this.database,
-    this.type,
-  });
+  SourceObjectIdentifier({this.database, this.type});
 
   SourceObjectIdentifier.fromJson(core.Map json_)
       : this(
@@ -9491,16 +9506,16 @@ class SourceObjectsConfig {
   /// - "SPECIFIED_OBJECTS" : Migrate specific objects.
   core.String? objectsSelectionType;
 
-  SourceObjectsConfig({
-    this.objectConfigs,
-    this.objectsSelectionType,
-  });
+  SourceObjectsConfig({this.objectConfigs, this.objectsSelectionType});
 
   SourceObjectsConfig.fromJson(core.Map json_)
       : this(
           objectConfigs: (json_['objectConfigs'] as core.List?)
-              ?.map((value) => SourceObjectConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => SourceObjectConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           objectsSelectionType: json_['objectsSelectionType'] as core.String?,
         );
@@ -9523,14 +9538,10 @@ class SourceSqlChange {
   /// Required.
   core.String? sqlCode;
 
-  SourceSqlChange({
-    this.sqlCode,
-  });
+  SourceSqlChange({this.sqlCode});
 
   SourceSqlChange.fromJson(core.Map json_)
-      : this(
-          sqlCode: json_['sqlCode'] as core.String?,
-        );
+      : this(sqlCode: json_['sqlCode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sqlCode != null) 'sqlCode': sqlCode!,
@@ -9551,10 +9562,7 @@ class SourceTextFilter {
   /// Optional.
   core.String? sourceMinLengthFilter;
 
-  SourceTextFilter({
-    this.sourceMaxLengthFilter,
-    this.sourceMinLengthFilter,
-  });
+  SourceTextFilter({this.sourceMaxLengthFilter, this.sourceMinLengthFilter});
 
   SourceTextFilter.fromJson(core.Map json_)
       : this(
@@ -9588,12 +9596,7 @@ class SqlAclEntry {
   /// The allowlisted value for the access control list.
   core.String? value;
 
-  SqlAclEntry({
-    this.expireTime,
-    this.label,
-    this.ttl,
-    this.value,
-  });
+  SqlAclEntry({this.expireTime, this.label, this.ttl, this.value});
 
   SqlAclEntry.fromJson(core.Map json_)
       : this(
@@ -9657,8 +9660,11 @@ class SqlIpConfig {
       : this(
           allocatedIpRange: json_['allocatedIpRange'] as core.String?,
           authorizedNetworks: (json_['authorizedNetworks'] as core.List?)
-              ?.map((value) => SqlAclEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => SqlAclEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           enableIpv4: json_['enableIpv4'] as core.bool?,
           privateNetwork: json_['privateNetwork'] as core.String?,
@@ -9688,10 +9694,7 @@ class SqlServerBackups {
   /// Optional.
   core.String? gcsPrefix;
 
-  SqlServerBackups({
-    this.gcsBucket,
-    this.gcsPrefix,
-  });
+  SqlServerBackups({this.gcsBucket, this.gcsPrefix});
 
   SqlServerBackups.fromJson(core.Map json_)
       : this(
@@ -9782,35 +9785,43 @@ class SqlServerConnectionProfile {
       : this(
           backups: json_.containsKey('backups')
               ? SqlServerBackups.fromJson(
-                  json_['backups'] as core.Map<core.String, core.dynamic>)
+                  json_['backups'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           cloudSqlId: json_['cloudSqlId'] as core.String?,
           forwardSshConnectivity: json_.containsKey('forwardSshConnectivity')
               ? ForwardSshTunnelConnectivity.fromJson(
                   json_['forwardSshConnectivity']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           host: json_['host'] as core.String?,
           password: json_['password'] as core.String?,
           passwordSet: json_['passwordSet'] as core.bool?,
           port: json_['port'] as core.int?,
           privateConnectivity: json_.containsKey('privateConnectivity')
-              ? PrivateConnectivity.fromJson(json_['privateConnectivity']
-                  as core.Map<core.String, core.dynamic>)
+              ? PrivateConnectivity.fromJson(
+                  json_['privateConnectivity']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           privateServiceConnectConnectivity:
               json_.containsKey('privateServiceConnectConnectivity')
                   ? PrivateServiceConnectConnectivity.fromJson(
                       json_['privateServiceConnectConnectivity']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           ssl: json_.containsKey('ssl')
               ? SslConfig.fromJson(
-                  json_['ssl'] as core.Map<core.String, core.dynamic>)
+                  json_['ssl'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           staticIpConnectivity: json_.containsKey('staticIpConnectivity')
-              ? StaticIpConnectivity.fromJson(json_['staticIpConnectivity']
-                  as core.Map<core.String, core.dynamic>)
+              ? StaticIpConnectivity.fromJson(
+                  json_['staticIpConnectivity']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           username: json_['username'] as core.String?,
         );
@@ -9853,17 +9864,16 @@ class SqlServerDatabaseBackup {
   /// Optional.
   SqlServerEncryptionOptions? encryptionOptions;
 
-  SqlServerDatabaseBackup({
-    this.database,
-    this.encryptionOptions,
-  });
+  SqlServerDatabaseBackup({this.database, this.encryptionOptions});
 
   SqlServerDatabaseBackup.fromJson(core.Map json_)
       : this(
           database: json_['database'] as core.String?,
           encryptionOptions: json_.containsKey('encryptionOptions')
-              ? SqlServerEncryptionOptions.fromJson(json_['encryptionOptions']
-                  as core.Map<core.String, core.dynamic>)
+              ? SqlServerEncryptionOptions.fromJson(
+                  json_['encryptionOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -9900,11 +9910,7 @@ class SqlServerEncryptionOptions {
   /// Required.
   core.String? pvkPath;
 
-  SqlServerEncryptionOptions({
-    this.certPath,
-    this.pvkPassword,
-    this.pvkPath,
-  });
+  SqlServerEncryptionOptions({this.certPath, this.pvkPassword, this.pvkPath});
 
   SqlServerEncryptionOptions.fromJson(core.Map json_)
       : this(
@@ -9962,8 +9968,11 @@ class SqlServerHomogeneousMigrationJobConfig {
       : this(
           backupFilePattern: json_['backupFilePattern'] as core.String?,
           databaseBackups: (json_['databaseBackups'] as core.List?)
-              ?.map((value) => SqlServerDatabaseBackup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => SqlServerDatabaseBackup.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           promoteWhenReady: json_['promoteWhenReady'] as core.bool?,
           useDiffBackup: json_['useDiffBackup'] as core.bool?,
@@ -9982,14 +9991,10 @@ class SshScript {
   /// The ssh configuration script.
   core.String? script;
 
-  SshScript({
-    this.script,
-  });
+  SshScript({this.script});
 
   SshScript.fromJson(core.Map json_)
-      : this(
-          script: json_['script'] as core.String?,
-        );
+      : this(script: json_['script'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (script != null) 'script': script!,
@@ -10067,14 +10072,10 @@ class StartMigrationJobRequest {
   /// Optional.
   core.bool? skipValidation;
 
-  StartMigrationJobRequest({
-    this.skipValidation,
-  });
+  StartMigrationJobRequest({this.skipValidation});
 
   StartMigrationJobRequest.fromJson(core.Map json_)
-      : this(
-          skipValidation: json_['skipValidation'] as core.bool?,
-        );
+      : this(skipValidation: json_['skipValidation'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (skipValidation != null) 'skipValidation': skipValidation!,
@@ -10114,10 +10115,7 @@ class StoredProcedureEntity {
   /// The SQL code which creates the stored procedure.
   core.String? sqlCode;
 
-  StoredProcedureEntity({
-    this.customFeatures,
-    this.sqlCode,
-  });
+  StoredProcedureEntity({this.customFeatures, this.sqlCode});
 
   StoredProcedureEntity.fromJson(core.Map json_)
       : this(
@@ -10166,11 +10164,7 @@ class SynonymEntity {
   /// - "DATABASE_ENTITY_TYPE_DATABASE" : Database.
   core.String? sourceType;
 
-  SynonymEntity({
-    this.customFeatures,
-    this.sourceEntity,
-    this.sourceType,
-  });
+  SynonymEntity({this.customFeatures, this.sourceEntity, this.sourceType});
 
   SynonymEntity.fromJson(core.Map json_)
       : this(
@@ -10223,24 +10217,36 @@ class TableEntity {
   TableEntity.fromJson(core.Map json_)
       : this(
           columns: (json_['columns'] as core.List?)
-              ?.map((value) => ColumnEntity.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ColumnEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           comment: json_['comment'] as core.String?,
           constraints: (json_['constraints'] as core.List?)
-              ?.map((value) => ConstraintEntity.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ConstraintEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           customFeatures: json_.containsKey('customFeatures')
               ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
               : null,
           indices: (json_['indices'] as core.List?)
-              ?.map((value) => IndexEntity.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => IndexEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           triggers: (json_['triggers'] as core.List?)
-              ?.map((value) => TriggerEntity.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TriggerEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -10259,14 +10265,10 @@ class TcpProxyScript {
   /// The TCP Proxy configuration script.
   core.String? script;
 
-  TcpProxyScript({
-    this.script,
-  });
+  TcpProxyScript({this.script});
 
   TcpProxyScript.fromJson(core.Map json_)
-      : this(
-          script: json_['script'] as core.String?,
-        );
+      : this(script: json_['script'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (script != null) 'script': script!,
@@ -10346,11 +10348,7 @@ class UDTEntity {
   /// The SQL code which creates the udt.
   core.String? udtSqlCode;
 
-  UDTEntity({
-    this.customFeatures,
-    this.udtBody,
-    this.udtSqlCode,
-  });
+  UDTEntity({this.customFeatures, this.udtBody, this.udtSqlCode});
 
   UDTEntity.fromJson(core.Map json_)
       : this(
@@ -10383,11 +10381,7 @@ class UserPassword {
   /// The database username.
   core.String? user;
 
-  UserPassword({
-    this.password,
-    this.passwordSet,
-    this.user,
-  });
+  UserPassword({this.password, this.passwordSet, this.user});
 
   UserPassword.fromJson(core.Map json_)
       : this(
@@ -10429,11 +10423,7 @@ class ValueListFilter {
   /// Required.
   core.List<core.String>? values;
 
-  ValueListFilter({
-    this.ignoreCase,
-    this.valuePresentList,
-    this.values,
-  });
+  ValueListFilter({this.ignoreCase, this.valuePresentList, this.values});
 
   ValueListFilter.fromJson(core.Map json_)
       : this(
@@ -10521,43 +10511,57 @@ class ValueTransformation {
       : this(
           applyHash: json_.containsKey('applyHash')
               ? ApplyHash.fromJson(
-                  json_['applyHash'] as core.Map<core.String, core.dynamic>)
+                  json_['applyHash'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           assignMaxValue: json_.containsKey('assignMaxValue')
-              ? Empty.fromJson(json_['assignMaxValue']
-                  as core.Map<core.String, core.dynamic>)
+              ? Empty.fromJson(
+                  json_['assignMaxValue']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           assignMinValue: json_.containsKey('assignMinValue')
-              ? Empty.fromJson(json_['assignMinValue']
-                  as core.Map<core.String, core.dynamic>)
+              ? Empty.fromJson(
+                  json_['assignMinValue']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           assignNull: json_.containsKey('assignNull')
               ? Empty.fromJson(
-                  json_['assignNull'] as core.Map<core.String, core.dynamic>)
+                  json_['assignNull'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           assignSpecificValue: json_.containsKey('assignSpecificValue')
-              ? AssignSpecificValue.fromJson(json_['assignSpecificValue']
-                  as core.Map<core.String, core.dynamic>)
+              ? AssignSpecificValue.fromJson(
+                  json_['assignSpecificValue']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           doubleComparison: json_.containsKey('doubleComparison')
-              ? DoubleComparisonFilter.fromJson(json_['doubleComparison']
-                  as core.Map<core.String, core.dynamic>)
+              ? DoubleComparisonFilter.fromJson(
+                  json_['doubleComparison']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           intComparison: json_.containsKey('intComparison')
               ? IntComparisonFilter.fromJson(
-                  json_['intComparison'] as core.Map<core.String, core.dynamic>)
+                  json_['intComparison'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           isNull: json_.containsKey('isNull')
               ? Empty.fromJson(
-                  json_['isNull'] as core.Map<core.String, core.dynamic>)
+                  json_['isNull'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           roundScale: json_.containsKey('roundScale')
               ? RoundToScale.fromJson(
-                  json_['roundScale'] as core.Map<core.String, core.dynamic>)
+                  json_['roundScale'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           valueList: json_.containsKey('valueList')
               ? ValueListFilter.fromJson(
-                  json_['valueList'] as core.Map<core.String, core.dynamic>)
+                  json_['valueList'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -10592,16 +10596,14 @@ class VerifyMigrationJobRequest {
   /// Optional.
   core.String? updateMask;
 
-  VerifyMigrationJobRequest({
-    this.migrationJob,
-    this.updateMask,
-  });
+  VerifyMigrationJobRequest({this.migrationJob, this.updateMask});
 
   VerifyMigrationJobRequest.fromJson(core.Map json_)
       : this(
           migrationJob: json_.containsKey('migrationJob')
               ? MigrationJob.fromJson(
-                  json_['migrationJob'] as core.Map<core.String, core.dynamic>)
+                  json_['migrationJob'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -10626,17 +10628,16 @@ class ViewEntity {
   /// The SQL code which creates the view.
   core.String? sqlCode;
 
-  ViewEntity({
-    this.constraints,
-    this.customFeatures,
-    this.sqlCode,
-  });
+  ViewEntity({this.constraints, this.customFeatures, this.sqlCode});
 
   ViewEntity.fromJson(core.Map json_)
       : this(
           constraints: (json_['constraints'] as core.List?)
-              ?.map((value) => ConstraintEntity.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ConstraintEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           customFeatures: json_.containsKey('customFeatures')
               ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
@@ -10664,11 +10665,7 @@ class VmCreationConfig {
   /// The Google Cloud Platform zone to create the VM in.
   core.String? vmZone;
 
-  VmCreationConfig({
-    this.subnet,
-    this.vmMachineType,
-    this.vmZone,
-  });
+  VmCreationConfig({this.subnet, this.vmMachineType, this.vmZone});
 
   VmCreationConfig.fromJson(core.Map json_)
       : this(
@@ -10691,14 +10688,10 @@ class VmSelectionConfig {
   /// Required.
   core.String? vmZone;
 
-  VmSelectionConfig({
-    this.vmZone,
-  });
+  VmSelectionConfig({this.vmZone});
 
   VmSelectionConfig.fromJson(core.Map json_)
-      : this(
-          vmZone: json_['vmZone'] as core.String?,
-        );
+      : this(vmZone: json_['vmZone'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (vmZone != null) 'vmZone': vmZone!,
@@ -10721,10 +10714,7 @@ class VpcPeeringConfig {
   /// Required.
   core.String? vpcName;
 
-  VpcPeeringConfig({
-    this.subnet,
-    this.vpcName,
-  });
+  VpcPeeringConfig({this.subnet, this.vpcName});
 
   VpcPeeringConfig.fromJson(core.Map json_)
       : this(
@@ -10746,14 +10736,10 @@ class VpcPeeringConnectivity {
   /// The name of the VPC network to peer with the Cloud SQL private network.
   core.String? vpc;
 
-  VpcPeeringConnectivity({
-    this.vpc,
-  });
+  VpcPeeringConnectivity({this.vpc});
 
   VpcPeeringConnectivity.fromJson(core.Map json_)
-      : this(
-          vpc: json_['vpc'] as core.String?,
-        );
+      : this(vpc: json_['vpc'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (vpc != null) 'vpc': vpc!,

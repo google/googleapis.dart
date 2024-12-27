@@ -219,11 +219,16 @@ class DirectoryApi {
   VerificationCodesResource get verificationCodes =>
       VerificationCodesResource(_requester);
 
-  DirectoryApi(http.Client client,
-      {core.String rootUrl = 'https://admin.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DirectoryApi(
+    http.Client client, {
+    core.String rootUrl = 'https://admin.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class AspsResource {
@@ -328,10 +333,7 @@ class AspsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Asps> list(
-    core.String userKey, {
-    core.String? $fields,
-  }) async {
+  async.Future<Asps> list(core.String userKey, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -368,10 +370,7 @@ class ChannelsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> stop(
-    Channel request, {
-    core.String? $fields,
-  }) async {
+  async.Future<void> stop(Channel request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -515,7 +514,8 @@ class ChromeosdevicesResource {
       queryParams: queryParams_,
     );
     return ChromeOsDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a paginated list of Chrome OS devices within an account.
@@ -616,7 +616,8 @@ class ChromeosdevicesResource {
       queryParams: queryParams_,
     );
     return ChromeOsDevices.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Moves or inserts multiple Chrome OS devices to an organizational unit.
@@ -727,7 +728,8 @@ class ChromeosdevicesResource {
       queryParams: queryParams_,
     );
     return ChromeOsDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a device's updatable properties, such as `annotatedUser`,
@@ -790,7 +792,8 @@ class ChromeosdevicesResource {
       queryParams: queryParams_,
     );
     return ChromeOsDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -862,7 +865,8 @@ class CustomerDevicesChromeosResource {
       queryParams: queryParams_,
     );
     return BatchChangeChromeOsDeviceStatusResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Issues a command for the device to execute.
@@ -909,7 +913,8 @@ class CustomerDevicesChromeosResource {
       queryParams: queryParams_,
     );
     return DirectoryChromeosdevicesIssueCommandResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -962,7 +967,8 @@ class CustomerDevicesChromeosCommandsResource {
       queryParams: queryParams_,
     );
     return DirectoryChromeosdevicesCommand.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1148,7 +1154,8 @@ class CustomersChromePrintServersResource {
       queryParams: queryParams_,
     );
     return BatchCreatePrintServersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes multiple print servers.
@@ -1194,7 +1201,8 @@ class CustomersChromePrintServersResource {
       queryParams: queryParams_,
     );
     return BatchDeletePrintServersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a print server.
@@ -1239,7 +1247,8 @@ class CustomersChromePrintServersResource {
       queryParams: queryParams_,
     );
     return PrintServer.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a print server.
@@ -1260,10 +1269,7 @@ class CustomersChromePrintServersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1313,7 +1319,8 @@ class CustomersChromePrintServersResource {
       queryParams: queryParams_,
     );
     return PrintServer.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists print server configurations.
@@ -1386,7 +1393,8 @@ class CustomersChromePrintServersResource {
       queryParams: queryParams_,
     );
     return ListPrintServersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a print server's configuration.
@@ -1433,7 +1441,8 @@ class CustomersChromePrintServersResource {
       queryParams: queryParams_,
     );
     return PrintServer.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1484,7 +1493,8 @@ class CustomersChromePrintersResource {
       queryParams: queryParams_,
     );
     return BatchCreatePrintersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes printers in batch.
@@ -1528,7 +1538,8 @@ class CustomersChromePrintersResource {
       queryParams: queryParams_,
     );
     return BatchDeletePrintersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a printer under given Organization Unit.
@@ -1592,10 +1603,7 @@ class CustomersChromePrintersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1628,10 +1636,7 @@ class CustomersChromePrintersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Printer> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Printer> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1713,7 +1718,8 @@ class CustomersChromePrintersResource {
       queryParams: queryParams_,
     );
     return ListPrintersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the supported printer models.
@@ -1767,7 +1773,8 @@ class CustomersChromePrintersResource {
       queryParams: queryParams_,
     );
     return ListPrinterModelsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a `Printer` resource.
@@ -1912,7 +1919,8 @@ class DomainAliasesResource {
       queryParams: queryParams_,
     );
     return DomainAlias.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Inserts a domain alias of the customer.
@@ -1954,7 +1962,8 @@ class DomainAliasesResource {
       queryParams: queryParams_,
     );
     return DomainAlias.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the domain aliases of the customer.
@@ -2002,7 +2011,8 @@ class DomainAliasesResource {
       queryParams: queryParams_,
     );
     return DomainAliases.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2237,10 +2247,7 @@ class GroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Group> get(
-    core.String groupKey, {
-    core.String? $fields,
-  }) async {
+  async.Future<Group> get(core.String groupKey, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2272,10 +2279,7 @@ class GroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Group> insert(
-    Group request, {
-    core.String? $fields,
-  }) async {
+  async.Future<Group> insert(Group request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -2721,7 +2725,8 @@ class MembersResource {
       queryParams: queryParams_,
     );
     return MembersHasMember.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Adds a user to the specified group.
@@ -3076,7 +3081,8 @@ class MobiledevicesResource {
       queryParams: queryParams_,
     );
     return MobileDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a paginated list of all user-owned mobile devices for an
@@ -3169,7 +3175,8 @@ class MobiledevicesResource {
       queryParams: queryParams_,
     );
     return MobileDevices.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3519,7 +3526,8 @@ class PrivilegesResource {
       queryParams: queryParams_,
     );
     return Privileges.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3929,7 +3937,8 @@ class ResourcesCalendarsResource {
       queryParams: queryParams_,
     );
     return CalendarResource.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Inserts a calendar resource.
@@ -3973,7 +3982,8 @@ class ResourcesCalendarsResource {
       queryParams: queryParams_,
     );
     return CalendarResource.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a list of calendar resources for an account.
@@ -4044,7 +4054,8 @@ class ResourcesCalendarsResource {
       queryParams: queryParams_,
     );
     return CalendarResources.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Patches a calendar resource.
@@ -4092,7 +4103,8 @@ class ResourcesCalendarsResource {
       queryParams: queryParams_,
     );
     return CalendarResource.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a calendar resource.
@@ -4144,7 +4156,8 @@ class ResourcesCalendarsResource {
       queryParams: queryParams_,
     );
     return CalendarResource.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4553,7 +4566,8 @@ class RoleAssignmentsResource {
       queryParams: queryParams_,
     );
     return RoleAssignment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a role assignment.
@@ -4595,7 +4609,8 @@ class RoleAssignmentsResource {
       queryParams: queryParams_,
     );
     return RoleAssignment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a paginated list of all roleAssignments.
@@ -4666,7 +4681,8 @@ class RoleAssignmentsResource {
       queryParams: queryParams_,
     );
     return RoleAssignments.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5308,10 +5324,7 @@ class TokensResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Tokens> list(
-    core.String userKey, {
-    core.String? $fields,
-  }) async {
+  async.Future<Tokens> list(core.String userKey, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5394,10 +5407,7 @@ class UsersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> delete(
-    core.String userKey, {
-    core.String? $fields,
-  }) async {
+  async.Future<void> delete(core.String userKey, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6186,10 +6196,7 @@ class UsersPhotosResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> delete(
-    core.String userKey, {
-    core.String? $fields,
-  }) async {
+  async.Future<void> delete(core.String userKey, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6440,7 +6447,8 @@ class VerificationCodesResource {
       queryParams: queryParams_,
     );
     return VerificationCodes.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6452,13 +6460,7 @@ class Alias {
   core.String? kind;
   core.String? primaryEmail;
 
-  Alias({
-    this.alias,
-    this.etag,
-    this.id,
-    this.kind,
-    this.primaryEmail,
-  });
+  Alias({this.alias, this.etag, this.id, this.kind, this.primaryEmail});
 
   Alias.fromJson(core.Map json_)
       : this(
@@ -6488,11 +6490,7 @@ class Aliases {
   core.String? etag;
   core.String? kind;
 
-  Aliases({
-    this.aliases,
-    this.etag,
-    this.kind,
-  });
+  Aliases({this.aliases, this.etag, this.kind});
 
   Aliases.fromJson(core.Map json_)
       : this(
@@ -6591,18 +6589,17 @@ class Asps {
   /// This is always `admin#directory#aspList`.
   core.String? kind;
 
-  Asps({
-    this.etag,
-    this.items,
-    this.kind,
-  });
+  Asps({this.etag, this.items, this.kind});
 
   Asps.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  Asp.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Asp.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -6635,11 +6632,7 @@ class AuxiliaryMessage {
   /// - "SEVERITY_ERROR" : Message of severity: error.
   core.String? severity;
 
-  AuxiliaryMessage({
-    this.auxiliaryMessage,
-    this.fieldMask,
-    this.severity,
-  });
+  AuxiliaryMessage({this.auxiliaryMessage, this.fieldMask, this.severity});
 
   AuxiliaryMessage.fromJson(core.Map json_)
       : this(
@@ -6674,11 +6667,7 @@ class BacklightInfo {
   /// Output only.
   core.String? path;
 
-  BacklightInfo({
-    this.brightness,
-    this.maxBrightness,
-    this.path,
-  });
+  BacklightInfo({this.brightness, this.maxBrightness, this.path});
 
   BacklightInfo.fromJson(core.Map json_)
       : this(
@@ -6803,8 +6792,11 @@ class BatchChangeChromeOsDeviceStatusResponse {
       : this(
           changeChromeOsDeviceStatusResults:
               (json_['changeChromeOsDeviceStatusResults'] as core.List?)
-                  ?.map((value) => ChangeChromeOsDeviceStatusResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  ?.map(
+                    (value) => ChangeChromeOsDeviceStatusResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  )
                   .toList(),
         );
 
@@ -6822,15 +6814,16 @@ class BatchCreatePrintServersRequest {
   /// Required.
   core.List<CreatePrintServerRequest>? requests;
 
-  BatchCreatePrintServersRequest({
-    this.requests,
-  });
+  BatchCreatePrintServersRequest({this.requests});
 
   BatchCreatePrintServersRequest.fromJson(core.Map json_)
       : this(
           requests: (json_['requests'] as core.List?)
-              ?.map((value) => CreatePrintServerRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CreatePrintServerRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -6848,20 +6841,23 @@ class BatchCreatePrintServersResponse {
   /// A list of successfully created print servers with their IDs populated.
   core.List<PrintServer>? printServers;
 
-  BatchCreatePrintServersResponse({
-    this.failures,
-    this.printServers,
-  });
+  BatchCreatePrintServersResponse({this.failures, this.printServers});
 
   BatchCreatePrintServersResponse.fromJson(core.Map json_)
       : this(
           failures: (json_['failures'] as core.List?)
-              ?.map((value) => PrintServerFailureInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PrintServerFailureInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           printServers: (json_['printServers'] as core.List?)
-              ?.map((value) => PrintServer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PrintServer.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -6878,15 +6874,16 @@ class BatchCreatePrintersRequest {
   /// Max 50 at a time.
   core.List<CreatePrinterRequest>? requests;
 
-  BatchCreatePrintersRequest({
-    this.requests,
-  });
+  BatchCreatePrintersRequest({this.requests});
 
   BatchCreatePrintersRequest.fromJson(core.Map json_)
       : this(
           requests: (json_['requests'] as core.List?)
-              ?.map((value) => CreatePrinterRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CreatePrinterRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -6905,20 +6902,23 @@ class BatchCreatePrintersResponse {
   /// A list of successfully created printers with their IDs populated.
   core.List<Printer>? printers;
 
-  BatchCreatePrintersResponse({
-    this.failures,
-    this.printers,
-  });
+  BatchCreatePrintersResponse({this.failures, this.printers});
 
   BatchCreatePrintersResponse.fromJson(core.Map json_)
       : this(
           failures: (json_['failures'] as core.List?)
-              ?.map((value) => FailureInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => FailureInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           printers: (json_['printers'] as core.List?)
-              ?.map((value) => Printer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Printer.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -6933,9 +6933,7 @@ class BatchDeletePrintServersRequest {
   /// A list of print server IDs that should be deleted (max `100` per batch).
   core.List<core.String>? printServerIds;
 
-  BatchDeletePrintServersRequest({
-    this.printServerIds,
-  });
+  BatchDeletePrintServersRequest({this.printServerIds});
 
   BatchDeletePrintServersRequest.fromJson(core.Map json_)
       : this(
@@ -6964,8 +6962,11 @@ class BatchDeletePrintServersResponse {
   BatchDeletePrintServersResponse.fromJson(core.Map json_)
       : this(
           failedPrintServers: (json_['failedPrintServers'] as core.List?)
-              ?.map((value) => PrintServerFailureInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PrintServerFailureInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           printServerIds: (json_['printServerIds'] as core.List?)
               ?.map((value) => value as core.String)
@@ -6986,9 +6987,7 @@ class BatchDeletePrintersRequest {
   /// Max 100 at a time.
   core.List<core.String>? printerIds;
 
-  BatchDeletePrintersRequest({
-    this.printerIds,
-  });
+  BatchDeletePrintersRequest({this.printerIds});
 
   BatchDeletePrintersRequest.fromJson(core.Map json_)
       : this(
@@ -7010,16 +7009,16 @@ class BatchDeletePrintersResponse {
   /// A list of Printer.id that were successfully deleted.
   core.List<core.String>? printerIds;
 
-  BatchDeletePrintersResponse({
-    this.failedPrinters,
-    this.printerIds,
-  });
+  BatchDeletePrintersResponse({this.failedPrinters, this.printerIds});
 
   BatchDeletePrintersResponse.fromJson(core.Map json_)
       : this(
           failedPrinters: (json_['failedPrinters'] as core.List?)
-              ?.map((value) => FailureInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => FailureInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           printerIds: (json_['printerIds'] as core.List?)
               ?.map((value) => value as core.String)
@@ -7089,13 +7088,15 @@ class Building {
       : this(
           address: json_.containsKey('address')
               ? BuildingAddress.fromJson(
-                  json_['address'] as core.Map<core.String, core.dynamic>)
+                  json_['address'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           buildingId: json_['buildingId'] as core.String?,
           buildingName: json_['buildingName'] as core.String?,
           coordinates: json_.containsKey('coordinates')
               ? BuildingCoordinates.fromJson(
-                  json_['coordinates'] as core.Map<core.String, core.dynamic>)
+                  json_['coordinates'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           description: json_['description'] as core.String?,
           etags: json_['etags'] as core.String?,
@@ -7200,10 +7201,7 @@ class BuildingCoordinates {
   /// Longitude in decimal degrees.
   core.double? longitude;
 
-  BuildingCoordinates({
-    this.latitude,
-    this.longitude,
-  });
+  BuildingCoordinates({this.latitude, this.longitude});
 
   BuildingCoordinates.fromJson(core.Map json_)
       : this(
@@ -7234,18 +7232,16 @@ class Buildings {
   /// results.
   core.String? nextPageToken;
 
-  Buildings({
-    this.buildings,
-    this.etag,
-    this.kind,
-    this.nextPageToken,
-  });
+  Buildings({this.buildings, this.etag, this.kind, this.nextPageToken});
 
   Buildings.fromJson(core.Map json_)
       : this(
           buildings: (json_['buildings'] as core.List?)
-              ?.map((value) => Building.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Building.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           kind: json_['kind'] as core.String?,
@@ -7272,10 +7268,7 @@ class ByteUsage {
   /// Output only.
   core.String? usedBytes;
 
-  ByteUsage({
-    this.capacityBytes,
-    this.usedBytes,
-  });
+  ByteUsage({this.capacityBytes, this.usedBytes});
 
   ByteUsage.fromJson(core.Map json_)
       : this(
@@ -7431,19 +7424,17 @@ class CalendarResources {
   /// results.
   core.String? nextPageToken;
 
-  CalendarResources({
-    this.etag,
-    this.items,
-    this.kind,
-    this.nextPageToken,
-  });
+  CalendarResources({this.etag, this.items, this.kind, this.nextPageToken});
 
   CalendarResources.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => CalendarResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CalendarResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
@@ -7468,22 +7459,20 @@ class ChangeChromeOsDeviceStatusResult {
   /// The device could change its status successfully.
   ChangeChromeOsDeviceStatusSucceeded? response;
 
-  ChangeChromeOsDeviceStatusResult({
-    this.deviceId,
-    this.error,
-    this.response,
-  });
+  ChangeChromeOsDeviceStatusResult({this.deviceId, this.error, this.response});
 
   ChangeChromeOsDeviceStatusResult.fromJson(core.Map json_)
       : this(
           deviceId: json_['deviceId'] as core.String?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           response: json_.containsKey('response')
               ? ChangeChromeOsDeviceStatusSucceeded.fromJson(
-                  json_['response'] as core.Map<core.String, core.dynamic>)
+                  json_['response'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -7565,10 +7554,7 @@ class Channel {
           kind: json_['kind'] as core.String?,
           params:
               (json_['params'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           payload: json_['payload'] as core.bool?,
           resourceId: json_['resourceId'] as core.String?,
@@ -7598,10 +7584,7 @@ class ChromeOsDeviceActiveTimeRanges {
   /// Date of usage
   core.DateTime? date;
 
-  ChromeOsDeviceActiveTimeRanges({
-    this.activeTime,
-    this.date,
-  });
+  ChromeOsDeviceActiveTimeRanges({this.activeTime, this.date});
 
   ChromeOsDeviceActiveTimeRanges.fromJson(core.Map json_)
       : this(
@@ -7673,8 +7656,11 @@ class ChromeOsDeviceCpuInfoLogicalCpus {
   ChromeOsDeviceCpuInfoLogicalCpus.fromJson(core.Map json_)
       : this(
           cStates: (json_['cStates'] as core.List?)
-              ?.map((value) => ChromeOsDeviceCpuInfoLogicalCpusCStates.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ChromeOsDeviceCpuInfoLogicalCpusCStates.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           currentScalingFrequencyKhz:
               json_['currentScalingFrequencyKhz'] as core.int?,
@@ -7717,8 +7703,11 @@ class ChromeOsDeviceCpuInfo {
       : this(
           architecture: json_['architecture'] as core.String?,
           logicalCpus: (json_['logicalCpus'] as core.List?)
-              ?.map((value) => ChromeOsDeviceCpuInfoLogicalCpus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ChromeOsDeviceCpuInfoLogicalCpus.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           maxClockSpeedKhz: json_['maxClockSpeedKhz'] as core.int?,
           model: json_['model'] as core.String?,
@@ -7774,9 +7763,12 @@ class ChromeOsDeviceCpuStatusReports {
   ChromeOsDeviceCpuStatusReports.fromJson(core.Map json_)
       : this(
           cpuTemperatureInfo: (json_['cpuTemperatureInfo'] as core.List?)
-              ?.map((value) =>
-                  ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) =>
+                    ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           cpuUtilizationPercentageInfo:
               (json_['cpuUtilizationPercentageInfo'] as core.List?)
@@ -7870,16 +7862,16 @@ class ChromeOsDeviceDiskVolumeReports {
   /// Disk volumes
   core.List<ChromeOsDeviceDiskVolumeReportsVolumeInfo>? volumeInfo;
 
-  ChromeOsDeviceDiskVolumeReports({
-    this.volumeInfo,
-  });
+  ChromeOsDeviceDiskVolumeReports({this.volumeInfo});
 
   ChromeOsDeviceDiskVolumeReports.fromJson(core.Map json_)
       : this(
           volumeInfo: (json_['volumeInfo'] as core.List?)
-              ?.map((value) =>
-                  ChromeOsDeviceDiskVolumeReportsVolumeInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ChromeOsDeviceDiskVolumeReportsVolumeInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -7896,10 +7888,7 @@ class ChromeOsDeviceLastKnownNetwork {
   /// The WAN IP address.
   core.String? wanIpAddress;
 
-  ChromeOsDeviceLastKnownNetwork({
-    this.ipAddress,
-    this.wanIpAddress,
-  });
+  ChromeOsDeviceLastKnownNetwork({this.ipAddress, this.wanIpAddress});
 
   ChromeOsDeviceLastKnownNetwork.fromJson(core.Map json_)
       : this(
@@ -7923,10 +7912,7 @@ class ChromeOsDeviceRecentUsers {
   /// The type of the user.
   core.String? type;
 
-  ChromeOsDeviceRecentUsers({
-    this.email,
-    this.type,
-  });
+  ChromeOsDeviceRecentUsers({this.email, this.type});
 
   ChromeOsDeviceRecentUsers.fromJson(core.Map json_)
       : this(
@@ -7984,10 +7970,7 @@ class ChromeOsDeviceSystemRamFreeReports {
   core.DateTime? reportTime;
   core.List<core.String>? systemRamFreeInfo;
 
-  ChromeOsDeviceSystemRamFreeReports({
-    this.reportTime,
-    this.systemRamFreeInfo,
-  });
+  ChromeOsDeviceSystemRamFreeReports({this.reportTime, this.systemRamFreeInfo});
 
   ChromeOsDeviceSystemRamFreeReports.fromJson(core.Map json_)
       : this(
@@ -8416,8 +8399,11 @@ class ChromeOsDevice {
   ChromeOsDevice.fromJson(core.Map json_)
       : this(
           activeTimeRanges: (json_['activeTimeRanges'] as core.List?)
-              ?.map((value) => ChromeOsDeviceActiveTimeRanges.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ChromeOsDeviceActiveTimeRanges.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           annotatedAssetId: json_['annotatedAssetId'] as core.String?,
           annotatedLocation: json_['annotatedLocation'] as core.String?,
@@ -8425,33 +8411,50 @@ class ChromeOsDevice {
           autoUpdateExpiration: json_['autoUpdateExpiration'] as core.String?,
           autoUpdateThrough: json_['autoUpdateThrough'] as core.String?,
           backlightInfo: (json_['backlightInfo'] as core.List?)
-              ?.map((value) => BacklightInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => BacklightInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           bootMode: json_['bootMode'] as core.String?,
           chromeOsType: json_['chromeOsType'] as core.String?,
           cpuInfo: (json_['cpuInfo'] as core.List?)
-              ?.map((value) => ChromeOsDeviceCpuInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ChromeOsDeviceCpuInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           cpuStatusReports: (json_['cpuStatusReports'] as core.List?)
-              ?.map((value) => ChromeOsDeviceCpuStatusReports.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ChromeOsDeviceCpuStatusReports.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           deprovisionReason: json_['deprovisionReason'] as core.String?,
           deviceFiles: (json_['deviceFiles'] as core.List?)
-              ?.map((value) => ChromeOsDeviceDeviceFiles.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ChromeOsDeviceDeviceFiles.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           deviceId: json_['deviceId'] as core.String?,
           deviceLicenseType: json_['deviceLicenseType'] as core.String?,
           diskSpaceUsage: json_.containsKey('diskSpaceUsage')
-              ? ByteUsage.fromJson(json_['diskSpaceUsage']
-                  as core.Map<core.String, core.dynamic>)
+              ? ByteUsage.fromJson(
+                  json_['diskSpaceUsage']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           diskVolumeReports: (json_['diskVolumeReports'] as core.List?)
-              ?.map((value) => ChromeOsDeviceDiskVolumeReports.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ChromeOsDeviceDiskVolumeReports.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           dockMacAddress: json_['dockMacAddress'] as core.String?,
           etag: json_['etag'] as core.String?,
@@ -8462,8 +8465,11 @@ class ChromeOsDevice {
           extendedSupportEnabled: json_['extendedSupportEnabled'] as core.bool?,
           extendedSupportStart: json_['extendedSupportStart'] as core.String?,
           fanInfo: (json_['fanInfo'] as core.List?)
-              ?.map((value) => FanInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => FanInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           firmwareVersion: json_['firmwareVersion'] as core.String?,
           firstEnrollmentTime: json_['firstEnrollmentTime'] as core.String?,
@@ -8471,11 +8477,16 @@ class ChromeOsDevice {
           lastDeprovisionTimestamp:
               json_['lastDeprovisionTimestamp'] as core.String?,
           lastEnrollmentTime: json_.containsKey('lastEnrollmentTime')
-              ? core.DateTime.parse(json_['lastEnrollmentTime'] as core.String)
+              ? core.DateTime.parse(
+                  json_['lastEnrollmentTime'] as core.String,
+                )
               : null,
           lastKnownNetwork: (json_['lastKnownNetwork'] as core.List?)
-              ?.map((value) => ChromeOsDeviceLastKnownNetwork.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ChromeOsDeviceLastKnownNetwork.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           lastSync: json_.containsKey('lastSync')
               ? core.DateTime.parse(json_['lastSync'] as core.String)
@@ -8489,18 +8500,26 @@ class ChromeOsDevice {
           orgUnitId: json_['orgUnitId'] as core.String?,
           orgUnitPath: json_['orgUnitPath'] as core.String?,
           osUpdateStatus: json_.containsKey('osUpdateStatus')
-              ? OsUpdateStatus.fromJson(json_['osUpdateStatus']
-                  as core.Map<core.String, core.dynamic>)
+              ? OsUpdateStatus.fromJson(
+                  json_['osUpdateStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           osVersion: json_['osVersion'] as core.String?,
           platformVersion: json_['platformVersion'] as core.String?,
           recentUsers: (json_['recentUsers'] as core.List?)
-              ?.map((value) => ChromeOsDeviceRecentUsers.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ChromeOsDeviceRecentUsers.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           screenshotFiles: (json_['screenshotFiles'] as core.List?)
-              ?.map((value) => ChromeOsDeviceScreenshotFiles.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ChromeOsDeviceScreenshotFiles.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           serialNumber: json_['serialNumber'] as core.String?,
           status: json_['status'] as core.String?,
@@ -8508,13 +8527,18 @@ class ChromeOsDevice {
               ? core.DateTime.parse(json_['supportEndDate'] as core.String)
               : null,
           systemRamFreeReports: (json_['systemRamFreeReports'] as core.List?)
-              ?.map((value) => ChromeOsDeviceSystemRamFreeReports.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ChromeOsDeviceSystemRamFreeReports.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           systemRamTotal: json_['systemRamTotal'] as core.String?,
           tpmVersionInfo: json_.containsKey('tpmVersionInfo')
-              ? ChromeOsDeviceTpmVersionInfo.fromJson(json_['tpmVersionInfo']
-                  as core.Map<core.String, core.dynamic>)
+              ? ChromeOsDeviceTpmVersionInfo.fromJson(
+                  json_['tpmVersionInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           willAutoRenew: json_['willAutoRenew'] as core.bool?,
         );
@@ -8598,10 +8622,7 @@ class ChromeOsDeviceAction {
   /// licenses for perpetual subscription customers.
   core.String? deprovisionReason;
 
-  ChromeOsDeviceAction({
-    this.action,
-    this.deprovisionReason,
-  });
+  ChromeOsDeviceAction({this.action, this.deprovisionReason});
 
   ChromeOsDeviceAction.fromJson(core.Map json_)
       : this(
@@ -8641,8 +8662,11 @@ class ChromeOsDevices {
   ChromeOsDevices.fromJson(core.Map json_)
       : this(
           chromeosdevices: (json_['chromeosdevices'] as core.List?)
-              ?.map((value) => ChromeOsDevice.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => ChromeOsDevice.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           kind: json_['kind'] as core.String?,
@@ -8661,9 +8685,7 @@ class ChromeOsMoveDevicesToOu {
   /// Chrome OS devices to be moved to OU
   core.List<core.String>? deviceIds;
 
-  ChromeOsMoveDevicesToOu({
-    this.deviceIds,
-  });
+  ChromeOsMoveDevicesToOu({this.deviceIds});
 
   ChromeOsMoveDevicesToOu.fromJson(core.Map json_)
       : this(
@@ -8698,17 +8720,15 @@ class CreatePrintServerRequest {
   /// Required.
   PrintServer? printServer;
 
-  CreatePrintServerRequest({
-    this.parent,
-    this.printServer,
-  });
+  CreatePrintServerRequest({this.parent, this.printServer});
 
   CreatePrintServerRequest.fromJson(core.Map json_)
       : this(
           parent: json_['parent'] as core.String?,
           printServer: json_.containsKey('printServer')
               ? PrintServer.fromJson(
-                  json_['printServer'] as core.Map<core.String, core.dynamic>)
+                  json_['printServer'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -8736,17 +8756,15 @@ class CreatePrinterRequest {
   /// Required.
   Printer? printer;
 
-  CreatePrinterRequest({
-    this.parent,
-    this.printer,
-  });
+  CreatePrinterRequest({this.parent, this.printer});
 
   CreatePrinterRequest.fromJson(core.Map json_)
       : this(
           parent: json_['parent'] as core.String?,
           printer: json_.containsKey('printer')
               ? Printer.fromJson(
-                  json_['printer'] as core.Map<core.String, core.dynamic>)
+                  json_['printer'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -8815,7 +8833,8 @@ class Customer {
           alternateEmail: json_['alternateEmail'] as core.String?,
           customerCreationTime: json_.containsKey('customerCreationTime')
               ? core.DateTime.parse(
-                  json_['customerCreationTime'] as core.String)
+                  json_['customerCreationTime'] as core.String,
+                )
               : null,
           customerDomain: json_['customerDomain'] as core.String?,
           etag: json_['etag'] as core.String?,
@@ -8825,7 +8844,8 @@ class Customer {
           phoneNumber: json_['phoneNumber'] as core.String?,
           postalAddress: json_.containsKey('postalAddress')
               ? CustomerPostalAddress.fromJson(
-                  json_['postalAddress'] as core.Map<core.String, core.dynamic>)
+                  json_['postalAddress'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -9003,7 +9023,8 @@ class DirectoryChromeosdevicesCommand {
           commandId: json_['commandId'] as core.String?,
           commandResult: json_.containsKey('commandResult')
               ? DirectoryChromeosdevicesCommandResult.fromJson(
-                  json_['commandResult'] as core.Map<core.String, core.dynamic>)
+                  json_['commandResult'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           issueTime: json_['issueTime'] as core.String?,
           payload: json_['payload'] as core.String?,
@@ -9142,10 +9163,7 @@ class DirectoryChromeosdevicesIssueCommandRequest {
   /// [help article](https://support.google.com/chrome/a?p=remote-log).
   core.String? payload;
 
-  DirectoryChromeosdevicesIssueCommandRequest({
-    this.commandType,
-    this.payload,
-  });
+  DirectoryChromeosdevicesIssueCommandRequest({this.commandType, this.payload});
 
   DirectoryChromeosdevicesIssueCommandRequest.fromJson(core.Map json_)
       : this(
@@ -9164,14 +9182,10 @@ class DirectoryChromeosdevicesIssueCommandResponse {
   /// The unique ID of the issued command, used to retrieve the command status.
   core.String? commandId;
 
-  DirectoryChromeosdevicesIssueCommandResponse({
-    this.commandId,
-  });
+  DirectoryChromeosdevicesIssueCommandResponse({this.commandId});
 
   DirectoryChromeosdevicesIssueCommandResponse.fromJson(core.Map json_)
-      : this(
-          commandId: json_['commandId'] as core.String?,
-        );
+      : this(commandId: json_['commandId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commandId != null) 'commandId': commandId!,
@@ -9242,17 +9256,16 @@ class DomainAliases {
   /// Kind of resource this is.
   core.String? kind;
 
-  DomainAliases({
-    this.domainAliases,
-    this.etag,
-    this.kind,
-  });
+  DomainAliases({this.domainAliases, this.etag, this.kind});
 
   DomainAliases.fromJson(core.Map json_)
       : this(
           domainAliases: (json_['domainAliases'] as core.List?)
-              ?.map((value) => DomainAlias.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DomainAlias.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           kind: json_['kind'] as core.String?,
@@ -9308,8 +9321,11 @@ class Domains {
       : this(
           creationTime: json_['creationTime'] as core.String?,
           domainAliases: (json_['domainAliases'] as core.List?)
-              ?.map((value) => DomainAlias.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DomainAlias.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           domainName: json_['domainName'] as core.String?,
           etag: json_['etag'] as core.String?,
@@ -9339,17 +9355,16 @@ class Domains2 {
   /// Kind of resource this is.
   core.String? kind;
 
-  Domains2({
-    this.domains,
-    this.etag,
-    this.kind,
-  });
+  Domains2({this.domains, this.etag, this.kind});
 
   Domains2.fromJson(core.Map json_)
       : this(
           domains: (json_['domains'] as core.List?)
-              ?.map((value) => Domains.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Domains.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           kind: json_['kind'] as core.String?,
@@ -9477,7 +9492,8 @@ class FailureInfo {
           errorMessage: json_['errorMessage'] as core.String?,
           printer: json_.containsKey('printer')
               ? Printer.fromJson(
-                  json_['printer'] as core.Map<core.String, core.dynamic>)
+                  json_['printer'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           printerId: json_['printerId'] as core.String?,
         );
@@ -9497,14 +9513,10 @@ class FanInfo {
   /// Output only.
   core.int? speedRpm;
 
-  FanInfo({
-    this.speedRpm,
-  });
+  FanInfo({this.speedRpm});
 
   FanInfo.fromJson(core.Map json_)
-      : this(
-          speedRpm: json_['speedRpm'] as core.int?,
-        );
+      : this(speedRpm: json_['speedRpm'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (speedRpm != null) 'speedRpm': speedRpm!,
@@ -9522,11 +9534,7 @@ class Feature {
   /// The name of the feature.
   core.String? name;
 
-  Feature({
-    this.etags,
-    this.kind,
-    this.name,
-  });
+  Feature({this.etags, this.kind, this.name});
 
   Feature.fromJson(core.Map json_)
       : this(
@@ -9546,14 +9554,10 @@ class FeatureRename {
   /// New name of the feature.
   core.String? newName;
 
-  FeatureRename({
-    this.newName,
-  });
+  FeatureRename({this.newName});
 
   FeatureRename.fromJson(core.Map json_)
-      : this(
-          newName: json_['newName'] as core.String?,
-        );
+      : this(newName: json_['newName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (newName != null) 'newName': newName!,
@@ -9577,19 +9581,17 @@ class Features {
   /// results.
   core.String? nextPageToken;
 
-  Features({
-    this.etag,
-    this.features,
-    this.kind,
-    this.nextPageToken,
-  });
+  Features({this.etag, this.features, this.kind, this.nextPageToken});
 
   Features.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           features: (json_['features'] as core.List?)
-              ?.map((value) => Feature.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Feature.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
@@ -9738,19 +9740,17 @@ class Groups {
   /// Token used to access next page of this result.
   core.String? nextPageToken;
 
-  Groups({
-    this.etag,
-    this.groups,
-    this.kind,
-    this.nextPageToken,
-  });
+  Groups({this.etag, this.groups, this.kind, this.nextPageToken});
 
   Groups.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           groups: (json_['groups'] as core.List?)
-              ?.map((value) =>
-                  Group.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Group.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
@@ -9774,17 +9774,17 @@ class ListPrintServersResponse {
   /// List of print servers.
   core.List<PrintServer>? printServers;
 
-  ListPrintServersResponse({
-    this.nextPageToken,
-    this.printServers,
-  });
+  ListPrintServersResponse({this.nextPageToken, this.printServers});
 
   ListPrintServersResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           printServers: (json_['printServers'] as core.List?)
-              ?.map((value) => PrintServer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PrintServer.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -9806,17 +9806,17 @@ class ListPrinterModelsResponse {
   /// Some printers may be added or removed over time.
   core.List<PrinterModel>? printerModels;
 
-  ListPrinterModelsResponse({
-    this.nextPageToken,
-    this.printerModels,
-  });
+  ListPrinterModelsResponse({this.nextPageToken, this.printerModels});
 
   ListPrinterModelsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           printerModels: (json_['printerModels'] as core.List?)
-              ?.map((value) => PrinterModel.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PrinterModel.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -9840,17 +9840,17 @@ class ListPrintersResponse {
   /// then all printers will be returned.
   core.List<Printer>? printers;
 
-  ListPrintersResponse({
-    this.nextPageToken,
-    this.printers,
-  });
+  ListPrintersResponse({this.nextPageToken, this.printers});
 
   ListPrintersResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           printers: (json_['printers'] as core.List?)
-              ?.map((value) => Printer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Printer.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -9954,20 +9954,18 @@ class Members {
   /// Token used to access next page of this result.
   core.String? nextPageToken;
 
-  Members({
-    this.etag,
-    this.kind,
-    this.members,
-    this.nextPageToken,
-  });
+  Members({this.etag, this.kind, this.members, this.nextPageToken});
 
   Members.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           kind: json_['kind'] as core.String?,
           members: (json_['members'] as core.List?)
-              ?.map((value) =>
-                  Member.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Member.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -9989,14 +9987,10 @@ class MembersHasMember {
   /// Output only.
   core.bool? isMember;
 
-  MembersHasMember({
-    this.isMember,
-  });
+  MembersHasMember({this.isMember});
 
   MembersHasMember.fromJson(core.Map json_)
-      : this(
-          isMember: json_['isMember'] as core.bool?,
-        );
+      : this(isMember: json_['isMember'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (isMember != null) 'isMember': isMember!,
@@ -10280,8 +10274,11 @@ class MobileDevice {
       : this(
           adbStatus: json_['adbStatus'] as core.bool?,
           applications: (json_['applications'] as core.List?)
-              ?.map((value) => MobileDeviceApplications.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MobileDeviceApplications.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           basebandVersion: json_['basebandVersion'] as core.String?,
           bootloaderVersion: json_['bootloaderVersion'] as core.String?,
@@ -10391,14 +10388,10 @@ class MobileDeviceAction {
   /// The action to be performed on the device.
   core.String? action;
 
-  MobileDeviceAction({
-    this.action,
-  });
+  MobileDeviceAction({this.action});
 
   MobileDeviceAction.fromJson(core.Map json_)
-      : this(
-          action: json_['action'] as core.String?,
-        );
+      : this(action: json_['action'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
@@ -10418,20 +10411,18 @@ class MobileDevices {
   /// Token used to access next page of this result.
   core.String? nextPageToken;
 
-  MobileDevices({
-    this.etag,
-    this.kind,
-    this.mobiledevices,
-    this.nextPageToken,
-  });
+  MobileDevices({this.etag, this.kind, this.mobiledevices, this.nextPageToken});
 
   MobileDevices.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           kind: json_['kind'] as core.String?,
           mobiledevices: (json_['mobiledevices'] as core.List?)
-              ?.map((value) => MobileDevice.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => MobileDevice.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -10556,19 +10547,18 @@ class OrgUnits {
   /// A list of organizational unit objects.
   core.List<OrgUnit>? organizationUnits;
 
-  OrgUnits({
-    this.etag,
-    this.kind,
-    this.organizationUnits,
-  });
+  OrgUnits({this.etag, this.kind, this.organizationUnits});
 
   OrgUnits.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           kind: json_['kind'] as core.String?,
           organizationUnits: (json_['organizationUnits'] as core.List?)
-              ?.map((value) => OrgUnit.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => OrgUnit.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -10826,7 +10816,8 @@ class PrintServerFailureInfo {
           errorMessage: json_['errorMessage'] as core.String?,
           printServer: json_.containsKey('printServer')
               ? PrintServer.fromJson(
-                  json_['printServer'] as core.Map<core.String, core.dynamic>)
+                  json_['printServer'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           printServerId: json_['printServerId'] as core.String?,
         );
@@ -10908,8 +10899,11 @@ class Printer {
   Printer.fromJson(core.Map json_)
       : this(
           auxiliaryMessages: (json_['auxiliaryMessages'] as core.List?)
-              ?.map((value) => AuxiliaryMessage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AuxiliaryMessage.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
@@ -10954,11 +10948,7 @@ class PrinterModel {
   /// eq. "Brother"
   core.String? manufacturer;
 
-  PrinterModel({
-    this.displayName,
-    this.makeAndModel,
-    this.manufacturer,
-  });
+  PrinterModel({this.displayName, this.makeAndModel, this.manufacturer});
 
   PrinterModel.fromJson(core.Map json_)
       : this(
@@ -11017,8 +11007,11 @@ class Privilege {
   Privilege.fromJson(core.Map json_)
       : this(
           childPrivileges: (json_['childPrivileges'] as core.List?)
-              ?.map((value) => Privilege.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Privilege.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           isOuScopable: json_['isOuScopable'] as core.bool?,
@@ -11051,18 +11044,17 @@ class Privileges {
   /// This is always `admin#directory#privileges`.
   core.String? kind;
 
-  Privileges({
-    this.etag,
-    this.items,
-    this.kind,
-  });
+  Privileges({this.etag, this.items, this.kind});
 
   Privileges.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => Privilege.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Privilege.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -11084,10 +11076,7 @@ class RoleRolePrivileges {
   /// \[`Privileges.list()`\](/admin-sdk/directory/v1/reference/privileges/list).
   core.String? serviceId;
 
-  RoleRolePrivileges({
-    this.privilegeName,
-    this.serviceId,
-  });
+  RoleRolePrivileges({this.privilegeName, this.serviceId});
 
   RoleRolePrivileges.fromJson(core.Map json_)
       : this(
@@ -11149,8 +11138,11 @@ class Role {
           roleId: json_['roleId'] as core.String?,
           roleName: json_['roleName'] as core.String?,
           rolePrivileges: (json_['rolePrivileges'] as core.List?)
-              ?.map((value) => RoleRolePrivileges.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RoleRolePrivileges.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -11287,19 +11279,17 @@ class RoleAssignments {
   core.String? kind;
   core.String? nextPageToken;
 
-  RoleAssignments({
-    this.etag,
-    this.items,
-    this.kind,
-    this.nextPageToken,
-  });
+  RoleAssignments({this.etag, this.items, this.kind, this.nextPageToken});
 
   RoleAssignments.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => RoleAssignment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RoleAssignment.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
@@ -11326,19 +11316,17 @@ class Roles {
   core.String? kind;
   core.String? nextPageToken;
 
-  Roles({
-    this.etag,
-    this.items,
-    this.kind,
-    this.nextPageToken,
-  });
+  Roles({this.etag, this.items, this.kind, this.nextPageToken});
 
   Roles.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  Role.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Role.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
@@ -11391,8 +11379,11 @@ class Schema {
           displayName: json_['displayName'] as core.String?,
           etag: json_['etag'] as core.String?,
           fields: (json_['fields'] as core.List?)
-              ?.map((value) => SchemaFieldSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => SchemaFieldSpec.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
           schemaId: json_['schemaId'] as core.String?,
@@ -11426,10 +11417,7 @@ class SchemaFieldSpecNumericIndexingSpec {
   /// range will still be indexed, but search may not be as performant.
   core.double? minValue;
 
-  SchemaFieldSpecNumericIndexingSpec({
-    this.maxValue,
-    this.minValue,
-  });
+  SchemaFieldSpecNumericIndexingSpec({this.maxValue, this.minValue});
 
   SchemaFieldSpecNumericIndexingSpec.fromJson(core.Map json_)
       : this(
@@ -11520,7 +11508,8 @@ class SchemaFieldSpec {
           numericIndexingSpec: json_.containsKey('numericIndexingSpec')
               ? SchemaFieldSpecNumericIndexingSpec.fromJson(
                   json_['numericIndexingSpec']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           readAccessType: json_['readAccessType'] as core.String?,
         );
@@ -11551,19 +11540,18 @@ class Schemas {
   /// A list of UserSchema objects.
   core.List<Schema>? schemas;
 
-  Schemas({
-    this.etag,
-    this.kind,
-    this.schemas,
-  });
+  Schemas({this.etag, this.kind, this.schemas});
 
   Schemas.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           kind: json_['kind'] as core.String?,
           schemas: (json_['schemas'] as core.List?)
-              ?.map((value) =>
-                  Schema.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Schema.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -11666,18 +11654,17 @@ class Tokens {
   /// This is always `admin#directory#tokenList`.
   core.String? kind;
 
-  Tokens({
-    this.etag,
-    this.items,
-    this.kind,
-  });
+  Tokens({this.etag, this.items, this.kind});
 
   Tokens.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  Token.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Token.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -12110,7 +12097,8 @@ class User {
           locations: json_['locations'],
           name: json_.containsKey('name')
               ? UserName.fromJson(
-                  json_['name'] as core.Map<core.String, core.dynamic>)
+                  json_['name'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           nonEditableAliases: (json_['nonEditableAliases'] as core.List?)
               ?.map((value) => value as core.String)
@@ -12198,14 +12186,10 @@ class UserMakeAdmin {
   /// Indicates the administrator status of the user.
   core.bool? status;
 
-  UserMakeAdmin({
-    this.status,
-  });
+  UserMakeAdmin({this.status});
 
   UserMakeAdmin.fromJson(core.Map json_)
-      : this(
-          status: json_['status'] as core.bool?,
-        );
+      : this(status: json_['status'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (status != null) 'status': status!,
@@ -12232,12 +12216,7 @@ class UserName {
   /// Required when creating a user account.
   core.String? givenName;
 
-  UserName({
-    this.displayName,
-    this.familyName,
-    this.fullName,
-    this.givenName,
-  });
+  UserName({this.displayName, this.familyName, this.fullName, this.givenName});
 
   UserName.fromJson(core.Map json_)
       : this(
@@ -12340,14 +12319,10 @@ class UserUndelete {
   /// OrgUnit of User
   core.String? orgUnitPath;
 
-  UserUndelete({
-    this.orgUnitPath,
-  });
+  UserUndelete({this.orgUnitPath});
 
   UserUndelete.fromJson(core.Map json_)
-      : this(
-          orgUnitPath: json_['orgUnitPath'] as core.String?,
-        );
+      : this(orgUnitPath: json_['orgUnitPath'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
@@ -12385,8 +12360,11 @@ class Users {
           nextPageToken: json_['nextPageToken'] as core.String?,
           triggerEvent: json_['trigger_event'] as core.String?,
           users: (json_['users'] as core.List?)
-              ?.map((value) =>
-                  User.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => User.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -12419,12 +12397,7 @@ class VerificationCode {
   /// result.
   core.String? verificationCode;
 
-  VerificationCode({
-    this.etag,
-    this.kind,
-    this.userId,
-    this.verificationCode,
-  });
+  VerificationCode({this.etag, this.kind, this.userId, this.verificationCode});
 
   VerificationCode.fromJson(core.Map json_)
       : this(
@@ -12456,18 +12429,17 @@ class VerificationCodes {
   /// This is always `admin#directory#verificationCodesList`.
   core.String? kind;
 
-  VerificationCodes({
-    this.etag,
-    this.items,
-    this.kind,
-  });
+  VerificationCodes({this.etag, this.items, this.kind});
 
   VerificationCodes.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => VerificationCode.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => VerificationCode.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );

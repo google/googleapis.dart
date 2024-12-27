@@ -158,11 +158,16 @@ class ClassroomApi {
   RegistrationsResource get registrations => RegistrationsResource(_requester);
   UserProfilesResource get userProfiles => UserProfilesResource(_requester);
 
-  ClassroomApi(http.Client client,
-      {core.String rootUrl = 'https://classroom.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ClassroomApi(
+    http.Client client, {
+    core.String rootUrl = 'https://classroom.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class CoursesResource {
@@ -209,10 +214,7 @@ class CoursesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Course> create(
-    Course request, {
-    core.String? $fields,
-  }) async {
+  async.Future<Course> create(Course request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -250,10 +252,7 @@ class CoursesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String id, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String id, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -289,10 +288,7 @@ class CoursesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Course> get(
-    core.String id, {
-    core.String? $fields,
-  }) async {
+  async.Future<Course> get(core.String id, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -376,7 +372,8 @@ class CoursesResource {
       queryParams: queryParams_,
     );
     return ListCoursesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates one or more fields in a course.
@@ -536,7 +533,8 @@ class CoursesAliasesResource {
       queryParams: queryParams_,
     );
     return CourseAlias.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an alias of a course.
@@ -639,7 +637,8 @@ class CoursesAliasesResource {
       queryParams: queryParams_,
     );
     return ListCourseAliasesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -699,7 +698,8 @@ class CoursesAnnouncementsResource {
       queryParams: queryParams_,
     );
     return Announcement.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an announcement.
@@ -798,7 +798,8 @@ class CoursesAnnouncementsResource {
       queryParams: queryParams_,
     );
     return Announcement.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets metadata for Classroom add-ons in the context of a specific post.
@@ -869,7 +870,8 @@ class CoursesAnnouncementsResource {
       queryParams: queryParams_,
     );
     return AddOnContext.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of announcements that the requester is permitted to view.
@@ -940,7 +942,8 @@ class CoursesAnnouncementsResource {
       queryParams: queryParams_,
     );
     return ListAnnouncementsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Modifies assignee mode and options of an announcement.
@@ -995,7 +998,8 @@ class CoursesAnnouncementsResource {
       queryParams: queryParams_,
     );
     return Announcement.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates one or more fields of an announcement.
@@ -1060,7 +1064,8 @@ class CoursesAnnouncementsResource {
       queryParams: queryParams_,
     );
     return Announcement.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1135,7 +1140,8 @@ class CoursesAnnouncementsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an add-on attachment.
@@ -1249,7 +1255,8 @@ class CoursesAnnouncementsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns all attachments created by an add-on under the post.
@@ -1318,7 +1325,8 @@ class CoursesAnnouncementsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return ListAddOnAttachmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an add-on attachment.
@@ -1391,7 +1399,8 @@ class CoursesAnnouncementsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1459,7 +1468,8 @@ class CoursesCourseWorkResource {
       queryParams: queryParams_,
     );
     return CourseWork.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a course work.
@@ -1558,7 +1568,8 @@ class CoursesCourseWorkResource {
       queryParams: queryParams_,
     );
     return CourseWork.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets metadata for Classroom add-ons in the context of a specific post.
@@ -1629,7 +1640,8 @@ class CoursesCourseWorkResource {
       queryParams: queryParams_,
     );
     return AddOnContext.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of course work that the requester is permitted to view.
@@ -1700,7 +1712,8 @@ class CoursesCourseWorkResource {
       queryParams: queryParams_,
     );
     return ListCourseWorkResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Modifies assignee mode and options of a coursework.
@@ -1755,7 +1768,8 @@ class CoursesCourseWorkResource {
       queryParams: queryParams_,
     );
     return CourseWork.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates one or more fields of a course work.
@@ -1830,7 +1844,8 @@ class CoursesCourseWorkResource {
       queryParams: queryParams_,
     );
     return CourseWork.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a rubric.
@@ -1992,7 +2007,8 @@ class CoursesCourseWorkAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an add-on attachment.
@@ -2106,7 +2122,8 @@ class CoursesCourseWorkAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns all attachments created by an add-on under the post.
@@ -2175,7 +2192,8 @@ class CoursesCourseWorkAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return ListAddOnAttachmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an add-on attachment.
@@ -2248,7 +2266,8 @@ class CoursesCourseWorkAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2256,8 +2275,8 @@ class CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource {
   final commons.ApiRequester _requester;
 
   CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Returns a student submission for an add-on attachment.
   ///
@@ -2317,7 +2336,8 @@ class CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachmentStudentSubmission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates data associated with an add-on attachment submission.
@@ -2393,7 +2413,8 @@ class CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachmentStudentSubmission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2631,7 +2652,8 @@ class CoursesCourseWorkRubricsResource {
       queryParams: queryParams_,
     );
     return ListRubricsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a rubric.
@@ -2772,7 +2794,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
       queryParams: queryParams_,
     );
     return StudentSubmission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of student submissions that the requester is permitted to
@@ -2864,7 +2887,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
       queryParams: queryParams_,
     );
     return ListStudentSubmissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Modifies attachments of student submission.
@@ -2929,7 +2953,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
       queryParams: queryParams_,
     );
     return StudentSubmission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates one or more fields of a student submission.
@@ -3000,7 +3025,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
       queryParams: queryParams_,
     );
     return StudentSubmission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Reclaims a student submission on behalf of the student that owns it.
@@ -3257,7 +3283,8 @@ class CoursesCourseWorkMaterialsResource {
       queryParams: queryParams_,
     );
     return CourseWorkMaterial.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a course work material.
@@ -3357,7 +3384,8 @@ class CoursesCourseWorkMaterialsResource {
       queryParams: queryParams_,
     );
     return CourseWorkMaterial.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets metadata for Classroom add-ons in the context of a specific post.
@@ -3428,7 +3456,8 @@ class CoursesCourseWorkMaterialsResource {
       queryParams: queryParams_,
     );
     return AddOnContext.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of course work material that the requester is permitted to
@@ -3514,7 +3543,8 @@ class CoursesCourseWorkMaterialsResource {
       queryParams: queryParams_,
     );
     return ListCourseWorkMaterialResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates one or more fields of a course work material.
@@ -3579,7 +3609,8 @@ class CoursesCourseWorkMaterialsResource {
       queryParams: queryParams_,
     );
     return CourseWorkMaterial.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3587,8 +3618,8 @@ class CoursesCourseWorkMaterialsAddOnAttachmentsResource {
   final commons.ApiRequester _requester;
 
   CoursesCourseWorkMaterialsAddOnAttachmentsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates an add-on attachment under a post.
   ///
@@ -3655,7 +3686,8 @@ class CoursesCourseWorkMaterialsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an add-on attachment.
@@ -3769,7 +3801,8 @@ class CoursesCourseWorkMaterialsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns all attachments created by an add-on under the post.
@@ -3838,7 +3871,8 @@ class CoursesCourseWorkMaterialsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return ListAddOnAttachmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an add-on attachment.
@@ -3911,7 +3945,8 @@ class CoursesCourseWorkMaterialsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3991,7 +4026,8 @@ class CoursesPostsResource {
       queryParams: queryParams_,
     );
     return AddOnContext.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4070,7 +4106,8 @@ class CoursesPostsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an add-on attachment.
@@ -4184,7 +4221,8 @@ class CoursesPostsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns all attachments created by an add-on under the post.
@@ -4253,7 +4291,8 @@ class CoursesPostsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return ListAddOnAttachmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an add-on attachment.
@@ -4326,7 +4365,8 @@ class CoursesPostsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4334,8 +4374,8 @@ class CoursesPostsAddOnAttachmentsStudentSubmissionsResource {
   final commons.ApiRequester _requester;
 
   CoursesPostsAddOnAttachmentsStudentSubmissionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Returns a student submission for an add-on attachment.
   ///
@@ -4395,7 +4435,8 @@ class CoursesPostsAddOnAttachmentsStudentSubmissionsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachmentStudentSubmission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates data associated with an add-on attachment submission.
@@ -4471,7 +4512,8 @@ class CoursesPostsAddOnAttachmentsStudentSubmissionsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachmentStudentSubmission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4690,7 +4732,8 @@ class CoursesStudentsResource {
       queryParams: queryParams_,
     );
     return ListStudentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4906,7 +4949,8 @@ class CoursesTeachersResource {
       queryParams: queryParams_,
     );
     return ListTeachersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5106,7 +5150,8 @@ class CoursesTopicsResource {
       queryParams: queryParams_,
     );
     return ListTopicResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates one or more fields of a topic.
@@ -5201,10 +5246,7 @@ class InvitationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> accept(
-    core.String id, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> accept(core.String id, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5263,7 +5305,8 @@ class InvitationsResource {
       queryParams: queryParams_,
     );
     return Invitation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an invitation.
@@ -5287,10 +5330,7 @@ class InvitationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String id, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String id, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5326,10 +5366,7 @@ class InvitationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Invitation> get(
-    core.String id, {
-    core.String? $fields,
-  }) async {
+  async.Future<Invitation> get(core.String id, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5342,7 +5379,8 @@ class InvitationsResource {
       queryParams: queryParams_,
     );
     return Invitation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of invitations that the requesting user is permitted to
@@ -5404,7 +5442,8 @@ class InvitationsResource {
       queryParams: queryParams_,
     );
     return ListInvitationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5470,7 +5509,8 @@ class RegistrationsResource {
       queryParams: queryParams_,
     );
     return Registration.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a `Registration`, causing Classroom to stop sending notifications
@@ -5560,7 +5600,8 @@ class UserProfilesResource {
       queryParams: queryParams_,
     );
     return UserProfile.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5633,7 +5674,8 @@ class UserProfilesGuardianInvitationsResource {
       queryParams: queryParams_,
     );
     return GuardianInvitation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a specific guardian invitation.
@@ -5686,7 +5728,8 @@ class UserProfilesGuardianInvitationsResource {
       queryParams: queryParams_,
     );
     return GuardianInvitation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of guardian invitations that the requesting user is
@@ -5765,7 +5808,8 @@ class UserProfilesGuardianInvitationsResource {
       queryParams: queryParams_,
     );
     return ListGuardianInvitationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Modifies a guardian invitation.
@@ -5834,7 +5878,8 @@ class UserProfilesGuardianInvitationsResource {
       queryParams: queryParams_,
     );
     return GuardianInvitation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6028,7 +6073,8 @@ class UserProfilesGuardiansResource {
       queryParams: queryParams_,
     );
     return ListGuardiansResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6138,33 +6184,44 @@ class AddOnAttachment {
   AddOnAttachment.fromJson(core.Map json_)
       : this(
           copyHistory: (json_['copyHistory'] as core.List?)
-              ?.map((value) => CopyHistory.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CopyHistory.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           courseId: json_['courseId'] as core.String?,
           dueDate: json_.containsKey('dueDate')
               ? Date.fromJson(
-                  json_['dueDate'] as core.Map<core.String, core.dynamic>)
+                  json_['dueDate'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dueTime: json_.containsKey('dueTime')
               ? TimeOfDay.fromJson(
-                  json_['dueTime'] as core.Map<core.String, core.dynamic>)
+                  json_['dueTime'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           id: json_['id'] as core.String?,
           itemId: json_['itemId'] as core.String?,
           maxPoints: (json_['maxPoints'] as core.num?)?.toDouble(),
           postId: json_['postId'] as core.String?,
           studentViewUri: json_.containsKey('studentViewUri')
-              ? EmbedUri.fromJson(json_['studentViewUri']
-                  as core.Map<core.String, core.dynamic>)
+              ? EmbedUri.fromJson(
+                  json_['studentViewUri']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           studentWorkReviewUri: json_.containsKey('studentWorkReviewUri')
-              ? EmbedUri.fromJson(json_['studentWorkReviewUri']
-                  as core.Map<core.String, core.dynamic>)
+              ? EmbedUri.fromJson(
+                  json_['studentWorkReviewUri']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           teacherViewUri: json_.containsKey('teacherViewUri')
-              ? EmbedUri.fromJson(json_['teacherViewUri']
-                  as core.Map<core.String, core.dynamic>)
+              ? EmbedUri.fromJson(
+                  json_['teacherViewUri']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           title: json_['title'] as core.String?,
         );
@@ -6276,13 +6333,17 @@ class AddOnContext {
           itemId: json_['itemId'] as core.String?,
           postId: json_['postId'] as core.String?,
           studentContext: json_.containsKey('studentContext')
-              ? StudentContext.fromJson(json_['studentContext']
-                  as core.Map<core.String, core.dynamic>)
+              ? StudentContext.fromJson(
+                  json_['studentContext']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           supportsStudentWork: json_['supportsStudentWork'] as core.bool?,
           teacherContext: json_.containsKey('teacherContext')
-              ? TeacherContext.fromJson(json_['teacherContext']
-                  as core.Map<core.String, core.dynamic>)
+              ? TeacherContext.fromJson(
+                  json_['teacherContext']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6404,11 +6465,15 @@ class Announcement {
               json_.containsKey('individualStudentsOptions')
                   ? IndividualStudentsOptions.fromJson(
                       json_['individualStudentsOptions']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           materials: (json_['materials'] as core.List?)
-              ?.map((value) => Material.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Material.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           scheduledTime: json_['scheduledTime'] as core.String?,
           state: json_['state'] as core.String?,
@@ -6440,15 +6505,15 @@ class Assignment {
   /// This is only populated for course teachers and administrators.
   DriveFolder? studentWorkFolder;
 
-  Assignment({
-    this.studentWorkFolder,
-  });
+  Assignment({this.studentWorkFolder});
 
   Assignment.fromJson(core.Map json_)
       : this(
           studentWorkFolder: json_.containsKey('studentWorkFolder')
-              ? DriveFolder.fromJson(json_['studentWorkFolder']
-                  as core.Map<core.String, core.dynamic>)
+              ? DriveFolder.fromJson(
+                  json_['studentWorkFolder']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6468,15 +6533,16 @@ class AssignmentSubmission {
   /// always available, but others (for example, title) may not be.
   core.List<Attachment>? attachments;
 
-  AssignmentSubmission({
-    this.attachments,
-  });
+  AssignmentSubmission({this.attachments});
 
   AssignmentSubmission.fromJson(core.Map json_)
       : this(
           attachments: (json_['attachments'] as core.List?)
-              ?.map((value) => Attachment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Attachment.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -6501,30 +6567,29 @@ class Attachment {
   /// Youtube video attachment.
   YouTubeVideo? youTubeVideo;
 
-  Attachment({
-    this.driveFile,
-    this.form,
-    this.link,
-    this.youTubeVideo,
-  });
+  Attachment({this.driveFile, this.form, this.link, this.youTubeVideo});
 
   Attachment.fromJson(core.Map json_)
       : this(
           driveFile: json_.containsKey('driveFile')
               ? DriveFile.fromJson(
-                  json_['driveFile'] as core.Map<core.String, core.dynamic>)
+                  json_['driveFile'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           form: json_.containsKey('form')
               ? Form.fromJson(
-                  json_['form'] as core.Map<core.String, core.dynamic>)
+                  json_['form'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           link: json_.containsKey('link')
               ? Link.fromJson(
-                  json_['link'] as core.Map<core.String, core.dynamic>)
+                  json_['link'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           youTubeVideo: json_.containsKey('youTubeVideo')
               ? YouTubeVideo.fromJson(
-                  json_['youTubeVideo'] as core.Map<core.String, core.dynamic>)
+                  json_['youTubeVideo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6546,14 +6611,10 @@ class CloudPubsubTopic {
   /// [Topic](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic).
   core.String? topicName;
 
-  CloudPubsubTopic({
-    this.topicName,
-  });
+  CloudPubsubTopic({this.topicName});
 
   CloudPubsubTopic.fromJson(core.Map json_)
-      : this(
-          topicName: json_['topicName'] as core.String?,
-        );
+      : this(topicName: json_['topicName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (topicName != null) 'topicName': topicName!,
@@ -6586,12 +6647,7 @@ class CopyHistory {
   )
   core.String? postId;
 
-  CopyHistory({
-    this.attachmentId,
-    this.courseId,
-    this.itemId,
-    this.postId,
-  });
+  CopyHistory({this.attachmentId, this.courseId, this.itemId, this.postId});
 
   CopyHistory.fromJson(core.Map json_)
       : this(
@@ -6783,8 +6839,11 @@ class Course {
           calendarId: json_['calendarId'] as core.String?,
           courseGroupEmail: json_['courseGroupEmail'] as core.String?,
           courseMaterialSets: (json_['courseMaterialSets'] as core.List?)
-              ?.map((value) => CourseMaterialSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CourseMaterialSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           courseState: json_['courseState'] as core.String?,
           creationTime: json_['creationTime'] as core.String?,
@@ -6792,8 +6851,10 @@ class Course {
           descriptionHeading: json_['descriptionHeading'] as core.String?,
           enrollmentCode: json_['enrollmentCode'] as core.String?,
           gradebookSettings: json_.containsKey('gradebookSettings')
-              ? GradebookSettings.fromJson(json_['gradebookSettings']
-                  as core.Map<core.String, core.dynamic>)
+              ? GradebookSettings.fromJson(
+                  json_['gradebookSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           guardiansEnabled: json_['guardiansEnabled'] as core.bool?,
           id: json_['id'] as core.String?,
@@ -6803,7 +6864,8 @@ class Course {
           section: json_['section'] as core.String?,
           teacherFolder: json_.containsKey('teacherFolder')
               ? DriveFolder.fromJson(
-                  json_['teacherFolder'] as core.Map<core.String, core.dynamic>)
+                  json_['teacherFolder'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           teacherGroupEmail: json_['teacherGroupEmail'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -6856,14 +6918,10 @@ class CourseAlias {
   /// of 256 characters.
   core.String? alias;
 
-  CourseAlias({
-    this.alias,
-  });
+  CourseAlias({this.alias});
 
   CourseAlias.fromJson(core.Map json_)
-      : this(
-          alias: json_['alias'] as core.String?,
-        );
+      : this(alias: json_['alias'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alias != null) 'alias': alias!,
@@ -6884,30 +6942,29 @@ class CourseMaterial {
   /// Youtube video attachment.
   YouTubeVideo? youTubeVideo;
 
-  CourseMaterial({
-    this.driveFile,
-    this.form,
-    this.link,
-    this.youTubeVideo,
-  });
+  CourseMaterial({this.driveFile, this.form, this.link, this.youTubeVideo});
 
   CourseMaterial.fromJson(core.Map json_)
       : this(
           driveFile: json_.containsKey('driveFile')
               ? DriveFile.fromJson(
-                  json_['driveFile'] as core.Map<core.String, core.dynamic>)
+                  json_['driveFile'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           form: json_.containsKey('form')
               ? Form.fromJson(
-                  json_['form'] as core.Map<core.String, core.dynamic>)
+                  json_['form'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           link: json_.containsKey('link')
               ? Link.fromJson(
-                  json_['link'] as core.Map<core.String, core.dynamic>)
+                  json_['link'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           youTubeVideo: json_.containsKey('youTubeVideo')
               ? YouTubeVideo.fromJson(
-                  json_['youTubeVideo'] as core.Map<core.String, core.dynamic>)
+                  json_['youTubeVideo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -6930,16 +6987,16 @@ class CourseMaterialSet {
   /// Title for this set.
   core.String? title;
 
-  CourseMaterialSet({
-    this.materials,
-    this.title,
-  });
+  CourseMaterialSet({this.materials, this.title});
 
   CourseMaterialSet.fromJson(core.Map json_)
       : this(
           materials: (json_['materials'] as core.List?)
-              ?.map((value) => CourseMaterial.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CourseMaterial.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           title: json_['title'] as core.String?,
         );
@@ -6955,14 +7012,10 @@ class CourseRosterChangesInfo {
   /// The `course_id` of the course to subscribe to roster changes for.
   core.String? courseId;
 
-  CourseRosterChangesInfo({
-    this.courseId,
-  });
+  CourseRosterChangesInfo({this.courseId});
 
   CourseRosterChangesInfo.fromJson(core.Map json_)
-      : this(
-          courseId: json_['courseId'] as core.String?,
-        );
+      : this(courseId: json_['courseId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (courseId != null) 'courseId': courseId!,
@@ -7154,7 +7207,8 @@ class CourseWork {
           assigneeMode: json_['assigneeMode'] as core.String?,
           assignment: json_.containsKey('assignment')
               ? Assignment.fromJson(
-                  json_['assignment'] as core.Map<core.String, core.dynamic>)
+                  json_['assignment'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           associatedWithDeveloper:
               json_['associatedWithDeveloper'] as core.bool?,
@@ -7164,31 +7218,40 @@ class CourseWork {
           description: json_['description'] as core.String?,
           dueDate: json_.containsKey('dueDate')
               ? Date.fromJson(
-                  json_['dueDate'] as core.Map<core.String, core.dynamic>)
+                  json_['dueDate'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           dueTime: json_.containsKey('dueTime')
               ? TimeOfDay.fromJson(
-                  json_['dueTime'] as core.Map<core.String, core.dynamic>)
+                  json_['dueTime'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           gradeCategory: json_.containsKey('gradeCategory')
               ? GradeCategory.fromJson(
-                  json_['gradeCategory'] as core.Map<core.String, core.dynamic>)
+                  json_['gradeCategory'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           id: json_['id'] as core.String?,
           individualStudentsOptions:
               json_.containsKey('individualStudentsOptions')
                   ? IndividualStudentsOptions.fromJson(
                       json_['individualStudentsOptions']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           materials: (json_['materials'] as core.List?)
-              ?.map((value) => Material.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Material.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           maxPoints: (json_['maxPoints'] as core.num?)?.toDouble(),
           multipleChoiceQuestion: json_.containsKey('multipleChoiceQuestion')
-              ? MultipleChoiceQuestion.fromJson(json_['multipleChoiceQuestion']
-                  as core.Map<core.String, core.dynamic>)
+              ? MultipleChoiceQuestion.fromJson(
+                  json_['multipleChoiceQuestion']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           scheduledTime: json_['scheduledTime'] as core.String?,
           state: json_['state'] as core.String?,
@@ -7236,14 +7299,10 @@ class CourseWorkChangesInfo {
   /// The `course_id` of the course to subscribe to work changes for.
   core.String? courseId;
 
-  CourseWorkChangesInfo({
-    this.courseId,
-  });
+  CourseWorkChangesInfo({this.courseId});
 
   CourseWorkChangesInfo.fromJson(core.Map json_)
-      : this(
-          courseId: json_['courseId'] as core.String?,
-        );
+      : this(courseId: json_['courseId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (courseId != null) 'courseId': courseId!,
@@ -7374,11 +7433,15 @@ class CourseWorkMaterial {
               json_.containsKey('individualStudentsOptions')
                   ? IndividualStudentsOptions.fromJson(
                       json_['individualStudentsOptions']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           materials: (json_['materials'] as core.List?)
-              ?.map((value) => Material.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Material.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           scheduledTime: json_['scheduledTime'] as core.String?,
           state: json_['state'] as core.String?,
@@ -7424,20 +7487,18 @@ class Criterion {
   /// The title of the criterion.
   core.String? title;
 
-  Criterion({
-    this.description,
-    this.id,
-    this.levels,
-    this.title,
-  });
+  Criterion({this.description, this.id, this.levels, this.title});
 
   Criterion.fromJson(core.Map json_)
       : this(
           description: json_['description'] as core.String?,
           id: json_['id'] as core.String?,
           levels: (json_['levels'] as core.List?)
-              ?.map((value) =>
-                  Level.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Level.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           title: json_['title'] as core.String?,
         );
@@ -7482,12 +7543,7 @@ class DriveFile {
   /// Read-only.
   core.String? title;
 
-  DriveFile({
-    this.alternateLink,
-    this.id,
-    this.thumbnailUrl,
-    this.title,
-  });
+  DriveFile({this.alternateLink, this.id, this.thumbnailUrl, this.title});
 
   DriveFile.fromJson(core.Map json_)
       : this(
@@ -7520,11 +7576,7 @@ class DriveFolder {
   /// Read-only.
   core.String? title;
 
-  DriveFolder({
-    this.alternateLink,
-    this.id,
-    this.title,
-  });
+  DriveFolder({this.alternateLink, this.id, this.title});
 
   DriveFolder.fromJson(core.Map json_)
       : this(
@@ -7550,14 +7602,9 @@ class EmbedUri {
   /// Required.
   core.String? uri;
 
-  EmbedUri({
-    this.uri,
-  });
+  EmbedUri({this.uri});
 
-  EmbedUri.fromJson(core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+  EmbedUri.fromJson(core.Map json_) : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
@@ -7619,11 +7666,14 @@ class Feed {
           courseRosterChangesInfo: json_.containsKey('courseRosterChangesInfo')
               ? CourseRosterChangesInfo.fromJson(
                   json_['courseRosterChangesInfo']
-                      as core.Map<core.String, core.dynamic>)
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           courseWorkChangesInfo: json_.containsKey('courseWorkChangesInfo')
-              ? CourseWorkChangesInfo.fromJson(json_['courseWorkChangesInfo']
-                  as core.Map<core.String, core.dynamic>)
+              ? CourseWorkChangesInfo.fromJson(
+                  json_['courseWorkChangesInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           feedType: json_['feedType'] as core.String?,
         );
@@ -7658,12 +7708,7 @@ class Form {
   /// Read-only.
   core.String? title;
 
-  Form({
-    this.formUrl,
-    this.responseUrl,
-    this.thumbnailUrl,
-    this.title,
-  });
+  Form({this.formUrl, this.responseUrl, this.thumbnailUrl, this.title});
 
   Form.fromJson(core.Map json_)
       : this(
@@ -7690,14 +7735,10 @@ class GlobalPermission {
   /// - "CREATE_COURSE" : User is permitted to create a course.
   core.String? permission;
 
-  GlobalPermission({
-    this.permission,
-  });
+  GlobalPermission({this.permission});
 
   GlobalPermission.fromJson(core.Map json_)
-      : this(
-          permission: json_['permission'] as core.String?,
-        );
+      : this(permission: json_['permission'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permission != null) 'permission': permission!,
@@ -7848,8 +7889,11 @@ class GradebookSettings {
           calculationType: json_['calculationType'] as core.String?,
           displaySetting: json_['displaySetting'] as core.String?,
           gradeCategories: (json_['gradeCategories'] as core.List?)
-              ?.map((value) => GradeCategory.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GradeCategory.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -7889,8 +7933,10 @@ class Guardian {
       : this(
           guardianId: json_['guardianId'] as core.String?,
           guardianProfile: json_.containsKey('guardianProfile')
-              ? UserProfile.fromJson(json_['guardianProfile']
-                  as core.Map<core.String, core.dynamic>)
+              ? UserProfile.fromJson(
+                  json_['guardianProfile']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           invitedEmailAddress: json_['invitedEmailAddress'] as core.String?,
           studentId: json_['studentId'] as core.String?,
@@ -7969,9 +8015,7 @@ class IndividualStudentsOptions {
   /// coursework/announcement.
   core.List<core.String>? studentIds;
 
-  IndividualStudentsOptions({
-    this.studentIds,
-  });
+  IndividualStudentsOptions({this.studentIds});
 
   IndividualStudentsOptions.fromJson(core.Map json_)
       : this(
@@ -8013,12 +8057,7 @@ class Invitation {
   /// user
   core.String? userId;
 
-  Invitation({
-    this.courseId,
-    this.id,
-    this.role,
-    this.userId,
-  });
+  Invitation({this.courseId, this.id, this.role, this.userId});
 
   Invitation.fromJson(core.Map json_)
       : this(
@@ -8058,12 +8097,7 @@ class Level {
   /// If the level has no points set, title must be set.
   core.String? title;
 
-  Level({
-    this.description,
-    this.id,
-    this.points,
-    this.title,
-  });
+  Level({this.description, this.id, this.points, this.title});
 
   Level.fromJson(core.Map json_)
       : this(
@@ -8099,11 +8133,7 @@ class Link {
   /// characters.
   core.String? url;
 
-  Link({
-    this.thumbnailUrl,
-    this.title,
-    this.url,
-  });
+  Link({this.thumbnailUrl, this.title, this.url});
 
   Link.fromJson(core.Map json_)
       : this(
@@ -8129,16 +8159,16 @@ class ListAddOnAttachmentsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListAddOnAttachmentsResponse({
-    this.addOnAttachments,
-    this.nextPageToken,
-  });
+  ListAddOnAttachmentsResponse({this.addOnAttachments, this.nextPageToken});
 
   ListAddOnAttachmentsResponse.fromJson(core.Map json_)
       : this(
           addOnAttachments: (json_['addOnAttachments'] as core.List?)
-              ?.map((value) => AddOnAttachment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AddOnAttachment.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -8159,16 +8189,16 @@ class ListAnnouncementsResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListAnnouncementsResponse({
-    this.announcements,
-    this.nextPageToken,
-  });
+  ListAnnouncementsResponse({this.announcements, this.nextPageToken});
 
   ListAnnouncementsResponse.fromJson(core.Map json_)
       : this(
           announcements: (json_['announcements'] as core.List?)
-              ?.map((value) => Announcement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Announcement.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -8189,16 +8219,16 @@ class ListCourseAliasesResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListCourseAliasesResponse({
-    this.aliases,
-    this.nextPageToken,
-  });
+  ListCourseAliasesResponse({this.aliases, this.nextPageToken});
 
   ListCourseAliasesResponse.fromJson(core.Map json_)
       : this(
           aliases: (json_['aliases'] as core.List?)
-              ?.map((value) => CourseAlias.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CourseAlias.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -8219,16 +8249,16 @@ class ListCourseWorkMaterialResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListCourseWorkMaterialResponse({
-    this.courseWorkMaterial,
-    this.nextPageToken,
-  });
+  ListCourseWorkMaterialResponse({this.courseWorkMaterial, this.nextPageToken});
 
   ListCourseWorkMaterialResponse.fromJson(core.Map json_)
       : this(
           courseWorkMaterial: (json_['courseWorkMaterial'] as core.List?)
-              ?.map((value) => CourseWorkMaterial.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CourseWorkMaterial.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -8250,16 +8280,16 @@ class ListCourseWorkResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListCourseWorkResponse({
-    this.courseWork,
-    this.nextPageToken,
-  });
+  ListCourseWorkResponse({this.courseWork, this.nextPageToken});
 
   ListCourseWorkResponse.fromJson(core.Map json_)
       : this(
           courseWork: (json_['courseWork'] as core.List?)
-              ?.map((value) => CourseWork.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => CourseWork.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -8280,16 +8310,16 @@ class ListCoursesResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListCoursesResponse({
-    this.courses,
-    this.nextPageToken,
-  });
+  ListCoursesResponse({this.courses, this.nextPageToken});
 
   ListCoursesResponse.fromJson(core.Map json_)
       : this(
           courses: (json_['courses'] as core.List?)
-              ?.map((value) =>
-                  Course.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Course.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -8318,8 +8348,11 @@ class ListGuardianInvitationsResponse {
   ListGuardianInvitationsResponse.fromJson(core.Map json_)
       : this(
           guardianInvitations: (json_['guardianInvitations'] as core.List?)
-              ?.map((value) => GuardianInvitation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GuardianInvitation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -8342,16 +8375,16 @@ class ListGuardiansResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListGuardiansResponse({
-    this.guardians,
-    this.nextPageToken,
-  });
+  ListGuardiansResponse({this.guardians, this.nextPageToken});
 
   ListGuardiansResponse.fromJson(core.Map json_)
       : this(
           guardians: (json_['guardians'] as core.List?)
-              ?.map((value) => Guardian.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Guardian.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -8372,16 +8405,16 @@ class ListInvitationsResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListInvitationsResponse({
-    this.invitations,
-    this.nextPageToken,
-  });
+  ListInvitationsResponse({this.invitations, this.nextPageToken});
 
   ListInvitationsResponse.fromJson(core.Map json_)
       : this(
           invitations: (json_['invitations'] as core.List?)
-              ?.map((value) => Invitation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Invitation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -8402,17 +8435,17 @@ class ListRubricsResponse {
   /// Rubrics that match the request.
   core.List<Rubric>? rubrics;
 
-  ListRubricsResponse({
-    this.nextPageToken,
-    this.rubrics,
-  });
+  ListRubricsResponse({this.nextPageToken, this.rubrics});
 
   ListRubricsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           rubrics: (json_['rubrics'] as core.List?)
-              ?.map((value) =>
-                  Rubric.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Rubric.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8432,17 +8465,17 @@ class ListStudentSubmissionsResponse {
   /// Student work that matches the request.
   core.List<StudentSubmission>? studentSubmissions;
 
-  ListStudentSubmissionsResponse({
-    this.nextPageToken,
-    this.studentSubmissions,
-  });
+  ListStudentSubmissionsResponse({this.nextPageToken, this.studentSubmissions});
 
   ListStudentSubmissionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           studentSubmissions: (json_['studentSubmissions'] as core.List?)
-              ?.map((value) => StudentSubmission.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => StudentSubmission.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8463,17 +8496,17 @@ class ListStudentsResponse {
   /// Students who match the list request.
   core.List<Student>? students;
 
-  ListStudentsResponse({
-    this.nextPageToken,
-    this.students,
-  });
+  ListStudentsResponse({this.nextPageToken, this.students});
 
   ListStudentsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           students: (json_['students'] as core.List?)
-              ?.map((value) => Student.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Student.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8493,17 +8526,17 @@ class ListTeachersResponse {
   /// Teachers who match the list request.
   core.List<Teacher>? teachers;
 
-  ListTeachersResponse({
-    this.nextPageToken,
-    this.teachers,
-  });
+  ListTeachersResponse({this.nextPageToken, this.teachers});
 
   ListTeachersResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           teachers: (json_['teachers'] as core.List?)
-              ?.map((value) => Teacher.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Teacher.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8523,17 +8556,17 @@ class ListTopicResponse {
   /// Topic items that match the request.
   core.List<Topic>? topic;
 
-  ListTopicResponse({
-    this.nextPageToken,
-    this.topic,
-  });
+  ListTopicResponse({this.nextPageToken, this.topic});
 
   ListTopicResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           topic: (json_['topic'] as core.List?)
-              ?.map((value) =>
-                  Topic.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Topic.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8562,30 +8595,29 @@ class Material {
   /// YouTube video material.
   YouTubeVideo? youtubeVideo;
 
-  Material({
-    this.driveFile,
-    this.form,
-    this.link,
-    this.youtubeVideo,
-  });
+  Material({this.driveFile, this.form, this.link, this.youtubeVideo});
 
   Material.fromJson(core.Map json_)
       : this(
           driveFile: json_.containsKey('driveFile')
               ? SharedDriveFile.fromJson(
-                  json_['driveFile'] as core.Map<core.String, core.dynamic>)
+                  json_['driveFile'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           form: json_.containsKey('form')
               ? Form.fromJson(
-                  json_['form'] as core.Map<core.String, core.dynamic>)
+                  json_['form'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           link: json_.containsKey('link')
               ? Link.fromJson(
-                  json_['link'] as core.Map<core.String, core.dynamic>)
+                  json_['link'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           youtubeVideo: json_.containsKey('youtubeVideo')
               ? YouTubeVideo.fromJson(
-                  json_['youtubeVideo'] as core.Map<core.String, core.dynamic>)
+                  json_['youtubeVideo'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -8625,7 +8657,8 @@ class ModifyAnnouncementAssigneesRequest {
               json_.containsKey('modifyIndividualStudentsOptions')
                   ? ModifyIndividualStudentsOptions.fromJson(
                       json_['modifyIndividualStudentsOptions']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
         );
 
@@ -8644,15 +8677,16 @@ class ModifyAttachmentsRequest {
   /// attachments are not supported.
   core.List<Attachment>? addAttachments;
 
-  ModifyAttachmentsRequest({
-    this.addAttachments,
-  });
+  ModifyAttachmentsRequest({this.addAttachments});
 
   ModifyAttachmentsRequest.fromJson(core.Map json_)
       : this(
           addAttachments: (json_['addAttachments'] as core.List?)
-              ?.map((value) => Attachment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Attachment.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -8689,7 +8723,8 @@ class ModifyCourseWorkAssigneesRequest {
               json_.containsKey('modifyIndividualStudentsOptions')
                   ? ModifyIndividualStudentsOptions.fromJson(
                       json_['modifyIndividualStudentsOptions']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
         );
 
@@ -8711,10 +8746,7 @@ class ModifyIndividualStudentsOptions {
   /// coursework/announcement.
   core.List<core.String>? removeStudentIds;
 
-  ModifyIndividualStudentsOptions({
-    this.addStudentIds,
-    this.removeStudentIds,
-  });
+  ModifyIndividualStudentsOptions({this.addStudentIds, this.removeStudentIds});
 
   ModifyIndividualStudentsOptions.fromJson(core.Map json_)
       : this(
@@ -8737,9 +8769,7 @@ class MultipleChoiceQuestion {
   /// Possible choices.
   core.List<core.String>? choices;
 
-  MultipleChoiceQuestion({
-    this.choices,
-  });
+  MultipleChoiceQuestion({this.choices});
 
   MultipleChoiceQuestion.fromJson(core.Map json_)
       : this(
@@ -8758,14 +8788,10 @@ class MultipleChoiceSubmission {
   /// Student's select choice.
   core.String? answer;
 
-  MultipleChoiceSubmission({
-    this.answer,
-  });
+  MultipleChoiceSubmission({this.answer});
 
   MultipleChoiceSubmission.fromJson(core.Map json_)
-      : this(
-          answer: json_['answer'] as core.String?,
-        );
+      : this(answer: json_['answer'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (answer != null) 'answer': answer!,
@@ -8790,11 +8816,7 @@ class Name {
   /// Read-only.
   core.String? givenName;
 
-  Name({
-    this.familyName,
-    this.fullName,
-    this.givenName,
-  });
+  Name({this.familyName, this.fullName, this.givenName});
 
   Name.fromJson(core.Map json_)
       : this(
@@ -8843,13 +8865,16 @@ class Registration {
   Registration.fromJson(core.Map json_)
       : this(
           cloudPubsubTopic: json_.containsKey('cloudPubsubTopic')
-              ? CloudPubsubTopic.fromJson(json_['cloudPubsubTopic']
-                  as core.Map<core.String, core.dynamic>)
+              ? CloudPubsubTopic.fromJson(
+                  json_['cloudPubsubTopic']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           expiryTime: json_['expiryTime'] as core.String?,
           feed: json_.containsKey('feed')
               ? Feed.fromJson(
-                  json_['feed'] as core.Map<core.String, core.dynamic>)
+                  json_['feed'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           registrationId: json_['registrationId'] as core.String?,
         );
@@ -8931,8 +8956,11 @@ class Rubric {
           courseWorkId: json_['courseWorkId'] as core.String?,
           creationTime: json_['creationTime'] as core.String?,
           criteria: (json_['criteria'] as core.List?)
-              ?.map((value) => Criterion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Criterion.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           id: json_['id'] as core.String?,
           sourceSpreadsheetId: json_['sourceSpreadsheetId'] as core.String?,
@@ -8975,11 +9003,7 @@ class RubricGrade {
   /// Optional.
   core.double? points;
 
-  RubricGrade({
-    this.criterionId,
-    this.levelId,
-    this.points,
-  });
+  RubricGrade({this.criterionId, this.levelId, this.points});
 
   RubricGrade.fromJson(core.Map json_)
       : this(
@@ -9009,16 +9033,14 @@ class SharedDriveFile {
   /// - "STUDENT_COPY" : Students have a personal copy of the shared file.
   core.String? shareMode;
 
-  SharedDriveFile({
-    this.driveFile,
-    this.shareMode,
-  });
+  SharedDriveFile({this.driveFile, this.shareMode});
 
   SharedDriveFile.fromJson(core.Map json_)
       : this(
           driveFile: json_.containsKey('driveFile')
               ? DriveFile.fromJson(
-                  json_['driveFile'] as core.Map<core.String, core.dynamic>)
+                  json_['driveFile'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           shareMode: json_['shareMode'] as core.String?,
         );
@@ -9034,14 +9056,10 @@ class ShortAnswerSubmission {
   /// Student response to a short-answer question.
   core.String? answer;
 
-  ShortAnswerSubmission({
-    this.answer,
-  });
+  ShortAnswerSubmission({this.answer});
 
   ShortAnswerSubmission.fromJson(core.Map json_)
-      : this(
-          answer: json_['answer'] as core.String?,
-        );
+      : this(answer: json_['answer'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (answer != null) 'answer': answer!,
@@ -9072,11 +9090,7 @@ class StateHistory {
   /// When the submission entered this state.
   core.String? stateTimestamp;
 
-  StateHistory({
-    this.actorUserId,
-    this.state,
-    this.stateTimestamp,
-  });
+  StateHistory({this.actorUserId, this.state, this.stateTimestamp});
 
   StateHistory.fromJson(core.Map json_)
       : this(
@@ -9116,23 +9130,21 @@ class Student {
   /// of the user * the string literal `"me"`, indicating the requesting user
   core.String? userId;
 
-  Student({
-    this.courseId,
-    this.profile,
-    this.studentWorkFolder,
-    this.userId,
-  });
+  Student({this.courseId, this.profile, this.studentWorkFolder, this.userId});
 
   Student.fromJson(core.Map json_)
       : this(
           courseId: json_['courseId'] as core.String?,
           profile: json_.containsKey('profile')
               ? UserProfile.fromJson(
-                  json_['profile'] as core.Map<core.String, core.dynamic>)
+                  json_['profile'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           studentWorkFolder: json_.containsKey('studentWorkFolder')
-              ? DriveFolder.fromJson(json_['studentWorkFolder']
-                  as core.Map<core.String, core.dynamic>)
+              ? DriveFolder.fromJson(
+                  json_['studentWorkFolder']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           userId: json_['userId'] as core.String?,
         );
@@ -9153,14 +9165,10 @@ class StudentContext {
   /// This is set exactly when `supportsStudentWork` is `true`.
   core.String? submissionId;
 
-  StudentContext({
-    this.submissionId,
-  });
+  StudentContext({this.submissionId});
 
   StudentContext.fromJson(core.Map json_)
-      : this(
-          submissionId: json_['submissionId'] as core.String?,
-        );
+      : this(submissionId: json_['submissionId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (submissionId != null) 'submissionId': submissionId!,
@@ -9322,12 +9330,15 @@ class StudentSubmission {
             (key, value) => core.MapEntry(
               key,
               RubricGrade.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           assignmentSubmission: json_.containsKey('assignmentSubmission')
-              ? AssignmentSubmission.fromJson(json_['assignmentSubmission']
-                  as core.Map<core.String, core.dynamic>)
+              ? AssignmentSubmission.fromJson(
+                  json_['assignmentSubmission']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           associatedWithDeveloper:
               json_['associatedWithDeveloper'] as core.bool?,
@@ -9342,7 +9353,8 @@ class StudentSubmission {
             (key, value) => core.MapEntry(
               key,
               RubricGrade.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           id: json_['id'] as core.String?,
@@ -9351,16 +9363,22 @@ class StudentSubmission {
               json_.containsKey('multipleChoiceSubmission')
                   ? MultipleChoiceSubmission.fromJson(
                       json_['multipleChoiceSubmission']
-                          as core.Map<core.String, core.dynamic>)
+                          as core.Map<core.String, core.dynamic>,
+                    )
                   : null,
           shortAnswerSubmission: json_.containsKey('shortAnswerSubmission')
-              ? ShortAnswerSubmission.fromJson(json_['shortAnswerSubmission']
-                  as core.Map<core.String, core.dynamic>)
+              ? ShortAnswerSubmission.fromJson(
+                  json_['shortAnswerSubmission']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           state: json_['state'] as core.String?,
           submissionHistory: (json_['submissionHistory'] as core.List?)
-              ?.map((value) => SubmissionHistory.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => SubmissionHistory.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           updateTime: json_['updateTime'] as core.String?,
           userId: json_['userId'] as core.String?,
@@ -9404,20 +9422,19 @@ class SubmissionHistory {
   /// The state history information of the submission, if present.
   StateHistory? stateHistory;
 
-  SubmissionHistory({
-    this.gradeHistory,
-    this.stateHistory,
-  });
+  SubmissionHistory({this.gradeHistory, this.stateHistory});
 
   SubmissionHistory.fromJson(core.Map json_)
       : this(
           gradeHistory: json_.containsKey('gradeHistory')
               ? GradeHistory.fromJson(
-                  json_['gradeHistory'] as core.Map<core.String, core.dynamic>)
+                  json_['gradeHistory'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           stateHistory: json_.containsKey('stateHistory')
               ? StateHistory.fromJson(
-                  json_['stateHistory'] as core.Map<core.String, core.dynamic>)
+                  json_['stateHistory'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -9446,18 +9463,15 @@ class Teacher {
   /// of the user * the string literal `"me"`, indicating the requesting user
   core.String? userId;
 
-  Teacher({
-    this.courseId,
-    this.profile,
-    this.userId,
-  });
+  Teacher({this.courseId, this.profile, this.userId});
 
   Teacher.fromJson(core.Map json_)
       : this(
           courseId: json_['courseId'] as core.String?,
           profile: json_.containsKey('profile')
               ? UserProfile.fromJson(
-                  json_['profile'] as core.Map<core.String, core.dynamic>)
+                  json_['profile'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           userId: json_['userId'] as core.String?,
         );
@@ -9477,7 +9491,7 @@ typedef TeacherContext = $Empty;
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef TimeOfDay = $TimeOfDay00;
+typedef TimeOfDay = $TimeOfDay;
 
 /// Topic created by a teacher for the course
 class Topic {
@@ -9504,12 +9518,7 @@ class Topic {
   /// Read-only.
   core.String? updateTime;
 
-  Topic({
-    this.courseId,
-    this.name,
-    this.topicId,
-    this.updateTime,
-  });
+  Topic({this.courseId, this.name, this.topicId, this.updateTime});
 
   Topic.fromJson(core.Map json_)
       : this(
@@ -9581,11 +9590,15 @@ class UserProfile {
           id: json_['id'] as core.String?,
           name: json_.containsKey('name')
               ? Name.fromJson(
-                  json_['name'] as core.Map<core.String, core.dynamic>)
+                  json_['name'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => GlobalPermission.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => GlobalPermission.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           photoUrl: json_['photoUrl'] as core.String?,
           verifiedTeacher: json_['verifiedTeacher'] as core.bool?,
@@ -9621,12 +9634,7 @@ class YouTubeVideo {
   /// Read-only.
   core.String? title;
 
-  YouTubeVideo({
-    this.alternateLink,
-    this.id,
-    this.thumbnailUrl,
-    this.title,
-  });
+  YouTubeVideo({this.alternateLink, this.id, this.thumbnailUrl, this.title});
 
   YouTubeVideo.fromJson(core.Map json_)
       : this(

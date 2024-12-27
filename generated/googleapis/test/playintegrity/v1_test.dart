@@ -40,10 +40,7 @@ api.AccountActivity buildAccountActivity() {
 void checkAccountActivity(api.AccountActivity o) {
   buildCounterAccountActivity++;
   if (buildCounterAccountActivity < 3) {
-    unittest.expect(
-      o.activityLevel!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.activityLevel!, unittest.equals('foo'));
   }
   buildCounterAccountActivity--;
 }
@@ -64,29 +61,17 @@ void checkAccountDetails(api.AccountDetails o) {
   buildCounterAccountDetails++;
   if (buildCounterAccountDetails < 3) {
     checkAccountActivity(o.accountActivity!);
-    unittest.expect(
-      o.appLicensingVerdict!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.appLicensingVerdict!, unittest.equals('foo'));
   }
   buildCounterAccountDetails--;
 }
 
-core.List<core.String> buildUnnamed0() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed0() => ['foo', 'foo'];
 
 void checkUnnamed0(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterAppAccessRiskVerdict = 0;
@@ -106,33 +91,18 @@ void checkAppAccessRiskVerdict(api.AppAccessRiskVerdict o) {
   buildCounterAppAccessRiskVerdict++;
   if (buildCounterAppAccessRiskVerdict < 3) {
     checkUnnamed0(o.appsDetected!);
-    unittest.expect(
-      o.otherApps!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.playOrSystemApps!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.otherApps!, unittest.equals('foo'));
+    unittest.expect(o.playOrSystemApps!, unittest.equals('foo'));
   }
   buildCounterAppAccessRiskVerdict--;
 }
 
-core.List<core.String> buildUnnamed1() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed1() => ['foo', 'foo'];
 
 void checkUnnamed1(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterAppIntegrity = 0;
@@ -152,19 +122,10 @@ api.AppIntegrity buildAppIntegrity() {
 void checkAppIntegrity(api.AppIntegrity o) {
   buildCounterAppIntegrity++;
   if (buildCounterAppIntegrity < 3) {
-    unittest.expect(
-      o.appRecognitionVerdict!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.appRecognitionVerdict!, unittest.equals('foo'));
     checkUnnamed1(o.certificateSha256Digest!);
-    unittest.expect(
-      o.packageName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.versionCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.packageName!, unittest.equals('foo'));
+    unittest.expect(o.versionCode!, unittest.equals('foo'));
   }
   buildCounterAppIntegrity--;
 }
@@ -183,10 +144,7 @@ api.DecodeIntegrityTokenRequest buildDecodeIntegrityTokenRequest() {
 void checkDecodeIntegrityTokenRequest(api.DecodeIntegrityTokenRequest o) {
   buildCounterDecodeIntegrityTokenRequest++;
   if (buildCounterDecodeIntegrityTokenRequest < 3) {
-    unittest.expect(
-      o.integrityToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.integrityToken!, unittest.equals('foo'));
   }
   buildCounterDecodeIntegrityTokenRequest--;
 }
@@ -224,46 +182,25 @@ api.DeviceAttributes buildDeviceAttributes() {
 void checkDeviceAttributes(api.DeviceAttributes o) {
   buildCounterDeviceAttributes++;
   if (buildCounterDeviceAttributes < 3) {
-    unittest.expect(
-      o.sdkVersion!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.sdkVersion!, unittest.equals(42));
   }
   buildCounterDeviceAttributes--;
 }
 
-core.List<core.String> buildUnnamed2() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed2() => ['foo', 'foo'];
 
 void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed3() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed3() => ['foo', 'foo'];
 
 void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterDeviceIntegrity = 0;
@@ -330,10 +267,7 @@ void checkEnvironmentDetails(api.EnvironmentDetails o) {
   buildCounterEnvironmentDetails++;
   if (buildCounterEnvironmentDetails < 3) {
     checkAppAccessRiskVerdict(o.appAccessRiskVerdict!);
-    unittest.expect(
-      o.playProtectVerdict!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.playProtectVerdict!, unittest.equals('foo'));
   }
   buildCounterEnvironmentDetails--;
 }
@@ -352,10 +286,7 @@ api.RecentDeviceActivity buildRecentDeviceActivity() {
 void checkRecentDeviceActivity(api.RecentDeviceActivity o) {
   buildCounterRecentDeviceActivity++;
   if (buildCounterRecentDeviceActivity < 3) {
-    unittest.expect(
-      o.deviceActivityLevel!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.deviceActivityLevel!, unittest.equals('foo'));
   }
   buildCounterRecentDeviceActivity--;
 }
@@ -377,22 +308,10 @@ api.RequestDetails buildRequestDetails() {
 void checkRequestDetails(api.RequestDetails o) {
   buildCounterRequestDetails++;
   if (buildCounterRequestDetails < 3) {
-    unittest.expect(
-      o.nonce!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.requestHash!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.requestPackageName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.timestampMillis!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nonce!, unittest.equals('foo'));
+    unittest.expect(o.requestHash!, unittest.equals('foo'));
+    unittest.expect(o.requestPackageName!, unittest.equals('foo'));
+    unittest.expect(o.timestampMillis!, unittest.equals('foo'));
   }
   buildCounterRequestDetails--;
 }
@@ -484,18 +403,9 @@ api.WriteDates buildWriteDates() {
 void checkWriteDates(api.WriteDates o) {
   buildCounterWriteDates++;
   if (buildCounterWriteDates < 3) {
-    unittest.expect(
-      o.yyyymmFirst!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.yyyymmSecond!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.yyyymmThird!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.yyyymmFirst!, unittest.equals(42));
+    unittest.expect(o.yyyymmSecond!, unittest.equals(42));
+    unittest.expect(o.yyyymmThird!, unittest.equals(42));
   }
   buildCounterWriteDates--;
 }
@@ -515,10 +425,7 @@ api.WriteDeviceRecallRequest buildWriteDeviceRecallRequest() {
 void checkWriteDeviceRecallRequest(api.WriteDeviceRecallRequest o) {
   buildCounterWriteDeviceRecallRequest++;
   if (buildCounterWriteDeviceRecallRequest < 3) {
-    unittest.expect(
-      o.integrityToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.integrityToken!, unittest.equals('foo'));
     checkValues(o.newValues!);
   }
   buildCounterWriteDeviceRecallRequest--;
@@ -545,7 +452,8 @@ void main() {
       final o = buildAccountActivity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AccountActivity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAccountActivity(od);
     });
   });
@@ -555,7 +463,8 @@ void main() {
       final o = buildAccountDetails();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AccountDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAccountDetails(od);
     });
   });
@@ -565,7 +474,8 @@ void main() {
       final o = buildAppAccessRiskVerdict();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AppAccessRiskVerdict.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAppAccessRiskVerdict(od);
     });
   });
@@ -575,7 +485,8 @@ void main() {
       final o = buildAppIntegrity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AppIntegrity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAppIntegrity(od);
     });
   });
@@ -585,7 +496,8 @@ void main() {
       final o = buildDecodeIntegrityTokenRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DecodeIntegrityTokenRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDecodeIntegrityTokenRequest(od);
     });
   });
@@ -595,7 +507,8 @@ void main() {
       final o = buildDecodeIntegrityTokenResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DecodeIntegrityTokenResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDecodeIntegrityTokenResponse(od);
     });
   });
@@ -605,7 +518,8 @@ void main() {
       final o = buildDeviceAttributes();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeviceAttributes.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeviceAttributes(od);
     });
   });
@@ -615,7 +529,8 @@ void main() {
       final o = buildDeviceIntegrity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeviceIntegrity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeviceIntegrity(od);
     });
   });
@@ -625,7 +540,8 @@ void main() {
       final o = buildDeviceRecall();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeviceRecall.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeviceRecall(od);
     });
   });
@@ -635,7 +551,8 @@ void main() {
       final o = buildEnvironmentDetails();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.EnvironmentDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkEnvironmentDetails(od);
     });
   });
@@ -645,7 +562,8 @@ void main() {
       final o = buildRecentDeviceActivity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RecentDeviceActivity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkRecentDeviceActivity(od);
     });
   });
@@ -655,7 +573,8 @@ void main() {
       final o = buildRequestDetails();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RequestDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkRequestDetails(od);
     });
   });
@@ -665,7 +584,8 @@ void main() {
       final o = buildTestingDetails();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TestingDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTestingDetails(od);
     });
   });
@@ -675,7 +595,8 @@ void main() {
       final o = buildTokenPayloadExternal();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TokenPayloadExternal.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTokenPayloadExternal(od);
     });
   });
@@ -684,8 +605,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildValues();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Values.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Values.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkValues(od);
     });
   });
@@ -694,8 +616,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildWriteDates();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.WriteDates.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.WriteDates.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkWriteDates(od);
     });
   });
@@ -705,7 +628,8 @@ void main() {
       final o = buildWriteDeviceRecallRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.WriteDeviceRecallRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkWriteDeviceRecallRequest(od);
     });
   });
@@ -715,7 +639,8 @@ void main() {
       final o = buildWriteDeviceRecallResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.WriteDeviceRecallResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkWriteDeviceRecallResponse(od);
     });
   });
@@ -727,55 +652,60 @@ void main() {
       final arg_request = buildWriteDeviceRecallRequest();
       final arg_packageName = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.WriteDeviceRecallRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkWriteDeviceRecallRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.WriteDeviceRecallRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkWriteDeviceRecallRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildWriteDeviceRecallResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.write(arg_request, arg_packageName, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildWriteDeviceRecallResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.write(
+        arg_request,
+        arg_packageName,
+        $fields: arg_$fields,
+      );
       checkWriteDeviceRecallResponse(response as api.WriteDeviceRecallResponse);
     });
   });
@@ -787,58 +717,63 @@ void main() {
       final arg_request = buildDecodeIntegrityTokenRequest();
       final arg_packageName = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.DecodeIntegrityTokenRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkDecodeIntegrityTokenRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.DecodeIntegrityTokenRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkDecodeIntegrityTokenRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildDecodeIntegrityTokenResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildDecodeIntegrityTokenResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.decodeIntegrityToken(
-          arg_request, arg_packageName,
-          $fields: arg_$fields);
+        arg_request,
+        arg_packageName,
+        $fields: arg_$fields,
+      );
       checkDecodeIntegrityTokenResponse(
-          response as api.DecodeIntegrityTokenResponse);
+        response as api.DecodeIntegrityTokenResponse,
+      );
     });
   });
 }

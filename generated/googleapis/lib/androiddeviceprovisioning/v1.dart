@@ -56,12 +56,16 @@ class AndroidProvisioningPartnerApi {
   OperationsResource get operations => OperationsResource(_requester);
   PartnersResource get partners => PartnersResource(_requester);
 
-  AndroidProvisioningPartnerApi(http.Client client,
-      {core.String rootUrl =
-          'https://androiddeviceprovisioning.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  AndroidProvisioningPartnerApi(
+    http.Client client, {
+    core.String rootUrl = 'https://androiddeviceprovisioning.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class CustomersResource {
@@ -113,7 +117,8 @@ class CustomersResource {
       queryParams: queryParams_,
     );
     return CustomerListCustomersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -165,7 +170,8 @@ class CustomersConfigurationsResource {
       queryParams: queryParams_,
     );
     return Configuration.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an unused configuration.
@@ -190,10 +196,7 @@ class CustomersConfigurationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -242,7 +245,8 @@ class CustomersConfigurationsResource {
       queryParams: queryParams_,
     );
     return Configuration.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists a customer's configurations.
@@ -279,7 +283,8 @@ class CustomersConfigurationsResource {
       queryParams: queryParams_,
     );
     return CustomerListConfigurationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a configuration's field values.
@@ -330,7 +335,8 @@ class CustomersConfigurationsResource {
       queryParams: queryParams_,
     );
     return Configuration.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -403,10 +409,7 @@ class CustomersDevicesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Device> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Device> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -464,7 +467,8 @@ class CustomersDevicesResource {
       queryParams: queryParams_,
     );
     return CustomerListDevicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Removes a configuration from device.
@@ -595,7 +599,8 @@ class CustomersDpcsResource {
       queryParams: queryParams_,
     );
     return CustomerListDpcsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -624,10 +629,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -753,7 +755,8 @@ class PartnersCustomersResource {
       queryParams: queryParams_,
     );
     return ListCustomersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -804,7 +807,8 @@ class PartnersDevicesResource {
       queryParams: queryParams_,
     );
     return ClaimDeviceResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Claims a batch of devices for a customer asynchronously.
@@ -893,7 +897,8 @@ class PartnersDevicesResource {
       queryParams: queryParams_,
     );
     return FindDevicesByDeviceIdentifierResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Finds devices claimed for customers.
@@ -940,7 +945,8 @@ class PartnersDevicesResource {
       queryParams: queryParams_,
     );
     return FindDevicesByOwnerResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a device.
@@ -961,10 +967,7 @@ class PartnersDevicesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Device> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Device> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1019,7 +1022,8 @@ class PartnersDevicesResource {
       queryParams: queryParams_,
     );
     return GetDeviceSimLockStateResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates reseller metadata associated with the device.
@@ -1071,7 +1075,8 @@ class PartnersDevicesResource {
       queryParams: queryParams_,
     );
     return DeviceMetadata.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Unclaims a device from a customer and removes it from zero-touch
@@ -1261,7 +1266,8 @@ class PartnersVendorsResource {
       queryParams: queryParams_,
     );
     return ListVendorsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1314,7 +1320,8 @@ class PartnersVendorsCustomersResource {
       queryParams: queryParams_,
     );
     return ListVendorCustomersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1379,12 +1386,16 @@ class ClaimDeviceRequest {
           configurationId: json_['configurationId'] as core.String?,
           customerId: json_['customerId'] as core.String?,
           deviceIdentifier: json_.containsKey('deviceIdentifier')
-              ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
-                  as core.Map<core.String, core.dynamic>)
+              ? DeviceIdentifier.fromJson(
+                  json_['deviceIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           deviceMetadata: json_.containsKey('deviceMetadata')
-              ? DeviceMetadata.fromJson(json_['deviceMetadata']
-                  as core.Map<core.String, core.dynamic>)
+              ? DeviceMetadata.fromJson(
+                  json_['deviceMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           googleWorkspaceCustomerId:
               json_['googleWorkspaceCustomerId'] as core.String?,
@@ -1416,10 +1427,7 @@ class ClaimDeviceResponse {
   /// `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.
   core.String? deviceName;
 
-  ClaimDeviceResponse({
-    this.deviceId,
-    this.deviceName,
-  });
+  ClaimDeviceResponse({this.deviceId, this.deviceName});
 
   ClaimDeviceResponse.fromJson(core.Map json_)
       : this(
@@ -1443,15 +1451,16 @@ class ClaimDevicesRequest {
   /// Required.
   core.List<PartnerClaim>? claims;
 
-  ClaimDevicesRequest({
-    this.claims,
-  });
+  ClaimDevicesRequest({this.claims});
 
   ClaimDevicesRequest.fromJson(core.Map json_)
       : this(
           claims: (json_['claims'] as core.List?)
-              ?.map((value) => PartnerClaim.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PartnerClaim.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1573,8 +1582,10 @@ class Company {
           companyId: json_['companyId'] as core.String?,
           companyName: json_['companyName'] as core.String?,
           googleWorkspaceAccount: json_.containsKey('googleWorkspaceAccount')
-              ? GoogleWorkspaceAccount.fromJson(json_['googleWorkspaceAccount']
-                  as core.Map<core.String, core.dynamic>)
+              ? GoogleWorkspaceAccount.fromJson(
+                  json_['googleWorkspaceAccount']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           languageCode: json_['languageCode'] as core.String?,
           name: json_['name'] as core.String?,
@@ -1748,15 +1759,14 @@ class CreateCustomerRequest {
   /// Required.
   Company? customer;
 
-  CreateCustomerRequest({
-    this.customer,
-  });
+  CreateCustomerRequest({this.customer});
 
   CreateCustomerRequest.fromJson(core.Map json_)
       : this(
           customer: json_.containsKey('customer')
               ? Company.fromJson(
-                  json_['customer'] as core.Map<core.String, core.dynamic>)
+                  json_['customer'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1780,17 +1790,15 @@ class CustomerApplyConfigurationRequest {
   /// Required.
   DeviceReference? device;
 
-  CustomerApplyConfigurationRequest({
-    this.configuration,
-    this.device,
-  });
+  CustomerApplyConfigurationRequest({this.configuration, this.device});
 
   CustomerApplyConfigurationRequest.fromJson(core.Map json_)
       : this(
           configuration: json_['configuration'] as core.String?,
           device: json_.containsKey('device')
               ? DeviceReference.fromJson(
-                  json_['device'] as core.Map<core.String, core.dynamic>)
+                  json_['device'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1805,15 +1813,16 @@ class CustomerListConfigurationsResponse {
   /// The configurations.
   core.List<Configuration>? configurations;
 
-  CustomerListConfigurationsResponse({
-    this.configurations,
-  });
+  CustomerListConfigurationsResponse({this.configurations});
 
   CustomerListConfigurationsResponse.fromJson(core.Map json_)
       : this(
           configurations: (json_['configurations'] as core.List?)
-              ?.map((value) => Configuration.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Configuration.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1832,16 +1841,16 @@ class CustomerListCustomersResponse {
   /// Omitted if no further results are available.
   core.String? nextPageToken;
 
-  CustomerListCustomersResponse({
-    this.customers,
-    this.nextPageToken,
-  });
+  CustomerListCustomersResponse({this.customers, this.nextPageToken});
 
   CustomerListCustomersResponse.fromJson(core.Map json_)
       : this(
           customers: (json_['customers'] as core.List?)
-              ?.map((value) => Company.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Company.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1862,16 +1871,16 @@ class CustomerListDevicesResponse {
   /// Omitted if no further results are available.
   core.String? nextPageToken;
 
-  CustomerListDevicesResponse({
-    this.devices,
-    this.nextPageToken,
-  });
+  CustomerListDevicesResponse({this.devices, this.nextPageToken});
 
   CustomerListDevicesResponse.fromJson(core.Map json_)
       : this(
           devices: (json_['devices'] as core.List?)
-              ?.map((value) =>
-                  Device.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Device.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1888,15 +1897,16 @@ class CustomerListDpcsResponse {
   /// enrollment.
   core.List<Dpc>? dpcs;
 
-  CustomerListDpcsResponse({
-    this.dpcs,
-  });
+  CustomerListDpcsResponse({this.dpcs});
 
   CustomerListDpcsResponse.fromJson(core.Map json_)
       : this(
           dpcs: (json_['dpcs'] as core.List?)
-              ?.map((value) =>
-                  Dpc.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Dpc.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1914,15 +1924,14 @@ class CustomerRemoveConfigurationRequest {
   /// Required.
   DeviceReference? device;
 
-  CustomerRemoveConfigurationRequest({
-    this.device,
-  });
+  CustomerRemoveConfigurationRequest({this.device});
 
   CustomerRemoveConfigurationRequest.fromJson(core.Map json_)
       : this(
           device: json_.containsKey('device')
               ? DeviceReference.fromJson(
-                  json_['device'] as core.Map<core.String, core.dynamic>)
+                  json_['device'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1940,15 +1949,14 @@ class CustomerUnclaimDeviceRequest {
   /// Required.
   DeviceReference? device;
 
-  CustomerUnclaimDeviceRequest({
-    this.device,
-  });
+  CustomerUnclaimDeviceRequest({this.device});
 
   CustomerUnclaimDeviceRequest.fromJson(core.Map json_)
       : this(
           device: json_.containsKey('device')
               ? DeviceReference.fromJson(
-                  json_['device'] as core.Map<core.String, core.dynamic>)
+                  json_['device'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2011,18 +2019,25 @@ class Device {
   Device.fromJson(core.Map json_)
       : this(
           claims: (json_['claims'] as core.List?)
-              ?.map((value) => DeviceClaim.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DeviceClaim.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           configuration: json_['configuration'] as core.String?,
           deviceId: json_['deviceId'] as core.String?,
           deviceIdentifier: json_.containsKey('deviceIdentifier')
-              ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
-                  as core.Map<core.String, core.dynamic>)
+              ? DeviceIdentifier.fromJson(
+                  json_['deviceIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           deviceMetadata: json_.containsKey('deviceMetadata')
-              ? DeviceMetadata.fromJson(json_['deviceMetadata']
-                  as core.Map<core.String, core.dynamic>)
+              ? DeviceMetadata.fromJson(
+                  json_['deviceMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
         );
@@ -2215,19 +2230,12 @@ class DeviceMetadata {
   /// Metadata entries recorded as key-value pairs.
   core.Map<core.String, core.String>? entries;
 
-  DeviceMetadata({
-    this.entries,
-  });
+  DeviceMetadata({this.entries});
 
   DeviceMetadata.fromJson(core.Map json_)
       : this(
-          entries:
-              (json_['entries'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          entries: (json_['entries'] as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2251,17 +2259,16 @@ class DeviceReference {
   /// The hardware IDs of the device.
   DeviceIdentifier? deviceIdentifier;
 
-  DeviceReference({
-    this.deviceId,
-    this.deviceIdentifier,
-  });
+  DeviceReference({this.deviceId, this.deviceIdentifier});
 
   DeviceReference.fromJson(core.Map json_)
       : this(
           deviceId: json_['deviceId'] as core.String?,
           deviceIdentifier: json_.containsKey('deviceIdentifier')
-              ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
-                  as core.Map<core.String, core.dynamic>)
+              ? DeviceIdentifier.fromJson(
+                  json_['deviceIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2303,11 +2310,7 @@ class Dpc {
   /// Output only.
   core.String? packageName;
 
-  Dpc({
-    this.dpcName,
-    this.name,
-    this.packageName,
-  });
+  Dpc({this.dpcName, this.name, this.packageName});
 
   Dpc.fromJson(core.Map json_)
       : this(
@@ -2357,8 +2360,10 @@ class FindDevicesByDeviceIdentifierRequest {
   FindDevicesByDeviceIdentifierRequest.fromJson(core.Map json_)
       : this(
           deviceIdentifier: json_.containsKey('deviceIdentifier')
-              ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
-                  as core.Map<core.String, core.dynamic>)
+              ? DeviceIdentifier.fromJson(
+                  json_['deviceIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           limit: json_['limit'] as core.String?,
           pageToken: json_['pageToken'] as core.String?,
@@ -2393,8 +2398,11 @@ class FindDevicesByDeviceIdentifierResponse {
   FindDevicesByDeviceIdentifierResponse.fromJson(core.Map json_)
       : this(
           devices: (json_['devices'] as core.List?)
-              ?.map((value) =>
-                  Device.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Device.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
@@ -2488,8 +2496,11 @@ class FindDevicesByOwnerResponse {
   FindDevicesByOwnerResponse.fromJson(core.Map json_)
       : this(
           devices: (json_['devices'] as core.List?)
-              ?.map((value) =>
-                  Device.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Device.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
@@ -2509,15 +2520,15 @@ class GetDeviceSimLockStateRequest {
   /// Required.
   DeviceIdentifier? deviceIdentifier;
 
-  GetDeviceSimLockStateRequest({
-    this.deviceIdentifier,
-  });
+  GetDeviceSimLockStateRequest({this.deviceIdentifier});
 
   GetDeviceSimLockStateRequest.fromJson(core.Map json_)
       : this(
           deviceIdentifier: json_.containsKey('deviceIdentifier')
-              ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
-                  as core.Map<core.String, core.dynamic>)
+              ? DeviceIdentifier.fromJson(
+                  json_['deviceIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -2537,14 +2548,10 @@ class GetDeviceSimLockStateResponse {
   /// - "LOCKED_TO_OTHER_PARTNER" : Device is SIM locked to a different partner.
   core.String? simLockState;
 
-  GetDeviceSimLockStateResponse({
-    this.simLockState,
-  });
+  GetDeviceSimLockStateResponse({this.simLockState});
 
   GetDeviceSimLockStateResponse.fromJson(core.Map json_)
-      : this(
-          simLockState: json_['simLockState'] as core.String?,
-        );
+      : this(simLockState: json_['simLockState'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (simLockState != null) 'simLockState': simLockState!,
@@ -2563,10 +2570,7 @@ class GoogleWorkspaceAccount {
   /// Output only.
   core.List<core.String>? preProvisioningTokens;
 
-  GoogleWorkspaceAccount({
-    this.customerId,
-    this.preProvisioningTokens,
-  });
+  GoogleWorkspaceAccount({this.customerId, this.preProvisioningTokens});
 
   GoogleWorkspaceAccount.fromJson(core.Map json_)
       : this(
@@ -2596,17 +2600,16 @@ class ListCustomersResponse {
   /// The total count of items in the list irrespective of pagination.
   core.int? totalSize;
 
-  ListCustomersResponse({
-    this.customers,
-    this.nextPageToken,
-    this.totalSize,
-  });
+  ListCustomersResponse({this.customers, this.nextPageToken, this.totalSize});
 
   ListCustomersResponse.fromJson(core.Map json_)
       : this(
           customers: (json_['customers'] as core.List?)
-              ?.map((value) => Company.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Company.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
@@ -2641,8 +2644,11 @@ class ListVendorCustomersResponse {
   ListVendorCustomersResponse.fromJson(core.Map json_)
       : this(
           customers: (json_['customers'] as core.List?)
-              ?.map((value) => Company.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Company.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
@@ -2671,19 +2677,18 @@ class ListVendorsResponse {
   /// object.
   core.List<Company>? vendors;
 
-  ListVendorsResponse({
-    this.nextPageToken,
-    this.totalSize,
-    this.vendors,
-  });
+  ListVendorsResponse({this.nextPageToken, this.totalSize, this.vendors});
 
   ListVendorsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
           vendors: (json_['vendors'] as core.List?)
-              ?.map((value) => Company.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Company.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -2733,20 +2738,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -2827,12 +2827,16 @@ class PartnerClaim {
           configurationId: json_['configurationId'] as core.String?,
           customerId: json_['customerId'] as core.String?,
           deviceIdentifier: json_.containsKey('deviceIdentifier')
-              ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
-                  as core.Map<core.String, core.dynamic>)
+              ? DeviceIdentifier.fromJson(
+                  json_['deviceIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           deviceMetadata: json_.containsKey('deviceMetadata')
-              ? DeviceMetadata.fromJson(json_['deviceMetadata']
-                  as core.Map<core.String, core.dynamic>)
+              ? DeviceMetadata.fromJson(
+                  json_['deviceMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           googleWorkspaceCustomerId:
               json_['googleWorkspaceCustomerId'] as core.String?,
@@ -2901,8 +2905,10 @@ class PartnerUnclaim {
       : this(
           deviceId: json_['deviceId'] as core.String?,
           deviceIdentifier: json_.containsKey('deviceIdentifier')
-              ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
-                  as core.Map<core.String, core.dynamic>)
+              ? DeviceIdentifier.fromJson(
+                  json_['deviceIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sectionType: json_['sectionType'] as core.String?,
           vacationModeDays: json_['vacationModeDays'] as core.int?,
@@ -2971,8 +2977,10 @@ class UnclaimDeviceRequest {
       : this(
           deviceId: json_['deviceId'] as core.String?,
           deviceIdentifier: json_.containsKey('deviceIdentifier')
-              ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
-                  as core.Map<core.String, core.dynamic>)
+              ? DeviceIdentifier.fromJson(
+                  json_['deviceIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           sectionType: json_['sectionType'] as core.String?,
           vacationModeDays: json_['vacationModeDays'] as core.int?,
@@ -2997,15 +3005,16 @@ class UnclaimDevicesRequest {
   /// Required.
   core.List<PartnerUnclaim>? unclaims;
 
-  UnclaimDevicesRequest({
-    this.unclaims,
-  });
+  UnclaimDevicesRequest({this.unclaims});
 
   UnclaimDevicesRequest.fromJson(core.Map json_)
       : this(
           unclaims: (json_['unclaims'] as core.List?)
-              ?.map((value) => PartnerUnclaim.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => PartnerUnclaim.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3021,15 +3030,16 @@ class UpdateDeviceMetadataInBatchRequest {
   /// Required.
   core.List<UpdateMetadataArguments>? updates;
 
-  UpdateDeviceMetadataInBatchRequest({
-    this.updates,
-  });
+  UpdateDeviceMetadataInBatchRequest({this.updates});
 
   UpdateDeviceMetadataInBatchRequest.fromJson(core.Map json_)
       : this(
           updates: (json_['updates'] as core.List?)
-              ?.map((value) => UpdateMetadataArguments.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => UpdateMetadataArguments.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -3045,15 +3055,15 @@ class UpdateDeviceMetadataRequest {
   /// Required.
   DeviceMetadata? deviceMetadata;
 
-  UpdateDeviceMetadataRequest({
-    this.deviceMetadata,
-  });
+  UpdateDeviceMetadataRequest({this.deviceMetadata});
 
   UpdateDeviceMetadataRequest.fromJson(core.Map json_)
       : this(
           deviceMetadata: json_.containsKey('deviceMetadata')
-              ? DeviceMetadata.fromJson(json_['deviceMetadata']
-                  as core.Map<core.String, core.dynamic>)
+              ? DeviceMetadata.fromJson(
+                  json_['deviceMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -3089,12 +3099,16 @@ class UpdateMetadataArguments {
       : this(
           deviceId: json_['deviceId'] as core.String?,
           deviceIdentifier: json_.containsKey('deviceIdentifier')
-              ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
-                  as core.Map<core.String, core.dynamic>)
+              ? DeviceIdentifier.fromJson(
+                  json_['deviceIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           deviceMetadata: json_.containsKey('deviceMetadata')
-              ? DeviceMetadata.fromJson(json_['deviceMetadata']
-                  as core.Map<core.String, core.dynamic>)
+              ? DeviceMetadata.fromJson(
+                  json_['deviceMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 

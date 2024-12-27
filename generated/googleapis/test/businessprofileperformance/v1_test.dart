@@ -42,10 +42,7 @@ api.DailyMetricTimeSeries buildDailyMetricTimeSeries() {
 void checkDailyMetricTimeSeries(api.DailyMetricTimeSeries o) {
   buildCounterDailyMetricTimeSeries++;
   if (buildCounterDailyMetricTimeSeries < 3) {
-    unittest.expect(
-      o.dailyMetric!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dailyMetric!, unittest.equals('foo'));
     checkDailySubEntityType(o.dailySubEntityType!);
     checkTimeSeries(o.timeSeries!);
   }
@@ -67,10 +64,7 @@ api.DailySubEntityType buildDailySubEntityType() {
 void checkDailySubEntityType(api.DailySubEntityType o) {
   buildCounterDailySubEntityType++;
   if (buildCounterDailySubEntityType < 3) {
-    unittest.expect(
-      o.dayOfWeek!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dayOfWeek!, unittest.equals('foo'));
     checkTimeOfDay(o.timeOfDay!);
   }
   buildCounterDailySubEntityType--;
@@ -92,18 +86,9 @@ api.Date buildDate() {
 void checkDate(api.Date o) {
   buildCounterDate++;
   if (buildCounterDate < 3) {
-    unittest.expect(
-      o.day!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.month!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.year!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.day!, unittest.equals(42));
+    unittest.expect(o.month!, unittest.equals(42));
+    unittest.expect(o.year!, unittest.equals(42));
   }
   buildCounterDate--;
 }
@@ -124,10 +109,7 @@ void checkDatedValue(api.DatedValue o) {
   buildCounterDatedValue++;
   if (buildCounterDatedValue < 3) {
     checkDate(o.date!);
-    unittest.expect(
-      o.value!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.value!, unittest.equals('foo'));
   }
   buildCounterDatedValue--;
 }
@@ -156,7 +138,8 @@ api.FetchMultiDailyMetricsTimeSeriesResponse
 }
 
 void checkFetchMultiDailyMetricsTimeSeriesResponse(
-    api.FetchMultiDailyMetricsTimeSeriesResponse o) {
+  api.FetchMultiDailyMetricsTimeSeriesResponse o,
+) {
   buildCounterFetchMultiDailyMetricsTimeSeriesResponse++;
   if (buildCounterFetchMultiDailyMetricsTimeSeriesResponse < 3) {
     checkUnnamed0(o.multiDailyMetricTimeSeries!);
@@ -176,7 +159,8 @@ api.GetDailyMetricsTimeSeriesResponse buildGetDailyMetricsTimeSeriesResponse() {
 }
 
 void checkGetDailyMetricsTimeSeriesResponse(
-    api.GetDailyMetricsTimeSeriesResponse o) {
+  api.GetDailyMetricsTimeSeriesResponse o,
+) {
   buildCounterGetDailyMetricsTimeSeriesResponse++;
   if (buildCounterGetDailyMetricsTimeSeriesResponse < 3) {
     checkTimeSeries(o.timeSeries!);
@@ -199,14 +183,8 @@ api.InsightsValue buildInsightsValue() {
 void checkInsightsValue(api.InsightsValue o) {
   buildCounterInsightsValue++;
   if (buildCounterInsightsValue < 3) {
-    unittest.expect(
-      o.threshold!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.value!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.threshold!, unittest.equals('foo'));
+    unittest.expect(o.value!, unittest.equals('foo'));
   }
   buildCounterInsightsValue--;
 }
@@ -236,13 +214,11 @@ api.ListSearchKeywordImpressionsMonthlyResponse
 }
 
 void checkListSearchKeywordImpressionsMonthlyResponse(
-    api.ListSearchKeywordImpressionsMonthlyResponse o) {
+  api.ListSearchKeywordImpressionsMonthlyResponse o,
+) {
   buildCounterListSearchKeywordImpressionsMonthlyResponse++;
   if (buildCounterListSearchKeywordImpressionsMonthlyResponse < 3) {
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
     checkUnnamed1(o.searchKeywordsCounts!);
   }
   buildCounterListSearchKeywordImpressionsMonthlyResponse--;
@@ -294,10 +270,7 @@ void checkSearchKeywordCount(api.SearchKeywordCount o) {
   buildCounterSearchKeywordCount++;
   if (buildCounterSearchKeywordCount < 3) {
     checkInsightsValue(o.insightsValue!);
-    unittest.expect(
-      o.searchKeyword!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.searchKeyword!, unittest.equals('foo'));
   }
   buildCounterSearchKeywordCount--;
 }
@@ -319,22 +292,10 @@ api.TimeOfDay buildTimeOfDay() {
 void checkTimeOfDay(api.TimeOfDay o) {
   buildCounterTimeOfDay++;
   if (buildCounterTimeOfDay < 3) {
-    unittest.expect(
-      o.hours!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.minutes!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.nanos!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.seconds!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.hours!, unittest.equals(42));
+    unittest.expect(o.minutes!, unittest.equals(42));
+    unittest.expect(o.nanos!, unittest.equals(42));
+    unittest.expect(o.seconds!, unittest.equals(42));
   }
   buildCounterTimeOfDay--;
 }
@@ -369,21 +330,12 @@ void checkTimeSeries(api.TimeSeries o) {
   buildCounterTimeSeries--;
 }
 
-core.List<core.String> buildUnnamed4() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed4() => ['foo', 'foo'];
 
 void checkUnnamed4(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 void main() {
@@ -392,7 +344,8 @@ void main() {
       final o = buildDailyMetricTimeSeries();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DailyMetricTimeSeries.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDailyMetricTimeSeries(od);
     });
   });
@@ -402,7 +355,8 @@ void main() {
       final o = buildDailySubEntityType();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DailySubEntityType.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDailySubEntityType(od);
     });
   });
@@ -411,8 +365,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildDate();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Date.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Date.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDate(od);
     });
   });
@@ -421,8 +376,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildDatedValue();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.DatedValue.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.DatedValue.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDatedValue(od);
     });
   });
@@ -432,7 +388,8 @@ void main() {
       final o = buildFetchMultiDailyMetricsTimeSeriesResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.FetchMultiDailyMetricsTimeSeriesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkFetchMultiDailyMetricsTimeSeriesResponse(od);
     });
   });
@@ -442,7 +399,8 @@ void main() {
       final o = buildGetDailyMetricsTimeSeriesResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GetDailyMetricsTimeSeriesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGetDailyMetricsTimeSeriesResponse(od);
     });
   });
@@ -452,7 +410,8 @@ void main() {
       final o = buildInsightsValue();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.InsightsValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkInsightsValue(od);
     });
   });
@@ -462,7 +421,8 @@ void main() {
       final o = buildListSearchKeywordImpressionsMonthlyResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ListSearchKeywordImpressionsMonthlyResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkListSearchKeywordImpressionsMonthlyResponse(od);
     });
   });
@@ -472,7 +432,8 @@ void main() {
       final o = buildMultiDailyMetricTimeSeries();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.MultiDailyMetricTimeSeries.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkMultiDailyMetricTimeSeries(od);
     });
   });
@@ -482,7 +443,8 @@ void main() {
       final o = buildSearchKeywordCount();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SearchKeywordCount.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSearchKeywordCount(od);
     });
   });
@@ -491,8 +453,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildTimeOfDay();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.TimeOfDay.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.TimeOfDay.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTimeOfDay(od);
     });
   });
@@ -501,8 +464,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildTimeSeries();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.TimeSeries.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.TimeSeries.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTimeSeries(od);
     });
   });
@@ -520,89 +484,94 @@ void main() {
       final arg_dailyRange_startDate_month = 42;
       final arg_dailyRange_startDate_year = 42;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['dailyMetrics']!,
-          unittest.equals(arg_dailyMetrics),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['dailyRange.endDate.day']!.first),
-          unittest.equals(arg_dailyRange_endDate_day),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['dailyRange.endDate.month']!.first),
-          unittest.equals(arg_dailyRange_endDate_month),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['dailyRange.endDate.year']!.first),
-          unittest.equals(arg_dailyRange_endDate_year),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['dailyRange.startDate.day']!.first),
-          unittest.equals(arg_dailyRange_startDate_day),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['dailyRange.startDate.month']!.first),
-          unittest.equals(arg_dailyRange_startDate_month),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['dailyRange.startDate.year']!.first),
-          unittest.equals(arg_dailyRange_startDate_year),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['dailyMetrics']!,
+            unittest.equals(arg_dailyMetrics),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['dailyRange.endDate.day']!.first),
+            unittest.equals(arg_dailyRange_endDate_day),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['dailyRange.endDate.month']!.first),
+            unittest.equals(arg_dailyRange_endDate_month),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['dailyRange.endDate.year']!.first),
+            unittest.equals(arg_dailyRange_endDate_year),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['dailyRange.startDate.day']!.first),
+            unittest.equals(arg_dailyRange_startDate_day),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['dailyRange.startDate.month']!.first),
+            unittest.equals(arg_dailyRange_startDate_month),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['dailyRange.startDate.year']!.first),
+            unittest.equals(arg_dailyRange_startDate_year),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildFetchMultiDailyMetricsTimeSeriesResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.fetchMultiDailyMetricsTimeSeries(arg_location,
-          dailyMetrics: arg_dailyMetrics,
-          dailyRange_endDate_day: arg_dailyRange_endDate_day,
-          dailyRange_endDate_month: arg_dailyRange_endDate_month,
-          dailyRange_endDate_year: arg_dailyRange_endDate_year,
-          dailyRange_startDate_day: arg_dailyRange_startDate_day,
-          dailyRange_startDate_month: arg_dailyRange_startDate_month,
-          dailyRange_startDate_year: arg_dailyRange_startDate_year,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildFetchMultiDailyMetricsTimeSeriesResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.fetchMultiDailyMetricsTimeSeries(
+        arg_location,
+        dailyMetrics: arg_dailyMetrics,
+        dailyRange_endDate_day: arg_dailyRange_endDate_day,
+        dailyRange_endDate_month: arg_dailyRange_endDate_month,
+        dailyRange_endDate_year: arg_dailyRange_endDate_year,
+        dailyRange_startDate_day: arg_dailyRange_startDate_day,
+        dailyRange_startDate_month: arg_dailyRange_startDate_month,
+        dailyRange_startDate_year: arg_dailyRange_startDate_year,
+        $fields: arg_$fields,
+      );
       checkFetchMultiDailyMetricsTimeSeriesResponse(
-          response as api.FetchMultiDailyMetricsTimeSeriesResponse);
+        response as api.FetchMultiDailyMetricsTimeSeriesResponse,
+      );
     });
 
     unittest.test('method--getDailyMetricsTimeSeries', () async {
@@ -622,219 +591,232 @@ void main() {
       final arg_dailySubEntityType_timeOfDay_nanos = 42;
       final arg_dailySubEntityType_timeOfDay_seconds = 42;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['dailyMetric']!.first,
-          unittest.equals(arg_dailyMetric),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['dailyRange.endDate.day']!.first),
-          unittest.equals(arg_dailyRange_endDate_day),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['dailyRange.endDate.month']!.first),
-          unittest.equals(arg_dailyRange_endDate_month),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['dailyRange.endDate.year']!.first),
-          unittest.equals(arg_dailyRange_endDate_year),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['dailyRange.startDate.day']!.first),
-          unittest.equals(arg_dailyRange_startDate_day),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['dailyRange.startDate.month']!.first),
-          unittest.equals(arg_dailyRange_startDate_month),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['dailyRange.startDate.year']!.first),
-          unittest.equals(arg_dailyRange_startDate_year),
-        );
-        unittest.expect(
-          queryMap['dailySubEntityType.dayOfWeek']!.first,
-          unittest.equals(arg_dailySubEntityType_dayOfWeek),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['dailySubEntityType.timeOfDay.hours']!.first),
-          unittest.equals(arg_dailySubEntityType_timeOfDay_hours),
-        );
-        unittest.expect(
-          core.int.parse(
-              queryMap['dailySubEntityType.timeOfDay.minutes']!.first),
-          unittest.equals(arg_dailySubEntityType_timeOfDay_minutes),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['dailySubEntityType.timeOfDay.nanos']!.first),
-          unittest.equals(arg_dailySubEntityType_timeOfDay_nanos),
-        );
-        unittest.expect(
-          core.int.parse(
-              queryMap['dailySubEntityType.timeOfDay.seconds']!.first),
-          unittest.equals(arg_dailySubEntityType_timeOfDay_seconds),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['dailyMetric']!.first,
+            unittest.equals(arg_dailyMetric),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['dailyRange.endDate.day']!.first),
+            unittest.equals(arg_dailyRange_endDate_day),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['dailyRange.endDate.month']!.first),
+            unittest.equals(arg_dailyRange_endDate_month),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['dailyRange.endDate.year']!.first),
+            unittest.equals(arg_dailyRange_endDate_year),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['dailyRange.startDate.day']!.first),
+            unittest.equals(arg_dailyRange_startDate_day),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['dailyRange.startDate.month']!.first),
+            unittest.equals(arg_dailyRange_startDate_month),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['dailyRange.startDate.year']!.first),
+            unittest.equals(arg_dailyRange_startDate_year),
+          );
+          unittest.expect(
+            queryMap['dailySubEntityType.dayOfWeek']!.first,
+            unittest.equals(arg_dailySubEntityType_dayOfWeek),
+          );
+          unittest.expect(
+            core.int.parse(
+              queryMap['dailySubEntityType.timeOfDay.hours']!.first,
+            ),
+            unittest.equals(arg_dailySubEntityType_timeOfDay_hours),
+          );
+          unittest.expect(
+            core.int.parse(
+              queryMap['dailySubEntityType.timeOfDay.minutes']!.first,
+            ),
+            unittest.equals(arg_dailySubEntityType_timeOfDay_minutes),
+          );
+          unittest.expect(
+            core.int.parse(
+              queryMap['dailySubEntityType.timeOfDay.nanos']!.first,
+            ),
+            unittest.equals(arg_dailySubEntityType_timeOfDay_nanos),
+          );
+          unittest.expect(
+            core.int.parse(
+              queryMap['dailySubEntityType.timeOfDay.seconds']!.first,
+            ),
+            unittest.equals(arg_dailySubEntityType_timeOfDay_seconds),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildGetDailyMetricsTimeSeriesResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.getDailyMetricsTimeSeries(arg_name,
-          dailyMetric: arg_dailyMetric,
-          dailyRange_endDate_day: arg_dailyRange_endDate_day,
-          dailyRange_endDate_month: arg_dailyRange_endDate_month,
-          dailyRange_endDate_year: arg_dailyRange_endDate_year,
-          dailyRange_startDate_day: arg_dailyRange_startDate_day,
-          dailyRange_startDate_month: arg_dailyRange_startDate_month,
-          dailyRange_startDate_year: arg_dailyRange_startDate_year,
-          dailySubEntityType_dayOfWeek: arg_dailySubEntityType_dayOfWeek,
-          dailySubEntityType_timeOfDay_hours:
-              arg_dailySubEntityType_timeOfDay_hours,
-          dailySubEntityType_timeOfDay_minutes:
-              arg_dailySubEntityType_timeOfDay_minutes,
-          dailySubEntityType_timeOfDay_nanos:
-              arg_dailySubEntityType_timeOfDay_nanos,
-          dailySubEntityType_timeOfDay_seconds:
-              arg_dailySubEntityType_timeOfDay_seconds,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGetDailyMetricsTimeSeriesResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getDailyMetricsTimeSeries(
+        arg_name,
+        dailyMetric: arg_dailyMetric,
+        dailyRange_endDate_day: arg_dailyRange_endDate_day,
+        dailyRange_endDate_month: arg_dailyRange_endDate_month,
+        dailyRange_endDate_year: arg_dailyRange_endDate_year,
+        dailyRange_startDate_day: arg_dailyRange_startDate_day,
+        dailyRange_startDate_month: arg_dailyRange_startDate_month,
+        dailyRange_startDate_year: arg_dailyRange_startDate_year,
+        dailySubEntityType_dayOfWeek: arg_dailySubEntityType_dayOfWeek,
+        dailySubEntityType_timeOfDay_hours:
+            arg_dailySubEntityType_timeOfDay_hours,
+        dailySubEntityType_timeOfDay_minutes:
+            arg_dailySubEntityType_timeOfDay_minutes,
+        dailySubEntityType_timeOfDay_nanos:
+            arg_dailySubEntityType_timeOfDay_nanos,
+        dailySubEntityType_timeOfDay_seconds:
+            arg_dailySubEntityType_timeOfDay_seconds,
+        $fields: arg_$fields,
+      );
       checkGetDailyMetricsTimeSeriesResponse(
-          response as api.GetDailyMetricsTimeSeriesResponse);
+        response as api.GetDailyMetricsTimeSeriesResponse,
+      );
     });
   });
 
-  unittest.group('resource-LocationsSearchkeywordsImpressionsMonthlyResource',
-      () {
-    unittest.test('method--list', () async {
-      final mock = HttpServerMock();
-      final res = api.BusinessProfilePerformanceApi(mock)
-          .locations
-          .searchkeywords
-          .impressions
-          .monthly;
-      final arg_parent = 'foo';
-      final arg_monthlyRange_endMonth_day = 42;
-      final arg_monthlyRange_endMonth_month = 42;
-      final arg_monthlyRange_endMonth_year = 42;
-      final arg_monthlyRange_startMonth_day = 42;
-      final arg_monthlyRange_startMonth_month = 42;
-      final arg_monthlyRange_startMonth_year = 42;
-      final arg_pageSize = 42;
-      final arg_pageToken = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
+  unittest.group(
+    'resource-LocationsSearchkeywordsImpressionsMonthlyResource',
+    () {
+      unittest.test('method--list', () async {
+        final mock = HttpServerMock();
+        final res = api.BusinessProfilePerformanceApi(
+          mock,
+        ).locations.searchkeywords.impressions.monthly;
+        final arg_parent = 'foo';
+        final arg_monthlyRange_endMonth_day = 42;
+        final arg_monthlyRange_endMonth_month = 42;
+        final arg_monthlyRange_endMonth_year = 42;
+        final arg_monthlyRange_startMonth_day = 42;
+        final arg_monthlyRange_startMonth_month = 42;
+        final arg_monthlyRange_startMonth_year = 42;
+        final arg_pageSize = 42;
+        final arg_pageToken = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
             );
-          }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['monthlyRange.endMonth.day']!.first),
-          unittest.equals(arg_monthlyRange_endMonth_day),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['monthlyRange.endMonth.month']!.first),
-          unittest.equals(arg_monthlyRange_endMonth_month),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['monthlyRange.endMonth.year']!.first),
-          unittest.equals(arg_monthlyRange_endMonth_year),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['monthlyRange.startMonth.day']!.first),
-          unittest.equals(arg_monthlyRange_startMonth_day),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['monthlyRange.startMonth.month']!.first),
-          unittest.equals(arg_monthlyRange_startMonth_month),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['monthlyRange.startMonth.year']!.first),
-          unittest.equals(arg_monthlyRange_startMonth_year),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildListSearchKeywordImpressionsMonthlyResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              core.int.parse(queryMap['monthlyRange.endMonth.day']!.first),
+              unittest.equals(arg_monthlyRange_endMonth_day),
+            );
+            unittest.expect(
+              core.int.parse(queryMap['monthlyRange.endMonth.month']!.first),
+              unittest.equals(arg_monthlyRange_endMonth_month),
+            );
+            unittest.expect(
+              core.int.parse(queryMap['monthlyRange.endMonth.year']!.first),
+              unittest.equals(arg_monthlyRange_endMonth_year),
+            );
+            unittest.expect(
+              core.int.parse(queryMap['monthlyRange.startMonth.day']!.first),
+              unittest.equals(arg_monthlyRange_startMonth_day),
+            );
+            unittest.expect(
+              core.int.parse(queryMap['monthlyRange.startMonth.month']!.first),
+              unittest.equals(arg_monthlyRange_startMonth_month),
+            );
+            unittest.expect(
+              core.int.parse(queryMap['monthlyRange.startMonth.year']!.first),
+              unittest.equals(arg_monthlyRange_startMonth_year),
+            );
+            unittest.expect(
+              core.int.parse(queryMap['pageSize']!.first),
+              unittest.equals(arg_pageSize),
+            );
+            unittest.expect(
+              queryMap['pageToken']!.first,
+              unittest.equals(arg_pageToken),
+            );
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildListSearchKeywordImpressionsMonthlyResponse(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.list(
+          arg_parent,
           monthlyRange_endMonth_day: arg_monthlyRange_endMonth_day,
           monthlyRange_endMonth_month: arg_monthlyRange_endMonth_month,
           monthlyRange_endMonth_year: arg_monthlyRange_endMonth_year,
@@ -843,9 +825,12 @@ void main() {
           monthlyRange_startMonth_year: arg_monthlyRange_startMonth_year,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
-          $fields: arg_$fields);
-      checkListSearchKeywordImpressionsMonthlyResponse(
-          response as api.ListSearchKeywordImpressionsMonthlyResponse);
-    });
-  });
+          $fields: arg_$fields,
+        );
+        checkListSearchKeywordImpressionsMonthlyResponse(
+          response as api.ListSearchKeywordImpressionsMonthlyResponse,
+        );
+      });
+    },
+  );
 }

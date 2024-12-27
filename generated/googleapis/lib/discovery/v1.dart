@@ -42,11 +42,16 @@ class DiscoveryApi {
 
   ApisResource get apis => ApisResource(_requester);
 
-  DiscoveryApi(http.Client client,
-      {core.String rootUrl = 'https://www.googleapis.com/',
-      core.String servicePath = 'discovery/v1/'})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DiscoveryApi(
+    http.Client client, {
+    core.String rootUrl = 'https://www.googleapis.com/',
+    core.String servicePath = 'discovery/v1/',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ApisResource {
@@ -93,7 +98,8 @@ class ApisResource {
       queryParams: queryParams_,
     );
     return RestDescription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieve the list of APIs supported at this endpoint.
@@ -133,7 +139,8 @@ class ApisResource {
       queryParams: queryParams_,
     );
     return DirectoryList.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -145,10 +152,7 @@ class DirectoryListItemsIcons {
   /// The URL of the 32x32 icon.
   core.String? x32;
 
-  DirectoryListItemsIcons({
-    this.x16,
-    this.x32,
-  });
+  DirectoryListItemsIcons({this.x16, this.x32});
 
   DirectoryListItemsIcons.fromJson(core.Map json_)
       : this(
@@ -222,7 +226,8 @@ class DirectoryListItems {
           documentationLink: json_['documentationLink'] as core.String?,
           icons: json_.containsKey('icons')
               ? DirectoryListItemsIcons.fromJson(
-                  json_['icons'] as core.Map<core.String, core.dynamic>)
+                  json_['icons'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
@@ -263,18 +268,17 @@ class DirectoryList {
   /// The kind for this response.
   core.String? kind;
 
-  DirectoryList({
-    this.discoveryVersion,
-    this.items,
-    this.kind,
-  });
+  DirectoryList({this.discoveryVersion, this.items, this.kind});
 
   DirectoryList.fromJson(core.Map json_)
       : this(
           discoveryVersion: json_['discoveryVersion'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map((value) => DirectoryListItems.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => DirectoryListItems.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -291,9 +295,7 @@ class JsonSchemaAnnotations {
   /// A list of methods for which this property is required on requests.
   core.List<core.String>? required;
 
-  JsonSchemaAnnotations({
-    this.required,
-  });
+  JsonSchemaAnnotations({this.required});
 
   JsonSchemaAnnotations.fromJson(core.Map json_)
       : this(
@@ -311,10 +313,7 @@ class JsonSchemaVariantMap {
   core.String? P_ref;
   core.String? typeValue;
 
-  JsonSchemaVariantMap({
-    this.P_ref,
-    this.typeValue,
-  });
+  JsonSchemaVariantMap({this.P_ref, this.typeValue});
 
   JsonSchemaVariantMap.fromJson(core.Map json_)
       : this(
@@ -339,17 +338,17 @@ class JsonSchemaVariant {
   /// The map of discriminant value to schema to use for parsing..
   core.List<JsonSchemaVariantMap>? map;
 
-  JsonSchemaVariant({
-    this.discriminant,
-    this.map,
-  });
+  JsonSchemaVariant({this.discriminant, this.map});
 
   JsonSchemaVariant.fromJson(core.Map json_)
       : this(
           discriminant: json_['discriminant'] as core.String?,
           map: (json_['map'] as core.List?)
-              ?.map((value) => JsonSchemaVariantMap.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => JsonSchemaVariantMap.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -479,12 +478,15 @@ class JsonSchema {
       : this(
           P_ref: json_['\$ref'] as core.String?,
           additionalProperties: json_.containsKey('additionalProperties')
-              ? JsonSchema.fromJson(json_['additionalProperties']
-                  as core.Map<core.String, core.dynamic>)
+              ? JsonSchema.fromJson(
+                  json_['additionalProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           annotations: json_.containsKey('annotations')
               ? JsonSchemaAnnotations.fromJson(
-                  json_['annotations'] as core.Map<core.String, core.dynamic>)
+                  json_['annotations'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           default_: json_['default'] as core.String?,
           deprecated: json_['deprecated'] as core.bool?,
@@ -502,7 +504,8 @@ class JsonSchema {
           id: json_['id'] as core.String?,
           items: json_.containsKey('items')
               ? JsonSchema.fromJson(
-                  json_['items'] as core.Map<core.String, core.dynamic>)
+                  json_['items'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           location: json_['location'] as core.String?,
           maximum: json_['maximum'] as core.String?,
@@ -513,7 +516,9 @@ class JsonSchema {
                   ?.map(
             (key, value) => core.MapEntry(
               key,
-              JsonSchema.fromJson(value as core.Map<core.String, core.dynamic>),
+              JsonSchema.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           readOnly: json_['readOnly'] as core.bool?,
@@ -522,7 +527,8 @@ class JsonSchema {
           type: json_['type'] as core.String?,
           variant: json_.containsKey('variant')
               ? JsonSchemaVariant.fromJson(
-                  json_['variant'] as core.Map<core.String, core.dynamic>)
+                  json_['variant'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -558,14 +564,10 @@ class RestDescriptionAuthOauth2ScopesValue {
   /// Description of scope.
   core.String? description;
 
-  RestDescriptionAuthOauth2ScopesValue({
-    this.description,
-  });
+  RestDescriptionAuthOauth2ScopesValue({this.description});
 
   RestDescriptionAuthOauth2ScopesValue.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-        );
+      : this(description: json_['description'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -577,9 +579,7 @@ class RestDescriptionAuthOauth2 {
   /// Available OAuth 2.0 scopes.
   core.Map<core.String, RestDescriptionAuthOauth2ScopesValue>? scopes;
 
-  RestDescriptionAuthOauth2({
-    this.scopes,
-  });
+  RestDescriptionAuthOauth2({this.scopes});
 
   RestDescriptionAuthOauth2.fromJson(core.Map json_)
       : this(
@@ -588,7 +588,8 @@ class RestDescriptionAuthOauth2 {
             (key, value) => core.MapEntry(
               key,
               RestDescriptionAuthOauth2ScopesValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
         );
@@ -603,15 +604,14 @@ class RestDescriptionAuth {
   /// OAuth 2.0 authentication information.
   RestDescriptionAuthOauth2? oauth2;
 
-  RestDescriptionAuth({
-    this.oauth2,
-  });
+  RestDescriptionAuth({this.oauth2});
 
   RestDescriptionAuth.fromJson(core.Map json_)
       : this(
           oauth2: json_.containsKey('oauth2')
               ? RestDescriptionAuthOauth2.fromJson(
-                  json_['oauth2'] as core.Map<core.String, core.dynamic>)
+                  json_['oauth2'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -665,10 +665,7 @@ class RestDescriptionIcons {
   /// The URL of the 32x32 icon.
   core.String? x32;
 
-  RestDescriptionIcons({
-    this.x16,
-    this.x32,
-  });
+  RestDescriptionIcons({this.x16, this.x32});
 
   RestDescriptionIcons.fromJson(core.Map json_)
       : this(
@@ -830,7 +827,8 @@ class RestDescription {
       : this(
           auth: json_.containsKey('auth')
               ? RestDescriptionAuth.fromJson(
-                  json_['auth'] as core.Map<core.String, core.dynamic>)
+                  json_['auth'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           basePath: json_['basePath'] as core.String?,
           baseUrl: json_['baseUrl'] as core.String?,
@@ -840,8 +838,11 @@ class RestDescription {
           discoveryVersion: json_['discoveryVersion'] as core.String?,
           documentationLink: json_['documentationLink'] as core.String?,
           endpoints: (json_['endpoints'] as core.List?)
-              ?.map((value) => RestDescriptionEndpoints.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => RestDescriptionEndpoints.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           etag: json_['etag'] as core.String?,
           exponentialBackoffDefault:
@@ -851,7 +852,8 @@ class RestDescription {
               .toList(),
           icons: json_.containsKey('icons')
               ? RestDescriptionIcons.fromJson(
-                  json_['icons'] as core.Map<core.String, core.dynamic>)
+                  json_['icons'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
@@ -862,7 +864,9 @@ class RestDescription {
               (json_['methods'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
               key,
-              RestMethod.fromJson(value as core.Map<core.String, core.dynamic>),
+              RestMethod.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           name: json_['name'] as core.String?,
@@ -874,7 +878,9 @@ class RestDescription {
                   ?.map(
             (key, value) => core.MapEntry(
               key,
-              JsonSchema.fromJson(value as core.Map<core.String, core.dynamic>),
+              JsonSchema.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           protocol: json_['protocol'] as core.String?,
@@ -883,7 +889,8 @@ class RestDescription {
             (key, value) => core.MapEntry(
               key,
               RestResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           revision: json_['revision'] as core.String?,
@@ -892,7 +899,9 @@ class RestDescription {
               (json_['schemas'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
               key,
-              JsonSchema.fromJson(value as core.Map<core.String, core.dynamic>),
+              JsonSchema.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           servicePath: json_['servicePath'] as core.String?,
@@ -947,10 +956,7 @@ class RestMethodMediaUploadProtocolsResumable {
   /// Should be used in conjunction with the basePath property at the api-level.
   core.String? path;
 
-  RestMethodMediaUploadProtocolsResumable({
-    this.multipart,
-    this.path,
-  });
+  RestMethodMediaUploadProtocolsResumable({this.multipart, this.path});
 
   RestMethodMediaUploadProtocolsResumable.fromJson(core.Map json_)
       : this(
@@ -974,10 +980,7 @@ class RestMethodMediaUploadProtocolsSimple {
   /// Should be used in conjunction with the basePath property at the api-level.
   core.String? path;
 
-  RestMethodMediaUploadProtocolsSimple({
-    this.multipart,
-    this.path,
-  });
+  RestMethodMediaUploadProtocolsSimple({this.multipart, this.path});
 
   RestMethodMediaUploadProtocolsSimple.fromJson(core.Map json_)
       : this(
@@ -999,20 +1002,19 @@ class RestMethodMediaUploadProtocols {
   /// Supports uploading as a single HTTP request.
   RestMethodMediaUploadProtocolsSimple? simple;
 
-  RestMethodMediaUploadProtocols({
-    this.resumable,
-    this.simple,
-  });
+  RestMethodMediaUploadProtocols({this.resumable, this.simple});
 
   RestMethodMediaUploadProtocols.fromJson(core.Map json_)
       : this(
           resumable: json_.containsKey('resumable')
               ? RestMethodMediaUploadProtocolsResumable.fromJson(
-                  json_['resumable'] as core.Map<core.String, core.dynamic>)
+                  json_['resumable'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           simple: json_.containsKey('simple')
               ? RestMethodMediaUploadProtocolsSimple.fromJson(
-                  json_['simple'] as core.Map<core.String, core.dynamic>)
+                  json_['simple'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1033,11 +1035,7 @@ class RestMethodMediaUpload {
   /// Supported upload protocols.
   RestMethodMediaUploadProtocols? protocols;
 
-  RestMethodMediaUpload({
-    this.accept,
-    this.maxSize,
-    this.protocols,
-  });
+  RestMethodMediaUpload({this.accept, this.maxSize, this.protocols});
 
   RestMethodMediaUpload.fromJson(core.Map json_)
       : this(
@@ -1047,7 +1045,8 @@ class RestMethodMediaUpload {
           maxSize: json_['maxSize'] as core.String?,
           protocols: json_.containsKey('protocols')
               ? RestMethodMediaUploadProtocols.fromJson(
-                  json_['protocols'] as core.Map<core.String, core.dynamic>)
+                  json_['protocols'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1066,10 +1065,7 @@ class RestMethodRequest {
   /// parameter name.
   core.String? parameterName;
 
-  RestMethodRequest({
-    this.P_ref,
-    this.parameterName,
-  });
+  RestMethodRequest({this.P_ref, this.parameterName});
 
   RestMethodRequest.fromJson(core.Map json_)
       : this(
@@ -1088,14 +1084,10 @@ class RestMethodResponse {
   /// Schema ID for the response schema.
   core.String? P_ref;
 
-  RestMethodResponse({
-    this.P_ref,
-  });
+  RestMethodResponse({this.P_ref});
 
   RestMethodResponse.fromJson(core.Map json_)
-      : this(
-          P_ref: json_['\$ref'] as core.String?,
-        );
+      : this(P_ref: json_['\$ref'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (P_ref != null) '\$ref': P_ref!,
@@ -1207,7 +1199,8 @@ class RestMethod {
           id: json_['id'] as core.String?,
           mediaUpload: json_.containsKey('mediaUpload')
               ? RestMethodMediaUpload.fromJson(
-                  json_['mediaUpload'] as core.Map<core.String, core.dynamic>)
+                  json_['mediaUpload'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           parameterOrder: (json_['parameterOrder'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1217,17 +1210,21 @@ class RestMethod {
                   ?.map(
             (key, value) => core.MapEntry(
               key,
-              JsonSchema.fromJson(value as core.Map<core.String, core.dynamic>),
+              JsonSchema.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           path: json_['path'] as core.String?,
           request: json_.containsKey('request')
               ? RestMethodRequest.fromJson(
-                  json_['request'] as core.Map<core.String, core.dynamic>)
+                  json_['request'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           response: json_.containsKey('response')
               ? RestMethodResponse.fromJson(
-                  json_['response'] as core.Map<core.String, core.dynamic>)
+                  json_['response'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           scopes: (json_['scopes'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1275,11 +1272,7 @@ class RestResource {
   /// Sub-resources on this resource.
   core.Map<core.String, RestResource>? resources;
 
-  RestResource({
-    this.deprecated,
-    this.methods,
-    this.resources,
-  });
+  RestResource({this.deprecated, this.methods, this.resources});
 
   RestResource.fromJson(core.Map json_)
       : this(
@@ -1288,7 +1281,9 @@ class RestResource {
               (json_['methods'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
               key,
-              RestMethod.fromJson(value as core.Map<core.String, core.dynamic>),
+              RestMethod.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           resources:
@@ -1296,7 +1291,8 @@ class RestResource {
             (key, value) => core.MapEntry(
               key,
               RestResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
         );

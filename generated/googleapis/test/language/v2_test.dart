@@ -42,18 +42,12 @@ void checkAnalyzeEntitiesRequest(api.AnalyzeEntitiesRequest o) {
   buildCounterAnalyzeEntitiesRequest++;
   if (buildCounterAnalyzeEntitiesRequest < 3) {
     checkDocument(o.document!);
-    unittest.expect(
-      o.encodingType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.encodingType!, unittest.equals('foo'));
   }
   buildCounterAnalyzeEntitiesRequest--;
 }
 
-core.List<api.Entity> buildUnnamed0() => [
-      buildEntity(),
-      buildEntity(),
-    ];
+core.List<api.Entity> buildUnnamed0() => [buildEntity(), buildEntity()];
 
 void checkUnnamed0(core.List<api.Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -78,10 +72,7 @@ void checkAnalyzeEntitiesResponse(api.AnalyzeEntitiesResponse o) {
   buildCounterAnalyzeEntitiesResponse++;
   if (buildCounterAnalyzeEntitiesResponse < 3) {
     checkUnnamed0(o.entities!);
-    unittest.expect(
-      o.languageCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
     unittest.expect(o.languageSupported!, unittest.isTrue);
   }
   buildCounterAnalyzeEntitiesResponse--;
@@ -103,18 +94,12 @@ void checkAnalyzeSentimentRequest(api.AnalyzeSentimentRequest o) {
   buildCounterAnalyzeSentimentRequest++;
   if (buildCounterAnalyzeSentimentRequest < 3) {
     checkDocument(o.document!);
-    unittest.expect(
-      o.encodingType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.encodingType!, unittest.equals('foo'));
   }
   buildCounterAnalyzeSentimentRequest--;
 }
 
-core.List<api.Sentence> buildUnnamed1() => [
-      buildSentence(),
-      buildSentence(),
-    ];
+core.List<api.Sentence> buildUnnamed1() => [buildSentence(), buildSentence()];
 
 void checkUnnamed1(core.List<api.Sentence> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -140,10 +125,7 @@ void checkAnalyzeSentimentResponse(api.AnalyzeSentimentResponse o) {
   buildCounterAnalyzeSentimentResponse++;
   if (buildCounterAnalyzeSentimentResponse < 3) {
     checkSentiment(o.documentSentiment!);
-    unittest.expect(
-      o.languageCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
     unittest.expect(o.languageSupported!, unittest.isTrue);
     checkUnnamed1(o.sentences!);
   }
@@ -167,10 +149,7 @@ void checkAnnotateTextRequest(api.AnnotateTextRequest o) {
   buildCounterAnnotateTextRequest++;
   if (buildCounterAnnotateTextRequest < 3) {
     checkDocument(o.document!);
-    unittest.expect(
-      o.encodingType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.encodingType!, unittest.equals('foo'));
     checkAnnotateTextRequestFeatures(o.features!);
   }
   buildCounterAnnotateTextRequest--;
@@ -212,10 +191,7 @@ void checkUnnamed2(core.List<api.ClassificationCategory> o) {
   checkClassificationCategory(o[1]);
 }
 
-core.List<api.Entity> buildUnnamed3() => [
-      buildEntity(),
-      buildEntity(),
-    ];
+core.List<api.Entity> buildUnnamed3() => [buildEntity(), buildEntity()];
 
 void checkUnnamed3(core.List<api.Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -234,10 +210,7 @@ void checkUnnamed4(core.List<api.ClassificationCategory> o) {
   checkClassificationCategory(o[1]);
 }
 
-core.List<api.Sentence> buildUnnamed5() => [
-      buildSentence(),
-      buildSentence(),
-    ];
+core.List<api.Sentence> buildUnnamed5() => [buildSentence(), buildSentence()];
 
 void checkUnnamed5(core.List<api.Sentence> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -268,10 +241,7 @@ void checkAnnotateTextResponse(api.AnnotateTextResponse o) {
     checkUnnamed2(o.categories!);
     checkSentiment(o.documentSentiment!);
     checkUnnamed3(o.entities!);
-    unittest.expect(
-      o.languageCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
     unittest.expect(o.languageSupported!, unittest.isTrue);
     checkUnnamed4(o.moderationCategories!);
     checkUnnamed5(o.sentences!);
@@ -295,18 +265,9 @@ api.ClassificationCategory buildClassificationCategory() {
 void checkClassificationCategory(api.ClassificationCategory o) {
   buildCounterClassificationCategory++;
   if (buildCounterClassificationCategory < 3) {
-    unittest.expect(
-      o.confidence!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.severity!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.confidence!, unittest.equals(42.0));
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.severity!, unittest.equals(42.0));
   }
   buildCounterClassificationCategory--;
 }
@@ -358,10 +319,7 @@ void checkClassifyTextResponse(api.ClassifyTextResponse o) {
   buildCounterClassifyTextResponse++;
   if (buildCounterClassifyTextResponse < 3) {
     checkUnnamed6(o.categories!);
-    unittest.expect(
-      o.languageCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
     unittest.expect(o.languageSupported!, unittest.isTrue);
   }
   buildCounterClassifyTextResponse--;
@@ -384,22 +342,10 @@ api.Document buildDocument() {
 void checkDocument(api.Document o) {
   buildCounterDocument++;
   if (buildCounterDocument < 3) {
-    unittest.expect(
-      o.content!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.gcsContentUri!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.languageCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.content!, unittest.equals('foo'));
+    unittest.expect(o.gcsContentUri!, unittest.equals('foo'));
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterDocument--;
 }
@@ -415,21 +361,12 @@ void checkUnnamed7(core.List<api.EntityMention> o) {
   checkEntityMention(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed8() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.Map<core.String, core.String> buildUnnamed8() => {'x': 'foo', 'y': 'foo'};
 
 void checkUnnamed8(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
 core.int buildCounterEntity = 0;
@@ -452,15 +389,9 @@ void checkEntity(api.Entity o) {
   if (buildCounterEntity < 3) {
     checkUnnamed7(o.mentions!);
     checkUnnamed8(o.metadata!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
     checkSentiment(o.sentiment!);
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterEntity--;
 }
@@ -482,16 +413,10 @@ api.EntityMention buildEntityMention() {
 void checkEntityMention(api.EntityMention o) {
   buildCounterEntityMention++;
   if (buildCounterEntityMention < 3) {
-    unittest.expect(
-      o.probability!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.probability!, unittest.equals(42.0));
     checkSentiment(o.sentiment!);
     checkTextSpan(o.text!);
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterEntityMention--;
 }
@@ -512,10 +437,7 @@ void checkModerateTextRequest(api.ModerateTextRequest o) {
   buildCounterModerateTextRequest++;
   if (buildCounterModerateTextRequest < 3) {
     checkDocument(o.document!);
-    unittest.expect(
-      o.modelVersion!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.modelVersion!, unittest.equals('foo'));
   }
   buildCounterModerateTextRequest--;
 }
@@ -547,10 +469,7 @@ api.ModerateTextResponse buildModerateTextResponse() {
 void checkModerateTextResponse(api.ModerateTextResponse o) {
   buildCounterModerateTextResponse++;
   if (buildCounterModerateTextResponse < 3) {
-    unittest.expect(
-      o.languageCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
     unittest.expect(o.languageSupported!, unittest.isTrue);
     checkUnnamed9(o.moderationCategories!);
   }
@@ -593,14 +512,8 @@ api.Sentiment buildSentiment() {
 void checkSentiment(api.Sentiment o) {
   buildCounterSentiment++;
   if (buildCounterSentiment < 3) {
-    unittest.expect(
-      o.magnitude!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.score!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.magnitude!, unittest.equals(42.0));
+    unittest.expect(o.score!, unittest.equals(42.0));
   }
   buildCounterSentiment--;
 }
@@ -620,14 +533,8 @@ api.TextSpan buildTextSpan() {
 void checkTextSpan(api.TextSpan o) {
   buildCounterTextSpan++;
   if (buildCounterTextSpan < 3) {
-    unittest.expect(
-      o.beginOffset!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.content!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.beginOffset!, unittest.equals(42));
+    unittest.expect(o.content!, unittest.equals('foo'));
   }
   buildCounterTextSpan--;
 }
@@ -638,7 +545,8 @@ void main() {
       final o = buildAnalyzeEntitiesRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AnalyzeEntitiesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAnalyzeEntitiesRequest(od);
     });
   });
@@ -648,7 +556,8 @@ void main() {
       final o = buildAnalyzeEntitiesResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AnalyzeEntitiesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAnalyzeEntitiesResponse(od);
     });
   });
@@ -658,7 +567,8 @@ void main() {
       final o = buildAnalyzeSentimentRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AnalyzeSentimentRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAnalyzeSentimentRequest(od);
     });
   });
@@ -668,7 +578,8 @@ void main() {
       final o = buildAnalyzeSentimentResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AnalyzeSentimentResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAnalyzeSentimentResponse(od);
     });
   });
@@ -678,7 +589,8 @@ void main() {
       final o = buildAnnotateTextRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AnnotateTextRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAnnotateTextRequest(od);
     });
   });
@@ -688,7 +600,8 @@ void main() {
       final o = buildAnnotateTextRequestFeatures();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AnnotateTextRequestFeatures.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAnnotateTextRequestFeatures(od);
     });
   });
@@ -698,7 +611,8 @@ void main() {
       final o = buildAnnotateTextResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AnnotateTextResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAnnotateTextResponse(od);
     });
   });
@@ -708,7 +622,8 @@ void main() {
       final o = buildClassificationCategory();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ClassificationCategory.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkClassificationCategory(od);
     });
   });
@@ -718,7 +633,8 @@ void main() {
       final o = buildClassifyTextRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ClassifyTextRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkClassifyTextRequest(od);
     });
   });
@@ -728,7 +644,8 @@ void main() {
       final o = buildClassifyTextResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ClassifyTextResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkClassifyTextResponse(od);
     });
   });
@@ -737,8 +654,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildDocument();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Document.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Document.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDocument(od);
     });
   });
@@ -747,8 +665,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildEntity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Entity.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Entity.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkEntity(od);
     });
   });
@@ -758,7 +677,8 @@ void main() {
       final o = buildEntityMention();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.EntityMention.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkEntityMention(od);
     });
   });
@@ -768,7 +688,8 @@ void main() {
       final o = buildModerateTextRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ModerateTextRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkModerateTextRequest(od);
     });
   });
@@ -778,7 +699,8 @@ void main() {
       final o = buildModerateTextResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ModerateTextResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkModerateTextResponse(od);
     });
   });
@@ -787,8 +709,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildSentence();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Sentence.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Sentence.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSentence(od);
     });
   });
@@ -797,8 +720,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildSentiment();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Sentiment.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Sentiment.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSentiment(od);
     });
   });
@@ -807,8 +731,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildTextSpan();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.TextSpan.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.TextSpan.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTextSpan(od);
     });
   });
@@ -819,54 +744,58 @@ void main() {
       final res = api.CloudNaturalLanguageApi(mock).documents;
       final arg_request = buildAnalyzeEntitiesRequest();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.AnalyzeEntitiesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkAnalyzeEntitiesRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.AnalyzeEntitiesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkAnalyzeEntitiesRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 28),
-          unittest.equals('v2/documents:analyzeEntities'),
-        );
-        pathOffset += 28;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 28),
+            unittest.equals('v2/documents:analyzeEntities'),
+          );
+          pathOffset += 28;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildAnalyzeEntitiesResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.analyzeEntities(arg_request, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildAnalyzeEntitiesResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.analyzeEntities(
+        arg_request,
+        $fields: arg_$fields,
+      );
       checkAnalyzeEntitiesResponse(response as api.AnalyzeEntitiesResponse);
     });
 
@@ -875,54 +804,58 @@ void main() {
       final res = api.CloudNaturalLanguageApi(mock).documents;
       final arg_request = buildAnalyzeSentimentRequest();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.AnalyzeSentimentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkAnalyzeSentimentRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.AnalyzeSentimentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkAnalyzeSentimentRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('v2/documents:analyzeSentiment'),
-        );
-        pathOffset += 29;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 29),
+            unittest.equals('v2/documents:analyzeSentiment'),
+          );
+          pathOffset += 29;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildAnalyzeSentimentResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.analyzeSentiment(arg_request, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildAnalyzeSentimentResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.analyzeSentiment(
+        arg_request,
+        $fields: arg_$fields,
+      );
       checkAnalyzeSentimentResponse(response as api.AnalyzeSentimentResponse);
     });
 
@@ -931,54 +864,58 @@ void main() {
       final res = api.CloudNaturalLanguageApi(mock).documents;
       final arg_request = buildAnnotateTextRequest();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.AnnotateTextRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkAnnotateTextRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.AnnotateTextRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkAnnotateTextRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 25),
-          unittest.equals('v2/documents:annotateText'),
-        );
-        pathOffset += 25;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 25),
+            unittest.equals('v2/documents:annotateText'),
+          );
+          pathOffset += 25;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildAnnotateTextResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.annotateText(arg_request, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildAnnotateTextResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.annotateText(
+        arg_request,
+        $fields: arg_$fields,
+      );
       checkAnnotateTextResponse(response as api.AnnotateTextResponse);
     });
 
@@ -987,54 +924,58 @@ void main() {
       final res = api.CloudNaturalLanguageApi(mock).documents;
       final arg_request = buildClassifyTextRequest();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ClassifyTextRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkClassifyTextRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ClassifyTextRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkClassifyTextRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 25),
-          unittest.equals('v2/documents:classifyText'),
-        );
-        pathOffset += 25;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 25),
+            unittest.equals('v2/documents:classifyText'),
+          );
+          pathOffset += 25;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildClassifyTextResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.classifyText(arg_request, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildClassifyTextResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.classifyText(
+        arg_request,
+        $fields: arg_$fields,
+      );
       checkClassifyTextResponse(response as api.ClassifyTextResponse);
     });
 
@@ -1043,54 +984,58 @@ void main() {
       final res = api.CloudNaturalLanguageApi(mock).documents;
       final arg_request = buildModerateTextRequest();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ModerateTextRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkModerateTextRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ModerateTextRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkModerateTextRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 25),
-          unittest.equals('v2/documents:moderateText'),
-        );
-        pathOffset += 25;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 25),
+            unittest.equals('v2/documents:moderateText'),
+          );
+          pathOffset += 25;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildModerateTextResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.moderateText(arg_request, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildModerateTextResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.moderateText(
+        arg_request,
+        $fields: arg_$fields,
+      );
       checkModerateTextResponse(response as api.ModerateTextResponse);
     });
   });

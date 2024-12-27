@@ -52,11 +52,16 @@ class WorkflowExecutionsApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  WorkflowExecutionsApi(http.Client client,
-      {core.String rootUrl = 'https://workflowexecutions.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  WorkflowExecutionsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://workflowexecutions.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -312,7 +317,8 @@ class ProjectsLocationsWorkflowsExecutionsResource {
       queryParams: queryParams_,
     );
     return ExportDataResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns an execution of the given name.
@@ -449,7 +455,8 @@ class ProjectsLocationsWorkflowsExecutionsResource {
       queryParams: queryParams_,
     );
     return ListExecutionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -457,8 +464,8 @@ class ProjectsLocationsWorkflowsExecutionsCallbacksResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsWorkflowsExecutionsCallbacksResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Returns a list of active callbacks that belong to the execution with the
   /// given name.
@@ -511,7 +518,8 @@ class ProjectsLocationsWorkflowsExecutionsCallbacksResource {
       queryParams: queryParams_,
     );
     return ListCallbacksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -519,8 +527,8 @@ class ProjectsLocationsWorkflowsExecutionsStepEntriesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsWorkflowsExecutionsStepEntriesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets a step entry.
   ///
@@ -650,7 +658,8 @@ class ProjectsLocationsWorkflowsExecutionsStepEntriesResource {
       queryParams: queryParams_,
     );
     return ListStepEntriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -682,12 +691,7 @@ class Callback {
   /// Output only.
   core.String? waiters;
 
-  Callback({
-    this.availablePayloads,
-    this.method,
-    this.name,
-    this.waiters,
-  });
+  Callback({this.availablePayloads, this.method, this.name, this.waiters});
 
   Callback.fromJson(core.Map json_)
       : this(
@@ -732,11 +736,7 @@ class Error {
   /// Stack trace with detailed information of where error was generated.
   StackTrace? stackTrace;
 
-  Error({
-    this.context,
-    this.payload,
-    this.stackTrace,
-  });
+  Error({this.context, this.payload, this.stackTrace});
 
   Error.fromJson(core.Map json_)
       : this(
@@ -744,7 +744,8 @@ class Error {
           payload: json_['payload'] as core.String?,
           stackTrace: json_.containsKey('stackTrace')
               ? StackTrace.fromJson(
-                  json_['stackTrace'] as core.Map<core.String, core.dynamic>)
+                  json_['stackTrace'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -760,14 +761,10 @@ class Exception {
   /// Error message represented as a JSON string.
   core.String? payload;
 
-  Exception({
-    this.payload,
-  });
+  Exception({this.payload});
 
   Exception.fromJson(core.Map json_)
-      : this(
-          payload: json_['payload'] as core.String?,
-        );
+      : this(payload: json_['payload'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (payload != null) 'payload': payload!,
@@ -939,15 +936,13 @@ class Execution {
           endTime: json_['endTime'] as core.String?,
           error: json_.containsKey('error')
               ? Error.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           executionHistoryLevel: json_['executionHistoryLevel'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           result: json_['result'] as core.String?,
@@ -955,11 +950,13 @@ class Execution {
           state: json_['state'] as core.String?,
           stateError: json_.containsKey('stateError')
               ? StateError.fromJson(
-                  json_['stateError'] as core.Map<core.String, core.dynamic>)
+                  json_['stateError'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           status: json_.containsKey('status')
               ? Status.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           workflowRevisionId: json_['workflowRevisionId'] as core.String?,
         );
@@ -994,14 +991,10 @@ class ExportDataResponse {
   /// given name
   core.String? data;
 
-  ExportDataResponse({
-    this.data,
-  });
+  ExportDataResponse({this.data});
 
   ExportDataResponse.fromJson(core.Map json_)
-      : this(
-          data: json_['data'] as core.String?,
-        );
+      : this(data: json_['data'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (data != null) 'data': data!,
@@ -1018,16 +1011,16 @@ class ListCallbacksResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListCallbacksResponse({
-    this.callbacks,
-    this.nextPageToken,
-  });
+  ListCallbacksResponse({this.callbacks, this.nextPageToken});
 
   ListCallbacksResponse.fromJson(core.Map json_)
       : this(
           callbacks: (json_['callbacks'] as core.List?)
-              ?.map((value) => Callback.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Callback.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1048,16 +1041,16 @@ class ListExecutionsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListExecutionsResponse({
-    this.executions,
-    this.nextPageToken,
-  });
+  ListExecutionsResponse({this.executions, this.nextPageToken});
 
   ListExecutionsResponse.fromJson(core.Map json_)
       : this(
           executions: (json_['executions'] as core.List?)
-              ?.map((value) => Execution.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Execution.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1096,8 +1089,11 @@ class ListStepEntriesResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           stepEntries: (json_['stepEntries'] as core.List?)
-              ?.map((value) => StepEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => StepEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -1126,12 +1122,7 @@ class NavigationInfo {
   /// The index of the previous step in the current workflow, if any.
   core.String? previous;
 
-  NavigationInfo({
-    this.children,
-    this.next,
-    this.parent,
-    this.previous,
-  });
+  NavigationInfo({this.children, this.next, this.parent, this.previous});
 
   NavigationInfo.fromJson(core.Map json_)
       : this(
@@ -1164,11 +1155,7 @@ class Position {
   /// The source code line number the current instruction was generated from.
   core.String? line;
 
-  Position({
-    this.column,
-    this.length,
-    this.line,
-  });
+  Position({this.column, this.length, this.line});
 
   Position.fromJson(core.Map json_)
       : this(
@@ -1200,15 +1187,16 @@ class StackTrace {
   /// An array of stack elements.
   core.List<StackTraceElement>? elements;
 
-  StackTrace({
-    this.elements,
-  });
+  StackTrace({this.elements});
 
   StackTrace.fromJson(core.Map json_)
       : this(
           elements: (json_['elements'] as core.List?)
-              ?.map((value) => StackTraceElement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => StackTraceElement.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1228,17 +1216,14 @@ class StackTraceElement {
   /// The step the error occurred at.
   core.String? step;
 
-  StackTraceElement({
-    this.position,
-    this.routine,
-    this.step,
-  });
+  StackTraceElement({this.position, this.routine, this.step});
 
   StackTraceElement.fromJson(core.Map json_)
       : this(
           position: json_.containsKey('position')
               ? Position.fromJson(
-                  json_['position'] as core.Map<core.String, core.dynamic>)
+                  json_['position'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           routine: json_['routine'] as core.String?,
           step: json_['step'] as core.String?,
@@ -1266,15 +1251,16 @@ class Status {
   /// `main` subworkflow, and ending with the most deeply nested step.
   core.List<Step>? currentSteps;
 
-  Status({
-    this.currentSteps,
-  });
+  Status({this.currentSteps});
 
   Status.fromJson(core.Map json_)
       : this(
           currentSteps: (json_['currentSteps'] as core.List?)
-              ?.map((value) =>
-                  Step.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Step.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1291,10 +1277,7 @@ class Step {
   /// Name of a step within the routine.
   core.String? step;
 
-  Step({
-    this.routine,
-    this.step,
-  });
+  Step({this.routine, this.step});
 
   Step.fromJson(core.Map json_)
       : this(
@@ -1433,25 +1416,31 @@ class StepEntry {
           entryId: json_['entryId'] as core.String?,
           exception: json_.containsKey('exception')
               ? Exception.fromJson(
-                  json_['exception'] as core.Map<core.String, core.dynamic>)
+                  json_['exception'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           name: json_['name'] as core.String?,
           navigationInfo: json_.containsKey('navigationInfo')
-              ? NavigationInfo.fromJson(json_['navigationInfo']
-                  as core.Map<core.String, core.dynamic>)
+              ? NavigationInfo.fromJson(
+                  json_['navigationInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           routine: json_['routine'] as core.String?,
           state: json_['state'] as core.String?,
           step: json_['step'] as core.String?,
           stepEntryMetadata: json_.containsKey('stepEntryMetadata')
-              ? StepEntryMetadata.fromJson(json_['stepEntryMetadata']
-                  as core.Map<core.String, core.dynamic>)
+              ? StepEntryMetadata.fromJson(
+                  json_['stepEntryMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           stepType: json_['stepType'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
           variableData: json_.containsKey('variableData')
               ? VariableData.fromJson(
-                  json_['variableData'] as core.Map<core.String, core.dynamic>)
+                  json_['variableData'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
         );
 
@@ -1565,7 +1554,8 @@ class TriggerPubsubExecutionRequest {
           deliveryAttempt: json_['deliveryAttempt'] as core.int?,
           message: json_.containsKey('message')
               ? PubsubMessage.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>)
+                  json_['message'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           subscription: json_['subscription'] as core.String?,
         );
@@ -1587,9 +1577,7 @@ class VariableData {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? variables;
 
-  VariableData({
-    this.variables,
-  });
+  VariableData({this.variables});
 
   VariableData.fromJson(core.Map json_)
       : this(

@@ -52,11 +52,16 @@ class TPUApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  TPUApi(http.Client client,
-      {core.String rootUrl = 'https://tpu.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  TPUApi(
+    http.Client client, {
+    core.String rootUrl = 'https://tpu.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 }
 
 class ProjectsResource {
@@ -99,10 +104,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -166,7 +168,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -210,7 +213,8 @@ class ProjectsLocationsAcceleratorTypesResource {
       queryParams: queryParams_,
     );
     return AcceleratorType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists accelerator types supported by this API.
@@ -263,7 +267,8 @@ class ProjectsLocationsAcceleratorTypesResource {
       queryParams: queryParams_,
     );
     return ListAcceleratorTypesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -371,10 +376,7 @@ class ProjectsLocationsNodesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Node> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Node> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -431,7 +433,8 @@ class ProjectsLocationsNodesResource {
       queryParams: queryParams_,
     );
     return ListNodesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Reimages a node's OS.
@@ -591,10 +594,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> cancel(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -631,10 +631,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -670,10 +667,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -735,7 +729,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -779,7 +774,8 @@ class ProjectsLocationsTensorflowVersionsResource {
       queryParams: queryParams_,
     );
     return TensorFlowVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List TensorFlow versions supported by this API.
@@ -832,7 +828,8 @@ class ProjectsLocationsTensorflowVersionsResource {
       queryParams: queryParams_,
     );
     return ListTensorFlowVersionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -844,10 +841,7 @@ class AcceleratorType {
   /// the accelerator type.
   core.String? type;
 
-  AcceleratorType({
-    this.name,
-    this.type,
-  });
+  AcceleratorType({this.name, this.type});
 
   AcceleratorType.fromJson(core.Map json_)
       : this(
@@ -889,8 +883,11 @@ class ListAcceleratorTypesResponse {
   ListAcceleratorTypesResponse.fromJson(core.Map json_)
       : this(
           acceleratorTypes: (json_['acceleratorTypes'] as core.List?)
-              ?.map((value) => AcceleratorType.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => AcceleratorType.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -913,16 +910,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -944,18 +941,17 @@ class ListNodesResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListNodesResponse({
-    this.nextPageToken,
-    this.nodes,
-    this.unreachable,
-  });
+  ListNodesResponse({this.nextPageToken, this.nodes, this.unreachable});
 
   ListNodesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           nodes: (json_['nodes'] as core.List?)
-              ?.map((value) =>
-                  Node.fromJson(value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Node.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -977,17 +973,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
         );
 
@@ -1018,8 +1014,11 @@ class ListTensorFlowVersionsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           tensorflowVersions: (json_['tensorflowVersions'] as core.List?)
-              ?.map((value) => TensorFlowVersion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => TensorFlowVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1045,10 +1044,7 @@ class NetworkEndpoint {
   /// The port of this network endpoint.
   core.int? port;
 
-  NetworkEndpoint({
-    this.ipAddress,
-    this.port,
-  });
+  NetworkEndpoint({this.ipAddress, this.port});
 
   NetworkEndpoint.fromJson(core.Map json_)
       : this(
@@ -1252,27 +1248,32 @@ class Node {
           ipAddress: json_['ipAddress'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
           network: json_['network'] as core.String?,
           networkEndpoints: (json_['networkEndpoints'] as core.List?)
-              ?.map((value) => NetworkEndpoint.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => NetworkEndpoint.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           port: json_['port'] as core.String?,
           schedulingConfig: json_.containsKey('schedulingConfig')
-              ? SchedulingConfig.fromJson(json_['schedulingConfig']
-                  as core.Map<core.String, core.dynamic>)
+              ? SchedulingConfig.fromJson(
+                  json_['schedulingConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
               : null,
           serviceAccount: json_['serviceAccount'] as core.String?,
           state: json_['state'] as core.String?,
           symptoms: (json_['symptoms'] as core.List?)
-              ?.map((value) => Symptom.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+              ?.map(
+                (value) => Symptom.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              )
               .toList(),
           tensorflowVersion: json_['tensorflowVersion'] as core.String?,
           useServiceNetworking: json_['useServiceNetworking'] as core.bool?,
@@ -1345,20 +1346,15 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -1383,14 +1379,10 @@ class ReimageNodeRequest {
   /// The version for reimage to create.
   core.String? tensorflowVersion;
 
-  ReimageNodeRequest({
-    this.tensorflowVersion,
-  });
+  ReimageNodeRequest({this.tensorflowVersion});
 
   ReimageNodeRequest.fromJson(core.Map json_)
-      : this(
-          tensorflowVersion: json_['tensorflowVersion'] as core.String?,
-        );
+      : this(tensorflowVersion: json_['tensorflowVersion'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (tensorflowVersion != null) 'tensorflowVersion': tensorflowVersion!,
@@ -1405,10 +1397,7 @@ class SchedulingConfig {
   /// Whether the node is created under a reservation.
   core.bool? reserved;
 
-  SchedulingConfig({
-    this.preemptible,
-    this.reserved,
-  });
+  SchedulingConfig({this.preemptible, this.reserved});
 
   SchedulingConfig.fromJson(core.Map json_)
       : this(
@@ -1448,10 +1437,7 @@ class TensorFlowVersion {
   /// the tensorflow version.
   core.String? version;
 
-  TensorFlowVersion({
-    this.name,
-    this.version,
-  });
+  TensorFlowVersion({this.name, this.version});
 
   TensorFlowVersion.fromJson(core.Map json_)
       : this(

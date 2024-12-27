@@ -40,10 +40,7 @@ api.Challenge buildChallenge() {
 void checkChallenge(api.Challenge o) {
   buildCounterChallenge++;
   if (buildCounterChallenge < 3) {
-    unittest.expect(
-      o.challenge!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.challenge!, unittest.equals('foo'));
   }
   buildCounterChallenge--;
 }
@@ -63,118 +60,58 @@ api.CrowdStrikeAgent buildCrowdStrikeAgent() {
 void checkCrowdStrikeAgent(api.CrowdStrikeAgent o) {
   buildCounterCrowdStrikeAgent++;
   if (buildCounterCrowdStrikeAgent < 3) {
-    unittest.expect(
-      o.agentId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.customerId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.agentId!, unittest.equals('foo'));
+    unittest.expect(o.customerId!, unittest.equals('foo'));
   }
   buildCounterCrowdStrikeAgent--;
 }
 
-core.List<core.String> buildUnnamed0() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed0() => ['foo', 'foo'];
 
 void checkUnnamed0(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed1() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed1() => ['foo', 'foo'];
 
 void checkUnnamed1(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed2() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed2() => ['foo', 'foo'];
 
 void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed3() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed3() => ['foo', 'foo'];
 
 void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed4() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed4() => ['foo', 'foo'];
 
 void checkUnnamed4(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed5() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed5() => ['foo', 'foo'];
 
 void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterDeviceSignals = 0;
@@ -223,97 +160,40 @@ void checkDeviceSignals(api.DeviceSignals o) {
   buildCounterDeviceSignals++;
   if (buildCounterDeviceSignals < 3) {
     unittest.expect(o.allowScreenLock!, unittest.isTrue);
-    unittest.expect(
-      o.browserVersion!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.browserVersion!, unittest.equals('foo'));
     unittest.expect(o.builtInDnsClientEnabled!, unittest.isTrue);
     unittest.expect(o.chromeRemoteDesktopAppBlocked!, unittest.isTrue);
     checkCrowdStrikeAgent(o.crowdStrikeAgent!);
     checkUnnamed0(o.deviceAffiliationIds!);
-    unittest.expect(
-      o.deviceEnrollmentDomain!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.deviceManufacturer!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.deviceModel!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.diskEncryption!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.hostname!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.deviceEnrollmentDomain!, unittest.equals('foo'));
+    unittest.expect(o.deviceManufacturer!, unittest.equals('foo'));
+    unittest.expect(o.deviceModel!, unittest.equals('foo'));
+    unittest.expect(o.diskEncryption!, unittest.equals('foo'));
+    unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(o.hostname!, unittest.equals('foo'));
     checkUnnamed1(o.imei!);
     checkUnnamed2(o.macAddresses!);
     checkUnnamed3(o.meid!);
-    unittest.expect(
-      o.operatingSystem!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.osFirewall!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.osVersion!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.operatingSystem!, unittest.equals('foo'));
+    unittest.expect(o.osFirewall!, unittest.equals('foo'));
+    unittest.expect(o.osVersion!, unittest.equals('foo'));
     unittest.expect(
       o.passwordProtectionWarningTrigger!,
       unittest.equals('foo'),
     );
     checkUnnamed4(o.profileAffiliationIds!);
-    unittest.expect(
-      o.profileEnrollmentDomain!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.realtimeUrlCheckMode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.safeBrowsingProtectionLevel!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.screenLockSecured!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.secureBootMode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.serialNumber!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.profileEnrollmentDomain!, unittest.equals('foo'));
+    unittest.expect(o.realtimeUrlCheckMode!, unittest.equals('foo'));
+    unittest.expect(o.safeBrowsingProtectionLevel!, unittest.equals('foo'));
+    unittest.expect(o.screenLockSecured!, unittest.equals('foo'));
+    unittest.expect(o.secureBootMode!, unittest.equals('foo'));
+    unittest.expect(o.serialNumber!, unittest.equals('foo'));
     unittest.expect(o.siteIsolationEnabled!, unittest.isTrue);
     checkUnnamed5(o.systemDnsServers!);
     unittest.expect(o.thirdPartyBlockingEnabled!, unittest.isTrue);
-    unittest.expect(
-      o.trigger!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.windowsMachineDomain!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.windowsUserDomain!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.trigger!, unittest.equals('foo'));
+    unittest.expect(o.windowsMachineDomain!, unittest.equals('foo'));
+    unittest.expect(o.windowsUserDomain!, unittest.equals('foo'));
   }
   buildCounterDeviceSignals--;
 }
@@ -348,14 +228,8 @@ api.VerifyChallengeResponseRequest buildVerifyChallengeResponseRequest() {
 void checkVerifyChallengeResponseRequest(api.VerifyChallengeResponseRequest o) {
   buildCounterVerifyChallengeResponseRequest++;
   if (buildCounterVerifyChallengeResponseRequest < 3) {
-    unittest.expect(
-      o.challengeResponse!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.expectedIdentity!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.challengeResponse!, unittest.equals('foo'));
+    unittest.expect(o.expectedIdentity!, unittest.equals('foo'));
   }
   buildCounterVerifyChallengeResponseRequest--;
 }
@@ -385,51 +259,18 @@ api.VerifyChallengeResponseResult buildVerifyChallengeResponseResult() {
 void checkVerifyChallengeResponseResult(api.VerifyChallengeResponseResult o) {
   buildCounterVerifyChallengeResponseResult++;
   if (buildCounterVerifyChallengeResponseResult < 3) {
-    unittest.expect(
-      o.attestedDeviceId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.customerId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.deviceEnrollmentId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.devicePermanentId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.deviceSignal!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.attestedDeviceId!, unittest.equals('foo'));
+    unittest.expect(o.customerId!, unittest.equals('foo'));
+    unittest.expect(o.deviceEnrollmentId!, unittest.equals('foo'));
+    unittest.expect(o.devicePermanentId!, unittest.equals('foo'));
+    unittest.expect(o.deviceSignal!, unittest.equals('foo'));
     checkDeviceSignals(o.deviceSignals!);
-    unittest.expect(
-      o.keyTrustLevel!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.profileCustomerId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.profileKeyTrustLevel!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.signedPublicKeyAndChallenge!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.virtualDeviceId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.virtualProfileId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.keyTrustLevel!, unittest.equals('foo'));
+    unittest.expect(o.profileCustomerId!, unittest.equals('foo'));
+    unittest.expect(o.profileKeyTrustLevel!, unittest.equals('foo'));
+    unittest.expect(o.signedPublicKeyAndChallenge!, unittest.equals('foo'));
+    unittest.expect(o.virtualDeviceId!, unittest.equals('foo'));
+    unittest.expect(o.virtualProfileId!, unittest.equals('foo'));
   }
   buildCounterVerifyChallengeResponseResult--;
 }
@@ -439,8 +280,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildChallenge();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Challenge.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Challenge.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkChallenge(od);
     });
   });
@@ -450,7 +292,8 @@ void main() {
       final o = buildCrowdStrikeAgent();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CrowdStrikeAgent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCrowdStrikeAgent(od);
     });
   });
@@ -460,7 +303,8 @@ void main() {
       final o = buildDeviceSignals();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeviceSignals.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeviceSignals(od);
     });
   });
@@ -469,8 +313,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildEmpty();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Empty.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkEmpty(od);
     });
   });
@@ -480,7 +325,8 @@ void main() {
       final o = buildVerifyChallengeResponseRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.VerifyChallengeResponseRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkVerifyChallengeResponseRequest(od);
     });
   });
@@ -490,7 +336,8 @@ void main() {
       final o = buildVerifyChallengeResponseResult();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.VerifyChallengeResponseResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkVerifyChallengeResponseResult(od);
     });
   });
@@ -501,52 +348,54 @@ void main() {
       final res = api.VerifiedaccessApi(mock).challenge;
       final arg_request = buildEmpty();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.Empty.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkEmpty(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.Empty.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkEmpty(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 21),
-          unittest.equals('v2/challenge:generate'),
-        );
-        pathOffset += 21;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 21),
+            unittest.equals('v2/challenge:generate'),
+          );
+          pathOffset += 21;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildChallenge());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildChallenge());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.generate(arg_request, $fields: arg_$fields);
       checkChallenge(response as api.Challenge);
     });
@@ -556,55 +405,60 @@ void main() {
       final res = api.VerifiedaccessApi(mock).challenge;
       final arg_request = buildVerifyChallengeResponseRequest();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.VerifyChallengeResponseRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkVerifyChallengeResponseRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.VerifyChallengeResponseRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkVerifyChallengeResponseRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 19),
-          unittest.equals('v2/challenge:verify'),
-        );
-        pathOffset += 19;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 19),
+            unittest.equals('v2/challenge:verify'),
+          );
+          pathOffset += 19;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildVerifyChallengeResponseResult());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildVerifyChallengeResponseResult(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.verify(arg_request, $fields: arg_$fields);
       checkVerifyChallengeResponseResult(
-          response as api.VerifyChallengeResponseResult);
+        response as api.VerifyChallengeResponseResult,
+      );
     });
   });
 }

@@ -72,13 +72,7 @@ class $AccessPolicy {
   /// Required.
   core.String? title;
 
-  $AccessPolicy({
-    this.etag,
-    this.name,
-    this.parent,
-    this.scopes,
-    this.title,
-  });
+  $AccessPolicy({this.etag, this.name, this.parent, this.scopes, this.title});
 
   $AccessPolicy.fromJson(core.Map json_)
       : this(
@@ -111,10 +105,7 @@ class $ActionParameter {
   /// The value of the parameter.
   core.String? value;
 
-  $ActionParameter({
-    this.key,
-    this.value,
-  });
+  $ActionParameter({this.key, this.value});
 
   $ActionParameter.fromJson(core.Map json_)
       : this(
@@ -258,10 +249,7 @@ class $AdUrl {
   /// The URL string value.
   core.String? url;
 
-  $AdUrl({
-    this.type,
-    this.url,
-  });
+  $AdUrl({this.type, this.url});
 
   $AdUrl.fromJson(core.Map json_)
       : this(
@@ -337,14 +325,10 @@ class $AdvertiserBillingConfig {
   /// Required.
   core.String? billingProfileId;
 
-  $AdvertiserBillingConfig({
-    this.billingProfileId,
-  });
+  $AdvertiserBillingConfig({this.billingProfileId});
 
   $AdvertiserBillingConfig.fromJson(core.Map json_)
-      : this(
-          billingProfileId: json_['billingProfileId'] as core.String?,
-        );
+      : this(billingProfileId: json_['billingProfileId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (billingProfileId != null) 'billingProfileId': billingProfileId!,
@@ -468,11 +452,7 @@ class $AdvertiserGeneralConfig {
   /// Output only.
   core.String? timeZone;
 
-  $AdvertiserGeneralConfig({
-    this.currencyCode,
-    this.domainUrl,
-    this.timeZone,
-  });
+  $AdvertiserGeneralConfig({this.currencyCode, this.domainUrl, this.timeZone});
 
   $AdvertiserGeneralConfig.fromJson(core.Map json_)
       : this(
@@ -497,9 +477,7 @@ class $AdvertiserTargetingConfig {
   /// for all video line items under the advertiser.
   core.bool? exemptTvFromViewabilityTargeting;
 
-  $AdvertiserTargetingConfig({
-    this.exemptTvFromViewabilityTargeting,
-  });
+  $AdvertiserTargetingConfig({this.exemptTvFromViewabilityTargeting});
 
   $AdvertiserTargetingConfig.fromJson(core.Map json_)
       : this(
@@ -559,14 +537,10 @@ class $AgeRangeAssignedTargetingOptionDetails {
   /// supported for the AdGroup of YouTube Programmatic Reservation line item.
   core.String? ageRange;
 
-  $AgeRangeAssignedTargetingOptionDetails({
-    this.ageRange,
-  });
+  $AgeRangeAssignedTargetingOptionDetails({this.ageRange});
 
   $AgeRangeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          ageRange: json_['ageRange'] as core.String?,
-        );
+      : this(ageRange: json_['ageRange'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ageRange != null) 'ageRange': ageRange!,
@@ -614,14 +588,10 @@ class $AgeRangeTargetingOptionDetails {
   /// supported for the AdGroup of YouTube Programmatic Reservation line item.
   core.String? ageRange;
 
-  $AgeRangeTargetingOptionDetails({
-    this.ageRange,
-  });
+  $AgeRangeTargetingOptionDetails({this.ageRange});
 
   $AgeRangeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          ageRange: json_['ageRange'] as core.String?,
-        );
+      : this(ageRange: json_['ageRange'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ageRange != null) 'ageRange': ageRange!,
@@ -645,10 +615,7 @@ class $AliasContext {
   /// The alias name.
   core.String? name;
 
-  $AliasContext({
-    this.kind,
-    this.name,
-  });
+  $AliasContext({this.kind, this.name});
 
   $AliasContext.fromJson(core.Map json_)
       : this(
@@ -680,10 +647,7 @@ class $AlterMetadataResourceLocationRequest {
   /// Required.
   core.String? resourceName;
 
-  $AlterMetadataResourceLocationRequest({
-    this.locationUri,
-    this.resourceName,
-  });
+  $AlterMetadataResourceLocationRequest({this.locationUri, this.resourceName});
 
   $AlterMetadataResourceLocationRequest.fromJson(core.Map json_)
       : this(
@@ -734,14 +698,9 @@ class $AlterTablePropertiesRequest {
 
   $AlterTablePropertiesRequest.fromJson(core.Map json_)
       : this(
-          properties:
-              (json_['properties'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          properties: (json_['properties']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           tableName: json_['tableName'] as core.String?,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -760,9 +719,7 @@ class $AlterTablePropertiesRequest {
 class $AnalysisCompleted {
   core.List<core.String>? analysisType;
 
-  $AnalysisCompleted({
-    this.analysisType,
-  });
+  $AnalysisCompleted({this.analysisType});
 
   $AnalysisCompleted.fromJson(core.Map json_)
       : this(
@@ -797,10 +754,7 @@ class $AnalyticsHubSubscriptionInfo {
   /// Optional.
   core.String? subscription;
 
-  $AnalyticsHubSubscriptionInfo({
-    this.listing,
-    this.subscription,
-  });
+  $AnalyticsHubSubscriptionInfo({this.listing, this.subscription});
 
   $AnalyticsHubSubscriptionInfo.fromJson(core.Map json_)
       : this(
@@ -932,14 +886,10 @@ class $AppCategoryTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  $AppCategoryTargetingOptionDetails({
-    this.displayName,
-  });
+  $AppCategoryTargetingOptionDetails({this.displayName});
 
   $AppCategoryTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-        );
+      : this(displayName: json_['displayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -968,11 +918,7 @@ class $Artifact {
   /// to one image.
   core.List<core.String>? names;
 
-  $Artifact({
-    this.checksum,
-    this.id,
-    this.names,
-  });
+  $Artifact({this.checksum, this.id, this.names});
 
   $Artifact.fromJson(core.Map json_)
       : this(
@@ -1001,10 +947,7 @@ class $ArtifactsGcsSource {
   /// Supports URI wildcards for matching multiple objects from a single URI.
   core.bool? useWildcards;
 
-  $ArtifactsGcsSource({
-    this.uris,
-    this.useWildcards,
-  });
+  $ArtifactsGcsSource({this.uris, this.useWildcards});
 
   $ArtifactsGcsSource.fromJson(core.Map json_)
       : this(
@@ -1039,10 +982,7 @@ class $Asset {
   /// creative resources or re-uploading the asset.
   core.String? mediaId;
 
-  $Asset({
-    this.content,
-    this.mediaId,
-  });
+  $Asset({this.content, this.mediaId});
 
   $Asset.fromJson(core.Map json_)
       : this(
@@ -1241,14 +1181,10 @@ class $Attribution {
   /// property is met within the desired error range.
   core.int? numIntegralSteps;
 
-  $Attribution({
-    this.numIntegralSteps,
-  });
+  $Attribution({this.numIntegralSteps});
 
   $Attribution.fromJson(core.Map json_)
-      : this(
-          numIntegralSteps: json_['numIntegralSteps'] as core.int?,
-        );
+      : this(numIntegralSteps: json_['numIntegralSteps'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (numIntegralSteps != null) 'numIntegralSteps': numIntegralSteps!,
@@ -1273,14 +1209,10 @@ class $AudioContentTypeAssignedTargetingOptionDetails {
   /// - "AUDIO_CONTENT_TYPE_PODCAST" : The audio content type is podcast.
   core.String? audioContentType;
 
-  $AudioContentTypeAssignedTargetingOptionDetails({
-    this.audioContentType,
-  });
+  $AudioContentTypeAssignedTargetingOptionDetails({this.audioContentType});
 
   $AudioContentTypeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          audioContentType: json_['audioContentType'] as core.String?,
-        );
+      : this(audioContentType: json_['audioContentType'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audioContentType != null) 'audioContentType': audioContentType!,
@@ -1305,14 +1237,10 @@ class $AudioContentTypeTargetingOptionDetails {
   /// - "AUDIO_CONTENT_TYPE_PODCAST" : The audio content type is podcast.
   core.String? audioContentType;
 
-  $AudioContentTypeTargetingOptionDetails({
-    this.audioContentType,
-  });
+  $AudioContentTypeTargetingOptionDetails({this.audioContentType});
 
   $AudioContentTypeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          audioContentType: json_['audioContentType'] as core.String?,
-        );
+      : this(audioContentType: json_['audioContentType'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audioContentType != null) 'audioContentType': audioContentType!,
@@ -1330,10 +1258,7 @@ class $AudioVideoOffset {
   /// The offset in seconds from the start of the audio or video.
   core.String? seconds;
 
-  $AudioVideoOffset({
-    this.percentage,
-    this.seconds,
-  });
+  $AudioVideoOffset({this.percentage, this.seconds});
 
   $AudioVideoOffset.fromJson(core.Map json_)
       : this(
@@ -1526,10 +1451,7 @@ class $AuditLogConfig {
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
   core.String? logType;
 
-  $AuditLogConfig({
-    this.exemptedMembers,
-    this.logType,
-  });
+  $AuditLogConfig({this.exemptedMembers, this.logType});
 
   $AuditLogConfig.fromJson(core.Map json_)
       : this(
@@ -1570,10 +1492,7 @@ class $AuthRequirement {
   /// Example: provider_id: bookstore_auth
   core.String? providerId;
 
-  $AuthRequirement({
-    this.audiences,
-    this.providerId,
-  });
+  $AuthRequirement({this.audiences, this.providerId});
 
   $AuthRequirement.fromJson(core.Map json_)
       : this(
@@ -1660,9 +1579,7 @@ class $AuthorizedSellerStatusTargetingOptionDetails {
   /// Publishers" in the UI.
   core.String? authorizedSellerStatus;
 
-  $AuthorizedSellerStatusTargetingOptionDetails({
-    this.authorizedSellerStatus,
-  });
+  $AuthorizedSellerStatusTargetingOptionDetails({this.authorizedSellerStatus});
 
   $AuthorizedSellerStatusTargetingOptionDetails.fromJson(core.Map json_)
       : this(
@@ -1685,14 +1602,10 @@ class $AutoRetrievalInfo {
   /// API.
   core.String? appSignatureHash;
 
-  $AutoRetrievalInfo({
-    this.appSignatureHash,
-  });
+  $AutoRetrievalInfo({this.appSignatureHash});
 
   $AutoRetrievalInfo.fromJson(core.Map json_)
-      : this(
-          appSignatureHash: json_['appSignatureHash'] as core.String?,
-        );
+      : this(appSignatureHash: json_['appSignatureHash'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appSignatureHash != null) 'appSignatureHash': appSignatureHash!,
@@ -1721,10 +1634,7 @@ class $AvroConfig {
   /// Optional.
   core.bool? writeMetadata;
 
-  $AvroConfig({
-    this.useTopicSchema,
-    this.writeMetadata,
-  });
+  $AvroConfig({this.useTopicSchema, this.writeMetadata});
 
   $AvroConfig.fromJson(core.Map json_)
       : this(
@@ -1867,14 +1777,10 @@ class $BillingConfig {
   /// - "NON_GCP_CONNECTOR" : Non-GCP connector.
   core.String? billingCategory;
 
-  $BillingConfig({
-    this.billingCategory,
-  });
+  $BillingConfig({this.billingCategory});
 
   $BillingConfig.fromJson(core.Map json_)
-      : this(
-          billingCategory: json_['billingCategory'] as core.String?,
-        );
+      : this(billingCategory: json_['billingCategory'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (billingCategory != null) 'billingCategory': billingCategory!,
@@ -1988,14 +1894,10 @@ class $BooleanPolicy {
   /// enforced, because `constraint_default` for the `Constraint` is `ALLOW`.
   core.bool? enforced;
 
-  $BooleanPolicy({
-    this.enforced,
-  });
+  $BooleanPolicy({this.enforced});
 
   $BooleanPolicy.fromJson(core.Map json_)
-      : this(
-          enforced: json_['enforced'] as core.bool?,
-        );
+      : this(enforced: json_['enforced'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enforced != null) 'enforced': enforced!,
@@ -2028,8 +1930,8 @@ class $BoostSpecConditionBoostSpecBoostControlSpecControlPoint {
   });
 
   $BoostSpecConditionBoostSpecBoostControlSpecControlPoint.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           attributeValue: json_['attributeValue'] as core.String?,
           boostAmount: (json_['boostAmount'] as core.num?)?.toDouble(),
         );
@@ -2092,14 +1994,10 @@ class $BrowserTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  $BrowserTargetingOptionDetails({
-    this.displayName,
-  });
+  $BrowserTargetingOptionDetails({this.displayName});
 
   $BrowserTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-        );
+      : this(displayName: json_['displayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -2115,11 +2013,7 @@ class $BuildMetadata {
   core.String? invocationId;
   core.String? startedOn;
 
-  $BuildMetadata({
-    this.finishedOn,
-    this.invocationId,
-    this.startedOn,
-  });
+  $BuildMetadata({this.finishedOn, this.invocationId, this.startedOn});
 
   $BuildMetadata.fromJson(core.Map json_)
       : this(
@@ -2216,10 +2110,7 @@ class $BusinessChainSearchTerms {
   /// State".
   core.String? regionQuery;
 
-  $BusinessChainSearchTerms({
-    this.businessChainQuery,
-    this.regionQuery,
-  });
+  $BusinessChainSearchTerms({this.businessChainQuery, this.regionQuery});
 
   $BusinessChainSearchTerms.fromJson(core.Map json_)
       : this(
@@ -2517,10 +2408,7 @@ class $CarrierAndIspTargetingOptionDetails {
   /// refers to a mobile carrier.
   core.String? type;
 
-  $CarrierAndIspTargetingOptionDetails({
-    this.displayName,
-    this.type,
-  });
+  $CarrierAndIspTargetingOptionDetails({this.displayName, this.type});
 
   $CarrierAndIspTargetingOptionDetails.fromJson(core.Map json_)
       : this(
@@ -2545,10 +2433,7 @@ class $Category {
   /// The localized name of the category.
   core.String? name;
 
-  $Category({
-    this.categoryId,
-    this.name,
-  });
+  $Category({this.categoryId, this.name});
 
   $Category.fromJson(core.Map json_)
       : this(
@@ -2611,14 +2496,10 @@ class $CategoryTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  $CategoryTargetingOptionDetails({
-    this.displayName,
-  });
+  $CategoryTargetingOptionDetails({this.displayName});
 
   $CategoryTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-        );
+      : this(displayName: json_['displayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -2635,14 +2516,10 @@ class $CdnPolicyBypassCacheOnRequestHeader {
   /// Values are case-insensitive.
   core.String? headerName;
 
-  $CdnPolicyBypassCacheOnRequestHeader({
-    this.headerName,
-  });
+  $CdnPolicyBypassCacheOnRequestHeader({this.headerName});
 
   $CdnPolicyBypassCacheOnRequestHeader.fromJson(core.Map json_)
-      : this(
-          headerName: json_['headerName'] as core.String?,
-        );
+      : this(headerName: json_['headerName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (headerName != null) 'headerName': headerName!,
@@ -2668,16 +2545,10 @@ class $CdnPolicyNegativeCachingPolicy {
   /// accessed objects may be evicted from the cache before the defined TTL.
   core.int? ttl;
 
-  $CdnPolicyNegativeCachingPolicy({
-    this.code,
-    this.ttl,
-  });
+  $CdnPolicyNegativeCachingPolicy({this.code, this.ttl});
 
   $CdnPolicyNegativeCachingPolicy.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.int?,
-          ttl: json_['ttl'] as core.int?,
-        );
+      : this(code: json_['code'] as core.int?, ttl: json_['ttl'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -2693,9 +2564,7 @@ class $CertChain {
   /// The certificates that form the CA chain, from leaf to root order.
   core.List<core.String>? certificates;
 
-  $CertChain({
-    this.certificates,
-  });
+  $CertChain({this.certificates});
 
   $CertChain.fromJson(core.Map json_)
       : this(
@@ -2897,10 +2766,7 @@ class $Channel01 {
           kind: json_['kind'] as core.String?,
           params:
               (json_['params'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           payload: json_['payload'] as core.bool?,
           resourceId: json_['resourceId'] as core.String?,
@@ -2943,10 +2809,7 @@ class $ChannelAssignedTargetingOptionDetails {
   /// For advertiser level assigned targeting option, this field must be true.
   core.bool? negative;
 
-  $ChannelAssignedTargetingOptionDetails({
-    this.channelId,
-    this.negative,
-  });
+  $ChannelAssignedTargetingOptionDetails({this.channelId, this.negative});
 
   $ChannelAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
@@ -2975,14 +2838,10 @@ class $Checksum {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  $Checksum({
-    this.sha256,
-  });
+  $Checksum({this.sha256});
 
   $Checksum.fromJson(core.Map json_)
-      : this(
-          sha256: json_['sha256'] as core.String?,
-        );
+      : this(sha256: json_['sha256'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sha256 != null) 'sha256': sha256!,
@@ -3049,14 +2908,12 @@ class $ClusterOperationsConfig {
   /// addition to system logs/metrics).
   core.bool? enableApplicationLogs;
 
-  $ClusterOperationsConfig({
-    this.enableApplicationLogs,
-  });
+  $ClusterOperationsConfig({this.enableApplicationLogs});
 
   $ClusterOperationsConfig.fromJson(core.Map json_)
       : this(
-          enableApplicationLogs: json_['enableApplicationLogs'] as core.bool?,
-        );
+            enableApplicationLogs:
+                json_['enableApplicationLogs'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enableApplicationLogs != null)
@@ -3075,10 +2932,7 @@ class $ClusterUpgradeIgnoredMembership {
   /// Reason why the membership is ignored.
   core.String? reason;
 
-  $ClusterUpgradeIgnoredMembership({
-    this.ignoredTime,
-    this.reason,
-  });
+  $ClusterUpgradeIgnoredMembership({this.ignoredTime, this.reason});
 
   $ClusterUpgradeIgnoredMembership.fromJson(core.Map json_)
       : this(
@@ -3121,11 +2975,7 @@ class $ClusterUpgradeUpgradeStatus {
   /// Last timestamp the status was updated.
   core.String? updateTime;
 
-  $ClusterUpgradeUpgradeStatus({
-    this.code,
-    this.reason,
-    this.updateTime,
-  });
+  $ClusterUpgradeUpgradeStatus({this.code, this.reason, this.updateTime});
 
   $ClusterUpgradeUpgradeStatus.fromJson(core.Map json_)
       : this(
@@ -3242,11 +3092,7 @@ class $CmTrackingAd {
   /// The placement ID of the campaign manager 360 tracking Ad.
   core.String? cmPlacementId;
 
-  $CmTrackingAd({
-    this.cmAdId,
-    this.cmCreativeId,
-    this.cmPlacementId,
-  });
+  $CmTrackingAd({this.cmAdId, this.cmCreativeId, this.cmPlacementId});
 
   $CmTrackingAd.fromJson(core.Map json_)
       : this(
@@ -3295,12 +3141,7 @@ class $Color {
   /// The amount of red in the color as a value in the interval \[0, 1\].
   core.double? red;
 
-  $Color({
-    this.alpha,
-    this.blue,
-    this.green,
-    this.red,
-  });
+  $Color({this.alpha, this.blue, this.green, this.red});
 
   $Color.fromJson(core.Map json_)
       : this(
@@ -3342,11 +3183,7 @@ class $CombinedAudience {
   /// Output only.
   core.String? name;
 
-  $CombinedAudience({
-    this.combinedAudienceId,
-    this.displayName,
-    this.name,
-  });
+  $CombinedAudience({this.combinedAudienceId, this.displayName, this.name});
 
   $CombinedAudience.fromJson(core.Map json_)
       : this(
@@ -3375,14 +3212,10 @@ class $CombinedAudienceTargetingSetting {
   /// Required.
   core.String? combinedAudienceId;
 
-  $CombinedAudienceTargetingSetting({
-    this.combinedAudienceId,
-  });
+  $CombinedAudienceTargetingSetting({this.combinedAudienceId});
 
   $CombinedAudienceTargetingSetting.fromJson(core.Map json_)
-      : this(
-          combinedAudienceId: json_['combinedAudienceId'] as core.String?,
-        );
+      : this(combinedAudienceId: json_['combinedAudienceId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (combinedAudienceId != null)
@@ -3418,14 +3251,7 @@ class $Command {
   /// The ID(s) of the command(s) that this command depends on.
   core.List<core.String>? waitFor;
 
-  $Command({
-    this.args,
-    this.dir,
-    this.env,
-    this.id,
-    this.name,
-    this.waitFor,
-  });
+  $Command({this.args, this.dir, this.env, this.id, this.name, this.waitFor});
 
   $Command.fromJson(core.Map json_)
       : this(
@@ -3474,11 +3300,7 @@ class $Completeness {
   /// Sometimes called "hermetic".
   core.bool? materials;
 
-  $Completeness({
-    this.arguments,
-    this.environment,
-    this.materials,
-  });
+  $Completeness({this.arguments, this.environment, this.materials});
 
   $Completeness.fromJson(core.Map json_)
       : this(
@@ -3502,14 +3324,10 @@ class $ComplianceStandard {
   /// Name of the compliance standard.
   core.String? standard;
 
-  $ComplianceStandard({
-    this.standard,
-  });
+  $ComplianceStandard({this.standard});
 
   $ComplianceStandard.fromJson(core.Map json_)
-      : this(
-          standard: json_['standard'] as core.String?,
-        );
+      : this(standard: json_['standard'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (standard != null) 'standard': standard!,
@@ -3535,11 +3353,7 @@ class $ComplianceVersion {
   /// is defined in.
   core.String? version;
 
-  $ComplianceVersion({
-    this.benchmarkDocument,
-    this.cpeUri,
-    this.version,
-  });
+  $ComplianceVersion({this.benchmarkDocument, this.cpeUri, this.version});
 
   $ComplianceVersion.fromJson(core.Map json_)
       : this(
@@ -3565,14 +3379,10 @@ class $ConditionExpectation {
   /// Optional.
   core.String? sqlExpression;
 
-  $ConditionExpectation({
-    this.sqlExpression,
-  });
+  $ConditionExpectation({this.sqlExpression});
 
   $ConditionExpectation.fromJson(core.Map json_)
-      : this(
-          sqlExpression: json_['sqlExpression'] as core.String?,
-        );
+      : this(sqlExpression: json_['sqlExpression'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sqlExpression != null) 'sqlExpression': sqlExpression!,
@@ -3589,9 +3399,7 @@ class $ConfidentialInstanceConfig {
   /// Optional.
   core.bool? enableConfidentialCompute;
 
-  $ConfidentialInstanceConfig({
-    this.enableConfidentialCompute,
-  });
+  $ConfidentialInstanceConfig({this.enableConfidentialCompute});
 
   $ConfidentialInstanceConfig.fromJson(core.Map json_)
       : this(
@@ -3698,11 +3506,7 @@ class $ConfigManagementGroupVersionKind {
   /// Kubernetes Version
   core.String? version;
 
-  $ConfigManagementGroupVersionKind({
-    this.group,
-    this.kind,
-    this.version,
-  });
+  $ConfigManagementGroupVersionKind({this.group, this.kind, this.version});
 
   $ConfigManagementGroupVersionKind.fromJson(core.Map json_)
       : this(
@@ -3827,10 +3631,7 @@ class $ConfigManagementPolicyControllerMigration {
   /// policycontroller.
   core.String? stage;
 
-  $ConfigManagementPolicyControllerMigration({
-    this.copyTime,
-    this.stage,
-  });
+  $ConfigManagementPolicyControllerMigration({this.copyTime, this.stage});
 
   $ConfigManagementPolicyControllerMigration.fromJson(core.Map json_)
       : this(
@@ -3853,14 +3654,10 @@ class $ConfigManagementPolicyControllerVersion {
   /// number.
   core.String? version;
 
-  $ConfigManagementPolicyControllerVersion({
-    this.version,
-  });
+  $ConfigManagementPolicyControllerVersion({this.version});
 
   $ConfigManagementPolicyControllerVersion.fromJson(core.Map json_)
-      : this(
-          version: json_['version'] as core.String?,
-        );
+      : this(version: json_['version'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (version != null) 'version': version!,
@@ -3891,11 +3688,7 @@ class $ConnectionStatus {
   /// Status provides detailed information for the state.
   core.String? status;
 
-  $ConnectionStatus({
-    this.description,
-    this.state,
-    this.status,
-  });
+  $ConnectionStatus({this.description, this.state, this.status});
 
   $ConnectionStatus.fromJson(core.Map json_)
       : this(
@@ -3932,10 +3725,7 @@ class $Consent {
   /// - "CONSENT_STATUS_DENIED" : Consent is denied.
   core.String? adUserData;
 
-  $Consent({
-    this.adPersonalization,
-    this.adUserData,
-  });
+  $Consent({this.adPersonalization, this.adUserData});
 
   $Consent.fromJson(core.Map json_)
       : this(
@@ -3963,11 +3753,7 @@ class $Console {
   /// Steps to resolve violation via cloud console
   core.List<core.String>? steps;
 
-  $Console({
-    this.additionalLinks,
-    this.consoleUris,
-    this.steps,
-  });
+  $Console({this.additionalLinks, this.consoleUris, this.steps});
 
   $Console.fromJson(core.Map json_)
       : this(
@@ -4134,14 +3920,10 @@ class $ContentDurationTargetingOptionDetails {
   /// - "CONTENT_DURATION_OVER_60_MIN" : Content is over 60 minutes long.
   core.String? contentDuration;
 
-  $ContentDurationTargetingOptionDetails({
-    this.contentDuration,
-  });
+  $ContentDurationTargetingOptionDetails({this.contentDuration});
 
   $ContentDurationTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentDuration: json_['contentDuration'] as core.String?,
-        );
+      : this(contentDuration: json_['contentDuration'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentDuration != null) 'contentDuration': contentDuration!,
@@ -4197,14 +3979,10 @@ class $ContentGenreTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  $ContentGenreTargetingOptionDetails({
-    this.displayName,
-  });
+  $ContentGenreTargetingOptionDetails({this.displayName});
 
   $ContentGenreTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-        );
+      : this(displayName: json_['displayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -4258,8 +4036,8 @@ class $ContentInstreamPositionAssignedTargetingOptionDetails {
   });
 
   $ContentInstreamPositionAssignedTargetingOptionDetails.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           adType: json_['adType'] as core.String?,
           contentInstreamPosition:
               json_['contentInstreamPosition'] as core.String?,
@@ -4360,8 +4138,8 @@ class $ContentOutstreamPositionAssignedTargetingOptionDetails {
   });
 
   $ContentOutstreamPositionAssignedTargetingOptionDetails.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           adType: json_['adType'] as core.String?,
           contentOutstreamPosition:
               json_['contentOutstreamPosition'] as core.String?,
@@ -4470,14 +4248,10 @@ class $ContentStreamTypeTargetingOptionDetails {
   /// - "CONTENT_ON_DEMAND" : The content is viewed on-demand.
   core.String? contentStreamType;
 
-  $ContentStreamTypeTargetingOptionDetails({
-    this.contentStreamType,
-  });
+  $ContentStreamTypeTargetingOptionDetails({this.contentStreamType});
 
   $ContentStreamTypeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentStreamType: json_['contentStreamType'] as core.String?,
-        );
+      : this(contentStreamType: json_['contentStreamType'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentStreamType != null) 'contentStreamType': contentStreamType!,
@@ -4545,9 +4319,7 @@ class $ContextChildrenRequest {
   /// The resource names of the child Contexts.
   core.List<core.String>? childContexts;
 
-  $ContextChildrenRequest({
-    this.childContexts,
-  });
+  $ContextChildrenRequest({this.childContexts});
 
   $ContextChildrenRequest.fromJson(core.Map json_)
       : this(
@@ -4576,10 +4348,7 @@ class $CounterEvent {
   /// Required.
   core.String? reportingName;
 
-  $CounterEvent({
-    this.name,
-    this.reportingName,
-  });
+  $CounterEvent({this.name, this.reportingName});
 
   $CounterEvent.fromJson(core.Map json_)
       : this(
@@ -4605,14 +4374,10 @@ class $CreateAssetRequest {
   /// Required.
   core.String? filename;
 
-  $CreateAssetRequest({
-    this.filename,
-  });
+  $CreateAssetRequest({this.filename});
 
   $CreateAssetRequest.fromJson(core.Map json_)
-      : this(
-          filename: json_['filename'] as core.String?,
-        );
+      : this(filename: json_['filename'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filename != null) 'filename': filename!,
@@ -4645,10 +4410,7 @@ class $CreativeAssetId {
   /// - "AUDIO"
   core.String? type;
 
-  $CreativeAssetId({
-    this.name,
-    this.type,
-  });
+  $CreativeAssetId({this.name, this.type});
 
   $CreativeAssetId.fromJson(core.Map json_)
       : this(
@@ -4796,10 +4558,7 @@ class $CryptoKeyVersionTemplate {
   /// backend.
   core.String? protectionLevel;
 
-  $CryptoKeyVersionTemplate({
-    this.algorithm,
-    this.protectionLevel,
-  });
+  $CryptoKeyVersionTemplate({this.algorithm, this.protectionLevel});
 
   $CryptoKeyVersionTemplate.fromJson(core.Map json_)
       : this(
@@ -4824,14 +4583,10 @@ class $CustomBiddingScriptRef {
   /// `customBiddingAlgorithms/{custom_bidding_algorithm_id}/scriptRef/{ref_id}`.
   core.String? resourceName;
 
-  $CustomBiddingScriptRef({
-    this.resourceName,
-  });
+  $CustomBiddingScriptRef({this.resourceName});
 
   $CustomBiddingScriptRef.fromJson(core.Map json_)
-      : this(
-          resourceName: json_['resourceName'] as core.String?,
-        );
+      : this(resourceName: json_['resourceName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceName != null) 'resourceName': resourceName!,
@@ -4856,10 +4611,7 @@ class $CustomLabel {
   /// The value of the label.
   core.String? value;
 
-  $CustomLabel({
-    this.key,
-    this.value,
-  });
+  $CustomLabel({this.key, this.value});
 
   $CustomLabel.fromJson(core.Map json_)
       : this(
@@ -4897,11 +4649,7 @@ class $CustomList {
   /// Output only.
   core.String? name;
 
-  $CustomList({
-    this.customListId,
-    this.displayName,
-    this.name,
-  });
+  $CustomList({this.customListId, this.displayName, this.name});
 
   $CustomList.fromJson(core.Map json_)
       : this(
@@ -4929,14 +4677,10 @@ class $CustomListTargetingSetting {
   /// Required.
   core.String? customListId;
 
-  $CustomListTargetingSetting({
-    this.customListId,
-  });
+  $CustomListTargetingSetting({this.customListId});
 
   $CustomListTargetingSetting.fromJson(core.Map json_)
-      : this(
-          customListId: json_['customListId'] as core.String?,
-        );
+      : this(customListId: json_['customListId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customListId != null) 'customListId': customListId!,
@@ -4956,14 +4700,10 @@ class $DataCatalogConfig {
   /// Optional.
   core.bool? enabled;
 
-  $DataCatalogConfig({
-    this.enabled,
-  });
+  $DataCatalogConfig({this.enabled});
 
   $DataCatalogConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -5028,11 +4768,7 @@ class $Date {
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
   core.int? year;
 
-  $Date({
-    this.day,
-    this.month,
-    this.year,
-  });
+  $Date({this.day, this.month, this.year});
 
   $Date.fromJson(core.Map json_)
       : this(
@@ -5133,10 +4869,7 @@ class $DeadLetterConfig {
   /// Optional.
   core.String? topic;
 
-  $DeadLetterConfig({
-    this.projectId,
-    this.topic,
-  });
+  $DeadLetterConfig({this.projectId, this.topic});
 
   $DeadLetterConfig.fromJson(core.Map json_)
       : this(
@@ -5180,10 +4913,7 @@ class $DeadLetterPolicy {
   /// Optional.
   core.int? maxDeliveryAttempts;
 
-  $DeadLetterPolicy({
-    this.deadLetterTopic,
-    this.maxDeliveryAttempts,
-  });
+  $DeadLetterPolicy({this.deadLetterTopic, this.maxDeliveryAttempts});
 
   $DeadLetterPolicy.fromJson(core.Map json_)
       : this(
@@ -5206,14 +4936,10 @@ class $DebugInfo {
   /// General debug info formatted for display.
   core.String? formattedDebugInfo;
 
-  $DebugInfo({
-    this.formattedDebugInfo,
-  });
+  $DebugInfo({this.formattedDebugInfo});
 
   $DebugInfo.fromJson(core.Map json_)
-      : this(
-          formattedDebugInfo: json_['formattedDebugInfo'] as core.String?,
-        );
+      : this(formattedDebugInfo: json_['formattedDebugInfo'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (formattedDebugInfo != null)
@@ -5455,11 +5181,7 @@ class $Destination {
   )
   core.String? serviceAttachment;
 
-  $Destination({
-    this.host,
-    this.port,
-    this.serviceAttachment,
-  });
+  $Destination({this.host, this.port, this.serviceAttachment});
 
   $Destination.fromJson(core.Map json_)
       : this(
@@ -5524,14 +5246,10 @@ class $DeviceMakeModelTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  $DeviceMakeModelTargetingOptionDetails({
-    this.displayName,
-  });
+  $DeviceMakeModelTargetingOptionDetails({this.displayName});
 
   $DeviceMakeModelTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-        );
+      : this(displayName: json_['displayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -5608,14 +5326,10 @@ class $DeviceTypeTargetingOptionDetails {
   /// - "DEVICE_TYPE_CONNECTED_DEVICE" : Connected device.
   core.String? deviceType;
 
-  $DeviceTypeTargetingOptionDetails({
-    this.deviceType,
-  });
+  $DeviceTypeTargetingOptionDetails({this.deviceType});
 
   $DeviceTypeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          deviceType: json_['deviceType'] as core.String?,
-        );
+      : this(deviceType: json_['deviceType'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceType != null) 'deviceType': deviceType!,
@@ -5633,10 +5347,7 @@ class $DiffVersionResponse {
   /// The version of the object stored at the server.
   core.String? objectVersion;
 
-  $DiffVersionResponse({
-    this.objectSizeBytes,
-    this.objectVersion,
-  });
+  $DiffVersionResponse({this.objectSizeBytes, this.objectVersion});
 
   $DiffVersionResponse.fromJson(core.Map json_)
       : this(
@@ -5716,14 +5427,10 @@ class $DigitalContentLabelTargetingOptionDetails {
   /// and Partners line items.
   core.String? contentRatingTier;
 
-  $DigitalContentLabelTargetingOptionDetails({
-    this.contentRatingTier,
-  });
+  $DigitalContentLabelTargetingOptionDetails({this.contentRatingTier});
 
   $DigitalContentLabelTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentRatingTier: json_['contentRatingTier'] as core.String?,
-        );
+      : this(contentRatingTier: json_['contentRatingTier'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentRatingTier != null) 'contentRatingTier': contentRatingTier!,
@@ -5803,10 +5510,7 @@ class $Dimensions {
   /// The width in pixels.
   core.int? widthPixels;
 
-  $Dimensions({
-    this.heightPixels,
-    this.widthPixels,
-  });
+  $Dimensions({this.heightPixels, this.widthPixels});
 
   $Dimensions.fromJson(core.Map json_)
       : this(
@@ -5896,10 +5600,7 @@ class $DiscoverySpecJsonOptions {
   /// Optional.
   core.String? encoding;
 
-  $DiscoverySpecJsonOptions({
-    this.disableTypeInference,
-    this.encoding,
-  });
+  $DiscoverySpecJsonOptions({this.disableTypeInference, this.encoding});
 
   $DiscoverySpecJsonOptions.fromJson(core.Map json_)
       : this(
@@ -5922,9 +5623,7 @@ class $DisksRemoveResourcePoliciesRequest {
   /// Resource policies to be removed from this disk.
   core.List<core.String>? resourcePolicies;
 
-  $DisksRemoveResourcePoliciesRequest({
-    this.resourcePolicies,
-  });
+  $DisksRemoveResourcePoliciesRequest({this.resourcePolicies});
 
   $DisksRemoveResourcePoliciesRequest.fromJson(core.Map json_)
       : this(
@@ -5955,14 +5654,10 @@ class $DisksStartAsyncReplicationRequest {
   /// regions/region/disks/disk
   core.String? asyncSecondaryDisk;
 
-  $DisksStartAsyncReplicationRequest({
-    this.asyncSecondaryDisk,
-  });
+  $DisksStartAsyncReplicationRequest({this.asyncSecondaryDisk});
 
   $DisksStartAsyncReplicationRequest.fromJson(core.Map json_)
-      : this(
-          asyncSecondaryDisk: json_['asyncSecondaryDisk'] as core.String?,
-        );
+      : this(asyncSecondaryDisk: json_['asyncSecondaryDisk'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (asyncSecondaryDisk != null)
@@ -5978,14 +5673,10 @@ class $DisplayVideoSourceAd {
   /// The ID of the source creative.
   core.String? creativeId;
 
-  $DisplayVideoSourceAd({
-    this.creativeId,
-  });
+  $DisplayVideoSourceAd({this.creativeId});
 
   $DisplayVideoSourceAd.fromJson(core.Map json_)
-      : this(
-          creativeId: json_['creativeId'] as core.String?,
-        );
+      : this(creativeId: json_['creativeId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (creativeId != null) 'creativeId': creativeId!,
@@ -6062,10 +5753,7 @@ class $DoubleRange {
   /// start of the range (inclusive)
   core.double? start;
 
-  $DoubleRange({
-    this.end,
-    this.start,
-  });
+  $DoubleRange({this.end, this.start});
 
   $DoubleRange.fromJson(core.Map json_)
       : this(
@@ -6204,10 +5892,7 @@ class $DoubleVerifyDisplayViewability {
   /// maximize 100% viewable duration 15 seconds or more.
   core.String? viewableDuring;
 
-  $DoubleVerifyDisplayViewability({
-    this.iab,
-    this.viewableDuring,
-  });
+  $DoubleVerifyDisplayViewability({this.iab, this.viewableDuring});
 
   $DoubleVerifyDisplayViewability.fromJson(core.Map json_)
       : this(
@@ -6358,10 +6043,7 @@ class $DownloadParameters {
   /// Content-Range header on its response to Scotty.
   core.bool? ignoreRange;
 
-  $DownloadParameters({
-    this.allowGzipCompression,
-    this.ignoreRange,
-  });
+  $DownloadParameters({this.allowGzipCompression, this.ignoreRange});
 
   $DownloadParameters.fromJson(core.Map json_)
       : this(
@@ -6384,14 +6066,10 @@ class $DrainedMachine {
   /// Drained machine IP address.
   core.String? nodeIp;
 
-  $DrainedMachine({
-    this.nodeIp,
-  });
+  $DrainedMachine({this.nodeIp});
 
   $DrainedMachine.fromJson(core.Map json_)
-      : this(
-          nodeIp: json_['nodeIp'] as core.String?,
-        );
+      : this(nodeIp: json_['nodeIp'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nodeIp != null) 'nodeIp': nodeIp!,
@@ -6409,10 +6087,7 @@ class $DrainingMachine {
   /// The count of pods yet to drain.
   core.int? podCount;
 
-  $DrainingMachine({
-    this.nodeIp,
-    this.podCount,
-  });
+  $DrainingMachine({this.nodeIp, this.podCount});
 
   $DrainingMachine.fromJson(core.Map json_)
       : this(
@@ -6436,14 +6111,10 @@ class $DuplicateLineItemRequest {
   /// Must be UTF-8 encoded with a maximum size of 240 bytes.
   core.String? targetDisplayName;
 
-  $DuplicateLineItemRequest({
-    this.targetDisplayName,
-  });
+  $DuplicateLineItemRequest({this.targetDisplayName});
 
   $DuplicateLineItemRequest.fromJson(core.Map json_)
-      : this(
-          targetDisplayName: json_['targetDisplayName'] as core.String?,
-        );
+      : this(targetDisplayName: json_['targetDisplayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (targetDisplayName != null) 'targetDisplayName': targetDisplayName!,
@@ -6458,14 +6129,10 @@ class $DuplicateLineItemResponse {
   /// The ID of the created line item.
   core.String? duplicateLineItemId;
 
-  $DuplicateLineItemResponse({
-    this.duplicateLineItemId,
-  });
+  $DuplicateLineItemResponse({this.duplicateLineItemId});
 
   $DuplicateLineItemResponse.fromJson(core.Map json_)
-      : this(
-          duplicateLineItemId: json_['duplicateLineItemId'] as core.String?,
-        );
+      : this(duplicateLineItemId: json_['duplicateLineItemId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (duplicateLineItemId != null)
@@ -6494,11 +6161,7 @@ class $DynamicListenerState {
   /// versions may be supported by the API.
   core.String? versionInfo;
 
-  $DynamicListenerState({
-    this.lastUpdated,
-    this.listener,
-    this.versionInfo,
-  });
+  $DynamicListenerState({this.lastUpdated, this.listener, this.versionInfo});
 
   $DynamicListenerState.fromJson(core.Map json_)
       : this(
@@ -6526,9 +6189,7 @@ class $EditCustomerMatchMembersResponse {
   /// Required.
   core.String? firstAndThirdPartyAudienceId;
 
-  $EditCustomerMatchMembersResponse({
-    this.firstAndThirdPartyAudienceId,
-  });
+  $EditCustomerMatchMembersResponse({this.firstAndThirdPartyAudienceId});
 
   $EditCustomerMatchMembersResponse.fromJson(core.Map json_)
       : this(
@@ -6642,8 +6303,8 @@ class $EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate {
   });
 
   $EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           addedAdvertisers: (json_['addedAdvertisers'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -6676,14 +6337,10 @@ class $EgressSource {
   /// allowed.
   core.String? accessLevel;
 
-  $EgressSource({
-    this.accessLevel,
-  });
+  $EgressSource({this.accessLevel});
 
   $EgressSource.fromJson(core.Map json_)
-      : this(
-          accessLevel: json_['accessLevel'] as core.String?,
-        );
+      : this(accessLevel: json_['accessLevel'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevel != null) 'accessLevel': accessLevel!,
@@ -7501,8 +7158,9 @@ class $Empty {
   $Empty();
 
   $Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map json_);
+    // ignore: avoid_unused_constructor_parameters
+    core.Map json_,
+  );
 
   core.Map<core.String, core.dynamic> toJson() => {};
 }
@@ -7518,14 +7176,10 @@ class $EncryptionConfig {
   /// projects/\[PROJECT\]/locations/\[REGION\]/keyRings/\[RING\]/cryptoKeys/\[KEY_NAME\]
   core.String? kmsKeyName;
 
-  $EncryptionConfig({
-    this.kmsKeyName,
-  });
+  $EncryptionConfig({this.kmsKeyName});
 
   $EncryptionConfig.fromJson(core.Map json_)
-      : this(
-          kmsKeyName: json_['kmsKeyName'] as core.String?,
-        );
+      : this(kmsKeyName: json_['kmsKeyName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
@@ -7550,10 +7204,7 @@ class $EncryptionKey {
   /// - "CUSTOMER_MANAGED" : Customer Managed.
   core.String? type;
 
-  $EncryptionKey({
-    this.kmsKeyName,
-    this.type,
-  });
+  $EncryptionKey({this.kmsKeyName, this.type});
 
   $EncryptionKey.fromJson(core.Map json_)
       : this(
@@ -7597,12 +7248,7 @@ class $Endpoint {
   /// For example, "8.8.8.8" or "myservice.appspot.com".
   core.String? target;
 
-  $Endpoint({
-    this.aliases,
-    this.allowCors,
-    this.name,
-    this.target,
-  });
+  $Endpoint({this.aliases, this.allowCors, this.name, this.target});
 
   $Endpoint.fromJson(core.Map json_)
       : this(
@@ -7633,9 +7279,7 @@ class $Entity {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? customFeatures;
 
-  $Entity({
-    this.customFeatures,
-  });
+  $Entity({this.customFeatures});
 
   $Entity.fromJson(core.Map json_)
       : this(
@@ -7663,10 +7307,7 @@ class $EnvelopeSignature {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  $EnvelopeSignature({
-    this.keyid,
-    this.sig,
-  });
+  $EnvelopeSignature({this.keyid, this.sig});
 
   $EnvelopeSignature.fromJson(core.Map json_)
       : this(
@@ -7705,14 +7346,10 @@ class $EnvironmentAssignedTargetingOptionDetails {
   /// - "ENVIRONMENT_APP" : Target inventory displayed in apps.
   core.String? environment;
 
-  $EnvironmentAssignedTargetingOptionDetails({
-    this.environment,
-  });
+  $EnvironmentAssignedTargetingOptionDetails({this.environment});
 
   $EnvironmentAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          environment: json_['environment'] as core.String?,
-        );
+      : this(environment: json_['environment'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (environment != null) 'environment': environment!,
@@ -7744,14 +7381,10 @@ class $EnvironmentTargetingOptionDetails {
   /// - "ENVIRONMENT_APP" : Target inventory displayed in apps.
   core.String? environment;
 
-  $EnvironmentTargetingOptionDetails({
-    this.environment,
-  });
+  $EnvironmentTargetingOptionDetails({this.environment});
 
   $EnvironmentTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          environment: json_['environment'] as core.String?,
-        );
+      : this(environment: json_['environment'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (environment != null) 'environment': environment!,
@@ -7767,14 +7400,10 @@ class $Error {
   /// A string representing the user facing error message
   core.String? errorMessage;
 
-  $Error({
-    this.errorMessage,
-  });
+  $Error({this.errorMessage});
 
   $Error.fromJson(core.Map json_)
-      : this(
-          errorMessage: json_['errorMessage'] as core.String?,
-        );
+      : this(errorMessage: json_['errorMessage'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorMessage != null) 'errorMessage': errorMessage!,
@@ -7814,22 +7443,13 @@ class $ErrorInfo {
   /// which represents UPPER_SNAKE_CASE.
   core.String? reason;
 
-  $ErrorInfo({
-    this.domain,
-    this.metadata,
-    this.reason,
-  });
+  $ErrorInfo({this.domain, this.metadata, this.reason});
 
   $ErrorInfo.fromJson(core.Map json_)
       : this(
           domain: json_['domain'] as core.String?,
-          metadata:
-              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           reason: json_['reason'] as core.String?,
         );
 
@@ -7847,9 +7467,7 @@ class $ErrorInfo {
 class $EventbusProtoBooleanParameterArray {
   core.List<core.bool>? booleanValues;
 
-  $EventbusProtoBooleanParameterArray({
-    this.booleanValues,
-  });
+  $EventbusProtoBooleanParameterArray({this.booleanValues});
 
   $EventbusProtoBooleanParameterArray.fromJson(core.Map json_)
       : this(
@@ -7870,9 +7488,7 @@ class $EventbusProtoBooleanParameterArray {
 class $EventbusProtoDoubleParameterArray {
   core.List<core.double>? doubleValues;
 
-  $EventbusProtoDoubleParameterArray({
-    this.doubleValues,
-  });
+  $EventbusProtoDoubleParameterArray({this.doubleValues});
 
   $EventbusProtoDoubleParameterArray.fromJson(core.Map json_)
       : this(
@@ -7893,9 +7509,7 @@ class $EventbusProtoDoubleParameterArray {
 class $EventbusProtoIntParameterArray {
   core.List<core.String>? intValues;
 
-  $EventbusProtoIntParameterArray({
-    this.intValues,
-  });
+  $EventbusProtoIntParameterArray({this.intValues});
 
   $EventbusProtoIntParameterArray.fromJson(core.Map json_)
       : this(
@@ -7920,9 +7534,7 @@ class $EventbusProtoProtoParameterArray {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object?>>? protoValues;
 
-  $EventbusProtoProtoParameterArray({
-    this.protoValues,
-  });
+  $EventbusProtoProtoParameterArray({this.protoValues});
 
   $EventbusProtoProtoParameterArray.fromJson(core.Map json_)
       : this(
@@ -7950,14 +7562,10 @@ class $EventbusProtoSerializedObjectParameter {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  $EventbusProtoSerializedObjectParameter({
-    this.objectValue,
-  });
+  $EventbusProtoSerializedObjectParameter({this.objectValue});
 
   $EventbusProtoSerializedObjectParameter.fromJson(core.Map json_)
-      : this(
-          objectValue: json_['objectValue'] as core.String?,
-        );
+      : this(objectValue: json_['objectValue'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (objectValue != null) 'objectValue': objectValue!,
@@ -7971,9 +7579,7 @@ class $EventbusProtoSerializedObjectParameter {
 class $EventbusProtoStringParameterArray {
   core.List<core.String>? stringValues;
 
-  $EventbusProtoStringParameterArray({
-    this.stringValues,
-  });
+  $EventbusProtoStringParameterArray({this.stringValues});
 
   $EventbusProtoStringParameterArray.fromJson(core.Map json_)
       : this(
@@ -8007,10 +7613,7 @@ class $EventingStatus {
   /// - "INGRESS_ENDPOINT_REQUIRED" : Ingress endpoint required.
   core.String? state;
 
-  $EventingStatus({
-    this.description,
-    this.state,
-  });
+  $EventingStatus({this.description, this.state});
 
   $EventingStatus.fromJson(core.Map json_)
       : this(
@@ -8122,14 +7725,10 @@ class $ExchangeAssignedTargetingOptionDetails {
   /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 
-  $ExchangeAssignedTargetingOptionDetails({
-    this.exchange,
-  });
+  $ExchangeAssignedTargetingOptionDetails({this.exchange});
 
   $ExchangeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          exchange: json_['exchange'] as core.String?,
-        );
+      : this(exchange: json_['exchange'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exchange != null) 'exchange': exchange!,
@@ -8383,10 +7982,7 @@ class $ExchangeReviewStatus {
   /// - "REVIEW_STATUS_PENDING" : The creative is pending review.
   core.String? status;
 
-  $ExchangeReviewStatus({
-    this.exchange,
-    this.status,
-  });
+  $ExchangeReviewStatus({this.exchange, this.status});
 
   $ExchangeReviewStatus.fromJson(core.Map json_)
       : this(
@@ -8498,14 +8094,10 @@ class $ExchangeTargetingOptionDetails {
   /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 
-  $ExchangeTargetingOptionDetails({
-    this.exchange,
-  });
+  $ExchangeTargetingOptionDetails({this.exchange});
 
   $ExchangeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          exchange: json_['exchange'] as core.String?,
-        );
+      : this(exchange: json_['exchange'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exchange != null) 'exchange': exchange!,
@@ -8526,9 +8118,7 @@ class $ExecAction {
   /// live/healthy and non-zero is unhealthy.
   core.List<core.String>? command;
 
-  $ExecAction({
-    this.command,
-  });
+  $ExecAction({this.command});
 
   $ExecAction.fromJson(core.Map json_)
       : this(
@@ -8628,12 +8218,7 @@ class $ExitEvent {
   /// Required.
   core.String? url;
 
-  $ExitEvent({
-    this.name,
-    this.reportingName,
-    this.type,
-    this.url,
-  });
+  $ExitEvent({this.name, this.reportingName, this.type, this.url});
 
   $ExitEvent.fromJson(core.Map json_)
       : this(
@@ -8667,14 +8252,10 @@ class $ExpirationPolicy {
   /// Optional.
   core.String? ttl;
 
-  $ExpirationPolicy({
-    this.ttl,
-  });
+  $ExpirationPolicy({this.ttl});
 
   $ExpirationPolicy.fromJson(core.Map json_)
-      : this(
-          ttl: json_['ttl'] as core.String?,
-        );
+      : this(ttl: json_['ttl'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ttl != null) 'ttl': ttl!,
@@ -8696,14 +8277,10 @@ class $ExplainOptions {
   /// Optional.
   core.bool? analyze;
 
-  $ExplainOptions({
-    this.analyze,
-  });
+  $ExplainOptions({this.analyze});
 
   $ExplainOptions.fromJson(core.Map json_)
-      : this(
-          analyze: json_['analyze'] as core.bool?,
-        );
+      : this(analyze: json_['analyze'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (analyze != null) 'analyze': analyze!,
@@ -8718,9 +8295,7 @@ class $Explicit {
   /// The values must be monotonically increasing.
   core.List<core.double>? bounds;
 
-  $Explicit({
-    this.bounds,
-  });
+  $Explicit({this.bounds});
 
   $Explicit.fromJson(core.Map json_)
       : this(
@@ -8748,11 +8323,7 @@ class $Exponential {
   /// Must be greater than 0.
   core.double? scale;
 
-  $Exponential({
-    this.growthFactor,
-    this.numFiniteBuckets,
-    this.scale,
-  });
+  $Exponential({this.growthFactor, this.numFiniteBuckets, this.scale});
 
   $Exponential.fromJson(core.Map json_)
       : this(
@@ -8839,14 +8410,10 @@ class $ExportOptions00 {
   /// - "ICS" : Export as ICS. Only available for Calendar.
   core.String? exportFormat;
 
-  $ExportOptions00({
-    this.exportFormat,
-  });
+  $ExportOptions00({this.exportFormat});
 
   $ExportOptions00.fromJson(core.Map json_)
-      : this(
-          exportFormat: json_['exportFormat'] as core.String?,
-        );
+      : this(exportFormat: json_['exportFormat'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exportFormat != null) 'exportFormat': exportFormat!,
@@ -8868,14 +8435,10 @@ class $ExportOptions01 {
   /// - "ICS" : Export as ICS. Only available for Calendar.
   core.String? exportFormat;
 
-  $ExportOptions01({
-    this.exportFormat,
-  });
+  $ExportOptions01({this.exportFormat});
 
   $ExportOptions01.fromJson(core.Map json_)
-      : this(
-          exportFormat: json_['exportFormat'] as core.String?,
-        );
+      : this(exportFormat: json_['exportFormat'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exportFormat != null) 'exportFormat': exportFormat!,
@@ -8985,12 +8548,7 @@ class $Expr {
   /// Optional.
   core.String? title;
 
-  $Expr({
-    this.description,
-    this.expression,
-    this.location,
-    this.title,
-  });
+  $Expr({this.description, this.expression, this.location, this.title});
 
   $Expr.fromJson(core.Map json_)
       : this(
@@ -9059,11 +8617,7 @@ class $F5BigIpConfig {
   /// Only necessary, if using SNAT.
   core.String? snatPool;
 
-  $F5BigIpConfig({
-    this.address,
-    this.partition,
-    this.snatPool,
-  });
+  $F5BigIpConfig({this.address, this.partition, this.snatPool});
 
   $F5BigIpConfig.fromJson(core.Map json_)
       : this(
@@ -9087,14 +8641,10 @@ class $FcmOptions {
   /// Label associated with the message's analytics data.
   core.String? analyticsLabel;
 
-  $FcmOptions({
-    this.analyticsLabel,
-  });
+  $FcmOptions({this.analyticsLabel});
 
   $FcmOptions.fromJson(core.Map json_)
-      : this(
-          analyticsLabel: json_['analyticsLabel'] as core.String?,
-        );
+      : this(analyticsLabel: json_['analyticsLabel'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (analyticsLabel != null) 'analyticsLabel': analyticsLabel!,
@@ -9112,10 +8662,7 @@ class $FetchGitRefsResponse {
   /// Name of the refs fetched.
   core.List<core.String>? refNames;
 
-  $FetchGitRefsResponse({
-    this.nextPageToken,
-    this.refNames,
-  });
+  $FetchGitRefsResponse({this.nextPageToken, this.refNames});
 
   $FetchGitRefsResponse.fromJson(core.Map json_)
       : this(
@@ -9141,14 +8688,10 @@ class $FileLocation {
   /// the path to war file combined with the path to jar file.
   core.String? filePath;
 
-  $FileLocation({
-    this.filePath,
-  });
+  $FileLocation({this.filePath});
 
   $FileLocation.fromJson(core.Map json_)
-      : this(
-          filePath: json_['filePath'] as core.String?,
-        );
+      : this(filePath: json_['filePath'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filePath != null) 'filePath': filePath!,
@@ -9193,11 +8736,7 @@ class $FilterSplit {
   /// Required.
   core.String? validationFilter;
 
-  $FilterSplit({
-    this.testFilter,
-    this.trainingFilter,
-    this.validationFilter,
-  });
+  $FilterSplit({this.testFilter, this.trainingFilter, this.validationFilter});
 
   $FilterSplit.fromJson(core.Map json_)
       : this(
@@ -9235,11 +8774,7 @@ class $Fingerprint {
   /// Output only.
   core.String? v2Name;
 
-  $Fingerprint({
-    this.v1Name,
-    this.v2Blob,
-    this.v2Name,
-  });
+  $Fingerprint({this.v1Name, this.v2Blob, this.v2Name});
 
   $Fingerprint.fromJson(core.Map json_)
       : this(
@@ -9342,14 +8877,10 @@ class $FixedBidStrategy {
   /// currency.
   core.String? bidAmountMicros;
 
-  $FixedBidStrategy({
-    this.bidAmountMicros,
-  });
+  $FixedBidStrategy({this.bidAmountMicros});
 
   $FixedBidStrategy.fromJson(core.Map json_)
-      : this(
-          bidAmountMicros: json_['bidAmountMicros'] as core.String?,
-        );
+      : this(bidAmountMicros: json_['bidAmountMicros'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bidAmountMicros != null) 'bidAmountMicros': bidAmountMicros!,
@@ -9366,14 +8897,10 @@ class $Format {
   /// Optional.
   core.String? schemaDefinition;
 
-  $Format({
-    this.schemaDefinition,
-  });
+  $Format({this.schemaDefinition});
 
   $Format.fromJson(core.Map json_)
-      : this(
-          schemaDefinition: json_['schemaDefinition'] as core.String?,
-        );
+      : this(schemaDefinition: json_['schemaDefinition'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (schemaDefinition != null) 'schemaDefinition': schemaDefinition!,
@@ -9568,11 +9095,7 @@ class $Gcloud {
   /// Steps to resolve violation via gcloud cli
   core.List<core.String>? steps;
 
-  $Gcloud({
-    this.additionalLinks,
-    this.gcloudCommands,
-    this.steps,
-  });
+  $Gcloud({this.additionalLinks, this.gcloudCommands, this.steps});
 
   $Gcloud.fromJson(core.Map json_)
       : this(
@@ -9606,14 +9129,9 @@ class $GcsBucket {
   /// Required.
   core.String? uri;
 
-  $GcsBucket({
-    this.uri,
-  });
+  $GcsBucket({this.uri});
 
-  $GcsBucket.fromJson(core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+  $GcsBucket.fromJson(core.Map json_) : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
@@ -9640,14 +9158,9 @@ class $GcsSource {
   /// are expected to contain content only, no metadata.
   core.String? uri;
 
-  $GcsSource({
-    this.uri,
-  });
+  $GcsSource({this.uri});
 
-  $GcsSource.fromJson(core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+  $GcsSource.fromJson(core.Map json_) : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
@@ -9671,14 +9184,10 @@ class $GenderAssignedTargetingOptionDetails {
   /// - "GENDER_UNKNOWN" : The audience gender is unknown.
   core.String? gender;
 
-  $GenderAssignedTargetingOptionDetails({
-    this.gender,
-  });
+  $GenderAssignedTargetingOptionDetails({this.gender});
 
   $GenderAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          gender: json_['gender'] as core.String?,
-        );
+      : this(gender: json_['gender'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gender != null) 'gender': gender!,
@@ -9702,14 +9211,10 @@ class $GenderTargetingOptionDetails {
   /// - "GENDER_UNKNOWN" : The audience gender is unknown.
   core.String? gender;
 
-  $GenderTargetingOptionDetails({
-    this.gender,
-  });
+  $GenderTargetingOptionDetails({this.gender});
 
   $GenderTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          gender: json_['gender'] as core.String?,
-        );
+      : this(gender: json_['gender'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gender != null) 'gender': gender!,
@@ -9725,14 +9230,10 @@ class $GenerateDownloadUrlResponse {
   /// function source code download.
   core.String? downloadUrl;
 
-  $GenerateDownloadUrlResponse({
-    this.downloadUrl,
-  });
+  $GenerateDownloadUrlResponse({this.downloadUrl});
 
   $GenerateDownloadUrlResponse.fromJson(core.Map json_)
-      : this(
-          downloadUrl: json_['downloadUrl'] as core.String?,
-        );
+      : this(downloadUrl: json_['downloadUrl'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (downloadUrl != null) 'downloadUrl': downloadUrl!,
@@ -9835,14 +9336,10 @@ class $GeoRegionSearchTerms {
   /// The query can be a prefix, e.g. "New Yor", "Seattle", "USA", etc.
   core.String? geoRegionQuery;
 
-  $GeoRegionSearchTerms({
-    this.geoRegionQuery,
-  });
+  $GeoRegionSearchTerms({this.geoRegionQuery});
 
   $GeoRegionSearchTerms.fromJson(core.Map json_)
-      : this(
-          geoRegionQuery: json_['geoRegionQuery'] as core.String?,
-        );
+      : this(geoRegionQuery: json_['geoRegionQuery'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (geoRegionQuery != null) 'geoRegionQuery': geoRegionQuery!,
@@ -9903,10 +9400,7 @@ class $GeoRegionTargetingOptionDetails {
   /// - "GEO_REGION_TYPE_DISTRICT" : The geographic region is a district.
   core.String? geoRegionType;
 
-  $GeoRegionTargetingOptionDetails({
-    this.displayName,
-    this.geoRegionType,
-  });
+  $GeoRegionTargetingOptionDetails({this.displayName, this.geoRegionType});
 
   $GeoRegionTargetingOptionDetails.fromJson(core.Map json_)
       : this(
@@ -9958,9 +9452,7 @@ class $GetPolicyOptions00 {
   /// Optional.
   core.int? requestedPolicyVersion;
 
-  $GetPolicyOptions00({
-    this.requestedPolicyVersion,
-  });
+  $GetPolicyOptions00({this.requestedPolicyVersion});
 
   $GetPolicyOptions00.fromJson(core.Map json_)
       : this(
@@ -9994,9 +9486,7 @@ class $GetPolicyOptions01 {
   /// Optional.
   core.int? requestedPolicyVersion;
 
-  $GetPolicyOptions01({
-    this.requestedPolicyVersion,
-  });
+  $GetPolicyOptions01({this.requestedPolicyVersion});
 
   $GetPolicyOptions01.fromJson(core.Map json_)
       : this(
@@ -10020,10 +9510,7 @@ class $GitSourceContext {
   /// Git repository URL.
   core.String? url;
 
-  $GitSourceContext({
-    this.revisionId,
-    this.url,
-  });
+  $GitSourceContext({this.revisionId, this.url});
 
   $GitSourceContext.fromJson(core.Map json_)
       : this(
@@ -10042,6 +9529,11 @@ class $GitSourceContext {
 /// - translate:v3 : GlossaryConfig
 /// - translate:v3 : TranslateTextGlossaryConfig
 class $GlossaryConfig {
+  /// If set to true, the glossary will be used for contextual translation.
+  ///
+  /// Optional.
+  core.bool? contextualTranslationEnabled;
+
   /// The `glossary` to be applied for this translation.
   ///
   /// The format depends on the glossary: - User-provided custom glossary:
@@ -10058,17 +9550,22 @@ class $GlossaryConfig {
   core.bool? ignoreCase;
 
   $GlossaryConfig({
+    this.contextualTranslationEnabled,
     this.glossary,
     this.ignoreCase,
   });
 
   $GlossaryConfig.fromJson(core.Map json_)
       : this(
+          contextualTranslationEnabled:
+              json_['contextualTranslationEnabled'] as core.bool?,
           glossary: json_['glossary'] as core.String?,
           ignoreCase: json_['ignoreCase'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (contextualTranslationEnabled != null)
+          'contextualTranslationEnabled': contextualTranslationEnabled!,
         if (glossary != null) 'glossary': glossary!,
         if (ignoreCase != null) 'ignoreCase': ignoreCase!,
       };
@@ -10153,14 +9650,10 @@ class $GoogleAudienceTargetingSetting {
   /// Required.
   core.String? googleAudienceId;
 
-  $GoogleAudienceTargetingSetting({
-    this.googleAudienceId,
-  });
+  $GoogleAudienceTargetingSetting({this.googleAudienceId});
 
   $GoogleAudienceTargetingSetting.fromJson(core.Map json_)
-      : this(
-          googleAudienceId: json_['googleAudienceId'] as core.String?,
-        );
+      : this(googleAudienceId: json_['googleAudienceId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (googleAudienceId != null) 'googleAudienceId': googleAudienceId!,
@@ -10234,8 +9727,8 @@ class $GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan {
   });
 
   $GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           pageEnd: json_['pageEnd'] as core.int?,
           pageStart: json_['pageStart'] as core.int?,
         );
@@ -10263,8 +9756,8 @@ class $GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPag
   });
 
   $GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           pageEnd: json_['pageEnd'] as core.int?,
           pageStart: json_['pageStart'] as core.int?,
         );
@@ -10448,8 +9941,8 @@ class $GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect {
   });
 
   $GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect.fromJson(
-      core.Map json_)
-      : this(
+    core.Map json_,
+  ) : this(
           confidence: (json_['confidence'] as core.num?)?.toDouble(),
           type: json_['type'] as core.String?,
         );
@@ -10524,15 +10017,11 @@ class $GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak {
   /// lines.
   core.String? type;
 
-  $GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak({
-    this.type,
-  });
+  $GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak({this.type});
 
   $GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak.fromJson(
-      core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(type: json_['type'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -10659,10 +10148,7 @@ class $GoogleCloudDocumentaiV1DocumentStyleFontSize {
   /// Follows CSS naming (such as `in`, `px`, and `pt`).
   core.String? unit;
 
-  $GoogleCloudDocumentaiV1DocumentStyleFontSize({
-    this.size,
-    this.unit,
-  });
+  $GoogleCloudDocumentaiV1DocumentStyleFontSize({this.size, this.unit});
 
   $GoogleCloudDocumentaiV1DocumentStyleFontSize.fromJson(core.Map json_)
       : this(
@@ -10715,10 +10201,7 @@ class $GoogleCloudDocumentaiV1NormalizedVertex {
   /// Y coordinate (starts from the top of the image).
   core.double? y;
 
-  $GoogleCloudDocumentaiV1NormalizedVertex({
-    this.x,
-    this.y,
-  });
+  $GoogleCloudDocumentaiV1NormalizedVertex({this.x, this.y});
 
   $GoogleCloudDocumentaiV1NormalizedVertex.fromJson(core.Map json_)
       : this(
@@ -10743,16 +10226,10 @@ class $GoogleCloudDocumentaiV1Vertex {
   /// Y coordinate (starts from the top of the image).
   core.int? y;
 
-  $GoogleCloudDocumentaiV1Vertex({
-    this.x,
-    this.y,
-  });
+  $GoogleCloudDocumentaiV1Vertex({this.x, this.y});
 
   $GoogleCloudDocumentaiV1Vertex.fromJson(core.Map json_)
-      : this(
-          x: json_['x'] as core.int?,
-          y: json_['y'] as core.int?,
-        );
+      : this(x: json_['x'] as core.int?, y: json_['y'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
@@ -10774,10 +10251,7 @@ class $GoogleTypeLocalizedText {
   /// Localized string in the language corresponding to language_code below.
   core.String? text;
 
-  $GoogleTypeLocalizedText({
-    this.languageCode,
-    this.text,
-  });
+  $GoogleTypeLocalizedText({this.languageCode, this.text});
 
   $GoogleTypeLocalizedText.fromJson(core.Map json_)
       : this(
@@ -10839,10 +10313,7 @@ class $GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource {
       : this(
           digest:
               (json_['digest'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           entryPoint: json_['entryPoint'] as core.String?,
           uri: json_['uri'] as core.String?,
@@ -10935,11 +10406,7 @@ class $GuestAttributesEntry {
   /// Value for the guest attribute entry.
   core.String? value;
 
-  $GuestAttributesEntry({
-    this.key,
-    this.namespace,
-    this.value,
-  });
+  $GuestAttributesEntry({this.key, this.namespace, this.value});
 
   $GuestAttributesEntry.fromJson(core.Map json_)
       : this(
@@ -10970,10 +10437,7 @@ class $HPAConfig {
   /// Output only.
   core.String? memoryUtilizationThreshold;
 
-  $HPAConfig({
-    this.cpuUtilizationThreshold,
-    this.memoryUtilizationThreshold,
-  });
+  $HPAConfig({this.cpuUtilizationThreshold, this.memoryUtilizationThreshold});
 
   $HPAConfig.fromJson(core.Map json_)
       : this(
@@ -10999,14 +10463,10 @@ class $Handler {
   /// Path to the script from the application root directory.
   core.String? scriptPath;
 
-  $Handler({
-    this.scriptPath,
-  });
+  $Handler({this.scriptPath});
 
   $Handler.fromJson(core.Map json_)
-      : this(
-          scriptPath: json_['scriptPath'] as core.String?,
-        );
+      : this(scriptPath: json_['scriptPath'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (scriptPath != null) 'scriptPath': scriptPath!,
@@ -11034,10 +10494,7 @@ class $Hash {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  $Hash({
-    this.type,
-    this.value,
-  });
+  $Hash({this.type, this.value});
 
   $Hash.fromJson(core.Map json_)
       : this(
@@ -11062,10 +10519,7 @@ class $Header {
   /// Header value.
   core.String? value;
 
-  $Header({
-    this.name,
-    this.value,
-  });
+  $Header({this.name, this.value});
 
   $Header.fromJson(core.Map json_)
       : this(
@@ -11107,14 +10561,10 @@ class $HouseholdIncomeAssignedTargetingOptionDetails {
   /// U.S. household incomes.
   core.String? householdIncome;
 
-  $HouseholdIncomeAssignedTargetingOptionDetails({
-    this.householdIncome,
-  });
+  $HouseholdIncomeAssignedTargetingOptionDetails({this.householdIncome});
 
   $HouseholdIncomeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          householdIncome: json_['householdIncome'] as core.String?,
-        );
+      : this(householdIncome: json_['householdIncome'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (householdIncome != null) 'householdIncome': householdIncome!,
@@ -11149,14 +10599,10 @@ class $HouseholdIncomeTargetingOptionDetails {
   /// U.S. household incomes.
   core.String? householdIncome;
 
-  $HouseholdIncomeTargetingOptionDetails({
-    this.householdIncome,
-  });
+  $HouseholdIncomeTargetingOptionDetails({this.householdIncome});
 
   $HouseholdIncomeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          householdIncome: json_['householdIncome'] as core.String?,
-        );
+      : this(householdIncome: json_['householdIncome'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (householdIncome != null) 'householdIncome': householdIncome!,
@@ -11201,11 +10647,7 @@ class $HttpBody {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object?>>? extensions;
 
-  $HttpBody({
-    this.contentType,
-    this.data,
-    this.extensions,
-  });
+  $HttpBody({this.contentType, this.data, this.extensions});
 
   $HttpBody.fromJson(core.Map json_)
       : this(
@@ -11234,10 +10676,7 @@ class $Identity {
   /// The revision independent identifier of the update.
   core.String? updateId;
 
-  $Identity({
-    this.revision,
-    this.updateId,
-  });
+  $Identity({this.revision, this.updateId});
 
   $Identity.fromJson(core.Map json_)
       : this(
@@ -11342,10 +10781,7 @@ class $IdentityServiceDiagnosticInterface {
   /// When reached, requests to the interface would be automatically rejected.
   core.String? expirationTime;
 
-  $IdentityServiceDiagnosticInterface({
-    this.enabled,
-    this.expirationTime,
-  });
+  $IdentityServiceDiagnosticInterface({this.enabled, this.expirationTime});
 
   $IdentityServiceDiagnosticInterface.fromJson(core.Map json_)
       : this(
@@ -11367,14 +10803,10 @@ class $IdentityServiceGoogleConfig {
   /// Disable automatic configuration of Google Plugin on supported platforms.
   core.bool? disable;
 
-  $IdentityServiceGoogleConfig({
-    this.disable,
-  });
+  $IdentityServiceGoogleConfig({this.disable});
 
   $IdentityServiceGoogleConfig.fromJson(core.Map json_)
-      : this(
-          disable: json_['disable'] as core.bool?,
-        );
+      : this(disable: json_['disable'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disable != null) 'disable': disable!,
@@ -11410,11 +10842,7 @@ class $IdentityServiceGroupConfig {
   /// Optional.
   core.String? idAttribute;
 
-  $IdentityServiceGroupConfig({
-    this.baseDn,
-    this.filter,
-    this.idAttribute,
-  });
+  $IdentityServiceGroupConfig({this.baseDn, this.filter, this.idAttribute});
 
   $IdentityServiceGroupConfig.fromJson(core.Map json_)
       : this(
@@ -11627,12 +11055,7 @@ class $IdentityServiceSamlConfig {
       : this(
           attributeMapping: (json_['attributeMapping']
                   as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           groupPrefix: json_['groupPrefix'] as core.String?,
           groupsAttribute: json_['groupsAttribute'] as core.String?,
           identityProviderCertificates:
@@ -11861,10 +11284,7 @@ class $IngressSource {
   /// case of allowing all Google Cloud resources only is not supported.
   core.String? resource;
 
-  $IngressSource({
-    this.accessLevel,
-    this.resource,
-  });
+  $IngressSource({this.accessLevel, this.resource});
 
   $IngressSource.fromJson(core.Map json_)
       : this(
@@ -11926,10 +11346,7 @@ class $InputMetrics {
   core.String? bytesRead;
   core.String? recordsRead;
 
-  $InputMetrics({
-    this.bytesRead,
-    this.recordsRead,
-  });
+  $InputMetrics({this.bytesRead, this.recordsRead});
 
   $InputMetrics.fromJson(core.Map json_)
       : this(
@@ -11977,11 +11394,7 @@ class $InstallationState {
   /// - "COMPLETE" : Installation process has been completed.
   core.String? stage;
 
-  $InstallationState({
-    this.actionUri,
-    this.message,
-    this.stage,
-  });
+  $InstallationState({this.actionUri, this.message, this.stage});
 
   $InstallationState.fromJson(core.Map json_)
       : this(
@@ -12017,10 +11430,7 @@ class $Instance00 {
   /// Required.
   core.String? reference;
 
-  $Instance00({
-    this.prediction,
-    this.reference,
-  });
+  $Instance00({this.prediction, this.reference});
 
   $Instance00.fromJson(core.Map json_)
       : this(
@@ -12045,14 +11455,10 @@ class $Instance01 {
   /// Required.
   core.String? prediction;
 
-  $Instance01({
-    this.prediction,
-  });
+  $Instance01({this.prediction});
 
   $Instance01.fromJson(core.Map json_)
-      : this(
-          prediction: json_['prediction'] as core.String?,
-        );
+      : this(prediction: json_['prediction'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (prediction != null) 'prediction': prediction!,
@@ -12128,11 +11534,7 @@ class $Instance03 {
   /// Optional.
   core.String? source;
 
-  $Instance03({
-    this.prediction,
-    this.reference,
-    this.source,
-  });
+  $Instance03({this.prediction, this.reference, this.source});
 
   $Instance03.fromJson(core.Map json_)
       : this(
@@ -12207,9 +11609,7 @@ class $InstanceGroupManagersAbandonInstancesRequest {
   /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String>? instances;
 
-  $InstanceGroupManagersAbandonInstancesRequest({
-    this.instances,
-  });
+  $InstanceGroupManagersAbandonInstancesRequest({this.instances});
 
   $InstanceGroupManagersAbandonInstancesRequest.fromJson(core.Map json_)
       : this(
@@ -12311,9 +11711,7 @@ class $InstanceGroupManagersResumeInstancesRequest {
   /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String>? instances;
 
-  $InstanceGroupManagersResumeInstancesRequest({
-    this.instances,
-  });
+  $InstanceGroupManagersResumeInstancesRequest({this.instances});
 
   $InstanceGroupManagersResumeInstancesRequest.fromJson(core.Map json_)
       : this(
@@ -12338,9 +11736,7 @@ class $InstanceGroupManagersStartInstancesRequest {
   /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String>? instances;
 
-  $InstanceGroupManagersStartInstancesRequest({
-    this.instances,
-  });
+  $InstanceGroupManagersStartInstancesRequest({this.instances});
 
   $InstanceGroupManagersStartInstancesRequest.fromJson(core.Map json_)
       : this(
@@ -12369,10 +11765,7 @@ class $InstanceGroupManagersStopInstancesRequest {
   /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String>? instances;
 
-  $InstanceGroupManagersStopInstancesRequest({
-    this.forceStop,
-    this.instances,
-  });
+  $InstanceGroupManagersStopInstancesRequest({this.forceStop, this.instances});
 
   $InstanceGroupManagersStopInstancesRequest.fromJson(core.Map json_)
       : this(
@@ -12625,10 +12018,7 @@ class $IntegrationDetails {
   /// of no more than 500 characters.
   core.String? integrationCode;
 
-  $IntegrationDetails({
-    this.details,
-    this.integrationCode,
-  });
+  $IntegrationDetails({this.details, this.integrationCode});
 
   $IntegrationDetails.fromJson(core.Map json_)
       : this(
@@ -12668,10 +12058,7 @@ class $Interval {
   /// Optional.
   core.String? startTime;
 
-  $Interval({
-    this.endTime,
-    this.startTime,
-  });
+  $Interval({this.endTime, this.startTime});
 
   $Interval.fromJson(core.Map json_)
       : this(
@@ -12693,9 +12080,7 @@ class $InventorySourceAccessorsAdvertiserAccessors {
   /// The IDs of the advertisers.
   core.List<core.String>? advertiserIds;
 
-  $InventorySourceAccessorsAdvertiserAccessors({
-    this.advertiserIds,
-  });
+  $InventorySourceAccessorsAdvertiserAccessors({this.advertiserIds});
 
   $InventorySourceAccessorsAdvertiserAccessors.fromJson(core.Map json_)
       : this(
@@ -12717,14 +12102,10 @@ class $InventorySourceAccessorsPartnerAccessor {
   /// The ID of the partner.
   core.String? partnerId;
 
-  $InventorySourceAccessorsPartnerAccessor({
-    this.partnerId,
-  });
+  $InventorySourceAccessorsPartnerAccessor({this.partnerId});
 
   $InventorySourceAccessorsPartnerAccessor.fromJson(core.Map json_)
-      : this(
-          partnerId: json_['partnerId'] as core.String?,
-        );
+      : this(partnerId: json_['partnerId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (partnerId != null) 'partnerId': partnerId!,
@@ -12744,14 +12125,10 @@ class $InventorySourceAssignedTargetingOptionDetails {
   /// Required.
   core.String? inventorySourceId;
 
-  $InventorySourceAssignedTargetingOptionDetails({
-    this.inventorySourceId,
-  });
+  $InventorySourceAssignedTargetingOptionDetails({this.inventorySourceId});
 
   $InventorySourceAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          inventorySourceId: json_['inventorySourceId'] as core.String?,
-        );
+      : this(inventorySourceId: json_['inventorySourceId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (inventorySourceId != null) 'inventorySourceId': inventorySourceId!,
@@ -12770,9 +12147,7 @@ class $InventorySourceFilter {
   /// Sources for the selected Advertiser or Partner.
   core.List<core.String>? inventorySourceIds;
 
-  $InventorySourceFilter({
-    this.inventorySourceIds,
-  });
+  $InventorySourceFilter({this.inventorySourceIds});
 
   $InventorySourceFilter.fromJson(core.Map json_)
       : this(
@@ -12975,14 +12350,10 @@ class $InventorySourceVideoCreativeConfig {
   /// the inventory source.
   core.String? duration;
 
-  $InventorySourceVideoCreativeConfig({
-    this.duration,
-  });
+  $InventorySourceVideoCreativeConfig({this.duration});
 
   $InventorySourceVideoCreativeConfig.fromJson(core.Map json_)
-      : this(
-          duration: json_['duration'] as core.String?,
-        );
+      : this(duration: json_['duration'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (duration != null) 'duration': duration!,
@@ -13026,10 +12397,7 @@ class $IssuesRequestPayload {
   /// `triggeraction` method.
   core.String? userInputActionOption;
 
-  $IssuesRequestPayload({
-    this.contentOption,
-    this.userInputActionOption,
-  });
+  $IssuesRequestPayload({this.contentOption, this.userInputActionOption});
 
   $IssuesRequestPayload.fromJson(core.Map json_)
       : this(
@@ -13072,10 +12440,7 @@ class $Justification {
   /// prevent exploitation based on known attack vectors.
   core.String? justificationType;
 
-  $Justification({
-    this.details,
-    this.justificationType,
-  });
+  $Justification({this.details, this.justificationType});
 
   $Justification.fromJson(core.Map json_)
       : this(
@@ -13101,14 +12466,10 @@ class $Jwt {
   /// For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1
   core.String? compactJwt;
 
-  $Jwt({
-    this.compactJwt,
-  });
+  $Jwt({this.compactJwt});
 
   $Jwt.fromJson(core.Map json_)
-      : this(
-          compactJwt: json_['compactJwt'] as core.String?,
-        );
+      : this(compactJwt: json_['compactJwt'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (compactJwt != null) 'compactJwt': compactJwt!,
@@ -13129,11 +12490,7 @@ class $JwtClaims {
   /// Value for the "sub" claim.
   core.String? subject;
 
-  $JwtClaims({
-    this.audience,
-    this.issuer,
-    this.subject,
-  });
+  $JwtClaims({this.audience, this.issuer, this.subject});
 
   $JwtClaims.fromJson(core.Map json_)
       : this(
@@ -13173,12 +12530,7 @@ class $JwtLocation {
   /// with a space at the end.
   core.String? valuePrefix;
 
-  $JwtLocation({
-    this.cookie,
-    this.header,
-    this.query,
-    this.valuePrefix,
-  });
+  $JwtLocation({this.cookie, this.header, this.query, this.valuePrefix});
 
   $JwtLocation.fromJson(core.Map json_)
       : this(
@@ -13207,10 +12559,7 @@ class $KMSEnvMap {
   /// The name of the KMS key that will be used to decrypt the cipher text.
   core.String? keyName;
 
-  $KMSEnvMap({
-    this.cipherText,
-    this.keyName,
-  });
+  $KMSEnvMap({this.cipherText, this.keyName});
 
   $KMSEnvMap.fromJson(core.Map json_)
       : this(
@@ -13235,9 +12584,7 @@ class $KeyAccessJustificationsPolicy {
   /// operations for the CryptoKey associated with this policy will fail.
   core.List<core.String>? allowedAccessReasons;
 
-  $KeyAccessJustificationsPolicy({
-    this.allowedAccessReasons,
-  });
+  $KeyAccessJustificationsPolicy({this.allowedAccessReasons});
 
   $KeyAccessJustificationsPolicy.fromJson(core.Map json_)
       : this(
@@ -13269,10 +12616,7 @@ class $KeywordAssignedTargetingOptionDetails {
   /// Indicates if this option is being negatively targeted.
   core.bool? negative;
 
-  $KeywordAssignedTargetingOptionDetails({
-    this.keyword,
-    this.negative,
-  });
+  $KeywordAssignedTargetingOptionDetails({this.keyword, this.negative});
 
   $KeywordAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
@@ -13294,14 +12638,10 @@ class $KindExpression {
   /// The name of the kind.
   core.String? name;
 
-  $KindExpression({
-    this.name,
-  });
+  $KindExpression({this.name});
 
   $KindExpression.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+      : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -13327,11 +12667,7 @@ class $LabelDescriptor {
   /// - "INT64" : A 64-bit signed integer.
   core.String? valueType;
 
-  $LabelDescriptor({
-    this.description,
-    this.key,
-    this.valueType,
-  });
+  $LabelDescriptor({this.description, this.key, this.valueType});
 
   $LabelDescriptor.fromJson(core.Map json_)
       : this(
@@ -13358,10 +12694,7 @@ class $LabelEntry {
   /// Value of the label
   core.String? value;
 
-  $LabelEntry({
-    this.key,
-    this.value,
-  });
+  $LabelEntry({this.key, this.value});
 
   $LabelEntry.fromJson(core.Map json_)
       : this(
@@ -13383,18 +12716,13 @@ class $Labels {
   /// Map of node label keys and node label values.
   core.Map<core.String, core.String>? labels;
 
-  $Labels({
-    this.labels,
-  });
+  $Labels({this.labels});
 
   $Labels.fromJson(core.Map json_)
       : this(
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
         );
 
@@ -13455,14 +12783,10 @@ class $LanguageTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  $LanguageTargetingOptionDetails({
-    this.displayName,
-  });
+  $LanguageTargetingOptionDetails({this.displayName});
 
   $LanguageTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-        );
+      : this(displayName: json_['displayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -13473,6 +12797,7 @@ class $LanguageTargetingOptionDetails {
 ///
 /// - addressvalidation:v1 : GoogleTypeLatLng
 /// - airquality:v1 : LatLng
+/// - areainsights:v1 : LatLng
 /// - datastore:v1 : LatLng
 /// - dialogflow:v2 : GoogleTypeLatLng
 /// - dialogflow:v3 : GoogleTypeLatLng
@@ -13495,10 +12820,7 @@ class $LatLng {
   /// It must be in the range \[-180.0, +180.0\].
   core.double? longitude;
 
-  $LatLng({
-    this.latitude,
-    this.longitude,
-  });
+  $LatLng({this.latitude, this.longitude});
 
   $LatLng.fromJson(core.Map json_)
       : this(
@@ -13544,12 +12866,7 @@ class $LatestBackup {
   /// - "FAILED" : The backup failed.
   core.String? state;
 
-  $LatestBackup({
-    this.backupId,
-    this.duration,
-    this.startTime,
-    this.state,
-  });
+  $LatestBackup({this.backupId, this.duration, this.startTime, this.state});
 
   $LatestBackup.fromJson(core.Map json_)
       : this(
@@ -13583,10 +12900,7 @@ class $Layer {
   /// Required.
   core.String? directive;
 
-  $Layer({
-    this.arguments,
-    this.directive,
-  });
+  $Layer({this.arguments, this.directive});
 
   $Layer.fromJson(core.Map json_)
       : this(
@@ -13615,10 +12929,7 @@ class $License {
   /// "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
   core.String? expression;
 
-  $License({
-    this.comments,
-    this.expression,
-  });
+  $License({this.comments, this.expression});
 
   $License.fromJson(core.Map json_)
       : this(
@@ -13750,11 +13061,7 @@ class $LineItemBudget {
   /// field is not applicable and will be ignored by the system.
   core.String? maxAmount;
 
-  $LineItemBudget({
-    this.budgetAllocationType,
-    this.budgetUnit,
-    this.maxAmount,
-  });
+  $LineItemBudget({this.budgetAllocationType, this.budgetUnit, this.maxAmount});
 
   $LineItemBudget.fromJson(core.Map json_)
       : this(
@@ -13785,11 +13092,7 @@ class $Linear {
   /// Must be greater than 0.
   core.double? width;
 
-  $Linear({
-    this.numFiniteBuckets,
-    this.offset,
-    this.width,
-  });
+  $Linear({this.numFiniteBuckets, this.offset, this.width});
 
   $Linear.fromJson(core.Map json_)
       : this(
@@ -13817,10 +13120,7 @@ class $Link {
   /// The URL of the link.
   core.String? url;
 
-  $Link({
-    this.description,
-    this.url,
-  });
+  $Link({this.description, this.url});
 
   $Link.fromJson(core.Map json_)
       : this(
@@ -13980,11 +13280,7 @@ class $Locality {
   /// e.g. `Availability Zone (AZ) `_ on AWS, `Zone `_ on GCP, etc.
   core.String? zone;
 
-  $Locality({
-    this.region,
-    this.subZone,
-    this.zone,
-  });
+  $Locality({this.region, this.subZone, this.zone});
 
   $Locality.fromJson(core.Map json_)
       : this(
@@ -14015,10 +13311,7 @@ class $LocalizedMessage {
   /// The localized error message in the above locale.
   core.String? message;
 
-  $LocalizedMessage({
-    this.locale,
-    this.message,
-  });
+  $LocalizedMessage({this.locale, this.message});
 
   $LocalizedMessage.fromJson(core.Map json_)
       : this(
@@ -14144,10 +13437,7 @@ class $Location00 {
           displayName: json_['displayName'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           locationId: json_['locationId'] as core.String?,
           metadata: json_.containsKey('metadata')
@@ -14213,10 +13503,7 @@ class $Location01 {
           displayName: json_['displayName'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           locationId: json_['locationId'] as core.String?,
           metadata: json_.containsKey('metadata')
@@ -14313,10 +13600,7 @@ class $LockConfig {
   /// Describes why a connection is locked.
   core.String? reason;
 
-  $LockConfig({
-    this.locked,
-    this.reason,
-  });
+  $LockConfig({this.locked, this.reason});
 
   $LockConfig.fromJson(core.Map json_)
       : this(
@@ -14348,10 +13632,7 @@ class $LogConfig {
   /// - "DEBUG" : Debug and high verbosity logs are enabled.
   core.String? level;
 
-  $LogConfig({
-    this.enabled,
-    this.level,
-  });
+  $LogConfig({this.enabled, this.level});
 
   $LogConfig.fromJson(core.Map json_)
       : this(
@@ -14380,10 +13661,7 @@ class $LogFileDirectories {
   /// Required.
   core.String? onlineLogDirectory;
 
-  $LogFileDirectories({
-    this.archivedLogDirectory,
-    this.onlineLogDirectory,
-  });
+  $LogFileDirectories({this.archivedLogDirectory, this.onlineLogDirectory});
 
   $LogFileDirectories.fromJson(core.Map json_)
       : this(
@@ -14412,10 +13690,7 @@ class $LookbackWindow {
   /// your ads.
   core.int? impressionDays;
 
-  $LookbackWindow({
-    this.clickDays,
-    this.impressionDays,
-  });
+  $LookbackWindow({this.clickDays, this.impressionDays});
 
   $LookbackWindow.fromJson(core.Map json_)
       : this(
@@ -14437,14 +13712,10 @@ class $LookupInvoiceCurrencyResponse {
   /// Currency used by the advertiser in ISO 4217 format.
   core.String? currencyCode;
 
-  $LookupInvoiceCurrencyResponse({
-    this.currencyCode,
-  });
+  $LookupInvoiceCurrencyResponse({this.currencyCode});
 
   $LookupInvoiceCurrencyResponse.fromJson(core.Map json_)
-      : this(
-          currencyCode: json_['currencyCode'] as core.String?,
-        );
+      : this(currencyCode: json_['currencyCode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,
@@ -14459,14 +13730,10 @@ class $MachineConfig {
   /// The number of CPU's in the VM instance.
   core.int? cpuCount;
 
-  $MachineConfig({
-    this.cpuCount,
-  });
+  $MachineConfig({this.cpuCount});
 
   $MachineConfig.fromJson(core.Map json_)
-      : this(
-          cpuCount: json_['cpuCount'] as core.int?,
-        );
+      : this(cpuCount: json_['cpuCount'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cpuCount != null) 'cpuCount': cpuCount!,
@@ -14487,9 +13754,7 @@ class $MaintenanceConfig {
   /// Required.
   core.List<core.String>? maintenanceAddressCidrBlocks;
 
-  $MaintenanceConfig({
-    this.maintenanceAddressCidrBlocks,
-  });
+  $MaintenanceConfig({this.maintenanceAddressCidrBlocks});
 
   $MaintenanceConfig.fromJson(core.Map json_)
       : this(
@@ -14513,14 +13778,10 @@ class $ManualLbConfig {
   /// Whether manual load balancing is enabled.
   core.bool? enabled;
 
-  $ManualLbConfig({
-    this.enabled,
-  });
+  $ManualLbConfig({this.enabled});
 
   $ManualLbConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+      : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -14537,19 +13798,13 @@ class $Material {
   core.Map<core.String, core.String>? digest;
   core.String? uri;
 
-  $Material({
-    this.digest,
-    this.uri,
-  });
+  $Material({this.digest, this.uri});
 
   $Material.fromJson(core.Map json_)
       : this(
           digest:
               (json_['digest'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           uri: json_['uri'] as core.String?,
         );
@@ -14674,14 +13929,10 @@ class $Media {
   /// Name of the media resource.
   core.String? resourceName;
 
-  $Media({
-    this.resourceName,
-  });
+  $Media({this.resourceName});
 
   $Media.fromJson(core.Map json_)
-      : this(
-          resourceName: json_['resourceName'] as core.String?,
-        );
+      : this(resourceName: json_['resourceName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceName != null) 'resourceName': resourceName!,
@@ -14703,10 +13954,7 @@ class $MethodSelector {
   /// ApiOperation.
   core.String? permission;
 
-  $MethodSelector({
-    this.method,
-    this.permission,
-  });
+  $MethodSelector({this.method, this.permission});
 
   $MethodSelector.fromJson(core.Map json_)
       : this(
@@ -14826,21 +14074,13 @@ class $MetricRule {
   /// Refer to selector for syntax details.
   core.String? selector;
 
-  $MetricRule({
-    this.metricCosts,
-    this.selector,
-  });
+  $MetricRule({this.metricCosts, this.selector});
 
   $MetricRule.fromJson(core.Map json_)
       : this(
-          metricCosts:
-              (json_['metricCosts'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          metricCosts: (json_['metricCosts']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           selector: json_['selector'] as core.String?,
         );
 
@@ -14861,10 +14101,7 @@ class $Mixin {
   /// If non-empty specifies a path under which inherited HTTP paths are rooted.
   core.String? root;
 
-  $Mixin({
-    this.name,
-    this.root,
-  });
+  $Mixin({this.name, this.root});
 
   $Mixin.fromJson(core.Map json_)
       : this(
@@ -14911,12 +14148,7 @@ class $MobileApp {
   /// Output only.
   core.String? publisher;
 
-  $MobileApp({
-    this.appId,
-    this.displayName,
-    this.platform,
-    this.publisher,
-  });
+  $MobileApp({this.appId, this.displayName, this.platform, this.publisher});
 
   $MobileApp.fromJson(core.Map json_)
       : this(
@@ -14951,11 +14183,7 @@ class $ModelCallSignals {
   /// Prompt as sent to the model.
   core.String? renderedPrompt;
 
-  $ModelCallSignals({
-    this.model,
-    this.modelOutput,
-    this.renderedPrompt,
-  });
+  $ModelCallSignals({this.model, this.modelOutput, this.renderedPrompt});
 
   $ModelCallSignals.fromJson(core.Map json_)
       : this(
@@ -14994,10 +14222,7 @@ class $ModelSourceInfo {
   /// - "MARKETPLACE" : The Model is saved or tuned from Marketplace.
   core.String? sourceType;
 
-  $ModelSourceInfo({
-    this.copy,
-    this.sourceType,
-  });
+  $ModelSourceInfo({this.copy, this.sourceType});
 
   $ModelSourceInfo.fromJson(core.Map json_)
       : this(
@@ -15051,11 +14276,7 @@ class $Money {
   /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
   core.String? units;
 
-  $Money({
-    this.currencyCode,
-    this.nanos,
-    this.units,
-  });
+  $Money({this.currencyCode, this.nanos, this.units});
 
   $Money.fromJson(core.Map json_)
       : this(
@@ -15095,24 +14316,16 @@ class $MonitoredResourceMetadata {
   /// Output only.
   core.Map<core.String, core.String>? userLabels;
 
-  $MonitoredResourceMetadata({
-    this.systemLabels,
-    this.userLabels,
-  });
+  $MonitoredResourceMetadata({this.systemLabels, this.userLabels});
 
   $MonitoredResourceMetadata.fromJson(core.Map json_)
       : this(
           systemLabels: json_.containsKey('systemLabels')
               ? json_['systemLabels'] as core.Map<core.String, core.dynamic>
               : null,
-          userLabels:
-              (json_['userLabels'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          userLabels: (json_['userLabels']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15136,10 +14349,7 @@ class $MonitoringDestination {
   /// The type must be defined in Service.monitored_resources section.
   core.String? monitoredResource;
 
-  $MonitoringDestination({
-    this.metrics,
-    this.monitoredResource,
-  });
+  $MonitoringDestination({this.metrics, this.monitoredResource});
 
   $MonitoringDestination.fromJson(core.Map json_)
       : this(
@@ -15222,14 +14432,10 @@ class $NativeContentPositionAssignedTargetingOptionDetails {
   /// recommendation, i.e., ads appear in sections for recommended content.
   core.String? contentPosition;
 
-  $NativeContentPositionAssignedTargetingOptionDetails({
-    this.contentPosition,
-  });
+  $NativeContentPositionAssignedTargetingOptionDetails({this.contentPosition});
 
   $NativeContentPositionAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentPosition: json_['contentPosition'] as core.String?,
-        );
+      : this(contentPosition: json_['contentPosition'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentPosition != null) 'contentPosition': contentPosition!,
@@ -15263,14 +14469,10 @@ class $NativeContentPositionTargetingOptionDetails {
   /// recommendation, i.e., ads appear in sections for recommended content.
   core.String? contentPosition;
 
-  $NativeContentPositionTargetingOptionDetails({
-    this.contentPosition,
-  });
+  $NativeContentPositionTargetingOptionDetails({this.contentPosition});
 
   $NativeContentPositionTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentPosition: json_['contentPosition'] as core.String?,
-        );
+      : this(contentPosition: json_['contentPosition'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentPosition != null) 'contentPosition': contentPosition!,
@@ -15298,10 +14500,7 @@ class $NegativeKeyword {
   /// Output only.
   core.String? name;
 
-  $NegativeKeyword({
-    this.keywordValue,
-    this.name,
-  });
+  $NegativeKeyword({this.keywordValue, this.name});
 
   $NegativeKeyword.fromJson(core.Map json_)
       : this(
@@ -15419,14 +14618,10 @@ class $NoWrapper {
   /// Optional.
   core.bool? writeMetadata;
 
-  $NoWrapper({
-    this.writeMetadata,
-  });
+  $NoWrapper({this.writeMetadata});
 
   $NoWrapper.fromJson(core.Map json_)
-      : this(
-          writeMetadata: json_['writeMetadata'] as core.bool?,
-        );
+      : this(writeMetadata: json_['writeMetadata'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (writeMetadata != null) 'writeMetadata': writeMetadata!,
@@ -15444,10 +14639,7 @@ class $NodeConfig {
   /// Minimum number of nodes in the runtime nodes.
   core.int? minNodeCount;
 
-  $NodeConfig({
-    this.maxNodeCount,
-    this.minNodeCount,
-  });
+  $NodeConfig({this.maxNodeCount, this.minNodeCount});
 
   $NodeConfig.fromJson(core.Map json_)
       : this(
@@ -15475,11 +14667,7 @@ class $NonCompliantFile {
   /// Explains why a file is non compliant for a CIS check.
   core.String? reason;
 
-  $NonCompliantFile({
-    this.displayCommand,
-    this.path,
-    this.reason,
-  });
+  $NonCompliantFile({this.displayCommand, this.path, this.reason});
 
   $NonCompliantFile.fromJson(core.Map json_)
       : this(
@@ -15507,14 +14695,10 @@ class $OAuthRequirements {
   /// https://www.googleapis.com/auth/calendar.read
   core.String? canonicalScopes;
 
-  $OAuthRequirements({
-    this.canonicalScopes,
-  });
+  $OAuthRequirements({this.canonicalScopes});
 
   $OAuthRequirements.fromJson(core.Map json_)
-      : this(
-          canonicalScopes: json_['canonicalScopes'] as core.String?,
-        );
+      : this(canonicalScopes: json_['canonicalScopes'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (canonicalScopes != null) 'canonicalScopes': canonicalScopes!,
@@ -15583,11 +14767,7 @@ class $ObjectId {
   /// The name of the object.
   core.String? objectName;
 
-  $ObjectId({
-    this.bucketName,
-    this.generation,
-    this.objectName,
-  });
+  $ObjectId({this.bucketName, this.generation, this.objectName});
 
   $ObjectId.fromJson(core.Map json_)
       : this(
@@ -15619,10 +14799,7 @@ class $ObjectIdentifier {
   /// Required.
   core.String? table;
 
-  $ObjectIdentifier({
-    this.schema,
-    this.table,
-  });
+  $ObjectIdentifier({this.schema, this.table});
 
   $ObjectIdentifier.fromJson(core.Map json_)
       : this(
@@ -15647,16 +14824,10 @@ class $OffsetPosition {
   /// Offset distance from top side of an asset or a window.
   core.int? top;
 
-  $OffsetPosition({
-    this.left,
-    this.top,
-  });
+  $OffsetPosition({this.left, this.top});
 
   $OffsetPosition.fromJson(core.Map json_)
-      : this(
-          left: json_['left'] as core.int?,
-          top: json_['top'] as core.int?,
-        );
+      : this(left: json_['left'] as core.int?, top: json_['top'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (left != null) 'left': left!,
@@ -15690,10 +14861,7 @@ class $OidcToken {
   /// Optional.
   core.String? serviceAccountEmail;
 
-  $OidcToken({
-    this.audience,
-    this.serviceAccountEmail,
-  });
+  $OidcToken({this.audience, this.serviceAccountEmail});
 
   $OidcToken.fromJson(core.Map json_)
       : this(
@@ -15723,14 +14891,10 @@ class $OmidAssignedTargetingOptionDetails {
   /// inventory.
   core.String? omid;
 
-  $OmidAssignedTargetingOptionDetails({
-    this.omid,
-  });
+  $OmidAssignedTargetingOptionDetails({this.omid});
 
   $OmidAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          omid: json_['omid'] as core.String?,
-        );
+      : this(omid: json_['omid'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (omid != null) 'omid': omid!,
@@ -15752,14 +14916,10 @@ class $OmidTargetingOptionDetails {
   /// inventory.
   core.String? omid;
 
-  $OmidTargetingOptionDetails({
-    this.omid,
-  });
+  $OmidTargetingOptionDetails({this.omid});
 
   $OmidTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          omid: json_['omid'] as core.String?,
-        );
+      : this(omid: json_['omid'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (omid != null) 'omid': omid!,
@@ -15846,14 +15006,10 @@ class $OnScreenPositionTargetingOptionDetails {
   /// - "ON_SCREEN_POSITION_BELOW_THE_FOLD" : The ad is located below the fold.
   core.String? onScreenPosition;
 
-  $OnScreenPositionTargetingOptionDetails({
-    this.onScreenPosition,
-  });
+  $OnScreenPositionTargetingOptionDetails({this.onScreenPosition});
 
   $OnScreenPositionTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          onScreenPosition: json_['onScreenPosition'] as core.String?,
-        );
+      : this(onScreenPosition: json_['onScreenPosition'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (onScreenPosition != null) 'onScreenPosition': onScreenPosition!,
@@ -15909,14 +15065,10 @@ class $OperatingSystemTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  $OperatingSystemTargetingOptionDetails({
-    this.displayName,
-  });
+  $OperatingSystemTargetingOptionDetails({this.displayName});
 
   $OperatingSystemTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-        );
+      : this(displayName: json_['displayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -15946,10 +15098,7 @@ class $Option {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? value;
 
-  $Option({
-    this.name,
-    this.value,
-  });
+  $Option({this.name, this.value});
 
   $Option.fromJson(core.Map json_)
       : this(
@@ -16097,10 +15246,7 @@ class $OutputMetrics {
   core.String? bytesWritten;
   core.String? recordsWritten;
 
-  $OutputMetrics({
-    this.bytesWritten,
-    this.recordsWritten,
-  });
+  $OutputMetrics({this.bytesWritten, this.recordsWritten});
 
   $OutputMetrics.fromJson(core.Map json_)
       : this(
@@ -16214,11 +15360,7 @@ class $PageInfo {
   /// results in the result set.
   core.int? totalResults;
 
-  $PageInfo({
-    this.resultPerPage,
-    this.startIndex,
-    this.totalResults,
-  });
+  $PageInfo({this.resultPerPage, this.startIndex, this.totalResults});
 
   $PageInfo.fromJson(core.Map json_)
       : this(
@@ -16246,14 +15388,10 @@ class $Parallelstore {
   /// Optional.
   core.String? path;
 
-  $Parallelstore({
-    this.path,
-  });
+  $Parallelstore({this.path});
 
   $Parallelstore.fromJson(core.Map json_)
-      : this(
-          path: json_['path'] as core.String?,
-        );
+      : this(path: json_['path'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (path != null) 'path': path!,
@@ -16278,14 +15416,10 @@ class $ParentalStatusAssignedTargetingOptionDetails {
   /// unknown.
   core.String? parentalStatus;
 
-  $ParentalStatusAssignedTargetingOptionDetails({
-    this.parentalStatus,
-  });
+  $ParentalStatusAssignedTargetingOptionDetails({this.parentalStatus});
 
   $ParentalStatusAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          parentalStatus: json_['parentalStatus'] as core.String?,
-        );
+      : this(parentalStatus: json_['parentalStatus'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (parentalStatus != null) 'parentalStatus': parentalStatus!,
@@ -16310,14 +15444,10 @@ class $ParentalStatusTargetingOptionDetails {
   /// unknown.
   core.String? parentalStatus;
 
-  $ParentalStatusTargetingOptionDetails({
-    this.parentalStatus,
-  });
+  $ParentalStatusTargetingOptionDetails({this.parentalStatus});
 
   $ParentalStatusTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          parentalStatus: json_['parentalStatus'] as core.String?,
-        );
+      : this(parentalStatus: json_['parentalStatus'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (parentalStatus != null) 'parentalStatus': parentalStatus!,
@@ -16488,10 +15618,7 @@ class $PartnerGeneralConfig {
   /// Immutable.
   core.String? timeZone;
 
-  $PartnerGeneralConfig({
-    this.currencyCode,
-    this.timeZone,
-  });
+  $PartnerGeneralConfig({this.currencyCode, this.timeZone});
 
   $PartnerGeneralConfig.fromJson(core.Map json_)
       : this(
@@ -16541,10 +15668,7 @@ class $PartnerRevenueModel {
   /// cost, which includes all partner costs and data costs.
   core.String? markupType;
 
-  $PartnerRevenueModel({
-    this.markupAmount,
-    this.markupType,
-  });
+  $PartnerRevenueModel({this.markupAmount, this.markupType});
 
   $PartnerRevenueModel.fromJson(core.Map json_)
       : this(
@@ -16566,14 +15690,10 @@ class $PathSegment {
   /// If specified, use the key to retrieve the value in a Struct.
   core.String? key;
 
-  $PathSegment({
-    this.key,
-  });
+  $PathSegment({this.key});
 
   $PathSegment.fromJson(core.Map json_)
-      : this(
-          key: json_['key'] as core.String?,
-        );
+      : this(key: json_['key'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
@@ -16794,10 +15914,7 @@ class $Permissions {
   /// project through any of our API methods
   core.bool? disabledUserSignup;
 
-  $Permissions({
-    this.disabledUserDeletion,
-    this.disabledUserSignup,
-  });
+  $Permissions({this.disabledUserDeletion, this.disabledUserSignup});
 
   $Permissions.fromJson(core.Map json_)
       : this(
@@ -16884,9 +16001,7 @@ class $PermissionsResponse {
   /// allowed.
   core.List<core.String>? permissions;
 
-  $PermissionsResponse({
-    this.permissions,
-  });
+  $PermissionsResponse({this.permissions});
 
   $PermissionsResponse.fromJson(core.Map json_)
       : this(
@@ -16917,10 +16032,7 @@ class $Pipe {
   /// will result in an error in environments other than Linux.
   core.String? path;
 
-  $Pipe({
-    this.mode,
-    this.path,
-  });
+  $Pipe({this.mode, this.path});
 
   $Pipe.fromJson(core.Map json_)
       : this(
@@ -16949,9 +16061,7 @@ class $PlanSummary {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object?>>? indexesUsed;
 
-  $PlanSummary({
-    this.indexesUsed,
-  });
+  $PlanSummary({this.indexesUsed});
 
   $PlanSummary.fromJson(core.Map json_)
       : this(
@@ -16979,10 +16089,7 @@ class $PlusCode {
   /// by 1/8000 degree area (~14 by 14 meters).
   core.String? globalCode;
 
-  $PlusCode({
-    this.compoundCode,
-    this.globalCode,
-  });
+  $PlusCode({this.compoundCode, this.globalCode});
 
   $PlusCode.fromJson(core.Map json_)
       : this(
@@ -17096,14 +16203,10 @@ class $PoiSearchTerms {
   /// "315 W 44th St", etc.
   core.String? poiQuery;
 
-  $PoiSearchTerms({
-    this.poiQuery,
-  });
+  $PoiSearchTerms({this.poiQuery});
 
   $PoiSearchTerms.fromJson(core.Map json_)
-      : this(
-          poiQuery: json_['poiQuery'] as core.String?,
-        );
+      : this(poiQuery: json_['poiQuery'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (poiQuery != null) 'poiQuery': poiQuery!,
@@ -17131,11 +16234,7 @@ class $PoiTargetingOptionDetails {
   /// Output only.
   core.double? longitude;
 
-  $PoiTargetingOptionDetails({
-    this.displayName,
-    this.latitude,
-    this.longitude,
-  });
+  $PoiTargetingOptionDetails({this.displayName, this.latitude, this.longitude});
 
   $PoiTargetingOptionDetails.fromJson(core.Map json_)
       : this(
@@ -17162,10 +16261,7 @@ class $PolicyControllerResourceList {
   /// Memory requirement expressed in Kubernetes resource units.
   core.String? memory;
 
-  $PolicyControllerResourceList({
-    this.cpu,
-    this.memory,
-  });
+  $PolicyControllerResourceList({this.cpu, this.memory});
 
   $PolicyControllerResourceList.fromJson(core.Map json_)
       : this(
@@ -17193,14 +16289,10 @@ class $PolicyControllerTemplateLibraryConfig {
   /// - "ALL" : Install the entire template library.
   core.String? installation;
 
-  $PolicyControllerTemplateLibraryConfig({
-    this.installation,
-  });
+  $PolicyControllerTemplateLibraryConfig({this.installation});
 
   $PolicyControllerTemplateLibraryConfig.fromJson(core.Map json_)
-      : this(
-          installation: json_['installation'] as core.String?,
-        );
+      : this(installation: json_['installation'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (installation != null) 'installation': installation!,
@@ -17255,9 +16347,7 @@ class $PortConfig {
   /// The port that control plane hosted load balancers will listen on.
   core.int? controlPlaneLoadBalancerPort;
 
-  $PortConfig({
-    this.controlPlaneLoadBalancerPort,
-  });
+  $PortConfig({this.controlPlaneLoadBalancerPort});
 
   $PortConfig.fromJson(core.Map json_)
       : this(
@@ -17278,10 +16368,12 @@ class $PortConfig {
 /// - contentwarehouse:v1 : GoogleTypePostalAddress
 /// - documentai:v1 : GoogleTypePostalAddress
 /// - domains:v1 : PostalAddress
+/// - jobs:v3 : PostalAddress
+/// - jobs:v4 : PostalAddress
 /// - mybusinessaccountmanagement:v1 : PostalAddress
 /// - mybusinessbusinessinformation:v1 : PostalAddress
 /// - mybusinessverifications:v1 : PostalAddress
-class $PostalAddress00 {
+class $PostalAddress {
   /// Unstructured address lines describing the lower levels of an address.
   ///
   /// Because values in address_lines do not have type information and may
@@ -17392,7 +16484,7 @@ class $PostalAddress00 {
   /// Optional.
   core.String? sublocality;
 
-  $PostalAddress00({
+  $PostalAddress({
     this.addressLines,
     this.administrativeArea,
     this.languageCode,
@@ -17406,170 +16498,7 @@ class $PostalAddress00 {
     this.sublocality,
   });
 
-  $PostalAddress00.fromJson(core.Map json_)
-      : this(
-          addressLines: (json_['addressLines'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          administrativeArea: json_['administrativeArea'] as core.String?,
-          languageCode: json_['languageCode'] as core.String?,
-          locality: json_['locality'] as core.String?,
-          organization: json_['organization'] as core.String?,
-          postalCode: json_['postalCode'] as core.String?,
-          recipients: (json_['recipients'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          regionCode: json_['regionCode'] as core.String?,
-          revision: json_['revision'] as core.int?,
-          sortingCode: json_['sortingCode'] as core.String?,
-          sublocality: json_['sublocality'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (addressLines != null) 'addressLines': addressLines!,
-        if (administrativeArea != null)
-          'administrativeArea': administrativeArea!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (locality != null) 'locality': locality!,
-        if (organization != null) 'organization': organization!,
-        if (postalCode != null) 'postalCode': postalCode!,
-        if (recipients != null) 'recipients': recipients!,
-        if (regionCode != null) 'regionCode': regionCode!,
-        if (revision != null) 'revision': revision!,
-        if (sortingCode != null) 'sortingCode': sortingCode!,
-        if (sublocality != null) 'sublocality': sublocality!,
-      };
-}
-
-/// Used by:
-///
-/// - jobs:v3 : PostalAddress
-/// - jobs:v4 : PostalAddress
-class $PostalAddress01 {
-  /// Unstructured address lines describing the lower levels of an address.
-  ///
-  /// Because values in address_lines do not have type information and may
-  /// sometimes contain multiple values in a single field (e.g. "Austin, TX"),
-  /// it is important that the line order is clear. The order of address lines
-  /// should be "envelope order" for the country/region of the address. In
-  /// places where this can vary (e.g. Japan), address_language is used to make
-  /// it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en"
-  /// for small-to-large). This way, the most specific line of an address can be
-  /// selected based on the language. The minimum permitted structural
-  /// representation of an address consists of a region_code with all remaining
-  /// information placed in the address_lines. It would be possible to format
-  /// such an address very approximately without geocoding, but no semantic
-  /// reasoning could be made about any of the address components until it was
-  /// at least partially resolved. Creating an address only containing a
-  /// region_code and address_lines, and then geocoding is the recommended way
-  /// to handle completely unstructured addresses (as opposed to guessing which
-  /// parts of the address should be localities or administrative areas).
-  core.List<core.String>? addressLines;
-
-  /// Highest administrative subdivision which is used for postal addresses of a
-  /// country or region.
-  ///
-  /// For example, this can be a state, a province, an oblast, or a prefecture.
-  /// Specifically, for Spain this is the province and not the autonomous
-  /// community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use
-  /// an administrative area in postal addresses. E.g. in Switzerland this
-  /// should be left unpopulated.
-  ///
-  /// Optional.
-  core.String? administrativeArea;
-
-  /// BCP-47 language code of the contents of this address (if known).
-  ///
-  /// This is often the UI language of the input form or is expected to match
-  /// one of the languages used in the address' country/region, or their
-  /// transliterated equivalents. This can affect formatting in certain
-  /// countries, but is not critical to the correctness of the data and will
-  /// never affect any validation or other non-formatting related operations. If
-  /// this value is not known, it should be omitted (rather than specifying a
-  /// possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
-  ///
-  /// Optional.
-  core.String? languageCode;
-
-  /// Generally refers to the city/town portion of the address.
-  ///
-  /// Examples: US city, IT comune, UK post town. In regions of the world where
-  /// localities are not well defined or do not fit into this structure well,
-  /// leave locality empty and use address_lines.
-  ///
-  /// Optional.
-  core.String? locality;
-
-  /// The name of the organization at the address.
-  ///
-  /// Optional.
-  core.String? organization;
-
-  /// Postal code of the address.
-  ///
-  /// Not all countries use or require postal codes to be present, but where
-  /// they are used, they may trigger additional validation with other parts of
-  /// the address (e.g. state/zip validation in the U.S.A.).
-  ///
-  /// Optional.
-  core.String? postalCode;
-
-  /// The recipient at the address.
-  ///
-  /// This field may, under certain circumstances, contain multiline
-  /// information. For example, it might contain "care of" information.
-  ///
-  /// Optional.
-  core.List<core.String>? recipients;
-
-  /// CLDR region code of the country/region of the address.
-  ///
-  /// This is never inferred and it is up to the user to ensure the value is
-  /// correct. See https://cldr.unicode.org/ and
-  /// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
-  /// for details. Example: "CH" for Switzerland.
-  ///
-  /// Required.
-  core.String? regionCode;
-
-  /// The schema revision of the `PostalAddress`.
-  ///
-  /// This must be set to 0, which is the latest revision. All new revisions
-  /// **must** be backward compatible with old revisions.
-  core.int? revision;
-
-  /// Additional, country-specific, sorting code.
-  ///
-  /// This is not used in most regions. Where it is used, the value is either a
-  /// string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or
-  /// just a number alone, representing the "sector code" (Jamaica), "delivery
-  /// area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
-  ///
-  /// Optional.
-  core.String? sortingCode;
-
-  /// Sublocality of the address.
-  ///
-  /// For example, this can be neighborhoods, boroughs, districts.
-  ///
-  /// Optional.
-  core.String? sublocality;
-
-  $PostalAddress01({
-    this.addressLines,
-    this.administrativeArea,
-    this.languageCode,
-    this.locality,
-    this.organization,
-    this.postalCode,
-    this.recipients,
-    this.regionCode,
-    this.revision,
-    this.sortingCode,
-    this.sublocality,
-  });
-
-  $PostalAddress01.fromJson(core.Map json_)
+  $PostalAddress.fromJson(core.Map json_)
       : this(
           addressLines: (json_['addressLines'] as core.List?)
               ?.map((value) => value as core.String)
@@ -17653,11 +16582,7 @@ class $ProductDetail {
   /// The section header used to group a set of product details.
   core.String? sectionName;
 
-  $ProductDetail({
-    this.attributeName,
-    this.attributeValue,
-    this.sectionName,
-  });
+  $ProductDetail({this.attributeName, this.attributeValue, this.sectionName});
 
   $ProductDetail.fromJson(core.Map json_)
       : this(
@@ -17682,14 +16607,10 @@ class $ProgramStatusReviewIneligibilityReasonDetails {
   /// reason `IN_COOLDOWN_PERIOD`.
   core.String? cooldownTime;
 
-  $ProgramStatusReviewIneligibilityReasonDetails({
-    this.cooldownTime,
-  });
+  $ProgramStatusReviewIneligibilityReasonDetails({this.cooldownTime});
 
   $ProgramStatusReviewIneligibilityReasonDetails.fromJson(core.Map json_)
-      : this(
-          cooldownTime: json_['cooldownTime'] as core.String?,
-        );
+      : this(cooldownTime: json_['cooldownTime'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cooldownTime != null) 'cooldownTime': cooldownTime!,
@@ -17709,10 +16630,7 @@ class $ProjectRepoId {
   /// Leave empty for the default repo.
   core.String? repoName;
 
-  $ProjectRepoId({
-    this.projectId,
-    this.repoName,
-  });
+  $ProjectRepoId({this.projectId, this.repoName});
 
   $ProjectRepoId.fromJson(core.Map json_)
       : this(
@@ -17739,14 +16657,10 @@ class $ProxiesSetProxyHeaderRequest {
   /// - "PROXY_V1"
   core.String? proxyHeader;
 
-  $ProxiesSetProxyHeaderRequest({
-    this.proxyHeader,
-  });
+  $ProxiesSetProxyHeaderRequest({this.proxyHeader});
 
   $ProxiesSetProxyHeaderRequest.fromJson(core.Map json_)
-      : this(
-          proxyHeader: json_['proxyHeader'] as core.String?,
-        );
+      : this(proxyHeader: json_['proxyHeader'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (proxyHeader != null) 'proxyHeader': proxyHeader!,
@@ -17825,10 +16739,7 @@ class $PublisherReviewStatus {
   /// - "REVIEW_STATUS_PENDING" : The creative is pending review.
   core.String? status;
 
-  $PublisherReviewStatus({
-    this.publisherName,
-    this.status,
-  });
+  $PublisherReviewStatus({this.publisherName, this.status});
 
   $PublisherReviewStatus.fromJson(core.Map json_)
       : this(
@@ -17904,14 +16815,9 @@ class $PubsubMessage {
 
   $PubsubMessage.fromJson(core.Map json_)
       : this(
-          attributes:
-              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          attributes: (json_['attributes']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
           data: json_['data'] as core.String?,
           messageId: json_['messageId'] as core.String?,
           orderingKey: json_['orderingKey'] as core.String?,
@@ -17935,14 +16841,10 @@ class $PurchasesAcknowledgeRequest {
   /// Payload to attach to the purchase.
   core.String? developerPayload;
 
-  $PurchasesAcknowledgeRequest({
-    this.developerPayload,
-  });
+  $PurchasesAcknowledgeRequest({this.developerPayload});
 
   $PurchasesAcknowledgeRequest.fromJson(core.Map json_)
-      : this(
-          developerPayload: json_['developerPayload'] as core.String?,
-        );
+      : this(developerPayload: json_['developerPayload'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (developerPayload != null) 'developerPayload': developerPayload!,
@@ -17968,11 +16870,7 @@ class $Query {
   /// used to refine the messages covered by the hold.
   core.String? terms;
 
-  $Query({
-    this.endTime,
-    this.startTime,
-    this.terms,
-  });
+  $Query({this.endTime, this.startTime, this.terms});
 
   $Query.fromJson(core.Map json_)
       : this(
@@ -18000,14 +16898,10 @@ class $QueryMetadataRequest {
   /// Required.
   core.String? query;
 
-  $QueryMetadataRequest({
-    this.query,
-  });
+  $QueryMetadataRequest({this.query});
 
   $QueryMetadataRequest.fromJson(core.Map json_)
-      : this(
-          query: json_['query'] as core.String?,
-        );
+      : this(query: json_['query'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (query != null) 'query': query!,
@@ -18029,10 +16923,7 @@ class $QuestionAnsweringQualitySpec {
   /// Optional.
   core.int? version;
 
-  $QuestionAnsweringQualitySpec({
-    this.useReference,
-    this.version,
-  });
+  $QuestionAnsweringQualitySpec({this.useReference, this.version});
 
   $QuestionAnsweringQualitySpec.fromJson(core.Map json_)
       : this(
@@ -18156,10 +17047,7 @@ class $QuotaLimit {
           unit: json_['unit'] as core.String?,
           values:
               (json_['values'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
         );
 
@@ -18185,9 +17073,7 @@ class $RawIndices {
   /// The indices to remove from a lexicographically-sorted local list.
   core.List<core.int>? indices;
 
-  $RawIndices({
-    this.indices,
-  });
+  $RawIndices({this.indices});
 
   $RawIndices.fromJson(core.Map json_)
       : this(
@@ -18329,10 +17215,7 @@ class $RelatedUrl {
   /// Specific URL associated with the resource.
   core.String? url;
 
-  $RelatedUrl({
-    this.label,
-    this.url,
-  });
+  $RelatedUrl({this.label, this.url});
 
   $RelatedUrl.fromJson(core.Map json_)
       : this(
@@ -18362,10 +17245,7 @@ class $RemarketingConfig {
   /// Output only.
   core.bool? remarketingEnabled;
 
-  $RemarketingConfig({
-    this.advertiserId,
-    this.remarketingEnabled,
-  });
+  $RemarketingConfig({this.advertiserId, this.remarketingEnabled});
 
   $RemarketingConfig.fromJson(core.Map json_)
       : this(
@@ -18388,14 +17268,10 @@ class $ReplaceAllTextResponse {
   /// The number of occurrences changed by replacing all text.
   core.int? occurrencesChanged;
 
-  $ReplaceAllTextResponse({
-    this.occurrencesChanged,
-  });
+  $ReplaceAllTextResponse({this.occurrencesChanged});
 
   $ReplaceAllTextResponse.fromJson(core.Map json_)
-      : this(
-          occurrencesChanged: json_['occurrencesChanged'] as core.int?,
-        );
+      : this(occurrencesChanged: json_['occurrencesChanged'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (occurrencesChanged != null)
@@ -18412,9 +17288,7 @@ class $Req {
   /// configs on this managed instance group.
   core.List<core.String>? names;
 
-  $Req({
-    this.names,
-  });
+  $Req({this.names});
 
   $Req.fromJson(core.Map json_)
       : this(
@@ -18453,14 +17327,10 @@ class $Request00 {
   /// Optional.
   core.String? requestId;
 
-  $Request00({
-    this.requestId,
-  });
+  $Request00({this.requestId});
 
   $Request00.fromJson(core.Map json_)
-      : this(
-          requestId: json_['requestId'] as core.String?,
-        );
+      : this(requestId: json_['requestId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
@@ -18486,14 +17356,10 @@ class $Request01 {
   /// Optional.
   core.String? customer;
 
-  $Request01({
-    this.customer,
-  });
+  $Request01({this.customer});
 
   $Request01.fromJson(core.Map json_)
-      : this(
-          customer: json_['customer'] as core.String?,
-        );
+      : this(customer: json_['customer'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customer != null) 'customer': customer!,
@@ -18520,14 +17386,10 @@ class $Request02 {
   /// Optional.
   core.String? requestId;
 
-  $Request02({
-    this.requestId,
-  });
+  $Request02({this.requestId});
 
   $Request02.fromJson(core.Map json_)
-      : this(
-          requestId: json_['requestId'] as core.String?,
-        );
+      : this(requestId: json_['requestId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
@@ -18556,14 +17418,10 @@ class $Request03 {
   /// Optional.
   core.String? requestId;
 
-  $Request03({
-    this.requestId,
-  });
+  $Request03({this.requestId});
 
   $Request03.fromJson(core.Map json_)
-      : this(
-          requestId: json_['requestId'] as core.String?,
-        );
+      : this(requestId: json_['requestId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
@@ -18590,22 +17448,14 @@ class $Request04 {
   /// `/^[a-zA-Z0-9_./-]{0,255}$/`.
   core.Map<core.String, core.String>? stateMetadata;
 
-  $Request04({
-    this.etag,
-    this.stateMetadata,
-  });
+  $Request04({this.etag, this.stateMetadata});
 
   $Request04.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
-          stateMetadata:
-              (json_['stateMetadata'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
+          stateMetadata: (json_['stateMetadata']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String)),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18642,10 +17492,7 @@ class $Request05 {
   /// Optional.
   core.bool? validateOnly;
 
-  $Request05({
-    this.requestId,
-    this.validateOnly,
-  });
+  $Request05({this.requestId, this.validateOnly});
 
   $Request05.fromJson(core.Map json_)
       : this(
@@ -18672,9 +17519,7 @@ class $Request06 {
   /// Optional.
   core.List<core.String>? overrideDeployPolicy;
 
-  $Request06({
-    this.overrideDeployPolicy,
-  });
+  $Request06({this.overrideDeployPolicy});
 
   $Request06.fromJson(core.Map json_)
       : this(
@@ -18706,10 +17551,7 @@ class $Request07 {
   /// point start using this field.
   core.String? pageToken;
 
-  $Request07({
-    this.pageSize,
-    this.pageToken,
-  });
+  $Request07({this.pageSize, this.pageToken});
 
   $Request07.fromJson(core.Map json_)
       : this(
@@ -18734,9 +17576,7 @@ class $Request08 {
   /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String>? instances;
 
-  $Request08({
-    this.instances,
-  });
+  $Request08({this.instances});
 
   $Request08.fromJson(core.Map json_)
       : this(
@@ -18760,14 +17600,10 @@ class $Request09 {
   /// for which review is to be requested.
   core.String? regionCode;
 
-  $Request09({
-    this.regionCode,
-  });
+  $Request09({this.regionCode});
 
   $Request09.fromJson(core.Map json_)
-      : this(
-          regionCode: json_['regionCode'] as core.String?,
-        );
+      : this(regionCode: json_['regionCode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (regionCode != null) 'regionCode': regionCode!,
@@ -18782,14 +17618,10 @@ class $Request10 {
   /// If not specified, the agent's default language is used.
   core.String? languageCode;
 
-  $Request10({
-    this.languageCode,
-  });
+  $Request10({this.languageCode});
 
   $Request10.fromJson(core.Map json_)
-      : this(
-          languageCode: json_['languageCode'] as core.String?,
-        );
+      : this(languageCode: json_['languageCode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
@@ -18808,14 +17640,10 @@ class $Request11 {
   /// Required.
   core.String? vmId;
 
-  $Request11({
-    this.vmId,
-  });
+  $Request11({this.vmId});
 
   $Request11.fromJson(core.Map json_)
-      : this(
-          vmId: json_['vmId'] as core.String?,
-        );
+      : this(vmId: json_['vmId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (vmId != null) 'vmId': vmId!,
@@ -18864,10 +17692,7 @@ class $ResourceDescriptor {
           content: json_['content'] as core.String?,
           digest:
               (json_['digest'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           downloadLocation: json_['downloadLocation'] as core.String?,
           mediaType: json_['mediaType'] as core.String?,
@@ -18901,10 +17726,7 @@ class $ResourceLimits {
   /// Output only.
   core.String? memory;
 
-  $ResourceLimits({
-    this.cpu,
-    this.memory,
-  });
+  $ResourceLimits({this.cpu, this.memory});
 
   $ResourceLimits.fromJson(core.Map json_)
       : this(
@@ -18933,10 +17755,7 @@ class $ResourceRequests {
   /// Output only.
   core.String? memory;
 
-  $ResourceRequests({
-    this.cpu,
-    this.memory,
-  });
+  $ResourceRequests({this.cpu, this.memory});
 
   $ResourceRequests.fromJson(core.Map json_)
       : this(
@@ -19006,14 +17825,10 @@ class $ResponseMetadata {
   /// This id is logged for tracking purposes.
   core.String? requestId;
 
-  $ResponseMetadata({
-    this.requestId,
-  });
+  $ResponseMetadata({this.requestId});
 
   $ResponseMetadata.fromJson(core.Map json_)
-      : this(
-          requestId: json_['requestId'] as core.String?,
-        );
+      : this(requestId: json_['requestId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
@@ -19113,10 +17928,7 @@ class $ResultPostScanActionsResultBigQueryExportResult {
   /// export (usually caused by scan failed).
   core.String? state;
 
-  $ResultPostScanActionsResultBigQueryExportResult({
-    this.message,
-    this.state,
-  });
+  $ResultPostScanActionsResultBigQueryExportResult({this.message, this.state});
 
   $ResultPostScanActionsResultBigQueryExportResult.fromJson(core.Map json_)
       : this(
@@ -19149,10 +17961,7 @@ class $RetryPolicy {
   /// Optional.
   core.String? minimumBackoff;
 
-  $RetryPolicy({
-    this.maximumBackoff,
-    this.minimumBackoff,
-  });
+  $RetryPolicy({this.maximumBackoff, this.minimumBackoff});
 
   $RetryPolicy.fromJson(core.Map json_)
       : this(
@@ -19178,14 +17987,10 @@ class $RevisionRequest {
   /// Required.
   core.String? tag;
 
-  $RevisionRequest({
-    this.tag,
-  });
+  $RevisionRequest({this.tag});
 
   $RevisionRequest.fromJson(core.Map json_)
-      : this(
-          tag: json_['tag'] as core.String?,
-        );
+      : this(tag: json_['tag'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (tag != null) 'tag': tag!,
@@ -19206,11 +18011,7 @@ class $RgbColor {
   /// The red component of the color, from 0.0 to 1.0.
   core.double? red;
 
-  $RgbColor({
-    this.blue,
-    this.green,
-    this.red,
-  });
+  $RgbColor({this.blue, this.green, this.red});
 
   $RgbColor.fromJson(core.Map json_)
       : this(
@@ -19241,10 +18042,7 @@ class $RouteFaultInjectionPolicyAbort {
   /// The value must be between \[0, 100\]
   core.int? percentage;
 
-  $RouteFaultInjectionPolicyAbort({
-    this.httpStatus,
-    this.percentage,
-  });
+  $RouteFaultInjectionPolicyAbort({this.httpStatus, this.percentage});
 
   $RouteFaultInjectionPolicyAbort.fromJson(core.Map json_)
       : this(
@@ -19271,10 +18069,7 @@ class $RouteFaultInjectionPolicyDelay {
   /// The value must be between \[0, 100\]
   core.int? percentage;
 
-  $RouteFaultInjectionPolicyDelay({
-    this.fixedDelay,
-    this.percentage,
-  });
+  $RouteFaultInjectionPolicyDelay({this.fixedDelay, this.percentage});
 
   $RouteFaultInjectionPolicyDelay.fromJson(core.Map json_)
       : this(
@@ -19302,14 +18097,10 @@ class $RouteStatefulSessionAffinityPolicy {
   /// Required.
   core.String? cookieTtl;
 
-  $RouteStatefulSessionAffinityPolicy({
-    this.cookieTtl,
-  });
+  $RouteStatefulSessionAffinityPolicy({this.cookieTtl});
 
   $RouteStatefulSessionAffinityPolicy.fromJson(core.Map json_)
-      : this(
-          cookieTtl: json_['cookieTtl'] as core.String?,
-        );
+      : this(cookieTtl: json_['cookieTtl'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cookieTtl != null) 'cookieTtl': cookieTtl!,
@@ -19326,14 +18117,10 @@ class $RuntimeRequest {
   /// Idempotent request UUID.
   core.String? requestId;
 
-  $RuntimeRequest({
-    this.requestId,
-  });
+  $RuntimeRequest({this.requestId});
 
   $RuntimeRequest.fromJson(core.Map json_)
-      : this(
-          requestId: json_['requestId'] as core.String?,
-        );
+      : this(requestId: json_['requestId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
@@ -19356,10 +18143,7 @@ class $SBOMStatus {
   /// - "COMPLETE" : SBOM scanning has completed.
   core.String? sbomState;
 
-  $SBOMStatus({
-    this.error,
-    this.sbomState,
-  });
+  $SBOMStatus({this.error, this.sbomState});
 
   $SBOMStatus.fromJson(core.Map json_)
       : this(
@@ -19401,10 +18185,7 @@ class $SbomReferenceIntotoPredicate {
       : this(
           digest:
               (json_['digest'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           location: json_['location'] as core.String?,
           mimeType: json_['mimeType'] as core.String?,
@@ -19443,12 +18224,7 @@ class $ScriptError {
   /// The line number in the script where the error was thrown.
   core.String? line;
 
-  $ScriptError({
-    this.column,
-    this.errorCode,
-    this.errorMessage,
-    this.line,
-  });
+  $ScriptError({this.column, this.errorCode, this.errorMessage, this.line});
 
   $ScriptError.fromJson(core.Map json_)
       : this(
@@ -19503,10 +18279,7 @@ class $SdfConfig {
   /// migrating to this version.
   core.String? version;
 
-  $SdfConfig({
-    this.adminEmail,
-    this.version,
-  });
+  $SdfConfig({this.adminEmail, this.version});
 
   $SdfConfig.fromJson(core.Map json_)
       : this(
@@ -19529,14 +18302,10 @@ class $Secret {
   /// `projects / * /secrets / * /versions / * `.
   core.String? secretVersion;
 
-  $Secret({
-    this.secretVersion,
-  });
+  $Secret({this.secretVersion});
 
   $Secret.fromJson(core.Map json_)
-      : this(
-          secretVersion: json_['secretVersion'] as core.String?,
-        );
+      : this(secretVersion: json_['secretVersion'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (secretVersion != null) 'secretVersion': secretVersion!,
@@ -19557,14 +18326,10 @@ class $SecretVersionRequest {
   /// Optional.
   core.String? etag;
 
-  $SecretVersionRequest({
-    this.etag,
-  });
+  $SecretVersionRequest({this.etag});
 
   $SecretVersionRequest.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-        );
+      : this(etag: json_['etag'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -19596,10 +18361,7 @@ class $SecurityPostureConfig {
   /// vulnerability on cluster Enterprise level features.
   core.String? vulnerabilityMode;
 
-  $SecurityPostureConfig({
-    this.mode,
-    this.vulnerabilityMode,
-  });
+  $SecurityPostureConfig({this.mode, this.vulnerabilityMode});
 
   $SecurityPostureConfig.fromJson(core.Map json_)
       : this(
@@ -19622,11 +18384,7 @@ class $SemanticVersion {
   core.int? minorNumber;
   core.int? patch;
 
-  $SemanticVersion({
-    this.majorNumber,
-    this.minorNumber,
-    this.patch,
-  });
+  $SemanticVersion({this.majorNumber, this.minorNumber, this.patch});
 
   $SemanticVersion.fromJson(core.Map json_)
       : this(
@@ -19789,14 +18547,10 @@ class $SensitiveCategoryTargetingOptionDetails {
   /// streamed over the internet.
   core.String? sensitiveCategory;
 
-  $SensitiveCategoryTargetingOptionDetails({
-    this.sensitiveCategory,
-  });
+  $SensitiveCategoryTargetingOptionDetails({this.sensitiveCategory});
 
   $SensitiveCategoryTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          sensitiveCategory: json_['sensitiveCategory'] as core.String?,
-        );
+      : this(sensitiveCategory: json_['sensitiveCategory'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sensitiveCategory != null) 'sensitiveCategory': sensitiveCategory!,
@@ -19816,14 +18570,10 @@ class $ServiceDirectoryConfig {
   /// Required.
   core.String? service;
 
-  $ServiceDirectoryConfig({
-    this.service,
-  });
+  $ServiceDirectoryConfig({this.service});
 
   $ServiceDirectoryConfig.fromJson(core.Map json_)
-      : this(
-          service: json_['service'] as core.String?,
-        );
+      : this(service: json_['service'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (service != null) 'service': service!,
@@ -19942,10 +18692,7 @@ class $ServiceMeshStatusDetails {
   /// Human-readable explanation of code.
   core.String? details;
 
-  $ServiceMeshStatusDetails({
-    this.code,
-    this.details,
-  });
+  $ServiceMeshStatusDetails({this.code, this.details});
 
   $ServiceMeshStatusDetails.fromJson(core.Map json_)
       : this(
@@ -19972,14 +18719,10 @@ class $SessionPositionAssignedTargetingOptionDetails {
   /// session.
   core.String? sessionPosition;
 
-  $SessionPositionAssignedTargetingOptionDetails({
-    this.sessionPosition,
-  });
+  $SessionPositionAssignedTargetingOptionDetails({this.sessionPosition});
 
   $SessionPositionAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          sessionPosition: json_['sessionPosition'] as core.String?,
-        );
+      : this(sessionPosition: json_['sessionPosition'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sessionPosition != null) 'sessionPosition': sessionPosition!,
@@ -20010,20 +18753,14 @@ class $SetLabelsRequest {
   /// The labels to set for this resource.
   core.Map<core.String, core.String>? labels;
 
-  $SetLabelsRequest({
-    this.labelFingerprint,
-    this.labels,
-  });
+  $SetLabelsRequest({this.labelFingerprint, this.labels});
 
   $SetLabelsRequest.fromJson(core.Map json_)
       : this(
           labelFingerprint: json_['labelFingerprint'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
         );
 
@@ -20047,10 +18784,7 @@ class $SetupTag {
   /// The name of the setup tag.
   core.String? tagName;
 
-  $SetupTag({
-    this.stopOnSetupFailure,
-    this.tagName,
-  });
+  $SetupTag({this.stopOnSetupFailure, this.tagName});
 
   $SetupTag.fromJson(core.Map json_)
       : this(
@@ -20077,18 +18811,11 @@ class $SetupTag {
 class $Shared00 {
   core.String? id;
 
-  $Shared00({
-    this.id,
-  });
+  $Shared00({this.id});
 
-  $Shared00.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-        );
+  $Shared00.fromJson(core.Map json_) : this(id: json_['id'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-      };
+  core.Map<core.String, core.dynamic> toJson() => {if (id != null) 'id': id!};
 }
 
 /// Used by:
@@ -20102,8 +18829,9 @@ class $Shared01 {
   $Shared01();
 
   $Shared01.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map json_);
+    // ignore: avoid_unused_constructor_parameters
+    core.Map json_,
+  );
 
   core.Map<core.String, core.dynamic> toJson() => {};
 }
@@ -20120,9 +18848,7 @@ class $Shared02 {
   /// An empty list would effectively disable metrics export.
   core.List<core.String>? backends;
 
-  $Shared02({
-    this.backends,
-  });
+  $Shared02({this.backends});
 
   $Shared02.fromJson(core.Map json_)
       : this(
@@ -20148,14 +18874,10 @@ class $Shared03 {
   /// Required.
   core.String? name;
 
-  $Shared03({
-    this.name,
-  });
+  $Shared03({this.name});
 
   $Shared03.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+      : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -20176,10 +18898,7 @@ class $Shared04 {
   /// "pd-standard" (Persistent Disk Hard Disk Drive).
   core.String? bootDiskType;
 
-  $Shared04({
-    this.bootDiskSizeGb,
-    this.bootDiskType,
-  });
+  $Shared04({this.bootDiskSizeGb, this.bootDiskType});
 
   $Shared04.fromJson(core.Map json_)
       : this(
@@ -20201,10 +18920,7 @@ class $Shared05 {
   core.String? name;
   core.String? value;
 
-  $Shared05({
-    this.name,
-    this.value,
-  });
+  $Shared05({this.name, this.value});
 
   $Shared05.fromJson(core.Map json_)
       : this(
@@ -20225,9 +18941,7 @@ class $Shared05 {
 class $Shared06 {
   core.List<core.double>? values;
 
-  $Shared06({
-    this.values,
-  });
+  $Shared06({this.values});
 
   $Shared06.fromJson(core.Map json_)
       : this(
@@ -20248,9 +18962,7 @@ class $Shared06 {
 class $Shared07 {
   core.List<core.String>? values;
 
-  $Shared07({
-    this.values,
-  });
+  $Shared07({this.values});
 
   $Shared07.fromJson(core.Map json_)
       : this(
@@ -20275,10 +18987,7 @@ class $Shared08 {
   /// The list of scopes to be made available for this service account.
   core.List<core.String>? scopes;
 
-  $Shared08({
-    this.email,
-    this.scopes,
-  });
+  $Shared08({this.email, this.scopes});
 
   $Shared08.fromJson(core.Map json_)
       : this(
@@ -20304,14 +19013,10 @@ class $Shared09 {
   /// Required.
   core.String? objectUri;
 
-  $Shared09({
-    this.objectUri,
-  });
+  $Shared09({this.objectUri});
 
   $Shared09.fromJson(core.Map json_)
-      : this(
-          objectUri: json_['objectUri'] as core.String?,
-        );
+      : this(objectUri: json_['objectUri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (objectUri != null) 'objectUri': objectUri!,
@@ -20329,10 +19034,7 @@ class $Shared10 {
   /// The price represented as a number.
   core.String? value;
 
-  $Shared10({
-    this.currency,
-    this.value,
-  });
+  $Shared10({this.currency, this.value});
 
   $Shared10.fromJson(core.Map json_)
       : this(
@@ -20369,10 +19071,7 @@ class $Shared11 {
   /// Catalog to Dataplex is disabled.
   core.String? tagTemplateMigration;
 
-  $Shared11({
-    this.catalogUiExperience,
-    this.tagTemplateMigration,
-  });
+  $Shared11({this.catalogUiExperience, this.tagTemplateMigration});
 
   $Shared11.fromJson(core.Map json_)
       : this(
@@ -20402,10 +19101,7 @@ class $Shared12 {
   /// sentiment).
   core.double? score;
 
-  $Shared12({
-    this.magnitude,
-    this.score,
-  });
+  $Shared12({this.magnitude, this.score});
 
   $Shared12.fromJson(core.Map json_)
       : this(
@@ -20437,10 +19133,7 @@ class $Shared13 {
   /// versions.
   core.String? osVersion;
 
-  $Shared13({
-    this.osShortName,
-    this.osVersion,
-  });
+  $Shared13({this.osShortName, this.osVersion});
 
   $Shared13.fromJson(core.Map json_)
       : this(
@@ -20478,12 +19171,7 @@ class $Shared14 {
   /// Version of the appliance.
   core.String? version;
 
-  $Shared14({
-    this.fqdn,
-    this.internalIp,
-    this.state,
-    this.version,
-  });
+  $Shared14({this.fqdn, this.internalIp, this.state, this.version});
 
   $Shared14.fromJson(core.Map json_)
       : this(
@@ -20508,14 +19196,10 @@ class $Shared14 {
 class $Shared15 {
   core.String? value;
 
-  $Shared15({
-    this.value,
-  });
+  $Shared15({this.value});
 
   $Shared15.fromJson(core.Map json_)
-      : this(
-          value: json_['value'] as core.String?,
-        );
+      : this(value: json_['value'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
@@ -20702,10 +19386,7 @@ class $Signature {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  $Signature({
-    this.publicKeyId,
-    this.signature,
-  });
+  $Signature({this.publicKeyId, this.signature});
 
   $Signature.fromJson(core.Map json_)
       : this(
@@ -20736,10 +19417,7 @@ class $Site {
   /// Required.
   core.String? urlOrAppId;
 
-  $Site({
-    this.name,
-    this.urlOrAppId,
-  });
+  $Site({this.name, this.urlOrAppId});
 
   $Site.fromJson(core.Map json_)
       : this(
@@ -20783,13 +19461,7 @@ class $Size {
   /// Acceptable values are 0 to 32767, inclusive.
   core.int? width;
 
-  $Size({
-    this.height,
-    this.iab,
-    this.id,
-    this.kind,
-    this.width,
-  });
+  $Size({this.height, this.iab, this.id, this.kind, this.width});
 
   $Size.fromJson(core.Map json_)
       : this(
@@ -20901,14 +19573,10 @@ class $Source {
   /// Required.
   core.String? inputUri;
 
-  $Source({
-    this.inputUri,
-  });
+  $Source({this.inputUri});
 
   $Source.fromJson(core.Map json_)
-      : this(
-          inputUri: json_['inputUri'] as core.String?,
-        );
+      : this(inputUri: json_['inputUri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (inputUri != null) 'inputUri': inputUri!,
@@ -20926,14 +19594,10 @@ class $SourceContext {
   /// For example: `"google/protobuf/source_context.proto"`.
   core.String? fileName;
 
-  $SourceContext({
-    this.fileName,
-  });
+  $SourceContext({this.fileName});
 
   $SourceContext.fromJson(core.Map json_)
-      : this(
-          fileName: json_['fileName'] as core.String?,
-        );
+      : this(fileName: json_['fileName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fileName != null) 'fileName': fileName!,
@@ -20953,14 +19617,9 @@ class $Spec {
   /// Optional.
   core.int? version;
 
-  $Spec({
-    this.version,
-  });
+  $Spec({this.version});
 
-  $Spec.fromJson(core.Map json_)
-      : this(
-          version: json_['version'] as core.int?,
-        );
+  $Spec.fromJson(core.Map json_) : this(version: json_['version'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (version != null) 'version': version!,
@@ -20987,11 +19646,7 @@ class $SqlProperty {
   /// Required.
   core.String? property;
 
-  $SqlProperty({
-    this.enabled,
-    this.numericValue,
-    this.property,
-  });
+  $SqlProperty({this.enabled, this.numericValue, this.property});
 
   $SqlProperty.fromJson(core.Map json_)
       : this(
@@ -21021,10 +19676,7 @@ class $StateError {
   /// - "KMS_ERROR" : Caused by an issue with KMS.
   core.String? type;
 
-  $StateError({
-    this.details,
-    this.type,
-  });
+  $StateError({this.details, this.type});
 
   $StateError.fromJson(core.Map json_)
       : this(
@@ -21052,10 +19704,7 @@ class $StaticCluster {
   /// The timestamp when the Cluster was last updated.
   core.String? lastUpdated;
 
-  $StaticCluster({
-    this.cluster,
-    this.lastUpdated,
-  });
+  $StaticCluster({this.cluster, this.lastUpdated});
 
   $StaticCluster.fromJson(core.Map json_)
       : this(
@@ -21085,10 +19734,7 @@ class $StaticListener {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? listener;
 
-  $StaticListener({
-    this.lastUpdated,
-    this.listener,
-  });
+  $StaticListener({this.lastUpdated, this.listener});
 
   $StaticListener.fromJson(core.Map json_)
       : this(
@@ -21118,10 +19764,7 @@ class $StaticRouteConfig {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? routeConfig;
 
-  $StaticRouteConfig({
-    this.lastUpdated,
-    this.routeConfig,
-  });
+  $StaticRouteConfig({this.lastUpdated, this.routeConfig});
 
   $StaticRouteConfig.fromJson(core.Map json_)
       : this(
@@ -21301,11 +19944,7 @@ class $Status00 {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  $Status00({
-    this.code,
-    this.details,
-    this.message,
-  });
+  $Status00({this.code, this.details, this.message});
 
   $Status00.fromJson(core.Map json_)
       : this(
@@ -21343,10 +19982,7 @@ class $Status01 {
   /// Description is populated if Code is Failed, explaining why it has failed.
   core.String? description;
 
-  $Status01({
-    this.code,
-    this.description,
-  });
+  $Status01({this.code, this.description});
 
   $Status01.fromJson(core.Map json_)
       : this(
@@ -21371,10 +20007,7 @@ class $StringValues {
   /// List of values denied at this resource.
   core.List<core.String>? deniedValues;
 
-  $StringValues({
-    this.allowedValues,
-    this.deniedValues,
-  });
+  $StringValues({this.allowedValues, this.deniedValues});
 
   $StringValues.fromJson(core.Map json_)
       : this(
@@ -21403,14 +20036,10 @@ class $SubExchangeAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  $SubExchangeAssignedTargetingOptionDetails({
-    this.targetingOptionId,
-  });
+  $SubExchangeAssignedTargetingOptionDetails({this.targetingOptionId});
 
   $SubExchangeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          targetingOptionId: json_['targetingOptionId'] as core.String?,
-        );
+      : this(targetingOptionId: json_['targetingOptionId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
@@ -21427,14 +20056,10 @@ class $SubExchangeTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  $SubExchangeTargetingOptionDetails({
-    this.displayName,
-  });
+  $SubExchangeTargetingOptionDetails({this.displayName});
 
   $SubExchangeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-        );
+      : this(displayName: json_['displayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -21451,19 +20076,13 @@ class $Subject {
   core.Map<core.String, core.String>? digest;
   core.String? name;
 
-  $Subject({
-    this.digest,
-    this.name,
-  });
+  $Subject({this.digest, this.name});
 
   $Subject.fromJson(core.Map json_)
       : this(
           digest:
               (json_['digest'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+            (key, value) => core.MapEntry(key, value as core.String),
           ),
           name: json_['name'] as core.String?,
         );
@@ -21501,12 +20120,7 @@ class $Symptom {
   /// A string used to uniquely distinguish a worker within a TPU node.
   core.String? workerId;
 
-  $Symptom({
-    this.createTime,
-    this.details,
-    this.symptomType,
-    this.workerId,
-  });
+  $Symptom({this.createTime, this.details, this.symptomType, this.workerId});
 
   $Symptom.fromJson(core.Map json_)
       : this(
@@ -21559,11 +20173,7 @@ class $TargetFrequency {
   /// `TIME_UNIT_WEEKS` - must be 1
   core.int? timeUnitCount;
 
-  $TargetFrequency({
-    this.targetCount,
-    this.timeUnit,
-    this.timeUnitCount,
-  });
+  $TargetFrequency({this.targetCount, this.timeUnit, this.timeUnitCount});
 
   $TargetFrequency.fromJson(core.Map json_)
       : this(
@@ -21593,10 +20203,7 @@ class $TeardownTag {
   /// The name of the teardown tag.
   core.String? tagName;
 
-  $TeardownTag({
-    this.stopTeardownOnFailure,
-    this.tagName,
-  });
+  $TeardownTag({this.stopTeardownOnFailure, this.tagName});
 
   $TeardownTag.fromJson(core.Map json_)
       : this(
@@ -21622,14 +20229,10 @@ class $TenantProjectRequest {
   /// Required.
   core.String? tag;
 
-  $TenantProjectRequest({
-    this.tag,
-  });
+  $TenantProjectRequest({this.tag});
 
   $TenantProjectRequest.fromJson(core.Map json_)
-      : this(
-          tag: json_['tag'] as core.String?,
-        );
+      : this(tag: json_['tag'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (tag != null) 'tag': tag!,
@@ -21706,9 +20309,7 @@ class $TestIamPermissionsRequest00 {
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String>? permissions;
 
-  $TestIamPermissionsRequest00({
-    this.permissions,
-  });
+  $TestIamPermissionsRequest00({this.permissions});
 
   $TestIamPermissionsRequest00.fromJson(core.Map json_)
       : this(
@@ -21736,9 +20337,7 @@ class $TestIamPermissionsRequest01 {
   /// (https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String>? permissions;
 
-  $TestIamPermissionsRequest01({
-    this.permissions,
-  });
+  $TestIamPermissionsRequest01({this.permissions});
 
   $TestIamPermissionsRequest01.fromJson(core.Map json_)
       : this(
@@ -21762,9 +20361,7 @@ class $TestIamPermissionsResponse {
   /// A subset of TestPermissionsRequest.permissions that the caller is allowed.
   core.List<core.String>? permissions;
 
-  $TestIamPermissionsResponse({
-    this.permissions,
-  });
+  $TestIamPermissionsResponse({this.permissions});
 
   $TestIamPermissionsResponse.fromJson(core.Map json_)
       : this(
@@ -21788,9 +20385,7 @@ class $TestPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   core.List<core.String>? permissions;
 
-  $TestPermissionsRequest({
-    this.permissions,
-  });
+  $TestPermissionsRequest({this.permissions});
 
   $TestPermissionsRequest.fromJson(core.Map json_)
       : this(
@@ -21816,10 +20411,7 @@ class $TextSpan {
   /// The content of the text span, which is a substring of the document.
   core.String? content;
 
-  $TextSpan({
-    this.beginOffset,
-    this.content,
-  });
+  $TextSpan({this.beginOffset, this.content});
 
   $TextSpan.fromJson(core.Map json_)
       : this(
@@ -21843,9 +20435,7 @@ class $ThirdPartyOnlyConfig {
   /// This value cannot be changed once set to `true`.
   core.bool? pixelOrderIdReportingEnabled;
 
-  $ThirdPartyOnlyConfig({
-    this.pixelOrderIdReportingEnabled,
-  });
+  $ThirdPartyOnlyConfig({this.pixelOrderIdReportingEnabled});
 
   $ThirdPartyOnlyConfig.fromJson(core.Map json_)
       : this(
@@ -21908,10 +20498,7 @@ class $ThirdPartyUrl {
   /// For example, https://www.example.com/path
   core.String? url;
 
-  $ThirdPartyUrl({
-    this.type,
-    this.url,
-  });
+  $ThirdPartyUrl({this.type, this.url});
 
   $ThirdPartyUrl.fromJson(core.Map json_)
       : this(
@@ -21949,10 +20536,7 @@ class $ThirdPartyVendorConfig {
   /// - "THIRD_PARTY_VENDOR_DYNATA" : Dynata.
   core.String? vendor;
 
-  $ThirdPartyVendorConfig({
-    this.placementId,
-    this.vendor,
-  });
+  $ThirdPartyVendorConfig({this.placementId, this.vendor});
 
   $ThirdPartyVendorConfig.fromJson(core.Map json_)
       : this(
@@ -21975,6 +20559,8 @@ class $ThirdPartyVendorConfig {
 /// - clouddeploy:v1 : TimeOfDay
 /// - dlp:v2 : GoogleTypeTimeOfDay
 /// - gkebackup:v1 : TimeOfDay
+/// - jobs:v3 : TimeOfDay
+/// - jobs:v4 : TimeOfDay
 /// - looker:v1 : TimeOfDay
 /// - memcache:v1 : TimeOfDay
 /// - monitoring:v3 : TimeOfDay
@@ -21985,7 +20571,7 @@ class $ThirdPartyVendorConfig {
 /// - redis:v1 : TimeOfDay
 /// - sheets:v4 : TimeOfDay
 /// - storagetransfer:v1 : TimeOfDay
-class $TimeOfDay00 {
+class $TimeOfDay {
   /// Hours of a day in 24 hour format.
   ///
   /// Must be greater than or equal to 0 and typically must be less than or
@@ -22009,64 +20595,9 @@ class $TimeOfDay00 {
   /// equal to 59. An API may allow the value 60 if it allows leap-seconds.
   core.int? seconds;
 
-  $TimeOfDay00({
-    this.hours,
-    this.minutes,
-    this.nanos,
-    this.seconds,
-  });
+  $TimeOfDay({this.hours, this.minutes, this.nanos, this.seconds});
 
-  $TimeOfDay00.fromJson(core.Map json_)
-      : this(
-          hours: json_['hours'] as core.int?,
-          minutes: json_['minutes'] as core.int?,
-          nanos: json_['nanos'] as core.int?,
-          seconds: json_['seconds'] as core.int?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (hours != null) 'hours': hours!,
-        if (minutes != null) 'minutes': minutes!,
-        if (nanos != null) 'nanos': nanos!,
-        if (seconds != null) 'seconds': seconds!,
-      };
-}
-
-/// Used by:
-///
-/// - jobs:v3 : TimeOfDay
-/// - jobs:v4 : TimeOfDay
-class $TimeOfDay01 {
-  /// Hours of day in 24 hour format.
-  ///
-  /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
-  /// for scenarios like business closing time.
-  core.int? hours;
-
-  /// Minutes of hour of day.
-  ///
-  /// Must be from 0 to 59.
-  core.int? minutes;
-
-  /// Fractions of seconds in nanoseconds.
-  ///
-  /// Must be from 0 to 999,999,999.
-  core.int? nanos;
-
-  /// Seconds of minutes of the time.
-  ///
-  /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
-  /// leap-seconds.
-  core.int? seconds;
-
-  $TimeOfDay01({
-    this.hours,
-    this.minutes,
-    this.nanos,
-    this.seconds,
-  });
-
-  $TimeOfDay01.fromJson(core.Map json_)
+  $TimeOfDay.fromJson(core.Map json_)
       : this(
           hours: json_['hours'] as core.int?,
           minutes: json_['minutes'] as core.int?,
@@ -22097,10 +20628,7 @@ class $TimeRange {
   /// Required.
   core.String? startTime;
 
-  $TimeRange({
-    this.endTime,
-    this.startTime,
-  });
+  $TimeRange({this.endTime, this.startTime});
 
   $TimeRange.fromJson(core.Map json_)
       : this(
@@ -22139,10 +20667,7 @@ class $TimeZone {
   /// Optional.
   core.String? version;
 
-  $TimeZone({
-    this.id,
-    this.version,
-  });
+  $TimeZone({this.id, this.version});
 
   $TimeZone.fromJson(core.Map json_)
       : this(
@@ -22171,10 +20696,7 @@ class $TimerEvent {
   /// Required.
   core.String? reportingName;
 
-  $TimerEvent({
-    this.name,
-    this.reportingName,
-  });
+  $TimerEvent({this.name, this.reportingName});
 
   $TimerEvent.fromJson(core.Map json_)
       : this(
@@ -22199,10 +20721,7 @@ class $TokenPagination {
   core.String? nextPageToken;
   core.String? previousPageToken;
 
-  $TokenPagination({
-    this.nextPageToken,
-    this.previousPageToken,
-  });
+  $TokenPagination({this.nextPageToken, this.previousPageToken});
 
   $TokenPagination.fromJson(core.Map json_)
       : this(
@@ -22229,10 +20748,7 @@ class $TokenResponse00 {
   /// The token content.
   core.String? token;
 
-  $TokenResponse00({
-    this.expirationTime,
-    this.token,
-  });
+  $TokenResponse00({this.expirationTime, this.token});
 
   $TokenResponse00.fromJson(core.Map json_)
       : this(
@@ -22264,11 +20780,7 @@ class $TokenResponse01 {
   /// The token content.
   core.String? token;
 
-  $TokenResponse01({
-    this.expirationTime,
-    this.gitUsername,
-    this.token,
-  });
+  $TokenResponse01({this.expirationTime, this.gitUsername, this.token});
 
   $TokenResponse01.fromJson(core.Map json_)
       : this(
@@ -22307,10 +20819,7 @@ class $TraceSamplingConfig {
   /// supported values are \> 0 and \<= 0.5.
   core.double? samplingRate;
 
-  $TraceSamplingConfig({
-    this.sampler,
-    this.samplingRate,
-  });
+  $TraceSamplingConfig({this.sampler, this.samplingRate});
 
   $TraceSamplingConfig.fromJson(core.Map json_)
       : this(
@@ -22385,9 +20894,7 @@ class $TriggerConfigVariables {
   /// Optional.
   core.List<core.String>? names;
 
-  $TriggerConfigVariables({
-    this.names,
-  });
+  $TriggerConfigVariables({this.names});
 
   $TriggerConfigVariables.fromJson(core.Map json_)
       : this(
@@ -22420,10 +20927,7 @@ class $TruncatableString {
   /// shortened string might be less than the size limit.
   core.String? value;
 
-  $TruncatableString({
-    this.truncatedByteCount,
-    this.value,
-  });
+  $TruncatableString({this.truncatedByteCount, this.value});
 
   $TruncatableString.fromJson(core.Map json_)
       : this(
@@ -22462,10 +20966,7 @@ class $UniversalAdId {
   /// Universal Ad ID.
   core.String? registry;
 
-  $UniversalAdId({
-    this.id,
-    this.registry,
-  });
+  $UniversalAdId({this.id, this.registry});
 
   $UniversalAdId.fromJson(core.Map json_)
       : this(
@@ -22544,10 +21045,7 @@ class $UrlAssignedTargetingOptionDetails {
   /// Required.
   core.String? url;
 
-  $UrlAssignedTargetingOptionDetails({
-    this.negative,
-    this.url,
-  });
+  $UrlAssignedTargetingOptionDetails({this.negative, this.url});
 
   $UrlAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
@@ -22663,14 +21161,10 @@ class $UserRewardedContentTargetingOptionDetails {
   /// besides user-rewarded.
   core.String? userRewardedContent;
 
-  $UserRewardedContentTargetingOptionDetails({
-    this.userRewardedContent,
-  });
+  $UserRewardedContentTargetingOptionDetails({this.userRewardedContent});
 
   $UserRewardedContentTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          userRewardedContent: json_['userRewardedContent'] as core.String?,
-        );
+      : this(userRewardedContent: json_['userRewardedContent'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (userRewardedContent != null)
@@ -22714,11 +21208,7 @@ class $V1AccessTuple {
   /// Required.
   core.String? principal;
 
-  $V1AccessTuple({
-    this.fullResourceName,
-    this.permission,
-    this.principal,
-  });
+  $V1AccessTuple({this.fullResourceName, this.permission, this.principal});
 
   $V1AccessTuple.fromJson(core.Map json_)
       : this(
@@ -22881,11 +21371,7 @@ class $VersionedPackage {
   /// The version of the package.
   core.String? version;
 
-  $VersionedPackage({
-    this.architecture,
-    this.packageName,
-    this.version,
-  });
+  $VersionedPackage({this.architecture, this.packageName, this.version});
 
   $VersionedPackage.fromJson(core.Map json_)
       : this(
@@ -22920,10 +21406,7 @@ class $VertexRagStoreRagResource {
   /// Optional.
   core.List<core.String>? ragFileIds;
 
-  $VertexRagStoreRagResource({
-    this.ragCorpus,
-    this.ragFileIds,
-  });
+  $VertexRagStoreRagResource({this.ragCorpus, this.ragFileIds});
 
   $VertexRagStoreRagResource.fromJson(core.Map json_)
       : this(
@@ -23015,14 +21498,10 @@ class $VideoPlayerSizeAssignedTargetingOptionDetails {
   /// unknown.
   core.String? videoPlayerSize;
 
-  $VideoPlayerSizeAssignedTargetingOptionDetails({
-    this.videoPlayerSize,
-  });
+  $VideoPlayerSizeAssignedTargetingOptionDetails({this.videoPlayerSize});
 
   $VideoPlayerSizeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          videoPlayerSize: json_['videoPlayerSize'] as core.String?,
-        );
+      : this(videoPlayerSize: json_['videoPlayerSize'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (videoPlayerSize != null) 'videoPlayerSize': videoPlayerSize!,
@@ -23052,14 +21531,10 @@ class $VideoPlayerSizeTargetingOptionDetails {
   /// unknown.
   core.String? videoPlayerSize;
 
-  $VideoPlayerSizeTargetingOptionDetails({
-    this.videoPlayerSize,
-  });
+  $VideoPlayerSizeTargetingOptionDetails({this.videoPlayerSize});
 
   $VideoPlayerSizeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          videoPlayerSize: json_['videoPlayerSize'] as core.String?,
-        );
+      : this(videoPlayerSize: json_['videoPlayerSize'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (videoPlayerSize != null) 'videoPlayerSize': videoPlayerSize!,
@@ -23098,14 +21573,10 @@ class $ViewabilityAssignedTargetingOptionDetails {
   /// least 90% likely to be viewable.
   core.String? viewability;
 
-  $ViewabilityAssignedTargetingOptionDetails({
-    this.viewability,
-  });
+  $ViewabilityAssignedTargetingOptionDetails({this.viewability});
 
   $ViewabilityAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          viewability: json_['viewability'] as core.String?,
-        );
+      : this(viewability: json_['viewability'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (viewability != null) 'viewability': viewability!,
@@ -23144,14 +21615,10 @@ class $ViewabilityTargetingOptionDetails {
   /// least 90% likely to be viewable.
   core.String? viewability;
 
-  $ViewabilityTargetingOptionDetails({
-    this.viewability,
-  });
+  $ViewabilityTargetingOptionDetails({this.viewability});
 
   $ViewabilityTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          viewability: json_['viewability'] as core.String?,
-        );
+      : this(viewability: json_['viewability'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (viewability != null) 'viewability': viewability!,
@@ -23175,10 +21642,7 @@ class $VpcAccessibleServices {
   /// APIs specified in 'allowed_services'.
   core.bool? enableRestriction;
 
-  $VpcAccessibleServices({
-    this.allowedServices,
-    this.enableRestriction,
-  });
+  $VpcAccessibleServices({this.allowedServices, this.enableRestriction});
 
   $VpcAccessibleServices.fromJson(core.Map json_)
       : this(
@@ -23207,14 +21671,10 @@ class $VpcServiceControlsRequest {
   /// Required.
   core.String? consumerNetwork;
 
-  $VpcServiceControlsRequest({
-    this.consumerNetwork,
-  });
+  $VpcServiceControlsRequest({this.consumerNetwork});
 
   $VpcServiceControlsRequest.fromJson(core.Map json_)
-      : this(
-          consumerNetwork: json_['consumerNetwork'] as core.String?,
-        );
+      : this(consumerNetwork: json_['consumerNetwork'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
@@ -23247,10 +21707,7 @@ class $VpcSubNetwork {
   /// allowed.
   core.List<core.String>? vpcIpSubnetworks;
 
-  $VpcSubNetwork({
-    this.network,
-    this.vpcIpSubnetworks,
-  });
+  $VpcSubNetwork({this.network, this.vpcIpSubnetworks});
 
   $VpcSubNetwork.fromJson(core.Map json_)
       : this(
@@ -23280,14 +21737,10 @@ class $WaitOperationRequest {
   /// the shorter one will be used.
   core.String? timeout;
 
-  $WaitOperationRequest({
-    this.timeout,
-  });
+  $WaitOperationRequest({this.timeout});
 
   $WaitOperationRequest.fromJson(core.Map json_)
-      : this(
-          timeout: json_['timeout'] as core.String?,
-        );
+      : this(timeout: json_['timeout'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (timeout != null) 'timeout': timeout!,
@@ -23306,14 +21759,10 @@ class $WebAppIcon {
   /// - The image should ideally have a size of 512x512.
   core.String? imageData;
 
-  $WebAppIcon({
-    this.imageData,
-  });
+  $WebAppIcon({this.imageData});
 
   $WebAppIcon.fromJson(core.Map json_)
-      : this(
-          imageData: json_['imageData'] as core.String?,
-        );
+      : this(imageData: json_['imageData'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (imageData != null) 'imageData': imageData!,
@@ -23373,10 +21822,7 @@ class $WindowsUpdateCategory {
   /// The name of the windows update category.
   core.String? name;
 
-  $WindowsUpdateCategory({
-    this.id,
-    this.name,
-  });
+  $WindowsUpdateCategory({this.id, this.name});
 
   $WindowsUpdateCategory.fromJson(core.Map json_)
       : this(
@@ -23407,10 +21853,7 @@ class $WorkstationRequest {
   /// Optional.
   core.bool? validateOnly;
 
-  $WorkstationRequest({
-    this.etag,
-    this.validateOnly,
-  });
+  $WorkstationRequest({this.etag, this.validateOnly});
 
   $WorkstationRequest.fromJson(core.Map json_)
       : this(
@@ -23558,10 +22001,7 @@ class $YoutubeVideoAssignedTargetingOptionDetails {
   /// YouTube video id as it appears on the YouTube watch page.
   core.String? videoId;
 
-  $YoutubeVideoAssignedTargetingOptionDetails({
-    this.negative,
-    this.videoId,
-  });
+  $YoutubeVideoAssignedTargetingOptionDetails({this.negative, this.videoId});
 
   $YoutubeVideoAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
@@ -23590,10 +22030,7 @@ class $YoutubeVideoDetails {
   /// - "VIDEO_UNAVAILABLE_REASON_DELETED" : The video is deleted.
   core.String? unavailableReason;
 
-  $YoutubeVideoDetails({
-    this.id,
-    this.unavailableReason,
-  });
+  $YoutubeVideoDetails({this.id, this.unavailableReason});
 
   $YoutubeVideoDetails.fromJson(core.Map json_)
       : this(
@@ -23624,12 +22061,7 @@ class $ZypperPatch {
   /// Any summary information provided about this patch.
   core.String? summary;
 
-  $ZypperPatch({
-    this.category,
-    this.patchName,
-    this.severity,
-    this.summary,
-  });
+  $ZypperPatch({this.category, this.patchName, this.severity, this.summary});
 
   $ZypperPatch.fromJson(core.Map json_)
       : this(
