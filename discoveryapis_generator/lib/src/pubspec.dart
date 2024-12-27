@@ -26,7 +26,7 @@ class Pubspec {
           if (extraDevDependencies != null) ...extraDevDependencies,
         };
 
-  String get sdkConstraint => '^3.5.0';
+  String get sdkConstraint => '^3.6.0';
 
   static const dependencies = {
     'http': '^1.0.0',

@@ -1,6 +1,6 @@
 ## 14.0.0-wip
 
-- Require Dart 3.5 or later.
+- Require Dart 3.6 or later.
 
 ### APIs
 

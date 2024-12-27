@@ -7,7 +7,7 @@
 - Added `Function` to the set of reserved names.
 - Remove extra parenthesis from date encoding.
 - Generate much smaller code for trivial types: `String`, `bool`, `int`, `double`.
-- Require Dart 3.5 or later.
+- Require Dart 3.6 or later.
 
 ## 1.0.0
 
