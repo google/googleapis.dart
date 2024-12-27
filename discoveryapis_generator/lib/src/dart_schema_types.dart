@@ -4,13 +4,14 @@
 
 // ignore_for_file: missing_whitespace_between_adjacent_strings
 
+import 'package:source_helper/source_helper.dart';
+
 import 'dart_api_library.dart';
 import 'dart_schema_type.dart';
 import 'dart_schemas.dart';
 import 'json_type.dart';
 import 'namer.dart';
 import 'type_deduplicate.dart';
-import 'utils.dart';
 
 /// Class representing non-primitive types.
 ///
@@ -94,7 +95,7 @@ class ObjectType extends ComplexDartSchemaType {
       var prefix = '', postfix = '';
       if (isVariantDiscriminator(property)) {
         prefix = 'final ';
-        postfix = ' = "${escapeString(discriminatorValue()!)}"';
+        postfix = ' = ${escapeDartString(discriminatorValue()!)}';
       }
       propertyString.writeln(
         '$comment$deprecatedMsg  $prefix${property.type.nullableDeclaration} '
@@ -150,7 +151,7 @@ class ObjectType extends ComplexDartSchemaType {
     toJsonString.writeln('{');
     for (var property in properties) {
       toJsonString.writeln('if (${property.name} != null)');
-      toJsonString.writeln("'${escapeString(property.jsonName)}':"
+      toJsonString.writeln('${escapeDartString(property.jsonName)}:'
           '${property.type.jsonEncode('${property.name}!')},');
     }
     toJsonString.write('};');
@@ -360,7 +361,7 @@ class BooleanType extends PrimitiveDartSchemaType {
 
   @override
   String decodeFromMap(String jsonName) =>
-      "json_['${escapeString(jsonName)}'] as $declaration?";
+      'json_[${escapeDartString(jsonName)}] as $declaration?';
 }
 
 class IntegerType extends PrimitiveDartSchemaType {
@@ -374,7 +375,7 @@ class IntegerType extends PrimitiveDartSchemaType {
 
   @override
   String decodeFromMap(String jsonName) =>
-      "json_['${escapeString(jsonName)}'] as $declaration?";
+      'json_[${escapeDartString(jsonName)}] as $declaration?';
 }
 
 class StringIntegerType extends PrimitiveDartSchemaType {
@@ -409,7 +410,7 @@ class DoubleType extends PrimitiveDartSchemaType {
 
   @override
   String decodeFromMap(String jsonName) =>
-      "(json_['${escapeString(jsonName)}'] as ${imports.core.ref()}num?)"
+      '(json_[${escapeDartString(jsonName)}] as ${imports.core.ref()}num?)'
       '?.toDouble()';
 }
 
@@ -428,7 +429,7 @@ class StringType extends PrimitiveDartSchemaType {
   @override
   String decodeFromMap(String jsonName) {
     if (runtimeType == StringType) {
-      return "json_['${escapeString(jsonName)}'] as $declaration?";
+      return 'json_[${escapeDartString(jsonName)}] as $declaration?';
     }
     return super.decodeFromMap(jsonName);
   }
@@ -473,11 +474,11 @@ class EnumType extends StringType {
   @override
   String decodeFromMap(String jsonName) {
     if (isNullValue) {
-      return "json_.containsKey('${escapeString(jsonName)}') ? "
+      return 'json_.containsKey(${escapeDartString(jsonName)}) ? '
           "'NULL_VALUE' : null";
     }
 
-    return "json_['${escapeString(jsonName)}'] as $declaration?";
+    return 'json_[${escapeDartString(jsonName)}] as $declaration?';
   }
 }
 
@@ -537,7 +538,8 @@ class AnyType extends PrimitiveDartSchemaType {
   String jsonDecode(String json, {String? importName}) => json;
 
   @override
-  String decodeFromMap(String jsonName) => "json_['${escapeString(jsonName)}']";
+  String decodeFromMap(String jsonName) =>
+      'json_[${escapeDartString(jsonName)}]';
 }
 
 /// Represents an unnamed `List<T>` type with a given `T`.
@@ -601,7 +603,7 @@ class UnnamedArrayType extends ComplexDartSchemaType implements HasInnertype {
     final innerType = this.innerType!;
 
     if (innerType.needsJsonDecoding) {
-      return '''(json_['${escapeString(jsonName)}'] as ${imports.core.ref()}List?)
+      return '''(json_[${escapeDartString(jsonName)}] as ${imports.core.ref()}List?)
   ?.map((value) => ${_importPrefixedDecode(innerType, null)}).toList()
 ''';
     }
@@ -742,7 +744,7 @@ ${_importPrefixedDecode(valueType, importName)},
     final valueType = this.valueType!;
 
     if (valueType.needsJsonDecoding) {
-      return '''(json_['${escapeString(jsonName)}'] as ${imports.coreJsonMap}?)
+      return '''(json_[${escapeDartString(jsonName)}] as ${imports.coreJsonMap}?)
   ?.map((key, value) => ${imports.core.ref()}MapEntry(
 key,
 ${_importPrefixedDecode(valueType, null)},

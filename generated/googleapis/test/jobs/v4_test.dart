@@ -1873,6 +1873,7 @@ api.SearchJobsRequest buildSearchJobsRequest() {
     o.offset = 42;
     o.orderBy = 'foo';
     o.pageToken = 'foo';
+    o.relevanceThreshold = 'foo';
     o.requestMetadata = buildRequestMetadata();
     o.searchMode = 'foo';
   }
@@ -1914,6 +1915,10 @@ void checkSearchJobsRequest(api.SearchJobsRequest o) {
     );
     unittest.expect(
       o.pageToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.relevanceThreshold!,
       unittest.equals('foo'),
     );
     checkRequestMetadata(o.requestMetadata!);

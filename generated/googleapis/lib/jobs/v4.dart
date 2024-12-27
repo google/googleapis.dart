@@ -2463,7 +2463,7 @@ class Job {
   /// creation. This kind of job can not be updated. And when creating a job
   /// with past timestamp, the posting_publish_time must be set before
   /// posting_expire_time. The purpose of this feature is to allow other
-  /// objects, such as Application, to refer a job that didn't exist in the
+  /// objects, such as ApplicationInfo, to refer a job that didn't exist in the
   /// system prior to becoming expired. If you want to modify a job that was
   /// expired on creation, delete it and create a new one. If this value isn't
   /// provided at the time of job creation or is invalid, the job posting
@@ -3293,7 +3293,7 @@ class LocationFilter {
   /// TelecommutePreference.TELECOMMUTE_EXCLUDED, the telecommute status of the
   /// jobs is ignored. Jobs that have PostingRegion.TELECOMMUTE and have
   /// additional Job.addresses may still be matched based on other location
-  /// filters using address or latlng. This filter can be used by itself to
+  /// filters using address or lat_lng. This filter can be used by itself to
   /// search exclusively for telecommuting jobs, or it can be combined with
   /// another location filter to search for a combination of job locations, such
   /// as "Mountain View" or "telecommuting" jobs. However, when used in
@@ -3475,19 +3475,19 @@ class Operation {
       };
 }
 
-/// Represents a postal address, e.g. for postal delivery or payments addresses.
+/// Represents a postal address.
 ///
-/// Given a postal address, a postal service can deliver items to a premise,
-/// P.O. Box or similar. It is not intended to model geographical locations
-/// (roads, towns, mountains). In typical usage an address would be created via
-/// user input or from importing existing data, depending on the type of
-/// process. Advice on address input / editing: - Use an
-/// internationalization-ready address widget such as
-/// https://github.com/google/libaddressinput) - Users should not be presented
-/// with UI elements for input or editing of fields outside countries where that
-/// field is used. For more guidance on how to use this schema, please see:
+/// For example for postal delivery or payments addresses. Given a postal
+/// address, a postal service can deliver items to a premise, P.O. Box or
+/// similar. It is not intended to model geographical locations (roads, towns,
+/// mountains). In typical usage an address would be created by user input or
+/// from importing existing data, depending on the type of process. Advice on
+/// address input / editing: - Use an internationalization-ready address widget
+/// such as https://github.com/google/libaddressinput) - Users should not be
+/// presented with UI elements for input or editing of fields outside countries
+/// where that field is used. For more guidance on how to use this schema, see:
 /// https://support.google.com/business/answer/6397478
-typedef PostalAddress = $PostalAddress01;
+typedef PostalAddress = $PostalAddress;
 
 /// Options for job processing.
 class ProcessingOptions {
@@ -3840,6 +3840,22 @@ class SearchJobsRequest {
   /// the next set of query results.
   core.String? pageToken;
 
+  /// The relevance threshold of the search results.
+  ///
+  /// Default to Google defined threshold, leveraging a balance of precision and
+  /// recall to deliver both highly accurate results and comprehensive coverage
+  /// of relevant information.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RELEVANCE_THRESHOLD_UNSPECIFIED" : Default value. In this case, server
+  /// behavior defaults to Google defined threshold.
+  /// - "LOWEST" : Lowest relevance threshold.
+  /// - "LOW" : Low relevance threshold.
+  /// - "MEDIUM" : Medium relevance threshold.
+  /// - "HIGH" : High relevance threshold.
+  core.String? relevanceThreshold;
+
   /// The meta information collected about the job searcher, used to improve the
   /// search quality of the service.
   ///
@@ -3879,6 +3895,7 @@ class SearchJobsRequest {
     this.offset,
     this.orderBy,
     this.pageToken,
+    this.relevanceThreshold,
     this.requestMetadata,
     this.searchMode,
   });
@@ -3906,6 +3923,7 @@ class SearchJobsRequest {
           offset: json_['offset'] as core.int?,
           orderBy: json_['orderBy'] as core.String?,
           pageToken: json_['pageToken'] as core.String?,
+          relevanceThreshold: json_['relevanceThreshold'] as core.String?,
           requestMetadata: json_.containsKey('requestMetadata')
               ? RequestMetadata.fromJson(json_['requestMetadata']
                   as core.Map<core.String, core.dynamic>)
@@ -3928,6 +3946,8 @@ class SearchJobsRequest {
         if (offset != null) 'offset': offset!,
         if (orderBy != null) 'orderBy': orderBy!,
         if (pageToken != null) 'pageToken': pageToken!,
+        if (relevanceThreshold != null)
+          'relevanceThreshold': relevanceThreshold!,
         if (requestMetadata != null) 'requestMetadata': requestMetadata!,
         if (searchMode != null) 'searchMode': searchMode!,
       };
@@ -4118,7 +4138,7 @@ class Tenant {
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef TimeOfDay = $TimeOfDay01;
+typedef TimeOfDay = $TimeOfDay;
 
 /// Message representing a period of time between two timestamps.
 class TimestampRange {

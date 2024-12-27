@@ -11,17 +11,10 @@ final _cleanRegEx = RegExp(r'[^\w$]');
 String _cleanName(String name) => name.replaceAll(_cleanRegEx, '_');
 
 final _formatter = DartFormatter(
-    languageVersion: DartFormatter.latestLanguageVersion,
-    lineEnding: '\n',
-    pageWidth: 80);
+  languageVersion: DartFormatter.latestShortStyleLanguageVersion,
+);
 
 String formatSource(String source) => _formatter.format(source);
-
-// TODO: Is this all we have to do?
-String escapeString(String string) => string
-    .replaceAll(r'$', r'\$')
-    .replaceAll("'", "\\'")
-    .replaceAll('"', '\\"');
 
 void orderedForEach<K extends Comparable<K>, V>(
   Map<K, V> map,

@@ -7311,8 +7311,9 @@ class AssetSliceSet {
 class AutoRenewingBasePlanType {
   /// Account hold period of the subscription, specified in ISO 8601 format.
   ///
-  /// Acceptable values must be in DAYS and in the range P0D (zero days) to P30D
-  /// (30 days). If not specified, the default value is P30D (30 days).
+  /// Acceptable values must be in days and between P0D and P60D. If not
+  /// specified, the default value is P30D. The sum of gracePeriodDuration and
+  /// accountHoldDuration must be between P30D and P60D days, inclusive.
   ///
   /// Optional.
   core.String? accountHoldDuration;
@@ -7327,9 +7328,10 @@ class AutoRenewingBasePlanType {
 
   /// Grace period of the subscription, specified in ISO 8601 format.
   ///
-  /// Acceptable values are P0D (zero days), P3D (3 days), P7D (7 days), P14D
-  /// (14 days), and P30D (30 days). If not specified, a default value will be
-  /// used based on the recurring period duration.
+  /// Acceptable values must be in days and between P0D and the lesser of 30D
+  /// and base plan billing period. If not specified, a default value will be
+  /// used based on the billing period. The sum of gracePeriodDuration and
+  /// accountHoldDuration must be between P30D and P60D days, inclusive.
   core.String? gracePeriodDuration;
 
   /// Whether the renewing base plan is backward compatible.
@@ -7425,10 +7427,14 @@ class AutoRenewingPlan {
   /// signup.
   SubscriptionItemPriceChangeDetails? priceChangeDetails;
 
+  /// The current recurring price of the auto renewing plan.
+  Money? recurringPrice;
+
   AutoRenewingPlan({
     this.autoRenewEnabled,
     this.installmentDetails,
     this.priceChangeDetails,
+    this.recurringPrice,
   });
 
   AutoRenewingPlan.fromJson(core.Map json_)
@@ -7443,6 +7449,10 @@ class AutoRenewingPlan {
                   json_['priceChangeDetails']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          recurringPrice: json_.containsKey('recurringPrice')
+              ? Money.fromJson(json_['recurringPrice']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7451,6 +7461,7 @@ class AutoRenewingPlan {
           'installmentDetails': installmentDetails!,
         if (priceChangeDetails != null)
           'priceChangeDetails': priceChangeDetails!,
+        if (recurringPrice != null) 'recurringPrice': recurringPrice!,
       };
 }
 
@@ -10450,11 +10461,11 @@ class InstallmentPlan {
 /// Represents an installments base plan where a user commits to a specified
 /// number of payments.
 class InstallmentsBasePlanType {
-  /// Account hold period of the subscription, specified exclusively in days and
-  /// in ISO 8601 format.
+  /// Account hold period of the subscription, specified in ISO 8601 format.
   ///
-  /// Acceptable values are P0D (zero days) to P30D (30days). If not specified,
-  /// the default value is P30D (30 days).
+  /// Acceptable values must be in days and between P0D and P60D. If not
+  /// specified, the default value is P30D. The sum of gracePeriodDuration and
+  /// accountHoldDuration must be between P30D and P60D days, inclusive.
   ///
   /// Optional.
   core.String? accountHoldDuration;
@@ -10476,9 +10487,10 @@ class InstallmentsBasePlanType {
 
   /// Grace period of the subscription, specified in ISO 8601 format.
   ///
-  /// Acceptable values are P0D (zero days), P3D (3 days), P7D (7 days), P14D
-  /// (14 days), and P30D (30 days). If not specified, a default value will be
-  /// used based on the recurring period duration.
+  /// Acceptable values must be in days and between P0D and the lesser of 30D
+  /// and base plan billing period. If not specified, a default value will be
+  /// used based on the billing period. The sum of gracePeriodDuration and
+  /// accountHoldDuration must be between P30D and P60D days, inclusive.
   core.String? gracePeriodDuration;
 
   /// The proration mode for the base plan determines what happens when a user

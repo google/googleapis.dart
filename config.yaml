@@ -11,7 +11,7 @@ packages:
     mono_pkg: resources/googleapis/_mono_pkg.yaml
     resolution: workspace
     extraDevDependencies:
-        googleapis_auth: ^1.0.0
+        googleapis_auth: '>=1.0.0 <3.0.0'
     apis:
     - abusiveexperiencereport:v1 # https://developers.google.com/abusive-experience-report/
     - acceleratedmobilepageurl:v1 # https://developers.google.com/amp/cache/
@@ -42,6 +42,7 @@ packages:
     - apikeys:v2
     - appengine:v1 # https://cloud.google.com/appengine/docs/admin-api/
     - apphub:v1
+    - areainsights:v1
     - artifactregistry:v1
     - assuredworkloads:v1
     - authorizedbuyersmarketplace:v1

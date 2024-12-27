@@ -1,16 +1,3 @@
-diff --git a/discovery/googleapis/chromemanagement__v1.json b/discovery/googleapis/chromemanagement__v1.json
-index 688456f2d..29e3dfc9b 100644
---- a/discovery/googleapis/chromemanagement__v1.json
-+++ b/discovery/googleapis/chromemanagement__v1.json
-@@ -20,7 +20,7 @@
-     "canonicalName": "Chrome Management",
-     "description": "The Chrome Management API is a suite of services that allows Chrome administrators to view, manage and gain insights on their Chrome OS and Chrome Browser devices.",
-     "discoveryVersion": "v1",
--    "documentationLink": "http://developers.google.com/chrome/management/",
-+    "documentationLink": "https://developers.google.com/chrome/management/",
-     "icons": {
-         "x16": "http://www.google.com/images/icons/product/search-16.gif",
-         "x32": "http://www.google.com/images/icons/product/search-32.gif"
 diff --git a/discovery/googleapis/chromepolicy__v1.json b/discovery/googleapis/chromepolicy__v1.json
 index ab44260d2..89ac4ce6b 100644
 --- a/discovery/googleapis/chromepolicy__v1.json

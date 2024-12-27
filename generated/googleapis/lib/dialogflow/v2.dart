@@ -15510,6 +15510,16 @@ class GoogleCloudDialogflowV2ConversationProfile {
   /// Event will be sent in format of ConversationEvent
   GoogleCloudDialogflowV2NotificationConfig? newMessageEventNotificationConfig;
 
+  /// Configuration for publishing transcription intermediate results.
+  ///
+  /// Event will be sent in format of ConversationEvent. If configured, the
+  /// following information will be populated as ConversationEvent Pub/Sub
+  /// message attributes: - "participant_id" - "participant_role" - "message_id"
+  ///
+  /// Optional.
+  GoogleCloudDialogflowV2NotificationConfig?
+      newRecognitionResultNotificationConfig;
+
   /// Configuration for publishing conversation lifecycle events.
   GoogleCloudDialogflowV2NotificationConfig? notificationConfig;
 
@@ -15549,6 +15559,7 @@ class GoogleCloudDialogflowV2ConversationProfile {
     this.loggingConfig,
     this.name,
     this.newMessageEventNotificationConfig,
+    this.newRecognitionResultNotificationConfig,
     this.notificationConfig,
     this.securitySettings,
     this.sttConfig,
@@ -15589,6 +15600,12 @@ class GoogleCloudDialogflowV2ConversationProfile {
                       json_['newMessageEventNotificationConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          newRecognitionResultNotificationConfig:
+              json_.containsKey('newRecognitionResultNotificationConfig')
+                  ? GoogleCloudDialogflowV2NotificationConfig.fromJson(
+                      json_['newRecognitionResultNotificationConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           notificationConfig: json_.containsKey('notificationConfig')
               ? GoogleCloudDialogflowV2NotificationConfig.fromJson(
                   json_['notificationConfig']
@@ -15622,6 +15639,9 @@ class GoogleCloudDialogflowV2ConversationProfile {
         if (newMessageEventNotificationConfig != null)
           'newMessageEventNotificationConfig':
               newMessageEventNotificationConfig!,
+        if (newRecognitionResultNotificationConfig != null)
+          'newRecognitionResultNotificationConfig':
+              newRecognitionResultNotificationConfig!,
         if (notificationConfig != null)
           'notificationConfig': notificationConfig!,
         if (securitySettings != null) 'securitySettings': securitySettings!,

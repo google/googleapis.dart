@@ -322,6 +322,63 @@ class AccountsCssProductInputsResource {
     return CssProductInput.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Updates the existing Css Product input in your CSS Center account.
+  ///
+  /// After inserting, updating, or deleting a CSS Product input, it may take
+  /// several minutes before the processed Css Product can be retrieved.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the CSS Product input. Format:
+  /// `accounts/{account}/cssProductInputs/{css_product_input}`
+  /// Value must have pattern `^accounts/\[^/\]+/cssProductInputs/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of CSS product attributes to be updated. If the
+  /// update mask is omitted, then it is treated as implied field mask
+  /// equivalent to all fields that are populated (have a non-empty value).
+  /// Attributes specified in the update mask without a value specified in the
+  /// body will be deleted from the CSS product. Update mask can only be
+  /// specified for top level fields in attributes and custom attributes. To
+  /// specify the update mask for custom attributes you need to add the
+  /// `custom_attribute.` prefix. Providing special "*" value for full CSS
+  /// product replacement is not supported.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CssProductInput].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CssProductInput> patch(
+    CssProductInput request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CssProductInput.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class AccountsCssProductsResource {

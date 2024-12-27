@@ -2337,8 +2337,8 @@ class AcknowledgeRequest {
       };
 }
 
-/// Information about an associated Analytics Hub subscription
-/// (https://cloud.google.com/bigquery/docs/analytics-hub-manage-subscriptions).
+/// Information about an associated
+/// [Analytics Hub subscription](https://cloud.google.com/bigquery/docs/analytics-hub-manage-subscriptions).
 typedef AnalyticsHubSubscriptionInfo = $AnalyticsHubSubscriptionInfo;
 
 /// Configuration for writing message data in Avro format.

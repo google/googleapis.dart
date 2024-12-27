@@ -2326,7 +2326,7 @@ class Places {
 /// presented with UI elements for input or editing of fields outside countries
 /// where that field is used. For more guidance on how to use this schema, see:
 /// https://support.google.com/business/answer/6397478
-typedef PostalAddress = $PostalAddress00;
+typedef PostalAddress = $PostalAddress;
 
 /// All information pertaining to the location's profile.
 class Profile {
@@ -2858,7 +2858,7 @@ class StructuredServiceItem {
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef TimeOfDay = $TimeOfDay00;
+typedef TimeOfDay = $TimeOfDay;
 
 /// Represents a span of time that the business is open, starting on the
 /// specified open day/time and closing on the specified close day/time.

@@ -1,6 +1,7 @@
-## 1.6.1-wip
+## 2.0.0-wip
 
-- Require `sdk: ^3.5.0`
+- Remove deprecated browser flows.
+- Require `sdk: ^3.6.0`
 
 ## 1.6.0
 

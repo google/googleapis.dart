@@ -808,6 +808,7 @@ api.AutoRenewingPlan buildAutoRenewingPlan() {
     o.autoRenewEnabled = true;
     o.installmentDetails = buildInstallmentPlan();
     o.priceChangeDetails = buildSubscriptionItemPriceChangeDetails();
+    o.recurringPrice = buildMoney();
   }
   buildCounterAutoRenewingPlan--;
   return o;
@@ -819,6 +820,7 @@ void checkAutoRenewingPlan(api.AutoRenewingPlan o) {
     unittest.expect(o.autoRenewEnabled!, unittest.isTrue);
     checkInstallmentPlan(o.installmentDetails!);
     checkSubscriptionItemPriceChangeDetails(o.priceChangeDetails!);
+    checkMoney(o.recurringPrice!);
   }
   buildCounterAutoRenewingPlan--;
 }

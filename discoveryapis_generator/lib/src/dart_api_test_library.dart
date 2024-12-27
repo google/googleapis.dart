@@ -4,13 +4,14 @@
 
 // ignore_for_file: missing_whitespace_between_adjacent_strings
 
+import 'package:source_helper/source_helper.dart';
+
 import 'dart_api_library.dart';
 import 'dart_resources.dart';
 import 'dart_schema_type.dart';
 import 'dart_schema_types.dart';
 import 'namer.dart';
 import 'uri_template.dart';
-import 'utils.dart';
 
 /// Generates a API test library based on a [DartApiLibrary].
 class DartApiTestLibrary extends TestHelper {
@@ -407,7 +408,7 @@ class MethodArgsTest extends TestHelper {
         if (str.isNotEmpty) {
           ln(expectEqual(
               'path.substring(pathOffset, pathOffset + ${str.length})',
-              "'${escapeString(str)}'"));
+              escapeDartString(str)));
           ln('pathOffset += ${str.length};');
         }
       } else if (part is VariableExpression) {
@@ -420,7 +421,7 @@ class MethodArgsTest extends TestHelper {
           }
           final stringPart = nextPart;
           ln('index = path.indexOf('
-              "'${escapeString(stringPart.staticString!)}', pathOffset);");
+              '${escapeDartString(stringPart.staticString!)}, pathOffset);');
           ln(expectIsTrue('index >= 0'));
           ln('subPart = core.Uri.decodeQueryComponent'
               '(path.substring(pathOffset, index));');
@@ -488,7 +489,7 @@ core.bool parseBool(n) {
     void checkParameter(MethodParameter p) {
       final name = parameterValues[p];
       final type = p.type;
-      final queryMapValue = "queryMap['${escapeString(p.jsonName!)}']!";
+      final queryMapValue = 'queryMap[${escapeDartString(p.jsonName!)}]!';
 
       if (!p.encodedInPath!) {
         if (type is IntegerType || type is StringIntegerType) {

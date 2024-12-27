@@ -318,12 +318,12 @@ class JsonSchemaVariantMap {
 
   JsonSchemaVariantMap.fromJson(core.Map json_)
       : this(
-          P_ref: json_['\$ref'] as core.String?,
+          P_ref: json_[r'$ref'] as core.String?,
           typeValue: json_['type_value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (P_ref != null) '\$ref': P_ref!,
+        if (P_ref != null) r'$ref': P_ref!,
         if (typeValue != null) 'type_value': typeValue!,
       };
 }
@@ -477,7 +477,7 @@ class JsonSchema {
 
   JsonSchema.fromJson(core.Map json_)
       : this(
-          P_ref: json_['\$ref'] as core.String?,
+          P_ref: json_[r'$ref'] as core.String?,
           additionalProperties: json_.containsKey('additionalProperties')
               ? JsonSchema.fromJson(json_['additionalProperties']
                   as core.Map<core.String, core.dynamic>)
@@ -527,7 +527,7 @@ class JsonSchema {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (P_ref != null) '\$ref': P_ref!,
+        if (P_ref != null) r'$ref': P_ref!,
         if (additionalProperties != null)
           'additionalProperties': additionalProperties!,
         if (annotations != null) 'annotations': annotations!,
@@ -1073,12 +1073,12 @@ class RestMethodRequest {
 
   RestMethodRequest.fromJson(core.Map json_)
       : this(
-          P_ref: json_['\$ref'] as core.String?,
+          P_ref: json_[r'$ref'] as core.String?,
           parameterName: json_['parameterName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (P_ref != null) '\$ref': P_ref!,
+        if (P_ref != null) r'$ref': P_ref!,
         if (parameterName != null) 'parameterName': parameterName!,
       };
 }
@@ -1094,11 +1094,11 @@ class RestMethodResponse {
 
   RestMethodResponse.fromJson(core.Map json_)
       : this(
-          P_ref: json_['\$ref'] as core.String?,
+          P_ref: json_[r'$ref'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (P_ref != null) '\$ref': P_ref!,
+        if (P_ref != null) r'$ref': P_ref!,
       };
 }
 

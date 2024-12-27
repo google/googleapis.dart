@@ -21542,6 +21542,18 @@ class GoogleCloudApigeeV1Environment {
   /// deployment type and cannot be combined with the PROXY deployment type.
   core.String? apiProxyType;
 
+  /// The algorithm to resolve IP.
+  ///
+  /// This will affect Analytics, API Security, and other features that use the
+  /// client ip. To remove a client ip resolution config, update the field to an
+  /// empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more
+  /// information, see:
+  /// https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution.
+  ///
+  /// Optional.
+  GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig?
+      clientIpResolutionConfig;
+
   /// Creation time of this environment as milliseconds since epoch.
   ///
   /// Output only.
@@ -21650,6 +21662,7 @@ class GoogleCloudApigeeV1Environment {
 
   GoogleCloudApigeeV1Environment({
     this.apiProxyType,
+    this.clientIpResolutionConfig,
     this.createdAt,
     this.deploymentType,
     this.description,
@@ -21667,6 +21680,12 @@ class GoogleCloudApigeeV1Environment {
   GoogleCloudApigeeV1Environment.fromJson(core.Map json_)
       : this(
           apiProxyType: json_['apiProxyType'] as core.String?,
+          clientIpResolutionConfig: json_
+                  .containsKey('clientIpResolutionConfig')
+              ? GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig.fromJson(
+                  json_['clientIpResolutionConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           createdAt: json_['createdAt'] as core.String?,
           deploymentType: json_['deploymentType'] as core.String?,
           description: json_['description'] as core.String?,
@@ -21689,6 +21708,8 @@ class GoogleCloudApigeeV1Environment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiProxyType != null) 'apiProxyType': apiProxyType!,
+        if (clientIpResolutionConfig != null)
+          'clientIpResolutionConfig': clientIpResolutionConfig!,
         if (createdAt != null) 'createdAt': createdAt!,
         if (deploymentType != null) 'deploymentType': deploymentType!,
         if (description != null) 'description': description!,
@@ -21702,6 +21723,67 @@ class GoogleCloudApigeeV1Environment {
         if (properties != null) 'properties': properties!,
         if (state != null) 'state': state!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Configuration for resolving the client ip.
+class GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig {
+  /// Resolves the client ip based on a custom header.
+  GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm?
+      headerIndexAlgorithm;
+
+  GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig({
+    this.headerIndexAlgorithm,
+  });
+
+  GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig.fromJson(
+      core.Map json_)
+      : this(
+          headerIndexAlgorithm: json_.containsKey('headerIndexAlgorithm')
+              ? GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm
+                  .fromJson(json_['headerIndexAlgorithm']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (headerIndexAlgorithm != null)
+          'headerIndexAlgorithm': headerIndexAlgorithm!,
+      };
+}
+
+/// Resolves the client ip based on a custom header.
+class GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm {
+  /// The index of the ip in the header.
+  ///
+  /// Positive indices 0, 1, 2, 3 chooses indices from the left (first ips)
+  /// Negative indices -1, -2, -3 chooses indices from the right (last ips)
+  ///
+  /// Required.
+  core.int? ipHeaderIndex;
+
+  /// The name of the header to extract the client ip from.
+  ///
+  /// We are currently only supporting the X-Forwarded-For header.
+  ///
+  /// Required.
+  core.String? ipHeaderName;
+
+  GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm({
+    this.ipHeaderIndex,
+    this.ipHeaderName,
+  });
+
+  GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm.fromJson(
+      core.Map json_)
+      : this(
+          ipHeaderIndex: json_['ipHeaderIndex'] as core.int?,
+          ipHeaderName: json_['ipHeaderName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ipHeaderIndex != null) 'ipHeaderIndex': ipHeaderIndex!,
+        if (ipHeaderName != null) 'ipHeaderName': ipHeaderName!,
       };
 }
 

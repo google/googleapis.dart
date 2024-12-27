@@ -32131,8 +32131,6 @@ class GoogleCloudAiplatformV1BleuSpec {
 }
 
 /// Content blob.
-///
-/// It's preferred to send as text directly rather than raw bytes.
 class GoogleCloudAiplatformV1Blob {
   /// Raw bytes.
   ///

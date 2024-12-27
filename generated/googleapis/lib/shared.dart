@@ -10042,6 +10042,11 @@ class $GitSourceContext {
 /// - translate:v3 : GlossaryConfig
 /// - translate:v3 : TranslateTextGlossaryConfig
 class $GlossaryConfig {
+  /// If set to true, the glossary will be used for contextual translation.
+  ///
+  /// Optional.
+  core.bool? contextualTranslationEnabled;
+
   /// The `glossary` to be applied for this translation.
   ///
   /// The format depends on the glossary: - User-provided custom glossary:
@@ -10058,17 +10063,22 @@ class $GlossaryConfig {
   core.bool? ignoreCase;
 
   $GlossaryConfig({
+    this.contextualTranslationEnabled,
     this.glossary,
     this.ignoreCase,
   });
 
   $GlossaryConfig.fromJson(core.Map json_)
       : this(
+          contextualTranslationEnabled:
+              json_['contextualTranslationEnabled'] as core.bool?,
           glossary: json_['glossary'] as core.String?,
           ignoreCase: json_['ignoreCase'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (contextualTranslationEnabled != null)
+          'contextualTranslationEnabled': contextualTranslationEnabled!,
         if (glossary != null) 'glossary': glossary!,
         if (ignoreCase != null) 'ignoreCase': ignoreCase!,
       };
@@ -13473,6 +13483,7 @@ class $LanguageTargetingOptionDetails {
 ///
 /// - addressvalidation:v1 : GoogleTypeLatLng
 /// - airquality:v1 : LatLng
+/// - areainsights:v1 : LatLng
 /// - datastore:v1 : LatLng
 /// - dialogflow:v2 : GoogleTypeLatLng
 /// - dialogflow:v3 : GoogleTypeLatLng
@@ -17278,10 +17289,12 @@ class $PortConfig {
 /// - contentwarehouse:v1 : GoogleTypePostalAddress
 /// - documentai:v1 : GoogleTypePostalAddress
 /// - domains:v1 : PostalAddress
+/// - jobs:v3 : PostalAddress
+/// - jobs:v4 : PostalAddress
 /// - mybusinessaccountmanagement:v1 : PostalAddress
 /// - mybusinessbusinessinformation:v1 : PostalAddress
 /// - mybusinessverifications:v1 : PostalAddress
-class $PostalAddress00 {
+class $PostalAddress {
   /// Unstructured address lines describing the lower levels of an address.
   ///
   /// Because values in address_lines do not have type information and may
@@ -17392,7 +17405,7 @@ class $PostalAddress00 {
   /// Optional.
   core.String? sublocality;
 
-  $PostalAddress00({
+  $PostalAddress({
     this.addressLines,
     this.administrativeArea,
     this.languageCode,
@@ -17406,170 +17419,7 @@ class $PostalAddress00 {
     this.sublocality,
   });
 
-  $PostalAddress00.fromJson(core.Map json_)
-      : this(
-          addressLines: (json_['addressLines'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          administrativeArea: json_['administrativeArea'] as core.String?,
-          languageCode: json_['languageCode'] as core.String?,
-          locality: json_['locality'] as core.String?,
-          organization: json_['organization'] as core.String?,
-          postalCode: json_['postalCode'] as core.String?,
-          recipients: (json_['recipients'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          regionCode: json_['regionCode'] as core.String?,
-          revision: json_['revision'] as core.int?,
-          sortingCode: json_['sortingCode'] as core.String?,
-          sublocality: json_['sublocality'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (addressLines != null) 'addressLines': addressLines!,
-        if (administrativeArea != null)
-          'administrativeArea': administrativeArea!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (locality != null) 'locality': locality!,
-        if (organization != null) 'organization': organization!,
-        if (postalCode != null) 'postalCode': postalCode!,
-        if (recipients != null) 'recipients': recipients!,
-        if (regionCode != null) 'regionCode': regionCode!,
-        if (revision != null) 'revision': revision!,
-        if (sortingCode != null) 'sortingCode': sortingCode!,
-        if (sublocality != null) 'sublocality': sublocality!,
-      };
-}
-
-/// Used by:
-///
-/// - jobs:v3 : PostalAddress
-/// - jobs:v4 : PostalAddress
-class $PostalAddress01 {
-  /// Unstructured address lines describing the lower levels of an address.
-  ///
-  /// Because values in address_lines do not have type information and may
-  /// sometimes contain multiple values in a single field (e.g. "Austin, TX"),
-  /// it is important that the line order is clear. The order of address lines
-  /// should be "envelope order" for the country/region of the address. In
-  /// places where this can vary (e.g. Japan), address_language is used to make
-  /// it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en"
-  /// for small-to-large). This way, the most specific line of an address can be
-  /// selected based on the language. The minimum permitted structural
-  /// representation of an address consists of a region_code with all remaining
-  /// information placed in the address_lines. It would be possible to format
-  /// such an address very approximately without geocoding, but no semantic
-  /// reasoning could be made about any of the address components until it was
-  /// at least partially resolved. Creating an address only containing a
-  /// region_code and address_lines, and then geocoding is the recommended way
-  /// to handle completely unstructured addresses (as opposed to guessing which
-  /// parts of the address should be localities or administrative areas).
-  core.List<core.String>? addressLines;
-
-  /// Highest administrative subdivision which is used for postal addresses of a
-  /// country or region.
-  ///
-  /// For example, this can be a state, a province, an oblast, or a prefecture.
-  /// Specifically, for Spain this is the province and not the autonomous
-  /// community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use
-  /// an administrative area in postal addresses. E.g. in Switzerland this
-  /// should be left unpopulated.
-  ///
-  /// Optional.
-  core.String? administrativeArea;
-
-  /// BCP-47 language code of the contents of this address (if known).
-  ///
-  /// This is often the UI language of the input form or is expected to match
-  /// one of the languages used in the address' country/region, or their
-  /// transliterated equivalents. This can affect formatting in certain
-  /// countries, but is not critical to the correctness of the data and will
-  /// never affect any validation or other non-formatting related operations. If
-  /// this value is not known, it should be omitted (rather than specifying a
-  /// possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
-  ///
-  /// Optional.
-  core.String? languageCode;
-
-  /// Generally refers to the city/town portion of the address.
-  ///
-  /// Examples: US city, IT comune, UK post town. In regions of the world where
-  /// localities are not well defined or do not fit into this structure well,
-  /// leave locality empty and use address_lines.
-  ///
-  /// Optional.
-  core.String? locality;
-
-  /// The name of the organization at the address.
-  ///
-  /// Optional.
-  core.String? organization;
-
-  /// Postal code of the address.
-  ///
-  /// Not all countries use or require postal codes to be present, but where
-  /// they are used, they may trigger additional validation with other parts of
-  /// the address (e.g. state/zip validation in the U.S.A.).
-  ///
-  /// Optional.
-  core.String? postalCode;
-
-  /// The recipient at the address.
-  ///
-  /// This field may, under certain circumstances, contain multiline
-  /// information. For example, it might contain "care of" information.
-  ///
-  /// Optional.
-  core.List<core.String>? recipients;
-
-  /// CLDR region code of the country/region of the address.
-  ///
-  /// This is never inferred and it is up to the user to ensure the value is
-  /// correct. See https://cldr.unicode.org/ and
-  /// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
-  /// for details. Example: "CH" for Switzerland.
-  ///
-  /// Required.
-  core.String? regionCode;
-
-  /// The schema revision of the `PostalAddress`.
-  ///
-  /// This must be set to 0, which is the latest revision. All new revisions
-  /// **must** be backward compatible with old revisions.
-  core.int? revision;
-
-  /// Additional, country-specific, sorting code.
-  ///
-  /// This is not used in most regions. Where it is used, the value is either a
-  /// string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or
-  /// just a number alone, representing the "sector code" (Jamaica), "delivery
-  /// area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
-  ///
-  /// Optional.
-  core.String? sortingCode;
-
-  /// Sublocality of the address.
-  ///
-  /// For example, this can be neighborhoods, boroughs, districts.
-  ///
-  /// Optional.
-  core.String? sublocality;
-
-  $PostalAddress01({
-    this.addressLines,
-    this.administrativeArea,
-    this.languageCode,
-    this.locality,
-    this.organization,
-    this.postalCode,
-    this.recipients,
-    this.regionCode,
-    this.revision,
-    this.sortingCode,
-    this.sublocality,
-  });
-
-  $PostalAddress01.fromJson(core.Map json_)
+  $PostalAddress.fromJson(core.Map json_)
       : this(
           addressLines: (json_['addressLines'] as core.List?)
               ?.map((value) => value as core.String)
@@ -21975,6 +21825,8 @@ class $ThirdPartyVendorConfig {
 /// - clouddeploy:v1 : TimeOfDay
 /// - dlp:v2 : GoogleTypeTimeOfDay
 /// - gkebackup:v1 : TimeOfDay
+/// - jobs:v3 : TimeOfDay
+/// - jobs:v4 : TimeOfDay
 /// - looker:v1 : TimeOfDay
 /// - memcache:v1 : TimeOfDay
 /// - monitoring:v3 : TimeOfDay
@@ -21985,7 +21837,7 @@ class $ThirdPartyVendorConfig {
 /// - redis:v1 : TimeOfDay
 /// - sheets:v4 : TimeOfDay
 /// - storagetransfer:v1 : TimeOfDay
-class $TimeOfDay00 {
+class $TimeOfDay {
   /// Hours of a day in 24 hour format.
   ///
   /// Must be greater than or equal to 0 and typically must be less than or
@@ -22009,64 +21861,14 @@ class $TimeOfDay00 {
   /// equal to 59. An API may allow the value 60 if it allows leap-seconds.
   core.int? seconds;
 
-  $TimeOfDay00({
+  $TimeOfDay({
     this.hours,
     this.minutes,
     this.nanos,
     this.seconds,
   });
 
-  $TimeOfDay00.fromJson(core.Map json_)
-      : this(
-          hours: json_['hours'] as core.int?,
-          minutes: json_['minutes'] as core.int?,
-          nanos: json_['nanos'] as core.int?,
-          seconds: json_['seconds'] as core.int?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (hours != null) 'hours': hours!,
-        if (minutes != null) 'minutes': minutes!,
-        if (nanos != null) 'nanos': nanos!,
-        if (seconds != null) 'seconds': seconds!,
-      };
-}
-
-/// Used by:
-///
-/// - jobs:v3 : TimeOfDay
-/// - jobs:v4 : TimeOfDay
-class $TimeOfDay01 {
-  /// Hours of day in 24 hour format.
-  ///
-  /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
-  /// for scenarios like business closing time.
-  core.int? hours;
-
-  /// Minutes of hour of day.
-  ///
-  /// Must be from 0 to 59.
-  core.int? minutes;
-
-  /// Fractions of seconds in nanoseconds.
-  ///
-  /// Must be from 0 to 999,999,999.
-  core.int? nanos;
-
-  /// Seconds of minutes of the time.
-  ///
-  /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
-  /// leap-seconds.
-  core.int? seconds;
-
-  $TimeOfDay01({
-    this.hours,
-    this.minutes,
-    this.nanos,
-    this.seconds,
-  });
-
-  $TimeOfDay01.fromJson(core.Map json_)
+  $TimeOfDay.fromJson(core.Map json_)
       : this(
           hours: json_['hours'] as core.int?,
           minutes: json_['minutes'] as core.int?,

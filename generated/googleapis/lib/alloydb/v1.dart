@@ -3537,7 +3537,7 @@ typedef GoogleCloudLocationLocation = $Location00;
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef GoogleTypeTimeOfDay = $TimeOfDay00;
+typedef GoogleTypeTimeOfDay = $TimeOfDay;
 
 /// Message for triggering fault injection on an instance
 class InjectFaultRequest {

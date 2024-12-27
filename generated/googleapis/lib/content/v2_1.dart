@@ -17143,6 +17143,11 @@ class Product {
   /// an item with an associated subscription contract.
   ProductSubscriptionCost? subscriptionCost;
 
+  /// The list of sustainability incentive programs.
+  ///
+  /// Optional.
+  core.List<ProductSustainabilityIncentive>? sustainabilityIncentives;
+
   /// The CLDR territory code for the item's country of sale.
   ///
   /// Required.
@@ -17266,6 +17271,7 @@ class Product {
     this.structuredDescription,
     this.structuredTitle,
     this.subscriptionCost,
+    this.sustainabilityIncentives,
     this.targetCountry,
     this.taxCategory,
     this.taxes,
@@ -17472,6 +17478,11 @@ class Product {
               ? ProductSubscriptionCost.fromJson(json_['subscriptionCost']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          sustainabilityIncentives:
+              (json_['sustainabilityIncentives'] as core.List?)
+                  ?.map((value) => ProductSustainabilityIncentive.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
           targetCountry: json_['targetCountry'] as core.String?,
           taxCategory: json_['taxCategory'] as core.String?,
           taxes: (json_['taxes'] as core.List?)
@@ -17605,6 +17616,8 @@ class Product {
           'structuredDescription': structuredDescription!,
         if (structuredTitle != null) 'structuredTitle': structuredTitle!,
         if (subscriptionCost != null) 'subscriptionCost': subscriptionCost!,
+        if (sustainabilityIncentives != null)
+          'sustainabilityIncentives': sustainabilityIncentives!,
         if (targetCountry != null) 'targetCountry': targetCountry!,
         if (taxCategory != null) 'taxCategory': taxCategory!,
         if (taxes != null) 'taxes': taxes!,
@@ -18587,6 +18600,57 @@ class ProductSubscriptionCost {
         if (amount != null) 'amount': amount!,
         if (period != null) 'period': period!,
         if (periodLength != null) 'periodLength': periodLength!,
+      };
+}
+
+/// Information regarding sustainability related incentive programs such as
+/// rebates or tax relief.
+class ProductSustainabilityIncentive {
+  /// The fixed amount of the incentive.
+  ///
+  /// Optional.
+  Price? amount;
+
+  /// The percentage of the sale price that the incentive is applied to.
+  ///
+  /// Optional.
+  core.double? percentage;
+
+  /// Sustainability incentive program.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified or unknown sustainability incentive
+  /// type.
+  /// - "EV_TAX_CREDIT" : Program offering tax liability reductions for electric
+  /// vehicles and, in some countries, plug-in hybrids. These reductions can be
+  /// based on a specific amount or a percentage of the sale price.
+  /// - "EV_PRICE_DISCOUNT" : A subsidy program, often called an environmental
+  /// bonus, provides a purchase grant for electric vehicles and, in some
+  /// countries, plug-in hybrids. The grant amount may be a fixed sum or a
+  /// percentage of the sale price.
+  core.String? type;
+
+  ProductSustainabilityIncentive({
+    this.amount,
+    this.percentage,
+    this.type,
+  });
+
+  ProductSustainabilityIncentive.fromJson(core.Map json_)
+      : this(
+          amount: json_.containsKey('amount')
+              ? Price.fromJson(
+                  json_['amount'] as core.Map<core.String, core.dynamic>)
+              : null,
+          percentage: (json_['percentage'] as core.num?)?.toDouble(),
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (amount != null) 'amount': amount!,
+        if (percentage != null) 'percentage': percentage!,
+        if (type != null) 'type': type!,
       };
 }
 

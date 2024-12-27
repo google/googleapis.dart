@@ -5492,6 +5492,14 @@ class GoogleCloudRunV2ServiceScaling {
   /// Optional.
   core.int? manualInstanceCount;
 
+  /// total max instances for the service.
+  ///
+  /// This number of instances is divided among all revisions with specified
+  /// traffic based on the percent of traffic they are receiving.
+  ///
+  /// Optional.
+  core.int? maxInstanceCount;
+
   /// total min instances for the service.
   ///
   /// This number of instances is divided among all revisions with specified
@@ -5511,6 +5519,7 @@ class GoogleCloudRunV2ServiceScaling {
 
   GoogleCloudRunV2ServiceScaling({
     this.manualInstanceCount,
+    this.maxInstanceCount,
     this.minInstanceCount,
     this.scalingMode,
   });
@@ -5518,6 +5527,7 @@ class GoogleCloudRunV2ServiceScaling {
   GoogleCloudRunV2ServiceScaling.fromJson(core.Map json_)
       : this(
           manualInstanceCount: json_['manualInstanceCount'] as core.int?,
+          maxInstanceCount: json_['maxInstanceCount'] as core.int?,
           minInstanceCount: json_['minInstanceCount'] as core.int?,
           scalingMode: json_['scalingMode'] as core.String?,
         );
@@ -5525,6 +5535,7 @@ class GoogleCloudRunV2ServiceScaling {
   core.Map<core.String, core.dynamic> toJson() => {
         if (manualInstanceCount != null)
           'manualInstanceCount': manualInstanceCount!,
+        if (maxInstanceCount != null) 'maxInstanceCount': maxInstanceCount!,
         if (minInstanceCount != null) 'minInstanceCount': minInstanceCount!,
         if (scalingMode != null) 'scalingMode': scalingMode!,
       };

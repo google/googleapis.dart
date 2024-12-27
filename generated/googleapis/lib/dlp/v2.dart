@@ -14058,8 +14058,9 @@ class GooglePrivacyDlpV2FileClusterSummary {
 
   /// True if no files exist in this cluster.
   ///
-  /// If the bucket had more files than could be listed, this will be false even
-  /// if no files for this cluster were seen and file_extensions_seen is empty.
+  /// If the file store had more files than could be listed, this will be false
+  /// even if no files for this cluster were seen and file_extensions_seen is
+  /// empty.
   core.bool? noFilesExist;
 
   /// The sensitivity score of this cluster.
@@ -14303,7 +14304,8 @@ class GooglePrivacyDlpV2FileStoreDataProfile {
   /// The time the file store was last modified.
   core.String? lastModifiedTime;
 
-  /// The location type of the bucket (region, dual-region, multi-region, etc).
+  /// The location type of the file store (region, dual-region, multi-region,
+  /// etc).
   ///
   /// If dual-region, expect data_storage_locations to be populated.
   core.String? locationType;
@@ -21393,4 +21395,4 @@ typedef GoogleTypeDate = $Date;
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef GoogleTypeTimeOfDay = $TimeOfDay00;
+typedef GoogleTypeTimeOfDay = $TimeOfDay;

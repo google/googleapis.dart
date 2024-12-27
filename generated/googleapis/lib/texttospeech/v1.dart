@@ -448,6 +448,9 @@ class AudioConfig {
   /// PCMU/mu-law. Audio content returned as MULAW also contains a WAV header.
   /// - "ALAW" : 8-bit samples that compand 14-bit audio samples using G.711
   /// PCMU/A-law. Audio content returned as ALAW also contains a WAV header.
+  /// - "PCM" : Uncompressed 16-bit signed little-endian samples (Linear PCM).
+  /// Note that as opposed to LINEAR16, audio will not be wrapped in a WAV (or
+  /// any other) header.
   core.String? audioEncoding;
 
   /// Input only.

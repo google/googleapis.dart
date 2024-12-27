@@ -10130,7 +10130,7 @@ class TimeInterval {
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and google.protobuf.Timestamp.
-typedef TimeOfDay = $TimeOfDay00;
+typedef TimeOfDay = $TimeOfDay;
 
 /// A collection of data points that describes the time-varying values of a
 /// metric.

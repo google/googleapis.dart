@@ -804,6 +804,50 @@ void checkGoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig(
   buildCounterGoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig--;
 }
 
+core.int buildCounterGoogleCloudRetailV2CollectUserEventRequest = 0;
+api.GoogleCloudRetailV2CollectUserEventRequest
+    buildGoogleCloudRetailV2CollectUserEventRequest() {
+  final o = api.GoogleCloudRetailV2CollectUserEventRequest();
+  buildCounterGoogleCloudRetailV2CollectUserEventRequest++;
+  if (buildCounterGoogleCloudRetailV2CollectUserEventRequest < 3) {
+    o.ets = 'foo';
+    o.prebuiltRule = 'foo';
+    o.rawJson = 'foo';
+    o.uri = 'foo';
+    o.userEvent = 'foo';
+  }
+  buildCounterGoogleCloudRetailV2CollectUserEventRequest--;
+  return o;
+}
+
+void checkGoogleCloudRetailV2CollectUserEventRequest(
+    api.GoogleCloudRetailV2CollectUserEventRequest o) {
+  buildCounterGoogleCloudRetailV2CollectUserEventRequest++;
+  if (buildCounterGoogleCloudRetailV2CollectUserEventRequest < 3) {
+    unittest.expect(
+      o.ets!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.prebuiltRule!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.rawJson!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.userEvent!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudRetailV2CollectUserEventRequest--;
+}
+
 core.List<core.String> buildUnnamed15() => [
       'foo',
       'foo',
@@ -6566,6 +6610,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudRetailV2CollectUserEventRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudRetailV2CollectUserEventRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRetailV2CollectUserEventRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRetailV2CollectUserEventRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudRetailV2ColorInfo', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudRetailV2ColorInfo();
@@ -11510,14 +11564,14 @@ void main() {
       final mock = HttpServerMock();
       final res =
           api.CloudRetailApi(mock).projects.locations.catalogs.userEvents;
+      final arg_request = buildGoogleCloudRetailV2CollectUserEventRequest();
       final arg_parent = 'foo';
-      final arg_ets = 'foo';
-      final arg_prebuiltRule = 'foo';
-      final arg_rawJson = 'foo';
-      final arg_uri = 'foo';
-      final arg_userEvent = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleCloudRetailV2CollectUserEventRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudRetailV2CollectUserEventRequest(obj);
+
         final path = req.url.path;
         var pathOffset = 0;
         core.int index;
@@ -11550,26 +11604,6 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap['ets']!.first,
-          unittest.equals(arg_ets),
-        );
-        unittest.expect(
-          queryMap['prebuiltRule']!.first,
-          unittest.equals(arg_prebuiltRule),
-        );
-        unittest.expect(
-          queryMap['rawJson']!.first,
-          unittest.equals(arg_rawJson),
-        );
-        unittest.expect(
-          queryMap['uri']!.first,
-          unittest.equals(arg_uri),
-        );
-        unittest.expect(
-          queryMap['userEvent']!.first,
-          unittest.equals(arg_userEvent),
-        );
-        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -11580,13 +11614,8 @@ void main() {
         final resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.collect(arg_parent,
-          ets: arg_ets,
-          prebuiltRule: arg_prebuiltRule,
-          rawJson: arg_rawJson,
-          uri: arg_uri,
-          userEvent: arg_userEvent,
-          $fields: arg_$fields);
+      final response =
+          await res.collect(arg_request, arg_parent, $fields: arg_$fields);
       checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
     });
 

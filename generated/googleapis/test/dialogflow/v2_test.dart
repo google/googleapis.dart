@@ -1502,6 +1502,8 @@ api.GoogleCloudDialogflowV2ConversationProfile
     o.name = 'foo';
     o.newMessageEventNotificationConfig =
         buildGoogleCloudDialogflowV2NotificationConfig();
+    o.newRecognitionResultNotificationConfig =
+        buildGoogleCloudDialogflowV2NotificationConfig();
     o.notificationConfig = buildGoogleCloudDialogflowV2NotificationConfig();
     o.securitySettings = 'foo';
     o.sttConfig = buildGoogleCloudDialogflowV2SpeechToTextConfig();
@@ -1541,6 +1543,8 @@ void checkGoogleCloudDialogflowV2ConversationProfile(
     );
     checkGoogleCloudDialogflowV2NotificationConfig(
         o.newMessageEventNotificationConfig!);
+    checkGoogleCloudDialogflowV2NotificationConfig(
+        o.newRecognitionResultNotificationConfig!);
     checkGoogleCloudDialogflowV2NotificationConfig(o.notificationConfig!);
     unittest.expect(
       o.securitySettings!,

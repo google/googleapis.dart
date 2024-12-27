@@ -203,11 +203,11 @@ ${duplicateItems.map((e) => e.definition).join('\n\n')}
                   '  # This is a private package dependency used by the '
                   'generated client stubs.');
             }
-            sink.writeln('  $lib: $value');
+            sink.writeln('  $lib: ${_yamlFormatValue(value)}');
           } else if (value is Map) {
             sink.writeln('  $lib:');
             value.forEach((k, v) {
-              sink.writeln('    $k: $v');
+              sink.writeln('    $k: ${_yamlFormatValue(v.toString())}');
             });
           }
         },
@@ -289,4 +289,12 @@ void _writeFile(String path, void Function(StringSink sink) writer) {
   final sink = file.openWrite();
   writer(sink);
   sink.flush().then((value) => sink.close());
+}
+
+String _yamlFormatValue(String value) {
+  // This logic is not "complete" for all yaml values. May need to be updated.
+  if (value.contains('>')) {
+    value = '"$value"';
+  }
+  return value;
 }

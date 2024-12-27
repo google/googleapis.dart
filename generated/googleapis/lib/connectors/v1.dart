@@ -7468,7 +7468,7 @@ class JsonAuthSchema {
 
   JsonAuthSchema.fromJson(core.Map json_)
       : this(
-          P_schema: json_['\$schema'] as core.String?,
+          P_schema: json_[r'$schema'] as core.String?,
           oneOf: (json_['oneOf'] as core.List?)
               ?.map((value) => AuthObject.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -7476,7 +7476,7 @@ class JsonAuthSchema {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (P_schema != null) '\$schema': P_schema!,
+        if (P_schema != null) r'$schema': P_schema!,
         if (oneOf != null) 'oneOf': oneOf!,
       };
 }

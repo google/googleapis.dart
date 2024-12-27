@@ -1120,6 +1120,7 @@ api.GlossaryConfig buildGlossaryConfig() {
   final o = api.GlossaryConfig();
   buildCounterGlossaryConfig++;
   if (buildCounterGlossaryConfig < 3) {
+    o.contextualTranslationEnabled = true;
     o.glossary = 'foo';
     o.ignoreCase = true;
   }
@@ -1130,6 +1131,7 @@ api.GlossaryConfig buildGlossaryConfig() {
 void checkGlossaryConfig(api.GlossaryConfig o) {
   buildCounterGlossaryConfig++;
   if (buildCounterGlossaryConfig < 3) {
+    unittest.expect(o.contextualTranslationEnabled!, unittest.isTrue);
     unittest.expect(
       o.glossary!,
       unittest.equals('foo'),
@@ -2534,6 +2536,7 @@ api.TranslateTextGlossaryConfig buildTranslateTextGlossaryConfig() {
   final o = api.TranslateTextGlossaryConfig();
   buildCounterTranslateTextGlossaryConfig++;
   if (buildCounterTranslateTextGlossaryConfig < 3) {
+    o.contextualTranslationEnabled = true;
     o.glossary = 'foo';
     o.ignoreCase = true;
   }
@@ -2544,6 +2547,7 @@ api.TranslateTextGlossaryConfig buildTranslateTextGlossaryConfig() {
 void checkTranslateTextGlossaryConfig(api.TranslateTextGlossaryConfig o) {
   buildCounterTranslateTextGlossaryConfig++;
   if (buildCounterTranslateTextGlossaryConfig < 3) {
+    unittest.expect(o.contextualTranslationEnabled!, unittest.isTrue);
     unittest.expect(
       o.glossary!,
       unittest.equals('foo'),

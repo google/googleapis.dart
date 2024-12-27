@@ -3778,7 +3778,7 @@ class GoogleAppsCardV1Button {
   ///
   /// If unset, button type defaults to `OUTLINED`. If the `color` field is set,
   /// the button type is forced to `FILLED` and any value set for this field is
-  /// ignored. [Google Chat apps](https://developers.google.com/workspace/chat):
+  /// ignored.
   ///
   /// Optional.
   /// Possible string values are:
@@ -4236,7 +4236,8 @@ class GoogleAppsCardV1CarouselCard {
 
 /// A text, icon, or text and icon chip that users can click.
 ///
-/// [Google Chat apps](https://developers.google.com/workspace/chat):
+/// \[Google Workspace Add-ons and Chat
+/// apps\](https://developers.google.com/workspace/extend):
 class GoogleAppsCardV1Chip {
   /// The alternative text that's used for accessibility.
   ///
@@ -4311,7 +4312,8 @@ class GoogleAppsCardV1Chip {
 /// A list of chips layed out horizontally, which can either scroll horizontally
 /// or wrap to the next line.
 ///
-/// [Google Chat apps](https://developers.google.com/workspace/chat):
+/// \[Google Workspace Add-ons and Chat
+/// apps\](https://developers.google.com/workspace/extend):
 class GoogleAppsCardV1ChipList {
   /// An array of chips.
   core.List<GoogleAppsCardV1Chip>? chips;
@@ -4347,7 +4349,8 @@ class GoogleAppsCardV1ChipList {
 
 /// Represent an expand and collapse control.
 ///
-/// [Google Chat apps](https://developers.google.com/workspace/chat):
+/// \[Google Workspace Add-ons and Chat
+/// apps\](https://developers.google.com/workspace/extend):
 class GoogleAppsCardV1CollapseControl {
   /// Define a customizable button to collapse the section.
   ///
@@ -5222,8 +5225,6 @@ class GoogleAppsCardV1OnClick {
   GoogleAppsCardV1OpenLink? openLink;
 
   /// If specified, this `onClick` opens an overflow menu.
-  ///
-  /// [Google Chat apps](https://developers.google.com/workspace/chat):
   GoogleAppsCardV1OverflowMenu? overflowMenu;
 
   GoogleAppsCardV1OnClick({
@@ -5326,7 +5327,8 @@ class GoogleAppsCardV1OpenLink {
 /// For example, showing non-primary actions in a card. You can use this widget
 /// when actions don't fit in the available space. To use, specify this widget
 /// in the `OnClick` action of widgets that support it. For example, in a
-/// `Button`. [Google Chat apps](https://developers.google.com/workspace/chat):
+/// `Button`. \[Google Workspace Add-ons and Chat
+/// apps\](https://developers.google.com/workspace/extend):
 class GoogleAppsCardV1OverflowMenu {
   /// The list of menu options.
   ///
@@ -5352,7 +5354,8 @@ class GoogleAppsCardV1OverflowMenu {
 
 /// An option that users can invoke in an overflow menu.
 ///
-/// [Google Chat apps](https://developers.google.com/workspace/chat):
+/// \[Google Workspace Add-ons and Chat
+/// apps\](https://developers.google.com/workspace/extend):
 class GoogleAppsCardV1OverflowMenuItem {
   /// Whether the menu option is disabled.
   ///
@@ -5456,7 +5459,6 @@ class GoogleAppsCardV1Section {
   ///
   /// This button will be shown only if the section is collapsible. If this
   /// field isn't set, the default button is used.
-  /// [Google Chat apps](https://developers.google.com/workspace/chat):
   ///
   /// Optional.
   GoogleAppsCardV1CollapseControl? collapseControl;
@@ -6018,7 +6020,6 @@ class GoogleAppsCardV1TextParagraph {
   /// or shorter than the specified maximum number of lines, a **show more**
   /// button isn't displayed. The default value is 0, in which case all context
   /// is displayed. Negative values are ignored.
-  /// [Google Chat apps](https://developers.google.com/workspace/chat):
   core.int? maxLines;
 
   /// The text that's shown in the widget.
@@ -6071,7 +6072,6 @@ class GoogleAppsCardV1Widget {
   /// "chips": [ { "text": "Edit", "disabled": true, }, { "icon": { "knownIcon":
   /// "INVITE", "altText": "check calendar" }, "onClick": { "openLink": { "url":
   /// "https://example.com/calendar" } } } ] } ```
-  /// [Google Chat apps](https://developers.google.com/workspace/chat):
   GoogleAppsCardV1ChipList? chipList;
 
   /// Displays up to 2 columns.
@@ -6275,8 +6275,6 @@ class GoogleAppsCardV1Widgets {
   GoogleAppsCardV1ButtonList? buttonList;
 
   /// ChipList widget.
-  ///
-  /// [Google Chat apps](https://developers.google.com/workspace/chat):
   GoogleAppsCardV1ChipList? chipList;
 
   /// DateTimePicker widget.

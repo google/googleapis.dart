@@ -3155,9 +3155,12 @@ class ProjectsLocationsCatalogsUserEventsResource {
 
   /// Writes a single user event from the browser.
   ///
-  /// This uses a GET request to due to browser restriction of POST-ing to a 3rd
-  /// party domain. This method is used only by the Retail API JavaScript pixel
-  /// and Google Tag Manager. Users should not call this method directly.
+  /// For larger user event payload over 16 KB, the POST method should be used
+  /// instead, otherwise a 400 Bad Request error is returned. This method is
+  /// used only by the Retail API JavaScript pixel and Google Tag Manager. Users
+  /// should not call this method directly.
+  ///
+  /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
@@ -3165,26 +3168,6 @@ class ProjectsLocationsCatalogsUserEventsResource {
   /// `projects/1234/locations/global/catalogs/default_catalog`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+$`.
-  ///
-  /// [ets] - The event timestamp in milliseconds. This prevents browser caching
-  /// of otherwise identical get requests. The name is abbreviated to reduce the
-  /// payload bytes.
-  ///
-  /// [prebuiltRule] - The prebuilt rule name that can convert a specific type
-  /// of raw_json. For example: "ga4_bq" rule for the GA4 user event schema.
-  ///
-  /// [rawJson] - An arbitrary serialized JSON string that contains necessary
-  /// information that can comprise a user event. When this field is specified,
-  /// the user_event field will be ignored. Note: line-delimited JSON is not
-  /// supported, a single JSON only.
-  ///
-  /// [uri] - The URL including cgi-parameters but excluding the hash fragment
-  /// with a length limit of 5,000 characters. This is often more useful than
-  /// the referer URL, because many browsers only send the domain for 3rd party
-  /// requests.
-  ///
-  /// [userEvent] - Required. URL encoded UserEvent proto with a length limit of
-  /// 2,000,000 characters.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3197,20 +3180,12 @@ class ProjectsLocationsCatalogsUserEventsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleApiHttpBody> collect(
+    GoogleCloudRetailV2CollectUserEventRequest request,
     core.String parent, {
-    core.String? ets,
-    core.String? prebuiltRule,
-    core.String? rawJson,
-    core.String? uri,
-    core.String? userEvent,
     core.String? $fields,
   }) async {
+    final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (ets != null) 'ets': [ets],
-      if (prebuiltRule != null) 'prebuiltRule': [prebuiltRule],
-      if (rawJson != null) 'rawJson': [rawJson],
-      if (uri != null) 'uri': [uri],
-      if (userEvent != null) 'userEvent': [userEvent],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3218,7 +3193,8 @@ class ProjectsLocationsCatalogsUserEventsResource {
 
     final response_ = await _requester.request(
       url_,
-      'GET',
+      'POST',
+      body: body_,
       queryParams: queryParams_,
     );
     return GoogleApiHttpBody.fromJson(
@@ -4500,6 +4476,64 @@ class GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (facetValues != null) 'facetValues': facetValues!,
         if (rerankFacet != null) 'rerankFacet': rerankFacet!,
+      };
+}
+
+/// Request message for CollectUserEvent method.
+class GoogleCloudRetailV2CollectUserEventRequest {
+  /// The event timestamp in milliseconds.
+  ///
+  /// This prevents browser caching of otherwise identical get requests. The
+  /// name is abbreviated to reduce the payload bytes.
+  core.String? ets;
+
+  /// The prebuilt rule name that can convert a specific type of raw_json.
+  ///
+  /// For example: "ga4_bq" rule for the GA4 user event schema.
+  core.String? prebuiltRule;
+
+  /// An arbitrary serialized JSON string that contains necessary information
+  /// that can comprise a user event.
+  ///
+  /// When this field is specified, the user_event field will be ignored. Note:
+  /// line-delimited JSON is not supported, a single JSON only.
+  core.String? rawJson;
+
+  /// The URL including cgi-parameters but excluding the hash fragment with a
+  /// length limit of 5,000 characters.
+  ///
+  /// This is often more useful than the referer URL, because many browsers only
+  /// send the domain for 3rd party requests.
+  core.String? uri;
+
+  /// URL encoded UserEvent proto with a length limit of 2,000,000 characters.
+  ///
+  /// Required.
+  core.String? userEvent;
+
+  GoogleCloudRetailV2CollectUserEventRequest({
+    this.ets,
+    this.prebuiltRule,
+    this.rawJson,
+    this.uri,
+    this.userEvent,
+  });
+
+  GoogleCloudRetailV2CollectUserEventRequest.fromJson(core.Map json_)
+      : this(
+          ets: json_['ets'] as core.String?,
+          prebuiltRule: json_['prebuiltRule'] as core.String?,
+          rawJson: json_['rawJson'] as core.String?,
+          uri: json_['uri'] as core.String?,
+          userEvent: json_['userEvent'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ets != null) 'ets': ets!,
+        if (prebuiltRule != null) 'prebuiltRule': prebuiltRule!,
+        if (rawJson != null) 'rawJson': rawJson!,
+        if (uri != null) 'uri': uri!,
+        if (userEvent != null) 'userEvent': userEvent!,
       };
 }
 

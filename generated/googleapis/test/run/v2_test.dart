@@ -2457,6 +2457,7 @@ api.GoogleCloudRunV2ServiceScaling buildGoogleCloudRunV2ServiceScaling() {
   buildCounterGoogleCloudRunV2ServiceScaling++;
   if (buildCounterGoogleCloudRunV2ServiceScaling < 3) {
     o.manualInstanceCount = 42;
+    o.maxInstanceCount = 42;
     o.minInstanceCount = 42;
     o.scalingMode = 'foo';
   }
@@ -2469,6 +2470,10 @@ void checkGoogleCloudRunV2ServiceScaling(api.GoogleCloudRunV2ServiceScaling o) {
   if (buildCounterGoogleCloudRunV2ServiceScaling < 3) {
     unittest.expect(
       o.manualInstanceCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.maxInstanceCount!,
       unittest.equals(42),
     );
     unittest.expect(

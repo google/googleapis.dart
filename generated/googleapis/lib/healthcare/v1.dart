@@ -5817,7 +5817,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     };
 
     final url_ =
-        'v1/' + core.Uri.encodeFull('$name') + '/\$consent-enforcement-status';
+        'v1/' + core.Uri.encodeFull('$name') + r'/$consent-enforcement-status';
 
     final response_ = await _requester.request(
       url_,
@@ -5876,7 +5876,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     };
 
     final url_ =
-        'v1/' + core.Uri.encodeFull('$name') + '/\$consent-enforcement-status';
+        'v1/' + core.Uri.encodeFull('$name') + r'/$consent-enforcement-status';
 
     final response_ = await _requester.request(
       url_,
@@ -5974,7 +5974,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/\$everything';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + r'/$everything';
 
     final response_ = await _requester.request(
       url_,
@@ -6016,7 +6016,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/\$purge';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + r'/$purge';
 
     final response_ = await _requester.request(
       url_,
@@ -6094,7 +6094,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
         core.Uri.encodeFull('$parent') +
         '/fhir/' +
         core.Uri.encodeFull('$type') +
-        '/\$validate';
+        r'/$validate';
 
     final response_ = await _requester.request(
       url_,

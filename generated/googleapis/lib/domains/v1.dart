@@ -3076,7 +3076,7 @@ class Policy {
 /// presented with UI elements for input or editing of fields outside countries
 /// where that field is used. For more guidance on how to use this schema, see:
 /// https://support.google.com/business/answer/6397478
-typedef PostalAddress = $PostalAddress00;
+typedef PostalAddress = $PostalAddress;
 
 /// Configures a RRSetRoutingPolicy such that all queries are responded with the
 /// primary_targets if they are healthy.

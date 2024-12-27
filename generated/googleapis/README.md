@@ -208,6 +208,13 @@ Provisions and manages developers' App Engine applications.
 - [Original documentation](https://cloud.google.com/app-hub/docs/)
 - [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/apphub_v1/apphub_v1-library.html)
 
+#### Places Insights API - `areainsights/v1`
+
+Places Insights API.
+
+- [Original documentation](https://g3doc.corp.google.com/geo/platform/area_insights/README.md?cl=head)
+- [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/areainsights_v1/areainsights_v1-library.html)
+
 #### Artifact Registry API - `artifactregistry/v1`
 
 Store and manage build artifacts in a scalable and integrated service built on Google infrastructure.
