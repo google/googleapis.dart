@@ -2,9 +2,10 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:source_helper/source_helper.dart';
+
 import 'dart_api_library.dart';
 import 'namer.dart';
-import 'utils.dart';
 
 /// Generates code for expanding a URI template.
 abstract class Part {
@@ -26,7 +27,7 @@ class StringPart extends Part {
 
   @override
   String stringExpression(Identifier? variable) =>
-      "'${escapeString(staticString!)}'";
+      escapeDartString(staticString!);
 }
 
 /// Represents a URI Template variable expression of the form {var}

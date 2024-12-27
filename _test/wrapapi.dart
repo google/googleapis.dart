@@ -31,11 +31,16 @@ final requestHeaders = {
 class WrapApi {
   final commons.ApiRequester _requester;
 
-  WrapApi(http.Client client,
-      {core.String rootUrl = 'http://localhost:9090/',
-      core.String servicePath = 'api/wrapApi/0.1/'})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  WrapApi(
+    http.Client client, {
+    core.String rootUrl = 'http://localhost:9090/',
+    core.String servicePath = 'api/wrapApi/0.1/',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 
   /// [request] - The metadata request object.
   ///
@@ -52,13 +57,10 @@ class WrapApi {
     final body_ = convert.json.encode(request);
     const url_ = 'helloPost';
 
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-    );
+    final response_ = await _requester.request(url_, 'POST', body: body_);
     return WrapResponse.fromJson(
-        (response_ as core.Map)['data'] as core.Map<core.String, core.dynamic>);
+      (response_ as core.Map)['data'] as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -73,8 +75,9 @@ class Empty {
   Empty();
 
   Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map json_);
+    // ignore: avoid_unused_constructor_parameters
+    core.Map json_,
+  );
 
   core.Map<core.String, core.dynamic> toJson() => {};
 }
@@ -83,16 +86,12 @@ class WrapRequest {
   core.int? age;
   core.String? name;
 
-  WrapRequest({
-    this.age,
-    this.name,
-  });
+  WrapRequest({this.age, this.name});
 
   WrapRequest.fromJson(core.Map json_)
       : this(
-          age: json_['age'] as core.int?,
-          name: json_['name'] as core.String?,
-        );
+            age: json_['age'] as core.int?,
+            name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (age != null) 'age': age!,
@@ -103,14 +102,10 @@ class WrapRequest {
 class WrapResponse {
   core.String? result;
 
-  WrapResponse({
-    this.result,
-  });
+  WrapResponse({this.result});
 
   WrapResponse.fromJson(core.Map json_)
-      : this(
-          result: json_['result'] as core.String?,
-        );
+      : this(result: json_['result'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (result != null) 'result': result!,

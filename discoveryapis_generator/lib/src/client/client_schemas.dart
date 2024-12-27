@@ -2,6 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:source_helper/source_helper.dart';
+
 import '../dart_api_library.dart';
 import '../dart_comments.dart';
 import '../dart_schema_type.dart';
@@ -33,9 +35,9 @@ class ClientObjectType extends ObjectType {
       // and the variant discriminator is final.
       if (!isVariantDiscriminator(property)) {
         final decodeString = property.type
-            .jsonDecode("json_['${escapeString(property.jsonName)}']");
+            .jsonDecode('json_[${escapeDartString(property.jsonName)}]');
         fromJsonString.writeln(
-          "    if (json_.containsKey('${escapeString(property.jsonName)}')) {",
+          'if (json_.containsKey(${escapeDartString(property.jsonName)})) {',
         );
         fromJsonString
             .writeln('      message.${property.name} = $decodeString;');
@@ -54,7 +56,7 @@ class ClientObjectType extends ObjectType {
     for (var property in properties) {
       toJsonString.writeln('    if (message.${property.name} != null) {');
       toJsonString.writeln(
-        "      json_['${escapeString(property.jsonName)}'] = "
+        '      json_[${escapeDartString(property.jsonName)}] = '
         '${property.type.jsonEncode('message.${property.name}!')};',
       );
       toJsonString.writeln('    }');

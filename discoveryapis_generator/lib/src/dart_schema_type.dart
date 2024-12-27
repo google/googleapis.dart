@@ -1,11 +1,11 @@
 import 'package:meta/meta.dart';
+import 'package:source_helper/source_helper.dart';
 
 import 'dart_api_library.dart';
 import 'dart_comments.dart';
 import 'dart_schemas.dart';
 import 'json_type.dart';
 import 'namer.dart';
-import 'utils.dart';
 
 /// Represents an internal representation used for codegen.
 ///
@@ -75,9 +75,9 @@ abstract class DartSchemaType {
   bool get needsJsonDecoding => jsonDecode('foo') != 'foo';
 
   String decodeFromMap(String jsonName) {
-    final decodeString = jsonDecode("json_['${escapeString(jsonName)}']");
+    final decodeString = jsonDecode('json_[${escapeDartString(jsonName)}]');
 
     return 'json_.containsKey'
-        "('${escapeString(jsonName)}') ? $decodeString : null";
+        '(${escapeDartString(jsonName)}) ? $decodeString : null';
   }
 }

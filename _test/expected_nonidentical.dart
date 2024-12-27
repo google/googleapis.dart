@@ -67,11 +67,16 @@ class ToyApi {
   ComputeResource get compute => ComputeResource(_requester);
   StorageResource get storage => StorageResource(_requester);
 
-  ToyApi(http.Client client,
-      {core.String rootUrl = 'http://localhost:9090/',
-      core.String servicePath = 'api/toyApi/0.1/'})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ToyApi(
+    http.Client client, {
+    core.String rootUrl = 'http://localhost:9090/',
+    core.String servicePath = 'api/toyApi/0.1/',
+  }) : _requester = commons.ApiRequester(
+          client,
+          rootUrl,
+          servicePath,
+          requestHeaders,
+        );
 
   /// Request parameters:
   ///
@@ -83,9 +88,7 @@ class ToyApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> failing({
-    core.String? $fields,
-  }) async {
+  async.Future<void> failing({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -112,9 +115,7 @@ class ToyApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ToyResponse> hello({
-    core.String? $fields,
-  }) async {
+  async.Future<ToyResponse> hello({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -127,7 +128,8 @@ class ToyApi {
       queryParams: queryParams_,
     );
     return ToyResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// [request] - The metadata request object.
@@ -240,10 +242,7 @@ class ToyApi {
       queryParams: queryParams_,
     );
     return (response_ as core.Map<core.String, core.dynamic>).map(
-      (key, value) => core.MapEntry(
-        key,
-        value as core.int,
-      ),
+      (key, value) => core.MapEntry(key, value as core.int),
     );
   }
 
@@ -283,7 +282,8 @@ class ToyApi {
       queryParams: queryParams_,
     );
     return ToyResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// [request] - The metadata request object.
@@ -321,7 +321,8 @@ class ToyApi {
       queryParams: queryParams_,
     );
     return ToyResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Request parameters:
@@ -362,7 +363,8 @@ class ToyApi {
       queryParams: queryParams_,
     );
     return ToyResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// [request] - The metadata request object.
@@ -397,8 +399,11 @@ class ToyApi {
       queryParams: queryParams_,
     );
     return (response_ as core.List)
-        .map((value) =>
-            (value as core.List).map((value) => value as core.String).toList())
+        .map(
+          (value) => (value as core.List)
+              .map((value) => value as core.String)
+              .toList(),
+        )
         .toList();
   }
 
@@ -434,14 +439,16 @@ class ToyApi {
       queryParams: queryParams_,
     );
     return (response_ as core.List)
-        .map((value) => (value as core.Map<core.String, core.dynamic>).map(
-              (key, value) => core.MapEntry(
-                key,
-                (value as core.List)
-                    .map((value) => value as core.String)
-                    .toList(),
-              ),
-            ))
+        .map(
+          (value) => (value as core.Map<core.String, core.dynamic>).map(
+            (key, value) => core.MapEntry(
+              key,
+              (value as core.List)
+                  .map((value) => value as core.String)
+                  .toList(),
+            ),
+          ),
+        )
         .toList();
   }
 
@@ -457,9 +464,7 @@ class ToyApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ToyMapResponse> helloNestedMap({
-    core.String? $fields,
-  }) async {
+  async.Future<ToyMapResponse> helloNestedMap({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -472,7 +477,8 @@ class ToyApi {
       queryParams: queryParams_,
     );
     return ToyMapResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// [request] - The metadata request object.
@@ -510,12 +516,11 @@ class ToyApi {
       (key, value) => core.MapEntry(
         key,
         (value as core.List)
-            .map((value) => (value as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.bool,
-                  ),
-                ))
+            .map(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
+                (key, value) => core.MapEntry(key, value as core.bool),
+              ),
+            )
             .toList(),
       ),
     );
@@ -556,10 +561,7 @@ class ToyApi {
       (key, value) => core.MapEntry(
         key,
         (value as core.Map<core.String, core.dynamic>).map(
-          (key, value) => core.MapEntry(
-            key,
-            value as core.bool,
-          ),
+          (key, value) => core.MapEntry(key, value as core.bool),
         ),
       ),
     );
@@ -597,7 +599,8 @@ class ToyApi {
       queryParams: queryParams_,
     );
     return ToyResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Request parameters:
@@ -612,9 +615,7 @@ class ToyApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ToyResponse> helloReturnNull({
-    core.String? $fields,
-  }) async {
+  async.Future<ToyResponse> helloReturnNull({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -627,7 +628,8 @@ class ToyApi {
       queryParams: queryParams_,
     );
     return ToyResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Request parameters:
@@ -642,9 +644,7 @@ class ToyApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ToyResponse> helloVoid({
-    core.String? $fields,
-  }) async {
+  async.Future<ToyResponse> helloVoid({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -657,7 +657,8 @@ class ToyApi {
       queryParams: queryParams_,
     );
     return ToyResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Request parameters:
@@ -670,9 +671,7 @@ class ToyApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> noop({
-    core.String? $fields,
-  }) async {
+  async.Future<void> noop({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -776,7 +775,8 @@ class ComputeResource {
     );
     if (downloadOptions.isMetadataDownload) {
       return ToyResourceResponse.fromJson(
-          response_ as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>,
+      );
     } else {
       return response_ as commons.Media;
     }
@@ -872,7 +872,8 @@ class ComputeResource {
       queryParams: queryParams_,
     );
     return ToyResourceResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -919,7 +920,8 @@ class StorageResource {
       queryParams: queryParams_,
     );
     return ToyResourceResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -957,14 +959,10 @@ typedef MapOfint = core.Map<core.String, core.int>;
 class NestedResponse {
   core.String? nestedResult;
 
-  NestedResponse({
-    this.nestedResult,
-  });
+  NestedResponse({this.nestedResult});
 
   NestedResponse.fromJson(core.Map json_)
-      : this(
-          nestedResult: json_['nestedResult'] as core.String?,
-        );
+      : this(nestedResult: json_['nestedResult'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nestedResult != null) 'nestedResult': nestedResult!,
@@ -974,14 +972,9 @@ class NestedResponse {
 class ToyAgeRequest {
   core.int? age;
 
-  ToyAgeRequest({
-    this.age,
-  });
+  ToyAgeRequest({this.age});
 
-  ToyAgeRequest.fromJson(core.Map json_)
-      : this(
-          age: json_['age'] as core.int?,
-        );
+  ToyAgeRequest.fromJson(core.Map json_) : this(age: json_['age'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (age != null) 'age': age!,
@@ -1031,21 +1024,17 @@ class ToyMapResponse {
             (key, value) => core.MapEntry(
               key,
               NestedResponse.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
           ),
           msgValue: (json_['msgValue'] as core.List?)
               ?.map((value) => value as core.Map<core.String, core.dynamic>)
               .toList(),
           nullValue: json_.containsKey('nullValue') ? 'NULL_VALUE' : null,
-          properties:
-              (json_['properties'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String?,
-            ),
-          ),
+          properties: (json_['properties']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map((key, value) => core.MapEntry(key, value as core.String?)),
           result: json_['result'] as core.String?,
           v: json_['v'],
         );
@@ -1064,16 +1053,12 @@ class ToyRequest {
   core.int? age;
   core.String? name;
 
-  ToyRequest({
-    this.age,
-    this.name,
-  });
+  ToyRequest({this.age, this.name});
 
   ToyRequest.fromJson(core.Map json_)
       : this(
-          age: json_['age'] as core.int?,
-          name: json_['name'] as core.String?,
-        );
+            age: json_['age'] as core.int?,
+            name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (age != null) 'age': age!,
@@ -1084,14 +1069,10 @@ class ToyRequest {
 class ToyResourceResponse {
   core.String? result;
 
-  ToyResourceResponse({
-    this.result,
-  });
+  ToyResourceResponse({this.result});
 
   ToyResourceResponse.fromJson(core.Map json_)
-      : this(
-          result: json_['result'] as core.String?,
-        );
+      : this(result: json_['result'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (result != null) 'result': result!,
@@ -1101,14 +1082,10 @@ class ToyResourceResponse {
 class ToyResponse {
   core.String? result;
 
-  ToyResponse({
-    this.result,
-  });
+  ToyResponse({this.result});
 
   ToyResponse.fromJson(core.Map json_)
-      : this(
-          result: json_['result'] as core.String?,
-        );
+      : this(result: json_['result'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (result != null) 'result': result!,

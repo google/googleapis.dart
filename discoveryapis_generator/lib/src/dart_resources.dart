@@ -6,6 +6,8 @@
 
 import 'dart:collection';
 
+import 'package:source_helper/source_helper.dart';
+
 import 'dart_api_library.dart';
 import 'dart_comments.dart';
 import 'dart_schema_type.dart';
@@ -276,10 +278,10 @@ class DartResourceMethod {
           expr = param.name.name;
         }
 
-        propertyAssignment = "'${escapeString(param.jsonName!)}': $expr,";
+        propertyAssignment = '${escapeDartString(param.jsonName!)}: $expr,';
       } else {
         final expr = param.type.primitiveEncoding(param.name.name);
-        propertyAssignment = "'${escapeString(param.jsonName!)}': [$expr],";
+        propertyAssignment = '${escapeDartString(param.jsonName!)}: [$expr],';
       }
 
       if (param.required) {
@@ -515,7 +517,7 @@ class DartApiClass extends DartResourceClass {
     for (var scope in scopes) {
       final doc = scope.comment.asDartDoc(2);
       sb.writeln('$doc  static const ${scope.identifier} = '
-          "'${escapeString(scope.url)}';");
+          '${escapeDartString(scope.url)};');
       sb.writeln();
     }
     sb.writeln();
@@ -527,9 +529,9 @@ class DartApiClass extends DartResourceClass {
     final str = StringBuffer();
 
     final parameters = [
-      "${imports.core.ref()}String rootUrl = '${escapeString(rootUrl!)}'",
+      '${imports.core.ref()}String rootUrl = ${escapeDartString(rootUrl!)}',
       '${imports.core.ref()}String servicePath = '
-          "'${escapeString(servicePath!)}'",
+          '${escapeDartString(servicePath!)}',
     ].join(', ');
 
     str.writeln('  $className(${imports.http}.Client client, {$parameters}) :');
