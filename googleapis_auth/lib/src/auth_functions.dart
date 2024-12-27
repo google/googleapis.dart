@@ -17,7 +17,10 @@ import 'utils.dart';
 /// Obtains a [Client] which uses the given [apiKey] for making HTTP
 /// requests.
 ///
-/// {@macro googleapis_auth_baseClient_param}
+/// {@template googleapis_auth_baseClient_param}
+/// If [baseClient] is provided, all HTTP requests will be made with it.
+/// Otherwise, a new [Client] instance will be created.
+/// {@endtemplate}
 ///
 /// Note that the returned client should *only* be used for making HTTP requests
 /// to Google Services. The [apiKey] should not be disclosed to third parties.
