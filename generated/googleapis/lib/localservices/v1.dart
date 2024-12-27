@@ -45,16 +45,11 @@ class LocalservicesApi {
   DetailedLeadReportsResource get detailedLeadReports =>
       DetailedLeadReportsResource(_requester);
 
-  LocalservicesApi(
-    http.Client client, {
-    core.String rootUrl = 'https://localservices.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  LocalservicesApi(http.Client client,
+      {core.String rootUrl = 'https://localservices.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class AccountReportsResource {
@@ -151,9 +146,7 @@ class AccountReportsResource {
       queryParams: queryParams_,
     );
     return GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -253,9 +246,7 @@ class DetailedLeadReportsResource {
       queryParams: queryParams_,
     );
     return GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -351,8 +342,7 @@ class GoogleAdsHomeservicesLocalservicesV1AccountReport {
           aggregatorInfo: json_.containsKey('aggregatorInfo')
               ? GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(
                   json_['aggregatorInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           averageFiveStarRating:
               (json_['averageFiveStarRating'] as core.num?)?.toDouble(),
@@ -430,8 +420,8 @@ class GoogleAdsHomeservicesLocalservicesV1AggregatorInfo {
 
   GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(core.Map json_)
       : this(
-            aggregatorProviderId:
-                json_['aggregatorProviderId'] as core.String?);
+          aggregatorProviderId: json_['aggregatorProviderId'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aggregatorProviderId != null)
@@ -571,19 +561,17 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
   });
 
   GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           accountId: json_['accountId'] as core.String?,
           aggregatorInfo: json_.containsKey('aggregatorInfo')
               ? GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(
                   json_['aggregatorInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           bookingLead: json_.containsKey('bookingLead')
               ? GoogleAdsHomeservicesLocalservicesV1BookingLead.fromJson(
-                  json_['bookingLead'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['bookingLead'] as core.Map<core.String, core.dynamic>)
               : null,
           businessName: json_['businessName'] as core.String?,
           chargeStatus: json_['chargeStatus'] as core.String?,
@@ -598,18 +586,15 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
           leadType: json_['leadType'] as core.String?,
           messageLead: json_.containsKey('messageLead')
               ? GoogleAdsHomeservicesLocalservicesV1MessageLead.fromJson(
-                  json_['messageLead'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['messageLead'] as core.Map<core.String, core.dynamic>)
               : null,
           phoneLead: json_.containsKey('phoneLead')
               ? GoogleAdsHomeservicesLocalservicesV1PhoneLead.fromJson(
-                  json_['phoneLead'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['phoneLead'] as core.Map<core.String, core.dynamic>)
               : null,
           timezone: json_.containsKey('timezone')
               ? GoogleTypeTimeZone.fromJson(
-                  json_['timezone'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['timezone'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -730,15 +715,12 @@ class GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse {
   });
 
   GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           accountReports: (json_['accountReports'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleAdsHomeservicesLocalservicesV1AccountReport.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleAdsHomeservicesLocalservicesV1AccountReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -771,16 +753,12 @@ class GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse {
   });
 
   GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           detailedLeadReports: (json_['detailedLeadReports'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport
-                        .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );

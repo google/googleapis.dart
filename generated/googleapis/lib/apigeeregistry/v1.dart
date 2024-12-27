@@ -59,16 +59,11 @@ class ApigeeRegistryApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ApigeeRegistryApi(
-    http.Client client, {
-    core.String rootUrl = 'https://apigeeregistry.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  ApigeeRegistryApi(http.Client client,
+      {core.String rootUrl = 'https://apigeeregistry.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -115,7 +110,10 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(core.String name, {core.String? $fields}) async {
+  async.Future<Location> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -179,8 +177,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -306,7 +303,10 @@ class ProjectsLocationsApisResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Api> get(core.String name, {core.String? $fields}) async {
+  async.Future<Api> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -436,8 +436,7 @@ class ProjectsLocationsApisResource {
       queryParams: queryParams_,
     );
     return ListApisResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Used to modify a specified API.
@@ -588,8 +587,7 @@ class ProjectsLocationsApisResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -667,7 +665,10 @@ class ProjectsLocationsApisArtifactsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -701,7 +702,10 @@ class ProjectsLocationsApisArtifactsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Artifact> get(core.String name, {core.String? $fields}) async {
+  async.Future<Artifact> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -874,8 +878,7 @@ class ProjectsLocationsApisArtifactsResource {
       queryParams: queryParams_,
     );
     return ListArtifactsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Used to replace a specified artifact.
@@ -1014,8 +1017,7 @@ class ProjectsLocationsApisArtifactsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1075,8 +1077,7 @@ class ProjectsLocationsApisDeploymentsResource {
       queryParams: queryParams_,
     );
     return ApiDeployment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes a specified deployment, all revisions, and all child resources
@@ -1158,8 +1159,7 @@ class ProjectsLocationsApisDeploymentsResource {
       queryParams: queryParams_,
     );
     return ApiDeployment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a specified deployment.
@@ -1197,8 +1197,7 @@ class ProjectsLocationsApisDeploymentsResource {
       queryParams: queryParams_,
     );
     return ApiDeployment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -1317,8 +1316,7 @@ class ProjectsLocationsApisDeploymentsResource {
       queryParams: queryParams_,
     );
     return ListApiDeploymentsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all revisions of a deployment.
@@ -1372,8 +1370,7 @@ class ProjectsLocationsApisDeploymentsResource {
       queryParams: queryParams_,
     );
     return ListApiDeploymentRevisionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Used to modify a specified deployment.
@@ -1427,8 +1424,7 @@ class ProjectsLocationsApisDeploymentsResource {
       queryParams: queryParams_,
     );
     return ApiDeployment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the current revision to a specified prior revision.
@@ -1472,8 +1468,7 @@ class ProjectsLocationsApisDeploymentsResource {
       queryParams: queryParams_,
     );
     return ApiDeployment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1564,8 +1559,7 @@ class ProjectsLocationsApisDeploymentsResource {
       queryParams: queryParams_,
     );
     return ApiDeployment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1616,8 +1610,7 @@ class ProjectsLocationsApisDeploymentsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1695,7 +1688,10 @@ class ProjectsLocationsApisDeploymentsArtifactsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1729,7 +1725,10 @@ class ProjectsLocationsApisDeploymentsArtifactsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Artifact> get(core.String name, {core.String? $fields}) async {
+  async.Future<Artifact> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1845,8 +1844,7 @@ class ProjectsLocationsApisDeploymentsArtifactsResource {
       queryParams: queryParams_,
     );
     return ListArtifactsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Used to replace a specified artifact.
@@ -1949,8 +1947,7 @@ class ProjectsLocationsApisVersionsResource {
       queryParams: queryParams_,
     );
     return ApiVersion.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes a specified version and all of the resources that it owns.
@@ -2014,7 +2011,10 @@ class ProjectsLocationsApisVersionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ApiVersion> get(core.String name, {core.String? $fields}) async {
+  async.Future<ApiVersion> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2027,8 +2027,7 @@ class ProjectsLocationsApisVersionsResource {
       queryParams: queryParams_,
     );
     return ApiVersion.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -2147,8 +2146,7 @@ class ProjectsLocationsApisVersionsResource {
       queryParams: queryParams_,
     );
     return ListApiVersionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Used to modify a specified version.
@@ -2202,8 +2200,7 @@ class ProjectsLocationsApisVersionsResource {
       queryParams: queryParams_,
     );
     return ApiVersion.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2301,8 +2298,7 @@ class ProjectsLocationsApisVersionsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2380,7 +2376,10 @@ class ProjectsLocationsApisVersionsArtifactsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2414,7 +2413,10 @@ class ProjectsLocationsApisVersionsArtifactsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Artifact> get(core.String name, {core.String? $fields}) async {
+  async.Future<Artifact> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2587,8 +2589,7 @@ class ProjectsLocationsApisVersionsArtifactsResource {
       queryParams: queryParams_,
     );
     return ListArtifactsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Used to replace a specified artifact.
@@ -2727,8 +2728,7 @@ class ProjectsLocationsApisVersionsArtifactsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2890,7 +2890,10 @@ class ProjectsLocationsApisVersionsSpecsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ApiSpec> get(core.String name, {core.String? $fields}) async {
+  async.Future<ApiSpec> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3064,8 +3067,7 @@ class ProjectsLocationsApisVersionsSpecsResource {
       queryParams: queryParams_,
     );
     return ListApiSpecsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all revisions of a spec.
@@ -3118,8 +3120,7 @@ class ProjectsLocationsApisVersionsSpecsResource {
       queryParams: queryParams_,
     );
     return ListApiSpecRevisionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Used to modify a specified spec.
@@ -3356,8 +3357,7 @@ class ProjectsLocationsApisVersionsSpecsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3365,8 +3365,8 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsApisVersionsSpecsArtifactsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Creates a specified artifact.
   ///
@@ -3436,7 +3436,10 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3470,7 +3473,10 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Artifact> get(core.String name, {core.String? $fields}) async {
+  async.Future<Artifact> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3643,8 +3649,7 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
       queryParams: queryParams_,
     );
     return ListArtifactsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Used to replace a specified artifact.
@@ -3783,8 +3788,7 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3861,7 +3865,10 @@ class ProjectsLocationsArtifactsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3895,7 +3902,10 @@ class ProjectsLocationsArtifactsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Artifact> get(core.String name, {core.String? $fields}) async {
+  async.Future<Artifact> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4067,8 +4077,7 @@ class ProjectsLocationsArtifactsResource {
       queryParams: queryParams_,
     );
     return ListArtifactsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Used to replace a specified artifact.
@@ -4207,8 +4216,7 @@ class ProjectsLocationsArtifactsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4367,8 +4375,7 @@ class ProjectsLocationsDocumentsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4480,7 +4487,10 @@ class ProjectsLocationsInstancesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Instance> get(core.String name, {core.String? $fields}) async {
+  async.Future<Instance> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4647,8 +4657,7 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4730,7 +4739,10 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4766,7 +4778,10 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4828,8 +4843,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4988,8 +5002,7 @@ class ProjectsLocationsRuntimeResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5068,16 +5081,24 @@ class Api {
 
   Api.fromJson(core.Map json_)
       : this(
-          annotations: (json_['annotations']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           availability: json_['availability'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           recommendedDeployment: json_['recommendedDeployment'] as core.String?,
@@ -5207,9 +5228,14 @@ class ApiDeployment {
   ApiDeployment.fromJson(core.Map json_)
       : this(
           accessGuidance: json_['accessGuidance'] as core.String?,
-          annotations: (json_['annotations']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           apiSpecRevision: json_['apiSpecRevision'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
@@ -5219,7 +5245,10 @@ class ApiDeployment {
           intendedAudience: json_['intendedAudience'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           revisionCreateTime: json_['revisionCreateTime'] as core.String?,
@@ -5373,9 +5402,14 @@ class ApiSpec {
 
   ApiSpec.fromJson(core.Map json_)
       : this(
-          annotations: (json_['annotations']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           contents: json_['contents'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
@@ -5383,7 +5417,10 @@ class ApiSpec {
           hash: json_['hash'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           mimeType: json_['mimeType'] as core.String?,
           name: json_['name'] as core.String?,
@@ -5483,15 +5520,23 @@ class ApiVersion {
 
   ApiVersion.fromJson(core.Map json_)
       : this(
-          annotations: (json_['annotations']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           primarySpec: json_['primarySpec'] as core.String?,
@@ -5605,15 +5650,23 @@ class Artifact {
 
   Artifact.fromJson(core.Map json_)
       : this(
-          annotations: (json_['annotations']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           contents: json_['contents'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           hash: json_['hash'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           mimeType: json_['mimeType'] as core.String?,
           name: json_['name'] as core.String?,
@@ -5690,14 +5743,17 @@ class Binding {
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
 
-  Binding({this.condition, this.members, this.role});
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -5729,7 +5785,11 @@ class Build {
   /// Output only.
   core.String? repo;
 
-  Build({this.commitId, this.commitTime, this.repo});
+  Build({
+    this.commitId,
+    this.commitTime,
+    this.repo,
+  });
 
   Build.fromJson(core.Map json_)
       : this(
@@ -5764,7 +5824,10 @@ class Config {
   /// Output only.
   core.String? location;
 
-  Config({this.cmekKeyName, this.location});
+  Config({
+    this.cmekKeyName,
+    this.location,
+  });
 
   Config.fromJson(core.Map json_)
       : this(
@@ -5888,13 +5951,11 @@ class Instance {
       : this(
           build: json_.containsKey('build')
               ? Build.fromJson(
-                  json_['build'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['build'] as core.Map<core.String, core.dynamic>)
               : null,
           config: json_.containsKey('config')
               ? Config.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_['createTime'] as core.String?,
           name: json_['name'] as core.String?,
@@ -5924,16 +5985,16 @@ class ListApiDeploymentRevisionsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListApiDeploymentRevisionsResponse({this.apiDeployments, this.nextPageToken});
+  ListApiDeploymentRevisionsResponse({
+    this.apiDeployments,
+    this.nextPageToken,
+  });
 
   ListApiDeploymentRevisionsResponse.fromJson(core.Map json_)
       : this(
           apiDeployments: (json_['apiDeployments'] as core.List?)
-              ?.map(
-                (value) => ApiDeployment.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ApiDeployment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -5954,16 +6015,16 @@ class ListApiDeploymentsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListApiDeploymentsResponse({this.apiDeployments, this.nextPageToken});
+  ListApiDeploymentsResponse({
+    this.apiDeployments,
+    this.nextPageToken,
+  });
 
   ListApiDeploymentsResponse.fromJson(core.Map json_)
       : this(
           apiDeployments: (json_['apiDeployments'] as core.List?)
-              ?.map(
-                (value) => ApiDeployment.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ApiDeployment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -5984,16 +6045,16 @@ class ListApiSpecRevisionsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListApiSpecRevisionsResponse({this.apiSpecs, this.nextPageToken});
+  ListApiSpecRevisionsResponse({
+    this.apiSpecs,
+    this.nextPageToken,
+  });
 
   ListApiSpecRevisionsResponse.fromJson(core.Map json_)
       : this(
           apiSpecs: (json_['apiSpecs'] as core.List?)
-              ?.map(
-                (value) => ApiSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ApiSpec.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -6014,16 +6075,16 @@ class ListApiSpecsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListApiSpecsResponse({this.apiSpecs, this.nextPageToken});
+  ListApiSpecsResponse({
+    this.apiSpecs,
+    this.nextPageToken,
+  });
 
   ListApiSpecsResponse.fromJson(core.Map json_)
       : this(
           apiSpecs: (json_['apiSpecs'] as core.List?)
-              ?.map(
-                (value) => ApiSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ApiSpec.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -6044,16 +6105,16 @@ class ListApiVersionsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListApiVersionsResponse({this.apiVersions, this.nextPageToken});
+  ListApiVersionsResponse({
+    this.apiVersions,
+    this.nextPageToken,
+  });
 
   ListApiVersionsResponse.fromJson(core.Map json_)
       : this(
           apiVersions: (json_['apiVersions'] as core.List?)
-              ?.map(
-                (value) => ApiVersion.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ApiVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -6074,16 +6135,16 @@ class ListApisResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListApisResponse({this.apis, this.nextPageToken});
+  ListApisResponse({
+    this.apis,
+    this.nextPageToken,
+  });
 
   ListApisResponse.fromJson(core.Map json_)
       : this(
           apis: (json_['apis'] as core.List?)
-              ?.map(
-                (value) => Api.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Api.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -6104,16 +6165,16 @@ class ListArtifactsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListArtifactsResponse({this.artifacts, this.nextPageToken});
+  ListArtifactsResponse({
+    this.artifacts,
+    this.nextPageToken,
+  });
 
   ListArtifactsResponse.fromJson(core.Map json_)
       : this(
           artifacts: (json_['artifacts'] as core.List?)
-              ?.map(
-                (value) => Artifact.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Artifact.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -6132,16 +6193,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({this.locations, this.nextPageToken});
+  ListLocationsResponse({
+    this.locations,
+    this.nextPageToken,
+  });
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map(
-                (value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -6160,17 +6221,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map(
-                (value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -6226,15 +6287,20 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({this.done, this.error, this.metadata, this.name, this.response});
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -6337,16 +6403,17 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({this.bindings, this.etag, this.version});
+  Policy({
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
   Policy.fromJson(core.Map json_)
       : this(
           bindings: (json_['bindings'] as core.List?)
-              ?.map(
-                (value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -6368,10 +6435,14 @@ class RollbackApiDeploymentRequest {
   /// Required.
   core.String? revisionId;
 
-  RollbackApiDeploymentRequest({this.revisionId});
+  RollbackApiDeploymentRequest({
+    this.revisionId,
+  });
 
   RollbackApiDeploymentRequest.fromJson(core.Map json_)
-      : this(revisionId: json_['revisionId'] as core.String?);
+      : this(
+          revisionId: json_['revisionId'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (revisionId != null) 'revisionId': revisionId!,
@@ -6387,10 +6458,14 @@ class RollbackApiSpecRequest {
   /// Required.
   core.String? revisionId;
 
-  RollbackApiSpecRequest({this.revisionId});
+  RollbackApiSpecRequest({
+    this.revisionId,
+  });
 
   RollbackApiSpecRequest.fromJson(core.Map json_)
-      : this(revisionId: json_['revisionId'] as core.String?);
+      : this(
+          revisionId: json_['revisionId'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (revisionId != null) 'revisionId': revisionId!,
@@ -6406,14 +6481,15 @@ class SetIamPolicyRequest {
   /// reject them.
   Policy? policy;
 
-  SetIamPolicyRequest({this.policy});
+  SetIamPolicyRequest({
+    this.policy,
+  });
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 

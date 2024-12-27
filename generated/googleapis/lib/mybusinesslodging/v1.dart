@@ -49,16 +49,11 @@ class MyBusinessLodgingApi {
 
   LocationsResource get locations => LocationsResource(_requester);
 
-  MyBusinessLodgingApi(
-    http.Client client, {
-    core.String rootUrl = 'https://mybusinesslodging.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  MyBusinessLodgingApi(http.Client client,
+      {core.String rootUrl = 'https://mybusinesslodging.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class LocationsResource {
@@ -201,8 +196,7 @@ class LocationsLodgingResource {
       queryParams: queryParams_,
     );
     return GetGoogleUpdatedLodgingResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1051,7 +1045,11 @@ class EcoCertification {
   /// - "VIREO_SRL" : Vireo Srl.
   core.String? ecoCertificate;
 
-  EcoCertification({this.awarded, this.awardedException, this.ecoCertificate});
+  EcoCertification({
+    this.awarded,
+    this.awardedException,
+    this.ecoCertificate,
+  });
 
   EcoCertification.fromJson(core.Map json_)
       : this(
@@ -1919,15 +1917,17 @@ class GetGoogleUpdatedLodgingResponse {
   /// Required.
   Lodging? lodging;
 
-  GetGoogleUpdatedLodgingResponse({this.diffMask, this.lodging});
+  GetGoogleUpdatedLodgingResponse({
+    this.diffMask,
+    this.lodging,
+  });
 
   GetGoogleUpdatedLodgingResponse.fromJson(core.Map json_)
       : this(
           diffMask: json_['diffMask'] as core.String?,
           lodging: json_.containsKey('lodging')
               ? Lodging.fromJson(
-                  json_['lodging'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['lodging'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2171,15 +2171,12 @@ class GuestUnitFeatures {
           tier: json_['tier'] as core.String?,
           tierException: json_['tierException'] as core.String?,
           totalLivingAreas: json_.containsKey('totalLivingAreas')
-              ? LivingArea.fromJson(
-                  json_['totalLivingAreas']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? LivingArea.fromJson(json_['totalLivingAreas']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           views: json_.containsKey('views')
               ? ViewsFromUnit.fromJson(
-                  json_['views'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['views'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2236,7 +2233,11 @@ class GuestUnitType {
   /// Required.
   core.String? label;
 
-  GuestUnitType({this.codes, this.features, this.label});
+  GuestUnitType({
+    this.codes,
+    this.features,
+    this.label,
+  });
 
   GuestUnitType.fromJson(core.Map json_)
       : this(
@@ -2245,8 +2246,7 @@ class GuestUnitType {
               .toList(),
           features: json_.containsKey('features')
               ? GuestUnitFeatures.fromJson(
-                  json_['features'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['features'] as core.Map<core.String, core.dynamic>)
               : null,
           label: json_['label'] as core.String?,
         );
@@ -2286,34 +2286,24 @@ class HealthAndSafety {
   HealthAndSafety.fromJson(core.Map json_)
       : this(
           enhancedCleaning: json_.containsKey('enhancedCleaning')
-              ? EnhancedCleaning.fromJson(
-                  json_['enhancedCleaning']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? EnhancedCleaning.fromJson(json_['enhancedCleaning']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           increasedFoodSafety: json_.containsKey('increasedFoodSafety')
-              ? IncreasedFoodSafety.fromJson(
-                  json_['increasedFoodSafety']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? IncreasedFoodSafety.fromJson(json_['increasedFoodSafety']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           minimizedContact: json_.containsKey('minimizedContact')
-              ? MinimizedContact.fromJson(
-                  json_['minimizedContact']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? MinimizedContact.fromJson(json_['minimizedContact']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           personalProtection: json_.containsKey('personalProtection')
-              ? PersonalProtection.fromJson(
-                  json_['personalProtection']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? PersonalProtection.fromJson(json_['personalProtection']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           physicalDistancing: json_.containsKey('physicalDistancing')
-              ? PhysicalDistancing.fromJson(
-                  json_['physicalDistancing']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? PhysicalDistancing.fromJson(json_['physicalDistancing']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2578,7 +2568,11 @@ class LanguageSpoken {
   /// the day of the week.
   core.String? spokenException;
 
-  LanguageSpoken({this.languageCode, this.spoken, this.spokenException});
+  LanguageSpoken({
+    this.languageCode,
+    this.spoken,
+    this.spokenException,
+  });
 
   LanguageSpoken.fromJson(core.Map json_)
       : this(
@@ -2624,28 +2618,23 @@ class LivingArea {
       : this(
           accessibility: json_.containsKey('accessibility')
               ? LivingAreaAccessibility.fromJson(
-                  json_['accessibility'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['accessibility'] as core.Map<core.String, core.dynamic>)
               : null,
           eating: json_.containsKey('eating')
               ? LivingAreaEating.fromJson(
-                  json_['eating'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['eating'] as core.Map<core.String, core.dynamic>)
               : null,
           features: json_.containsKey('features')
               ? LivingAreaFeatures.fromJson(
-                  json_['features'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['features'] as core.Map<core.String, core.dynamic>)
               : null,
           layout: json_.containsKey('layout')
               ? LivingAreaLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['layout'] as core.Map<core.String, core.dynamic>)
               : null,
           sleeping: json_.containsKey('sleeping')
               ? LivingAreaSleeping.fromJson(
-                  json_['sleeping'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['sleeping'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4435,120 +4424,92 @@ class Lodging {
       : this(
           accessibility: json_.containsKey('accessibility')
               ? Accessibility.fromJson(
-                  json_['accessibility'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['accessibility'] as core.Map<core.String, core.dynamic>)
               : null,
           activities: json_.containsKey('activities')
               ? Activities.fromJson(
-                  json_['activities'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['activities'] as core.Map<core.String, core.dynamic>)
               : null,
           allUnits: json_.containsKey('allUnits')
               ? GuestUnitFeatures.fromJson(
-                  json_['allUnits'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['allUnits'] as core.Map<core.String, core.dynamic>)
               : null,
           business: json_.containsKey('business')
               ? Business.fromJson(
-                  json_['business'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['business'] as core.Map<core.String, core.dynamic>)
               : null,
           commonLivingArea: json_.containsKey('commonLivingArea')
-              ? LivingArea.fromJson(
-                  json_['commonLivingArea']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? LivingArea.fromJson(json_['commonLivingArea']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           connectivity: json_.containsKey('connectivity')
               ? Connectivity.fromJson(
-                  json_['connectivity'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['connectivity'] as core.Map<core.String, core.dynamic>)
               : null,
           families: json_.containsKey('families')
               ? Families.fromJson(
-                  json_['families'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['families'] as core.Map<core.String, core.dynamic>)
               : null,
           foodAndDrink: json_.containsKey('foodAndDrink')
               ? FoodAndDrink.fromJson(
-                  json_['foodAndDrink'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['foodAndDrink'] as core.Map<core.String, core.dynamic>)
               : null,
           guestUnits: (json_['guestUnits'] as core.List?)
-              ?.map(
-                (value) => GuestUnitType.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GuestUnitType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           healthAndSafety: json_.containsKey('healthAndSafety')
-              ? HealthAndSafety.fromJson(
-                  json_['healthAndSafety']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? HealthAndSafety.fromJson(json_['healthAndSafety']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           housekeeping: json_.containsKey('housekeeping')
               ? Housekeeping.fromJson(
-                  json_['housekeeping'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['housekeeping'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? LodgingMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           parking: json_.containsKey('parking')
               ? Parking.fromJson(
-                  json_['parking'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['parking'] as core.Map<core.String, core.dynamic>)
               : null,
           pets: json_.containsKey('pets')
               ? Pets.fromJson(
-                  json_['pets'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['pets'] as core.Map<core.String, core.dynamic>)
               : null,
           policies: json_.containsKey('policies')
               ? Policies.fromJson(
-                  json_['policies'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policies'] as core.Map<core.String, core.dynamic>)
               : null,
           pools: json_.containsKey('pools')
               ? Pools.fromJson(
-                  json_['pools'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['pools'] as core.Map<core.String, core.dynamic>)
               : null,
           property: json_.containsKey('property')
               ? Property.fromJson(
-                  json_['property'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['property'] as core.Map<core.String, core.dynamic>)
               : null,
           services: json_.containsKey('services')
               ? Services.fromJson(
-                  json_['services'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['services'] as core.Map<core.String, core.dynamic>)
               : null,
           someUnits: json_.containsKey('someUnits')
               ? GuestUnitFeatures.fromJson(
-                  json_['someUnits'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['someUnits'] as core.Map<core.String, core.dynamic>)
               : null,
           sustainability: json_.containsKey('sustainability')
-              ? Sustainability.fromJson(
-                  json_['sustainability']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Sustainability.fromJson(json_['sustainability']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           transportation: json_.containsKey('transportation')
-              ? Transportation.fromJson(
-                  json_['transportation']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Transportation.fromJson(json_['transportation']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           wellness: json_.containsKey('wellness')
               ? Wellness.fromJson(
-                  json_['wellness'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['wellness'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4589,10 +4550,14 @@ class LodgingMetadata {
   /// Required.
   core.String? updateTime;
 
-  LodgingMetadata({this.updateTime});
+  LodgingMetadata({
+    this.updateTime,
+  });
 
   LodgingMetadata.fromJson(core.Map json_)
-      : this(updateTime: json_['updateTime'] as core.String?);
+      : this(
+          updateTime: json_['updateTime'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (updateTime != null) 'updateTime': updateTime!,
@@ -5653,14 +5618,12 @@ class Policies {
               json_['allInclusiveOnlyException'] as core.String?,
           checkinTime: json_.containsKey('checkinTime')
               ? TimeOfDay.fromJson(
-                  json_['checkinTime'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['checkinTime'] as core.Map<core.String, core.dynamic>)
               : null,
           checkinTimeException: json_['checkinTimeException'] as core.String?,
           checkoutTime: json_.containsKey('checkoutTime')
               ? TimeOfDay.fromJson(
-                  json_['checkoutTime'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['checkoutTime'] as core.Map<core.String, core.dynamic>)
               : null,
           checkoutTimeException: json_['checkoutTimeException'] as core.String?,
           kidsStayFree: json_['kidsStayFree'] as core.bool?,
@@ -5671,10 +5634,8 @@ class Policies {
           maxKidsStayFreeCountException:
               json_['maxKidsStayFreeCountException'] as core.String?,
           paymentOptions: json_.containsKey('paymentOptions')
-              ? PaymentOptions.fromJson(
-                  json_['paymentOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? PaymentOptions.fromJson(json_['paymentOptions']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           smokeFreeProperty: json_['smokeFreeProperty'] as core.bool?,
           smokeFreePropertyException:
@@ -6451,11 +6412,8 @@ class Services {
           giftShop: json_['giftShop'] as core.bool?,
           giftShopException: json_['giftShopException'] as core.String?,
           languagesSpoken: (json_['languagesSpoken'] as core.List?)
-              ?.map(
-                (value) => LanguageSpoken.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => LanguageSpoken.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           selfServiceLaundry: json_['selfServiceLaundry'] as core.bool?,
           selfServiceLaundryException:
@@ -6546,35 +6504,26 @@ class Sustainability {
   Sustainability.fromJson(core.Map json_)
       : this(
           energyEfficiency: json_.containsKey('energyEfficiency')
-              ? EnergyEfficiency.fromJson(
-                  json_['energyEfficiency']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? EnergyEfficiency.fromJson(json_['energyEfficiency']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           sustainabilityCertifications:
               json_.containsKey('sustainabilityCertifications')
                   ? SustainabilityCertifications.fromJson(
                       json_['sustainabilityCertifications']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           sustainableSourcing: json_.containsKey('sustainableSourcing')
-              ? SustainableSourcing.fromJson(
-                  json_['sustainableSourcing']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SustainableSourcing.fromJson(json_['sustainableSourcing']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           wasteReduction: json_.containsKey('wasteReduction')
-              ? WasteReduction.fromJson(
-                  json_['wasteReduction']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? WasteReduction.fromJson(json_['wasteReduction']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           waterConservation: json_.containsKey('waterConservation')
-              ? WaterConservation.fromJson(
-                  json_['waterConservation']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? WaterConservation.fromJson(json_['waterConservation']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6656,11 +6605,8 @@ class SustainabilityCertifications {
           breeamCertificationException:
               json_['breeamCertificationException'] as core.String?,
           ecoCertifications: (json_['ecoCertifications'] as core.List?)
-              ?.map(
-                (value) => EcoCertification.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => EcoCertification.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           leedCertification: json_['leedCertification'] as core.String?,
           leedCertificationException:

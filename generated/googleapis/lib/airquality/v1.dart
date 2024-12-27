@@ -56,16 +56,11 @@ class AirQualityApi {
   HistoryResource get history => HistoryResource(_requester);
   MapTypesResource get mapTypes => MapTypesResource(_requester);
 
-  AirQualityApi(
-    http.Client client, {
-    core.String rootUrl = 'https://airquality.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  AirQualityApi(http.Client client,
+      {core.String rootUrl = 'https://airquality.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class CurrentConditionsResource {
@@ -111,8 +106,7 @@ class CurrentConditionsResource {
       queryParams: queryParams_,
     );
     return LookupCurrentConditionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -156,8 +150,7 @@ class ForecastResource {
       queryParams: queryParams_,
     );
     return LookupForecastResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -201,8 +194,7 @@ class HistoryResource {
       queryParams: queryParams_,
     );
     return LookupHistoryResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -300,7 +292,10 @@ class AdditionalInfo {
   /// Text representing the pollutant's main emission sources.
   core.String? sources;
 
-  AdditionalInfo({this.effects, this.sources});
+  AdditionalInfo({
+    this.effects,
+    this.sources,
+  });
 
   AdditionalInfo.fromJson(core.Map json_)
       : this(
@@ -379,8 +374,7 @@ class AirQualityIndex {
           code: json_['code'] as core.String?,
           color: json_.containsKey('color')
               ? Color.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['color'] as core.Map<core.String, core.dynamic>)
               : null,
           displayName: json_['displayName'] as core.String?,
           dominantPollutant: json_['dominantPollutant'] as core.String?,
@@ -461,7 +455,10 @@ class Concentration {
   /// Value of the pollutant concentration.
   core.double? value;
 
-  Concentration({this.units, this.value});
+  Concentration({
+    this.units,
+    this.value,
+  });
 
   Concentration.fromJson(core.Map json_)
       : this(
@@ -493,7 +490,10 @@ class CustomLocalAqi {
   /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
   core.String? regionCode;
 
-  CustomLocalAqi({this.aqi, this.regionCode});
+  CustomLocalAqi({
+    this.aqi,
+    this.regionCode,
+  });
 
   CustomLocalAqi.fromJson(core.Map json_)
       : this(
@@ -613,24 +613,16 @@ class HourInfo {
       : this(
           dateTime: json_['dateTime'] as core.String?,
           healthRecommendations: json_.containsKey('healthRecommendations')
-              ? HealthRecommendations.fromJson(
-                  json_['healthRecommendations']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? HealthRecommendations.fromJson(json_['healthRecommendations']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           indexes: (json_['indexes'] as core.List?)
-              ?.map(
-                (value) => AirQualityIndex.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AirQualityIndex.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           pollutants: (json_['pollutants'] as core.List?)
-              ?.map(
-                (value) => Pollutant.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Pollutant.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -686,24 +678,16 @@ class HourlyForecast {
       : this(
           dateTime: json_['dateTime'] as core.String?,
           healthRecommendations: json_.containsKey('healthRecommendations')
-              ? HealthRecommendations.fromJson(
-                  json_['healthRecommendations']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? HealthRecommendations.fromJson(json_['healthRecommendations']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           indexes: (json_['indexes'] as core.List?)
-              ?.map(
-                (value) => AirQualityIndex.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AirQualityIndex.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           pollutants: (json_['pollutants'] as core.List?)
-              ?.map(
-                (value) => Pollutant.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Pollutant.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -823,11 +807,8 @@ class LookupCurrentConditionsRequest {
   LookupCurrentConditionsRequest.fromJson(core.Map json_)
       : this(
           customLocalAqis: (json_['customLocalAqis'] as core.List?)
-              ?.map(
-                (value) => CustomLocalAqi.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CustomLocalAqi.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           extraComputations: (json_['extraComputations'] as core.List?)
               ?.map((value) => value as core.String)
@@ -835,8 +816,7 @@ class LookupCurrentConditionsRequest {
           languageCode: json_['languageCode'] as core.String?,
           location: json_.containsKey('location')
               ? LatLng.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
           uaqiColorPalette: json_['uaqiColorPalette'] as core.String?,
           universalAqi: json_['universalAqi'] as core.bool?,
@@ -899,24 +879,16 @@ class LookupCurrentConditionsResponse {
       : this(
           dateTime: json_['dateTime'] as core.String?,
           healthRecommendations: json_.containsKey('healthRecommendations')
-              ? HealthRecommendations.fromJson(
-                  json_['healthRecommendations']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? HealthRecommendations.fromJson(json_['healthRecommendations']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           indexes: (json_['indexes'] as core.List?)
-              ?.map(
-                (value) => AirQualityIndex.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AirQualityIndex.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           pollutants: (json_['pollutants'] as core.List?)
-              ?.map(
-                (value) => Pollutant.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Pollutant.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           regionCode: json_['regionCode'] as core.String?,
         );
@@ -1031,11 +1003,8 @@ class LookupForecastRequest {
   LookupForecastRequest.fromJson(core.Map json_)
       : this(
           customLocalAqis: (json_['customLocalAqis'] as core.List?)
-              ?.map(
-                (value) => CustomLocalAqi.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CustomLocalAqi.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           dateTime: json_['dateTime'] as core.String?,
           extraComputations: (json_['extraComputations'] as core.List?)
@@ -1044,15 +1013,13 @@ class LookupForecastRequest {
           languageCode: json_['languageCode'] as core.String?,
           location: json_.containsKey('location')
               ? LatLng.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
           pageSize: json_['pageSize'] as core.int?,
           pageToken: json_['pageToken'] as core.String?,
           period: json_.containsKey('period')
               ? Interval.fromJson(
-                  json_['period'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['period'] as core.Map<core.String, core.dynamic>)
               : null,
           uaqiColorPalette: json_['uaqiColorPalette'] as core.String?,
           universalAqi: json_['universalAqi'] as core.bool?,
@@ -1105,11 +1072,8 @@ class LookupForecastResponse {
   LookupForecastResponse.fromJson(core.Map json_)
       : this(
           hourlyForecasts: (json_['hourlyForecasts'] as core.List?)
-              ?.map(
-                (value) => HourlyForecast.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => HourlyForecast.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           regionCode: json_['regionCode'] as core.String?,
@@ -1236,11 +1200,8 @@ class LookupHistoryRequest {
   LookupHistoryRequest.fromJson(core.Map json_)
       : this(
           customLocalAqis: (json_['customLocalAqis'] as core.List?)
-              ?.map(
-                (value) => CustomLocalAqi.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CustomLocalAqi.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           dateTime: json_['dateTime'] as core.String?,
           extraComputations: (json_['extraComputations'] as core.List?)
@@ -1250,15 +1211,13 @@ class LookupHistoryRequest {
           languageCode: json_['languageCode'] as core.String?,
           location: json_.containsKey('location')
               ? LatLng.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
           pageSize: json_['pageSize'] as core.int?,
           pageToken: json_['pageToken'] as core.String?,
           period: json_.containsKey('period')
               ? Interval.fromJson(
-                  json_['period'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['period'] as core.Map<core.String, core.dynamic>)
               : null,
           uaqiColorPalette: json_['uaqiColorPalette'] as core.String?,
           universalAqi: json_['universalAqi'] as core.bool?,
@@ -1302,16 +1261,17 @@ class LookupHistoryResponse {
   /// Optional.
   core.String? regionCode;
 
-  LookupHistoryResponse({this.hoursInfo, this.nextPageToken, this.regionCode});
+  LookupHistoryResponse({
+    this.hoursInfo,
+    this.nextPageToken,
+    this.regionCode,
+  });
 
   LookupHistoryResponse.fromJson(core.Map json_)
       : this(
           hoursInfo: (json_['hoursInfo'] as core.List?)
-              ?.map(
-                (value) => HourInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => HourInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           regionCode: json_['regionCode'] as core.String?,
@@ -1362,16 +1322,13 @@ class Pollutant {
   Pollutant.fromJson(core.Map json_)
       : this(
           additionalInfo: json_.containsKey('additionalInfo')
-              ? AdditionalInfo.fromJson(
-                  json_['additionalInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AdditionalInfo.fromJson(json_['additionalInfo']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           code: json_['code'] as core.String?,
           concentration: json_.containsKey('concentration')
               ? Concentration.fromJson(
-                  json_['concentration'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['concentration'] as core.Map<core.String, core.dynamic>)
               : null,
           displayName: json_['displayName'] as core.String?,
           fullName: json_['fullName'] as core.String?,

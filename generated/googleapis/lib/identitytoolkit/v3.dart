@@ -49,16 +49,11 @@ class IdentityToolkitApi {
 
   RelyingpartyResource get relyingparty => RelyingpartyResource(_requester);
 
-  IdentityToolkitApi(
-    http.Client client, {
-    core.String rootUrl = 'https://www.googleapis.com/',
-    core.String servicePath = 'identitytoolkit/v3/relyingparty/',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  IdentityToolkitApi(http.Client client,
+      {core.String rootUrl = 'https://www.googleapis.com/',
+      core.String servicePath = 'identitytoolkit/v3/relyingparty/'})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class RelyingpartyResource {
@@ -100,8 +95,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return CreateAuthUriResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete user account.
@@ -138,8 +132,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return DeleteAccountResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Batch download user accounts.
@@ -176,8 +169,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return DownloadAccountResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Reset password for a user.
@@ -214,8 +206,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return EmailLinkSigninResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the account info.
@@ -252,8 +243,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return GetAccountInfoResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a code for user action confirmation.
@@ -290,8 +280,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return GetOobConfirmationCodeResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get project configuration.
@@ -333,8 +322,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get token signing public key.
@@ -366,7 +354,10 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return (response_ as core.Map<core.String, core.dynamic>).map(
-      (key, value) => core.MapEntry(key, value as core.String),
+      (key, value) => core.MapEntry(
+        key,
+        value as core.String,
+      ),
     );
   }
 
@@ -399,8 +390,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return GetRecaptchaParamResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Reset password for a user.
@@ -437,8 +427,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return ResetPasswordResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Send SMS verification code.
@@ -477,8 +466,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return IdentitytoolkitRelyingpartySendVerificationCodeResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Set account info for a user.
@@ -515,8 +503,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return SetAccountInfoResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Set project configuration.
@@ -554,8 +541,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sign out user.
@@ -592,8 +578,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Signup new user.
@@ -630,8 +615,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return SignupNewUserResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Batch upload existing user accounts.
@@ -668,8 +652,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return UploadAccountResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Verifies the assertion returned by the IdP.
@@ -706,8 +689,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return VerifyAssertionResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Verifies the developer asserted ID token.
@@ -744,8 +726,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return VerifyCustomTokenResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Verifies the user entered password.
@@ -782,8 +763,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return VerifyPasswordResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Verifies ownership of a phone number and creates/updates the user account
@@ -822,8 +802,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -905,10 +884,14 @@ class DeleteAccountResponse {
   /// The fixed string "identitytoolkit#DeleteAccountResponse".
   core.String? kind;
 
-  DeleteAccountResponse({this.kind});
+  DeleteAccountResponse({
+    this.kind,
+  });
 
   DeleteAccountResponse.fromJson(core.Map json_)
-      : this(kind: json_['kind'] as core.String?);
+      : this(
+          kind: json_['kind'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -928,18 +911,19 @@ class DownloadAccountResponse {
   /// The user accounts data.
   core.List<UserInfo>? users;
 
-  DownloadAccountResponse({this.kind, this.nextPageToken, this.users});
+  DownloadAccountResponse({
+    this.kind,
+    this.nextPageToken,
+    this.users,
+  });
 
   DownloadAccountResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           users: (json_['users'] as core.List?)
-              ?.map(
-                (value) => UserInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => UserInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1062,17 +1046,17 @@ class GetAccountInfoResponse {
   /// The info of the users.
   core.List<UserInfo>? users;
 
-  GetAccountInfoResponse({this.kind, this.users});
+  GetAccountInfoResponse({
+    this.kind,
+    this.users,
+  });
 
   GetAccountInfoResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
           users: (json_['users'] as core.List?)
-              ?.map(
-                (value) => UserInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => UserInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1094,7 +1078,11 @@ class GetOobConfirmationCodeResponse {
   /// The code to be send to the user.
   core.String? oobCode;
 
-  GetOobConfirmationCodeResponse({this.email, this.kind, this.oobCode});
+  GetOobConfirmationCodeResponse({
+    this.email,
+    this.kind,
+    this.oobCode,
+  });
 
   GetOobConfirmationCodeResponse.fromJson(core.Map json_)
       : this(
@@ -1238,9 +1226,14 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
           clientId: json_['clientId'] as core.String?,
           context: json_['context'] as core.String?,
           continueUri: json_['continueUri'] as core.String?,
-          customParameter: (json_['customParameter']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          customParameter:
+              (json_['customParameter'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           hostedDomain: json_['hostedDomain'] as core.String?,
           identifier: json_['identifier'] as core.String?,
           oauthConsumerKey: json_['oauthConsumerKey'] as core.String?,
@@ -1497,40 +1490,29 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
               ?.map((value) => value as core.String)
               .toList(),
           changeEmailTemplate: json_.containsKey('changeEmailTemplate')
-              ? EmailTemplate.fromJson(
-                  json_['changeEmailTemplate']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? EmailTemplate.fromJson(json_['changeEmailTemplate']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           dynamicLinksDomain: json_['dynamicLinksDomain'] as core.String?,
           enableAnonymousUser: json_['enableAnonymousUser'] as core.bool?,
           idpConfig: (json_['idpConfig'] as core.List?)
-              ?.map(
-                (value) => IdpConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => IdpConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           legacyResetPasswordTemplate:
               json_.containsKey('legacyResetPasswordTemplate')
-                  ? EmailTemplate.fromJson(
-                      json_['legacyResetPasswordTemplate']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                  ? EmailTemplate.fromJson(json_['legacyResetPasswordTemplate']
+                      as core.Map<core.String, core.dynamic>)
                   : null,
           projectId: json_['projectId'] as core.String?,
           resetPasswordTemplate: json_.containsKey('resetPasswordTemplate')
-              ? EmailTemplate.fromJson(
-                  json_['resetPasswordTemplate']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? EmailTemplate.fromJson(json_['resetPasswordTemplate']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           useEmailSending: json_['useEmailSending'] as core.bool?,
           verifyEmailTemplate: json_.containsKey('verifyEmailTemplate')
-              ? EmailTemplate.fromJson(
-                  json_['verifyEmailTemplate']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? EmailTemplate.fromJson(json_['verifyEmailTemplate']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1619,8 +1601,8 @@ class IdentitytoolkitRelyingpartySendVerificationCodeRequest {
   });
 
   IdentitytoolkitRelyingpartySendVerificationCodeRequest.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           iosReceipt: json_['iosReceipt'] as core.String?,
           iosSecret: json_['iosSecret'] as core.String?,
           phoneNumber: json_['phoneNumber'] as core.String?,
@@ -1640,11 +1622,15 @@ class IdentitytoolkitRelyingpartySendVerificationCodeResponse {
   /// Encrypted session information
   core.String? sessionInfo;
 
-  IdentitytoolkitRelyingpartySendVerificationCodeResponse({this.sessionInfo});
+  IdentitytoolkitRelyingpartySendVerificationCodeResponse({
+    this.sessionInfo,
+  });
 
   IdentitytoolkitRelyingpartySendVerificationCodeResponse.fromJson(
-    core.Map json_,
-  ) : this(sessionInfo: json_['sessionInfo'] as core.String?);
+      core.Map json_)
+      : this(
+          sessionInfo: json_['sessionInfo'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sessionInfo != null) 'sessionInfo': sessionInfo!,
@@ -1873,40 +1859,29 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
               ?.map((value) => value as core.String)
               .toList(),
           changeEmailTemplate: json_.containsKey('changeEmailTemplate')
-              ? EmailTemplate.fromJson(
-                  json_['changeEmailTemplate']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? EmailTemplate.fromJson(json_['changeEmailTemplate']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           delegatedProjectNumber:
               json_['delegatedProjectNumber'] as core.String?,
           enableAnonymousUser: json_['enableAnonymousUser'] as core.bool?,
           idpConfig: (json_['idpConfig'] as core.List?)
-              ?.map(
-                (value) => IdpConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => IdpConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           legacyResetPasswordTemplate:
               json_.containsKey('legacyResetPasswordTemplate')
-                  ? EmailTemplate.fromJson(
-                      json_['legacyResetPasswordTemplate']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                  ? EmailTemplate.fromJson(json_['legacyResetPasswordTemplate']
+                      as core.Map<core.String, core.dynamic>)
                   : null,
           resetPasswordTemplate: json_.containsKey('resetPasswordTemplate')
-              ? EmailTemplate.fromJson(
-                  json_['resetPasswordTemplate']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? EmailTemplate.fromJson(json_['resetPasswordTemplate']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           useEmailSending: json_['useEmailSending'] as core.bool?,
           verifyEmailTemplate: json_.containsKey('verifyEmailTemplate')
-              ? EmailTemplate.fromJson(
-                  json_['verifyEmailTemplate']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? EmailTemplate.fromJson(json_['verifyEmailTemplate']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1936,10 +1911,14 @@ class IdentitytoolkitRelyingpartySetProjectConfigResponse {
   /// Project ID of the relying party.
   core.String? projectId;
 
-  IdentitytoolkitRelyingpartySetProjectConfigResponse({this.projectId});
+  IdentitytoolkitRelyingpartySetProjectConfigResponse({
+    this.projectId,
+  });
 
   IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(core.Map json_)
-      : this(projectId: json_['projectId'] as core.String?);
+      : this(
+          projectId: json_['projectId'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (projectId != null) 'projectId': projectId!,
@@ -1976,10 +1955,14 @@ class IdentitytoolkitRelyingpartySignOutUserResponse {
   /// The local ID of the user.
   core.String? localId;
 
-  IdentitytoolkitRelyingpartySignOutUserResponse({this.localId});
+  IdentitytoolkitRelyingpartySignOutUserResponse({
+    this.localId,
+  });
 
   IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(core.Map json_)
-      : this(localId: json_['localId'] as core.String?);
+      : this(
+          localId: json_['localId'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (localId != null) 'localId': localId!,
@@ -2184,11 +2167,8 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
           signerKey: json_['signerKey'] as core.String?,
           targetProjectId: json_['targetProjectId'] as core.String?,
           users: (json_['users'] as core.List?)
-              ?.map(
-                (value) => UserInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => UserInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2866,11 +2846,8 @@ class SetAccountInfoResponse {
           passwordHash: json_['passwordHash'] as core.String?,
           photoUrl: json_['photoUrl'] as core.String?,
           providerUserInfo: (json_['providerUserInfo'] as core.List?)
-              ?.map(
-                (value) => SetAccountInfoResponseProviderUserInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SetAccountInfoResponseProviderUserInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           refreshToken: json_['refreshToken'] as core.String?,
         );
@@ -2955,7 +2932,10 @@ class UploadAccountResponseError {
   /// Detailed error message for the account info.
   core.String? message;
 
-  UploadAccountResponseError({this.index, this.message});
+  UploadAccountResponseError({
+    this.index,
+    this.message,
+  });
 
   UploadAccountResponseError.fromJson(core.Map json_)
       : this(
@@ -2977,16 +2957,16 @@ class UploadAccountResponse {
   /// The fixed string "identitytoolkit#UploadAccountResponse".
   core.String? kind;
 
-  UploadAccountResponse({this.error, this.kind});
+  UploadAccountResponse({
+    this.error,
+    this.kind,
+  });
 
   UploadAccountResponse.fromJson(core.Map json_)
       : this(
           error: (json_['error'] as core.List?)
-              ?.map(
-                (value) => UploadAccountResponseError.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => UploadAccountResponseError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -3171,11 +3151,8 @@ class UserInfo {
           phoneNumber: json_['phoneNumber'] as core.String?,
           photoUrl: json_['photoUrl'] as core.String?,
           providerUserInfo: (json_['providerUserInfo'] as core.List?)
-              ?.map(
-                (value) => UserInfoProviderUserInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => UserInfoProviderUserInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           rawPassword: json_['rawPassword'] as core.String?,
           salt: json_['salt'] as core.String?,

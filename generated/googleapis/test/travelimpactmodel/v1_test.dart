@@ -26,7 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.Flight> buildUnnamed0() => [buildFlight(), buildFlight()];
+core.List<api.Flight> buildUnnamed0() => [
+      buildFlight(),
+      buildFlight(),
+    ];
 
 void checkUnnamed0(core.List<api.Flight> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -101,9 +104,18 @@ api.Date buildDate() {
 void checkDate(api.Date o) {
   buildCounterDate++;
   if (buildCounterDate < 3) {
-    unittest.expect(o.day!, unittest.equals(42));
-    unittest.expect(o.month!, unittest.equals(42));
-    unittest.expect(o.year!, unittest.equals(42));
+    unittest.expect(
+      o.day!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.month!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.year!,
+      unittest.equals(42),
+    );
   }
   buildCounterDate--;
 }
@@ -125,10 +137,22 @@ api.EmissionsGramsPerPax buildEmissionsGramsPerPax() {
 void checkEmissionsGramsPerPax(api.EmissionsGramsPerPax o) {
   buildCounterEmissionsGramsPerPax++;
   if (buildCounterEmissionsGramsPerPax < 3) {
-    unittest.expect(o.business!, unittest.equals(42));
-    unittest.expect(o.economy!, unittest.equals(42));
-    unittest.expect(o.first!, unittest.equals(42));
-    unittest.expect(o.premiumEconomy!, unittest.equals(42));
+    unittest.expect(
+      o.business!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.economy!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.first!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.premiumEconomy!,
+      unittest.equals(42),
+    );
   }
   buildCounterEmissionsGramsPerPax--;
 }
@@ -152,10 +176,22 @@ void checkFlight(api.Flight o) {
   buildCounterFlight++;
   if (buildCounterFlight < 3) {
     checkDate(o.departureDate!);
-    unittest.expect(o.destination!, unittest.equals('foo'));
-    unittest.expect(o.flightNumber!, unittest.equals(42));
-    unittest.expect(o.operatingCarrierCode!, unittest.equals('foo'));
-    unittest.expect(o.origin!, unittest.equals('foo'));
+    unittest.expect(
+      o.destination!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.flightNumber!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.operatingCarrierCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.origin!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterFlight--;
 }
@@ -198,10 +234,22 @@ api.ModelVersion buildModelVersion() {
 void checkModelVersion(api.ModelVersion o) {
   buildCounterModelVersion++;
   if (buildCounterModelVersion < 3) {
-    unittest.expect(o.dated!, unittest.equals('foo'));
-    unittest.expect(o.major!, unittest.equals(42));
-    unittest.expect(o.minor!, unittest.equals(42));
-    unittest.expect(o.patch!, unittest.equals(42));
+    unittest.expect(
+      o.dated!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.major!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.minor!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.patch!,
+      unittest.equals(42),
+    );
   }
   buildCounterModelVersion--;
 }
@@ -212,8 +260,7 @@ void main() {
       final o = buildComputeFlightEmissionsRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ComputeFlightEmissionsRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkComputeFlightEmissionsRequest(od);
     });
   });
@@ -223,8 +270,7 @@ void main() {
       final o = buildComputeFlightEmissionsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ComputeFlightEmissionsResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkComputeFlightEmissionsResponse(od);
     });
   });
@@ -233,9 +279,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildDate();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Date.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Date.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDate(od);
     });
   });
@@ -245,8 +290,7 @@ void main() {
       final o = buildEmissionsGramsPerPax();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.EmissionsGramsPerPax.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkEmissionsGramsPerPax(od);
     });
   });
@@ -255,9 +299,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildFlight();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Flight.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Flight.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkFlight(od);
     });
   });
@@ -267,8 +310,7 @@ void main() {
       final o = buildFlightWithEmissions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.FlightWithEmissions.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkFlightWithEmissions(od);
     });
   });
@@ -278,8 +320,7 @@ void main() {
       final o = buildModelVersion();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ModelVersion.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkModelVersion(od);
     });
   });
@@ -290,63 +331,56 @@ void main() {
       final res = api.TravelImpactModelApi(mock).flights;
       final arg_request = buildComputeFlightEmissionsRequest();
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.ComputeFlightEmissionsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkComputeFlightEmissionsRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ComputeFlightEmissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkComputeFlightEmissionsRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 33),
-            unittest.equals('v1/flights:computeFlightEmissions'),
-          );
-          pathOffset += 33;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 33),
+          unittest.equals('v1/flights:computeFlightEmissions'),
+        );
+        pathOffset += 33;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildComputeFlightEmissionsResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.computeFlightEmissions(
-        arg_request,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildComputeFlightEmissionsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.computeFlightEmissions(arg_request, $fields: arg_$fields);
       checkComputeFlightEmissionsResponse(
-        response as api.ComputeFlightEmissionsResponse,
-      );
+          response as api.ComputeFlightEmissionsResponse);
     });
   });
 }

@@ -55,16 +55,11 @@ class Oauth2Api {
 
   UserinfoResource get userinfo => UserinfoResource(_requester);
 
-  Oauth2Api(
-    http.Client client, {
-    core.String rootUrl = 'https://www.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  Oauth2Api(http.Client client,
+      {core.String rootUrl = 'https://www.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 
   /// Request parameters:
   ///
@@ -123,7 +118,9 @@ class UserinfoResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Userinfo> get({core.String? $fields}) async {
+  async.Future<Userinfo> get({
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -164,7 +161,9 @@ class UserinfoV2MeResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Userinfo> get({core.String? $fields}) async {
+  async.Future<Userinfo> get({
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };

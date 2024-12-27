@@ -45,12 +45,21 @@ void checkEmptyResponse(api.EmptyResponse o) {
   buildCounterEmptyResponse--;
 }
 
-core.List<core.String> buildUnnamed0() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed0() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed0(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterErrorProto = 0;
@@ -74,12 +83,30 @@ void checkErrorProto(api.ErrorProto o) {
   buildCounterErrorProto++;
   if (buildCounterErrorProto < 3) {
     checkUnnamed0(o.argument!);
-    unittest.expect(o.code!, unittest.equals('foo'));
-    unittest.expect(o.debugInfo!, unittest.equals('foo'));
-    unittest.expect(o.domain!, unittest.equals('foo'));
-    unittest.expect(o.externalErrorMessage!, unittest.equals('foo'));
-    unittest.expect(o.location!, unittest.equals('foo'));
-    unittest.expect(o.locationType!, unittest.equals('foo'));
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.debugInfo!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.domain!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.externalErrorMessage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.locationType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterErrorProto--;
 }
@@ -111,9 +138,15 @@ api.Errors buildErrors() {
 void checkErrors(api.Errors o) {
   buildCounterErrors++;
   if (buildCounterErrors < 3) {
-    unittest.expect(o.code!, unittest.equals('foo'));
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
     checkUnnamed1(o.error!);
-    unittest.expect(o.requestId!, unittest.equals('foo'));
+    unittest.expect(
+      o.requestId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterErrors--;
 }
@@ -139,9 +172,18 @@ void checkGroup(api.Group o) {
   if (buildCounterGroup < 3) {
     checkGroupContentDetails(o.contentDetails!);
     checkErrors(o.errors!);
-    unittest.expect(o.etag!, unittest.equals('foo'));
-    unittest.expect(o.id!, unittest.equals('foo'));
-    unittest.expect(o.kind!, unittest.equals('foo'));
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
     checkGroupSnippet(o.snippet!);
   }
   buildCounterGroup--;
@@ -162,8 +204,14 @@ api.GroupContentDetails buildGroupContentDetails() {
 void checkGroupContentDetails(api.GroupContentDetails o) {
   buildCounterGroupContentDetails++;
   if (buildCounterGroupContentDetails < 3) {
-    unittest.expect(o.itemCount!, unittest.equals('foo'));
-    unittest.expect(o.itemType!, unittest.equals('foo'));
+    unittest.expect(
+      o.itemCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.itemType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGroupContentDetails--;
 }
@@ -188,10 +236,22 @@ void checkGroupItem(api.GroupItem o) {
   buildCounterGroupItem++;
   if (buildCounterGroupItem < 3) {
     checkErrors(o.errors!);
-    unittest.expect(o.etag!, unittest.equals('foo'));
-    unittest.expect(o.groupId!, unittest.equals('foo'));
-    unittest.expect(o.id!, unittest.equals('foo'));
-    unittest.expect(o.kind!, unittest.equals('foo'));
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.groupId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
     checkGroupItemResource(o.resource!);
   }
   buildCounterGroupItem--;
@@ -212,8 +272,14 @@ api.GroupItemResource buildGroupItemResource() {
 void checkGroupItemResource(api.GroupItemResource o) {
   buildCounterGroupItemResource++;
   if (buildCounterGroupItemResource < 3) {
-    unittest.expect(o.id!, unittest.equals('foo'));
-    unittest.expect(o.kind!, unittest.equals('foo'));
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGroupItemResource--;
 }
@@ -233,8 +299,14 @@ api.GroupSnippet buildGroupSnippet() {
 void checkGroupSnippet(api.GroupSnippet o) {
   buildCounterGroupSnippet++;
   if (buildCounterGroupSnippet < 3) {
-    unittest.expect(o.publishedAt!, unittest.equals('foo'));
-    unittest.expect(o.title!, unittest.equals('foo'));
+    unittest.expect(
+      o.publishedAt!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGroupSnippet--;
 }
@@ -268,14 +340,23 @@ void checkListGroupItemsResponse(api.ListGroupItemsResponse o) {
   buildCounterListGroupItemsResponse++;
   if (buildCounterListGroupItemsResponse < 3) {
     checkErrors(o.errors!);
-    unittest.expect(o.etag!, unittest.equals('foo'));
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
     checkUnnamed2(o.items!);
-    unittest.expect(o.kind!, unittest.equals('foo'));
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterListGroupItemsResponse--;
 }
 
-core.List<api.Group> buildUnnamed3() => [buildGroup(), buildGroup()];
+core.List<api.Group> buildUnnamed3() => [
+      buildGroup(),
+      buildGroup(),
+    ];
 
 void checkUnnamed3(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -302,10 +383,19 @@ void checkListGroupsResponse(api.ListGroupsResponse o) {
   buildCounterListGroupsResponse++;
   if (buildCounterListGroupsResponse < 3) {
     checkErrors(o.errors!);
-    unittest.expect(o.etag!, unittest.equals('foo'));
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
     checkUnnamed3(o.items!);
-    unittest.expect(o.kind!, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterListGroupsResponse--;
 }
@@ -325,12 +415,12 @@ core.List<core.Object?> buildUnnamed5() => [
       {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
       {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
     ];
 
@@ -338,14 +428,32 @@ void checkUnnamed5(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1['bool'], unittest.equals(true));
-  unittest.expect(casted1['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted1['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted1['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted1['string'],
+    unittest.equals('foo'),
+  );
   var casted2 = (o[1]) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2['bool'], unittest.equals(true));
-  unittest.expect(casted2['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted2['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted2['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted2['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.List<core.Object?>> buildUnnamed6() => [
@@ -378,7 +486,10 @@ void checkQueryResponse(api.QueryResponse o) {
   if (buildCounterQueryResponse < 3) {
     checkUnnamed4(o.columnHeaders!);
     checkErrors(o.errors!);
-    unittest.expect(o.kind!, unittest.equals('foo'));
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
     checkUnnamed6(o.rows!);
   }
   buildCounterQueryResponse--;
@@ -400,9 +511,18 @@ api.ResultTableColumnHeader buildResultTableColumnHeader() {
 void checkResultTableColumnHeader(api.ResultTableColumnHeader o) {
   buildCounterResultTableColumnHeader++;
   if (buildCounterResultTableColumnHeader < 3) {
-    unittest.expect(o.columnType!, unittest.equals('foo'));
-    unittest.expect(o.dataType!, unittest.equals('foo'));
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.columnType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterResultTableColumnHeader--;
 }
@@ -413,8 +533,7 @@ void main() {
       final o = buildEmptyResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.EmptyResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkEmptyResponse(od);
     });
   });
@@ -423,9 +542,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildErrorProto();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ErrorProto.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.ErrorProto.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkErrorProto(od);
     });
   });
@@ -434,9 +552,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildErrors();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Errors.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Errors.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkErrors(od);
     });
   });
@@ -445,9 +562,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildGroup();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Group.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Group.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGroup(od);
     });
   });
@@ -457,8 +573,7 @@ void main() {
       final o = buildGroupContentDetails();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GroupContentDetails.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGroupContentDetails(od);
     });
   });
@@ -467,9 +582,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildGroupItem();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GroupItem.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.GroupItem.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGroupItem(od);
     });
   });
@@ -479,8 +593,7 @@ void main() {
       final o = buildGroupItemResource();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GroupItemResource.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGroupItemResource(od);
     });
   });
@@ -490,8 +603,7 @@ void main() {
       final o = buildGroupSnippet();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GroupSnippet.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGroupSnippet(od);
     });
   });
@@ -501,8 +613,7 @@ void main() {
       final o = buildListGroupItemsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ListGroupItemsResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkListGroupItemsResponse(od);
     });
   });
@@ -512,8 +623,7 @@ void main() {
       final o = buildListGroupsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ListGroupsResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkListGroupsResponse(od);
     });
   });
@@ -523,8 +633,7 @@ void main() {
       final o = buildQueryResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.QueryResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkQueryResponse(od);
     });
   });
@@ -534,8 +643,7 @@ void main() {
       final o = buildResultTableColumnHeader();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ResultTableColumnHeader.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkResultTableColumnHeader(od);
     });
   });
@@ -547,59 +655,60 @@ void main() {
       final arg_id = 'foo';
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 13),
-            unittest.equals('v2/groupItems'),
-          );
-          pathOffset += 13;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('v2/groupItems'),
+        );
+        pathOffset += 13;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(queryMap['id']!.first, unittest.equals(arg_id));
-          unittest.expect(
-            queryMap['onBehalfOfContentOwner']!.first,
-            unittest.equals(arg_onBehalfOfContentOwner),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['id']!.first,
+          unittest.equals(arg_id),
+        );
+        unittest.expect(
+          queryMap['onBehalfOfContentOwner']!.first,
+          unittest.equals(arg_onBehalfOfContentOwner),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildEmptyResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmptyResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(
-        id: arg_id,
-        onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-        $fields: arg_$fields,
-      );
+          id: arg_id,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          $fields: arg_$fields);
       checkEmptyResponse(response as api.EmptyResponse);
     });
 
@@ -609,63 +718,59 @@ void main() {
       final arg_request = buildGroupItem();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GroupItem.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGroupItem(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GroupItem.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGroupItem(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 13),
-            unittest.equals('v2/groupItems'),
-          );
-          pathOffset += 13;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('v2/groupItems'),
+        );
+        pathOffset += 13;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['onBehalfOfContentOwner']!.first,
-            unittest.equals(arg_onBehalfOfContentOwner),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['onBehalfOfContentOwner']!.first,
+          unittest.equals(arg_onBehalfOfContentOwner),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGroupItem());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.insert(
-        arg_request,
-        onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGroupItem());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.insert(arg_request,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          $fields: arg_$fields);
       checkGroupItem(response as api.GroupItem);
     });
 
@@ -675,62 +780,60 @@ void main() {
       final arg_groupId = 'foo';
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 13),
-            unittest.equals('v2/groupItems'),
-          );
-          pathOffset += 13;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('v2/groupItems'),
+        );
+        pathOffset += 13;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['groupId']!.first,
-            unittest.equals(arg_groupId),
-          );
-          unittest.expect(
-            queryMap['onBehalfOfContentOwner']!.first,
-            unittest.equals(arg_onBehalfOfContentOwner),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['groupId']!.first,
+          unittest.equals(arg_groupId),
+        );
+        unittest.expect(
+          queryMap['onBehalfOfContentOwner']!.first,
+          unittest.equals(arg_onBehalfOfContentOwner),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildListGroupItemsResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListGroupItemsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.list(
-        groupId: arg_groupId,
-        onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-        $fields: arg_$fields,
-      );
+          groupId: arg_groupId,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          $fields: arg_$fields);
       checkListGroupItemsResponse(response as api.ListGroupItemsResponse);
     });
   });
@@ -742,59 +845,60 @@ void main() {
       final arg_id = 'foo';
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 9),
-            unittest.equals('v2/groups'),
-          );
-          pathOffset += 9;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals('v2/groups'),
+        );
+        pathOffset += 9;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(queryMap['id']!.first, unittest.equals(arg_id));
-          unittest.expect(
-            queryMap['onBehalfOfContentOwner']!.first,
-            unittest.equals(arg_onBehalfOfContentOwner),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['id']!.first,
+          unittest.equals(arg_id),
+        );
+        unittest.expect(
+          queryMap['onBehalfOfContentOwner']!.first,
+          unittest.equals(arg_onBehalfOfContentOwner),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildEmptyResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmptyResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(
-        id: arg_id,
-        onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-        $fields: arg_$fields,
-      );
+          id: arg_id,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          $fields: arg_$fields);
       checkEmptyResponse(response as api.EmptyResponse);
     });
 
@@ -804,63 +908,59 @@ void main() {
       final arg_request = buildGroup();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.Group.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGroup(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.Group.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGroup(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 9),
-            unittest.equals('v2/groups'),
-          );
-          pathOffset += 9;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals('v2/groups'),
+        );
+        pathOffset += 9;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['onBehalfOfContentOwner']!.first,
-            unittest.equals(arg_onBehalfOfContentOwner),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['onBehalfOfContentOwner']!.first,
+          unittest.equals(arg_onBehalfOfContentOwner),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGroup());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.insert(
-        arg_request,
-        onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGroup());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.insert(arg_request,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          $fields: arg_$fields);
       checkGroup(response as api.Group);
     });
 
@@ -872,69 +972,70 @@ void main() {
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 9),
-            unittest.equals('v2/groups'),
-          );
-          pathOffset += 9;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals('v2/groups'),
+        );
+        pathOffset += 9;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(queryMap['id']!.first, unittest.equals(arg_id));
-          unittest.expect(
-            queryMap['mine']!.first,
-            unittest.equals('$arg_mine'),
-          );
-          unittest.expect(
-            queryMap['onBehalfOfContentOwner']!.first,
-            unittest.equals(arg_onBehalfOfContentOwner),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['id']!.first,
+          unittest.equals(arg_id),
+        );
+        unittest.expect(
+          queryMap['mine']!.first,
+          unittest.equals('$arg_mine'),
+        );
+        unittest.expect(
+          queryMap['onBehalfOfContentOwner']!.first,
+          unittest.equals(arg_onBehalfOfContentOwner),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildListGroupsResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListGroupsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.list(
-        id: arg_id,
-        mine: arg_mine,
-        onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+          id: arg_id,
+          mine: arg_mine,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkListGroupsResponse(response as api.ListGroupsResponse);
     });
 
@@ -944,63 +1045,59 @@ void main() {
       final arg_request = buildGroup();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.Group.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGroup(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.Group.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGroup(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 9),
-            unittest.equals('v2/groups'),
-          );
-          pathOffset += 9;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals('v2/groups'),
+        );
+        pathOffset += 9;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['onBehalfOfContentOwner']!.first,
-            unittest.equals(arg_onBehalfOfContentOwner),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['onBehalfOfContentOwner']!.first,
+          unittest.equals(arg_onBehalfOfContentOwner),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGroup());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.update(
-        arg_request,
-        onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGroup());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.update(arg_request,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          $fields: arg_$fields);
       checkGroup(response as api.Group);
     });
   });
@@ -1021,101 +1118,105 @@ void main() {
       final arg_startDate = 'foo';
       final arg_startIndex = 42;
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 10),
-            unittest.equals('v2/reports'),
-          );
-          pathOffset += 10;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals('v2/reports'),
+        );
+        pathOffset += 10;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['currency']!.first,
-            unittest.equals(arg_currency),
-          );
-          unittest.expect(
-            queryMap['dimensions']!.first,
-            unittest.equals(arg_dimensions),
-          );
-          unittest.expect(
-            queryMap['endDate']!.first,
-            unittest.equals(arg_endDate),
-          );
-          unittest.expect(
-            queryMap['filters']!.first,
-            unittest.equals(arg_filters),
-          );
-          unittest.expect(queryMap['ids']!.first, unittest.equals(arg_ids));
-          unittest.expect(
-            queryMap['includeHistoricalChannelData']!.first,
-            unittest.equals('$arg_includeHistoricalChannelData'),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['maxResults']!.first),
-            unittest.equals(arg_maxResults),
-          );
-          unittest.expect(
-            queryMap['metrics']!.first,
-            unittest.equals(arg_metrics),
-          );
-          unittest.expect(queryMap['sort']!.first, unittest.equals(arg_sort));
-          unittest.expect(
-            queryMap['startDate']!.first,
-            unittest.equals(arg_startDate),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['startIndex']!.first),
-            unittest.equals(arg_startIndex),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['currency']!.first,
+          unittest.equals(arg_currency),
+        );
+        unittest.expect(
+          queryMap['dimensions']!.first,
+          unittest.equals(arg_dimensions),
+        );
+        unittest.expect(
+          queryMap['endDate']!.first,
+          unittest.equals(arg_endDate),
+        );
+        unittest.expect(
+          queryMap['filters']!.first,
+          unittest.equals(arg_filters),
+        );
+        unittest.expect(
+          queryMap['ids']!.first,
+          unittest.equals(arg_ids),
+        );
+        unittest.expect(
+          queryMap['includeHistoricalChannelData']!.first,
+          unittest.equals('$arg_includeHistoricalChannelData'),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['maxResults']!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap['metrics']!.first,
+          unittest.equals(arg_metrics),
+        );
+        unittest.expect(
+          queryMap['sort']!.first,
+          unittest.equals(arg_sort),
+        );
+        unittest.expect(
+          queryMap['startDate']!.first,
+          unittest.equals(arg_startDate),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['startIndex']!.first),
+          unittest.equals(arg_startIndex),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildQueryResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildQueryResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.query(
-        currency: arg_currency,
-        dimensions: arg_dimensions,
-        endDate: arg_endDate,
-        filters: arg_filters,
-        ids: arg_ids,
-        includeHistoricalChannelData: arg_includeHistoricalChannelData,
-        maxResults: arg_maxResults,
-        metrics: arg_metrics,
-        sort: arg_sort,
-        startDate: arg_startDate,
-        startIndex: arg_startIndex,
-        $fields: arg_$fields,
-      );
+          currency: arg_currency,
+          dimensions: arg_dimensions,
+          endDate: arg_endDate,
+          filters: arg_filters,
+          ids: arg_ids,
+          includeHistoricalChannelData: arg_includeHistoricalChannelData,
+          maxResults: arg_maxResults,
+          metrics: arg_metrics,
+          sort: arg_sort,
+          startDate: arg_startDate,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
       checkQueryResponse(response as api.QueryResponse);
     });
   });

@@ -50,16 +50,11 @@ class CloudDomainsApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  CloudDomainsApi(
-    http.Client client, {
-    core.String rootUrl = 'https://domains.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  CloudDomainsApi(http.Client client,
+      {core.String rootUrl = 'https://domains.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -98,7 +93,10 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(core.String name, {core.String? $fields}) async {
+  async.Future<Location> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -162,8 +160,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -194,7 +191,10 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -256,8 +256,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -554,8 +553,7 @@ class ProjectsLocationsRegistrationsResource {
       queryParams: queryParams_,
     );
     return Registration.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -779,8 +777,7 @@ class ProjectsLocationsRegistrationsResource {
       queryParams: queryParams_,
     );
     return ListRegistrationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates select fields of a `Registration` resource, notably `labels`.
@@ -985,8 +982,7 @@ class ProjectsLocationsRegistrationsResource {
       queryParams: queryParams_,
     );
     return AuthorizationCode.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the authorization code of the `Registration` for the purpose of
@@ -1034,8 +1030,7 @@ class ProjectsLocationsRegistrationsResource {
       queryParams: queryParams_,
     );
     return AuthorizationCode.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the DNS records from the Google Domains DNS zone for domains that
@@ -1088,8 +1083,7 @@ class ProjectsLocationsRegistrationsResource {
       queryParams: queryParams_,
     );
     return RetrieveGoogleDomainsDnsRecordsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the deprecated domain and email forwarding configurations you set up
@@ -1138,8 +1132,7 @@ class ProjectsLocationsRegistrationsResource {
       queryParams: queryParams_,
     );
     return RetrieveGoogleDomainsForwardingConfigResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deprecated: For more information, see
@@ -1197,8 +1190,7 @@ class ProjectsLocationsRegistrationsResource {
       queryParams: queryParams_,
     );
     return RetrieveImportableDomainsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets parameters needed to register a new domain name, including price and
@@ -1245,8 +1237,7 @@ class ProjectsLocationsRegistrationsResource {
       queryParams: queryParams_,
     );
     return RetrieveRegisterParametersResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deprecated: For more information, see
@@ -1300,8 +1291,7 @@ class ProjectsLocationsRegistrationsResource {
       queryParams: queryParams_,
     );
     return RetrieveTransferParametersResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Searches for available domain names similar to the provided query.
@@ -1348,8 +1338,7 @@ class ProjectsLocationsRegistrationsResource {
       queryParams: queryParams_,
     );
     return SearchDomainsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1447,8 +1436,7 @@ class ProjectsLocationsRegistrationsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deprecated: For more information, see
@@ -1542,16 +1530,16 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({this.auditLogConfigs, this.service});
+  AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
 
   AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map(
-                (value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -1577,10 +1565,14 @@ class AuthorizationCode {
   /// It can be used to transfer the domain to or from another registrar.
   core.String? code;
 
-  AuthorizationCode({this.code});
+  AuthorizationCode({
+    this.code,
+  });
 
   AuthorizationCode.fromJson(core.Map json_)
-      : this(code: json_['code'] as core.String?);
+      : this(
+          code: json_['code'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -1667,14 +1659,17 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({this.condition, this.members, this.role});
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1725,10 +1720,8 @@ class ConfigureContactSettingsRequest {
               ?.map((value) => value as core.String)
               .toList(),
           contactSettings: json_.containsKey('contactSettings')
-              ? ContactSettings.fromJson(
-                  json_['contactSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ContactSettings.fromJson(json_['contactSettings']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
           validateOnly: json_['validateOnly'] as core.bool?,
@@ -1773,8 +1766,7 @@ class ConfigureDnsSettingsRequest {
       : this(
           dnsSettings: json_.containsKey('dnsSettings')
               ? DnsSettings.fromJson(
-                  json_['dnsSettings'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['dnsSettings'] as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
           validateOnly: json_['validateOnly'] as core.bool?,
@@ -1809,10 +1801,8 @@ class ConfigureManagementSettingsRequest {
   ConfigureManagementSettingsRequest.fromJson(core.Map json_)
       : this(
           managementSettings: json_.containsKey('managementSettings')
-              ? ManagementSettings.fromJson(
-                  json_['managementSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ManagementSettings.fromJson(json_['managementSettings']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -1848,7 +1838,12 @@ class Contact {
   /// Required.
   PostalAddress? postalAddress;
 
-  Contact({this.email, this.faxNumber, this.phoneNumber, this.postalAddress});
+  Contact({
+    this.email,
+    this.faxNumber,
+    this.phoneNumber,
+    this.postalAddress,
+  });
 
   Contact.fromJson(core.Map json_)
       : this(
@@ -1857,8 +1852,7 @@ class Contact {
           phoneNumber: json_['phoneNumber'] as core.String?,
           postalAddress: json_.containsKey('postalAddress')
               ? PostalAddress.fromJson(
-                  json_['postalAddress'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['postalAddress'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1931,21 +1925,16 @@ class ContactSettings {
       : this(
           adminContact: json_.containsKey('adminContact')
               ? Contact.fromJson(
-                  json_['adminContact'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['adminContact'] as core.Map<core.String, core.dynamic>)
               : null,
           privacy: json_['privacy'] as core.String?,
           registrantContact: json_.containsKey('registrantContact')
-              ? Contact.fromJson(
-                  json_['registrantContact']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Contact.fromJson(json_['registrantContact']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           technicalContact: json_.containsKey('technicalContact')
-              ? Contact.fromJson(
-                  json_['technicalContact']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Contact.fromJson(json_['technicalContact']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1973,16 +1962,16 @@ class CustomDns {
   /// Required.
   core.List<core.String>? nameServers;
 
-  CustomDns({this.dsRecords, this.nameServers});
+  CustomDns({
+    this.dsRecords,
+    this.nameServers,
+  });
 
   CustomDns.fromJson(core.Map json_)
       : this(
           dsRecords: (json_['dsRecords'] as core.List?)
-              ?.map(
-                (value) => DsRecord.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DsRecord.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nameServers: (json_['nameServers'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2041,21 +2030,15 @@ class DnsSettings {
       : this(
           customDns: json_.containsKey('customDns')
               ? CustomDns.fromJson(
-                  json_['customDns'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['customDns'] as core.Map<core.String, core.dynamic>)
               : null,
           glueRecords: (json_['glueRecords'] as core.List?)
-              ?.map(
-                (value) => GlueRecord.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GlueRecord.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           googleDomainsDns: json_.containsKey('googleDomainsDns')
-              ? GoogleDomainsDns.fromJson(
-                  json_['googleDomainsDns']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleDomainsDns.fromJson(json_['googleDomainsDns']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           googleDomainsRedirectsDataAvailable:
               json_['googleDomainsRedirectsDataAvailable'] as core.bool?,
@@ -2102,7 +2085,11 @@ class Domain {
   /// Only set when `resource_state` is `IMPORTABLE`.
   Money? yearlyPrice;
 
-  Domain({this.domainName, this.resourceState, this.yearlyPrice});
+  Domain({
+    this.domainName,
+    this.resourceState,
+    this.yearlyPrice,
+  });
 
   Domain.fromJson(core.Map json_)
       : this(
@@ -2110,8 +2097,7 @@ class Domain {
           resourceState: json_['resourceState'] as core.String?,
           yearlyPrice: json_.containsKey('yearlyPrice')
               ? Money.fromJson(
-                  json_['yearlyPrice'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['yearlyPrice'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2231,7 +2217,12 @@ class DsRecord {
   /// Must be set in range 0 -- 65535.
   core.int? keyTag;
 
-  DsRecord({this.algorithm, this.digest, this.digestType, this.keyTag});
+  DsRecord({
+    this.algorithm,
+    this.digest,
+    this.digestType,
+    this.keyTag,
+  });
 
   DsRecord.fromJson(core.Map json_)
       : this(
@@ -2261,7 +2252,10 @@ class EmailForwarding {
   /// Target email that receives emails sent to the `alias`.
   core.String? targetEmailAddress;
 
-  EmailForwarding({this.alias, this.targetEmailAddress});
+  EmailForwarding({
+    this.alias,
+    this.targetEmailAddress,
+  });
 
   EmailForwarding.fromJson(core.Map json_)
       : this(
@@ -2321,17 +2315,17 @@ class GeoPolicy {
   /// instead.
   core.List<GeoPolicyItem>? item;
 
-  GeoPolicy({this.enableFencing, this.item});
+  GeoPolicy({
+    this.enableFencing,
+    this.item,
+  });
 
   GeoPolicy.fromJson(core.Map json_)
       : this(
           enableFencing: json_['enableFencing'] as core.bool?,
           item: (json_['item'] as core.List?)
-              ?.map(
-                (value) => GeoPolicyItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GeoPolicyItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2372,10 +2366,8 @@ class GeoPolicyItem {
   GeoPolicyItem.fromJson(core.Map json_)
       : this(
           healthCheckedTargets: json_.containsKey('healthCheckedTargets')
-              ? HealthCheckTargets.fromJson(
-                  json_['healthCheckedTargets']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? HealthCheckTargets.fromJson(json_['healthCheckedTargets']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           location: json_['location'] as core.String?,
           rrdata: (json_['rrdata'] as core.List?)
@@ -2421,7 +2413,11 @@ class GlueRecord {
   /// At least one of `ipv4_address` and `ipv6_address` must be set.
   core.List<core.String>? ipv6Addresses;
 
-  GlueRecord({this.hostName, this.ipv4Addresses, this.ipv6Addresses});
+  GlueRecord({
+    this.hostName,
+    this.ipv4Addresses,
+    this.ipv6Addresses,
+  });
 
   GlueRecord.fromJson(core.Map json_)
       : this(
@@ -2481,16 +2477,17 @@ class GoogleDomainsDns {
   /// Output only.
   core.List<core.String>? nameServers;
 
-  GoogleDomainsDns({this.dsRecords, this.dsState, this.nameServers});
+  GoogleDomainsDns({
+    this.dsRecords,
+    this.dsState,
+    this.nameServers,
+  });
 
   GoogleDomainsDns.fromJson(core.Map json_)
       : this(
           dsRecords: (json_['dsRecords'] as core.List?)
-              ?.map(
-                (value) => DsRecord.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DsRecord.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           dsState: json_['dsState'] as core.String?,
           nameServers: (json_['nameServers'] as core.List?)
@@ -2519,7 +2516,10 @@ class HealthCheckTargets {
   /// Configuration for internal load balancers to be health checked.
   core.List<LoadBalancerTarget>? internalLoadBalancer;
 
-  HealthCheckTargets({this.externalEndpoints, this.internalLoadBalancer});
+  HealthCheckTargets({
+    this.externalEndpoints,
+    this.internalLoadBalancer,
+  });
 
   HealthCheckTargets.fromJson(core.Map json_)
       : this(
@@ -2527,11 +2527,8 @@ class HealthCheckTargets {
               ?.map((value) => value as core.String)
               .toList(),
           internalLoadBalancer: (json_['internalLoadBalancer'] as core.List?)
-              ?.map(
-                (value) => LoadBalancerTarget.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => LoadBalancerTarget.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2557,14 +2554,20 @@ class ImportDomainRequest {
   /// Set of labels associated with the `Registration`.
   core.Map<core.String, core.String>? labels;
 
-  ImportDomainRequest({this.domainName, this.labels});
+  ImportDomainRequest({
+    this.domainName,
+    this.labels,
+  });
 
   ImportDomainRequest.fromJson(core.Map json_)
       : this(
           domainName: json_['domainName'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
         );
 
@@ -2583,10 +2586,14 @@ class InitiatePushTransferRequest {
   /// Required.
   core.String? tag;
 
-  InitiatePushTransferRequest({this.tag});
+  InitiatePushTransferRequest({
+    this.tag,
+  });
 
   InitiatePushTransferRequest.fromJson(core.Map json_)
-      : this(tag: json_['tag'] as core.String?);
+      : this(
+          tag: json_['tag'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (tag != null) 'tag': tag!,
@@ -2601,16 +2608,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({this.locations, this.nextPageToken});
+  ListLocationsResponse({
+    this.locations,
+    this.nextPageToken,
+  });
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map(
-                (value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2629,17 +2636,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map(
-                (value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2660,17 +2667,17 @@ class ListRegistrationsResponse {
   /// A list of `Registration`s.
   core.List<Registration>? registrations;
 
-  ListRegistrationsResponse({this.nextPageToken, this.registrations});
+  ListRegistrationsResponse({
+    this.nextPageToken,
+    this.registrations,
+  });
 
   ListRegistrationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           registrations: (json_['registrations'] as core.List?)
-              ?.map(
-                (value) => Registration.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Registration.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2909,15 +2916,20 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({this.done, this.error, this.metadata, this.name, this.response});
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -3023,23 +3035,22 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
+  Policy({
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
   Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map(
-                (value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map(
-                (value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -3099,16 +3110,12 @@ class PrimaryBackupPolicy {
   PrimaryBackupPolicy.fromJson(core.Map json_)
       : this(
           backupGeoTargets: json_.containsKey('backupGeoTargets')
-              ? GeoPolicy.fromJson(
-                  json_['backupGeoTargets']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GeoPolicy.fromJson(json_['backupGeoTargets']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           primaryTargets: json_.containsKey('primaryTargets')
-              ? HealthCheckTargets.fromJson(
-                  json_['primaryTargets']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? HealthCheckTargets.fromJson(json_['primaryTargets']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           trickleTraffic: (json_['trickleTraffic'] as core.num?)?.toDouble(),
         );
@@ -3155,29 +3162,24 @@ class RRSetRoutingPolicy {
       : this(
           geo: json_.containsKey('geo')
               ? GeoPolicy.fromJson(
-                  json_['geo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['geo'] as core.Map<core.String, core.dynamic>)
               : null,
           geoPolicy: json_.containsKey('geoPolicy')
               ? GeoPolicy.fromJson(
-                  json_['geoPolicy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['geoPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
           healthCheck: json_['healthCheck'] as core.String?,
           primaryBackup: json_.containsKey('primaryBackup')
               ? PrimaryBackupPolicy.fromJson(
-                  json_['primaryBackup'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['primaryBackup'] as core.Map<core.String, core.dynamic>)
               : null,
           wrr: json_.containsKey('wrr')
               ? WrrPolicy.fromJson(
-                  json_['wrr'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['wrr'] as core.Map<core.String, core.dynamic>)
               : null,
           wrrPolicy: json_.containsKey('wrrPolicy')
               ? WrrPolicy.fromJson(
-                  json_['wrrPolicy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['wrrPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3243,14 +3245,12 @@ class RegisterDomainRequest {
               .toList(),
           registration: json_.containsKey('registration')
               ? Registration.fromJson(
-                  json_['registration'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['registration'] as core.Map<core.String, core.dynamic>)
               : null,
           validateOnly: json_['validateOnly'] as core.bool?,
           yearlyPrice: json_.containsKey('yearlyPrice')
               ? Money.fromJson(
-                  json_['yearlyPrice'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['yearlyPrice'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3315,8 +3315,7 @@ class RegisterParameters {
               .toList(),
           yearlyPrice: json_.containsKey('yearlyPrice')
               ? Money.fromJson(
-                  json_['yearlyPrice'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['yearlyPrice'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3525,16 +3524,13 @@ class Registration {
   Registration.fromJson(core.Map json_)
       : this(
           contactSettings: json_.containsKey('contactSettings')
-              ? ContactSettings.fromJson(
-                  json_['contactSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ContactSettings.fromJson(json_['contactSettings']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_['createTime'] as core.String?,
           dnsSettings: json_.containsKey('dnsSettings')
               ? DnsSettings.fromJson(
-                  json_['dnsSettings'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['dnsSettings'] as core.Map<core.String, core.dynamic>)
               : null,
           domainName: json_['domainName'] as core.String?,
           domainProperties: (json_['domainProperties'] as core.List?)
@@ -3546,20 +3542,19 @@ class Registration {
               .toList(),
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           managementSettings: json_.containsKey('managementSettings')
-              ? ManagementSettings.fromJson(
-                  json_['managementSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ManagementSettings.fromJson(json_['managementSettings']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           pendingContactSettings: json_.containsKey('pendingContactSettings')
-              ? ContactSettings.fromJson(
-                  json_['pendingContactSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ContactSettings.fromJson(json_['pendingContactSettings']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           registerFailureReason: json_['registerFailureReason'] as core.String?,
           state: json_['state'] as core.String?,
@@ -3612,15 +3607,17 @@ class RenewDomainRequest {
   /// Required.
   Money? yearlyPrice;
 
-  RenewDomainRequest({this.validateOnly, this.yearlyPrice});
+  RenewDomainRequest({
+    this.validateOnly,
+    this.yearlyPrice,
+  });
 
   RenewDomainRequest.fromJson(core.Map json_)
       : this(
           validateOnly: json_['validateOnly'] as core.bool?,
           yearlyPrice: json_.containsKey('yearlyPrice')
               ? Money.fromJson(
-                  json_['yearlyPrice'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['yearlyPrice'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3675,8 +3672,7 @@ class ResourceRecordSet {
           name: json_['name'] as core.String?,
           routingPolicy: json_.containsKey('routingPolicy')
               ? RRSetRoutingPolicy.fromJson(
-                  json_['routingPolicy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['routingPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
           rrdata: (json_['rrdata'] as core.List?)
               ?.map((value) => value as core.String)
@@ -3709,17 +3705,17 @@ class RetrieveGoogleDomainsDnsRecordsResponse {
   /// The resource record set resources (DNS Zone records).
   core.List<ResourceRecordSet>? rrset;
 
-  RetrieveGoogleDomainsDnsRecordsResponse({this.nextPageToken, this.rrset});
+  RetrieveGoogleDomainsDnsRecordsResponse({
+    this.nextPageToken,
+    this.rrset,
+  });
 
   RetrieveGoogleDomainsDnsRecordsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           rrset: (json_['rrset'] as core.List?)
-              ?.map(
-                (value) => ResourceRecordSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ResourceRecordSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3751,18 +3747,12 @@ class RetrieveGoogleDomainsForwardingConfigResponse {
   RetrieveGoogleDomainsForwardingConfigResponse.fromJson(core.Map json_)
       : this(
           domainForwardings: (json_['domainForwardings'] as core.List?)
-              ?.map(
-                (value) => DomainForwarding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DomainForwarding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           emailForwardings: (json_['emailForwardings'] as core.List?)
-              ?.map(
-                (value) => EmailForwarding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => EmailForwarding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3786,16 +3776,16 @@ class RetrieveImportableDomainsResponse {
   /// of results.
   core.String? nextPageToken;
 
-  RetrieveImportableDomainsResponse({this.domains, this.nextPageToken});
+  RetrieveImportableDomainsResponse({
+    this.domains,
+    this.nextPageToken,
+  });
 
   RetrieveImportableDomainsResponse.fromJson(core.Map json_)
       : this(
           domains: (json_['domains'] as core.List?)
-              ?.map(
-                (value) => Domain.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Domain.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -3811,15 +3801,15 @@ class RetrieveRegisterParametersResponse {
   /// Parameters to use when calling the `RegisterDomain` method.
   RegisterParameters? registerParameters;
 
-  RetrieveRegisterParametersResponse({this.registerParameters});
+  RetrieveRegisterParametersResponse({
+    this.registerParameters,
+  });
 
   RetrieveRegisterParametersResponse.fromJson(core.Map json_)
       : this(
           registerParameters: json_.containsKey('registerParameters')
-              ? RegisterParameters.fromJson(
-                  json_['registerParameters']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? RegisterParameters.fromJson(json_['registerParameters']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3837,15 +3827,15 @@ class RetrieveTransferParametersResponse {
   /// Parameters to use when calling the `TransferDomain` method.
   TransferParameters? transferParameters;
 
-  RetrieveTransferParametersResponse({this.transferParameters});
+  RetrieveTransferParametersResponse({
+    this.transferParameters,
+  });
 
   RetrieveTransferParametersResponse.fromJson(core.Map json_)
       : this(
           transferParameters: json_.containsKey('transferParameters')
-              ? TransferParameters.fromJson(
-                  json_['transferParameters']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? TransferParameters.fromJson(json_['transferParameters']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3860,16 +3850,15 @@ class SearchDomainsResponse {
   /// Results of the domain name search.
   core.List<RegisterParameters>? registerParameters;
 
-  SearchDomainsResponse({this.registerParameters});
+  SearchDomainsResponse({
+    this.registerParameters,
+  });
 
   SearchDomainsResponse.fromJson(core.Map json_)
       : this(
           registerParameters: (json_['registerParameters'] as core.List?)
-              ?.map(
-                (value) => RegisterParameters.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => RegisterParameters.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3894,14 +3883,16 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({this.policy, this.updateMask});
+  SetIamPolicyRequest({
+    this.policy,
+    this.updateMask,
+  });
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -3976,24 +3967,20 @@ class TransferDomainRequest {
   TransferDomainRequest.fromJson(core.Map json_)
       : this(
           authorizationCode: json_.containsKey('authorizationCode')
-              ? AuthorizationCode.fromJson(
-                  json_['authorizationCode']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AuthorizationCode.fromJson(json_['authorizationCode']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           contactNotices: (json_['contactNotices'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           registration: json_.containsKey('registration')
               ? Registration.fromJson(
-                  json_['registration'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['registration'] as core.Map<core.String, core.dynamic>)
               : null,
           validateOnly: json_['validateOnly'] as core.bool?,
           yearlyPrice: json_.containsKey('yearlyPrice')
               ? Money.fromJson(
-                  json_['yearlyPrice'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['yearlyPrice'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4067,8 +4054,7 @@ class TransferParameters {
           transferLockState: json_['transferLockState'] as core.String?,
           yearlyPrice: json_.containsKey('yearlyPrice')
               ? Money.fromJson(
-                  json_['yearlyPrice'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['yearlyPrice'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4089,16 +4075,15 @@ class TransferParameters {
 class WrrPolicy {
   core.List<WrrPolicyItem>? item;
 
-  WrrPolicy({this.item});
+  WrrPolicy({
+    this.item,
+  });
 
   WrrPolicy.fromJson(core.Map json_)
       : this(
           item: (json_['item'] as core.List?)
-              ?.map(
-                (value) => WrrPolicyItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => WrrPolicyItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4142,10 +4127,8 @@ class WrrPolicyItem {
   WrrPolicyItem.fromJson(core.Map json_)
       : this(
           healthCheckedTargets: json_.containsKey('healthCheckedTargets')
-              ? HealthCheckTargets.fromJson(
-                  json_['healthCheckedTargets']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? HealthCheckTargets.fromJson(json_['healthCheckedTargets']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           rrdata: (json_['rrdata'] as core.List?)
               ?.map((value) => value as core.String)

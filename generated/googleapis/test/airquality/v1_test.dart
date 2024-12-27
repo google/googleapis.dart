@@ -41,8 +41,14 @@ api.AdditionalInfo buildAdditionalInfo() {
 void checkAdditionalInfo(api.AdditionalInfo o) {
   buildCounterAdditionalInfo++;
   if (buildCounterAdditionalInfo < 3) {
-    unittest.expect(o.effects!, unittest.equals('foo'));
-    unittest.expect(o.sources!, unittest.equals('foo'));
+    unittest.expect(
+      o.effects!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sources!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAdditionalInfo--;
 }
@@ -67,13 +73,31 @@ api.AirQualityIndex buildAirQualityIndex() {
 void checkAirQualityIndex(api.AirQualityIndex o) {
   buildCounterAirQualityIndex++;
   if (buildCounterAirQualityIndex < 3) {
-    unittest.expect(o.aqi!, unittest.equals(42));
-    unittest.expect(o.aqiDisplay!, unittest.equals('foo'));
-    unittest.expect(o.category!, unittest.equals('foo'));
-    unittest.expect(o.code!, unittest.equals('foo'));
+    unittest.expect(
+      o.aqi!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.aqiDisplay!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.category!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
     checkColor(o.color!);
-    unittest.expect(o.displayName!, unittest.equals('foo'));
-    unittest.expect(o.dominantPollutant!, unittest.equals('foo'));
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dominantPollutant!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAirQualityIndex--;
 }
@@ -95,10 +119,22 @@ api.Color buildColor() {
 void checkColor(api.Color o) {
   buildCounterColor++;
   if (buildCounterColor < 3) {
-    unittest.expect(o.alpha!, unittest.equals(42.0));
-    unittest.expect(o.blue!, unittest.equals(42.0));
-    unittest.expect(o.green!, unittest.equals(42.0));
-    unittest.expect(o.red!, unittest.equals(42.0));
+    unittest.expect(
+      o.alpha!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.blue!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.green!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.red!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterColor--;
 }
@@ -118,8 +154,14 @@ api.Concentration buildConcentration() {
 void checkConcentration(api.Concentration o) {
   buildCounterConcentration++;
   if (buildCounterConcentration < 3) {
-    unittest.expect(o.units!, unittest.equals('foo'));
-    unittest.expect(o.value!, unittest.equals(42.0));
+    unittest.expect(
+      o.units!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterConcentration--;
 }
@@ -139,8 +181,14 @@ api.CustomLocalAqi buildCustomLocalAqi() {
 void checkCustomLocalAqi(api.CustomLocalAqi o) {
   buildCounterCustomLocalAqi++;
   if (buildCounterCustomLocalAqi < 3) {
-    unittest.expect(o.aqi!, unittest.equals('foo'));
-    unittest.expect(o.regionCode!, unittest.equals('foo'));
+    unittest.expect(
+      o.aqi!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.regionCode!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterCustomLocalAqi--;
 }
@@ -165,13 +213,34 @@ api.HealthRecommendations buildHealthRecommendations() {
 void checkHealthRecommendations(api.HealthRecommendations o) {
   buildCounterHealthRecommendations++;
   if (buildCounterHealthRecommendations < 3) {
-    unittest.expect(o.athletes!, unittest.equals('foo'));
-    unittest.expect(o.children!, unittest.equals('foo'));
-    unittest.expect(o.elderly!, unittest.equals('foo'));
-    unittest.expect(o.generalPopulation!, unittest.equals('foo'));
-    unittest.expect(o.heartDiseasePopulation!, unittest.equals('foo'));
-    unittest.expect(o.lungDiseasePopulation!, unittest.equals('foo'));
-    unittest.expect(o.pregnantWomen!, unittest.equals('foo'));
+    unittest.expect(
+      o.athletes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.children!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.elderly!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.generalPopulation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.heartDiseasePopulation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lungDiseasePopulation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pregnantWomen!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterHealthRecommendations--;
 }
@@ -215,7 +284,10 @@ api.HourInfo buildHourInfo() {
 void checkHourInfo(api.HourInfo o) {
   buildCounterHourInfo++;
   if (buildCounterHourInfo < 3) {
-    unittest.expect(o.dateTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.dateTime!,
+      unittest.equals('foo'),
+    );
     checkHealthRecommendations(o.healthRecommendations!);
     checkUnnamed0(o.indexes!);
     checkUnnamed1(o.pollutants!);
@@ -262,7 +334,10 @@ api.HourlyForecast buildHourlyForecast() {
 void checkHourlyForecast(api.HourlyForecast o) {
   buildCounterHourlyForecast++;
   if (buildCounterHourlyForecast < 3) {
-    unittest.expect(o.dateTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.dateTime!,
+      unittest.equals('foo'),
+    );
     checkHealthRecommendations(o.healthRecommendations!);
     checkUnnamed2(o.indexes!);
     checkUnnamed3(o.pollutants!);
@@ -274,12 +349,12 @@ core.Map<core.String, core.Object?> buildUnnamed4() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
     };
 
@@ -287,14 +362,32 @@ void checkUnnamed4(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1['bool'], unittest.equals(true));
-  unittest.expect(casted1['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted1['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted1['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted1['string'],
+    unittest.equals('foo'),
+  );
   var casted2 = (o['y']!) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2['bool'], unittest.equals(true));
-  unittest.expect(casted2['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted2['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted2['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted2['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.Map<core.String, core.Object?>> buildUnnamed5() => [
@@ -324,8 +417,14 @@ api.HttpBody buildHttpBody() {
 void checkHttpBody(api.HttpBody o) {
   buildCounterHttpBody++;
   if (buildCounterHttpBody < 3) {
-    unittest.expect(o.contentType!, unittest.equals('foo'));
-    unittest.expect(o.data!, unittest.equals('foo'));
+    unittest.expect(
+      o.contentType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.data!,
+      unittest.equals('foo'),
+    );
     checkUnnamed5(o.extensions!);
   }
   buildCounterHttpBody--;
@@ -346,8 +445,14 @@ api.Interval buildInterval() {
 void checkInterval(api.Interval o) {
   buildCounterInterval++;
   if (buildCounterInterval < 3) {
-    unittest.expect(o.endTime!, unittest.equals('foo'));
-    unittest.expect(o.startTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterInterval--;
 }
@@ -367,8 +472,14 @@ api.LatLng buildLatLng() {
 void checkLatLng(api.LatLng o) {
   buildCounterLatLng++;
   if (buildCounterLatLng < 3) {
-    unittest.expect(o.latitude!, unittest.equals(42.0));
-    unittest.expect(o.longitude!, unittest.equals(42.0));
+    unittest.expect(
+      o.latitude!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.longitude!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterLatLng--;
 }
@@ -384,12 +495,21 @@ void checkUnnamed6(core.List<api.CustomLocalAqi> o) {
   checkCustomLocalAqi(o[1]);
 }
 
-core.List<core.String> buildUnnamed7() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed7() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterLookupCurrentConditionsRequest = 0;
@@ -413,9 +533,15 @@ void checkLookupCurrentConditionsRequest(api.LookupCurrentConditionsRequest o) {
   if (buildCounterLookupCurrentConditionsRequest < 3) {
     checkUnnamed6(o.customLocalAqis!);
     checkUnnamed7(o.extraComputations!);
-    unittest.expect(o.languageCode!, unittest.equals('foo'));
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
     checkLatLng(o.location!);
-    unittest.expect(o.uaqiColorPalette!, unittest.equals('foo'));
+    unittest.expect(
+      o.uaqiColorPalette!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.universalAqi!, unittest.isTrue);
   }
   buildCounterLookupCurrentConditionsRequest--;
@@ -459,15 +585,20 @@ api.LookupCurrentConditionsResponse buildLookupCurrentConditionsResponse() {
 }
 
 void checkLookupCurrentConditionsResponse(
-  api.LookupCurrentConditionsResponse o,
-) {
+    api.LookupCurrentConditionsResponse o) {
   buildCounterLookupCurrentConditionsResponse++;
   if (buildCounterLookupCurrentConditionsResponse < 3) {
-    unittest.expect(o.dateTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.dateTime!,
+      unittest.equals('foo'),
+    );
     checkHealthRecommendations(o.healthRecommendations!);
     checkUnnamed8(o.indexes!);
     checkUnnamed9(o.pollutants!);
-    unittest.expect(o.regionCode!, unittest.equals('foo'));
+    unittest.expect(
+      o.regionCode!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterLookupCurrentConditionsResponse--;
 }
@@ -483,12 +614,21 @@ void checkUnnamed10(core.List<api.CustomLocalAqi> o) {
   checkCustomLocalAqi(o[1]);
 }
 
-core.List<core.String> buildUnnamed11() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed11() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed11(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterLookupForecastRequest = 0;
@@ -515,14 +655,29 @@ void checkLookupForecastRequest(api.LookupForecastRequest o) {
   buildCounterLookupForecastRequest++;
   if (buildCounterLookupForecastRequest < 3) {
     checkUnnamed10(o.customLocalAqis!);
-    unittest.expect(o.dateTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.dateTime!,
+      unittest.equals('foo'),
+    );
     checkUnnamed11(o.extraComputations!);
-    unittest.expect(o.languageCode!, unittest.equals('foo'));
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
     checkLatLng(o.location!);
-    unittest.expect(o.pageSize!, unittest.equals(42));
-    unittest.expect(o.pageToken!, unittest.equals('foo'));
+    unittest.expect(
+      o.pageSize!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.pageToken!,
+      unittest.equals('foo'),
+    );
     checkInterval(o.period!);
-    unittest.expect(o.uaqiColorPalette!, unittest.equals('foo'));
+    unittest.expect(
+      o.uaqiColorPalette!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.universalAqi!, unittest.isTrue);
   }
   buildCounterLookupForecastRequest--;
@@ -556,8 +711,14 @@ void checkLookupForecastResponse(api.LookupForecastResponse o) {
   buildCounterLookupForecastResponse++;
   if (buildCounterLookupForecastResponse < 3) {
     checkUnnamed12(o.hourlyForecasts!);
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    unittest.expect(o.regionCode!, unittest.equals('foo'));
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.regionCode!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterLookupForecastResponse--;
 }
@@ -573,12 +734,21 @@ void checkUnnamed13(core.List<api.CustomLocalAqi> o) {
   checkCustomLocalAqi(o[1]);
 }
 
-core.List<core.String> buildUnnamed14() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed14() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed14(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterLookupHistoryRequest = 0;
@@ -606,21 +776,42 @@ void checkLookupHistoryRequest(api.LookupHistoryRequest o) {
   buildCounterLookupHistoryRequest++;
   if (buildCounterLookupHistoryRequest < 3) {
     checkUnnamed13(o.customLocalAqis!);
-    unittest.expect(o.dateTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.dateTime!,
+      unittest.equals('foo'),
+    );
     checkUnnamed14(o.extraComputations!);
-    unittest.expect(o.hours!, unittest.equals(42));
-    unittest.expect(o.languageCode!, unittest.equals('foo'));
+    unittest.expect(
+      o.hours!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
     checkLatLng(o.location!);
-    unittest.expect(o.pageSize!, unittest.equals(42));
-    unittest.expect(o.pageToken!, unittest.equals('foo'));
+    unittest.expect(
+      o.pageSize!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.pageToken!,
+      unittest.equals('foo'),
+    );
     checkInterval(o.period!);
-    unittest.expect(o.uaqiColorPalette!, unittest.equals('foo'));
+    unittest.expect(
+      o.uaqiColorPalette!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.universalAqi!, unittest.isTrue);
   }
   buildCounterLookupHistoryRequest--;
 }
 
-core.List<api.HourInfo> buildUnnamed15() => [buildHourInfo(), buildHourInfo()];
+core.List<api.HourInfo> buildUnnamed15() => [
+      buildHourInfo(),
+      buildHourInfo(),
+    ];
 
 void checkUnnamed15(core.List<api.HourInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -645,8 +836,14 @@ void checkLookupHistoryResponse(api.LookupHistoryResponse o) {
   buildCounterLookupHistoryResponse++;
   if (buildCounterLookupHistoryResponse < 3) {
     checkUnnamed15(o.hoursInfo!);
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    unittest.expect(o.regionCode!, unittest.equals('foo'));
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.regionCode!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterLookupHistoryResponse--;
 }
@@ -670,10 +867,19 @@ void checkPollutant(api.Pollutant o) {
   buildCounterPollutant++;
   if (buildCounterPollutant < 3) {
     checkAdditionalInfo(o.additionalInfo!);
-    unittest.expect(o.code!, unittest.equals('foo'));
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
     checkConcentration(o.concentration!);
-    unittest.expect(o.displayName!, unittest.equals('foo'));
-    unittest.expect(o.fullName!, unittest.equals('foo'));
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fullName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPollutant--;
 }
@@ -684,8 +890,7 @@ void main() {
       final o = buildAdditionalInfo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AdditionalInfo.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkAdditionalInfo(od);
     });
   });
@@ -695,8 +900,7 @@ void main() {
       final o = buildAirQualityIndex();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AirQualityIndex.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkAirQualityIndex(od);
     });
   });
@@ -705,9 +909,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildColor();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Color.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Color.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkColor(od);
     });
   });
@@ -717,8 +920,7 @@ void main() {
       final o = buildConcentration();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.Concentration.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkConcentration(od);
     });
   });
@@ -728,8 +930,7 @@ void main() {
       final o = buildCustomLocalAqi();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CustomLocalAqi.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkCustomLocalAqi(od);
     });
   });
@@ -739,8 +940,7 @@ void main() {
       final o = buildHealthRecommendations();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.HealthRecommendations.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkHealthRecommendations(od);
     });
   });
@@ -749,9 +949,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildHourInfo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.HourInfo.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.HourInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkHourInfo(od);
     });
   });
@@ -761,8 +960,7 @@ void main() {
       final o = buildHourlyForecast();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.HourlyForecast.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkHourlyForecast(od);
     });
   });
@@ -771,9 +969,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildHttpBody();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.HttpBody.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.HttpBody.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkHttpBody(od);
     });
   });
@@ -782,9 +979,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildInterval();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Interval.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Interval.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkInterval(od);
     });
   });
@@ -793,9 +989,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildLatLng();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.LatLng.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.LatLng.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLatLng(od);
     });
   });
@@ -805,8 +1000,7 @@ void main() {
       final o = buildLookupCurrentConditionsRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LookupCurrentConditionsRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkLookupCurrentConditionsRequest(od);
     });
   });
@@ -816,8 +1010,7 @@ void main() {
       final o = buildLookupCurrentConditionsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LookupCurrentConditionsResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkLookupCurrentConditionsResponse(od);
     });
   });
@@ -827,8 +1020,7 @@ void main() {
       final o = buildLookupForecastRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LookupForecastRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkLookupForecastRequest(od);
     });
   });
@@ -838,8 +1030,7 @@ void main() {
       final o = buildLookupForecastResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LookupForecastResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkLookupForecastResponse(od);
     });
   });
@@ -849,8 +1040,7 @@ void main() {
       final o = buildLookupHistoryRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LookupHistoryRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkLookupHistoryRequest(od);
     });
   });
@@ -860,8 +1050,7 @@ void main() {
       final o = buildLookupHistoryResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LookupHistoryResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkLookupHistoryResponse(od);
     });
   });
@@ -870,9 +1059,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildPollutant();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Pollutant.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Pollutant.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPollutant(od);
     });
   });
@@ -883,60 +1071,56 @@ void main() {
       final res = api.AirQualityApi(mock).currentConditions;
       final arg_request = buildLookupCurrentConditionsRequest();
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.LookupCurrentConditionsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkLookupCurrentConditionsRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.LookupCurrentConditionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLookupCurrentConditionsRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 27),
-            unittest.equals('v1/currentConditions:lookup'),
-          );
-          pathOffset += 27;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 27),
+          unittest.equals('v1/currentConditions:lookup'),
+        );
+        pathOffset += 27;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildLookupCurrentConditionsResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildLookupCurrentConditionsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.lookup(arg_request, $fields: arg_$fields);
       checkLookupCurrentConditionsResponse(
-        response as api.LookupCurrentConditionsResponse,
-      );
+          response as api.LookupCurrentConditionsResponse);
     });
   });
 
@@ -946,54 +1130,52 @@ void main() {
       final res = api.AirQualityApi(mock).forecast;
       final arg_request = buildLookupForecastRequest();
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.LookupForecastRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkLookupForecastRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.LookupForecastRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLookupForecastRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 18),
-            unittest.equals('v1/forecast:lookup'),
-          );
-          pathOffset += 18;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('v1/forecast:lookup'),
+        );
+        pathOffset += 18;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildLookupForecastResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildLookupForecastResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.lookup(arg_request, $fields: arg_$fields);
       checkLookupForecastResponse(response as api.LookupForecastResponse);
     });
@@ -1005,54 +1187,52 @@ void main() {
       final res = api.AirQualityApi(mock).history;
       final arg_request = buildLookupHistoryRequest();
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.LookupHistoryRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkLookupHistoryRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.LookupHistoryRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLookupHistoryRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 17),
-            unittest.equals('v1/history:lookup'),
-          );
-          pathOffset += 17;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals('v1/history:lookup'),
+        );
+        pathOffset += 17;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildLookupHistoryResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildLookupHistoryResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.lookup(arg_request, $fields: arg_$fields);
       checkLookupHistoryResponse(response as api.LookupHistoryResponse);
     });
@@ -1067,95 +1247,99 @@ void main() {
       final arg_x = 42;
       final arg_y = 42;
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 12),
-            unittest.equals('v1/mapTypes/'),
-          );
-          pathOffset += 12;
-          index = path.indexOf('/heatmapTiles/', pathOffset);
-          unittest.expect(index >= 0, unittest.isTrue);
-          subPart = core.Uri.decodeQueryComponent(
-            path.substring(pathOffset, index),
-          );
-          pathOffset = index;
-          unittest.expect(subPart, unittest.equals('$arg_mapType'));
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 14),
-            unittest.equals('/heatmapTiles/'),
-          );
-          pathOffset += 14;
-          index = path.indexOf('/', pathOffset);
-          unittest.expect(index >= 0, unittest.isTrue);
-          subPart = core.Uri.decodeQueryComponent(
-            path.substring(pathOffset, index),
-          );
-          pathOffset = index;
-          unittest.expect(subPart, unittest.equals('$arg_zoom'));
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          index = path.indexOf('/', pathOffset);
-          unittest.expect(index >= 0, unittest.isTrue);
-          subPart = core.Uri.decodeQueryComponent(
-            path.substring(pathOffset, index),
-          );
-          pathOffset = index;
-          unittest.expect(subPart, unittest.equals('$arg_x'));
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-          pathOffset = path.length;
-          unittest.expect(subPart, unittest.equals('$arg_y'));
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('v1/mapTypes/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf('/heatmapTiles/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_mapType'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 14),
+          unittest.equals('/heatmapTiles/'),
+        );
+        pathOffset += 14;
+        index = path.indexOf('/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_zoom'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        index = path.indexOf('/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_x'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_y'),
+        );
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildHttpBody());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildHttpBody());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.lookupHeatmapTile(
-        arg_mapType,
-        arg_zoom,
-        arg_x,
-        arg_y,
-        $fields: arg_$fields,
-      );
+          arg_mapType, arg_zoom, arg_x, arg_y,
+          $fields: arg_$fields);
       checkHttpBody(response as api.HttpBody);
     });
   });

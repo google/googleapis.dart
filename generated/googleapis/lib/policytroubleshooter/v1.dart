@@ -44,16 +44,11 @@ class PolicyTroubleshooterApi {
 
   IamResource get iam => IamResource(_requester);
 
-  PolicyTroubleshooterApi(
-    http.Client client, {
-    core.String rootUrl = 'https://policytroubleshooter.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  PolicyTroubleshooterApi(http.Client client,
+      {core.String rootUrl = 'https://policytroubleshooter.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class IamResource {
@@ -99,9 +94,7 @@ class IamResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -208,8 +201,7 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
           access: json_['access'] as core.String?,
           condition: json_.containsKey('condition')
               ? GoogleTypeExpr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           memberships:
               (json_['memberships'] as core.Map<core.String, core.dynamic>?)
@@ -217,9 +209,7 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
             (key, value) => core.MapEntry(
               key,
               GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership
-                  .fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  .fromJson(value as core.Map<core.String, core.dynamic>),
             ),
           ),
           relevance: json_['relevance'] as core.String?,
@@ -274,8 +264,8 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership {
   });
 
   GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           membership: json_['membership'] as core.String?,
           relevance: json_['relevance'] as core.String?,
         );
@@ -354,18 +344,14 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
       : this(
           access: json_['access'] as core.String?,
           bindingExplanations: (json_['bindingExplanations'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudPolicytroubleshooterV1BindingExplanation
-                    .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudPolicytroubleshooterV1BindingExplanation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           fullResourceName: json_['fullResourceName'] as core.String?,
           policy: json_.containsKey('policy')
               ? GoogleIamV1Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
           relevance: json_['relevance'] as core.String?,
         );
@@ -391,12 +377,11 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest {
   });
 
   GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           accessTuple: json_.containsKey('accessTuple')
               ? GoogleCloudPolicytroubleshooterV1AccessTuple.fromJson(
-                  json_['accessTuple'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['accessTuple'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -442,23 +427,17 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
   });
 
   GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           access: json_['access'] as core.String?,
           errors: (json_['errors'] as core.List?)
-              ?.map(
-                (value) => GoogleRpcStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleRpcStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           explainedPolicies: (json_['explainedPolicies'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudPolicytroubleshooterV1ExplainedPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudPolicytroubleshooterV1ExplainedPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -496,16 +475,16 @@ class GoogleIamV1AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  GoogleIamV1AuditConfig({this.auditLogConfigs, this.service});
+  GoogleIamV1AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
 
   GoogleIamV1AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map(
-                (value) => GoogleIamV1AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleIamV1AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -604,14 +583,17 @@ class GoogleIamV1Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  GoogleIamV1Binding({this.condition, this.members, this.role});
+  GoogleIamV1Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
   GoogleIamV1Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? GoogleTypeExpr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -722,18 +704,12 @@ class GoogleIamV1Policy {
   GoogleIamV1Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map(
-                (value) => GoogleIamV1AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleIamV1AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map(
-                (value) => GoogleIamV1Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleIamV1Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,

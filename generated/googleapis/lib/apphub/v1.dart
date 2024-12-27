@@ -52,16 +52,11 @@ class AppHubApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  AppHubApi(
-    http.Client client, {
-    core.String rootUrl = 'https://apphub.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  AppHubApi(http.Client client,
+      {core.String rootUrl = 'https://apphub.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -136,8 +131,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return DetachServiceProjectAttachmentResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about a location.
@@ -157,7 +151,10 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(core.String name, {core.String? $fields}) async {
+  async.Future<Location> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -221,8 +218,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists a service project attachment for a given service project.
@@ -266,8 +262,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return LookupServiceProjectAttachmentResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -431,8 +426,7 @@ class ProjectsLocationsApplicationsResource {
       queryParams: queryParams_,
     );
     return Application.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -544,8 +538,7 @@ class ProjectsLocationsApplicationsResource {
       queryParams: queryParams_,
     );
     return ListApplicationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an Application in a host project and location.
@@ -710,8 +703,7 @@ class ProjectsLocationsApplicationsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -856,7 +848,10 @@ class ProjectsLocationsApplicationsServicesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Service> get(core.String name, {core.String? $fields}) async {
+  async.Future<Service> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -925,8 +920,7 @@ class ProjectsLocationsApplicationsServicesResource {
       queryParams: queryParams_,
     );
     return ListServicesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a Service in an Application.
@@ -1138,7 +1132,10 @@ class ProjectsLocationsApplicationsWorkloadsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Workload> get(core.String name, {core.String? $fields}) async {
+  async.Future<Workload> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1207,8 +1204,7 @@ class ProjectsLocationsApplicationsWorkloadsResource {
       queryParams: queryParams_,
     );
     return ListWorkloadsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a Workload in an Application.
@@ -1321,8 +1317,7 @@ class ProjectsLocationsDiscoveredServicesResource {
       queryParams: queryParams_,
     );
     return DiscoveredService.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Discovered Services that can be added to an Application in a host
@@ -1378,8 +1373,7 @@ class ProjectsLocationsDiscoveredServicesResource {
       queryParams: queryParams_,
     );
     return ListDiscoveredServicesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists a Discovered Service in a host project and location, with a given
@@ -1423,8 +1417,7 @@ class ProjectsLocationsDiscoveredServicesResource {
       queryParams: queryParams_,
     );
     return LookupDiscoveredServiceResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1470,8 +1463,7 @@ class ProjectsLocationsDiscoveredWorkloadsResource {
       queryParams: queryParams_,
     );
     return DiscoveredWorkload.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Discovered Workloads that can be added to an Application in a host
@@ -1528,8 +1520,7 @@ class ProjectsLocationsDiscoveredWorkloadsResource {
       queryParams: queryParams_,
     );
     return ListDiscoveredWorkloadsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists a Discovered Workload in a host project and location, with a given
@@ -1573,8 +1564,7 @@ class ProjectsLocationsDiscoveredWorkloadsResource {
       queryParams: queryParams_,
     );
     return LookupDiscoveredWorkloadResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1656,7 +1646,10 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1692,7 +1685,10 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1754,8 +1750,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1763,8 +1758,8 @@ class ProjectsLocationsServiceProjectAttachmentsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsServiceProjectAttachmentsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Attaches a service project to the host project.
   ///
@@ -1918,8 +1913,7 @@ class ProjectsLocationsServiceProjectAttachmentsResource {
       queryParams: queryParams_,
     );
     return ServiceProjectAttachment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists service projects attached to the host project.
@@ -1976,8 +1970,7 @@ class ProjectsLocationsServiceProjectAttachmentsResource {
       queryParams: queryParams_,
     );
     return ListServiceProjectAttachmentsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2060,8 +2053,7 @@ class Application {
       : this(
           attributes: json_.containsKey('attributes')
               ? Attributes.fromJson(
-                  json_['attributes'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['attributes'] as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
@@ -2069,8 +2061,7 @@ class Application {
           name: json_['name'] as core.String?,
           scope: json_.containsKey('scope')
               ? Scope.fromJson(
-                  json_['scope'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['scope'] as core.Map<core.String, core.dynamic>)
               : null,
           state: json_['state'] as core.String?,
           uid: json_['uid'] as core.String?,
@@ -2128,35 +2119,24 @@ class Attributes {
   Attributes.fromJson(core.Map json_)
       : this(
           businessOwners: (json_['businessOwners'] as core.List?)
-              ?.map(
-                (value) => ContactInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ContactInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           criticality: json_.containsKey('criticality')
               ? Criticality.fromJson(
-                  json_['criticality'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['criticality'] as core.Map<core.String, core.dynamic>)
               : null,
           developerOwners: (json_['developerOwners'] as core.List?)
-              ?.map(
-                (value) => ContactInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ContactInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           environment: json_.containsKey('environment')
               ? Environment.fromJson(
-                  json_['environment'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['environment'] as core.Map<core.String, core.dynamic>)
               : null,
           operatorOwners: (json_['operatorOwners'] as core.List?)
-              ?.map(
-                (value) => ContactInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ContactInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2196,16 +2176,16 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({this.auditLogConfigs, this.service});
+  AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
 
   AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map(
-                (value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -2304,14 +2284,17 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({this.condition, this.members, this.role});
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2343,7 +2326,10 @@ class ContactInfo {
   /// Required.
   core.String? email;
 
-  ContactInfo({this.displayName, this.email});
+  ContactInfo({
+    this.displayName,
+    this.email,
+  });
 
   ContactInfo.fromJson(core.Map json_)
       : this(
@@ -2370,10 +2356,14 @@ class Criticality {
   /// - "LOW" : Low impact.
   core.String? type;
 
-  Criticality({this.type});
+  Criticality({
+    this.type,
+  });
 
   Criticality.fromJson(core.Map json_)
-      : this(type: json_['type'] as core.String?);
+      : this(
+          type: json_['type'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -2412,22 +2402,22 @@ class DiscoveredService {
   /// Output only.
   ServiceReference? serviceReference;
 
-  DiscoveredService({this.name, this.serviceProperties, this.serviceReference});
+  DiscoveredService({
+    this.name,
+    this.serviceProperties,
+    this.serviceReference,
+  });
 
   DiscoveredService.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
           serviceProperties: json_.containsKey('serviceProperties')
-              ? ServiceProperties.fromJson(
-                  json_['serviceProperties']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ServiceProperties.fromJson(json_['serviceProperties']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           serviceReference: json_.containsKey('serviceReference')
-              ? ServiceReference.fromJson(
-                  json_['serviceReference']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ServiceReference.fromJson(json_['serviceReference']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2474,16 +2464,12 @@ class DiscoveredWorkload {
       : this(
           name: json_['name'] as core.String?,
           workloadProperties: json_.containsKey('workloadProperties')
-              ? WorkloadProperties.fromJson(
-                  json_['workloadProperties']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? WorkloadProperties.fromJson(json_['workloadProperties']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           workloadReference: json_.containsKey('workloadReference')
-              ? WorkloadReference.fromJson(
-                  json_['workloadReference']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? WorkloadReference.fromJson(json_['workloadReference']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2516,10 +2502,14 @@ class Environment {
   /// - "DEVELOPMENT" : Development environment.
   core.String? type;
 
-  Environment({this.type});
+  Environment({
+    this.type,
+  });
 
   Environment.fromJson(core.Map json_)
-      : this(type: json_['type'] as core.String?);
+      : this(
+          type: json_['type'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -2566,11 +2556,8 @@ class ListApplicationsResponse {
   ListApplicationsResponse.fromJson(core.Map json_)
       : this(
           applications: (json_['applications'] as core.List?)
-              ?.map(
-                (value) => Application.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Application.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -2605,11 +2592,8 @@ class ListDiscoveredServicesResponse {
   ListDiscoveredServicesResponse.fromJson(core.Map json_)
       : this(
           discoveredServices: (json_['discoveredServices'] as core.List?)
-              ?.map(
-                (value) => DiscoveredService.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DiscoveredService.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -2645,11 +2629,8 @@ class ListDiscoveredWorkloadsResponse {
   ListDiscoveredWorkloadsResponse.fromJson(core.Map json_)
       : this(
           discoveredWorkloads: (json_['discoveredWorkloads'] as core.List?)
-              ?.map(
-                (value) => DiscoveredWorkload.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DiscoveredWorkload.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -2673,16 +2654,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({this.locations, this.nextPageToken});
+  ListLocationsResponse({
+    this.locations,
+    this.nextPageToken,
+  });
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map(
-                (value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2701,17 +2682,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map(
-                (value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2743,11 +2724,8 @@ class ListServiceProjectAttachmentsResponse {
           nextPageToken: json_['nextPageToken'] as core.String?,
           serviceProjectAttachments:
               (json_['serviceProjectAttachments'] as core.List?)
-                  ?.map(
-                    (value) => ServiceProjectAttachment.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => ServiceProjectAttachment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2773,17 +2751,18 @@ class ListServicesResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListServicesResponse({this.nextPageToken, this.services, this.unreachable});
+  ListServicesResponse({
+    this.nextPageToken,
+    this.services,
+    this.unreachable,
+  });
 
   ListServicesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           services: (json_['services'] as core.List?)
-              ?.map(
-                (value) => Service.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Service.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2808,7 +2787,11 @@ class ListWorkloadsResponse {
   /// List of Workloads.
   core.List<Workload>? workloads;
 
-  ListWorkloadsResponse({this.nextPageToken, this.unreachable, this.workloads});
+  ListWorkloadsResponse({
+    this.nextPageToken,
+    this.unreachable,
+    this.workloads,
+  });
 
   ListWorkloadsResponse.fromJson(core.Map json_)
       : this(
@@ -2817,11 +2800,8 @@ class ListWorkloadsResponse {
               ?.map((value) => value as core.String)
               .toList(),
           workloads: (json_['workloads'] as core.List?)
-              ?.map(
-                (value) => Workload.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Workload.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2840,15 +2820,15 @@ class LookupDiscoveredServiceResponse {
   /// Discovered Service if exists, empty otherwise.
   DiscoveredService? discoveredService;
 
-  LookupDiscoveredServiceResponse({this.discoveredService});
+  LookupDiscoveredServiceResponse({
+    this.discoveredService,
+  });
 
   LookupDiscoveredServiceResponse.fromJson(core.Map json_)
       : this(
           discoveredService: json_.containsKey('discoveredService')
-              ? DiscoveredService.fromJson(
-                  json_['discoveredService']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? DiscoveredService.fromJson(json_['discoveredService']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2862,15 +2842,15 @@ class LookupDiscoveredWorkloadResponse {
   /// Discovered Workload if exists, empty otherwise.
   DiscoveredWorkload? discoveredWorkload;
 
-  LookupDiscoveredWorkloadResponse({this.discoveredWorkload});
+  LookupDiscoveredWorkloadResponse({
+    this.discoveredWorkload,
+  });
 
   LookupDiscoveredWorkloadResponse.fromJson(core.Map json_)
       : this(
           discoveredWorkload: json_.containsKey('discoveredWorkload')
-              ? DiscoveredWorkload.fromJson(
-                  json_['discoveredWorkload']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? DiscoveredWorkload.fromJson(json_['discoveredWorkload']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2885,7 +2865,9 @@ class LookupServiceProjectAttachmentResponse {
   /// Service project attachment for a project if exists, empty otherwise.
   ServiceProjectAttachment? serviceProjectAttachment;
 
-  LookupServiceProjectAttachmentResponse({this.serviceProjectAttachment});
+  LookupServiceProjectAttachmentResponse({
+    this.serviceProjectAttachment,
+  });
 
   LookupServiceProjectAttachmentResponse.fromJson(core.Map json_)
       : this(
@@ -2893,8 +2875,7 @@ class LookupServiceProjectAttachmentResponse {
               json_.containsKey('serviceProjectAttachment')
                   ? ServiceProjectAttachment.fromJson(
                       json_['serviceProjectAttachment']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
         );
 
@@ -2947,15 +2928,20 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({this.done, this.error, this.metadata, this.name, this.response});
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -3061,23 +3047,22 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
+  Policy({
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
   Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map(
-                (value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map(
-                (value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -3102,9 +3087,14 @@ class Scope {
   /// - "GLOBAL" : Global type.
   core.String? type;
 
-  Scope({this.type});
+  Scope({
+    this.type,
+  });
 
-  Scope.fromJson(core.Map json_) : this(type: json_['type'] as core.String?);
+  Scope.fromJson(core.Map json_)
+      : this(
+          type: json_['type'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -3205,8 +3195,7 @@ class Service {
       : this(
           attributes: json_.containsKey('attributes')
               ? Attributes.fromJson(
-                  json_['attributes'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['attributes'] as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
@@ -3214,16 +3203,12 @@ class Service {
           displayName: json_['displayName'] as core.String?,
           name: json_['name'] as core.String?,
           serviceProperties: json_.containsKey('serviceProperties')
-              ? ServiceProperties.fromJson(
-                  json_['serviceProperties']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ServiceProperties.fromJson(json_['serviceProperties']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           serviceReference: json_.containsKey('serviceReference')
-              ? ServiceReference.fromJson(
-                  json_['serviceReference']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ServiceReference.fromJson(json_['serviceReference']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           state: json_['state'] as core.String?,
           uid: json_['uid'] as core.String?,
@@ -3336,7 +3321,11 @@ class ServiceProperties {
   /// Output only.
   core.String? zone;
 
-  ServiceProperties({this.gcpProject, this.location, this.zone});
+  ServiceProperties({
+    this.gcpProject,
+    this.location,
+    this.zone,
+  });
 
   ServiceProperties.fromJson(core.Map json_)
       : this(
@@ -3361,10 +3350,14 @@ class ServiceReference {
   /// Output only.
   core.String? uri;
 
-  ServiceReference({this.uri});
+  ServiceReference({
+    this.uri,
+  });
 
   ServiceReference.fromJson(core.Map json_)
-      : this(uri: json_['uri'] as core.String?);
+      : this(
+          uri: json_['uri'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
@@ -3386,14 +3379,16 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({this.policy, this.updateMask});
+  SetIamPolicyRequest({
+    this.policy,
+    this.updateMask,
+  });
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -3513,8 +3508,7 @@ class Workload {
       : this(
           attributes: json_.containsKey('attributes')
               ? Attributes.fromJson(
-                  json_['attributes'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['attributes'] as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
@@ -3525,16 +3519,12 @@ class Workload {
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
           workloadProperties: json_.containsKey('workloadProperties')
-              ? WorkloadProperties.fromJson(
-                  json_['workloadProperties']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? WorkloadProperties.fromJson(json_['workloadProperties']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           workloadReference: json_.containsKey('workloadReference')
-              ? WorkloadReference.fromJson(
-                  json_['workloadReference']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? WorkloadReference.fromJson(json_['workloadReference']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3577,7 +3567,11 @@ class WorkloadProperties {
   /// Output only.
   core.String? zone;
 
-  WorkloadProperties({this.gcpProject, this.location, this.zone});
+  WorkloadProperties({
+    this.gcpProject,
+    this.location,
+    this.zone,
+  });
 
   WorkloadProperties.fromJson(core.Map json_)
       : this(
@@ -3600,10 +3594,14 @@ class WorkloadReference {
   /// Output only.
   core.String? uri;
 
-  WorkloadReference({this.uri});
+  WorkloadReference({
+    this.uri,
+  });
 
   WorkloadReference.fromJson(core.Map json_)
-      : this(uri: json_['uri'] as core.String?);
+      : this(
+          uri: json_['uri'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,

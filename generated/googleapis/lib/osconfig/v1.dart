@@ -62,16 +62,11 @@ class OSConfigApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  OSConfigApi(
-    http.Client client, {
-    core.String rootUrl = 'https://osconfig.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  OSConfigApi(http.Client client,
+      {core.String rootUrl = 'https://osconfig.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -142,8 +137,7 @@ class ProjectsLocationsGlobalResource {
       queryParams: queryParams_,
     );
     return ProjectFeatureSettings.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// UpdateProjectFeatureSettings sets the VM Manager features for a project.
@@ -192,8 +186,7 @@ class ProjectsLocationsGlobalResource {
       queryParams: queryParams_,
     );
     return ProjectFeatureSettings.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -334,8 +327,7 @@ class ProjectsLocationsInstancesInventoriesResource {
       queryParams: queryParams_,
     );
     return ListInventoriesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -346,16 +338,16 @@ class ProjectsLocationsInstancesOsPolicyAssignmentsResource {
       ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource(_requester);
 
   ProjectsLocationsInstancesOsPolicyAssignmentsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 }
 
 class ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Get the OS policy assignment report for the specified Compute Engine VM
   /// instance.
@@ -398,8 +390,7 @@ class ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource {
       queryParams: queryParams_,
     );
     return OSPolicyAssignmentReport.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List OS policy assignment reports for all Compute Engine VM instances in
@@ -468,8 +459,7 @@ class ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource {
       queryParams: queryParams_,
     );
     return ListOSPolicyAssignmentReportsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -477,8 +467,8 @@ class ProjectsLocationsInstancesVulnerabilityReportsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsInstancesVulnerabilityReportsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Gets the vulnerability report for the specified VM instance.
   ///
@@ -521,8 +511,7 @@ class ProjectsLocationsInstancesVulnerabilityReportsResource {
       queryParams: queryParams_,
     );
     return VulnerabilityReport.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List vulnerability reports for all VM instances in the specified zone.
@@ -587,8 +576,7 @@ class ProjectsLocationsInstancesVulnerabilityReportsResource {
       queryParams: queryParams_,
     );
     return ListVulnerabilityReportsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -753,8 +741,7 @@ class ProjectsLocationsOsPolicyAssignmentsResource {
       queryParams: queryParams_,
     );
     return OSPolicyAssignment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List the OS policy assignments under the parent resource.
@@ -803,8 +790,7 @@ class ProjectsLocationsOsPolicyAssignmentsResource {
       queryParams: queryParams_,
     );
     return ListOSPolicyAssignmentsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List the OS policy assignment revisions for a given OS policy assignment.
@@ -852,8 +838,7 @@ class ProjectsLocationsOsPolicyAssignmentsResource {
       queryParams: queryParams_,
     );
     return ListOSPolicyAssignmentRevisionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update an existing OS policy assignment.
@@ -927,8 +912,8 @@ class ProjectsLocationsOsPolicyAssignmentsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOsPolicyAssignmentsOperationsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -1001,7 +986,10 @@ class ProjectsLocationsOsPolicyAssignmentsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1070,8 +1058,7 @@ class ProjectsPatchDeploymentsResource {
       queryParams: queryParams_,
     );
     return PatchDeployment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete an OS Config patch deployment.
@@ -1092,7 +1079,10 @@ class ProjectsPatchDeploymentsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1141,8 +1131,7 @@ class ProjectsPatchDeploymentsResource {
       queryParams: queryParams_,
     );
     return PatchDeployment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a page of OS Config patch deployments.
@@ -1190,8 +1179,7 @@ class ProjectsPatchDeploymentsResource {
       queryParams: queryParams_,
     );
     return ListPatchDeploymentsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update an OS Config patch deployment.
@@ -1240,8 +1228,7 @@ class ProjectsPatchDeploymentsResource {
       queryParams: queryParams_,
     );
     return PatchDeployment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Change state of patch deployment to "PAUSED".
@@ -1285,8 +1272,7 @@ class ProjectsPatchDeploymentsResource {
       queryParams: queryParams_,
     );
     return PatchDeployment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Change state of patch deployment back to "ACTIVE".
@@ -1330,8 +1316,7 @@ class ProjectsPatchDeploymentsResource {
       queryParams: queryParams_,
     );
     return PatchDeployment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1448,7 +1433,10 @@ class ProjectsPatchJobsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PatchJob> get(core.String name, {core.String? $fields}) async {
+  async.Future<PatchJob> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1511,8 +1499,7 @@ class ProjectsPatchJobsResource {
       queryParams: queryParams_,
     );
     return ListPatchJobsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1572,8 +1559,7 @@ class ProjectsPatchJobsInstanceDetailsResource {
       queryParams: queryParams_,
     );
     return ListPatchJobInstanceDetailsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1601,7 +1587,11 @@ class AptSettings {
   /// - "UPGRADE" : Runs `apt-get upgrade`.
   core.String? type;
 
-  AptSettings({this.excludes, this.exclusivePackages, this.type});
+  AptSettings({
+    this.excludes,
+    this.exclusivePackages,
+    this.type,
+  });
 
   AptSettings.fromJson(core.Map json_)
       : this(
@@ -1820,21 +1810,20 @@ class ExecStep {
   /// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
   ExecStepConfig? windowsExecStepConfig;
 
-  ExecStep({this.linuxExecStepConfig, this.windowsExecStepConfig});
+  ExecStep({
+    this.linuxExecStepConfig,
+    this.windowsExecStepConfig,
+  });
 
   ExecStep.fromJson(core.Map json_)
       : this(
           linuxExecStepConfig: json_.containsKey('linuxExecStepConfig')
-              ? ExecStepConfig.fromJson(
-                  json_['linuxExecStepConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ExecStepConfig.fromJson(json_['linuxExecStepConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           windowsExecStepConfig: json_.containsKey('windowsExecStepConfig')
-              ? ExecStepConfig.fromJson(
-                  json_['windowsExecStepConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ExecStepConfig.fromJson(json_['windowsExecStepConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1892,8 +1881,7 @@ class ExecStepConfig {
               .toList(),
           gcsObject: json_.containsKey('gcsObject')
               ? GcsObject.fromJson(
-                  json_['gcsObject'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['gcsObject'] as core.Map<core.String, core.dynamic>)
               : null,
           interpreter: json_['interpreter'] as core.String?,
           localPath: json_['localPath'] as core.String?,
@@ -1960,20 +1948,16 @@ class ExecutePatchJobRequest {
           dryRun: json_['dryRun'] as core.bool?,
           duration: json_['duration'] as core.String?,
           instanceFilter: json_.containsKey('instanceFilter')
-              ? PatchInstanceFilter.fromJson(
-                  json_['instanceFilter']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? PatchInstanceFilter.fromJson(json_['instanceFilter']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           patchConfig: json_.containsKey('patchConfig')
               ? PatchConfig.fromJson(
-                  json_['patchConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['patchConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           rollout: json_.containsKey('rollout')
               ? PatchRollout.fromJson(
-                  json_['rollout'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['rollout'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1998,7 +1982,10 @@ class FixedOrPercent {
   /// multiplied by a reference value.
   core.int? percent;
 
-  FixedOrPercent({this.fixed, this.percent});
+  FixedOrPercent({
+    this.fixed,
+    this.percent,
+  });
 
   FixedOrPercent.fromJson(core.Map json_)
       : this(
@@ -2032,7 +2019,11 @@ class GcsObject {
   /// Required.
   core.String? object;
 
-  GcsObject({this.bucket, this.generationNumber, this.object});
+  GcsObject({
+    this.bucket,
+    this.generationNumber,
+    this.object,
+  });
 
   GcsObject.fromJson(core.Map json_)
       : this(
@@ -2081,7 +2072,12 @@ class Inventory {
   /// Output only.
   core.String? updateTime;
 
-  Inventory({this.items, this.name, this.osInfo, this.updateTime});
+  Inventory({
+    this.items,
+    this.name,
+    this.osInfo,
+    this.updateTime,
+  });
 
   Inventory.fromJson(core.Map json_)
       : this(
@@ -2089,15 +2085,13 @@ class Inventory {
             (key, value) => core.MapEntry(
               key,
               InventoryItem.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
           name: json_['name'] as core.String?,
           osInfo: json_.containsKey('osInfo')
               ? InventoryOsInfo.fromJson(
-                  json_['osInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['osInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -2156,18 +2150,14 @@ class InventoryItem {
   InventoryItem.fromJson(core.Map json_)
       : this(
           availablePackage: json_.containsKey('availablePackage')
-              ? InventorySoftwarePackage.fromJson(
-                  json_['availablePackage']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? InventorySoftwarePackage.fromJson(json_['availablePackage']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_['createTime'] as core.String?,
           id: json_['id'] as core.String?,
           installedPackage: json_.containsKey('installedPackage')
-              ? InventorySoftwarePackage.fromJson(
-                  json_['installedPackage']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? InventorySoftwarePackage.fromJson(json_['installedPackage']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           originType: json_['originType'] as core.String?,
           type: json_['type'] as core.String?,
@@ -2255,49 +2245,39 @@ class InventorySoftwarePackage {
       : this(
           aptPackage: json_.containsKey('aptPackage')
               ? InventoryVersionedPackage.fromJson(
-                  json_['aptPackage'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['aptPackage'] as core.Map<core.String, core.dynamic>)
               : null,
           cosPackage: json_.containsKey('cosPackage')
               ? InventoryVersionedPackage.fromJson(
-                  json_['cosPackage'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['cosPackage'] as core.Map<core.String, core.dynamic>)
               : null,
           googetPackage: json_.containsKey('googetPackage')
               ? InventoryVersionedPackage.fromJson(
-                  json_['googetPackage'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['googetPackage'] as core.Map<core.String, core.dynamic>)
               : null,
           qfePackage: json_.containsKey('qfePackage')
               ? InventoryWindowsQuickFixEngineeringPackage.fromJson(
-                  json_['qfePackage'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['qfePackage'] as core.Map<core.String, core.dynamic>)
               : null,
           windowsApplication: json_.containsKey('windowsApplication')
-              ? InventoryWindowsApplication.fromJson(
-                  json_['windowsApplication']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? InventoryWindowsApplication.fromJson(json_['windowsApplication']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           wuaPackage: json_.containsKey('wuaPackage')
               ? InventoryWindowsUpdatePackage.fromJson(
-                  json_['wuaPackage'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['wuaPackage'] as core.Map<core.String, core.dynamic>)
               : null,
           yumPackage: json_.containsKey('yumPackage')
               ? InventoryVersionedPackage.fromJson(
-                  json_['yumPackage'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['yumPackage'] as core.Map<core.String, core.dynamic>)
               : null,
           zypperPackage: json_.containsKey('zypperPackage')
               ? InventoryVersionedPackage.fromJson(
-                  json_['zypperPackage'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['zypperPackage'] as core.Map<core.String, core.dynamic>)
               : null,
           zypperPatch: json_.containsKey('zypperPatch')
               ? InventoryZypperPatch.fromJson(
-                  json_['zypperPatch'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['zypperPatch'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2361,8 +2341,7 @@ class InventoryWindowsApplication {
           helpLink: json_['helpLink'] as core.String?,
           installDate: json_.containsKey('installDate')
               ? Date.fromJson(
-                  json_['installDate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['installDate'] as core.Map<core.String, core.dynamic>)
               : null,
           publisher: json_['publisher'] as core.String?,
         );
@@ -2437,12 +2416,9 @@ class InventoryWindowsUpdatePackage {
   InventoryWindowsUpdatePackage.fromJson(core.Map json_)
       : this(
           categories: (json_['categories'] as core.List?)
-              ?.map(
-                (value) =>
-                    InventoryWindowsUpdatePackageWindowsUpdateCategory.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  InventoryWindowsUpdatePackageWindowsUpdateCategory.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           description: json_['description'] as core.String?,
           kbArticleIds: (json_['kbArticleIds'] as core.List?)
@@ -2489,16 +2465,16 @@ class ListInventoriesResponse {
   /// The pagination token to retrieve the next page of inventory objects.
   core.String? nextPageToken;
 
-  ListInventoriesResponse({this.inventories, this.nextPageToken});
+  ListInventoriesResponse({
+    this.inventories,
+    this.nextPageToken,
+  });
 
   ListInventoriesResponse.fromJson(core.Map json_)
       : this(
           inventories: (json_['inventories'] as core.List?)
-              ?.map(
-                (value) => Inventory.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Inventory.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2529,11 +2505,8 @@ class ListOSPolicyAssignmentReportsResponse {
           nextPageToken: json_['nextPageToken'] as core.String?,
           osPolicyAssignmentReports:
               (json_['osPolicyAssignmentReports'] as core.List?)
-                  ?.map(
-                    (value) => OSPolicyAssignmentReport.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => OSPolicyAssignmentReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
         );
 
@@ -2562,11 +2535,8 @@ class ListOSPolicyAssignmentRevisionsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           osPolicyAssignments: (json_['osPolicyAssignments'] as core.List?)
-              ?.map(
-                (value) => OSPolicyAssignment.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => OSPolicyAssignment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2594,11 +2564,8 @@ class ListOSPolicyAssignmentsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           osPolicyAssignments: (json_['osPolicyAssignments'] as core.List?)
-              ?.map(
-                (value) => OSPolicyAssignment.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => OSPolicyAssignment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2618,17 +2585,17 @@ class ListPatchDeploymentsResponse {
   /// The list of patch deployments.
   core.List<PatchDeployment>? patchDeployments;
 
-  ListPatchDeploymentsResponse({this.nextPageToken, this.patchDeployments});
+  ListPatchDeploymentsResponse({
+    this.nextPageToken,
+    this.patchDeployments,
+  });
 
   ListPatchDeploymentsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           patchDeployments: (json_['patchDeployments'] as core.List?)
-              ?.map(
-                (value) => PatchDeployment.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PatchDeployment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2656,11 +2623,8 @@ class ListPatchJobInstanceDetailsResponse {
           nextPageToken: json_['nextPageToken'] as core.String?,
           patchJobInstanceDetails:
               (json_['patchJobInstanceDetails'] as core.List?)
-                  ?.map(
-                    (value) => PatchJobInstanceDetails.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => PatchJobInstanceDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
         );
 
@@ -2679,17 +2643,17 @@ class ListPatchJobsResponse {
   /// The list of patch jobs.
   core.List<PatchJob>? patchJobs;
 
-  ListPatchJobsResponse({this.nextPageToken, this.patchJobs});
+  ListPatchJobsResponse({
+    this.nextPageToken,
+    this.patchJobs,
+  });
 
   ListPatchJobsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           patchJobs: (json_['patchJobs'] as core.List?)
-              ?.map(
-                (value) => PatchJob.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PatchJob.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2718,11 +2682,8 @@ class ListVulnerabilityReportsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           vulnerabilityReports: (json_['vulnerabilityReports'] as core.List?)
-              ?.map(
-                (value) => VulnerabilityReport.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => VulnerabilityReport.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2753,16 +2714,17 @@ class MonthlySchedule {
   /// Required.
   WeekDayOfMonth? weekDayOfMonth;
 
-  MonthlySchedule({this.monthDay, this.weekDayOfMonth});
+  MonthlySchedule({
+    this.monthDay,
+    this.weekDayOfMonth,
+  });
 
   MonthlySchedule.fromJson(core.Map json_)
       : this(
           monthDay: json_['monthDay'] as core.int?,
           weekDayOfMonth: json_.containsKey('weekDayOfMonth')
-              ? WeekDayOfMonth.fromJson(
-                  json_['weekDayOfMonth']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? WeekDayOfMonth.fromJson(json_['weekDayOfMonth']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2834,11 +2796,8 @@ class OSPolicy {
           id: json_['id'] as core.String?,
           mode: json_['mode'] as core.String?,
           resourceGroups: (json_['resourceGroups'] as core.List?)
-              ?.map(
-                (value) => OSPolicyResourceGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => OSPolicyResourceGroup.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2973,24 +2932,19 @@ class OSPolicyAssignment {
           instanceFilter: json_.containsKey('instanceFilter')
               ? OSPolicyAssignmentInstanceFilter.fromJson(
                   json_['instanceFilter']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           osPolicies: (json_['osPolicies'] as core.List?)
-              ?.map(
-                (value) => OSPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => OSPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           reconciling: json_['reconciling'] as core.bool?,
           revisionCreateTime: json_['revisionCreateTime'] as core.String?,
           revisionId: json_['revisionId'] as core.String?,
           rollout: json_.containsKey('rollout')
               ? OSPolicyAssignmentRollout.fromJson(
-                  json_['rollout'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['rollout'] as core.Map<core.String, core.dynamic>)
               : null,
           rolloutState: json_['rolloutState'] as core.String?,
           uid: json_['uid'] as core.String?,
@@ -3053,25 +3007,17 @@ class OSPolicyAssignmentInstanceFilter {
       : this(
           all: json_['all'] as core.bool?,
           exclusionLabels: (json_['exclusionLabels'] as core.List?)
-              ?.map(
-                (value) => OSPolicyAssignmentLabelSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => OSPolicyAssignmentLabelSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           inclusionLabels: (json_['inclusionLabels'] as core.List?)
-              ?.map(
-                (value) => OSPolicyAssignmentLabelSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => OSPolicyAssignmentLabelSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           inventories: (json_['inventories'] as core.List?)
-              ?.map(
-                (value) => OSPolicyAssignmentInstanceFilterInventory.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  OSPolicyAssignmentInstanceFilterInventory.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3100,13 +3046,18 @@ class OSPolicyAssignmentLabelSet {
   /// selected.
   core.Map<core.String, core.String>? labels;
 
-  OSPolicyAssignmentLabelSet({this.labels});
+  OSPolicyAssignmentLabelSet({
+    this.labels,
+  });
 
   OSPolicyAssignmentLabelSet.fromJson(core.Map json_)
       : this(
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
         );
 
@@ -3164,11 +3115,9 @@ class OSPolicyAssignmentReport {
           name: json_['name'] as core.String?,
           osPolicyAssignment: json_['osPolicyAssignment'] as core.String?,
           osPolicyCompliances: (json_['osPolicyCompliances'] as core.List?)
-              ?.map(
-                (value) => OSPolicyAssignmentReportOSPolicyCompliance.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  OSPolicyAssignmentReportOSPolicyCompliance.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -3242,16 +3191,12 @@ class OSPolicyAssignmentReportOSPolicyCompliance {
           complianceState: json_['complianceState'] as core.String?,
           complianceStateReason: json_['complianceStateReason'] as core.String?,
           osPolicyId: json_['osPolicyId'] as core.String?,
-          osPolicyResourceCompliances:
-              (json_['osPolicyResourceCompliances'] as core.List?)
-                  ?.map(
-                    (value) =>
-                        OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance
-                            .fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
-                  .toList(),
+          osPolicyResourceCompliances: (json_['osPolicyResourceCompliances']
+                  as core.List?)
+              ?.map((value) =>
+                  OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3311,25 +3256,19 @@ class OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance {
   });
 
   OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           complianceState: json_['complianceState'] as core.String?,
           complianceStateReason: json_['complianceStateReason'] as core.String?,
           configSteps: (json_['configSteps'] as core.List?)
-              ?.map(
-                (value) =>
-                    OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep
-                        .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           execResourceOutput: json_.containsKey('execResourceOutput')
               ? OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput
-                  .fromJson(
-                  json_['execResourceOutput']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['execResourceOutput']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           osPolicyResourceId: json_['osPolicyResourceId'] as core.String?,
         );
@@ -3365,8 +3304,10 @@ class OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecRe
   });
 
   OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput.fromJson(
-    core.Map json_,
-  ) : this(enforcementOutput: json_['enforcementOutput'] as core.String?);
+      core.Map json_)
+      : this(
+          enforcementOutput: json_['enforcementOutput'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enforcementOutput != null) 'enforcementOutput': enforcementOutput!,
@@ -3403,8 +3344,8 @@ class OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPoli
   });
 
   OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           errorMessage: json_['errorMessage'] as core.String?,
           type: json_['type'] as core.String?,
         );
@@ -3433,15 +3374,16 @@ class OSPolicyAssignmentRollout {
   /// Required.
   core.String? minWaitDuration;
 
-  OSPolicyAssignmentRollout({this.disruptionBudget, this.minWaitDuration});
+  OSPolicyAssignmentRollout({
+    this.disruptionBudget,
+    this.minWaitDuration,
+  });
 
   OSPolicyAssignmentRollout.fromJson(core.Map json_)
       : this(
           disruptionBudget: json_.containsKey('disruptionBudget')
-              ? FixedOrPercent.fromJson(
-                  json_['disruptionBudget']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? FixedOrPercent.fromJson(json_['disruptionBudget']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           minWaitDuration: json_['minWaitDuration'] as core.String?,
         );
@@ -3483,30 +3425,32 @@ class OSPolicyResource {
   /// Package repository resource
   OSPolicyResourceRepositoryResource? repository;
 
-  OSPolicyResource({this.exec, this.file, this.id, this.pkg, this.repository});
+  OSPolicyResource({
+    this.exec,
+    this.file,
+    this.id,
+    this.pkg,
+    this.repository,
+  });
 
   OSPolicyResource.fromJson(core.Map json_)
       : this(
           exec: json_.containsKey('exec')
               ? OSPolicyResourceExecResource.fromJson(
-                  json_['exec'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['exec'] as core.Map<core.String, core.dynamic>)
               : null,
           file: json_.containsKey('file')
               ? OSPolicyResourceFileResource.fromJson(
-                  json_['file'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['file'] as core.Map<core.String, core.dynamic>)
               : null,
           id: json_['id'] as core.String?,
           pkg: json_.containsKey('pkg')
               ? OSPolicyResourcePackageResource.fromJson(
-                  json_['pkg'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['pkg'] as core.Map<core.String, core.dynamic>)
               : null,
           repository: json_.containsKey('repository')
               ? OSPolicyResourceRepositoryResource.fromJson(
-                  json_['repository'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['repository'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3555,19 +3499,20 @@ class OSPolicyResourceExecResource {
   /// Required.
   OSPolicyResourceExecResourceExec? validate;
 
-  OSPolicyResourceExecResource({this.enforce, this.validate});
+  OSPolicyResourceExecResource({
+    this.enforce,
+    this.validate,
+  });
 
   OSPolicyResourceExecResource.fromJson(core.Map json_)
       : this(
           enforce: json_.containsKey('enforce')
               ? OSPolicyResourceExecResourceExec.fromJson(
-                  json_['enforce'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['enforce'] as core.Map<core.String, core.dynamic>)
               : null,
           validate: json_.containsKey('validate')
               ? OSPolicyResourceExecResourceExec.fromJson(
-                  json_['validate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['validate'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3627,8 +3572,7 @@ class OSPolicyResourceExecResourceExec {
               .toList(),
           file: json_.containsKey('file')
               ? OSPolicyResourceFile.fromJson(
-                  json_['file'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['file'] as core.Map<core.String, core.dynamic>)
               : null,
           interpreter: json_['interpreter'] as core.String?,
           outputFilePath: json_['outputFilePath'] as core.String?,
@@ -3674,14 +3618,12 @@ class OSPolicyResourceFile {
           allowInsecure: json_['allowInsecure'] as core.bool?,
           gcs: json_.containsKey('gcs')
               ? OSPolicyResourceFileGcs.fromJson(
-                  json_['gcs'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['gcs'] as core.Map<core.String, core.dynamic>)
               : null,
           localPath: json_['localPath'] as core.String?,
           remote: json_.containsKey('remote')
               ? OSPolicyResourceFileRemote.fromJson(
-                  json_['remote'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['remote'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3708,7 +3650,11 @@ class OSPolicyResourceFileGcs {
   /// Required.
   core.String? object;
 
-  OSPolicyResourceFileGcs({this.bucket, this.generation, this.object});
+  OSPolicyResourceFileGcs({
+    this.bucket,
+    this.generation,
+    this.object,
+  });
 
   OSPolicyResourceFileGcs.fromJson(core.Map json_)
       : this(
@@ -3737,7 +3683,10 @@ class OSPolicyResourceFileRemote {
   /// Required.
   core.String? uri;
 
-  OSPolicyResourceFileRemote({this.sha256Checksum, this.uri});
+  OSPolicyResourceFileRemote({
+    this.sha256Checksum,
+    this.uri,
+  });
 
   OSPolicyResourceFileRemote.fromJson(core.Map json_)
       : this(
@@ -3801,8 +3750,7 @@ class OSPolicyResourceFileResource {
           content: json_['content'] as core.String?,
           file: json_.containsKey('file')
               ? OSPolicyResourceFile.fromJson(
-                  json_['file'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['file'] as core.Map<core.String, core.dynamic>)
               : null,
           path: json_['path'] as core.String?,
           permissions: json_['permissions'] as core.String?,
@@ -3843,23 +3791,20 @@ class OSPolicyResourceGroup {
   /// Required.
   core.List<OSPolicyResource>? resources;
 
-  OSPolicyResourceGroup({this.inventoryFilters, this.resources});
+  OSPolicyResourceGroup({
+    this.inventoryFilters,
+    this.resources,
+  });
 
   OSPolicyResourceGroup.fromJson(core.Map json_)
       : this(
           inventoryFilters: (json_['inventoryFilters'] as core.List?)
-              ?.map(
-                (value) => OSPolicyInventoryFilter.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => OSPolicyInventoryFilter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           resources: (json_['resources'] as core.List?)
-              ?.map(
-                (value) => OSPolicyResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => OSPolicyResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3917,39 +3862,32 @@ class OSPolicyResourcePackageResource {
       : this(
           apt: json_.containsKey('apt')
               ? OSPolicyResourcePackageResourceAPT.fromJson(
-                  json_['apt'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['apt'] as core.Map<core.String, core.dynamic>)
               : null,
           deb: json_.containsKey('deb')
               ? OSPolicyResourcePackageResourceDeb.fromJson(
-                  json_['deb'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['deb'] as core.Map<core.String, core.dynamic>)
               : null,
           desiredState: json_['desiredState'] as core.String?,
           googet: json_.containsKey('googet')
               ? OSPolicyResourcePackageResourceGooGet.fromJson(
-                  json_['googet'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['googet'] as core.Map<core.String, core.dynamic>)
               : null,
           msi: json_.containsKey('msi')
               ? OSPolicyResourcePackageResourceMSI.fromJson(
-                  json_['msi'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['msi'] as core.Map<core.String, core.dynamic>)
               : null,
           rpm: json_.containsKey('rpm')
               ? OSPolicyResourcePackageResourceRPM.fromJson(
-                  json_['rpm'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['rpm'] as core.Map<core.String, core.dynamic>)
               : null,
           yum: json_.containsKey('yum')
               ? OSPolicyResourcePackageResourceYUM.fromJson(
-                  json_['yum'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['yum'] as core.Map<core.String, core.dynamic>)
               : null,
           zypper: json_.containsKey('zypper')
               ? OSPolicyResourcePackageResourceZypper.fromJson(
-                  json_['zypper'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['zypper'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3986,15 +3924,17 @@ class OSPolicyResourcePackageResourceDeb {
   /// Required.
   OSPolicyResourceFile? source;
 
-  OSPolicyResourcePackageResourceDeb({this.pullDeps, this.source});
+  OSPolicyResourcePackageResourceDeb({
+    this.pullDeps,
+    this.source,
+  });
 
   OSPolicyResourcePackageResourceDeb.fromJson(core.Map json_)
       : this(
           pullDeps: json_['pullDeps'] as core.bool?,
           source: json_.containsKey('source')
               ? OSPolicyResourceFile.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4025,7 +3965,10 @@ class OSPolicyResourcePackageResourceMSI {
   /// Required.
   OSPolicyResourceFile? source;
 
-  OSPolicyResourcePackageResourceMSI({this.properties, this.source});
+  OSPolicyResourcePackageResourceMSI({
+    this.properties,
+    this.source,
+  });
 
   OSPolicyResourcePackageResourceMSI.fromJson(core.Map json_)
       : this(
@@ -4034,8 +3977,7 @@ class OSPolicyResourcePackageResourceMSI {
               .toList(),
           source: json_.containsKey('source')
               ? OSPolicyResourceFile.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4060,15 +4002,17 @@ class OSPolicyResourcePackageResourceRPM {
   /// Required.
   OSPolicyResourceFile? source;
 
-  OSPolicyResourcePackageResourceRPM({this.pullDeps, this.source});
+  OSPolicyResourcePackageResourceRPM({
+    this.pullDeps,
+    this.source,
+  });
 
   OSPolicyResourcePackageResourceRPM.fromJson(core.Map json_)
       : this(
           pullDeps: json_['pullDeps'] as core.bool?,
           source: json_.containsKey('source')
               ? OSPolicyResourceFile.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4113,23 +4057,19 @@ class OSPolicyResourceRepositoryResource {
       : this(
           apt: json_.containsKey('apt')
               ? OSPolicyResourceRepositoryResourceAptRepository.fromJson(
-                  json_['apt'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['apt'] as core.Map<core.String, core.dynamic>)
               : null,
           goo: json_.containsKey('goo')
               ? OSPolicyResourceRepositoryResourceGooRepository.fromJson(
-                  json_['goo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['goo'] as core.Map<core.String, core.dynamic>)
               : null,
           yum: json_.containsKey('yum')
               ? OSPolicyResourceRepositoryResourceYumRepository.fromJson(
-                  json_['yum'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['yum'] as core.Map<core.String, core.dynamic>)
               : null,
           zypper: json_.containsKey('zypper')
               ? OSPolicyResourceRepositoryResourceZypperRepository.fromJson(
-                  json_['zypper'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['zypper'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4221,7 +4161,10 @@ class OSPolicyResourceRepositoryResourceGooRepository {
   /// Required.
   core.String? url;
 
-  OSPolicyResourceRepositoryResourceGooRepository({this.name, this.url});
+  OSPolicyResourceRepositoryResourceGooRepository({
+    this.name,
+    this.url,
+  });
 
   OSPolicyResourceRepositoryResourceGooRepository.fromJson(core.Map json_)
       : this(
@@ -4344,10 +4287,14 @@ class OneTimeSchedule {
   /// Required.
   core.String? executeTime;
 
-  OneTimeSchedule({this.executeTime});
+  OneTimeSchedule({
+    this.executeTime,
+  });
 
   OneTimeSchedule.fromJson(core.Map json_)
-      : this(executeTime: json_['executeTime'] as core.String?);
+      : this(
+          executeTime: json_['executeTime'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (executeTime != null) 'executeTime': executeTime!,
@@ -4397,15 +4344,20 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({this.done, this.error, this.metadata, this.name, this.response});
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -4490,40 +4442,33 @@ class PatchConfig {
       : this(
           apt: json_.containsKey('apt')
               ? AptSettings.fromJson(
-                  json_['apt'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['apt'] as core.Map<core.String, core.dynamic>)
               : null,
           goo: json_.containsKey('goo')
               ? GooSettings.fromJson(
-                  json_['goo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['goo'] as core.Map<core.String, core.dynamic>)
               : null,
           migInstancesAllowed: json_['migInstancesAllowed'] as core.bool?,
           postStep: json_.containsKey('postStep')
               ? ExecStep.fromJson(
-                  json_['postStep'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['postStep'] as core.Map<core.String, core.dynamic>)
               : null,
           preStep: json_.containsKey('preStep')
               ? ExecStep.fromJson(
-                  json_['preStep'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['preStep'] as core.Map<core.String, core.dynamic>)
               : null,
           rebootConfig: json_['rebootConfig'] as core.String?,
           windowsUpdate: json_.containsKey('windowsUpdate')
               ? WindowsUpdateSettings.fromJson(
-                  json_['windowsUpdate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['windowsUpdate'] as core.Map<core.String, core.dynamic>)
               : null,
           yum: json_.containsKey('yum')
               ? YumSettings.fromJson(
-                  json_['yum'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['yum'] as core.Map<core.String, core.dynamic>)
               : null,
           zypper: json_.containsKey('zypper')
               ? ZypperSettings.fromJson(
-                  json_['zypper'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['zypper'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4652,34 +4597,26 @@ class PatchDeployment {
           description: json_['description'] as core.String?,
           duration: json_['duration'] as core.String?,
           instanceFilter: json_.containsKey('instanceFilter')
-              ? PatchInstanceFilter.fromJson(
-                  json_['instanceFilter']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? PatchInstanceFilter.fromJson(json_['instanceFilter']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           lastExecuteTime: json_['lastExecuteTime'] as core.String?,
           name: json_['name'] as core.String?,
           oneTimeSchedule: json_.containsKey('oneTimeSchedule')
-              ? OneTimeSchedule.fromJson(
-                  json_['oneTimeSchedule']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? OneTimeSchedule.fromJson(json_['oneTimeSchedule']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           patchConfig: json_.containsKey('patchConfig')
               ? PatchConfig.fromJson(
-                  json_['patchConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['patchConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           recurringSchedule: json_.containsKey('recurringSchedule')
-              ? RecurringSchedule.fromJson(
-                  json_['recurringSchedule']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? RecurringSchedule.fromJson(json_['recurringSchedule']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           rollout: json_.containsKey('rollout')
               ? PatchRollout.fromJson(
-                  json_['rollout'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['rollout'] as core.Map<core.String, core.dynamic>)
               : null,
           state: json_['state'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -4748,11 +4685,8 @@ class PatchInstanceFilter {
       : this(
           all: json_['all'] as core.bool?,
           groupLabels: (json_['groupLabels'] as core.List?)
-              ?.map(
-                (value) => PatchInstanceFilterGroupLabel.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PatchInstanceFilterGroupLabel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           instanceNamePrefixes: (json_['instanceNamePrefixes'] as core.List?)
               ?.map((value) => value as core.String)
@@ -4788,13 +4722,18 @@ class PatchInstanceFilterGroupLabel {
   /// be targeted by this filter.
   core.Map<core.String, core.String>? labels;
 
-  PatchInstanceFilterGroupLabel({this.labels});
+  PatchInstanceFilterGroupLabel({
+    this.labels,
+  });
 
   PatchInstanceFilterGroupLabel.fromJson(core.Map json_)
       : this(
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
         );
 
@@ -4907,27 +4846,22 @@ class PatchJob {
           instanceDetailsSummary: json_.containsKey('instanceDetailsSummary')
               ? PatchJobInstanceDetailsSummary.fromJson(
                   json_['instanceDetailsSummary']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           instanceFilter: json_.containsKey('instanceFilter')
-              ? PatchInstanceFilter.fromJson(
-                  json_['instanceFilter']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? PatchInstanceFilter.fromJson(json_['instanceFilter']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           patchConfig: json_.containsKey('patchConfig')
               ? PatchConfig.fromJson(
-                  json_['patchConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['patchConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           patchDeployment: json_['patchDeployment'] as core.String?,
           percentComplete: (json_['percentComplete'] as core.num?)?.toDouble(),
           rollout: json_.containsKey('rollout')
               ? PatchRollout.fromJson(
-                  json_['rollout'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['rollout'] as core.Map<core.String, core.dynamic>)
               : null,
           state: json_['state'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -5197,15 +5131,16 @@ class PatchRollout {
   /// time.
   core.String? mode;
 
-  PatchRollout({this.disruptionBudget, this.mode});
+  PatchRollout({
+    this.disruptionBudget,
+    this.mode,
+  });
 
   PatchRollout.fromJson(core.Map json_)
       : this(
           disruptionBudget: json_.containsKey('disruptionBudget')
-              ? FixedOrPercent.fromJson(
-                  json_['disruptionBudget']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? FixedOrPercent.fromJson(json_['disruptionBudget']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           mode: json_['mode'] as core.String?,
         );
@@ -5238,7 +5173,10 @@ class ProjectFeatureSettings {
   /// - "OSCONFIG_C" : Enables all VM Manager features in the project.
   core.String? patchAndConfigFeatureSet;
 
-  ProjectFeatureSettings({this.name, this.patchAndConfigFeatureSet});
+  ProjectFeatureSettings({
+    this.name,
+    this.patchAndConfigFeatureSet,
+  });
 
   ProjectFeatureSettings.fromJson(core.Map json_)
       : this(
@@ -5333,25 +5271,21 @@ class RecurringSchedule {
           lastExecuteTime: json_['lastExecuteTime'] as core.String?,
           monthly: json_.containsKey('monthly')
               ? MonthlySchedule.fromJson(
-                  json_['monthly'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['monthly'] as core.Map<core.String, core.dynamic>)
               : null,
           nextExecuteTime: json_['nextExecuteTime'] as core.String?,
           startTime: json_['startTime'] as core.String?,
           timeOfDay: json_.containsKey('timeOfDay')
               ? TimeOfDay.fromJson(
-                  json_['timeOfDay'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['timeOfDay'] as core.Map<core.String, core.dynamic>)
               : null,
           timeZone: json_.containsKey('timeZone')
               ? TimeZone.fromJson(
-                  json_['timeZone'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['timeZone'] as core.Map<core.String, core.dynamic>)
               : null,
           weekly: json_.containsKey('weekly')
               ? WeeklySchedule.fromJson(
-                  json_['weekly'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['weekly'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5416,18 +5350,19 @@ class VulnerabilityReport {
   /// Output only.
   core.List<VulnerabilityReportVulnerability>? vulnerabilities;
 
-  VulnerabilityReport({this.name, this.updateTime, this.vulnerabilities});
+  VulnerabilityReport({
+    this.name,
+    this.updateTime,
+    this.vulnerabilities,
+  });
 
   VulnerabilityReport.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
           vulnerabilities: (json_['vulnerabilities'] as core.List?)
-              ?.map(
-                (value) => VulnerabilityReportVulnerability.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => VulnerabilityReportVulnerability.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5493,19 +5428,15 @@ class VulnerabilityReportVulnerability {
           createTime: json_['createTime'] as core.String?,
           details: json_.containsKey('details')
               ? VulnerabilityReportVulnerabilityDetails.fromJson(
-                  json_['details'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['details'] as core.Map<core.String, core.dynamic>)
               : null,
           installedInventoryItemIds:
               (json_['installedInventoryItemIds'] as core.List?)
                   ?.map((value) => value as core.String)
                   .toList(),
           items: (json_['items'] as core.List?)
-              ?.map(
-                (value) => VulnerabilityReportVulnerabilityItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => VulnerabilityReportVulnerabilityItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -5566,17 +5497,13 @@ class VulnerabilityReportVulnerabilityDetails {
           cvssV2Score: (json_['cvssV2Score'] as core.num?)?.toDouble(),
           cvssV3: json_.containsKey('cvssV3')
               ? CVSSv3.fromJson(
-                  json_['cvssV3'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['cvssV3'] as core.Map<core.String, core.dynamic>)
               : null,
           description: json_['description'] as core.String?,
           references: (json_['references'] as core.List?)
-              ?.map(
-                (value) =>
-                    VulnerabilityReportVulnerabilityDetailsReference.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  VulnerabilityReportVulnerabilityDetailsReference.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           severity: json_['severity'] as core.String?,
         );
@@ -5599,7 +5526,10 @@ class VulnerabilityReportVulnerabilityDetailsReference {
   /// The url of the reference.
   core.String? url;
 
-  VulnerabilityReportVulnerabilityDetailsReference({this.source, this.url});
+  VulnerabilityReportVulnerabilityDetailsReference({
+    this.source,
+    this.url,
+  });
 
   VulnerabilityReportVulnerabilityDetailsReference.fromJson(core.Map json_)
       : this(
@@ -5705,7 +5635,11 @@ class WeekDayOfMonth {
   /// Required.
   core.int? weekOrdinal;
 
-  WeekDayOfMonth({this.dayOfWeek, this.dayOffset, this.weekOrdinal});
+  WeekDayOfMonth({
+    this.dayOfWeek,
+    this.dayOffset,
+    this.weekOrdinal,
+  });
 
   WeekDayOfMonth.fromJson(core.Map json_)
       : this(
@@ -5737,10 +5671,14 @@ class WeeklySchedule {
   /// - "SUNDAY" : Sunday
   core.String? dayOfWeek;
 
-  WeeklySchedule({this.dayOfWeek});
+  WeeklySchedule({
+    this.dayOfWeek,
+  });
 
   WeeklySchedule.fromJson(core.Map json_)
-      : this(dayOfWeek: json_['dayOfWeek'] as core.String?);
+      : this(
+          dayOfWeek: json_['dayOfWeek'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,

@@ -55,16 +55,11 @@ class PolicyAnalyzerApi {
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  PolicyAnalyzerApi(
-    http.Client client, {
-    core.String rootUrl = 'https://policyanalyzer.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  PolicyAnalyzerApi(http.Client client,
+      {core.String rootUrl = 'https://policyanalyzer.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class FoldersResource {
@@ -165,8 +160,7 @@ class FoldersLocationsActivityTypesActivitiesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPolicyanalyzerV1QueryActivityResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -203,8 +197,8 @@ class OrganizationsLocationsActivityTypesActivitiesResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsActivityTypesActivitiesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Queries policy activities on Google Cloud resources.
   ///
@@ -270,8 +264,7 @@ class OrganizationsLocationsActivityTypesActivitiesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPolicyanalyzerV1QueryActivityResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -373,8 +366,7 @@ class ProjectsLocationsActivityTypesActivitiesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudPolicyanalyzerV1QueryActivityResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -415,8 +407,7 @@ class GoogleCloudPolicyanalyzerV1Activity {
           observationPeriod: json_.containsKey('observationPeriod')
               ? GoogleCloudPolicyanalyzerV1ObservationPeriod.fromJson(
                   json_['observationPeriod']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -440,7 +431,10 @@ class GoogleCloudPolicyanalyzerV1ObservationPeriod {
   /// The time in this timestamp is always `07:00:00Z`.
   core.String? startTime;
 
-  GoogleCloudPolicyanalyzerV1ObservationPeriod({this.endTime, this.startTime});
+  GoogleCloudPolicyanalyzerV1ObservationPeriod({
+    this.endTime,
+    this.startTime,
+  });
 
   GoogleCloudPolicyanalyzerV1ObservationPeriod.fromJson(core.Map json_)
       : this(
@@ -474,11 +468,8 @@ class GoogleCloudPolicyanalyzerV1QueryActivityResponse {
   GoogleCloudPolicyanalyzerV1QueryActivityResponse.fromJson(core.Map json_)
       : this(
           activities: (json_['activities'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudPolicyanalyzerV1Activity.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudPolicyanalyzerV1Activity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );

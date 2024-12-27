@@ -55,16 +55,11 @@ class SpeechApi {
   ProjectsResource get projects => ProjectsResource(_requester);
   SpeechResource get speech => SpeechResource(_requester);
 
-  SpeechApi(
-    http.Client client, {
-    core.String rootUrl = 'https://speech.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  SpeechApi(http.Client client,
+      {core.String rootUrl = 'https://speech.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class OperationsResource {
@@ -92,7 +87,10 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -154,8 +152,7 @@ class OperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -230,8 +227,7 @@ class ProjectsLocationsCustomClassesResource {
       queryParams: queryParams_,
     );
     return CustomClass.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a custom class.
@@ -259,7 +255,10 @@ class ProjectsLocationsCustomClassesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -309,8 +308,7 @@ class ProjectsLocationsCustomClassesResource {
       queryParams: queryParams_,
     );
     return CustomClass.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List custom classes.
@@ -367,8 +365,7 @@ class ProjectsLocationsCustomClassesResource {
       queryParams: queryParams_,
     );
     return ListCustomClassesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a custom class.
@@ -414,8 +411,7 @@ class ProjectsLocationsCustomClassesResource {
       queryParams: queryParams_,
     );
     return CustomClass.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -494,7 +490,10 @@ class ProjectsLocationsPhraseSetsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -534,7 +533,10 @@ class ProjectsLocationsPhraseSetsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PhraseSet> get(core.String name, {core.String? $fields}) async {
+  async.Future<PhraseSet> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -602,8 +604,7 @@ class ProjectsLocationsPhraseSetsResource {
       queryParams: queryParams_,
     );
     return ListPhraseSetResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a phrase set.
@@ -734,8 +735,7 @@ class SpeechResource {
       queryParams: queryParams_,
     );
     return RecognizeResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -744,7 +744,9 @@ class ABNFGrammar {
   /// strings that will end up concatenated.
   core.List<core.String>? abnfStrings;
 
-  ABNFGrammar({this.abnfStrings});
+  ABNFGrammar({
+    this.abnfStrings,
+  });
 
   ABNFGrammar.fromJson(core.Map json_)
       : this(
@@ -763,10 +765,14 @@ class ClassItem {
   /// The class item's value.
   core.String? value;
 
-  ClassItem({this.value});
+  ClassItem({
+    this.value,
+  });
 
   ClassItem.fromJson(core.Map json_)
-      : this(value: json_['value'] as core.String?);
+      : this(
+          value: json_['value'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
@@ -790,14 +796,16 @@ class CreateCustomClassRequest {
   /// Required.
   core.String? customClassId;
 
-  CreateCustomClassRequest({this.customClass, this.customClassId});
+  CreateCustomClassRequest({
+    this.customClass,
+    this.customClassId,
+  });
 
   CreateCustomClassRequest.fromJson(core.Map json_)
       : this(
           customClass: json_.containsKey('customClass')
               ? CustomClass.fromJson(
-                  json_['customClass'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['customClass'] as core.Map<core.String, core.dynamic>)
               : null,
           customClassId: json_['customClassId'] as core.String?,
         );
@@ -825,14 +833,16 @@ class CreatePhraseSetRequest {
   /// Required.
   core.String? phraseSetId;
 
-  CreatePhraseSetRequest({this.phraseSet, this.phraseSetId});
+  CreatePhraseSetRequest({
+    this.phraseSet,
+    this.phraseSetId,
+  });
 
   CreatePhraseSetRequest.fromJson(core.Map json_)
       : this(
           phraseSet: json_.containsKey('phraseSet')
               ? PhraseSet.fromJson(
-                  json_['phraseSet'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['phraseSet'] as core.Map<core.String, core.dynamic>)
               : null,
           phraseSetId: json_['phraseSetId'] as core.String?,
         );
@@ -963,20 +973,22 @@ class CustomClass {
 
   CustomClass.fromJson(core.Map json_)
       : this(
-          annotations: (json_['annotations']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           customClassId: json_['customClassId'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           etag: json_['etag'] as core.String?,
           expireTime: json_['expireTime'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map(
-                (value) => ClassItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ClassItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           kmsKeyName: json_['kmsKeyName'] as core.String?,
           kmsKeyVersionName: json_['kmsKeyVersionName'] as core.String?,
@@ -1026,7 +1038,11 @@ class Entry {
   /// Max length is 100 characters.
   core.String? search;
 
-  Entry({this.caseSensitive, this.replace, this.search});
+  Entry({
+    this.caseSensitive,
+    this.replace,
+    this.search,
+  });
 
   Entry.fromJson(core.Map json_)
       : this(
@@ -1052,16 +1068,16 @@ class ListCustomClassesResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListCustomClassesResponse({this.customClasses, this.nextPageToken});
+  ListCustomClassesResponse({
+    this.customClasses,
+    this.nextPageToken,
+  });
 
   ListCustomClassesResponse.fromJson(core.Map json_)
       : this(
           customClasses: (json_['customClasses'] as core.List?)
-              ?.map(
-                (value) => CustomClass.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CustomClass.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1080,17 +1096,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map(
-                (value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1110,17 +1126,17 @@ class ListPhraseSetResponse {
   /// The phrase set.
   core.List<PhraseSet>? phraseSets;
 
-  ListPhraseSetResponse({this.nextPageToken, this.phraseSets});
+  ListPhraseSetResponse({
+    this.nextPageToken,
+    this.phraseSets,
+  });
 
   ListPhraseSetResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           phraseSets: (json_['phraseSets'] as core.List?)
-              ?.map(
-                (value) => PhraseSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PhraseSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1149,24 +1165,25 @@ class LongRunningRecognizeRequest {
   /// Optional.
   TranscriptOutputConfig? outputConfig;
 
-  LongRunningRecognizeRequest({this.audio, this.config, this.outputConfig});
+  LongRunningRecognizeRequest({
+    this.audio,
+    this.config,
+    this.outputConfig,
+  });
 
   LongRunningRecognizeRequest.fromJson(core.Map json_)
       : this(
           audio: json_.containsKey('audio')
               ? RecognitionAudio.fromJson(
-                  json_['audio'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['audio'] as core.Map<core.String, core.dynamic>)
               : null,
           config: json_.containsKey('config')
               ? RecognitionConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
           outputConfig: json_.containsKey('outputConfig')
               ? TranscriptOutputConfig.fromJson(
-                  json_['outputConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1220,15 +1237,20 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({this.done, this.error, this.metadata, this.name, this.response});
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -1289,7 +1311,10 @@ class Phrase {
   /// The phrase itself.
   core.String? value;
 
-  Phrase({this.boost, this.value});
+  Phrase({
+    this.boost,
+    this.value,
+  });
 
   Phrase.fromJson(core.Map json_)
       : this(
@@ -1427,9 +1452,14 @@ class PhraseSet {
 
   PhraseSet.fromJson(core.Map json_)
       : this(
-          annotations: (json_['annotations']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           boost: (json_['boost'] as core.num?)?.toDouble(),
           deleteTime: json_['deleteTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
@@ -1439,11 +1469,8 @@ class PhraseSet {
           kmsKeyVersionName: json_['kmsKeyVersionName'] as core.String?,
           name: json_['name'] as core.String?,
           phrases: (json_['phrases'] as core.List?)
-              ?.map(
-                (value) => Phrase.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Phrase.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           reconciling: json_['reconciling'] as core.bool?,
           state: json_['state'] as core.String?,
@@ -1495,7 +1522,10 @@ class RecognitionAudio {
   /// [Request URIs](https://cloud.google.com/storage/docs/reference-uris).
   core.String? uri;
 
-  RecognitionAudio({this.content, this.uri});
+  RecognitionAudio({
+    this.content,
+    this.uri,
+  });
 
   RecognitionAudio.fromJson(core.Map json_)
       : this(
@@ -1762,8 +1792,7 @@ class RecognitionConfig {
       : this(
           adaptation: json_.containsKey('adaptation')
               ? SpeechAdaptation.fromJson(
-                  json_['adaptation'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['adaptation'] as core.Map<core.String, core.dynamic>)
               : null,
           alternativeLanguageCodes:
               (json_['alternativeLanguageCodes'] as core.List?)
@@ -1771,10 +1800,8 @@ class RecognitionConfig {
                   .toList(),
           audioChannelCount: json_['audioChannelCount'] as core.int?,
           diarizationConfig: json_.containsKey('diarizationConfig')
-              ? SpeakerDiarizationConfig.fromJson(
-                  json_['diarizationConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SpeakerDiarizationConfig.fromJson(json_['diarizationConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           enableAutomaticPunctuation:
               json_['enableAutomaticPunctuation'] as core.bool?,
@@ -1790,24 +1817,19 @@ class RecognitionConfig {
           maxAlternatives: json_['maxAlternatives'] as core.int?,
           metadata: json_.containsKey('metadata')
               ? RecognitionMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           model: json_['model'] as core.String?,
           profanityFilter: json_['profanityFilter'] as core.bool?,
           sampleRateHertz: json_['sampleRateHertz'] as core.int?,
           speechContexts: (json_['speechContexts'] as core.List?)
-              ?.map(
-                (value) => SpeechContext.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SpeechContext.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           transcriptNormalization: json_.containsKey('transcriptNormalization')
               ? TranscriptNormalization.fromJson(
                   json_['transcriptNormalization']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           useEnhanced: json_['useEnhanced'] as core.bool?,
         );
@@ -1977,19 +1999,20 @@ class RecognizeRequest {
   /// Required.
   RecognitionConfig? config;
 
-  RecognizeRequest({this.audio, this.config});
+  RecognizeRequest({
+    this.audio,
+    this.config,
+  });
 
   RecognizeRequest.fromJson(core.Map json_)
       : this(
           audio: json_.containsKey('audio')
               ? RecognitionAudio.fromJson(
-                  json_['audio'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['audio'] as core.Map<core.String, core.dynamic>)
               : null,
           config: json_.containsKey('config')
               ? RecognitionConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2035,17 +2058,12 @@ class RecognizeResponse {
       : this(
           requestId: json_['requestId'] as core.String?,
           results: (json_['results'] as core.List?)
-              ?.map(
-                (value) => SpeechRecognitionResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SpeechRecognitionResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           speechAdaptationInfo: json_.containsKey('speechAdaptationInfo')
-              ? SpeechAdaptationInfo.fromJson(
-                  json_['speechAdaptationInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SpeechAdaptationInfo.fromJson(json_['speechAdaptationInfo']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           totalBilledTime: json_['totalBilledTime'] as core.String?,
           usingLegacyModels: json_['usingLegacyModels'] as core.bool?,
@@ -2150,25 +2168,18 @@ class SpeechAdaptation {
       : this(
           abnfGrammar: json_.containsKey('abnfGrammar')
               ? ABNFGrammar.fromJson(
-                  json_['abnfGrammar'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['abnfGrammar'] as core.Map<core.String, core.dynamic>)
               : null,
           customClasses: (json_['customClasses'] as core.List?)
-              ?.map(
-                (value) => CustomClass.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CustomClass.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           phraseSetReferences: (json_['phraseSetReferences'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           phraseSets: (json_['phraseSets'] as core.List?)
-              ?.map(
-                (value) => PhraseSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PhraseSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2192,7 +2203,10 @@ class SpeechAdaptationInfo {
   /// request timed out.
   core.String? timeoutMessage;
 
-  SpeechAdaptationInfo({this.adaptationTimeout, this.timeoutMessage});
+  SpeechAdaptationInfo({
+    this.adaptationTimeout,
+    this.timeoutMessage,
+  });
 
   SpeechAdaptationInfo.fromJson(core.Map json_)
       : this(
@@ -2236,7 +2250,10 @@ class SpeechContext {
   /// months.
   core.List<core.String>? phrases;
 
-  SpeechContext({this.boost, this.phrases});
+  SpeechContext({
+    this.boost,
+    this.phrases,
+  });
 
   SpeechContext.fromJson(core.Map json_)
       : this(
@@ -2277,18 +2294,19 @@ class SpeechRecognitionAlternative {
   /// words from the beginning of the audio.
   core.List<WordInfo>? words;
 
-  SpeechRecognitionAlternative({this.confidence, this.transcript, this.words});
+  SpeechRecognitionAlternative({
+    this.confidence,
+    this.transcript,
+    this.words,
+  });
 
   SpeechRecognitionAlternative.fromJson(core.Map json_)
       : this(
           confidence: (json_['confidence'] as core.num?)?.toDouble(),
           transcript: json_['transcript'] as core.String?,
           words: (json_['words'] as core.List?)
-              ?.map(
-                (value) => WordInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => WordInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2337,11 +2355,8 @@ class SpeechRecognitionResult {
   SpeechRecognitionResult.fromJson(core.Map json_)
       : this(
           alternatives: (json_['alternatives'] as core.List?)
-              ?.map(
-                (value) => SpeechRecognitionAlternative.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SpeechRecognitionAlternative.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           channelTag: json_['channelTag'] as core.int?,
           languageCode: json_['languageCode'] as core.String?,
@@ -2380,16 +2395,15 @@ class TranscriptNormalization {
   /// before it. At most 100 entries.
   core.List<Entry>? entries;
 
-  TranscriptNormalization({this.entries});
+  TranscriptNormalization({
+    this.entries,
+  });
 
   TranscriptNormalization.fromJson(core.Map json_)
       : this(
           entries: (json_['entries'] as core.List?)
-              ?.map(
-                (value) => Entry.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Entry.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2406,10 +2420,14 @@ class TranscriptOutputConfig {
   /// bucket must already exist.
   core.String? gcsUri;
 
-  TranscriptOutputConfig({this.gcsUri});
+  TranscriptOutputConfig({
+    this.gcsUri,
+  });
 
   TranscriptOutputConfig.fromJson(core.Map json_)
-      : this(gcsUri: json_['gcsUri'] as core.String?);
+      : this(
+          gcsUri: json_['gcsUri'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcsUri != null) 'gcsUri': gcsUri!,

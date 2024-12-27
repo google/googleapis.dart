@@ -122,16 +122,11 @@ class GmailApi {
 
   UsersResource get users => UsersResource(_requester);
 
-  GmailApi(
-    http.Client client, {
-    core.String rootUrl = 'https://gmail.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  GmailApi(http.Client client,
+      {core.String rootUrl = 'https://gmail.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class UsersResource {
@@ -197,7 +192,10 @@ class UsersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> stop(core.String userId, {core.String? $fields}) async {
+  async.Future<void> stop(
+    core.String userId, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -252,8 +250,7 @@ class UsersResource {
       queryParams: queryParams_,
     );
     return WatchResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -475,8 +472,7 @@ class UsersDraftsResource {
       queryParams: queryParams_,
     );
     return ListDraftsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sends the specified, existing draft to the recipients in the `To`, `Cc`,
@@ -687,8 +683,7 @@ class UsersHistoryResource {
       queryParams: queryParams_,
     );
     return ListHistoryResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -853,8 +848,7 @@ class UsersLabelsResource {
       queryParams: queryParams_,
     );
     return ListLabelsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Patch the specified label.
@@ -1384,8 +1378,7 @@ class UsersMessagesResource {
       queryParams: queryParams_,
     );
     return ListMessagesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies the labels on the specified message.
@@ -1637,8 +1630,7 @@ class UsersMessagesAttachmentsResource {
       queryParams: queryParams_,
     );
     return MessagePartBody.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1692,8 +1684,7 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return AutoForwarding.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets IMAP settings.
@@ -1731,8 +1722,7 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return ImapSettings.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets language settings.
@@ -1770,8 +1760,7 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return LanguageSettings.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets POP settings.
@@ -1808,8 +1797,7 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return PopSettings.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets vacation responder settings.
@@ -1847,8 +1835,7 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return VacationSettings.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the auto-forwarding setting for the specified account.
@@ -1895,8 +1882,7 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return AutoForwarding.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates IMAP settings.
@@ -1939,8 +1925,7 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return ImapSettings.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates language settings.
@@ -1989,8 +1974,7 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return LanguageSettings.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates POP settings.
@@ -2032,8 +2016,7 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return PopSettings.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates vacation responder settings.
@@ -2076,8 +2059,7 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return VacationSettings.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2143,8 +2125,7 @@ class UsersSettingsCseIdentitiesResource {
       queryParams: queryParams_,
     );
     return CseIdentity.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a client-side encryption identity.
@@ -2232,8 +2213,7 @@ class UsersSettingsCseIdentitiesResource {
       queryParams: queryParams_,
     );
     return CseIdentity.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the client-side encrypted identities for an authenticated user.
@@ -2282,8 +2262,7 @@ class UsersSettingsCseIdentitiesResource {
       queryParams: queryParams_,
     );
     return ListCseIdentitiesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Associates a different key pair with an existing client-side encryption
@@ -2335,8 +2314,7 @@ class UsersSettingsCseIdentitiesResource {
       queryParams: queryParams_,
     );
     return CseIdentity.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2387,8 +2365,7 @@ class UsersSettingsCseKeypairsResource {
       queryParams: queryParams_,
     );
     return CseKeyPair.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Turns off a client-side encryption key pair.
@@ -2441,8 +2418,7 @@ class UsersSettingsCseKeypairsResource {
       queryParams: queryParams_,
     );
     return CseKeyPair.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Turns on a client-side encryption key pair that was turned off.
@@ -2493,8 +2469,7 @@ class UsersSettingsCseKeypairsResource {
       queryParams: queryParams_,
     );
     return CseKeyPair.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves an existing client-side encryption key pair.
@@ -2536,8 +2511,7 @@ class UsersSettingsCseKeypairsResource {
       queryParams: queryParams_,
     );
     return CseKeyPair.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists client-side encryption key pairs for an authenticated user.
@@ -2586,8 +2560,7 @@ class UsersSettingsCseKeypairsResource {
       queryParams: queryParams_,
     );
     return ListCseKeyPairsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a client-side encryption key pair permanently and immediately.
@@ -2831,8 +2804,7 @@ class UsersSettingsDelegatesResource {
       queryParams: queryParams_,
     );
     return ListDelegatesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3001,8 +2973,7 @@ class UsersSettingsFiltersResource {
       queryParams: queryParams_,
     );
     return ListFiltersResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3058,8 +3029,7 @@ class UsersSettingsForwardingAddressesResource {
       queryParams: queryParams_,
     );
     return ForwardingAddress.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified forwarding address and revokes any verification that
@@ -3144,8 +3114,7 @@ class UsersSettingsForwardingAddressesResource {
       queryParams: queryParams_,
     );
     return ForwardingAddress.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the forwarding addresses for the specified account.
@@ -3183,8 +3152,7 @@ class UsersSettingsForwardingAddressesResource {
       queryParams: queryParams_,
     );
     return ListForwardingAddressesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3373,8 +3341,7 @@ class UsersSettingsSendAsResource {
       queryParams: queryParams_,
     );
     return ListSendAsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Patch the specified send-as alias.
@@ -3707,8 +3674,7 @@ class UsersSettingsSendAsSmimeInfoResource {
       queryParams: queryParams_,
     );
     return ListSmimeInfoResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the default S/MIME config for the specified send-as alias.
@@ -3923,8 +3889,7 @@ class UsersThreadsResource {
       queryParams: queryParams_,
     );
     return ListThreadsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies the labels applied to the thread.
@@ -4084,7 +4049,11 @@ class AutoForwarding {
   /// Whether all incoming mail is automatically forwarded to another address.
   core.bool? enabled;
 
-  AutoForwarding({this.disposition, this.emailAddress, this.enabled});
+  AutoForwarding({
+    this.disposition,
+    this.emailAddress,
+    this.enabled,
+  });
 
   AutoForwarding.fromJson(core.Map json_)
       : this(
@@ -4104,7 +4073,9 @@ class BatchDeleteMessagesRequest {
   /// The IDs of the messages to delete.
   core.List<core.String>? ids;
 
-  BatchDeleteMessagesRequest({this.ids});
+  BatchDeleteMessagesRequest({
+    this.ids,
+  });
 
   BatchDeleteMessagesRequest.fromJson(core.Map json_)
       : this(
@@ -4130,7 +4101,11 @@ class BatchModifyMessagesRequest {
   /// A list of label IDs to remove from messages.
   core.List<core.String>? removeLabelIds;
 
-  BatchModifyMessagesRequest({this.addLabelIds, this.ids, this.removeLabelIds});
+  BatchModifyMessagesRequest({
+    this.addLabelIds,
+    this.ids,
+    this.removeLabelIds,
+  });
 
   BatchModifyMessagesRequest.fromJson(core.Map json_)
       : this(
@@ -4182,10 +4157,8 @@ class CseIdentity {
           emailAddress: json_['emailAddress'] as core.String?,
           primaryKeyPairId: json_['primaryKeyPairId'] as core.String?,
           signAndEncryptKeyPairs: json_.containsKey('signAndEncryptKeyPairs')
-              ? SignAndEncryptKeyPairs.fromJson(
-                  json_['signAndEncryptKeyPairs']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SignAndEncryptKeyPairs.fromJson(json_['signAndEncryptKeyPairs']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4273,11 +4246,8 @@ class CseKeyPair {
           pem: json_['pem'] as core.String?,
           pkcs7: json_['pkcs7'] as core.String?,
           privateKeyMetadata: (json_['privateKeyMetadata'] as core.List?)
-              ?.map(
-                (value) => CsePrivateKeyMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CsePrivateKeyMetadata.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           subjectEmailAddresses: (json_['subjectEmailAddresses'] as core.List?)
               ?.map((value) => value as core.String)
@@ -4320,16 +4290,12 @@ class CsePrivateKeyMetadata {
   CsePrivateKeyMetadata.fromJson(core.Map json_)
       : this(
           hardwareKeyMetadata: json_.containsKey('hardwareKeyMetadata')
-              ? HardwareKeyMetadata.fromJson(
-                  json_['hardwareKeyMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? HardwareKeyMetadata.fromJson(json_['hardwareKeyMetadata']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           kaclsKeyMetadata: json_.containsKey('kaclsKeyMetadata')
-              ? KaclsKeyMetadata.fromJson(
-                  json_['kaclsKeyMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? KaclsKeyMetadata.fromJson(json_['kaclsKeyMetadata']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           privateKeyMetadataId: json_['privateKeyMetadataId'] as core.String?,
         );
@@ -4367,7 +4333,10 @@ class Delegate {
   /// expired without verification.
   core.String? verificationStatus;
 
-  Delegate({this.delegateEmail, this.verificationStatus});
+  Delegate({
+    this.delegateEmail,
+    this.verificationStatus,
+  });
 
   Delegate.fromJson(core.Map json_)
       : this(
@@ -4393,15 +4362,17 @@ class Draft {
   /// The message content of the draft.
   Message? message;
 
-  Draft({this.id, this.message});
+  Draft({
+    this.id,
+    this.message,
+  });
 
   Draft.fromJson(core.Map json_)
       : this(
           id: json_['id'] as core.String?,
           message: json_.containsKey('message')
               ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['message'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4427,19 +4398,21 @@ class Filter {
   /// The server assigned ID of the filter.
   core.String? id;
 
-  Filter({this.action, this.criteria, this.id});
+  Filter({
+    this.action,
+    this.criteria,
+    this.id,
+  });
 
   Filter.fromJson(core.Map json_)
       : this(
           action: json_.containsKey('action')
               ? FilterAction.fromJson(
-                  json_['action'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['action'] as core.Map<core.String, core.dynamic>)
               : null,
           criteria: json_.containsKey('criteria')
               ? FilterCriteria.fromJson(
-                  json_['criteria'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['criteria'] as core.Map<core.String, core.dynamic>)
               : null,
           id: json_['id'] as core.String?,
         );
@@ -4462,7 +4435,11 @@ class FilterAction {
   /// List of labels to remove from the message.
   core.List<core.String>? removeLabelIds;
 
-  FilterAction({this.addLabelIds, this.forward, this.removeLabelIds});
+  FilterAction({
+    this.addLabelIds,
+    this.forward,
+    this.removeLabelIds,
+  });
 
   FilterAction.fromJson(core.Map json_)
       : this(
@@ -4582,7 +4559,10 @@ class ForwardingAddress {
   /// - "pending" : The address is awaiting verification by the owner.
   core.String? verificationStatus;
 
-  ForwardingAddress({this.forwardingEmail, this.verificationStatus});
+  ForwardingAddress({
+    this.forwardingEmail,
+    this.verificationStatus,
+  });
 
   ForwardingAddress.fromJson(core.Map json_)
       : this(
@@ -4602,10 +4582,14 @@ class HardwareKeyMetadata {
   /// Description about the hardware key.
   core.String? description;
 
-  HardwareKeyMetadata({this.description});
+  HardwareKeyMetadata({
+    this.description,
+  });
 
   HardwareKeyMetadata.fromJson(core.Map json_)
-      : this(description: json_['description'] as core.String?);
+      : this(
+          description: json_['description'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -4651,39 +4635,24 @@ class History {
       : this(
           id: json_['id'] as core.String?,
           labelsAdded: (json_['labelsAdded'] as core.List?)
-              ?.map(
-                (value) => HistoryLabelAdded.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => HistoryLabelAdded.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           labelsRemoved: (json_['labelsRemoved'] as core.List?)
-              ?.map(
-                (value) => HistoryLabelRemoved.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => HistoryLabelRemoved.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           messages: (json_['messages'] as core.List?)
-              ?.map(
-                (value) => Message.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Message.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           messagesAdded: (json_['messagesAdded'] as core.List?)
-              ?.map(
-                (value) => HistoryMessageAdded.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => HistoryMessageAdded.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           messagesDeleted: (json_['messagesDeleted'] as core.List?)
-              ?.map(
-                (value) => HistoryMessageDeleted.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => HistoryMessageDeleted.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4702,7 +4671,10 @@ class HistoryLabelAdded {
   core.List<core.String>? labelIds;
   Message? message;
 
-  HistoryLabelAdded({this.labelIds, this.message});
+  HistoryLabelAdded({
+    this.labelIds,
+    this.message,
+  });
 
   HistoryLabelAdded.fromJson(core.Map json_)
       : this(
@@ -4711,8 +4683,7 @@ class HistoryLabelAdded {
               .toList(),
           message: json_.containsKey('message')
               ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['message'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4727,7 +4698,10 @@ class HistoryLabelRemoved {
   core.List<core.String>? labelIds;
   Message? message;
 
-  HistoryLabelRemoved({this.labelIds, this.message});
+  HistoryLabelRemoved({
+    this.labelIds,
+    this.message,
+  });
 
   HistoryLabelRemoved.fromJson(core.Map json_)
       : this(
@@ -4736,8 +4710,7 @@ class HistoryLabelRemoved {
               .toList(),
           message: json_.containsKey('message')
               ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['message'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4750,14 +4723,15 @@ class HistoryLabelRemoved {
 class HistoryMessageAdded {
   Message? message;
 
-  HistoryMessageAdded({this.message});
+  HistoryMessageAdded({
+    this.message,
+  });
 
   HistoryMessageAdded.fromJson(core.Map json_)
       : this(
           message: json_.containsKey('message')
               ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['message'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4769,14 +4743,15 @@ class HistoryMessageAdded {
 class HistoryMessageDeleted {
   Message? message;
 
-  HistoryMessageDeleted({this.message});
+  HistoryMessageDeleted({
+    this.message,
+  });
 
   HistoryMessageDeleted.fromJson(core.Map json_)
       : this(
           message: json_.containsKey('message')
               ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['message'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4852,7 +4827,10 @@ class KaclsKeyMetadata {
   /// key.
   core.String? kaclsUri;
 
-  KaclsKeyMetadata({this.kaclsData, this.kaclsUri});
+  KaclsKeyMetadata({
+    this.kaclsData,
+    this.kaclsUri,
+  });
 
   KaclsKeyMetadata.fromJson(core.Map json_)
       : this(
@@ -4941,8 +4919,7 @@ class Label {
       : this(
           color: json_.containsKey('color')
               ? LabelColor.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['color'] as core.Map<core.String, core.dynamic>)
               : null,
           id: json_['id'] as core.String?,
           labelListVisibility: json_['labelListVisibility'] as core.String?,
@@ -5010,7 +4987,10 @@ class LabelColor {
   /// #cca6ac, #094228, #42d692, #16a765
   core.String? textColor;
 
-  LabelColor({this.backgroundColor, this.textColor});
+  LabelColor({
+    this.backgroundColor,
+    this.textColor,
+  });
 
   LabelColor.fromJson(core.Map json_)
       : this(
@@ -5043,10 +5023,14 @@ class LanguageSettings {
   /// variant (or a reasonable default).
   core.String? displayLanguage;
 
-  LanguageSettings({this.displayLanguage});
+  LanguageSettings({
+    this.displayLanguage,
+  });
 
   LanguageSettings.fromJson(core.Map json_)
-      : this(displayLanguage: json_['displayLanguage'] as core.String?);
+      : this(
+          displayLanguage: json_['displayLanguage'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayLanguage != null) 'displayLanguage': displayLanguage!,
@@ -5064,16 +5048,16 @@ class ListCseIdentitiesResponse {
   /// pages remain.
   core.String? nextPageToken;
 
-  ListCseIdentitiesResponse({this.cseIdentities, this.nextPageToken});
+  ListCseIdentitiesResponse({
+    this.cseIdentities,
+    this.nextPageToken,
+  });
 
   ListCseIdentitiesResponse.fromJson(core.Map json_)
       : this(
           cseIdentities: (json_['cseIdentities'] as core.List?)
-              ?.map(
-                (value) => CseIdentity.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CseIdentity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -5094,16 +5078,16 @@ class ListCseKeyPairsResponse {
   /// If this value is not returned, then no further pages remain.
   core.String? nextPageToken;
 
-  ListCseKeyPairsResponse({this.cseKeyPairs, this.nextPageToken});
+  ListCseKeyPairsResponse({
+    this.cseKeyPairs,
+    this.nextPageToken,
+  });
 
   ListCseKeyPairsResponse.fromJson(core.Map json_)
       : this(
           cseKeyPairs: (json_['cseKeyPairs'] as core.List?)
-              ?.map(
-                (value) => CseKeyPair.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CseKeyPair.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -5121,16 +5105,15 @@ class ListDelegatesResponse {
   /// If an account doesn't have delegates, this field doesn't appear.
   core.List<Delegate>? delegates;
 
-  ListDelegatesResponse({this.delegates});
+  ListDelegatesResponse({
+    this.delegates,
+  });
 
   ListDelegatesResponse.fromJson(core.Map json_)
       : this(
           delegates: (json_['delegates'] as core.List?)
-              ?.map(
-                (value) => Delegate.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Delegate.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5162,11 +5145,8 @@ class ListDraftsResponse {
   ListDraftsResponse.fromJson(core.Map json_)
       : this(
           drafts: (json_['drafts'] as core.List?)
-              ?.map(
-                (value) => Draft.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Draft.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           resultSizeEstimate: json_['resultSizeEstimate'] as core.int?,
@@ -5185,16 +5165,15 @@ class ListFiltersResponse {
   /// List of a user's filters.
   core.List<Filter>? filter;
 
-  ListFiltersResponse({this.filter});
+  ListFiltersResponse({
+    this.filter,
+  });
 
   ListFiltersResponse.fromJson(core.Map json_)
       : this(
           filter: (json_['filter'] as core.List?)
-              ?.map(
-                (value) => Filter.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Filter.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5208,16 +5187,15 @@ class ListForwardingAddressesResponse {
   /// List of addresses that may be used for forwarding.
   core.List<ForwardingAddress>? forwardingAddresses;
 
-  ListForwardingAddressesResponse({this.forwardingAddresses});
+  ListForwardingAddressesResponse({
+    this.forwardingAddresses,
+  });
 
   ListForwardingAddressesResponse.fromJson(core.Map json_)
       : this(
           forwardingAddresses: (json_['forwardingAddresses'] as core.List?)
-              ?.map(
-                (value) => ForwardingAddress.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ForwardingAddress.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5240,16 +5218,17 @@ class ListHistoryResponse {
   /// Page token to retrieve the next page of results in the list.
   core.String? nextPageToken;
 
-  ListHistoryResponse({this.history, this.historyId, this.nextPageToken});
+  ListHistoryResponse({
+    this.history,
+    this.historyId,
+    this.nextPageToken,
+  });
 
   ListHistoryResponse.fromJson(core.Map json_)
       : this(
           history: (json_['history'] as core.List?)
-              ?.map(
-                (value) => History.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => History.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           historyId: json_['historyId'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
@@ -5270,16 +5249,15 @@ class ListLabelsResponse {
   /// method can fetch additional label details.
   core.List<Label>? labels;
 
-  ListLabelsResponse({this.labels});
+  ListLabelsResponse({
+    this.labels,
+  });
 
   ListLabelsResponse.fromJson(core.Map json_)
       : this(
           labels: (json_['labels'] as core.List?)
-              ?.map(
-                (value) => Label.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Label.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5310,11 +5288,8 @@ class ListMessagesResponse {
   ListMessagesResponse.fromJson(core.Map json_)
       : this(
           messages: (json_['messages'] as core.List?)
-              ?.map(
-                (value) => Message.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Message.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           resultSizeEstimate: json_['resultSizeEstimate'] as core.int?,
@@ -5333,16 +5308,15 @@ class ListSendAsResponse {
   /// List of send-as aliases.
   core.List<SendAs>? sendAs;
 
-  ListSendAsResponse({this.sendAs});
+  ListSendAsResponse({
+    this.sendAs,
+  });
 
   ListSendAsResponse.fromJson(core.Map json_)
       : this(
           sendAs: (json_['sendAs'] as core.List?)
-              ?.map(
-                (value) => SendAs.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  SendAs.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5355,16 +5329,15 @@ class ListSmimeInfoResponse {
   /// List of SmimeInfo.
   core.List<SmimeInfo>? smimeInfo;
 
-  ListSmimeInfoResponse({this.smimeInfo});
+  ListSmimeInfoResponse({
+    this.smimeInfo,
+  });
 
   ListSmimeInfoResponse.fromJson(core.Map json_)
       : this(
           smimeInfo: (json_['smimeInfo'] as core.List?)
-              ?.map(
-                (value) => SmimeInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SmimeInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5398,11 +5371,8 @@ class ListThreadsResponse {
           nextPageToken: json_['nextPageToken'] as core.String?,
           resultSizeEstimate: json_['resultSizeEstimate'] as core.int?,
           threads: (json_['threads'] as core.List?)
-              ?.map(
-                (value) => Thread.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Thread.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5488,8 +5458,7 @@ class Message {
               .toList(),
           payload: json_.containsKey('payload')
               ? MessagePart.fromJson(
-                  json_['payload'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['payload'] as core.Map<core.String, core.dynamic>)
               : null,
           raw: json_['raw'] as core.String?,
           sizeEstimate: json_['sizeEstimate'] as core.int?,
@@ -5554,25 +5523,18 @@ class MessagePart {
       : this(
           body: json_.containsKey('body')
               ? MessagePartBody.fromJson(
-                  json_['body'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['body'] as core.Map<core.String, core.dynamic>)
               : null,
           filename: json_['filename'] as core.String?,
           headers: (json_['headers'] as core.List?)
-              ?.map(
-                (value) => MessagePartHeader.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => MessagePartHeader.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           mimeType: json_['mimeType'] as core.String?,
           partId: json_['partId'] as core.String?,
           parts: (json_['parts'] as core.List?)
-              ?.map(
-                (value) => MessagePart.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => MessagePart.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5611,7 +5573,11 @@ class MessagePartBody {
   /// Number of bytes for the message part data (encoding notwithstanding).
   core.int? size;
 
-  MessagePartBody({this.attachmentId, this.data, this.size});
+  MessagePartBody({
+    this.attachmentId,
+    this.data,
+    this.size,
+  });
 
   MessagePartBody.fromJson(core.Map json_)
       : this(
@@ -5638,7 +5604,10 @@ class MessagePartHeader {
   /// For example, `someuser@example.com`.
   core.String? value;
 
-  MessagePartHeader({this.name, this.value});
+  MessagePartHeader({
+    this.name,
+    this.value,
+  });
 
   MessagePartHeader.fromJson(core.Map json_)
       : this(
@@ -5663,7 +5632,10 @@ class ModifyMessageRequest {
   /// You can remove up to 100 labels with each update.
   core.List<core.String>? removeLabelIds;
 
-  ModifyMessageRequest({this.addLabelIds, this.removeLabelIds});
+  ModifyMessageRequest({
+    this.addLabelIds,
+    this.removeLabelIds,
+  });
 
   ModifyMessageRequest.fromJson(core.Map json_)
       : this(
@@ -5692,7 +5664,10 @@ class ModifyThreadRequest {
   /// You can remove up to 100 labels with each update.
   core.List<core.String>? removeLabelIds;
 
-  ModifyThreadRequest({this.addLabelIds, this.removeLabelIds});
+  ModifyThreadRequest({
+    this.addLabelIds,
+    this.removeLabelIds,
+  });
 
   ModifyThreadRequest.fromJson(core.Map json_)
       : this(
@@ -5735,7 +5710,10 @@ class PopSettings {
   /// - "markRead" : Leave the message in the `INBOX` and mark it as read.
   core.String? disposition;
 
-  PopSettings({this.accessWindow, this.disposition});
+  PopSettings({
+    this.accessWindow,
+    this.disposition,
+  });
 
   PopSettings.fromJson(core.Map json_)
       : this(
@@ -5881,8 +5859,7 @@ class SendAs {
           signature: json_['signature'] as core.String?,
           smtpMsa: json_.containsKey('smtpMsa')
               ? SmtpMsa.fromJson(
-                  json_['smtpMsa'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['smtpMsa'] as core.Map<core.String, core.dynamic>)
               : null,
           treatAsAlias: json_['treatAsAlias'] as core.bool?,
           verificationStatus: json_['verificationStatus'] as core.String?,
@@ -5911,7 +5888,10 @@ class SignAndEncryptKeyPairs {
   /// The ID of the CseKeyPair that signs outgoing mail.
   core.String? signingKeyPairId;
 
-  SignAndEncryptKeyPairs({this.encryptionKeyPairId, this.signingKeyPairId});
+  SignAndEncryptKeyPairs({
+    this.encryptionKeyPairId,
+    this.signingKeyPairId,
+  });
 
   SignAndEncryptKeyPairs.fromJson(core.Map json_)
       : this(
@@ -6075,18 +6055,20 @@ class Thread {
   /// A short part of the message text.
   core.String? snippet;
 
-  Thread({this.historyId, this.id, this.messages, this.snippet});
+  Thread({
+    this.historyId,
+    this.id,
+    this.messages,
+    this.snippet,
+  });
 
   Thread.fromJson(core.Map json_)
       : this(
           historyId: json_['historyId'] as core.String?,
           id: json_['id'] as core.String?,
           messages: (json_['messages'] as core.List?)
-              ?.map(
-                (value) => Message.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Message.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           snippet: json_['snippet'] as core.String?,
         );
@@ -6269,7 +6251,10 @@ class WatchResponse {
   /// The ID of the mailbox's current history record.
   core.String? historyId;
 
-  WatchResponse({this.expiration, this.historyId});
+  WatchResponse({
+    this.expiration,
+    this.historyId,
+  });
 
   WatchResponse.fromJson(core.Map json_)
       : this(

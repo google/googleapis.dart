@@ -56,16 +56,11 @@ class PlayIntegrityApi {
   DeviceRecallResource get deviceRecall => DeviceRecallResource(_requester);
   V1Resource get v1 => V1Resource(_requester);
 
-  PlayIntegrityApi(
-    http.Client client, {
-    core.String rootUrl = 'https://playintegrity.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  PlayIntegrityApi(http.Client client,
+      {core.String rootUrl = 'https://playintegrity.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class DeviceRecallResource {
@@ -117,8 +112,7 @@ class DeviceRecallResource {
       queryParams: queryParams_,
     );
     return WriteDeviceRecallResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -167,8 +161,7 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return DecodeIntegrityTokenResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -191,10 +184,14 @@ class AccountActivity {
   /// device, with harder to replicate signals.
   core.String? activityLevel;
 
-  AccountActivity({this.activityLevel});
+  AccountActivity({
+    this.activityLevel,
+  });
 
   AccountActivity.fromJson(core.Map json_)
-      : this(activityLevel: json_['activityLevel'] as core.String?);
+      : this(
+          activityLevel: json_['activityLevel'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activityLevel != null) 'activityLevel': activityLevel!,
@@ -223,15 +220,16 @@ class AccountDetails {
   /// minimum bar or the application was not a known Play version.
   core.String? appLicensingVerdict;
 
-  AccountDetails({this.accountActivity, this.appLicensingVerdict});
+  AccountDetails({
+    this.accountActivity,
+    this.appLicensingVerdict,
+  });
 
   AccountDetails.fromJson(core.Map json_)
       : this(
           accountActivity: json_.containsKey('accountActivity')
-              ? AccountActivity.fromJson(
-                  json_['accountActivity']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AccountActivity.fromJson(json_['accountActivity']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           appLicensingVerdict: json_['appLicensingVerdict'] as core.String?,
         );
@@ -385,10 +383,14 @@ class DecodeIntegrityTokenRequest {
   /// Encoded integrity token.
   core.String? integrityToken;
 
-  DecodeIntegrityTokenRequest({this.integrityToken});
+  DecodeIntegrityTokenRequest({
+    this.integrityToken,
+  });
 
   DecodeIntegrityTokenRequest.fromJson(core.Map json_)
-      : this(integrityToken: json_['integrityToken'] as core.String?);
+      : this(
+          integrityToken: json_['integrityToken'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (integrityToken != null) 'integrityToken': integrityToken!,
@@ -400,15 +402,15 @@ class DecodeIntegrityTokenResponse {
   /// Plain token payload generated from the decoded integrity token.
   TokenPayloadExternal? tokenPayloadExternal;
 
-  DecodeIntegrityTokenResponse({this.tokenPayloadExternal});
+  DecodeIntegrityTokenResponse({
+    this.tokenPayloadExternal,
+  });
 
   DecodeIntegrityTokenResponse.fromJson(core.Map json_)
       : this(
           tokenPayloadExternal: json_.containsKey('tokenPayloadExternal')
-              ? TokenPayloadExternal.fromJson(
-                  json_['tokenPayloadExternal']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? TokenPayloadExternal.fromJson(json_['tokenPayloadExternal']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -429,10 +431,14 @@ class DeviceAttributes {
   /// DeviceIntegrity did not meet the minimum bar.
   core.int? sdkVersion;
 
-  DeviceAttributes({this.sdkVersion});
+  DeviceAttributes({
+    this.sdkVersion,
+  });
 
   DeviceAttributes.fromJson(core.Map json_)
-      : this(sdkVersion: json_['sdkVersion'] as core.int?);
+      : this(
+          sdkVersion: json_['sdkVersion'] as core.int?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sdkVersion != null) 'sdkVersion': sdkVersion!,
@@ -472,15 +478,12 @@ class DeviceIntegrity {
   DeviceIntegrity.fromJson(core.Map json_)
       : this(
           deviceAttributes: json_.containsKey('deviceAttributes')
-              ? DeviceAttributes.fromJson(
-                  json_['deviceAttributes']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? DeviceAttributes.fromJson(json_['deviceAttributes']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           deviceRecall: json_.containsKey('deviceRecall')
               ? DeviceRecall.fromJson(
-                  json_['deviceRecall'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['deviceRecall'] as core.Map<core.String, core.dynamic>)
               : null,
           deviceRecognitionVerdict:
               (json_['deviceRecognitionVerdict'] as core.List?)
@@ -491,10 +494,8 @@ class DeviceIntegrity {
                   ?.map((value) => value as core.String)
                   .toList(),
           recentDeviceActivity: json_.containsKey('recentDeviceActivity')
-              ? RecentDeviceActivity.fromJson(
-                  json_['recentDeviceActivity']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? RecentDeviceActivity.fromJson(json_['recentDeviceActivity']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -522,19 +523,20 @@ class DeviceRecall {
   /// Required.
   WriteDates? writeDates;
 
-  DeviceRecall({this.values, this.writeDates});
+  DeviceRecall({
+    this.values,
+    this.writeDates,
+  });
 
   DeviceRecall.fromJson(core.Map json_)
       : this(
           values: json_.containsKey('values')
               ? Values.fromJson(
-                  json_['values'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['values'] as core.Map<core.String, core.dynamic>)
               : null,
           writeDates: json_.containsKey('writeDates')
               ? WriteDates.fromJson(
-                  json_['writeDates'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['writeDates'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -564,15 +566,16 @@ class EnvironmentDetails {
   /// - "POSSIBLE_RISK" : Play Protect is turned off. Turn on Play Protect.
   core.String? playProtectVerdict;
 
-  EnvironmentDetails({this.appAccessRiskVerdict, this.playProtectVerdict});
+  EnvironmentDetails({
+    this.appAccessRiskVerdict,
+    this.playProtectVerdict,
+  });
 
   EnvironmentDetails.fromJson(core.Map json_)
       : this(
           appAccessRiskVerdict: json_.containsKey('appAccessRiskVerdict')
-              ? AppAccessRiskVerdict.fromJson(
-                  json_['appAccessRiskVerdict']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AppAccessRiskVerdict.fromJson(json_['appAccessRiskVerdict']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           playProtectVerdict: json_['playProtectVerdict'] as core.String?,
         );
@@ -606,10 +609,14 @@ class RecentDeviceActivity {
   /// for details.
   core.String? deviceActivityLevel;
 
-  RecentDeviceActivity({this.deviceActivityLevel});
+  RecentDeviceActivity({
+    this.deviceActivityLevel,
+  });
 
   RecentDeviceActivity.fromJson(core.Map json_)
-      : this(deviceActivityLevel: json_['deviceActivityLevel'] as core.String?);
+      : this(
+          deviceActivityLevel: json_['deviceActivityLevel'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceActivityLevel != null)
@@ -670,10 +677,14 @@ class TestingDetails {
   /// Required.
   core.bool? isTestingResponse;
 
-  TestingDetails({this.isTestingResponse});
+  TestingDetails({
+    this.isTestingResponse,
+  });
 
   TestingDetails.fromJson(core.Map json_)
-      : this(isTestingResponse: json_['isTestingResponse'] as core.bool?);
+      : this(
+          isTestingResponse: json_['isTestingResponse'] as core.bool?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (isTestingResponse != null) 'isTestingResponse': isTestingResponse!,
@@ -722,39 +733,28 @@ class TokenPayloadExternal {
   TokenPayloadExternal.fromJson(core.Map json_)
       : this(
           accountDetails: json_.containsKey('accountDetails')
-              ? AccountDetails.fromJson(
-                  json_['accountDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AccountDetails.fromJson(json_['accountDetails']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           appIntegrity: json_.containsKey('appIntegrity')
               ? AppIntegrity.fromJson(
-                  json_['appIntegrity'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['appIntegrity'] as core.Map<core.String, core.dynamic>)
               : null,
           deviceIntegrity: json_.containsKey('deviceIntegrity')
-              ? DeviceIntegrity.fromJson(
-                  json_['deviceIntegrity']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? DeviceIntegrity.fromJson(json_['deviceIntegrity']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           environmentDetails: json_.containsKey('environmentDetails')
-              ? EnvironmentDetails.fromJson(
-                  json_['environmentDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? EnvironmentDetails.fromJson(json_['environmentDetails']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           requestDetails: json_.containsKey('requestDetails')
-              ? RequestDetails.fromJson(
-                  json_['requestDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? RequestDetails.fromJson(json_['requestDetails']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           testingDetails: json_.containsKey('testingDetails')
-              ? TestingDetails.fromJson(
-                  json_['testingDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? TestingDetails.fromJson(json_['testingDetails']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -786,7 +786,11 @@ class Values {
   /// Required.
   core.bool? bitThird;
 
-  Values({this.bitFirst, this.bitSecond, this.bitThird});
+  Values({
+    this.bitFirst,
+    this.bitSecond,
+    this.bitThird,
+  });
 
   Values.fromJson(core.Map json_)
       : this(
@@ -825,7 +829,11 @@ class WriteDates {
   /// Optional.
   core.int? yyyymmThird;
 
-  WriteDates({this.yyyymmFirst, this.yyyymmSecond, this.yyyymmThird});
+  WriteDates({
+    this.yyyymmFirst,
+    this.yyyymmSecond,
+    this.yyyymmThird,
+  });
 
   WriteDates.fromJson(core.Map json_)
       : this(
@@ -853,15 +861,17 @@ class WriteDeviceRecallRequest {
   /// Required.
   Values? newValues;
 
-  WriteDeviceRecallRequest({this.integrityToken, this.newValues});
+  WriteDeviceRecallRequest({
+    this.integrityToken,
+    this.newValues,
+  });
 
   WriteDeviceRecallRequest.fromJson(core.Map json_)
       : this(
           integrityToken: json_['integrityToken'] as core.String?,
           newValues: json_.containsKey('newValues')
               ? Values.fromJson(
-                  json_['newValues'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['newValues'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 

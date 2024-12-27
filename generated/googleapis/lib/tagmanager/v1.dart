@@ -84,16 +84,11 @@ class TagManagerApi {
 
   AccountsResource get accounts => AccountsResource(_requester);
 
-  TagManagerApi(
-    http.Client client, {
-    core.String rootUrl = 'https://tagmanager.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  TagManagerApi(http.Client client,
+      {core.String rootUrl = 'https://tagmanager.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class AccountsResource {
@@ -155,7 +150,9 @@ class AccountsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListAccountsResponse> list({core.String? $fields}) async {
+  async.Future<ListAccountsResponse> list({
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -168,8 +165,7 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return ListAccountsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Account.
@@ -394,8 +390,7 @@ class AccountsContainersResource {
       queryParams: queryParams_,
     );
     return ListContainersResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a Container.
@@ -499,8 +494,7 @@ class AccountsContainersEnvironmentsResource {
       queryParams: queryParams_,
     );
     return Environment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GTM Environment.
@@ -589,8 +583,7 @@ class AccountsContainersEnvironmentsResource {
       queryParams: queryParams_,
     );
     return Environment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Environments of a GTM Container.
@@ -632,8 +625,7 @@ class AccountsContainersEnvironmentsResource {
       queryParams: queryParams_,
     );
     return ListEnvironmentsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Environment.
@@ -689,8 +681,7 @@ class AccountsContainersEnvironmentsResource {
       queryParams: queryParams_,
     );
     return Environment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -876,8 +867,7 @@ class AccountsContainersFoldersResource {
       queryParams: queryParams_,
     );
     return ListFoldersResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Folder.
@@ -986,8 +976,7 @@ class AccountsContainersFoldersEntitiesResource {
       queryParams: queryParams_,
     );
     return FolderEntities.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1112,8 +1101,7 @@ class AccountsContainersReauthorizeEnvironmentsResource {
       queryParams: queryParams_,
     );
     return Environment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1296,8 +1284,7 @@ class AccountsContainersTagsResource {
       queryParams: queryParams_,
     );
     return ListTagsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Tag.
@@ -1535,8 +1522,7 @@ class AccountsContainersTriggersResource {
       queryParams: queryParams_,
     );
     return ListTriggersResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Trigger.
@@ -1774,8 +1760,7 @@ class AccountsContainersVariablesResource {
       queryParams: queryParams_,
     );
     return ListVariablesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Variable.
@@ -1884,8 +1869,7 @@ class AccountsContainersVersionsResource {
       queryParams: queryParams_,
     );
     return CreateContainerVersionResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a Container Version.
@@ -1975,8 +1959,7 @@ class AccountsContainersVersionsResource {
       queryParams: queryParams_,
     );
     return ContainerVersion.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all Container Versions of a GTM Container.
@@ -2026,8 +2009,7 @@ class AccountsContainersVersionsResource {
       queryParams: queryParams_,
     );
     return ListContainerVersionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Publishes a Container Version.
@@ -2079,8 +2061,7 @@ class AccountsContainersVersionsResource {
       queryParams: queryParams_,
     );
     return PublishContainerVersionResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Restores a Container Version.
@@ -2131,8 +2112,7 @@ class AccountsContainersVersionsResource {
       queryParams: queryParams_,
     );
     return ContainerVersion.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a Container Version.
@@ -2179,8 +2159,7 @@ class AccountsContainersVersionsResource {
       queryParams: queryParams_,
     );
     return ContainerVersion.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a Container Version.
@@ -2236,8 +2215,7 @@ class AccountsContainersVersionsResource {
       queryParams: queryParams_,
     );
     return ContainerVersion.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2286,8 +2264,7 @@ class AccountsPermissionsResource {
       queryParams: queryParams_,
     );
     return UserAccess.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes a user from the account, revoking access to it and all of its
@@ -2367,8 +2344,7 @@ class AccountsPermissionsResource {
       queryParams: queryParams_,
     );
     return UserAccess.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all users that have access to the account along with Account and
@@ -2406,8 +2382,7 @@ class AccountsPermissionsResource {
       queryParams: queryParams_,
     );
     return ListAccountUsersResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a user's Account & Container Permissions.
@@ -2453,8 +2428,7 @@ class AccountsPermissionsResource {
       queryParams: queryParams_,
     );
     return UserAccess.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2478,7 +2452,12 @@ class Account {
   /// @mutable tagmanager.accounts.create @mutable tagmanager.accounts.update
   core.bool? shareData;
 
-  Account({this.accountId, this.fingerprint, this.name, this.shareData});
+  Account({
+    this.accountId,
+    this.fingerprint,
+    this.name,
+    this.shareData,
+  });
 
   Account.fromJson(core.Map json_)
       : this(
@@ -2505,7 +2484,9 @@ class AccountAccess {
   /// tagmanager.accounts.permissions.update
   core.List<core.String>? permission;
 
-  AccountAccess({this.permission});
+  AccountAccess({
+    this.permission,
+  });
 
   AccountAccess.fromJson(core.Map json_)
       : this(
@@ -2552,16 +2533,16 @@ class Condition {
   /// - "urlMatches"
   core.String? type;
 
-  Condition({this.parameter, this.type});
+  Condition({
+    this.parameter,
+    this.type,
+  });
 
   Condition.fromJson(core.Map json_)
       : this(
           parameter: (json_['parameter'] as core.List?)
-              ?.map(
-                (value) => Parameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Parameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           type: json_['type'] as core.String?,
         );
@@ -2704,7 +2685,10 @@ class ContainerAccess {
   /// tagmanager.accounts.permissions.update
   core.List<core.String>? permission;
 
-  ContainerAccess({this.containerId, this.permission});
+  ContainerAccess({
+    this.containerId,
+    this.permission,
+  });
 
   ContainerAccess.fromJson(core.Map json_)
       : this(
@@ -2798,56 +2782,37 @@ class ContainerVersion {
           accountId: json_['accountId'] as core.String?,
           container: json_.containsKey('container')
               ? Container.fromJson(
-                  json_['container'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['container'] as core.Map<core.String, core.dynamic>)
               : null,
           containerId: json_['containerId'] as core.String?,
           containerVersionId: json_['containerVersionId'] as core.String?,
           deleted: json_['deleted'] as core.bool?,
           fingerprint: json_['fingerprint'] as core.String?,
           folder: (json_['folder'] as core.List?)
-              ?.map(
-                (value) => Folder.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Folder.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           macro: (json_['macro'] as core.List?)
-              ?.map(
-                (value) => Macro.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Macro.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           name: json_['name'] as core.String?,
           notes: json_['notes'] as core.String?,
           rule: (json_['rule'] as core.List?)
-              ?.map(
-                (value) => Rule.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Rule.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           tag: (json_['tag'] as core.List?)
-              ?.map(
-                (value) => Tag.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Tag.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           trigger: (json_['trigger'] as core.List?)
-              ?.map(
-                (value) => Trigger.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Trigger.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           variable: (json_['variable'] as core.List?)
-              ?.map(
-                (value) => Variable.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Variable.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2990,16 +2955,17 @@ class CreateContainerVersionResponse {
   /// The container version created.
   ContainerVersion? containerVersion;
 
-  CreateContainerVersionResponse({this.compilerError, this.containerVersion});
+  CreateContainerVersionResponse({
+    this.compilerError,
+    this.containerVersion,
+  });
 
   CreateContainerVersionResponse.fromJson(core.Map json_)
       : this(
           compilerError: json_['compilerError'] as core.bool?,
           containerVersion: json_.containsKey('containerVersion')
-              ? ContainerVersion.fromJson(
-                  json_['containerVersion']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ContainerVersion.fromJson(json_['containerVersion']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3182,30 +3148,25 @@ class FolderEntities {
   /// The list of variables inside the folder.
   core.List<Variable>? variable;
 
-  FolderEntities({this.tag, this.trigger, this.variable});
+  FolderEntities({
+    this.tag,
+    this.trigger,
+    this.variable,
+  });
 
   FolderEntities.fromJson(core.Map json_)
       : this(
           tag: (json_['tag'] as core.List?)
-              ?.map(
-                (value) => Tag.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Tag.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           trigger: (json_['trigger'] as core.List?)
-              ?.map(
-                (value) => Trigger.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Trigger.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           variable: (json_['variable'] as core.List?)
-              ?.map(
-                (value) => Variable.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Variable.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3221,16 +3182,15 @@ class ListAccountUsersResponse {
   /// All GTM AccountUsers of a GTM Account.
   core.List<UserAccess>? userAccess;
 
-  ListAccountUsersResponse({this.userAccess});
+  ListAccountUsersResponse({
+    this.userAccess,
+  });
 
   ListAccountUsersResponse.fromJson(core.Map json_)
       : this(
           userAccess: (json_['userAccess'] as core.List?)
-              ?.map(
-                (value) => UserAccess.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => UserAccess.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3244,16 +3204,15 @@ class ListAccountsResponse {
   /// List of GTM Accounts that a user has access to.
   core.List<Account>? accounts;
 
-  ListAccountsResponse({this.accounts});
+  ListAccountsResponse({
+    this.accounts,
+  });
 
   ListAccountsResponse.fromJson(core.Map json_)
       : this(
           accounts: (json_['accounts'] as core.List?)
-              ?.map(
-                (value) => Account.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Account.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3278,19 +3237,13 @@ class ListContainerVersionsResponse {
   ListContainerVersionsResponse.fromJson(core.Map json_)
       : this(
           containerVersion: (json_['containerVersion'] as core.List?)
-              ?.map(
-                (value) => ContainerVersion.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ContainerVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           containerVersionHeader:
               (json_['containerVersionHeader'] as core.List?)
-                  ?.map(
-                    (value) => ContainerVersionHeader.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => ContainerVersionHeader.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
         );
 
@@ -3306,16 +3259,15 @@ class ListContainersResponse {
   /// All Containers of a GTM Account.
   core.List<Container>? containers;
 
-  ListContainersResponse({this.containers});
+  ListContainersResponse({
+    this.containers,
+  });
 
   ListContainersResponse.fromJson(core.Map json_)
       : this(
           containers: (json_['containers'] as core.List?)
-              ?.map(
-                (value) => Container.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Container.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3329,16 +3281,15 @@ class ListEnvironmentsResponse {
   /// All Environments of a GTM Container.
   core.List<Environment>? environments;
 
-  ListEnvironmentsResponse({this.environments});
+  ListEnvironmentsResponse({
+    this.environments,
+  });
 
   ListEnvironmentsResponse.fromJson(core.Map json_)
       : this(
           environments: (json_['environments'] as core.List?)
-              ?.map(
-                (value) => Environment.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Environment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3352,16 +3303,15 @@ class ListFoldersResponse {
   /// All GTM Folders of a GTM Container.
   core.List<Folder>? folders;
 
-  ListFoldersResponse({this.folders});
+  ListFoldersResponse({
+    this.folders,
+  });
 
   ListFoldersResponse.fromJson(core.Map json_)
       : this(
           folders: (json_['folders'] as core.List?)
-              ?.map(
-                (value) => Folder.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Folder.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3375,16 +3325,15 @@ class ListTagsResponse {
   /// All GTM Tags of a GTM Container.
   core.List<Tag>? tags;
 
-  ListTagsResponse({this.tags});
+  ListTagsResponse({
+    this.tags,
+  });
 
   ListTagsResponse.fromJson(core.Map json_)
       : this(
           tags: (json_['tags'] as core.List?)
-              ?.map(
-                (value) => Tag.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Tag.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3398,16 +3347,15 @@ class ListTriggersResponse {
   /// All GTM Triggers of a GTM Container.
   core.List<Trigger>? triggers;
 
-  ListTriggersResponse({this.triggers});
+  ListTriggersResponse({
+    this.triggers,
+  });
 
   ListTriggersResponse.fromJson(core.Map json_)
       : this(
           triggers: (json_['triggers'] as core.List?)
-              ?.map(
-                (value) => Trigger.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Trigger.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3421,16 +3369,15 @@ class ListVariablesResponse {
   /// All GTM Variables of a GTM Container.
   core.List<Variable>? variables;
 
-  ListVariablesResponse({this.variables});
+  ListVariablesResponse({
+    this.variables,
+  });
 
   ListVariablesResponse.fromJson(core.Map json_)
       : this(
           variables: (json_['variables'] as core.List?)
-              ?.map(
-                (value) => Variable.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Variable.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3543,11 +3490,8 @@ class Macro {
           name: json_['name'] as core.String?,
           notes: json_['notes'] as core.String?,
           parameter: (json_['parameter'] as core.List?)
-              ?.map(
-                (value) => Parameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Parameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           parentFolderId: json_['parentFolderId'] as core.String?,
           scheduleEndMs: json_['scheduleEndMs'] as core.String?,
@@ -3642,24 +3586,24 @@ class Parameter {
   /// tagmanager.accounts.containers.tags.update
   core.String? value;
 
-  Parameter({this.key, this.list, this.map, this.type, this.value});
+  Parameter({
+    this.key,
+    this.list,
+    this.map,
+    this.type,
+    this.value,
+  });
 
   Parameter.fromJson(core.Map json_)
       : this(
           key: json_['key'] as core.String?,
           list: (json_['list'] as core.List?)
-              ?.map(
-                (value) => Parameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Parameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           map: (json_['map'] as core.List?)
-              ?.map(
-                (value) => Parameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Parameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           type: json_['type'] as core.String?,
           value: json_['value'] as core.String?,
@@ -3682,16 +3626,17 @@ class PublishContainerVersionResponse {
   /// The container version created.
   ContainerVersion? containerVersion;
 
-  PublishContainerVersionResponse({this.compilerError, this.containerVersion});
+  PublishContainerVersionResponse({
+    this.compilerError,
+    this.containerVersion,
+  });
 
   PublishContainerVersionResponse.fromJson(core.Map json_)
       : this(
           compilerError: json_['compilerError'] as core.bool?,
           containerVersion: json_.containsKey('containerVersion')
-              ? ContainerVersion.fromJson(
-                  json_['containerVersion']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ContainerVersion.fromJson(json_['containerVersion']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3749,11 +3694,8 @@ class Rule {
       : this(
           accountId: json_['accountId'] as core.String?,
           condition: (json_['condition'] as core.List?)
-              ?.map(
-                (value) => Condition.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Condition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           containerId: json_['containerId'] as core.String?,
           fingerprint: json_['fingerprint'] as core.String?,
@@ -3952,36 +3894,26 @@ class Tag {
           name: json_['name'] as core.String?,
           notes: json_['notes'] as core.String?,
           parameter: (json_['parameter'] as core.List?)
-              ?.map(
-                (value) => Parameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Parameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           parentFolderId: json_['parentFolderId'] as core.String?,
           paused: json_['paused'] as core.bool?,
           priority: json_.containsKey('priority')
               ? Parameter.fromJson(
-                  json_['priority'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['priority'] as core.Map<core.String, core.dynamic>)
               : null,
           scheduleEndMs: json_['scheduleEndMs'] as core.String?,
           scheduleStartMs: json_['scheduleStartMs'] as core.String?,
           setupTag: (json_['setupTag'] as core.List?)
-              ?.map(
-                (value) => SetupTag.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SetupTag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           tagFiringOption: json_['tagFiringOption'] as core.String?,
           tagId: json_['tagId'] as core.String?,
           teardownTag: (json_['teardownTag'] as core.List?)
-              ?.map(
-                (value) => TeardownTag.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => TeardownTag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           type: json_['type'] as core.String?,
         );
@@ -4255,139 +4187,98 @@ class Trigger {
       : this(
           accountId: json_['accountId'] as core.String?,
           autoEventFilter: (json_['autoEventFilter'] as core.List?)
-              ?.map(
-                (value) => Condition.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Condition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           checkValidation: json_.containsKey('checkValidation')
-              ? Parameter.fromJson(
-                  json_['checkValidation']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Parameter.fromJson(json_['checkValidation']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           containerId: json_['containerId'] as core.String?,
           continuousTimeMinMilliseconds:
               json_.containsKey('continuousTimeMinMilliseconds')
-                  ? Parameter.fromJson(
-                      json_['continuousTimeMinMilliseconds']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                  ? Parameter.fromJson(json_['continuousTimeMinMilliseconds']
+                      as core.Map<core.String, core.dynamic>)
                   : null,
           customEventFilter: (json_['customEventFilter'] as core.List?)
-              ?.map(
-                (value) => Condition.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Condition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           eventName: json_.containsKey('eventName')
               ? Parameter.fromJson(
-                  json_['eventName'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['eventName'] as core.Map<core.String, core.dynamic>)
               : null,
           filter: (json_['filter'] as core.List?)
-              ?.map(
-                (value) => Condition.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Condition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           fingerprint: json_['fingerprint'] as core.String?,
           horizontalScrollPercentageList:
               json_.containsKey('horizontalScrollPercentageList')
-                  ? Parameter.fromJson(
-                      json_['horizontalScrollPercentageList']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                  ? Parameter.fromJson(json_['horizontalScrollPercentageList']
+                      as core.Map<core.String, core.dynamic>)
                   : null,
           interval: json_.containsKey('interval')
               ? Parameter.fromJson(
-                  json_['interval'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['interval'] as core.Map<core.String, core.dynamic>)
               : null,
           intervalSeconds: json_.containsKey('intervalSeconds')
-              ? Parameter.fromJson(
-                  json_['intervalSeconds']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Parameter.fromJson(json_['intervalSeconds']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           limit: json_.containsKey('limit')
               ? Parameter.fromJson(
-                  json_['limit'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['limit'] as core.Map<core.String, core.dynamic>)
               : null,
           maxTimerLengthSeconds: json_.containsKey('maxTimerLengthSeconds')
-              ? Parameter.fromJson(
-                  json_['maxTimerLengthSeconds']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Parameter.fromJson(json_['maxTimerLengthSeconds']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           parameter: (json_['parameter'] as core.List?)
-              ?.map(
-                (value) => Parameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Parameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           parentFolderId: json_['parentFolderId'] as core.String?,
           selector: json_.containsKey('selector')
               ? Parameter.fromJson(
-                  json_['selector'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['selector'] as core.Map<core.String, core.dynamic>)
               : null,
           totalTimeMinMilliseconds:
               json_.containsKey('totalTimeMinMilliseconds')
-                  ? Parameter.fromJson(
-                      json_['totalTimeMinMilliseconds']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                  ? Parameter.fromJson(json_['totalTimeMinMilliseconds']
+                      as core.Map<core.String, core.dynamic>)
                   : null,
           triggerId: json_['triggerId'] as core.String?,
           type: json_['type'] as core.String?,
           uniqueTriggerId: json_.containsKey('uniqueTriggerId')
-              ? Parameter.fromJson(
-                  json_['uniqueTriggerId']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Parameter.fromJson(json_['uniqueTriggerId']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           verticalScrollPercentageList:
               json_.containsKey('verticalScrollPercentageList')
-                  ? Parameter.fromJson(
-                      json_['verticalScrollPercentageList']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                  ? Parameter.fromJson(json_['verticalScrollPercentageList']
+                      as core.Map<core.String, core.dynamic>)
                   : null,
           visibilitySelector: json_.containsKey('visibilitySelector')
-              ? Parameter.fromJson(
-                  json_['visibilitySelector']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Parameter.fromJson(json_['visibilitySelector']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           visiblePercentageMax: json_.containsKey('visiblePercentageMax')
-              ? Parameter.fromJson(
-                  json_['visiblePercentageMax']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Parameter.fromJson(json_['visiblePercentageMax']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           visiblePercentageMin: json_.containsKey('visiblePercentageMin')
-              ? Parameter.fromJson(
-                  json_['visiblePercentageMin']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Parameter.fromJson(json_['visiblePercentageMin']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           waitForTags: json_.containsKey('waitForTags')
               ? Parameter.fromJson(
-                  json_['waitForTags'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['waitForTags'] as core.Map<core.String, core.dynamic>)
               : null,
           waitForTagsTimeout: json_.containsKey('waitForTagsTimeout')
-              ? Parameter.fromJson(
-                  json_['waitForTagsTimeout']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Parameter.fromJson(json_['waitForTagsTimeout']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4469,16 +4360,12 @@ class UserAccess {
       : this(
           accountAccess: json_.containsKey('accountAccess')
               ? AccountAccess.fromJson(
-                  json_['accountAccess'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['accountAccess'] as core.Map<core.String, core.dynamic>)
               : null,
           accountId: json_['accountId'] as core.String?,
           containerAccess: (json_['containerAccess'] as core.List?)
-              ?.map(
-                (value) => ContainerAccess.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ContainerAccess.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           emailAddress: json_['emailAddress'] as core.String?,
           permissionId: json_['permissionId'] as core.String?,
@@ -4596,11 +4483,8 @@ class Variable {
           name: json_['name'] as core.String?,
           notes: json_['notes'] as core.String?,
           parameter: (json_['parameter'] as core.List?)
-              ?.map(
-                (value) => Parameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Parameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           parentFolderId: json_['parentFolderId'] as core.String?,
           scheduleEndMs: json_['scheduleEndMs'] as core.String?,

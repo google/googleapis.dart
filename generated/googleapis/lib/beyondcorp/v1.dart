@@ -74,16 +74,11 @@ class BeyondCorpApi {
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  BeyondCorpApi(
-    http.Client client, {
-    core.String rootUrl = 'https://beyondcorp.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  BeyondCorpApi(http.Client client,
+      {core.String rootUrl = 'https://beyondcorp.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class OrganizationsResource {
@@ -123,17 +118,15 @@ class OrganizationsLocationsGlobalPartnerTenantsResource {
   OrganizationsLocationsGlobalPartnerTenantsBrowserDlpRulesResource
       get browserDlpRules =>
           OrganizationsLocationsGlobalPartnerTenantsBrowserDlpRulesResource(
-            _requester,
-          );
+              _requester);
   OrganizationsLocationsGlobalPartnerTenantsProxyConfigsResource
       get proxyConfigs =>
           OrganizationsLocationsGlobalPartnerTenantsProxyConfigsResource(
-            _requester,
-          );
+              _requester);
 
   OrganizationsLocationsGlobalPartnerTenantsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Gets the access control policy for a resource.
   ///
@@ -190,8 +183,7 @@ class OrganizationsLocationsGlobalPartnerTenantsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -239,8 +231,7 @@ class OrganizationsLocationsGlobalPartnerTenantsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -291,8 +282,7 @@ class OrganizationsLocationsGlobalPartnerTenantsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -300,8 +290,8 @@ class OrganizationsLocationsGlobalPartnerTenantsBrowserDlpRulesResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsGlobalPartnerTenantsBrowserDlpRulesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Gets the access control policy for a resource.
   ///
@@ -358,8 +348,7 @@ class OrganizationsLocationsGlobalPartnerTenantsBrowserDlpRulesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -407,8 +396,7 @@ class OrganizationsLocationsGlobalPartnerTenantsBrowserDlpRulesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -459,8 +447,7 @@ class OrganizationsLocationsGlobalPartnerTenantsBrowserDlpRulesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -468,8 +455,8 @@ class OrganizationsLocationsGlobalPartnerTenantsProxyConfigsResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsGlobalPartnerTenantsProxyConfigsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Gets the access control policy for a resource.
   ///
@@ -526,8 +513,7 @@ class OrganizationsLocationsGlobalPartnerTenantsProxyConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -575,8 +561,7 @@ class OrganizationsLocationsGlobalPartnerTenantsProxyConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -627,8 +612,7 @@ class OrganizationsLocationsGlobalPartnerTenantsProxyConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -710,7 +694,10 @@ class OrganizationsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -762,8 +749,7 @@ class OrganizationsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -813,8 +799,7 @@ class OrganizationsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -883,8 +868,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudLocationLocation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -936,8 +920,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudLocationListLocationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1011,8 +994,7 @@ class ProjectsLocationsAppConnectionsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a single AppConnection.
@@ -1069,8 +1051,7 @@ class ProjectsLocationsAppConnectionsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of a single AppConnection.
@@ -1108,8 +1089,7 @@ class ProjectsLocationsAppConnectionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -1167,8 +1147,7 @@ class ProjectsLocationsAppConnectionsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists AppConnections in a given project and location.
@@ -1230,9 +1209,7 @@ class ProjectsLocationsAppConnectionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the parameters of a single AppConnection.
@@ -1306,8 +1283,7 @@ class ProjectsLocationsAppConnectionsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Resolves AppConnections details for a given AppConnector.
@@ -1370,9 +1346,7 @@ class ProjectsLocationsAppConnectionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1420,8 +1394,7 @@ class ProjectsLocationsAppConnectionsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1472,8 +1445,7 @@ class ProjectsLocationsAppConnectionsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1547,8 +1519,7 @@ class ProjectsLocationsAppConnectorsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a single AppConnector.
@@ -1605,8 +1576,7 @@ class ProjectsLocationsAppConnectorsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of a single AppConnector.
@@ -1644,8 +1614,7 @@ class ProjectsLocationsAppConnectorsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudBeyondcorpAppconnectorsV1AppConnector.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -1703,8 +1672,7 @@ class ProjectsLocationsAppConnectorsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists AppConnectors in a given project and location.
@@ -1766,9 +1734,7 @@ class ProjectsLocationsAppConnectorsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the parameters of a single AppConnector.
@@ -1837,8 +1803,7 @@ class ProjectsLocationsAppConnectorsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Report status for a given connector.
@@ -1881,8 +1846,7 @@ class ProjectsLocationsAppConnectorsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets instance configuration for a given AppConnector.
@@ -1926,9 +1890,7 @@ class ProjectsLocationsAppConnectorsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1976,8 +1938,7 @@ class ProjectsLocationsAppConnectorsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -2028,8 +1989,7 @@ class ProjectsLocationsAppConnectorsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2103,8 +2063,7 @@ class ProjectsLocationsAppGatewaysResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a single AppGateway.
@@ -2161,8 +2120,7 @@ class ProjectsLocationsAppGatewaysResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of a single AppGateway.
@@ -2184,7 +2142,10 @@ class ProjectsLocationsAppGatewaysResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AppGateway> get(core.String name, {core.String? $fields}) async {
+  async.Future<AppGateway> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2197,8 +2158,7 @@ class ProjectsLocationsAppGatewaysResource {
       queryParams: queryParams_,
     );
     return AppGateway.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -2256,8 +2216,7 @@ class ProjectsLocationsAppGatewaysResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists AppGateways in a given project and location.
@@ -2317,8 +2276,7 @@ class ProjectsLocationsAppGatewaysResource {
       queryParams: queryParams_,
     );
     return ListAppGatewaysResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2366,8 +2324,7 @@ class ProjectsLocationsAppGatewaysResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Calls the Bouncer method ShouldThrottle to check if a request should be
@@ -2414,8 +2371,7 @@ class ProjectsLocationsAppGatewaysResource {
       queryParams: queryParams_,
     );
     return ShouldThrottleResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -2466,8 +2422,7 @@ class ProjectsLocationsAppGatewaysResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2532,8 +2487,7 @@ class ProjectsLocationsClientConnectorServicesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2581,8 +2535,7 @@ class ProjectsLocationsClientConnectorServicesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -2633,8 +2586,7 @@ class ProjectsLocationsClientConnectorServicesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2699,8 +2651,7 @@ class ProjectsLocationsClientGatewaysResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2748,8 +2699,7 @@ class ProjectsLocationsClientGatewaysResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -2800,8 +2750,7 @@ class ProjectsLocationsClientGatewaysResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2831,8 +2780,8 @@ class ProjectsLocationsGlobalSecurityGatewaysApplicationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsGlobalSecurityGatewaysApplicationsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Creates a new Application in a given project and location.
   ///
@@ -2889,8 +2838,7 @@ class ProjectsLocationsGlobalSecurityGatewaysApplicationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the parameters of a single Application.
@@ -2950,8 +2898,7 @@ class ProjectsLocationsGlobalSecurityGatewaysApplicationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -3002,8 +2949,7 @@ class ProjectsLocationsGlobalSecurityGatewaysApplicationsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3085,7 +3031,10 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3137,8 +3086,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -3188,8 +3136,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3255,8 +3202,7 @@ class ProjectsLocationsSecurityGatewaysResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a single SecurityGateway.
@@ -3313,8 +3259,7 @@ class ProjectsLocationsSecurityGatewaysResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of a single SecurityGateway.
@@ -3352,8 +3297,7 @@ class ProjectsLocationsSecurityGatewaysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -3411,8 +3355,7 @@ class ProjectsLocationsSecurityGatewaysResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists SecurityGateways in a given project and location.
@@ -3478,9 +3421,7 @@ class ProjectsLocationsSecurityGatewaysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the parameters of a single SecurityGateway.
@@ -3540,8 +3481,7 @@ class ProjectsLocationsSecurityGatewaysResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -3589,8 +3529,7 @@ class ProjectsLocationsSecurityGatewaysResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -3641,8 +3580,7 @@ class ProjectsLocationsSecurityGatewaysResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3650,8 +3588,8 @@ class ProjectsLocationsSecurityGatewaysApplicationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSecurityGatewaysApplicationsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Deletes a single Application.
   ///
@@ -3706,8 +3644,7 @@ class ProjectsLocationsSecurityGatewaysApplicationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of a single Application.
@@ -3745,8 +3682,7 @@ class ProjectsLocationsSecurityGatewaysApplicationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudBeyondcorpSecuritygatewaysV1Application.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -3804,8 +3740,7 @@ class ProjectsLocationsSecurityGatewaysApplicationsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Applications in a given project and location.
@@ -3872,9 +3807,7 @@ class ProjectsLocationsSecurityGatewaysApplicationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -3922,8 +3855,7 @@ class ProjectsLocationsSecurityGatewaysApplicationsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3939,7 +3871,10 @@ class AllocatedConnection {
   /// Required.
   core.String? pscUri;
 
-  AllocatedConnection({this.ingressPort, this.pscUri});
+  AllocatedConnection({
+    this.ingressPort,
+    this.pscUri,
+  });
 
   AllocatedConnection.fromJson(core.Map json_)
       : this(
@@ -4064,18 +3999,18 @@ class AppGateway {
   AppGateway.fromJson(core.Map json_)
       : this(
           allocatedConnections: (json_['allocatedConnections'] as core.List?)
-              ?.map(
-                (value) => AllocatedConnection.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AllocatedConnection.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           createTime: json_['createTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           hostType: json_['hostType'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
@@ -4224,10 +4159,8 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
       : this(
           applicationEndpoint: json_.containsKey('applicationEndpoint')
               ? GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint
-                  .fromJson(
-                  json_['applicationEndpoint']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['applicationEndpoint']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           connectors: (json_['connectors'] as core.List?)
               ?.map((value) => value as core.String)
@@ -4237,12 +4170,14 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
           gateway: json_.containsKey('gateway')
               ? GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway
                   .fromJson(
-                  json_['gateway'] as core.Map<core.String, core.dynamic>,
-                )
+                      json_['gateway'] as core.Map<core.String, core.dynamic>)
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
@@ -4289,8 +4224,8 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint {
   });
 
   GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           host: json_['host'] as core.String?,
           port: json_['port'] as core.int?,
         );
@@ -4344,8 +4279,8 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
   });
 
   GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           appGateway: json_['appGateway'] as core.String?,
           ingressPort: json_['ingressPort'] as core.int?,
           l7psc: json_['l7psc'] as core.String?,
@@ -4381,15 +4316,12 @@ class GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse {
   });
 
   GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           appConnections: (json_['appConnections'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -4425,16 +4357,12 @@ class GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse {
   });
 
   GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           appConnectionDetails: (json_['appConnectionDetails'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails
-                        .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -4465,12 +4393,11 @@ class GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConne
   });
 
   GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           appConnection: json_.containsKey('appConnection')
               ? GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(
-                  json_['appConnection'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['appConnection'] as core.Map<core.String, core.dynamic>)
               : null,
           recentMigVms: (json_['recentMigVms'] as core.List?)
               ?.map((value) => value as core.String)
@@ -4566,19 +4493,20 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnector {
           displayName: json_['displayName'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           principalInfo: json_.containsKey('principalInfo')
               ? GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo
-                  .fromJson(
-                  json_['principalInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['principalInfo']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           resourceInfo: json_.containsKey('resourceInfo')
               ? GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
-                  json_['resourceInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['resourceInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           state: json_['state'] as core.String?,
           uid: json_['uid'] as core.String?,
@@ -4631,12 +4559,11 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig {
   });
 
   GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           imageConfig: json_.containsKey('imageConfig')
               ? GoogleCloudBeyondcorpAppconnectorsV1ImageConfig.fromJson(
-                  json_['imageConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['imageConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           instanceConfig: json_.containsKey('instanceConfig')
               ? json_['instanceConfig'] as core.Map<core.String, core.dynamic>
@@ -4644,8 +4571,7 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig {
           notificationConfig: json_.containsKey('notificationConfig')
               ? GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig.fromJson(
                   json_['notificationConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           sequenceNumber: json_['sequenceNumber'] as core.String?,
         );
@@ -4670,14 +4596,12 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo {
   });
 
   GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           serviceAccount: json_.containsKey('serviceAccount')
               ? GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount
-                  .fromJson(
-                  json_['serviceAccount']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['serviceAccount']
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4696,8 +4620,10 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccoun
   });
 
   GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount.fromJson(
-    core.Map json_,
-  ) : this(email: json_['email'] as core.String?);
+      core.Map json_)
+      : this(
+          email: json_['email'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
@@ -4754,15 +4680,12 @@ class GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse {
   });
 
   GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           appConnectors: (json_['appConnectors'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudBeyondcorpAppconnectorsV1AppConnector.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudBeyondcorpAppconnectorsV1AppConnector.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -4788,14 +4711,12 @@ class GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig {
   });
 
   GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           pubsubNotification: json_.containsKey('pubsubNotification')
               ? GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig
-                  .fromJson(
-                  json_['pubsubNotification']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['pubsubNotification']
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4815,8 +4736,10 @@ class GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificat
   });
 
   GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig.fromJson(
-    core.Map json_,
-  ) : this(pubsubSubscription: json_['pubsubSubscription'] as core.String?);
+      core.Map json_)
+      : this(
+          pubsubSubscription: json_['pubsubSubscription'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pubsubSubscription != null)
@@ -4860,13 +4783,12 @@ class GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest {
   });
 
   GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           requestId: json_['requestId'] as core.String?,
           resourceInfo: json_.containsKey('resourceInfo')
               ? GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
-                  json_['resourceInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['resourceInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           validateOnly: json_['validateOnly'] as core.bool?,
         );
@@ -4889,14 +4811,12 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse {
   });
 
   GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           instanceConfig: json_.containsKey('instanceConfig')
               ? GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig
-                  .fromJson(
-                  json_['instanceConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['instanceConfig']
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4959,12 +4879,9 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
               : null,
           status: json_['status'] as core.String?,
           sub: (json_['sub'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           time: json_['time'] as core.String?,
         );
@@ -5029,13 +4946,9 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1Application {
           createTime: json_['createTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           endpointMatchers: (json_['endpointMatchers'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher
-                        .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           name: json_['name'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -5069,8 +4982,8 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher {
   });
 
   GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           hostname: json_['hostname'] as core.String?,
           ports: (json_['ports'] as core.List?)
               ?.map((value) => value as core.int)
@@ -5091,15 +5004,16 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1Hub {
   /// Optional.
   GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway? internetGateway;
 
-  GoogleCloudBeyondcorpSecuritygatewaysV1Hub({this.internetGateway});
+  GoogleCloudBeyondcorpSecuritygatewaysV1Hub({
+    this.internetGateway,
+  });
 
   GoogleCloudBeyondcorpSecuritygatewaysV1Hub.fromJson(core.Map json_)
       : this(
           internetGateway: json_.containsKey('internetGateway')
               ? GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway.fromJson(
                   json_['internetGateway']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5115,11 +5029,13 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway {
   /// Output only.
   core.List<core.String>? assignedIps;
 
-  GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway({this.assignedIps});
+  GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway({
+    this.assignedIps,
+  });
 
   GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           assignedIps: (json_['assignedIps'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -5149,15 +5065,12 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse {
   });
 
   GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           applications: (json_['applications'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudBeyondcorpSecuritygatewaysV1Application.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudBeyondcorpSecuritygatewaysV1Application.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -5192,17 +5105,13 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse {
   });
 
   GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           securityGateways: (json_['securityGateways'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway
-                        .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -5278,8 +5187,8 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
   });
 
   GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           createTime: json_['createTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           externalIps: (json_['externalIps'] as core.List?)
@@ -5289,8 +5198,7 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
             (key, value) => core.MapEntry(
               key,
               GoogleCloudBeyondcorpSecuritygatewaysV1Hub.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
           name: json_['name'] as core.String?,
@@ -5325,11 +5233,8 @@ class GoogleCloudLocationListLocationsResponse {
   GoogleCloudLocationListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudLocationLocation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudLocationLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -5370,16 +5275,16 @@ class GoogleIamV1AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  GoogleIamV1AuditConfig({this.auditLogConfigs, this.service});
+  GoogleIamV1AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
 
   GoogleIamV1AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map(
-                (value) => GoogleIamV1AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleIamV1AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -5478,14 +5383,17 @@ class GoogleIamV1Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  GoogleIamV1Binding({this.condition, this.members, this.role});
+  GoogleIamV1Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
   GoogleIamV1Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? GoogleTypeExpr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -5596,18 +5504,12 @@ class GoogleIamV1Policy {
   GoogleIamV1Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map(
-                (value) => GoogleIamV1AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleIamV1AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map(
-                (value) => GoogleIamV1Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleIamV1Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -5636,14 +5538,16 @@ class GoogleIamV1SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  GoogleIamV1SetIamPolicyRequest({this.policy, this.updateMask});
+  GoogleIamV1SetIamPolicyRequest({
+    this.policy,
+    this.updateMask,
+  });
 
   GoogleIamV1SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? GoogleIamV1Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -5680,11 +5584,8 @@ class GoogleLongrunningListOperationsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map(
-                (value) => GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5750,8 +5651,7 @@ class GoogleLongrunningOperation {
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -5821,11 +5721,8 @@ class ListAppGatewaysResponse {
   ListAppGatewaysResponse.fromJson(core.Map json_)
       : this(
           appGateways: (json_['appGateways'] as core.List?)
-              ?.map(
-                (value) => AppGateway.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AppGateway.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -5845,10 +5742,14 @@ class ShouldThrottleResponse {
   /// Whether the port should be throttled
   core.bool? shouldThrottle;
 
-  ShouldThrottleResponse({this.shouldThrottle});
+  ShouldThrottleResponse({
+    this.shouldThrottle,
+  });
 
   ShouldThrottleResponse.fromJson(core.Map json_)
-      : this(shouldThrottle: json_['shouldThrottle'] as core.bool?);
+      : this(
+          shouldThrottle: json_['shouldThrottle'] as core.bool?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (shouldThrottle != null) 'shouldThrottle': shouldThrottle!,

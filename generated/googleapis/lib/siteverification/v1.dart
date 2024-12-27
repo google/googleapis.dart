@@ -49,16 +49,11 @@ class SiteVerificationApi {
 
   WebResourceResource get webResource => WebResourceResource(_requester);
 
-  SiteVerificationApi(
-    http.Client client, {
-    core.String rootUrl = 'https://www.googleapis.com/',
-    core.String servicePath = 'siteVerification/v1/',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  SiteVerificationApi(http.Client client,
+      {core.String rootUrl = 'https://www.googleapis.com/',
+      core.String servicePath = 'siteVerification/v1/'})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class WebResourceResource {
@@ -80,7 +75,10 @@ class WebResourceResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> delete(core.String id, {core.String? $fields}) async {
+  async.Future<void> delete(
+    core.String id, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -127,8 +125,7 @@ class WebResourceResource {
       queryParams: queryParams_,
     );
     return SiteVerificationWebResourceResource.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a verification token for placing on a website or domain.
@@ -165,8 +162,7 @@ class WebResourceResource {
       queryParams: queryParams_,
     );
     return SiteVerificationWebResourceGettokenResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Attempt verification of a website or domain.
@@ -207,8 +203,7 @@ class WebResourceResource {
       queryParams: queryParams_,
     );
     return SiteVerificationWebResourceResource.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get the list of your verified websites and domains.
@@ -240,8 +235,7 @@ class WebResourceResource {
       queryParams: queryParams_,
     );
     return SiteVerificationWebResourceListResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modify the list of owners for your website or domain.
@@ -283,8 +277,7 @@ class WebResourceResource {
       queryParams: queryParams_,
     );
     return SiteVerificationWebResourceResource.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modify the list of owners for your website or domain.
@@ -324,8 +317,7 @@ class WebResourceResource {
       queryParams: queryParams_,
     );
     return SiteVerificationWebResourceResource.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -342,7 +334,10 @@ class SiteVerificationWebResourceGettokenRequestSite {
   /// Can be SITE or INET_DOMAIN (domain name).
   core.String? type;
 
-  SiteVerificationWebResourceGettokenRequestSite({this.identifier, this.type});
+  SiteVerificationWebResourceGettokenRequestSite({
+    this.identifier,
+    this.type,
+  });
 
   SiteVerificationWebResourceGettokenRequestSite.fromJson(core.Map json_)
       : this(
@@ -375,8 +370,7 @@ class SiteVerificationWebResourceGettokenRequest {
       : this(
           site: json_.containsKey('site')
               ? SiteVerificationWebResourceGettokenRequestSite.fromJson(
-                  json_['site'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['site'] as core.Map<core.String, core.dynamic>)
               : null,
           verificationMethod: json_['verificationMethod'] as core.String?,
         );
@@ -403,7 +397,10 @@ class SiteVerificationWebResourceGettokenResponse {
   /// succeed.
   core.String? token;
 
-  SiteVerificationWebResourceGettokenResponse({this.method, this.token});
+  SiteVerificationWebResourceGettokenResponse({
+    this.method,
+    this.token,
+  });
 
   SiteVerificationWebResourceGettokenResponse.fromJson(core.Map json_)
       : this(
@@ -421,16 +418,15 @@ class SiteVerificationWebResourceListResponse {
   /// The list of sites that are owned by the authenticated user.
   core.List<SiteVerificationWebResourceResource>? items;
 
-  SiteVerificationWebResourceListResponse({this.items});
+  SiteVerificationWebResourceListResponse({
+    this.items,
+  });
 
   SiteVerificationWebResourceListResponse.fromJson(core.Map json_)
       : this(
           items: (json_['items'] as core.List?)
-              ?.map(
-                (value) => SiteVerificationWebResourceResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SiteVerificationWebResourceResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -452,7 +448,10 @@ class SiteVerificationWebResourceResourceSite {
   /// Can be SITE or INET_DOMAIN (domain name).
   core.String? type;
 
-  SiteVerificationWebResourceResourceSite({this.identifier, this.type});
+  SiteVerificationWebResourceResourceSite({
+    this.identifier,
+    this.type,
+  });
 
   SiteVerificationWebResourceResourceSite.fromJson(core.Map json_)
       : this(
@@ -479,7 +478,11 @@ class SiteVerificationWebResourceResource {
   /// The address and type of a site that is verified or will be verified.
   SiteVerificationWebResourceResourceSite? site;
 
-  SiteVerificationWebResourceResource({this.id, this.owners, this.site});
+  SiteVerificationWebResourceResource({
+    this.id,
+    this.owners,
+    this.site,
+  });
 
   SiteVerificationWebResourceResource.fromJson(core.Map json_)
       : this(
@@ -489,8 +492,7 @@ class SiteVerificationWebResourceResource {
               .toList(),
           site: json_.containsKey('site')
               ? SiteVerificationWebResourceResourceSite.fromJson(
-                  json_['site'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['site'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 

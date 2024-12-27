@@ -52,16 +52,11 @@ class CloudShellApi {
   OperationsResource get operations => OperationsResource(_requester);
   UsersResource get users => UsersResource(_requester);
 
-  CloudShellApi(
-    http.Client client, {
-    core.String rootUrl = 'https://cloudshell.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  CloudShellApi(http.Client client,
+      {core.String rootUrl = 'https://cloudshell.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class OperationsResource {
@@ -139,7 +134,10 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -174,7 +172,10 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -236,8 +237,7 @@ class OperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -383,8 +383,7 @@ class UsersEnvironmentsResource {
       queryParams: queryParams_,
     );
     return Environment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes a public SSH key from an environment.
@@ -492,10 +491,14 @@ class AddPublicKeyRequest {
   /// \<format\> \<content\>, where \<content\> part is encoded with Base64.
   core.String? key;
 
-  AddPublicKeyRequest({this.key});
+  AddPublicKeyRequest({
+    this.key,
+  });
 
   AddPublicKeyRequest.fromJson(core.Map json_)
-      : this(key: json_['key'] as core.String?);
+      : this(
+          key: json_['key'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
@@ -671,17 +674,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map(
-                (value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -734,15 +737,20 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({this.done, this.error, this.metadata, this.name, this.response});
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -767,10 +775,14 @@ class RemovePublicKeyRequest {
   /// Key that should be removed from the environment.
   core.String? key;
 
-  RemovePublicKeyRequest({this.key});
+  RemovePublicKeyRequest({
+    this.key,
+  });
 
   RemovePublicKeyRequest.fromJson(core.Map json_)
-      : this(key: json_['key'] as core.String?);
+      : this(
+          key: json_['key'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
@@ -790,7 +802,10 @@ class StartEnvironmentRequest {
   /// Public keys that should be added to the environment before it is started.
   core.List<core.String>? publicKeys;
 
-  StartEnvironmentRequest({this.accessToken, this.publicKeys});
+  StartEnvironmentRequest({
+    this.accessToken,
+    this.publicKeys,
+  });
 
   StartEnvironmentRequest.fromJson(core.Map json_)
       : this(

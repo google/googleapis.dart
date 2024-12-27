@@ -69,16 +69,11 @@ class VMwareEngineApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  VMwareEngineApi(
-    http.Client client, {
-    core.String rootUrl = 'https://vmwareengine.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  VMwareEngineApi(http.Client client,
+      {core.String rootUrl = 'https://vmwareengine.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -129,7 +124,10 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(core.String name, {core.String? $fields}) async {
+  async.Future<Location> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -186,8 +184,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return DnsBindPermission.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -239,8 +236,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -533,8 +529,7 @@ class ProjectsLocationsNetworkPeeringsResource {
       queryParams: queryParams_,
     );
     return NetworkPeering.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists `NetworkPeering` resources in a given project.
@@ -611,8 +606,7 @@ class ProjectsLocationsNetworkPeeringsResource {
       queryParams: queryParams_,
     );
     return ListNetworkPeeringsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies a `NetworkPeering` resource.
@@ -692,8 +686,8 @@ class ProjectsLocationsNetworkPeeringsPeeringRoutesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsNetworkPeeringsPeeringRoutesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Lists the network peering routes exchanged over a peering connection.
   ///
@@ -756,8 +750,7 @@ class ProjectsLocationsNetworkPeeringsPeeringRoutesResource {
       queryParams: queryParams_,
     );
     return ListPeeringRoutesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -958,8 +951,7 @@ class ProjectsLocationsNetworkPoliciesResource {
       queryParams: queryParams_,
     );
     return FetchNetworkPolicyExternalAddressesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a `NetworkPolicy` resource by its resource name.
@@ -999,8 +991,7 @@ class ProjectsLocationsNetworkPoliciesResource {
       queryParams: queryParams_,
     );
     return NetworkPolicy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists `NetworkPolicy` resources in a specified project and location.
@@ -1075,8 +1066,7 @@ class ProjectsLocationsNetworkPoliciesResource {
       queryParams: queryParams_,
     );
     return ListNetworkPoliciesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies a `NetworkPolicy` resource.
@@ -1162,8 +1152,8 @@ class ProjectsLocationsNetworkPoliciesExternalAccessRulesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsNetworkPoliciesExternalAccessRulesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Creates a new external access rule in a given network policy.
   ///
@@ -1329,8 +1319,7 @@ class ProjectsLocationsNetworkPoliciesExternalAccessRulesResource {
       queryParams: queryParams_,
     );
     return ExternalAccessRule.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists `ExternalAccessRule` resources in the specified network policy.
@@ -1409,8 +1398,7 @@ class ProjectsLocationsNetworkPoliciesExternalAccessRulesResource {
       queryParams: queryParams_,
     );
     return ListExternalAccessRulesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the parameters of a single external access rule.
@@ -1510,7 +1498,10 @@ class ProjectsLocationsNodeTypesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<NodeType> get(core.String name, {core.String? $fields}) async {
+  async.Future<NodeType> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1589,8 +1580,7 @@ class ProjectsLocationsNodeTypesResource {
       queryParams: queryParams_,
     );
     return ListNodeTypesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1622,7 +1612,10 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1658,7 +1651,10 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1720,8 +1716,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1741,8 +1736,7 @@ class ProjectsLocationsPrivateCloudsResource {
   ProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResource
       get managementDnsZoneBindings =>
           ProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResource(
-            _requester,
-          );
+              _requester);
   ProjectsLocationsPrivateCloudsSubnetsResource get subnets =>
       ProjectsLocationsPrivateCloudsSubnetsResource(_requester);
 
@@ -1935,8 +1929,7 @@ class ProjectsLocationsPrivateCloudsResource {
       queryParams: queryParams_,
     );
     return PrivateCloud.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of the `DnsForwarding` config.
@@ -1976,8 +1969,7 @@ class ProjectsLocationsPrivateCloudsResource {
       queryParams: queryParams_,
     );
     return DnsForwarding.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -2111,8 +2103,7 @@ class ProjectsLocationsPrivateCloudsResource {
       queryParams: queryParams_,
     );
     return ListPrivateCloudsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies a `PrivateCloud` resource.
@@ -2358,8 +2349,7 @@ class ProjectsLocationsPrivateCloudsResource {
       queryParams: queryParams_,
     );
     return Credentials.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of credentials for Vcenter appliance.
@@ -2411,8 +2401,7 @@ class ProjectsLocationsPrivateCloudsResource {
       queryParams: queryParams_,
     );
     return Credentials.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -2463,8 +2452,7 @@ class ProjectsLocationsPrivateCloudsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Restores a private cloud that was previously scheduled for deletion by
@@ -2736,7 +2724,10 @@ class ProjectsLocationsPrivateCloudsClustersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Cluster> get(core.String name, {core.String? $fields}) async {
+  async.Future<Cluster> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2874,8 +2865,7 @@ class ProjectsLocationsPrivateCloudsClustersResource {
       queryParams: queryParams_,
     );
     return ListClustersResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies a `Cluster` resource.
@@ -3042,8 +3032,7 @@ class ProjectsLocationsPrivateCloudsClustersResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3051,8 +3040,8 @@ class ProjectsLocationsPrivateCloudsClustersNodesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsPrivateCloudsClustersNodesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Gets details of a single node.
   ///
@@ -3073,7 +3062,10 @@ class ProjectsLocationsPrivateCloudsClustersNodesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Node> get(core.String name, {core.String? $fields}) async {
+  async.Future<Node> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3138,8 +3130,7 @@ class ProjectsLocationsPrivateCloudsClustersNodesResource {
       queryParams: queryParams_,
     );
     return ListNodesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3147,8 +3138,8 @@ class ProjectsLocationsPrivateCloudsExternalAddressesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsPrivateCloudsExternalAddressesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Creates a new `ExternalAddress` resource in a given private cloud.
   ///
@@ -3318,8 +3309,7 @@ class ProjectsLocationsPrivateCloudsExternalAddressesResource {
       queryParams: queryParams_,
     );
     return ExternalAddress.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists external IP addresses assigned to VMware workload VMs in a given
@@ -3396,8 +3386,7 @@ class ProjectsLocationsPrivateCloudsExternalAddressesResource {
       queryParams: queryParams_,
     );
     return ListExternalAddressesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the parameters of a single external IP address.
@@ -3478,8 +3467,8 @@ class ProjectsLocationsPrivateCloudsHcxActivationKeysResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsPrivateCloudsHcxActivationKeysResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Creates a new HCX activation key in a given private cloud.
   ///
@@ -3588,8 +3577,7 @@ class ProjectsLocationsPrivateCloudsHcxActivationKeysResource {
       queryParams: queryParams_,
     );
     return HcxActivationKey.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -3700,8 +3688,7 @@ class ProjectsLocationsPrivateCloudsHcxActivationKeysResource {
       queryParams: queryParams_,
     );
     return ListHcxActivationKeysResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -3799,8 +3786,7 @@ class ProjectsLocationsPrivateCloudsHcxActivationKeysResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3808,8 +3794,8 @@ class ProjectsLocationsPrivateCloudsLoggingServersResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsPrivateCloudsLoggingServersResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Create a new logging server for a given private cloud.
   ///
@@ -3973,8 +3959,7 @@ class ProjectsLocationsPrivateCloudsLoggingServersResource {
       queryParams: queryParams_,
     );
     return LoggingServer.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists logging servers configured for a given private cloud.
@@ -4052,8 +4037,7 @@ class ProjectsLocationsPrivateCloudsLoggingServersResource {
       queryParams: queryParams_,
     );
     return ListLoggingServersResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the parameters of a single logging server.
@@ -4130,8 +4114,8 @@ class ProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Creates a new `ManagementDnsZoneBinding` resource in a private cloud.
   ///
@@ -4307,8 +4291,7 @@ class ProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResource {
       queryParams: queryParams_,
     );
     return ManagementDnsZoneBinding.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Consumer VPCs bound to Management DNS Zone of a given private cloud.
@@ -4390,8 +4373,7 @@ class ProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResource {
       queryParams: queryParams_,
     );
     return ListManagementDnsZoneBindingsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a `ManagementDnsZoneBinding` resource.
@@ -4536,7 +4518,10 @@ class ProjectsLocationsPrivateCloudsSubnetsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Subnet> get(core.String name, {core.String? $fields}) async {
+  async.Future<Subnet> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4602,8 +4587,7 @@ class ProjectsLocationsPrivateCloudsSubnetsResource {
       queryParams: queryParams_,
     );
     return ListSubnetsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the parameters of a single subnet.
@@ -4841,8 +4825,7 @@ class ProjectsLocationsPrivateConnectionsResource {
       queryParams: queryParams_,
     );
     return PrivateConnection.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists `PrivateConnection` resources in a given project and location.
@@ -4918,8 +4901,7 @@ class ProjectsLocationsPrivateConnectionsResource {
       queryParams: queryParams_,
     );
     return ListPrivateConnectionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies a `PrivateConnection` resource.
@@ -4997,8 +4979,8 @@ class ProjectsLocationsPrivateConnectionsPeeringRoutesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsPrivateConnectionsPeeringRoutesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Lists the private connection routes exchanged over a peering connection.
   ///
@@ -5052,8 +5034,7 @@ class ProjectsLocationsPrivateConnectionsPeeringRoutesResource {
       queryParams: queryParams_,
     );
     return ListPrivateConnectionPeeringRoutesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5246,8 +5227,7 @@ class ProjectsLocationsVmwareEngineNetworksResource {
       queryParams: queryParams_,
     );
     return VmwareEngineNetwork.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists `VmwareEngineNetwork` resources in a given project and location.
@@ -5323,8 +5303,7 @@ class ProjectsLocationsVmwareEngineNetworksResource {
       queryParams: queryParams_,
     );
     return ListVmwareEngineNetworksResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies a VMware Engine network resource.
@@ -5426,16 +5405,16 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({this.auditLogConfigs, this.service});
+  AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
 
   AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map(
-                (value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -5510,29 +5489,22 @@ class AutoscalingPolicy {
       : this(
           consumedMemoryThresholds:
               json_.containsKey('consumedMemoryThresholds')
-                  ? Thresholds.fromJson(
-                      json_['consumedMemoryThresholds']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                  ? Thresholds.fromJson(json_['consumedMemoryThresholds']
+                      as core.Map<core.String, core.dynamic>)
                   : null,
           cpuThresholds: json_.containsKey('cpuThresholds')
               ? Thresholds.fromJson(
-                  json_['cpuThresholds'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['cpuThresholds'] as core.Map<core.String, core.dynamic>)
               : null,
           grantedMemoryThresholds: json_.containsKey('grantedMemoryThresholds')
-              ? Thresholds.fromJson(
-                  json_['grantedMemoryThresholds']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Thresholds.fromJson(json_['grantedMemoryThresholds']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           nodeTypeId: json_['nodeTypeId'] as core.String?,
           scaleOutSize: json_['scaleOutSize'] as core.int?,
           storageThresholds: json_.containsKey('storageThresholds')
-              ? Thresholds.fromJson(
-                  json_['storageThresholds']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Thresholds.fromJson(json_['storageThresholds']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5602,8 +5574,7 @@ class AutoscalingSettings {
             (key, value) => core.MapEntry(
               key,
               AutoscalingPolicy.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
           coolDownPeriod: json_['coolDownPeriod'] as core.String?,
@@ -5702,14 +5673,17 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({this.condition, this.members, this.role});
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -5807,10 +5781,8 @@ class Cluster {
   Cluster.fromJson(core.Map json_)
       : this(
           autoscalingSettings: json_.containsKey('autoscalingSettings')
-              ? AutoscalingSettings.fromJson(
-                  json_['autoscalingSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AutoscalingSettings.fromJson(json_['autoscalingSettings']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_['createTime'] as core.String?,
           management: json_['management'] as core.bool?,
@@ -5821,16 +5793,13 @@ class Cluster {
             (key, value) => core.MapEntry(
               key,
               NodeTypeConfig.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
           state: json_['state'] as core.String?,
           stretchedClusterConfig: json_.containsKey('stretchedClusterConfig')
-              ? StretchedClusterConfig.fromJson(
-                  json_['stretchedClusterConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? StretchedClusterConfig.fromJson(json_['stretchedClusterConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -5859,7 +5828,10 @@ class Credentials {
   /// Initial username.
   core.String? username;
 
-  Credentials({this.password, this.username});
+  Credentials({
+    this.password,
+    this.username,
+  });
 
   Credentials.fromJson(core.Map json_)
       : this(
@@ -5895,17 +5867,17 @@ class DnsBindPermission {
   /// Output only.
   core.List<Principal>? principals;
 
-  DnsBindPermission({this.name, this.principals});
+  DnsBindPermission({
+    this.name,
+    this.principals,
+  });
 
   DnsBindPermission.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
           principals: (json_['principals'] as core.List?)
-              ?.map(
-                (value) => Principal.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Principal.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5956,11 +5928,8 @@ class DnsForwarding {
       : this(
           createTime: json_['createTime'] as core.String?,
           forwardingRules: (json_['forwardingRules'] as core.List?)
-              ?.map(
-                (value) => ForwardingRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ForwardingRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           name: json_['name'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -6123,11 +6092,8 @@ class ExternalAccessRule {
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           destinationIpRanges: (json_['destinationIpRanges'] as core.List?)
-              ?.map(
-                (value) => IpRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => IpRange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           destinationPorts: (json_['destinationPorts'] as core.List?)
               ?.map((value) => value as core.String)
@@ -6136,11 +6102,8 @@ class ExternalAccessRule {
           name: json_['name'] as core.String?,
           priority: json_['priority'] as core.int?,
           sourceIpRanges: (json_['sourceIpRanges'] as core.List?)
-              ?.map(
-                (value) => IpRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => IpRange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           sourcePorts: (json_['sourcePorts'] as core.List?)
               ?.map((value) => value as core.String)
@@ -6273,11 +6236,8 @@ class FetchNetworkPolicyExternalAddressesResponse {
   FetchNetworkPolicyExternalAddressesResponse.fromJson(core.Map json_)
       : this(
           externalAddresses: (json_['externalAddresses'] as core.List?)
-              ?.map(
-                (value) => ExternalAddress.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ExternalAddress.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -6304,7 +6264,10 @@ class ForwardingRule {
   /// Required.
   core.List<core.String>? nameServers;
 
-  ForwardingRule({this.domain, this.nameServers});
+  ForwardingRule({
+    this.domain,
+    this.nameServers,
+  });
 
   ForwardingRule.fromJson(core.Map json_)
       : this(
@@ -6346,14 +6309,16 @@ class GrantDnsBindPermissionRequest {
   /// Optional.
   core.String? requestId;
 
-  GrantDnsBindPermissionRequest({this.principal, this.requestId});
+  GrantDnsBindPermissionRequest({
+    this.principal,
+    this.requestId,
+  });
 
   GrantDnsBindPermissionRequest.fromJson(core.Map json_)
       : this(
           principal: json_.containsKey('principal')
               ? Principal.fromJson(
-                  json_['principal'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['principal'] as core.Map<core.String, core.dynamic>)
               : null,
           requestId: json_['requestId'] as core.String?,
         );
@@ -6386,7 +6351,12 @@ class Hcx {
   /// Version of the appliance.
   core.String? version;
 
-  Hcx({this.fqdn, this.internalIp, this.state, this.version});
+  Hcx({
+    this.fqdn,
+    this.internalIp,
+    this.state,
+    this.version,
+  });
 
   Hcx.fromJson(core.Map json_)
       : this(
@@ -6494,7 +6464,11 @@ class IpRange {
   /// For example: `10.0.0.0/24`.
   core.String? ipAddressRange;
 
-  IpRange({this.externalAddress, this.ipAddress, this.ipAddressRange});
+  IpRange({
+    this.externalAddress,
+    this.ipAddress,
+    this.ipAddressRange,
+  });
 
   IpRange.fromJson(core.Map json_)
       : this(
@@ -6524,16 +6498,17 @@ class ListClustersResponse {
   /// wildcards.
   core.List<core.String>? unreachable;
 
-  ListClustersResponse({this.clusters, this.nextPageToken, this.unreachable});
+  ListClustersResponse({
+    this.clusters,
+    this.nextPageToken,
+    this.unreachable,
+  });
 
   ListClustersResponse.fromJson(core.Map json_)
       : this(
           clusters: (json_['clusters'] as core.List?)
-              ?.map(
-                (value) => Cluster.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Cluster.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -6571,11 +6546,8 @@ class ListExternalAccessRulesResponse {
   ListExternalAccessRulesResponse.fromJson(core.Map json_)
       : this(
           externalAccessRules: (json_['externalAccessRules'] as core.List?)
-              ?.map(
-                (value) => ExternalAccessRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ExternalAccessRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -6614,11 +6586,8 @@ class ListExternalAddressesResponse {
   ListExternalAddressesResponse.fromJson(core.Map json_)
       : this(
           externalAddresses: (json_['externalAddresses'] as core.List?)
-              ?.map(
-                (value) => ExternalAddress.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ExternalAddress.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -6656,11 +6625,8 @@ class ListHcxActivationKeysResponse {
   ListHcxActivationKeysResponse.fromJson(core.Map json_)
       : this(
           hcxActivationKeys: (json_['hcxActivationKeys'] as core.List?)
-              ?.map(
-                (value) => HcxActivationKey.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => HcxActivationKey.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -6683,16 +6649,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({this.locations, this.nextPageToken});
+  ListLocationsResponse({
+    this.locations,
+    this.nextPageToken,
+  });
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map(
-                (value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -6726,11 +6692,8 @@ class ListLoggingServersResponse {
   ListLoggingServersResponse.fromJson(core.Map json_)
       : this(
           loggingServers: (json_['loggingServers'] as core.List?)
-              ?.map(
-                (value) => LoggingServer.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => LoggingServer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -6769,11 +6732,8 @@ class ListManagementDnsZoneBindingsResponse {
       : this(
           managementDnsZoneBindings:
               (json_['managementDnsZoneBindings'] as core.List?)
-                  ?.map(
-                    (value) => ManagementDnsZoneBinding.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => ManagementDnsZoneBinding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -6811,11 +6771,8 @@ class ListNetworkPeeringsResponse {
   ListNetworkPeeringsResponse.fromJson(core.Map json_)
       : this(
           networkPeerings: (json_['networkPeerings'] as core.List?)
-              ?.map(
-                (value) => NetworkPeering.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => NetworkPeering.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -6853,11 +6810,8 @@ class ListNetworkPoliciesResponse {
   ListNetworkPoliciesResponse.fromJson(core.Map json_)
       : this(
           networkPolicies: (json_['networkPolicies'] as core.List?)
-              ?.map(
-                (value) => NetworkPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => NetworkPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -6886,17 +6840,18 @@ class ListNodeTypesResponse {
   /// wildcards.
   core.List<core.String>? unreachable;
 
-  ListNodeTypesResponse({this.nextPageToken, this.nodeTypes, this.unreachable});
+  ListNodeTypesResponse({
+    this.nextPageToken,
+    this.nodeTypes,
+    this.unreachable,
+  });
 
   ListNodeTypesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           nodeTypes: (json_['nodeTypes'] as core.List?)
-              ?.map(
-                (value) => NodeType.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => NodeType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -6920,17 +6875,17 @@ class ListNodesResponse {
   /// The nodes.
   core.List<Node>? nodes;
 
-  ListNodesResponse({this.nextPageToken, this.nodes});
+  ListNodesResponse({
+    this.nextPageToken,
+    this.nodes,
+  });
 
   ListNodesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           nodes: (json_['nodes'] as core.List?)
-              ?.map(
-                (value) => Node.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Node.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -6948,17 +6903,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map(
-                (value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -6978,17 +6933,17 @@ class ListPeeringRoutesResponse {
   /// A list of peering routes.
   core.List<PeeringRoute>? peeringRoutes;
 
-  ListPeeringRoutesResponse({this.nextPageToken, this.peeringRoutes});
+  ListPeeringRoutesResponse({
+    this.nextPageToken,
+    this.peeringRoutes,
+  });
 
   ListPeeringRoutesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           peeringRoutes: (json_['peeringRoutes'] as core.List?)
-              ?.map(
-                (value) => PeeringRoute.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PeeringRoute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -7022,11 +6977,8 @@ class ListPrivateCloudsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           privateClouds: (json_['privateClouds'] as core.List?)
-              ?.map(
-                (value) => PrivateCloud.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PrivateCloud.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -7059,11 +7011,8 @@ class ListPrivateConnectionPeeringRoutesResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           peeringRoutes: (json_['peeringRoutes'] as core.List?)
-              ?.map(
-                (value) => PeeringRoute.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PeeringRoute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -7096,11 +7045,8 @@ class ListPrivateConnectionsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           privateConnections: (json_['privateConnections'] as core.List?)
-              ?.map(
-                (value) => PrivateConnection.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PrivateConnection.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -7129,17 +7075,18 @@ class ListSubnetsResponse {
   /// wildcards.
   core.List<core.String>? unreachable;
 
-  ListSubnetsResponse({this.nextPageToken, this.subnets, this.unreachable});
+  ListSubnetsResponse({
+    this.nextPageToken,
+    this.subnets,
+    this.unreachable,
+  });
 
   ListSubnetsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           subnets: (json_['subnets'] as core.List?)
-              ?.map(
-                (value) => Subnet.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Subnet.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -7179,11 +7126,8 @@ class ListVmwareEngineNetworksResponse {
               ?.map((value) => value as core.String)
               .toList(),
           vmwareEngineNetworks: (json_['vmwareEngineNetworks'] as core.List?)
-              ?.map(
-                (value) => VmwareEngineNetwork.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => VmwareEngineNetwork.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -7334,15 +7278,12 @@ class ManagementCluster {
             (key, value) => core.MapEntry(
               key,
               NodeTypeConfig.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
           stretchedClusterConfig: json_.containsKey('stretchedClusterConfig')
-              ? StretchedClusterConfig.fromJson(
-                  json_['stretchedClusterConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? StretchedClusterConfig.fromJson(json_['stretchedClusterConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7840,14 +7781,11 @@ class NetworkPolicy {
           edgeServicesCidr: json_['edgeServicesCidr'] as core.String?,
           externalIp: json_.containsKey('externalIp')
               ? NetworkService.fromJson(
-                  json_['externalIp'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['externalIp'] as core.Map<core.String, core.dynamic>)
               : null,
           internetAccess: json_.containsKey('internetAccess')
-              ? NetworkService.fromJson(
-                  json_['internetAccess']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? NetworkService.fromJson(json_['internetAccess']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           uid: json_['uid'] as core.String?,
@@ -7897,7 +7835,10 @@ class NetworkService {
   /// - "ACTIVE" : Service is active.
   core.String? state;
 
-  NetworkService({this.enabled, this.state});
+  NetworkService({
+    this.enabled,
+    this.state,
+  });
 
   NetworkService.fromJson(core.Map json_)
       : this(
@@ -8135,7 +8076,10 @@ class NodeTypeConfig {
   /// Required.
   core.int? nodeCount;
 
-  NodeTypeConfig({this.customCoreCount, this.nodeCount});
+  NodeTypeConfig({
+    this.customCoreCount,
+    this.nodeCount,
+  });
 
   NodeTypeConfig.fromJson(core.Map json_)
       : this(
@@ -8195,15 +8139,20 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({this.done, this.error, this.metadata, this.name, this.response});
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -8395,23 +8344,22 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
+  Policy({
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
   Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map(
-                (value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map(
-                (value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -8434,7 +8382,10 @@ class Principal {
   /// The user who needs to be granted permission.
   core.String? user;
 
-  Principal({this.serviceAccount, this.user});
+  Principal({
+    this.serviceAccount,
+    this.user,
+  });
 
   Principal.fromJson(core.Map json_)
       : this(
@@ -8580,25 +8531,20 @@ class PrivateCloud {
           expireTime: json_['expireTime'] as core.String?,
           hcx: json_.containsKey('hcx')
               ? Hcx.fromJson(
-                  json_['hcx'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['hcx'] as core.Map<core.String, core.dynamic>)
               : null,
           managementCluster: json_.containsKey('managementCluster')
-              ? ManagementCluster.fromJson(
-                  json_['managementCluster']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ManagementCluster.fromJson(json_['managementCluster']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           networkConfig: json_.containsKey('networkConfig')
               ? NetworkConfig.fromJson(
-                  json_['networkConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['networkConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           nsx: json_.containsKey('nsx')
               ? Nsx.fromJson(
-                  json_['nsx'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['nsx'] as core.Map<core.String, core.dynamic>)
               : null,
           state: json_['state'] as core.String?,
           type: json_['type'] as core.String?,
@@ -8606,8 +8552,7 @@ class PrivateCloud {
           updateTime: json_['updateTime'] as core.String?,
           vcenter: json_.containsKey('vcenter')
               ? Vcenter.fromJson(
-                  json_['vcenter'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['vcenter'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -8826,10 +8771,14 @@ class RepairManagementDnsZoneBindingRequest {
   /// Optional.
   core.String? requestId;
 
-  RepairManagementDnsZoneBindingRequest({this.requestId});
+  RepairManagementDnsZoneBindingRequest({
+    this.requestId,
+  });
 
   RepairManagementDnsZoneBindingRequest.fromJson(core.Map json_)
-      : this(requestId: json_['requestId'] as core.String?);
+      : this(
+          requestId: json_['requestId'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
@@ -8855,10 +8804,14 @@ class ResetNsxCredentialsRequest {
   /// Optional.
   core.String? requestId;
 
-  ResetNsxCredentialsRequest({this.requestId});
+  ResetNsxCredentialsRequest({
+    this.requestId,
+  });
 
   ResetNsxCredentialsRequest.fromJson(core.Map json_)
-      : this(requestId: json_['requestId'] as core.String?);
+      : this(
+          requestId: json_['requestId'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
@@ -8895,7 +8848,10 @@ class ResetVcenterCredentialsRequest {
   /// Optional.
   core.String? username;
 
-  ResetVcenterCredentialsRequest({this.requestId, this.username});
+  ResetVcenterCredentialsRequest({
+    this.requestId,
+    this.username,
+  });
 
   ResetVcenterCredentialsRequest.fromJson(core.Map json_)
       : this(
@@ -8935,14 +8891,16 @@ class RevokeDnsBindPermissionRequest {
   /// Optional.
   core.String? requestId;
 
-  RevokeDnsBindPermissionRequest({this.principal, this.requestId});
+  RevokeDnsBindPermissionRequest({
+    this.principal,
+    this.requestId,
+  });
 
   RevokeDnsBindPermissionRequest.fromJson(core.Map json_)
       : this(
           principal: json_.containsKey('principal')
               ? Principal.fromJson(
-                  json_['principal'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['principal'] as core.Map<core.String, core.dynamic>)
               : null,
           requestId: json_['requestId'] as core.String?,
         );
@@ -8968,14 +8926,16 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({this.policy, this.updateMask});
+  SetIamPolicyRequest({
+    this.policy,
+    this.updateMask,
+  });
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -9016,7 +8976,10 @@ class StretchedClusterConfig {
   /// Required.
   core.String? secondaryLocation;
 
-  StretchedClusterConfig({this.preferredLocation, this.secondaryLocation});
+  StretchedClusterConfig({
+    this.preferredLocation,
+    this.secondaryLocation,
+  });
 
   StretchedClusterConfig.fromJson(core.Map json_)
       : this(
@@ -9129,7 +9092,10 @@ class Thresholds {
   /// Required.
   core.int? scaleOut;
 
-  Thresholds({this.scaleIn, this.scaleOut});
+  Thresholds({
+    this.scaleIn,
+    this.scaleOut,
+  });
 
   Thresholds.fromJson(core.Map json_)
       : this(
@@ -9151,10 +9117,14 @@ class UndeletePrivateCloudRequest {
   /// Optional.
   core.String? requestId;
 
-  UndeletePrivateCloudRequest({this.requestId});
+  UndeletePrivateCloudRequest({
+    this.requestId,
+  });
 
   UndeletePrivateCloudRequest.fromJson(core.Map json_)
-      : this(requestId: json_['requestId'] as core.String?);
+      : this(
+          requestId: json_['requestId'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
@@ -9255,11 +9225,8 @@ class VmwareEngineNetwork {
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
           vpcNetworks: (json_['vpcNetworks'] as core.List?)
-              ?.map(
-                (value) => VpcNetwork.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => VpcNetwork.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -9302,7 +9269,10 @@ class VpcNetwork {
   /// like Cloud Storage.
   core.String? type;
 
-  VpcNetwork({this.network, this.type});
+  VpcNetwork({
+    this.network,
+    this.type,
+  });
 
   VpcNetwork.fromJson(core.Map json_)
       : this(

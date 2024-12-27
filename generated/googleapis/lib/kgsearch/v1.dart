@@ -40,16 +40,11 @@ class KgsearchApi {
 
   EntitiesResource get entities => EntitiesResource(_requester);
 
-  KgsearchApi(
-    http.Client client, {
-    core.String rootUrl = 'https://kgsearch.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  KgsearchApi(http.Client client,
+      {core.String rootUrl = 'https://kgsearch.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class EntitiesResource {
@@ -122,8 +117,7 @@ class EntitiesResource {
       queryParams: queryParams_,
     );
     return SearchResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -150,7 +144,11 @@ class SearchResponse {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object?>? itemListElement;
 
-  SearchResponse({this.P_context, this.P_type, this.itemListElement});
+  SearchResponse({
+    this.P_context,
+    this.P_type,
+    this.itemListElement,
+  });
 
   SearchResponse.fromJson(core.Map json_)
       : this(

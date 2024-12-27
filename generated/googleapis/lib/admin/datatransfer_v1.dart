@@ -56,16 +56,11 @@ class DataTransferApi {
   ApplicationsResource get applications => ApplicationsResource(_requester);
   TransfersResource get transfers => TransfersResource(_requester);
 
-  DataTransferApi(
-    http.Client client, {
-    core.String rootUrl = 'https://admin.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  DataTransferApi(http.Client client,
+      {core.String rootUrl = 'https://admin.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ApplicationsResource {
@@ -106,8 +101,7 @@ class ApplicationsResource {
       queryParams: queryParams_,
     );
     return Application.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the applications available for data transfer for a customer.
@@ -152,8 +146,7 @@ class ApplicationsResource {
       queryParams: queryParams_,
     );
     return ApplicationsListResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -196,8 +189,7 @@ class TransfersResource {
       queryParams: queryParams_,
     );
     return DataTransfer.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a data transfer request.
@@ -237,8 +229,7 @@ class TransfersResource {
       queryParams: queryParams_,
     );
     return DataTransfer.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the transfers for a customer by source user, destination user, or
@@ -296,8 +287,7 @@ class TransfersResource {
       queryParams: queryParams_,
     );
     return DataTransfersListResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -325,7 +315,13 @@ class Application {
   /// These parameters select which categories of the user's data to transfer.
   core.List<ApplicationTransferParam>? transferParams;
 
-  Application({this.etag, this.id, this.kind, this.name, this.transferParams});
+  Application({
+    this.etag,
+    this.id,
+    this.kind,
+    this.name,
+    this.transferParams,
+  });
 
   Application.fromJson(core.Map json_)
       : this(
@@ -334,11 +330,8 @@ class Application {
           kind: json_['kind'] as core.String?,
           name: json_['name'] as core.String?,
           transferParams: (json_['transferParams'] as core.List?)
-              ?.map(
-                (value) => ApplicationTransferParam.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ApplicationTransferParam.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -380,11 +373,8 @@ class ApplicationDataTransfer {
           applicationId: json_['applicationId'] as core.String?,
           applicationTransferParams:
               (json_['applicationTransferParams'] as core.List?)
-                  ?.map(
-                    (value) => ApplicationTransferParam.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => ApplicationTransferParam.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
           applicationTransferStatus:
               json_['applicationTransferStatus'] as core.String?,
@@ -407,7 +397,10 @@ class ApplicationTransferParam {
   /// The value of the transfer parameter, such as `PRIVATE` or `SHARED`.
   core.List<core.String>? value;
 
-  ApplicationTransferParam({this.key, this.value});
+  ApplicationTransferParam({
+    this.key,
+    this.value,
+  });
 
   ApplicationTransferParam.fromJson(core.Map json_)
       : this(
@@ -448,11 +441,8 @@ class ApplicationsListResponse {
   ApplicationsListResponse.fromJson(core.Map json_)
       : this(
           applications: (json_['applications'] as core.List?)
-              ?.map(
-                (value) => Application.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Application.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           kind: json_['kind'] as core.String?,
@@ -519,11 +509,8 @@ class DataTransfer {
       : this(
           applicationDataTransfers:
               (json_['applicationDataTransfers'] as core.List?)
-                  ?.map(
-                    (value) => ApplicationDataTransfer.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => ApplicationDataTransfer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
           etag: json_['etag'] as core.String?,
           id: json_['id'] as core.String?,
@@ -576,11 +563,8 @@ class DataTransfersListResponse {
   DataTransfersListResponse.fromJson(core.Map json_)
       : this(
           dataTransfers: (json_['dataTransfers'] as core.List?)
-              ?.map(
-                (value) => DataTransfer.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DataTransfer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           kind: json_['kind'] as core.String?,

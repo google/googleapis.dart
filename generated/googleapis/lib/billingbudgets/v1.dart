@@ -56,16 +56,11 @@ class CloudBillingBudgetApi {
   BillingAccountsResource get billingAccounts =>
       BillingAccountsResource(_requester);
 
-  CloudBillingBudgetApi(
-    http.Client client, {
-    core.String rootUrl = 'https://billingbudgets.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  CloudBillingBudgetApi(http.Client client,
+      {core.String rootUrl = 'https://billingbudgets.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class BillingAccountsResource {
@@ -125,8 +120,7 @@ class BillingAccountsBudgetsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudBillingBudgetsV1Budget.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a budget.
@@ -165,8 +159,7 @@ class BillingAccountsBudgetsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a budget.
@@ -208,8 +201,7 @@ class BillingAccountsBudgetsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudBillingBudgetsV1Budget.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of budgets for a billing account.
@@ -273,8 +265,7 @@ class BillingAccountsBudgetsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudBillingBudgetsV1ListBudgetsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a budget and returns the updated budget.
@@ -330,8 +321,7 @@ class BillingAccountsBudgetsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudBillingBudgetsV1Budget.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -416,13 +406,11 @@ class GoogleCloudBillingBudgetsV1Budget {
       : this(
           amount: json_.containsKey('amount')
               ? GoogleCloudBillingBudgetsV1BudgetAmount.fromJson(
-                  json_['amount'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['amount'] as core.Map<core.String, core.dynamic>)
               : null,
           budgetFilter: json_.containsKey('budgetFilter')
               ? GoogleCloudBillingBudgetsV1Filter.fromJson(
-                  json_['budgetFilter'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['budgetFilter'] as core.Map<core.String, core.dynamic>)
               : null,
           displayName: json_['displayName'] as core.String?,
           etag: json_['etag'] as core.String?,
@@ -430,16 +418,13 @@ class GoogleCloudBillingBudgetsV1Budget {
           notificationsRule: json_.containsKey('notificationsRule')
               ? GoogleCloudBillingBudgetsV1NotificationsRule.fromJson(
                   json_['notificationsRule']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           ownershipScope: json_['ownershipScope'] as core.String?,
           thresholdRules: (json_['thresholdRules'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudBillingBudgetsV1ThresholdRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudBillingBudgetsV1ThresholdRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -482,14 +467,11 @@ class GoogleCloudBillingBudgetsV1BudgetAmount {
           lastPeriodAmount: json_.containsKey('lastPeriodAmount')
               ? GoogleCloudBillingBudgetsV1LastPeriodAmount.fromJson(
                   json_['lastPeriodAmount']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           specifiedAmount: json_.containsKey('specifiedAmount')
-              ? GoogleTypeMoney.fromJson(
-                  json_['specifiedAmount']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleTypeMoney.fromJson(json_['specifiedAmount']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -514,19 +496,20 @@ class GoogleCloudBillingBudgetsV1CustomPeriod {
   /// Required.
   GoogleTypeDate? startDate;
 
-  GoogleCloudBillingBudgetsV1CustomPeriod({this.endDate, this.startDate});
+  GoogleCloudBillingBudgetsV1CustomPeriod({
+    this.endDate,
+    this.startDate,
+  });
 
   GoogleCloudBillingBudgetsV1CustomPeriod.fromJson(core.Map json_)
       : this(
           endDate: json_.containsKey('endDate')
               ? GoogleTypeDate.fromJson(
-                  json_['endDate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['endDate'] as core.Map<core.String, core.dynamic>)
               : null,
           startDate: json_.containsKey('startDate')
               ? GoogleTypeDate.fromJson(
-                  json_['startDate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['startDate'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -668,12 +651,14 @@ class GoogleCloudBillingBudgetsV1Filter {
           creditTypesTreatment: json_['creditTypesTreatment'] as core.String?,
           customPeriod: json_.containsKey('customPeriod')
               ? GoogleCloudBillingBudgetsV1CustomPeriod.fromJson(
-                  json_['customPeriod'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['customPeriod'] as core.Map<core.String, core.dynamic>)
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.List),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.List,
+            ),
           ),
           projects: (json_['projects'] as core.List?)
               ?.map((value) => value as core.String)
@@ -727,11 +712,8 @@ class GoogleCloudBillingBudgetsV1ListBudgetsResponse {
   GoogleCloudBillingBudgetsV1ListBudgetsResponse.fromJson(core.Map json_)
       : this(
           budgets: (json_['budgets'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudBillingBudgetsV1Budget.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudBillingBudgetsV1Budget.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );

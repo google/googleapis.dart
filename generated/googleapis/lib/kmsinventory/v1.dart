@@ -51,16 +51,11 @@ class KmsinventoryApi {
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  KmsinventoryApi(
-    http.Client client, {
-    core.String rootUrl = 'https://kmsinventory.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  KmsinventoryApi(http.Client client,
+      {core.String rootUrl = 'https://kmsinventory.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class OrganizationsResource {
@@ -149,8 +144,7 @@ class OrganizationsProtectedResourcesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -219,8 +213,7 @@ class ProjectsCryptoKeysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudKmsInventoryV1ListCryptoKeysResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -273,8 +266,10 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudKmsInventoryV1ProtectedResourcesSummary>
-      getProtectedResourcesSummary(core.String name,
-          {core.String? $fields}) async {
+      getProtectedResourcesSummary(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -288,8 +283,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudKmsInventoryV1ProtectedResourcesSummary.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -310,11 +304,8 @@ class GoogleCloudKmsInventoryV1ListCryptoKeysResponse {
   GoogleCloudKmsInventoryV1ListCryptoKeysResponse.fromJson(core.Map json_)
       : this(
           cryptoKeys: (json_['cryptoKeys'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudKmsV1CryptoKey.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudKmsV1CryptoKey.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -403,7 +394,10 @@ class GoogleCloudKmsInventoryV1ProtectedResource {
               .toList(),
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           location: json_['location'] as core.String?,
           name: json_['name'] as core.String?,
@@ -463,18 +457,32 @@ class GoogleCloudKmsInventoryV1ProtectedResourcesSummary {
 
   GoogleCloudKmsInventoryV1ProtectedResourcesSummary.fromJson(core.Map json_)
       : this(
-          cloudProducts: (json_['cloudProducts']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
-          locations: (json_['locations']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          cloudProducts:
+              (json_['cloudProducts'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          locations:
+              (json_['locations'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           projectCount: json_['projectCount'] as core.int?,
           resourceCount: json_['resourceCount'] as core.String?,
-          resourceTypes: (json_['resourceTypes']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          resourceTypes:
+              (json_['resourceTypes'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -503,15 +511,13 @@ class GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse {
   });
 
   GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           protectedResources: (json_['protectedResources'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudKmsInventoryV1ProtectedResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudKmsInventoryV1ProtectedResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -661,27 +667,27 @@ class GoogleCloudKmsV1CryptoKey {
               json_.containsKey('keyAccessJustificationsPolicy')
                   ? GoogleCloudKmsV1KeyAccessJustificationsPolicy.fromJson(
                       json_['keyAccessJustificationsPolicy']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           nextRotationTime: json_['nextRotationTime'] as core.String?,
           primary: json_.containsKey('primary')
               ? GoogleCloudKmsV1CryptoKeyVersion.fromJson(
-                  json_['primary'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['primary'] as core.Map<core.String, core.dynamic>)
               : null,
           purpose: json_['purpose'] as core.String?,
           rotationPeriod: json_['rotationPeriod'] as core.String?,
           versionTemplate: json_.containsKey('versionTemplate')
               ? GoogleCloudKmsV1CryptoKeyVersionTemplate.fromJson(
                   json_['versionTemplate']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -941,8 +947,7 @@ class GoogleCloudKmsV1CryptoKeyVersion {
           algorithm: json_['algorithm'] as core.String?,
           attestation: json_.containsKey('attestation')
               ? GoogleCloudKmsV1KeyOperationAttestation.fromJson(
-                  json_['attestation'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['attestation'] as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_['createTime'] as core.String?,
           destroyEventTime: json_['destroyEventTime'] as core.String?,
@@ -953,8 +958,7 @@ class GoogleCloudKmsV1CryptoKeyVersion {
               json_.containsKey('externalProtectionLevelOptions')
                   ? GoogleCloudKmsV1ExternalProtectionLevelOptions.fromJson(
                       json_['externalProtectionLevelOptions']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           generateTime: json_['generateTime'] as core.String?,
           generationFailureReason:
@@ -1053,9 +1057,8 @@ class GoogleCloudKmsV1KeyOperationAttestation {
       : this(
           certChains: json_.containsKey('certChains')
               ? GoogleCloudKmsV1KeyOperationAttestationCertificateChains
-                  .fromJson(
-                  json_['certChains'] as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['certChains']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           content: json_['content'] as core.String?,
           format: json_['format'] as core.String?,

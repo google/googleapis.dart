@@ -49,16 +49,11 @@ class SmartDeviceManagementApi {
 
   EnterprisesResource get enterprises => EnterprisesResource(_requester);
 
-  SmartDeviceManagementApi(
-    http.Client client, {
-    core.String rootUrl = 'https://smartdevicemanagement.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  SmartDeviceManagementApi(http.Client client,
+      {core.String rootUrl = 'https://smartdevicemanagement.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class EnterprisesResource {
@@ -117,8 +112,7 @@ class EnterprisesDevicesResource {
       queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a device managed by the enterprise.
@@ -155,8 +149,7 @@ class EnterprisesDevicesResource {
       queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1Device.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists devices managed by the enterprise.
@@ -198,8 +191,7 @@ class EnterprisesDevicesResource {
       queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1ListDevicesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -246,8 +238,7 @@ class EnterprisesStructuresResource {
       queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1Structure.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists structures managed by the enterprise.
@@ -288,8 +279,7 @@ class EnterprisesStructuresResource {
       queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1ListStructuresResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -334,8 +324,7 @@ class EnterprisesStructuresRoomsResource {
       queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1Room.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists rooms managed by the enterprise.
@@ -372,8 +361,7 @@ class EnterprisesStructuresRoomsResource {
       queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1ListRoomsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -418,11 +406,8 @@ class GoogleHomeEnterpriseSdmV1Device {
       : this(
           name: json_['name'] as core.String?,
           parentRelations: (json_['parentRelations'] as core.List?)
-              ?.map(
-                (value) => GoogleHomeEnterpriseSdmV1ParentRelation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleHomeEnterpriseSdmV1ParentRelation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           traits: json_.containsKey('traits')
               ? json_['traits'] as core.Map<core.String, core.dynamic>
@@ -477,7 +462,9 @@ class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? results;
 
-  GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse({this.results});
+  GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse({
+    this.results,
+  });
 
   GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse.fromJson(core.Map json_)
       : this(
@@ -496,16 +483,15 @@ class GoogleHomeEnterpriseSdmV1ListDevicesResponse {
   /// The list of devices.
   core.List<GoogleHomeEnterpriseSdmV1Device>? devices;
 
-  GoogleHomeEnterpriseSdmV1ListDevicesResponse({this.devices});
+  GoogleHomeEnterpriseSdmV1ListDevicesResponse({
+    this.devices,
+  });
 
   GoogleHomeEnterpriseSdmV1ListDevicesResponse.fromJson(core.Map json_)
       : this(
           devices: (json_['devices'] as core.List?)
-              ?.map(
-                (value) => GoogleHomeEnterpriseSdmV1Device.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleHomeEnterpriseSdmV1Device.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -519,16 +505,15 @@ class GoogleHomeEnterpriseSdmV1ListRoomsResponse {
   /// The list of rooms.
   core.List<GoogleHomeEnterpriseSdmV1Room>? rooms;
 
-  GoogleHomeEnterpriseSdmV1ListRoomsResponse({this.rooms});
+  GoogleHomeEnterpriseSdmV1ListRoomsResponse({
+    this.rooms,
+  });
 
   GoogleHomeEnterpriseSdmV1ListRoomsResponse.fromJson(core.Map json_)
       : this(
           rooms: (json_['rooms'] as core.List?)
-              ?.map(
-                (value) => GoogleHomeEnterpriseSdmV1Room.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleHomeEnterpriseSdmV1Room.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -542,16 +527,15 @@ class GoogleHomeEnterpriseSdmV1ListStructuresResponse {
   /// The list of structures.
   core.List<GoogleHomeEnterpriseSdmV1Structure>? structures;
 
-  GoogleHomeEnterpriseSdmV1ListStructuresResponse({this.structures});
+  GoogleHomeEnterpriseSdmV1ListStructuresResponse({
+    this.structures,
+  });
 
   GoogleHomeEnterpriseSdmV1ListStructuresResponse.fromJson(core.Map json_)
       : this(
           structures: (json_['structures'] as core.List?)
-              ?.map(
-                (value) => GoogleHomeEnterpriseSdmV1Structure.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleHomeEnterpriseSdmV1Structure.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -578,7 +562,10 @@ class GoogleHomeEnterpriseSdmV1ParentRelation {
   /// Output only.
   core.String? parent;
 
-  GoogleHomeEnterpriseSdmV1ParentRelation({this.displayName, this.parent});
+  GoogleHomeEnterpriseSdmV1ParentRelation({
+    this.displayName,
+    this.parent,
+  });
 
   GoogleHomeEnterpriseSdmV1ParentRelation.fromJson(core.Map json_)
       : this(
@@ -608,7 +595,10 @@ class GoogleHomeEnterpriseSdmV1Room {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? traits;
 
-  GoogleHomeEnterpriseSdmV1Room({this.name, this.traits});
+  GoogleHomeEnterpriseSdmV1Room({
+    this.name,
+    this.traits,
+  });
 
   GoogleHomeEnterpriseSdmV1Room.fromJson(core.Map json_)
       : this(
@@ -640,7 +630,10 @@ class GoogleHomeEnterpriseSdmV1Structure {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? traits;
 
-  GoogleHomeEnterpriseSdmV1Structure({this.name, this.traits});
+  GoogleHomeEnterpriseSdmV1Structure({
+    this.name,
+    this.traits,
+  });
 
   GoogleHomeEnterpriseSdmV1Structure.fromJson(core.Map json_)
       : this(

@@ -66,16 +66,11 @@ class FirebaseappcheckApi {
   OauthClientsResource get oauthClients => OauthClientsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  FirebaseappcheckApi(
-    http.Client client, {
-    core.String rootUrl = 'https://firebaseappcheck.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  FirebaseappcheckApi(http.Client client,
+      {core.String rootUrl = 'https://firebaseappcheck.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class JwksResource {
@@ -122,8 +117,7 @@ class JwksResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1PublicJwkSet.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -179,8 +173,7 @@ class OauthClientsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1AppCheckToken.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Accepts an App Attest CBOR attestation and verifies it with Apple using
@@ -234,9 +227,7 @@ class OauthClientsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Validates a debug token secret that you have previously created using
@@ -286,8 +277,7 @@ class OauthClientsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1AppCheckToken.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Generates a challenge that protects the integrity of an immediately
@@ -339,8 +329,7 @@ class OauthClientsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -420,8 +409,7 @@ class ProjectsAppsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1AppCheckToken.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Accepts an App Attest CBOR attestation and verifies it with Apple using
@@ -475,9 +463,7 @@ class ProjectsAppsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Validates a custom token signed using your project's Admin SDK service
@@ -525,8 +511,7 @@ class ProjectsAppsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1AppCheckToken.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Validates a debug token secret that you have previously created using
@@ -576,8 +561,7 @@ class ProjectsAppsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1AppCheckToken.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Accepts a
@@ -627,8 +611,7 @@ class ProjectsAppsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1AppCheckToken.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Validates an
@@ -678,8 +661,7 @@ class ProjectsAppsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1AppCheckToken.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Validates a
@@ -730,8 +712,7 @@ class ProjectsAppsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1AppCheckToken.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Validates a
@@ -780,8 +761,7 @@ class ProjectsAppsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1AppCheckToken.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Validates a
@@ -833,8 +813,7 @@ class ProjectsAppsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1AppCheckToken.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Generates a challenge that protects the integrity of an immediately
@@ -886,8 +865,7 @@ class ProjectsAppsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Generates a challenge that protects the integrity of an immediately
@@ -940,9 +918,7 @@ class ProjectsAppsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1000,8 +976,7 @@ class ProjectsAppsAppAttestConfigResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the AppAttestConfig for the specified app.
@@ -1039,8 +1014,7 @@ class ProjectsAppsAppAttestConfigResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1AppAttestConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the AppAttestConfig for the specified app.
@@ -1091,8 +1065,7 @@ class ProjectsAppsAppAttestConfigResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1AppAttestConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1146,8 +1119,7 @@ class ProjectsAppsDebugTokensResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1DebugToken.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified DebugToken.
@@ -1190,8 +1162,7 @@ class ProjectsAppsDebugTokensResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified DebugToken.
@@ -1233,8 +1204,7 @@ class ProjectsAppsDebugTokensResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1DebugToken.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all DebugTokens for the specified app.
@@ -1290,8 +1260,7 @@ class ProjectsAppsDebugTokensResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1ListDebugTokensResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified DebugToken.
@@ -1344,8 +1313,7 @@ class ProjectsAppsDebugTokensResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1DebugToken.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1406,8 +1374,7 @@ class ProjectsAppsDeviceCheckConfigResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1BatchGetDeviceCheckConfigsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the DeviceCheckConfig for the specified app.
@@ -1449,8 +1416,7 @@ class ProjectsAppsDeviceCheckConfigResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1DeviceCheckConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the DeviceCheckConfig for the specified app.
@@ -1503,8 +1469,7 @@ class ProjectsAppsDeviceCheckConfigResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1DeviceCheckConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1562,9 +1527,7 @@ class ProjectsAppsPlayIntegrityConfigResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1BatchGetPlayIntegrityConfigsResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the PlayIntegrityConfig for the specified app.
@@ -1603,8 +1566,7 @@ class ProjectsAppsPlayIntegrityConfigResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1PlayIntegrityConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the PlayIntegrityConfig for the specified app.
@@ -1656,8 +1618,7 @@ class ProjectsAppsPlayIntegrityConfigResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1PlayIntegrityConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1717,9 +1678,7 @@ class ProjectsAppsRecaptchaEnterpriseConfigResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1BatchGetRecaptchaEnterpriseConfigsResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the RecaptchaEnterpriseConfig for the specified app.
@@ -1758,8 +1717,7 @@ class ProjectsAppsRecaptchaEnterpriseConfigResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the RecaptchaEnterpriseConfig for the specified app.
@@ -1811,8 +1769,7 @@ class ProjectsAppsRecaptchaEnterpriseConfigResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1873,8 +1830,7 @@ class ProjectsAppsRecaptchaV3ConfigResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the RecaptchaV3Config for the specified app.
@@ -1916,8 +1872,7 @@ class ProjectsAppsRecaptchaV3ConfigResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1RecaptchaV3Config.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the RecaptchaV3Config for the specified app.
@@ -1970,8 +1925,7 @@ class ProjectsAppsRecaptchaV3ConfigResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1RecaptchaV3Config.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2035,8 +1989,7 @@ class ProjectsAppsSafetyNetConfigResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the SafetyNetConfig for the specified app.
@@ -2077,8 +2030,7 @@ class ProjectsAppsSafetyNetConfigResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1SafetyNetConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the SafetyNetConfig for the specified app.
@@ -2132,8 +2084,7 @@ class ProjectsAppsSafetyNetConfigResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1SafetyNetConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2187,8 +2138,7 @@ class ProjectsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1BatchUpdateServicesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the Service configuration for the specified service name.
@@ -2231,8 +2181,7 @@ class ProjectsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1Service.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all Service configurations for the specified project.
@@ -2288,8 +2237,7 @@ class ProjectsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1ListServicesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified Service configuration.
@@ -2342,8 +2290,7 @@ class ProjectsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1Service.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2398,8 +2345,7 @@ class ProjectsServicesResourcePoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates the specified ResourcePolicy configuration.
@@ -2445,8 +2391,7 @@ class ProjectsServicesResourcePoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1ResourcePolicy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified ResourcePolicy configuration.
@@ -2496,8 +2441,7 @@ class ProjectsServicesResourcePoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the requested ResourcePolicy configuration.
@@ -2539,8 +2483,7 @@ class ProjectsServicesResourcePoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1ResourcePolicy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all ResourcePolicy configurations for the specified project and
@@ -2610,8 +2553,7 @@ class ProjectsServicesResourcePoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1ListResourcePoliciesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified ResourcePolicy configuration.
@@ -2664,8 +2606,7 @@ class ProjectsServicesResourcePoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1ResourcePolicy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2691,7 +2632,10 @@ class GoogleFirebaseAppcheckV1AppAttestConfig {
   /// and 7 days, inclusive.
   core.String? tokenTtl;
 
-  GoogleFirebaseAppcheckV1AppAttestConfig({this.name, this.tokenTtl});
+  GoogleFirebaseAppcheckV1AppAttestConfig({
+    this.name,
+    this.tokenTtl,
+  });
 
   GoogleFirebaseAppcheckV1AppAttestConfig.fromJson(core.Map json_)
       : this(
@@ -2725,7 +2669,10 @@ class GoogleFirebaseAppcheckV1AppCheckToken {
   /// duration.
   core.String? ttl;
 
-  GoogleFirebaseAppcheckV1AppCheckToken({this.token, this.ttl});
+  GoogleFirebaseAppcheckV1AppCheckToken({
+    this.token,
+    this.ttl,
+  });
 
   GoogleFirebaseAppcheckV1AppCheckToken.fromJson(core.Map json_)
       : this(
@@ -2744,17 +2691,16 @@ class GoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse {
   /// AppAttestConfigs retrieved.
   core.List<GoogleFirebaseAppcheckV1AppAttestConfig>? configs;
 
-  GoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse({this.configs});
+  GoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse({
+    this.configs,
+  });
 
   GoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           configs: (json_['configs'] as core.List?)
-              ?.map(
-                (value) => GoogleFirebaseAppcheckV1AppAttestConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleFirebaseAppcheckV1AppAttestConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2768,17 +2714,17 @@ class GoogleFirebaseAppcheckV1BatchGetDeviceCheckConfigsResponse {
   /// DeviceCheckConfigs retrieved.
   core.List<GoogleFirebaseAppcheckV1DeviceCheckConfig>? configs;
 
-  GoogleFirebaseAppcheckV1BatchGetDeviceCheckConfigsResponse({this.configs});
+  GoogleFirebaseAppcheckV1BatchGetDeviceCheckConfigsResponse({
+    this.configs,
+  });
 
   GoogleFirebaseAppcheckV1BatchGetDeviceCheckConfigsResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           configs: (json_['configs'] as core.List?)
-              ?.map(
-                (value) => GoogleFirebaseAppcheckV1DeviceCheckConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleFirebaseAppcheckV1DeviceCheckConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2792,17 +2738,17 @@ class GoogleFirebaseAppcheckV1BatchGetPlayIntegrityConfigsResponse {
   /// PlayIntegrityConfigs retrieved.
   core.List<GoogleFirebaseAppcheckV1PlayIntegrityConfig>? configs;
 
-  GoogleFirebaseAppcheckV1BatchGetPlayIntegrityConfigsResponse({this.configs});
+  GoogleFirebaseAppcheckV1BatchGetPlayIntegrityConfigsResponse({
+    this.configs,
+  });
 
   GoogleFirebaseAppcheckV1BatchGetPlayIntegrityConfigsResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           configs: (json_['configs'] as core.List?)
-              ?.map(
-                (value) => GoogleFirebaseAppcheckV1PlayIntegrityConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleFirebaseAppcheckV1PlayIntegrityConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2821,15 +2767,12 @@ class GoogleFirebaseAppcheckV1BatchGetRecaptchaEnterpriseConfigsResponse {
   });
 
   GoogleFirebaseAppcheckV1BatchGetRecaptchaEnterpriseConfigsResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           configs: (json_['configs'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2843,17 +2786,17 @@ class GoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse {
   /// RecaptchaV3Configs retrieved.
   core.List<GoogleFirebaseAppcheckV1RecaptchaV3Config>? configs;
 
-  GoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse({this.configs});
+  GoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse({
+    this.configs,
+  });
 
   GoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           configs: (json_['configs'] as core.List?)
-              ?.map(
-                (value) => GoogleFirebaseAppcheckV1RecaptchaV3Config.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleFirebaseAppcheckV1RecaptchaV3Config.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2867,17 +2810,16 @@ class GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse {
   /// SafetyNetConfigs retrieved.
   core.List<GoogleFirebaseAppcheckV1SafetyNetConfig>? configs;
 
-  GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse({this.configs});
+  GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse({
+    this.configs,
+  });
 
   GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           configs: (json_['configs'] as core.List?)
-              ?.map(
-                (value) => GoogleFirebaseAppcheckV1SafetyNetConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleFirebaseAppcheckV1SafetyNetConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2911,15 +2853,12 @@ class GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest {
   });
 
   GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           requests: (json_['requests'] as core.List?)
-              ?.map(
-                (value) => GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest
-                    .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -2940,14 +2879,11 @@ class GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse {
   });
 
   GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           resourcePolicies: (json_['resourcePolicies'] as core.List?)
-              ?.map(
-                (value) => GoogleFirebaseAppcheckV1ResourcePolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleFirebaseAppcheckV1ResourcePolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2982,12 +2918,9 @@ class GoogleFirebaseAppcheckV1BatchUpdateServicesRequest {
   GoogleFirebaseAppcheckV1BatchUpdateServicesRequest.fromJson(core.Map json_)
       : this(
           requests: (json_['requests'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleFirebaseAppcheckV1UpdateServiceRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleFirebaseAppcheckV1UpdateServiceRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -3003,16 +2936,15 @@ class GoogleFirebaseAppcheckV1BatchUpdateServicesResponse {
   /// Service objects after the updates have been applied.
   core.List<GoogleFirebaseAppcheckV1Service>? services;
 
-  GoogleFirebaseAppcheckV1BatchUpdateServicesResponse({this.services});
+  GoogleFirebaseAppcheckV1BatchUpdateServicesResponse({
+    this.services,
+  });
 
   GoogleFirebaseAppcheckV1BatchUpdateServicesResponse.fromJson(core.Map json_)
       : this(
           services: (json_['services'] as core.List?)
-              ?.map(
-                (value) => GoogleFirebaseAppcheckV1Service.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleFirebaseAppcheckV1Service.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3200,8 +3132,8 @@ class GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest {
   });
 
   GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           artifact: json_['artifact'] as core.String?,
           assertion: json_['assertion'] as core.String?,
           challenge: json_['challenge'] as core.String?,
@@ -3270,8 +3202,8 @@ class GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest {
   });
 
   GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           attestationStatement: json_['attestationStatement'] as core.String?,
           challenge: json_['challenge'] as core.String?,
           keyId: json_['keyId'] as core.String?,
@@ -3308,12 +3240,11 @@ class GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse {
   });
 
   GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           appCheckToken: json_.containsKey('appCheckToken')
               ? GoogleFirebaseAppcheckV1AppCheckToken.fromJson(
-                  json_['appCheckToken'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['appCheckToken'] as core.Map<core.String, core.dynamic>)
               : null,
           artifact: json_['artifact'] as core.String?,
         );
@@ -3413,8 +3344,8 @@ class GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest {
   });
 
   GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           deviceToken: json_['deviceToken'] as core.String?,
           limitedUse: json_['limitedUse'] as core.bool?,
         );
@@ -3447,8 +3378,8 @@ class GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest {
   });
 
   GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           limitedUse: json_['limitedUse'] as core.bool?,
           playIntegrityToken: json_['playIntegrityToken'] as core.String?,
         );
@@ -3481,8 +3412,8 @@ class GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest {
   });
 
   GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           limitedUse: json_['limitedUse'] as core.bool?,
           recaptchaEnterpriseToken:
               json_['recaptchaEnterpriseToken'] as core.String?,
@@ -3516,8 +3447,8 @@ class GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest {
   });
 
   GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           limitedUse: json_['limitedUse'] as core.bool?,
           recaptchaV3Token: json_['recaptchaV3Token'] as core.String?,
         );
@@ -3537,10 +3468,14 @@ class GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest {
   /// Required.
   core.String? safetyNetToken;
 
-  GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest({this.safetyNetToken});
+  GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest({
+    this.safetyNetToken,
+  });
 
   GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest.fromJson(core.Map json_)
-      : this(safetyNetToken: json_['safetyNetToken'] as core.String?);
+      : this(
+          safetyNetToken: json_['safetyNetToken'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (safetyNetToken != null) 'safetyNetToken': safetyNetToken!,
@@ -3574,8 +3509,8 @@ class GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse {
   });
 
   GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           challenge: json_['challenge'] as core.String?,
           ttl: json_['ttl'] as core.String?,
         );
@@ -3609,8 +3544,8 @@ class GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse {
   });
 
   GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           challenge: json_['challenge'] as core.String?,
           ttl: json_['ttl'] as core.String?,
         );
@@ -3643,11 +3578,8 @@ class GoogleFirebaseAppcheckV1ListDebugTokensResponse {
   GoogleFirebaseAppcheckV1ListDebugTokensResponse.fromJson(core.Map json_)
       : this(
           debugTokens: (json_['debugTokens'] as core.List?)
-              ?.map(
-                (value) => GoogleFirebaseAppcheckV1DebugToken.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleFirebaseAppcheckV1DebugToken.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -3681,11 +3613,8 @@ class GoogleFirebaseAppcheckV1ListResourcePoliciesResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           resourcePolicies: (json_['resourcePolicies'] as core.List?)
-              ?.map(
-                (value) => GoogleFirebaseAppcheckV1ResourcePolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleFirebaseAppcheckV1ResourcePolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3718,11 +3647,8 @@ class GoogleFirebaseAppcheckV1ListServicesResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           services: (json_['services'] as core.List?)
-              ?.map(
-                (value) => GoogleFirebaseAppcheckV1Service.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleFirebaseAppcheckV1Service.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3755,7 +3681,10 @@ class GoogleFirebaseAppcheckV1PlayIntegrityConfig {
   /// and 7 days, inclusive.
   core.String? tokenTtl;
 
-  GoogleFirebaseAppcheckV1PlayIntegrityConfig({this.name, this.tokenTtl});
+  GoogleFirebaseAppcheckV1PlayIntegrityConfig({
+    this.name,
+    this.tokenTtl,
+  });
 
   GoogleFirebaseAppcheckV1PlayIntegrityConfig.fromJson(core.Map json_)
       : this(
@@ -3839,16 +3768,15 @@ class GoogleFirebaseAppcheckV1PublicJwkSet {
   /// [section 5.1 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-5).
   core.List<GoogleFirebaseAppcheckV1PublicJwk>? keys;
 
-  GoogleFirebaseAppcheckV1PublicJwkSet({this.keys});
+  GoogleFirebaseAppcheckV1PublicJwkSet({
+    this.keys,
+  });
 
   GoogleFirebaseAppcheckV1PublicJwkSet.fromJson(core.Map json_)
       : this(
           keys: (json_['keys'] as core.List?)
-              ?.map(
-                (value) => GoogleFirebaseAppcheckV1PublicJwk.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleFirebaseAppcheckV1PublicJwk.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4098,7 +4026,10 @@ class GoogleFirebaseAppcheckV1SafetyNetConfig {
   /// and 7 days, inclusive.
   core.String? tokenTtl;
 
-  GoogleFirebaseAppcheckV1SafetyNetConfig({this.name, this.tokenTtl});
+  GoogleFirebaseAppcheckV1SafetyNetConfig({
+    this.name,
+    this.tokenTtl,
+  });
 
   GoogleFirebaseAppcheckV1SafetyNetConfig.fromJson(core.Map json_)
       : this(
@@ -4166,7 +4097,10 @@ class GoogleFirebaseAppcheckV1Service {
   /// Required.
   core.String? name;
 
-  GoogleFirebaseAppcheckV1Service({this.enforcementMode, this.name});
+  GoogleFirebaseAppcheckV1Service({
+    this.enforcementMode,
+    this.name,
+  });
 
   GoogleFirebaseAppcheckV1Service.fromJson(core.Map json_)
       : this(
@@ -4212,8 +4146,7 @@ class GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest {
           resourcePolicy: json_.containsKey('resourcePolicy')
               ? GoogleFirebaseAppcheckV1ResourcePolicy.fromJson(
                   json_['resourcePolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -4248,14 +4181,16 @@ class GoogleFirebaseAppcheckV1UpdateServiceRequest {
   /// Required.
   core.String? updateMask;
 
-  GoogleFirebaseAppcheckV1UpdateServiceRequest({this.service, this.updateMask});
+  GoogleFirebaseAppcheckV1UpdateServiceRequest({
+    this.service,
+    this.updateMask,
+  });
 
   GoogleFirebaseAppcheckV1UpdateServiceRequest.fromJson(core.Map json_)
       : this(
           service: json_.containsKey('service')
               ? GoogleFirebaseAppcheckV1Service.fromJson(
-                  json_['service'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['service'] as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );

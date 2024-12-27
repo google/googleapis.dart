@@ -65,16 +65,11 @@ class YouTubeAnalyticsApi {
   GroupsResource get groups => GroupsResource(_requester);
   ReportsResource get reports => ReportsResource(_requester);
 
-  YouTubeAnalyticsApi(
-    http.Client client, {
-    core.String rootUrl = 'https://youtubeanalytics.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  YouTubeAnalyticsApi(http.Client client,
+      {core.String rootUrl = 'https://youtubeanalytics.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class GroupItemsResource {
@@ -130,8 +125,7 @@ class GroupItemsResource {
       queryParams: queryParams_,
     );
     return EmptyResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a group item.
@@ -232,8 +226,7 @@ class GroupItemsResource {
       queryParams: queryParams_,
     );
     return ListGroupItemsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -290,8 +283,7 @@ class GroupsResource {
       queryParams: queryParams_,
     );
     return EmptyResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a group.
@@ -411,8 +403,7 @@ class GroupsResource {
       queryParams: queryParams_,
     );
     return ListGroupsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies a group.
@@ -587,8 +578,7 @@ class ReportsResource {
       queryParams: queryParams_,
     );
     return QueryResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -597,14 +587,15 @@ class EmptyResponse {
   /// Apiary error details
   Errors? errors;
 
-  EmptyResponse({this.errors});
+  EmptyResponse({
+    this.errors,
+  });
 
   EmptyResponse.fromJson(core.Map json_)
       : this(
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['errors'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -727,17 +718,18 @@ class Errors {
   /// the error in the logs
   core.String? requestId;
 
-  Errors({this.code, this.error, this.requestId});
+  Errors({
+    this.code,
+    this.error,
+    this.requestId,
+  });
 
   Errors.fromJson(core.Map json_)
       : this(
           code: json_['code'] as core.String?,
           error: (json_['error'] as core.List?)
-              ?.map(
-                (value) => ErrorProto.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ErrorProto.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           requestId: json_['requestId'] as core.String?,
         );
@@ -785,23 +777,19 @@ class Group {
   Group.fromJson(core.Map json_)
       : this(
           contentDetails: json_.containsKey('contentDetails')
-              ? GroupContentDetails.fromJson(
-                  json_['contentDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GroupContentDetails.fromJson(json_['contentDetails']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['errors'] as core.Map<core.String, core.dynamic>)
               : null,
           etag: json_['etag'] as core.String?,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           snippet: json_.containsKey('snippet')
               ? GroupSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['snippet'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -826,7 +814,10 @@ class GroupContentDetails {
   /// `youtube#playlist` * `youtube#video` * `youtubePartner#asset`
   core.String? itemType;
 
-  GroupContentDetails({this.itemCount, this.itemType});
+  GroupContentDetails({
+    this.itemCount,
+    this.itemType,
+  });
 
   GroupContentDetails.fromJson(core.Map json_)
       : this(
@@ -884,8 +875,7 @@ class GroupItem {
       : this(
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['errors'] as core.Map<core.String, core.dynamic>)
               : null,
           etag: json_['etag'] as core.String?,
           groupId: json_['groupId'] as core.String?,
@@ -893,8 +883,7 @@ class GroupItem {
           kind: json_['kind'] as core.String?,
           resource: json_.containsKey('resource')
               ? GroupItemResource.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['resource'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -919,7 +908,10 @@ class GroupItemResource {
   /// `youtube#playlist` * `youtube#video` * `youtubePartner#asset`
   core.String? kind;
 
-  GroupItemResource({this.id, this.kind});
+  GroupItemResource({
+    this.id,
+    this.kind,
+  });
 
   GroupItemResource.fromJson(core.Map json_)
       : this(
@@ -945,7 +937,10 @@ class GroupSnippet {
   /// The value must be a non-empty string.
   core.String? title;
 
-  GroupSnippet({this.publishedAt, this.title});
+  GroupSnippet({
+    this.publishedAt,
+    this.title,
+  });
 
   GroupSnippet.fromJson(core.Map json_)
       : this(
@@ -977,22 +972,23 @@ class ListGroupItemsResponse {
   /// The value will be `youtube#groupItemListResponse`.
   core.String? kind;
 
-  ListGroupItemsResponse({this.errors, this.etag, this.items, this.kind});
+  ListGroupItemsResponse({
+    this.errors,
+    this.etag,
+    this.items,
+    this.kind,
+  });
 
   ListGroupItemsResponse.fromJson(core.Map json_)
       : this(
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['errors'] as core.Map<core.String, core.dynamic>)
               : null,
           etag: json_['etag'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map(
-                (value) => GroupItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GroupItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -1039,16 +1035,12 @@ class ListGroupsResponse {
       : this(
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['errors'] as core.Map<core.String, core.dynamic>)
               : null,
           etag: json_['etag'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map(
-                (value) => Group.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Group.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
@@ -1101,21 +1093,22 @@ class QueryResponse {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.List<core.Object?>>? rows;
 
-  QueryResponse({this.columnHeaders, this.errors, this.kind, this.rows});
+  QueryResponse({
+    this.columnHeaders,
+    this.errors,
+    this.kind,
+    this.rows,
+  });
 
   QueryResponse.fromJson(core.Map json_)
       : this(
           columnHeaders: (json_['columnHeaders'] as core.List?)
-              ?.map(
-                (value) => ResultTableColumnHeader.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ResultTableColumnHeader.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['errors'] as core.Map<core.String, core.dynamic>)
               : null,
           kind: json_['kind'] as core.String?,
           rows: (json_['rows'] as core.List?)
@@ -1142,7 +1135,11 @@ class ResultTableColumnHeader {
   /// The name of the dimension or metric.
   core.String? name;
 
-  ResultTableColumnHeader({this.columnType, this.dataType, this.name});
+  ResultTableColumnHeader({
+    this.columnType,
+    this.dataType,
+    this.name,
+  });
 
   ResultTableColumnHeader.fromJson(core.Map json_)
       : this(

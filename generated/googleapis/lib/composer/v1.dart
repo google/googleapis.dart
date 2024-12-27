@@ -54,16 +54,11 @@ class CloudComposerApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  CloudComposerApi(
-    http.Client client, {
-    core.String rootUrl = 'https://composer.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  CloudComposerApi(http.Client client,
+      {core.String rootUrl = 'https://composer.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -311,8 +306,7 @@ class ProjectsLocationsEnvironmentsResource {
       queryParams: queryParams_,
     );
     return ExecuteAirflowCommandResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Fetches database properties.
@@ -353,8 +347,7 @@ class ProjectsLocationsEnvironmentsResource {
       queryParams: queryParams_,
     );
     return FetchDatabasePropertiesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get an existing environment.
@@ -392,8 +385,7 @@ class ProjectsLocationsEnvironmentsResource {
       queryParams: queryParams_,
     );
     return Environment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List environments.
@@ -439,8 +431,7 @@ class ProjectsLocationsEnvironmentsResource {
       queryParams: queryParams_,
     );
     return ListEnvironmentsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Loads a snapshot of a Cloud Composer environment.
@@ -653,8 +644,7 @@ class ProjectsLocationsEnvironmentsResource {
       queryParams: queryParams_,
     );
     return PollAirflowCommandResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a snapshots of a Cloud Composer environment.
@@ -743,8 +733,7 @@ class ProjectsLocationsEnvironmentsResource {
       queryParams: queryParams_,
     );
     return StopAirflowCommandResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -752,8 +741,8 @@ class ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Creates a user workloads ConfigMap.
   ///
@@ -800,8 +789,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource {
       queryParams: queryParams_,
     );
     return UserWorkloadsConfigMap.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a user workloads ConfigMap.
@@ -826,7 +814,10 @@ class ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -879,8 +870,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource {
       queryParams: queryParams_,
     );
     return UserWorkloadsConfigMap.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists user workloads ConfigMaps.
@@ -932,8 +922,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource {
       queryParams: queryParams_,
     );
     return ListUserWorkloadsConfigMapsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a user workloads ConfigMap.
@@ -979,8 +968,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource {
       queryParams: queryParams_,
     );
     return UserWorkloadsConfigMap.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -988,8 +976,8 @@ class ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Creates a user workloads Secret.
   ///
@@ -1036,8 +1024,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource {
       queryParams: queryParams_,
     );
     return UserWorkloadsSecret.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a user workloads Secret.
@@ -1062,7 +1049,10 @@ class ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1116,8 +1106,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource {
       queryParams: queryParams_,
     );
     return UserWorkloadsSecret.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists user workloads Secrets.
@@ -1168,8 +1157,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource {
       queryParams: queryParams_,
     );
     return ListUserWorkloadsSecretsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a user workloads Secret.
@@ -1215,8 +1203,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource {
       queryParams: queryParams_,
     );
     return UserWorkloadsSecret.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1283,8 +1270,7 @@ class ProjectsLocationsEnvironmentsWorkloadsResource {
       queryParams: queryParams_,
     );
     return ListWorkloadsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1343,8 +1329,7 @@ class ProjectsLocationsImageVersionsResource {
       queryParams: queryParams_,
     );
     return ListImageVersionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1376,7 +1361,10 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1412,7 +1400,10 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1474,8 +1465,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1532,7 +1522,10 @@ class AllowedIpRange {
   /// `2001:db8::/32`.
   core.String? value;
 
-  AllowedIpRange({this.description, this.value});
+  AllowedIpRange({
+    this.description,
+    this.value,
+  });
 
   AllowedIpRange.fromJson(core.Map json_)
       : this(
@@ -1573,10 +1566,14 @@ class CheckUpgradeRequest {
   /// Optional.
   core.String? imageVersion;
 
-  CheckUpgradeRequest({this.imageVersion});
+  CheckUpgradeRequest({
+    this.imageVersion,
+  });
 
   CheckUpgradeRequest.fromJson(core.Map json_)
-      : this(imageVersion: json_['imageVersion'] as core.String?);
+      : this(
+          imageVersion: json_['imageVersion'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (imageVersion != null) 'imageVersion': imageVersion!,
@@ -1591,7 +1588,10 @@ class CidrBlock {
   /// User-defined name that identifies the CIDR block.
   core.String? displayName;
 
-  CidrBlock({this.cidrBlock, this.displayName});
+  CidrBlock({
+    this.cidrBlock,
+    this.displayName,
+  });
 
   CidrBlock.fromJson(core.Map json_)
       : this(
@@ -1612,10 +1612,14 @@ class CloudDataLineageIntegration {
   /// Optional.
   core.bool? enabled;
 
-  CloudDataLineageIntegration({this.enabled});
+  CloudDataLineageIntegration({
+    this.enabled,
+  });
 
   CloudDataLineageIntegration.fromJson(core.Map json_)
-      : this(enabled: json_['enabled'] as core.bool?);
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -1646,15 +1650,18 @@ class ComposerWorkload {
   /// - "REDIS" : Redis.
   core.String? type;
 
-  ComposerWorkload({this.name, this.status, this.type});
+  ComposerWorkload({
+    this.name,
+    this.status,
+    this.type,
+  });
 
   ComposerWorkload.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
           status: json_.containsKey('status')
               ? ComposerWorkloadStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
         );
@@ -1742,7 +1749,12 @@ class DagProcessorResource {
   /// Optional.
   core.double? storageGb;
 
-  DagProcessorResource({this.count, this.cpu, this.memoryGb, this.storageGb});
+  DagProcessorResource({
+    this.count,
+    this.cpu,
+    this.memoryGb,
+    this.storageGb,
+  });
 
   DagProcessorResource.fromJson(core.Map json_)
       : this(
@@ -1783,14 +1795,12 @@ class DataRetentionConfig {
               json_.containsKey('airflowMetadataRetentionConfig')
                   ? AirflowMetadataRetentionPolicyConfig.fromJson(
                       json_['airflowMetadataRetentionConfig']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           taskLogsRetentionConfig: json_.containsKey('taskLogsRetentionConfig')
               ? TaskLogsRetentionConfig.fromJson(
                   json_['taskLogsRetentionConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1825,7 +1835,10 @@ class DatabaseConfig {
   /// Optional.
   core.String? zone;
 
-  DatabaseConfig({this.machineType, this.zone});
+  DatabaseConfig({
+    this.machineType,
+    this.zone,
+  });
 
   DatabaseConfig.fromJson(core.Map json_)
       : this(
@@ -1875,10 +1888,14 @@ class EncryptionConfig {
   /// Optional.
   core.String? kmsKeyName;
 
-  EncryptionConfig({this.kmsKeyName});
+  EncryptionConfig({
+    this.kmsKeyName,
+  });
 
   EncryptionConfig.fromJson(core.Map json_)
-      : this(kmsKeyName: json_['kmsKeyName'] as core.String?);
+      : this(
+          kmsKeyName: json_['kmsKeyName'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
@@ -1972,13 +1989,15 @@ class Environment {
       : this(
           config: json_.containsKey('config')
               ? EnvironmentConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_['createTime'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
@@ -1986,8 +2005,7 @@ class Environment {
           state: json_['state'] as core.String?,
           storageConfig: json_.containsKey('storageConfig')
               ? StorageConfig.fromJson(
-                  json_['storageConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['storageConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           updateTime: json_['updateTime'] as core.String?,
           uuid: json_['uuid'] as core.String?,
@@ -2191,82 +2209,62 @@ class EnvironmentConfig {
           airflowUri: json_['airflowUri'] as core.String?,
           dagGcsPrefix: json_['dagGcsPrefix'] as core.String?,
           dataRetentionConfig: json_.containsKey('dataRetentionConfig')
-              ? DataRetentionConfig.fromJson(
-                  json_['dataRetentionConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? DataRetentionConfig.fromJson(json_['dataRetentionConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           databaseConfig: json_.containsKey('databaseConfig')
-              ? DatabaseConfig.fromJson(
-                  json_['databaseConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? DatabaseConfig.fromJson(json_['databaseConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           encryptionConfig: json_.containsKey('encryptionConfig')
-              ? EncryptionConfig.fromJson(
-                  json_['encryptionConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? EncryptionConfig.fromJson(json_['encryptionConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           environmentSize: json_['environmentSize'] as core.String?,
           gkeCluster: json_['gkeCluster'] as core.String?,
           maintenanceWindow: json_.containsKey('maintenanceWindow')
-              ? MaintenanceWindow.fromJson(
-                  json_['maintenanceWindow']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? MaintenanceWindow.fromJson(json_['maintenanceWindow']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           masterAuthorizedNetworksConfig:
               json_.containsKey('masterAuthorizedNetworksConfig')
                   ? MasterAuthorizedNetworksConfig.fromJson(
                       json_['masterAuthorizedNetworksConfig']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           nodeConfig: json_.containsKey('nodeConfig')
               ? NodeConfig.fromJson(
-                  json_['nodeConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['nodeConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           nodeCount: json_['nodeCount'] as core.int?,
           privateEnvironmentConfig:
               json_.containsKey('privateEnvironmentConfig')
                   ? PrivateEnvironmentConfig.fromJson(
                       json_['privateEnvironmentConfig']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           recoveryConfig: json_.containsKey('recoveryConfig')
-              ? RecoveryConfig.fromJson(
-                  json_['recoveryConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? RecoveryConfig.fromJson(json_['recoveryConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           resilienceMode: json_['resilienceMode'] as core.String?,
           softwareConfig: json_.containsKey('softwareConfig')
-              ? SoftwareConfig.fromJson(
-                  json_['softwareConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SoftwareConfig.fromJson(json_['softwareConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           webServerConfig: json_.containsKey('webServerConfig')
-              ? WebServerConfig.fromJson(
-                  json_['webServerConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? WebServerConfig.fromJson(json_['webServerConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           webServerNetworkAccessControl:
               json_.containsKey('webServerNetworkAccessControl')
                   ? WebServerNetworkAccessControl.fromJson(
                       json_['webServerNetworkAccessControl']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           workloadsConfig: json_.containsKey('workloadsConfig')
-              ? WorkloadsConfig.fromJson(
-                  json_['workloadsConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? WorkloadsConfig.fromJson(json_['workloadsConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2383,7 +2381,10 @@ class ExitInfo {
   /// The exit code from the command execution.
   core.int? exitCode;
 
-  ExitInfo({this.error, this.exitCode});
+  ExitInfo({
+    this.error,
+    this.exitCode,
+  });
 
   ExitInfo.fromJson(core.Map json_)
       : this(
@@ -2565,8 +2566,7 @@ class ImageVersion {
           isDefault: json_['isDefault'] as core.bool?,
           releaseDate: json_.containsKey('releaseDate')
               ? Date.fromJson(
-                  json_['releaseDate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['releaseDate'] as core.Map<core.String, core.dynamic>)
               : null,
           supportedPythonVersions:
               (json_['supportedPythonVersions'] as core.List?)
@@ -2594,7 +2594,10 @@ class Line {
   /// Number of the line.
   core.int? lineNumber;
 
-  Line({this.content, this.lineNumber});
+  Line({
+    this.content,
+    this.lineNumber,
+  });
 
   Line.fromJson(core.Map json_)
       : this(
@@ -2616,16 +2619,16 @@ class ListEnvironmentsResponse {
   /// The page token used to query for the next page if one exists.
   core.String? nextPageToken;
 
-  ListEnvironmentsResponse({this.environments, this.nextPageToken});
+  ListEnvironmentsResponse({
+    this.environments,
+    this.nextPageToken,
+  });
 
   ListEnvironmentsResponse.fromJson(core.Map json_)
       : this(
           environments: (json_['environments'] as core.List?)
-              ?.map(
-                (value) => Environment.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Environment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2644,16 +2647,16 @@ class ListImageVersionsResponse {
   /// The page token used to query for the next page if one exists.
   core.String? nextPageToken;
 
-  ListImageVersionsResponse({this.imageVersions, this.nextPageToken});
+  ListImageVersionsResponse({
+    this.imageVersions,
+    this.nextPageToken,
+  });
 
   ListImageVersionsResponse.fromJson(core.Map json_)
       : this(
           imageVersions: (json_['imageVersions'] as core.List?)
-              ?.map(
-                (value) => ImageVersion.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ImageVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2672,17 +2675,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map(
-                (value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2710,11 +2713,8 @@ class ListUserWorkloadsConfigMapsResponse {
           nextPageToken: json_['nextPageToken'] as core.String?,
           userWorkloadsConfigMaps:
               (json_['userWorkloadsConfigMaps'] as core.List?)
-                  ?.map(
-                    (value) => UserWorkloadsConfigMap.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => UserWorkloadsConfigMap.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
         );
 
@@ -2742,11 +2742,8 @@ class ListUserWorkloadsSecretsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           userWorkloadsSecrets: (json_['userWorkloadsSecrets'] as core.List?)
-              ?.map(
-                (value) => UserWorkloadsSecret.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => UserWorkloadsSecret.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2765,17 +2762,17 @@ class ListWorkloadsResponse {
   /// The list of environment workloads.
   core.List<ComposerWorkload>? workloads;
 
-  ListWorkloadsResponse({this.nextPageToken, this.workloads});
+  ListWorkloadsResponse({
+    this.nextPageToken,
+    this.workloads,
+  });
 
   ListWorkloadsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           workloads: (json_['workloads'] as core.List?)
-              ?.map(
-                (value) => ComposerWorkload.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ComposerWorkload.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2870,7 +2867,11 @@ class MaintenanceWindow {
   /// Required.
   core.String? startTime;
 
-  MaintenanceWindow({this.endTime, this.recurrence, this.startTime});
+  MaintenanceWindow({
+    this.endTime,
+    this.recurrence,
+    this.startTime,
+  });
 
   MaintenanceWindow.fromJson(core.Map json_)
       : this(
@@ -2899,16 +2900,16 @@ class MasterAuthorizedNetworksConfig {
   /// Whether or not master authorized networks feature is enabled.
   core.bool? enabled;
 
-  MasterAuthorizedNetworksConfig({this.cidrBlocks, this.enabled});
+  MasterAuthorizedNetworksConfig({
+    this.cidrBlocks,
+    this.enabled,
+  });
 
   MasterAuthorizedNetworksConfig.fromJson(core.Map json_)
       : this(
           cidrBlocks: (json_['cidrBlocks'] as core.List?)
-              ?.map(
-                (value) => CidrBlock.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CidrBlock.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           enabled: json_['enabled'] as core.bool?,
         );
@@ -2938,10 +2939,14 @@ class NetworkingConfig {
   /// for connecting the Customer and Tenant projects.
   core.String? connectionType;
 
-  NetworkingConfig({this.connectionType});
+  NetworkingConfig({
+    this.connectionType,
+  });
 
   NetworkingConfig.fromJson(core.Map json_)
-      : this(connectionType: json_['connectionType'] as core.String?);
+      : this(
+          connectionType: json_['connectionType'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (connectionType != null) 'connectionType': connectionType!,
@@ -3123,10 +3128,8 @@ class NodeConfig {
           diskSizeGb: json_['diskSizeGb'] as core.int?,
           enableIpMasqAgent: json_['enableIpMasqAgent'] as core.bool?,
           ipAllocationPolicy: json_.containsKey('ipAllocationPolicy')
-              ? IPAllocationPolicy.fromJson(
-                  json_['ipAllocationPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? IPAllocationPolicy.fromJson(json_['ipAllocationPolicy']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           location: json_['location'] as core.String?,
           machineType: json_['machineType'] as core.String?,
@@ -3203,15 +3206,20 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({this.done, this.error, this.metadata, this.name, this.response});
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -3282,21 +3290,21 @@ class PollAirflowCommandResponse {
   /// Whether the command execution has finished and there is no more output.
   core.bool? outputEnd;
 
-  PollAirflowCommandResponse({this.exitInfo, this.output, this.outputEnd});
+  PollAirflowCommandResponse({
+    this.exitInfo,
+    this.output,
+    this.outputEnd,
+  });
 
   PollAirflowCommandResponse.fromJson(core.Map json_)
       : this(
           exitInfo: json_.containsKey('exitInfo')
               ? ExitInfo.fromJson(
-                  json_['exitInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['exitInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           output: (json_['output'] as core.List?)
-              ?.map(
-                (value) => Line.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Line.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           outputEnd: json_['outputEnd'] as core.bool?,
         );
@@ -3482,16 +3490,12 @@ class PrivateEnvironmentConfig {
           enablePrivatelyUsedPublicIps:
               json_['enablePrivatelyUsedPublicIps'] as core.bool?,
           networkingConfig: json_.containsKey('networkingConfig')
-              ? NetworkingConfig.fromJson(
-                  json_['networkingConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? NetworkingConfig.fromJson(json_['networkingConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           privateClusterConfig: json_.containsKey('privateClusterConfig')
-              ? PrivateClusterConfig.fromJson(
-                  json_['privateClusterConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? PrivateClusterConfig.fromJson(json_['privateClusterConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           webServerIpv4CidrBlock:
               json_['webServerIpv4CidrBlock'] as core.String?,
@@ -3534,7 +3538,9 @@ class RecoveryConfig {
   /// Optional.
   ScheduledSnapshotsConfig? scheduledSnapshotsConfig;
 
-  RecoveryConfig({this.scheduledSnapshotsConfig});
+  RecoveryConfig({
+    this.scheduledSnapshotsConfig,
+  });
 
   RecoveryConfig.fromJson(core.Map json_)
       : this(
@@ -3542,8 +3548,7 @@ class RecoveryConfig {
               json_.containsKey('scheduledSnapshotsConfig')
                   ? ScheduledSnapshotsConfig.fromJson(
                       json_['scheduledSnapshotsConfig']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
         );
 
@@ -3559,10 +3564,14 @@ class SaveSnapshotRequest {
   /// e.g.: "gs://my-bucket/snapshots".
   core.String? snapshotLocation;
 
-  SaveSnapshotRequest({this.snapshotLocation});
+  SaveSnapshotRequest({
+    this.snapshotLocation,
+  });
 
   SaveSnapshotRequest.fromJson(core.Map json_)
-      : this(snapshotLocation: json_['snapshotLocation'] as core.String?);
+      : this(
+          snapshotLocation: json_['snapshotLocation'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (snapshotLocation != null) 'snapshotLocation': snapshotLocation!,
@@ -3642,7 +3651,12 @@ class SchedulerResource {
   /// Optional.
   core.double? storageGb;
 
-  SchedulerResource({this.count, this.cpu, this.memoryGb, this.storageGb});
+  SchedulerResource({
+    this.count,
+    this.cpu,
+    this.memoryGb,
+    this.storageGb,
+  });
 
   SchedulerResource.fromJson(core.Map json_)
       : this(
@@ -3785,21 +3799,35 @@ class SoftwareConfig {
       : this(
           airflowConfigOverrides: (json_['airflowConfigOverrides']
                   as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           cloudDataLineageIntegration:
               json_.containsKey('cloudDataLineageIntegration')
                   ? CloudDataLineageIntegration.fromJson(
                       json_['cloudDataLineageIntegration']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
-          envVariables: (json_['envVariables']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          envVariables:
+              (json_['envVariables'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           imageVersion: json_['imageVersion'] as core.String?,
-          pypiPackages: (json_['pypiPackages']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          pypiPackages:
+              (json_['pypiPackages'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           pythonVersion: json_['pythonVersion'] as core.String?,
           schedulerCount: json_['schedulerCount'] as core.int?,
           webServerPluginsMode: json_['webServerPluginsMode'] as core.String?,
@@ -3876,7 +3904,10 @@ class StopAirflowCommandResponse {
   /// Output message from stopping execution request.
   core.List<core.String>? output;
 
-  StopAirflowCommandResponse({this.isDone, this.output});
+  StopAirflowCommandResponse({
+    this.isDone,
+    this.output,
+  });
 
   StopAirflowCommandResponse.fromJson(core.Map json_)
       : this(
@@ -3901,10 +3932,14 @@ class StorageConfig {
   /// Optional.
   core.String? bucket;
 
-  StorageConfig({this.bucket});
+  StorageConfig({
+    this.bucket,
+  });
 
   StorageConfig.fromJson(core.Map json_)
-      : this(bucket: json_['bucket'] as core.String?);
+      : this(
+          bucket: json_['bucket'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bucket != null) 'bucket': bucket!,
@@ -3924,10 +3959,14 @@ class TaskLogsRetentionConfig {
   /// - "CLOUD_LOGGING_ONLY" : Store task logs in Cloud Logging only.
   core.String? storageMode;
 
-  TaskLogsRetentionConfig({this.storageMode});
+  TaskLogsRetentionConfig({
+    this.storageMode,
+  });
 
   TaskLogsRetentionConfig.fromJson(core.Map json_)
-      : this(storageMode: json_['storageMode'] as core.String?);
+      : this(
+          storageMode: json_['storageMode'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (storageMode != null) 'storageMode': storageMode!,
@@ -3951,7 +3990,11 @@ class TriggererResource {
   /// Optional.
   core.double? memoryGb;
 
-  TriggererResource({this.count, this.cpu, this.memoryGb});
+  TriggererResource({
+    this.count,
+    this.cpu,
+    this.memoryGb,
+  });
 
   TriggererResource.fromJson(core.Map json_)
       : this(
@@ -3985,12 +4028,18 @@ class UserWorkloadsConfigMap {
   /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}"
   core.String? name;
 
-  UserWorkloadsConfigMap({this.data, this.name});
+  UserWorkloadsConfigMap({
+    this.data,
+    this.name,
+  });
 
   UserWorkloadsConfigMap.fromJson(core.Map json_)
       : this(
           data: (json_['data'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
         );
@@ -4021,12 +4070,18 @@ class UserWorkloadsSecret {
   /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}"
   core.String? name;
 
-  UserWorkloadsSecret({this.data, this.name});
+  UserWorkloadsSecret({
+    this.data,
+    this.name,
+  });
 
   UserWorkloadsSecret.fromJson(core.Map json_)
       : this(
           data: (json_['data'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
         );
@@ -4052,10 +4107,14 @@ class WebServerConfig {
   /// Optional.
   core.String? machineType;
 
-  WebServerConfig({this.machineType});
+  WebServerConfig({
+    this.machineType,
+  });
 
   WebServerConfig.fromJson(core.Map json_)
-      : this(machineType: json_['machineType'] as core.String?);
+      : this(
+          machineType: json_['machineType'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (machineType != null) 'machineType': machineType!,
@@ -4067,16 +4126,15 @@ class WebServerNetworkAccessControl {
   /// A collection of allowed IP ranges with descriptions.
   core.List<AllowedIpRange>? allowedIpRanges;
 
-  WebServerNetworkAccessControl({this.allowedIpRanges});
+  WebServerNetworkAccessControl({
+    this.allowedIpRanges,
+  });
 
   WebServerNetworkAccessControl.fromJson(core.Map json_)
       : this(
           allowedIpRanges: (json_['allowedIpRanges'] as core.List?)
-              ?.map(
-                (value) => AllowedIpRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AllowedIpRange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4102,7 +4160,11 @@ class WebServerResource {
   /// Optional.
   core.double? storageGb;
 
-  WebServerResource({this.cpu, this.memoryGb, this.storageGb});
+  WebServerResource({
+    this.cpu,
+    this.memoryGb,
+    this.storageGb,
+  });
 
   WebServerResource.fromJson(core.Map json_)
       : this(
@@ -4217,28 +4279,23 @@ class WorkloadsConfig {
       : this(
           dagProcessor: json_.containsKey('dagProcessor')
               ? DagProcessorResource.fromJson(
-                  json_['dagProcessor'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['dagProcessor'] as core.Map<core.String, core.dynamic>)
               : null,
           scheduler: json_.containsKey('scheduler')
               ? SchedulerResource.fromJson(
-                  json_['scheduler'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['scheduler'] as core.Map<core.String, core.dynamic>)
               : null,
           triggerer: json_.containsKey('triggerer')
               ? TriggererResource.fromJson(
-                  json_['triggerer'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['triggerer'] as core.Map<core.String, core.dynamic>)
               : null,
           webServer: json_.containsKey('webServer')
               ? WebServerResource.fromJson(
-                  json_['webServer'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['webServer'] as core.Map<core.String, core.dynamic>)
               : null,
           worker: json_.containsKey('worker')
               ? WorkerResource.fromJson(
-                  json_['worker'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['worker'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 

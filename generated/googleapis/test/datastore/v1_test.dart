@@ -43,7 +43,10 @@ api.Aggregation buildAggregation() {
 void checkAggregation(api.Aggregation o) {
   buildCounterAggregation++;
   if (buildCounterAggregation < 3) {
-    unittest.expect(o.alias!, unittest.equals('foo'));
+    unittest.expect(
+      o.alias!,
+      unittest.equals('foo'),
+    );
     checkAvg(o.avg!);
     checkCount(o.count!);
     checkSum(o.sum!);
@@ -141,13 +144,22 @@ void checkAggregationResultBatch(api.AggregationResultBatch o) {
   buildCounterAggregationResultBatch++;
   if (buildCounterAggregationResultBatch < 3) {
     checkUnnamed2(o.aggregationResults!);
-    unittest.expect(o.moreResults!, unittest.equals('foo'));
-    unittest.expect(o.readTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.moreResults!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.readTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAggregationResultBatch--;
 }
 
-core.List<api.Key> buildUnnamed3() => [buildKey(), buildKey()];
+core.List<api.Key> buildUnnamed3() => [
+      buildKey(),
+      buildKey(),
+    ];
 
 void checkUnnamed3(core.List<api.Key> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -170,13 +182,19 @@ api.AllocateIdsRequest buildAllocateIdsRequest() {
 void checkAllocateIdsRequest(api.AllocateIdsRequest o) {
   buildCounterAllocateIdsRequest++;
   if (buildCounterAllocateIdsRequest < 3) {
-    unittest.expect(o.databaseId!, unittest.equals('foo'));
+    unittest.expect(
+      o.databaseId!,
+      unittest.equals('foo'),
+    );
     checkUnnamed3(o.keys!);
   }
   buildCounterAllocateIdsRequest--;
 }
 
-core.List<api.Key> buildUnnamed4() => [buildKey(), buildKey()];
+core.List<api.Key> buildUnnamed4() => [
+      buildKey(),
+      buildKey(),
+    ];
 
 void checkUnnamed4(core.List<api.Key> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -203,7 +221,10 @@ void checkAllocateIdsResponse(api.AllocateIdsResponse o) {
   buildCounterAllocateIdsResponse--;
 }
 
-core.List<api.Value> buildUnnamed5() => [buildValue(), buildValue()];
+core.List<api.Value> buildUnnamed5() => [
+      buildValue(),
+      buildValue(),
+    ];
 
 void checkUnnamed5(core.List<api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -264,7 +285,10 @@ api.BeginTransactionRequest buildBeginTransactionRequest() {
 void checkBeginTransactionRequest(api.BeginTransactionRequest o) {
   buildCounterBeginTransactionRequest++;
   if (buildCounterBeginTransactionRequest < 3) {
-    unittest.expect(o.databaseId!, unittest.equals('foo'));
+    unittest.expect(
+      o.databaseId!,
+      unittest.equals('foo'),
+    );
     checkTransactionOptions(o.transactionOptions!);
   }
   buildCounterBeginTransactionRequest--;
@@ -284,12 +308,18 @@ api.BeginTransactionResponse buildBeginTransactionResponse() {
 void checkBeginTransactionResponse(api.BeginTransactionResponse o) {
   buildCounterBeginTransactionResponse++;
   if (buildCounterBeginTransactionResponse < 3) {
-    unittest.expect(o.transaction!, unittest.equals('foo'));
+    unittest.expect(
+      o.transaction!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBeginTransactionResponse--;
 }
 
-core.List<api.Mutation> buildUnnamed6() => [buildMutation(), buildMutation()];
+core.List<api.Mutation> buildUnnamed6() => [
+      buildMutation(),
+      buildMutation(),
+    ];
 
 void checkUnnamed6(core.List<api.Mutation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -315,11 +345,20 @@ api.CommitRequest buildCommitRequest() {
 void checkCommitRequest(api.CommitRequest o) {
   buildCounterCommitRequest++;
   if (buildCounterCommitRequest < 3) {
-    unittest.expect(o.databaseId!, unittest.equals('foo'));
-    unittest.expect(o.mode!, unittest.equals('foo'));
+    unittest.expect(
+      o.databaseId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.mode!,
+      unittest.equals('foo'),
+    );
     checkUnnamed6(o.mutations!);
     checkTransactionOptions(o.singleUseTransaction!);
-    unittest.expect(o.transaction!, unittest.equals('foo'));
+    unittest.expect(
+      o.transaction!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterCommitRequest--;
 }
@@ -351,14 +390,23 @@ api.CommitResponse buildCommitResponse() {
 void checkCommitResponse(api.CommitResponse o) {
   buildCounterCommitResponse++;
   if (buildCounterCommitResponse < 3) {
-    unittest.expect(o.commitTime!, unittest.equals('foo'));
-    unittest.expect(o.indexUpdates!, unittest.equals(42));
+    unittest.expect(
+      o.commitTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.indexUpdates!,
+      unittest.equals(42),
+    );
     checkUnnamed7(o.mutationResults!);
   }
   buildCounterCommitResponse--;
 }
 
-core.List<api.Filter> buildUnnamed8() => [buildFilter(), buildFilter()];
+core.List<api.Filter> buildUnnamed8() => [
+      buildFilter(),
+      buildFilter(),
+    ];
 
 void checkUnnamed8(core.List<api.Filter> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -382,7 +430,10 @@ void checkCompositeFilter(api.CompositeFilter o) {
   buildCounterCompositeFilter++;
   if (buildCounterCompositeFilter < 3) {
     checkUnnamed8(o.filters!);
-    unittest.expect(o.op!, unittest.equals('foo'));
+    unittest.expect(
+      o.op!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterCompositeFilter--;
 }
@@ -401,7 +452,10 @@ api.Count buildCount() {
 void checkCount(api.Count o) {
   buildCounterCount++;
   if (buildCounterCount < 3) {
-    unittest.expect(o.upTo!, unittest.equals('foo'));
+    unittest.expect(
+      o.upTo!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterCount--;
 }
@@ -471,11 +525,23 @@ api.EntityResult buildEntityResult() {
 void checkEntityResult(api.EntityResult o) {
   buildCounterEntityResult++;
   if (buildCounterEntityResult < 3) {
-    unittest.expect(o.createTime!, unittest.equals('foo'));
-    unittest.expect(o.cursor!, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.cursor!,
+      unittest.equals('foo'),
+    );
     checkEntity(o.entity!);
-    unittest.expect(o.updateTime!, unittest.equals('foo'));
-    unittest.expect(o.version!, unittest.equals('foo'));
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterEntityResult--;
 }
@@ -484,12 +550,12 @@ core.Map<core.String, core.Object?> buildUnnamed10() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
     };
 
@@ -497,14 +563,32 @@ void checkUnnamed10(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1['bool'], unittest.equals(true));
-  unittest.expect(casted1['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted1['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted1['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted1['string'],
+    unittest.equals('foo'),
+  );
   var casted2 = (o['y']!) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2['bool'], unittest.equals(true));
-  unittest.expect(casted2['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted2['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted2['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted2['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterExecutionStats = 0;
@@ -525,9 +609,18 @@ void checkExecutionStats(api.ExecutionStats o) {
   buildCounterExecutionStats++;
   if (buildCounterExecutionStats < 3) {
     checkUnnamed10(o.debugStats!);
-    unittest.expect(o.executionDuration!, unittest.equals('foo'));
-    unittest.expect(o.readOperations!, unittest.equals('foo'));
-    unittest.expect(o.resultsReturned!, unittest.equals('foo'));
+    unittest.expect(
+      o.executionDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.readOperations!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resultsReturned!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterExecutionStats--;
 }
@@ -612,30 +705,60 @@ api.FindNearest buildFindNearest() {
 void checkFindNearest(api.FindNearest o) {
   buildCounterFindNearest++;
   if (buildCounterFindNearest < 3) {
-    unittest.expect(o.distanceMeasure!, unittest.equals('foo'));
-    unittest.expect(o.distanceResultProperty!, unittest.equals('foo'));
-    unittest.expect(o.distanceThreshold!, unittest.equals(42.0));
-    unittest.expect(o.limit!, unittest.equals(42));
+    unittest.expect(
+      o.distanceMeasure!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.distanceResultProperty!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.distanceThreshold!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.limit!,
+      unittest.equals(42),
+    );
     checkValue(o.queryVector!);
     checkPropertyReference(o.vectorProperty!);
   }
   buildCounterFindNearest--;
 }
 
-core.List<core.String> buildUnnamed11() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed11() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed11(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
-core.List<core.String> buildUnnamed12() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed12() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed12(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleDatastoreAdminV1EntityFilter = 0;
@@ -652,8 +775,7 @@ api.GoogleDatastoreAdminV1EntityFilter
 }
 
 void checkGoogleDatastoreAdminV1EntityFilter(
-  api.GoogleDatastoreAdminV1EntityFilter o,
-) {
+    api.GoogleDatastoreAdminV1EntityFilter o) {
   buildCounterGoogleDatastoreAdminV1EntityFilter++;
   if (buildCounterGoogleDatastoreAdminV1EntityFilter < 3) {
     checkUnnamed11(o.kinds!);
@@ -662,12 +784,21 @@ void checkGoogleDatastoreAdminV1EntityFilter(
   buildCounterGoogleDatastoreAdminV1EntityFilter--;
 }
 
-core.Map<core.String, core.String> buildUnnamed13() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed13() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed13(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x']!, unittest.equals('foo'));
-  unittest.expect(o['y']!, unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleDatastoreAdminV1ExportEntitiesRequest = 0;
@@ -685,23 +816,34 @@ api.GoogleDatastoreAdminV1ExportEntitiesRequest
 }
 
 void checkGoogleDatastoreAdminV1ExportEntitiesRequest(
-  api.GoogleDatastoreAdminV1ExportEntitiesRequest o,
-) {
+    api.GoogleDatastoreAdminV1ExportEntitiesRequest o) {
   buildCounterGoogleDatastoreAdminV1ExportEntitiesRequest++;
   if (buildCounterGoogleDatastoreAdminV1ExportEntitiesRequest < 3) {
     checkGoogleDatastoreAdminV1EntityFilter(o.entityFilter!);
     checkUnnamed13(o.labels!);
-    unittest.expect(o.outputUrlPrefix!, unittest.equals('foo'));
+    unittest.expect(
+      o.outputUrlPrefix!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDatastoreAdminV1ExportEntitiesRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed14() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed14() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed14(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x']!, unittest.equals('foo'));
-  unittest.expect(o['y']!, unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleDatastoreAdminV1ImportEntitiesRequest = 0;
@@ -719,12 +861,14 @@ api.GoogleDatastoreAdminV1ImportEntitiesRequest
 }
 
 void checkGoogleDatastoreAdminV1ImportEntitiesRequest(
-  api.GoogleDatastoreAdminV1ImportEntitiesRequest o,
-) {
+    api.GoogleDatastoreAdminV1ImportEntitiesRequest o) {
   buildCounterGoogleDatastoreAdminV1ImportEntitiesRequest++;
   if (buildCounterGoogleDatastoreAdminV1ImportEntitiesRequest < 3) {
     checkGoogleDatastoreAdminV1EntityFilter(o.entityFilter!);
-    unittest.expect(o.inputUrl!, unittest.equals('foo'));
+    unittest.expect(
+      o.inputUrl!,
+      unittest.equals('foo'),
+    );
     checkUnnamed14(o.labels!);
   }
   buildCounterGoogleDatastoreAdminV1ImportEntitiesRequest--;
@@ -760,12 +904,27 @@ api.GoogleDatastoreAdminV1Index buildGoogleDatastoreAdminV1Index() {
 void checkGoogleDatastoreAdminV1Index(api.GoogleDatastoreAdminV1Index o) {
   buildCounterGoogleDatastoreAdminV1Index++;
   if (buildCounterGoogleDatastoreAdminV1Index < 3) {
-    unittest.expect(o.ancestor!, unittest.equals('foo'));
-    unittest.expect(o.indexId!, unittest.equals('foo'));
-    unittest.expect(o.kind!, unittest.equals('foo'));
-    unittest.expect(o.projectId!, unittest.equals('foo'));
+    unittest.expect(
+      o.ancestor!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.indexId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
     checkUnnamed15(o.properties!);
-    unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDatastoreAdminV1Index--;
 }
@@ -784,12 +943,17 @@ api.GoogleDatastoreAdminV1IndexedProperty
 }
 
 void checkGoogleDatastoreAdminV1IndexedProperty(
-  api.GoogleDatastoreAdminV1IndexedProperty o,
-) {
+    api.GoogleDatastoreAdminV1IndexedProperty o) {
   buildCounterGoogleDatastoreAdminV1IndexedProperty++;
   if (buildCounterGoogleDatastoreAdminV1IndexedProperty < 3) {
-    unittest.expect(o.direction!, unittest.equals('foo'));
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.direction!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDatastoreAdminV1IndexedProperty--;
 }
@@ -819,12 +983,14 @@ api.GoogleDatastoreAdminV1ListIndexesResponse
 }
 
 void checkGoogleDatastoreAdminV1ListIndexesResponse(
-  api.GoogleDatastoreAdminV1ListIndexesResponse o,
-) {
+    api.GoogleDatastoreAdminV1ListIndexesResponse o) {
   buildCounterGoogleDatastoreAdminV1ListIndexesResponse++;
   if (buildCounterGoogleDatastoreAdminV1ListIndexesResponse < 3) {
     checkUnnamed16(o.indexes!);
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDatastoreAdminV1ListIndexesResponse--;
 }
@@ -854,11 +1020,13 @@ api.GoogleLongrunningListOperationsResponse
 }
 
 void checkGoogleLongrunningListOperationsResponse(
-  api.GoogleLongrunningListOperationsResponse o,
-) {
+    api.GoogleLongrunningListOperationsResponse o) {
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
     checkUnnamed17(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
@@ -868,12 +1036,12 @@ core.Map<core.String, core.Object?> buildUnnamed18() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
     };
 
@@ -881,26 +1049,44 @@ void checkUnnamed18(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3['bool'], unittest.equals(true));
-  unittest.expect(casted3['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted3['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted3['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted3['string'],
+    unittest.equals('foo'),
+  );
   var casted4 = (o['y']!) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4['bool'], unittest.equals(true));
-  unittest.expect(casted4['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted4['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted4['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted4['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.Map<core.String, core.Object?> buildUnnamed19() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
     };
 
@@ -908,14 +1094,32 @@ void checkUnnamed19(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5['bool'], unittest.equals(true));
-  unittest.expect(casted5['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted5['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted5['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted5['string'],
+    unittest.equals('foo'),
+  );
   var casted6 = (o['y']!) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6['bool'], unittest.equals(true));
-  unittest.expect(casted6['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted6['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted6['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted6['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleLongrunningOperation = 0;
@@ -939,7 +1143,10 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
     checkUnnamed18(o.metadata!);
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkUnnamed19(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
@@ -987,7 +1194,10 @@ void checkGqlQuery(api.GqlQuery o) {
     unittest.expect(o.allowLiterals!, unittest.isTrue);
     checkUnnamed20(o.namedBindings!);
     checkUnnamed21(o.positionalBindings!);
-    unittest.expect(o.queryString!, unittest.equals('foo'));
+    unittest.expect(
+      o.queryString!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGqlQuery--;
 }
@@ -1007,7 +1217,10 @@ api.GqlQueryParameter buildGqlQueryParameter() {
 void checkGqlQueryParameter(api.GqlQueryParameter o) {
   buildCounterGqlQueryParameter++;
   if (buildCounterGqlQueryParameter < 3) {
-    unittest.expect(o.cursor!, unittest.equals('foo'));
+    unittest.expect(
+      o.cursor!,
+      unittest.equals('foo'),
+    );
     checkValue(o.value!);
   }
   buildCounterGqlQueryParameter--;
@@ -1059,7 +1272,10 @@ api.KindExpression buildKindExpression() {
 void checkKindExpression(api.KindExpression o) {
   buildCounterKindExpression++;
   if (buildCounterKindExpression < 3) {
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterKindExpression--;
 }
@@ -1079,13 +1295,22 @@ api.LatLng buildLatLng() {
 void checkLatLng(api.LatLng o) {
   buildCounterLatLng++;
   if (buildCounterLatLng < 3) {
-    unittest.expect(o.latitude!, unittest.equals(42.0));
-    unittest.expect(o.longitude!, unittest.equals(42.0));
+    unittest.expect(
+      o.latitude!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.longitude!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterLatLng--;
 }
 
-core.List<api.Key> buildUnnamed23() => [buildKey(), buildKey()];
+core.List<api.Key> buildUnnamed23() => [
+      buildKey(),
+      buildKey(),
+    ];
 
 void checkUnnamed23(core.List<api.Key> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1110,7 +1335,10 @@ api.LookupRequest buildLookupRequest() {
 void checkLookupRequest(api.LookupRequest o) {
   buildCounterLookupRequest++;
   if (buildCounterLookupRequest < 3) {
-    unittest.expect(o.databaseId!, unittest.equals('foo'));
+    unittest.expect(
+      o.databaseId!,
+      unittest.equals('foo'),
+    );
     checkUnnamed23(o.keys!);
     checkPropertyMask(o.propertyMask!);
     checkReadOptions(o.readOptions!);
@@ -1118,7 +1346,10 @@ void checkLookupRequest(api.LookupRequest o) {
   buildCounterLookupRequest--;
 }
 
-core.List<api.Key> buildUnnamed24() => [buildKey(), buildKey()];
+core.List<api.Key> buildUnnamed24() => [
+      buildKey(),
+      buildKey(),
+    ];
 
 void checkUnnamed24(core.List<api.Key> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1169,8 +1400,14 @@ void checkLookupResponse(api.LookupResponse o) {
     checkUnnamed24(o.deferred!);
     checkUnnamed25(o.found!);
     checkUnnamed26(o.missing!);
-    unittest.expect(o.readTime!, unittest.equals('foo'));
-    unittest.expect(o.transaction!, unittest.equals('foo'));
+    unittest.expect(
+      o.readTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.transaction!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterLookupResponse--;
 }
@@ -1208,20 +1445,32 @@ api.Mutation buildMutation() {
 void checkMutation(api.Mutation o) {
   buildCounterMutation++;
   if (buildCounterMutation < 3) {
-    unittest.expect(o.baseVersion!, unittest.equals('foo'));
-    unittest.expect(o.conflictResolutionStrategy!, unittest.equals('foo'));
+    unittest.expect(
+      o.baseVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.conflictResolutionStrategy!,
+      unittest.equals('foo'),
+    );
     checkKey(o.delete!);
     checkEntity(o.insert!);
     checkPropertyMask(o.propertyMask!);
     checkUnnamed27(o.propertyTransforms!);
     checkEntity(o.update!);
-    unittest.expect(o.updateTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
     checkEntity(o.upsert!);
   }
   buildCounterMutation--;
 }
 
-core.List<api.Value> buildUnnamed28() => [buildValue(), buildValue()];
+core.List<api.Value> buildUnnamed28() => [
+      buildValue(),
+      buildValue(),
+    ];
 
 void checkUnnamed28(core.List<api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1249,11 +1498,20 @@ void checkMutationResult(api.MutationResult o) {
   buildCounterMutationResult++;
   if (buildCounterMutationResult < 3) {
     unittest.expect(o.conflictDetected!, unittest.isTrue);
-    unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
     checkKey(o.key!);
     checkUnnamed28(o.transformResults!);
-    unittest.expect(o.updateTime!, unittest.equals('foo'));
-    unittest.expect(o.version!, unittest.equals('foo'));
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterMutationResult--;
 }
@@ -1274,9 +1532,18 @@ api.PartitionId buildPartitionId() {
 void checkPartitionId(api.PartitionId o) {
   buildCounterPartitionId++;
   if (buildCounterPartitionId < 3) {
-    unittest.expect(o.databaseId!, unittest.equals('foo'));
-    unittest.expect(o.namespaceId!, unittest.equals('foo'));
-    unittest.expect(o.projectId!, unittest.equals('foo'));
+    unittest.expect(
+      o.databaseId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.namespaceId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPartitionId--;
 }
@@ -1297,9 +1564,18 @@ api.PathElement buildPathElement() {
 void checkPathElement(api.PathElement o) {
   buildCounterPathElement++;
   if (buildCounterPathElement < 3) {
-    unittest.expect(o.id!, unittest.equals('foo'));
-    unittest.expect(o.kind!, unittest.equals('foo'));
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPathElement--;
 }
@@ -1308,12 +1584,12 @@ core.Map<core.String, core.Object?> buildUnnamed29() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
     };
 
@@ -1321,14 +1597,32 @@ void checkUnnamed29(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted7['bool'], unittest.equals(true));
-  unittest.expect(casted7['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted7['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted7['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted7['string'],
+    unittest.equals('foo'),
+  );
   var casted8 = (o['y']!) as core.Map;
   unittest.expect(casted8, unittest.hasLength(3));
-  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted8['bool'], unittest.equals(true));
-  unittest.expect(casted8['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted8['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted8['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted8['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.Map<core.String, core.Object?>> buildUnnamed30() => [
@@ -1396,19 +1690,31 @@ api.PropertyFilter buildPropertyFilter() {
 void checkPropertyFilter(api.PropertyFilter o) {
   buildCounterPropertyFilter++;
   if (buildCounterPropertyFilter < 3) {
-    unittest.expect(o.op!, unittest.equals('foo'));
+    unittest.expect(
+      o.op!,
+      unittest.equals('foo'),
+    );
     checkPropertyReference(o.property!);
     checkValue(o.value!);
   }
   buildCounterPropertyFilter--;
 }
 
-core.List<core.String> buildUnnamed31() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed31() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed31(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterPropertyMask = 0;
@@ -1445,7 +1751,10 @@ api.PropertyOrder buildPropertyOrder() {
 void checkPropertyOrder(api.PropertyOrder o) {
   buildCounterPropertyOrder++;
   if (buildCounterPropertyOrder < 3) {
-    unittest.expect(o.direction!, unittest.equals('foo'));
+    unittest.expect(
+      o.direction!,
+      unittest.equals('foo'),
+    );
     checkPropertyReference(o.property!);
   }
   buildCounterPropertyOrder--;
@@ -1465,7 +1774,10 @@ api.PropertyReference buildPropertyReference() {
 void checkPropertyReference(api.PropertyReference o) {
   buildCounterPropertyReference++;
   if (buildCounterPropertyReference < 3) {
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPropertyReference--;
 }
@@ -1494,9 +1806,15 @@ void checkPropertyTransform(api.PropertyTransform o) {
     checkValue(o.increment!);
     checkValue(o.maximum!);
     checkValue(o.minimum!);
-    unittest.expect(o.property!, unittest.equals('foo'));
+    unittest.expect(
+      o.property!,
+      unittest.equals('foo'),
+    );
     checkArrayValue(o.removeAllFromArray!);
-    unittest.expect(o.setToServerValue!, unittest.equals('foo'));
+    unittest.expect(
+      o.setToServerValue!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPropertyTransform--;
 }
@@ -1569,15 +1887,27 @@ void checkQuery(api.Query o) {
   buildCounterQuery++;
   if (buildCounterQuery < 3) {
     checkUnnamed32(o.distinctOn!);
-    unittest.expect(o.endCursor!, unittest.equals('foo'));
+    unittest.expect(
+      o.endCursor!,
+      unittest.equals('foo'),
+    );
     checkFilter(o.filter!);
     checkFindNearest(o.findNearest!);
     checkUnnamed33(o.kind!);
-    unittest.expect(o.limit!, unittest.equals(42));
-    unittest.expect(o.offset!, unittest.equals(42));
+    unittest.expect(
+      o.limit!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.offset!,
+      unittest.equals(42),
+    );
     checkUnnamed34(o.order!);
     checkUnnamed35(o.projection!);
-    unittest.expect(o.startCursor!, unittest.equals('foo'));
+    unittest.expect(
+      o.startCursor!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterQuery--;
 }
@@ -1614,14 +1944,35 @@ api.QueryResultBatch buildQueryResultBatch() {
 void checkQueryResultBatch(api.QueryResultBatch o) {
   buildCounterQueryResultBatch++;
   if (buildCounterQueryResultBatch < 3) {
-    unittest.expect(o.endCursor!, unittest.equals('foo'));
-    unittest.expect(o.entityResultType!, unittest.equals('foo'));
+    unittest.expect(
+      o.endCursor!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.entityResultType!,
+      unittest.equals('foo'),
+    );
     checkUnnamed36(o.entityResults!);
-    unittest.expect(o.moreResults!, unittest.equals('foo'));
-    unittest.expect(o.readTime!, unittest.equals('foo'));
-    unittest.expect(o.skippedCursor!, unittest.equals('foo'));
-    unittest.expect(o.skippedResults!, unittest.equals(42));
-    unittest.expect(o.snapshotVersion!, unittest.equals('foo'));
+    unittest.expect(
+      o.moreResults!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.readTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.skippedCursor!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.skippedResults!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.snapshotVersion!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterQueryResultBatch--;
 }
@@ -1640,7 +1991,10 @@ api.ReadOnly buildReadOnly() {
 void checkReadOnly(api.ReadOnly o) {
   buildCounterReadOnly++;
   if (buildCounterReadOnly < 3) {
-    unittest.expect(o.readTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.readTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterReadOnly--;
 }
@@ -1663,9 +2017,18 @@ void checkReadOptions(api.ReadOptions o) {
   buildCounterReadOptions++;
   if (buildCounterReadOptions < 3) {
     checkTransactionOptions(o.newTransaction!);
-    unittest.expect(o.readConsistency!, unittest.equals('foo'));
-    unittest.expect(o.readTime!, unittest.equals('foo'));
-    unittest.expect(o.transaction!, unittest.equals('foo'));
+    unittest.expect(
+      o.readConsistency!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.readTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.transaction!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterReadOptions--;
 }
@@ -1684,12 +2047,18 @@ api.ReadWrite buildReadWrite() {
 void checkReadWrite(api.ReadWrite o) {
   buildCounterReadWrite++;
   if (buildCounterReadWrite < 3) {
-    unittest.expect(o.previousTransaction!, unittest.equals('foo'));
+    unittest.expect(
+      o.previousTransaction!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterReadWrite--;
 }
 
-core.List<api.Key> buildUnnamed37() => [buildKey(), buildKey()];
+core.List<api.Key> buildUnnamed37() => [
+      buildKey(),
+      buildKey(),
+    ];
 
 void checkUnnamed37(core.List<api.Key> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1712,7 +2081,10 @@ api.ReserveIdsRequest buildReserveIdsRequest() {
 void checkReserveIdsRequest(api.ReserveIdsRequest o) {
   buildCounterReserveIdsRequest++;
   if (buildCounterReserveIdsRequest < 3) {
-    unittest.expect(o.databaseId!, unittest.equals('foo'));
+    unittest.expect(
+      o.databaseId!,
+      unittest.equals('foo'),
+    );
     checkUnnamed37(o.keys!);
   }
   buildCounterReserveIdsRequest--;
@@ -1748,8 +2120,14 @@ api.RollbackRequest buildRollbackRequest() {
 void checkRollbackRequest(api.RollbackRequest o) {
   buildCounterRollbackRequest++;
   if (buildCounterRollbackRequest < 3) {
-    unittest.expect(o.databaseId!, unittest.equals('foo'));
-    unittest.expect(o.transaction!, unittest.equals('foo'));
+    unittest.expect(
+      o.databaseId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.transaction!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterRollbackRequest--;
 }
@@ -1789,7 +2167,10 @@ void checkRunAggregationQueryRequest(api.RunAggregationQueryRequest o) {
   buildCounterRunAggregationQueryRequest++;
   if (buildCounterRunAggregationQueryRequest < 3) {
     checkAggregationQuery(o.aggregationQuery!);
-    unittest.expect(o.databaseId!, unittest.equals('foo'));
+    unittest.expect(
+      o.databaseId!,
+      unittest.equals('foo'),
+    );
     checkExplainOptions(o.explainOptions!);
     checkGqlQuery(o.gqlQuery!);
     checkPartitionId(o.partitionId!);
@@ -1818,7 +2199,10 @@ void checkRunAggregationQueryResponse(api.RunAggregationQueryResponse o) {
     checkAggregationResultBatch(o.batch!);
     checkExplainMetrics(o.explainMetrics!);
     checkAggregationQuery(o.query!);
-    unittest.expect(o.transaction!, unittest.equals('foo'));
+    unittest.expect(
+      o.transaction!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterRunAggregationQueryResponse--;
 }
@@ -1843,7 +2227,10 @@ api.RunQueryRequest buildRunQueryRequest() {
 void checkRunQueryRequest(api.RunQueryRequest o) {
   buildCounterRunQueryRequest++;
   if (buildCounterRunQueryRequest < 3) {
-    unittest.expect(o.databaseId!, unittest.equals('foo'));
+    unittest.expect(
+      o.databaseId!,
+      unittest.equals('foo'),
+    );
     checkExplainOptions(o.explainOptions!);
     checkGqlQuery(o.gqlQuery!);
     checkPartitionId(o.partitionId!);
@@ -1874,7 +2261,10 @@ void checkRunQueryResponse(api.RunQueryResponse o) {
     checkQueryResultBatch(o.batch!);
     checkExplainMetrics(o.explainMetrics!);
     checkQuery(o.query!);
-    unittest.expect(o.transaction!, unittest.equals('foo'));
+    unittest.expect(
+      o.transaction!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterRunQueryResponse--;
 }
@@ -1883,12 +2273,12 @@ core.Map<core.String, core.Object?> buildUnnamed38() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
     };
 
@@ -1896,14 +2286,32 @@ void checkUnnamed38(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
-  unittest.expect(casted9['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted9['bool'], unittest.equals(true));
-  unittest.expect(casted9['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted9['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted9['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted9['string'],
+    unittest.equals('foo'),
+  );
   var casted10 = (o['y']!) as core.Map;
   unittest.expect(casted10, unittest.hasLength(3));
-  unittest.expect(casted10['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted10['bool'], unittest.equals(true));
-  unittest.expect(casted10['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted10['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted10['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted10['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.Map<core.String, core.Object?>> buildUnnamed39() => [
@@ -1933,9 +2341,15 @@ api.Status buildStatus() {
 void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
-    unittest.expect(o.code!, unittest.equals(42));
+    unittest.expect(
+      o.code!,
+      unittest.equals(42),
+    );
     checkUnnamed39(o.details!);
-    unittest.expect(o.message!, unittest.equals('foo'));
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterStatus--;
 }
@@ -2007,18 +2421,39 @@ void checkValue(api.Value o) {
   buildCounterValue++;
   if (buildCounterValue < 3) {
     checkArrayValue(o.arrayValue!);
-    unittest.expect(o.blobValue!, unittest.equals('foo'));
+    unittest.expect(
+      o.blobValue!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.booleanValue!, unittest.isTrue);
-    unittest.expect(o.doubleValue!, unittest.equals(42.0));
+    unittest.expect(
+      o.doubleValue!,
+      unittest.equals(42.0),
+    );
     checkEntity(o.entityValue!);
     unittest.expect(o.excludeFromIndexes!, unittest.isTrue);
     checkLatLng(o.geoPointValue!);
-    unittest.expect(o.integerValue!, unittest.equals('foo'));
+    unittest.expect(
+      o.integerValue!,
+      unittest.equals('foo'),
+    );
     checkKey(o.keyValue!);
-    unittest.expect(o.meaning!, unittest.equals(42));
-    unittest.expect(o.nullValue!, unittest.equals('NULL_VALUE'));
-    unittest.expect(o.stringValue!, unittest.equals('foo'));
-    unittest.expect(o.timestampValue!, unittest.equals('foo'));
+    unittest.expect(
+      o.meaning!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.nullValue!,
+      unittest.equals('NULL_VALUE'),
+    );
+    unittest.expect(
+      o.stringValue!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timestampValue!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterValue--;
 }
@@ -2029,8 +2464,7 @@ void main() {
       final o = buildAggregation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.Aggregation.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkAggregation(od);
     });
   });
@@ -2040,8 +2474,7 @@ void main() {
       final o = buildAggregationQuery();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AggregationQuery.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkAggregationQuery(od);
     });
   });
@@ -2051,8 +2484,7 @@ void main() {
       final o = buildAggregationResult();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AggregationResult.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkAggregationResult(od);
     });
   });
@@ -2062,8 +2494,7 @@ void main() {
       final o = buildAggregationResultBatch();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AggregationResultBatch.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkAggregationResultBatch(od);
     });
   });
@@ -2073,8 +2504,7 @@ void main() {
       final o = buildAllocateIdsRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AllocateIdsRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkAllocateIdsRequest(od);
     });
   });
@@ -2084,8 +2514,7 @@ void main() {
       final o = buildAllocateIdsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AllocateIdsResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkAllocateIdsResponse(od);
     });
   });
@@ -2094,9 +2523,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildArrayValue();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ArrayValue.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.ArrayValue.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkArrayValue(od);
     });
   });
@@ -2115,8 +2543,7 @@ void main() {
       final o = buildBeginTransactionRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BeginTransactionRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkBeginTransactionRequest(od);
     });
   });
@@ -2126,8 +2553,7 @@ void main() {
       final o = buildBeginTransactionResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BeginTransactionResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkBeginTransactionResponse(od);
     });
   });
@@ -2137,8 +2563,7 @@ void main() {
       final o = buildCommitRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CommitRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkCommitRequest(od);
     });
   });
@@ -2148,8 +2573,7 @@ void main() {
       final o = buildCommitResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CommitResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkCommitResponse(od);
     });
   });
@@ -2159,8 +2583,7 @@ void main() {
       final o = buildCompositeFilter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CompositeFilter.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkCompositeFilter(od);
     });
   });
@@ -2169,9 +2592,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildCount();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Count.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Count.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkCount(od);
     });
   });
@@ -2180,9 +2602,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildEmpty();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Empty.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od);
     });
   });
@@ -2191,9 +2612,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildEntity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Entity.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Entity.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEntity(od);
     });
   });
@@ -2203,8 +2623,7 @@ void main() {
       final o = buildEntityResult();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.EntityResult.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkEntityResult(od);
     });
   });
@@ -2214,8 +2633,7 @@ void main() {
       final o = buildExecutionStats();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ExecutionStats.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkExecutionStats(od);
     });
   });
@@ -2225,8 +2643,7 @@ void main() {
       final o = buildExplainMetrics();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ExplainMetrics.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkExplainMetrics(od);
     });
   });
@@ -2236,8 +2653,7 @@ void main() {
       final o = buildExplainOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ExplainOptions.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkExplainOptions(od);
     });
   });
@@ -2246,9 +2662,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildFilter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Filter.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Filter.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkFilter(od);
     });
   });
@@ -2258,8 +2673,7 @@ void main() {
       final o = buildFindNearest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.FindNearest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkFindNearest(od);
     });
   });
@@ -2269,8 +2683,7 @@ void main() {
       final o = buildGoogleDatastoreAdminV1EntityFilter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleDatastoreAdminV1EntityFilter.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDatastoreAdminV1EntityFilter(od);
     });
   });
@@ -2280,8 +2693,7 @@ void main() {
       final o = buildGoogleDatastoreAdminV1ExportEntitiesRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleDatastoreAdminV1ExportEntitiesRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDatastoreAdminV1ExportEntitiesRequest(od);
     });
   });
@@ -2291,8 +2703,7 @@ void main() {
       final o = buildGoogleDatastoreAdminV1ImportEntitiesRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleDatastoreAdminV1ImportEntitiesRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDatastoreAdminV1ImportEntitiesRequest(od);
     });
   });
@@ -2302,8 +2713,7 @@ void main() {
       final o = buildGoogleDatastoreAdminV1Index();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleDatastoreAdminV1Index.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDatastoreAdminV1Index(od);
     });
   });
@@ -2313,8 +2723,7 @@ void main() {
       final o = buildGoogleDatastoreAdminV1IndexedProperty();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleDatastoreAdminV1IndexedProperty.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDatastoreAdminV1IndexedProperty(od);
     });
   });
@@ -2324,8 +2733,7 @@ void main() {
       final o = buildGoogleDatastoreAdminV1ListIndexesResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleDatastoreAdminV1ListIndexesResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDatastoreAdminV1ListIndexesResponse(od);
     });
   });
@@ -2335,8 +2743,7 @@ void main() {
       final o = buildGoogleLongrunningListOperationsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleLongrunningListOperationsResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningListOperationsResponse(od);
     });
   });
@@ -2346,8 +2753,7 @@ void main() {
       final o = buildGoogleLongrunningOperation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleLongrunningOperation.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningOperation(od);
     });
   });
@@ -2356,9 +2762,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildGqlQuery();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GqlQuery.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.GqlQuery.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGqlQuery(od);
     });
   });
@@ -2368,8 +2773,7 @@ void main() {
       final o = buildGqlQueryParameter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GqlQueryParameter.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGqlQueryParameter(od);
     });
   });
@@ -2388,8 +2792,7 @@ void main() {
       final o = buildKindExpression();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.KindExpression.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkKindExpression(od);
     });
   });
@@ -2398,9 +2801,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildLatLng();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.LatLng.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.LatLng.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLatLng(od);
     });
   });
@@ -2410,8 +2812,7 @@ void main() {
       final o = buildLookupRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LookupRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkLookupRequest(od);
     });
   });
@@ -2421,8 +2822,7 @@ void main() {
       final o = buildLookupResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LookupResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkLookupResponse(od);
     });
   });
@@ -2431,9 +2831,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildMutation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Mutation.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Mutation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkMutation(od);
     });
   });
@@ -2443,8 +2842,7 @@ void main() {
       final o = buildMutationResult();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.MutationResult.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkMutationResult(od);
     });
   });
@@ -2454,8 +2852,7 @@ void main() {
       final o = buildPartitionId();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PartitionId.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkPartitionId(od);
     });
   });
@@ -2465,8 +2862,7 @@ void main() {
       final o = buildPathElement();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PathElement.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkPathElement(od);
     });
   });
@@ -2476,8 +2872,7 @@ void main() {
       final o = buildPlanSummary();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PlanSummary.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkPlanSummary(od);
     });
   });
@@ -2486,9 +2881,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildProjection();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Projection.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Projection.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkProjection(od);
     });
   });
@@ -2498,8 +2892,7 @@ void main() {
       final o = buildPropertyFilter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PropertyFilter.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkPropertyFilter(od);
     });
   });
@@ -2509,8 +2902,7 @@ void main() {
       final o = buildPropertyMask();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PropertyMask.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkPropertyMask(od);
     });
   });
@@ -2520,8 +2912,7 @@ void main() {
       final o = buildPropertyOrder();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PropertyOrder.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkPropertyOrder(od);
     });
   });
@@ -2531,8 +2922,7 @@ void main() {
       final o = buildPropertyReference();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PropertyReference.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkPropertyReference(od);
     });
   });
@@ -2542,8 +2932,7 @@ void main() {
       final o = buildPropertyTransform();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PropertyTransform.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkPropertyTransform(od);
     });
   });
@@ -2552,9 +2941,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildQuery();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Query.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Query.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkQuery(od);
     });
   });
@@ -2564,8 +2952,7 @@ void main() {
       final o = buildQueryResultBatch();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.QueryResultBatch.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkQueryResultBatch(od);
     });
   });
@@ -2574,9 +2961,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildReadOnly();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ReadOnly.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.ReadOnly.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkReadOnly(od);
     });
   });
@@ -2586,8 +2972,7 @@ void main() {
       final o = buildReadOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ReadOptions.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkReadOptions(od);
     });
   });
@@ -2596,9 +2981,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildReadWrite();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ReadWrite.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.ReadWrite.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkReadWrite(od);
     });
   });
@@ -2608,8 +2992,7 @@ void main() {
       final o = buildReserveIdsRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ReserveIdsRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkReserveIdsRequest(od);
     });
   });
@@ -2619,8 +3002,7 @@ void main() {
       final o = buildReserveIdsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ReserveIdsResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkReserveIdsResponse(od);
     });
   });
@@ -2630,8 +3012,7 @@ void main() {
       final o = buildRollbackRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RollbackRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkRollbackRequest(od);
     });
   });
@@ -2641,8 +3022,7 @@ void main() {
       final o = buildRollbackResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RollbackResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkRollbackResponse(od);
     });
   });
@@ -2652,8 +3032,7 @@ void main() {
       final o = buildRunAggregationQueryRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RunAggregationQueryRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkRunAggregationQueryRequest(od);
     });
   });
@@ -2663,8 +3042,7 @@ void main() {
       final o = buildRunAggregationQueryResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RunAggregationQueryResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkRunAggregationQueryResponse(od);
     });
   });
@@ -2674,8 +3052,7 @@ void main() {
       final o = buildRunQueryRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RunQueryRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkRunQueryRequest(od);
     });
   });
@@ -2685,8 +3062,7 @@ void main() {
       final o = buildRunQueryResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RunQueryResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkRunQueryResponse(od);
     });
   });
@@ -2695,9 +3071,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildStatus();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Status.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od);
     });
   });
@@ -2716,8 +3091,7 @@ void main() {
       final o = buildTransactionOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TransactionOptions.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkTransactionOptions(od);
     });
   });
@@ -2726,9 +3100,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildValue();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Value.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Value.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkValue(od);
     });
   });
@@ -2740,71 +3113,68 @@ void main() {
       final arg_request = buildAllocateIdsRequest();
       final arg_projectId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.AllocateIdsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkAllocateIdsRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.AllocateIdsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAllocateIdsRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 12),
-            unittest.equals('v1/projects/'),
-          );
-          pathOffset += 12;
-          index = path.indexOf(':allocateIds', pathOffset);
-          unittest.expect(index >= 0, unittest.isTrue);
-          subPart = core.Uri.decodeQueryComponent(
-            path.substring(pathOffset, index),
-          );
-          pathOffset = index;
-          unittest.expect(subPart, unittest.equals('$arg_projectId'));
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 12),
-            unittest.equals(':allocateIds'),
-          );
-          pathOffset += 12;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('v1/projects/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf(':allocateIds', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals(':allocateIds'),
+        );
+        pathOffset += 12;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildAllocateIdsResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.allocateIds(
-        arg_request,
-        arg_projectId,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAllocateIdsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.allocateIds(arg_request, arg_projectId,
+          $fields: arg_$fields);
       checkAllocateIdsResponse(response as api.AllocateIdsResponse);
     });
 
@@ -2814,71 +3184,68 @@ void main() {
       final arg_request = buildBeginTransactionRequest();
       final arg_projectId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.BeginTransactionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkBeginTransactionRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.BeginTransactionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBeginTransactionRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 12),
-            unittest.equals('v1/projects/'),
-          );
-          pathOffset += 12;
-          index = path.indexOf(':beginTransaction', pathOffset);
-          unittest.expect(index >= 0, unittest.isTrue);
-          subPart = core.Uri.decodeQueryComponent(
-            path.substring(pathOffset, index),
-          );
-          pathOffset = index;
-          unittest.expect(subPart, unittest.equals('$arg_projectId'));
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 17),
-            unittest.equals(':beginTransaction'),
-          );
-          pathOffset += 17;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('v1/projects/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf(':beginTransaction', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals(':beginTransaction'),
+        );
+        pathOffset += 17;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildBeginTransactionResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.beginTransaction(
-        arg_request,
-        arg_projectId,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildBeginTransactionResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.beginTransaction(arg_request, arg_projectId,
+          $fields: arg_$fields);
       checkBeginTransactionResponse(response as api.BeginTransactionResponse);
     });
 
@@ -2888,71 +3255,68 @@ void main() {
       final arg_request = buildCommitRequest();
       final arg_projectId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.CommitRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkCommitRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.CommitRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCommitRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 12),
-            unittest.equals('v1/projects/'),
-          );
-          pathOffset += 12;
-          index = path.indexOf(':commit', pathOffset);
-          unittest.expect(index >= 0, unittest.isTrue);
-          subPart = core.Uri.decodeQueryComponent(
-            path.substring(pathOffset, index),
-          );
-          pathOffset = index;
-          unittest.expect(subPart, unittest.equals('$arg_projectId'));
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 7),
-            unittest.equals(':commit'),
-          );
-          pathOffset += 7;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('v1/projects/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf(':commit', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals(':commit'),
+        );
+        pathOffset += 7;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildCommitResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.commit(
-        arg_request,
-        arg_projectId,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCommitResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.commit(arg_request, arg_projectId, $fields: arg_$fields);
       checkCommitResponse(response as api.CommitResponse);
     });
 
@@ -2962,74 +3326,70 @@ void main() {
       final arg_request = buildGoogleDatastoreAdminV1ExportEntitiesRequest();
       final arg_projectId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GoogleDatastoreAdminV1ExportEntitiesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGoogleDatastoreAdminV1ExportEntitiesRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleDatastoreAdminV1ExportEntitiesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleDatastoreAdminV1ExportEntitiesRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 12),
-            unittest.equals('v1/projects/'),
-          );
-          pathOffset += 12;
-          index = path.indexOf(':export', pathOffset);
-          unittest.expect(index >= 0, unittest.isTrue);
-          subPart = core.Uri.decodeQueryComponent(
-            path.substring(pathOffset, index),
-          );
-          pathOffset = index;
-          unittest.expect(subPart, unittest.equals('$arg_projectId'));
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 7),
-            unittest.equals(':export'),
-          );
-          pathOffset += 7;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('v1/projects/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf(':export', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals(':export'),
+        );
+        pathOffset += 7;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleLongrunningOperation());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.export(
-        arg_request,
-        arg_projectId,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.export(arg_request, arg_projectId, $fields: arg_$fields);
       checkGoogleLongrunningOperation(
-        response as api.GoogleLongrunningOperation,
-      );
+          response as api.GoogleLongrunningOperation);
     });
 
     unittest.test('method--import', () async {
@@ -3038,74 +3398,70 @@ void main() {
       final arg_request = buildGoogleDatastoreAdminV1ImportEntitiesRequest();
       final arg_projectId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GoogleDatastoreAdminV1ImportEntitiesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGoogleDatastoreAdminV1ImportEntitiesRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleDatastoreAdminV1ImportEntitiesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleDatastoreAdminV1ImportEntitiesRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 12),
-            unittest.equals('v1/projects/'),
-          );
-          pathOffset += 12;
-          index = path.indexOf(':import', pathOffset);
-          unittest.expect(index >= 0, unittest.isTrue);
-          subPart = core.Uri.decodeQueryComponent(
-            path.substring(pathOffset, index),
-          );
-          pathOffset = index;
-          unittest.expect(subPart, unittest.equals('$arg_projectId'));
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 7),
-            unittest.equals(':import'),
-          );
-          pathOffset += 7;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('v1/projects/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf(':import', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals(':import'),
+        );
+        pathOffset += 7;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleLongrunningOperation());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.import(
-        arg_request,
-        arg_projectId,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.import(arg_request, arg_projectId, $fields: arg_$fields);
       checkGoogleLongrunningOperation(
-        response as api.GoogleLongrunningOperation,
-      );
+          response as api.GoogleLongrunningOperation);
     });
 
     unittest.test('method--lookup', () async {
@@ -3114,71 +3470,68 @@ void main() {
       final arg_request = buildLookupRequest();
       final arg_projectId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.LookupRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkLookupRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.LookupRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLookupRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 12),
-            unittest.equals('v1/projects/'),
-          );
-          pathOffset += 12;
-          index = path.indexOf(':lookup', pathOffset);
-          unittest.expect(index >= 0, unittest.isTrue);
-          subPart = core.Uri.decodeQueryComponent(
-            path.substring(pathOffset, index),
-          );
-          pathOffset = index;
-          unittest.expect(subPart, unittest.equals('$arg_projectId'));
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 7),
-            unittest.equals(':lookup'),
-          );
-          pathOffset += 7;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('v1/projects/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf(':lookup', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals(':lookup'),
+        );
+        pathOffset += 7;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildLookupResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.lookup(
-        arg_request,
-        arg_projectId,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildLookupResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.lookup(arg_request, arg_projectId, $fields: arg_$fields);
       checkLookupResponse(response as api.LookupResponse);
     });
 
@@ -3188,71 +3541,68 @@ void main() {
       final arg_request = buildReserveIdsRequest();
       final arg_projectId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.ReserveIdsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkReserveIdsRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ReserveIdsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkReserveIdsRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 12),
-            unittest.equals('v1/projects/'),
-          );
-          pathOffset += 12;
-          index = path.indexOf(':reserveIds', pathOffset);
-          unittest.expect(index >= 0, unittest.isTrue);
-          subPart = core.Uri.decodeQueryComponent(
-            path.substring(pathOffset, index),
-          );
-          pathOffset = index;
-          unittest.expect(subPart, unittest.equals('$arg_projectId'));
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 11),
-            unittest.equals(':reserveIds'),
-          );
-          pathOffset += 11;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('v1/projects/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf(':reserveIds', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals(':reserveIds'),
+        );
+        pathOffset += 11;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildReserveIdsResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.reserveIds(
-        arg_request,
-        arg_projectId,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildReserveIdsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.reserveIds(arg_request, arg_projectId,
+          $fields: arg_$fields);
       checkReserveIdsResponse(response as api.ReserveIdsResponse);
     });
 
@@ -3262,71 +3612,68 @@ void main() {
       final arg_request = buildRollbackRequest();
       final arg_projectId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.RollbackRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkRollbackRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RollbackRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRollbackRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 12),
-            unittest.equals('v1/projects/'),
-          );
-          pathOffset += 12;
-          index = path.indexOf(':rollback', pathOffset);
-          unittest.expect(index >= 0, unittest.isTrue);
-          subPart = core.Uri.decodeQueryComponent(
-            path.substring(pathOffset, index),
-          );
-          pathOffset = index;
-          unittest.expect(subPart, unittest.equals('$arg_projectId'));
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 9),
-            unittest.equals(':rollback'),
-          );
-          pathOffset += 9;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('v1/projects/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf(':rollback', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals(':rollback'),
+        );
+        pathOffset += 9;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildRollbackResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.rollback(
-        arg_request,
-        arg_projectId,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildRollbackResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.rollback(arg_request, arg_projectId, $fields: arg_$fields);
       checkRollbackResponse(response as api.RollbackResponse);
     });
 
@@ -3336,74 +3683,70 @@ void main() {
       final arg_request = buildRunAggregationQueryRequest();
       final arg_projectId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.RunAggregationQueryRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkRunAggregationQueryRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RunAggregationQueryRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRunAggregationQueryRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 12),
-            unittest.equals('v1/projects/'),
-          );
-          pathOffset += 12;
-          index = path.indexOf(':runAggregationQuery', pathOffset);
-          unittest.expect(index >= 0, unittest.isTrue);
-          subPart = core.Uri.decodeQueryComponent(
-            path.substring(pathOffset, index),
-          );
-          pathOffset = index;
-          unittest.expect(subPart, unittest.equals('$arg_projectId'));
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 20),
-            unittest.equals(':runAggregationQuery'),
-          );
-          pathOffset += 20;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('v1/projects/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf(':runAggregationQuery', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals(':runAggregationQuery'),
+        );
+        pathOffset += 20;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildRunAggregationQueryResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.runAggregationQuery(
-        arg_request,
-        arg_projectId,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildRunAggregationQueryResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.runAggregationQuery(arg_request, arg_projectId,
+          $fields: arg_$fields);
       checkRunAggregationQueryResponse(
-        response as api.RunAggregationQueryResponse,
-      );
+          response as api.RunAggregationQueryResponse);
     });
 
     unittest.test('method--runQuery', () async {
@@ -3412,71 +3755,68 @@ void main() {
       final arg_request = buildRunQueryRequest();
       final arg_projectId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.RunQueryRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkRunQueryRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RunQueryRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRunQueryRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 12),
-            unittest.equals('v1/projects/'),
-          );
-          pathOffset += 12;
-          index = path.indexOf(':runQuery', pathOffset);
-          unittest.expect(index >= 0, unittest.isTrue);
-          subPart = core.Uri.decodeQueryComponent(
-            path.substring(pathOffset, index),
-          );
-          pathOffset = index;
-          unittest.expect(subPart, unittest.equals('$arg_projectId'));
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 9),
-            unittest.equals(':runQuery'),
-          );
-          pathOffset += 9;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('v1/projects/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf(':runQuery', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals(':runQuery'),
+        );
+        pathOffset += 9;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildRunQueryResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.runQuery(
-        arg_request,
-        arg_projectId,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildRunQueryResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.runQuery(arg_request, arg_projectId, $fields: arg_$fields);
       checkRunQueryResponse(response as api.RunQueryResponse);
     });
   });
@@ -3488,74 +3828,70 @@ void main() {
       final arg_request = buildGoogleDatastoreAdminV1Index();
       final arg_projectId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GoogleDatastoreAdminV1Index.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGoogleDatastoreAdminV1Index(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleDatastoreAdminV1Index.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleDatastoreAdminV1Index(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 12),
-            unittest.equals('v1/projects/'),
-          );
-          pathOffset += 12;
-          index = path.indexOf('/indexes', pathOffset);
-          unittest.expect(index >= 0, unittest.isTrue);
-          subPart = core.Uri.decodeQueryComponent(
-            path.substring(pathOffset, index),
-          );
-          pathOffset = index;
-          unittest.expect(subPart, unittest.equals('$arg_projectId'));
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 8),
-            unittest.equals('/indexes'),
-          );
-          pathOffset += 8;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('v1/projects/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf('/indexes', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('/indexes'),
+        );
+        pathOffset += 8;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleLongrunningOperation());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_projectId,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_projectId, $fields: arg_$fields);
       checkGoogleLongrunningOperation(
-        response as api.GoogleLongrunningOperation,
-      );
+          response as api.GoogleLongrunningOperation);
     });
 
     unittest.test('method--delete', () async {
@@ -3564,72 +3900,72 @@ void main() {
       final arg_projectId = 'foo';
       final arg_indexId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 12),
-            unittest.equals('v1/projects/'),
-          );
-          pathOffset += 12;
-          index = path.indexOf('/indexes/', pathOffset);
-          unittest.expect(index >= 0, unittest.isTrue);
-          subPart = core.Uri.decodeQueryComponent(
-            path.substring(pathOffset, index),
-          );
-          pathOffset = index;
-          unittest.expect(subPart, unittest.equals('$arg_projectId'));
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 9),
-            unittest.equals('/indexes/'),
-          );
-          pathOffset += 9;
-          subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-          pathOffset = path.length;
-          unittest.expect(subPart, unittest.equals('$arg_indexId'));
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('v1/projects/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf('/indexes/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals('/indexes/'),
+        );
+        pathOffset += 9;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_indexId'),
+        );
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleLongrunningOperation());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.delete(
-        arg_projectId,
-        arg_indexId,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.delete(arg_projectId, arg_indexId, $fields: arg_$fields);
       checkGoogleLongrunningOperation(
-        response as api.GoogleLongrunningOperation,
-      );
+          response as api.GoogleLongrunningOperation);
     });
 
     unittest.test('method--get', () async {
@@ -3638,72 +3974,72 @@ void main() {
       final arg_projectId = 'foo';
       final arg_indexId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 12),
-            unittest.equals('v1/projects/'),
-          );
-          pathOffset += 12;
-          index = path.indexOf('/indexes/', pathOffset);
-          unittest.expect(index >= 0, unittest.isTrue);
-          subPart = core.Uri.decodeQueryComponent(
-            path.substring(pathOffset, index),
-          );
-          pathOffset = index;
-          unittest.expect(subPart, unittest.equals('$arg_projectId'));
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 9),
-            unittest.equals('/indexes/'),
-          );
-          pathOffset += 9;
-          subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-          pathOffset = path.length;
-          unittest.expect(subPart, unittest.equals('$arg_indexId'));
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('v1/projects/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf('/indexes/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals('/indexes/'),
+        );
+        pathOffset += 9;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_indexId'),
+        );
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleDatastoreAdminV1Index());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.get(
-        arg_projectId,
-        arg_indexId,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleDatastoreAdminV1Index());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.get(arg_projectId, arg_indexId, $fields: arg_$fields);
       checkGoogleDatastoreAdminV1Index(
-        response as api.GoogleDatastoreAdminV1Index,
-      );
+          response as api.GoogleDatastoreAdminV1Index);
     });
 
     unittest.test('method--list', () async {
@@ -3714,85 +4050,82 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 12),
-            unittest.equals('v1/projects/'),
-          );
-          pathOffset += 12;
-          index = path.indexOf('/indexes', pathOffset);
-          unittest.expect(index >= 0, unittest.isTrue);
-          subPart = core.Uri.decodeQueryComponent(
-            path.substring(pathOffset, index),
-          );
-          pathOffset = index;
-          unittest.expect(subPart, unittest.equals('$arg_projectId'));
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 8),
-            unittest.equals('/indexes'),
-          );
-          pathOffset += 8;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('v1/projects/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf('/indexes', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('/indexes'),
+        );
+        pathOffset += 8;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGoogleDatastoreAdminV1ListIndexesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_projectId,
-        filter: arg_filter,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleDatastoreAdminV1ListIndexesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_projectId,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGoogleDatastoreAdminV1ListIndexesResponse(
-        response as api.GoogleDatastoreAdminV1ListIndexesResponse,
-      );
+          response as api.GoogleDatastoreAdminV1ListIndexesResponse);
     });
   });
 
@@ -3802,50 +4135,49 @@ void main() {
       final res = api.DatastoreApi(mock).projects.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.cancel(arg_name, $fields: arg_$fields);
       checkEmpty(response as api.Empty);
     });
@@ -3855,50 +4187,49 @@ void main() {
       final res = api.DatastoreApi(mock).projects.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkEmpty(response as api.Empty);
     });
@@ -3908,54 +4239,52 @@ void main() {
       final res = api.DatastoreApi(mock).projects.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleLongrunningOperation());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGoogleLongrunningOperation(
-        response as api.GoogleLongrunningOperation,
-      );
+          response as api.GoogleLongrunningOperation);
     });
 
     unittest.test('method--list', () async {
@@ -3966,74 +4295,69 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGoogleLongrunningListOperationsResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_name,
-        filter: arg_filter,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGoogleLongrunningListOperationsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGoogleLongrunningListOperationsResponse(
-        response as api.GoogleLongrunningListOperationsResponse,
-      );
+          response as api.GoogleLongrunningListOperationsResponse);
     });
   });
 }

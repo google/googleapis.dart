@@ -42,9 +42,18 @@ api.AmpUrl buildAmpUrl() {
 void checkAmpUrl(api.AmpUrl o) {
   buildCounterAmpUrl++;
   if (buildCounterAmpUrl < 3) {
-    unittest.expect(o.ampUrl!, unittest.equals('foo'));
-    unittest.expect(o.cdnAmpUrl!, unittest.equals('foo'));
-    unittest.expect(o.originalUrl!, unittest.equals('foo'));
+    unittest.expect(
+      o.ampUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.cdnAmpUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.originalUrl!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAmpUrl--;
 }
@@ -65,19 +74,37 @@ api.AmpUrlError buildAmpUrlError() {
 void checkAmpUrlError(api.AmpUrlError o) {
   buildCounterAmpUrlError++;
   if (buildCounterAmpUrlError < 3) {
-    unittest.expect(o.errorCode!, unittest.equals('foo'));
-    unittest.expect(o.errorMessage!, unittest.equals('foo'));
-    unittest.expect(o.originalUrl!, unittest.equals('foo'));
+    unittest.expect(
+      o.errorCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.errorMessage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.originalUrl!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAmpUrlError--;
 }
 
-core.List<core.String> buildUnnamed0() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed0() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed0(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterBatchGetAmpUrlsRequest = 0;
@@ -95,13 +122,19 @@ api.BatchGetAmpUrlsRequest buildBatchGetAmpUrlsRequest() {
 void checkBatchGetAmpUrlsRequest(api.BatchGetAmpUrlsRequest o) {
   buildCounterBatchGetAmpUrlsRequest++;
   if (buildCounterBatchGetAmpUrlsRequest < 3) {
-    unittest.expect(o.lookupStrategy!, unittest.equals('foo'));
+    unittest.expect(
+      o.lookupStrategy!,
+      unittest.equals('foo'),
+    );
     checkUnnamed0(o.urls!);
   }
   buildCounterBatchGetAmpUrlsRequest--;
 }
 
-core.List<api.AmpUrl> buildUnnamed1() => [buildAmpUrl(), buildAmpUrl()];
+core.List<api.AmpUrl> buildUnnamed1() => [
+      buildAmpUrl(),
+      buildAmpUrl(),
+    ];
 
 void checkUnnamed1(core.List<api.AmpUrl> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -146,9 +179,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildAmpUrl();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.AmpUrl.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.AmpUrl.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkAmpUrl(od);
     });
   });
@@ -158,8 +190,7 @@ void main() {
       final o = buildAmpUrlError();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AmpUrlError.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkAmpUrlError(od);
     });
   });
@@ -169,8 +200,7 @@ void main() {
       final o = buildBatchGetAmpUrlsRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BatchGetAmpUrlsRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkBatchGetAmpUrlsRequest(od);
     });
   });
@@ -180,8 +210,7 @@ void main() {
       final o = buildBatchGetAmpUrlsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BatchGetAmpUrlsResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkBatchGetAmpUrlsResponse(od);
     });
   });
@@ -192,54 +221,52 @@ void main() {
       final res = api.AcceleratedmobilepageurlApi(mock).ampUrls;
       final arg_request = buildBatchGetAmpUrlsRequest();
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.BatchGetAmpUrlsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkBatchGetAmpUrlsRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.BatchGetAmpUrlsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBatchGetAmpUrlsRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 19),
-            unittest.equals('v1/ampUrls:batchGet'),
-          );
-          pathOffset += 19;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 19),
+          unittest.equals('v1/ampUrls:batchGet'),
+        );
+        pathOffset += 19;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildBatchGetAmpUrlsResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildBatchGetAmpUrlsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.batchGet(arg_request, $fields: arg_$fields);
       checkBatchGetAmpUrlsResponse(response as api.BatchGetAmpUrlsResponse);
     });

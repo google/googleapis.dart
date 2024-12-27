@@ -51,16 +51,11 @@ class CssApi {
 
   AccountsResource get accounts => AccountsResource(_requester);
 
-  CssApi(
-    http.Client client, {
-    core.String rootUrl = 'https://css.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  CssApi(http.Client client,
+      {core.String rootUrl = 'https://css.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class AccountsResource {
@@ -175,8 +170,7 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return ListChildAccountsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates labels assigned to CSS/MC accounts by a CSS domain.
@@ -326,8 +320,7 @@ class AccountsCssProductInputsResource {
       queryParams: queryParams_,
     );
     return CssProductInput.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the existing Css Product input in your CSS Center account.
@@ -384,8 +377,7 @@ class AccountsCssProductInputsResource {
       queryParams: queryParams_,
     );
     return CssProductInput.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -415,7 +407,10 @@ class AccountsCssProductsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CssProduct> get(core.String name, {core.String? $fields}) async {
+  async.Future<CssProduct> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -428,8 +423,7 @@ class AccountsCssProductsResource {
       queryParams: queryParams_,
     );
     return CssProduct.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the processed CSS Products in your CSS Center account.
@@ -485,8 +479,7 @@ class AccountsCssProductsResource {
       queryParams: queryParams_,
     );
     return ListCssProductsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -533,8 +526,7 @@ class AccountsLabelsResource {
       queryParams: queryParams_,
     );
     return AccountLabel.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a label and removes it from all accounts to which it was assigned.
@@ -555,7 +547,10 @@ class AccountsLabelsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -617,8 +612,7 @@ class AccountsLabelsResource {
       queryParams: queryParams_,
     );
     return ListAccountLabelsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a label.
@@ -660,8 +654,7 @@ class AccountsLabelsResource {
       queryParams: queryParams_,
     );
     return AccountLabel.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1074,11 +1067,8 @@ class Attributes {
           ageGroup: json_['ageGroup'] as core.String?,
           brand: json_['brand'] as core.String?,
           certifications: (json_['certifications'] as core.List?)
-              ?.map(
-                (value) => Certification.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Certification.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           color: json_['color'] as core.String?,
           cppAdsRedirect: json_['cppAdsRedirect'] as core.String?,
@@ -1103,36 +1093,29 @@ class Attributes {
               json_.containsKey('headlineOfferInstallment')
                   ? HeadlineOfferInstallment.fromJson(
                       json_['headlineOfferInstallment']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           headlineOfferLink: json_['headlineOfferLink'] as core.String?,
           headlineOfferMobileLink:
               json_['headlineOfferMobileLink'] as core.String?,
           headlineOfferPrice: json_.containsKey('headlineOfferPrice')
-              ? Price.fromJson(
-                  json_['headlineOfferPrice']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Price.fromJson(json_['headlineOfferPrice']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           headlineOfferShippingPrice:
               json_.containsKey('headlineOfferShippingPrice')
-                  ? Price.fromJson(
-                      json_['headlineOfferShippingPrice']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                  ? Price.fromJson(json_['headlineOfferShippingPrice']
+                      as core.Map<core.String, core.dynamic>)
                   : null,
           headlineOfferSubscriptionCost:
               json_.containsKey('headlineOfferSubscriptionCost')
                   ? HeadlineOfferSubscriptionCost.fromJson(
                       json_['headlineOfferSubscriptionCost']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           highPrice: json_.containsKey('highPrice')
               ? Price.fromJson(
-                  json_['highPrice'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['highPrice'] as core.Map<core.String, core.dynamic>)
               : null,
           imageLink: json_['imageLink'] as core.String?,
           includedDestinations: (json_['includedDestinations'] as core.List?)
@@ -1142,8 +1125,7 @@ class Attributes {
           itemGroupId: json_['itemGroupId'] as core.String?,
           lowPrice: json_.containsKey('lowPrice')
               ? Price.fromJson(
-                  json_['lowPrice'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['lowPrice'] as core.Map<core.String, core.dynamic>)
               : null,
           material: json_['material'] as core.String?,
           mpn: json_['mpn'] as core.String?,
@@ -1152,37 +1134,30 @@ class Attributes {
           pattern: json_['pattern'] as core.String?,
           pause: json_['pause'] as core.String?,
           productDetails: (json_['productDetails'] as core.List?)
-              ?.map(
-                (value) => ProductDetail.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ProductDetail.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           productHeight: json_.containsKey('productHeight')
               ? ProductDimension.fromJson(
-                  json_['productHeight'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['productHeight'] as core.Map<core.String, core.dynamic>)
               : null,
           productHighlights: (json_['productHighlights'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           productLength: json_.containsKey('productLength')
               ? ProductDimension.fromJson(
-                  json_['productLength'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['productLength'] as core.Map<core.String, core.dynamic>)
               : null,
           productTypes: (json_['productTypes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           productWeight: json_.containsKey('productWeight')
               ? ProductWeight.fromJson(
-                  json_['productWeight'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['productWeight'] as core.Map<core.String, core.dynamic>)
               : null,
           productWidth: json_.containsKey('productWidth')
               ? ProductDimension.fromJson(
-                  json_['productWidth'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['productWidth'] as core.Map<core.String, core.dynamic>)
               : null,
           size: json_['size'] as core.String?,
           sizeSystem: json_['sizeSystem'] as core.String?,
@@ -1282,7 +1257,11 @@ class Certification {
   /// (EPREL) database.
   core.String? name;
 
-  Certification({this.authority, this.code, this.name});
+  Certification({
+    this.authority,
+    this.code,
+    this.name,
+  });
 
   Certification.fromJson(core.Map json_)
       : this(
@@ -1356,22 +1335,16 @@ class CssProduct {
       : this(
           attributes: json_.containsKey('attributes')
               ? Attributes.fromJson(
-                  json_['attributes'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['attributes'] as core.Map<core.String, core.dynamic>)
               : null,
           contentLanguage: json_['contentLanguage'] as core.String?,
           cssProductStatus: json_.containsKey('cssProductStatus')
-              ? CssProductStatus.fromJson(
-                  json_['cssProductStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CssProductStatus.fromJson(json_['cssProductStatus']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           customAttributes: (json_['customAttributes'] as core.List?)
-              ?.map(
-                (value) => CustomAttribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CustomAttribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           feedLabel: json_['feedLabel'] as core.String?,
           name: json_['name'] as core.String?,
@@ -1474,16 +1447,12 @@ class CssProductInput {
       : this(
           attributes: json_.containsKey('attributes')
               ? Attributes.fromJson(
-                  json_['attributes'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['attributes'] as core.Map<core.String, core.dynamic>)
               : null,
           contentLanguage: json_['contentLanguage'] as core.String?,
           customAttributes: (json_['customAttributes'] as core.List?)
-              ?.map(
-                (value) => CustomAttribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CustomAttribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           feedLabel: json_['feedLabel'] as core.String?,
           finalName: json_['finalName'] as core.String?,
@@ -1537,19 +1506,13 @@ class CssProductStatus {
       : this(
           creationDate: json_['creationDate'] as core.String?,
           destinationStatuses: (json_['destinationStatuses'] as core.List?)
-              ?.map(
-                (value) => DestinationStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DestinationStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           googleExpirationDate: json_['googleExpirationDate'] as core.String?,
           itemLevelIssues: (json_['itemLevelIssues'] as core.List?)
-              ?.map(
-                (value) => ItemLevelIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ItemLevelIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           lastUpdateDate: json_['lastUpdateDate'] as core.String?,
         );
@@ -1582,16 +1545,17 @@ class CustomAttribute {
   /// If `value` is not empty, `group_values` must be empty.
   core.String? value;
 
-  CustomAttribute({this.groupValues, this.name, this.value});
+  CustomAttribute({
+    this.groupValues,
+    this.name,
+    this.value,
+  });
 
   CustomAttribute.fromJson(core.Map json_)
       : this(
           groupValues: (json_['groupValues'] as core.List?)
-              ?.map(
-                (value) => CustomAttribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CustomAttribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           name: json_['name'] as core.String?,
           value: json_['value'] as core.String?,
@@ -1670,19 +1634,21 @@ class HeadlineOfferInstallment {
   /// The number of installments the buyer has to pay.
   core.String? months;
 
-  HeadlineOfferInstallment({this.amount, this.downpayment, this.months});
+  HeadlineOfferInstallment({
+    this.amount,
+    this.downpayment,
+    this.months,
+  });
 
   HeadlineOfferInstallment.fromJson(core.Map json_)
       : this(
           amount: json_.containsKey('amount')
               ? Price.fromJson(
-                  json_['amount'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['amount'] as core.Map<core.String, core.dynamic>)
               : null,
           downpayment: json_.containsKey('downpayment')
               ? Price.fromJson(
-                  json_['downpayment'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['downpayment'] as core.Map<core.String, core.dynamic>)
               : null,
           months: json_['months'] as core.String?,
         );
@@ -1712,14 +1678,17 @@ class HeadlineOfferSubscriptionCost {
   /// The number of subscription periods the buyer has to pay.
   core.String? periodLength;
 
-  HeadlineOfferSubscriptionCost({this.amount, this.period, this.periodLength});
+  HeadlineOfferSubscriptionCost({
+    this.amount,
+    this.period,
+    this.periodLength,
+  });
 
   HeadlineOfferSubscriptionCost.fromJson(core.Map json_)
       : this(
           amount: json_.containsKey('amount')
               ? Price.fromJson(
-                  json_['amount'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['amount'] as core.Map<core.String, core.dynamic>)
               : null,
           period: json_['period'] as core.String?,
           periodLength: json_['periodLength'] as core.String?,
@@ -1813,16 +1782,16 @@ class ListAccountLabelsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListAccountLabelsResponse({this.accountLabels, this.nextPageToken});
+  ListAccountLabelsResponse({
+    this.accountLabels,
+    this.nextPageToken,
+  });
 
   ListAccountLabelsResponse.fromJson(core.Map json_)
       : this(
           accountLabels: (json_['accountLabels'] as core.List?)
-              ?.map(
-                (value) => AccountLabel.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AccountLabel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1843,16 +1812,16 @@ class ListChildAccountsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListChildAccountsResponse({this.accounts, this.nextPageToken});
+  ListChildAccountsResponse({
+    this.accounts,
+    this.nextPageToken,
+  });
 
   ListChildAccountsResponse.fromJson(core.Map json_)
       : this(
           accounts: (json_['accounts'] as core.List?)
-              ?.map(
-                (value) => Account.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Account.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1876,16 +1845,16 @@ class ListCssProductsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListCssProductsResponse({this.cssProducts, this.nextPageToken});
+  ListCssProductsResponse({
+    this.cssProducts,
+    this.nextPageToken,
+  });
 
   ListCssProductsResponse.fromJson(core.Map json_)
       : this(
           cssProducts: (json_['cssProducts'] as core.List?)
-              ?.map(
-                (value) => CssProduct.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CssProduct.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1907,7 +1876,10 @@ class Price {
   /// [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217).
   core.String? currencyCode;
 
-  Price({this.amountMicros, this.currencyCode});
+  Price({
+    this.amountMicros,
+    this.currencyCode,
+  });
 
   Price.fromJson(core.Map json_)
       : this(
@@ -1940,7 +1912,10 @@ class ProductDimension {
   /// Required.
   core.double? value;
 
-  ProductDimension({this.unit, this.value});
+  ProductDimension({
+    this.unit,
+    this.value,
+  });
 
   ProductDimension.fromJson(core.Map json_)
       : this(
@@ -1970,7 +1945,10 @@ class ProductWeight {
   /// Required.
   core.double? value;
 
-  ProductWeight({this.unit, this.value});
+  ProductWeight({
+    this.unit,
+    this.value,
+  });
 
   ProductWeight.fromJson(core.Map json_)
       : this(
@@ -1999,7 +1977,10 @@ class UpdateAccountLabelsRequest {
   /// Optional.
   core.String? parent;
 
-  UpdateAccountLabelsRequest({this.labelIds, this.parent});
+  UpdateAccountLabelsRequest({
+    this.labelIds,
+    this.parent,
+  });
 
   UpdateAccountLabelsRequest.fromJson(core.Map json_)
       : this(

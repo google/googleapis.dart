@@ -96,16 +96,11 @@ class PeopleServiceApi {
   OtherContactsResource get otherContacts => OtherContactsResource(_requester);
   PeopleResource get people => PeopleResource(_requester);
 
-  PeopleServiceApi(
-    http.Client client, {
-    core.String rootUrl = 'https://people.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  PeopleServiceApi(http.Client client,
+      {core.String rootUrl = 'https://people.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ContactGroupsResource {
@@ -163,8 +158,7 @@ class ContactGroupsResource {
       queryParams: queryParams_,
     );
     return BatchGetContactGroupsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Create a new contact group owned by the authenticated user.
@@ -206,8 +200,7 @@ class ContactGroupsResource {
       queryParams: queryParams_,
     );
     return ContactGroup.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete an existing contact group owned by the authenticated user by
@@ -301,8 +294,7 @@ class ContactGroupsResource {
       queryParams: queryParams_,
     );
     return ContactGroup.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all contact groups owned by the authenticated user.
@@ -361,8 +353,7 @@ class ContactGroupsResource {
       queryParams: queryParams_,
     );
     return ListContactGroupsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the name of an existing contact group owned by the authenticated
@@ -411,8 +402,7 @@ class ContactGroupsResource {
       queryParams: queryParams_,
     );
     return ContactGroup.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -466,8 +456,7 @@ class ContactGroupsMembersResource {
       queryParams: queryParams_,
     );
     return ModifyContactGroupMembersResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -619,8 +608,7 @@ class OtherContactsResource {
       queryParams: queryParams_,
     );
     return ListOtherContactsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Provides a list of contacts in the authenticated user's other contacts
@@ -679,8 +667,7 @@ class OtherContactsResource {
       queryParams: queryParams_,
     );
     return SearchResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -728,8 +715,7 @@ class PeopleResource {
       queryParams: queryParams_,
     );
     return BatchCreateContactsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a batch of contacts.
@@ -809,8 +795,7 @@ class PeopleResource {
       queryParams: queryParams_,
     );
     return BatchUpdateContactsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Create a new contact and return the person resource for that contact.
@@ -965,8 +950,7 @@ class PeopleResource {
       queryParams: queryParams_,
     );
     return DeleteContactPhotoResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Provides information about a person by specifying a resource name.
@@ -1102,8 +1086,7 @@ class PeopleResource {
       queryParams: queryParams_,
     );
     return GetPeopleResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Provides a list of domain profiles and domain contacts in the
@@ -1195,8 +1178,7 @@ class PeopleResource {
       queryParams: queryParams_,
     );
     return ListDirectoryPeopleResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Provides a list of contacts in the authenticated user's grouped contacts
@@ -1264,8 +1246,7 @@ class PeopleResource {
       queryParams: queryParams_,
     );
     return SearchResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Provides a list of domain profiles and domain contacts in the
@@ -1337,8 +1318,7 @@ class PeopleResource {
       queryParams: queryParams_,
     );
     return SearchDirectoryPeopleResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update contact data for an existing contact person.
@@ -1469,8 +1449,7 @@ class PeopleResource {
       queryParams: queryParams_,
     );
     return UpdateContactPhotoResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1593,8 +1572,7 @@ class PeopleConnectionsResource {
       queryParams: queryParams_,
     );
     return ListConnectionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1673,8 +1651,7 @@ class Address {
           formattedValue: json_['formattedValue'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           poBox: json_['poBox'] as core.String?,
           postalCode: json_['postalCode'] as core.String?,
@@ -1712,15 +1689,17 @@ class AgeRangeType {
   /// Metadata about the age range.
   FieldMetadata? metadata;
 
-  AgeRangeType({this.ageRange, this.metadata});
+  AgeRangeType({
+    this.ageRange,
+    this.metadata,
+  });
 
   AgeRangeType.fromJson(core.Map json_)
       : this(
           ageRange: json_['ageRange'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1762,16 +1741,17 @@ class BatchCreateContactsRequest {
   /// Optional.
   core.List<core.String>? sources;
 
-  BatchCreateContactsRequest({this.contacts, this.readMask, this.sources});
+  BatchCreateContactsRequest({
+    this.contacts,
+    this.readMask,
+    this.sources,
+  });
 
   BatchCreateContactsRequest.fromJson(core.Map json_)
       : this(
           contacts: (json_['contacts'] as core.List?)
-              ?.map(
-                (value) => ContactToCreate.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ContactToCreate.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           readMask: json_['readMask'] as core.String?,
           sources: (json_['sources'] as core.List?)
@@ -1794,16 +1774,15 @@ class BatchCreateContactsResponse {
   /// The contacts that were created, unless the request `read_mask` is empty.
   core.List<PersonResponse>? createdPeople;
 
-  BatchCreateContactsResponse({this.createdPeople});
+  BatchCreateContactsResponse({
+    this.createdPeople,
+  });
 
   BatchCreateContactsResponse.fromJson(core.Map json_)
       : this(
           createdPeople: (json_['createdPeople'] as core.List?)
-              ?.map(
-                (value) => PersonResponse.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PersonResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1821,7 +1800,9 @@ class BatchDeleteContactsRequest {
   /// Required.
   core.List<core.String>? resourceNames;
 
-  BatchDeleteContactsRequest({this.resourceNames});
+  BatchDeleteContactsRequest({
+    this.resourceNames,
+  });
 
   BatchDeleteContactsRequest.fromJson(core.Map json_)
       : this(
@@ -1840,16 +1821,15 @@ class BatchGetContactGroupsResponse {
   /// The list of responses for each requested contact group resource.
   core.List<ContactGroupResponse>? responses;
 
-  BatchGetContactGroupsResponse({this.responses});
+  BatchGetContactGroupsResponse({
+    this.responses,
+  });
 
   BatchGetContactGroupsResponse.fromJson(core.Map json_)
       : this(
           responses: (json_['responses'] as core.List?)
-              ?.map(
-                (value) => ContactGroupResponse.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ContactGroupResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1942,7 +1922,9 @@ class BatchUpdateContactsResponse {
   /// request `read_mask` is empty.
   core.Map<core.String, PersonResponse>? updateResult;
 
-  BatchUpdateContactsResponse({this.updateResult});
+  BatchUpdateContactsResponse({
+    this.updateResult,
+  });
 
   BatchUpdateContactsResponse.fromJson(core.Map json_)
       : this(
@@ -1952,8 +1934,7 @@ class BatchUpdateContactsResponse {
             (key, value) => core.MapEntry(
               key,
               PersonResponse.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
         );
@@ -1978,15 +1959,18 @@ class Biography {
   /// The short biography.
   core.String? value;
 
-  Biography({this.contentType, this.metadata, this.value});
+  Biography({
+    this.contentType,
+    this.metadata,
+    this.value,
+  });
 
   Biography.fromJson(core.Map json_)
       : this(
           contentType: json_['contentType'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           value: json_['value'] as core.String?,
         );
@@ -2019,19 +2003,21 @@ class Birthday {
   )
   core.String? text;
 
-  Birthday({this.date, this.metadata, this.text});
+  Birthday({
+    this.date,
+    this.metadata,
+    this.text,
+  });
 
   Birthday.fromJson(core.Map json_)
       : this(
           date: json_.containsKey('date')
               ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['date'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           text: json_['text'] as core.String?,
         );
@@ -2051,14 +2037,16 @@ class BraggingRights {
   /// The bragging rights; for example, `climbed mount everest`.
   core.String? value;
 
-  BraggingRights({this.metadata, this.value});
+  BraggingRights({
+    this.metadata,
+    this.value,
+  });
 
   BraggingRights.fromJson(core.Map json_)
       : this(
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           value: json_['value'] as core.String?,
         );
@@ -2089,15 +2077,19 @@ class CalendarUrl {
   /// The calendar URL.
   core.String? url;
 
-  CalendarUrl({this.formattedType, this.metadata, this.type, this.url});
+  CalendarUrl({
+    this.formattedType,
+    this.metadata,
+    this.type,
+    this.url,
+  });
 
   CalendarUrl.fromJson(core.Map json_)
       : this(
           formattedType: json_['formattedType'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
           url: json_['url'] as core.String?,
@@ -2124,15 +2116,18 @@ class ClientData {
   /// The client specified value of the client data.
   core.String? value;
 
-  ClientData({this.key, this.metadata, this.value});
+  ClientData({
+    this.key,
+    this.metadata,
+    this.value,
+  });
 
   ClientData.fromJson(core.Map json_)
       : this(
           key: json_['key'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           value: json_['value'] as core.String?,
         );
@@ -2221,11 +2216,8 @@ class ContactGroup {
   ContactGroup.fromJson(core.Map json_)
       : this(
           clientData: (json_['clientData'] as core.List?)
-              ?.map(
-                (value) => GroupClientData.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GroupClientData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           formattedName: json_['formattedName'] as core.String?,
@@ -2236,8 +2228,7 @@ class ContactGroup {
               .toList(),
           metadata: json_.containsKey('metadata')
               ? ContactGroupMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           resourceName: json_['resourceName'] as core.String?,
@@ -2276,7 +2267,10 @@ class ContactGroupMembership {
   /// contact must always have at least one contact group membership.
   core.String? contactGroupResourceName;
 
-  ContactGroupMembership({this.contactGroupId, this.contactGroupResourceName});
+  ContactGroupMembership({
+    this.contactGroupId,
+    this.contactGroupResourceName,
+  });
 
   ContactGroupMembership.fromJson(core.Map json_)
       : this(
@@ -2308,7 +2302,10 @@ class ContactGroupMetadata {
   /// Output only.
   core.String? updateTime;
 
-  ContactGroupMetadata({this.deleted, this.updateTime});
+  ContactGroupMetadata({
+    this.deleted,
+    this.updateTime,
+  });
 
   ContactGroupMetadata.fromJson(core.Map json_)
       : this(
@@ -2343,14 +2340,12 @@ class ContactGroupResponse {
       : this(
           contactGroup: json_.containsKey('contactGroup')
               ? ContactGroup.fromJson(
-                  json_['contactGroup'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['contactGroup'] as core.Map<core.String, core.dynamic>)
               : null,
           requestedResourceName: json_['requestedResourceName'] as core.String?,
           status: json_.containsKey('status')
               ? Status.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2369,14 +2364,15 @@ class ContactToCreate {
   /// Required.
   Person? contactPerson;
 
-  ContactToCreate({this.contactPerson});
+  ContactToCreate({
+    this.contactPerson,
+  });
 
   ContactToCreate.fromJson(core.Map json_)
       : this(
           contactPerson: json_.containsKey('contactPerson')
               ? Person.fromJson(
-                  json_['contactPerson'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['contactPerson'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2453,15 +2449,18 @@ class CoverPhoto {
   /// The URL of the cover photo.
   core.String? url;
 
-  CoverPhoto({this.default_, this.metadata, this.url});
+  CoverPhoto({
+    this.default_,
+    this.metadata,
+    this.url,
+  });
 
   CoverPhoto.fromJson(core.Map json_)
       : this(
           default_: json_['default'] as core.bool?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           url: json_['url'] as core.String?,
         );
@@ -2488,14 +2487,16 @@ class CreateContactGroupRequest {
   /// Optional.
   core.String? readGroupFields;
 
-  CreateContactGroupRequest({this.contactGroup, this.readGroupFields});
+  CreateContactGroupRequest({
+    this.contactGroup,
+    this.readGroupFields,
+  });
 
   CreateContactGroupRequest.fromJson(core.Map json_)
       : this(
           contactGroup: json_.containsKey('contactGroup')
               ? ContactGroup.fromJson(
-                  json_['contactGroup'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['contactGroup'] as core.Map<core.String, core.dynamic>)
               : null,
           readGroupFields: json_['readGroupFields'] as core.String?,
         );
@@ -2524,14 +2525,15 @@ class DeleteContactPhotoResponse {
   /// DeleteContactPhotoRequest; otherwise this will be unset.
   Person? person;
 
-  DeleteContactPhotoResponse({this.person});
+  DeleteContactPhotoResponse({
+    this.person,
+  });
 
   DeleteContactPhotoResponse.fromJson(core.Map json_)
       : this(
           person: json_.containsKey('person')
               ? Person.fromJson(
-                  json_['person'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['person'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2545,10 +2547,14 @@ class DomainMembership {
   /// True if the person is in the viewer's Google Workspace domain.
   core.bool? inViewerDomain;
 
-  DomainMembership({this.inViewerDomain});
+  DomainMembership({
+    this.inViewerDomain,
+  });
 
   DomainMembership.fromJson(core.Map json_)
-      : this(inViewerDomain: json_['inViewerDomain'] as core.bool?);
+      : this(
+          inViewerDomain: json_['inViewerDomain'] as core.bool?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (inViewerDomain != null) 'inViewerDomain': inViewerDomain!,
@@ -2592,8 +2598,7 @@ class EmailAddress {
           formattedType: json_['formattedType'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
           value: json_['value'] as core.String?,
@@ -2636,20 +2641,23 @@ class Event {
   /// * `other`
   core.String? type;
 
-  Event({this.date, this.formattedType, this.metadata, this.type});
+  Event({
+    this.date,
+    this.formattedType,
+    this.metadata,
+    this.type,
+  });
 
   Event.fromJson(core.Map json_)
       : this(
           date: json_.containsKey('date')
               ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['date'] as core.Map<core.String, core.dynamic>)
               : null,
           formattedType: json_['formattedType'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
         );
@@ -2682,15 +2690,19 @@ class ExternalId {
   /// The value of the external ID.
   core.String? value;
 
-  ExternalId({this.formattedType, this.metadata, this.type, this.value});
+  ExternalId({
+    this.formattedType,
+    this.metadata,
+    this.type,
+    this.value,
+  });
 
   ExternalId.fromJson(core.Map json_)
       : this(
           formattedType: json_['formattedType'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
           value: json_['value'] as core.String?,
@@ -2729,15 +2741,19 @@ class FieldMetadata {
   /// Output only.
   core.bool? verified;
 
-  FieldMetadata({this.primary, this.source, this.sourcePrimary, this.verified});
+  FieldMetadata({
+    this.primary,
+    this.source,
+    this.sourcePrimary,
+    this.verified,
+  });
 
   FieldMetadata.fromJson(core.Map json_)
       : this(
           primary: json_['primary'] as core.bool?,
           source: json_.containsKey('source')
               ? Source.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
           sourcePrimary: json_['sourcePrimary'] as core.bool?,
           verified: json_['verified'] as core.bool?,
@@ -2759,14 +2775,16 @@ class FileAs {
   /// The file-as value
   core.String? value;
 
-  FileAs({this.metadata, this.value});
+  FileAs({
+    this.metadata,
+    this.value,
+  });
 
   FileAs.fromJson(core.Map json_)
       : this(
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           value: json_['value'] as core.String?,
         );
@@ -2802,7 +2820,12 @@ class Gender {
   /// `female` * `unspecified`
   core.String? value;
 
-  Gender({this.addressMeAs, this.formattedValue, this.metadata, this.value});
+  Gender({
+    this.addressMeAs,
+    this.formattedValue,
+    this.metadata,
+    this.value,
+  });
 
   Gender.fromJson(core.Map json_)
       : this(
@@ -2810,8 +2833,7 @@ class Gender {
           formattedValue: json_['formattedValue'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           value: json_['value'] as core.String?,
         );
@@ -2829,16 +2851,15 @@ class GetPeopleResponse {
   /// The response for each requested resource name.
   core.List<PersonResponse>? responses;
 
-  GetPeopleResponse({this.responses});
+  GetPeopleResponse({
+    this.responses,
+  });
 
   GetPeopleResponse.fromJson(core.Map json_)
       : this(
           responses: (json_['responses'] as core.List?)
-              ?.map(
-                (value) => PersonResponse.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PersonResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2857,7 +2878,10 @@ class GroupClientData {
   /// The client specified value of the client data.
   core.String? value;
 
-  GroupClientData({this.key, this.value});
+  GroupClientData({
+    this.key,
+    this.value,
+  });
 
   GroupClientData.fromJson(core.Map json_)
       : this(
@@ -2919,8 +2943,7 @@ class ImClient {
           formattedType: json_['formattedType'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           protocol: json_['protocol'] as core.String?,
           type: json_['type'] as core.String?,
@@ -2945,14 +2968,16 @@ class Interest {
   /// The interest; for example, `stargazing`.
   core.String? value;
 
-  Interest({this.metadata, this.value});
+  Interest({
+    this.metadata,
+    this.value,
+  });
 
   Interest.fromJson(core.Map json_)
       : this(
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           value: json_['value'] as core.String?,
         );
@@ -3001,11 +3026,8 @@ class ListConnectionsResponse {
   ListConnectionsResponse.fromJson(core.Map json_)
       : this(
           connections: (json_['connections'] as core.List?)
-              ?.map(
-                (value) => Person.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Person.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           nextSyncToken: json_['nextSyncToken'] as core.String?,
@@ -3048,11 +3070,8 @@ class ListContactGroupsResponse {
   ListContactGroupsResponse.fromJson(core.Map json_)
       : this(
           contactGroups: (json_['contactGroups'] as core.List?)
-              ?.map(
-                (value) => ContactGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ContactGroup.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           nextSyncToken: json_['nextSyncToken'] as core.String?,
@@ -3094,11 +3113,8 @@ class ListDirectoryPeopleResponse {
           nextPageToken: json_['nextPageToken'] as core.String?,
           nextSyncToken: json_['nextSyncToken'] as core.String?,
           people: (json_['people'] as core.List?)
-              ?.map(
-                (value) => Person.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Person.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3143,11 +3159,8 @@ class ListOtherContactsResponse {
           nextPageToken: json_['nextPageToken'] as core.String?,
           nextSyncToken: json_['nextSyncToken'] as core.String?,
           otherContacts: (json_['otherContacts'] as core.List?)
-              ?.map(
-                (value) => Person.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Person.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -3169,14 +3182,16 @@ class Locale {
   /// tag representing the locale.
   core.String? value;
 
-  Locale({this.metadata, this.value});
+  Locale({
+    this.metadata,
+    this.value,
+  });
 
   Locale.fromJson(core.Map json_)
       : this(
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           value: json_['value'] as core.String?,
         );
@@ -3236,8 +3251,7 @@ class Location {
           floorSection: json_['floorSection'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
           value: json_['value'] as core.String?,
@@ -3279,21 +3293,16 @@ class Membership {
   Membership.fromJson(core.Map json_)
       : this(
           contactGroupMembership: json_.containsKey('contactGroupMembership')
-              ? ContactGroupMembership.fromJson(
-                  json_['contactGroupMembership']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ContactGroupMembership.fromJson(json_['contactGroupMembership']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           domainMembership: json_.containsKey('domainMembership')
-              ? DomainMembership.fromJson(
-                  json_['domainMembership']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? DomainMembership.fromJson(json_['domainMembership']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3335,15 +3344,19 @@ class MiscKeyword {
   /// The value of the miscellaneous keyword.
   core.String? value;
 
-  MiscKeyword({this.formattedType, this.metadata, this.type, this.value});
+  MiscKeyword({
+    this.formattedType,
+    this.metadata,
+    this.type,
+    this.value,
+  });
 
   MiscKeyword.fromJson(core.Map json_)
       : this(
           formattedType: json_['formattedType'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
           value: json_['value'] as core.String?,
@@ -3521,8 +3534,7 @@ class Name {
           honorificSuffix: json_['honorificSuffix'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           middleName: json_['middleName'] as core.String?,
           phoneticFamilyName: json_['phoneticFamilyName'] as core.String?,
@@ -3581,14 +3593,17 @@ class Nickname {
   /// The nickname.
   core.String? value;
 
-  Nickname({this.metadata, this.type, this.value});
+  Nickname({
+    this.metadata,
+    this.type,
+    this.value,
+  });
 
   Nickname.fromJson(core.Map json_)
       : this(
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
           value: json_['value'] as core.String?,
@@ -3609,14 +3624,16 @@ class Occupation {
   /// The occupation; for example, `carpenter`.
   core.String? value;
 
-  Occupation({this.metadata, this.value});
+  Occupation({
+    this.metadata,
+    this.value,
+  });
 
   Occupation.fromJson(core.Map json_)
       : this(
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           value: json_['value'] as core.String?,
         );
@@ -3716,8 +3733,7 @@ class Organization {
           domain: json_['domain'] as core.String?,
           endDate: json_.containsKey('endDate')
               ? Date.fromJson(
-                  json_['endDate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['endDate'] as core.Map<core.String, core.dynamic>)
               : null,
           formattedType: json_['formattedType'] as core.String?,
           fullTimeEquivalentMillipercent:
@@ -3726,15 +3742,13 @@ class Organization {
           location: json_['location'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           phoneticName: json_['phoneticName'] as core.String?,
           startDate: json_.containsKey('startDate')
               ? Date.fromJson(
-                  json_['startDate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['startDate'] as core.Map<core.String, core.dynamic>)
               : null,
           symbol: json_['symbol'] as core.String?,
           title: json_['title'] as core.String?,
@@ -3991,250 +4005,147 @@ class Person {
   Person.fromJson(core.Map json_)
       : this(
           addresses: (json_['addresses'] as core.List?)
-              ?.map(
-                (value) => Address.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Address.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           ageRange: json_['ageRange'] as core.String?,
           ageRanges: (json_['ageRanges'] as core.List?)
-              ?.map(
-                (value) => AgeRangeType.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AgeRangeType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           biographies: (json_['biographies'] as core.List?)
-              ?.map(
-                (value) => Biography.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Biography.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           birthdays: (json_['birthdays'] as core.List?)
-              ?.map(
-                (value) => Birthday.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Birthday.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           braggingRights: (json_['braggingRights'] as core.List?)
-              ?.map(
-                (value) => BraggingRights.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => BraggingRights.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           calendarUrls: (json_['calendarUrls'] as core.List?)
-              ?.map(
-                (value) => CalendarUrl.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CalendarUrl.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           clientData: (json_['clientData'] as core.List?)
-              ?.map(
-                (value) => ClientData.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ClientData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           coverPhotos: (json_['coverPhotos'] as core.List?)
-              ?.map(
-                (value) => CoverPhoto.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CoverPhoto.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           emailAddresses: (json_['emailAddresses'] as core.List?)
-              ?.map(
-                (value) => EmailAddress.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => EmailAddress.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           events: (json_['events'] as core.List?)
-              ?.map(
-                (value) => Event.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Event.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           externalIds: (json_['externalIds'] as core.List?)
-              ?.map(
-                (value) => ExternalId.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ExternalId.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           fileAses: (json_['fileAses'] as core.List?)
-              ?.map(
-                (value) => FileAs.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  FileAs.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           genders: (json_['genders'] as core.List?)
-              ?.map(
-                (value) => Gender.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Gender.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           imClients: (json_['imClients'] as core.List?)
-              ?.map(
-                (value) => ImClient.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ImClient.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           interests: (json_['interests'] as core.List?)
-              ?.map(
-                (value) => Interest.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Interest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           locales: (json_['locales'] as core.List?)
-              ?.map(
-                (value) => Locale.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Locale.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           locations: (json_['locations'] as core.List?)
-              ?.map(
-                (value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           memberships: (json_['memberships'] as core.List?)
-              ?.map(
-                (value) => Membership.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Membership.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           metadata: json_.containsKey('metadata')
               ? PersonMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           miscKeywords: (json_['miscKeywords'] as core.List?)
-              ?.map(
-                (value) => MiscKeyword.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => MiscKeyword.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           names: (json_['names'] as core.List?)
-              ?.map(
-                (value) => Name.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Name.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nicknames: (json_['nicknames'] as core.List?)
-              ?.map(
-                (value) => Nickname.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Nickname.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           occupations: (json_['occupations'] as core.List?)
-              ?.map(
-                (value) => Occupation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Occupation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           organizations: (json_['organizations'] as core.List?)
-              ?.map(
-                (value) => Organization.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Organization.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           phoneNumbers: (json_['phoneNumbers'] as core.List?)
-              ?.map(
-                (value) => PhoneNumber.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PhoneNumber.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           photos: (json_['photos'] as core.List?)
-              ?.map(
-                (value) => Photo.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Photo.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           relations: (json_['relations'] as core.List?)
-              ?.map(
-                (value) => Relation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Relation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           relationshipInterests: (json_['relationshipInterests'] as core.List?)
-              ?.map(
-                (value) => RelationshipInterest.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => RelationshipInterest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           relationshipStatuses: (json_['relationshipStatuses'] as core.List?)
-              ?.map(
-                (value) => RelationshipStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => RelationshipStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           residences: (json_['residences'] as core.List?)
-              ?.map(
-                (value) => Residence.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Residence.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           resourceName: json_['resourceName'] as core.String?,
           sipAddresses: (json_['sipAddresses'] as core.List?)
-              ?.map(
-                (value) => SipAddress.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SipAddress.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           skills: (json_['skills'] as core.List?)
-              ?.map(
-                (value) => Skill.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Skill.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           taglines: (json_['taglines'] as core.List?)
-              ?.map(
-                (value) => Tagline.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Tagline.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           urls: (json_['urls'] as core.List?)
-              ?.map(
-                (value) => Url.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Url.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           userDefined: (json_['userDefined'] as core.List?)
-              ?.map(
-                (value) => UserDefined.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => UserDefined.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4345,11 +4256,8 @@ class PersonMetadata {
               ?.map((value) => value as core.String)
               .toList(),
           sources: (json_['sources'] as core.List?)
-              ?.map(
-                (value) => Source.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Source.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4399,14 +4307,12 @@ class PersonResponse {
           httpStatusCode: json_['httpStatusCode'] as core.int?,
           person: json_.containsKey('person')
               ? Person.fromJson(
-                  json_['person'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['person'] as core.Map<core.String, core.dynamic>)
               : null,
           requestedResourceName: json_['requestedResourceName'] as core.String?,
           status: json_.containsKey('status')
               ? Status.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4461,8 +4367,7 @@ class PhoneNumber {
           formattedType: json_['formattedType'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
           value: json_['value'] as core.String?,
@@ -4496,15 +4401,18 @@ class Photo {
   /// https://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/AAAAAAAABa8/00gzXvDBYqw/s100/photo.jpg?sz=50
   core.String? url;
 
-  Photo({this.default_, this.metadata, this.url});
+  Photo({
+    this.default_,
+    this.metadata,
+    this.url,
+  });
 
   Photo.fromJson(core.Map json_)
       : this(
           default_: json_['default'] as core.bool?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           url: json_['url'] as core.String?,
         );
@@ -4533,7 +4441,10 @@ class ProfileMetadata {
   /// Output only.
   core.List<core.String>? userTypes;
 
-  ProfileMetadata({this.objectType, this.userTypes});
+  ProfileMetadata({
+    this.objectType,
+    this.userTypes,
+  });
 
   ProfileMetadata.fromJson(core.Map json_)
       : this(
@@ -4571,15 +4482,19 @@ class Relation {
   /// * `partner`
   core.String? type;
 
-  Relation({this.formattedType, this.metadata, this.person, this.type});
+  Relation({
+    this.formattedType,
+    this.metadata,
+    this.person,
+    this.type,
+  });
 
   Relation.fromJson(core.Map json_)
       : this(
           formattedType: json_['formattedType'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           person: json_['person'] as core.String?,
           type: json_['type'] as core.String?,
@@ -4611,15 +4526,18 @@ class RelationshipInterest {
   /// `date` * `relationship` * `networking`
   core.String? value;
 
-  RelationshipInterest({this.formattedValue, this.metadata, this.value});
+  RelationshipInterest({
+    this.formattedValue,
+    this.metadata,
+    this.value,
+  });
 
   RelationshipInterest.fromJson(core.Map json_)
       : this(
           formattedValue: json_['formattedValue'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           value: json_['value'] as core.String?,
         );
@@ -4649,15 +4567,18 @@ class RelationshipStatus {
   /// `openRelationship` * `widowed` * `inDomesticPartnership` * `inCivilUnion`
   core.String? value;
 
-  RelationshipStatus({this.formattedValue, this.metadata, this.value});
+  RelationshipStatus({
+    this.formattedValue,
+    this.metadata,
+    this.value,
+  });
 
   RelationshipStatus.fromJson(core.Map json_)
       : this(
           formattedValue: json_['formattedValue'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           value: json_['value'] as core.String?,
         );
@@ -4683,15 +4604,18 @@ class Residence {
   /// The address of the residence.
   core.String? value;
 
-  Residence({this.current, this.metadata, this.value});
+  Residence({
+    this.current,
+    this.metadata,
+    this.value,
+  });
 
   Residence.fromJson(core.Map json_)
       : this(
           current: json_['current'] as core.bool?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           value: json_['value'] as core.String?,
         );
@@ -4727,11 +4651,8 @@ class SearchDirectoryPeopleResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           people: (json_['people'] as core.List?)
-              ?.map(
-                (value) => Person.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Person.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -4748,16 +4669,15 @@ class SearchResponse {
   /// The results of the request.
   core.List<SearchResult>? results;
 
-  SearchResponse({this.results});
+  SearchResponse({
+    this.results,
+  });
 
   SearchResponse.fromJson(core.Map json_)
       : this(
           results: (json_['results'] as core.List?)
-              ?.map(
-                (value) => SearchResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SearchResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4771,14 +4691,15 @@ class SearchResult {
   /// The matched Person.
   Person? person;
 
-  SearchResult({this.person});
+  SearchResult({
+    this.person,
+  });
 
   SearchResult.fromJson(core.Map json_)
       : this(
           person: json_.containsKey('person')
               ? Person.fromJson(
-                  json_['person'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['person'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4812,15 +4733,19 @@ class SipAddress {
   /// format.
   core.String? value;
 
-  SipAddress({this.formattedType, this.metadata, this.type, this.value});
+  SipAddress({
+    this.formattedType,
+    this.metadata,
+    this.type,
+    this.value,
+  });
 
   SipAddress.fromJson(core.Map json_)
       : this(
           formattedType: json_['formattedType'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
           value: json_['value'] as core.String?,
@@ -4842,14 +4767,16 @@ class Skill {
   /// The skill; for example, `underwater basket weaving`.
   core.String? value;
 
-  Skill({this.metadata, this.value});
+  Skill({
+    this.metadata,
+    this.value,
+  });
 
   Skill.fromJson(core.Map json_)
       : this(
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           value: json_['value'] as core.String?,
         );
@@ -4916,10 +4843,8 @@ class Source {
           etag: json_['etag'] as core.String?,
           id: json_['id'] as core.String?,
           profileMetadata: json_.containsKey('profileMetadata')
-              ? ProfileMetadata.fromJson(
-                  json_['profileMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ProfileMetadata.fromJson(json_['profileMetadata']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -4952,14 +4877,16 @@ class Tagline {
   /// The tagline.
   core.String? value;
 
-  Tagline({this.metadata, this.value});
+  Tagline({
+    this.metadata,
+    this.value,
+  });
 
   Tagline.fromJson(core.Map json_)
       : this(
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           value: json_['value'] as core.String?,
         );
@@ -5007,8 +4934,7 @@ class UpdateContactGroupRequest {
       : this(
           contactGroup: json_.containsKey('contactGroup')
               ? ContactGroup.fromJson(
-                  json_['contactGroup'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['contactGroup'] as core.Map<core.String, core.dynamic>)
               : null,
           readGroupFields: json_['readGroupFields'] as core.String?,
           updateGroupFields: json_['updateGroupFields'] as core.String?,
@@ -5059,7 +4985,11 @@ class UpdateContactPhotoRequest {
   /// Optional.
   core.List<core.String>? sources;
 
-  UpdateContactPhotoRequest({this.personFields, this.photoBytes, this.sources});
+  UpdateContactPhotoRequest({
+    this.personFields,
+    this.photoBytes,
+    this.sources,
+  });
 
   UpdateContactPhotoRequest.fromJson(core.Map json_)
       : this(
@@ -5083,14 +5013,15 @@ class UpdateContactPhotoResponse {
   /// UpdateContactPhotoRequest; otherwise this will be unset.
   Person? person;
 
-  UpdateContactPhotoResponse({this.person});
+  UpdateContactPhotoResponse({
+    this.person,
+  });
 
   UpdateContactPhotoResponse.fromJson(core.Map json_)
       : this(
           person: json_.containsKey('person')
               ? Person.fromJson(
-                  json_['person'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['person'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5120,15 +5051,19 @@ class Url {
   /// The URL.
   core.String? value;
 
-  Url({this.formattedType, this.metadata, this.type, this.value});
+  Url({
+    this.formattedType,
+    this.metadata,
+    this.type,
+    this.value,
+  });
 
   Url.fromJson(core.Map json_)
       : this(
           formattedType: json_['formattedType'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
           value: json_['value'] as core.String?,
@@ -5153,15 +5088,18 @@ class UserDefined {
   /// The end user specified value of the user defined data.
   core.String? value;
 
-  UserDefined({this.key, this.metadata, this.value});
+  UserDefined({
+    this.key,
+    this.metadata,
+    this.value,
+  });
 
   UserDefined.fromJson(core.Map json_)
       : this(
           key: json_['key'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? FieldMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           value: json_['value'] as core.String?,
         );

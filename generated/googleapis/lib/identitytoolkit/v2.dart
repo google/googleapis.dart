@@ -69,16 +69,11 @@ class IdentityToolkitApi {
   ProjectsResource get projects => ProjectsResource(_requester);
   V2Resource get v2 => V2Resource(_requester);
 
-  IdentityToolkitApi(
-    http.Client client, {
-    core.String rootUrl = 'https://identitytoolkit.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  IdentityToolkitApi(http.Client client,
+      {core.String rootUrl = 'https://identitytoolkit.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class AccountsResource {
@@ -130,8 +125,7 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitV2RevokeTokenResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -177,8 +171,7 @@ class AccountsMfaEnrollmentResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Step one of the MFA enrollment process.
@@ -217,8 +210,7 @@ class AccountsMfaEnrollmentResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitV2StartMfaEnrollmentResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Revokes one second factor from the enrolled second factors for an account.
@@ -255,8 +247,7 @@ class AccountsMfaEnrollmentResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitV2WithdrawMfaResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -299,8 +290,7 @@ class AccountsMfaSignInResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitV2FinalizeMfaSignInResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sends the MFA challenge
@@ -337,8 +327,7 @@ class AccountsMfaSignInResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitV2StartMfaSignInResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -389,9 +378,7 @@ class DefaultSupportedIdpsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -444,8 +431,7 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2Config.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update an Identity Toolkit project configuration.
@@ -494,8 +480,7 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2Config.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -553,8 +538,7 @@ class ProjectsDefaultSupportedIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a default supported Idp configuration for an Identity Toolkit
@@ -593,8 +577,7 @@ class ProjectsDefaultSupportedIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieve a default supported Idp configuration for an Identity Toolkit
@@ -634,8 +617,7 @@ class ProjectsDefaultSupportedIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all default supported Idp configurations for an Identity Toolkit
@@ -686,9 +668,7 @@ class ProjectsDefaultSupportedIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a default supported Idp configuration for an Identity Toolkit
@@ -740,8 +720,7 @@ class ProjectsDefaultSupportedIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -800,9 +779,7 @@ class ProjectsIdentityPlatformResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -856,8 +833,7 @@ class ProjectsInboundSamlConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete an inbound SAML configuration for an Identity Toolkit project.
@@ -894,8 +870,7 @@ class ProjectsInboundSamlConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieve an inbound SAML configuration for an Identity Toolkit project.
@@ -932,8 +907,7 @@ class ProjectsInboundSamlConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all inbound SAML configurations for an Identity Toolkit project.
@@ -981,9 +955,7 @@ class ProjectsInboundSamlConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update an inbound SAML configuration for an Identity Toolkit project.
@@ -1032,8 +1004,7 @@ class ProjectsInboundSamlConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1086,8 +1057,7 @@ class ProjectsOauthIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete an Oidc Idp configuration for an Identity Toolkit project.
@@ -1124,8 +1094,7 @@ class ProjectsOauthIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieve an Oidc Idp configuration for an Identity Toolkit project.
@@ -1162,8 +1131,7 @@ class ProjectsOauthIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all Oidc Idp configurations for an Identity Toolkit project.
@@ -1211,9 +1179,7 @@ class ProjectsOauthIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update an Oidc Idp configuration for an Identity Toolkit project.
@@ -1262,8 +1228,7 @@ class ProjectsOauthIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1321,8 +1286,7 @@ class ProjectsTenantsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2Tenant.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a tenant.
@@ -1360,8 +1324,7 @@ class ProjectsTenantsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a tenant.
@@ -1399,8 +1362,7 @@ class ProjectsTenantsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2Tenant.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -1448,8 +1410,7 @@ class ProjectsTenantsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List tenants under the given agent project.
@@ -1497,8 +1458,7 @@ class ProjectsTenantsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2ListTenantsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a tenant.
@@ -1549,8 +1509,7 @@ class ProjectsTenantsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2Tenant.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy for a resource.
@@ -1597,8 +1556,7 @@ class ProjectsTenantsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the caller's permissions on a resource.
@@ -1646,8 +1604,7 @@ class ProjectsTenantsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1705,8 +1662,7 @@ class ProjectsTenantsDefaultSupportedIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a default supported Idp configuration for an Identity Toolkit
@@ -1745,8 +1701,7 @@ class ProjectsTenantsDefaultSupportedIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieve a default supported Idp configuration for an Identity Toolkit
@@ -1786,8 +1741,7 @@ class ProjectsTenantsDefaultSupportedIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all default supported Idp configurations for an Identity Toolkit
@@ -1838,9 +1792,7 @@ class ProjectsTenantsDefaultSupportedIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a default supported Idp configuration for an Identity Toolkit
@@ -1892,8 +1844,7 @@ class ProjectsTenantsDefaultSupportedIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1947,8 +1898,7 @@ class ProjectsTenantsInboundSamlConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete an inbound SAML configuration for an Identity Toolkit project.
@@ -1986,8 +1936,7 @@ class ProjectsTenantsInboundSamlConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieve an inbound SAML configuration for an Identity Toolkit project.
@@ -2025,8 +1974,7 @@ class ProjectsTenantsInboundSamlConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all inbound SAML configurations for an Identity Toolkit project.
@@ -2074,9 +2022,7 @@ class ProjectsTenantsInboundSamlConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update an inbound SAML configuration for an Identity Toolkit project.
@@ -2126,8 +2072,7 @@ class ProjectsTenantsInboundSamlConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2180,8 +2125,7 @@ class ProjectsTenantsOauthIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete an Oidc Idp configuration for an Identity Toolkit project.
@@ -2219,8 +2163,7 @@ class ProjectsTenantsOauthIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieve an Oidc Idp configuration for an Identity Toolkit project.
@@ -2258,8 +2201,7 @@ class ProjectsTenantsOauthIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all Oidc Idp configurations for an Identity Toolkit project.
@@ -2307,9 +2249,7 @@ class ProjectsTenantsOauthIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update an Oidc Idp configuration for an Identity Toolkit project.
@@ -2359,8 +2299,7 @@ class ProjectsTenantsOauthIdpConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2402,8 +2341,7 @@ class V2Resource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitV2PasswordPolicy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets parameters needed for reCAPTCHA analysis.
@@ -2457,8 +2395,7 @@ class V2Resource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitV2RecaptchaConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2470,7 +2407,9 @@ class GoogleCloudIdentitytoolkitAdminV2AllowByDefault {
   /// https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
   core.List<core.String>? disallowedRegions;
 
-  GoogleCloudIdentitytoolkitAdminV2AllowByDefault({this.disallowedRegions});
+  GoogleCloudIdentitytoolkitAdminV2AllowByDefault({
+    this.disallowedRegions,
+  });
 
   GoogleCloudIdentitytoolkitAdminV2AllowByDefault.fromJson(core.Map json_)
       : this(
@@ -2492,7 +2431,9 @@ class GoogleCloudIdentitytoolkitAdminV2AllowlistOnly {
   /// https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
   core.List<core.String>? allowedRegions;
 
-  GoogleCloudIdentitytoolkitAdminV2AllowlistOnly({this.allowedRegions});
+  GoogleCloudIdentitytoolkitAdminV2AllowlistOnly({
+    this.allowedRegions,
+  });
 
   GoogleCloudIdentitytoolkitAdminV2AllowlistOnly.fromJson(core.Map json_)
       : this(
@@ -2511,10 +2452,14 @@ class GoogleCloudIdentitytoolkitAdminV2Anonymous {
   /// Whether anonymous user auth is enabled for the project or not.
   core.bool? enabled;
 
-  GoogleCloudIdentitytoolkitAdminV2Anonymous({this.enabled});
+  GoogleCloudIdentitytoolkitAdminV2Anonymous({
+    this.enabled,
+  });
 
   GoogleCloudIdentitytoolkitAdminV2Anonymous.fromJson(core.Map json_)
-      : this(enabled: json_['enabled'] as core.bool?);
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -2542,8 +2487,7 @@ class GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig {
           codeFlowConfig: json_.containsKey('codeFlowConfig')
               ? GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig.fromJson(
                   json_['codeFlowConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2572,23 +2516,20 @@ class GoogleCloudIdentitytoolkitAdminV2BlockingFunctionsConfig {
   });
 
   GoogleCloudIdentitytoolkitAdminV2BlockingFunctionsConfig.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           forwardInboundCredentials:
               json_.containsKey('forwardInboundCredentials')
                   ? GoogleCloudIdentitytoolkitAdminV2ForwardInboundCredentials
-                      .fromJson(
-                      json_['forwardInboundCredentials']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                      .fromJson(json_['forwardInboundCredentials']
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           triggers:
               (json_['triggers'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
               key,
               GoogleCloudIdentitytoolkitAdminV2Trigger.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
         );
@@ -2629,8 +2570,7 @@ class GoogleCloudIdentitytoolkitAdminV2ClientConfig {
           firebaseSubdomain: json_['firebaseSubdomain'] as core.String?,
           permissions: json_.containsKey('permissions')
               ? GoogleCloudIdentitytoolkitAdminV2Permissions.fromJson(
-                  json_['permissions'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['permissions'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2648,15 +2588,16 @@ class GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig {
   /// account.
   GoogleCloudIdentitytoolkitAdminV2ClientPermissions? permissions;
 
-  GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig({this.permissions});
+  GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig({
+    this.permissions,
+  });
 
   GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           permissions: json_.containsKey('permissions')
               ? GoogleCloudIdentitytoolkitAdminV2ClientPermissions.fromJson(
-                  json_['permissions'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['permissions'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2790,70 +2731,57 @@ class GoogleCloudIdentitytoolkitAdminV2Config {
               json_['autodeleteAnonymousUsers'] as core.bool?,
           blockingFunctions: json_.containsKey('blockingFunctions')
               ? GoogleCloudIdentitytoolkitAdminV2BlockingFunctionsConfig
-                  .fromJson(
-                  json_['blockingFunctions']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['blockingFunctions']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           client: json_.containsKey('client')
               ? GoogleCloudIdentitytoolkitAdminV2ClientConfig.fromJson(
-                  json_['client'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['client'] as core.Map<core.String, core.dynamic>)
               : null,
           emailPrivacyConfig: json_.containsKey('emailPrivacyConfig')
               ? GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig.fromJson(
                   json_['emailPrivacyConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           mfa: json_.containsKey('mfa')
               ? GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig.fromJson(
-                  json_['mfa'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['mfa'] as core.Map<core.String, core.dynamic>)
               : null,
           monitoring: json_.containsKey('monitoring')
               ? GoogleCloudIdentitytoolkitAdminV2MonitoringConfig.fromJson(
-                  json_['monitoring'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['monitoring'] as core.Map<core.String, core.dynamic>)
               : null,
           multiTenant: json_.containsKey('multiTenant')
               ? GoogleCloudIdentitytoolkitAdminV2MultiTenantConfig.fromJson(
-                  json_['multiTenant'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['multiTenant'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           notification: json_.containsKey('notification')
               ? GoogleCloudIdentitytoolkitAdminV2NotificationConfig.fromJson(
-                  json_['notification'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['notification'] as core.Map<core.String, core.dynamic>)
               : null,
           passwordPolicyConfig: json_.containsKey('passwordPolicyConfig')
               ? GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig.fromJson(
                   json_['passwordPolicyConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           quota: json_.containsKey('quota')
               ? GoogleCloudIdentitytoolkitAdminV2QuotaConfig.fromJson(
-                  json_['quota'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['quota'] as core.Map<core.String, core.dynamic>)
               : null,
           recaptchaConfig: json_.containsKey('recaptchaConfig')
               ? GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig.fromJson(
                   json_['recaptchaConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           signIn: json_.containsKey('signIn')
               ? GoogleCloudIdentitytoolkitAdminV2SignInConfig.fromJson(
-                  json_['signIn'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['signIn'] as core.Map<core.String, core.dynamic>)
               : null,
           smsRegionConfig: json_.containsKey('smsRegionConfig')
               ? GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig.fromJson(
                   json_['smsRegionConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           subtype: json_['subtype'] as core.String?,
         );
@@ -2938,13 +2866,12 @@ class GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig {
   });
 
   GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           appleSignInConfig: json_.containsKey('appleSignInConfig')
               ? GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig.fromJson(
                   json_['appleSignInConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           clientId: json_['clientId'] as core.String?,
           clientSecret: json_['clientSecret'] as core.String?,
@@ -3039,7 +2966,10 @@ class GoogleCloudIdentitytoolkitAdminV2Email {
   /// a user may sign in via either email/password or email link.
   core.bool? passwordRequired;
 
-  GoogleCloudIdentitytoolkitAdminV2Email({this.enabled, this.passwordRequired});
+  GoogleCloudIdentitytoolkitAdminV2Email({
+    this.enabled,
+    this.passwordRequired,
+  });
 
   GoogleCloudIdentitytoolkitAdminV2Email.fromJson(core.Map json_)
       : this(
@@ -3171,8 +3101,8 @@ class GoogleCloudIdentitytoolkitAdminV2ForwardInboundCredentials {
   });
 
   GoogleCloudIdentitytoolkitAdminV2ForwardInboundCredentials.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           accessToken: json_['accessToken'] as core.bool?,
           idToken: json_['idToken'] as core.bool?,
           refreshToken: json_['refreshToken'] as core.bool?,
@@ -3267,10 +3197,14 @@ class GoogleCloudIdentitytoolkitAdminV2IdpCertificate {
   /// The x509 certificate
   core.String? x509Certificate;
 
-  GoogleCloudIdentitytoolkitAdminV2IdpCertificate({this.x509Certificate});
+  GoogleCloudIdentitytoolkitAdminV2IdpCertificate({
+    this.x509Certificate,
+  });
 
   GoogleCloudIdentitytoolkitAdminV2IdpCertificate.fromJson(core.Map json_)
-      : this(x509Certificate: json_['x509Certificate'] as core.String?);
+      : this(
+          x509Certificate: json_['x509Certificate'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (x509Certificate != null) 'x509Certificate': x509Certificate!,
@@ -3302,12 +3236,9 @@ class GoogleCloudIdentitytoolkitAdminV2IdpConfig {
   GoogleCloudIdentitytoolkitAdminV2IdpConfig.fromJson(core.Map json_)
       : this(
           idpCertificates: (json_['idpCertificates'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudIdentitytoolkitAdminV2IdpCertificate.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudIdentitytoolkitAdminV2IdpCertificate.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           idpEntityId: json_['idpEntityId'] as core.String?,
           signRequest: json_['signRequest'] as core.bool?,
@@ -3360,14 +3291,12 @@ class GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig {
           enabled: json_['enabled'] as core.bool?,
           idpConfig: json_.containsKey('idpConfig')
               ? GoogleCloudIdentitytoolkitAdminV2IdpConfig.fromJson(
-                  json_['idpConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['idpConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           spConfig: json_.containsKey('spConfig')
               ? GoogleCloudIdentitytoolkitAdminV2SpConfig.fromJson(
-                  json_['spConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['spConfig'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3390,10 +3319,14 @@ class GoogleCloudIdentitytoolkitAdminV2Inheritance {
   /// default settings with no customizations.
   core.bool? emailSendingConfig;
 
-  GoogleCloudIdentitytoolkitAdminV2Inheritance({this.emailSendingConfig});
+  GoogleCloudIdentitytoolkitAdminV2Inheritance({
+    this.emailSendingConfig,
+  });
 
   GoogleCloudIdentitytoolkitAdminV2Inheritance.fromJson(core.Map json_)
-      : this(emailSendingConfig: json_['emailSendingConfig'] as core.bool?);
+      : this(
+          emailSendingConfig: json_['emailSendingConfig'] as core.bool?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (emailSendingConfig != null)
@@ -3427,18 +3360,14 @@ class GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse {
   });
 
   GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse.fromJson(
-    core.Map json_,
-  ) : this(
-          defaultSupportedIdpConfigs:
-              (json_['defaultSupportedIdpConfigs'] as core.List?)
-                  ?.map(
-                    (value) =>
-                        GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig
-                            .fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
-                  .toList(),
+      core.Map json_)
+      : this(
+          defaultSupportedIdpConfigs: (json_['defaultSupportedIdpConfigs']
+                  as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -3465,15 +3394,12 @@ class GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse {
   });
 
   GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           defaultSupportedIdps: (json_['defaultSupportedIdps'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp
-                    .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -3501,15 +3427,12 @@ class GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse {
   });
 
   GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           inboundSamlConfigs: (json_['inboundSamlConfigs'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -3536,16 +3459,13 @@ class GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse {
   });
 
   GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           oauthIdpConfigs: (json_['oauthIdpConfigs'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3572,11 +3492,8 @@ class GoogleCloudIdentitytoolkitAdminV2ListTenantsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           tenants: (json_['tenants'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudIdentitytoolkitAdminV2Tenant.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudIdentitytoolkitAdminV2Tenant.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3592,15 +3509,16 @@ class GoogleCloudIdentitytoolkitAdminV2MonitoringConfig {
   /// Logging
   GoogleCloudIdentitytoolkitAdminV2RequestLogging? requestLogging;
 
-  GoogleCloudIdentitytoolkitAdminV2MonitoringConfig({this.requestLogging});
+  GoogleCloudIdentitytoolkitAdminV2MonitoringConfig({
+    this.requestLogging,
+  });
 
   GoogleCloudIdentitytoolkitAdminV2MonitoringConfig.fromJson(core.Map json_)
       : this(
           requestLogging: json_.containsKey('requestLogging')
               ? GoogleCloudIdentitytoolkitAdminV2RequestLogging.fromJson(
                   json_['requestLogging']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3637,18 +3555,15 @@ class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig {
   });
 
   GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           enabledProviders: (json_['enabledProviders'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           providerConfigs: (json_['providerConfigs'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudIdentitytoolkitAdminV2ProviderConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudIdentitytoolkitAdminV2ProviderConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           state: json_['state'] as core.String?,
         );
@@ -3714,13 +3629,11 @@ class GoogleCloudIdentitytoolkitAdminV2NotificationConfig {
           defaultLocale: json_['defaultLocale'] as core.String?,
           sendEmail: json_.containsKey('sendEmail')
               ? GoogleCloudIdentitytoolkitAdminV2SendEmail.fromJson(
-                  json_['sendEmail'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['sendEmail'] as core.Map<core.String, core.dynamic>)
               : null,
           sendSms: json_.containsKey('sendSms')
               ? GoogleCloudIdentitytoolkitAdminV2SendSms.fromJson(
-                  json_['sendSms'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['sendSms'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3781,8 +3694,7 @@ class GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig {
           name: json_['name'] as core.String?,
           responseType: json_.containsKey('responseType')
               ? GoogleCloudIdentitytoolkitAdminV2OAuthResponseType.fromJson(
-                  json_['responseType'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['responseType'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3877,16 +3789,12 @@ class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig {
           lastUpdateTime: json_['lastUpdateTime'] as core.String?,
           passwordPolicyEnforcementState:
               json_['passwordPolicyEnforcementState'] as core.String?,
-          passwordPolicyVersions:
-              (json_['passwordPolicyVersions'] as core.List?)
-                  ?.map(
-                    (value) =>
-                        GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion
-                            .fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
-                  .toList(),
+          passwordPolicyVersions: (json_['passwordPolicyVersions']
+                  as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3916,13 +3824,12 @@ class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion {
   });
 
   GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           customStrengthOptions: json_.containsKey('customStrengthOptions')
               ? GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions.fromJson(
                   json_['customStrengthOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           schemaVersion: json_['schemaVersion'] as core.int?,
         );
@@ -3956,7 +3863,12 @@ class GoogleCloudIdentitytoolkitAdminV2PhoneNumber {
           enabled: json_['enabled'] as core.bool?,
           testPhoneNumbers: (json_['testPhoneNumbers']
                   as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3992,8 +3904,7 @@ class GoogleCloudIdentitytoolkitAdminV2ProviderConfig {
           totpProviderConfig: json_.containsKey('totpProviderConfig')
               ? GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig.fromJson(
                   json_['totpProviderConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4011,15 +3922,16 @@ class GoogleCloudIdentitytoolkitAdminV2QuotaConfig {
   /// Signup quota is measured in sign ups per project per hour per IP.
   GoogleCloudIdentitytoolkitAdminV2TemporaryQuota? signUpQuotaConfig;
 
-  GoogleCloudIdentitytoolkitAdminV2QuotaConfig({this.signUpQuotaConfig});
+  GoogleCloudIdentitytoolkitAdminV2QuotaConfig({
+    this.signUpQuotaConfig,
+  });
 
   GoogleCloudIdentitytoolkitAdminV2QuotaConfig.fromJson(core.Map json_)
       : this(
           signUpQuotaConfig: json_.containsKey('signUpQuotaConfig')
               ? GoogleCloudIdentitytoolkitAdminV2TemporaryQuota.fromJson(
                   json_['signUpQuotaConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4108,30 +4020,20 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
           emailPasswordEnforcementState:
               json_['emailPasswordEnforcementState'] as core.String?,
           managedRules: (json_['managedRules'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule
-                    .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           phoneEnforcementState: json_['phoneEnforcementState'] as core.String?,
           recaptchaKeys: (json_['recaptchaKeys'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudIdentitytoolkitAdminV2RecaptchaKey.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudIdentitytoolkitAdminV2RecaptchaKey.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           tollFraudManagedRules: (json_['tollFraudManagedRules'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule
-                        .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           useAccountDefender: json_['useAccountDefender'] as core.bool?,
           useSmsBotScore: json_['useSmsBotScore'] as core.bool?,
@@ -4172,7 +4074,10 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaKey {
   /// - "ANDROID" : Client type is Android.
   core.String? type;
 
-  GoogleCloudIdentitytoolkitAdminV2RecaptchaKey({this.key, this.type});
+  GoogleCloudIdentitytoolkitAdminV2RecaptchaKey({
+    this.key,
+    this.type,
+  });
 
   GoogleCloudIdentitytoolkitAdminV2RecaptchaKey.fromJson(core.Map json_)
       : this(
@@ -4253,8 +4158,8 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule {
   });
 
   GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           action: json_['action'] as core.String?,
           startScore: (json_['startScore'] as core.num?)?.toDouble(),
         );
@@ -4271,10 +4176,14 @@ class GoogleCloudIdentitytoolkitAdminV2RequestLogging {
   /// Whether logging is enabled for this project or not.
   core.bool? enabled;
 
-  GoogleCloudIdentitytoolkitAdminV2RequestLogging({this.enabled});
+  GoogleCloudIdentitytoolkitAdminV2RequestLogging({
+    this.enabled,
+  });
 
   GoogleCloudIdentitytoolkitAdminV2RequestLogging.fromJson(core.Map json_)
-      : this(enabled: json_['enabled'] as core.bool?);
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -4334,45 +4243,38 @@ class GoogleCloudIdentitytoolkitAdminV2SendEmail {
           changeEmailTemplate: json_.containsKey('changeEmailTemplate')
               ? GoogleCloudIdentitytoolkitAdminV2EmailTemplate.fromJson(
                   json_['changeEmailTemplate']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           dnsInfo: json_.containsKey('dnsInfo')
               ? GoogleCloudIdentitytoolkitAdminV2DnsInfo.fromJson(
-                  json_['dnsInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['dnsInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           legacyResetPasswordTemplate:
               json_.containsKey('legacyResetPasswordTemplate')
                   ? GoogleCloudIdentitytoolkitAdminV2EmailTemplate.fromJson(
                       json_['legacyResetPasswordTemplate']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           method: json_['method'] as core.String?,
           resetPasswordTemplate: json_.containsKey('resetPasswordTemplate')
               ? GoogleCloudIdentitytoolkitAdminV2EmailTemplate.fromJson(
                   json_['resetPasswordTemplate']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           revertSecondFactorAdditionTemplate:
               json_.containsKey('revertSecondFactorAdditionTemplate')
                   ? GoogleCloudIdentitytoolkitAdminV2EmailTemplate.fromJson(
                       json_['revertSecondFactorAdditionTemplate']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           smtp: json_.containsKey('smtp')
               ? GoogleCloudIdentitytoolkitAdminV2Smtp.fromJson(
-                  json_['smtp'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['smtp'] as core.Map<core.String, core.dynamic>)
               : null,
           verifyEmailTemplate: json_.containsKey('verifyEmailTemplate')
               ? GoogleCloudIdentitytoolkitAdminV2EmailTemplate.fromJson(
                   json_['verifyEmailTemplate']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4414,8 +4316,7 @@ class GoogleCloudIdentitytoolkitAdminV2SendSms {
       : this(
           smsTemplate: json_.containsKey('smsTemplate')
               ? GoogleCloudIdentitytoolkitAdminV2SmsTemplate.fromJson(
-                  json_['smsTemplate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['smsTemplate'] as core.Map<core.String, core.dynamic>)
               : null,
           useDeviceLocale: json_['useDeviceLocale'] as core.bool?,
         );
@@ -4460,23 +4361,19 @@ class GoogleCloudIdentitytoolkitAdminV2SignInConfig {
           allowDuplicateEmails: json_['allowDuplicateEmails'] as core.bool?,
           anonymous: json_.containsKey('anonymous')
               ? GoogleCloudIdentitytoolkitAdminV2Anonymous.fromJson(
-                  json_['anonymous'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['anonymous'] as core.Map<core.String, core.dynamic>)
               : null,
           email: json_.containsKey('email')
               ? GoogleCloudIdentitytoolkitAdminV2Email.fromJson(
-                  json_['email'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['email'] as core.Map<core.String, core.dynamic>)
               : null,
           hashConfig: json_.containsKey('hashConfig')
               ? GoogleCloudIdentitytoolkitAdminV2HashConfig.fromJson(
-                  json_['hashConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['hashConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           phoneNumber: json_.containsKey('phoneNumber')
               ? GoogleCloudIdentitytoolkitAdminV2PhoneNumber.fromJson(
-                  json_['phoneNumber'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['phoneNumber'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4513,13 +4410,11 @@ class GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig {
           allowByDefault: json_.containsKey('allowByDefault')
               ? GoogleCloudIdentitytoolkitAdminV2AllowByDefault.fromJson(
                   json_['allowByDefault']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           allowlistOnly: json_.containsKey('allowlistOnly')
               ? GoogleCloudIdentitytoolkitAdminV2AllowlistOnly.fromJson(
-                  json_['allowlistOnly'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['allowlistOnly'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4541,10 +4436,14 @@ class GoogleCloudIdentitytoolkitAdminV2SmsTemplate {
   /// Output only.
   core.String? content;
 
-  GoogleCloudIdentitytoolkitAdminV2SmsTemplate({this.content});
+  GoogleCloudIdentitytoolkitAdminV2SmsTemplate({
+    this.content,
+  });
 
   GoogleCloudIdentitytoolkitAdminV2SmsTemplate.fromJson(core.Map json_)
-      : this(content: json_['content'] as core.String?);
+      : this(
+          content: json_['content'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
@@ -4656,12 +4555,9 @@ class GoogleCloudIdentitytoolkitAdminV2SpConfig {
       : this(
           callbackUri: json_['callbackUri'] as core.String?,
           spCertificates: (json_['spCertificates'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudIdentitytoolkitAdminV2SpCertificate.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudIdentitytoolkitAdminV2SpCertificate.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           spEntityId: json_['spEntityId'] as core.String?,
         );
@@ -4805,61 +4701,57 @@ class GoogleCloudIdentitytoolkitAdminV2Tenant {
           client: json_.containsKey('client')
               ? GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig
                   .fromJson(
-                  json_['client'] as core.Map<core.String, core.dynamic>,
-                )
+                      json_['client'] as core.Map<core.String, core.dynamic>)
               : null,
           disableAuth: json_['disableAuth'] as core.bool?,
           displayName: json_['displayName'] as core.String?,
           emailPrivacyConfig: json_.containsKey('emailPrivacyConfig')
               ? GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig.fromJson(
                   json_['emailPrivacyConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           enableAnonymousUser: json_['enableAnonymousUser'] as core.bool?,
           enableEmailLinkSignin: json_['enableEmailLinkSignin'] as core.bool?,
           hashConfig: json_.containsKey('hashConfig')
               ? GoogleCloudIdentitytoolkitAdminV2HashConfig.fromJson(
-                  json_['hashConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['hashConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           inheritance: json_.containsKey('inheritance')
               ? GoogleCloudIdentitytoolkitAdminV2Inheritance.fromJson(
-                  json_['inheritance'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['inheritance'] as core.Map<core.String, core.dynamic>)
               : null,
           mfaConfig: json_.containsKey('mfaConfig')
               ? GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig.fromJson(
-                  json_['mfaConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['mfaConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           monitoring: json_.containsKey('monitoring')
               ? GoogleCloudIdentitytoolkitAdminV2MonitoringConfig.fromJson(
-                  json_['monitoring'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['monitoring'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           passwordPolicyConfig: json_.containsKey('passwordPolicyConfig')
               ? GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig.fromJson(
                   json_['passwordPolicyConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           recaptchaConfig: json_.containsKey('recaptchaConfig')
               ? GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig.fromJson(
                   json_['recaptchaConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           smsRegionConfig: json_.containsKey('smsRegionConfig')
               ? GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig.fromJson(
                   json_['smsRegionConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           testPhoneNumbers: (json_['testPhoneNumbers']
                   as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4900,8 +4792,10 @@ class GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig {
   });
 
   GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig.fromJson(
-    core.Map json_,
-  ) : this(adjacentIntervals: json_['adjacentIntervals'] as core.int?);
+      core.Map json_)
+      : this(
+          adjacentIntervals: json_['adjacentIntervals'] as core.int?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adjacentIntervals != null) 'adjacentIntervals': adjacentIntervals!,
@@ -4916,7 +4810,10 @@ class GoogleCloudIdentitytoolkitAdminV2Trigger {
   /// When the trigger was changed.
   core.String? updateTime;
 
-  GoogleCloudIdentitytoolkitAdminV2Trigger({this.functionUri, this.updateTime});
+  GoogleCloudIdentitytoolkitAdminV2Trigger({
+    this.functionUri,
+    this.updateTime,
+  });
 
   GoogleCloudIdentitytoolkitAdminV2Trigger.fromJson(core.Map json_)
       : this(
@@ -4971,24 +4868,20 @@ class GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentRequest {
   });
 
   GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentRequest.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           displayName: json_['displayName'] as core.String?,
           idToken: json_['idToken'] as core.String?,
           phoneVerificationInfo: json_.containsKey('phoneVerificationInfo')
               ? GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo
-                  .fromJson(
-                  json_['phoneVerificationInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['phoneVerificationInfo']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           tenantId: json_['tenantId'] as core.String?,
           totpVerificationInfo: json_.containsKey('totpVerificationInfo')
               ? GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo
-                  .fromJson(
-                  json_['totpVerificationInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['totpVerificationInfo']
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5026,21 +4919,19 @@ class GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentResponse {
   });
 
   GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           idToken: json_['idToken'] as core.String?,
           phoneAuthInfo: json_.containsKey('phoneAuthInfo')
               ? GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo
-                  .fromJson(
-                  json_['phoneAuthInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['phoneAuthInfo']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           refreshToken: json_['refreshToken'] as core.String?,
           totpAuthInfo: json_.containsKey('totpAuthInfo')
               ? GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo
-                  .fromJson(
-                  json_['totpAuthInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['totpAuthInfo']
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5076,8 +4967,8 @@ class GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo {
   });
 
   GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           androidVerificationProof:
               json_['androidVerificationProof'] as core.String?,
           code: json_['code'] as core.String?,
@@ -5116,8 +5007,8 @@ class GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo {
   });
 
   GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           androidVerificationProof:
               json_['androidVerificationProof'] as core.String?,
           androidVerificationProofExpireTime:
@@ -5172,17 +5063,14 @@ class GoogleCloudIdentitytoolkitV2FinalizeMfaSignInRequest {
           mfaPendingCredential: json_['mfaPendingCredential'] as core.String?,
           phoneVerificationInfo: json_.containsKey('phoneVerificationInfo')
               ? GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo
-                  .fromJson(
-                  json_['phoneVerificationInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['phoneVerificationInfo']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           tenantId: json_['tenantId'] as core.String?,
           totpVerificationInfo: json_.containsKey('totpVerificationInfo')
               ? GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo.fromJson(
                   json_['totpVerificationInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5220,9 +5108,8 @@ class GoogleCloudIdentitytoolkitV2FinalizeMfaSignInResponse {
           idToken: json_['idToken'] as core.String?,
           phoneAuthInfo: json_.containsKey('phoneAuthInfo')
               ? GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo
-                  .fromJson(
-                  json_['phoneAuthInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['phoneAuthInfo']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           refreshToken: json_['refreshToken'] as core.String?,
         );
@@ -5248,8 +5135,8 @@ class GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo {
   });
 
   GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           sessionInfo: json_['sessionInfo'] as core.String?,
           verificationCode: json_['verificationCode'] as core.String?,
         );
@@ -5269,10 +5156,14 @@ class GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo {
   /// User-entered verification code.
   core.String? verificationCode;
 
-  GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo({this.verificationCode});
+  GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo({
+    this.verificationCode,
+  });
 
   GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo.fromJson(core.Map json_)
-      : this(verificationCode: json_['verificationCode'] as core.String?);
+      : this(
+          verificationCode: json_['verificationCode'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (verificationCode != null) 'verificationCode': verificationCode!,
@@ -5324,8 +5215,7 @@ class GoogleCloudIdentitytoolkitV2PasswordPolicy {
           customStrengthOptions: json_.containsKey('customStrengthOptions')
               ? GoogleCloudIdentitytoolkitV2CustomStrengthOptions.fromJson(
                   json_['customStrengthOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           enforcementState: json_['enforcementState'] as core.String?,
           forceUpgradeOnSignin: json_['forceUpgradeOnSignin'] as core.bool?,
@@ -5374,16 +5264,12 @@ class GoogleCloudIdentitytoolkitV2RecaptchaConfig {
 
   GoogleCloudIdentitytoolkitV2RecaptchaConfig.fromJson(core.Map json_)
       : this(
-          recaptchaEnforcementState:
-              (json_['recaptchaEnforcementState'] as core.List?)
-                  ?.map(
-                    (value) =>
-                        GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState
-                            .fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
-                  .toList(),
+          recaptchaEnforcementState: (json_['recaptchaEnforcementState']
+                  as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           recaptchaKey: json_['recaptchaKey'] as core.String?,
           useSmsBotScore: json_['useSmsBotScore'] as core.bool?,
           useSmsTollFraudProtection:
@@ -5551,16 +5437,13 @@ class GoogleCloudIdentitytoolkitV2StartMfaEnrollmentRequest {
           phoneEnrollmentInfo: json_.containsKey('phoneEnrollmentInfo')
               ? GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo.fromJson(
                   json_['phoneEnrollmentInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           tenantId: json_['tenantId'] as core.String?,
           totpEnrollmentInfo: json_.containsKey('totpEnrollmentInfo')
               ? GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentRequestInfo
-                  .fromJson(
-                  json_['totpEnrollmentInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['totpEnrollmentInfo']
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5589,20 +5472,17 @@ class GoogleCloudIdentitytoolkitV2StartMfaEnrollmentResponse {
   });
 
   GoogleCloudIdentitytoolkitV2StartMfaEnrollmentResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           phoneSessionInfo: json_.containsKey('phoneSessionInfo')
               ? GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo.fromJson(
                   json_['phoneSessionInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           totpSessionInfo: json_.containsKey('totpSessionInfo')
               ? GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo
-                  .fromJson(
-                  json_['totpSessionInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['totpSessionInfo']
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5698,8 +5578,7 @@ class GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo {
           autoRetrievalInfo: json_.containsKey('autoRetrievalInfo')
               ? GoogleCloudIdentitytoolkitV2AutoRetrievalInfo.fromJson(
                   json_['autoRetrievalInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           captchaResponse: json_['captchaResponse'] as core.String?,
           clientType: json_['clientType'] as core.String?,
@@ -5732,10 +5611,14 @@ class GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo {
   /// An opaque string that represents the enrollment session.
   core.String? sessionInfo;
 
-  GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo({this.sessionInfo});
+  GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo({
+    this.sessionInfo,
+  });
 
   GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo.fromJson(core.Map json_)
-      : this(sessionInfo: json_['sessionInfo'] as core.String?);
+      : this(
+          sessionInfo: json_['sessionInfo'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sessionInfo != null) 'sessionInfo': sessionInfo!,
@@ -5777,8 +5660,7 @@ class GoogleCloudIdentitytoolkitV2StartMfaSignInRequest {
           phoneSignInInfo: json_.containsKey('phoneSignInInfo')
               ? GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo.fromJson(
                   json_['phoneSignInInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           tenantId: json_['tenantId'] as core.String?,
         );
@@ -5802,15 +5684,16 @@ class GoogleCloudIdentitytoolkitV2StartMfaSignInResponse {
   /// the sign in.
   GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo? phoneResponseInfo;
 
-  GoogleCloudIdentitytoolkitV2StartMfaSignInResponse({this.phoneResponseInfo});
+  GoogleCloudIdentitytoolkitV2StartMfaSignInResponse({
+    this.phoneResponseInfo,
+  });
 
   GoogleCloudIdentitytoolkitV2StartMfaSignInResponse.fromJson(core.Map json_)
       : this(
           phoneResponseInfo: json_.containsKey('phoneResponseInfo')
               ? GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo.fromJson(
                   json_['phoneResponseInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5857,8 +5740,8 @@ class GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo {
   });
 
   GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           finalizeEnrollmentTime:
               json_['finalizeEnrollmentTime'] as core.String?,
           hashingAlgorithm: json_['hashingAlgorithm'] as core.String?,
@@ -5970,16 +5853,16 @@ class GoogleIamV1AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  GoogleIamV1AuditConfig({this.auditLogConfigs, this.service});
+  GoogleIamV1AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
 
   GoogleIamV1AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map(
-                (value) => GoogleIamV1AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleIamV1AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -6078,14 +5961,17 @@ class GoogleIamV1Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  GoogleIamV1Binding({this.condition, this.members, this.role});
+  GoogleIamV1Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
   GoogleIamV1Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? GoogleTypeExpr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -6106,14 +5992,15 @@ class GoogleIamV1GetIamPolicyRequest {
   /// `GetIamPolicy`.
   GoogleIamV1GetPolicyOptions? options;
 
-  GoogleIamV1GetIamPolicyRequest({this.options});
+  GoogleIamV1GetIamPolicyRequest({
+    this.options,
+  });
 
   GoogleIamV1GetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           options: json_.containsKey('options')
               ? GoogleIamV1GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['options'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6221,18 +6108,12 @@ class GoogleIamV1Policy {
   GoogleIamV1Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map(
-                (value) => GoogleIamV1AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleIamV1AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map(
-                (value) => GoogleIamV1Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleIamV1Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -6261,14 +6142,16 @@ class GoogleIamV1SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  GoogleIamV1SetIamPolicyRequest({this.policy, this.updateMask});
+  GoogleIamV1SetIamPolicyRequest({
+    this.policy,
+    this.updateMask,
+  });
 
   GoogleIamV1SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? GoogleIamV1Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );

@@ -50,16 +50,11 @@ class DriveActivityApi {
 
   ActivityResource get activity => ActivityResource(_requester);
 
-  DriveActivityApi(
-    http.Client client, {
-    core.String rootUrl = 'https://driveactivity.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  DriveActivityApi(http.Client client,
+      {core.String rootUrl = 'https://driveactivity.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ActivityResource {
@@ -101,8 +96,7 @@ class ActivityResource {
       queryParams: queryParams_,
     );
     return QueryDriveActivityResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -139,23 +133,19 @@ class Action {
       : this(
           actor: json_.containsKey('actor')
               ? Actor.fromJson(
-                  json_['actor'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['actor'] as core.Map<core.String, core.dynamic>)
               : null,
           detail: json_.containsKey('detail')
               ? ActionDetail.fromJson(
-                  json_['detail'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['detail'] as core.Map<core.String, core.dynamic>)
               : null,
           target: json_.containsKey('target')
               ? Target.fromJson(
-                  json_['target'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['target'] as core.Map<core.String, core.dynamic>)
               : null,
           timeRange: json_.containsKey('timeRange')
               ? TimeRange.fromJson(
-                  json_['timeRange'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['timeRange'] as core.Map<core.String, core.dynamic>)
               : null,
           timestamp: json_['timestamp'] as core.String?,
         );
@@ -225,67 +215,52 @@ class ActionDetail {
   ActionDetail.fromJson(core.Map json_)
       : this(
           appliedLabelChange: json_.containsKey('appliedLabelChange')
-              ? AppliedLabelChange.fromJson(
-                  json_['appliedLabelChange']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AppliedLabelChange.fromJson(json_['appliedLabelChange']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           comment: json_.containsKey('comment')
               ? Comment.fromJson(
-                  json_['comment'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['comment'] as core.Map<core.String, core.dynamic>)
               : null,
           create: json_.containsKey('create')
               ? Create.fromJson(
-                  json_['create'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['create'] as core.Map<core.String, core.dynamic>)
               : null,
           delete: json_.containsKey('delete')
               ? Delete.fromJson(
-                  json_['delete'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['delete'] as core.Map<core.String, core.dynamic>)
               : null,
           dlpChange: json_.containsKey('dlpChange')
               ? DataLeakPreventionChange.fromJson(
-                  json_['dlpChange'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['dlpChange'] as core.Map<core.String, core.dynamic>)
               : null,
           edit: json_.containsKey('edit')
               ? Edit.fromJson(
-                  json_['edit'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['edit'] as core.Map<core.String, core.dynamic>)
               : null,
           move: json_.containsKey('move')
               ? Move.fromJson(
-                  json_['move'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['move'] as core.Map<core.String, core.dynamic>)
               : null,
           permissionChange: json_.containsKey('permissionChange')
-              ? PermissionChange.fromJson(
-                  json_['permissionChange']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? PermissionChange.fromJson(json_['permissionChange']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           reference: json_.containsKey('reference')
               ? ApplicationReference.fromJson(
-                  json_['reference'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['reference'] as core.Map<core.String, core.dynamic>)
               : null,
           rename: json_.containsKey('rename')
               ? Rename.fromJson(
-                  json_['rename'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['rename'] as core.Map<core.String, core.dynamic>)
               : null,
           restore: json_.containsKey('restore')
               ? Restore.fromJson(
-                  json_['restore'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['restore'] as core.Map<core.String, core.dynamic>)
               : null,
           settingsChange: json_.containsKey('settingsChange')
-              ? SettingsChange.fromJson(
-                  json_['settingsChange']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SettingsChange.fromJson(json_['settingsChange']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -335,28 +310,23 @@ class Actor {
       : this(
           administrator: json_.containsKey('administrator')
               ? Administrator.fromJson(
-                  json_['administrator'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['administrator'] as core.Map<core.String, core.dynamic>)
               : null,
           anonymous: json_.containsKey('anonymous')
               ? AnonymousUser.fromJson(
-                  json_['anonymous'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['anonymous'] as core.Map<core.String, core.dynamic>)
               : null,
           impersonation: json_.containsKey('impersonation')
               ? Impersonation.fromJson(
-                  json_['impersonation'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['impersonation'] as core.Map<core.String, core.dynamic>)
               : null,
           system: json_.containsKey('system')
               ? SystemEvent.fromJson(
-                  json_['system'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['system'] as core.Map<core.String, core.dynamic>)
               : null,
           user: json_.containsKey('user')
               ? User.fromJson(
-                  json_['user'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['user'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -388,10 +358,14 @@ class ApplicationReference {
   /// - "DISCUSS" : Comments were made regarding a Drive item.
   core.String? type;
 
-  ApplicationReference({this.type});
+  ApplicationReference({
+    this.type,
+  });
 
   ApplicationReference.fromJson(core.Map json_)
-      : this(type: json_['type'] as core.String?);
+      : this(
+          type: json_['type'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -403,16 +377,15 @@ class AppliedLabelChange {
   /// Changes that were made to the Label on the Target.
   core.List<AppliedLabelChangeDetail>? changes;
 
-  AppliedLabelChange({this.changes});
+  AppliedLabelChange({
+    this.changes,
+  });
 
   AppliedLabelChange.fromJson(core.Map json_)
       : this(
           changes: (json_['changes'] as core.List?)
-              ?.map(
-                (value) => AppliedLabelChangeDetail.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AppliedLabelChangeDetail.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -450,11 +423,8 @@ class AppliedLabelChangeDetail {
   AppliedLabelChangeDetail.fromJson(core.Map json_)
       : this(
           fieldChanges: (json_['fieldChanges'] as core.List?)
-              ?.map(
-                (value) => FieldValueChange.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => FieldValueChange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           label: json_['label'] as core.String?,
           title: json_['title'] as core.String?,
@@ -488,14 +458,16 @@ class Assignment {
   /// - "REASSIGNED" : An assignment was reassigned.
   core.String? subtype;
 
-  Assignment({this.assignedUser, this.subtype});
+  Assignment({
+    this.assignedUser,
+    this.subtype,
+  });
 
   Assignment.fromJson(core.Map json_)
       : this(
           assignedUser: json_.containsKey('assignedUser')
               ? User.fromJson(
-                  json_['assignedUser'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['assignedUser'] as core.Map<core.String, core.dynamic>)
               : null,
           subtype: json_['subtype'] as core.String?,
         );
@@ -520,31 +492,30 @@ class Comment {
   /// A change on a suggestion.
   Suggestion? suggestion;
 
-  Comment({this.assignment, this.mentionedUsers, this.post, this.suggestion});
+  Comment({
+    this.assignment,
+    this.mentionedUsers,
+    this.post,
+    this.suggestion,
+  });
 
   Comment.fromJson(core.Map json_)
       : this(
           assignment: json_.containsKey('assignment')
               ? Assignment.fromJson(
-                  json_['assignment'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['assignment'] as core.Map<core.String, core.dynamic>)
               : null,
           mentionedUsers: (json_['mentionedUsers'] as core.List?)
-              ?.map(
-                (value) => User.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  User.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           post: json_.containsKey('post')
               ? Post.fromJson(
-                  json_['post'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['post'] as core.Map<core.String, core.dynamic>)
               : null,
           suggestion: json_.containsKey('suggestion')
               ? Suggestion.fromJson(
-                  json_['suggestion'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['suggestion'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -569,19 +540,20 @@ class ConsolidationStrategy {
   /// The individual activities are not consolidated.
   NoConsolidation? none;
 
-  ConsolidationStrategy({this.legacy, this.none});
+  ConsolidationStrategy({
+    this.legacy,
+    this.none,
+  });
 
   ConsolidationStrategy.fromJson(core.Map json_)
       : this(
           legacy: json_.containsKey('legacy')
               ? Legacy.fromJson(
-                  json_['legacy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['legacy'] as core.Map<core.String, core.dynamic>)
               : null,
           none: json_.containsKey('none')
               ? NoConsolidation.fromJson(
-                  json_['none'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['none'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -596,15 +568,15 @@ class Copy {
   /// The original object.
   TargetReference? originalObject;
 
-  Copy({this.originalObject});
+  Copy({
+    this.originalObject,
+  });
 
   Copy.fromJson(core.Map json_)
       : this(
           originalObject: json_.containsKey('originalObject')
-              ? TargetReference.fromJson(
-                  json_['originalObject']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? TargetReference.fromJson(json_['originalObject']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -627,24 +599,25 @@ class Create {
   /// Drive.
   Upload? upload;
 
-  Create({this.copy, this.new_, this.upload});
+  Create({
+    this.copy,
+    this.new_,
+    this.upload,
+  });
 
   Create.fromJson(core.Map json_)
       : this(
           copy: json_.containsKey('copy')
               ? Copy.fromJson(
-                  json_['copy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['copy'] as core.Map<core.String, core.dynamic>)
               : null,
           new_: json_.containsKey('new')
               ? New.fromJson(
-                  json_['new'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['new'] as core.Map<core.String, core.dynamic>)
               : null,
           upload: json_.containsKey('upload')
               ? Upload.fromJson(
-                  json_['upload'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['upload'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -666,10 +639,14 @@ class DataLeakPreventionChange {
   /// content.
   core.String? type;
 
-  DataLeakPreventionChange({this.type});
+  DataLeakPreventionChange({
+    this.type,
+  });
 
   DataLeakPreventionChange.fromJson(core.Map json_)
-      : this(type: json_['type'] as core.String?);
+      : this(
+          type: json_['type'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -681,9 +658,14 @@ class Date {
   /// Date value.
   core.String? value;
 
-  Date({this.value});
+  Date({
+    this.value,
+  });
 
-  Date.fromJson(core.Map json_) : this(value: json_['value'] as core.String?);
+  Date.fromJson(core.Map json_)
+      : this(
+          value: json_['value'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
@@ -699,9 +681,14 @@ class Delete {
   /// - "PERMANENT_DELETE" : An object was deleted permanently.
   core.String? type;
 
-  Delete({this.type});
+  Delete({
+    this.type,
+  });
 
-  Delete.fromJson(core.Map json_) : this(type: json_['type'] as core.String?);
+  Delete.fromJson(core.Map json_)
+      : this(
+          type: json_['type'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -719,7 +706,10 @@ class Domain {
   /// The name of the domain, e.g. `google.com`.
   core.String? name;
 
-  Domain({this.legacyId, this.name});
+  Domain({
+    this.legacyId,
+    this.name,
+  });
 
   Domain.fromJson(core.Map json_)
       : this(
@@ -747,15 +737,18 @@ class Drive {
   /// The title of the shared drive.
   core.String? title;
 
-  Drive({this.name, this.root, this.title});
+  Drive({
+    this.name,
+    this.root,
+    this.title,
+  });
 
   Drive.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
           root: json_.containsKey('root')
               ? DriveItem.fromJson(
-                  json_['root'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['root'] as core.Map<core.String, core.dynamic>)
               : null,
           title: json_['title'] as core.String?,
         );
@@ -813,36 +806,24 @@ class DriveActivity {
   DriveActivity.fromJson(core.Map json_)
       : this(
           actions: (json_['actions'] as core.List?)
-              ?.map(
-                (value) => Action.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Action.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           actors: (json_['actors'] as core.List?)
-              ?.map(
-                (value) => Actor.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Actor.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           primaryActionDetail: json_.containsKey('primaryActionDetail')
-              ? ActionDetail.fromJson(
-                  json_['primaryActionDetail']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ActionDetail.fromJson(json_['primaryActionDetail']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           targets: (json_['targets'] as core.List?)
-              ?.map(
-                (value) => Target.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Target.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           timeRange: json_.containsKey('timeRange')
               ? TimeRange.fromJson(
-                  json_['timeRange'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['timeRange'] as core.Map<core.String, core.dynamic>)
               : null,
           timestamp: json_['timestamp'] as core.String?,
         );
@@ -871,10 +852,14 @@ class DriveFolder {
   /// - "STANDARD_FOLDER" : The folder is a standard, non-root, folder.
   core.String? type;
 
-  DriveFolder({this.type});
+  DriveFolder({
+    this.type,
+  });
 
   DriveFolder.fromJson(core.Map json_)
-      : this(type: json_['type'] as core.String?);
+      : this(
+          type: json_['type'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -934,30 +919,25 @@ class DriveItem {
       : this(
           driveFile: json_.containsKey('driveFile')
               ? DriveFile.fromJson(
-                  json_['driveFile'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['driveFile'] as core.Map<core.String, core.dynamic>)
               : null,
           driveFolder: json_.containsKey('driveFolder')
               ? DriveFolder.fromJson(
-                  json_['driveFolder'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['driveFolder'] as core.Map<core.String, core.dynamic>)
               : null,
           file: json_.containsKey('file')
               ? File.fromJson(
-                  json_['file'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['file'] as core.Map<core.String, core.dynamic>)
               : null,
           folder: json_.containsKey('folder')
               ? Folder.fromJson(
-                  json_['folder'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['folder'] as core.Map<core.String, core.dynamic>)
               : null,
           mimeType: json_['mimeType'] as core.String?,
           name: json_['name'] as core.String?,
           owner: json_.containsKey('owner')
               ? Owner.fromJson(
-                  json_['owner'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['owner'] as core.Map<core.String, core.dynamic>)
               : null,
           title: json_['title'] as core.String?,
         );
@@ -1017,23 +997,19 @@ class DriveItemReference {
       : this(
           driveFile: json_.containsKey('driveFile')
               ? DriveFile.fromJson(
-                  json_['driveFile'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['driveFile'] as core.Map<core.String, core.dynamic>)
               : null,
           driveFolder: json_.containsKey('driveFolder')
               ? DriveFolder.fromJson(
-                  json_['driveFolder'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['driveFolder'] as core.Map<core.String, core.dynamic>)
               : null,
           file: json_.containsKey('file')
               ? File.fromJson(
-                  json_['file'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['file'] as core.Map<core.String, core.dynamic>)
               : null,
           folder: json_.containsKey('folder')
               ? Folder.fromJson(
-                  json_['folder'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['folder'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           title: json_['title'] as core.String?,
@@ -1060,7 +1036,10 @@ class DriveReference {
   /// The title of the shared drive.
   core.String? title;
 
-  DriveReference({this.name, this.title});
+  DriveReference({
+    this.name,
+    this.title,
+  });
 
   DriveReference.fromJson(core.Map json_)
       : this(
@@ -1118,43 +1097,35 @@ class FieldValue {
       : this(
           date: json_.containsKey('date')
               ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['date'] as core.Map<core.String, core.dynamic>)
               : null,
           integer: json_.containsKey('integer')
               ? Integer.fromJson(
-                  json_['integer'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['integer'] as core.Map<core.String, core.dynamic>)
               : null,
           selection: json_.containsKey('selection')
               ? Selection.fromJson(
-                  json_['selection'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['selection'] as core.Map<core.String, core.dynamic>)
               : null,
           selectionList: json_.containsKey('selectionList')
               ? SelectionList.fromJson(
-                  json_['selectionList'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['selectionList'] as core.Map<core.String, core.dynamic>)
               : null,
           text: json_.containsKey('text')
               ? Text.fromJson(
-                  json_['text'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['text'] as core.Map<core.String, core.dynamic>)
               : null,
           textList: json_.containsKey('textList')
               ? TextList.fromJson(
-                  json_['textList'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['textList'] as core.Map<core.String, core.dynamic>)
               : null,
           user: json_.containsKey('user')
               ? SingleUser.fromJson(
-                  json_['user'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['user'] as core.Map<core.String, core.dynamic>)
               : null,
           userList: json_.containsKey('userList')
               ? UserList.fromJson(
-                  json_['userList'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['userList'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1205,13 +1176,11 @@ class FieldValueChange {
           fieldId: json_['fieldId'] as core.String?,
           newValue: json_.containsKey('newValue')
               ? FieldValue.fromJson(
-                  json_['newValue'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['newValue'] as core.Map<core.String, core.dynamic>)
               : null,
           oldValue: json_.containsKey('oldValue')
               ? FieldValue.fromJson(
-                  json_['oldValue'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['oldValue'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1262,8 +1231,7 @@ class FileComment {
           linkToDiscussion: json_['linkToDiscussion'] as core.String?,
           parent: json_.containsKey('parent')
               ? DriveItem.fromJson(
-                  json_['parent'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['parent'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1290,9 +1258,14 @@ class Folder {
   /// `DriveFolder.Type` instead.
   core.String? type;
 
-  Folder({this.type});
+  Folder({
+    this.type,
+  });
 
-  Folder.fromJson(core.Map json_) : this(type: json_['type'] as core.String?);
+  Folder.fromJson(core.Map json_)
+      : this(
+          type: json_['type'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -1307,7 +1280,10 @@ class Group {
   /// The title of the group.
   core.String? title;
 
-  Group({this.email, this.title});
+  Group({
+    this.email,
+    this.title,
+  });
 
   Group.fromJson(core.Map json_)
       : this(
@@ -1329,15 +1305,15 @@ class Impersonation {
   /// The impersonated user.
   User? impersonatedUser;
 
-  Impersonation({this.impersonatedUser});
+  Impersonation({
+    this.impersonatedUser,
+  });
 
   Impersonation.fromJson(core.Map json_)
       : this(
           impersonatedUser: json_.containsKey('impersonatedUser')
-              ? User.fromJson(
-                  json_['impersonatedUser']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? User.fromJson(json_['impersonatedUser']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1351,10 +1327,14 @@ class Integer {
   /// Integer value.
   core.String? value;
 
-  Integer({this.value});
+  Integer({
+    this.value,
+  });
 
   Integer.fromJson(core.Map json_)
-      : this(value: json_['value'] as core.String?);
+      : this(
+          value: json_['value'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
@@ -1373,7 +1353,10 @@ class KnownUser {
   /// https://developers.google.com/people/.
   core.String? personName;
 
-  KnownUser({this.isCurrentUser, this.personName});
+  KnownUser({
+    this.isCurrentUser,
+    this.personName,
+  });
 
   KnownUser.fromJson(core.Map json_)
       : this(
@@ -1404,23 +1387,20 @@ class Move {
   /// The removed parent object(s).
   core.List<TargetReference>? removedParents;
 
-  Move({this.addedParents, this.removedParents});
+  Move({
+    this.addedParents,
+    this.removedParents,
+  });
 
   Move.fromJson(core.Map json_)
       : this(
           addedParents: (json_['addedParents'] as core.List?)
-              ?.map(
-                (value) => TargetReference.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => TargetReference.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           removedParents: (json_['removedParents'] as core.List?)
-              ?.map(
-                (value) => TargetReference.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => TargetReference.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1453,29 +1433,30 @@ class Owner {
   /// The user that owns the Drive item.
   User? user;
 
-  Owner({this.domain, this.drive, this.teamDrive, this.user});
+  Owner({
+    this.domain,
+    this.drive,
+    this.teamDrive,
+    this.user,
+  });
 
   Owner.fromJson(core.Map json_)
       : this(
           domain: json_.containsKey('domain')
               ? Domain.fromJson(
-                  json_['domain'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['domain'] as core.Map<core.String, core.dynamic>)
               : null,
           drive: json_.containsKey('drive')
               ? DriveReference.fromJson(
-                  json_['drive'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['drive'] as core.Map<core.String, core.dynamic>)
               : null,
           teamDrive: json_.containsKey('teamDrive')
               ? TeamDriveReference.fromJson(
-                  json_['teamDrive'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['teamDrive'] as core.Map<core.String, core.dynamic>)
               : null,
           user: json_.containsKey('user')
               ? User.fromJson(
-                  json_['user'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['user'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1541,24 +1522,20 @@ class Permission {
           allowDiscovery: json_['allowDiscovery'] as core.bool?,
           anyone: json_.containsKey('anyone')
               ? Anyone.fromJson(
-                  json_['anyone'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['anyone'] as core.Map<core.String, core.dynamic>)
               : null,
           domain: json_.containsKey('domain')
               ? Domain.fromJson(
-                  json_['domain'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['domain'] as core.Map<core.String, core.dynamic>)
               : null,
           group: json_.containsKey('group')
               ? Group.fromJson(
-                  json_['group'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['group'] as core.Map<core.String, core.dynamic>)
               : null,
           role: json_['role'] as core.String?,
           user: json_.containsKey('user')
               ? User.fromJson(
-                  json_['user'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['user'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1580,23 +1557,20 @@ class PermissionChange {
   /// The set of permissions removed by this change.
   core.List<Permission>? removedPermissions;
 
-  PermissionChange({this.addedPermissions, this.removedPermissions});
+  PermissionChange({
+    this.addedPermissions,
+    this.removedPermissions,
+  });
 
   PermissionChange.fromJson(core.Map json_)
       : this(
           addedPermissions: (json_['addedPermissions'] as core.List?)
-              ?.map(
-                (value) => Permission.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Permission.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           removedPermissions: (json_['removedPermissions'] as core.List?)
-              ?.map(
-                (value) => Permission.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Permission.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1620,10 +1594,14 @@ class Post {
   /// - "REOPENED" : A posted comment was reopened.
   core.String? subtype;
 
-  Post({this.subtype});
+  Post({
+    this.subtype,
+  });
 
   Post.fromJson(core.Map json_)
-      : this(subtype: json_['subtype'] as core.String?);
+      : this(
+          subtype: json_['subtype'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (subtype != null) 'subtype': subtype!,
@@ -1691,10 +1669,8 @@ class QueryDriveActivityRequest {
       : this(
           ancestorName: json_['ancestorName'] as core.String?,
           consolidationStrategy: json_.containsKey('consolidationStrategy')
-              ? ConsolidationStrategy.fromJson(
-                  json_['consolidationStrategy']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ConsolidationStrategy.fromJson(json_['consolidationStrategy']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           filter: json_['filter'] as core.String?,
           itemName: json_['itemName'] as core.String?,
@@ -1722,16 +1698,16 @@ class QueryDriveActivityResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  QueryDriveActivityResponse({this.activities, this.nextPageToken});
+  QueryDriveActivityResponse({
+    this.activities,
+    this.nextPageToken,
+  });
 
   QueryDriveActivityResponse.fromJson(core.Map json_)
       : this(
           activities: (json_['activities'] as core.List?)
-              ?.map(
-                (value) => DriveActivity.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DriveActivity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1750,7 +1726,10 @@ class Rename {
   /// The previous title of the drive object.
   core.String? oldTitle;
 
-  Rename({this.newTitle, this.oldTitle});
+  Rename({
+    this.newTitle,
+    this.oldTitle,
+  });
 
   Rename.fromJson(core.Map json_)
       : this(
@@ -1772,9 +1751,14 @@ class Restore {
   /// - "UNTRASH" : An object was restored from the trash.
   core.String? type;
 
-  Restore({this.type});
+  Restore({
+    this.type,
+  });
 
-  Restore.fromJson(core.Map json_) : this(type: json_['type'] as core.String?);
+  Restore.fromJson(core.Map json_)
+      : this(
+          type: json_['type'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -1806,7 +1790,10 @@ class RestrictionChange {
   /// - "FULLY_RESTRICTED" : The use of this feature is fully restricted.
   core.String? newRestriction;
 
-  RestrictionChange({this.feature, this.newRestriction});
+  RestrictionChange({
+    this.feature,
+    this.newRestriction,
+  });
 
   RestrictionChange.fromJson(core.Map json_)
       : this(
@@ -1829,7 +1816,10 @@ class Selection {
   /// Selection value as Field Choice ID.
   core.String? value;
 
-  Selection({this.displayName, this.value});
+  Selection({
+    this.displayName,
+    this.value,
+  });
 
   Selection.fromJson(core.Map json_)
       : this(
@@ -1848,16 +1838,15 @@ class SelectionList {
   /// Selection values.
   core.List<Selection>? values;
 
-  SelectionList({this.values});
+  SelectionList({
+    this.values,
+  });
 
   SelectionList.fromJson(core.Map json_)
       : this(
           values: (json_['values'] as core.List?)
-              ?.map(
-                (value) => Selection.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Selection.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1871,16 +1860,15 @@ class SettingsChange {
   /// The set of changes made to restrictions.
   core.List<RestrictionChange>? restrictionChanges;
 
-  SettingsChange({this.restrictionChanges});
+  SettingsChange({
+    this.restrictionChanges,
+  });
 
   SettingsChange.fromJson(core.Map json_)
       : this(
           restrictionChanges: (json_['restrictionChanges'] as core.List?)
-              ?.map(
-                (value) => RestrictionChange.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => RestrictionChange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1895,10 +1883,14 @@ class SingleUser {
   /// User value as email.
   core.String? value;
 
-  SingleUser({this.value});
+  SingleUser({
+    this.value,
+  });
 
   SingleUser.fromJson(core.Map json_)
-      : this(value: json_['value'] as core.String?);
+      : this(
+          value: json_['value'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
@@ -1920,10 +1912,14 @@ class Suggestion {
   /// - "REJECT_DELETED" : A rejected suggestion was deleted.
   core.String? subtype;
 
-  Suggestion({this.subtype});
+  Suggestion({
+    this.subtype,
+  });
 
   Suggestion.fromJson(core.Map json_)
-      : this(subtype: json_['subtype'] as core.String?);
+      : this(
+          subtype: json_['subtype'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (subtype != null) 'subtype': subtype!,
@@ -1941,10 +1937,14 @@ class SystemEvent {
   /// purging trash.
   core.String? type;
 
-  SystemEvent({this.type});
+  SystemEvent({
+    this.type,
+  });
 
   SystemEvent.fromJson(core.Map json_)
-      : this(type: json_['type'] as core.String?);
+      : this(
+          type: json_['type'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -1971,29 +1971,30 @@ class Target {
   )
   TeamDrive? teamDrive;
 
-  Target({this.drive, this.driveItem, this.fileComment, this.teamDrive});
+  Target({
+    this.drive,
+    this.driveItem,
+    this.fileComment,
+    this.teamDrive,
+  });
 
   Target.fromJson(core.Map json_)
       : this(
           drive: json_.containsKey('drive')
               ? Drive.fromJson(
-                  json_['drive'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['drive'] as core.Map<core.String, core.dynamic>)
               : null,
           driveItem: json_.containsKey('driveItem')
               ? DriveItem.fromJson(
-                  json_['driveItem'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['driveItem'] as core.Map<core.String, core.dynamic>)
               : null,
           fileComment: json_.containsKey('fileComment')
               ? FileComment.fromJson(
-                  json_['fileComment'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['fileComment'] as core.Map<core.String, core.dynamic>)
               : null,
           teamDrive: json_.containsKey('teamDrive')
               ? TeamDrive.fromJson(
-                  json_['teamDrive'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['teamDrive'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2019,24 +2020,25 @@ class TargetReference {
   )
   TeamDriveReference? teamDrive;
 
-  TargetReference({this.drive, this.driveItem, this.teamDrive});
+  TargetReference({
+    this.drive,
+    this.driveItem,
+    this.teamDrive,
+  });
 
   TargetReference.fromJson(core.Map json_)
       : this(
           drive: json_.containsKey('drive')
               ? DriveReference.fromJson(
-                  json_['drive'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['drive'] as core.Map<core.String, core.dynamic>)
               : null,
           driveItem: json_.containsKey('driveItem')
               ? DriveItemReference.fromJson(
-                  json_['driveItem'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['driveItem'] as core.Map<core.String, core.dynamic>)
               : null,
           teamDrive: json_.containsKey('teamDrive')
               ? TeamDriveReference.fromJson(
-                  json_['teamDrive'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['teamDrive'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2058,15 +2060,18 @@ class TeamDrive {
   /// This field is deprecated; please see `Drive.title` instead.
   core.String? title;
 
-  TeamDrive({this.name, this.root, this.title});
+  TeamDrive({
+    this.name,
+    this.root,
+    this.title,
+  });
 
   TeamDrive.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
           root: json_.containsKey('root')
               ? DriveItem.fromJson(
-                  json_['root'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['root'] as core.Map<core.String, core.dynamic>)
               : null,
           title: json_['title'] as core.String?,
         );
@@ -2086,7 +2091,10 @@ class TeamDriveReference {
   /// This field is deprecated; please see `DriveReference.title` instead.
   core.String? title;
 
-  TeamDriveReference({this.name, this.title});
+  TeamDriveReference({
+    this.name,
+    this.title,
+  });
 
   TeamDriveReference.fromJson(core.Map json_)
       : this(
@@ -2105,9 +2113,14 @@ class Text {
   /// Value of Text Field.
   core.String? value;
 
-  Text({this.value});
+  Text({
+    this.value,
+  });
 
-  Text.fromJson(core.Map json_) : this(value: json_['value'] as core.String?);
+  Text.fromJson(core.Map json_)
+      : this(
+          value: json_['value'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
@@ -2119,16 +2132,15 @@ class TextList {
   /// Text values.
   core.List<Text>? values;
 
-  TextList({this.values});
+  TextList({
+    this.values,
+  });
 
   TextList.fromJson(core.Map json_)
       : this(
           values: (json_['values'] as core.List?)
-              ?.map(
-                (value) => Text.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Text.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2145,7 +2157,10 @@ class TimeRange {
   /// The start of the time range.
   core.String? startTime;
 
-  TimeRange({this.endTime, this.startTime});
+  TimeRange({
+    this.endTime,
+    this.startTime,
+  });
 
   TimeRange.fromJson(core.Map json_)
       : this(
@@ -2176,24 +2191,25 @@ class User {
   /// A user about whom nothing is currently known.
   UnknownUser? unknownUser;
 
-  User({this.deletedUser, this.knownUser, this.unknownUser});
+  User({
+    this.deletedUser,
+    this.knownUser,
+    this.unknownUser,
+  });
 
   User.fromJson(core.Map json_)
       : this(
           deletedUser: json_.containsKey('deletedUser')
               ? DeletedUser.fromJson(
-                  json_['deletedUser'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['deletedUser'] as core.Map<core.String, core.dynamic>)
               : null,
           knownUser: json_.containsKey('knownUser')
               ? KnownUser.fromJson(
-                  json_['knownUser'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['knownUser'] as core.Map<core.String, core.dynamic>)
               : null,
           unknownUser: json_.containsKey('unknownUser')
               ? UnknownUser.fromJson(
-                  json_['unknownUser'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['unknownUser'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2209,16 +2225,15 @@ class UserList {
   /// User values.
   core.List<SingleUser>? values;
 
-  UserList({this.values});
+  UserList({
+    this.values,
+  });
 
   UserList.fromJson(core.Map json_)
       : this(
           values: (json_['values'] as core.List?)
-              ?.map(
-                (value) => SingleUser.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SingleUser.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 

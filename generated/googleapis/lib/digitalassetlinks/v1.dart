@@ -45,16 +45,11 @@ class DigitalassetlinksApi {
   AssetlinksResource get assetlinks => AssetlinksResource(_requester);
   StatementsResource get statements => StatementsResource(_requester);
 
-  DigitalassetlinksApi(
-    http.Client client, {
-    core.String rootUrl = 'https://digitalassetlinks.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  DigitalassetlinksApi(http.Client client,
+      {core.String rootUrl = 'https://digitalassetlinks.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class AssetlinksResource {
@@ -190,14 +185,14 @@ class AssetlinksResource {
       if (relation != null) 'relation': [relation],
       if (source_androidApp_certificate_sha256Fingerprint != null)
         'source.androidApp.certificate.sha256Fingerprint': [
-          source_androidApp_certificate_sha256Fingerprint,
+          source_androidApp_certificate_sha256Fingerprint
         ],
       if (source_androidApp_packageName != null)
         'source.androidApp.packageName': [source_androidApp_packageName],
       if (source_web_site != null) 'source.web.site': [source_web_site],
       if (target_androidApp_certificate_sha256Fingerprint != null)
         'target.androidApp.certificate.sha256Fingerprint': [
-          target_androidApp_certificate_sha256Fingerprint,
+          target_androidApp_certificate_sha256Fingerprint
         ],
       if (target_androidApp_packageName != null)
         'target.androidApp.packageName': [target_androidApp_packageName],
@@ -213,8 +208,7 @@ class AssetlinksResource {
       queryParams: queryParams_,
     );
     return CheckResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -307,7 +301,7 @@ class StatementsResource {
       if (relation != null) 'relation': [relation],
       if (source_androidApp_certificate_sha256Fingerprint != null)
         'source.androidApp.certificate.sha256Fingerprint': [
-          source_androidApp_certificate_sha256Fingerprint,
+          source_androidApp_certificate_sha256Fingerprint
         ],
       if (source_androidApp_packageName != null)
         'source.androidApp.packageName': [source_androidApp_packageName],
@@ -323,8 +317,7 @@ class StatementsResource {
       queryParams: queryParams_,
     );
     return ListResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -350,14 +343,16 @@ class AndroidAppAsset {
   /// `com.google.android.apps.maps`. REQUIRED
   core.String? packageName;
 
-  AndroidAppAsset({this.certificate, this.packageName});
+  AndroidAppAsset({
+    this.certificate,
+    this.packageName,
+  });
 
   AndroidAppAsset.fromJson(core.Map json_)
       : this(
           certificate: json_.containsKey('certificate')
               ? CertificateInfo.fromJson(
-                  json_['certificate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['certificate'] as core.Map<core.String, core.dynamic>)
               : null,
           packageName: json_['packageName'] as core.String?,
         );
@@ -380,19 +375,20 @@ class Asset {
   /// Set if this is a web asset.
   WebAsset? web;
 
-  Asset({this.androidApp, this.web});
+  Asset({
+    this.androidApp,
+    this.web,
+  });
 
   Asset.fromJson(core.Map json_)
       : this(
           androidApp: json_.containsKey('androidApp')
               ? AndroidAppAsset.fromJson(
-                  json_['androidApp'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['androidApp'] as core.Map<core.String, core.dynamic>)
               : null,
           web: json_.containsKey('web')
               ? WebAsset.fromJson(
-                  json_['web'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['web'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -421,10 +417,14 @@ class CertificateInfo {
   /// representations of each octet, separated by colons).
   core.String? sha256Fingerprint;
 
-  CertificateInfo({this.sha256Fingerprint});
+  CertificateInfo({
+    this.sha256Fingerprint,
+  });
 
   CertificateInfo.fromJson(core.Map json_)
-      : this(sha256Fingerprint: json_['sha256Fingerprint'] as core.String?);
+      : this(
+          sha256Fingerprint: json_['sha256Fingerprint'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sha256Fingerprint != null) 'sha256Fingerprint': sha256Fingerprint!,
@@ -456,7 +456,12 @@ class CheckResponse {
   /// REQUIRED
   core.String? maxAge;
 
-  CheckResponse({this.debugString, this.errorCode, this.linked, this.maxAge});
+  CheckResponse({
+    this.debugString,
+    this.errorCode,
+    this.linked,
+    this.maxAge,
+  });
 
   CheckResponse.fromJson(core.Map json_)
       : this(
@@ -515,11 +520,8 @@ class ListResponse {
               .toList(),
           maxAge: json_['maxAge'] as core.String?,
           statements: (json_['statements'] as core.List?)
-              ?.map(
-                (value) => Statement.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Statement.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -561,20 +563,22 @@ class Statement {
   /// REQUIRED
   Asset? target;
 
-  Statement({this.relation, this.source, this.target});
+  Statement({
+    this.relation,
+    this.source,
+    this.target,
+  });
 
   Statement.fromJson(core.Map json_)
       : this(
           relation: json_['relation'] as core.String?,
           source: json_.containsKey('source')
               ? Asset.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
           target: json_.containsKey('target')
               ? Asset.fromJson(
-                  json_['target'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['target'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -606,9 +610,14 @@ class WebAsset {
   /// `https://www.google.com:444/` (port does not match) REQUIRED
   core.String? site;
 
-  WebAsset({this.site});
+  WebAsset({
+    this.site,
+  });
 
-  WebAsset.fromJson(core.Map json_) : this(site: json_['site'] as core.String?);
+  WebAsset.fromJson(core.Map json_)
+      : this(
+          site: json_['site'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (site != null) 'site': site!,

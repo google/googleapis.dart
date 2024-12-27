@@ -46,16 +46,11 @@ class MyBusinessVerificationsApi {
 
   LocationsResource get locations => LocationsResource(_requester);
 
-  MyBusinessVerificationsApi(
-    http.Client client, {
-    core.String rootUrl = 'https://mybusinessverifications.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  MyBusinessVerificationsApi(http.Client client,
+      {core.String rootUrl = 'https://mybusinessverifications.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class LocationsResource {
@@ -106,8 +101,7 @@ class LocationsResource {
       queryParams: queryParams_,
     );
     return FetchVerificationOptionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the VoiceOfMerchant state.
@@ -143,8 +137,7 @@ class LocationsResource {
       queryParams: queryParams_,
     );
     return VoiceOfMerchantState.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Starts the verification process for a location.
@@ -185,8 +178,7 @@ class LocationsResource {
       queryParams: queryParams_,
     );
     return VerifyLocationResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -237,8 +229,7 @@ class LocationsVerificationsResource {
       queryParams: queryParams_,
     );
     return CompleteVerificationResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List verifications of a location, ordered by create time.
@@ -284,8 +275,7 @@ class LocationsVerificationsResource {
       queryParams: queryParams_,
     );
     return ListVerificationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -311,8 +301,7 @@ class AddressVerificationData {
       : this(
           address: json_.containsKey('address')
               ? PostalAddress.fromJson(
-                  json_['address'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['address'] as core.Map<core.String, core.dynamic>)
               : null,
           business: json_['business'] as core.String?,
           expectedDeliveryDaysRegion:
@@ -334,10 +323,14 @@ class CompleteVerificationRequest {
   /// Required.
   core.String? pin;
 
-  CompleteVerificationRequest({this.pin});
+  CompleteVerificationRequest({
+    this.pin,
+  });
 
   CompleteVerificationRequest.fromJson(core.Map json_)
-      : this(pin: json_['pin'] as core.String?);
+      : this(
+          pin: json_['pin'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pin != null) 'pin': pin!,
@@ -349,14 +342,15 @@ class CompleteVerificationResponse {
   /// The completed verification.
   Verification? verification;
 
-  CompleteVerificationResponse({this.verification});
+  CompleteVerificationResponse({
+    this.verification,
+  });
 
   CompleteVerificationResponse.fromJson(core.Map json_)
       : this(
           verification: json_.containsKey('verification')
               ? Verification.fromJson(
-                  json_['verification'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['verification'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -380,12 +374,14 @@ class ComplyWithGuidelines {
   /// [Help Center article](https://support.google.com/business/answer/9334246).
   core.String? recommendationReason;
 
-  ComplyWithGuidelines({this.recommendationReason});
+  ComplyWithGuidelines({
+    this.recommendationReason,
+  });
 
   ComplyWithGuidelines.fromJson(core.Map json_)
       : this(
-            recommendationReason:
-                json_['recommendationReason'] as core.String?);
+          recommendationReason: json_['recommendationReason'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (recommendationReason != null)
@@ -408,7 +404,11 @@ class EmailVerificationData {
   /// e.g. "foo" in foo@gmail.com
   core.String? user;
 
-  EmailVerificationData({this.domain, this.isUserNameEditable, this.user});
+  EmailVerificationData({
+    this.domain,
+    this.isUserNameEditable,
+    this.user,
+  });
 
   EmailVerificationData.fromJson(core.Map json_)
       : this(
@@ -445,14 +445,16 @@ class FetchVerificationOptionsRequest {
   /// Required.
   core.String? languageCode;
 
-  FetchVerificationOptionsRequest({this.context, this.languageCode});
+  FetchVerificationOptionsRequest({
+    this.context,
+    this.languageCode,
+  });
 
   FetchVerificationOptionsRequest.fromJson(core.Map json_)
       : this(
           context: json_.containsKey('context')
               ? ServiceBusinessContext.fromJson(
-                  json_['context'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['context'] as core.Map<core.String, core.dynamic>)
               : null,
           languageCode: json_['languageCode'] as core.String?,
         );
@@ -468,16 +470,15 @@ class FetchVerificationOptionsResponse {
   /// The available verification options.
   core.List<VerificationOption>? options;
 
-  FetchVerificationOptionsResponse({this.options});
+  FetchVerificationOptionsResponse({
+    this.options,
+  });
 
   FetchVerificationOptionsResponse.fromJson(core.Map json_)
       : this(
           options: (json_['options'] as core.List?)
-              ?.map(
-                (value) => VerificationOption.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => VerificationOption.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -499,17 +500,17 @@ class ListVerificationsResponse {
   /// List of the verifications.
   core.List<Verification>? verifications;
 
-  ListVerificationsResponse({this.nextPageToken, this.verifications});
+  ListVerificationsResponse({
+    this.nextPageToken,
+    this.verifications,
+  });
 
   ListVerificationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           verifications: (json_['verifications'] as core.List?)
-              ?.map(
-                (value) => Verification.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Verification.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -544,14 +545,15 @@ class ServiceBusinessContext {
   /// It is used to either enable more verification options or send a postcard.
   PostalAddress? address;
 
-  ServiceBusinessContext({this.address});
+  ServiceBusinessContext({
+    this.address,
+  });
 
   ServiceBusinessContext.fromJson(core.Map json_)
       : this(
           address: json_.containsKey('address')
               ? PostalAddress.fromJson(
-                  json_['address'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['address'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -671,14 +673,12 @@ class VerificationOption {
       : this(
           addressData: json_.containsKey('addressData')
               ? AddressVerificationData.fromJson(
-                  json_['addressData'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['addressData'] as core.Map<core.String, core.dynamic>)
               : null,
           announcement: json_['announcement'] as core.String?,
           emailData: json_.containsKey('emailData')
               ? EmailVerificationData.fromJson(
-                  json_['emailData'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['emailData'] as core.Map<core.String, core.dynamic>)
               : null,
           phoneNumber: json_['phoneNumber'] as core.String?,
           verificationMethod: json_['verificationMethod'] as core.String?,
@@ -700,10 +700,14 @@ class VerificationToken {
   /// The token string.
   core.String? tokenString;
 
-  VerificationToken({this.tokenString});
+  VerificationToken({
+    this.tokenString,
+  });
 
   VerificationToken.fromJson(core.Map json_)
-      : this(tokenString: json_['tokenString'] as core.String?);
+      : this(
+          tokenString: json_['tokenString'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (tokenString != null) 'tokenString': tokenString!,
@@ -719,7 +723,9 @@ class Verify {
   /// completed by the location.
   core.bool? hasPendingVerification;
 
-  Verify({this.hasPendingVerification});
+  Verify({
+    this.hasPendingVerification,
+  });
 
   Verify.fromJson(core.Map json_)
       : this(
@@ -820,8 +826,7 @@ class VerifyLocationRequest {
       : this(
           context: json_.containsKey('context')
               ? ServiceBusinessContext.fromJson(
-                  json_['context'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['context'] as core.Map<core.String, core.dynamic>)
               : null,
           emailAddress: json_['emailAddress'] as core.String?,
           languageCode: json_['languageCode'] as core.String?,
@@ -830,8 +835,7 @@ class VerifyLocationRequest {
           phoneNumber: json_['phoneNumber'] as core.String?,
           token: json_.containsKey('token')
               ? VerificationToken.fromJson(
-                  json_['token'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['token'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -851,14 +855,15 @@ class VerifyLocationResponse {
   /// The created verification request.
   Verification? verification;
 
-  VerifyLocationResponse({this.verification});
+  VerifyLocationResponse({
+    this.verification,
+  });
 
   VerifyLocationResponse.fromJson(core.Map json_)
       : this(
           verification: json_.containsKey('verification')
               ? Verification.fromJson(
-                  json_['verification'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['verification'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -919,10 +924,8 @@ class VoiceOfMerchantState {
   VoiceOfMerchantState.fromJson(core.Map json_)
       : this(
           complyWithGuidelines: json_.containsKey('complyWithGuidelines')
-              ? ComplyWithGuidelines.fromJson(
-                  json_['complyWithGuidelines']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ComplyWithGuidelines.fromJson(json_['complyWithGuidelines']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           hasBusinessAuthority: json_['hasBusinessAuthority'] as core.bool?,
           hasVoiceOfMerchant: json_['hasVoiceOfMerchant'] as core.bool?,
@@ -930,19 +933,15 @@ class VoiceOfMerchantState {
               json_.containsKey('resolveOwnershipConflict')
                   ? ResolveOwnershipConflict.fromJson(
                       json_['resolveOwnershipConflict']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           verify: json_.containsKey('verify')
               ? Verify.fromJson(
-                  json_['verify'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['verify'] as core.Map<core.String, core.dynamic>)
               : null,
           waitForVoiceOfMerchant: json_.containsKey('waitForVoiceOfMerchant')
-              ? WaitForVoiceOfMerchant.fromJson(
-                  json_['waitForVoiceOfMerchant']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? WaitForVoiceOfMerchant.fromJson(json_['waitForVoiceOfMerchant']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 

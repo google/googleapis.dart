@@ -55,16 +55,11 @@ class GroupsMigrationApi {
 
   ArchiveResource get archive => ArchiveResource(_requester);
 
-  GroupsMigrationApi(
-    http.Client client, {
-    core.String rootUrl = 'https://groupsmigration.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  GroupsMigrationApi(http.Client client,
+      {core.String rootUrl = 'https://groupsmigration.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ArchiveResource {
@@ -128,7 +123,10 @@ class Groups {
   /// The status of the insert request.
   core.String? responseCode;
 
-  Groups({this.kind, this.responseCode});
+  Groups({
+    this.kind,
+    this.responseCode,
+  });
 
   Groups.fromJson(core.Map json_)
       : this(

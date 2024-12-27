@@ -60,16 +60,11 @@ class DoubleclicksearchApi {
   ReportsResource get reports => ReportsResource(_requester);
   SavedColumnsResource get savedColumns => SavedColumnsResource(_requester);
 
-  DoubleclicksearchApi(
-    http.Client client, {
-    core.String rootUrl = 'https://doubleclicksearch.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  DoubleclicksearchApi(http.Client client,
+      {core.String rootUrl = 'https://doubleclicksearch.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ConversionResource {
@@ -164,8 +159,7 @@ class ConversionResource {
       queryParams: queryParams_,
     );
     return ConversionList.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of conversions from a DoubleClick Search engine account.
@@ -253,8 +247,7 @@ class ConversionResource {
       queryParams: queryParams_,
     );
     return ConversionList.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a batch of new conversions into DoubleClick Search.
@@ -291,8 +284,7 @@ class ConversionResource {
       queryParams: queryParams_,
     );
     return ConversionList.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a batch of conversions in DoubleClick Search.
@@ -329,8 +321,7 @@ class ConversionResource {
       queryParams: queryParams_,
     );
     return ConversionList.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the availabilities of a batch of floodlight activities in
@@ -368,8 +359,7 @@ class ConversionResource {
       queryParams: queryParams_,
     );
     return UpdateAvailabilityResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -430,7 +420,10 @@ class ReportsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Report> get(core.String reportId, {core.String? $fields}) async {
+  async.Future<Report> get(
+    core.String reportId, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -549,8 +542,7 @@ class ReportsResource {
     );
     if (downloadOptions.isMetadataDownload) {
       return IdMappingFile.fromJson(
-        response_ as core.Map<core.String, core.dynamic>,
-      );
+          response_ as core.Map<core.String, core.dynamic>);
     } else {
       return response_ as commons.Media;
     }
@@ -637,8 +629,7 @@ class SavedColumnsResource {
       queryParams: queryParams_,
     );
     return SavedColumnList.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -911,18 +902,12 @@ class Conversion {
           criterionId: json_['criterionId'] as core.String?,
           currencyCode: json_['currencyCode'] as core.String?,
           customDimension: (json_['customDimension'] as core.List?)
-              ?.map(
-                (value) => CustomDimension.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CustomDimension.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           customMetric: (json_['customMetric'] as core.List?)
-              ?.map(
-                (value) => CustomMetric.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CustomMetric.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           customerId: json_['customerId'] as core.String?,
           deviceType: json_['deviceType'] as core.String?,
@@ -996,16 +981,16 @@ class ConversionList {
   /// Value: the fixed string doubleclicksearch#conversionList.
   core.String? kind;
 
-  ConversionList({this.conversion, this.kind});
+  ConversionList({
+    this.conversion,
+    this.kind,
+  });
 
   ConversionList.fromJson(core.Map json_)
       : this(
           conversion: (json_['conversion'] as core.List?)
-              ?.map(
-                (value) => Conversion.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Conversion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -1024,7 +1009,10 @@ class CustomDimension {
   /// Custom dimension value.
   core.String? value;
 
-  CustomDimension({this.name, this.value});
+  CustomDimension({
+    this.name,
+    this.value,
+  });
 
   CustomDimension.fromJson(core.Map json_)
       : this(
@@ -1046,7 +1034,10 @@ class CustomMetric {
   /// Custom metric numeric value.
   core.double? value;
 
-  CustomMetric({this.name, this.value});
+  CustomMetric({
+    this.name,
+    this.value,
+  });
 
   CustomMetric.fromJson(core.Map json_)
       : this(
@@ -1071,7 +1062,10 @@ class ReportFiles {
   /// Use this url to download the report file.
   core.String? url;
 
-  ReportFiles({this.byteCount, this.url});
+  ReportFiles({
+    this.byteCount,
+    this.url,
+  });
 
   ReportFiles.fromJson(core.Map json_)
       : this(
@@ -1155,19 +1149,15 @@ class Report {
   Report.fromJson(core.Map json_)
       : this(
           files: (json_['files'] as core.List?)
-              ?.map(
-                (value) => ReportFiles.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ReportFiles.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           id: json_['id'] as core.String?,
           isReportReady: json_['isReportReady'] as core.bool?,
           kind: json_['kind'] as core.String?,
           request: json_.containsKey('request')
               ? ReportRequest.fromJson(
-                  json_['request'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['request'] as core.Map<core.String, core.dynamic>)
               : null,
           rowCount: json_['rowCount'] as core.int?,
           rows: (json_['rows'] as core.List?)
@@ -1320,14 +1310,17 @@ class ReportRequestFilters {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object?>? values;
 
-  ReportRequestFilters({this.column, this.operator, this.values});
+  ReportRequestFilters({
+    this.column,
+    this.operator,
+    this.values,
+  });
 
   ReportRequestFilters.fromJson(core.Map json_)
       : this(
           column: json_.containsKey('column')
               ? ReportApiColumnSpec.fromJson(
-                  json_['column'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['column'] as core.Map<core.String, core.dynamic>)
               : null,
           operator: json_['operator'] as core.String?,
           values:
@@ -1350,14 +1343,16 @@ class ReportRequestOrderBy {
   /// The sort direction, which is either `ascending` or `descending`.
   core.String? sortOrder;
 
-  ReportRequestOrderBy({this.column, this.sortOrder});
+  ReportRequestOrderBy({
+    this.column,
+    this.sortOrder,
+  });
 
   ReportRequestOrderBy.fromJson(core.Map json_)
       : this(
           column: json_.containsKey('column')
               ? ReportApiColumnSpec.fromJson(
-                  json_['column'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['column'] as core.Map<core.String, core.dynamic>)
               : null,
           sortOrder: json_['sortOrder'] as core.String?,
         );
@@ -1582,34 +1577,24 @@ class ReportRequest {
   ReportRequest.fromJson(core.Map json_)
       : this(
           columns: (json_['columns'] as core.List?)
-              ?.map(
-                (value) => ReportApiColumnSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ReportApiColumnSpec.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           downloadFormat: json_['downloadFormat'] as core.String?,
           filters: (json_['filters'] as core.List?)
-              ?.map(
-                (value) => ReportRequestFilters.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ReportRequestFilters.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           includeDeletedEntities: json_['includeDeletedEntities'] as core.bool?,
           includeRemovedEntities: json_['includeRemovedEntities'] as core.bool?,
           maxRowsPerFile: json_['maxRowsPerFile'] as core.int?,
           orderBy: (json_['orderBy'] as core.List?)
-              ?.map(
-                (value) => ReportRequestOrderBy.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ReportRequestOrderBy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           reportScope: json_.containsKey('reportScope')
               ? ReportRequestReportScope.fromJson(
-                  json_['reportScope'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['reportScope'] as core.Map<core.String, core.dynamic>)
               : null,
           reportType: json_['reportType'] as core.String?,
           rowCount: json_['rowCount'] as core.int?,
@@ -1617,8 +1602,7 @@ class ReportRequest {
           statisticsCurrency: json_['statisticsCurrency'] as core.String?,
           timeRange: json_.containsKey('timeRange')
               ? ReportRequestTimeRange.fromJson(
-                  json_['timeRange'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['timeRange'] as core.Map<core.String, core.dynamic>)
               : null,
           verifySingleTimeZone: json_['verifySingleTimeZone'] as core.bool?,
         );
@@ -1664,7 +1648,11 @@ class SavedColumn {
   /// The type of data this saved column will produce.
   core.String? type;
 
-  SavedColumn({this.kind, this.savedColumnName, this.type});
+  SavedColumn({
+    this.kind,
+    this.savedColumnName,
+    this.type,
+  });
 
   SavedColumn.fromJson(core.Map json_)
       : this(
@@ -1694,16 +1682,16 @@ class SavedColumnList {
   /// Value: the fixed string doubleclicksearch#savedColumnList.
   core.String? kind;
 
-  SavedColumnList({this.items, this.kind});
+  SavedColumnList({
+    this.items,
+    this.kind,
+  });
 
   SavedColumnList.fromJson(core.Map json_)
       : this(
           items: (json_['items'] as core.List?)
-              ?.map(
-                (value) => SavedColumn.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SavedColumn.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           kind: json_['kind'] as core.String?,
         );
@@ -1719,16 +1707,15 @@ class UpdateAvailabilityRequest {
   /// The availabilities being requested.
   core.List<Availability>? availabilities;
 
-  UpdateAvailabilityRequest({this.availabilities});
+  UpdateAvailabilityRequest({
+    this.availabilities,
+  });
 
   UpdateAvailabilityRequest.fromJson(core.Map json_)
       : this(
           availabilities: (json_['availabilities'] as core.List?)
-              ?.map(
-                (value) => Availability.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Availability.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1742,16 +1729,15 @@ class UpdateAvailabilityResponse {
   /// The availabilities being returned.
   core.List<Availability>? availabilities;
 
-  UpdateAvailabilityResponse({this.availabilities});
+  UpdateAvailabilityResponse({
+    this.availabilities,
+  });
 
   UpdateAvailabilityResponse.fromJson(core.Map json_)
       : this(
           availabilities: (json_['availabilities'] as core.List?)
-              ?.map(
-                (value) => Availability.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Availability.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 

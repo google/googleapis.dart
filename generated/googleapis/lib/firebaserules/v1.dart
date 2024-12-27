@@ -59,16 +59,11 @@ class FirebaseRulesApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  FirebaseRulesApi(
-    http.Client client, {
-    core.String rootUrl = 'https://firebaserules.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  FirebaseRulesApi(http.Client client,
+      {core.String rootUrl = 'https://firebaserules.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -133,8 +128,7 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return TestRulesetResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -217,7 +211,10 @@ class ProjectsReleasesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -250,7 +247,10 @@ class ProjectsReleasesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Release> get(core.String name, {core.String? $fields}) async {
+  async.Future<Release> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -311,8 +311,7 @@ class ProjectsReleasesResource {
       queryParams: queryParams_,
     );
     return GetReleaseExecutableResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List the `Release` values for a project.
@@ -382,8 +381,7 @@ class ProjectsReleasesResource {
       queryParams: queryParams_,
     );
     return ListReleasesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a `Release` via PATCH.
@@ -502,7 +500,10 @@ class ProjectsRulesetsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -535,7 +536,10 @@ class ProjectsRulesetsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Ruleset> get(core.String name, {core.String? $fields}) async {
+  async.Future<Ruleset> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -608,8 +612,7 @@ class ProjectsRulesetsResource {
       queryParams: queryParams_,
     );
     return ListRulesetsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -624,14 +627,16 @@ class Arg {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? exactValue;
 
-  Arg({this.anyValue, this.exactValue});
+  Arg({
+    this.anyValue,
+    this.exactValue,
+  });
 
   Arg.fromJson(core.Map json_)
       : this(
           anyValue: json_.containsKey('anyValue')
               ? Empty.fromJson(
-                  json_['anyValue'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['anyValue'] as core.Map<core.String, core.dynamic>)
               : null,
           exactValue: json_['exactValue'],
         );
@@ -662,29 +667,25 @@ class ExpressionReport {
   /// Values that this expression evaluated to when encountered.
   core.List<ValueCount>? values;
 
-  ExpressionReport({this.children, this.sourcePosition, this.values});
+  ExpressionReport({
+    this.children,
+    this.sourcePosition,
+    this.values,
+  });
 
   ExpressionReport.fromJson(core.Map json_)
       : this(
           children: (json_['children'] as core.List?)
-              ?.map(
-                (value) => ExpressionReport.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ExpressionReport.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           sourcePosition: json_.containsKey('sourcePosition')
-              ? SourcePosition.fromJson(
-                  json_['sourcePosition']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SourcePosition.fromJson(json_['sourcePosition']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           values: (json_['values'] as core.List?)
-              ?.map(
-                (value) => ValueCount.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ValueCount.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -717,7 +718,11 @@ class File {
   /// Required.
   core.String? name;
 
-  File({this.content, this.fingerprint, this.name});
+  File({
+    this.content,
+    this.fingerprint,
+    this.name,
+  });
 
   File.fromJson(core.Map json_)
       : this(
@@ -745,7 +750,10 @@ class FunctionCall {
   /// Name of the function invoked.
   core.String? function;
 
-  FunctionCall({this.args, this.function});
+  FunctionCall({
+    this.args,
+    this.function,
+  });
 
   FunctionCall.fromJson(core.Map json_)
       : this(
@@ -783,22 +791,22 @@ class FunctionMock {
   /// The mock result of the function call.
   Result? result;
 
-  FunctionMock({this.args, this.function, this.result});
+  FunctionMock({
+    this.args,
+    this.function,
+    this.result,
+  });
 
   FunctionMock.fromJson(core.Map json_)
       : this(
           args: (json_['args'] as core.List?)
-              ?.map(
-                (value) => Arg.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Arg.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           function: json_['function'] as core.String?,
           result: json_.containsKey('result')
               ? Result.fromJson(
-                  json_['result'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['result'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -898,17 +906,19 @@ class Issue {
   /// Position of the issue in the `Source`.
   SourcePosition? sourcePosition;
 
-  Issue({this.description, this.severity, this.sourcePosition});
+  Issue({
+    this.description,
+    this.severity,
+    this.sourcePosition,
+  });
 
   Issue.fromJson(core.Map json_)
       : this(
           description: json_['description'] as core.String?,
           severity: json_['severity'] as core.String?,
           sourcePosition: json_.containsKey('sourcePosition')
-              ? SourcePosition.fromJson(
-                  json_['sourcePosition']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SourcePosition.fromJson(json_['sourcePosition']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -929,17 +939,17 @@ class ListReleasesResponse {
   /// List of `Release` instances.
   core.List<Release>? releases;
 
-  ListReleasesResponse({this.nextPageToken, this.releases});
+  ListReleasesResponse({
+    this.nextPageToken,
+    this.releases,
+  });
 
   ListReleasesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           releases: (json_['releases'] as core.List?)
-              ?.map(
-                (value) => Release.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Release.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -959,17 +969,17 @@ class ListRulesetsResponse {
   /// List of `Ruleset` instances.
   core.List<Ruleset>? rulesets;
 
-  ListRulesetsResponse({this.nextPageToken, this.rulesets});
+  ListRulesetsResponse({
+    this.nextPageToken,
+    this.rulesets,
+  });
 
   ListRulesetsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           rulesets: (json_['rulesets'] as core.List?)
-              ?.map(
-                (value) => Ruleset.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Ruleset.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -986,7 +996,9 @@ class Metadata {
   /// There may be 0+ of these.
   core.List<core.String>? services;
 
-  Metadata({this.services});
+  Metadata({
+    this.services,
+  });
 
   Metadata.fromJson(core.Map json_)
       : this(
@@ -1027,7 +1039,12 @@ class Release {
   /// Output only.
   core.String? updateTime;
 
-  Release({this.createTime, this.name, this.rulesetName, this.updateTime});
+  Release({
+    this.createTime,
+    this.name,
+    this.rulesetName,
+    this.updateTime,
+  });
 
   Release.fromJson(core.Map json_)
       : this(
@@ -1058,14 +1075,16 @@ class Result {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? value;
 
-  Result({this.undefined, this.value});
+  Result({
+    this.undefined,
+    this.value,
+  });
 
   Result.fromJson(core.Map json_)
       : this(
           undefined: json_.containsKey('undefined')
               ? Empty.fromJson(
-                  json_['undefined'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['undefined'] as core.Map<core.String, core.dynamic>)
               : null,
           value: json_['value'],
         );
@@ -1124,14 +1143,12 @@ class Ruleset {
           createTime: json_['createTime'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? Metadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           source: json_.containsKey('source')
               ? Source.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1151,16 +1168,15 @@ class Source {
   /// Required.
   core.List<File>? files;
 
-  Source({this.files});
+  Source({
+    this.files,
+  });
 
   Source.fromJson(core.Map json_)
       : this(
           files: (json_['files'] as core.List?)
-              ?.map(
-                (value) => File.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  File.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1296,11 +1312,8 @@ class TestCase {
           expectation: json_['expectation'] as core.String?,
           expressionReportLevel: json_['expressionReportLevel'] as core.String?,
           functionMocks: (json_['functionMocks'] as core.List?)
-              ?.map(
-                (value) => FunctionMock.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => FunctionMock.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           pathEncoding: json_['pathEncoding'] as core.String?,
           request: json_['request'],
@@ -1384,30 +1397,20 @@ class TestResult {
               .toList(),
           errorPosition: json_.containsKey('errorPosition')
               ? SourcePosition.fromJson(
-                  json_['errorPosition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['errorPosition'] as core.Map<core.String, core.dynamic>)
               : null,
           expressionReports: (json_['expressionReports'] as core.List?)
-              ?.map(
-                (value) => ExpressionReport.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ExpressionReport.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           functionCalls: (json_['functionCalls'] as core.List?)
-              ?.map(
-                (value) => FunctionCall.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => FunctionCall.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           state: json_['state'] as core.String?,
           visitedExpressions: (json_['visitedExpressions'] as core.List?)
-              ?.map(
-                (value) => VisitedExpression.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => VisitedExpression.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1440,19 +1443,20 @@ class TestRulesetRequest {
   /// Required.
   TestSuite? testSuite;
 
-  TestRulesetRequest({this.source, this.testSuite});
+  TestRulesetRequest({
+    this.source,
+    this.testSuite,
+  });
 
   TestRulesetRequest.fromJson(core.Map json_)
       : this(
           source: json_.containsKey('source')
               ? Source.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
           testSuite: json_.containsKey('testSuite')
               ? TestSuite.fromJson(
-                  json_['testSuite'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['testSuite'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1475,23 +1479,20 @@ class TestRulesetResponse {
   /// `TestSuite`.
   core.List<TestResult>? testResults;
 
-  TestRulesetResponse({this.issues, this.testResults});
+  TestRulesetResponse({
+    this.issues,
+    this.testResults,
+  });
 
   TestRulesetResponse.fromJson(core.Map json_)
       : this(
           issues: (json_['issues'] as core.List?)
-              ?.map(
-                (value) => Issue.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Issue.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           testResults: (json_['testResults'] as core.List?)
-              ?.map(
-                (value) => TestResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => TestResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1510,16 +1511,15 @@ class TestSuite {
   /// Collection of test cases associated with the `TestSuite`.
   core.List<TestCase>? testCases;
 
-  TestSuite({this.testCases});
+  TestSuite({
+    this.testCases,
+  });
 
   TestSuite.fromJson(core.Map json_)
       : this(
           testCases: (json_['testCases'] as core.List?)
-              ?.map(
-                (value) => TestCase.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => TestCase.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1540,14 +1540,16 @@ class UpdateReleaseRequest {
   /// Optional.
   core.String? updateMask;
 
-  UpdateReleaseRequest({this.release, this.updateMask});
+  UpdateReleaseRequest({
+    this.release,
+    this.updateMask,
+  });
 
   UpdateReleaseRequest.fromJson(core.Map json_)
       : this(
           release: json_.containsKey('release')
               ? Release.fromJson(
-                  json_['release'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['release'] as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -1570,10 +1572,16 @@ class ValueCount {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? value;
 
-  ValueCount({this.count, this.value});
+  ValueCount({
+    this.count,
+    this.value,
+  });
 
   ValueCount.fromJson(core.Map json_)
-      : this(count: json_['count'] as core.int?, value: json_['value']);
+      : this(
+          count: json_['count'] as core.int?,
+          value: json_['value'],
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
@@ -1592,15 +1600,16 @@ class VisitedExpression {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? value;
 
-  VisitedExpression({this.sourcePosition, this.value});
+  VisitedExpression({
+    this.sourcePosition,
+    this.value,
+  });
 
   VisitedExpression.fromJson(core.Map json_)
       : this(
           sourcePosition: json_.containsKey('sourcePosition')
-              ? SourcePosition.fromJson(
-                  json_['sourcePosition']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SourcePosition.fromJson(json_['sourcePosition']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           value: json_['value'],
         );

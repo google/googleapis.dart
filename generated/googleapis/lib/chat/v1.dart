@@ -176,16 +176,11 @@ class HangoutsChatApi {
   SpacesResource get spaces => SpacesResource(_requester);
   UsersResource get users => UsersResource(_requester);
 
-  HangoutsChatApi(
-    http.Client client, {
-    core.String rootUrl = 'https://chat.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  HangoutsChatApi(http.Client client,
+      {core.String rootUrl = 'https://chat.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class MediaResource {
@@ -313,8 +308,7 @@ class MediaResource {
       uploadOptions: uploadOptions,
     );
     return UploadAttachmentResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -374,8 +368,7 @@ class SpacesResource {
       queryParams: queryParams_,
     );
     return CompleteImportSpaceResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a space.
@@ -689,8 +682,7 @@ class SpacesResource {
       queryParams: queryParams_,
     );
     return ListSpacesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a space.
@@ -928,8 +920,7 @@ class SpacesResource {
       queryParams: queryParams_,
     );
     return SearchSpacesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a space and adds specified users to it.
@@ -1085,8 +1076,7 @@ class SpacesMembersResource {
       queryParams: queryParams_,
     );
     return Membership.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a membership.
@@ -1154,8 +1144,7 @@ class SpacesMembersResource {
       queryParams: queryParams_,
     );
     return Membership.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns details about a membership.
@@ -1220,8 +1209,7 @@ class SpacesMembersResource {
       queryParams: queryParams_,
     );
     return Membership.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists memberships in a space.
@@ -1338,8 +1326,7 @@ class SpacesMembersResource {
       queryParams: queryParams_,
     );
     return ListMembershipsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a membership.
@@ -1409,8 +1396,7 @@ class SpacesMembersResource {
       queryParams: queryParams_,
     );
     return Membership.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1627,7 +1613,10 @@ class SpacesMessagesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Message> get(core.String name, {core.String? $fields}) async {
+  async.Future<Message> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1735,8 +1724,7 @@ class SpacesMessagesResource {
       queryParams: queryParams_,
     );
     return ListMessagesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a message.
@@ -1932,7 +1920,10 @@ class SpacesMessagesAttachmentsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Attachment> get(core.String name, {core.String? $fields}) async {
+  async.Future<Attachment> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1945,8 +1936,7 @@ class SpacesMessagesAttachmentsResource {
       queryParams: queryParams_,
     );
     return Attachment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2026,7 +2016,10 @@ class SpacesMessagesReactionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2120,8 +2113,7 @@ class SpacesMessagesReactionsResource {
       queryParams: queryParams_,
     );
     return ListReactionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2160,7 +2152,10 @@ class SpacesSpaceEventsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SpaceEvent> get(core.String name, {core.String? $fields}) async {
+  async.Future<SpaceEvent> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2173,8 +2168,7 @@ class SpacesSpaceEventsResource {
       queryParams: queryParams_,
     );
     return SpaceEvent.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists events from a Google Chat space.
@@ -2270,8 +2264,7 @@ class SpacesSpaceEventsResource {
       queryParams: queryParams_,
     );
     return ListSpaceEventsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2337,8 +2330,7 @@ class UsersSpacesResource {
       queryParams: queryParams_,
     );
     return SpaceReadState.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a user's read state within a space, used to identify read and
@@ -2398,8 +2390,7 @@ class UsersSpacesResource {
       queryParams: queryParams_,
     );
     return SpaceReadState.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2456,8 +2447,7 @@ class UsersSpacesThreadsResource {
       queryParams: queryParams_,
     );
     return ThreadReadState.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2508,7 +2498,10 @@ class AccessSettings {
   /// Optional.
   core.String? audience;
 
-  AccessSettings({this.accessState, this.audience});
+  AccessSettings({
+    this.accessState,
+    this.audience,
+  });
 
   AccessSettings.fromJson(core.Map json_)
       : this(
@@ -2530,14 +2523,15 @@ class AccessoryWidget {
   /// A list of buttons.
   GoogleAppsCardV1ButtonList? buttonList;
 
-  AccessoryWidget({this.buttonList});
+  AccessoryWidget({
+    this.buttonList,
+  });
 
   AccessoryWidget.fromJson(core.Map json_)
       : this(
           buttonList: json_.containsKey('buttonList')
               ? GoogleAppsCardV1ButtonList.fromJson(
-                  json_['buttonList'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['buttonList'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2592,20 +2586,23 @@ class ActionResponse {
   /// response types.)
   core.String? url;
 
-  ActionResponse({this.dialogAction, this.type, this.updatedWidget, this.url});
+  ActionResponse({
+    this.dialogAction,
+    this.type,
+    this.updatedWidget,
+    this.url,
+  });
 
   ActionResponse.fromJson(core.Map json_)
       : this(
           dialogAction: json_.containsKey('dialogAction')
               ? DialogAction.fromJson(
-                  json_['dialogAction'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['dialogAction'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
           updatedWidget: json_.containsKey('updatedWidget')
               ? UpdatedWidget.fromJson(
-                  json_['updatedWidget'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['updatedWidget'] as core.Map<core.String, core.dynamic>)
               : null,
           url: json_['url'] as core.String?,
         );
@@ -2709,7 +2706,10 @@ class ActionStatus {
   /// If unset, a generic message based on the `status_code` is sent.
   core.String? userFacingMessage;
 
-  ActionStatus({this.statusCode, this.userFacingMessage});
+  ActionStatus({
+    this.statusCode,
+    this.userFacingMessage,
+  });
 
   ActionStatus.fromJson(core.Map json_)
       : this(
@@ -2774,22 +2774,18 @@ class Annotation {
       : this(
           length: json_['length'] as core.int?,
           richLinkMetadata: json_.containsKey('richLinkMetadata')
-              ? RichLinkMetadata.fromJson(
-                  json_['richLinkMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? RichLinkMetadata.fromJson(json_['richLinkMetadata']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           slashCommand: json_.containsKey('slashCommand')
               ? SlashCommandMetadata.fromJson(
-                  json_['slashCommand'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['slashCommand'] as core.Map<core.String, core.dynamic>)
               : null,
           startIndex: json_['startIndex'] as core.int?,
           type: json_['type'] as core.String?,
           userMention: json_.containsKey('userMention')
               ? UserMentionMetadata.fromJson(
-                  json_['userMention'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['userMention'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2810,10 +2806,14 @@ class AttachedGif {
   /// Output only.
   core.String? uri;
 
-  AttachedGif({this.uri});
+  AttachedGif({
+    this.uri,
+  });
 
   AttachedGif.fromJson(core.Map json_)
-      : this(uri: json_['uri'] as core.String?);
+      : this(
+          uri: json_['uri'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
@@ -2892,18 +2892,15 @@ class Attachment {
   Attachment.fromJson(core.Map json_)
       : this(
           attachmentDataRef: json_.containsKey('attachmentDataRef')
-              ? AttachmentDataRef.fromJson(
-                  json_['attachmentDataRef']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AttachmentDataRef.fromJson(json_['attachmentDataRef']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           contentName: json_['contentName'] as core.String?,
           contentType: json_['contentType'] as core.String?,
           downloadUri: json_['downloadUri'] as core.String?,
           driveDataRef: json_.containsKey('driveDataRef')
               ? DriveDataRef.fromJson(
-                  json_['driveDataRef'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['driveDataRef'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           source: json_['source'] as core.String?,
@@ -2939,7 +2936,10 @@ class AttachmentDataRef {
   /// Optional.
   core.String? resourceName;
 
-  AttachmentDataRef({this.attachmentUploadToken, this.resourceName});
+  AttachmentDataRef({
+    this.attachmentUploadToken,
+    this.resourceName,
+  });
 
   AttachmentDataRef.fromJson(core.Map json_)
       : this(
@@ -2964,19 +2964,20 @@ class Button {
   /// A button with text and `onclick` action.
   TextButton? textButton;
 
-  Button({this.imageButton, this.textButton});
+  Button({
+    this.imageButton,
+    this.textButton,
+  });
 
   Button.fromJson(core.Map json_)
       : this(
           imageButton: json_.containsKey('imageButton')
               ? ImageButton.fromJson(
-                  json_['imageButton'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['imageButton'] as core.Map<core.String, core.dynamic>)
               : null,
           textButton: json_.containsKey('textButton')
               ? TextButton.fromJson(
-                  json_['textButton'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['textButton'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3002,29 +3003,27 @@ class Card {
   /// Sections are separated by a line divider.
   core.List<Section>? sections;
 
-  Card({this.cardActions, this.header, this.name, this.sections});
+  Card({
+    this.cardActions,
+    this.header,
+    this.name,
+    this.sections,
+  });
 
   Card.fromJson(core.Map json_)
       : this(
           cardActions: (json_['cardActions'] as core.List?)
-              ?.map(
-                (value) => CardAction.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CardAction.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           header: json_.containsKey('header')
               ? CardHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['header'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           sections: (json_['sections'] as core.List?)
-              ?.map(
-                (value) => Section.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Section.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3047,15 +3046,17 @@ class CardAction {
   /// The onclick action for this action item.
   OnClick? onClick;
 
-  CardAction({this.actionLabel, this.onClick});
+  CardAction({
+    this.actionLabel,
+    this.onClick,
+  });
 
   CardAction.fromJson(core.Map json_)
       : this(
           actionLabel: json_['actionLabel'] as core.String?,
           onClick: json_.containsKey('onClick')
               ? OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['onClick'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3086,7 +3087,12 @@ class CardHeader {
   /// lines.
   core.String? title;
 
-  CardHeader({this.imageStyle, this.imageUrl, this.subtitle, this.title});
+  CardHeader({
+    this.imageStyle,
+    this.imageUrl,
+    this.subtitle,
+    this.title,
+  });
 
   CardHeader.fromJson(core.Map json_)
       : this(
@@ -3123,14 +3129,16 @@ class CardWithId {
   /// A unique identifier for a card in a message.
   core.String? cardId;
 
-  CardWithId({this.card, this.cardId});
+  CardWithId({
+    this.card,
+    this.cardId,
+  });
 
   CardWithId.fromJson(core.Map json_)
       : this(
           card: json_.containsKey('card')
               ? GoogleAppsCardV1Card.fromJson(
-                  json_['card'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['card'] as core.Map<core.String, core.dynamic>)
               : null,
           cardId: json_['cardId'] as core.String?,
         );
@@ -3151,15 +3159,15 @@ class ChatClientDataSourceMarkup {
   /// Google Chat spaces that the user is a member of.
   SpaceDataSource? spaceDataSource;
 
-  ChatClientDataSourceMarkup({this.spaceDataSource});
+  ChatClientDataSourceMarkup({
+    this.spaceDataSource,
+  });
 
   ChatClientDataSourceMarkup.fromJson(core.Map json_)
       : this(
           spaceDataSource: json_.containsKey('spaceDataSource')
-              ? SpaceDataSource.fromJson(
-                  json_['spaceDataSource']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SpaceDataSource.fromJson(json_['spaceDataSource']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3185,7 +3193,11 @@ class ChatSpaceLinkData {
   /// Format: `spaces/{space}/threads/{thread}`
   core.String? thread;
 
-  ChatSpaceLinkData({this.message, this.space, this.thread});
+  ChatSpaceLinkData({
+    this.message,
+    this.space,
+    this.thread,
+  });
 
   ChatSpaceLinkData.fromJson(core.Map json_)
       : this(
@@ -3260,14 +3272,15 @@ class CompleteImportSpaceResponse {
   /// The import mode space.
   Space? space;
 
-  CompleteImportSpaceResponse({this.space});
+  CompleteImportSpaceResponse({
+    this.space,
+  });
 
   CompleteImportSpaceResponse.fromJson(core.Map json_)
       : this(
           space: json_.containsKey('space')
               ? Space.fromJson(
-                  json_['space'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['space'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3283,10 +3296,14 @@ class CustomEmoji {
   /// Output only.
   core.String? uid;
 
-  CustomEmoji({this.uid});
+  CustomEmoji({
+    this.uid,
+  });
 
   CustomEmoji.fromJson(core.Map json_)
-      : this(uid: json_['uid'] as core.String?);
+      : this(
+          uid: json_['uid'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (uid != null) 'uid': uid!,
@@ -3311,10 +3328,14 @@ class DeletionMetadata {
   /// space owner.
   core.String? deletionType;
 
-  DeletionMetadata({this.deletionType});
+  DeletionMetadata({
+    this.deletionType,
+  });
 
   DeletionMetadata.fromJson(core.Map json_)
-      : this(deletionType: json_['deletionType'] as core.String?);
+      : this(
+          deletionType: json_['deletionType'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deletionType != null) 'deletionType': deletionType!,
@@ -3329,14 +3350,15 @@ class Dialog {
   /// support the following card entities: `DateTimePicker`, `OnChangeAction`.
   GoogleAppsCardV1Card? body;
 
-  Dialog({this.body});
+  Dialog({
+    this.body,
+  });
 
   Dialog.fromJson(core.Map json_)
       : this(
           body: json_.containsKey('body')
               ? GoogleAppsCardV1Card.fromJson(
-                  json_['body'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['body'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3362,19 +3384,20 @@ class DialogAction {
   /// request.
   Dialog? dialog;
 
-  DialogAction({this.actionStatus, this.dialog});
+  DialogAction({
+    this.actionStatus,
+    this.dialog,
+  });
 
   DialogAction.fromJson(core.Map json_)
       : this(
           actionStatus: json_.containsKey('actionStatus')
               ? ActionStatus.fromJson(
-                  json_['actionStatus'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['actionStatus'] as core.Map<core.String, core.dynamic>)
               : null,
           dialog: json_.containsKey('dialog')
               ? Dialog.fromJson(
-                  json_['dialog'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['dialog'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3391,10 +3414,14 @@ class DriveDataRef {
   /// Use with the Drive API.
   core.String? driveFileId;
 
-  DriveDataRef({this.driveFileId});
+  DriveDataRef({
+    this.driveFileId,
+  });
 
   DriveDataRef.fromJson(core.Map json_)
-      : this(driveFileId: json_['driveFileId'] as core.String?);
+      : this(
+          driveFileId: json_['driveFileId'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (driveFileId != null) 'driveFileId': driveFileId!,
@@ -3411,14 +3438,16 @@ class DriveLinkData {
   /// The mime type of the linked Google Drive resource.
   core.String? mimeType;
 
-  DriveLinkData({this.driveDataRef, this.mimeType});
+  DriveLinkData({
+    this.driveDataRef,
+    this.mimeType,
+  });
 
   DriveLinkData.fromJson(core.Map json_)
       : this(
           driveDataRef: json_.containsKey('driveDataRef')
               ? DriveDataRef.fromJson(
-                  json_['driveDataRef'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['driveDataRef'] as core.Map<core.String, core.dynamic>)
               : null,
           mimeType: json_['mimeType'] as core.String?,
         );
@@ -3441,14 +3470,16 @@ class Emoji {
   /// Optional.
   core.String? unicode;
 
-  Emoji({this.customEmoji, this.unicode});
+  Emoji({
+    this.customEmoji,
+    this.unicode,
+  });
 
   Emoji.fromJson(core.Map json_)
       : this(
           customEmoji: json_.containsKey('customEmoji')
               ? CustomEmoji.fromJson(
-                  json_['customEmoji'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['customEmoji'] as core.Map<core.String, core.dynamic>)
               : null,
           unicode: json_['unicode'] as core.String?,
         );
@@ -3471,14 +3502,16 @@ class EmojiReactionSummary {
   /// Output only.
   core.int? reactionCount;
 
-  EmojiReactionSummary({this.emoji, this.reactionCount});
+  EmojiReactionSummary({
+    this.emoji,
+    this.reactionCount,
+  });
 
   EmojiReactionSummary.fromJson(core.Map json_)
       : this(
           emoji: json_.containsKey('emoji')
               ? Emoji.fromJson(
-                  json_['emoji'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['emoji'] as core.Map<core.String, core.dynamic>)
               : null,
           reactionCount: json_['reactionCount'] as core.int?,
         );
@@ -3512,17 +3545,17 @@ class FormAction {
   /// List of action parameters.
   core.List<ActionParameter>? parameters;
 
-  FormAction({this.actionMethodName, this.parameters});
+  FormAction({
+    this.actionMethodName,
+    this.parameters,
+  });
 
   FormAction.fromJson(core.Map json_)
       : this(
           actionMethodName: json_['actionMethodName'] as core.String?,
           parameters: (json_['parameters'] as core.List?)
-              ?.map(
-                (value) => ActionParameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ActionParameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3615,11 +3648,8 @@ class GoogleAppsCardV1Action {
           interaction: json_['interaction'] as core.String?,
           loadIndicator: json_['loadIndicator'] as core.String?,
           parameters: (json_['parameters'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCardV1ActionParameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleAppsCardV1ActionParameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           persistValues: json_['persistValues'] as core.bool?,
         );
@@ -3671,15 +3701,18 @@ class GoogleAppsCardV1BorderStyle {
   /// - "STROKE" : Outline.
   core.String? type;
 
-  GoogleAppsCardV1BorderStyle({this.cornerRadius, this.strokeColor, this.type});
+  GoogleAppsCardV1BorderStyle({
+    this.cornerRadius,
+    this.strokeColor,
+    this.type,
+  });
 
   GoogleAppsCardV1BorderStyle.fromJson(core.Map json_)
       : this(
           cornerRadius: json_['cornerRadius'] as core.int?,
           strokeColor: json_.containsKey('strokeColor')
               ? Color.fromJson(
-                  json_['strokeColor'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['strokeColor'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
         );
@@ -3780,19 +3813,16 @@ class GoogleAppsCardV1Button {
           altText: json_['altText'] as core.String?,
           color: json_.containsKey('color')
               ? Color.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['color'] as core.Map<core.String, core.dynamic>)
               : null,
           disabled: json_['disabled'] as core.bool?,
           icon: json_.containsKey('icon')
               ? GoogleAppsCardV1Icon.fromJson(
-                  json_['icon'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['icon'] as core.Map<core.String, core.dynamic>)
               : null,
           onClick: json_.containsKey('onClick')
               ? GoogleAppsCardV1OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['onClick'] as core.Map<core.String, core.dynamic>)
               : null,
           text: json_['text'] as core.String?,
           type: json_['type'] as core.String?,
@@ -3819,16 +3849,15 @@ class GoogleAppsCardV1ButtonList {
   /// An array of buttons.
   core.List<GoogleAppsCardV1Button>? buttons;
 
-  GoogleAppsCardV1ButtonList({this.buttons});
+  GoogleAppsCardV1ButtonList({
+    this.buttons,
+  });
 
   GoogleAppsCardV1ButtonList.fromJson(core.Map json_)
       : this(
           buttons: (json_['buttons'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCardV1Button.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleAppsCardV1Button.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3957,37 +3986,27 @@ class GoogleAppsCardV1Card {
   GoogleAppsCardV1Card.fromJson(core.Map json_)
       : this(
           cardActions: (json_['cardActions'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCardV1CardAction.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleAppsCardV1CardAction.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           displayStyle: json_['displayStyle'] as core.String?,
           fixedFooter: json_.containsKey('fixedFooter')
               ? GoogleAppsCardV1CardFixedFooter.fromJson(
-                  json_['fixedFooter'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['fixedFooter'] as core.Map<core.String, core.dynamic>)
               : null,
           header: json_.containsKey('header')
               ? GoogleAppsCardV1CardHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['header'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           peekCardHeader: json_.containsKey('peekCardHeader')
-              ? GoogleAppsCardV1CardHeader.fromJson(
-                  json_['peekCardHeader']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleAppsCardV1CardHeader.fromJson(json_['peekCardHeader']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           sectionDividerStyle: json_['sectionDividerStyle'] as core.String?,
           sections: (json_['sections'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCardV1Section.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleAppsCardV1Section.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4016,15 +4035,17 @@ class GoogleAppsCardV1CardAction {
   /// The `onClick` action for this action item.
   GoogleAppsCardV1OnClick? onClick;
 
-  GoogleAppsCardV1CardAction({this.actionLabel, this.onClick});
+  GoogleAppsCardV1CardAction({
+    this.actionLabel,
+    this.onClick,
+  });
 
   GoogleAppsCardV1CardAction.fromJson(core.Map json_)
       : this(
           actionLabel: json_['actionLabel'] as core.String?,
           onClick: json_.containsKey('onClick')
               ? GoogleAppsCardV1OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['onClick'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4056,20 +4077,20 @@ class GoogleAppsCardV1CardFixedFooter {
   /// `secondaryButton` is set, you must also set `primaryButton`.
   GoogleAppsCardV1Button? secondaryButton;
 
-  GoogleAppsCardV1CardFixedFooter({this.primaryButton, this.secondaryButton});
+  GoogleAppsCardV1CardFixedFooter({
+    this.primaryButton,
+    this.secondaryButton,
+  });
 
   GoogleAppsCardV1CardFixedFooter.fromJson(core.Map json_)
       : this(
           primaryButton: json_.containsKey('primaryButton')
               ? GoogleAppsCardV1Button.fromJson(
-                  json_['primaryButton'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['primaryButton'] as core.Map<core.String, core.dynamic>)
               : null,
           secondaryButton: json_.containsKey('secondaryButton')
-              ? GoogleAppsCardV1Button.fromJson(
-                  json_['secondaryButton']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleAppsCardV1Button.fromJson(json_['secondaryButton']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4158,16 +4179,15 @@ class GoogleAppsCardV1Carousel {
   /// A list of cards included in the carousel.
   core.List<GoogleAppsCardV1CarouselCard>? carouselCards;
 
-  GoogleAppsCardV1Carousel({this.carouselCards});
+  GoogleAppsCardV1Carousel({
+    this.carouselCards,
+  });
 
   GoogleAppsCardV1Carousel.fromJson(core.Map json_)
       : this(
           carouselCards: (json_['carouselCards'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCardV1CarouselCard.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleAppsCardV1CarouselCard.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4191,23 +4211,20 @@ class GoogleAppsCardV1CarouselCard {
   /// The widgets are displayed in the order that they are specified.
   core.List<GoogleAppsCardV1NestedWidget>? widgets;
 
-  GoogleAppsCardV1CarouselCard({this.footerWidgets, this.widgets});
+  GoogleAppsCardV1CarouselCard({
+    this.footerWidgets,
+    this.widgets,
+  });
 
   GoogleAppsCardV1CarouselCard.fromJson(core.Map json_)
       : this(
           footerWidgets: (json_['footerWidgets'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCardV1NestedWidget.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleAppsCardV1NestedWidget.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           widgets: (json_['widgets'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCardV1NestedWidget.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleAppsCardV1NestedWidget.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4273,14 +4290,12 @@ class GoogleAppsCardV1Chip {
           enabled: json_['enabled'] as core.bool?,
           icon: json_.containsKey('icon')
               ? GoogleAppsCardV1Icon.fromJson(
-                  json_['icon'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['icon'] as core.Map<core.String, core.dynamic>)
               : null,
           label: json_['label'] as core.String?,
           onClick: json_.containsKey('onClick')
               ? GoogleAppsCardV1OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['onClick'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4312,16 +4327,16 @@ class GoogleAppsCardV1ChipList {
   /// fit in the available space.
   core.String? layout;
 
-  GoogleAppsCardV1ChipList({this.chips, this.layout});
+  GoogleAppsCardV1ChipList({
+    this.chips,
+    this.layout,
+  });
 
   GoogleAppsCardV1ChipList.fromJson(core.Map json_)
       : this(
           chips: (json_['chips'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCardV1Chip.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleAppsCardV1Chip.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           layout: json_['layout'] as core.String?,
         );
@@ -4376,15 +4391,12 @@ class GoogleAppsCardV1CollapseControl {
   GoogleAppsCardV1CollapseControl.fromJson(core.Map json_)
       : this(
           collapseButton: json_.containsKey('collapseButton')
-              ? GoogleAppsCardV1Button.fromJson(
-                  json_['collapseButton']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleAppsCardV1Button.fromJson(json_['collapseButton']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           expandButton: json_.containsKey('expandButton')
               ? GoogleAppsCardV1Button.fromJson(
-                  json_['expandButton'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['expandButton'] as core.Map<core.String, core.dynamic>)
               : null,
           horizontalAlignment: json_['horizontalAlignment'] as core.String?,
         );
@@ -4450,11 +4462,8 @@ class GoogleAppsCardV1Column {
           horizontalSizeStyle: json_['horizontalSizeStyle'] as core.String?,
           verticalAlignment: json_['verticalAlignment'] as core.String?,
           widgets: (json_['widgets'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCardV1Widgets.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleAppsCardV1Widgets.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4495,16 +4504,15 @@ class GoogleAppsCardV1Columns {
   /// You can include up to 2 columns in a card or dialog.
   core.List<GoogleAppsCardV1Column>? columnItems;
 
-  GoogleAppsCardV1Columns({this.columnItems});
+  GoogleAppsCardV1Columns({
+    this.columnItems,
+  });
 
   GoogleAppsCardV1Columns.fromJson(core.Map json_)
       : this(
           columnItems: (json_['columnItems'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCardV1Column.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleAppsCardV1Column.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4578,10 +4586,8 @@ class GoogleAppsCardV1DateTimePicker {
           label: json_['label'] as core.String?,
           name: json_['name'] as core.String?,
           onChangeAction: json_.containsKey('onChangeAction')
-              ? GoogleAppsCardV1Action.fromJson(
-                  json_['onChangeAction']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleAppsCardV1Action.fromJson(json_['onChangeAction']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           timezoneOffsetDate: json_['timezoneOffsetDate'] as core.int?,
           type: json_['type'] as core.String?,
@@ -4682,33 +4688,27 @@ class GoogleAppsCardV1DecoratedText {
           bottomLabel: json_['bottomLabel'] as core.String?,
           button: json_.containsKey('button')
               ? GoogleAppsCardV1Button.fromJson(
-                  json_['button'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['button'] as core.Map<core.String, core.dynamic>)
               : null,
           endIcon: json_.containsKey('endIcon')
               ? GoogleAppsCardV1Icon.fromJson(
-                  json_['endIcon'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['endIcon'] as core.Map<core.String, core.dynamic>)
               : null,
           icon: json_.containsKey('icon')
               ? GoogleAppsCardV1Icon.fromJson(
-                  json_['icon'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['icon'] as core.Map<core.String, core.dynamic>)
               : null,
           onClick: json_.containsKey('onClick')
               ? GoogleAppsCardV1OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['onClick'] as core.Map<core.String, core.dynamic>)
               : null,
           startIcon: json_.containsKey('startIcon')
               ? GoogleAppsCardV1Icon.fromJson(
-                  json_['startIcon'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['startIcon'] as core.Map<core.String, core.dynamic>)
               : null,
           switchControl: json_.containsKey('switchControl')
               ? GoogleAppsCardV1SwitchControl.fromJson(
-                  json_['switchControl'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['switchControl'] as core.Map<core.String, core.dynamic>)
               : null,
           text: json_['text'] as core.String?,
           topLabel: json_['topLabel'] as core.String?,
@@ -4789,21 +4789,16 @@ class GoogleAppsCardV1Grid {
       : this(
           borderStyle: json_.containsKey('borderStyle')
               ? GoogleAppsCardV1BorderStyle.fromJson(
-                  json_['borderStyle'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['borderStyle'] as core.Map<core.String, core.dynamic>)
               : null,
           columnCount: json_['columnCount'] as core.int?,
           items: (json_['items'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCardV1GridItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleAppsCardV1GridItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           onClick: json_.containsKey('onClick')
               ? GoogleAppsCardV1OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['onClick'] as core.Map<core.String, core.dynamic>)
               : null,
           title: json_['title'] as core.String?,
         );
@@ -4860,8 +4855,7 @@ class GoogleAppsCardV1GridItem {
           id: json_['id'] as core.String?,
           image: json_.containsKey('image')
               ? GoogleAppsCardV1ImageComponent.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
           layout: json_['layout'] as core.String?,
           subtitle: json_['subtitle'] as core.String?,
@@ -4952,8 +4946,7 @@ class GoogleAppsCardV1Icon {
           knownIcon: json_['knownIcon'] as core.String?,
           materialIcon: json_.containsKey('materialIcon')
               ? GoogleAppsCardV1MaterialIcon.fromJson(
-                  json_['materialIcon'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['materialIcon'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4986,7 +4979,11 @@ class GoogleAppsCardV1Image {
   /// When a user clicks the image, the click triggers this action.
   GoogleAppsCardV1OnClick? onClick;
 
-  GoogleAppsCardV1Image({this.altText, this.imageUrl, this.onClick});
+  GoogleAppsCardV1Image({
+    this.altText,
+    this.imageUrl,
+    this.onClick,
+  });
 
   GoogleAppsCardV1Image.fromJson(core.Map json_)
       : this(
@@ -4994,8 +4991,7 @@ class GoogleAppsCardV1Image {
           imageUrl: json_['imageUrl'] as core.String?,
           onClick: json_.containsKey('onClick')
               ? GoogleAppsCardV1OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['onClick'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5035,13 +5031,11 @@ class GoogleAppsCardV1ImageComponent {
           altText: json_['altText'] as core.String?,
           borderStyle: json_.containsKey('borderStyle')
               ? GoogleAppsCardV1BorderStyle.fromJson(
-                  json_['borderStyle'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['borderStyle'] as core.Map<core.String, core.dynamic>)
               : null,
           cropStyle: json_.containsKey('cropStyle')
               ? GoogleAppsCardV1ImageCropStyle.fromJson(
-                  json_['cropStyle'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['cropStyle'] as core.Map<core.String, core.dynamic>)
               : null,
           imageUri: json_['imageUri'] as core.String?,
         );
@@ -5077,7 +5071,10 @@ class GoogleAppsCardV1ImageCropStyle {
   /// - "RECTANGLE_4_3" : Applies a rectangular crop with a 4:3 aspect ratio.
   core.String? type;
 
-  GoogleAppsCardV1ImageCropStyle({this.aspectRatio, this.type});
+  GoogleAppsCardV1ImageCropStyle({
+    this.aspectRatio,
+    this.type,
+  });
 
   GoogleAppsCardV1ImageCropStyle.fromJson(core.Map json_)
       : this(
@@ -5134,7 +5131,12 @@ class GoogleAppsCardV1MaterialIcon {
   /// settings under **Customize**.
   core.int? weight;
 
-  GoogleAppsCardV1MaterialIcon({this.fill, this.grade, this.name, this.weight});
+  GoogleAppsCardV1MaterialIcon({
+    this.fill,
+    this.grade,
+    this.name,
+    this.weight,
+  });
 
   GoogleAppsCardV1MaterialIcon.fromJson(core.Map json_)
       : this(
@@ -5177,18 +5179,15 @@ class GoogleAppsCardV1NestedWidget {
       : this(
           buttonList: json_.containsKey('buttonList')
               ? GoogleAppsCardV1ButtonList.fromJson(
-                  json_['buttonList'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['buttonList'] as core.Map<core.String, core.dynamic>)
               : null,
           image: json_.containsKey('image')
               ? GoogleAppsCardV1Image.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
           textParagraph: json_.containsKey('textParagraph')
               ? GoogleAppsCardV1TextParagraph.fromJson(
-                  json_['textParagraph'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['textParagraph'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5240,29 +5239,23 @@ class GoogleAppsCardV1OnClick {
       : this(
           action: json_.containsKey('action')
               ? GoogleAppsCardV1Action.fromJson(
-                  json_['action'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['action'] as core.Map<core.String, core.dynamic>)
               : null,
           card: json_.containsKey('card')
               ? GoogleAppsCardV1Card.fromJson(
-                  json_['card'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['card'] as core.Map<core.String, core.dynamic>)
               : null,
           openDynamicLinkAction: json_.containsKey('openDynamicLinkAction')
-              ? GoogleAppsCardV1Action.fromJson(
-                  json_['openDynamicLinkAction']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleAppsCardV1Action.fromJson(json_['openDynamicLinkAction']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           openLink: json_.containsKey('openLink')
               ? GoogleAppsCardV1OpenLink.fromJson(
-                  json_['openLink'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['openLink'] as core.Map<core.String, core.dynamic>)
               : null,
           overflowMenu: json_.containsKey('overflowMenu')
               ? GoogleAppsCardV1OverflowMenu.fromJson(
-                  json_['overflowMenu'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['overflowMenu'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5308,7 +5301,11 @@ class GoogleAppsCardV1OpenLink {
   /// The URL to open.
   core.String? url;
 
-  GoogleAppsCardV1OpenLink({this.onClose, this.openAs, this.url});
+  GoogleAppsCardV1OpenLink({
+    this.onClose,
+    this.openAs,
+    this.url,
+  });
 
   GoogleAppsCardV1OpenLink.fromJson(core.Map json_)
       : this(
@@ -5338,16 +5335,15 @@ class GoogleAppsCardV1OverflowMenu {
   /// Required.
   core.List<GoogleAppsCardV1OverflowMenuItem>? items;
 
-  GoogleAppsCardV1OverflowMenu({this.items});
+  GoogleAppsCardV1OverflowMenu({
+    this.items,
+  });
 
   GoogleAppsCardV1OverflowMenu.fromJson(core.Map json_)
       : this(
           items: (json_['items'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCardV1OverflowMenuItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleAppsCardV1OverflowMenuItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5394,13 +5390,11 @@ class GoogleAppsCardV1OverflowMenuItem {
           disabled: json_['disabled'] as core.bool?,
           onClick: json_.containsKey('onClick')
               ? GoogleAppsCardV1OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['onClick'] as core.Map<core.String, core.dynamic>)
               : null,
           startIcon: json_.containsKey('startIcon')
               ? GoogleAppsCardV1Icon.fromJson(
-                  json_['startIcon'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['startIcon'] as core.Map<core.String, core.dynamic>)
               : null,
           text: json_['text'] as core.String?,
         );
@@ -5444,10 +5438,8 @@ class GoogleAppsCardV1PlatformDataSource {
       : this(
           commonDataSource: json_['commonDataSource'] as core.String?,
           hostAppDataSource: json_.containsKey('hostAppDataSource')
-              ? HostAppDataSourceMarkup.fromJson(
-                  json_['hostAppDataSource']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? HostAppDataSourceMarkup.fromJson(json_['hostAppDataSource']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5516,19 +5508,15 @@ class GoogleAppsCardV1Section {
           collapseControl: json_.containsKey('collapseControl')
               ? GoogleAppsCardV1CollapseControl.fromJson(
                   json_['collapseControl']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           collapsible: json_['collapsible'] as core.bool?,
           header: json_['header'] as core.String?,
           uncollapsibleWidgetsCount:
               json_['uncollapsibleWidgetsCount'] as core.int?,
           widgets: (json_['widgets'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCardV1Widget.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleAppsCardV1Widget.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5650,17 +5638,12 @@ class GoogleAppsCardV1SelectionInput {
   GoogleAppsCardV1SelectionInput.fromJson(core.Map json_)
       : this(
           externalDataSource: json_.containsKey('externalDataSource')
-              ? GoogleAppsCardV1Action.fromJson(
-                  json_['externalDataSource']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleAppsCardV1Action.fromJson(json_['externalDataSource']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           items: (json_['items'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCardV1SelectionItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleAppsCardV1SelectionItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           label: json_['label'] as core.String?,
           multiSelectMaxSelectedItems:
@@ -5669,16 +5652,13 @@ class GoogleAppsCardV1SelectionInput {
               json_['multiSelectMinQueryLength'] as core.int?,
           name: json_['name'] as core.String?,
           onChangeAction: json_.containsKey('onChangeAction')
-              ? GoogleAppsCardV1Action.fromJson(
-                  json_['onChangeAction']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleAppsCardV1Action.fromJson(json_['onChangeAction']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           platformDataSource: json_.containsKey('platformDataSource')
               ? GoogleAppsCardV1PlatformDataSource.fromJson(
                   json_['platformDataSource']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
         );
@@ -5769,10 +5749,14 @@ class GoogleAppsCardV1SuggestionItem {
   /// This is equivalent to what users enter themselves.
   core.String? text;
 
-  GoogleAppsCardV1SuggestionItem({this.text});
+  GoogleAppsCardV1SuggestionItem({
+    this.text,
+  });
 
   GoogleAppsCardV1SuggestionItem.fromJson(core.Map json_)
-      : this(text: json_['text'] as core.String?);
+      : this(
+          text: json_['text'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (text != null) 'text': text!,
@@ -5797,16 +5781,15 @@ class GoogleAppsCardV1Suggestions {
   /// fields.
   core.List<GoogleAppsCardV1SuggestionItem>? items;
 
-  GoogleAppsCardV1Suggestions({this.items});
+  GoogleAppsCardV1Suggestions({
+    this.items,
+  });
 
   GoogleAppsCardV1Suggestions.fromJson(core.Map json_)
       : this(
           items: (json_['items'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCardV1SuggestionItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleAppsCardV1SuggestionItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5863,10 +5846,8 @@ class GoogleAppsCardV1SwitchControl {
           controlType: json_['controlType'] as core.String?,
           name: json_['name'] as core.String?,
           onChangeAction: json_.containsKey('onChangeAction')
-              ? GoogleAppsCardV1Action.fromJson(
-                  json_['onChangeAction']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleAppsCardV1Action.fromJson(json_['onChangeAction']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           selected: json_['selected'] as core.bool?,
           value: json_['value'] as core.String?,
@@ -5987,25 +5968,19 @@ class GoogleAppsCardV1TextInput {
   GoogleAppsCardV1TextInput.fromJson(core.Map json_)
       : this(
           autoCompleteAction: json_.containsKey('autoCompleteAction')
-              ? GoogleAppsCardV1Action.fromJson(
-                  json_['autoCompleteAction']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleAppsCardV1Action.fromJson(json_['autoCompleteAction']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           hintText: json_['hintText'] as core.String?,
           initialSuggestions: json_.containsKey('initialSuggestions')
-              ? GoogleAppsCardV1Suggestions.fromJson(
-                  json_['initialSuggestions']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleAppsCardV1Suggestions.fromJson(json_['initialSuggestions']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           label: json_['label'] as core.String?,
           name: json_['name'] as core.String?,
           onChangeAction: json_.containsKey('onChangeAction')
-              ? GoogleAppsCardV1Action.fromJson(
-                  json_['onChangeAction']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleAppsCardV1Action.fromJson(json_['onChangeAction']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           placeholderText: json_['placeholderText'] as core.String?,
           type: json_['type'] as core.String?,
@@ -6050,7 +6025,10 @@ class GoogleAppsCardV1TextParagraph {
   /// The text that's shown in the widget.
   core.String? text;
 
-  GoogleAppsCardV1TextParagraph({this.maxLines, this.text});
+  GoogleAppsCardV1TextParagraph({
+    this.maxLines,
+    this.text,
+  });
 
   GoogleAppsCardV1TextParagraph.fromJson(core.Map json_)
       : this(
@@ -6221,66 +6199,52 @@ class GoogleAppsCardV1Widget {
       : this(
           buttonList: json_.containsKey('buttonList')
               ? GoogleAppsCardV1ButtonList.fromJson(
-                  json_['buttonList'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['buttonList'] as core.Map<core.String, core.dynamic>)
               : null,
           carousel: json_.containsKey('carousel')
               ? GoogleAppsCardV1Carousel.fromJson(
-                  json_['carousel'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['carousel'] as core.Map<core.String, core.dynamic>)
               : null,
           chipList: json_.containsKey('chipList')
               ? GoogleAppsCardV1ChipList.fromJson(
-                  json_['chipList'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['chipList'] as core.Map<core.String, core.dynamic>)
               : null,
           columns: json_.containsKey('columns')
               ? GoogleAppsCardV1Columns.fromJson(
-                  json_['columns'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['columns'] as core.Map<core.String, core.dynamic>)
               : null,
           dateTimePicker: json_.containsKey('dateTimePicker')
-              ? GoogleAppsCardV1DateTimePicker.fromJson(
-                  json_['dateTimePicker']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleAppsCardV1DateTimePicker.fromJson(json_['dateTimePicker']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           decoratedText: json_.containsKey('decoratedText')
               ? GoogleAppsCardV1DecoratedText.fromJson(
-                  json_['decoratedText'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['decoratedText'] as core.Map<core.String, core.dynamic>)
               : null,
           divider: json_.containsKey('divider')
               ? GoogleAppsCardV1Divider.fromJson(
-                  json_['divider'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['divider'] as core.Map<core.String, core.dynamic>)
               : null,
           grid: json_.containsKey('grid')
               ? GoogleAppsCardV1Grid.fromJson(
-                  json_['grid'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['grid'] as core.Map<core.String, core.dynamic>)
               : null,
           horizontalAlignment: json_['horizontalAlignment'] as core.String?,
           image: json_.containsKey('image')
               ? GoogleAppsCardV1Image.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
           selectionInput: json_.containsKey('selectionInput')
-              ? GoogleAppsCardV1SelectionInput.fromJson(
-                  json_['selectionInput']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleAppsCardV1SelectionInput.fromJson(json_['selectionInput']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           textInput: json_.containsKey('textInput')
               ? GoogleAppsCardV1TextInput.fromJson(
-                  json_['textInput'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['textInput'] as core.Map<core.String, core.dynamic>)
               : null,
           textParagraph: json_.containsKey('textParagraph')
               ? GoogleAppsCardV1TextParagraph.fromJson(
-                  json_['textParagraph'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['textParagraph'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6346,45 +6310,35 @@ class GoogleAppsCardV1Widgets {
       : this(
           buttonList: json_.containsKey('buttonList')
               ? GoogleAppsCardV1ButtonList.fromJson(
-                  json_['buttonList'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['buttonList'] as core.Map<core.String, core.dynamic>)
               : null,
           chipList: json_.containsKey('chipList')
               ? GoogleAppsCardV1ChipList.fromJson(
-                  json_['chipList'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['chipList'] as core.Map<core.String, core.dynamic>)
               : null,
           dateTimePicker: json_.containsKey('dateTimePicker')
-              ? GoogleAppsCardV1DateTimePicker.fromJson(
-                  json_['dateTimePicker']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleAppsCardV1DateTimePicker.fromJson(json_['dateTimePicker']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           decoratedText: json_.containsKey('decoratedText')
               ? GoogleAppsCardV1DecoratedText.fromJson(
-                  json_['decoratedText'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['decoratedText'] as core.Map<core.String, core.dynamic>)
               : null,
           image: json_.containsKey('image')
               ? GoogleAppsCardV1Image.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
           selectionInput: json_.containsKey('selectionInput')
-              ? GoogleAppsCardV1SelectionInput.fromJson(
-                  json_['selectionInput']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleAppsCardV1SelectionInput.fromJson(json_['selectionInput']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           textInput: json_.containsKey('textInput')
               ? GoogleAppsCardV1TextInput.fromJson(
-                  json_['textInput'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['textInput'] as core.Map<core.String, core.dynamic>)
               : null,
           textParagraph: json_.containsKey('textParagraph')
               ? GoogleAppsCardV1TextParagraph.fromJson(
-                  json_['textParagraph'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['textParagraph'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6409,9 +6363,14 @@ class Group {
   /// in Cloud Identity Groups API. Format: groups/{group}
   core.String? name;
 
-  Group({this.name});
+  Group({
+    this.name,
+  });
 
-  Group.fromJson(core.Map json_) : this(name: json_['name'] as core.String?);
+  Group.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -6427,15 +6386,15 @@ class HostAppDataSourceMarkup {
   /// A data source from Google Chat.
   ChatClientDataSourceMarkup? chatDataSource;
 
-  HostAppDataSourceMarkup({this.chatDataSource});
+  HostAppDataSourceMarkup({
+    this.chatDataSource,
+  });
 
   HostAppDataSourceMarkup.fromJson(core.Map json_)
       : this(
           chatDataSource: json_.containsKey('chatDataSource')
-              ? ChatClientDataSourceMarkup.fromJson(
-                  json_['chatDataSource']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ChatClientDataSourceMarkup.fromJson(json_['chatDataSource']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6459,7 +6418,11 @@ class Image {
   /// The `onclick` action.
   OnClick? onClick;
 
-  Image({this.aspectRatio, this.imageUrl, this.onClick});
+  Image({
+    this.aspectRatio,
+    this.imageUrl,
+    this.onClick,
+  });
 
   Image.fromJson(core.Map json_)
       : this(
@@ -6467,8 +6430,7 @@ class Image {
           imageUrl: json_['imageUrl'] as core.String?,
           onClick: json_.containsKey('onClick')
               ? OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['onClick'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6528,7 +6490,12 @@ class ImageButton {
   /// The `onclick` action.
   OnClick? onClick;
 
-  ImageButton({this.icon, this.iconUrl, this.name, this.onClick});
+  ImageButton({
+    this.icon,
+    this.iconUrl,
+    this.name,
+    this.onClick,
+  });
 
   ImageButton.fromJson(core.Map json_)
       : this(
@@ -6537,8 +6504,7 @@ class ImageButton {
           name: json_['name'] as core.String?,
           onClick: json_.containsKey('onClick')
               ? OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['onClick'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6645,8 +6611,7 @@ class KeyValue {
           bottomLabel: json_['bottomLabel'] as core.String?,
           button: json_.containsKey('button')
               ? Button.fromJson(
-                  json_['button'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['button'] as core.Map<core.String, core.dynamic>)
               : null,
           content: json_['content'] as core.String?,
           contentMultiline: json_['contentMultiline'] as core.bool?,
@@ -6654,8 +6619,7 @@ class KeyValue {
           iconUrl: json_['iconUrl'] as core.String?,
           onClick: json_.containsKey('onClick')
               ? OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['onClick'] as core.Map<core.String, core.dynamic>)
               : null,
           topLabel: json_['topLabel'] as core.String?,
         );
@@ -6685,16 +6649,16 @@ class ListMembershipsResponse {
   /// If empty, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListMembershipsResponse({this.memberships, this.nextPageToken});
+  ListMembershipsResponse({
+    this.memberships,
+    this.nextPageToken,
+  });
 
   ListMembershipsResponse.fromJson(core.Map json_)
       : this(
           memberships: (json_['memberships'] as core.List?)
-              ?.map(
-                (value) => Membership.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Membership.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -6715,16 +6679,16 @@ class ListMessagesResponse {
   /// If empty, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListMessagesResponse({this.messages, this.nextPageToken});
+  ListMessagesResponse({
+    this.messages,
+    this.nextPageToken,
+  });
 
   ListMessagesResponse.fromJson(core.Map json_)
       : this(
           messages: (json_['messages'] as core.List?)
-              ?.map(
-                (value) => Message.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Message.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -6745,17 +6709,17 @@ class ListReactionsResponse {
   /// List of reactions in the requested (or first) page.
   core.List<Reaction>? reactions;
 
-  ListReactionsResponse({this.nextPageToken, this.reactions});
+  ListReactionsResponse({
+    this.nextPageToken,
+    this.reactions,
+  });
 
   ListReactionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           reactions: (json_['reactions'] as core.List?)
-              ?.map(
-                (value) => Reaction.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Reaction.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -6778,17 +6742,17 @@ class ListSpaceEventsResponse {
   /// for list requests.
   core.List<SpaceEvent>? spaceEvents;
 
-  ListSpaceEventsResponse({this.nextPageToken, this.spaceEvents});
+  ListSpaceEventsResponse({
+    this.nextPageToken,
+    this.spaceEvents,
+  });
 
   ListSpaceEventsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           spaceEvents: (json_['spaceEvents'] as core.List?)
-              ?.map(
-                (value) => SpaceEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SpaceEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -6811,17 +6775,17 @@ class ListSpacesResponse {
   /// for list requests.
   core.List<Space>? spaces;
 
-  ListSpacesResponse({this.nextPageToken, this.spaces});
+  ListSpacesResponse({
+    this.nextPageToken,
+    this.spaces,
+  });
 
   ListSpacesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           spaces: (json_['spaces'] as core.List?)
-              ?.map(
-                (value) => Space.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Space.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -6841,9 +6805,14 @@ class MatchedUrl {
   /// Output only.
   core.String? url;
 
-  MatchedUrl({this.url});
+  MatchedUrl({
+    this.url,
+  });
 
-  MatchedUrl.fromJson(core.Map json_) : this(url: json_['url'] as core.String?);
+  MatchedUrl.fromJson(core.Map json_)
+      : this(
+          url: json_['url'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
@@ -6945,13 +6914,11 @@ class Membership {
           deleteTime: json_['deleteTime'] as core.String?,
           groupMember: json_.containsKey('groupMember')
               ? Group.fromJson(
-                  json_['groupMember'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['groupMember'] as core.Map<core.String, core.dynamic>)
               : null,
           member: json_.containsKey('member')
               ? User.fromJson(
-                  json_['member'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['member'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           role: json_['role'] as core.String?,
@@ -6976,16 +6943,15 @@ class MembershipBatchCreatedEventData {
   /// A list of new memberships.
   core.List<MembershipCreatedEventData>? memberships;
 
-  MembershipBatchCreatedEventData({this.memberships});
+  MembershipBatchCreatedEventData({
+    this.memberships,
+  });
 
   MembershipBatchCreatedEventData.fromJson(core.Map json_)
       : this(
           memberships: (json_['memberships'] as core.List?)
-              ?.map(
-                (value) => MembershipCreatedEventData.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => MembershipCreatedEventData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -7001,16 +6967,15 @@ class MembershipBatchDeletedEventData {
   /// A list of deleted memberships.
   core.List<MembershipDeletedEventData>? memberships;
 
-  MembershipBatchDeletedEventData({this.memberships});
+  MembershipBatchDeletedEventData({
+    this.memberships,
+  });
 
   MembershipBatchDeletedEventData.fromJson(core.Map json_)
       : this(
           memberships: (json_['memberships'] as core.List?)
-              ?.map(
-                (value) => MembershipDeletedEventData.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => MembershipDeletedEventData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -7026,16 +6991,15 @@ class MembershipBatchUpdatedEventData {
   /// A list of updated memberships.
   core.List<MembershipUpdatedEventData>? memberships;
 
-  MembershipBatchUpdatedEventData({this.memberships});
+  MembershipBatchUpdatedEventData({
+    this.memberships,
+  });
 
   MembershipBatchUpdatedEventData.fromJson(core.Map json_)
       : this(
           memberships: (json_['memberships'] as core.List?)
-              ?.map(
-                (value) => MembershipUpdatedEventData.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => MembershipUpdatedEventData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -7057,7 +7021,10 @@ class MembershipCount {
   /// Output only.
   core.int? joinedGroupCount;
 
-  MembershipCount({this.joinedDirectHumanUserCount, this.joinedGroupCount});
+  MembershipCount({
+    this.joinedDirectHumanUserCount,
+    this.joinedGroupCount,
+  });
 
   MembershipCount.fromJson(core.Map json_)
       : this(
@@ -7080,14 +7047,15 @@ class MembershipCreatedEventData {
   /// The new membership.
   Membership? membership;
 
-  MembershipCreatedEventData({this.membership});
+  MembershipCreatedEventData({
+    this.membership,
+  });
 
   MembershipCreatedEventData.fromJson(core.Map json_)
       : this(
           membership: json_.containsKey('membership')
               ? Membership.fromJson(
-                  json_['membership'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['membership'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7105,14 +7073,15 @@ class MembershipDeletedEventData {
   /// Only the `name` and `state` fields are populated.
   Membership? membership;
 
-  MembershipDeletedEventData({this.membership});
+  MembershipDeletedEventData({
+    this.membership,
+  });
 
   MembershipDeletedEventData.fromJson(core.Map json_)
       : this(
           membership: json_.containsKey('membership')
               ? Membership.fromJson(
-                  json_['membership'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['membership'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7128,14 +7097,15 @@ class MembershipUpdatedEventData {
   /// The updated membership.
   Membership? membership;
 
-  MembershipUpdatedEventData({this.membership});
+  MembershipUpdatedEventData({
+    this.membership,
+  });
 
   MembershipUpdatedEventData.fromJson(core.Map json_)
       : this(
           membership: json_.containsKey('membership')
               ? Membership.fromJson(
-                  json_['membership'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['membership'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7410,113 +7380,79 @@ class Message {
   Message.fromJson(core.Map json_)
       : this(
           accessoryWidgets: (json_['accessoryWidgets'] as core.List?)
-              ?.map(
-                (value) => AccessoryWidget.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AccessoryWidget.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           actionResponse: json_.containsKey('actionResponse')
-              ? ActionResponse.fromJson(
-                  json_['actionResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ActionResponse.fromJson(json_['actionResponse']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           annotations: (json_['annotations'] as core.List?)
-              ?.map(
-                (value) => Annotation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Annotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           argumentText: json_['argumentText'] as core.String?,
           attachedGifs: (json_['attachedGifs'] as core.List?)
-              ?.map(
-                (value) => AttachedGif.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AttachedGif.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           attachment: (json_['attachment'] as core.List?)
-              ?.map(
-                (value) => Attachment.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Attachment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           cards: (json_['cards'] as core.List?)
-              ?.map(
-                (value) => Card.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Card.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           cardsV2: (json_['cardsV2'] as core.List?)
-              ?.map(
-                (value) => CardWithId.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CardWithId.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           clientAssignedMessageId:
               json_['clientAssignedMessageId'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
           deletionMetadata: json_.containsKey('deletionMetadata')
-              ? DeletionMetadata.fromJson(
-                  json_['deletionMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? DeletionMetadata.fromJson(json_['deletionMetadata']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           emojiReactionSummaries:
               (json_['emojiReactionSummaries'] as core.List?)
-                  ?.map(
-                    (value) => EmojiReactionSummary.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => EmojiReactionSummary.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
           fallbackText: json_['fallbackText'] as core.String?,
           formattedText: json_['formattedText'] as core.String?,
           lastUpdateTime: json_['lastUpdateTime'] as core.String?,
           matchedUrl: json_.containsKey('matchedUrl')
               ? MatchedUrl.fromJson(
-                  json_['matchedUrl'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['matchedUrl'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           privateMessageViewer: json_.containsKey('privateMessageViewer')
-              ? User.fromJson(
-                  json_['privateMessageViewer']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? User.fromJson(json_['privateMessageViewer']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           quotedMessageMetadata: json_.containsKey('quotedMessageMetadata')
-              ? QuotedMessageMetadata.fromJson(
-                  json_['quotedMessageMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? QuotedMessageMetadata.fromJson(json_['quotedMessageMetadata']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           sender: json_.containsKey('sender')
               ? User.fromJson(
-                  json_['sender'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['sender'] as core.Map<core.String, core.dynamic>)
               : null,
           slashCommand: json_.containsKey('slashCommand')
               ? SlashCommand.fromJson(
-                  json_['slashCommand'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['slashCommand'] as core.Map<core.String, core.dynamic>)
               : null,
           space: json_.containsKey('space')
               ? Space.fromJson(
-                  json_['space'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['space'] as core.Map<core.String, core.dynamic>)
               : null,
           text: json_['text'] as core.String?,
           thread: json_.containsKey('thread')
               ? Thread.fromJson(
-                  json_['thread'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['thread'] as core.Map<core.String, core.dynamic>)
               : null,
           threadReply: json_['threadReply'] as core.bool?,
         );
@@ -7562,16 +7498,15 @@ class MessageBatchCreatedEventData {
   /// A list of new messages.
   core.List<MessageCreatedEventData>? messages;
 
-  MessageBatchCreatedEventData({this.messages});
+  MessageBatchCreatedEventData({
+    this.messages,
+  });
 
   MessageBatchCreatedEventData.fromJson(core.Map json_)
       : this(
           messages: (json_['messages'] as core.List?)
-              ?.map(
-                (value) => MessageCreatedEventData.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => MessageCreatedEventData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -7587,16 +7522,15 @@ class MessageBatchDeletedEventData {
   /// A list of deleted messages.
   core.List<MessageDeletedEventData>? messages;
 
-  MessageBatchDeletedEventData({this.messages});
+  MessageBatchDeletedEventData({
+    this.messages,
+  });
 
   MessageBatchDeletedEventData.fromJson(core.Map json_)
       : this(
           messages: (json_['messages'] as core.List?)
-              ?.map(
-                (value) => MessageDeletedEventData.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => MessageDeletedEventData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -7612,16 +7546,15 @@ class MessageBatchUpdatedEventData {
   /// A list of updated messages.
   core.List<MessageUpdatedEventData>? messages;
 
-  MessageBatchUpdatedEventData({this.messages});
+  MessageBatchUpdatedEventData({
+    this.messages,
+  });
 
   MessageBatchUpdatedEventData.fromJson(core.Map json_)
       : this(
           messages: (json_['messages'] as core.List?)
-              ?.map(
-                (value) => MessageUpdatedEventData.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => MessageUpdatedEventData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -7637,14 +7570,15 @@ class MessageCreatedEventData {
   /// The new message.
   Message? message;
 
-  MessageCreatedEventData({this.message});
+  MessageCreatedEventData({
+    this.message,
+  });
 
   MessageCreatedEventData.fromJson(core.Map json_)
       : this(
           message: json_.containsKey('message')
               ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['message'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7663,14 +7597,15 @@ class MessageDeletedEventData {
   /// are populated.
   Message? message;
 
-  MessageDeletedEventData({this.message});
+  MessageDeletedEventData({
+    this.message,
+  });
 
   MessageDeletedEventData.fromJson(core.Map json_)
       : this(
           message: json_.containsKey('message')
               ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['message'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7686,14 +7621,15 @@ class MessageUpdatedEventData {
   /// The updated message.
   Message? message;
 
-  MessageUpdatedEventData({this.message});
+  MessageUpdatedEventData({
+    this.message,
+  });
 
   MessageUpdatedEventData.fromJson(core.Map json_)
       : this(
           message: json_.containsKey('message')
               ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['message'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7710,19 +7646,20 @@ class OnClick {
   /// This `onclick` action triggers an open link action if specified.
   OpenLink? openLink;
 
-  OnClick({this.action, this.openLink});
+  OnClick({
+    this.action,
+    this.openLink,
+  });
 
   OnClick.fromJson(core.Map json_)
       : this(
           action: json_.containsKey('action')
               ? FormAction.fromJson(
-                  json_['action'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['action'] as core.Map<core.String, core.dynamic>)
               : null,
           openLink: json_.containsKey('openLink')
               ? OpenLink.fromJson(
-                  json_['openLink'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['openLink'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7737,9 +7674,14 @@ class OpenLink {
   /// The URL to open.
   core.String? url;
 
-  OpenLink({this.url});
+  OpenLink({
+    this.url,
+  });
 
-  OpenLink.fromJson(core.Map json_) : this(url: json_['url'] as core.String?);
+  OpenLink.fromJson(core.Map json_)
+      : this(
+          url: json_['url'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
@@ -7758,7 +7700,10 @@ class PermissionSetting {
   /// Optional.
   core.bool? membersAllowed;
 
-  PermissionSetting({this.managersAllowed, this.membersAllowed});
+  PermissionSetting({
+    this.managersAllowed,
+    this.membersAllowed,
+  });
 
   PermissionSetting.fromJson(core.Map json_)
       : this(
@@ -7833,47 +7778,35 @@ class PermissionSettings {
       : this(
           manageApps: json_.containsKey('manageApps')
               ? PermissionSetting.fromJson(
-                  json_['manageApps'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['manageApps'] as core.Map<core.String, core.dynamic>)
               : null,
           manageMembersAndGroups: json_.containsKey('manageMembersAndGroups')
-              ? PermissionSetting.fromJson(
-                  json_['manageMembersAndGroups']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? PermissionSetting.fromJson(json_['manageMembersAndGroups']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           manageWebhooks: json_.containsKey('manageWebhooks')
-              ? PermissionSetting.fromJson(
-                  json_['manageWebhooks']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? PermissionSetting.fromJson(json_['manageWebhooks']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           modifySpaceDetails: json_.containsKey('modifySpaceDetails')
-              ? PermissionSetting.fromJson(
-                  json_['modifySpaceDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? PermissionSetting.fromJson(json_['modifySpaceDetails']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           postMessages: json_.containsKey('postMessages')
               ? PermissionSetting.fromJson(
-                  json_['postMessages'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['postMessages'] as core.Map<core.String, core.dynamic>)
               : null,
           replyMessages: json_.containsKey('replyMessages')
               ? PermissionSetting.fromJson(
-                  json_['replyMessages'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['replyMessages'] as core.Map<core.String, core.dynamic>)
               : null,
           toggleHistory: json_.containsKey('toggleHistory')
               ? PermissionSetting.fromJson(
-                  json_['toggleHistory'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['toggleHistory'] as core.Map<core.String, core.dynamic>)
               : null,
           useAtMentionAll: json_.containsKey('useAtMentionAll')
-              ? PermissionSetting.fromJson(
-                  json_['useAtMentionAll']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? PermissionSetting.fromJson(json_['useAtMentionAll']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7906,7 +7839,10 @@ class QuotedMessageMetadata {
   /// Output only.
   core.String? name;
 
-  QuotedMessageMetadata({this.lastUpdateTime, this.name});
+  QuotedMessageMetadata({
+    this.lastUpdateTime,
+    this.name,
+  });
 
   QuotedMessageMetadata.fromJson(core.Map json_)
       : this(
@@ -7938,20 +7874,22 @@ class Reaction {
   /// Output only.
   User? user;
 
-  Reaction({this.emoji, this.name, this.user});
+  Reaction({
+    this.emoji,
+    this.name,
+    this.user,
+  });
 
   Reaction.fromJson(core.Map json_)
       : this(
           emoji: json_.containsKey('emoji')
               ? Emoji.fromJson(
-                  json_['emoji'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['emoji'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           user: json_.containsKey('user')
               ? User.fromJson(
-                  json_['user'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['user'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7969,16 +7907,15 @@ class ReactionBatchCreatedEventData {
   /// A list of new reactions.
   core.List<ReactionCreatedEventData>? reactions;
 
-  ReactionBatchCreatedEventData({this.reactions});
+  ReactionBatchCreatedEventData({
+    this.reactions,
+  });
 
   ReactionBatchCreatedEventData.fromJson(core.Map json_)
       : this(
           reactions: (json_['reactions'] as core.List?)
-              ?.map(
-                (value) => ReactionCreatedEventData.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ReactionCreatedEventData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -7994,16 +7931,15 @@ class ReactionBatchDeletedEventData {
   /// A list of deleted reactions.
   core.List<ReactionDeletedEventData>? reactions;
 
-  ReactionBatchDeletedEventData({this.reactions});
+  ReactionBatchDeletedEventData({
+    this.reactions,
+  });
 
   ReactionBatchDeletedEventData.fromJson(core.Map json_)
       : this(
           reactions: (json_['reactions'] as core.List?)
-              ?.map(
-                (value) => ReactionDeletedEventData.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ReactionDeletedEventData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -8019,14 +7955,15 @@ class ReactionCreatedEventData {
   /// The new reaction.
   Reaction? reaction;
 
-  ReactionCreatedEventData({this.reaction});
+  ReactionCreatedEventData({
+    this.reaction,
+  });
 
   ReactionCreatedEventData.fromJson(core.Map json_)
       : this(
           reaction: json_.containsKey('reaction')
               ? Reaction.fromJson(
-                  json_['reaction'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['reaction'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -8042,14 +7979,15 @@ class ReactionDeletedEventData {
   /// The deleted reaction.
   Reaction? reaction;
 
-  ReactionDeletedEventData({this.reaction});
+  ReactionDeletedEventData({
+    this.reaction,
+  });
 
   ReactionDeletedEventData.fromJson(core.Map json_)
       : this(
           reaction: json_.containsKey('reaction')
               ? Reaction.fromJson(
-                  json_['reaction'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['reaction'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -8087,15 +8025,12 @@ class RichLinkMetadata {
   RichLinkMetadata.fromJson(core.Map json_)
       : this(
           chatSpaceLinkData: json_.containsKey('chatSpaceLinkData')
-              ? ChatSpaceLinkData.fromJson(
-                  json_['chatSpaceLinkData']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ChatSpaceLinkData.fromJson(json_['chatSpaceLinkData']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           driveLinkData: json_.containsKey('driveLinkData')
               ? DriveLinkData.fromJson(
-                  json_['driveLinkData'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['driveLinkData'] as core.Map<core.String, core.dynamic>)
               : null,
           richLinkType: json_['richLinkType'] as core.String?,
           uri: json_['uri'] as core.String?,
@@ -8124,17 +8059,18 @@ class SearchSpacesResponse {
   /// If the result is over 10,000 spaces, this value is an estimate.
   core.int? totalSize;
 
-  SearchSpacesResponse({this.nextPageToken, this.spaces, this.totalSize});
+  SearchSpacesResponse({
+    this.nextPageToken,
+    this.spaces,
+    this.totalSize,
+  });
 
   SearchSpacesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           spaces: (json_['spaces'] as core.List?)
-              ?.map(
-                (value) => Space.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Space.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -8164,17 +8100,17 @@ class Section {
   /// A section must contain at least one widget.
   core.List<WidgetMarkup>? widgets;
 
-  Section({this.header, this.widgets});
+  Section({
+    this.header,
+    this.widgets,
+  });
 
   Section.fromJson(core.Map json_)
       : this(
           header: json_['header'] as core.String?,
           widgets: (json_['widgets'] as core.List?)
-              ?.map(
-                (value) => WidgetMarkup.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => WidgetMarkup.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -8189,16 +8125,15 @@ class SelectionItems {
   /// An array of the SelectionItem objects.
   core.List<GoogleAppsCardV1SelectionItem>? items;
 
-  SelectionItems({this.items});
+  SelectionItems({
+    this.items,
+  });
 
   SelectionItems.fromJson(core.Map json_)
       : this(
           items: (json_['items'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCardV1SelectionItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleAppsCardV1SelectionItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -8263,22 +8198,22 @@ class SetUpSpaceRequest {
   /// Required.
   Space? space;
 
-  SetUpSpaceRequest({this.memberships, this.requestId, this.space});
+  SetUpSpaceRequest({
+    this.memberships,
+    this.requestId,
+    this.space,
+  });
 
   SetUpSpaceRequest.fromJson(core.Map json_)
       : this(
           memberships: (json_['memberships'] as core.List?)
-              ?.map(
-                (value) => Membership.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Membership.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           requestId: json_['requestId'] as core.String?,
           space: json_.containsKey('space')
               ? Space.fromJson(
-                  json_['space'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['space'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -8296,10 +8231,14 @@ class SlashCommand {
   /// The ID of the slash command invoked.
   core.String? commandId;
 
-  SlashCommand({this.commandId});
+  SlashCommand({
+    this.commandId,
+  });
 
   SlashCommand.fromJson(core.Map json_)
-      : this(commandId: json_['commandId'] as core.String?);
+      : this(
+          commandId: json_['commandId'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commandId != null) 'commandId': commandId!,
@@ -8339,8 +8278,7 @@ class SlashCommandMetadata {
       : this(
           bot: json_.containsKey('bot')
               ? User.fromJson(
-                  json_['bot'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['bot'] as core.Map<core.String, core.dynamic>)
               : null,
           commandId: json_['commandId'] as core.String?,
           commandName: json_['commandName'] as core.String?,
@@ -8593,10 +8531,8 @@ class Space {
   Space.fromJson(core.Map json_)
       : this(
           accessSettings: json_.containsKey('accessSettings')
-              ? AccessSettings.fromJson(
-                  json_['accessSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AccessSettings.fromJson(json_['accessSettings']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           adminInstalled: json_['adminInstalled'] as core.bool?,
           createTime: json_['createTime'] as core.String?,
@@ -8606,25 +8542,20 @@ class Space {
           importModeExpireTime: json_['importModeExpireTime'] as core.String?,
           lastActiveTime: json_['lastActiveTime'] as core.String?,
           membershipCount: json_.containsKey('membershipCount')
-              ? MembershipCount.fromJson(
-                  json_['membershipCount']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? MembershipCount.fromJson(json_['membershipCount']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           permissionSettings: json_.containsKey('permissionSettings')
-              ? PermissionSettings.fromJson(
-                  json_['permissionSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? PermissionSettings.fromJson(json_['permissionSettings']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           predefinedPermissionSettings:
               json_['predefinedPermissionSettings'] as core.String?,
           singleUserBotDm: json_['singleUserBotDm'] as core.bool?,
           spaceDetails: json_.containsKey('spaceDetails')
               ? SpaceDetails.fromJson(
-                  json_['spaceDetails'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['spaceDetails'] as core.Map<core.String, core.dynamic>)
               : null,
           spaceHistoryState: json_['spaceHistoryState'] as core.String?,
           spaceThreadingState: json_['spaceThreadingState'] as core.String?,
@@ -8670,16 +8601,15 @@ class SpaceBatchUpdatedEventData {
   /// A list of updated spaces.
   core.List<SpaceUpdatedEventData>? spaces;
 
-  SpaceBatchUpdatedEventData({this.spaces});
+  SpaceBatchUpdatedEventData({
+    this.spaces,
+  });
 
   SpaceBatchUpdatedEventData.fromJson(core.Map json_)
       : this(
           spaces: (json_['spaces'] as core.List?)
-              ?.map(
-                (value) => SpaceUpdatedEventData.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SpaceUpdatedEventData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -8698,12 +8628,14 @@ class SpaceDataSource {
   /// space as an item by default.
   core.bool? defaultToCurrentSpace;
 
-  SpaceDataSource({this.defaultToCurrentSpace});
+  SpaceDataSource({
+    this.defaultToCurrentSpace,
+  });
 
   SpaceDataSource.fromJson(core.Map json_)
       : this(
-            defaultToCurrentSpace:
-                json_['defaultToCurrentSpace'] as core.bool?);
+          defaultToCurrentSpace: json_['defaultToCurrentSpace'] as core.bool?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (defaultToCurrentSpace != null)
@@ -8728,7 +8660,10 @@ class SpaceDetails {
   /// Optional.
   core.String? guidelines;
 
-  SpaceDetails({this.description, this.guidelines});
+  SpaceDetails({
+    this.description,
+    this.guidelines,
+  });
 
   SpaceDetails.fromJson(core.Map json_)
       : this(
@@ -8912,124 +8847,105 @@ class SpaceEvent {
               json_.containsKey('membershipBatchCreatedEventData')
                   ? MembershipBatchCreatedEventData.fromJson(
                       json_['membershipBatchCreatedEventData']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           membershipBatchDeletedEventData:
               json_.containsKey('membershipBatchDeletedEventData')
                   ? MembershipBatchDeletedEventData.fromJson(
                       json_['membershipBatchDeletedEventData']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           membershipBatchUpdatedEventData:
               json_.containsKey('membershipBatchUpdatedEventData')
                   ? MembershipBatchUpdatedEventData.fromJson(
                       json_['membershipBatchUpdatedEventData']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           membershipCreatedEventData:
               json_.containsKey('membershipCreatedEventData')
                   ? MembershipCreatedEventData.fromJson(
                       json_['membershipCreatedEventData']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           membershipDeletedEventData:
               json_.containsKey('membershipDeletedEventData')
                   ? MembershipDeletedEventData.fromJson(
                       json_['membershipDeletedEventData']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           membershipUpdatedEventData:
               json_.containsKey('membershipUpdatedEventData')
                   ? MembershipUpdatedEventData.fromJson(
                       json_['membershipUpdatedEventData']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           messageBatchCreatedEventData:
               json_.containsKey('messageBatchCreatedEventData')
                   ? MessageBatchCreatedEventData.fromJson(
                       json_['messageBatchCreatedEventData']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           messageBatchDeletedEventData:
               json_.containsKey('messageBatchDeletedEventData')
                   ? MessageBatchDeletedEventData.fromJson(
                       json_['messageBatchDeletedEventData']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           messageBatchUpdatedEventData:
               json_.containsKey('messageBatchUpdatedEventData')
                   ? MessageBatchUpdatedEventData.fromJson(
                       json_['messageBatchUpdatedEventData']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           messageCreatedEventData: json_.containsKey('messageCreatedEventData')
               ? MessageCreatedEventData.fromJson(
                   json_['messageCreatedEventData']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           messageDeletedEventData: json_.containsKey('messageDeletedEventData')
               ? MessageDeletedEventData.fromJson(
                   json_['messageDeletedEventData']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           messageUpdatedEventData: json_.containsKey('messageUpdatedEventData')
               ? MessageUpdatedEventData.fromJson(
                   json_['messageUpdatedEventData']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           reactionBatchCreatedEventData:
               json_.containsKey('reactionBatchCreatedEventData')
                   ? ReactionBatchCreatedEventData.fromJson(
                       json_['reactionBatchCreatedEventData']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           reactionBatchDeletedEventData:
               json_.containsKey('reactionBatchDeletedEventData')
                   ? ReactionBatchDeletedEventData.fromJson(
                       json_['reactionBatchDeletedEventData']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           reactionCreatedEventData:
               json_.containsKey('reactionCreatedEventData')
                   ? ReactionCreatedEventData.fromJson(
                       json_['reactionCreatedEventData']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           reactionDeletedEventData:
               json_.containsKey('reactionDeletedEventData')
                   ? ReactionDeletedEventData.fromJson(
                       json_['reactionDeletedEventData']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           spaceBatchUpdatedEventData:
               json_.containsKey('spaceBatchUpdatedEventData')
                   ? SpaceBatchUpdatedEventData.fromJson(
                       json_['spaceBatchUpdatedEventData']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           spaceUpdatedEventData: json_.containsKey('spaceUpdatedEventData')
-              ? SpaceUpdatedEventData.fromJson(
-                  json_['spaceUpdatedEventData']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SpaceUpdatedEventData.fromJson(json_['spaceUpdatedEventData']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -9093,7 +9009,10 @@ class SpaceReadState {
   /// Format: `users/{user}/spaces/{space}/spaceReadState`
   core.String? name;
 
-  SpaceReadState({this.lastReadTime, this.name});
+  SpaceReadState({
+    this.lastReadTime,
+    this.name,
+  });
 
   SpaceReadState.fromJson(core.Map json_)
       : this(
@@ -9114,14 +9033,15 @@ class SpaceUpdatedEventData {
   /// The updated space.
   Space? space;
 
-  SpaceUpdatedEventData({this.space});
+  SpaceUpdatedEventData({
+    this.space,
+  });
 
   SpaceUpdatedEventData.fromJson(core.Map json_)
       : this(
           space: json_.containsKey('space')
               ? Space.fromJson(
-                  json_['space'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['space'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -9138,14 +9058,16 @@ class TextButton {
   /// The text of the button.
   core.String? text;
 
-  TextButton({this.onClick, this.text});
+  TextButton({
+    this.onClick,
+    this.text,
+  });
 
   TextButton.fromJson(core.Map json_)
       : this(
           onClick: json_.containsKey('onClick')
               ? OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['onClick'] as core.Map<core.String, core.dynamic>)
               : null,
           text: json_['text'] as core.String?,
         );
@@ -9165,10 +9087,14 @@ class TextButton {
 class TextParagraph {
   core.String? text;
 
-  TextParagraph({this.text});
+  TextParagraph({
+    this.text,
+  });
 
   TextParagraph.fromJson(core.Map json_)
-      : this(text: json_['text'] as core.String?);
+      : this(
+          text: json_['text'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (text != null) 'text': text!,
@@ -9199,7 +9125,10 @@ class Thread {
   /// Optional.
   core.String? threadKey;
 
-  Thread({this.name, this.threadKey});
+  Thread({
+    this.name,
+    this.threadKey,
+  });
 
   Thread.fromJson(core.Map json_)
       : this(
@@ -9227,7 +9156,10 @@ class ThreadReadState {
   /// Format: `users/{user}/spaces/{space}/threads/{thread}/threadReadState`
   core.String? name;
 
-  ThreadReadState({this.lastReadTime, this.name});
+  ThreadReadState({
+    this.lastReadTime,
+    this.name,
+  });
 
   ThreadReadState.fromJson(core.Map json_)
       : this(
@@ -9253,14 +9185,16 @@ class UpdatedWidget {
   /// request.
   core.String? widget;
 
-  UpdatedWidget({this.suggestions, this.widget});
+  UpdatedWidget({
+    this.suggestions,
+    this.widget,
+  });
 
   UpdatedWidget.fromJson(core.Map json_)
       : this(
           suggestions: json_.containsKey('suggestions')
               ? SelectionItems.fromJson(
-                  json_['suggestions'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['suggestions'] as core.Map<core.String, core.dynamic>)
               : null,
           widget: json_['widget'] as core.String?,
         );
@@ -9278,10 +9212,14 @@ class UploadAttachmentRequest {
   /// Required.
   core.String? filename;
 
-  UploadAttachmentRequest({this.filename});
+  UploadAttachmentRequest({
+    this.filename,
+  });
 
   UploadAttachmentRequest.fromJson(core.Map json_)
-      : this(filename: json_['filename'] as core.String?);
+      : this(
+          filename: json_['filename'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filename != null) 'filename': filename!,
@@ -9293,15 +9231,15 @@ class UploadAttachmentResponse {
   /// Reference to the uploaded attachment.
   AttachmentDataRef? attachmentDataRef;
 
-  UploadAttachmentResponse({this.attachmentDataRef});
+  UploadAttachmentResponse({
+    this.attachmentDataRef,
+  });
 
   UploadAttachmentResponse.fromJson(core.Map json_)
       : this(
           attachmentDataRef: json_.containsKey('attachmentDataRef')
-              ? AttachmentDataRef.fromJson(
-                  json_['attachmentDataRef']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AttachmentDataRef.fromJson(json_['attachmentDataRef']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -9393,15 +9331,17 @@ class UserMentionMetadata {
   /// The user mentioned.
   User? user;
 
-  UserMentionMetadata({this.type, this.user});
+  UserMentionMetadata({
+    this.type,
+    this.user,
+  });
 
   UserMentionMetadata.fromJson(core.Map json_)
       : this(
           type: json_['type'] as core.String?,
           user: json_.containsKey('user')
               ? User.fromJson(
-                  json_['user'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['user'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -9427,31 +9367,30 @@ class WidgetMarkup {
   /// Display a text paragraph in this widget.
   TextParagraph? textParagraph;
 
-  WidgetMarkup({this.buttons, this.image, this.keyValue, this.textParagraph});
+  WidgetMarkup({
+    this.buttons,
+    this.image,
+    this.keyValue,
+    this.textParagraph,
+  });
 
   WidgetMarkup.fromJson(core.Map json_)
       : this(
           buttons: (json_['buttons'] as core.List?)
-              ?.map(
-                (value) => Button.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Button.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           image: json_.containsKey('image')
               ? Image.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
           keyValue: json_.containsKey('keyValue')
               ? KeyValue.fromJson(
-                  json_['keyValue'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['keyValue'] as core.Map<core.String, core.dynamic>)
               : null,
           textParagraph: json_.containsKey('textParagraph')
               ? TextParagraph.fromJson(
-                  json_['textParagraph'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['textParagraph'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 

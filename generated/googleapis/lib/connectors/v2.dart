@@ -55,16 +55,11 @@ class ConnectorsApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ConnectorsApi(
-    http.Client client, {
-    core.String rootUrl = 'https://connectors.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  ConnectorsApi(http.Client client,
+      {core.String rootUrl = 'https://connectors.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -133,8 +128,7 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return CheckReadinessResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Reports the status of the connection.
@@ -177,8 +171,7 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return CheckStatusResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// ExchangeAuthCode exchanges the OAuth authorization code (and other
@@ -221,8 +214,7 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return ExchangeAuthCodeResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Executes a SQL statement specified in the body of the request.
@@ -269,8 +261,7 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return ExecuteSqlQueryResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// RefreshAccessToken exchanges the OAuth refresh token (and other necessary
@@ -313,8 +304,7 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return RefreshAccessTokenResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -367,8 +357,7 @@ class ProjectsLocationsConnectionsActionsResource {
       queryParams: queryParams_,
     );
     return ExecuteActionResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the schema of the given action.
@@ -390,7 +379,10 @@ class ProjectsLocationsConnectionsActionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Action> get(core.String name, {core.String? $fields}) async {
+  async.Future<Action> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -460,8 +452,7 @@ class ProjectsLocationsConnectionsActionsResource {
       queryParams: queryParams_,
     );
     return ListActionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -493,7 +484,10 @@ class ProjectsLocationsConnectionsEntityTypesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<EntityType> get(core.String name, {core.String? $fields}) async {
+  async.Future<EntityType> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -506,8 +500,7 @@ class ProjectsLocationsConnectionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return EntityType.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists metadata related to all entity types present in the external system.
@@ -565,8 +558,7 @@ class ProjectsLocationsConnectionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return ListEntityTypesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -574,8 +566,8 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConnectionsEntityTypesEntitiesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Creates a new entity row of the specified entity type in the external
   /// system.
@@ -644,7 +636,10 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -729,7 +724,10 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Entity> get(core.String name, {core.String? $fields}) async {
+  async.Future<Entity> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -809,8 +807,7 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
       queryParams: queryParams_,
     );
     return ListEntitiesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing entity row matching the entity type and entity id
@@ -915,8 +912,7 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
       queryParams: queryParams_,
     );
     return UpdateEntitiesWithConditionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -932,7 +928,11 @@ class AccessCredentials {
   /// OAuth refresh token.
   core.String? refreshToken;
 
-  AccessCredentials({this.accessToken, this.expiresIn, this.refreshToken});
+  AccessCredentials({
+    this.accessToken,
+    this.expiresIn,
+    this.refreshToken,
+  });
 
   AccessCredentials.fromJson(core.Map json_)
       : this(
@@ -987,31 +987,21 @@ class Action {
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           inputJsonSchema: json_.containsKey('inputJsonSchema')
-              ? JsonSchema.fromJson(
-                  json_['inputJsonSchema']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? JsonSchema.fromJson(json_['inputJsonSchema']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           inputParameters: (json_['inputParameters'] as core.List?)
-              ?.map(
-                (value) => InputParameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => InputParameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           name: json_['name'] as core.String?,
           resultJsonSchema: json_.containsKey('resultJsonSchema')
-              ? JsonSchema.fromJson(
-                  json_['resultJsonSchema']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? JsonSchema.fromJson(json_['resultJsonSchema']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           resultMetadata: (json_['resultMetadata'] as core.List?)
-              ?.map(
-                (value) => ResultMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ResultMetadata.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1040,7 +1030,11 @@ class AuthCodeData {
   /// OAuth backends.
   core.String? redirectUri;
 
-  AuthCodeData({this.authCode, this.pkceVerifier, this.redirectUri});
+  AuthCodeData({
+    this.authCode,
+    this.pkceVerifier,
+    this.redirectUri,
+  });
 
   AuthCodeData.fromJson(core.Map json_)
       : this(
@@ -1060,10 +1054,14 @@ class AuthCodeData {
 class CheckReadinessResponse {
   core.String? status;
 
-  CheckReadinessResponse({this.status});
+  CheckReadinessResponse({
+    this.status,
+  });
 
   CheckReadinessResponse.fromJson(core.Map json_)
-      : this(status: json_['status'] as core.String?);
+      : this(
+          status: json_['status'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (status != null) 'status': status!,
@@ -1091,7 +1089,10 @@ class CheckStatusResponse {
   /// auth configuration not present, invalid auth credentials, etc.
   core.String? state;
 
-  CheckStatusResponse({this.description, this.state});
+  CheckStatusResponse({
+    this.description,
+    this.state,
+  });
 
   CheckStatusResponse.fromJson(core.Map json_)
       : this(
@@ -1132,7 +1133,10 @@ class Entity {
   /// Output only.
   core.String? name;
 
-  Entity({this.fields, this.name});
+  Entity({
+    this.fields,
+    this.name,
+  });
 
   Entity.fromJson(core.Map json_)
       : this(
@@ -1161,21 +1165,22 @@ class EntityType {
   core.String? name;
   core.List<core.String>? operations;
 
-  EntityType({this.fields, this.jsonSchema, this.name, this.operations});
+  EntityType({
+    this.fields,
+    this.jsonSchema,
+    this.name,
+    this.operations,
+  });
 
   EntityType.fromJson(core.Map json_)
       : this(
           fields: (json_['fields'] as core.List?)
-              ?.map(
-                (value) => Field.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Field.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           jsonSchema: json_.containsKey('jsonSchema')
               ? JsonSchema.fromJson(
-                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           operations: (json_['operations'] as core.List?)
@@ -1202,14 +1207,15 @@ class ExchangeAuthCodeRequest {
   /// Optional.
   AuthCodeData? authCodeData;
 
-  ExchangeAuthCodeRequest({this.authCodeData});
+  ExchangeAuthCodeRequest({
+    this.authCodeData,
+  });
 
   ExchangeAuthCodeRequest.fromJson(core.Map json_)
       : this(
           authCodeData: json_.containsKey('authCodeData')
               ? AuthCodeData.fromJson(
-                  json_['authCodeData'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['authCodeData'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1223,15 +1229,15 @@ class ExchangeAuthCodeRequest {
 class ExchangeAuthCodeResponse {
   AccessCredentials? accessCredentials;
 
-  ExchangeAuthCodeResponse({this.accessCredentials});
+  ExchangeAuthCodeResponse({
+    this.accessCredentials,
+  });
 
   ExchangeAuthCodeResponse.fromJson(core.Map json_)
       : this(
           accessCredentials: json_.containsKey('accessCredentials')
-              ? AccessCredentials.fromJson(
-                  json_['accessCredentials']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AccessCredentials.fromJson(json_['accessCredentials']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1250,7 +1256,9 @@ class ExecuteActionRequest {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? parameters;
 
-  ExecuteActionRequest({this.parameters});
+  ExecuteActionRequest({
+    this.parameters,
+  });
 
   ExecuteActionRequest.fromJson(core.Map json_)
       : this(
@@ -1278,7 +1286,9 @@ class ExecuteActionResponse {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object?>>? results;
 
-  ExecuteActionResponse({this.results});
+  ExecuteActionResponse({
+    this.results,
+  });
 
   ExecuteActionResponse.fromJson(core.Map json_)
       : this(
@@ -1301,14 +1311,15 @@ class ExecuteSqlQueryRequest {
   /// Required.
   Query? query;
 
-  ExecuteSqlQueryRequest({this.query});
+  ExecuteSqlQueryRequest({
+    this.query,
+  });
 
   ExecuteSqlQueryRequest.fromJson(core.Map json_)
       : this(
           query: json_.containsKey('query')
               ? Query.fromJson(
-                  json_['query'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['query'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1331,7 +1342,9 @@ class ExecuteSqlQueryResponse {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object?>>? results;
 
-  ExecuteSqlQueryResponse({this.results});
+  ExecuteSqlQueryResponse({
+    this.results,
+  });
 
   ExecuteSqlQueryResponse.fromJson(core.Map json_)
       : this(
@@ -1454,16 +1467,14 @@ class Field {
           description: json_['description'] as core.String?,
           jsonSchema: json_.containsKey('jsonSchema')
               ? JsonSchema.fromJson(
-                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
               : null,
           key: json_['key'] as core.bool?,
           name: json_['name'] as core.String?,
           nullable: json_['nullable'] as core.bool?,
           reference: json_.containsKey('reference')
               ? Reference.fromJson(
-                  json_['reference'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['reference'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1580,8 +1591,7 @@ class InputParameter {
           description: json_['description'] as core.String?,
           jsonSchema: json_.containsKey('jsonSchema')
               ? JsonSchema.fromJson(
-                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           nullable: json_['nullable'] as core.bool?,
@@ -1719,8 +1729,7 @@ class JsonSchema {
           format: json_['format'] as core.String?,
           items: json_.containsKey('items')
               ? JsonSchema.fromJson(
-                  json_['items'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['items'] as core.Map<core.String, core.dynamic>)
               : null,
           jdbcType: json_['jdbcType'] as core.String?,
           properties:
@@ -1728,9 +1737,7 @@ class JsonSchema {
                   ?.map(
             (key, value) => core.MapEntry(
               key,
-              JsonSchema.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+              JsonSchema.fromJson(value as core.Map<core.String, core.dynamic>),
             ),
           ),
           required: (json_['required'] as core.List?)
@@ -1777,11 +1784,8 @@ class ListActionsResponse {
   ListActionsResponse.fromJson(core.Map json_)
       : this(
           actions: (json_['actions'] as core.List?)
-              ?.map(
-                (value) => Action.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Action.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unsupportedActionNames:
@@ -1806,16 +1810,16 @@ class ListEntitiesResponse {
   /// Next page token if more records are available.
   core.String? nextPageToken;
 
-  ListEntitiesResponse({this.entities, this.nextPageToken});
+  ListEntitiesResponse({
+    this.entities,
+    this.nextPageToken,
+  });
 
   ListEntitiesResponse.fromJson(core.Map json_)
       : this(
           entities: (json_['entities'] as core.List?)
-              ?.map(
-                (value) => Entity.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Entity.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1849,11 +1853,8 @@ class ListEntityTypesResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           types: (json_['types'] as core.List?)
-              ?.map(
-                (value) => EntityType.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => EntityType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           unsupportedTypeNames: (json_['unsupportedTypeNames'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1889,18 +1890,20 @@ class Query {
   /// Sets the number of seconds the driver will wait for a query to execute.
   core.String? timeout;
 
-  Query({this.maxRows, this.query, this.queryParameters, this.timeout});
+  Query({
+    this.maxRows,
+    this.query,
+    this.queryParameters,
+    this.timeout,
+  });
 
   Query.fromJson(core.Map json_)
       : this(
           maxRows: json_['maxRows'] as core.String?,
           query: json_['query'] as core.String?,
           queryParameters: (json_['queryParameters'] as core.List?)
-              ?.map(
-                (value) => QueryParameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => QueryParameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           timeout: json_['timeout'] as core.String?,
         );
@@ -1970,11 +1973,16 @@ class QueryParameter {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? value;
 
-  QueryParameter({this.dataType, this.value});
+  QueryParameter({
+    this.dataType,
+    this.value,
+  });
 
   QueryParameter.fromJson(core.Map json_)
       : this(
-            dataType: json_['dataType'] as core.String?, value: json_['value']);
+          dataType: json_['dataType'] as core.String?,
+          value: json_['value'],
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataType != null) 'dataType': dataType!,
@@ -1989,7 +1997,10 @@ class Reference {
   /// Name of reference entity type.
   core.String? type;
 
-  Reference({this.name, this.type});
+  Reference({
+    this.name,
+    this.type,
+  });
 
   Reference.fromJson(core.Map json_)
       : this(
@@ -2013,10 +2024,14 @@ class RefreshAccessTokenRequest {
   /// Optional.
   core.String? refreshToken;
 
-  RefreshAccessTokenRequest({this.refreshToken});
+  RefreshAccessTokenRequest({
+    this.refreshToken,
+  });
 
   RefreshAccessTokenRequest.fromJson(core.Map json_)
-      : this(refreshToken: json_['refreshToken'] as core.String?);
+      : this(
+          refreshToken: json_['refreshToken'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (refreshToken != null) 'refreshToken': refreshToken!,
@@ -2028,15 +2043,15 @@ class RefreshAccessTokenRequest {
 class RefreshAccessTokenResponse {
   AccessCredentials? accessCredentials;
 
-  RefreshAccessTokenResponse({this.accessCredentials});
+  RefreshAccessTokenResponse({
+    this.accessCredentials,
+  });
 
   RefreshAccessTokenResponse.fromJson(core.Map json_)
       : this(
           accessCredentials: json_.containsKey('accessCredentials')
-              ? AccessCredentials.fromJson(
-                  json_['accessCredentials']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AccessCredentials.fromJson(json_['accessCredentials']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2132,8 +2147,7 @@ class ResultMetadata {
           description: json_['description'] as core.String?,
           jsonSchema: json_.containsKey('jsonSchema')
               ? JsonSchema.fromJson(
-                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           nullable: json_['nullable'] as core.bool?,
@@ -2157,7 +2171,9 @@ class UpdateEntitiesWithConditionsResponse {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  UpdateEntitiesWithConditionsResponse({this.response});
+  UpdateEntitiesWithConditionsResponse({
+    this.response,
+  });
 
   UpdateEntitiesWithConditionsResponse.fromJson(core.Map json_)
       : this(

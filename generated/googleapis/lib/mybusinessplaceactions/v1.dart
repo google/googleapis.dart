@@ -52,16 +52,11 @@ class MyBusinessPlaceActionsApi {
   PlaceActionTypeMetadataResource get placeActionTypeMetadata =>
       PlaceActionTypeMetadataResource(_requester);
 
-  MyBusinessPlaceActionsApi(
-    http.Client client, {
-    core.String rootUrl = 'https://mybusinessplaceactions.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  MyBusinessPlaceActionsApi(http.Client client,
+      {core.String rootUrl = 'https://mybusinessplaceactions.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class LocationsResource {
@@ -123,8 +118,7 @@ class LocationsPlaceActionLinksResource {
       queryParams: queryParams_,
     );
     return PlaceActionLink.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a place action link from the specified location.
@@ -145,7 +139,10 @@ class LocationsPlaceActionLinksResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -193,8 +190,7 @@ class LocationsPlaceActionLinksResource {
       queryParams: queryParams_,
     );
     return PlaceActionLink.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the place action links for the specified location.
@@ -248,8 +244,7 @@ class LocationsPlaceActionLinksResource {
       queryParams: queryParams_,
     );
     return ListPlaceActionLinksResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified place action link and returns it.
@@ -303,8 +298,7 @@ class LocationsPlaceActionLinksResource {
       queryParams: queryParams_,
     );
     return PlaceActionLink.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -372,8 +366,7 @@ class PlaceActionTypeMetadataResource {
       queryParams: queryParams_,
     );
     return ListPlaceActionTypeMetadataResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -394,17 +387,17 @@ class ListPlaceActionLinksResponse {
   /// The returned list of place action links.
   core.List<PlaceActionLink>? placeActionLinks;
 
-  ListPlaceActionLinksResponse({this.nextPageToken, this.placeActionLinks});
+  ListPlaceActionLinksResponse({
+    this.nextPageToken,
+    this.placeActionLinks,
+  });
 
   ListPlaceActionLinksResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           placeActionLinks: (json_['placeActionLinks'] as core.List?)
-              ?.map(
-                (value) => PlaceActionLink.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PlaceActionLink.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -437,11 +430,8 @@ class ListPlaceActionTypeMetadataResponse {
           nextPageToken: json_['nextPageToken'] as core.String?,
           placeActionTypeMetadata:
               (json_['placeActionTypeMetadata'] as core.List?)
-                  ?.map(
-                    (value) => PlaceActionTypeMetadata.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => PlaceActionTypeMetadata.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
         );
 
@@ -582,7 +572,10 @@ class PlaceActionTypeMetadata {
   /// pickup.
   core.String? placeActionType;
 
-  PlaceActionTypeMetadata({this.displayName, this.placeActionType});
+  PlaceActionTypeMetadata({
+    this.displayName,
+    this.placeActionType,
+  });
 
   PlaceActionTypeMetadata.fromJson(core.Map json_)
       : this(

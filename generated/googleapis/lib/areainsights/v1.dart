@@ -48,16 +48,11 @@ class AreaInsightsApi {
 
   V1Resource get v1 => V1Resource(_requester);
 
-  AreaInsightsApi(
-    http.Client client, {
-    core.String rootUrl = 'https://areainsights.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  AreaInsightsApi(http.Client client,
+      {core.String rootUrl = 'https://areainsights.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class V1Resource {
@@ -109,8 +104,7 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return ComputeInsightsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -129,14 +123,17 @@ class Circle {
   /// Optional.
   core.int? radius;
 
-  Circle({this.latLng, this.place, this.radius});
+  Circle({
+    this.latLng,
+    this.place,
+    this.radius,
+  });
 
   Circle.fromJson(core.Map json_)
       : this(
           latLng: json_.containsKey('latLng')
               ? LatLng.fromJson(
-                  json_['latLng'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['latLng'] as core.Map<core.String, core.dynamic>)
               : null,
           place: json_['place'] as core.String?,
           radius: json_['radius'] as core.int?,
@@ -163,14 +160,16 @@ class ComputeInsightsRequest {
   /// Required.
   core.List<core.String>? insights;
 
-  ComputeInsightsRequest({this.filter, this.insights});
+  ComputeInsightsRequest({
+    this.filter,
+    this.insights,
+  });
 
   ComputeInsightsRequest.fromJson(core.Map json_)
       : this(
           filter: json_.containsKey('filter')
               ? Filter.fromJson(
-                  json_['filter'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['filter'] as core.Map<core.String, core.dynamic>)
               : null,
           insights: (json_['insights'] as core.List?)
               ?.map((value) => value as core.String)
@@ -191,17 +190,17 @@ class ComputeInsightsResponse {
   /// Result for Insights.INSIGHT_PLACES.
   core.List<PlaceInsight>? placeInsights;
 
-  ComputeInsightsResponse({this.count, this.placeInsights});
+  ComputeInsightsResponse({
+    this.count,
+    this.placeInsights,
+  });
 
   ComputeInsightsResponse.fromJson(core.Map json_)
       : this(
           count: json_['count'] as core.String?,
           placeInsights: (json_['placeInsights'] as core.List?)
-              ?.map(
-                (value) => PlaceInsight.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PlaceInsight.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -218,14 +217,15 @@ class CustomArea {
   /// Required.
   Polygon? polygon;
 
-  CustomArea({this.polygon});
+  CustomArea({
+    this.polygon,
+  });
 
   CustomArea.fromJson(core.Map json_)
       : this(
           polygon: json_.containsKey('polygon')
               ? Polygon.fromJson(
-                  json_['polygon'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['polygon'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -282,10 +282,8 @@ class Filter {
   Filter.fromJson(core.Map json_)
       : this(
           locationFilter: json_.containsKey('locationFilter')
-              ? LocationFilter.fromJson(
-                  json_['locationFilter']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? LocationFilter.fromJson(json_['locationFilter']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           operatingStatus: (json_['operatingStatus'] as core.List?)
               ?.map((value) => value as core.String)
@@ -295,13 +293,11 @@ class Filter {
               .toList(),
           ratingFilter: json_.containsKey('ratingFilter')
               ? RatingFilter.fromJson(
-                  json_['ratingFilter'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['ratingFilter'] as core.Map<core.String, core.dynamic>)
               : null,
           typeFilter: json_.containsKey('typeFilter')
               ? TypeFilter.fromJson(
-                  json_['typeFilter'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['typeFilter'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -334,24 +330,25 @@ class LocationFilter {
   /// Area as region.
   Region? region;
 
-  LocationFilter({this.circle, this.customArea, this.region});
+  LocationFilter({
+    this.circle,
+    this.customArea,
+    this.region,
+  });
 
   LocationFilter.fromJson(core.Map json_)
       : this(
           circle: json_.containsKey('circle')
               ? Circle.fromJson(
-                  json_['circle'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['circle'] as core.Map<core.String, core.dynamic>)
               : null,
           customArea: json_.containsKey('customArea')
               ? CustomArea.fromJson(
-                  json_['customArea'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['customArea'] as core.Map<core.String, core.dynamic>)
               : null,
           region: json_.containsKey('region')
               ? Region.fromJson(
-                  json_['region'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['region'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -371,10 +368,14 @@ class PlaceInsight {
   /// [Places API](https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places/get).
   core.String? place;
 
-  PlaceInsight({this.place});
+  PlaceInsight({
+    this.place,
+  });
 
   PlaceInsight.fromJson(core.Map json_)
-      : this(place: json_['place'] as core.String?);
+      : this(
+          place: json_['place'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (place != null) 'place': place!,
@@ -394,16 +395,15 @@ class Polygon {
   /// Optional.
   core.List<LatLng>? coordinates;
 
-  Polygon({this.coordinates});
+  Polygon({
+    this.coordinates,
+  });
 
   Polygon.fromJson(core.Map json_)
       : this(
           coordinates: (json_['coordinates'] as core.List?)
-              ?.map(
-                (value) => LatLng.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  LatLng.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -430,7 +430,10 @@ class RatingFilter {
   /// Optional.
   core.double? minRating;
 
-  RatingFilter({this.maxRating, this.minRating});
+  RatingFilter({
+    this.maxRating,
+    this.minRating,
+  });
 
   RatingFilter.fromJson(core.Map json_)
       : this(
@@ -450,9 +453,14 @@ class Region {
   /// The unique identifier of a specific geographic region.
   core.String? place;
 
-  Region({this.place});
+  Region({
+    this.place,
+  });
 
-  Region.fromJson(core.Map json_) : this(place: json_['place'] as core.String?);
+  Region.fromJson(core.Map json_)
+      : this(
+          place: json_['place'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (place != null) 'place': place!,

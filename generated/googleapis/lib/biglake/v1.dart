@@ -58,16 +58,11 @@ class BigLakeServiceApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  BigLakeServiceApi(
-    http.Client client, {
-    core.String rootUrl = 'https://biglake.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  BigLakeServiceApi(http.Client client,
+      {core.String rootUrl = 'https://biglake.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -162,7 +157,10 @@ class ProjectsLocationsCatalogsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Catalog> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Catalog> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -196,7 +194,10 @@ class ProjectsLocationsCatalogsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Catalog> get(core.String name, {core.String? $fields}) async {
+  async.Future<Catalog> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -259,8 +260,7 @@ class ProjectsLocationsCatalogsResource {
       queryParams: queryParams_,
     );
     return ListCatalogsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -377,7 +377,10 @@ class ProjectsLocationsCatalogsDatabasesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Database> get(core.String name, {core.String? $fields}) async {
+  async.Future<Database> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -442,8 +445,7 @@ class ProjectsLocationsCatalogsDatabasesResource {
       queryParams: queryParams_,
     );
     return ListDatabasesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing database specified by the database ID.
@@ -569,7 +571,10 @@ class ProjectsLocationsCatalogsDatabasesTablesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Table> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Table> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -603,7 +608,10 @@ class ProjectsLocationsCatalogsDatabasesTablesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Table> get(core.String name, {core.String? $fields}) async {
+  async.Future<Table> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -677,8 +685,7 @@ class ProjectsLocationsCatalogsDatabasesTablesResource {
       queryParams: queryParams_,
     );
     return ListTablesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing table specified by the table ID.
@@ -895,8 +902,7 @@ class Database {
           expireTime: json_['expireTime'] as core.String?,
           hiveOptions: json_.containsKey('hiveOptions')
               ? HiveDatabaseOptions.fromJson(
-                  json_['hiveOptions'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['hiveOptions'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           type: json_['type'] as core.String?,
@@ -923,14 +929,22 @@ class HiveDatabaseOptions {
   /// Stores user supplied Hive database parameters.
   core.Map<core.String, core.String>? parameters;
 
-  HiveDatabaseOptions({this.locationUri, this.parameters});
+  HiveDatabaseOptions({
+    this.locationUri,
+    this.parameters,
+  });
 
   HiveDatabaseOptions.fromJson(core.Map json_)
       : this(
           locationUri: json_['locationUri'] as core.String?,
-          parameters: (json_['parameters']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          parameters:
+              (json_['parameters'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -952,18 +966,25 @@ class HiveTableOptions {
   /// For example, MANAGED_TABLE, EXTERNAL_TABLE.
   core.String? tableType;
 
-  HiveTableOptions({this.parameters, this.storageDescriptor, this.tableType});
+  HiveTableOptions({
+    this.parameters,
+    this.storageDescriptor,
+    this.tableType,
+  });
 
   HiveTableOptions.fromJson(core.Map json_)
       : this(
-          parameters: (json_['parameters']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          parameters:
+              (json_['parameters'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           storageDescriptor: json_.containsKey('storageDescriptor')
-              ? StorageDescriptor.fromJson(
-                  json_['storageDescriptor']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? StorageDescriptor.fromJson(json_['storageDescriptor']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           tableType: json_['tableType'] as core.String?,
         );
@@ -985,16 +1006,16 @@ class ListCatalogsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListCatalogsResponse({this.catalogs, this.nextPageToken});
+  ListCatalogsResponse({
+    this.catalogs,
+    this.nextPageToken,
+  });
 
   ListCatalogsResponse.fromJson(core.Map json_)
       : this(
           catalogs: (json_['catalogs'] as core.List?)
-              ?.map(
-                (value) => Catalog.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Catalog.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1015,16 +1036,16 @@ class ListDatabasesResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListDatabasesResponse({this.databases, this.nextPageToken});
+  ListDatabasesResponse({
+    this.databases,
+    this.nextPageToken,
+  });
 
   ListDatabasesResponse.fromJson(core.Map json_)
       : this(
           databases: (json_['databases'] as core.List?)
-              ?.map(
-                (value) => Database.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Database.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1045,17 +1066,17 @@ class ListTablesResponse {
   /// The tables from the specified database.
   core.List<Table>? tables;
 
-  ListTablesResponse({this.nextPageToken, this.tables});
+  ListTablesResponse({
+    this.nextPageToken,
+    this.tables,
+  });
 
   ListTablesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           tables: (json_['tables'] as core.List?)
-              ?.map(
-                (value) => Table.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Table.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1075,10 +1096,14 @@ class RenameTableRequest {
   /// Required.
   core.String? newName;
 
-  RenameTableRequest({this.newName});
+  RenameTableRequest({
+    this.newName,
+  });
 
   RenameTableRequest.fromJson(core.Map json_)
-      : this(newName: json_['newName'] as core.String?);
+      : this(
+          newName: json_['newName'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (newName != null) 'newName': newName!,
@@ -1090,10 +1115,14 @@ class SerDeInfo {
   /// The fully qualified Java class name of the serialization library.
   core.String? serializationLib;
 
-  SerDeInfo({this.serializationLib});
+  SerDeInfo({
+    this.serializationLib,
+  });
 
   SerDeInfo.fromJson(core.Map json_)
-      : this(serializationLib: json_['serializationLib'] as core.String?);
+      : this(
+          serializationLib: json_['serializationLib'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (serializationLib != null) 'serializationLib': serializationLib!,
@@ -1129,8 +1158,7 @@ class StorageDescriptor {
           outputFormat: json_['outputFormat'] as core.String?,
           serdeInfo: json_.containsKey('serdeInfo')
               ? SerDeInfo.fromJson(
-                  json_['serdeInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['serdeInfo'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1211,8 +1239,7 @@ class Table {
           expireTime: json_['expireTime'] as core.String?,
           hiveOptions: json_.containsKey('hiveOptions')
               ? HiveTableOptions.fromJson(
-                  json_['hiveOptions'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['hiveOptions'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           type: json_['type'] as core.String?,

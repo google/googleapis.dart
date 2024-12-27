@@ -105,16 +105,11 @@ class CloudIdentityApi {
       InboundSsoAssignmentsResource(_requester);
   PoliciesResource get policies => PoliciesResource(_requester);
 
-  CloudIdentityApi(
-    http.Client client, {
-    core.String rootUrl = 'https://cloudidentity.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  CloudIdentityApi(http.Client client,
+      {core.String rootUrl = 'https://cloudidentity.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class CustomersResource {
@@ -211,8 +206,7 @@ class CustomersUserinvitationsResource {
       queryParams: queryParams_,
     );
     return UserInvitation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Verifies whether a user account is eligible to receive a UserInvitation
@@ -257,8 +251,7 @@ class CustomersUserinvitationsResource {
       queryParams: queryParams_,
     );
     return IsInvitableUserResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of UserInvitation resources.
@@ -326,8 +319,7 @@ class CustomersUserinvitationsResource {
       queryParams: queryParams_,
     );
     return ListUserInvitationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sends a UserInvitation to email.
@@ -580,8 +572,7 @@ class DevicesResource {
       queryParams: queryParams_,
     );
     return GoogleAppsCloudidentityDevicesV1Device.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists/Searches devices.
@@ -664,8 +655,7 @@ class DevicesResource {
       queryParams: queryParams_,
     );
     return GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Wipes all data on the specified device.
@@ -952,8 +942,7 @@ class DevicesDeviceUsersResource {
       queryParams: queryParams_,
     );
     return GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists/Searches DeviceUsers.
@@ -1025,8 +1014,7 @@ class DevicesDeviceUsersResource {
       queryParams: queryParams_,
     );
     return GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Looks up resource names of the DeviceUsers associated with the caller's
@@ -1110,9 +1098,7 @@ class DevicesDeviceUsersResource {
       queryParams: queryParams_,
     );
     return GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Wipes the user's account on a device.
@@ -1230,8 +1216,7 @@ class DevicesDeviceUsersClientStatesResource {
       queryParams: queryParams_,
     );
     return GoogleAppsCloudidentityDevicesV1ClientState.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the client states for the given search query.
@@ -1297,8 +1282,7 @@ class DevicesDeviceUsersClientStatesResource {
       queryParams: queryParams_,
     );
     return GoogleAppsCloudidentityDevicesV1ListClientStatesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the client state for the device user **Note**: This method is
@@ -1488,7 +1472,10 @@ class GroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Group> get(core.String name, {core.String? $fields}) async {
+  async.Future<Group> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1543,8 +1530,7 @@ class GroupsResource {
       queryParams: queryParams_,
     );
     return SecuritySettings.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the `Group` resources under a customer or namespace.
@@ -1608,8 +1594,7 @@ class GroupsResource {
       queryParams: queryParams_,
     );
     return ListGroupsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Looks up the
@@ -1663,8 +1648,7 @@ class GroupsResource {
       queryParams: queryParams_,
     );
     return LookupGroupNameResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a `Group`.
@@ -1786,8 +1770,7 @@ class GroupsResource {
       queryParams: queryParams_,
     );
     return SearchGroupsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update Security Settings
@@ -1898,8 +1881,7 @@ class GroupsMembershipsResource {
       queryParams: queryParams_,
     );
     return CheckTransitiveMembershipResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a `Membership`.
@@ -2001,7 +1983,10 @@ class GroupsMembershipsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Membership> get(core.String name, {core.String? $fields}) async {
+  async.Future<Membership> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2014,8 +1999,7 @@ class GroupsMembershipsResource {
       queryParams: queryParams_,
     );
     return Membership.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a membership graph of just a member or both a member and a group.
@@ -2137,8 +2121,7 @@ class GroupsMembershipsResource {
       queryParams: queryParams_,
     );
     return ListMembershipsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Looks up the
@@ -2197,8 +2180,7 @@ class GroupsMembershipsResource {
       queryParams: queryParams_,
     );
     return LookupMembershipNameResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies the `MembershipRole`s of a `Membership`.
@@ -2243,8 +2225,7 @@ class GroupsMembershipsResource {
       queryParams: queryParams_,
     );
     return ModifyMembershipRolesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Searches direct groups of a member.
@@ -2316,8 +2297,7 @@ class GroupsMembershipsResource {
       queryParams: queryParams_,
     );
     return SearchDirectGroupsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Search transitive groups of a member.
@@ -2391,8 +2371,7 @@ class GroupsMembershipsResource {
       queryParams: queryParams_,
     );
     return SearchTransitiveGroupsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Search transitive memberships of a group.
@@ -2449,8 +2428,7 @@ class GroupsMembershipsResource {
       queryParams: queryParams_,
     );
     return SearchTransitiveMembershipsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2578,8 +2556,7 @@ class InboundSamlSsoProfilesResource {
       queryParams: queryParams_,
     );
     return InboundSamlSsoProfile.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists InboundSamlSsoProfiles for a customer.
@@ -2637,8 +2614,7 @@ class InboundSamlSsoProfilesResource {
       queryParams: queryParams_,
     );
     return ListInboundSamlSsoProfilesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an InboundSamlSsoProfile.
@@ -2822,8 +2798,7 @@ class InboundSamlSsoProfilesIdpCredentialsResource {
       queryParams: queryParams_,
     );
     return IdpCredential.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of IdpCredentials in an InboundSamlSsoProfile.
@@ -2872,8 +2847,7 @@ class InboundSamlSsoProfilesIdpCredentialsResource {
       queryParams: queryParams_,
     );
     return ListIdpCredentialsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2997,8 +2971,7 @@ class InboundSsoAssignmentsResource {
       queryParams: queryParams_,
     );
     return InboundSsoAssignment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the InboundSsoAssignments for a `Customer`.
@@ -3055,8 +3028,7 @@ class InboundSsoAssignmentsResource {
       queryParams: queryParams_,
     );
     return ListInboundSsoAssignmentsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an InboundSsoAssignment.
@@ -3136,7 +3108,10 @@ class PoliciesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> get(core.String name, {core.String? $fields}) async {
+  async.Future<Policy> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3209,8 +3184,7 @@ class PoliciesResource {
       queryParams: queryParams_,
     );
     return ListPoliciesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3222,10 +3196,14 @@ class AddIdpCredentialRequest {
   /// signatures.
   core.String? pemData;
 
-  AddIdpCredentialRequest({this.pemData});
+  AddIdpCredentialRequest({
+    this.pemData,
+  });
 
   AddIdpCredentialRequest.fromJson(core.Map json_)
-      : this(pemData: json_['pemData'] as core.String?);
+      : this(
+          pemData: json_['pemData'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pemData != null) 'pemData': pemData!,
@@ -3244,10 +3222,14 @@ class CheckTransitiveMembershipResponse {
   /// possible lack of authorization in some of the paths.
   core.bool? hasMembership;
 
-  CheckTransitiveMembershipResponse({this.hasMembership});
+  CheckTransitiveMembershipResponse({
+    this.hasMembership,
+  });
 
   CheckTransitiveMembershipResponse.fromJson(core.Map json_)
-      : this(hasMembership: json_['hasMembership'] as core.bool?);
+      : this(
+          hasMembership: json_['hasMembership'] as core.bool?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (hasMembership != null) 'hasMembership': hasMembership!,
@@ -3259,10 +3241,14 @@ class DsaPublicKeyInfo {
   /// Key size in bits (size of parameter P).
   core.int? keySize;
 
-  DsaPublicKeyInfo({this.keySize});
+  DsaPublicKeyInfo({
+    this.keySize,
+  });
 
   DsaPublicKeyInfo.fromJson(core.Map json_)
-      : this(keySize: json_['keySize'] as core.int?);
+      : this(
+          keySize: json_['keySize'] as core.int?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keySize != null) 'keySize': keySize!,
@@ -3282,21 +3268,20 @@ class DynamicGroupMetadata {
   /// Output only.
   DynamicGroupStatus? status;
 
-  DynamicGroupMetadata({this.queries, this.status});
+  DynamicGroupMetadata({
+    this.queries,
+    this.status,
+  });
 
   DynamicGroupMetadata.fromJson(core.Map json_)
       : this(
           queries: (json_['queries'] as core.List?)
-              ?.map(
-                (value) => DynamicGroupQuery.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DynamicGroupQuery.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           status: json_.containsKey('status')
               ? DynamicGroupStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3326,7 +3311,10 @@ class DynamicGroupQuery {
   /// - "USER" : For queries on User
   core.String? resourceType;
 
-  DynamicGroupQuery({this.query, this.resourceType});
+  DynamicGroupQuery({
+    this.query,
+    this.resourceType,
+  });
 
   DynamicGroupQuery.fromJson(core.Map json_)
       : this(
@@ -3360,7 +3348,10 @@ class DynamicGroupStatus {
   /// at which dynamic group was created.
   core.String? statusTime;
 
-  DynamicGroupStatus({this.status, this.statusTime});
+  DynamicGroupStatus({
+    this.status,
+    this.statusTime,
+  });
 
   DynamicGroupStatus.fromJson(core.Map json_)
       : this(
@@ -3399,7 +3390,10 @@ class EntityKey {
   /// the form of `identitysources/{identity_source}`.
   core.String? namespace;
 
-  EntityKey({this.id, this.namespace});
+  EntityKey({
+    this.id,
+    this.namespace,
+  });
 
   EntityKey.fromJson(core.Map json_)
       : this(
@@ -3418,10 +3412,14 @@ class ExpiryDetail {
   /// The time at which the `MembershipRole` will expire.
   core.String? expireTime;
 
-  ExpiryDetail({this.expireTime});
+  ExpiryDetail({
+    this.expireTime,
+  });
 
   ExpiryDetail.fromJson(core.Map json_)
-      : this(expireTime: json_['expireTime'] as core.String?);
+      : this(
+          expireTime: json_['expireTime'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expireTime != null) 'expireTime': expireTime!,
@@ -3543,8 +3541,7 @@ class GoogleAppsCloudidentityDevicesV1BrowserAttributes {
           chromeBrowserInfo: json_.containsKey('chromeBrowserInfo')
               ? GoogleAppsCloudidentityDevicesV1BrowserInfo.fromJson(
                   json_['chromeBrowserInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           chromeProfileId: json_['chromeProfileId'] as core.String?,
           lastProfileSyncTime: json_['lastProfileSyncTime'] as core.String?,
@@ -3789,8 +3786,7 @@ class GoogleAppsCloudidentityDevicesV1CertificateAttributes {
           certificateTemplate: json_.containsKey('certificateTemplate')
               ? GoogleAppsCloudidentityDevicesV1CertificateTemplate.fromJson(
                   json_['certificateTemplate']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           fingerprint: json_['fingerprint'] as core.String?,
           issuer: json_['issuer'] as core.String?,
@@ -3986,8 +3982,7 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
             (key, value) => core.MapEntry(
               key,
               GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
           lastUpdateTime: json_['lastUpdateTime'] as core.String?,
@@ -4302,8 +4297,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
               json_.containsKey('androidSpecificAttributes')
                   ? GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(
                       json_['androidSpecificAttributes']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           assetTag: json_['assetTag'] as core.String?,
           basebandVersion: json_['basebandVersion'] as core.String?,
@@ -4321,10 +4315,8 @@ class GoogleAppsCloudidentityDevicesV1Device {
           endpointVerificationSpecificAttributes: json_
                   .containsKey('endpointVerificationSpecificAttributes')
               ? GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes
-                  .fromJson(
-                  json_['endpointVerificationSpecificAttributes']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['endpointVerificationSpecificAttributes']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           hostname: json_['hostname'] as core.String?,
           imei: json_['imei'] as core.String?,
@@ -4532,27 +4524,21 @@ class GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes {
   });
 
   GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           additionalSignals: json_.containsKey('additionalSignals')
               ? json_['additionalSignals']
                   as core.Map<core.String, core.dynamic>
               : null,
           browserAttributes: (json_['browserAttributes'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleAppsCloudidentityDevicesV1BrowserAttributes.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleAppsCloudidentityDevicesV1BrowserAttributes.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           certificateAttributes: (json_['certificateAttributes'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCloudidentityDevicesV1CertificateAttributes
-                    .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleAppsCloudidentityDevicesV1CertificateAttributes
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4580,14 +4566,12 @@ class GoogleAppsCloudidentityDevicesV1ListClientStatesResponse {
   });
 
   GoogleAppsCloudidentityDevicesV1ListClientStatesResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           clientStates: (json_['clientStates'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCloudidentityDevicesV1ClientState.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleAppsCloudidentityDevicesV1ClientState.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -4614,14 +4598,12 @@ class GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse {
   });
 
   GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           deviceUsers: (json_['deviceUsers'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -4650,11 +4632,8 @@ class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
   GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(core.Map json_)
       : this(
           devices: (json_['devices'] as core.List?)
-              ?.map(
-                (value) => GoogleAppsCloudidentityDevicesV1Device.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleAppsCloudidentityDevicesV1Device.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -4690,8 +4669,8 @@ class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
   });
 
   GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           customer: json_['customer'] as core.String?,
           names: (json_['names'] as core.List?)
               ?.map((value) => value as core.String)
@@ -4839,29 +4818,26 @@ class Group {
   Group.fromJson(core.Map json_)
       : this(
           additionalGroupKeys: (json_['additionalGroupKeys'] as core.List?)
-              ?.map(
-                (value) => EntityKey.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => EntityKey.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           dynamicGroupMetadata: json_.containsKey('dynamicGroupMetadata')
-              ? DynamicGroupMetadata.fromJson(
-                  json_['dynamicGroupMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? DynamicGroupMetadata.fromJson(json_['dynamicGroupMetadata']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           groupKey: json_.containsKey('groupKey')
               ? EntityKey.fromJson(
-                  json_['groupKey'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['groupKey'] as core.Map<core.String, core.dynamic>)
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           parent: json_['parent'] as core.String?,
@@ -4931,20 +4907,19 @@ class GroupRelation {
           group: json_['group'] as core.String?,
           groupKey: json_.containsKey('groupKey')
               ? EntityKey.fromJson(
-                  json_['groupKey'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['groupKey'] as core.Map<core.String, core.dynamic>)
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           relationType: json_['relationType'] as core.String?,
           roles: (json_['roles'] as core.List?)
-              ?.map(
-                (value) => TransitiveMembershipRole.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => TransitiveMembershipRole.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4981,20 +4956,23 @@ class IdpCredential {
   /// Output only.
   core.String? updateTime;
 
-  IdpCredential({this.dsaKeyInfo, this.name, this.rsaKeyInfo, this.updateTime});
+  IdpCredential({
+    this.dsaKeyInfo,
+    this.name,
+    this.rsaKeyInfo,
+    this.updateTime,
+  });
 
   IdpCredential.fromJson(core.Map json_)
       : this(
           dsaKeyInfo: json_.containsKey('dsaKeyInfo')
               ? DsaPublicKeyInfo.fromJson(
-                  json_['dsaKeyInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['dsaKeyInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           rsaKeyInfo: json_.containsKey('rsaKeyInfo')
               ? RsaPublicKeyInfo.fromJson(
-                  json_['rsaKeyInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['rsaKeyInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -5049,14 +5027,12 @@ class InboundSamlSsoProfile {
           displayName: json_['displayName'] as core.String?,
           idpConfig: json_.containsKey('idpConfig')
               ? SamlIdpConfig.fromJson(
-                  json_['idpConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['idpConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           spConfig: json_.containsKey('spConfig')
               ? SamlSpConfig.fromJson(
-                  json_['spConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['spConfig'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5143,14 +5119,11 @@ class InboundSsoAssignment {
           rank: json_['rank'] as core.int?,
           samlSsoInfo: json_.containsKey('samlSsoInfo')
               ? SamlSsoInfo.fromJson(
-                  json_['samlSsoInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['samlSsoInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           signInBehavior: json_.containsKey('signInBehavior')
-              ? SignInBehavior.fromJson(
-                  json_['signInBehavior']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SignInBehavior.fromJson(json_['signInBehavior']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           ssoMode: json_['ssoMode'] as core.String?,
           targetGroup: json_['targetGroup'] as core.String?,
@@ -5174,10 +5147,14 @@ class IsInvitableUserResponse {
   /// Returns true if the email address is invitable.
   core.bool? isInvitableUser;
 
-  IsInvitableUserResponse({this.isInvitableUser});
+  IsInvitableUserResponse({
+    this.isInvitableUser,
+  });
 
   IsInvitableUserResponse.fromJson(core.Map json_)
-      : this(isInvitableUser: json_['isInvitableUser'] as core.bool?);
+      : this(
+          isInvitableUser: json_['isInvitableUser'] as core.bool?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (isInvitableUser != null) 'isInvitableUser': isInvitableUser!,
@@ -5195,16 +5172,16 @@ class ListGroupsResponse {
   /// results available for listing.
   core.String? nextPageToken;
 
-  ListGroupsResponse({this.groups, this.nextPageToken});
+  ListGroupsResponse({
+    this.groups,
+    this.nextPageToken,
+  });
 
   ListGroupsResponse.fromJson(core.Map json_)
       : this(
           groups: (json_['groups'] as core.List?)
-              ?.map(
-                (value) => Group.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Group.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -5225,16 +5202,16 @@ class ListIdpCredentialsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListIdpCredentialsResponse({this.idpCredentials, this.nextPageToken});
+  ListIdpCredentialsResponse({
+    this.idpCredentials,
+    this.nextPageToken,
+  });
 
   ListIdpCredentialsResponse.fromJson(core.Map json_)
       : this(
           idpCredentials: (json_['idpCredentials'] as core.List?)
-              ?.map(
-                (value) => IdpCredential.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => IdpCredential.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -5265,11 +5242,8 @@ class ListInboundSamlSsoProfilesResponse {
       : this(
           inboundSamlSsoProfiles:
               (json_['inboundSamlSsoProfiles'] as core.List?)
-                  ?.map(
-                    (value) => InboundSamlSsoProfile.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => InboundSamlSsoProfile.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -5300,11 +5274,8 @@ class ListInboundSsoAssignmentsResponse {
   ListInboundSsoAssignmentsResponse.fromJson(core.Map json_)
       : this(
           inboundSsoAssignments: (json_['inboundSsoAssignments'] as core.List?)
-              ?.map(
-                (value) => InboundSsoAssignment.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => InboundSsoAssignment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -5325,16 +5296,16 @@ class ListMembershipsResponse {
   /// there are no more results available.
   core.String? nextPageToken;
 
-  ListMembershipsResponse({this.memberships, this.nextPageToken});
+  ListMembershipsResponse({
+    this.memberships,
+    this.nextPageToken,
+  });
 
   ListMembershipsResponse.fromJson(core.Map json_)
       : this(
           memberships: (json_['memberships'] as core.List?)
-              ?.map(
-                (value) => Membership.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Membership.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -5355,17 +5326,17 @@ class ListPoliciesResponse {
   /// The results
   core.List<Policy>? policies;
 
-  ListPoliciesResponse({this.nextPageToken, this.policies});
+  ListPoliciesResponse({
+    this.nextPageToken,
+    this.policies,
+  });
 
   ListPoliciesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           policies: (json_['policies'] as core.List?)
-              ?.map(
-                (value) => Policy.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Policy.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5388,17 +5359,17 @@ class ListUserInvitationsResponse {
   /// The list of UserInvitation resources.
   core.List<UserInvitation>? userInvitations;
 
-  ListUserInvitationsResponse({this.nextPageToken, this.userInvitations});
+  ListUserInvitationsResponse({
+    this.nextPageToken,
+    this.userInvitations,
+  });
 
   ListUserInvitationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           userInvitations: (json_['userInvitations'] as core.List?)
-              ?.map(
-                (value) => UserInvitation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => UserInvitation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5414,10 +5385,14 @@ class LookupGroupNameResponse {
   /// of the looked-up `Group`.
   core.String? name;
 
-  LookupGroupNameResponse({this.name});
+  LookupGroupNameResponse({
+    this.name,
+  });
 
   LookupGroupNameResponse.fromJson(core.Map json_)
-      : this(name: json_['name'] as core.String?);
+      : this(
+          name: json_['name'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -5432,10 +5407,14 @@ class LookupMembershipNameResponse {
   /// Must be of the form `groups/{group}/memberships/{membership}`.
   core.String? name;
 
-  LookupMembershipNameResponse({this.name});
+  LookupMembershipNameResponse({
+    this.name,
+  });
 
   LookupMembershipNameResponse.fromJson(core.Map json_)
-      : this(name: json_['name'] as core.String?);
+      : this(
+          name: json_['name'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -5479,19 +5458,13 @@ class MemberRelation {
       : this(
           member: json_['member'] as core.String?,
           preferredMemberKey: (json_['preferredMemberKey'] as core.List?)
-              ?.map(
-                (value) => EntityKey.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => EntityKey.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           relationType: json_['relationType'] as core.String?,
           roles: (json_['roles'] as core.List?)
-              ?.map(
-                (value) => TransitiveMembershipRole.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => TransitiveMembershipRole.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5522,14 +5495,16 @@ class MemberRestriction {
   /// users or groups to be members. `member.type == 1 || member.type == 3`
   core.String? query;
 
-  MemberRestriction({this.evaluation, this.query});
+  MemberRestriction({
+    this.evaluation,
+    this.query,
+  });
 
   MemberRestriction.fromJson(core.Map json_)
       : this(
           evaluation: json_.containsKey('evaluation')
               ? RestrictionEvaluation.fromJson(
-                  json_['evaluation'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['evaluation'] as core.Map<core.String, core.dynamic>)
               : null,
           query: json_['query'] as core.String?,
         );
@@ -5616,17 +5591,12 @@ class Membership {
           deliverySetting: json_['deliverySetting'] as core.String?,
           name: json_['name'] as core.String?,
           preferredMemberKey: json_.containsKey('preferredMemberKey')
-              ? EntityKey.fromJson(
-                  json_['preferredMemberKey']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? EntityKey.fromJson(json_['preferredMemberKey']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           roles: (json_['roles'] as core.List?)
-              ?.map(
-                (value) => MembershipRole.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => MembershipRole.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           type: json_['type'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -5692,20 +5662,19 @@ class MembershipRelation {
           group: json_['group'] as core.String?,
           groupKey: json_.containsKey('groupKey')
               ? EntityKey.fromJson(
-                  json_['groupKey'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['groupKey'] as core.Map<core.String, core.dynamic>)
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           membership: json_['membership'] as core.String?,
           roles: (json_['roles'] as core.List?)
-              ?.map(
-                (value) => MembershipRole.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => MembershipRole.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5738,21 +5707,22 @@ class MembershipRole {
   /// Evaluations of restrictions applied to parent group on this membership.
   RestrictionEvaluations? restrictionEvaluations;
 
-  MembershipRole({this.expiryDetail, this.name, this.restrictionEvaluations});
+  MembershipRole({
+    this.expiryDetail,
+    this.name,
+    this.restrictionEvaluations,
+  });
 
   MembershipRole.fromJson(core.Map json_)
       : this(
           expiryDetail: json_.containsKey('expiryDetail')
               ? ExpiryDetail.fromJson(
-                  json_['expiryDetail'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['expiryDetail'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           restrictionEvaluations: json_.containsKey('restrictionEvaluations')
-              ? RestrictionEvaluations.fromJson(
-                  json_['restrictionEvaluations']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? RestrictionEvaluations.fromJson(json_['restrictionEvaluations']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5780,10 +5750,14 @@ class MembershipRoleRestrictionEvaluation {
   /// - "EVALUATING" : The state of the membership is under evaluation.
   core.String? state;
 
-  MembershipRoleRestrictionEvaluation({this.state});
+  MembershipRoleRestrictionEvaluation({
+    this.state,
+  });
 
   MembershipRoleRestrictionEvaluation.fromJson(core.Map json_)
-      : this(state: json_['state'] as core.String?);
+      : this(
+          state: json_['state'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
@@ -5822,21 +5796,15 @@ class ModifyMembershipRolesRequest {
   ModifyMembershipRolesRequest.fromJson(core.Map json_)
       : this(
           addRoles: (json_['addRoles'] as core.List?)
-              ?.map(
-                (value) => MembershipRole.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => MembershipRole.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           removeRoles: (json_['removeRoles'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           updateRolesParams: (json_['updateRolesParams'] as core.List?)
-              ?.map(
-                (value) => UpdateMembershipRolesParams.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => UpdateMembershipRolesParams.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5852,14 +5820,15 @@ class ModifyMembershipRolesResponse {
   /// The `Membership` resource after modifying its `MembershipRole`s.
   Membership? membership;
 
-  ModifyMembershipRolesResponse({this.membership});
+  ModifyMembershipRolesResponse({
+    this.membership,
+  });
 
   ModifyMembershipRolesResponse.fromJson(core.Map json_)
       : this(
           membership: json_.containsKey('membership')
               ? Membership.fromJson(
-                  json_['membership'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['membership'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5911,15 +5880,20 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({this.done, this.error, this.metadata, this.name, this.response});
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -5980,7 +5954,13 @@ class Policy {
   /// - "ADMIN" : Policy type denoting the admin-configurable policies.
   core.String? type;
 
-  Policy({this.customer, this.name, this.policyQuery, this.setting, this.type});
+  Policy({
+    this.customer,
+    this.name,
+    this.policyQuery,
+    this.setting,
+    this.type,
+  });
 
   Policy.fromJson(core.Map json_)
       : this(
@@ -5988,13 +5968,11 @@ class Policy {
           name: json_['name'] as core.String?,
           policyQuery: json_.containsKey('policyQuery')
               ? PolicyQuery.fromJson(
-                  json_['policyQuery'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policyQuery'] as core.Map<core.String, core.dynamic>)
               : null,
           setting: json_.containsKey('setting')
               ? Setting.fromJson(
-                  json_['setting'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['setting'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
         );
@@ -6054,7 +6032,12 @@ class PolicyQuery {
   /// Output only.
   core.double? sortOrder;
 
-  PolicyQuery({this.group, this.orgUnit, this.query, this.sortOrder});
+  PolicyQuery({
+    this.group,
+    this.orgUnit,
+    this.query,
+    this.sortOrder,
+  });
 
   PolicyQuery.fromJson(core.Map json_)
       : this(
@@ -6088,10 +6071,14 @@ class RestrictionEvaluation {
   /// may be added.
   core.String? state;
 
-  RestrictionEvaluation({this.state});
+  RestrictionEvaluation({
+    this.state,
+  });
 
   RestrictionEvaluation.fromJson(core.Map json_)
-      : this(state: json_['state'] as core.String?);
+      : this(
+          state: json_['state'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
@@ -6105,7 +6092,9 @@ class RestrictionEvaluations {
   /// Empty if the user lacks permission to view the restriction evaluation.
   MembershipRoleRestrictionEvaluation? memberRestrictionEvaluation;
 
-  RestrictionEvaluations({this.memberRestrictionEvaluation});
+  RestrictionEvaluations({
+    this.memberRestrictionEvaluation,
+  });
 
   RestrictionEvaluations.fromJson(core.Map json_)
       : this(
@@ -6113,8 +6102,7 @@ class RestrictionEvaluations {
               json_.containsKey('memberRestrictionEvaluation')
                   ? MembershipRoleRestrictionEvaluation.fromJson(
                       json_['memberRestrictionEvaluation']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
         );
 
@@ -6129,10 +6117,14 @@ class RsaPublicKeyInfo {
   /// Key size in bits (size of the modulus).
   core.int? keySize;
 
-  RsaPublicKeyInfo({this.keySize});
+  RsaPublicKeyInfo({
+    this.keySize,
+  });
 
   RsaPublicKeyInfo.fromJson(core.Map json_)
-      : this(keySize: json_['keySize'] as core.int?);
+      : this(
+          keySize: json_['keySize'] as core.int?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keySize != null) 'keySize': keySize!,
@@ -6210,7 +6202,10 @@ class SamlSpConfig {
   /// Output only.
   core.String? entityId;
 
-  SamlSpConfig({this.assertionConsumerServiceUri, this.entityId});
+  SamlSpConfig({
+    this.assertionConsumerServiceUri,
+    this.entityId,
+  });
 
   SamlSpConfig.fromJson(core.Map json_)
       : this(
@@ -6235,7 +6230,9 @@ class SamlSsoInfo {
   /// Required.
   core.String? inboundSamlSsoProfile;
 
-  SamlSsoInfo({this.inboundSamlSsoProfile});
+  SamlSsoInfo({
+    this.inboundSamlSsoProfile,
+  });
 
   SamlSsoInfo.fromJson(core.Map json_)
       : this(
@@ -6257,16 +6254,16 @@ class SearchDirectGroupsResponse {
   /// results available for listing.
   core.String? nextPageToken;
 
-  SearchDirectGroupsResponse({this.memberships, this.nextPageToken});
+  SearchDirectGroupsResponse({
+    this.memberships,
+    this.nextPageToken,
+  });
 
   SearchDirectGroupsResponse.fromJson(core.Map json_)
       : this(
           memberships: (json_['memberships'] as core.List?)
-              ?.map(
-                (value) => MembershipRelation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => MembershipRelation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -6286,16 +6283,16 @@ class SearchGroupsResponse {
   /// there are no more results available.
   core.String? nextPageToken;
 
-  SearchGroupsResponse({this.groups, this.nextPageToken});
+  SearchGroupsResponse({
+    this.groups,
+    this.nextPageToken,
+  });
 
   SearchGroupsResponse.fromJson(core.Map json_)
       : this(
           groups: (json_['groups'] as core.List?)
-              ?.map(
-                (value) => Group.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Group.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -6315,16 +6312,16 @@ class SearchTransitiveGroupsResponse {
   /// results available for listing.
   core.String? nextPageToken;
 
-  SearchTransitiveGroupsResponse({this.memberships, this.nextPageToken});
+  SearchTransitiveGroupsResponse({
+    this.memberships,
+    this.nextPageToken,
+  });
 
   SearchTransitiveGroupsResponse.fromJson(core.Map json_)
       : this(
           memberships: (json_['memberships'] as core.List?)
-              ?.map(
-                (value) => GroupRelation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GroupRelation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -6344,16 +6341,16 @@ class SearchTransitiveMembershipsResponse {
   /// results.
   core.String? nextPageToken;
 
-  SearchTransitiveMembershipsResponse({this.memberships, this.nextPageToken});
+  SearchTransitiveMembershipsResponse({
+    this.memberships,
+    this.nextPageToken,
+  });
 
   SearchTransitiveMembershipsResponse.fromJson(core.Map json_)
       : this(
           memberships: (json_['memberships'] as core.List?)
-              ?.map(
-                (value) => MemberRelation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => MemberRelation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -6376,15 +6373,16 @@ class SecuritySettings {
   /// Output only.
   core.String? name;
 
-  SecuritySettings({this.memberRestriction, this.name});
+  SecuritySettings({
+    this.memberRestriction,
+    this.name,
+  });
 
   SecuritySettings.fromJson(core.Map json_)
       : this(
           memberRestriction: json_.containsKey('memberRestriction')
-              ? MemberRestriction.fromJson(
-                  json_['memberRestriction']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? MemberRestriction.fromJson(json_['memberRestriction']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
         );
@@ -6416,7 +6414,10 @@ class Setting {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? value;
 
-  Setting({this.type, this.value});
+  Setting({
+    this.type,
+    this.value,
+  });
 
   Setting.fromJson(core.Map json_)
       : this(
@@ -6444,10 +6445,14 @@ class SignInBehavior {
   /// service URLs will accept the IdP's assertion of the user's identity.
   core.String? redirectCondition;
 
-  SignInBehavior({this.redirectCondition});
+  SignInBehavior({
+    this.redirectCondition,
+  });
 
   SignInBehavior.fromJson(core.Map json_)
-      : this(redirectCondition: json_['redirectCondition'] as core.String?);
+      : this(
+          redirectCondition: json_['redirectCondition'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (redirectCondition != null) 'redirectCondition': redirectCondition!,
@@ -6471,10 +6476,14 @@ class TransitiveMembershipRole {
   /// `"MANAGER"`.
   core.String? role;
 
-  TransitiveMembershipRole({this.role});
+  TransitiveMembershipRole({
+    this.role,
+  });
 
   TransitiveMembershipRole.fromJson(core.Map json_)
-      : this(role: json_['role'] as core.String?);
+      : this(
+          role: json_['role'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (role != null) 'role': role!,
@@ -6493,16 +6502,17 @@ class UpdateMembershipRolesParams {
   /// Only `MEMBER` `MembershipRole` can currently be updated.
   MembershipRole? membershipRole;
 
-  UpdateMembershipRolesParams({this.fieldMask, this.membershipRole});
+  UpdateMembershipRolesParams({
+    this.fieldMask,
+    this.membershipRole,
+  });
 
   UpdateMembershipRolesParams.fromJson(core.Map json_)
       : this(
           fieldMask: json_['fieldMask'] as core.String?,
           membershipRole: json_.containsKey('membershipRole')
-              ? MembershipRole.fromJson(
-                  json_['membershipRole']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? MembershipRole.fromJson(json_['membershipRole']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6542,7 +6552,12 @@ class UserInvitation {
   /// Time when the `UserInvitation` was last updated.
   core.String? updateTime;
 
-  UserInvitation({this.mailsSentCount, this.name, this.state, this.updateTime});
+  UserInvitation({
+    this.mailsSentCount,
+    this.name,
+    this.state,
+    this.updateTime,
+  });
 
   UserInvitation.fromJson(core.Map json_)
       : this(

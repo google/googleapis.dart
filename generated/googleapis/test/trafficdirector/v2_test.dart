@@ -51,12 +51,12 @@ core.Map<core.String, core.Object?> buildUnnamed0() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
     };
 
@@ -64,14 +64,32 @@ void checkUnnamed0(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1['bool'], unittest.equals(true));
-  unittest.expect(casted1['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted1['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted1['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted1['string'],
+    unittest.equals('foo'),
+  );
   var casted2 = (o['y']!) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2['bool'], unittest.equals(true));
-  unittest.expect(casted2['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted2['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted2['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted2['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterBuildVersion = 0;
@@ -240,7 +258,10 @@ void checkClustersConfigDump(api.ClustersConfigDump o) {
     checkUnnamed4(o.dynamicActiveClusters!);
     checkUnnamed5(o.dynamicWarmingClusters!);
     checkUnnamed6(o.staticClusters!);
-    unittest.expect(o.versionInfo!, unittest.equals('foo'));
+    unittest.expect(
+      o.versionInfo!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterClustersConfigDump--;
 }
@@ -260,7 +281,10 @@ api.DoubleMatcher buildDoubleMatcher() {
 void checkDoubleMatcher(api.DoubleMatcher o) {
   buildCounterDoubleMatcher++;
   if (buildCounterDoubleMatcher < 3) {
-    unittest.expect(o.exact!, unittest.equals(42.0));
+    unittest.expect(
+      o.exact!,
+      unittest.equals(42.0),
+    );
     checkDoubleRange(o.range!);
   }
   buildCounterDoubleMatcher--;
@@ -281,8 +305,14 @@ api.DoubleRange buildDoubleRange() {
 void checkDoubleRange(api.DoubleRange o) {
   buildCounterDoubleRange++;
   if (buildCounterDoubleRange < 3) {
-    unittest.expect(o.end!, unittest.equals(42.0));
-    unittest.expect(o.start!, unittest.equals(42.0));
+    unittest.expect(
+      o.end!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.start!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterDoubleRange--;
 }
@@ -291,12 +321,12 @@ core.Map<core.String, core.Object?> buildUnnamed7() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
     };
 
@@ -304,14 +334,32 @@ void checkUnnamed7(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3['bool'], unittest.equals(true));
-  unittest.expect(casted3['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted3['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted3['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted3['string'],
+    unittest.equals('foo'),
+  );
   var casted4 = (o['y']!) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4['bool'], unittest.equals(true));
-  unittest.expect(casted4['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted4['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted4['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted4['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterDynamicCluster = 0;
@@ -331,8 +379,14 @@ void checkDynamicCluster(api.DynamicCluster o) {
   buildCounterDynamicCluster++;
   if (buildCounterDynamicCluster < 3) {
     checkUnnamed7(o.cluster!);
-    unittest.expect(o.lastUpdated!, unittest.equals('foo'));
-    unittest.expect(o.versionInfo!, unittest.equals('foo'));
+    unittest.expect(
+      o.lastUpdated!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.versionInfo!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDynamicCluster--;
 }
@@ -358,7 +412,10 @@ void checkDynamicListener(api.DynamicListener o) {
     checkDynamicListenerState(o.activeState!);
     checkDynamicListenerState(o.drainingState!);
     checkUpdateFailureState(o.errorState!);
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkDynamicListenerState(o.warmingState!);
   }
   buildCounterDynamicListener--;
@@ -368,12 +425,12 @@ core.Map<core.String, core.Object?> buildUnnamed8() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
     };
 
@@ -381,14 +438,32 @@ void checkUnnamed8(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5['bool'], unittest.equals(true));
-  unittest.expect(casted5['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted5['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted5['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted5['string'],
+    unittest.equals('foo'),
+  );
   var casted6 = (o['y']!) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6['bool'], unittest.equals(true));
-  unittest.expect(casted6['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted6['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted6['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted6['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterDynamicListenerState = 0;
@@ -407,9 +482,15 @@ api.DynamicListenerState buildDynamicListenerState() {
 void checkDynamicListenerState(api.DynamicListenerState o) {
   buildCounterDynamicListenerState++;
   if (buildCounterDynamicListenerState < 3) {
-    unittest.expect(o.lastUpdated!, unittest.equals('foo'));
+    unittest.expect(
+      o.lastUpdated!,
+      unittest.equals('foo'),
+    );
     checkUnnamed8(o.listener!);
-    unittest.expect(o.versionInfo!, unittest.equals('foo'));
+    unittest.expect(
+      o.versionInfo!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDynamicListenerState--;
 }
@@ -418,12 +499,12 @@ core.Map<core.String, core.Object?> buildUnnamed9() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
     };
 
@@ -431,14 +512,32 @@ void checkUnnamed9(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted7['bool'], unittest.equals(true));
-  unittest.expect(casted7['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted7['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted7['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted7['string'],
+    unittest.equals('foo'),
+  );
   var casted8 = (o['y']!) as core.Map;
   unittest.expect(casted8, unittest.hasLength(3));
-  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted8['bool'], unittest.equals(true));
-  unittest.expect(casted8['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted8['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted8['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted8['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterDynamicRouteConfig = 0;
@@ -457,9 +556,15 @@ api.DynamicRouteConfig buildDynamicRouteConfig() {
 void checkDynamicRouteConfig(api.DynamicRouteConfig o) {
   buildCounterDynamicRouteConfig++;
   if (buildCounterDynamicRouteConfig < 3) {
-    unittest.expect(o.lastUpdated!, unittest.equals('foo'));
+    unittest.expect(
+      o.lastUpdated!,
+      unittest.equals('foo'),
+    );
     checkUnnamed9(o.routeConfig!);
-    unittest.expect(o.versionInfo!, unittest.equals('foo'));
+    unittest.expect(
+      o.versionInfo!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDynamicRouteConfig--;
 }
@@ -468,12 +573,12 @@ core.Map<core.String, core.Object?> buildUnnamed10() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
     };
 
@@ -481,14 +586,32 @@ void checkUnnamed10(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
-  unittest.expect(casted9['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted9['bool'], unittest.equals(true));
-  unittest.expect(casted9['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted9['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted9['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted9['string'],
+    unittest.equals('foo'),
+  );
   var casted10 = (o['y']!) as core.Map;
   unittest.expect(casted10, unittest.hasLength(3));
-  unittest.expect(casted10['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted10['bool'], unittest.equals(true));
-  unittest.expect(casted10['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted10['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted10['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted10['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.Map<core.String, core.Object?>> buildUnnamed11() => [
@@ -519,10 +642,19 @@ api.DynamicScopedRouteConfigs buildDynamicScopedRouteConfigs() {
 void checkDynamicScopedRouteConfigs(api.DynamicScopedRouteConfigs o) {
   buildCounterDynamicScopedRouteConfigs++;
   if (buildCounterDynamicScopedRouteConfigs < 3) {
-    unittest.expect(o.lastUpdated!, unittest.equals('foo'));
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.lastUpdated!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkUnnamed11(o.scopedRouteConfigs!);
-    unittest.expect(o.versionInfo!, unittest.equals('foo'));
+    unittest.expect(
+      o.versionInfo!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDynamicScopedRouteConfigs--;
 }
@@ -545,10 +677,19 @@ api.Extension buildExtension() {
 void checkExtension(api.Extension o) {
   buildCounterExtension++;
   if (buildCounterExtension < 3) {
-    unittest.expect(o.category!, unittest.equals('foo'));
+    unittest.expect(
+      o.category!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.disabled!, unittest.isTrue);
-    unittest.expect(o.name!, unittest.equals('foo'));
-    unittest.expect(o.typeDescriptor!, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.typeDescriptor!,
+      unittest.equals('foo'),
+    );
     checkBuildVersion(o.version!);
   }
   buildCounterExtension--;
@@ -568,7 +709,10 @@ api.GoogleRE2 buildGoogleRE2() {
 void checkGoogleRE2(api.GoogleRE2 o) {
   buildCounterGoogleRE2++;
   if (buildCounterGoogleRE2 < 3) {
-    unittest.expect(o.maxProgramSize!, unittest.equals(42));
+    unittest.expect(
+      o.maxProgramSize!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleRE2--;
 }
@@ -577,12 +721,12 @@ core.Map<core.String, core.Object?> buildUnnamed12() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
     };
 
@@ -590,14 +734,32 @@ void checkUnnamed12(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted11 = (o['x']!) as core.Map;
   unittest.expect(casted11, unittest.hasLength(3));
-  unittest.expect(casted11['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted11['bool'], unittest.equals(true));
-  unittest.expect(casted11['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted11['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted11['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted11['string'],
+    unittest.equals('foo'),
+  );
   var casted12 = (o['y']!) as core.Map;
   unittest.expect(casted12, unittest.hasLength(3));
-  unittest.expect(casted12['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted12['bool'], unittest.equals(true));
-  unittest.expect(casted12['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted12['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted12['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted12['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.Map<core.String, core.Object?>> buildUnnamed13() => [
@@ -627,8 +789,14 @@ api.InlineScopedRouteConfigs buildInlineScopedRouteConfigs() {
 void checkInlineScopedRouteConfigs(api.InlineScopedRouteConfigs o) {
   buildCounterInlineScopedRouteConfigs++;
   if (buildCounterInlineScopedRouteConfigs < 3) {
-    unittest.expect(o.lastUpdated!, unittest.equals('foo'));
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.lastUpdated!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkUnnamed13(o.scopedRouteConfigs!);
   }
   buildCounterInlineScopedRouteConfigs--;
@@ -693,7 +861,10 @@ void checkListenersConfigDump(api.ListenersConfigDump o) {
   if (buildCounterListenersConfigDump < 3) {
     checkUnnamed14(o.dynamicListeners!);
     checkUnnamed15(o.staticListeners!);
-    unittest.expect(o.versionInfo!, unittest.equals('foo'));
+    unittest.expect(
+      o.versionInfo!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterListenersConfigDump--;
 }
@@ -714,19 +885,37 @@ api.Locality buildLocality() {
 void checkLocality(api.Locality o) {
   buildCounterLocality++;
   if (buildCounterLocality < 3) {
-    unittest.expect(o.region!, unittest.equals('foo'));
-    unittest.expect(o.subZone!, unittest.equals('foo'));
-    unittest.expect(o.zone!, unittest.equals('foo'));
+    unittest.expect(
+      o.region!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.subZone!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.zone!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterLocality--;
 }
 
-core.List<core.String> buildUnnamed16() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed16() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed16(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.Extension> buildUnnamed17() => [
@@ -740,7 +929,10 @@ void checkUnnamed17(core.List<api.Extension> o) {
   checkExtension(o[1]);
 }
 
-core.List<api.Address> buildUnnamed18() => [buildAddress(), buildAddress()];
+core.List<api.Address> buildUnnamed18() => [
+      buildAddress(),
+      buildAddress(),
+    ];
 
 void checkUnnamed18(core.List<api.Address> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -752,12 +944,12 @@ core.Map<core.String, core.Object?> buildUnnamed19() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
     };
 
@@ -765,14 +957,32 @@ void checkUnnamed19(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted13 = (o['x']!) as core.Map;
   unittest.expect(casted13, unittest.hasLength(3));
-  unittest.expect(casted13['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted13['bool'], unittest.equals(true));
-  unittest.expect(casted13['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted13['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted13['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted13['string'],
+    unittest.equals('foo'),
+  );
   var casted14 = (o['y']!) as core.Map;
   unittest.expect(casted14, unittest.hasLength(3));
-  unittest.expect(casted14['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted14['bool'], unittest.equals(true));
-  unittest.expect(casted14['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted14['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted14['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted14['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterNode = 0;
@@ -799,17 +1009,32 @@ api.Node buildNode() {
 void checkNode(api.Node o) {
   buildCounterNode++;
   if (buildCounterNode < 3) {
-    unittest.expect(o.buildVersion!, unittest.equals('foo'));
+    unittest.expect(
+      o.buildVersion!,
+      unittest.equals('foo'),
+    );
     checkUnnamed16(o.clientFeatures!);
-    unittest.expect(o.cluster!, unittest.equals('foo'));
+    unittest.expect(
+      o.cluster!,
+      unittest.equals('foo'),
+    );
     checkUnnamed17(o.extensions!);
-    unittest.expect(o.id!, unittest.equals('foo'));
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
     checkUnnamed18(o.listeningAddresses!);
     checkLocality(o.locality!);
     checkUnnamed19(o.metadata!);
     checkBuildVersion(o.userAgentBuildVersion!);
-    unittest.expect(o.userAgentName!, unittest.equals('foo'));
-    unittest.expect(o.userAgentVersion!, unittest.equals('foo'));
+    unittest.expect(
+      o.userAgentName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.userAgentVersion!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterNode--;
 }
@@ -875,7 +1100,10 @@ api.PathSegment buildPathSegment() {
 void checkPathSegment(api.PathSegment o) {
   buildCounterPathSegment++;
   if (buildCounterPathSegment < 3) {
-    unittest.expect(o.key!, unittest.equals('foo'));
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPathSegment--;
 }
@@ -902,7 +1130,10 @@ void checkPerXdsConfig(api.PerXdsConfig o) {
     checkListenersConfigDump(o.listenerConfig!);
     checkRoutesConfigDump(o.routeConfig!);
     checkScopedRoutesConfigDump(o.scopedRouteConfig!);
-    unittest.expect(o.status!, unittest.equals('foo'));
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPerXdsConfig--;
 }
@@ -922,8 +1153,14 @@ api.Pipe buildPipe() {
 void checkPipe(api.Pipe o) {
   buildCounterPipe++;
   if (buildCounterPipe < 3) {
-    unittest.expect(o.mode!, unittest.equals(42));
-    unittest.expect(o.path!, unittest.equals('foo'));
+    unittest.expect(
+      o.mode!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.path!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPipe--;
 }
@@ -944,7 +1181,10 @@ void checkRegexMatcher(api.RegexMatcher o) {
   buildCounterRegexMatcher++;
   if (buildCounterRegexMatcher < 3) {
     checkGoogleRE2(o.googleRe2!);
-    unittest.expect(o.regex!, unittest.equals('foo'));
+    unittest.expect(
+      o.regex!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterRegexMatcher--;
 }
@@ -1051,9 +1291,18 @@ api.SemanticVersion buildSemanticVersion() {
 void checkSemanticVersion(api.SemanticVersion o) {
   buildCounterSemanticVersion++;
   if (buildCounterSemanticVersion < 3) {
-    unittest.expect(o.majorNumber!, unittest.equals(42));
-    unittest.expect(o.minorNumber!, unittest.equals(42));
-    unittest.expect(o.patch!, unittest.equals(42));
+    unittest.expect(
+      o.majorNumber!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.minorNumber!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.patch!,
+      unittest.equals(42),
+    );
   }
   buildCounterSemanticVersion--;
 }
@@ -1077,12 +1326,27 @@ api.SocketAddress buildSocketAddress() {
 void checkSocketAddress(api.SocketAddress o) {
   buildCounterSocketAddress++;
   if (buildCounterSocketAddress < 3) {
-    unittest.expect(o.address!, unittest.equals('foo'));
+    unittest.expect(
+      o.address!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.ipv4Compat!, unittest.isTrue);
-    unittest.expect(o.namedPort!, unittest.equals('foo'));
-    unittest.expect(o.portValue!, unittest.equals(42));
-    unittest.expect(o.protocol!, unittest.equals('foo'));
-    unittest.expect(o.resolverName!, unittest.equals('foo'));
+    unittest.expect(
+      o.namedPort!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.portValue!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.protocol!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resolverName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSocketAddress--;
 }
@@ -1091,12 +1355,12 @@ core.Map<core.String, core.Object?> buildUnnamed25() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
     };
 
@@ -1104,14 +1368,32 @@ void checkUnnamed25(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted15 = (o['x']!) as core.Map;
   unittest.expect(casted15, unittest.hasLength(3));
-  unittest.expect(casted15['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted15['bool'], unittest.equals(true));
-  unittest.expect(casted15['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted15['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted15['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted15['string'],
+    unittest.equals('foo'),
+  );
   var casted16 = (o['y']!) as core.Map;
   unittest.expect(casted16, unittest.hasLength(3));
-  unittest.expect(casted16['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted16['bool'], unittest.equals(true));
-  unittest.expect(casted16['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted16['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted16['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted16['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterStaticCluster = 0;
@@ -1130,7 +1412,10 @@ void checkStaticCluster(api.StaticCluster o) {
   buildCounterStaticCluster++;
   if (buildCounterStaticCluster < 3) {
     checkUnnamed25(o.cluster!);
-    unittest.expect(o.lastUpdated!, unittest.equals('foo'));
+    unittest.expect(
+      o.lastUpdated!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterStaticCluster--;
 }
@@ -1139,12 +1424,12 @@ core.Map<core.String, core.Object?> buildUnnamed26() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
     };
 
@@ -1152,14 +1437,32 @@ void checkUnnamed26(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted17 = (o['x']!) as core.Map;
   unittest.expect(casted17, unittest.hasLength(3));
-  unittest.expect(casted17['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted17['bool'], unittest.equals(true));
-  unittest.expect(casted17['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted17['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted17['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted17['string'],
+    unittest.equals('foo'),
+  );
   var casted18 = (o['y']!) as core.Map;
   unittest.expect(casted18, unittest.hasLength(3));
-  unittest.expect(casted18['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted18['bool'], unittest.equals(true));
-  unittest.expect(casted18['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted18['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted18['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted18['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterStaticListener = 0;
@@ -1177,7 +1480,10 @@ api.StaticListener buildStaticListener() {
 void checkStaticListener(api.StaticListener o) {
   buildCounterStaticListener++;
   if (buildCounterStaticListener < 3) {
-    unittest.expect(o.lastUpdated!, unittest.equals('foo'));
+    unittest.expect(
+      o.lastUpdated!,
+      unittest.equals('foo'),
+    );
     checkUnnamed26(o.listener!);
   }
   buildCounterStaticListener--;
@@ -1187,12 +1493,12 @@ core.Map<core.String, core.Object?> buildUnnamed27() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
     };
 
@@ -1200,14 +1506,32 @@ void checkUnnamed27(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted19 = (o['x']!) as core.Map;
   unittest.expect(casted19, unittest.hasLength(3));
-  unittest.expect(casted19['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted19['bool'], unittest.equals(true));
-  unittest.expect(casted19['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted19['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted19['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted19['string'],
+    unittest.equals('foo'),
+  );
   var casted20 = (o['y']!) as core.Map;
   unittest.expect(casted20, unittest.hasLength(3));
-  unittest.expect(casted20['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted20['bool'], unittest.equals(true));
-  unittest.expect(casted20['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted20['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted20['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted20['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterStaticRouteConfig = 0;
@@ -1225,7 +1549,10 @@ api.StaticRouteConfig buildStaticRouteConfig() {
 void checkStaticRouteConfig(api.StaticRouteConfig o) {
   buildCounterStaticRouteConfig++;
   if (buildCounterStaticRouteConfig < 3) {
-    unittest.expect(o.lastUpdated!, unittest.equals('foo'));
+    unittest.expect(
+      o.lastUpdated!,
+      unittest.equals('foo'),
+    );
     checkUnnamed27(o.routeConfig!);
   }
   buildCounterStaticRouteConfig--;
@@ -1250,12 +1577,24 @@ api.StringMatcher buildStringMatcher() {
 void checkStringMatcher(api.StringMatcher o) {
   buildCounterStringMatcher++;
   if (buildCounterStringMatcher < 3) {
-    unittest.expect(o.exact!, unittest.equals('foo'));
+    unittest.expect(
+      o.exact!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.ignoreCase!, unittest.isTrue);
-    unittest.expect(o.prefix!, unittest.equals('foo'));
-    unittest.expect(o.regex!, unittest.equals('foo'));
+    unittest.expect(
+      o.prefix!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.regex!,
+      unittest.equals('foo'),
+    );
     checkRegexMatcher(o.safeRegex!);
-    unittest.expect(o.suffix!, unittest.equals('foo'));
+    unittest.expect(
+      o.suffix!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterStringMatcher--;
 }
@@ -1296,12 +1635,12 @@ core.Map<core.String, core.Object?> buildUnnamed29() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
     };
 
@@ -1309,14 +1648,32 @@ void checkUnnamed29(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted21 = (o['x']!) as core.Map;
   unittest.expect(casted21, unittest.hasLength(3));
-  unittest.expect(casted21['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted21['bool'], unittest.equals(true));
-  unittest.expect(casted21['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted21['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted21['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted21['string'],
+    unittest.equals('foo'),
+  );
   var casted22 = (o['y']!) as core.Map;
   unittest.expect(casted22, unittest.hasLength(3));
-  unittest.expect(casted22['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted22['bool'], unittest.equals(true));
-  unittest.expect(casted22['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted22['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted22['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted22['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterUpdateFailureState = 0;
@@ -1335,9 +1692,15 @@ api.UpdateFailureState buildUpdateFailureState() {
 void checkUpdateFailureState(api.UpdateFailureState o) {
   buildCounterUpdateFailureState++;
   if (buildCounterUpdateFailureState < 3) {
-    unittest.expect(o.details!, unittest.equals('foo'));
+    unittest.expect(
+      o.details!,
+      unittest.equals('foo'),
+    );
     checkUnnamed29(o.failedConfiguration!);
-    unittest.expect(o.lastUpdateAttempt!, unittest.equals('foo'));
+    unittest.expect(
+      o.lastUpdateAttempt!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterUpdateFailureState--;
 }
@@ -1376,9 +1739,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildAddress();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Address.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Address.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkAddress(od);
     });
   });
@@ -1388,8 +1750,7 @@ void main() {
       final o = buildBuildVersion();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BuildVersion.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildVersion(od);
     });
   });
@@ -1399,8 +1760,7 @@ void main() {
       final o = buildClientConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ClientConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkClientConfig(od);
     });
   });
@@ -1410,8 +1770,7 @@ void main() {
       final o = buildClientStatusRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ClientStatusRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkClientStatusRequest(od);
     });
   });
@@ -1421,8 +1780,7 @@ void main() {
       final o = buildClientStatusResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ClientStatusResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkClientStatusResponse(od);
     });
   });
@@ -1432,8 +1790,7 @@ void main() {
       final o = buildClustersConfigDump();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ClustersConfigDump.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkClustersConfigDump(od);
     });
   });
@@ -1443,8 +1800,7 @@ void main() {
       final o = buildDoubleMatcher();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DoubleMatcher.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkDoubleMatcher(od);
     });
   });
@@ -1454,8 +1810,7 @@ void main() {
       final o = buildDoubleRange();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DoubleRange.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkDoubleRange(od);
     });
   });
@@ -1465,8 +1820,7 @@ void main() {
       final o = buildDynamicCluster();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DynamicCluster.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkDynamicCluster(od);
     });
   });
@@ -1476,8 +1830,7 @@ void main() {
       final o = buildDynamicListener();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DynamicListener.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkDynamicListener(od);
     });
   });
@@ -1487,8 +1840,7 @@ void main() {
       final o = buildDynamicListenerState();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DynamicListenerState.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkDynamicListenerState(od);
     });
   });
@@ -1498,8 +1850,7 @@ void main() {
       final o = buildDynamicRouteConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DynamicRouteConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkDynamicRouteConfig(od);
     });
   });
@@ -1509,8 +1860,7 @@ void main() {
       final o = buildDynamicScopedRouteConfigs();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DynamicScopedRouteConfigs.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkDynamicScopedRouteConfigs(od);
     });
   });
@@ -1519,9 +1869,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildExtension();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Extension.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Extension.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkExtension(od);
     });
   });
@@ -1530,9 +1879,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleRE2();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleRE2.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.GoogleRE2.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleRE2(od);
     });
   });
@@ -1542,8 +1890,7 @@ void main() {
       final o = buildInlineScopedRouteConfigs();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.InlineScopedRouteConfigs.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkInlineScopedRouteConfigs(od);
     });
   });
@@ -1553,8 +1900,7 @@ void main() {
       final o = buildListMatcher();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ListMatcher.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkListMatcher(od);
     });
   });
@@ -1564,8 +1910,7 @@ void main() {
       final o = buildListenersConfigDump();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ListenersConfigDump.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkListenersConfigDump(od);
     });
   });
@@ -1574,9 +1919,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildLocality();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Locality.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Locality.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLocality(od);
     });
   });
@@ -1585,9 +1929,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildNode();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Node.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Node.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkNode(od);
     });
   });
@@ -1597,8 +1940,7 @@ void main() {
       final o = buildNodeMatcher();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.NodeMatcher.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkNodeMatcher(od);
     });
   });
@@ -1607,9 +1949,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildNullMatch();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.NullMatch.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.NullMatch.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkNullMatch(od);
     });
   });
@@ -1619,8 +1960,7 @@ void main() {
       final o = buildPathSegment();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PathSegment.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkPathSegment(od);
     });
   });
@@ -1630,8 +1970,7 @@ void main() {
       final o = buildPerXdsConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PerXdsConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkPerXdsConfig(od);
     });
   });
@@ -1640,9 +1979,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildPipe();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Pipe.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Pipe.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPipe(od);
     });
   });
@@ -1652,8 +1990,7 @@ void main() {
       final o = buildRegexMatcher();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RegexMatcher.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkRegexMatcher(od);
     });
   });
@@ -1663,8 +2000,7 @@ void main() {
       final o = buildRoutesConfigDump();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RoutesConfigDump.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkRoutesConfigDump(od);
     });
   });
@@ -1674,8 +2010,7 @@ void main() {
       final o = buildScopedRoutesConfigDump();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ScopedRoutesConfigDump.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkScopedRoutesConfigDump(od);
     });
   });
@@ -1685,8 +2020,7 @@ void main() {
       final o = buildSemanticVersion();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SemanticVersion.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkSemanticVersion(od);
     });
   });
@@ -1696,8 +2030,7 @@ void main() {
       final o = buildSocketAddress();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SocketAddress.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkSocketAddress(od);
     });
   });
@@ -1707,8 +2040,7 @@ void main() {
       final o = buildStaticCluster();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.StaticCluster.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkStaticCluster(od);
     });
   });
@@ -1718,8 +2050,7 @@ void main() {
       final o = buildStaticListener();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.StaticListener.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkStaticListener(od);
     });
   });
@@ -1729,8 +2060,7 @@ void main() {
       final o = buildStaticRouteConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.StaticRouteConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkStaticRouteConfig(od);
     });
   });
@@ -1740,8 +2070,7 @@ void main() {
       final o = buildStringMatcher();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.StringMatcher.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkStringMatcher(od);
     });
   });
@@ -1751,8 +2080,7 @@ void main() {
       final o = buildStructMatcher();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.StructMatcher.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkStructMatcher(od);
     });
   });
@@ -1762,8 +2090,7 @@ void main() {
       final o = buildUpdateFailureState();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateFailureState.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkUpdateFailureState(od);
     });
   });
@@ -1773,8 +2100,7 @@ void main() {
       final o = buildValueMatcher();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ValueMatcher.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkValueMatcher(od);
     });
   });
@@ -1785,58 +2111,54 @@ void main() {
       final res = api.TrafficDirectorServiceApi(mock).discovery;
       final arg_request = buildClientStatusRequest();
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.ClientStatusRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkClientStatusRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ClientStatusRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkClientStatusRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 26),
-            unittest.equals('v2/discovery:client_status'),
-          );
-          pathOffset += 26;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 26),
+          unittest.equals('v2/discovery:client_status'),
+        );
+        pathOffset += 26;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildClientStatusResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.clientStatus(
-        arg_request,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildClientStatusResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.clientStatus(arg_request, $fields: arg_$fields);
       checkClientStatusResponse(response as api.ClientStatusResponse);
     });
   });

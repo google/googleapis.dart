@@ -47,16 +47,11 @@ class ParallelstoreApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ParallelstoreApi(
-    http.Client client, {
-    core.String rootUrl = 'https://parallelstore.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  ParallelstoreApi(http.Client client,
+      {core.String rootUrl = 'https://parallelstore.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -95,7 +90,10 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(core.String name, {core.String? $fields}) async {
+  async.Future<Location> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -159,8 +157,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -343,7 +340,10 @@ class ProjectsLocationsInstancesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Instance> get(core.String name, {core.String? $fields}) async {
+  async.Future<Instance> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -454,8 +454,7 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return ListInstancesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the parameters of a single instance.
@@ -577,8 +576,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -619,8 +617,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -644,7 +641,10 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -706,8 +706,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -766,18 +765,14 @@ class ExportDataRequest {
   ExportDataRequest.fromJson(core.Map json_)
       : this(
           destinationGcsBucket: json_.containsKey('destinationGcsBucket')
-              ? DestinationGcsBucket.fromJson(
-                  json_['destinationGcsBucket']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? DestinationGcsBucket.fromJson(json_['destinationGcsBucket']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           requestId: json_['requestId'] as core.String?,
           serviceAccount: json_['serviceAccount'] as core.String?,
           sourceParallelstore: json_.containsKey('sourceParallelstore')
-              ? SourceParallelstore.fromJson(
-                  json_['sourceParallelstore']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SourceParallelstore.fromJson(json_['sourceParallelstore']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -848,16 +843,13 @@ class ImportDataRequest {
               json_.containsKey('destinationParallelstore')
                   ? DestinationParallelstore.fromJson(
                       json_['destinationParallelstore']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           requestId: json_['requestId'] as core.String?,
           serviceAccount: json_['serviceAccount'] as core.String?,
           sourceGcsBucket: json_.containsKey('sourceGcsBucket')
-              ? SourceGcsBucket.fromJson(
-                  json_['sourceGcsBucket']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SourceGcsBucket.fromJson(json_['sourceGcsBucket']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1025,7 +1017,10 @@ class Instance {
           fileStripeLevel: json_['fileStripeLevel'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           network: json_['network'] as core.String?,
@@ -1065,16 +1060,17 @@ class ListInstancesResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListInstancesResponse({this.instances, this.nextPageToken, this.unreachable});
+  ListInstancesResponse({
+    this.instances,
+    this.nextPageToken,
+    this.unreachable,
+  });
 
   ListInstancesResponse.fromJson(core.Map json_)
       : this(
           instances: (json_['instances'] as core.List?)
-              ?.map(
-                (value) => Instance.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Instance.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -1097,16 +1093,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({this.locations, this.nextPageToken});
+  ListLocationsResponse({
+    this.locations,
+    this.nextPageToken,
+  });
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map(
-                (value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1125,17 +1121,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map(
-                (value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1191,15 +1187,20 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({this.done, this.error, this.metadata, this.name, this.response});
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>

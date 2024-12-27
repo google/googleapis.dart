@@ -43,8 +43,14 @@ void checkAddressVerificationData(api.AddressVerificationData o) {
   buildCounterAddressVerificationData++;
   if (buildCounterAddressVerificationData < 3) {
     checkPostalAddress(o.address!);
-    unittest.expect(o.business!, unittest.equals('foo'));
-    unittest.expect(o.expectedDeliveryDaysRegion!, unittest.equals(42));
+    unittest.expect(
+      o.business!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expectedDeliveryDaysRegion!,
+      unittest.equals(42),
+    );
   }
   buildCounterAddressVerificationData--;
 }
@@ -63,7 +69,10 @@ api.CompleteVerificationRequest buildCompleteVerificationRequest() {
 void checkCompleteVerificationRequest(api.CompleteVerificationRequest o) {
   buildCounterCompleteVerificationRequest++;
   if (buildCounterCompleteVerificationRequest < 3) {
-    unittest.expect(o.pin!, unittest.equals('foo'));
+    unittest.expect(
+      o.pin!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterCompleteVerificationRequest--;
 }
@@ -101,7 +110,10 @@ api.ComplyWithGuidelines buildComplyWithGuidelines() {
 void checkComplyWithGuidelines(api.ComplyWithGuidelines o) {
   buildCounterComplyWithGuidelines++;
   if (buildCounterComplyWithGuidelines < 3) {
-    unittest.expect(o.recommendationReason!, unittest.equals('foo'));
+    unittest.expect(
+      o.recommendationReason!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterComplyWithGuidelines--;
 }
@@ -122,9 +134,15 @@ api.EmailVerificationData buildEmailVerificationData() {
 void checkEmailVerificationData(api.EmailVerificationData o) {
   buildCounterEmailVerificationData++;
   if (buildCounterEmailVerificationData < 3) {
-    unittest.expect(o.domain!, unittest.equals('foo'));
+    unittest.expect(
+      o.domain!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.isUserNameEditable!, unittest.isTrue);
-    unittest.expect(o.user!, unittest.equals('foo'));
+    unittest.expect(
+      o.user!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterEmailVerificationData--;
 }
@@ -142,12 +160,14 @@ api.FetchVerificationOptionsRequest buildFetchVerificationOptionsRequest() {
 }
 
 void checkFetchVerificationOptionsRequest(
-  api.FetchVerificationOptionsRequest o,
-) {
+    api.FetchVerificationOptionsRequest o) {
   buildCounterFetchVerificationOptionsRequest++;
   if (buildCounterFetchVerificationOptionsRequest < 3) {
     checkServiceBusinessContext(o.context!);
-    unittest.expect(o.languageCode!, unittest.equals('foo'));
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterFetchVerificationOptionsRequest--;
 }
@@ -175,8 +195,7 @@ api.FetchVerificationOptionsResponse buildFetchVerificationOptionsResponse() {
 }
 
 void checkFetchVerificationOptionsResponse(
-  api.FetchVerificationOptionsResponse o,
-) {
+    api.FetchVerificationOptionsResponse o) {
   buildCounterFetchVerificationOptionsResponse++;
   if (buildCounterFetchVerificationOptionsResponse < 3) {
     checkUnnamed0(o.options!);
@@ -210,26 +229,47 @@ api.ListVerificationsResponse buildListVerificationsResponse() {
 void checkListVerificationsResponse(api.ListVerificationsResponse o) {
   buildCounterListVerificationsResponse++;
   if (buildCounterListVerificationsResponse < 3) {
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
     checkUnnamed1(o.verifications!);
   }
   buildCounterListVerificationsResponse--;
 }
 
-core.List<core.String> buildUnnamed2() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed2() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
-core.List<core.String> buildUnnamed3() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed3() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterPostalAddress = 0;
@@ -257,16 +297,43 @@ void checkPostalAddress(api.PostalAddress o) {
   buildCounterPostalAddress++;
   if (buildCounterPostalAddress < 3) {
     checkUnnamed2(o.addressLines!);
-    unittest.expect(o.administrativeArea!, unittest.equals('foo'));
-    unittest.expect(o.languageCode!, unittest.equals('foo'));
-    unittest.expect(o.locality!, unittest.equals('foo'));
-    unittest.expect(o.organization!, unittest.equals('foo'));
-    unittest.expect(o.postalCode!, unittest.equals('foo'));
+    unittest.expect(
+      o.administrativeArea!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.locality!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.organization!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.postalCode!,
+      unittest.equals('foo'),
+    );
     checkUnnamed3(o.recipients!);
-    unittest.expect(o.regionCode!, unittest.equals('foo'));
-    unittest.expect(o.revision!, unittest.equals(42));
-    unittest.expect(o.sortingCode!, unittest.equals('foo'));
-    unittest.expect(o.sublocality!, unittest.equals('foo'));
+    unittest.expect(
+      o.regionCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.revision!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.sortingCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sublocality!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPostalAddress--;
 }
@@ -323,11 +390,26 @@ api.Verification buildVerification() {
 void checkVerification(api.Verification o) {
   buildCounterVerification++;
   if (buildCounterVerification < 3) {
-    unittest.expect(o.announcement!, unittest.equals('foo'));
-    unittest.expect(o.createTime!, unittest.equals('foo'));
-    unittest.expect(o.method!, unittest.equals('foo'));
-    unittest.expect(o.name!, unittest.equals('foo'));
-    unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(
+      o.announcement!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.method!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterVerification--;
 }
@@ -351,10 +433,19 @@ void checkVerificationOption(api.VerificationOption o) {
   buildCounterVerificationOption++;
   if (buildCounterVerificationOption < 3) {
     checkAddressVerificationData(o.addressData!);
-    unittest.expect(o.announcement!, unittest.equals('foo'));
+    unittest.expect(
+      o.announcement!,
+      unittest.equals('foo'),
+    );
     checkEmailVerificationData(o.emailData!);
-    unittest.expect(o.phoneNumber!, unittest.equals('foo'));
-    unittest.expect(o.verificationMethod!, unittest.equals('foo'));
+    unittest.expect(
+      o.phoneNumber!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.verificationMethod!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterVerificationOption--;
 }
@@ -373,7 +464,10 @@ api.VerificationToken buildVerificationToken() {
 void checkVerificationToken(api.VerificationToken o) {
   buildCounterVerificationToken++;
   if (buildCounterVerificationToken < 3) {
-    unittest.expect(o.tokenString!, unittest.equals('foo'));
+    unittest.expect(
+      o.tokenString!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterVerificationToken--;
 }
@@ -418,11 +512,26 @@ void checkVerifyLocationRequest(api.VerifyLocationRequest o) {
   buildCounterVerifyLocationRequest++;
   if (buildCounterVerifyLocationRequest < 3) {
     checkServiceBusinessContext(o.context!);
-    unittest.expect(o.emailAddress!, unittest.equals('foo'));
-    unittest.expect(o.languageCode!, unittest.equals('foo'));
-    unittest.expect(o.mailerContact!, unittest.equals('foo'));
-    unittest.expect(o.method!, unittest.equals('foo'));
-    unittest.expect(o.phoneNumber!, unittest.equals('foo'));
+    unittest.expect(
+      o.emailAddress!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.mailerContact!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.method!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.phoneNumber!,
+      unittest.equals('foo'),
+    );
     checkVerificationToken(o.token!);
   }
   buildCounterVerifyLocationRequest--;
@@ -497,8 +606,7 @@ void main() {
       final o = buildAddressVerificationData();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddressVerificationData.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkAddressVerificationData(od);
     });
   });
@@ -508,8 +616,7 @@ void main() {
       final o = buildCompleteVerificationRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CompleteVerificationRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkCompleteVerificationRequest(od);
     });
   });
@@ -519,8 +626,7 @@ void main() {
       final o = buildCompleteVerificationResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CompleteVerificationResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkCompleteVerificationResponse(od);
     });
   });
@@ -530,8 +636,7 @@ void main() {
       final o = buildComplyWithGuidelines();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ComplyWithGuidelines.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkComplyWithGuidelines(od);
     });
   });
@@ -541,8 +646,7 @@ void main() {
       final o = buildEmailVerificationData();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.EmailVerificationData.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkEmailVerificationData(od);
     });
   });
@@ -552,8 +656,7 @@ void main() {
       final o = buildFetchVerificationOptionsRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.FetchVerificationOptionsRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkFetchVerificationOptionsRequest(od);
     });
   });
@@ -563,8 +666,7 @@ void main() {
       final o = buildFetchVerificationOptionsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.FetchVerificationOptionsResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkFetchVerificationOptionsResponse(od);
     });
   });
@@ -574,8 +676,7 @@ void main() {
       final o = buildListVerificationsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ListVerificationsResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkListVerificationsResponse(od);
     });
   });
@@ -585,8 +686,7 @@ void main() {
       final o = buildPostalAddress();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PostalAddress.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkPostalAddress(od);
     });
   });
@@ -596,8 +696,7 @@ void main() {
       final o = buildResolveOwnershipConflict();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ResolveOwnershipConflict.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkResolveOwnershipConflict(od);
     });
   });
@@ -607,8 +706,7 @@ void main() {
       final o = buildServiceBusinessContext();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ServiceBusinessContext.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkServiceBusinessContext(od);
     });
   });
@@ -618,8 +716,7 @@ void main() {
       final o = buildVerification();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.Verification.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkVerification(od);
     });
   });
@@ -629,8 +726,7 @@ void main() {
       final o = buildVerificationOption();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.VerificationOption.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkVerificationOption(od);
     });
   });
@@ -640,8 +736,7 @@ void main() {
       final o = buildVerificationToken();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.VerificationToken.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkVerificationToken(od);
     });
   });
@@ -650,9 +745,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildVerify();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Verify.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Verify.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkVerify(od);
     });
   });
@@ -662,8 +756,7 @@ void main() {
       final o = buildVerifyLocationRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.VerifyLocationRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkVerifyLocationRequest(od);
     });
   });
@@ -673,8 +766,7 @@ void main() {
       final o = buildVerifyLocationResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.VerifyLocationResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkVerifyLocationResponse(od);
     });
   });
@@ -684,8 +776,7 @@ void main() {
       final o = buildVoiceOfMerchantState();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.VoiceOfMerchantState.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkVoiceOfMerchantState(od);
     });
   });
@@ -695,8 +786,7 @@ void main() {
       final o = buildWaitForVoiceOfMerchant();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.WaitForVoiceOfMerchant.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkWaitForVoiceOfMerchant(od);
     });
   });
@@ -708,65 +798,59 @@ void main() {
       final arg_request = buildFetchVerificationOptionsRequest();
       final arg_location = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.FetchVerificationOptionsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkFetchVerificationOptionsRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.FetchVerificationOptionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkFetchVerificationOptionsRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildFetchVerificationOptionsResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildFetchVerificationOptionsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.fetchVerificationOptions(
-        arg_request,
-        arg_location,
-        $fields: arg_$fields,
-      );
+          arg_request, arg_location,
+          $fields: arg_$fields);
       checkFetchVerificationOptionsResponse(
-        response as api.FetchVerificationOptionsResponse,
-      );
+          response as api.FetchVerificationOptionsResponse);
     });
 
     unittest.test('method--getVoiceOfMerchantState', () async {
@@ -774,54 +858,51 @@ void main() {
       final res = api.MyBusinessVerificationsApi(mock).locations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildVoiceOfMerchantState());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.getVoiceOfMerchantState(
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildVoiceOfMerchantState());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getVoiceOfMerchantState(arg_name, $fields: arg_$fields);
       checkVoiceOfMerchantState(response as api.VoiceOfMerchantState);
     });
 
@@ -831,60 +912,55 @@ void main() {
       final arg_request = buildVerifyLocationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.VerifyLocationRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkVerifyLocationRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.VerifyLocationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkVerifyLocationRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildVerifyLocationResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.verify(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildVerifyLocationResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.verify(arg_request, arg_name, $fields: arg_$fields);
       checkVerifyLocationResponse(response as api.VerifyLocationResponse);
     });
   });
@@ -896,63 +972,57 @@ void main() {
       final arg_request = buildCompleteVerificationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.CompleteVerificationRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkCompleteVerificationRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.CompleteVerificationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCompleteVerificationRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildCompleteVerificationResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.complete(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCompleteVerificationResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.complete(arg_request, arg_name, $fields: arg_$fields);
       checkCompleteVerificationResponse(
-        response as api.CompleteVerificationResponse,
-      );
+          response as api.CompleteVerificationResponse);
     });
 
     unittest.test('method--list', () async {
@@ -962,64 +1032,61 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildListVerificationsResponse());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListVerificationsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkListVerificationsResponse(response as api.ListVerificationsResponse);
     });
   });

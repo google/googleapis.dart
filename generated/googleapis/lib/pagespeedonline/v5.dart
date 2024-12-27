@@ -52,16 +52,11 @@ class PagespeedInsightsApi {
 
   PagespeedapiResource get pagespeedapi => PagespeedapiResource(_requester);
 
-  PagespeedInsightsApi(
-    http.Client client, {
-    core.String rootUrl = 'https://pagespeedonline.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  PagespeedInsightsApi(http.Client client,
+      {core.String rootUrl = 'https://pagespeedonline.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class PagespeedapiResource {
@@ -136,8 +131,7 @@ class PagespeedapiResource {
       queryParams: queryParams_,
     );
     return PagespeedApiPagespeedResponseV5.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -201,7 +195,11 @@ class Bucket {
   /// The proportion of data in this bucket.
   core.double? proportion;
 
-  Bucket({this.max, this.min, this.proportion});
+  Bucket({
+    this.max,
+    this.min,
+    this.proportion,
+  });
 
   Bucket.fromJson(core.Map json_)
       : this(
@@ -252,29 +250,23 @@ class Categories {
       : this(
           accessibility: json_.containsKey('accessibility')
               ? LighthouseCategoryV5.fromJson(
-                  json_['accessibility'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['accessibility'] as core.Map<core.String, core.dynamic>)
               : null,
           bestPractices: json_.containsKey('best-practices')
-              ? LighthouseCategoryV5.fromJson(
-                  json_['best-practices']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? LighthouseCategoryV5.fromJson(json_['best-practices']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           performance: json_.containsKey('performance')
               ? LighthouseCategoryV5.fromJson(
-                  json_['performance'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['performance'] as core.Map<core.String, core.dynamic>)
               : null,
           pwa: json_.containsKey('pwa')
               ? LighthouseCategoryV5.fromJson(
-                  json_['pwa'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['pwa'] as core.Map<core.String, core.dynamic>)
               : null,
           seo: json_.containsKey('seo')
               ? LighthouseCategoryV5.fromJson(
-                  json_['seo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['seo'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -295,7 +287,10 @@ class CategoryGroupV5 {
   /// The human readable title of the group
   core.String? title;
 
-  CategoryGroupV5({this.description, this.title});
+  CategoryGroupV5({
+    this.description,
+    this.title,
+  });
 
   CategoryGroupV5.fromJson(core.Map json_)
       : this(
@@ -389,8 +384,13 @@ class Environment {
   Environment.fromJson(core.Map json_)
       : this(
           benchmarkIndex: (json_['benchmarkIndex'] as core.num?)?.toDouble(),
-          credits: (json_['credits'] as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          credits:
+              (json_['credits'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           hostUserAgent: json_['hostUserAgent'] as core.String?,
           networkUserAgent: json_['networkUserAgent'] as core.String?,
         );
@@ -409,7 +409,9 @@ class I18n {
   /// configSettings.
   RendererFormattedStrings? rendererFormattedStrings;
 
-  I18n({this.rendererFormattedStrings});
+  I18n({
+    this.rendererFormattedStrings,
+  });
 
   I18n.fromJson(core.Map json_)
       : this(
@@ -417,8 +419,7 @@ class I18n {
               json_.containsKey('rendererFormattedStrings')
                   ? RendererFormattedStrings.fromJson(
                       json_['rendererFormattedStrings']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
         );
 
@@ -574,8 +575,7 @@ class LighthouseAuditResultV5 {
           id: json_['id'] as core.String?,
           metricSavings: json_.containsKey('metricSavings')
               ? MetricSavings.fromJson(
-                  json_['metricSavings'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metricSavings'] as core.Map<core.String, core.dynamic>)
               : null,
           numericUnit: json_['numericUnit'] as core.String?,
           numericValue: (json_['numericValue'] as core.num?)?.toDouble(),
@@ -639,11 +639,8 @@ class LighthouseCategoryV5 {
   LighthouseCategoryV5.fromJson(core.Map json_)
       : this(
           auditRefs: (json_['auditRefs'] as core.List?)
-              ?.map(
-                (value) => AuditRefs.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AuditRefs.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           description: json_['description'] as core.String?,
           id: json_['id'] as core.String?,
@@ -760,14 +757,12 @@ class LighthouseResultV5 {
             (key, value) => core.MapEntry(
               key,
               LighthouseAuditResultV5.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
           categories: json_.containsKey('categories')
               ? Categories.fromJson(
-                  json_['categories'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['categories'] as core.Map<core.String, core.dynamic>)
               : null,
           categoryGroups:
               (json_['categoryGroups'] as core.Map<core.String, core.dynamic>?)
@@ -775,27 +770,20 @@ class LighthouseResultV5 {
             (key, value) => core.MapEntry(
               key,
               CategoryGroupV5.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
           configSettings: json_.containsKey('configSettings')
-              ? ConfigSettings.fromJson(
-                  json_['configSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ConfigSettings.fromJson(json_['configSettings']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           entities: (json_['entities'] as core.List?)
-              ?.map(
-                (value) => LhrEntity.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => LhrEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           environment: json_.containsKey('environment')
               ? Environment.fromJson(
-                  json_['environment'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['environment'] as core.Map<core.String, core.dynamic>)
               : null,
           fetchTime: json_['fetchTime'] as core.String?,
           finalDisplayedUrl: json_['finalDisplayedUrl'] as core.String?,
@@ -803,8 +791,7 @@ class LighthouseResultV5 {
           fullPageScreenshot: json_['fullPageScreenshot'],
           i18n: json_.containsKey('i18n')
               ? I18n.fromJson(
-                  json_['i18n'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['i18n'] as core.Map<core.String, core.dynamic>)
               : null,
           lighthouseVersion: json_['lighthouseVersion'] as core.String?,
           mainDocumentUrl: json_['mainDocumentUrl'] as core.String?,
@@ -814,20 +801,15 @@ class LighthouseResultV5 {
               : null,
           runtimeError: json_.containsKey('runtimeError')
               ? RuntimeError.fromJson(
-                  json_['runtimeError'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['runtimeError'] as core.Map<core.String, core.dynamic>)
               : null,
           stackPacks: (json_['stackPacks'] as core.List?)
-              ?.map(
-                (value) => StackPack.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => StackPack.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           timing: json_.containsKey('timing')
               ? Timing.fromJson(
-                  json_['timing'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['timing'] as core.Map<core.String, core.dynamic>)
               : null,
           userAgent: json_['userAgent'] as core.String?,
         );
@@ -888,7 +870,13 @@ class MetricSavings {
   /// Optional.
   core.double? TBT;
 
-  MetricSavings({this.CLS, this.FCP, this.INP, this.LCP, this.TBT});
+  MetricSavings({
+    this.CLS,
+    this.FCP,
+    this.INP,
+    this.LCP,
+    this.TBT,
+  });
 
   MetricSavings.fromJson(core.Map json_)
       : this(
@@ -942,8 +930,7 @@ class PagespeedApiLoadingExperienceV5 {
             (key, value) => core.MapEntry(
               key,
               UserPageLoadMetricV5.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
           originFallback: json_['origin_fallback'] as core.bool?,
@@ -1004,27 +991,22 @@ class PagespeedApiPagespeedResponseV5 {
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           lighthouseResult: json_.containsKey('lighthouseResult')
-              ? LighthouseResultV5.fromJson(
-                  json_['lighthouseResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? LighthouseResultV5.fromJson(json_['lighthouseResult']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           loadingExperience: json_.containsKey('loadingExperience')
               ? PagespeedApiLoadingExperienceV5.fromJson(
                   json_['loadingExperience']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           originLoadingExperience: json_.containsKey('originLoadingExperience')
               ? PagespeedApiLoadingExperienceV5.fromJson(
                   json_['originLoadingExperience']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           version: json_.containsKey('version')
               ? PagespeedVersion.fromJson(
-                  json_['version'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['version'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1050,7 +1032,10 @@ class PagespeedVersion {
   /// The minor version number of PageSpeed used to generate these results.
   core.String? minor;
 
-  PagespeedVersion({this.major, this.minor});
+  PagespeedVersion({
+    this.major,
+    this.minor,
+  });
 
   PagespeedVersion.fromJson(core.Map json_)
       : this(
@@ -1467,7 +1452,10 @@ class RuntimeError {
   /// A human readable message explaining the error code.
   core.String? message;
 
-  RuntimeError({this.code, this.message});
+  RuntimeError({
+    this.code,
+    this.message,
+  });
 
   RuntimeError.fromJson(core.Map json_)
       : this(
@@ -1495,13 +1483,23 @@ class StackPack {
   /// The stack pack title.
   core.String? title;
 
-  StackPack({this.descriptions, this.iconDataURL, this.id, this.title});
+  StackPack({
+    this.descriptions,
+    this.iconDataURL,
+    this.id,
+    this.title,
+  });
 
   StackPack.fromJson(core.Map json_)
       : this(
-          descriptions: (json_['descriptions']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          descriptions:
+              (json_['descriptions'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           iconDataURL: json_['iconDataURL'] as core.String?,
           id: json_['id'] as core.String?,
           title: json_['title'] as core.String?,
@@ -1520,10 +1518,14 @@ class Timing {
   /// The total duration of Lighthouse's run.
   core.double? total;
 
-  Timing({this.total});
+  Timing({
+    this.total,
+  });
 
   Timing.fromJson(core.Map json_)
-      : this(total: (json_['total'] as core.num?)?.toDouble());
+      : this(
+          total: (json_['total'] as core.num?)?.toDouble(),
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (total != null) 'total': total!,
@@ -1567,11 +1569,8 @@ class UserPageLoadMetricV5 {
       : this(
           category: json_['category'] as core.String?,
           distributions: (json_['distributions'] as core.List?)
-              ?.map(
-                (value) => Bucket.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Bucket.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           formFactor: json_['formFactor'] as core.String?,
           median: json_['median'] as core.int?,

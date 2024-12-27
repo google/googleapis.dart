@@ -45,16 +45,11 @@ class VersionHistoryApi {
 
   PlatformsResource get platforms => PlatformsResource(_requester);
 
-  VersionHistoryApi(
-    http.Client client, {
-    core.String rootUrl = 'https://versionhistory.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  VersionHistoryApi(http.Client client,
+      {core.String rootUrl = 'https://versionhistory.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class PlatformsResource {
@@ -112,8 +107,7 @@ class PlatformsResource {
       queryParams: queryParams_,
     );
     return ListPlatformsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -170,8 +164,7 @@ class PlatformsChannelsResource {
       queryParams: queryParams_,
     );
     return ListChannelsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -256,8 +249,7 @@ class PlatformsChannelsVersionsResource {
       queryParams: queryParams_,
     );
     return ListVersionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -346,8 +338,7 @@ class PlatformsChannelsVersionsReleasesResource {
       queryParams: queryParams_,
     );
     return ListReleasesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -375,7 +366,10 @@ class Channel {
   /// Format is "{product}/platforms/{platform}/channels/{channel}"
   core.String? name;
 
-  Channel({this.channelType, this.name});
+  Channel({
+    this.channelType,
+    this.name,
+  });
 
   Channel.fromJson(core.Map json_)
       : this(
@@ -407,16 +401,16 @@ class ListChannelsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListChannelsResponse({this.channels, this.nextPageToken});
+  ListChannelsResponse({
+    this.channels,
+    this.nextPageToken,
+  });
 
   ListChannelsResponse.fromJson(core.Map json_)
       : this(
           channels: (json_['channels'] as core.List?)
-              ?.map(
-                (value) => Channel.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Channel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -437,17 +431,17 @@ class ListPlatformsResponse {
   /// The list of platforms.
   core.List<Platform>? platforms;
 
-  ListPlatformsResponse({this.nextPageToken, this.platforms});
+  ListPlatformsResponse({
+    this.nextPageToken,
+    this.platforms,
+  });
 
   ListPlatformsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           platforms: (json_['platforms'] as core.List?)
-              ?.map(
-                (value) => Platform.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Platform.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -467,17 +461,17 @@ class ListReleasesResponse {
   /// The list of releases.
   core.List<Release>? releases;
 
-  ListReleasesResponse({this.nextPageToken, this.releases});
+  ListReleasesResponse({
+    this.nextPageToken,
+    this.releases,
+  });
 
   ListReleasesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           releases: (json_['releases'] as core.List?)
-              ?.map(
-                (value) => Release.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Release.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -497,17 +491,17 @@ class ListVersionsResponse {
   /// The list of versions.
   core.List<Version>? versions;
 
-  ListVersionsResponse({this.nextPageToken, this.versions});
+  ListVersionsResponse({
+    this.nextPageToken,
+    this.versions,
+  });
 
   ListVersionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           versions: (json_['versions'] as core.List?)
-              ?.map(
-                (value) => Version.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Version.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -547,7 +541,10 @@ class Platform {
   /// - "WIN_ARM64" : Chrome Desktop for Windows (ARM64).
   core.String? platformType;
 
-  Platform({this.name, this.platformType});
+  Platform({
+    this.name,
+    this.platformType,
+  });
 
   Platform.fromJson(core.Map json_)
       : this(
@@ -617,8 +614,7 @@ class Release {
           pinnable: json_['pinnable'] as core.bool?,
           serving: json_.containsKey('serving')
               ? Interval.fromJson(
-                  json_['serving'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['serving'] as core.Map<core.String, core.dynamic>)
               : null,
           version: json_['version'] as core.String?,
         );
@@ -650,7 +646,10 @@ class Version {
   /// e.g. "84.0.4147.38"
   core.String? version;
 
-  Version({this.name, this.version});
+  Version({
+    this.name,
+    this.version,
+  });
 
   Version.fromJson(core.Map json_)
       : this(

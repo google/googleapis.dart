@@ -50,16 +50,11 @@ class LicensingApi {
   LicenseAssignmentsResource get licenseAssignments =>
       LicenseAssignmentsResource(_requester);
 
-  LicensingApi(
-    http.Client client, {
-    core.String rootUrl = 'https://licensing.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  LicensingApi(http.Client client,
+      {core.String rootUrl = 'https://licensing.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class LicenseAssignmentsResource {
@@ -167,8 +162,7 @@ class LicenseAssignmentsResource {
       queryParams: queryParams_,
     );
     return LicenseAssignment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Assign a license.
@@ -217,8 +211,7 @@ class LicenseAssignmentsResource {
       queryParams: queryParams_,
     );
     return LicenseAssignment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all users assigned licenses for a specific product SKU.
@@ -276,8 +269,7 @@ class LicenseAssignmentsResource {
       queryParams: queryParams_,
     );
     return LicenseAssignmentList.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all users assigned licenses for a specific product SKU.
@@ -341,8 +333,7 @@ class LicenseAssignmentsResource {
       queryParams: queryParams_,
     );
     return LicenseAssignmentList.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Reassign a user's product SKU with a different SKU in the same product.
@@ -401,8 +392,7 @@ class LicenseAssignmentsResource {
       queryParams: queryParams_,
     );
     return LicenseAssignment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Reassign a user's product SKU with a different SKU in the same product.
@@ -459,8 +449,7 @@ class LicenseAssignmentsResource {
       queryParams: queryParams_,
     );
     return LicenseAssignment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -551,10 +540,14 @@ class LicenseAssignmentInsert {
   /// Email id of the user
   core.String? userId;
 
-  LicenseAssignmentInsert({this.userId});
+  LicenseAssignmentInsert({
+    this.userId,
+  });
 
   LicenseAssignmentInsert.fromJson(core.Map json_)
-      : this(userId: json_['userId'] as core.String?);
+      : this(
+          userId: json_['userId'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (userId != null) 'userId': userId!,
@@ -578,17 +571,19 @@ class LicenseAssignmentList {
   /// `maxResults` determines how many entries are returned on each next page.
   core.String? nextPageToken;
 
-  LicenseAssignmentList({this.etag, this.items, this.kind, this.nextPageToken});
+  LicenseAssignmentList({
+    this.etag,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+  });
 
   LicenseAssignmentList.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           items: (json_['items'] as core.List?)
-              ?.map(
-                (value) => LicenseAssignment.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => LicenseAssignment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,

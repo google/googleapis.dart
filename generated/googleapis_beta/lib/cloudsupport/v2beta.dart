@@ -64,16 +64,11 @@ class CloudSupportApi {
   CasesResource get cases => CasesResource(_requester);
   MediaResource get media => MediaResource(_requester);
 
-  CloudSupportApi(
-    http.Client client, {
-    core.String rootUrl = 'https://cloudsupport.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  CloudSupportApi(http.Client client,
+      {core.String rootUrl = 'https://cloudsupport.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class CaseClassificationsResource {
@@ -151,8 +146,7 @@ class CaseClassificationsResource {
       queryParams: queryParams_,
     );
     return SearchCaseClassificationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -367,7 +361,10 @@ class CasesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Case> get(core.String name, {core.String? $fields}) async {
+  async.Future<Case> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -460,8 +457,7 @@ class CasesResource {
       queryParams: queryParams_,
     );
     return ListCasesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a case.
@@ -605,8 +601,7 @@ class CasesResource {
       queryParams: queryParams_,
     );
     return SearchCasesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Show items in the feed of this case, including case emails, attachments,
@@ -661,8 +656,7 @@ class CasesResource {
       queryParams: queryParams_,
     );
     return ShowFeedResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -727,8 +721,7 @@ class CasesAttachmentsResource {
       queryParams: queryParams_,
     );
     return ListAttachmentsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -845,8 +838,7 @@ class CasesCommentsResource {
       queryParams: queryParams_,
     );
     return ListCommentsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -987,8 +979,7 @@ class MediaResource {
       uploadOptions: commons.UploadOptions.defaultOptions,
     );
     return Attachment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1031,7 +1022,12 @@ class Actor {
   /// Output only.
   core.String? username;
 
-  Actor({this.displayName, this.email, this.googleSupport, this.username});
+  Actor({
+    this.displayName,
+    this.email,
+    this.googleSupport,
+    this.username,
+  });
 
   Actor.fromJson(core.Map json_)
       : this(
@@ -1102,8 +1098,7 @@ class Attachment {
           createTime: json_['createTime'] as core.String?,
           creator: json_.containsKey('creator')
               ? Actor.fromJson(
-                  json_['creator'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['creator'] as core.Map<core.String, core.dynamic>)
               : null,
           filename: json_['filename'] as core.String?,
           mimeType: json_['mimeType'] as core.String?,
@@ -1321,17 +1316,14 @@ class Case {
   Case.fromJson(core.Map json_)
       : this(
           classification: json_.containsKey('classification')
-              ? CaseClassification.fromJson(
-                  json_['classification']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CaseClassification.fromJson(json_['classification']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           contactEmail: json_['contactEmail'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           creator: json_.containsKey('creator')
               ? Actor.fromJson(
-                  json_['creator'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['creator'] as core.Map<core.String, core.dynamic>)
               : null,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
@@ -1398,7 +1390,11 @@ class CaseClassification {
   /// The full product the classification corresponds to.
   Product? product;
 
-  CaseClassification({this.displayName, this.id, this.product});
+  CaseClassification({
+    this.displayName,
+    this.id,
+    this.product,
+  });
 
   CaseClassification.fromJson(core.Map json_)
       : this(
@@ -1406,8 +1402,7 @@ class CaseClassification {
           id: json_['id'] as core.String?,
           product: json_.containsKey('product')
               ? Product.fromJson(
-                  json_['product'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['product'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1474,8 +1469,7 @@ class Comment {
           createTime: json_['createTime'] as core.String?,
           creator: json_.containsKey('creator')
               ? Actor.fromJson(
-                  json_['creator'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['creator'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           plainTextBody: json_['plainTextBody'] as core.String?,
@@ -1584,10 +1578,8 @@ class CompositeMedia {
       : this(
           blobRef: json_['blobRef'] as core.String?,
           blobstore2Info: json_.containsKey('blobstore2Info')
-              ? Blobstore2Info.fromJson(
-                  json_['blobstore2Info']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Blobstore2Info.fromJson(json_['blobstore2Info']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           cosmoBinaryReference: json_['cosmoBinaryReference'] as core.String?,
           crc32cHash: json_['crc32cHash'] as core.int?,
@@ -1596,8 +1588,7 @@ class CompositeMedia {
           md5Hash: json_['md5Hash'] as core.String?,
           objectId: json_.containsKey('objectId')
               ? ObjectId.fromJson(
-                  json_['objectId'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['objectId'] as core.Map<core.String, core.dynamic>)
               : null,
           path: json_['path'] as core.String?,
           referenceType: json_['referenceType'] as core.String?,
@@ -1670,14 +1661,15 @@ class CreateAttachmentRequest {
   /// Required.
   Attachment? attachment;
 
-  CreateAttachmentRequest({this.attachment});
+  CreateAttachmentRequest({
+    this.attachment,
+  });
 
   CreateAttachmentRequest.fromJson(core.Map json_)
       : this(
           attachment: json_.containsKey('attachment')
               ? Attachment.fromJson(
-                  json_['attachment'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['attachment'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1714,17 +1706,13 @@ class DiffChecksumsResponse {
   DiffChecksumsResponse.fromJson(core.Map json_)
       : this(
           checksumsLocation: json_.containsKey('checksumsLocation')
-              ? CompositeMedia.fromJson(
-                  json_['checksumsLocation']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CompositeMedia.fromJson(json_['checksumsLocation']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           chunkSizeBytes: json_['chunkSizeBytes'] as core.String?,
           objectLocation: json_.containsKey('objectLocation')
-              ? CompositeMedia.fromJson(
-                  json_['objectLocation']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CompositeMedia.fromJson(json_['objectLocation']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           objectSizeBytes: json_['objectSizeBytes'] as core.String?,
           objectVersion: json_['objectVersion'] as core.String?,
@@ -1744,15 +1732,15 @@ class DiffDownloadResponse {
   /// # gdata.* are outside protos with mising documentation
   CompositeMedia? objectLocation;
 
-  DiffDownloadResponse({this.objectLocation});
+  DiffDownloadResponse({
+    this.objectLocation,
+  });
 
   DiffDownloadResponse.fromJson(core.Map json_)
       : this(
           objectLocation: json_.containsKey('objectLocation')
-              ? CompositeMedia.fromJson(
-                  json_['objectLocation']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CompositeMedia.fromJson(json_['objectLocation']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1772,19 +1760,21 @@ class DiffUploadRequest {
   /// # gdata.* are outside protos with mising documentation
   core.String? objectVersion;
 
-  DiffUploadRequest({this.checksumsInfo, this.objectInfo, this.objectVersion});
+  DiffUploadRequest({
+    this.checksumsInfo,
+    this.objectInfo,
+    this.objectVersion,
+  });
 
   DiffUploadRequest.fromJson(core.Map json_)
       : this(
           checksumsInfo: json_.containsKey('checksumsInfo')
               ? CompositeMedia.fromJson(
-                  json_['checksumsInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['checksumsInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           objectInfo: json_.containsKey('objectInfo')
               ? CompositeMedia.fromJson(
-                  json_['objectInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['objectInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           objectVersion: json_['objectVersion'] as core.String?,
         );
@@ -1804,16 +1794,17 @@ class DiffUploadResponse {
   /// # gdata.* are outside protos with mising documentation
   CompositeMedia? originalObject;
 
-  DiffUploadResponse({this.objectVersion, this.originalObject});
+  DiffUploadResponse({
+    this.objectVersion,
+    this.originalObject,
+  });
 
   DiffUploadResponse.fromJson(core.Map json_)
       : this(
           objectVersion: json_['objectVersion'] as core.String?,
           originalObject: json_.containsKey('originalObject')
-              ? CompositeMedia.fromJson(
-                  json_['originalObject']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CompositeMedia.fromJson(json_['originalObject']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1831,7 +1822,10 @@ class DiffVersionResponse {
   /// # gdata.* are outside protos with mising documentation
   core.String? objectVersion;
 
-  DiffVersionResponse({this.objectSizeBytes, this.objectVersion});
+  DiffVersionResponse({
+    this.objectSizeBytes,
+    this.objectVersion,
+  });
 
   DiffVersionResponse.fromJson(core.Map json_)
       : this(
@@ -1853,7 +1847,10 @@ class DownloadParameters {
   /// # gdata.* are outside protos with mising documentation
   core.bool? ignoreRange;
 
-  DownloadParameters({this.allowGzipCompression, this.ignoreRange});
+  DownloadParameters({
+    this.allowGzipCompression,
+    this.ignoreRange,
+  });
 
   DownloadParameters.fromJson(core.Map json_)
       : this(
@@ -1923,13 +1920,11 @@ class EmailMessage {
       : this(
           actor: json_.containsKey('actor')
               ? Actor.fromJson(
-                  json_['actor'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['actor'] as core.Map<core.String, core.dynamic>)
               : null,
           bodyContent: json_.containsKey('bodyContent')
               ? TextContent.fromJson(
-                  json_['bodyContent'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['bodyContent'] as core.Map<core.String, core.dynamic>)
               : null,
           ccEmailAddresses: (json_['ccEmailAddresses'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1960,14 +1955,15 @@ class EscalateCaseRequest {
   /// The escalation information to be sent with the escalation request.
   Escalation? escalation;
 
-  EscalateCaseRequest({this.escalation});
+  EscalateCaseRequest({
+    this.escalation,
+  });
 
   EscalateCaseRequest.fromJson(core.Map json_)
       : this(
           escalation: json_.containsKey('escalation')
               ? Escalation.fromJson(
-                  json_['escalation'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['escalation'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1997,7 +1993,10 @@ class Escalation {
   /// - "BUSINESS_IMPACT" : The issue is having a significant business impact.
   core.String? reason;
 
-  Escalation({this.justification, this.reason});
+  Escalation({
+    this.justification,
+    this.reason,
+  });
 
   Escalation.fromJson(core.Map json_)
       : this(
@@ -2050,24 +2049,19 @@ class FeedItem {
       : this(
           attachment: json_.containsKey('attachment')
               ? Attachment.fromJson(
-                  json_['attachment'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['attachment'] as core.Map<core.String, core.dynamic>)
               : null,
           comment: json_.containsKey('comment')
               ? Comment.fromJson(
-                  json_['comment'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['comment'] as core.Map<core.String, core.dynamic>)
               : null,
           deletedAttachment: json_.containsKey('deletedAttachment')
-              ? Attachment.fromJson(
-                  json_['deletedAttachment']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Attachment.fromJson(json_['deletedAttachment']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           emailMessage: json_.containsKey('emailMessage')
               ? EmailMessage.fromJson(
-                  json_['emailMessage'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['emailMessage'] as core.Map<core.String, core.dynamic>)
               : null,
           eventTime: json_['eventTime'] as core.String?,
         );
@@ -2092,16 +2086,16 @@ class ListAttachmentsResponse {
   /// requests. If unspecified, there are no more results to retrieve.
   core.String? nextPageToken;
 
-  ListAttachmentsResponse({this.attachments, this.nextPageToken});
+  ListAttachmentsResponse({
+    this.attachments,
+    this.nextPageToken,
+  });
 
   ListAttachmentsResponse.fromJson(core.Map json_)
       : this(
           attachments: (json_['attachments'] as core.List?)
-              ?.map(
-                (value) => Attachment.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Attachment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2124,16 +2118,16 @@ class ListCasesResponse {
   /// unspecified, there are no more results to retrieve.
   core.String? nextPageToken;
 
-  ListCasesResponse({this.cases, this.nextPageToken});
+  ListCasesResponse({
+    this.cases,
+    this.nextPageToken,
+  });
 
   ListCasesResponse.fromJson(core.Map json_)
       : this(
           cases: (json_['cases'] as core.List?)
-              ?.map(
-                (value) => Case.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Case.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2155,16 +2149,16 @@ class ListCommentsResponse {
   /// requests. If unspecified, there are no more results to retrieve.
   core.String? nextPageToken;
 
-  ListCommentsResponse({this.comments, this.nextPageToken});
+  ListCommentsResponse({
+    this.comments,
+    this.nextPageToken,
+  });
 
   ListCommentsResponse.fromJson(core.Map json_)
       : this(
           comments: (json_['comments'] as core.List?)
-              ?.map(
-                (value) => Comment.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Comment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2391,62 +2385,43 @@ class Media {
           bigstoreObjectRef: json_['bigstoreObjectRef'] as core.String?,
           blobRef: json_['blobRef'] as core.String?,
           blobstore2Info: json_.containsKey('blobstore2Info')
-              ? Blobstore2Info.fromJson(
-                  json_['blobstore2Info']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Blobstore2Info.fromJson(json_['blobstore2Info']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           compositeMedia: (json_['compositeMedia'] as core.List?)
-              ?.map(
-                (value) => CompositeMedia.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CompositeMedia.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           contentType: json_['contentType'] as core.String?,
           contentTypeInfo: json_.containsKey('contentTypeInfo')
-              ? ContentTypeInfo.fromJson(
-                  json_['contentTypeInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ContentTypeInfo.fromJson(json_['contentTypeInfo']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           cosmoBinaryReference: json_['cosmoBinaryReference'] as core.String?,
           crc32cHash: json_['crc32cHash'] as core.int?,
           diffChecksumsResponse: json_.containsKey('diffChecksumsResponse')
-              ? DiffChecksumsResponse.fromJson(
-                  json_['diffChecksumsResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? DiffChecksumsResponse.fromJson(json_['diffChecksumsResponse']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           diffDownloadResponse: json_.containsKey('diffDownloadResponse')
-              ? DiffDownloadResponse.fromJson(
-                  json_['diffDownloadResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? DiffDownloadResponse.fromJson(json_['diffDownloadResponse']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           diffUploadRequest: json_.containsKey('diffUploadRequest')
-              ? DiffUploadRequest.fromJson(
-                  json_['diffUploadRequest']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? DiffUploadRequest.fromJson(json_['diffUploadRequest']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           diffUploadResponse: json_.containsKey('diffUploadResponse')
-              ? DiffUploadResponse.fromJson(
-                  json_['diffUploadResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? DiffUploadResponse.fromJson(json_['diffUploadResponse']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           diffVersionResponse: json_.containsKey('diffVersionResponse')
-              ? DiffVersionResponse.fromJson(
-                  json_['diffVersionResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? DiffVersionResponse.fromJson(json_['diffVersionResponse']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           downloadParameters: json_.containsKey('downloadParameters')
-              ? DownloadParameters.fromJson(
-                  json_['downloadParameters']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? DownloadParameters.fromJson(json_['downloadParameters']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           filename: json_['filename'] as core.String?,
           hash: json_['hash'] as core.String?,
@@ -2458,8 +2433,7 @@ class Media {
           mediaId: json_['mediaId'] as core.String?,
           objectId: json_.containsKey('objectId')
               ? ObjectId.fromJson(
-                  json_['objectId'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['objectId'] as core.Map<core.String, core.dynamic>)
               : null,
           path: json_['path'] as core.String?,
           referenceType: json_['referenceType'] as core.String?,
@@ -2520,7 +2494,11 @@ class ObjectId {
   /// # gdata.* are outside protos with mising documentation
   core.String? objectName;
 
-  ObjectId({this.bucketName, this.generation, this.objectName});
+  ObjectId({
+    this.bucketName,
+    this.generation,
+    this.objectName,
+  });
 
   ObjectId.fromJson(core.Map json_)
       : this(
@@ -2545,10 +2523,14 @@ class Product {
   /// - "GOOGLE_MAPS" : Google Maps
   core.String? productLine;
 
-  Product({this.productLine});
+  Product({
+    this.productLine,
+  });
 
   Product.fromJson(core.Map json_)
-      : this(productLine: json_['productLine'] as core.String?);
+      : this(
+          productLine: json_['productLine'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (productLine != null) 'productLine': productLine!,
@@ -2575,11 +2557,8 @@ class SearchCaseClassificationsResponse {
   SearchCaseClassificationsResponse.fromJson(core.Map json_)
       : this(
           caseClassifications: (json_['caseClassifications'] as core.List?)
-              ?.map(
-                (value) => CaseClassification.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CaseClassification.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2603,16 +2582,16 @@ class SearchCasesResponse {
   /// If unspecified, there are no more results to retrieve.
   core.String? nextPageToken;
 
-  SearchCasesResponse({this.cases, this.nextPageToken});
+  SearchCasesResponse({
+    this.cases,
+    this.nextPageToken,
+  });
 
   SearchCasesResponse.fromJson(core.Map json_)
       : this(
           cases: (json_['cases'] as core.List?)
-              ?.map(
-                (value) => Case.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Case.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2634,16 +2613,16 @@ class ShowFeedResponse {
   /// `ShowFeedRequests`. If unspecified, there are no more results to retrieve.
   core.String? nextPageToken;
 
-  ShowFeedResponse({this.feedItems, this.nextPageToken});
+  ShowFeedResponse({
+    this.feedItems,
+    this.nextPageToken,
+  });
 
   ShowFeedResponse.fromJson(core.Map json_)
       : this(
           feedItems: (json_['feedItems'] as core.List?)
-              ?.map(
-                (value) => FeedItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => FeedItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2659,10 +2638,14 @@ class TextContent {
   /// Content in this field should be rendered and interpreted as-is.
   core.String? plainText;
 
-  TextContent({this.plainText});
+  TextContent({
+    this.plainText,
+  });
 
   TextContent.fromJson(core.Map json_)
-      : this(plainText: json_['plainText'] as core.String?);
+      : this(
+          plainText: json_['plainText'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (plainText != null) 'plainText': plainText!,

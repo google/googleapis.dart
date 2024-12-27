@@ -149,16 +149,11 @@ class FitnessApi {
 
   UsersResource get users => UsersResource(_requester);
 
-  FitnessApi(
-    http.Client client, {
-    core.String rootUrl = 'https://fitness.googleapis.com/',
-    core.String servicePath = 'fitness/v1/users/',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  FitnessApi(http.Client client,
+      {core.String rootUrl = 'https://fitness.googleapis.com/',
+      core.String servicePath = 'fitness/v1/users/'})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class UsersResource {
@@ -246,8 +241,7 @@ class UsersDataSourcesResource {
       queryParams: queryParams_,
     );
     return DataSource.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified data source.
@@ -290,8 +284,7 @@ class UsersDataSourcesResource {
       queryParams: queryParams_,
     );
     return DataSource.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the specified data source.
@@ -332,8 +325,7 @@ class UsersDataSourcesResource {
       queryParams: queryParams_,
     );
     return DataSource.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all data sources that are visible to the developer, using the OAuth
@@ -378,8 +370,7 @@ class UsersDataSourcesResource {
       queryParams: queryParams_,
     );
     return ListDataSourcesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified data source.
@@ -429,8 +420,7 @@ class UsersDataSourcesResource {
       queryParams: queryParams_,
     );
     return DataSource.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -491,8 +481,7 @@ class UsersDataSourcesDataPointChangesResource {
       queryParams: queryParams_,
     );
     return ListDataPointChangesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -732,8 +721,7 @@ class UsersDatasetResource {
       queryParams: queryParams_,
     );
     return AggregateResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -847,8 +835,7 @@ class UsersSessionsResource {
       queryParams: queryParams_,
     );
     return ListSessionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates or insert a given session.
@@ -948,17 +935,13 @@ class AggregateBucket {
       : this(
           activity: json_['activity'] as core.int?,
           dataset: (json_['dataset'] as core.List?)
-              ?.map(
-                (value) => Dataset.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Dataset.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           endTimeMillis: json_['endTimeMillis'] as core.String?,
           session: json_.containsKey('session')
               ? Session.fromJson(
-                  json_['session'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['session'] as core.Map<core.String, core.dynamic>)
               : null,
           startTimeMillis: json_['startTimeMillis'] as core.String?,
           type: json_['type'] as core.String?,
@@ -995,7 +978,10 @@ class AggregateBy {
   /// aggregated by either the dataTypeName or the dataSourceId, not both.
   core.String? dataTypeName;
 
-  AggregateBy({this.dataSourceId, this.dataTypeName});
+  AggregateBy({
+    this.dataSourceId,
+    this.dataTypeName,
+  });
 
   AggregateBy.fromJson(core.Map json_)
       : this(
@@ -1083,34 +1069,24 @@ class AggregateRequest {
   AggregateRequest.fromJson(core.Map json_)
       : this(
           aggregateBy: (json_['aggregateBy'] as core.List?)
-              ?.map(
-                (value) => AggregateBy.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AggregateBy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           bucketByActivitySegment: json_.containsKey('bucketByActivitySegment')
-              ? BucketByActivity.fromJson(
-                  json_['bucketByActivitySegment']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? BucketByActivity.fromJson(json_['bucketByActivitySegment']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           bucketByActivityType: json_.containsKey('bucketByActivityType')
-              ? BucketByActivity.fromJson(
-                  json_['bucketByActivityType']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? BucketByActivity.fromJson(json_['bucketByActivityType']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           bucketBySession: json_.containsKey('bucketBySession')
-              ? BucketBySession.fromJson(
-                  json_['bucketBySession']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? BucketBySession.fromJson(json_['bucketBySession']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           bucketByTime: json_.containsKey('bucketByTime')
               ? BucketByTime.fromJson(
-                  json_['bucketByTime'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['bucketByTime'] as core.Map<core.String, core.dynamic>)
               : null,
           endTimeMillis: json_['endTimeMillis'] as core.String?,
           filteredDataQualityStandard:
@@ -1139,16 +1115,15 @@ class AggregateResponse {
   /// A list of buckets containing the aggregated data.
   core.List<AggregateBucket>? bucket;
 
-  AggregateResponse({this.bucket});
+  AggregateResponse({
+    this.bucket,
+  });
 
   AggregateResponse.fromJson(core.Map json_)
       : this(
           bucket: (json_['bucket'] as core.List?)
-              ?.map(
-                (value) => AggregateBucket.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AggregateBucket.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1183,7 +1158,12 @@ class Application {
   /// that affects the computation of the data.
   core.String? version;
 
-  Application({this.detailsUrl, this.name, this.packageName, this.version});
+  Application({
+    this.detailsUrl,
+    this.name,
+    this.packageName,
+    this.version,
+  });
 
   Application.fromJson(core.Map json_)
       : this(
@@ -1211,7 +1191,10 @@ class BucketByActivity {
   /// data.
   core.String? minDurationMillis;
 
-  BucketByActivity({this.activityDataSourceId, this.minDurationMillis});
+  BucketByActivity({
+    this.activityDataSourceId,
+    this.minDurationMillis,
+  });
 
   BucketByActivity.fromJson(core.Map json_)
       : this(
@@ -1231,10 +1214,14 @@ class BucketBySession {
   /// considered and used as a container for aggregated data.
   core.String? minDurationMillis;
 
-  BucketBySession({this.minDurationMillis});
+  BucketBySession({
+    this.minDurationMillis,
+  });
 
   BucketBySession.fromJson(core.Map json_)
-      : this(minDurationMillis: json_['minDurationMillis'] as core.String?);
+      : this(
+          minDurationMillis: json_['minDurationMillis'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (minDurationMillis != null) 'minDurationMillis': minDurationMillis!,
@@ -1250,15 +1237,17 @@ class BucketByTime {
   core.String? durationMillis;
   BucketByTimePeriod? period;
 
-  BucketByTime({this.durationMillis, this.period});
+  BucketByTime({
+    this.durationMillis,
+    this.period,
+  });
 
   BucketByTime.fromJson(core.Map json_)
       : this(
           durationMillis: json_['durationMillis'] as core.String?,
           period: json_.containsKey('period')
               ? BucketByTimePeriod.fromJson(
-                  json_['period'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['period'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1280,7 +1269,11 @@ class BucketByTimePeriod {
   core.String? type;
   core.int? value;
 
-  BucketByTimePeriod({this.timeZoneId, this.type, this.value});
+  BucketByTimePeriod({
+    this.timeZoneId,
+    this.type,
+    this.value,
+  });
 
   BucketByTimePeriod.fromJson(core.Map json_)
       : this(
@@ -1373,11 +1366,8 @@ class DataPoint {
           rawTimestampNanos: json_['rawTimestampNanos'] as core.String?,
           startTimeNanos: json_['startTimeNanos'] as core.String?,
           value: (json_['value'] as core.List?)
-              ?.map(
-                (value) => Value.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Value.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1497,8 +1487,7 @@ class DataSource {
       : this(
           application: json_.containsKey('application')
               ? Application.fromJson(
-                  json_['application'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['application'] as core.Map<core.String, core.dynamic>)
               : null,
           dataQualityStandard: (json_['dataQualityStandard'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1507,13 +1496,11 @@ class DataSource {
           dataStreamName: json_['dataStreamName'] as core.String?,
           dataType: json_.containsKey('dataType')
               ? DataType.fromJson(
-                  json_['dataType'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['dataType'] as core.Map<core.String, core.dynamic>)
               : null,
           device: json_.containsKey('device')
               ? Device.fromJson(
-                  json_['device'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['device'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           type: json_['type'] as core.String?,
@@ -1542,16 +1529,16 @@ class DataType {
   /// platform.
   core.String? name;
 
-  DataType({this.field, this.name});
+  DataType({
+    this.field,
+    this.name,
+  });
 
   DataType.fromJson(core.Map json_)
       : this(
           field: (json_['field'] as core.List?)
-              ?.map(
-                (value) => DataTypeField.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DataTypeField.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           name: json_['name'] as core.String?,
         );
@@ -1587,7 +1574,11 @@ class DataTypeField {
   core.String? name;
   core.bool? optional;
 
-  DataTypeField({this.format, this.name, this.optional});
+  DataTypeField({
+    this.format,
+    this.name,
+    this.optional,
+  });
 
   DataTypeField.fromJson(core.Map json_)
       : this(
@@ -1657,11 +1648,8 @@ class Dataset {
           minStartTimeNs: json_['minStartTimeNs'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           point: (json_['point'] as core.List?)
-              ?.map(
-                (value) => DataPoint.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DataPoint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1715,7 +1703,13 @@ class Device {
   /// Version string for the device hardware/software.
   core.String? version;
 
-  Device({this.manufacturer, this.model, this.type, this.uid, this.version});
+  Device({
+    this.manufacturer,
+    this.model,
+    this.type,
+    this.uid,
+    this.version,
+  });
 
   Device.fromJson(core.Map json_)
       : this(
@@ -1764,18 +1758,12 @@ class ListDataPointChangesResponse {
       : this(
           dataSourceId: json_['dataSourceId'] as core.String?,
           deletedDataPoint: (json_['deletedDataPoint'] as core.List?)
-              ?.map(
-                (value) => DataPoint.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DataPoint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           insertedDataPoint: (json_['insertedDataPoint'] as core.List?)
-              ?.map(
-                (value) => DataPoint.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DataPoint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1792,16 +1780,15 @@ class ListDataSourcesResponse {
   /// A previously created data source.
   core.List<DataSource>? dataSource;
 
-  ListDataSourcesResponse({this.dataSource});
+  ListDataSourcesResponse({
+    this.dataSource,
+  });
 
   ListDataSourcesResponse.fromJson(core.Map json_)
       : this(
           dataSource: (json_['dataSource'] as core.List?)
-              ?.map(
-                (value) => DataSource.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DataSource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1844,20 +1831,14 @@ class ListSessionsResponse {
   ListSessionsResponse.fromJson(core.Map json_)
       : this(
           deletedSession: (json_['deletedSession'] as core.List?)
-              ?.map(
-                (value) => Session.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Session.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           hasMoreData: json_['hasMoreData'] as core.bool?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           session: (json_['session'] as core.List?)
-              ?.map(
-                (value) => Session.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Session.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1877,10 +1858,14 @@ class MapValue {
   /// Floating point value.
   core.double? fpVal;
 
-  MapValue({this.fpVal});
+  MapValue({
+    this.fpVal,
+  });
 
   MapValue.fromJson(core.Map json_)
-      : this(fpVal: (json_['fpVal'] as core.num?)?.toDouble());
+      : this(
+          fpVal: (json_['fpVal'] as core.num?)?.toDouble(),
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fpVal != null) 'fpVal': fpVal!,
@@ -1941,8 +1926,7 @@ class Session {
           activityType: json_['activityType'] as core.int?,
           application: json_.containsKey('application')
               ? Application.fromJson(
-                  json_['application'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['application'] as core.Map<core.String, core.dynamic>)
               : null,
           description: json_['description'] as core.String?,
           endTimeMillis: json_['endTimeMillis'] as core.String?,
@@ -1996,18 +1980,20 @@ class Value {
   /// data frequency may be down sampled.
   core.String? stringVal;
 
-  Value({this.fpVal, this.intVal, this.mapVal, this.stringVal});
+  Value({
+    this.fpVal,
+    this.intVal,
+    this.mapVal,
+    this.stringVal,
+  });
 
   Value.fromJson(core.Map json_)
       : this(
           fpVal: (json_['fpVal'] as core.num?)?.toDouble(),
           intVal: json_['intVal'] as core.int?,
           mapVal: (json_['mapVal'] as core.List?)
-              ?.map(
-                (value) => ValueMapValEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ValueMapValEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           stringVal: json_['stringVal'] as core.String?,
         );
@@ -2024,15 +2010,17 @@ class ValueMapValEntry {
   core.String? key;
   MapValue? value;
 
-  ValueMapValEntry({this.key, this.value});
+  ValueMapValEntry({
+    this.key,
+    this.value,
+  });
 
   ValueMapValEntry.fromJson(core.Map json_)
       : this(
           key: json_['key'] as core.String?,
           value: json_.containsKey('value')
               ? MapValue.fromJson(
-                  json_['value'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['value'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 

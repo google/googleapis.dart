@@ -61,9 +61,18 @@ api.UrlNotification buildUrlNotification() {
 void checkUrlNotification(api.UrlNotification o) {
   buildCounterUrlNotification++;
   if (buildCounterUrlNotification < 3) {
-    unittest.expect(o.notifyTime!, unittest.equals('foo'));
-    unittest.expect(o.type!, unittest.equals('foo'));
-    unittest.expect(o.url!, unittest.equals('foo'));
+    unittest.expect(
+      o.notifyTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.url!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterUrlNotification--;
 }
@@ -86,7 +95,10 @@ void checkUrlNotificationMetadata(api.UrlNotificationMetadata o) {
   if (buildCounterUrlNotificationMetadata < 3) {
     checkUrlNotification(o.latestRemove!);
     checkUrlNotification(o.latestUpdate!);
-    unittest.expect(o.url!, unittest.equals('foo'));
+    unittest.expect(
+      o.url!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterUrlNotificationMetadata--;
 }
@@ -97,8 +109,7 @@ void main() {
       final o = buildPublishUrlNotificationResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PublishUrlNotificationResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkPublishUrlNotificationResponse(od);
     });
   });
@@ -108,8 +119,7 @@ void main() {
       final o = buildUrlNotification();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UrlNotification.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkUrlNotification(od);
     });
   });
@@ -119,8 +129,7 @@ void main() {
       final o = buildUrlNotificationMetadata();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UrlNotificationMetadata.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkUrlNotificationMetadata(od);
     });
   });
@@ -131,54 +140,54 @@ void main() {
       final res = api.IndexingApi(mock).urlNotifications;
       final arg_url = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 28),
-            unittest.equals('v3/urlNotifications/metadata'),
-          );
-          pathOffset += 28;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 28),
+          unittest.equals('v3/urlNotifications/metadata'),
+        );
+        pathOffset += 28;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(queryMap['url']!.first, unittest.equals(arg_url));
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['url']!.first,
+          unittest.equals(arg_url),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildUrlNotificationMetadata());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.getMetadata(
-        url: arg_url,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildUrlNotificationMetadata());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getMetadata(url: arg_url, $fields: arg_$fields);
       checkUrlNotificationMetadata(response as api.UrlNotificationMetadata);
     });
 
@@ -187,60 +196,55 @@ void main() {
       final res = api.IndexingApi(mock).urlNotifications;
       final arg_request = buildUrlNotification();
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.UrlNotification.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkUrlNotification(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.UrlNotification.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUrlNotification(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 27),
-            unittest.equals('v3/urlNotifications:publish'),
-          );
-          pathOffset += 27;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 27),
+          unittest.equals('v3/urlNotifications:publish'),
+        );
+        pathOffset += 27;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildPublishUrlNotificationResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPublishUrlNotificationResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.publish(arg_request, $fields: arg_$fields);
       checkPublishUrlNotificationResponse(
-        response as api.PublishUrlNotificationResponse,
-      );
+          response as api.PublishUrlNotificationResponse);
     });
   });
 }

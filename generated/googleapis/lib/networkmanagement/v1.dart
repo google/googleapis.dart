@@ -54,16 +54,11 @@ class NetworkManagementApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  NetworkManagementApi(
-    http.Client client, {
-    core.String rootUrl = 'https://networkmanagement.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  NetworkManagementApi(http.Client client,
+      {core.String rootUrl = 'https://networkmanagement.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -102,7 +97,10 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(core.String name, {core.String? $fields}) async {
+  async.Future<Location> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -166,8 +164,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -320,8 +317,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
       queryParams: queryParams_,
     );
     return ConnectivityTest.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -441,8 +437,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
       queryParams: queryParams_,
     );
     return ListConnectivityTestsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the configuration of an existing `ConnectivityTest`.
@@ -649,8 +644,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -732,7 +726,10 @@ class ProjectsLocationsGlobalOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -768,7 +765,10 @@ class ProjectsLocationsGlobalOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -830,8 +830,7 @@ class ProjectsLocationsGlobalOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -967,8 +966,7 @@ class ProjectsLocationsVpcFlowLogsConfigsResource {
       queryParams: queryParams_,
     );
     return VpcFlowLogsConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all `VpcFlowLogsConfigs` in a given project.
@@ -1024,8 +1022,7 @@ class ProjectsLocationsVpcFlowLogsConfigsResource {
       queryParams: queryParams_,
     );
     return ListVpcFlowLogsConfigsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing `VpcFlowLogsConfig`.
@@ -1213,10 +1210,14 @@ class AppEngineVersionEndpoint {
   /// name.
   core.String? uri;
 
-  AppEngineVersionEndpoint({this.uri});
+  AppEngineVersionEndpoint({
+    this.uri,
+  });
 
   AppEngineVersionEndpoint.fromJson(core.Map json_)
-      : this(uri: json_['uri'] as core.String?);
+      : this(
+          uri: json_['uri'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
@@ -1289,16 +1290,16 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({this.auditLogConfigs, this.service});
+  AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
 
   AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map(
-                (value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -1397,14 +1398,17 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({this.condition, this.members, this.role});
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1427,10 +1431,14 @@ class CloudFunctionEndpoint {
   /// A [Cloud Function](https://cloud.google.com/functions) name.
   core.String? uri;
 
-  CloudFunctionEndpoint({this.uri});
+  CloudFunctionEndpoint({
+    this.uri,
+  });
 
   CloudFunctionEndpoint.fromJson(core.Map json_)
-      : this(uri: json_['uri'] as core.String?);
+      : this(
+          uri: json_['uri'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
@@ -1486,10 +1494,14 @@ class CloudRunRevisionEndpoint {
   /// projects/{project}/locations/{location}/revisions/{revision}
   core.String? uri;
 
-  CloudRunRevisionEndpoint({this.uri});
+  CloudRunRevisionEndpoint({
+    this.uri,
+  });
 
   CloudRunRevisionEndpoint.fromJson(core.Map json_)
-      : this(uri: json_['uri'] as core.String?);
+      : this(
+          uri: json_['uri'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
@@ -1724,43 +1736,38 @@ class ConnectivityTest {
           description: json_['description'] as core.String?,
           destination: json_.containsKey('destination')
               ? Endpoint.fromJson(
-                  json_['destination'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['destination'] as core.Map<core.String, core.dynamic>)
               : null,
           displayName: json_['displayName'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           probingDetails: json_.containsKey('probingDetails')
-              ? ProbingDetails.fromJson(
-                  json_['probingDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ProbingDetails.fromJson(json_['probingDetails']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           protocol: json_['protocol'] as core.String?,
           reachabilityDetails: json_.containsKey('reachabilityDetails')
-              ? ReachabilityDetails.fromJson(
-                  json_['reachabilityDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ReachabilityDetails.fromJson(json_['reachabilityDetails']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           relatedProjects: (json_['relatedProjects'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          returnReachabilityDetails:
-              json_.containsKey('returnReachabilityDetails')
-                  ? ReachabilityDetails.fromJson(
-                      json_['returnReachabilityDetails']
-                          as core.Map<core.String, core.dynamic>,
-                    )
-                  : null,
+          returnReachabilityDetails: json_
+                  .containsKey('returnReachabilityDetails')
+              ? ReachabilityDetails.fromJson(json_['returnReachabilityDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           roundTrip: json_['roundTrip'] as core.bool?,
           source: json_.containsKey('source')
               ? Endpoint.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -2120,10 +2127,14 @@ class EdgeLocation {
   /// Name of the metropolitan area.
   core.String? metropolitanArea;
 
-  EdgeLocation({this.metropolitanArea});
+  EdgeLocation({
+    this.metropolitanArea,
+  });
 
   EdgeLocation.fromJson(core.Map json_)
-      : this(metropolitanArea: json_['metropolitanArea'] as core.String?);
+      : this(
+          metropolitanArea: json_['metropolitanArea'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metropolitanArea != null) 'metropolitanArea': metropolitanArea!,
@@ -2281,21 +2292,16 @@ class Endpoint {
   Endpoint.fromJson(core.Map json_)
       : this(
           appEngineVersion: json_.containsKey('appEngineVersion')
-              ? AppEngineVersionEndpoint.fromJson(
-                  json_['appEngineVersion']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AppEngineVersionEndpoint.fromJson(json_['appEngineVersion']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           cloudFunction: json_.containsKey('cloudFunction')
               ? CloudFunctionEndpoint.fromJson(
-                  json_['cloudFunction'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['cloudFunction'] as core.Map<core.String, core.dynamic>)
               : null,
           cloudRunRevision: json_.containsKey('cloudRunRevision')
-              ? CloudRunRevisionEndpoint.fromJson(
-                  json_['cloudRunRevision']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CloudRunRevisionEndpoint.fromJson(json_['cloudRunRevision']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           cloudSqlInstance: json_['cloudSqlInstance'] as core.String?,
           forwardingRule: json_['forwardingRule'] as core.String?,
@@ -2579,7 +2585,11 @@ class ForwardInfo {
   /// - "ROUTER_APPLIANCE" : Forwarded to a router appliance.
   core.String? target;
 
-  ForwardInfo({this.ipAddress, this.resourceUri, this.target});
+  ForwardInfo({
+    this.ipAddress,
+    this.resourceUri,
+    this.target,
+  });
 
   ForwardInfo.fromJson(core.Map json_)
       : this(
@@ -2760,7 +2770,10 @@ class GoogleServiceInfo {
   /// Source IP address.
   core.String? sourceIp;
 
-  GoogleServiceInfo({this.googleServiceType, this.sourceIp});
+  GoogleServiceInfo({
+    this.googleServiceType,
+    this.sourceIp,
+  });
 
   GoogleServiceInfo.fromJson(core.Map json_)
       : this(
@@ -2855,16 +2868,15 @@ class LatencyDistribution {
   /// Representative latency percentiles.
   core.List<LatencyPercentile>? latencyPercentiles;
 
-  LatencyDistribution({this.latencyPercentiles});
+  LatencyDistribution({
+    this.latencyPercentiles,
+  });
 
   LatencyDistribution.fromJson(core.Map json_)
       : this(
           latencyPercentiles: (json_['latencyPercentiles'] as core.List?)
-              ?.map(
-                (value) => LatencyPercentile.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => LatencyPercentile.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2885,7 +2897,10 @@ class LatencyPercentile {
   /// Percentage of samples this data point applies to.
   core.int? percent;
 
-  LatencyPercentile({this.latencyMicros, this.percent});
+  LatencyPercentile({
+    this.latencyMicros,
+    this.percent,
+  });
 
   LatencyPercentile.fromJson(core.Map json_)
       : this(
@@ -2921,11 +2936,8 @@ class ListConnectivityTestsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           resources: (json_['resources'] as core.List?)
-              ?.map(
-                (value) => ConnectivityTest.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ConnectivityTest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2947,16 +2959,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({this.locations, this.nextPageToken});
+  ListLocationsResponse({
+    this.locations,
+    this.nextPageToken,
+  });
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map(
-                (value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2975,17 +2987,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map(
-                (value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3020,11 +3032,8 @@ class ListVpcFlowLogsConfigsResponse {
               ?.map((value) => value as core.String)
               .toList(),
           vpcFlowLogsConfigs: (json_['vpcFlowLogsConfigs'] as core.List?)
-              ?.map(
-                (value) => VpcFlowLogsConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => VpcFlowLogsConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3263,11 +3272,8 @@ class LoadBalancerInfo {
           backendType: json_['backendType'] as core.String?,
           backendUri: json_['backendUri'] as core.String?,
           backends: (json_['backends'] as core.List?)
-              ?.map(
-                (value) => LoadBalancerBackend.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => LoadBalancerBackend.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           healthCheckUri: json_['healthCheckUri'] as core.String?,
           loadBalancerType: json_['loadBalancerType'] as core.String?,
@@ -3488,15 +3494,20 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({this.done, this.error, this.metadata, this.name, this.response});
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -3602,23 +3613,22 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
+  Policy({
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
   Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map(
-                (value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map(
-                (value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -3702,26 +3712,20 @@ class ProbingDetails {
           abortCause: json_['abortCause'] as core.String?,
           destinationEgressLocation:
               json_.containsKey('destinationEgressLocation')
-                  ? EdgeLocation.fromJson(
-                      json_['destinationEgressLocation']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                  ? EdgeLocation.fromJson(json_['destinationEgressLocation']
+                      as core.Map<core.String, core.dynamic>)
                   : null,
           endpointInfo: json_.containsKey('endpointInfo')
               ? EndpointInfo.fromJson(
-                  json_['endpointInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['endpointInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           probingLatency: json_.containsKey('probingLatency')
-              ? LatencyDistribution.fromJson(
-                  json_['probingLatency']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? LatencyDistribution.fromJson(json_['probingLatency']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           result: json_['result'] as core.String?,
           sentProbeCount: json_['sentProbeCount'] as core.int?,
@@ -3872,22 +3876,23 @@ class ReachabilityDetails {
   /// The time of the configuration analysis.
   core.String? verifyTime;
 
-  ReachabilityDetails({this.error, this.result, this.traces, this.verifyTime});
+  ReachabilityDetails({
+    this.error,
+    this.result,
+    this.traces,
+    this.verifyTime,
+  });
 
   ReachabilityDetails.fromJson(core.Map json_)
       : this(
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           result: json_['result'] as core.String?,
           traces: (json_['traces'] as core.List?)
-              ?.map(
-                (value) => Trace.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Trace.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           verifyTime: json_['verifyTime'] as core.String?,
         );
@@ -4283,10 +4288,14 @@ class ServerlessNegInfo {
   /// URI of the serverless network endpoint group.
   core.String? negUri;
 
-  ServerlessNegInfo({this.negUri});
+  ServerlessNegInfo({
+    this.negUri,
+  });
 
   ServerlessNegInfo.fromJson(core.Map json_)
-      : this(negUri: json_['negUri'] as core.String?);
+      : this(
+          negUri: json_['negUri'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (negUri != null) 'negUri': negUri!,
@@ -4308,14 +4317,16 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({this.policy, this.updateMask});
+  SetIamPolicyRequest({
+    this.policy,
+    this.updateMask,
+  });
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -4561,148 +4572,116 @@ class Step {
       : this(
           abort: json_.containsKey('abort')
               ? AbortInfo.fromJson(
-                  json_['abort'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['abort'] as core.Map<core.String, core.dynamic>)
               : null,
           appEngineVersion: json_.containsKey('appEngineVersion')
-              ? AppEngineVersionInfo.fromJson(
-                  json_['appEngineVersion']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AppEngineVersionInfo.fromJson(json_['appEngineVersion']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           causesDrop: json_['causesDrop'] as core.bool?,
           cloudFunction: json_.containsKey('cloudFunction')
               ? CloudFunctionInfo.fromJson(
-                  json_['cloudFunction'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['cloudFunction'] as core.Map<core.String, core.dynamic>)
               : null,
           cloudRunRevision: json_.containsKey('cloudRunRevision')
-              ? CloudRunRevisionInfo.fromJson(
-                  json_['cloudRunRevision']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CloudRunRevisionInfo.fromJson(json_['cloudRunRevision']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           cloudSqlInstance: json_.containsKey('cloudSqlInstance')
-              ? CloudSQLInstanceInfo.fromJson(
-                  json_['cloudSqlInstance']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CloudSQLInstanceInfo.fromJson(json_['cloudSqlInstance']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           deliver: json_.containsKey('deliver')
               ? DeliverInfo.fromJson(
-                  json_['deliver'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['deliver'] as core.Map<core.String, core.dynamic>)
               : null,
           description: json_['description'] as core.String?,
           drop: json_.containsKey('drop')
               ? DropInfo.fromJson(
-                  json_['drop'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['drop'] as core.Map<core.String, core.dynamic>)
               : null,
           endpoint: json_.containsKey('endpoint')
               ? EndpointInfo.fromJson(
-                  json_['endpoint'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['endpoint'] as core.Map<core.String, core.dynamic>)
               : null,
           firewall: json_.containsKey('firewall')
               ? FirewallInfo.fromJson(
-                  json_['firewall'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['firewall'] as core.Map<core.String, core.dynamic>)
               : null,
           forward: json_.containsKey('forward')
               ? ForwardInfo.fromJson(
-                  json_['forward'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['forward'] as core.Map<core.String, core.dynamic>)
               : null,
           forwardingRule: json_.containsKey('forwardingRule')
-              ? ForwardingRuleInfo.fromJson(
-                  json_['forwardingRule']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ForwardingRuleInfo.fromJson(json_['forwardingRule']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           gkeMaster: json_.containsKey('gkeMaster')
               ? GKEMasterInfo.fromJson(
-                  json_['gkeMaster'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['gkeMaster'] as core.Map<core.String, core.dynamic>)
               : null,
           googleService: json_.containsKey('googleService')
               ? GoogleServiceInfo.fromJson(
-                  json_['googleService'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['googleService'] as core.Map<core.String, core.dynamic>)
               : null,
           instance: json_.containsKey('instance')
               ? InstanceInfo.fromJson(
-                  json_['instance'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['instance'] as core.Map<core.String, core.dynamic>)
               : null,
           loadBalancer: json_.containsKey('loadBalancer')
               ? LoadBalancerInfo.fromJson(
-                  json_['loadBalancer'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['loadBalancer'] as core.Map<core.String, core.dynamic>)
               : null,
           loadBalancerBackendInfo: json_.containsKey('loadBalancerBackendInfo')
               ? LoadBalancerBackendInfo.fromJson(
                   json_['loadBalancerBackendInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           nat: json_.containsKey('nat')
               ? NatInfo.fromJson(
-                  json_['nat'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['nat'] as core.Map<core.String, core.dynamic>)
               : null,
           network: json_.containsKey('network')
               ? NetworkInfo.fromJson(
-                  json_['network'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['network'] as core.Map<core.String, core.dynamic>)
               : null,
           projectId: json_['projectId'] as core.String?,
           proxyConnection: json_.containsKey('proxyConnection')
-              ? ProxyConnectionInfo.fromJson(
-                  json_['proxyConnection']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ProxyConnectionInfo.fromJson(json_['proxyConnection']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           redisCluster: json_.containsKey('redisCluster')
               ? RedisClusterInfo.fromJson(
-                  json_['redisCluster'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['redisCluster'] as core.Map<core.String, core.dynamic>)
               : null,
           redisInstance: json_.containsKey('redisInstance')
               ? RedisInstanceInfo.fromJson(
-                  json_['redisInstance'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['redisInstance'] as core.Map<core.String, core.dynamic>)
               : null,
           route: json_.containsKey('route')
               ? RouteInfo.fromJson(
-                  json_['route'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['route'] as core.Map<core.String, core.dynamic>)
               : null,
           serverlessNeg: json_.containsKey('serverlessNeg')
               ? ServerlessNegInfo.fromJson(
-                  json_['serverlessNeg'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['serverlessNeg'] as core.Map<core.String, core.dynamic>)
               : null,
           state: json_['state'] as core.String?,
           storageBucket: json_.containsKey('storageBucket')
               ? StorageBucketInfo.fromJson(
-                  json_['storageBucket'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['storageBucket'] as core.Map<core.String, core.dynamic>)
               : null,
           vpcConnector: json_.containsKey('vpcConnector')
               ? VpcConnectorInfo.fromJson(
-                  json_['vpcConnector'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['vpcConnector'] as core.Map<core.String, core.dynamic>)
               : null,
           vpnGateway: json_.containsKey('vpnGateway')
               ? VpnGatewayInfo.fromJson(
-                  json_['vpnGateway'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['vpnGateway'] as core.Map<core.String, core.dynamic>)
               : null,
           vpnTunnel: json_.containsKey('vpnTunnel')
               ? VpnTunnelInfo.fromJson(
-                  json_['vpnTunnel'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['vpnTunnel'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4749,10 +4728,14 @@ class StorageBucketInfo {
   /// Cloud Storage Bucket name.
   core.String? bucket;
 
-  StorageBucketInfo({this.bucket});
+  StorageBucketInfo({
+    this.bucket,
+  });
 
   StorageBucketInfo.fromJson(core.Map json_)
-      : this(bucket: json_['bucket'] as core.String?);
+      : this(
+          bucket: json_['bucket'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bucket != null) 'bucket': bucket!,
@@ -4796,22 +4779,22 @@ class Trace {
   /// and avoid reordering or sorting them.
   core.List<Step>? steps;
 
-  Trace({this.endpointInfo, this.forwardTraceId, this.steps});
+  Trace({
+    this.endpointInfo,
+    this.forwardTraceId,
+    this.steps,
+  });
 
   Trace.fromJson(core.Map json_)
       : this(
           endpointInfo: json_.containsKey('endpointInfo')
               ? EndpointInfo.fromJson(
-                  json_['endpointInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['endpointInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           forwardTraceId: json_['forwardTraceId'] as core.int?,
           steps: (json_['steps'] as core.List?)
-              ?.map(
-                (value) => Step.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Step.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4835,7 +4818,11 @@ class VpcConnectorInfo {
   /// URI of a VPC connector.
   core.String? uri;
 
-  VpcConnectorInfo({this.displayName, this.location, this.uri});
+  VpcConnectorInfo({
+    this.displayName,
+    this.location,
+    this.uri,
+  });
 
   VpcConnectorInfo.fromJson(core.Map json_)
       : this(
@@ -4995,7 +4982,10 @@ class VpcFlowLogsConfig {
               json_['interconnectAttachment'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           metadata: json_['metadata'] as core.String?,
           metadataFields: (json_['metadataFields'] as core.List?)

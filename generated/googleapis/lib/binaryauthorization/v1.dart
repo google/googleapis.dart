@@ -61,16 +61,11 @@ class BinaryAuthorizationApi {
   ProjectsResource get projects => ProjectsResource(_requester);
   SystempolicyResource get systempolicy => SystempolicyResource(_requester);
 
-  BinaryAuthorizationApi(
-    http.Client client, {
-    core.String rootUrl = 'https://binaryauthorization.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  BinaryAuthorizationApi(http.Client client,
+      {core.String rootUrl = 'https://binaryauthorization.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -245,7 +240,10 @@ class ProjectsAttestorsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -280,7 +278,10 @@ class ProjectsAttestorsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Attestor> get(core.String name, {core.String? $fields}) async {
+  async.Future<Attestor> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -399,8 +400,7 @@ class ProjectsAttestorsResource {
       queryParams: queryParams_,
     );
     return ListAttestorsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -496,8 +496,7 @@ class ProjectsAttestorsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an attestor.
@@ -586,8 +585,7 @@ class ProjectsAttestorsResource {
       queryParams: queryParams_,
     );
     return ValidateAttestationOccurrenceResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -662,8 +660,7 @@ class ProjectsPlatformsGkePoliciesResource {
       queryParams: queryParams_,
     );
     return EvaluateGkePolicyResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -721,8 +718,7 @@ class ProjectsPlatformsPoliciesResource {
       queryParams: queryParams_,
     );
     return PlatformPolicy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a platform policy.
@@ -806,8 +802,7 @@ class ProjectsPlatformsPoliciesResource {
       queryParams: queryParams_,
     );
     return PlatformPolicy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists platform policies owned by a project in the specified platform.
@@ -858,8 +853,7 @@ class ProjectsPlatformsPoliciesResource {
       queryParams: queryParams_,
     );
     return ListPlatformPoliciesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Replaces a platform policy.
@@ -905,8 +899,7 @@ class ProjectsPlatformsPoliciesResource {
       queryParams: queryParams_,
     );
     return PlatformPolicy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1064,8 +1057,7 @@ class ProjectsPolicyResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1176,10 +1168,14 @@ class AdmissionWhitelistPattern {
   /// which matches subdirectories of a given entry.
   core.String? namePattern;
 
-  AdmissionWhitelistPattern({this.namePattern});
+  AdmissionWhitelistPattern({
+    this.namePattern,
+  });
 
   AdmissionWhitelistPattern.fromJson(core.Map json_)
-      : this(namePattern: json_['namePattern'] as core.String?);
+      : this(
+          namePattern: json_['namePattern'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (namePattern != null) 'namePattern': namePattern!,
@@ -1191,10 +1187,14 @@ class AllowlistResult {
   /// The allowlist pattern that the image matched.
   core.String? matchedPattern;
 
-  AllowlistResult({this.matchedPattern});
+  AllowlistResult({
+    this.matchedPattern,
+  });
 
   AllowlistResult.fromJson(core.Map json_)
-      : this(matchedPattern: json_['matchedPattern'] as core.String?);
+      : this(
+          matchedPattern: json_['matchedPattern'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (matchedPattern != null) 'matchedPattern': matchedPattern!,
@@ -1227,16 +1227,17 @@ class AttestationAuthenticator {
   /// Optional.
   PkixPublicKeySet? pkixPublicKeySet;
 
-  AttestationAuthenticator({this.displayName, this.pkixPublicKeySet});
+  AttestationAuthenticator({
+    this.displayName,
+    this.pkixPublicKeySet,
+  });
 
   AttestationAuthenticator.fromJson(core.Map json_)
       : this(
           displayName: json_['displayName'] as core.String?,
           pkixPublicKeySet: json_.containsKey('pkixPublicKeySet')
-              ? PkixPublicKeySet.fromJson(
-                  json_['pkixPublicKeySet']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? PkixPublicKeySet.fromJson(json_['pkixPublicKeySet']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1286,24 +1287,22 @@ class AttestationOccurrence {
   /// in common.proto for more details on signature structure and verification.
   core.List<Signature>? signatures;
 
-  AttestationOccurrence({this.jwts, this.serializedPayload, this.signatures});
+  AttestationOccurrence({
+    this.jwts,
+    this.serializedPayload,
+    this.signatures,
+  });
 
   AttestationOccurrence.fromJson(core.Map json_)
       : this(
           jwts: (json_['jwts'] as core.List?)
-              ?.map(
-                (value) => Jwt.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Jwt.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           serializedPayload: json_['serializedPayload'] as core.String?,
           signatures: (json_['signatures'] as core.List?)
-              ?.map(
-                (value) => Signature.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Signature.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1323,7 +1322,9 @@ class AttestationSource {
   /// each `AttestationSource` is 10.
   core.List<core.String>? containerAnalysisAttestationProjects;
 
-  AttestationSource({this.containerAnalysisAttestationProjects});
+  AttestationSource({
+    this.containerAnalysisAttestationProjects,
+  });
 
   AttestationSource.fromJson(core.Map json_)
       : this(
@@ -1391,10 +1392,8 @@ class Attestor {
           name: json_['name'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
           userOwnedGrafeasNote: json_.containsKey('userOwnedGrafeasNote')
-              ? UserOwnedGrafeasNote.fromJson(
-                  json_['userOwnedGrafeasNote']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? UserOwnedGrafeasNote.fromJson(json_['userOwnedGrafeasNote']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1461,8 +1460,7 @@ class AttestorPublicKey {
           id: json_['id'] as core.String?,
           pkixPublicKey: json_.containsKey('pkixPublicKey')
               ? PkixPublicKey.fromJson(
-                  json_['pkixPublicKey'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['pkixPublicKey'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1555,14 +1553,17 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({this.condition, this.members, this.role});
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1664,46 +1665,34 @@ class Check {
           alwaysDeny: json_['alwaysDeny'] as core.bool?,
           displayName: json_['displayName'] as core.String?,
           imageAllowlist: json_.containsKey('imageAllowlist')
-              ? ImageAllowlist.fromJson(
-                  json_['imageAllowlist']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ImageAllowlist.fromJson(json_['imageAllowlist']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           imageFreshnessCheck: json_.containsKey('imageFreshnessCheck')
-              ? ImageFreshnessCheck.fromJson(
-                  json_['imageFreshnessCheck']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ImageFreshnessCheck.fromJson(json_['imageFreshnessCheck']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           sigstoreSignatureCheck: json_.containsKey('sigstoreSignatureCheck')
-              ? SigstoreSignatureCheck.fromJson(
-                  json_['sigstoreSignatureCheck']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SigstoreSignatureCheck.fromJson(json_['sigstoreSignatureCheck']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           simpleSigningAttestationCheck:
               json_.containsKey('simpleSigningAttestationCheck')
                   ? SimpleSigningAttestationCheck.fromJson(
                       json_['simpleSigningAttestationCheck']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           slsaCheck: json_.containsKey('slsaCheck')
               ? SlsaCheck.fromJson(
-                  json_['slsaCheck'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['slsaCheck'] as core.Map<core.String, core.dynamic>)
               : null,
           trustedDirectoryCheck: json_.containsKey('trustedDirectoryCheck')
-              ? TrustedDirectoryCheck.fromJson(
-                  json_['trustedDirectoryCheck']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? TrustedDirectoryCheck.fromJson(json_['trustedDirectoryCheck']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           vulnerabilityCheck: json_.containsKey('vulnerabilityCheck')
-              ? VulnerabilityCheck.fromJson(
-                  json_['vulnerabilityCheck']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? VulnerabilityCheck.fromJson(json_['vulnerabilityCheck']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1758,17 +1747,13 @@ class CheckResult {
   CheckResult.fromJson(core.Map json_)
       : this(
           allowlistResult: json_.containsKey('allowlistResult')
-              ? AllowlistResult.fromJson(
-                  json_['allowlistResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AllowlistResult.fromJson(json_['allowlistResult']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           displayName: json_['displayName'] as core.String?,
           evaluationResult: json_.containsKey('evaluationResult')
-              ? EvaluationResult.fromJson(
-                  json_['evaluationResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? EvaluationResult.fromJson(json_['evaluationResult']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           explanation: json_['explanation'] as core.String?,
           index: json_['index'] as core.String?,
@@ -1790,16 +1775,15 @@ class CheckResults {
   /// Per-check details.
   core.List<CheckResult>? results;
 
-  CheckResults({this.results});
+  CheckResults({
+    this.results,
+  });
 
   CheckResults.fromJson(core.Map json_)
       : this(
           results: (json_['results'] as core.List?)
-              ?.map(
-                (value) => CheckResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CheckResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1850,28 +1834,27 @@ class CheckSet {
   /// Optional.
   Scope? scope;
 
-  CheckSet({this.checks, this.displayName, this.imageAllowlist, this.scope});
+  CheckSet({
+    this.checks,
+    this.displayName,
+    this.imageAllowlist,
+    this.scope,
+  });
 
   CheckSet.fromJson(core.Map json_)
       : this(
           checks: (json_['checks'] as core.List?)
-              ?.map(
-                (value) => Check.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Check.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           displayName: json_['displayName'] as core.String?,
           imageAllowlist: json_.containsKey('imageAllowlist')
-              ? ImageAllowlist.fromJson(
-                  json_['imageAllowlist']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ImageAllowlist.fromJson(json_['imageAllowlist']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           scope: json_.containsKey('scope')
               ? Scope.fromJson(
-                  json_['scope'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['scope'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1918,23 +1901,19 @@ class CheckSetResult {
   CheckSetResult.fromJson(core.Map json_)
       : this(
           allowlistResult: json_.containsKey('allowlistResult')
-              ? AllowlistResult.fromJson(
-                  json_['allowlistResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AllowlistResult.fromJson(json_['allowlistResult']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           checkResults: json_.containsKey('checkResults')
               ? CheckResults.fromJson(
-                  json_['checkResults'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['checkResults'] as core.Map<core.String, core.dynamic>)
               : null,
           displayName: json_['displayName'] as core.String?,
           explanation: json_['explanation'] as core.String?,
           index: json_['index'] as core.String?,
           scope: json_.containsKey('scope')
               ? Scope.fromJson(
-                  json_['scope'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['scope'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1966,7 +1945,9 @@ class EvaluateGkePolicyRequest {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? resource;
 
-  EvaluateGkePolicyRequest({this.resource});
+  EvaluateGkePolicyRequest({
+    this.resource,
+  });
 
   EvaluateGkePolicyRequest.fromJson(core.Map json_)
       : this(
@@ -1994,16 +1975,16 @@ class EvaluateGkePolicyResponse {
   /// Pods conform to the policy. Non-conformance has precedence over errors.
   core.String? verdict;
 
-  EvaluateGkePolicyResponse({this.results, this.verdict});
+  EvaluateGkePolicyResponse({
+    this.results,
+    this.verdict,
+  });
 
   EvaluateGkePolicyResponse.fromJson(core.Map json_)
       : this(
           results: (json_['results'] as core.List?)
-              ?.map(
-                (value) => PodResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PodResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           verdict: json_['verdict'] as core.String?,
         );
@@ -2026,10 +2007,14 @@ class EvaluationResult {
   /// - "ERROR" : The check was not successfully evaluated.
   core.String? verdict;
 
-  EvaluationResult({this.verdict});
+  EvaluationResult({
+    this.verdict,
+  });
 
   EvaluationResult.fromJson(core.Map json_)
-      : this(verdict: json_['verdict'] as core.String?);
+      : this(
+          verdict: json_['verdict'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (verdict != null) 'verdict': verdict!,
@@ -2091,22 +2076,20 @@ class GkePolicy {
   /// Optional.
   ImageAllowlist? imageAllowlist;
 
-  GkePolicy({this.checkSets, this.imageAllowlist});
+  GkePolicy({
+    this.checkSets,
+    this.imageAllowlist,
+  });
 
   GkePolicy.fromJson(core.Map json_)
       : this(
           checkSets: (json_['checkSets'] as core.List?)
-              ?.map(
-                (value) => CheckSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CheckSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           imageAllowlist: json_.containsKey('imageAllowlist')
-              ? ImageAllowlist.fromJson(
-                  json_['imageAllowlist']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ImageAllowlist.fromJson(json_['imageAllowlist']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2199,16 +2182,17 @@ class IamPolicy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  IamPolicy({this.bindings, this.etag, this.version});
+  IamPolicy({
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
   IamPolicy.fromJson(core.Map json_)
       : this(
           bindings: (json_['bindings'] as core.List?)
-              ?.map(
-                (value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -2231,7 +2215,9 @@ class ImageAllowlist {
   /// Required.
   core.List<core.String>? allowPattern;
 
-  ImageAllowlist({this.allowPattern});
+  ImageAllowlist({
+    this.allowPattern,
+  });
 
   ImageAllowlist.fromJson(core.Map json_)
       : this(
@@ -2255,10 +2241,14 @@ class ImageFreshnessCheck {
   /// Required.
   core.int? maxUploadAgeDays;
 
-  ImageFreshnessCheck({this.maxUploadAgeDays});
+  ImageFreshnessCheck({
+    this.maxUploadAgeDays,
+  });
 
   ImageFreshnessCheck.fromJson(core.Map json_)
-      : this(maxUploadAgeDays: json_['maxUploadAgeDays'] as core.int?);
+      : this(
+          maxUploadAgeDays: json_['maxUploadAgeDays'] as core.int?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxUploadAgeDays != null) 'maxUploadAgeDays': maxUploadAgeDays!,
@@ -2304,16 +2294,12 @@ class ImageResult {
   ImageResult.fromJson(core.Map json_)
       : this(
           allowlistResult: json_.containsKey('allowlistResult')
-              ? AllowlistResult.fromJson(
-                  json_['allowlistResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AllowlistResult.fromJson(json_['allowlistResult']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           checkSetResult: json_.containsKey('checkSetResult')
-              ? CheckSetResult.fromJson(
-                  json_['checkSetResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CheckSetResult.fromJson(json_['checkSetResult']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           explanation: json_['explanation'] as core.String?,
           imageUri: json_['imageUri'] as core.String?,
@@ -2343,16 +2329,16 @@ class ListAttestorsResponse {
   /// results.
   core.String? nextPageToken;
 
-  ListAttestorsResponse({this.attestors, this.nextPageToken});
+  ListAttestorsResponse({
+    this.attestors,
+    this.nextPageToken,
+  });
 
   ListAttestorsResponse.fromJson(core.Map json_)
       : this(
           attestors: (json_['attestors'] as core.List?)
-              ?.map(
-                (value) => Attestor.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Attestor.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2375,17 +2361,17 @@ class ListPlatformPoliciesResponse {
   /// The list of platform policies.
   core.List<PlatformPolicy>? platformPolicies;
 
-  ListPlatformPoliciesResponse({this.nextPageToken, this.platformPolicies});
+  ListPlatformPoliciesResponse({
+    this.nextPageToken,
+    this.platformPolicies,
+  });
 
   ListPlatformPoliciesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           platformPolicies: (json_['platformPolicies'] as core.List?)
-              ?.map(
-                (value) => PlatformPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PlatformPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2464,7 +2450,11 @@ class PkixPublicKey {
   /// digest.
   core.String? signatureAlgorithm;
 
-  PkixPublicKey({this.keyId, this.publicKeyPem, this.signatureAlgorithm});
+  PkixPublicKey({
+    this.keyId,
+    this.publicKeyPem,
+    this.signatureAlgorithm,
+  });
 
   PkixPublicKey.fromJson(core.Map json_)
       : this(
@@ -2492,16 +2482,15 @@ class PkixPublicKeySet {
   /// Required.
   core.List<PkixPublicKey>? pkixPublicKeys;
 
-  PkixPublicKeySet({this.pkixPublicKeys});
+  PkixPublicKeySet({
+    this.pkixPublicKeys,
+  });
 
   PkixPublicKeySet.fromJson(core.Map json_)
       : this(
           pkixPublicKeys: (json_['pkixPublicKeys'] as core.List?)
-              ?.map(
-                (value) => PkixPublicKey.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PkixPublicKey.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2553,8 +2542,7 @@ class PlatformPolicy {
           etag: json_['etag'] as core.String?,
           gkePolicy: json_.containsKey('gkePolicy')
               ? GkePolicy.fromJson(
-                  json_['gkePolicy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['gkePolicy'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -2604,11 +2592,8 @@ class PodResult {
   PodResult.fromJson(core.Map json_)
       : this(
           imageResults: (json_['imageResults'] as core.List?)
-              ?.map(
-                (value) => ImageResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ImageResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           kubernetesNamespace: json_['kubernetesNamespace'] as core.String?,
           kubernetesServiceAccount:
@@ -2737,11 +2722,8 @@ class Policy {
       : this(
           admissionWhitelistPatterns:
               (json_['admissionWhitelistPatterns'] as core.List?)
-                  ?.map(
-                    (value) => AdmissionWhitelistPattern.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => AdmissionWhitelistPattern.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
           clusterAdmissionRules: (json_['clusterAdmissionRules']
                   as core.Map<core.String, core.dynamic>?)
@@ -2749,15 +2731,12 @@ class Policy {
             (key, value) => core.MapEntry(
               key,
               AdmissionRule.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
           defaultAdmissionRule: json_.containsKey('defaultAdmissionRule')
-              ? AdmissionRule.fromJson(
-                  json_['defaultAdmissionRule']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AdmissionRule.fromJson(json_['defaultAdmissionRule']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           description: json_['description'] as core.String?,
           etag: json_['etag'] as core.String?,
@@ -2770,8 +2749,7 @@ class Policy {
             (key, value) => core.MapEntry(
               key,
               AdmissionRule.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
           kubernetesNamespaceAdmissionRules:
@@ -2781,8 +2759,7 @@ class Policy {
             (key, value) => core.MapEntry(
               key,
               AdmissionRule.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
           kubernetesServiceAccountAdmissionRules:
@@ -2792,8 +2769,7 @@ class Policy {
             (key, value) => core.MapEntry(
               key,
               AdmissionRule.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
           name: json_['name'] as core.String?,
@@ -2842,7 +2818,10 @@ class Scope {
   /// Optional.
   core.String? kubernetesServiceAccount;
 
-  Scope({this.kubernetesNamespace, this.kubernetesServiceAccount});
+  Scope({
+    this.kubernetesNamespace,
+    this.kubernetesServiceAccount,
+  });
 
   Scope.fromJson(core.Map json_)
       : this(
@@ -2868,14 +2847,15 @@ class SetIamPolicyRequest {
   /// reject them.
   IamPolicy? policy;
 
-  SetIamPolicyRequest({this.policy});
+  SetIamPolicyRequest({
+    this.policy,
+  });
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? IamPolicy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2927,15 +2907,17 @@ class SigstoreAuthority {
   /// Required.
   SigstorePublicKeySet? publicKeySet;
 
-  SigstoreAuthority({this.displayName, this.publicKeySet});
+  SigstoreAuthority({
+    this.displayName,
+    this.publicKeySet,
+  });
 
   SigstoreAuthority.fromJson(core.Map json_)
       : this(
           displayName: json_['displayName'] as core.String?,
           publicKeySet: json_.containsKey('publicKeySet')
               ? SigstorePublicKeySet.fromJson(
-                  json_['publicKeySet'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['publicKeySet'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2953,10 +2935,14 @@ class SigstorePublicKey {
   /// The public key material in PEM format.
   core.String? publicKeyPem;
 
-  SigstorePublicKey({this.publicKeyPem});
+  SigstorePublicKey({
+    this.publicKeyPem,
+  });
 
   SigstorePublicKey.fromJson(core.Map json_)
-      : this(publicKeyPem: json_['publicKeyPem'] as core.String?);
+      : this(
+          publicKeyPem: json_['publicKeyPem'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (publicKeyPem != null) 'publicKeyPem': publicKeyPem!,
@@ -2973,16 +2959,15 @@ class SigstorePublicKeySet {
   /// Required.
   core.List<SigstorePublicKey>? publicKeys;
 
-  SigstorePublicKeySet({this.publicKeys});
+  SigstorePublicKeySet({
+    this.publicKeys,
+  });
 
   SigstorePublicKeySet.fromJson(core.Map json_)
       : this(
           publicKeys: (json_['publicKeys'] as core.List?)
-              ?.map(
-                (value) => SigstorePublicKey.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SigstorePublicKey.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3001,16 +2986,15 @@ class SigstoreSignatureCheck {
   /// Required.
   core.List<SigstoreAuthority>? sigstoreAuthorities;
 
-  SigstoreSignatureCheck({this.sigstoreAuthorities});
+  SigstoreSignatureCheck({
+    this.sigstoreAuthorities,
+  });
 
   SigstoreSignatureCheck.fromJson(core.Map json_)
       : this(
           sigstoreAuthorities: (json_['sigstoreAuthorities'] as core.List?)
-              ?.map(
-                (value) => SigstoreAuthority.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SigstoreAuthority.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3058,11 +3042,8 @@ class SimpleSigningAttestationCheck {
       : this(
           attestationAuthenticators:
               (json_['attestationAuthenticators'] as core.List?)
-                  ?.map(
-                    (value) => AttestationAuthenticator.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => AttestationAuthenticator.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
           containerAnalysisAttestationProjects:
               (json_['containerAnalysisAttestationProjects'] as core.List?)
@@ -3088,16 +3069,15 @@ class SlsaCheck {
   /// are satisfied.
   core.List<VerificationRule>? rules;
 
-  SlsaCheck({this.rules});
+  SlsaCheck({
+    this.rules,
+  });
 
   SlsaCheck.fromJson(core.Map json_)
       : this(
           rules: (json_['rules'] as core.List?)
-              ?.map(
-                (value) => VerificationRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => VerificationRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3137,7 +3117,9 @@ class TrustedDirectoryCheck {
   /// Required.
   core.List<core.String>? trustedDirPatterns;
 
-  TrustedDirectoryCheck({this.trustedDirPatterns});
+  TrustedDirectoryCheck({
+    this.trustedDirPatterns,
+  });
 
   TrustedDirectoryCheck.fromJson(core.Map json_)
       : this(
@@ -3201,11 +3183,8 @@ class UserOwnedGrafeasNote {
               json_['delegationServiceAccountEmail'] as core.String?,
           noteReference: json_['noteReference'] as core.String?,
           publicKeys: (json_['publicKeys'] as core.List?)
-              ?.map(
-                (value) => AttestorPublicKey.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AttestorPublicKey.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3250,8 +3229,7 @@ class ValidateAttestationOccurrenceRequest {
       : this(
           attestation: json_.containsKey('attestation')
               ? AttestationOccurrence.fromJson(
-                  json_['attestation'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['attestation'] as core.Map<core.String, core.dynamic>)
               : null,
           occurrenceNote: json_['occurrenceNote'] as core.String?,
           occurrenceResourceUri: json_['occurrenceResourceUri'] as core.String?,
@@ -3278,7 +3256,10 @@ class ValidateAttestationOccurrenceResponse {
   /// by the Attestor.
   core.String? result;
 
-  ValidateAttestationOccurrenceResponse({this.denialReason, this.result});
+  ValidateAttestationOccurrenceResponse({
+    this.denialReason,
+    this.result,
+  });
 
   ValidateAttestationOccurrenceResponse.fromJson(core.Map json_)
       : this(
@@ -3351,10 +3332,8 @@ class VerificationRule {
   VerificationRule.fromJson(core.Map json_)
       : this(
           attestationSource: json_.containsKey('attestationSource')
-              ? AttestationSource.fromJson(
-                  json_['attestationSource']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AttestationSource.fromJson(json_['attestationSource']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           configBasedBuildRequired:
               json_['configBasedBuildRequired'] as core.bool?,

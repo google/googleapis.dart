@@ -61,16 +61,11 @@ class DocumentApi {
   OperationsResource get operations => OperationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  DocumentApi(
-    http.Client client, {
-    core.String rootUrl = 'https://documentai.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  DocumentApi(http.Client client,
+      {core.String rootUrl = 'https://documentai.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class OperationsResource {
@@ -115,8 +110,7 @@ class OperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -165,7 +159,10 @@ class ProjectsLocationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDocumentaiV1FetchProcessorTypesResponse>
-      fetchProcessorTypes(core.String parent, {core.String? $fields}) async {
+      fetchProcessorTypes(
+    core.String parent, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -179,8 +176,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDocumentaiV1FetchProcessorTypesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about a location.
@@ -216,8 +212,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudLocationLocation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -269,8 +264,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudLocationListLocationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -323,8 +317,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -364,8 +357,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -415,8 +407,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -460,8 +451,7 @@ class ProjectsLocationsProcessorTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDocumentaiV1ProcessorType.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the processor types that exist.
@@ -509,8 +499,7 @@ class ProjectsLocationsProcessorTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDocumentaiV1ListProcessorTypesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -569,8 +558,7 @@ class ProjectsLocationsProcessorsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a processor from the ProcessorType provided.
@@ -618,8 +606,7 @@ class ProjectsLocationsProcessorsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDocumentaiV1Processor.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the processor, unloads all deployed model artifacts if it was
@@ -657,8 +644,7 @@ class ProjectsLocationsProcessorsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Disables a processor
@@ -700,8 +686,7 @@ class ProjectsLocationsProcessorsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Enables a processor
@@ -743,8 +728,7 @@ class ProjectsLocationsProcessorsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a processor detail.
@@ -781,8 +765,7 @@ class ProjectsLocationsProcessorsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDocumentaiV1Processor.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all processors which belong to this project.
@@ -831,8 +814,7 @@ class ProjectsLocationsProcessorsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDocumentaiV1ListProcessorsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Processes a single document.
@@ -878,8 +860,7 @@ class ProjectsLocationsProcessorsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDocumentaiV1ProcessResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Set the default (active) version of a Processor that will be used in
@@ -925,8 +906,7 @@ class ProjectsLocationsProcessorsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -934,8 +914,8 @@ class ProjectsLocationsProcessorsHumanReviewConfigResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsProcessorsHumanReviewConfigResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Send a document for Human Review.
   ///
@@ -980,8 +960,7 @@ class ProjectsLocationsProcessorsHumanReviewConfigResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -991,12 +970,11 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
   ProjectsLocationsProcessorsProcessorVersionsEvaluationsResource
       get evaluations =>
           ProjectsLocationsProcessorsProcessorVersionsEvaluationsResource(
-            _requester,
-          );
+              _requester);
 
   ProjectsLocationsProcessorsProcessorVersionsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// LRO endpoint to batch process many documents.
   ///
@@ -1042,8 +1020,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the processor version, all artifacts under the processor version
@@ -1081,8 +1058,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deploys the processor version.
@@ -1124,8 +1100,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Evaluates a ProcessorVersion against annotated documents, producing an
@@ -1172,8 +1147,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a processor version detail.
@@ -1210,8 +1184,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDocumentaiV1ProcessorVersion.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all versions of a processor.
@@ -1261,8 +1234,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDocumentaiV1ListProcessorVersionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Processes a single document.
@@ -1308,8 +1280,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDocumentaiV1ProcessResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Trains a new processor version.
@@ -1356,8 +1327,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeploys the processor version.
@@ -1399,8 +1369,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1408,8 +1377,8 @@ class ProjectsLocationsProcessorsProcessorVersionsEvaluationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsProcessorsProcessorVersionsEvaluationsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Retrieves a specific evaluation.
   ///
@@ -1446,8 +1415,7 @@ class ProjectsLocationsProcessorsProcessorVersionsEvaluationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDocumentaiV1Evaluation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a set of evaluations for a given processor version.
@@ -1497,8 +1465,7 @@ class ProjectsLocationsProcessorsProcessorVersionsEvaluationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDocumentaiV1ListEvaluationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1543,8 +1510,7 @@ class ProjectsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1568,13 +1534,11 @@ class GoogleCloudDocumentaiV1BatchDocumentsInputConfig {
       : this(
           gcsDocuments: json_.containsKey('gcsDocuments')
               ? GoogleCloudDocumentaiV1GcsDocuments.fromJson(
-                  json_['gcsDocuments'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['gcsDocuments'] as core.Map<core.String, core.dynamic>)
               : null,
           gcsPrefix: json_.containsKey('gcsPrefix')
               ? GoogleCloudDocumentaiV1GcsPrefix.fromJson(
-                  json_['gcsPrefix'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['gcsPrefix'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1623,24 +1587,24 @@ class GoogleCloudDocumentaiV1BatchProcessRequest {
           documentOutputConfig: json_.containsKey('documentOutputConfig')
               ? GoogleCloudDocumentaiV1DocumentOutputConfig.fromJson(
                   json_['documentOutputConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           inputDocuments: json_.containsKey('inputDocuments')
               ? GoogleCloudDocumentaiV1BatchDocumentsInputConfig.fromJson(
                   json_['inputDocuments']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           processOptions: json_.containsKey('processOptions')
               ? GoogleCloudDocumentaiV1ProcessOptions.fromJson(
                   json_['processOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           skipHumanReview: json_['skipHumanReview'] as core.bool?,
         );
@@ -1663,23 +1627,20 @@ class GoogleCloudDocumentaiV1BoundingPoly {
   /// The bounding polygon vertices.
   core.List<GoogleCloudDocumentaiV1Vertex>? vertices;
 
-  GoogleCloudDocumentaiV1BoundingPoly({this.normalizedVertices, this.vertices});
+  GoogleCloudDocumentaiV1BoundingPoly({
+    this.normalizedVertices,
+    this.vertices,
+  });
 
   GoogleCloudDocumentaiV1BoundingPoly.fromJson(core.Map json_)
       : this(
           normalizedVertices: (json_['normalizedVertices'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1NormalizedVertex.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudDocumentaiV1NormalizedVertex.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           vertices: (json_['vertices'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1Vertex.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudDocumentaiV1Vertex.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1802,70 +1763,49 @@ class GoogleCloudDocumentaiV1Document {
           chunkedDocument: json_.containsKey('chunkedDocument')
               ? GoogleCloudDocumentaiV1DocumentChunkedDocument.fromJson(
                   json_['chunkedDocument']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           content: json_['content'] as core.String?,
           documentLayout: json_.containsKey('documentLayout')
               ? GoogleCloudDocumentaiV1DocumentDocumentLayout.fromJson(
                   json_['documentLayout']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           entities: (json_['entities'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentEntity.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudDocumentaiV1DocumentEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           entityRelations: (json_['entityRelations'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentEntityRelation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentEntityRelation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           mimeType: json_['mimeType'] as core.String?,
           pages: (json_['pages'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentPage.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudDocumentaiV1DocumentPage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           revisions: (json_['revisions'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentRevision.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudDocumentaiV1DocumentRevision.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           shardInfo: json_.containsKey('shardInfo')
               ? GoogleCloudDocumentaiV1DocumentShardInfo.fromJson(
-                  json_['shardInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['shardInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           text: json_['text'] as core.String?,
           textChanges: (json_['textChanges'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentTextChange.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentTextChange.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           textStyles: (json_['textStyles'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentStyle.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudDocumentaiV1DocumentStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           uri: json_['uri'] as core.String?,
         );
@@ -1893,17 +1833,16 @@ class GoogleCloudDocumentaiV1DocumentChunkedDocument {
   /// List of chunks.
   core.List<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk>? chunks;
 
-  GoogleCloudDocumentaiV1DocumentChunkedDocument({this.chunks});
+  GoogleCloudDocumentaiV1DocumentChunkedDocument({
+    this.chunks,
+  });
 
   GoogleCloudDocumentaiV1DocumentChunkedDocument.fromJson(core.Map json_)
       : this(
           chunks: (json_['chunks'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk
-                    .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1948,28 +1887,19 @@ class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk {
           chunkId: json_['chunkId'] as core.String?,
           content: json_['content'] as core.String?,
           pageFooters: (json_['pageFooters'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter
-                        .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           pageHeaders: (json_['pageHeaders'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader
-                        .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           pageSpan: json_.containsKey('pageSpan')
               ? GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan
                   .fromJson(
-                  json_['pageSpan'] as core.Map<core.String, core.dynamic>,
-                )
+                      json_['pageSpan'] as core.Map<core.String, core.dynamic>)
               : null,
           sourceBlockIds: (json_['sourceBlockIds'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2000,13 +1930,12 @@ class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter {
   });
 
   GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           pageSpan: json_.containsKey('pageSpan')
               ? GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan
                   .fromJson(
-                  json_['pageSpan'] as core.Map<core.String, core.dynamic>,
-                )
+                      json_['pageSpan'] as core.Map<core.String, core.dynamic>)
               : null,
           text: json_['text'] as core.String?,
         );
@@ -2031,13 +1960,12 @@ class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader {
   });
 
   GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           pageSpan: json_.containsKey('pageSpan')
               ? GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan
                   .fromJson(
-                  json_['pageSpan'] as core.Map<core.String, core.dynamic>,
-                )
+                      json_['pageSpan'] as core.Map<core.String, core.dynamic>)
               : null,
           text: json_['text'] as core.String?,
         );
@@ -2059,18 +1987,16 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayout {
   core.List<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock>?
       blocks;
 
-  GoogleCloudDocumentaiV1DocumentDocumentLayout({this.blocks});
+  GoogleCloudDocumentaiV1DocumentDocumentLayout({
+    this.blocks,
+  });
 
   GoogleCloudDocumentaiV1DocumentDocumentLayout.fromJson(core.Map json_)
       : this(
           blocks: (json_['blocks'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock
-                        .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2111,32 +2037,28 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock {
   });
 
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           blockId: json_['blockId'] as core.String?,
           listBlock: json_.containsKey('listBlock')
               ? GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock
                   .fromJson(
-                  json_['listBlock'] as core.Map<core.String, core.dynamic>,
-                )
+                      json_['listBlock'] as core.Map<core.String, core.dynamic>)
               : null,
           pageSpan: json_.containsKey('pageSpan')
               ? GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan
                   .fromJson(
-                  json_['pageSpan'] as core.Map<core.String, core.dynamic>,
-                )
+                      json_['pageSpan'] as core.Map<core.String, core.dynamic>)
               : null,
           tableBlock: json_.containsKey('tableBlock')
               ? GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock
-                  .fromJson(
-                  json_['tableBlock'] as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['tableBlock']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           textBlock: json_.containsKey('textBlock')
               ? GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock
                   .fromJson(
-                  json_['textBlock'] as core.Map<core.String, core.dynamic>,
-                )
+                      json_['textBlock'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2167,16 +2089,12 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutList
   });
 
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           listEntries: (json_['listEntries'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry
-                        .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           type: json_['type'] as core.String?,
         );
@@ -2200,16 +2118,12 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutList
   });
 
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           blocks: (json_['blocks'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock
-                        .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2244,26 +2158,18 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTabl
   });
 
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           bodyRows: (json_['bodyRows'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow
-                        .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           caption: json_['caption'] as core.String?,
           headerRows: (json_['headerRows'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow
-                        .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2295,16 +2201,12 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTabl
   });
 
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           blocks: (json_['blocks'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock
-                        .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           colSpan: json_['colSpan'] as core.int?,
           rowSpan: json_['rowSpan'] as core.int?,
@@ -2329,16 +2231,12 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTabl
   });
 
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           cells: (json_['cells'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell
-                        .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2371,16 +2269,12 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutText
   });
 
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           blocks: (json_['blocks'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock
-                        .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           text: json_['text'] as core.String?,
           type: json_['type'] as core.String?,
@@ -2489,31 +2383,24 @@ class GoogleCloudDocumentaiV1DocumentEntity {
           normalizedValue: json_.containsKey('normalizedValue')
               ? GoogleCloudDocumentaiV1DocumentEntityNormalizedValue.fromJson(
                   json_['normalizedValue']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           pageAnchor: json_.containsKey('pageAnchor')
               ? GoogleCloudDocumentaiV1DocumentPageAnchor.fromJson(
-                  json_['pageAnchor'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['pageAnchor'] as core.Map<core.String, core.dynamic>)
               : null,
           properties: (json_['properties'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentEntity.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudDocumentaiV1DocumentEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           provenance: json_.containsKey('provenance')
               ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
-                  json_['provenance'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['provenance'] as core.Map<core.String, core.dynamic>)
               : null,
           redacted: json_['redacted'] as core.bool?,
           textAnchor: json_.containsKey('textAnchor')
               ? GoogleCloudDocumentaiV1DocumentTextAnchor.fromJson(
-                  json_['textAnchor'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['textAnchor'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
         );
@@ -2598,26 +2485,22 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
       : this(
           addressValue: json_.containsKey('addressValue')
               ? GoogleTypePostalAddress.fromJson(
-                  json_['addressValue'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['addressValue'] as core.Map<core.String, core.dynamic>)
               : null,
           booleanValue: json_['booleanValue'] as core.bool?,
           dateValue: json_.containsKey('dateValue')
               ? GoogleTypeDate.fromJson(
-                  json_['dateValue'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['dateValue'] as core.Map<core.String, core.dynamic>)
               : null,
           datetimeValue: json_.containsKey('datetimeValue')
               ? GoogleTypeDateTime.fromJson(
-                  json_['datetimeValue'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['datetimeValue'] as core.Map<core.String, core.dynamic>)
               : null,
           floatValue: (json_['floatValue'] as core.num?)?.toDouble(),
           integerValue: json_['integerValue'] as core.int?,
           moneyValue: json_.containsKey('moneyValue')
               ? GoogleTypeMoney.fromJson(
-                  json_['moneyValue'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['moneyValue'] as core.Map<core.String, core.dynamic>)
               : null,
           text: json_['text'] as core.String?,
         );
@@ -2645,16 +2528,16 @@ class GoogleCloudDocumentaiV1DocumentOutputConfig {
   /// Output config to write the results to Cloud Storage.
   GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig? gcsOutputConfig;
 
-  GoogleCloudDocumentaiV1DocumentOutputConfig({this.gcsOutputConfig});
+  GoogleCloudDocumentaiV1DocumentOutputConfig({
+    this.gcsOutputConfig,
+  });
 
   GoogleCloudDocumentaiV1DocumentOutputConfig.fromJson(core.Map json_)
       : this(
           gcsOutputConfig: json_.containsKey('gcsOutputConfig')
               ? GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig
-                  .fromJson(
-                  json_['gcsOutputConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['gcsOutputConfig']
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2685,16 +2568,14 @@ class GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig {
   });
 
   GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           fieldMask: json_['fieldMask'] as core.String?,
           gcsUri: json_['gcsUri'] as core.String?,
           shardingConfig: json_.containsKey('shardingConfig')
               ? GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig
-                  .fromJson(
-                  json_['shardingConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['shardingConfig']
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2719,8 +2600,8 @@ class GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig {
   });
 
   GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           pagesOverlap: json_['pagesOverlap'] as core.int?,
           pagesPerShard: json_['pagesPerShard'] as core.int?,
         );
@@ -2827,113 +2708,80 @@ class GoogleCloudDocumentaiV1DocumentPage {
   GoogleCloudDocumentaiV1DocumentPage.fromJson(core.Map json_)
       : this(
           blocks: (json_['blocks'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentPageBlock.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageBlock.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           detectedBarcodes: (json_['detectedBarcodes'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentPageDetectedBarcode.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedBarcode.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           detectedLanguages: (json_['detectedLanguages'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage
-                    .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           dimension: json_.containsKey('dimension')
               ? GoogleCloudDocumentaiV1DocumentPageDimension.fromJson(
-                  json_['dimension'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['dimension'] as core.Map<core.String, core.dynamic>)
               : null,
           formFields: (json_['formFields'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentPageFormField.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageFormField.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           image: json_.containsKey('image')
               ? GoogleCloudDocumentaiV1DocumentPageImage.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
           imageQualityScores: json_.containsKey('imageQualityScores')
               ? GoogleCloudDocumentaiV1DocumentPageImageQualityScores.fromJson(
                   json_['imageQualityScores']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           layout: json_.containsKey('layout')
               ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['layout'] as core.Map<core.String, core.dynamic>)
               : null,
           lines: (json_['lines'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentPageLine.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudDocumentaiV1DocumentPageLine.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           pageNumber: json_['pageNumber'] as core.int?,
           paragraphs: (json_['paragraphs'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentPageParagraph.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageParagraph.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           provenance: json_.containsKey('provenance')
               ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
-                  json_['provenance'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['provenance'] as core.Map<core.String, core.dynamic>)
               : null,
           symbols: (json_['symbols'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentPageSymbol.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageSymbol.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           tables: (json_['tables'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentPageTable.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageTable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           tokens: (json_['tokens'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentPageToken.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageToken.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           transforms: (json_['transforms'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentPageMatrix.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageMatrix.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           visualElements: (json_['visualElements'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentPageVisualElement.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageVisualElement.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2967,17 +2815,16 @@ class GoogleCloudDocumentaiV1DocumentPageAnchor {
   /// One or more references to visual page elements
   core.List<GoogleCloudDocumentaiV1DocumentPageAnchorPageRef>? pageRefs;
 
-  GoogleCloudDocumentaiV1DocumentPageAnchor({this.pageRefs});
+  GoogleCloudDocumentaiV1DocumentPageAnchor({
+    this.pageRefs,
+  });
 
   GoogleCloudDocumentaiV1DocumentPageAnchor.fromJson(core.Map json_)
       : this(
           pageRefs: (json_['pageRefs'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentPageAnchorPageRef.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageAnchorPageRef.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3046,8 +2893,7 @@ class GoogleCloudDocumentaiV1DocumentPageAnchorPageRef {
       : this(
           boundingPoly: json_.containsKey('boundingPoly')
               ? GoogleCloudDocumentaiV1BoundingPoly.fromJson(
-                  json_['boundingPoly'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['boundingPoly'] as core.Map<core.String, core.dynamic>)
               : null,
           confidence: (json_['confidence'] as core.num?)?.toDouble(),
           layoutId: json_['layoutId'] as core.String?,
@@ -3089,22 +2935,17 @@ class GoogleCloudDocumentaiV1DocumentPageBlock {
   GoogleCloudDocumentaiV1DocumentPageBlock.fromJson(core.Map json_)
       : this(
           detectedLanguages: (json_['detectedLanguages'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage
-                    .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           layout: json_.containsKey('layout')
               ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['layout'] as core.Map<core.String, core.dynamic>)
               : null,
           provenance: json_.containsKey('provenance')
               ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
-                  json_['provenance'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['provenance'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3132,13 +2973,11 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedBarcode {
       : this(
           barcode: json_.containsKey('barcode')
               ? GoogleCloudDocumentaiV1Barcode.fromJson(
-                  json_['barcode'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['barcode'] as core.Map<core.String, core.dynamic>)
               : null,
           layout: json_.containsKey('layout')
               ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['layout'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3212,37 +3051,27 @@ class GoogleCloudDocumentaiV1DocumentPageFormField {
           correctedValueText: json_['correctedValueText'] as core.String?,
           fieldName: json_.containsKey('fieldName')
               ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['fieldName'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['fieldName'] as core.Map<core.String, core.dynamic>)
               : null,
           fieldValue: json_.containsKey('fieldValue')
               ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['fieldValue'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['fieldValue'] as core.Map<core.String, core.dynamic>)
               : null,
           nameDetectedLanguages: (json_['nameDetectedLanguages'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage
-                    .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           provenance: json_.containsKey('provenance')
               ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
-                  json_['provenance'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['provenance'] as core.Map<core.String, core.dynamic>)
               : null,
-          valueDetectedLanguages:
-              (json_['valueDetectedLanguages'] as core.List?)
-                  ?.map(
-                    (value) =>
-                        GoogleCloudDocumentaiV1DocumentPageDetectedLanguage
-                            .fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
-                  .toList(),
+          valueDetectedLanguages: (json_['valueDetectedLanguages']
+                  as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           valueType: json_['valueType'] as core.String?,
         );
 
@@ -3285,13 +3114,9 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
   GoogleCloudDocumentaiV1DocumentPageImageQualityScores.fromJson(core.Map json_)
       : this(
           detectedDefects: (json_['detectedDefects'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect
-                        .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           qualityScore: (json_['qualityScore'] as core.num?)?.toDouble(),
         );
@@ -3344,15 +3169,13 @@ class GoogleCloudDocumentaiV1DocumentPageLayout {
       : this(
           boundingPoly: json_.containsKey('boundingPoly')
               ? GoogleCloudDocumentaiV1BoundingPoly.fromJson(
-                  json_['boundingPoly'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['boundingPoly'] as core.Map<core.String, core.dynamic>)
               : null,
           confidence: (json_['confidence'] as core.num?)?.toDouble(),
           orientation: json_['orientation'] as core.String?,
           textAnchor: json_.containsKey('textAnchor')
               ? GoogleCloudDocumentaiV1DocumentTextAnchor.fromJson(
-                  json_['textAnchor'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['textAnchor'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3390,22 +3213,17 @@ class GoogleCloudDocumentaiV1DocumentPageLine {
   GoogleCloudDocumentaiV1DocumentPageLine.fromJson(core.Map json_)
       : this(
           detectedLanguages: (json_['detectedLanguages'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage
-                    .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           layout: json_.containsKey('layout')
               ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['layout'] as core.Map<core.String, core.dynamic>)
               : null,
           provenance: json_.containsKey('provenance')
               ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
-                  json_['provenance'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['provenance'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3445,22 +3263,17 @@ class GoogleCloudDocumentaiV1DocumentPageParagraph {
   GoogleCloudDocumentaiV1DocumentPageParagraph.fromJson(core.Map json_)
       : this(
           detectedLanguages: (json_['detectedLanguages'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage
-                    .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           layout: json_.containsKey('layout')
               ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['layout'] as core.Map<core.String, core.dynamic>)
               : null,
           provenance: json_.containsKey('provenance')
               ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
-                  json_['provenance'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['provenance'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3488,17 +3301,13 @@ class GoogleCloudDocumentaiV1DocumentPageSymbol {
   GoogleCloudDocumentaiV1DocumentPageSymbol.fromJson(core.Map json_)
       : this(
           detectedLanguages: (json_['detectedLanguages'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage
-                    .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           layout: json_.containsKey('layout')
               ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['layout'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3540,38 +3349,27 @@ class GoogleCloudDocumentaiV1DocumentPageTable {
   GoogleCloudDocumentaiV1DocumentPageTable.fromJson(core.Map json_)
       : this(
           bodyRows: (json_['bodyRows'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           detectedLanguages: (json_['detectedLanguages'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage
-                    .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           headerRows: (json_['headerRows'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           layout: json_.containsKey('layout')
               ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['layout'] as core.Map<core.String, core.dynamic>)
               : null,
           provenance: json_.containsKey('provenance')
               ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
-                  json_['provenance'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['provenance'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3610,17 +3408,13 @@ class GoogleCloudDocumentaiV1DocumentPageTableTableCell {
       : this(
           colSpan: json_['colSpan'] as core.int?,
           detectedLanguages: (json_['detectedLanguages'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage
-                    .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           layout: json_.containsKey('layout')
               ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['layout'] as core.Map<core.String, core.dynamic>)
               : null,
           rowSpan: json_['rowSpan'] as core.int?,
         );
@@ -3638,17 +3432,16 @@ class GoogleCloudDocumentaiV1DocumentPageTableTableRow {
   /// Cells that make up this row.
   core.List<GoogleCloudDocumentaiV1DocumentPageTableTableCell>? cells;
 
-  GoogleCloudDocumentaiV1DocumentPageTableTableRow({this.cells});
+  GoogleCloudDocumentaiV1DocumentPageTableTableRow({
+    this.cells,
+  });
 
   GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromJson(core.Map json_)
       : this(
           cells: (json_['cells'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentPageTableTableCell.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageTableTableCell.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3690,31 +3483,24 @@ class GoogleCloudDocumentaiV1DocumentPageToken {
       : this(
           detectedBreak: json_.containsKey('detectedBreak')
               ? GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak.fromJson(
-                  json_['detectedBreak'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['detectedBreak'] as core.Map<core.String, core.dynamic>)
               : null,
           detectedLanguages: (json_['detectedLanguages'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage
-                    .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           layout: json_.containsKey('layout')
               ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['layout'] as core.Map<core.String, core.dynamic>)
               : null,
           provenance: json_.containsKey('provenance')
               ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
-                  json_['provenance'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['provenance'] as core.Map<core.String, core.dynamic>)
               : null,
           styleInfo: json_.containsKey('styleInfo')
               ? GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromJson(
-                  json_['styleInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['styleInfo'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3810,10 +3596,8 @@ class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
   GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromJson(core.Map json_)
       : this(
           backgroundColor: json_.containsKey('backgroundColor')
-              ? GoogleTypeColor.fromJson(
-                  json_['backgroundColor']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleTypeColor.fromJson(json_['backgroundColor']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           bold: json_['bold'] as core.bool?,
           fontSize: json_['fontSize'] as core.int?,
@@ -3829,8 +3613,7 @@ class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
           superscript: json_['superscript'] as core.bool?,
           textColor: json_.containsKey('textColor')
               ? GoogleTypeColor.fromJson(
-                  json_['textColor'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['textColor'] as core.Map<core.String, core.dynamic>)
               : null,
           underlined: json_['underlined'] as core.bool?,
         );
@@ -3877,17 +3660,13 @@ class GoogleCloudDocumentaiV1DocumentPageVisualElement {
   GoogleCloudDocumentaiV1DocumentPageVisualElement.fromJson(core.Map json_)
       : this(
           detectedLanguages: (json_['detectedLanguages'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage
-                    .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           layout: json_.containsKey('layout')
               ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['layout'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
         );
@@ -3950,12 +3729,9 @@ class GoogleCloudDocumentaiV1DocumentProvenance {
       : this(
           id: json_['id'] as core.int?,
           parents: (json_['parents'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentProvenanceParent.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentProvenanceParent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           revision: json_['revision'] as core.int?,
           type: json_['type'] as core.String?,
@@ -4027,8 +3803,7 @@ class GoogleCloudDocumentaiV1DocumentRevision {
           createTime: json_['createTime'] as core.String?,
           humanReview: json_.containsKey('humanReview')
               ? GoogleCloudDocumentaiV1DocumentRevisionHumanReview.fromJson(
-                  json_['humanReview'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['humanReview'] as core.Map<core.String, core.dynamic>)
               : null,
           id: json_['id'] as core.String?,
           parent: (json_['parent'] as core.List?)
@@ -4081,17 +3856,13 @@ class GoogleCloudDocumentaiV1DocumentSchema {
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           entityTypes: (json_['entityTypes'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentSchemaEntityType.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentSchemaEntityType.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           metadata: json_.containsKey('metadata')
               ? GoogleCloudDocumentaiV1DocumentSchemaMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4155,19 +3926,14 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityType {
           displayName: json_['displayName'] as core.String?,
           enumValues: json_.containsKey('enumValues')
               ? GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues
-                  .fromJson(
-                  json_['enumValues'] as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['enumValues']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           properties: (json_['properties'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty
-                        .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4185,11 +3951,13 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues {
   /// The individual values that this enum values type can include.
   core.List<core.String>? values;
 
-  GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues({this.values});
+  GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues({
+    this.values,
+  });
 
   GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           values: (json_['values'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -4237,8 +4005,8 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
   });
 
   GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           displayName: json_['displayName'] as core.String?,
           name: json_['name'] as core.String?,
           occurrenceType: json_['occurrenceType'] as core.String?,
@@ -4359,27 +4127,22 @@ class GoogleCloudDocumentaiV1DocumentStyle {
   GoogleCloudDocumentaiV1DocumentStyle.fromJson(core.Map json_)
       : this(
           backgroundColor: json_.containsKey('backgroundColor')
-              ? GoogleTypeColor.fromJson(
-                  json_['backgroundColor']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleTypeColor.fromJson(json_['backgroundColor']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           color: json_.containsKey('color')
               ? GoogleTypeColor.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['color'] as core.Map<core.String, core.dynamic>)
               : null,
           fontFamily: json_['fontFamily'] as core.String?,
           fontSize: json_.containsKey('fontSize')
               ? GoogleCloudDocumentaiV1DocumentStyleFontSize.fromJson(
-                  json_['fontSize'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['fontSize'] as core.Map<core.String, core.dynamic>)
               : null,
           fontWeight: json_['fontWeight'] as core.String?,
           textAnchor: json_.containsKey('textAnchor')
               ? GoogleCloudDocumentaiV1DocumentTextAnchor.fromJson(
-                  json_['textAnchor'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['textAnchor'] as core.Map<core.String, core.dynamic>)
               : null,
           textDecoration: json_['textDecoration'] as core.String?,
           textStyle: json_['textStyle'] as core.String?,
@@ -4412,18 +4175,18 @@ class GoogleCloudDocumentaiV1DocumentTextAnchor {
   /// The text segments from the Document.text.
   core.List<GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment>? textSegments;
 
-  GoogleCloudDocumentaiV1DocumentTextAnchor({this.content, this.textSegments});
+  GoogleCloudDocumentaiV1DocumentTextAnchor({
+    this.content,
+    this.textSegments,
+  });
 
   GoogleCloudDocumentaiV1DocumentTextAnchor.fromJson(core.Map json_)
       : this(
           content: json_['content'] as core.String?,
           textSegments: (json_['textSegments'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment
-                    .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4471,16 +4234,13 @@ class GoogleCloudDocumentaiV1DocumentTextChange {
       : this(
           changedText: json_['changedText'] as core.String?,
           provenance: (json_['provenance'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           textAnchor: json_.containsKey('textAnchor')
               ? GoogleCloudDocumentaiV1DocumentTextAnchor.fromJson(
-                  json_['textAnchor'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['textAnchor'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4508,13 +4268,12 @@ class GoogleCloudDocumentaiV1EvaluateProcessorVersionRequest {
   });
 
   GoogleCloudDocumentaiV1EvaluateProcessorVersionRequest.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           evaluationDocuments: json_.containsKey('evaluationDocuments')
               ? GoogleCloudDocumentaiV1BatchDocumentsInputConfig.fromJson(
                   json_['evaluationDocuments']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4565,17 +4324,14 @@ class GoogleCloudDocumentaiV1Evaluation {
       : this(
           allEntitiesMetrics: json_.containsKey('allEntitiesMetrics')
               ? GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics
-                  .fromJson(
-                  json_['allEntitiesMetrics']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['allEntitiesMetrics']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_['createTime'] as core.String?,
           documentCounters: json_.containsKey('documentCounters')
               ? GoogleCloudDocumentaiV1EvaluationCounters.fromJson(
                   json_['documentCounters']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           entityMetrics:
               (json_['entityMetrics'] as core.Map<core.String, core.dynamic>?)
@@ -4583,8 +4339,7 @@ class GoogleCloudDocumentaiV1Evaluation {
             (key, value) => core.MapEntry(
               key,
               GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
           kmsKeyName: json_['kmsKeyName'] as core.String?,
@@ -4618,13 +4373,12 @@ class GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics {
   });
 
   GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           confidenceLevel: (json_['confidenceLevel'] as core.num?)?.toDouble(),
           metrics: json_.containsKey('metrics')
               ? GoogleCloudDocumentaiV1EvaluationMetrics.fromJson(
-                  json_['metrics'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metrics'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4817,30 +4571,22 @@ class GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics {
   });
 
   GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           auprc: (json_['auprc'] as core.num?)?.toDouble(),
           auprcExact: (json_['auprcExact'] as core.num?)?.toDouble(),
-          confidenceLevelMetrics:
-              (json_['confidenceLevelMetrics'] as core.List?)
-                  ?.map(
-                    (value) =>
-                        GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics
-                            .fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
-                  .toList(),
-          confidenceLevelMetricsExact:
-              (json_['confidenceLevelMetricsExact'] as core.List?)
-                  ?.map(
-                    (value) =>
-                        GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics
-                            .fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
-                  .toList(),
+          confidenceLevelMetrics: (json_['confidenceLevelMetrics']
+                  as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          confidenceLevelMetricsExact: (json_['confidenceLevelMetricsExact']
+                  as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           estimatedCalibrationError:
               (json_['estimatedCalibrationError'] as core.num?)?.toDouble(),
           estimatedCalibrationErrorExact:
@@ -4890,14 +4636,12 @@ class GoogleCloudDocumentaiV1EvaluationReference {
           aggregateMetrics: json_.containsKey('aggregateMetrics')
               ? GoogleCloudDocumentaiV1EvaluationMetrics.fromJson(
                   json_['aggregateMetrics']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           aggregateMetricsExact: json_.containsKey('aggregateMetricsExact')
               ? GoogleCloudDocumentaiV1EvaluationMetrics.fromJson(
                   json_['aggregateMetricsExact']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           evaluation: json_['evaluation'] as core.String?,
           operation: json_['operation'] as core.String?,
@@ -4917,16 +4661,15 @@ class GoogleCloudDocumentaiV1FetchProcessorTypesResponse {
   /// The list of processor types.
   core.List<GoogleCloudDocumentaiV1ProcessorType>? processorTypes;
 
-  GoogleCloudDocumentaiV1FetchProcessorTypesResponse({this.processorTypes});
+  GoogleCloudDocumentaiV1FetchProcessorTypesResponse({
+    this.processorTypes,
+  });
 
   GoogleCloudDocumentaiV1FetchProcessorTypesResponse.fromJson(core.Map json_)
       : this(
           processorTypes: (json_['processorTypes'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1ProcessorType.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudDocumentaiV1ProcessorType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4943,7 +4686,10 @@ class GoogleCloudDocumentaiV1GcsDocument {
   /// An IANA MIME type (RFC6838) of the content.
   core.String? mimeType;
 
-  GoogleCloudDocumentaiV1GcsDocument({this.gcsUri, this.mimeType});
+  GoogleCloudDocumentaiV1GcsDocument({
+    this.gcsUri,
+    this.mimeType,
+  });
 
   GoogleCloudDocumentaiV1GcsDocument.fromJson(core.Map json_)
       : this(
@@ -4962,16 +4708,15 @@ class GoogleCloudDocumentaiV1GcsDocuments {
   /// The list of documents.
   core.List<GoogleCloudDocumentaiV1GcsDocument>? documents;
 
-  GoogleCloudDocumentaiV1GcsDocuments({this.documents});
+  GoogleCloudDocumentaiV1GcsDocuments({
+    this.documents,
+  });
 
   GoogleCloudDocumentaiV1GcsDocuments.fromJson(core.Map json_)
       : this(
           documents: (json_['documents'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1GcsDocument.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudDocumentaiV1GcsDocument.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4985,10 +4730,14 @@ class GoogleCloudDocumentaiV1GcsPrefix {
   /// The URI prefix.
   core.String? gcsUriPrefix;
 
-  GoogleCloudDocumentaiV1GcsPrefix({this.gcsUriPrefix});
+  GoogleCloudDocumentaiV1GcsPrefix({
+    this.gcsUriPrefix,
+  });
 
   GoogleCloudDocumentaiV1GcsPrefix.fromJson(core.Map json_)
-      : this(gcsUriPrefix: json_['gcsUriPrefix'] as core.String?);
+      : this(
+          gcsUriPrefix: json_['gcsUriPrefix'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcsUriPrefix != null) 'gcsUriPrefix': gcsUriPrefix!,
@@ -5061,11 +4810,8 @@ class GoogleCloudDocumentaiV1ListEvaluationsResponse {
   GoogleCloudDocumentaiV1ListEvaluationsResponse.fromJson(core.Map json_)
       : this(
           evaluations: (json_['evaluations'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1Evaluation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudDocumentaiV1Evaluation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -5093,11 +4839,8 @@ class GoogleCloudDocumentaiV1ListProcessorTypesResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           processorTypes: (json_['processorTypes'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1ProcessorType.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudDocumentaiV1ProcessorType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5124,11 +4867,8 @@ class GoogleCloudDocumentaiV1ListProcessorVersionsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           processorVersions: (json_['processorVersions'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1ProcessorVersion.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudDocumentaiV1ProcessorVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5155,11 +4895,8 @@ class GoogleCloudDocumentaiV1ListProcessorsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           processors: (json_['processors'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudDocumentaiV1Processor.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudDocumentaiV1Processor.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5246,14 +4983,12 @@ class GoogleCloudDocumentaiV1OcrConfig {
           enableSymbol: json_['enableSymbol'] as core.bool?,
           hints: json_.containsKey('hints')
               ? GoogleCloudDocumentaiV1OcrConfigHints.fromJson(
-                  json_['hints'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['hints'] as core.Map<core.String, core.dynamic>)
               : null,
           premiumFeatures: json_.containsKey('premiumFeatures')
               ? GoogleCloudDocumentaiV1OcrConfigPremiumFeatures.fromJson(
                   json_['premiumFeatures']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5284,7 +5019,9 @@ class GoogleCloudDocumentaiV1OcrConfigHints {
   /// (although it will be a significant hindrance if the hint is wrong).
   core.List<core.String>? languageHints;
 
-  GoogleCloudDocumentaiV1OcrConfigHints({this.languageHints});
+  GoogleCloudDocumentaiV1OcrConfigHints({
+    this.languageHints,
+  });
 
   GoogleCloudDocumentaiV1OcrConfigHints.fromJson(core.Map json_)
       : this(
@@ -5382,26 +5119,21 @@ class GoogleCloudDocumentaiV1ProcessOptions {
           fromStart: json_['fromStart'] as core.int?,
           individualPageSelector: json_.containsKey('individualPageSelector')
               ? GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector
-                  .fromJson(
-                  json_['individualPageSelector']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['individualPageSelector']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           layoutConfig: json_.containsKey('layoutConfig')
               ? GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig.fromJson(
-                  json_['layoutConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['layoutConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           ocrConfig: json_.containsKey('ocrConfig')
               ? GoogleCloudDocumentaiV1OcrConfig.fromJson(
-                  json_['ocrConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['ocrConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           schemaOverride: json_.containsKey('schemaOverride')
               ? GoogleCloudDocumentaiV1DocumentSchema.fromJson(
                   json_['schemaOverride']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5423,11 +5155,13 @@ class GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector {
   /// Optional.
   core.List<core.int>? pages;
 
-  GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector({this.pages});
+  GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector({
+    this.pages,
+  });
 
   GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           pages: (json_['pages'] as core.List?)
               ?.map((value) => value as core.int)
               .toList(),
@@ -5446,16 +5180,16 @@ class GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig {
   GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig?
       chunkingConfig;
 
-  GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig({this.chunkingConfig});
+  GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig({
+    this.chunkingConfig,
+  });
 
   GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig.fromJson(core.Map json_)
       : this(
           chunkingConfig: json_.containsKey('chunkingConfig')
               ? GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig
-                  .fromJson(
-                  json_['chunkingConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['chunkingConfig']
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5482,8 +5216,8 @@ class GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig {
   });
 
   GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           chunkSize: json_['chunkSize'] as core.int?,
           includeAncestorHeadings:
               json_['includeAncestorHeadings'] as core.bool?,
@@ -5552,30 +5286,28 @@ class GoogleCloudDocumentaiV1ProcessRequest {
           fieldMask: json_['fieldMask'] as core.String?,
           gcsDocument: json_.containsKey('gcsDocument')
               ? GoogleCloudDocumentaiV1GcsDocument.fromJson(
-                  json_['gcsDocument'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['gcsDocument'] as core.Map<core.String, core.dynamic>)
               : null,
           imagelessMode: json_['imagelessMode'] as core.bool?,
           inlineDocument: json_.containsKey('inlineDocument')
-              ? GoogleCloudDocumentaiV1Document.fromJson(
-                  json_['inlineDocument']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleCloudDocumentaiV1Document.fromJson(json_['inlineDocument']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           processOptions: json_.containsKey('processOptions')
               ? GoogleCloudDocumentaiV1ProcessOptions.fromJson(
                   json_['processOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           rawDocument: json_.containsKey('rawDocument')
               ? GoogleCloudDocumentaiV1RawDocument.fromJson(
-                  json_['rawDocument'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['rawDocument'] as core.Map<core.String, core.dynamic>)
               : null,
           skipHumanReview: json_['skipHumanReview'] as core.bool?,
         );
@@ -5610,14 +5342,12 @@ class GoogleCloudDocumentaiV1ProcessResponse {
       : this(
           document: json_.containsKey('document')
               ? GoogleCloudDocumentaiV1Document.fromJson(
-                  json_['document'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['document'] as core.Map<core.String, core.dynamic>)
               : null,
           humanReviewStatus: json_.containsKey('humanReviewStatus')
               ? GoogleCloudDocumentaiV1HumanReviewStatus.fromJson(
                   json_['humanReviewStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5728,12 +5458,9 @@ class GoogleCloudDocumentaiV1Processor {
           processEndpoint: json_['processEndpoint'] as core.String?,
           processorVersionAliases:
               (json_['processorVersionAliases'] as core.List?)
-                  ?.map(
-                    (value) =>
-                        GoogleCloudDocumentaiV1ProcessorVersionAlias.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) =>
+                      GoogleCloudDocumentaiV1ProcessorVersionAlias.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList(),
           satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
           satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
@@ -5834,12 +5561,9 @@ class GoogleCloudDocumentaiV1ProcessorType {
       : this(
           allowCreation: json_['allowCreation'] as core.bool?,
           availableLocations: (json_['availableLocations'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudDocumentaiV1ProcessorTypeLocationInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1ProcessorTypeLocationInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           category: json_['category'] as core.String?,
           launchStage: json_['launchStage'] as core.String?,
@@ -5871,10 +5595,14 @@ class GoogleCloudDocumentaiV1ProcessorTypeLocationInfo {
   /// support\](/document-ai/docs/regions).
   core.String? locationId;
 
-  GoogleCloudDocumentaiV1ProcessorTypeLocationInfo({this.locationId});
+  GoogleCloudDocumentaiV1ProcessorTypeLocationInfo({
+    this.locationId,
+  });
 
   GoogleCloudDocumentaiV1ProcessorTypeLocationInfo.fromJson(core.Map json_)
-      : this(locationId: json_['locationId'] as core.String?);
+      : this(
+          locationId: json_['locationId'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (locationId != null) 'locationId': locationId!,
@@ -5988,21 +5716,18 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
           deprecationInfo: json_.containsKey('deprecationInfo')
               ? GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo.fromJson(
                   json_['deprecationInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           displayName: json_['displayName'] as core.String?,
           documentSchema: json_.containsKey('documentSchema')
               ? GoogleCloudDocumentaiV1DocumentSchema.fromJson(
                   json_['documentSchema']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           genAiModelInfo: json_.containsKey('genAiModelInfo')
               ? GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo.fromJson(
                   json_['genAiModelInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           googleManaged: json_['googleManaged'] as core.bool?,
           kmsKeyName: json_['kmsKeyName'] as core.String?,
@@ -6010,8 +5735,7 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
           latestEvaluation: json_.containsKey('latestEvaluation')
               ? GoogleCloudDocumentaiV1EvaluationReference.fromJson(
                   json_['latestEvaluation']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           modelType: json_['modelType'] as core.String?,
           name: json_['name'] as core.String?,
@@ -6077,8 +5801,8 @@ class GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo {
   });
 
   GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           deprecationTime: json_['deprecationTime'] as core.String?,
           replacementProcessorVersion:
               json_['replacementProcessorVersion'] as core.String?,
@@ -6110,18 +5834,14 @@ class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo {
       : this(
           customGenAiModelInfo: json_.containsKey('customGenAiModelInfo')
               ? GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo
-                  .fromJson(
-                  json_['customGenAiModelInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['customGenAiModelInfo']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           foundationGenAiModelInfo: json_
                   .containsKey('foundationGenAiModelInfo')
               ? GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo
-                  .fromJson(
-                  json_['foundationGenAiModelInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['foundationGenAiModelInfo']
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6154,8 +5874,8 @@ class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo 
   });
 
   GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           baseProcessorVersionId:
               json_['baseProcessorVersionId'] as core.String?,
           customModelType: json_['customModelType'] as core.String?,
@@ -6183,8 +5903,8 @@ class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelI
   });
 
   GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           finetuningAllowed: json_['finetuningAllowed'] as core.bool?,
           minTrainLabeledDocuments:
               json_['minTrainLabeledDocuments'] as core.int?,
@@ -6270,15 +5990,12 @@ class GoogleCloudDocumentaiV1ReviewDocumentRequest {
           documentSchema: json_.containsKey('documentSchema')
               ? GoogleCloudDocumentaiV1DocumentSchema.fromJson(
                   json_['documentSchema']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           enableSchemaValidation: json_['enableSchemaValidation'] as core.bool?,
           inlineDocument: json_.containsKey('inlineDocument')
-              ? GoogleCloudDocumentaiV1Document.fromJson(
-                  json_['inlineDocument']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleCloudDocumentaiV1Document.fromJson(json_['inlineDocument']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           priority: json_['priority'] as core.String?,
         );
@@ -6307,8 +6024,8 @@ class GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest {
   });
 
   GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           defaultProcessorVersion:
               json_['defaultProcessorVersion'] as core.String?,
         );
@@ -6367,36 +6084,29 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequest {
           customDocumentExtractionOptions: json_
                   .containsKey('customDocumentExtractionOptions')
               ? GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions
-                  .fromJson(
-                  json_['customDocumentExtractionOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['customDocumentExtractionOptions']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           documentSchema: json_.containsKey('documentSchema')
               ? GoogleCloudDocumentaiV1DocumentSchema.fromJson(
                   json_['documentSchema']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           foundationModelTuningOptions: json_
                   .containsKey('foundationModelTuningOptions')
               ? GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions
-                  .fromJson(
-                  json_['foundationModelTuningOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['foundationModelTuningOptions']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           inputData: json_.containsKey('inputData')
               ? GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData
                   .fromJson(
-                  json_['inputData'] as core.Map<core.String, core.dynamic>,
-                )
+                      json_['inputData'] as core.Map<core.String, core.dynamic>)
               : null,
           processorVersion: json_.containsKey('processorVersion')
               ? GoogleCloudDocumentaiV1ProcessorVersion.fromJson(
                   json_['processorVersion']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6428,8 +6138,10 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractio
   });
 
   GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions.fromJson(
-    core.Map json_,
-  ) : this(trainingMethod: json_['trainingMethod'] as core.String?);
+      core.Map json_)
+      : this(
+          trainingMethod: json_['trainingMethod'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (trainingMethod != null) 'trainingMethod': trainingMethod!,
@@ -6460,8 +6172,8 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOp
   });
 
   GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           learningRateMultiplier:
               (json_['learningRateMultiplier'] as core.num?)?.toDouble(),
           trainSteps: json_['trainSteps'] as core.int?,
@@ -6488,18 +6200,16 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData {
   });
 
   GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           testDocuments: json_.containsKey('testDocuments')
               ? GoogleCloudDocumentaiV1BatchDocumentsInputConfig.fromJson(
-                  json_['testDocuments'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['testDocuments'] as core.Map<core.String, core.dynamic>)
               : null,
           trainingDocuments: json_.containsKey('trainingDocuments')
               ? GoogleCloudDocumentaiV1BatchDocumentsInputConfig.fromJson(
                   json_['trainingDocuments']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6533,11 +6243,8 @@ class GoogleCloudLocationListLocationsResponse {
   GoogleCloudLocationListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudLocationLocation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudLocationLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -6568,11 +6275,8 @@ class GoogleLongrunningListOperationsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map(
-                (value) => GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -6638,8 +6342,7 @@ class GoogleLongrunningOperation {
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -6839,8 +6542,7 @@ class GoogleTypeDateTime {
           seconds: json_['seconds'] as core.int?,
           timeZone: json_.containsKey('timeZone')
               ? GoogleTypeTimeZone.fromJson(
-                  json_['timeZone'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['timeZone'] as core.Map<core.String, core.dynamic>)
               : null,
           utcOffset: json_['utcOffset'] as core.String?,
           year: json_['year'] as core.int?,

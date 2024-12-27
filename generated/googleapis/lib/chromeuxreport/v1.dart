@@ -45,16 +45,11 @@ class ChromeUXReportApi {
 
   RecordsResource get records => RecordsResource(_requester);
 
-  ChromeUXReportApi(
-    http.Client client, {
-    core.String rootUrl = 'https://chromeuxreport.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  ChromeUXReportApi(http.Client client,
+      {core.String rootUrl = 'https://chromeuxreport.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class RecordsResource {
@@ -100,8 +95,7 @@ class RecordsResource {
       queryParams: queryParams_,
     );
     return QueryHistoryResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Queries the Chrome User Experience for a single `record` for a given site.
@@ -141,8 +135,7 @@ class RecordsResource {
       queryParams: queryParams_,
     );
     return QueryResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -178,13 +171,18 @@ class Bin {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? start;
 
-  Bin({this.density, this.end, this.start});
+  Bin({
+    this.density,
+    this.end,
+    this.start,
+  });
 
   Bin.fromJson(core.Map json_)
       : this(
-            density: json_['density'],
-            end: json_['end'],
-            start: json_['start']);
+          density: json_['density'],
+          end: json_['end'],
+          start: json_['start'],
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (density != null) 'density': density!,
@@ -202,19 +200,20 @@ class CollectionPeriod {
   /// The last day in the collection period, inclusive.
   Date? lastDate;
 
-  CollectionPeriod({this.firstDate, this.lastDate});
+  CollectionPeriod({
+    this.firstDate,
+    this.lastDate,
+  });
 
   CollectionPeriod.fromJson(core.Map json_)
       : this(
           firstDate: json_.containsKey('firstDate')
               ? Date.fromJson(
-                  json_['firstDate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['firstDate'] as core.Map<core.String, core.dynamic>)
               : null,
           lastDate: json_.containsKey('lastDate')
               ? Date.fromJson(
-                  json_['lastDate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['lastDate'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -243,7 +242,9 @@ class FractionTimeseries {
   /// Values between 0.0 and 1.0 (inclusive) and NaN.
   core.List<core.double>? fractions;
 
-  FractionTimeseries({this.fractions});
+  FractionTimeseries({
+    this.fractions,
+  });
 
   FractionTimeseries.fromJson(core.Map json_)
       : this(
@@ -285,7 +286,11 @@ class HistoryKey {
   /// specifying a "url" only data for that specific url will be aggregated.
   core.String? url;
 
-  HistoryKey({this.formFactor, this.origin, this.url});
+  HistoryKey({
+    this.formFactor,
+    this.origin,
+    this.url,
+  });
 
   HistoryKey.fromJson(core.Map json_)
       : this(
@@ -328,29 +333,28 @@ class HistoryRecord {
   /// "experimental_interaction_to_next_paint"\]
   core.Map<core.String, MetricTimeseries>? metrics;
 
-  HistoryRecord({this.collectionPeriods, this.key, this.metrics});
+  HistoryRecord({
+    this.collectionPeriods,
+    this.key,
+    this.metrics,
+  });
 
   HistoryRecord.fromJson(core.Map json_)
       : this(
           collectionPeriods: (json_['collectionPeriods'] as core.List?)
-              ?.map(
-                (value) => CollectionPeriod.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CollectionPeriod.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           key: json_.containsKey('key')
               ? HistoryKey.fromJson(
-                  json_['key'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['key'] as core.Map<core.String, core.dynamic>)
               : null,
           metrics:
               (json_['metrics'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
               key,
               MetricTimeseries.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
         );
@@ -398,7 +402,12 @@ class Key {
   /// aggregated.
   core.String? url;
 
-  Key({this.effectiveConnectionType, this.formFactor, this.origin, this.url});
+  Key({
+    this.effectiveConnectionType,
+    this.formFactor,
+    this.origin,
+    this.url,
+  });
 
   Key.fromJson(core.Map json_)
       : this(
@@ -439,25 +448,28 @@ class Metric {
   /// given for the Histogram bins.
   Percentiles? percentiles;
 
-  Metric({this.fractions, this.histogram, this.percentiles});
+  Metric({
+    this.fractions,
+    this.histogram,
+    this.percentiles,
+  });
 
   Metric.fromJson(core.Map json_)
       : this(
           fractions:
               (json_['fractions'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, (value as core.num).toDouble()),
+            (key, value) => core.MapEntry(
+              key,
+              (value as core.num).toDouble(),
+            ),
           ),
           histogram: (json_['histogram'] as core.List?)
-              ?.map(
-                (value) => Bin.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Bin.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           percentiles: json_.containsKey('percentiles')
               ? Percentiles.fromJson(
-                  json_['percentiles'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['percentiles'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -503,22 +515,16 @@ class MetricTimeseries {
             (key, value) => core.MapEntry(
               key,
               FractionTimeseries.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
           histogramTimeseries: (json_['histogramTimeseries'] as core.List?)
-              ?.map(
-                (value) => TimeseriesBin.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => TimeseriesBin.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           percentilesTimeseries: json_.containsKey('percentilesTimeseries')
-              ? TimeseriesPercentiles.fromJson(
-                  json_['percentilesTimeseries']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? TimeseriesPercentiles.fromJson(json_['percentilesTimeseries']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -544,9 +550,14 @@ class Percentiles {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? p75;
 
-  Percentiles({this.p75});
+  Percentiles({
+    this.p75,
+  });
 
-  Percentiles.fromJson(core.Map json_) : this(p75: json_['p75']);
+  Percentiles.fromJson(core.Map json_)
+      : this(
+          p75: json_['p75'],
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (p75 != null) 'p75': p75!,
@@ -592,7 +603,12 @@ class QueryHistoryRequest {
   /// "https://cloud.google.com/why-google-cloud/"
   core.String? url;
 
-  QueryHistoryRequest({this.formFactor, this.metrics, this.origin, this.url});
+  QueryHistoryRequest({
+    this.formFactor,
+    this.metrics,
+    this.origin,
+    this.url,
+  });
 
   QueryHistoryRequest.fromJson(core.Map json_)
       : this(
@@ -626,20 +642,20 @@ class QueryHistoryResponse {
   /// order to make the requested `url_pattern` valid.
   UrlNormalization? urlNormalizationDetails;
 
-  QueryHistoryResponse({this.record, this.urlNormalizationDetails});
+  QueryHistoryResponse({
+    this.record,
+    this.urlNormalizationDetails,
+  });
 
   QueryHistoryResponse.fromJson(core.Map json_)
       : this(
           record: json_.containsKey('record')
               ? HistoryRecord.fromJson(
-                  json_['record'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['record'] as core.Map<core.String, core.dynamic>)
               : null,
           urlNormalizationDetails: json_.containsKey('urlNormalizationDetails')
-              ? UrlNormalization.fromJson(
-                  json_['urlNormalizationDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? UrlNormalization.fromJson(json_['urlNormalizationDetails']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -742,20 +758,20 @@ class QueryResponse {
   /// order to make the requested `url_pattern` valid.
   UrlNormalization? urlNormalizationDetails;
 
-  QueryResponse({this.record, this.urlNormalizationDetails});
+  QueryResponse({
+    this.record,
+    this.urlNormalizationDetails,
+  });
 
   QueryResponse.fromJson(core.Map json_)
       : this(
           record: json_.containsKey('record')
               ? Record.fromJson(
-                  json_['record'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['record'] as core.Map<core.String, core.dynamic>)
               : null,
           urlNormalizationDetails: json_.containsKey('urlNormalizationDetails')
-              ? UrlNormalization.fromJson(
-                  json_['urlNormalizationDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? UrlNormalization.fromJson(json_['urlNormalizationDetails']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -789,20 +805,21 @@ class Record {
   /// "experimental_interaction_to_next_paint"\]
   core.Map<core.String, Metric>? metrics;
 
-  Record({this.collectionPeriod, this.key, this.metrics});
+  Record({
+    this.collectionPeriod,
+    this.key,
+    this.metrics,
+  });
 
   Record.fromJson(core.Map json_)
       : this(
           collectionPeriod: json_.containsKey('collectionPeriod')
-              ? CollectionPeriod.fromJson(
-                  json_['collectionPeriod']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CollectionPeriod.fromJson(json_['collectionPeriod']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           key: json_.containsKey('key')
               ? Key.fromJson(
-                  json_['key'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['key'] as core.Map<core.String, core.dynamic>)
               : null,
           metrics:
               (json_['metrics'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -855,7 +872,11 @@ class TimeseriesBin {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? start;
 
-  TimeseriesBin({this.densities, this.end, this.start});
+  TimeseriesBin({
+    this.densities,
+    this.end,
+    this.start,
+  });
 
   TimeseriesBin.fromJson(core.Map json_)
       : this(
@@ -889,12 +910,14 @@ class TimeseriesPercentiles {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object?>? p75s;
 
-  TimeseriesPercentiles({this.p75s});
+  TimeseriesPercentiles({
+    this.p75s,
+  });
 
   TimeseriesPercentiles.fromJson(core.Map json_)
       : this(
-            p75s:
-                json_.containsKey('p75s') ? json_['p75s'] as core.List : null);
+          p75s: json_.containsKey('p75s') ? json_['p75s'] as core.List : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (p75s != null) 'p75s': p75s!,
@@ -916,7 +939,10 @@ class UrlNormalization {
   /// The original requested URL prior to any normalization actions.
   core.String? originalUrl;
 
-  UrlNormalization({this.normalizedUrl, this.originalUrl});
+  UrlNormalization({
+    this.normalizedUrl,
+    this.originalUrl,
+  });
 
   UrlNormalization.fromJson(core.Map json_)
       : this(

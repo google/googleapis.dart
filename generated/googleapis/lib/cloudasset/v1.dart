@@ -61,16 +61,11 @@ class CloudAssetApi {
   SavedQueriesResource get savedQueries => SavedQueriesResource(_requester);
   V1Resource get v1 => V1Resource(_requester);
 
-  CloudAssetApi(
-    http.Client client, {
-    core.String rootUrl = 'https://cloudasset.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  CloudAssetApi(http.Client client,
+      {core.String rootUrl = 'https://cloudasset.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class AssetsResource {
@@ -181,8 +176,7 @@ class AssetsResource {
       queryParams: queryParams_,
     );
     return ListAssetsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -242,8 +236,7 @@ class EffectiveIamPoliciesResource {
       queryParams: queryParams_,
     );
     return BatchGetEffectiveIamPoliciesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -316,7 +309,10 @@ class FeedsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -350,7 +346,10 @@ class FeedsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Feed> get(core.String name, {core.String? $fields}) async {
+  async.Future<Feed> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -401,8 +400,7 @@ class FeedsResource {
       queryParams: queryParams_,
     );
     return ListFeedsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an asset feed configuration.
@@ -476,7 +474,10 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -548,8 +549,7 @@ class SavedQueriesResource {
       queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a saved query.
@@ -572,7 +572,10 @@ class SavedQueriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -607,7 +610,10 @@ class SavedQueriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SavedQuery> get(core.String name, {core.String? $fields}) async {
+  async.Future<SavedQuery> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -620,8 +626,7 @@ class SavedQueriesResource {
       queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all saved queries in a parent project/folder/organization.
@@ -683,8 +688,7 @@ class SavedQueriesResource {
       queryParams: queryParams_,
     );
     return ListSavedQueriesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a saved query.
@@ -732,8 +736,7 @@ class SavedQueriesResource {
       queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -906,39 +909,39 @@ class V1Resource {
             analysisQuery_accessSelector_roles,
       if (analysisQuery_conditionContext_accessTime != null)
         'analysisQuery.conditionContext.accessTime': [
-          analysisQuery_conditionContext_accessTime,
+          analysisQuery_conditionContext_accessTime
         ],
       if (analysisQuery_identitySelector_identity != null)
         'analysisQuery.identitySelector.identity': [
-          analysisQuery_identitySelector_identity,
+          analysisQuery_identitySelector_identity
         ],
       if (analysisQuery_options_analyzeServiceAccountImpersonation != null)
         'analysisQuery.options.analyzeServiceAccountImpersonation': [
-          '${analysisQuery_options_analyzeServiceAccountImpersonation}',
+          '${analysisQuery_options_analyzeServiceAccountImpersonation}'
         ],
       if (analysisQuery_options_expandGroups != null)
         'analysisQuery.options.expandGroups': [
-          '${analysisQuery_options_expandGroups}',
+          '${analysisQuery_options_expandGroups}'
         ],
       if (analysisQuery_options_expandResources != null)
         'analysisQuery.options.expandResources': [
-          '${analysisQuery_options_expandResources}',
+          '${analysisQuery_options_expandResources}'
         ],
       if (analysisQuery_options_expandRoles != null)
         'analysisQuery.options.expandRoles': [
-          '${analysisQuery_options_expandRoles}',
+          '${analysisQuery_options_expandRoles}'
         ],
       if (analysisQuery_options_outputGroupEdges != null)
         'analysisQuery.options.outputGroupEdges': [
-          '${analysisQuery_options_outputGroupEdges}',
+          '${analysisQuery_options_outputGroupEdges}'
         ],
       if (analysisQuery_options_outputResourceEdges != null)
         'analysisQuery.options.outputResourceEdges': [
-          '${analysisQuery_options_outputResourceEdges}',
+          '${analysisQuery_options_outputResourceEdges}'
         ],
       if (analysisQuery_resourceSelector_fullResourceName != null)
         'analysisQuery.resourceSelector.fullResourceName': [
-          analysisQuery_resourceSelector_fullResourceName,
+          analysisQuery_resourceSelector_fullResourceName
         ],
       if (executionTimeout != null) 'executionTimeout': [executionTimeout],
       if (savedAnalysisQuery != null)
@@ -954,8 +957,7 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return AnalyzeIamPolicyResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Analyzes IAM policies asynchronously to answer which identities have what
@@ -1078,8 +1080,7 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return AnalyzeMoveResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Analyzes organization policies under a scope.
@@ -1144,8 +1145,7 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return AnalyzeOrgPoliciesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Analyzes organization policies governed assets (Google Cloud resources or
@@ -1273,8 +1273,7 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return AnalyzeOrgPolicyGovernedAssetsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Analyzes organization policies governed containers (projects, folders or
@@ -1345,8 +1344,7 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return AnalyzeOrgPolicyGovernedContainersResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Batch gets the update history of assets that overlap a time window.
@@ -1439,8 +1437,7 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return BatchGetAssetsHistoryResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Exports assets with time and resource types to a given Cloud Storage
@@ -1547,8 +1544,7 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return QueryAssetsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Searches all IAM policies within the specified scope, such as a project,
@@ -1673,8 +1669,7 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return SearchAllIamPoliciesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Searches all Google Cloud resources within the specified scope, such as a
@@ -1843,8 +1838,7 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return SearchAllResourcesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1865,7 +1859,10 @@ class AccessSelector {
   /// Optional.
   core.List<core.String>? roles;
 
-  AccessSelector({this.permissions, this.roles});
+  AccessSelector({
+    this.permissions,
+    this.roles,
+  });
 
   AccessSelector.fromJson(core.Map json_)
       : this(
@@ -1922,13 +1919,11 @@ class AnalyzeIamPolicyLongrunningRequest {
       : this(
           analysisQuery: json_.containsKey('analysisQuery')
               ? IamPolicyAnalysisQuery.fromJson(
-                  json_['analysisQuery'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['analysisQuery'] as core.Map<core.String, core.dynamic>)
               : null,
           outputConfig: json_.containsKey('outputConfig')
               ? IamPolicyAnalysisOutputConfig.fromJson(
-                  json_['outputConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           savedAnalysisQuery: json_['savedAnalysisQuery'] as core.String?,
         );
@@ -1967,16 +1962,12 @@ class AnalyzeIamPolicyResponse {
           fullyExplored: json_['fullyExplored'] as core.bool?,
           mainAnalysis: json_.containsKey('mainAnalysis')
               ? IamPolicyAnalysis.fromJson(
-                  json_['mainAnalysis'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['mainAnalysis'] as core.Map<core.String, core.dynamic>)
               : null,
           serviceAccountImpersonationAnalysis:
               (json_['serviceAccountImpersonationAnalysis'] as core.List?)
-                  ?.map(
-                    (value) => IamPolicyAnalysis.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => IamPolicyAnalysis.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
         );
 
@@ -1997,16 +1988,15 @@ class AnalyzeMoveResponse {
   /// The analysis is grouped by different Google Cloud services.
   core.List<MoveAnalysis>? moveAnalysis;
 
-  AnalyzeMoveResponse({this.moveAnalysis});
+  AnalyzeMoveResponse({
+    this.moveAnalysis,
+  });
 
   AnalyzeMoveResponse.fromJson(core.Map json_)
       : this(
           moveAnalysis: (json_['moveAnalysis'] as core.List?)
-              ?.map(
-                (value) => MoveAnalysis.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => MoveAnalysis.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2038,16 +2028,12 @@ class AnalyzeOrgPoliciesResponse {
       : this(
           constraint: json_.containsKey('constraint')
               ? AnalyzerOrgPolicyConstraint.fromJson(
-                  json_['constraint'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['constraint'] as core.Map<core.String, core.dynamic>)
               : null,
           nextPageToken: json_['nextPageToken'] as core.String?,
           orgPolicyResults: (json_['orgPolicyResults'] as core.List?)
-              ?.map(
-                (value) => OrgPolicyResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => OrgPolicyResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2082,17 +2068,12 @@ class AnalyzeOrgPolicyGovernedAssetsResponse {
       : this(
           constraint: json_.containsKey('constraint')
               ? AnalyzerOrgPolicyConstraint.fromJson(
-                  json_['constraint'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['constraint'] as core.Map<core.String, core.dynamic>)
               : null,
           governedAssets: (json_['governedAssets'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset
-                        .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2126,15 +2107,11 @@ class AnalyzeOrgPolicyGovernedContainersResponse {
       : this(
           constraint: json_.containsKey('constraint')
               ? AnalyzerOrgPolicyConstraint.fromJson(
-                  json_['constraint'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['constraint'] as core.Map<core.String, core.dynamic>)
               : null,
           governedContainers: (json_['governedContainers'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudAssetV1GovernedContainer.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudAssetV1GovernedContainer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2205,11 +2182,8 @@ class AnalyzerOrgPolicy {
           inheritFromParent: json_['inheritFromParent'] as core.bool?,
           reset: json_['reset'] as core.bool?,
           rules: (json_['rules'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudAssetV1Rule.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudAssetV1Rule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2240,14 +2214,12 @@ class AnalyzerOrgPolicyConstraint {
           customConstraint: json_.containsKey('customConstraint')
               ? GoogleCloudAssetV1CustomConstraint.fromJson(
                   json_['customConstraint']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           googleDefinedConstraint: json_.containsKey('googleDefinedConstraint')
               ? GoogleCloudAssetV1Constraint.fromJson(
                   json_['googleDefinedConstraint']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2375,13 +2347,11 @@ class Asset {
       : this(
           accessLevel: json_.containsKey('accessLevel')
               ? GoogleIdentityAccesscontextmanagerV1AccessLevel.fromJson(
-                  json_['accessLevel'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['accessLevel'] as core.Map<core.String, core.dynamic>)
               : null,
           accessPolicy: json_.containsKey('accessPolicy')
               ? GoogleIdentityAccesscontextmanagerV1AccessPolicy.fromJson(
-                  json_['accessPolicy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['accessPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
           ancestors: (json_['ancestors'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2389,42 +2359,33 @@ class Asset {
           assetType: json_['assetType'] as core.String?,
           iamPolicy: json_.containsKey('iamPolicy')
               ? Policy.fromJson(
-                  json_['iamPolicy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['iamPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           orgPolicy: (json_['orgPolicy'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudOrgpolicyV1Policy.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudOrgpolicyV1Policy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           osInventory: json_.containsKey('osInventory')
               ? Inventory.fromJson(
-                  json_['osInventory'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['osInventory'] as core.Map<core.String, core.dynamic>)
               : null,
           relatedAsset: json_.containsKey('relatedAsset')
               ? RelatedAsset.fromJson(
-                  json_['relatedAsset'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['relatedAsset'] as core.Map<core.String, core.dynamic>)
               : null,
           relatedAssets: json_.containsKey('relatedAssets')
               ? RelatedAssets.fromJson(
-                  json_['relatedAssets'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['relatedAssets'] as core.Map<core.String, core.dynamic>)
               : null,
           resource: json_.containsKey('resource')
               ? Resource.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['resource'] as core.Map<core.String, core.dynamic>)
               : null,
           servicePerimeter: json_.containsKey('servicePerimeter')
               ? GoogleIdentityAccesscontextmanagerV1ServicePerimeter.fromJson(
                   json_['servicePerimeter']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -2454,15 +2415,15 @@ class AssetEnrichment {
   /// role in the resource's IAM Policy.
   ResourceOwners? resourceOwners;
 
-  AssetEnrichment({this.resourceOwners});
+  AssetEnrichment({
+    this.resourceOwners,
+  });
 
   AssetEnrichment.fromJson(core.Map json_)
       : this(
           resourceOwners: json_.containsKey('resourceOwners')
-              ? ResourceOwners.fromJson(
-                  json_['resourceOwners']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ResourceOwners.fromJson(json_['resourceOwners']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2489,17 +2450,17 @@ class AttachedResource {
   /// resource representations during version migration.
   core.List<VersionedResource>? versionedResources;
 
-  AttachedResource({this.assetType, this.versionedResources});
+  AttachedResource({
+    this.assetType,
+    this.versionedResources,
+  });
 
   AttachedResource.fromJson(core.Map json_)
       : this(
           assetType: json_['assetType'] as core.String?,
           versionedResources: (json_['versionedResources'] as core.List?)
-              ?.map(
-                (value) => VersionedResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => VersionedResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2537,16 +2498,16 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({this.auditLogConfigs, this.service});
+  AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
 
   AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map(
-                (value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -2570,16 +2531,15 @@ class BatchGetAssetsHistoryResponse {
   /// A list of assets with valid time windows.
   core.List<TemporalAsset>? assets;
 
-  BatchGetAssetsHistoryResponse({this.assets});
+  BatchGetAssetsHistoryResponse({
+    this.assets,
+  });
 
   BatchGetAssetsHistoryResponse.fromJson(core.Map json_)
       : this(
           assets: (json_['assets'] as core.List?)
-              ?.map(
-                (value) => TemporalAsset.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => TemporalAsset.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2598,16 +2558,15 @@ class BatchGetEffectiveIamPoliciesResponse {
   /// empty EffectiveIamPolicy.policies.
   core.List<EffectiveIamPolicy>? policyResults;
 
-  BatchGetEffectiveIamPoliciesResponse({this.policyResults});
+  BatchGetEffectiveIamPoliciesResponse({
+    this.policyResults,
+  });
 
   BatchGetEffectiveIamPoliciesResponse.fromJson(core.Map json_)
       : this(
           policyResults: (json_['policyResults'] as core.List?)
-              ?.map(
-                (value) => EffectiveIamPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => EffectiveIamPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2704,8 +2663,7 @@ class BigQueryDestination {
           force: json_['force'] as core.bool?,
           partitionSpec: json_.containsKey('partitionSpec')
               ? PartitionSpec.fromJson(
-                  json_['partitionSpec'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['partitionSpec'] as core.Map<core.String, core.dynamic>)
               : null,
           separateTablesPerAssetType:
               json_['separateTablesPerAssetType'] as core.bool?,
@@ -2802,14 +2760,17 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({this.condition, this.members, this.role});
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2832,10 +2793,14 @@ class ConditionContext {
   /// an INVALID_ARGUMENT error will be returned.
   core.String? accessTime;
 
-  ConditionContext({this.accessTime});
+  ConditionContext({
+    this.accessTime,
+  });
 
   ConditionContext.fromJson(core.Map json_)
-      : this(accessTime: json_['accessTime'] as core.String?);
+      : this(
+          accessTime: json_['accessTime'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessTime != null) 'accessTime': accessTime!,
@@ -2854,10 +2819,14 @@ class ConditionEvaluation {
   /// values or have not been supported by Policy Analyzer yet.
   core.String? evaluationValue;
 
-  ConditionEvaluation({this.evaluationValue});
+  ConditionEvaluation({
+    this.evaluationValue,
+  });
 
   ConditionEvaluation.fromJson(core.Map json_)
-      : this(evaluationValue: json_['evaluationValue'] as core.String?);
+      : this(
+          evaluationValue: json_['evaluationValue'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (evaluationValue != null) 'evaluationValue': evaluationValue!,
@@ -2881,14 +2850,16 @@ class CreateFeedRequest {
   /// Required.
   core.String? feedId;
 
-  CreateFeedRequest({this.feed, this.feedId});
+  CreateFeedRequest({
+    this.feed,
+    this.feedId,
+  });
 
   CreateFeedRequest.fromJson(core.Map json_)
       : this(
           feed: json_.containsKey('feed')
               ? Feed.fromJson(
-                  json_['feed'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['feed'] as core.Map<core.String, core.dynamic>)
               : null,
           feedId: json_['feedId'] as core.String?,
         );
@@ -2933,17 +2904,17 @@ class EffectiveIamPolicy {
   /// policies\[i+1\]'s PolicyInfo.attached_resource, if policies\[i+1\] exists.
   core.List<PolicyInfo>? policies;
 
-  EffectiveIamPolicy({this.fullResourceName, this.policies});
+  EffectiveIamPolicy({
+    this.fullResourceName,
+    this.policies,
+  });
 
   EffectiveIamPolicy.fromJson(core.Map json_)
       : this(
           fullResourceName: json_['fullResourceName'] as core.String?,
           policies: (json_['policies'] as core.List?)
-              ?.map(
-                (value) => PolicyInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PolicyInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2972,17 +2943,17 @@ class EffectiveTagDetails {
   /// [tag inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#inheritance).
   core.List<Tag>? effectiveTags;
 
-  EffectiveTagDetails({this.attachedResource, this.effectiveTags});
+  EffectiveTagDetails({
+    this.attachedResource,
+    this.effectiveTags,
+  });
 
   EffectiveTagDetails.fromJson(core.Map json_)
       : this(
           attachedResource: json_['attachedResource'] as core.String?,
           effectiveTags: (json_['effectiveTags'] as core.List?)
-              ?.map(
-                (value) => Tag.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Tag.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3012,7 +2983,9 @@ class Explanation {
   /// requests with permission queries.
   core.Map<core.String, Permissions>? matchedPermissions;
 
-  Explanation({this.matchedPermissions});
+  Explanation({
+    this.matchedPermissions,
+  });
 
   Explanation.fromJson(core.Map json_)
       : this(
@@ -3022,8 +2995,7 @@ class Explanation {
             (key, value) => core.MapEntry(
               key,
               Permissions.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
         );
@@ -3111,8 +3083,7 @@ class ExportAssetsRequest {
           contentType: json_['contentType'] as core.String?,
           outputConfig: json_.containsKey('outputConfig')
               ? OutputConfig.fromJson(
-                  json_['outputConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           readTime: json_['readTime'] as core.String?,
           relationshipTypes: (json_['relationshipTypes'] as core.List?)
@@ -3252,15 +3223,12 @@ class Feed {
               .toList(),
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           contentType: json_['contentType'] as core.String?,
           feedOutputConfig: json_.containsKey('feedOutputConfig')
-              ? FeedOutputConfig.fromJson(
-                  json_['feedOutputConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? FeedOutputConfig.fromJson(json_['feedOutputConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           relationshipTypes: (json_['relationshipTypes'] as core.List?)
@@ -3284,15 +3252,15 @@ class FeedOutputConfig {
   /// Destination on Pub/Sub.
   PubsubDestination? pubsubDestination;
 
-  FeedOutputConfig({this.pubsubDestination});
+  FeedOutputConfig({
+    this.pubsubDestination,
+  });
 
   FeedOutputConfig.fromJson(core.Map json_)
       : this(
           pubsubDestination: json_.containsKey('pubsubDestination')
-              ? PubsubDestination.fromJson(
-                  json_['pubsubDestination']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? PubsubDestination.fromJson(json_['pubsubDestination']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3325,7 +3293,10 @@ class GcsDestination {
   /// name "gs://bucket_name/object_name_prefix" already exists.
   core.String? uriPrefix;
 
-  GcsDestination({this.uri, this.uriPrefix});
+  GcsDestination({
+    this.uri,
+    this.uriPrefix,
+  });
 
   GcsDestination.fromJson(core.Map json_)
       : this(
@@ -3350,14 +3321,17 @@ class GoogleCloudAssetV1Access {
   /// The role.
   core.String? role;
 
-  GoogleCloudAssetV1Access({this.analysisState, this.permission, this.role});
+  GoogleCloudAssetV1Access({
+    this.analysisState,
+    this.permission,
+    this.role,
+  });
 
   GoogleCloudAssetV1Access.fromJson(core.Map json_)
       : this(
           analysisState: json_.containsKey('analysisState')
               ? IamPolicyAnalysisState.fromJson(
-                  json_['analysisState'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['analysisState'] as core.Map<core.String, core.dynamic>)
               : null,
           permission: json_['permission'] as core.String?,
           role: json_['role'] as core.String?,
@@ -3415,31 +3389,20 @@ class GoogleCloudAssetV1AccessControlList {
   GoogleCloudAssetV1AccessControlList.fromJson(core.Map json_)
       : this(
           accesses: (json_['accesses'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudAssetV1Access.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudAssetV1Access.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           conditionEvaluation: json_.containsKey('conditionEvaluation')
-              ? ConditionEvaluation.fromJson(
-                  json_['conditionEvaluation']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ConditionEvaluation.fromJson(json_['conditionEvaluation']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           resourceEdges: (json_['resourceEdges'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudAssetV1Edge.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudAssetV1Edge.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           resources: (json_['resources'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudAssetV1Resource.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudAssetV1Resource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3490,34 +3453,25 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset {
   });
 
   GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           consolidatedPolicy: json_.containsKey('consolidatedPolicy')
-              ? AnalyzerOrgPolicy.fromJson(
-                  json_['consolidatedPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AnalyzerOrgPolicy.fromJson(json_['consolidatedPolicy']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           governedIamPolicy: json_.containsKey('governedIamPolicy')
               ? GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy
-                  .fromJson(
-                  json_['governedIamPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['governedIamPolicy']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           governedResource: json_.containsKey('governedResource')
               ? GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource
-                  .fromJson(
-                  json_['governedResource']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['governedResource']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           policyBundle: (json_['policyBundle'] as core.List?)
-              ?.map(
-                (value) => AnalyzerOrgPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AnalyzerOrgPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3583,8 +3537,8 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy 
   });
 
   GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           assetType: json_['assetType'] as core.String?,
           attachedResource: json_['attachedResource'] as core.String?,
           folders: (json_['folders'] as core.List?)
@@ -3593,8 +3547,7 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy 
           organization: json_['organization'] as core.String?,
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
           project: json_['project'] as core.String?,
         );
@@ -3664,15 +3617,12 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource {
   });
 
   GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           assetType: json_['assetType'] as core.String?,
           effectiveTags: (json_['effectiveTags'] as core.List?)
-              ?.map(
-                (value) => EffectiveTagDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => EffectiveTagDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           folders: (json_['folders'] as core.List?)
               ?.map((value) => value as core.String)
@@ -3818,8 +3768,7 @@ class GoogleCloudAssetV1Constraint {
           booleanConstraint: json_.containsKey('booleanConstraint')
               ? GoogleCloudAssetV1BooleanConstraint.fromJson(
                   json_['booleanConstraint']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           constraintDefault: json_['constraintDefault'] as core.String?,
           description: json_['description'] as core.String?,
@@ -3827,8 +3776,7 @@ class GoogleCloudAssetV1Constraint {
           listConstraint: json_.containsKey('listConstraint')
               ? GoogleCloudAssetV1ListConstraint.fromJson(
                   json_['listConstraint']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
         );
@@ -3931,7 +3879,10 @@ class GoogleCloudAssetV1Edge {
   /// email of an identity.
   core.String? targetNode;
 
-  GoogleCloudAssetV1Edge({this.sourceNode, this.targetNode});
+  GoogleCloudAssetV1Edge({
+    this.sourceNode,
+    this.targetNode,
+  });
 
   GoogleCloudAssetV1Edge.fromJson(core.Map json_)
       : this(
@@ -3960,10 +3911,14 @@ class GoogleCloudAssetV1GcsDestination {
   /// Required.
   core.String? uri;
 
-  GoogleCloudAssetV1GcsDestination({this.uri});
+  GoogleCloudAssetV1GcsDestination({
+    this.uri,
+  });
 
   GoogleCloudAssetV1GcsDestination.fromJson(core.Map json_)
-      : this(uri: json_['uri'] as core.String?);
+      : this(
+          uri: json_['uri'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
@@ -4036,17 +3991,12 @@ class GoogleCloudAssetV1GovernedContainer {
   GoogleCloudAssetV1GovernedContainer.fromJson(core.Map json_)
       : this(
           consolidatedPolicy: json_.containsKey('consolidatedPolicy')
-              ? AnalyzerOrgPolicy.fromJson(
-                  json_['consolidatedPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AnalyzerOrgPolicy.fromJson(json_['consolidatedPolicy']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           effectiveTags: (json_['effectiveTags'] as core.List?)
-              ?.map(
-                (value) => EffectiveTagDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => EffectiveTagDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           folders: (json_['folders'] as core.List?)
               ?.map((value) => value as core.String)
@@ -4055,11 +4005,8 @@ class GoogleCloudAssetV1GovernedContainer {
           organization: json_['organization'] as core.String?,
           parent: json_['parent'] as core.String?,
           policyBundle: (json_['policyBundle'] as core.List?)
-              ?.map(
-                (value) => AnalyzerOrgPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AnalyzerOrgPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           project: json_['project'] as core.String?,
         );
@@ -4091,14 +4038,16 @@ class GoogleCloudAssetV1Identity {
   /// projectOwner:some_project_id - domain:google.com - allUsers
   core.String? name;
 
-  GoogleCloudAssetV1Identity({this.analysisState, this.name});
+  GoogleCloudAssetV1Identity({
+    this.analysisState,
+    this.name,
+  });
 
   GoogleCloudAssetV1Identity.fromJson(core.Map json_)
       : this(
           analysisState: json_.containsKey('analysisState')
               ? IamPolicyAnalysisState.fromJson(
-                  json_['analysisState'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['analysisState'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
         );
@@ -4125,23 +4074,20 @@ class GoogleCloudAssetV1IdentityList {
   /// Otherwise, identities reachable from the policy binding's members.
   core.List<GoogleCloudAssetV1Identity>? identities;
 
-  GoogleCloudAssetV1IdentityList({this.groupEdges, this.identities});
+  GoogleCloudAssetV1IdentityList({
+    this.groupEdges,
+    this.identities,
+  });
 
   GoogleCloudAssetV1IdentityList.fromJson(core.Map json_)
       : this(
           groupEdges: (json_['groupEdges'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudAssetV1Edge.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudAssetV1Edge.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           identities: (json_['identities'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudAssetV1Identity.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudAssetV1Identity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4167,7 +4113,10 @@ class GoogleCloudAssetV1ListConstraint {
   /// 'folders/123' folder.
   core.bool? supportsUnder;
 
-  GoogleCloudAssetV1ListConstraint({this.supportsIn, this.supportsUnder});
+  GoogleCloudAssetV1ListConstraint({
+    this.supportsIn,
+    this.supportsUnder,
+  });
 
   GoogleCloudAssetV1ListConstraint.fromJson(core.Map json_)
       : this(
@@ -4216,8 +4165,8 @@ class GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination {
   });
 
   GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           dataset: json_['dataset'] as core.String?,
           table: json_['table'] as core.String?,
           writeDisposition: json_['writeDisposition'] as core.String?,
@@ -4239,14 +4188,16 @@ class GoogleCloudAssetV1Resource {
   /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
   core.String? fullResourceName;
 
-  GoogleCloudAssetV1Resource({this.analysisState, this.fullResourceName});
+  GoogleCloudAssetV1Resource({
+    this.analysisState,
+    this.fullResourceName,
+  });
 
   GoogleCloudAssetV1Resource.fromJson(core.Map json_)
       : this(
           analysisState: json_.containsKey('analysisState')
               ? IamPolicyAnalysisState.fromJson(
-                  json_['analysisState'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['analysisState'] as core.Map<core.String, core.dynamic>)
               : null,
           fullResourceName: json_['fullResourceName'] as core.String?,
         );
@@ -4313,21 +4264,17 @@ class GoogleCloudAssetV1Rule {
           allowAll: json_['allowAll'] as core.bool?,
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           conditionEvaluation: json_.containsKey('conditionEvaluation')
-              ? ConditionEvaluation.fromJson(
-                  json_['conditionEvaluation']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ConditionEvaluation.fromJson(json_['conditionEvaluation']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           denyAll: json_['denyAll'] as core.bool?,
           enforce: json_['enforce'] as core.bool?,
           values: json_.containsKey('values')
               ? GoogleCloudAssetV1StringValues.fromJson(
-                  json_['values'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['values'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4436,21 +4383,18 @@ class GoogleCloudOrgpolicyV1Policy {
       : this(
           booleanPolicy: json_.containsKey('booleanPolicy')
               ? GoogleCloudOrgpolicyV1BooleanPolicy.fromJson(
-                  json_['booleanPolicy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['booleanPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
           constraint: json_['constraint'] as core.String?,
           etag: json_['etag'] as core.String?,
           listPolicy: json_.containsKey('listPolicy')
               ? GoogleCloudOrgpolicyV1ListPolicy.fromJson(
-                  json_['listPolicy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['listPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
           restoreDefault: json_.containsKey('restoreDefault')
               ? GoogleCloudOrgpolicyV1RestoreDefault.fromJson(
                   json_['restoreDefault']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           updateTime: json_['updateTime'] as core.String?,
           version: json_['version'] as core.int?,
@@ -4522,13 +4466,11 @@ class GoogleIdentityAccesscontextmanagerV1AccessLevel {
       : this(
           basic: json_.containsKey('basic')
               ? GoogleIdentityAccesscontextmanagerV1BasicLevel.fromJson(
-                  json_['basic'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['basic'] as core.Map<core.String, core.dynamic>)
               : null,
           custom: json_.containsKey('custom')
               ? GoogleIdentityAccesscontextmanagerV1CustomLevel.fromJson(
-                  json_['custom'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['custom'] as core.Map<core.String, core.dynamic>)
               : null,
           description: json_['description'] as core.String?,
           name: json_['name'] as core.String?,
@@ -4578,12 +4520,9 @@ class GoogleIdentityAccesscontextmanagerV1ApiOperation {
   GoogleIdentityAccesscontextmanagerV1ApiOperation.fromJson(core.Map json_)
       : this(
           methodSelectors: (json_['methodSelectors'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleIdentityAccesscontextmanagerV1MethodSelector.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleIdentityAccesscontextmanagerV1MethodSelector.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           serviceName: json_['serviceName'] as core.String?,
         );
@@ -4623,12 +4562,9 @@ class GoogleIdentityAccesscontextmanagerV1BasicLevel {
       : this(
           combiningFunction: json_['combiningFunction'] as core.String?,
           conditions: (json_['conditions'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleIdentityAccesscontextmanagerV1Condition.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleIdentityAccesscontextmanagerV1Condition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4711,8 +4647,7 @@ class GoogleIdentityAccesscontextmanagerV1Condition {
       : this(
           devicePolicy: json_.containsKey('devicePolicy')
               ? GoogleIdentityAccesscontextmanagerV1DevicePolicy.fromJson(
-                  json_['devicePolicy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['devicePolicy'] as core.Map<core.String, core.dynamic>)
               : null,
           ipSubnetworks: (json_['ipSubnetworks'] as core.List?)
               ?.map((value) => value as core.String)
@@ -4728,12 +4663,9 @@ class GoogleIdentityAccesscontextmanagerV1Condition {
               ?.map((value) => value as core.String)
               .toList(),
           vpcNetworkSources: (json_['vpcNetworkSources'] as core.List?)
-              ?.map(
-                (value) => GoogleIdentityAccesscontextmanagerV1VpcNetworkSource
-                    .fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleIdentityAccesscontextmanagerV1VpcNetworkSource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4759,14 +4691,15 @@ class GoogleIdentityAccesscontextmanagerV1CustomLevel {
   /// Required.
   Expr? expr;
 
-  GoogleIdentityAccesscontextmanagerV1CustomLevel({this.expr});
+  GoogleIdentityAccesscontextmanagerV1CustomLevel({
+    this.expr,
+  });
 
   GoogleIdentityAccesscontextmanagerV1CustomLevel.fromJson(core.Map json_)
       : this(
           expr: json_.containsKey('expr')
               ? Expr.fromJson(
-                  json_['expr'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['expr'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4828,12 +4761,9 @@ class GoogleIdentityAccesscontextmanagerV1DevicePolicy {
                   ?.map((value) => value as core.String)
                   .toList(),
           osConstraints: (json_['osConstraints'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleIdentityAccesscontextmanagerV1OsConstraint.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleIdentityAccesscontextmanagerV1OsConstraint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           requireAdminApproval: json_['requireAdminApproval'] as core.bool?,
           requireCorpOwned: json_['requireCorpOwned'] as core.bool?,
@@ -4918,12 +4848,9 @@ class GoogleIdentityAccesscontextmanagerV1EgressFrom {
           identityType: json_['identityType'] as core.String?,
           sourceRestriction: json_['sourceRestriction'] as core.String?,
           sources: (json_['sources'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleIdentityAccesscontextmanagerV1EgressSource.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleIdentityAccesscontextmanagerV1EgressSource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4977,13 +4904,11 @@ class GoogleIdentityAccesscontextmanagerV1EgressPolicy {
       : this(
           egressFrom: json_.containsKey('egressFrom')
               ? GoogleIdentityAccesscontextmanagerV1EgressFrom.fromJson(
-                  json_['egressFrom'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['egressFrom'] as core.Map<core.String, core.dynamic>)
               : null,
           egressTo: json_.containsKey('egressTo')
               ? GoogleIdentityAccesscontextmanagerV1EgressTo.fromJson(
-                  json_['egressTo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['egressTo'] as core.Map<core.String, core.dynamic>)
               : null,
           title: json_['title'] as core.String?,
         );
@@ -5045,12 +4970,9 @@ class GoogleIdentityAccesscontextmanagerV1EgressTo {
               ?.map((value) => value as core.String)
               .toList(),
           operations: (json_['operations'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleIdentityAccesscontextmanagerV1ApiOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleIdentityAccesscontextmanagerV1ApiOperation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           resources: (json_['resources'] as core.List?)
               ?.map((value) => value as core.String)
@@ -5110,12 +5032,9 @@ class GoogleIdentityAccesscontextmanagerV1IngressFrom {
               .toList(),
           identityType: json_['identityType'] as core.String?,
           sources: (json_['sources'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleIdentityAccesscontextmanagerV1IngressSource.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleIdentityAccesscontextmanagerV1IngressSource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5166,13 +5085,11 @@ class GoogleIdentityAccesscontextmanagerV1IngressPolicy {
       : this(
           ingressFrom: json_.containsKey('ingressFrom')
               ? GoogleIdentityAccesscontextmanagerV1IngressFrom.fromJson(
-                  json_['ingressFrom'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['ingressFrom'] as core.Map<core.String, core.dynamic>)
               : null,
           ingressTo: json_.containsKey('ingressTo')
               ? GoogleIdentityAccesscontextmanagerV1IngressTo.fromJson(
-                  json_['ingressTo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['ingressTo'] as core.Map<core.String, core.dynamic>)
               : null,
           title: json_['title'] as core.String?,
         );
@@ -5213,12 +5130,9 @@ class GoogleIdentityAccesscontextmanagerV1IngressTo {
   GoogleIdentityAccesscontextmanagerV1IngressTo.fromJson(core.Map json_)
       : this(
           operations: (json_['operations'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleIdentityAccesscontextmanagerV1ApiOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleIdentityAccesscontextmanagerV1ApiOperation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           resources: (json_['resources'] as core.List?)
               ?.map((value) => value as core.String)
@@ -5337,14 +5251,12 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
           spec: json_.containsKey('spec')
               ? GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig
                   .fromJson(
-                  json_['spec'] as core.Map<core.String, core.dynamic>,
-                )
+                      json_['spec'] as core.Map<core.String, core.dynamic>)
               : null,
           status: json_.containsKey('status')
               ? GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig
                   .fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
+                      json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
           title: json_['title'] as core.String?,
           useExplicitDryRunSpec: json_['useExplicitDryRunSpec'] as core.bool?,
@@ -5421,26 +5333,20 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
   });
 
   GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           accessLevels: (json_['accessLevels'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           egressPolicies: (json_['egressPolicies'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleIdentityAccesscontextmanagerV1EgressPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleIdentityAccesscontextmanagerV1EgressPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           ingressPolicies: (json_['ingressPolicies'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleIdentityAccesscontextmanagerV1IngressPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleIdentityAccesscontextmanagerV1IngressPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           resources: (json_['resources'] as core.List?)
               ?.map((value) => value as core.String)
@@ -5450,10 +5356,8 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
               .toList(),
           vpcAccessibleServices: json_.containsKey('vpcAccessibleServices')
               ? GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
-                  .fromJson(
-                  json_['vpcAccessibleServices']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['vpcAccessibleServices']
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5478,14 +5382,15 @@ class GoogleIdentityAccesscontextmanagerV1VpcNetworkSource {
   /// Sub-segment ranges of a VPC network.
   GoogleIdentityAccesscontextmanagerV1VpcSubNetwork? vpcSubnetwork;
 
-  GoogleIdentityAccesscontextmanagerV1VpcNetworkSource({this.vpcSubnetwork});
+  GoogleIdentityAccesscontextmanagerV1VpcNetworkSource({
+    this.vpcSubnetwork,
+  });
 
   GoogleIdentityAccesscontextmanagerV1VpcNetworkSource.fromJson(core.Map json_)
       : this(
           vpcSubnetwork: json_.containsKey('vpcSubnetwork')
               ? GoogleIdentityAccesscontextmanagerV1VpcSubNetwork.fromJson(
-                  json_['vpcSubnetwork'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['vpcSubnetwork'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5524,23 +5429,16 @@ class IamPolicyAnalysis {
       : this(
           analysisQuery: json_.containsKey('analysisQuery')
               ? IamPolicyAnalysisQuery.fromJson(
-                  json_['analysisQuery'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['analysisQuery'] as core.Map<core.String, core.dynamic>)
               : null,
           analysisResults: (json_['analysisResults'] as core.List?)
-              ?.map(
-                (value) => IamPolicyAnalysisResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => IamPolicyAnalysisResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           fullyExplored: json_['fullyExplored'] as core.bool?,
           nonCriticalErrors: (json_['nonCriticalErrors'] as core.List?)
-              ?.map(
-                (value) => IamPolicyAnalysisState.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => IamPolicyAnalysisState.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5570,14 +5468,12 @@ class IamPolicyAnalysisOutputConfig {
           bigqueryDestination: json_.containsKey('bigqueryDestination')
               ? GoogleCloudAssetV1BigQueryDestination.fromJson(
                   json_['bigqueryDestination']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           gcsDestination: json_.containsKey('gcsDestination')
               ? GoogleCloudAssetV1GcsDestination.fromJson(
                   json_['gcsDestination']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5643,33 +5539,24 @@ class IamPolicyAnalysisQuery {
   IamPolicyAnalysisQuery.fromJson(core.Map json_)
       : this(
           accessSelector: json_.containsKey('accessSelector')
-              ? AccessSelector.fromJson(
-                  json_['accessSelector']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AccessSelector.fromJson(json_['accessSelector']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           conditionContext: json_.containsKey('conditionContext')
-              ? ConditionContext.fromJson(
-                  json_['conditionContext']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ConditionContext.fromJson(json_['conditionContext']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           identitySelector: json_.containsKey('identitySelector')
-              ? IdentitySelector.fromJson(
-                  json_['identitySelector']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? IdentitySelector.fromJson(json_['identitySelector']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           options: json_.containsKey('options')
               ? Options.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['options'] as core.Map<core.String, core.dynamic>)
               : null,
           resourceSelector: json_.containsKey('resourceSelector')
-              ? ResourceSelector.fromJson(
-                  json_['resourceSelector']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ResourceSelector.fromJson(json_['resourceSelector']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           scope: json_['scope'] as core.String?,
         );
@@ -5718,24 +5605,19 @@ class IamPolicyAnalysisResult {
   IamPolicyAnalysisResult.fromJson(core.Map json_)
       : this(
           accessControlLists: (json_['accessControlLists'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudAssetV1AccessControlList.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudAssetV1AccessControlList.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           attachedResourceFullName:
               json_['attachedResourceFullName'] as core.String?,
           fullyExplored: json_['fullyExplored'] as core.bool?,
           iamBinding: json_.containsKey('iamBinding')
               ? Binding.fromJson(
-                  json_['iamBinding'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['iamBinding'] as core.Map<core.String, core.dynamic>)
               : null,
           identityList: json_.containsKey('identityList')
               ? GoogleCloudAssetV1IdentityList.fromJson(
-                  json_['identityList'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['identityList'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5844,7 +5726,10 @@ class IamPolicyAnalysisState {
   /// Internal Server Error
   core.String? code;
 
-  IamPolicyAnalysisState({this.cause, this.code});
+  IamPolicyAnalysisState({
+    this.cause,
+    this.code,
+  });
 
   IamPolicyAnalysisState.fromJson(core.Map json_)
       : this(
@@ -5938,8 +5823,7 @@ class IamPolicySearchResult {
           assetType: json_['assetType'] as core.String?,
           explanation: json_.containsKey('explanation')
               ? Explanation.fromJson(
-                  json_['explanation'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['explanation'] as core.Map<core.String, core.dynamic>)
               : null,
           folders: (json_['folders'] as core.List?)
               ?.map((value) => value as core.String)
@@ -5947,8 +5831,7 @@ class IamPolicySearchResult {
           organization: json_['organization'] as core.String?,
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
           project: json_['project'] as core.String?,
           resource: json_['resource'] as core.String?,
@@ -5981,10 +5864,14 @@ class IdentitySelector {
   /// Required.
   core.String? identity;
 
-  IdentitySelector({this.identity});
+  IdentitySelector({
+    this.identity,
+  });
 
   IdentitySelector.fromJson(core.Map json_)
-      : this(identity: json_['identity'] as core.String?);
+      : this(
+          identity: json_['identity'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (identity != null) 'identity': identity!,
@@ -6021,7 +5908,12 @@ class Inventory {
   /// Output only.
   core.String? updateTime;
 
-  Inventory({this.items, this.name, this.osInfo, this.updateTime});
+  Inventory({
+    this.items,
+    this.name,
+    this.osInfo,
+    this.updateTime,
+  });
 
   Inventory.fromJson(core.Map json_)
       : this(
@@ -6034,8 +5926,7 @@ class Inventory {
           name: json_['name'] as core.String?,
           osInfo: json_.containsKey('osInfo')
               ? OsInfo.fromJson(
-                  json_['osInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['osInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -6094,18 +5985,14 @@ class Item {
   Item.fromJson(core.Map json_)
       : this(
           availablePackage: json_.containsKey('availablePackage')
-              ? SoftwarePackage.fromJson(
-                  json_['availablePackage']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SoftwarePackage.fromJson(json_['availablePackage']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_['createTime'] as core.String?,
           id: json_['id'] as core.String?,
           installedPackage: json_.containsKey('installedPackage')
-              ? SoftwarePackage.fromJson(
-                  json_['installedPackage']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SoftwarePackage.fromJson(json_['installedPackage']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           originType: json_['originType'] as core.String?,
           type: json_['type'] as core.String?,
@@ -6137,16 +6024,17 @@ class ListAssetsResponse {
   /// Time the snapshot was taken.
   core.String? readTime;
 
-  ListAssetsResponse({this.assets, this.nextPageToken, this.readTime});
+  ListAssetsResponse({
+    this.assets,
+    this.nextPageToken,
+    this.readTime,
+  });
 
   ListAssetsResponse.fromJson(core.Map json_)
       : this(
           assets: (json_['assets'] as core.List?)
-              ?.map(
-                (value) => Asset.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Asset.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           readTime: json_['readTime'] as core.String?,
@@ -6163,16 +6051,15 @@ class ListFeedsResponse {
   /// A list of feeds.
   core.List<Feed>? feeds;
 
-  ListFeedsResponse({this.feeds});
+  ListFeedsResponse({
+    this.feeds,
+  });
 
   ListFeedsResponse.fromJson(core.Map json_)
       : this(
           feeds: (json_['feeds'] as core.List?)
-              ?.map(
-                (value) => Feed.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Feed.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -6191,17 +6078,17 @@ class ListSavedQueriesResponse {
   /// A list of savedQueries.
   core.List<SavedQuery>? savedQueries;
 
-  ListSavedQueriesResponse({this.nextPageToken, this.savedQueries});
+  ListSavedQueriesResponse({
+    this.nextPageToken,
+    this.savedQueries,
+  });
 
   ListSavedQueriesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           savedQueries: (json_['savedQueries'] as core.List?)
-              ?.map(
-                (value) => SavedQuery.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SavedQuery.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -6224,20 +6111,22 @@ class MoveAnalysis {
   /// Description of error encountered when performing the analysis.
   Status? error;
 
-  MoveAnalysis({this.analysis, this.displayName, this.error});
+  MoveAnalysis({
+    this.analysis,
+    this.displayName,
+    this.error,
+  });
 
   MoveAnalysis.fromJson(core.Map json_)
       : this(
           analysis: json_.containsKey('analysis')
               ? MoveAnalysisResult.fromJson(
-                  json_['analysis'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['analysis'] as core.Map<core.String, core.dynamic>)
               : null,
           displayName: json_['displayName'] as core.String?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6261,23 +6150,20 @@ class MoveAnalysisResult {
   /// but will not block moves at runtime.
   core.List<MoveImpact>? warnings;
 
-  MoveAnalysisResult({this.blockers, this.warnings});
+  MoveAnalysisResult({
+    this.blockers,
+    this.warnings,
+  });
 
   MoveAnalysisResult.fromJson(core.Map json_)
       : this(
           blockers: (json_['blockers'] as core.List?)
-              ?.map(
-                (value) => MoveImpact.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => MoveImpact.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           warnings: (json_['warnings'] as core.List?)
-              ?.map(
-                (value) => MoveImpact.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => MoveImpact.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -6292,10 +6178,14 @@ class MoveImpact {
   /// User friendly impact detail in a free form message.
   core.String? detail;
 
-  MoveImpact({this.detail});
+  MoveImpact({
+    this.detail,
+  });
 
   MoveImpact.fromJson(core.Map json_)
-      : this(detail: json_['detail'] as core.String?);
+      : this(
+          detail: json_['detail'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (detail != null) 'detail': detail!,
@@ -6345,15 +6235,20 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({this.done, this.error, this.metadata, this.name, this.response});
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -6543,21 +6438,16 @@ class OrgPolicyResult {
   OrgPolicyResult.fromJson(core.Map json_)
       : this(
           consolidatedPolicy: json_.containsKey('consolidatedPolicy')
-              ? AnalyzerOrgPolicy.fromJson(
-                  json_['consolidatedPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AnalyzerOrgPolicy.fromJson(json_['consolidatedPolicy']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           folders: (json_['folders'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           organization: json_['organization'] as core.String?,
           policyBundle: (json_['policyBundle'] as core.List?)
-              ?.map(
-                (value) => AnalyzerOrgPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AnalyzerOrgPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           project: json_['project'] as core.String?,
         );
@@ -6586,21 +6476,20 @@ class OutputConfig {
   /// Destination on Cloud Storage.
   GcsDestination? gcsDestination;
 
-  OutputConfig({this.bigqueryDestination, this.gcsDestination});
+  OutputConfig({
+    this.bigqueryDestination,
+    this.gcsDestination,
+  });
 
   OutputConfig.fromJson(core.Map json_)
       : this(
           bigqueryDestination: json_.containsKey('bigqueryDestination')
-              ? BigQueryDestination.fromJson(
-                  json_['bigqueryDestination']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? BigQueryDestination.fromJson(json_['bigqueryDestination']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           gcsDestination: json_.containsKey('gcsDestination')
-              ? GcsDestination.fromJson(
-                  json_['gcsDestination']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GcsDestination.fromJson(json_['gcsDestination']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6628,10 +6517,14 @@ class PartitionSpec {
   /// representing when the request was received.
   core.String? partitionKey;
 
-  PartitionSpec({this.partitionKey});
+  PartitionSpec({
+    this.partitionKey,
+  });
 
   PartitionSpec.fromJson(core.Map json_)
-      : this(partitionKey: json_['partitionKey'] as core.String?);
+      : this(
+          partitionKey: json_['partitionKey'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (partitionKey != null) 'partitionKey': partitionKey!,
@@ -6645,7 +6538,9 @@ class Permissions {
   /// A sample permission string: `compute.disk.get`.
   core.List<core.String>? permissions;
 
-  Permissions({this.permissions});
+  Permissions({
+    this.permissions,
+  });
 
   Permissions.fromJson(core.Map json_)
       : this(
@@ -6745,23 +6640,22 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
+  Policy({
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
   Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map(
-                (value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map(
-                (value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -6783,15 +6677,17 @@ class PolicyInfo {
   /// The IAM policy that's directly attached to the attached_resource.
   Policy? policy;
 
-  PolicyInfo({this.attachedResource, this.policy});
+  PolicyInfo({
+    this.attachedResource,
+    this.policy,
+  });
 
   PolicyInfo.fromJson(core.Map json_)
       : this(
           attachedResource: json_['attachedResource'] as core.String?,
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6808,10 +6704,14 @@ class PubsubDestination {
   /// Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
   core.String? topic;
 
-  PubsubDestination({this.topic});
+  PubsubDestination({
+    this.topic,
+  });
 
   PubsubDestination.fromJson(core.Map json_)
-      : this(topic: json_['topic'] as core.String?);
+      : this(
+          topic: json_['topic'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (topic != null) 'topic': topic!,
@@ -6824,16 +6724,16 @@ class QueryAssetsOutputConfig {
   GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination?
       bigqueryDestination;
 
-  QueryAssetsOutputConfig({this.bigqueryDestination});
+  QueryAssetsOutputConfig({
+    this.bigqueryDestination,
+  });
 
   QueryAssetsOutputConfig.fromJson(core.Map json_)
       : this(
           bigqueryDestination: json_.containsKey('bigqueryDestination')
               ? GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination
-                  .fromJson(
-                  json_['bigqueryDestination']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                  .fromJson(json_['bigqueryDestination']
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6931,17 +6831,14 @@ class QueryAssetsRequest {
           jobReference: json_['jobReference'] as core.String?,
           outputConfig: json_.containsKey('outputConfig')
               ? QueryAssetsOutputConfig.fromJson(
-                  json_['outputConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           pageSize: json_['pageSize'] as core.int?,
           pageToken: json_['pageToken'] as core.String?,
           readTime: json_['readTime'] as core.String?,
           readTimeWindow: json_.containsKey('readTimeWindow')
-              ? TimeWindow.fromJson(
-                  json_['readTimeWindow']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? TimeWindow.fromJson(json_['readTimeWindow']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           statement: json_['statement'] as core.String?,
           timeout: json_['timeout'] as core.String?,
@@ -6997,19 +6894,16 @@ class QueryAssetsResponse {
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           jobReference: json_['jobReference'] as core.String?,
           outputConfig: json_.containsKey('outputConfig')
               ? QueryAssetsOutputConfig.fromJson(
-                  json_['outputConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           queryResult: json_.containsKey('queryResult')
               ? QueryResult.fromJson(
-                  json_['queryResult'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['queryResult'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7029,15 +6923,15 @@ class QueryContent {
   /// AssetService.AnalyzeIamPolicyLongrunning RPC.
   IamPolicyAnalysisQuery? iamPolicyAnalysisQuery;
 
-  QueryContent({this.iamPolicyAnalysisQuery});
+  QueryContent({
+    this.iamPolicyAnalysisQuery,
+  });
 
   QueryContent.fromJson(core.Map json_)
       : this(
           iamPolicyAnalysisQuery: json_.containsKey('iamPolicyAnalysisQuery')
-              ? IamPolicyAnalysisQuery.fromJson(
-                  json_['iamPolicyAnalysisQuery']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? IamPolicyAnalysisQuery.fromJson(json_['iamPolicyAnalysisQuery']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7068,7 +6962,12 @@ class QueryResult {
   /// Total rows of the whole query results.
   core.String? totalRows;
 
-  QueryResult({this.nextPageToken, this.rows, this.schema, this.totalRows});
+  QueryResult({
+    this.nextPageToken,
+    this.rows,
+    this.schema,
+    this.totalRows,
+  });
 
   QueryResult.fromJson(core.Map json_)
       : this(
@@ -7078,8 +6977,7 @@ class QueryResult {
               .toList(),
           schema: json_.containsKey('schema')
               ? TableSchema.fromJson(
-                  json_['schema'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['schema'] as core.Map<core.String, core.dynamic>)
               : null,
           totalRows: json_['totalRows'] as core.String?,
         );
@@ -7170,22 +7068,20 @@ class RelatedAssets {
   /// The detailed relationship attributes.
   RelationshipAttributes? relationshipAttributes;
 
-  RelatedAssets({this.assets, this.relationshipAttributes});
+  RelatedAssets({
+    this.assets,
+    this.relationshipAttributes,
+  });
 
   RelatedAssets.fromJson(core.Map json_)
       : this(
           assets: (json_['assets'] as core.List?)
-              ?.map(
-                (value) => RelatedAsset.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => RelatedAsset.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           relationshipAttributes: json_.containsKey('relationshipAttributes')
-              ? RelationshipAttributes.fromJson(
-                  json_['relationshipAttributes']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? RelationshipAttributes.fromJson(json_['relationshipAttributes']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7209,7 +7105,10 @@ class RelatedResource {
   /// `//compute.googleapis.com/projects/my_proj_123/zones/instance/instance123`
   core.String? fullResourceName;
 
-  RelatedResource({this.assetType, this.fullResourceName});
+  RelatedResource({
+    this.assetType,
+    this.fullResourceName,
+  });
 
   RelatedResource.fromJson(core.Map json_)
       : this(
@@ -7228,16 +7127,15 @@ class RelatedResources {
   /// The detailed related resources of the primary resource.
   core.List<RelatedResource>? relatedResources;
 
-  RelatedResources({this.relatedResources});
+  RelatedResources({
+    this.relatedResources,
+  });
 
   RelatedResources.fromJson(core.Map json_)
       : this(
           relatedResources: (json_['relatedResources'] as core.List?)
-              ?.map(
-                (value) => RelatedResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => RelatedResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -7386,7 +7284,9 @@ class ResourceOwners {
   /// List of resource owners.
   core.List<core.String>? resourceOwners;
 
-  ResourceOwners({this.resourceOwners});
+  ResourceOwners({
+    this.resourceOwners,
+  });
 
   ResourceOwners.fromJson(core.Map json_)
       : this(
@@ -7739,28 +7639,19 @@ class ResourceSearchResult {
               : null,
           assetType: json_['assetType'] as core.String?,
           attachedResources: (json_['attachedResources'] as core.List?)
-              ?.map(
-                (value) => AttachedResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AttachedResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           effectiveTags: (json_['effectiveTags'] as core.List?)
-              ?.map(
-                (value) => EffectiveTagDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => EffectiveTagDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           enrichments: (json_['enrichments'] as core.List?)
-              ?.map(
-                (value) => AssetEnrichment.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AssetEnrichment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           folders: (json_['folders'] as core.List?)
               ?.map((value) => value as core.String)
@@ -7771,7 +7662,10 @@ class ResourceSearchResult {
               .toList(),
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           location: json_['location'] as core.String?,
           name: json_['name'] as core.String?,
@@ -7789,13 +7683,17 @@ class ResourceSearchResult {
             (key, value) => core.MapEntry(
               key,
               RelatedResources.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
           sccSecurityMarks: (json_['sccSecurityMarks']
                   as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           state: json_['state'] as core.String?,
           tagKeys: (json_['tagKeys'] as core.List?)
               ?.map((value) => value as core.String)
@@ -7807,19 +7705,13 @@ class ResourceSearchResult {
               ?.map((value) => value as core.String)
               .toList(),
           tags: (json_['tags'] as core.List?)
-              ?.map(
-                (value) => Tag.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Tag.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           updateTime: json_['updateTime'] as core.String?,
           versionedResources: (json_['versionedResources'] as core.List?)
-              ?.map(
-                (value) => VersionedResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => VersionedResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -7870,10 +7762,14 @@ class ResourceSelector {
   /// Required.
   core.String? fullResourceName;
 
-  ResourceSelector({this.fullResourceName});
+  ResourceSelector({
+    this.fullResourceName,
+  });
 
   ResourceSelector.fromJson(core.Map json_)
-      : this(fullResourceName: json_['fullResourceName'] as core.String?);
+      : this(
+          fullResourceName: json_['fullResourceName'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
@@ -7939,15 +7835,17 @@ class SavedQuery {
       : this(
           content: json_.containsKey('content')
               ? QueryContent.fromJson(
-                  json_['content'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['content'] as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_['createTime'] as core.String?,
           creator: json_['creator'] as core.String?,
           description: json_['description'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           lastUpdateTime: json_['lastUpdateTime'] as core.String?,
           lastUpdater: json_['lastUpdater'] as core.String?,
@@ -7979,17 +7877,17 @@ class SearchAllIamPoliciesResponse {
   /// the policy.
   core.List<IamPolicySearchResult>? results;
 
-  SearchAllIamPoliciesResponse({this.nextPageToken, this.results});
+  SearchAllIamPoliciesResponse({
+    this.nextPageToken,
+    this.results,
+  });
 
   SearchAllIamPoliciesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           results: (json_['results'] as core.List?)
-              ?.map(
-                (value) => IamPolicySearchResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => IamPolicySearchResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -8013,17 +7911,17 @@ class SearchAllResourcesResponse {
   /// It contains the resource standard metadata information.
   core.List<ResourceSearchResult>? results;
 
-  SearchAllResourcesResponse({this.nextPageToken, this.results});
+  SearchAllResourcesResponse({
+    this.nextPageToken,
+    this.results,
+  });
 
   SearchAllResourcesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           results: (json_['results'] as core.List?)
-              ?.map(
-                (value) => ResourceSearchResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ResourceSearchResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -8100,49 +7998,39 @@ class SoftwarePackage {
       : this(
           aptPackage: json_.containsKey('aptPackage')
               ? VersionedPackage.fromJson(
-                  json_['aptPackage'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['aptPackage'] as core.Map<core.String, core.dynamic>)
               : null,
           cosPackage: json_.containsKey('cosPackage')
               ? VersionedPackage.fromJson(
-                  json_['cosPackage'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['cosPackage'] as core.Map<core.String, core.dynamic>)
               : null,
           googetPackage: json_.containsKey('googetPackage')
               ? VersionedPackage.fromJson(
-                  json_['googetPackage'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['googetPackage'] as core.Map<core.String, core.dynamic>)
               : null,
           qfePackage: json_.containsKey('qfePackage')
               ? WindowsQuickFixEngineeringPackage.fromJson(
-                  json_['qfePackage'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['qfePackage'] as core.Map<core.String, core.dynamic>)
               : null,
           windowsApplication: json_.containsKey('windowsApplication')
-              ? WindowsApplication.fromJson(
-                  json_['windowsApplication']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? WindowsApplication.fromJson(json_['windowsApplication']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           wuaPackage: json_.containsKey('wuaPackage')
               ? WindowsUpdatePackage.fromJson(
-                  json_['wuaPackage'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['wuaPackage'] as core.Map<core.String, core.dynamic>)
               : null,
           yumPackage: json_.containsKey('yumPackage')
               ? VersionedPackage.fromJson(
-                  json_['yumPackage'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['yumPackage'] as core.Map<core.String, core.dynamic>)
               : null,
           zypperPackage: json_.containsKey('zypperPackage')
               ? VersionedPackage.fromJson(
-                  json_['zypperPackage'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['zypperPackage'] as core.Map<core.String, core.dynamic>)
               : null,
           zypperPatch: json_.containsKey('zypperPatch')
               ? ZypperPatch.fromJson(
-                  json_['zypperPatch'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['zypperPatch'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -8194,17 +8082,19 @@ class TableFieldSchema {
   /// RECORD (where RECORD indicates that the field contains a nested schema).
   core.String? type;
 
-  TableFieldSchema({this.field, this.fields, this.mode, this.type});
+  TableFieldSchema({
+    this.field,
+    this.fields,
+    this.mode,
+    this.type,
+  });
 
   TableFieldSchema.fromJson(core.Map json_)
       : this(
           field: json_['field'] as core.String?,
           fields: (json_['fields'] as core.List?)
-              ?.map(
-                (value) => TableFieldSchema.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => TableFieldSchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           mode: json_['mode'] as core.String?,
           type: json_['type'] as core.String?,
@@ -8223,16 +8113,15 @@ class TableSchema {
   /// Describes the fields in a table.
   core.List<TableFieldSchema>? fields;
 
-  TableSchema({this.fields});
+  TableSchema({
+    this.fields,
+  });
 
   TableSchema.fromJson(core.Map json_)
       : this(
           fields: (json_['fields'] as core.List?)
-              ?.map(
-                (value) => TableFieldSchema.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => TableFieldSchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -8257,7 +8146,12 @@ class Tag {
   /// TagValue ID, in the format of tagValues/{TAG_VALUE_ID}.
   core.String? tagValueId;
 
-  Tag({this.tagKey, this.tagKeyId, this.tagValue, this.tagValueId});
+  Tag({
+    this.tagKey,
+    this.tagKeyId,
+    this.tagValue,
+    this.tagValueId,
+  });
 
   Tag.fromJson(core.Map json_)
       : this(
@@ -8315,20 +8209,17 @@ class TemporalAsset {
       : this(
           asset: json_.containsKey('asset')
               ? Asset.fromJson(
-                  json_['asset'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['asset'] as core.Map<core.String, core.dynamic>)
               : null,
           deleted: json_['deleted'] as core.bool?,
           priorAsset: json_.containsKey('priorAsset')
               ? Asset.fromJson(
-                  json_['priorAsset'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['priorAsset'] as core.Map<core.String, core.dynamic>)
               : null,
           priorAssetState: json_['priorAssetState'] as core.String?,
           window: json_.containsKey('window')
               ? TimeWindow.fromJson(
-                  json_['window'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['window'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -8351,7 +8242,10 @@ class TimeWindow {
   /// Start time of the time window (exclusive).
   core.String? startTime;
 
-  TimeWindow({this.endTime, this.startTime});
+  TimeWindow({
+    this.endTime,
+    this.startTime,
+  });
 
   TimeWindow.fromJson(core.Map json_)
       : this(
@@ -8385,14 +8279,16 @@ class UpdateFeedRequest {
   /// Required.
   core.String? updateMask;
 
-  UpdateFeedRequest({this.feed, this.updateMask});
+  UpdateFeedRequest({
+    this.feed,
+    this.updateMask,
+  });
 
   UpdateFeedRequest.fromJson(core.Map json_)
       : this(
           feed: json_.containsKey('feed')
               ? Feed.fromJson(
-                  json_['feed'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['feed'] as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -8435,7 +8331,10 @@ class VersionedResource {
   /// version will be "v1".
   core.String? version;
 
-  VersionedResource({this.resource, this.version});
+  VersionedResource({
+    this.resource,
+    this.version,
+  });
 
   VersionedResource.fromJson(core.Map json_)
       : this(
@@ -8491,8 +8390,7 @@ class WindowsApplication {
           helpLink: json_['helpLink'] as core.String?,
           installDate: json_.containsKey('installDate')
               ? Date.fromJson(
-                  json_['installDate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['installDate'] as core.Map<core.String, core.dynamic>)
               : null,
           publisher: json_['publisher'] as core.String?,
         );
@@ -8569,11 +8467,8 @@ class WindowsUpdatePackage {
   WindowsUpdatePackage.fromJson(core.Map json_)
       : this(
           categories: (json_['categories'] as core.List?)
-              ?.map(
-                (value) => WindowsUpdateCategory.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => WindowsUpdateCategory.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           description: json_['description'] as core.String?,
           kbArticleIds: (json_['kbArticleIds'] as core.List?)

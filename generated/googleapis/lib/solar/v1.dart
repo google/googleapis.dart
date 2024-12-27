@@ -52,16 +52,11 @@ class SolarApi {
   DataLayersResource get dataLayers => DataLayersResource(_requester);
   GeoTiffResource get geoTiff => GeoTiffResource(_requester);
 
-  SolarApi(
-    http.Client client, {
-    core.String rootUrl = 'https://solar.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  SolarApi(http.Client client,
+      {core.String rootUrl = 'https://solar.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class BuildingInsightsResource {
@@ -133,8 +128,7 @@ class BuildingInsightsResource {
       queryParams: queryParams_,
     );
     return BuildingInsights.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -251,8 +245,7 @@ class DataLayersResource {
       queryParams: queryParams_,
     );
     return DataLayers.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -277,7 +270,10 @@ class GeoTiffResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<HttpBody> get({core.String? id, core.String? $fields}) async {
+  async.Future<HttpBody> get({
+    core.String? id,
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (id != null) 'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -366,34 +362,27 @@ class BuildingInsights {
           administrativeArea: json_['administrativeArea'] as core.String?,
           boundingBox: json_.containsKey('boundingBox')
               ? LatLngBox.fromJson(
-                  json_['boundingBox'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['boundingBox'] as core.Map<core.String, core.dynamic>)
               : null,
           center: json_.containsKey('center')
               ? LatLng.fromJson(
-                  json_['center'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['center'] as core.Map<core.String, core.dynamic>)
               : null,
           imageryDate: json_.containsKey('imageryDate')
               ? Date.fromJson(
-                  json_['imageryDate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['imageryDate'] as core.Map<core.String, core.dynamic>)
               : null,
           imageryProcessedDate: json_.containsKey('imageryProcessedDate')
-              ? Date.fromJson(
-                  json_['imageryProcessedDate']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Date.fromJson(json_['imageryProcessedDate']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           imageryQuality: json_['imageryQuality'] as core.String?,
           name: json_['name'] as core.String?,
           postalCode: json_['postalCode'] as core.String?,
           regionCode: json_['regionCode'] as core.String?,
           solarPotential: json_.containsKey('solarPotential')
-              ? SolarPotential.fromJson(
-                  json_['solarPotential']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SolarPotential.fromJson(json_['solarPotential']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           statisticalArea: json_['statisticalArea'] as core.String?,
         );
@@ -452,26 +441,21 @@ class CashPurchaseSavings {
   CashPurchaseSavings.fromJson(core.Map json_)
       : this(
           outOfPocketCost: json_.containsKey('outOfPocketCost')
-              ? Money.fromJson(
-                  json_['outOfPocketCost']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Money.fromJson(json_['outOfPocketCost']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           paybackYears: (json_['paybackYears'] as core.num?)?.toDouble(),
           rebateValue: json_.containsKey('rebateValue')
               ? Money.fromJson(
-                  json_['rebateValue'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['rebateValue'] as core.Map<core.String, core.dynamic>)
               : null,
           savings: json_.containsKey('savings')
               ? SavingsOverTime.fromJson(
-                  json_['savings'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['savings'] as core.Map<core.String, core.dynamic>)
               : null,
           upfrontCost: json_.containsKey('upfrontCost')
               ? Money.fromJson(
-                  json_['upfrontCost'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['upfrontCost'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -594,14 +578,11 @@ class DataLayers {
               .toList(),
           imageryDate: json_.containsKey('imageryDate')
               ? Date.fromJson(
-                  json_['imageryDate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['imageryDate'] as core.Map<core.String, core.dynamic>)
               : null,
           imageryProcessedDate: json_.containsKey('imageryProcessedDate')
-              ? Date.fromJson(
-                  json_['imageryProcessedDate']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Date.fromJson(json_['imageryProcessedDate']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           imageryQuality: json_['imageryQuality'] as core.String?,
           maskUrl: json_['maskUrl'] as core.String?,
@@ -661,22 +642,18 @@ class FinancedPurchaseSavings {
   FinancedPurchaseSavings.fromJson(core.Map json_)
       : this(
           annualLoanPayment: json_.containsKey('annualLoanPayment')
-              ? Money.fromJson(
-                  json_['annualLoanPayment']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Money.fromJson(json_['annualLoanPayment']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           loanInterestRate:
               (json_['loanInterestRate'] as core.num?)?.toDouble(),
           rebateValue: json_.containsKey('rebateValue')
               ? Money.fromJson(
-                  json_['rebateValue'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['rebateValue'] as core.Map<core.String, core.dynamic>)
               : null,
           savings: json_.containsKey('savings')
               ? SavingsOverTime.fromJson(
-                  json_['savings'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['savings'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -741,34 +718,26 @@ class FinancialAnalysis {
           averageKwhPerMonth:
               (json_['averageKwhPerMonth'] as core.num?)?.toDouble(),
           cashPurchaseSavings: json_.containsKey('cashPurchaseSavings')
-              ? CashPurchaseSavings.fromJson(
-                  json_['cashPurchaseSavings']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CashPurchaseSavings.fromJson(json_['cashPurchaseSavings']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           defaultBill: json_['defaultBill'] as core.bool?,
           financedPurchaseSavings: json_.containsKey('financedPurchaseSavings')
               ? FinancedPurchaseSavings.fromJson(
                   json_['financedPurchaseSavings']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           financialDetails: json_.containsKey('financialDetails')
-              ? FinancialDetails.fromJson(
-                  json_['financialDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? FinancialDetails.fromJson(json_['financialDetails']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           leasingSavings: json_.containsKey('leasingSavings')
-              ? LeasingSavings.fromJson(
-                  json_['leasingSavings']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? LeasingSavings.fromJson(json_['leasingSavings']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           monthlyBill: json_.containsKey('monthlyBill')
               ? Money.fromJson(
-                  json_['monthlyBill'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['monthlyBill'] as core.Map<core.String, core.dynamic>)
               : null,
           panelConfigIndex: json_['panelConfigIndex'] as core.int?,
         );
@@ -856,47 +825,35 @@ class FinancialDetails {
       : this(
           costOfElectricityWithoutSolar:
               json_.containsKey('costOfElectricityWithoutSolar')
-                  ? Money.fromJson(
-                      json_['costOfElectricityWithoutSolar']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                  ? Money.fromJson(json_['costOfElectricityWithoutSolar']
+                      as core.Map<core.String, core.dynamic>)
                   : null,
           federalIncentive: json_.containsKey('federalIncentive')
-              ? Money.fromJson(
-                  json_['federalIncentive']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Money.fromJson(json_['federalIncentive']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           initialAcKwhPerYear:
               (json_['initialAcKwhPerYear'] as core.num?)?.toDouble(),
           lifetimeSrecTotal: json_.containsKey('lifetimeSrecTotal')
-              ? Money.fromJson(
-                  json_['lifetimeSrecTotal']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Money.fromJson(json_['lifetimeSrecTotal']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           netMeteringAllowed: json_['netMeteringAllowed'] as core.bool?,
           percentageExportedToGrid:
               (json_['percentageExportedToGrid'] as core.num?)?.toDouble(),
           remainingLifetimeUtilityBill:
               json_.containsKey('remainingLifetimeUtilityBill')
-                  ? Money.fromJson(
-                      json_['remainingLifetimeUtilityBill']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                  ? Money.fromJson(json_['remainingLifetimeUtilityBill']
+                      as core.Map<core.String, core.dynamic>)
                   : null,
           solarPercentage: (json_['solarPercentage'] as core.num?)?.toDouble(),
           stateIncentive: json_.containsKey('stateIncentive')
-              ? Money.fromJson(
-                  json_['stateIncentive']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Money.fromJson(json_['stateIncentive']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           utilityIncentive: json_.containsKey('utilityIncentive')
-              ? Money.fromJson(
-                  json_['utilityIncentive']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Money.fromJson(json_['utilityIncentive']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -954,19 +911,20 @@ class LatLngBox {
   /// The southwest corner of the box.
   LatLng? sw;
 
-  LatLngBox({this.ne, this.sw});
+  LatLngBox({
+    this.ne,
+    this.sw,
+  });
 
   LatLngBox.fromJson(core.Map json_)
       : this(
           ne: json_.containsKey('ne')
               ? LatLng.fromJson(
-                  json_['ne'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['ne'] as core.Map<core.String, core.dynamic>)
               : null,
           sw: json_.containsKey('sw')
               ? LatLng.fromJson(
-                  json_['sw'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['sw'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1010,17 +968,14 @@ class LeasingSavings {
   LeasingSavings.fromJson(core.Map json_)
       : this(
           annualLeasingCost: json_.containsKey('annualLeasingCost')
-              ? Money.fromJson(
-                  json_['annualLeasingCost']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Money.fromJson(json_['annualLeasingCost']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           leasesAllowed: json_['leasesAllowed'] as core.bool?,
           leasesSupported: json_['leasesSupported'] as core.bool?,
           savings: json_.containsKey('savings')
               ? SavingsOverTime.fromJson(
-                  json_['savings'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['savings'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1079,21 +1034,18 @@ class RoofSegmentSizeAndSunshineStats {
           azimuthDegrees: (json_['azimuthDegrees'] as core.num?)?.toDouble(),
           boundingBox: json_.containsKey('boundingBox')
               ? LatLngBox.fromJson(
-                  json_['boundingBox'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['boundingBox'] as core.Map<core.String, core.dynamic>)
               : null,
           center: json_.containsKey('center')
               ? LatLng.fromJson(
-                  json_['center'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['center'] as core.Map<core.String, core.dynamic>)
               : null,
           pitchDegrees: (json_['pitchDegrees'] as core.num?)?.toDouble(),
           planeHeightAtCenterMeters:
               (json_['planeHeightAtCenterMeters'] as core.num?)?.toDouble(),
           stats: json_.containsKey('stats')
               ? SizeAndSunshineStats.fromJson(
-                  json_['stats'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['stats'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1200,33 +1152,25 @@ class SavingsOverTime {
           financiallyViable: json_['financiallyViable'] as core.bool?,
           presentValueOfSavingsLifetime:
               json_.containsKey('presentValueOfSavingsLifetime')
-                  ? Money.fromJson(
-                      json_['presentValueOfSavingsLifetime']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                  ? Money.fromJson(json_['presentValueOfSavingsLifetime']
+                      as core.Map<core.String, core.dynamic>)
                   : null,
           presentValueOfSavingsYear20:
               json_.containsKey('presentValueOfSavingsYear20')
-                  ? Money.fromJson(
-                      json_['presentValueOfSavingsYear20']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                  ? Money.fromJson(json_['presentValueOfSavingsYear20']
+                      as core.Map<core.String, core.dynamic>)
                   : null,
           savingsLifetime: json_.containsKey('savingsLifetime')
-              ? Money.fromJson(
-                  json_['savingsLifetime']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Money.fromJson(json_['savingsLifetime']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           savingsYear1: json_.containsKey('savingsYear1')
               ? Money.fromJson(
-                  json_['savingsYear1'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['savingsYear1'] as core.Map<core.String, core.dynamic>)
               : null,
           savingsYear20: json_.containsKey('savingsYear20')
               ? Money.fromJson(
-                  json_['savingsYear20'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['savingsYear20'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1320,8 +1264,7 @@ class SolarPanel {
       : this(
           center: json_.containsKey('center')
               ? LatLng.fromJson(
-                  json_['center'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['center'] as core.Map<core.String, core.dynamic>)
               : null,
           orientation: json_['orientation'] as core.String?,
           segmentIndex: json_['segmentIndex'] as core.int?,
@@ -1367,11 +1310,8 @@ class SolarPanelConfig {
       : this(
           panelsCount: json_['panelsCount'] as core.int?,
           roofSegmentSummaries: (json_['roofSegmentSummaries'] as core.List?)
-              ?.map(
-                (value) => RoofSegmentSummary.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => RoofSegmentSummary.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           yearlyEnergyDcKwh:
               (json_['yearlyEnergyDcKwh'] as core.num?)?.toDouble(),
@@ -1492,17 +1432,13 @@ class SolarPotential {
       : this(
           buildingStats: json_.containsKey('buildingStats')
               ? SizeAndSunshineStats.fromJson(
-                  json_['buildingStats'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['buildingStats'] as core.Map<core.String, core.dynamic>)
               : null,
           carbonOffsetFactorKgPerMwh:
               (json_['carbonOffsetFactorKgPerMwh'] as core.num?)?.toDouble(),
           financialAnalyses: (json_['financialAnalyses'] as core.List?)
-              ?.map(
-                (value) => FinancialAnalysis.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => FinancialAnalysis.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           maxArrayAreaMeters2:
               (json_['maxArrayAreaMeters2'] as core.num?)?.toDouble(),
@@ -1517,31 +1453,20 @@ class SolarPotential {
           panelWidthMeters:
               (json_['panelWidthMeters'] as core.num?)?.toDouble(),
           roofSegmentStats: (json_['roofSegmentStats'] as core.List?)
-              ?.map(
-                (value) => RoofSegmentSizeAndSunshineStats.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => RoofSegmentSizeAndSunshineStats.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           solarPanelConfigs: (json_['solarPanelConfigs'] as core.List?)
-              ?.map(
-                (value) => SolarPanelConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SolarPanelConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           solarPanels: (json_['solarPanels'] as core.List?)
-              ?.map(
-                (value) => SolarPanel.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SolarPanel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           wholeRoofStats: json_.containsKey('wholeRoofStats')
-              ? SizeAndSunshineStats.fromJson(
-                  json_['wholeRoofStats']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SizeAndSunshineStats.fromJson(json_['wholeRoofStats']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 

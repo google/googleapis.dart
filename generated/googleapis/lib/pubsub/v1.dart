@@ -58,16 +58,11 @@ class PubsubApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  PubsubApi(
-    http.Client client, {
-    core.String rootUrl = 'https://pubsub.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  PubsubApi(http.Client client,
+      {core.String rootUrl = 'https://pubsub.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -195,7 +190,10 @@ class ProjectsSchemasResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -413,8 +411,7 @@ class ProjectsSchemasResource {
       queryParams: queryParams_,
     );
     return ListSchemasResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all schema revisions for the named schema.
@@ -471,8 +468,7 @@ class ProjectsSchemasResource {
       queryParams: queryParams_,
     );
     return ListSchemaRevisionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new schema revision that is a copy of the provided revision_id.
@@ -608,8 +604,7 @@ class ProjectsSchemasResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Validates a schema.
@@ -651,8 +646,7 @@ class ProjectsSchemasResource {
       queryParams: queryParams_,
     );
     return ValidateSchemaResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Validates a message against a schema.
@@ -695,8 +689,7 @@ class ProjectsSchemasResource {
       queryParams: queryParams_,
     );
     return ValidateMessageResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -961,8 +954,7 @@ class ProjectsSnapshotsResource {
       queryParams: queryParams_,
     );
     return ListSnapshotsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing snapshot by updating the fields specified in the
@@ -1105,8 +1097,7 @@ class ProjectsSnapshotsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1216,8 +1207,7 @@ class ProjectsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an existing subscription.
@@ -1300,8 +1290,7 @@ class ProjectsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return DetachSubscriptionResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the configuration details of a subscription.
@@ -1338,8 +1327,7 @@ class ProjectsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -1443,8 +1431,7 @@ class ProjectsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return ListSubscriptionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies the ack deadline for a specific message.
@@ -1588,8 +1575,7 @@ class ProjectsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Pulls messages from the server.
@@ -1631,8 +1617,7 @@ class ProjectsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return PullResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Seeks an existing subscription to a point in time or to a given snapshot,
@@ -1681,8 +1666,7 @@ class ProjectsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return SeekResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1778,8 +1762,7 @@ class ProjectsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1865,7 +1848,10 @@ class ProjectsTopicsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String topic, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String topic, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1898,7 +1884,10 @@ class ProjectsTopicsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Topic> get(core.String topic, {core.String? $fields}) async {
+  async.Future<Topic> get(
+    core.String topic, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2014,8 +2003,7 @@ class ProjectsTopicsResource {
       queryParams: queryParams_,
     );
     return ListTopicsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing topic by updating the fields specified in the update
@@ -2107,8 +2095,7 @@ class ProjectsTopicsResource {
       queryParams: queryParams_,
     );
     return PublishResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2204,8 +2191,7 @@ class ProjectsTopicsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2266,8 +2252,7 @@ class ProjectsTopicsSnapshotsResource {
       queryParams: queryParams_,
     );
     return ListTopicSnapshotsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2322,8 +2307,7 @@ class ProjectsTopicsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return ListTopicSubscriptionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2337,7 +2321,9 @@ class AcknowledgeRequest {
   /// Required.
   core.List<core.String>? ackIds;
 
-  AcknowledgeRequest({this.ackIds});
+  AcknowledgeRequest({
+    this.ackIds,
+  });
 
   AcknowledgeRequest.fromJson(core.Map json_)
       : this(
@@ -2530,14 +2516,17 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({this.condition, this.members, this.role});
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2628,24 +2617,20 @@ class CloudStorage {
       : this(
           avroFormat: json_.containsKey('avroFormat')
               ? AvroFormat.fromJson(
-                  json_['avroFormat'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['avroFormat'] as core.Map<core.String, core.dynamic>)
               : null,
           bucket: json_['bucket'] as core.String?,
           matchGlob: json_['matchGlob'] as core.String?,
           minimumObjectCreateTime:
               json_['minimumObjectCreateTime'] as core.String?,
           pubsubAvroFormat: json_.containsKey('pubsubAvroFormat')
-              ? PubSubAvroFormat.fromJson(
-                  json_['pubsubAvroFormat']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? PubSubAvroFormat.fromJson(json_['pubsubAvroFormat']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           state: json_['state'] as core.String?,
           textFormat: json_.containsKey('textFormat')
               ? TextFormat.fromJson(
-                  json_['textFormat'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['textFormat'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2781,8 +2766,7 @@ class CloudStorageConfig {
       : this(
           avroConfig: json_.containsKey('avroConfig')
               ? AvroConfig.fromJson(
-                  json_['avroConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['avroConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           bucket: json_['bucket'] as core.String?,
           filenameDatetimeFormat:
@@ -2796,8 +2780,7 @@ class CloudStorageConfig {
           state: json_['state'] as core.String?,
           textConfig: json_.containsKey('textConfig')
               ? TextConfig.fromJson(
-                  json_['textConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['textConfig'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2825,14 +2808,15 @@ class CommitSchemaRequest {
   /// Required.
   Schema? schema;
 
-  CommitSchemaRequest({this.schema});
+  CommitSchemaRequest({
+    this.schema,
+  });
 
   CommitSchemaRequest.fromJson(core.Map json_)
       : this(
           schema: json_.containsKey('schema')
               ? Schema.fromJson(
-                  json_['schema'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['schema'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2862,13 +2846,19 @@ class CreateSnapshotRequest {
   /// Required.
   core.String? subscription;
 
-  CreateSnapshotRequest({this.labels, this.subscription});
+  CreateSnapshotRequest({
+    this.labels,
+    this.subscription,
+  });
 
   CreateSnapshotRequest.fromJson(core.Map json_)
       : this(
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           subscription: json_['subscription'] as core.String?,
         );
@@ -2952,19 +2942,15 @@ class IngestionDataSourceSettings {
       : this(
           awsKinesis: json_.containsKey('awsKinesis')
               ? AwsKinesis.fromJson(
-                  json_['awsKinesis'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['awsKinesis'] as core.Map<core.String, core.dynamic>)
               : null,
           cloudStorage: json_.containsKey('cloudStorage')
               ? CloudStorage.fromJson(
-                  json_['cloudStorage'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['cloudStorage'] as core.Map<core.String, core.dynamic>)
               : null,
           platformLogsSettings: json_.containsKey('platformLogsSettings')
-              ? PlatformLogsSettings.fromJson(
-                  json_['platformLogsSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? PlatformLogsSettings.fromJson(json_['platformLogsSettings']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2986,17 +2972,17 @@ class ListSchemaRevisionsResponse {
   /// The revisions of the schema.
   core.List<Schema>? schemas;
 
-  ListSchemaRevisionsResponse({this.nextPageToken, this.schemas});
+  ListSchemaRevisionsResponse({
+    this.nextPageToken,
+    this.schemas,
+  });
 
   ListSchemaRevisionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           schemas: (json_['schemas'] as core.List?)
-              ?.map(
-                (value) => Schema.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Schema.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3015,17 +3001,17 @@ class ListSchemasResponse {
   /// The resulting schemas.
   core.List<Schema>? schemas;
 
-  ListSchemasResponse({this.nextPageToken, this.schemas});
+  ListSchemasResponse({
+    this.nextPageToken,
+    this.schemas,
+  });
 
   ListSchemasResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           schemas: (json_['schemas'] as core.List?)
-              ?.map(
-                (value) => Schema.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Schema.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3048,17 +3034,17 @@ class ListSnapshotsResponse {
   /// Optional.
   core.List<Snapshot>? snapshots;
 
-  ListSnapshotsResponse({this.nextPageToken, this.snapshots});
+  ListSnapshotsResponse({
+    this.nextPageToken,
+    this.snapshots,
+  });
 
   ListSnapshotsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           snapshots: (json_['snapshots'] as core.List?)
-              ?.map(
-                (value) => Snapshot.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Snapshot.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3082,17 +3068,17 @@ class ListSubscriptionsResponse {
   /// Optional.
   core.List<Subscription>? subscriptions;
 
-  ListSubscriptionsResponse({this.nextPageToken, this.subscriptions});
+  ListSubscriptionsResponse({
+    this.nextPageToken,
+    this.subscriptions,
+  });
 
   ListSubscriptionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           subscriptions: (json_['subscriptions'] as core.List?)
-              ?.map(
-                (value) => Subscription.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Subscription.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3116,7 +3102,10 @@ class ListTopicSnapshotsResponse {
   /// Optional.
   core.List<core.String>? snapshots;
 
-  ListTopicSnapshotsResponse({this.nextPageToken, this.snapshots});
+  ListTopicSnapshotsResponse({
+    this.nextPageToken,
+    this.snapshots,
+  });
 
   ListTopicSnapshotsResponse.fromJson(core.Map json_)
       : this(
@@ -3146,7 +3135,10 @@ class ListTopicSubscriptionsResponse {
   /// Optional.
   core.List<core.String>? subscriptions;
 
-  ListTopicSubscriptionsResponse({this.nextPageToken, this.subscriptions});
+  ListTopicSubscriptionsResponse({
+    this.nextPageToken,
+    this.subscriptions,
+  });
 
   ListTopicSubscriptionsResponse.fromJson(core.Map json_)
       : this(
@@ -3175,17 +3167,17 @@ class ListTopicsResponse {
   /// Optional.
   core.List<Topic>? topics;
 
-  ListTopicsResponse({this.nextPageToken, this.topics});
+  ListTopicsResponse({
+    this.nextPageToken,
+    this.topics,
+  });
 
   ListTopicsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           topics: (json_['topics'] as core.List?)
-              ?.map(
-                (value) => Topic.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Topic.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3218,7 +3210,10 @@ class MessageStoragePolicy {
   /// Optional.
   core.bool? enforceInTransit;
 
-  MessageStoragePolicy({this.allowedPersistenceRegions, this.enforceInTransit});
+  MessageStoragePolicy({
+    this.allowedPersistenceRegions,
+    this.enforceInTransit,
+  });
 
   MessageStoragePolicy.fromJson(core.Map json_)
       : this(
@@ -3257,7 +3252,10 @@ class ModifyAckDeadlineRequest {
   /// Required.
   core.List<core.String>? ackIds;
 
-  ModifyAckDeadlineRequest({this.ackDeadlineSeconds, this.ackIds});
+  ModifyAckDeadlineRequest({
+    this.ackDeadlineSeconds,
+    this.ackIds,
+  });
 
   ModifyAckDeadlineRequest.fromJson(core.Map json_)
       : this(
@@ -3286,14 +3284,15 @@ class ModifyPushConfigRequest {
   /// Required.
   PushConfig? pushConfig;
 
-  ModifyPushConfigRequest({this.pushConfig});
+  ModifyPushConfigRequest({
+    this.pushConfig,
+  });
 
   ModifyPushConfigRequest.fromJson(core.Map json_)
       : this(
           pushConfig: json_.containsKey('pushConfig')
               ? PushConfig.fromJson(
-                  json_['pushConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['pushConfig'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3324,10 +3323,14 @@ class PlatformLogsSettings {
   /// - "ERROR" : Only error logs will be written.
   core.String? severity;
 
-  PlatformLogsSettings({this.severity});
+  PlatformLogsSettings({
+    this.severity,
+  });
 
   PlatformLogsSettings.fromJson(core.Map json_)
-      : this(severity: json_['severity'] as core.String?);
+      : this(
+          severity: json_['severity'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (severity != null) 'severity': severity!,
@@ -3417,16 +3420,17 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({this.bindings, this.etag, this.version});
+  Policy({
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
   Policy.fromJson(core.Map json_)
       : this(
           bindings: (json_['bindings'] as core.List?)
-              ?.map(
-                (value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -3453,16 +3457,15 @@ class PublishRequest {
   /// Required.
   core.List<PubsubMessage>? messages;
 
-  PublishRequest({this.messages});
+  PublishRequest({
+    this.messages,
+  });
 
   PublishRequest.fromJson(core.Map json_)
       : this(
           messages: (json_['messages'] as core.List?)
-              ?.map(
-                (value) => PubsubMessage.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PubsubMessage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3481,7 +3484,9 @@ class PublishResponse {
   /// Optional.
   core.List<core.String>? messageIds;
 
-  PublishResponse({this.messageIds});
+  PublishResponse({
+    this.messageIds,
+  });
 
   PublishResponse.fromJson(core.Map json_)
       : this(
@@ -3536,7 +3541,10 @@ class PullRequest {
   )
   core.bool? returnImmediately;
 
-  PullRequest({this.maxMessages, this.returnImmediately});
+  PullRequest({
+    this.maxMessages,
+    this.returnImmediately,
+  });
 
   PullRequest.fromJson(core.Map json_)
       : this(
@@ -3563,16 +3571,15 @@ class PullResponse {
   /// Optional.
   core.List<ReceivedMessage>? receivedMessages;
 
-  PullResponse({this.receivedMessages});
+  PullResponse({
+    this.receivedMessages,
+  });
 
   PullResponse.fromJson(core.Map json_)
       : this(
           receivedMessages: (json_['receivedMessages'] as core.List?)
-              ?.map(
-                (value) => ReceivedMessage.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ReceivedMessage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3638,23 +3645,25 @@ class PushConfig {
 
   PushConfig.fromJson(core.Map json_)
       : this(
-          attributes: (json_['attributes']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          attributes:
+              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           noWrapper: json_.containsKey('noWrapper')
               ? NoWrapper.fromJson(
-                  json_['noWrapper'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['noWrapper'] as core.Map<core.String, core.dynamic>)
               : null,
           oidcToken: json_.containsKey('oidcToken')
               ? OidcToken.fromJson(
-                  json_['oidcToken'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['oidcToken'] as core.Map<core.String, core.dynamic>)
               : null,
           pubsubWrapper: json_.containsKey('pubsubWrapper')
               ? PubsubWrapper.fromJson(
-                  json_['pubsubWrapper'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['pubsubWrapper'] as core.Map<core.String, core.dynamic>)
               : null,
           pushEndpoint: json_['pushEndpoint'] as core.String?,
         );
@@ -3696,7 +3705,11 @@ class ReceivedMessage {
   /// Optional.
   PubsubMessage? message;
 
-  ReceivedMessage({this.ackId, this.deliveryAttempt, this.message});
+  ReceivedMessage({
+    this.ackId,
+    this.deliveryAttempt,
+    this.message,
+  });
 
   ReceivedMessage.fromJson(core.Map json_)
       : this(
@@ -3704,8 +3717,7 @@ class ReceivedMessage {
           deliveryAttempt: json_['deliveryAttempt'] as core.int?,
           message: json_.containsKey('message')
               ? PubsubMessage.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['message'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3735,10 +3747,14 @@ class RollbackSchemaRequest {
   /// Required.
   core.String? revisionId;
 
-  RollbackSchemaRequest({this.revisionId});
+  RollbackSchemaRequest({
+    this.revisionId,
+  });
 
   RollbackSchemaRequest.fromJson(core.Map json_)
-      : this(revisionId: json_['revisionId'] as core.String?);
+      : this(
+          revisionId: json_['revisionId'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (revisionId != null) 'revisionId': revisionId!,
@@ -3890,7 +3906,10 @@ class SeekRequest {
   /// Optional.
   core.String? time;
 
-  SeekRequest({this.snapshot, this.time});
+  SeekRequest({
+    this.snapshot,
+    this.time,
+  });
 
   SeekRequest.fromJson(core.Map json_)
       : this(
@@ -3916,14 +3935,15 @@ class SetIamPolicyRequest {
   /// reject them.
   Policy? policy;
 
-  SetIamPolicyRequest({this.policy});
+  SetIamPolicyRequest({
+    this.policy,
+  });
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3971,14 +3991,22 @@ class Snapshot {
   /// Optional.
   core.String? topic;
 
-  Snapshot({this.expireTime, this.labels, this.name, this.topic});
+  Snapshot({
+    this.expireTime,
+    this.labels,
+    this.name,
+    this.topic,
+  });
 
   Snapshot.fromJson(core.Map json_)
       : this(
           expireTime: json_['expireTime'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           topic: json_['topic'] as core.String?,
@@ -4222,55 +4250,47 @@ class Subscription {
               json_.containsKey('analyticsHubSubscriptionInfo')
                   ? AnalyticsHubSubscriptionInfo.fromJson(
                       json_['analyticsHubSubscriptionInfo']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           bigqueryConfig: json_.containsKey('bigqueryConfig')
-              ? BigQueryConfig.fromJson(
-                  json_['bigqueryConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? BigQueryConfig.fromJson(json_['bigqueryConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           cloudStorageConfig: json_.containsKey('cloudStorageConfig')
-              ? CloudStorageConfig.fromJson(
-                  json_['cloudStorageConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CloudStorageConfig.fromJson(json_['cloudStorageConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           deadLetterPolicy: json_.containsKey('deadLetterPolicy')
-              ? DeadLetterPolicy.fromJson(
-                  json_['deadLetterPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? DeadLetterPolicy.fromJson(json_['deadLetterPolicy']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           detached: json_['detached'] as core.bool?,
           enableExactlyOnceDelivery:
               json_['enableExactlyOnceDelivery'] as core.bool?,
           enableMessageOrdering: json_['enableMessageOrdering'] as core.bool?,
           expirationPolicy: json_.containsKey('expirationPolicy')
-              ? ExpirationPolicy.fromJson(
-                  json_['expirationPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ExpirationPolicy.fromJson(json_['expirationPolicy']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           filter: json_['filter'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           messageRetentionDuration:
               json_['messageRetentionDuration'] as core.String?,
           name: json_['name'] as core.String?,
           pushConfig: json_.containsKey('pushConfig')
               ? PushConfig.fromJson(
-                  json_['pushConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['pushConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           retainAckedMessages: json_['retainAckedMessages'] as core.bool?,
           retryPolicy: json_.containsKey('retryPolicy')
               ? RetryPolicy.fromJson(
-                  json_['retryPolicy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['retryPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
           state: json_['state'] as core.String?,
           topic: json_['topic'] as core.String?,
@@ -4331,10 +4351,14 @@ class TextFormat {
   /// Optional.
   core.String? delimiter;
 
-  TextFormat({this.delimiter});
+  TextFormat({
+    this.delimiter,
+  });
 
   TextFormat.fromJson(core.Map json_)
-      : this(delimiter: json_['delimiter'] as core.String?);
+      : this(
+          delimiter: json_['delimiter'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (delimiter != null) 'delimiter': delimiter!,
@@ -4438,29 +4462,27 @@ class Topic {
               json_.containsKey('ingestionDataSourceSettings')
                   ? IngestionDataSourceSettings.fromJson(
                       json_['ingestionDataSourceSettings']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           kmsKeyName: json_['kmsKeyName'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           messageRetentionDuration:
               json_['messageRetentionDuration'] as core.String?,
           messageStoragePolicy: json_.containsKey('messageStoragePolicy')
-              ? MessageStoragePolicy.fromJson(
-                  json_['messageStoragePolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? MessageStoragePolicy.fromJson(json_['messageStoragePolicy']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           schemaSettings: json_.containsKey('schemaSettings')
-              ? SchemaSettings.fromJson(
-                  json_['schemaSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SchemaSettings.fromJson(json_['schemaSettings']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           state: json_['state'] as core.String?,
         );
@@ -4495,14 +4517,16 @@ class UpdateSnapshotRequest {
   /// Required.
   core.String? updateMask;
 
-  UpdateSnapshotRequest({this.snapshot, this.updateMask});
+  UpdateSnapshotRequest({
+    this.snapshot,
+    this.updateMask,
+  });
 
   UpdateSnapshotRequest.fromJson(core.Map json_)
       : this(
           snapshot: json_.containsKey('snapshot')
               ? Snapshot.fromJson(
-                  json_['snapshot'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['snapshot'] as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -4527,14 +4551,16 @@ class UpdateSubscriptionRequest {
   /// Required.
   core.String? updateMask;
 
-  UpdateSubscriptionRequest({this.subscription, this.updateMask});
+  UpdateSubscriptionRequest({
+    this.subscription,
+    this.updateMask,
+  });
 
   UpdateSubscriptionRequest.fromJson(core.Map json_)
       : this(
           subscription: json_.containsKey('subscription')
               ? Subscription.fromJson(
-                  json_['subscription'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['subscription'] as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -4562,14 +4588,16 @@ class UpdateTopicRequest {
   /// Required.
   core.String? updateMask;
 
-  UpdateTopicRequest({this.topic, this.updateMask});
+  UpdateTopicRequest({
+    this.topic,
+    this.updateMask,
+  });
 
   UpdateTopicRequest.fromJson(core.Map json_)
       : this(
           topic: json_.containsKey('topic')
               ? Topic.fromJson(
-                  json_['topic'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['topic'] as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -4607,7 +4635,12 @@ class ValidateMessageRequest {
   /// Ad-hoc schema against which to validate
   Schema? schema;
 
-  ValidateMessageRequest({this.encoding, this.message, this.name, this.schema});
+  ValidateMessageRequest({
+    this.encoding,
+    this.message,
+    this.name,
+    this.schema,
+  });
 
   ValidateMessageRequest.fromJson(core.Map json_)
       : this(
@@ -4616,8 +4649,7 @@ class ValidateMessageRequest {
           name: json_['name'] as core.String?,
           schema: json_.containsKey('schema')
               ? Schema.fromJson(
-                  json_['schema'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['schema'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4641,14 +4673,15 @@ class ValidateSchemaRequest {
   /// Required.
   Schema? schema;
 
-  ValidateSchemaRequest({this.schema});
+  ValidateSchemaRequest({
+    this.schema,
+  });
 
   ValidateSchemaRequest.fromJson(core.Map json_)
       : this(
           schema: json_.containsKey('schema')
               ? Schema.fromJson(
-                  json_['schema'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['schema'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 

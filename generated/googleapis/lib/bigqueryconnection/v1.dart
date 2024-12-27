@@ -55,16 +55,11 @@ class BigQueryConnectionServiceApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  BigQueryConnectionServiceApi(
-    http.Client client, {
-    core.String rootUrl = 'https://bigqueryconnection.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  BigQueryConnectionServiceApi(http.Client client,
+      {core.String rootUrl = 'https://bigqueryconnection.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -135,8 +130,7 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return Connection.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes connection and associated credential.
@@ -158,7 +152,10 @@ class ProjectsLocationsConnectionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -192,7 +189,10 @@ class ProjectsLocationsConnectionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Connection> get(core.String name, {core.String? $fields}) async {
+  async.Future<Connection> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -205,8 +205,7 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return Connection.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -298,8 +297,7 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return ListConnectionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified connection.
@@ -350,8 +348,7 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return Connection.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -449,8 +446,7 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -481,16 +477,16 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({this.auditLogConfigs, this.service});
+  AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
 
   AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map(
-                (value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -521,7 +517,10 @@ class AwsAccessRole {
   /// This identity will be used to access the user's AWS IAM Role.
   core.String? identity;
 
-  AwsAccessRole({this.iamRoleId, this.identity});
+  AwsAccessRole({
+    this.iamRoleId,
+    this.identity,
+  });
 
   AwsAccessRole.fromJson(core.Map json_)
       : this(
@@ -541,14 +540,15 @@ class AwsProperties {
   /// customer's AWS IAM Role.
   AwsAccessRole? accessRole;
 
-  AwsProperties({this.accessRole});
+  AwsProperties({
+    this.accessRole,
+  });
 
   AwsProperties.fromJson(core.Map json_)
       : this(
           accessRole: json_.containsKey('accessRole')
               ? AwsAccessRole.fromJson(
-                  json_['accessRole'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['accessRole'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -707,14 +707,17 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({this.condition, this.members, this.role});
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -744,10 +747,14 @@ class CloudResourceProperties {
   /// Output only.
   core.String? serviceAccountId;
 
-  CloudResourceProperties({this.serviceAccountId});
+  CloudResourceProperties({
+    this.serviceAccountId,
+  });
 
   CloudResourceProperties.fromJson(core.Map json_)
-      : this(serviceAccountId: json_['serviceAccountId'] as core.String?);
+      : this(
+          serviceAccountId: json_['serviceAccountId'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (serviceAccountId != null) 'serviceAccountId': serviceAccountId!,
@@ -837,7 +844,10 @@ class CloudSqlCredential {
   /// The username for the credential.
   core.String? username;
 
-  CloudSqlCredential({this.password, this.username});
+  CloudSqlCredential({
+    this.password,
+    this.username,
+  });
 
   CloudSqlCredential.fromJson(core.Map json_)
       : this(
@@ -892,8 +902,7 @@ class CloudSqlProperties {
       : this(
           credential: json_.containsKey('credential')
               ? CloudSqlCredential.fromJson(
-                  json_['credential'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['credential'] as core.Map<core.String, core.dynamic>)
               : null,
           database: json_['database'] as core.String?,
           instanceId: json_['instanceId'] as core.String?,
@@ -1001,33 +1010,27 @@ class Connection {
       : this(
           aws: json_.containsKey('aws')
               ? AwsProperties.fromJson(
-                  json_['aws'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['aws'] as core.Map<core.String, core.dynamic>)
               : null,
           azure: json_.containsKey('azure')
               ? AzureProperties.fromJson(
-                  json_['azure'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['azure'] as core.Map<core.String, core.dynamic>)
               : null,
           cloudResource: json_.containsKey('cloudResource')
               ? CloudResourceProperties.fromJson(
-                  json_['cloudResource'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['cloudResource'] as core.Map<core.String, core.dynamic>)
               : null,
           cloudSpanner: json_.containsKey('cloudSpanner')
               ? CloudSpannerProperties.fromJson(
-                  json_['cloudSpanner'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['cloudSpanner'] as core.Map<core.String, core.dynamic>)
               : null,
           cloudSql: json_.containsKey('cloudSql')
               ? CloudSqlProperties.fromJson(
-                  json_['cloudSql'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['cloudSql'] as core.Map<core.String, core.dynamic>)
               : null,
           configuration: json_.containsKey('configuration')
               ? ConnectorConfiguration.fromJson(
-                  json_['configuration'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['configuration'] as core.Map<core.String, core.dynamic>)
               : null,
           creationTime: json_['creationTime'] as core.String?,
           description: json_['description'] as core.String?,
@@ -1039,13 +1042,11 @@ class Connection {
           salesforceDataCloud: json_.containsKey('salesforceDataCloud')
               ? SalesforceDataCloudProperties.fromJson(
                   json_['salesforceDataCloud']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           spark: json_.containsKey('spark')
               ? SparkProperties.fromJson(
-                  json_['spark'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['spark'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1100,25 +1101,21 @@ class ConnectorConfiguration {
       : this(
           asset: json_.containsKey('asset')
               ? ConnectorConfigurationAsset.fromJson(
-                  json_['asset'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['asset'] as core.Map<core.String, core.dynamic>)
               : null,
           authentication: json_.containsKey('authentication')
               ? ConnectorConfigurationAuthentication.fromJson(
                   json_['authentication']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           connectorId: json_['connectorId'] as core.String?,
           endpoint: json_.containsKey('endpoint')
               ? ConnectorConfigurationEndpoint.fromJson(
-                  json_['endpoint'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['endpoint'] as core.Map<core.String, core.dynamic>)
               : null,
           network: json_.containsKey('network')
               ? ConnectorConfigurationNetwork.fromJson(
-                  json_['network'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['network'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1145,7 +1142,10 @@ class ConnectorConfigurationAsset {
   /// Example: `//library.googleapis.com/shelves/shelf1/books/book2`
   core.String? googleCloudResource;
 
-  ConnectorConfigurationAsset({this.database, this.googleCloudResource});
+  ConnectorConfigurationAsset({
+    this.database,
+    this.googleCloudResource,
+  });
 
   ConnectorConfigurationAsset.fromJson(core.Map json_)
       : this(
@@ -1185,8 +1185,7 @@ class ConnectorConfigurationAuthentication {
           usernamePassword: json_.containsKey('usernamePassword')
               ? ConnectorConfigurationUsernamePassword.fromJson(
                   json_['usernamePassword']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1203,10 +1202,14 @@ class ConnectorConfigurationEndpoint {
   /// https://www.ietf.org/rfc/rfc3986.html#section-3.2.3.
   core.String? hostPort;
 
-  ConnectorConfigurationEndpoint({this.hostPort});
+  ConnectorConfigurationEndpoint({
+    this.hostPort,
+  });
 
   ConnectorConfigurationEndpoint.fromJson(core.Map json_)
-      : this(hostPort: json_['hostPort'] as core.String?);
+      : this(
+          hostPort: json_['hostPort'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (hostPort != null) 'hostPort': hostPort!,
@@ -1218,15 +1221,16 @@ class ConnectorConfigurationNetwork {
   /// Private Service Connect networking configuration.
   ConnectorConfigurationPrivateServiceConnect? privateServiceConnect;
 
-  ConnectorConfigurationNetwork({this.privateServiceConnect});
+  ConnectorConfigurationNetwork({
+    this.privateServiceConnect,
+  });
 
   ConnectorConfigurationNetwork.fromJson(core.Map json_)
       : this(
           privateServiceConnect: json_.containsKey('privateServiceConnect')
               ? ConnectorConfigurationPrivateServiceConnect.fromJson(
                   json_['privateServiceConnect']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1244,10 +1248,14 @@ class ConnectorConfigurationPrivateServiceConnect {
   /// Required.
   core.String? networkAttachment;
 
-  ConnectorConfigurationPrivateServiceConnect({this.networkAttachment});
+  ConnectorConfigurationPrivateServiceConnect({
+    this.networkAttachment,
+  });
 
   ConnectorConfigurationPrivateServiceConnect.fromJson(core.Map json_)
-      : this(networkAttachment: json_['networkAttachment'] as core.String?);
+      : this(
+          networkAttachment: json_['networkAttachment'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (networkAttachment != null) 'networkAttachment': networkAttachment!,
@@ -1272,7 +1280,10 @@ class ConnectorConfigurationSecret {
   /// - "PLAINTEXT"
   core.String? secretType;
 
-  ConnectorConfigurationSecret({this.plaintext, this.secretType});
+  ConnectorConfigurationSecret({
+    this.plaintext,
+    this.secretType,
+  });
 
   ConnectorConfigurationSecret.fromJson(core.Map json_)
       : this(
@@ -1298,14 +1309,16 @@ class ConnectorConfigurationUsernamePassword {
   /// Required.
   core.String? username;
 
-  ConnectorConfigurationUsernamePassword({this.password, this.username});
+  ConnectorConfigurationUsernamePassword({
+    this.password,
+    this.username,
+  });
 
   ConnectorConfigurationUsernamePassword.fromJson(core.Map json_)
       : this(
           password: json_.containsKey('password')
               ? ConnectorConfigurationSecret.fromJson(
-                  json_['password'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['password'] as core.Map<core.String, core.dynamic>)
               : null,
           username: json_['username'] as core.String?,
         );
@@ -1350,14 +1363,15 @@ class GetIamPolicyRequest {
   /// `GetIamPolicy`.
   GetPolicyOptions? options;
 
-  GetIamPolicyRequest({this.options});
+  GetIamPolicyRequest({
+    this.options,
+  });
 
   GetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           options: json_.containsKey('options')
               ? GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['options'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1377,16 +1391,16 @@ class ListConnectionsResponse {
   /// Next page token.
   core.String? nextPageToken;
 
-  ListConnectionsResponse({this.connections, this.nextPageToken});
+  ListConnectionsResponse({
+    this.connections,
+    this.nextPageToken,
+  });
 
   ListConnectionsResponse.fromJson(core.Map json_)
       : this(
           connections: (json_['connections'] as core.List?)
-              ?.map(
-                (value) => Connection.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Connection.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1407,10 +1421,14 @@ class MetastoreServiceConfig {
   /// Optional.
   core.String? metastoreService;
 
-  MetastoreServiceConfig({this.metastoreService});
+  MetastoreServiceConfig({
+    this.metastoreService,
+  });
 
   MetastoreServiceConfig.fromJson(core.Map json_)
-      : this(metastoreService: json_['metastoreService'] as core.String?);
+      : this(
+          metastoreService: json_['metastoreService'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metastoreService != null) 'metastoreService': metastoreService!,
@@ -1503,23 +1521,22 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
+  Policy({
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
   Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map(
-                (value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map(
-                (value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -1584,14 +1601,16 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({this.policy, this.updateMask});
+  SetIamPolicyRequest({
+    this.policy,
+    this.updateMask,
+  });
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -1613,10 +1632,14 @@ class SparkHistoryServerConfig {
   /// Optional.
   core.String? dataprocCluster;
 
-  SparkHistoryServerConfig({this.dataprocCluster});
+  SparkHistoryServerConfig({
+    this.dataprocCluster,
+  });
 
   SparkHistoryServerConfig.fromJson(core.Map json_)
-      : this(dataprocCluster: json_['dataprocCluster'] as core.String?);
+      : this(
+          dataprocCluster: json_['dataprocCluster'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataprocCluster != null) 'dataprocCluster': dataprocCluster!,
@@ -1657,18 +1680,15 @@ class SparkProperties {
   SparkProperties.fromJson(core.Map json_)
       : this(
           metastoreServiceConfig: json_.containsKey('metastoreServiceConfig')
-              ? MetastoreServiceConfig.fromJson(
-                  json_['metastoreServiceConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? MetastoreServiceConfig.fromJson(json_['metastoreServiceConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           serviceAccountId: json_['serviceAccountId'] as core.String?,
           sparkHistoryServerConfig:
               json_.containsKey('sparkHistoryServerConfig')
                   ? SparkHistoryServerConfig.fromJson(
                       json_['sparkHistoryServerConfig']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
         );
 

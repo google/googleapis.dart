@@ -50,16 +50,11 @@ class MyBusinessQ_AApi {
 
   LocationsResource get locations => LocationsResource(_requester);
 
-  MyBusinessQ_AApi(
-    http.Client client, {
-    core.String rootUrl = 'https://mybusinessqanda.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  MyBusinessQ_AApi(http.Client client,
+      {core.String rootUrl = 'https://mybusinessqanda.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class LocationsResource {
@@ -136,7 +131,10 @@ class LocationsQuestionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -215,8 +213,7 @@ class LocationsQuestionsResource {
       queryParams: queryParams_,
     );
     return ListQuestionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a specific question written by the current user.
@@ -289,7 +286,10 @@ class LocationsQuestionsAnswersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -354,8 +354,7 @@ class LocationsQuestionsAnswersResource {
       queryParams: queryParams_,
     );
     return ListAnswersResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates an answer or updates the existing answer written by the user for
@@ -454,8 +453,7 @@ class Answer {
       : this(
           author: json_.containsKey('author')
               ? Author.fromJson(
-                  json_['author'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['author'] as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_['createTime'] as core.String?,
           name: json_['name'] as core.String?,
@@ -490,7 +488,11 @@ class Author {
   /// - "MERCHANT" : The owner/manager of the location
   core.String? type;
 
-  Author({this.displayName, this.profilePhotoUri, this.type});
+  Author({
+    this.displayName,
+    this.profilePhotoUri,
+    this.type,
+  });
 
   Author.fromJson(core.Map json_)
       : this(
@@ -529,16 +531,17 @@ class ListAnswersResponse {
   /// The total number of answers posted for this question across all pages.
   core.int? totalSize;
 
-  ListAnswersResponse({this.answers, this.nextPageToken, this.totalSize});
+  ListAnswersResponse({
+    this.answers,
+    this.nextPageToken,
+    this.totalSize,
+  });
 
   ListAnswersResponse.fromJson(core.Map json_)
       : this(
           answers: (json_['answers'] as core.List?)
-              ?.map(
-                (value) => Answer.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Answer.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
@@ -566,17 +569,18 @@ class ListQuestionsResponse {
   /// The total number of questions posted for this location across all pages.
   core.int? totalSize;
 
-  ListQuestionsResponse({this.nextPageToken, this.questions, this.totalSize});
+  ListQuestionsResponse({
+    this.nextPageToken,
+    this.questions,
+    this.totalSize,
+  });
 
   ListQuestionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           questions: (json_['questions'] as core.List?)
-              ?.map(
-                (value) => Question.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Question.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -655,18 +659,14 @@ class Question {
       : this(
           author: json_.containsKey('author')
               ? Author.fromJson(
-                  json_['author'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['author'] as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_['createTime'] as core.String?,
           name: json_['name'] as core.String?,
           text: json_['text'] as core.String?,
           topAnswers: (json_['topAnswers'] as core.List?)
-              ?.map(
-                (value) => Answer.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Answer.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           totalAnswerCount: json_['totalAnswerCount'] as core.int?,
           updateTime: json_['updateTime'] as core.String?,
@@ -692,14 +692,15 @@ class UpsertAnswerRequest {
   /// Required.
   Answer? answer;
 
-  UpsertAnswerRequest({this.answer});
+  UpsertAnswerRequest({
+    this.answer,
+  });
 
   UpsertAnswerRequest.fromJson(core.Map json_)
       : this(
           answer: json_.containsKey('answer')
               ? Answer.fromJson(
-                  json_['answer'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['answer'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 

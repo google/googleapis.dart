@@ -33,8 +33,7 @@ core.List<api.GoogleSecuritySafebrowsingV5FullHashFullHashDetail>
         ];
 
 void checkUnnamed0(
-  core.List<api.GoogleSecuritySafebrowsingV5FullHashFullHashDetail> o,
-) {
+    core.List<api.GoogleSecuritySafebrowsingV5FullHashFullHashDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleSecuritySafebrowsingV5FullHashFullHashDetail(o[0]);
   checkGoogleSecuritySafebrowsingV5FullHashFullHashDetail(o[1]);
@@ -54,22 +53,33 @@ api.GoogleSecuritySafebrowsingV5FullHash
 }
 
 void checkGoogleSecuritySafebrowsingV5FullHash(
-  api.GoogleSecuritySafebrowsingV5FullHash o,
-) {
+    api.GoogleSecuritySafebrowsingV5FullHash o) {
   buildCounterGoogleSecuritySafebrowsingV5FullHash++;
   if (buildCounterGoogleSecuritySafebrowsingV5FullHash < 3) {
-    unittest.expect(o.fullHash!, unittest.equals('foo'));
+    unittest.expect(
+      o.fullHash!,
+      unittest.equals('foo'),
+    );
     checkUnnamed0(o.fullHashDetails!);
   }
   buildCounterGoogleSecuritySafebrowsingV5FullHash--;
 }
 
-core.List<core.String> buildUnnamed1() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed1() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleSecuritySafebrowsingV5FullHashFullHashDetail = 0;
@@ -86,12 +96,14 @@ api.GoogleSecuritySafebrowsingV5FullHashFullHashDetail
 }
 
 void checkGoogleSecuritySafebrowsingV5FullHashFullHashDetail(
-  api.GoogleSecuritySafebrowsingV5FullHashFullHashDetail o,
-) {
+    api.GoogleSecuritySafebrowsingV5FullHashFullHashDetail o) {
   buildCounterGoogleSecuritySafebrowsingV5FullHashFullHashDetail++;
   if (buildCounterGoogleSecuritySafebrowsingV5FullHashFullHashDetail < 3) {
     checkUnnamed1(o.attributes!);
-    unittest.expect(o.threatType!, unittest.equals('foo'));
+    unittest.expect(
+      o.threatType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleSecuritySafebrowsingV5FullHashFullHashDetail--;
 }
@@ -121,22 +133,33 @@ api.GoogleSecuritySafebrowsingV5SearchHashesResponse
 }
 
 void checkGoogleSecuritySafebrowsingV5SearchHashesResponse(
-  api.GoogleSecuritySafebrowsingV5SearchHashesResponse o,
-) {
+    api.GoogleSecuritySafebrowsingV5SearchHashesResponse o) {
   buildCounterGoogleSecuritySafebrowsingV5SearchHashesResponse++;
   if (buildCounterGoogleSecuritySafebrowsingV5SearchHashesResponse < 3) {
-    unittest.expect(o.cacheDuration!, unittest.equals('foo'));
+    unittest.expect(
+      o.cacheDuration!,
+      unittest.equals('foo'),
+    );
     checkUnnamed2(o.fullHashes!);
   }
   buildCounterGoogleSecuritySafebrowsingV5SearchHashesResponse--;
 }
 
-core.List<core.String> buildUnnamed3() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed3() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 void main() {
@@ -145,41 +168,33 @@ void main() {
       final o = buildGoogleSecuritySafebrowsingV5FullHash();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleSecuritySafebrowsingV5FullHash.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleSecuritySafebrowsingV5FullHash(od);
     });
   });
 
   unittest.group(
-    'obj-schema-GoogleSecuritySafebrowsingV5FullHashFullHashDetail',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGoogleSecuritySafebrowsingV5FullHashFullHashDetail();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GoogleSecuritySafebrowsingV5FullHashFullHashDetail.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGoogleSecuritySafebrowsingV5FullHashFullHashDetail(od);
-      });
-    },
-  );
+      'obj-schema-GoogleSecuritySafebrowsingV5FullHashFullHashDetail', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleSecuritySafebrowsingV5FullHashFullHashDetail();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleSecuritySafebrowsingV5FullHashFullHashDetail.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleSecuritySafebrowsingV5FullHashFullHashDetail(od);
+    });
+  });
 
-  unittest.group(
-    'obj-schema-GoogleSecuritySafebrowsingV5SearchHashesResponse',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGoogleSecuritySafebrowsingV5SearchHashesResponse();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GoogleSecuritySafebrowsingV5SearchHashesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGoogleSecuritySafebrowsingV5SearchHashesResponse(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GoogleSecuritySafebrowsingV5SearchHashesResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleSecuritySafebrowsingV5SearchHashesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleSecuritySafebrowsingV5SearchHashesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleSecuritySafebrowsingV5SearchHashesResponse(od);
+    });
+  });
 
   unittest.group('resource-HashesResource', () {
     unittest.test('method--search', () async {
@@ -187,62 +202,57 @@ void main() {
       final res = api.SafebrowsingApi(mock).hashes;
       final arg_hashPrefixes = buildUnnamed3();
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 16),
-            unittest.equals('v5/hashes:search'),
-          );
-          pathOffset += 16;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('v5/hashes:search'),
+        );
+        pathOffset += 16;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['hashPrefixes']!,
-            unittest.equals(arg_hashPrefixes),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['hashPrefixes']!,
+          unittest.equals(arg_hashPrefixes),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGoogleSecuritySafebrowsingV5SearchHashesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleSecuritySafebrowsingV5SearchHashesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.search(
-        hashPrefixes: arg_hashPrefixes,
-        $fields: arg_$fields,
-      );
+          hashPrefixes: arg_hashPrefixes, $fields: arg_$fields);
       checkGoogleSecuritySafebrowsingV5SearchHashesResponse(
-        response as api.GoogleSecuritySafebrowsingV5SearchHashesResponse,
-      );
+          response as api.GoogleSecuritySafebrowsingV5SearchHashesResponse);
     });
   });
 }

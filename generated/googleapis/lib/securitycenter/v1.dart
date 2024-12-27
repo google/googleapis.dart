@@ -113,16 +113,11 @@ class SecurityCommandCenterApi {
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  SecurityCommandCenterApi(
-    http.Client client, {
-    core.String rootUrl = 'https://securitycenter.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  SecurityCommandCenterApi(http.Client client,
+      {core.String rootUrl = 'https://securitycenter.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class FoldersResource {
@@ -198,8 +193,7 @@ class FoldersAssetsResource {
       queryParams: queryParams_,
     );
     return GroupAssetsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists an organization's assets.
@@ -340,8 +334,7 @@ class FoldersAssetsResource {
       queryParams: queryParams_,
     );
     return ListAssetsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates security marks.
@@ -400,8 +393,7 @@ class FoldersAssetsResource {
       queryParams: queryParams_,
     );
     return SecurityMarks.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -458,8 +450,7 @@ class FoldersBigQueryExportsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an existing BigQuery export.
@@ -482,7 +473,10 @@ class FoldersBigQueryExportsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -533,8 +527,7 @@ class FoldersBigQueryExportsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists BigQuery exports.
@@ -591,8 +584,7 @@ class FoldersBigQueryExportsResource {
       queryParams: queryParams_,
     );
     return ListBigQueryExportsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a BigQuery export.
@@ -644,8 +636,7 @@ class FoldersBigQueryExportsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -657,8 +648,7 @@ class FoldersEventThreatDetectionSettingsResource {
   FoldersEventThreatDetectionSettingsEffectiveCustomModulesResource
       get effectiveCustomModules =>
           FoldersEventThreatDetectionSettingsEffectiveCustomModulesResource(
-            _requester,
-          );
+              _requester);
 
   FoldersEventThreatDetectionSettingsResource(commons.ApiRequester client)
       : _requester = client;
@@ -707,8 +697,7 @@ class FoldersEventThreatDetectionSettingsResource {
       queryParams: queryParams_,
     );
     return ValidateEventThreatDetectionCustomModuleResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -716,8 +705,8 @@ class FoldersEventThreatDetectionSettingsCustomModulesResource {
   final commons.ApiRequester _requester;
 
   FoldersEventThreatDetectionSettingsCustomModulesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Creates a resident Event Threat Detection custom module at the scope of
   /// the given Resource Manager parent, and also creates inherited custom
@@ -764,8 +753,7 @@ class FoldersEventThreatDetectionSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return EventThreatDetectionCustomModule.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified Event Threat Detection custom module and all of its
@@ -793,7 +781,10 @@ class FoldersEventThreatDetectionSettingsCustomModulesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -846,8 +837,7 @@ class FoldersEventThreatDetectionSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return EventThreatDetectionCustomModule.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all Event Threat Detection custom modules for the given Resource
@@ -905,8 +895,7 @@ class FoldersEventThreatDetectionSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return ListEventThreatDetectionCustomModulesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all resident Event Threat Detection custom modules under the given
@@ -965,8 +954,7 @@ class FoldersEventThreatDetectionSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return ListDescendantEventThreatDetectionCustomModulesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the Event Threat Detection custom module with the given name based
@@ -1025,8 +1013,7 @@ class FoldersEventThreatDetectionSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return EventThreatDetectionCustomModule.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1034,8 +1021,8 @@ class FoldersEventThreatDetectionSettingsEffectiveCustomModulesResource {
   final commons.ApiRequester _requester;
 
   FoldersEventThreatDetectionSettingsEffectiveCustomModulesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Gets an effective Event Threat Detection custom module at the given level.
   ///
@@ -1077,8 +1064,7 @@ class FoldersEventThreatDetectionSettingsEffectiveCustomModulesResource {
       queryParams: queryParams_,
     );
     return EffectiveEventThreatDetectionCustomModule.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all effective Event Threat Detection custom modules for the given
@@ -1137,8 +1123,7 @@ class FoldersEventThreatDetectionSettingsEffectiveCustomModulesResource {
       queryParams: queryParams_,
     );
     return ListEffectiveEventThreatDetectionCustomModulesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1232,7 +1217,10 @@ class FoldersLocationsMuteConfigsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1287,8 +1275,7 @@ class FoldersLocationsMuteConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a mute config.
@@ -1341,8 +1328,7 @@ class FoldersLocationsMuteConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1398,8 +1384,7 @@ class FoldersMuteConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an existing mute config.
@@ -1425,7 +1410,10 @@ class FoldersMuteConfigsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1479,8 +1467,7 @@ class FoldersMuteConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists mute configs.
@@ -1532,8 +1519,7 @@ class FoldersMuteConfigsResource {
       queryParams: queryParams_,
     );
     return ListMuteConfigsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a mute config.
@@ -1585,8 +1571,7 @@ class FoldersMuteConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1643,8 +1628,7 @@ class FoldersNotificationConfigsResource {
       queryParams: queryParams_,
     );
     return NotificationConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a notification config.
@@ -1667,7 +1651,10 @@ class FoldersNotificationConfigsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1718,8 +1705,7 @@ class FoldersNotificationConfigsResource {
       queryParams: queryParams_,
     );
     return NotificationConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists notification configs.
@@ -1771,8 +1757,7 @@ class FoldersNotificationConfigsResource {
       queryParams: queryParams_,
     );
     return ListNotificationConfigsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   ///  Updates a notification config.
@@ -1826,8 +1811,7 @@ class FoldersNotificationConfigsResource {
       queryParams: queryParams_,
     );
     return NotificationConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1841,8 +1825,7 @@ class FoldersSecurityHealthAnalyticsSettingsResource {
   FoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource
       get effectiveCustomModules =>
           FoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource(
-            _requester,
-          );
+              _requester);
 
   FoldersSecurityHealthAnalyticsSettingsResource(commons.ApiRequester client)
       : _requester = client;
@@ -1852,8 +1835,8 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
   final commons.ApiRequester _requester;
 
   FoldersSecurityHealthAnalyticsSettingsCustomModulesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the
   /// given CRM parent, and also creates inherited
@@ -1904,9 +1887,7 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified SecurityHealthAnalyticsCustomModule and all of its
@@ -1934,7 +1915,10 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1973,7 +1957,10 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
-      get(core.String name, {core.String? $fields}) async {
+      get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1986,9 +1973,7 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of all SecurityHealthAnalyticsCustomModules for the given
@@ -2042,8 +2027,7 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return ListSecurityHealthAnalyticsCustomModulesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of all resident SecurityHealthAnalyticsCustomModules under
@@ -2098,8 +2082,7 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return ListDescendantSecurityHealthAnalyticsCustomModulesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the SecurityHealthAnalyticsCustomModule under the given name based
@@ -2163,9 +2146,7 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Simulates a given SecurityHealthAnalyticsCustomModule and Resource.
@@ -2212,8 +2193,7 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return SimulateSecurityHealthAnalyticsCustomModuleResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2221,8 +2201,8 @@ class FoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource {
   final commons.ApiRequester _requester;
 
   FoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.
   ///
@@ -2250,7 +2230,10 @@ class FoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource {
   /// this method will complete with the same error.
   async.Future<
           GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule>
-      get(core.String name, {core.String? $fields}) async {
+      get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2263,9 +2246,7 @@ class FoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for
@@ -2321,8 +2302,7 @@ class FoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource {
       queryParams: queryParams_,
     );
     return ListEffectiveSecurityHealthAnalyticsCustomModulesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2380,8 +2360,7 @@ class FoldersSourcesResource {
       queryParams: queryParams_,
     );
     return ListSourcesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2444,8 +2423,7 @@ class FoldersSourcesFindingsResource {
       queryParams: queryParams_,
     );
     return GroupFindingsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists an organization or source's findings.
@@ -2581,8 +2559,7 @@ class FoldersSourcesFindingsResource {
       queryParams: queryParams_,
     );
     return ListFindingsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates or updates a finding.
@@ -2790,8 +2767,7 @@ class FoldersSourcesFindingsResource {
       queryParams: queryParams_,
     );
     return SecurityMarks.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2850,8 +2826,7 @@ class FoldersSourcesFindingsExternalSystemsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1ExternalSystem.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2925,8 +2900,7 @@ class OrganizationsResource {
       queryParams: queryParams_,
     );
     return OrganizationSettings.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an organization's settings.
@@ -2974,8 +2948,7 @@ class OrganizationsResource {
       queryParams: queryParams_,
     );
     return OrganizationSettings.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3029,8 +3002,7 @@ class OrganizationsAssetsResource {
       queryParams: queryParams_,
     );
     return GroupAssetsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists an organization's assets.
@@ -3171,8 +3143,7 @@ class OrganizationsAssetsResource {
       queryParams: queryParams_,
     );
     return ListAssetsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Runs asset discovery.
@@ -3281,8 +3252,7 @@ class OrganizationsAssetsResource {
       queryParams: queryParams_,
     );
     return SecurityMarks.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3346,8 +3316,7 @@ class OrganizationsAttackPathsResource {
       queryParams: queryParams_,
     );
     return ListAttackPathsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3404,8 +3373,7 @@ class OrganizationsBigQueryExportsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an existing BigQuery export.
@@ -3428,7 +3396,10 @@ class OrganizationsBigQueryExportsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3479,8 +3450,7 @@ class OrganizationsBigQueryExportsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists BigQuery exports.
@@ -3537,8 +3507,7 @@ class OrganizationsBigQueryExportsResource {
       queryParams: queryParams_,
     );
     return ListBigQueryExportsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a BigQuery export.
@@ -3590,8 +3559,7 @@ class OrganizationsBigQueryExportsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3601,13 +3569,11 @@ class OrganizationsEventThreatDetectionSettingsResource {
   OrganizationsEventThreatDetectionSettingsCustomModulesResource
       get customModules =>
           OrganizationsEventThreatDetectionSettingsCustomModulesResource(
-            _requester,
-          );
+              _requester);
   OrganizationsEventThreatDetectionSettingsEffectiveCustomModulesResource
       get effectiveCustomModules =>
           OrganizationsEventThreatDetectionSettingsEffectiveCustomModulesResource(
-            _requester,
-          );
+              _requester);
 
   OrganizationsEventThreatDetectionSettingsResource(commons.ApiRequester client)
       : _requester = client;
@@ -3657,8 +3623,7 @@ class OrganizationsEventThreatDetectionSettingsResource {
       queryParams: queryParams_,
     );
     return ValidateEventThreatDetectionCustomModuleResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3666,8 +3631,8 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
   final commons.ApiRequester _requester;
 
   OrganizationsEventThreatDetectionSettingsCustomModulesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Creates a resident Event Threat Detection custom module at the scope of
   /// the given Resource Manager parent, and also creates inherited custom
@@ -3715,8 +3680,7 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return EventThreatDetectionCustomModule.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified Event Threat Detection custom module and all of its
@@ -3744,7 +3708,10 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3797,8 +3764,7 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return EventThreatDetectionCustomModule.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all Event Threat Detection custom modules for the given Resource
@@ -3857,8 +3823,7 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return ListEventThreatDetectionCustomModulesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all resident Event Threat Detection custom modules under the given
@@ -3918,8 +3883,7 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return ListDescendantEventThreatDetectionCustomModulesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the Event Threat Detection custom module with the given name based
@@ -3978,8 +3942,7 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return EventThreatDetectionCustomModule.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3987,8 +3950,8 @@ class OrganizationsEventThreatDetectionSettingsEffectiveCustomModulesResource {
   final commons.ApiRequester _requester;
 
   OrganizationsEventThreatDetectionSettingsEffectiveCustomModulesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Gets an effective Event Threat Detection custom module at the given level.
   ///
@@ -4030,8 +3993,7 @@ class OrganizationsEventThreatDetectionSettingsEffectiveCustomModulesResource {
       queryParams: queryParams_,
     );
     return EffectiveEventThreatDetectionCustomModule.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all effective Event Threat Detection custom modules for the given
@@ -4091,8 +4053,7 @@ class OrganizationsEventThreatDetectionSettingsEffectiveCustomModulesResource {
       queryParams: queryParams_,
     );
     return ListEffectiveEventThreatDetectionCustomModulesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4188,7 +4149,10 @@ class OrganizationsLocationsMuteConfigsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4243,8 +4207,7 @@ class OrganizationsLocationsMuteConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a mute config.
@@ -4297,8 +4260,7 @@ class OrganizationsLocationsMuteConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4355,8 +4317,7 @@ class OrganizationsMuteConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an existing mute config.
@@ -4382,7 +4343,10 @@ class OrganizationsMuteConfigsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4436,8 +4400,7 @@ class OrganizationsMuteConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists mute configs.
@@ -4489,8 +4452,7 @@ class OrganizationsMuteConfigsResource {
       queryParams: queryParams_,
     );
     return ListMuteConfigsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a mute config.
@@ -4542,8 +4504,7 @@ class OrganizationsMuteConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4600,8 +4561,7 @@ class OrganizationsNotificationConfigsResource {
       queryParams: queryParams_,
     );
     return NotificationConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a notification config.
@@ -4625,7 +4585,10 @@ class OrganizationsNotificationConfigsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4677,8 +4640,7 @@ class OrganizationsNotificationConfigsResource {
       queryParams: queryParams_,
     );
     return NotificationConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists notification configs.
@@ -4730,8 +4692,7 @@ class OrganizationsNotificationConfigsResource {
       queryParams: queryParams_,
     );
     return ListNotificationConfigsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   ///  Updates a notification config.
@@ -4786,8 +4747,7 @@ class OrganizationsNotificationConfigsResource {
       queryParams: queryParams_,
     );
     return NotificationConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4823,7 +4783,10 @@ class OrganizationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> cancel(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4859,7 +4822,10 @@ class OrganizationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4894,7 +4860,10 @@ class OrganizationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4956,8 +4925,7 @@ class OrganizationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5012,8 +4980,7 @@ class OrganizationsResourceValueConfigsResource {
       queryParams: queryParams_,
     );
     return BatchCreateResourceValueConfigsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a ResourceValueConfig.
@@ -5034,7 +5001,10 @@ class OrganizationsResourceValueConfigsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5084,8 +5054,7 @@ class OrganizationsResourceValueConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1ResourceValueConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all ResourceValueConfigs.
@@ -5137,8 +5106,7 @@ class OrganizationsResourceValueConfigsResource {
       queryParams: queryParams_,
     );
     return ListResourceValueConfigsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing ResourceValueConfigs with new rules.
@@ -5185,8 +5153,7 @@ class OrganizationsResourceValueConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1ResourceValueConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5196,25 +5163,23 @@ class OrganizationsSecurityHealthAnalyticsSettingsResource {
   OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource
       get customModules =>
           OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource(
-            _requester,
-          );
+              _requester);
   OrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource
       get effectiveCustomModules =>
           OrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource(
-            _requester,
-          );
+              _requester);
 
   OrganizationsSecurityHealthAnalyticsSettingsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 }
 
 class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
   final commons.ApiRequester _requester;
 
   OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the
   /// given CRM parent, and also creates inherited
@@ -5265,9 +5230,7 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified SecurityHealthAnalyticsCustomModule and all of its
@@ -5295,7 +5258,10 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5334,7 +5300,10 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
-      get(core.String name, {core.String? $fields}) async {
+      get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5347,9 +5316,7 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of all SecurityHealthAnalyticsCustomModules for the given
@@ -5403,8 +5370,7 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return ListSecurityHealthAnalyticsCustomModulesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of all resident SecurityHealthAnalyticsCustomModules under
@@ -5459,8 +5425,7 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return ListDescendantSecurityHealthAnalyticsCustomModulesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the SecurityHealthAnalyticsCustomModule under the given name based
@@ -5524,9 +5489,7 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Simulates a given SecurityHealthAnalyticsCustomModule and Resource.
@@ -5573,8 +5536,7 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return SimulateSecurityHealthAnalyticsCustomModuleResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5582,8 +5544,8 @@ class OrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource
   final commons.ApiRequester _requester;
 
   OrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.
   ///
@@ -5611,7 +5573,10 @@ class OrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource
   /// this method will complete with the same error.
   async.Future<
           GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule>
-      get(core.String name, {core.String? $fields}) async {
+      get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5624,9 +5589,7 @@ class OrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for
@@ -5682,8 +5645,7 @@ class OrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource
       queryParams: queryParams_,
     );
     return ListEffectiveSecurityHealthAnalyticsCustomModulesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5721,7 +5683,10 @@ class OrganizationsSimulationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Simulation> get(core.String name, {core.String? $fields}) async {
+  async.Future<Simulation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5734,8 +5699,7 @@ class OrganizationsSimulationsResource {
       queryParams: queryParams_,
     );
     return Simulation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5745,25 +5709,23 @@ class OrganizationsSimulationsAttackExposureResultsResource {
   OrganizationsSimulationsAttackExposureResultsAttackPathsResource
       get attackPaths =>
           OrganizationsSimulationsAttackExposureResultsAttackPathsResource(
-            _requester,
-          );
+              _requester);
   OrganizationsSimulationsAttackExposureResultsValuedResourcesResource
       get valuedResources =>
           OrganizationsSimulationsAttackExposureResultsValuedResourcesResource(
-            _requester,
-          );
+              _requester);
 
   OrganizationsSimulationsAttackExposureResultsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 }
 
 class OrganizationsSimulationsAttackExposureResultsAttackPathsResource {
   final commons.ApiRequester _requester;
 
   OrganizationsSimulationsAttackExposureResultsAttackPathsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Lists the attack paths for a set of simulation results or valued resources
   /// and filter.
@@ -5820,8 +5782,7 @@ class OrganizationsSimulationsAttackExposureResultsAttackPathsResource {
       queryParams: queryParams_,
     );
     return ListAttackPathsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5829,8 +5790,8 @@ class OrganizationsSimulationsAttackExposureResultsValuedResourcesResource {
   final commons.ApiRequester _requester;
 
   OrganizationsSimulationsAttackExposureResultsValuedResourcesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Lists the valued resources for a set of simulation results and filter.
   ///
@@ -5897,8 +5858,7 @@ class OrganizationsSimulationsAttackExposureResultsValuedResourcesResource {
       queryParams: queryParams_,
     );
     return ListValuedResourcesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5962,8 +5922,7 @@ class OrganizationsSimulationsAttackPathsResource {
       queryParams: queryParams_,
     );
     return ListAttackPathsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6011,8 +5970,7 @@ class OrganizationsSimulationsValuedResourcesResource {
       queryParams: queryParams_,
     );
     return ValuedResource.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the valued resources for a set of simulation results and filter.
@@ -6079,8 +6037,7 @@ class OrganizationsSimulationsValuedResourcesResource {
       queryParams: queryParams_,
     );
     return ListValuedResourcesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6088,8 +6045,8 @@ class OrganizationsSimulationsValuedResourcesAttackPathsResource {
   final commons.ApiRequester _requester;
 
   OrganizationsSimulationsValuedResourcesAttackPathsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Lists the attack paths for a set of simulation results or valued resources
   /// and filter.
@@ -6146,8 +6103,7 @@ class OrganizationsSimulationsValuedResourcesAttackPathsResource {
       queryParams: queryParams_,
     );
     return ListAttackPathsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6219,7 +6175,10 @@ class OrganizationsSourcesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Source> get(core.String name, {core.String? $fields}) async {
+  async.Future<Source> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6323,8 +6282,7 @@ class OrganizationsSourcesResource {
       queryParams: queryParams_,
     );
     return ListSourcesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a source.
@@ -6459,8 +6417,7 @@ class OrganizationsSourcesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6572,8 +6529,7 @@ class OrganizationsSourcesFindingsResource {
       queryParams: queryParams_,
     );
     return GroupFindingsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists an organization or source's findings.
@@ -6709,8 +6665,7 @@ class OrganizationsSourcesFindingsResource {
       queryParams: queryParams_,
     );
     return ListFindingsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates or updates a finding.
@@ -6918,8 +6873,7 @@ class OrganizationsSourcesFindingsResource {
       queryParams: queryParams_,
     );
     return SecurityMarks.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6927,8 +6881,8 @@ class OrganizationsSourcesFindingsExternalSystemsResource {
   final commons.ApiRequester _requester;
 
   OrganizationsSourcesFindingsExternalSystemsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Updates external system.
   ///
@@ -6979,8 +6933,7 @@ class OrganizationsSourcesFindingsExternalSystemsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1ExternalSystem.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7054,8 +7007,7 @@ class OrganizationsValuedResourcesResource {
       queryParams: queryParams_,
     );
     return ListValuedResourcesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7132,8 +7084,7 @@ class ProjectsAssetsResource {
       queryParams: queryParams_,
     );
     return GroupAssetsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists an organization's assets.
@@ -7274,8 +7225,7 @@ class ProjectsAssetsResource {
       queryParams: queryParams_,
     );
     return ListAssetsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates security marks.
@@ -7334,8 +7284,7 @@ class ProjectsAssetsResource {
       queryParams: queryParams_,
     );
     return SecurityMarks.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7392,8 +7341,7 @@ class ProjectsBigQueryExportsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an existing BigQuery export.
@@ -7416,7 +7364,10 @@ class ProjectsBigQueryExportsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7467,8 +7418,7 @@ class ProjectsBigQueryExportsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists BigQuery exports.
@@ -7525,8 +7475,7 @@ class ProjectsBigQueryExportsResource {
       queryParams: queryParams_,
     );
     return ListBigQueryExportsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a BigQuery export.
@@ -7578,8 +7527,7 @@ class ProjectsBigQueryExportsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7591,8 +7539,7 @@ class ProjectsEventThreatDetectionSettingsResource {
   ProjectsEventThreatDetectionSettingsEffectiveCustomModulesResource
       get effectiveCustomModules =>
           ProjectsEventThreatDetectionSettingsEffectiveCustomModulesResource(
-            _requester,
-          );
+              _requester);
 
   ProjectsEventThreatDetectionSettingsResource(commons.ApiRequester client)
       : _requester = client;
@@ -7641,8 +7588,7 @@ class ProjectsEventThreatDetectionSettingsResource {
       queryParams: queryParams_,
     );
     return ValidateEventThreatDetectionCustomModuleResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7650,8 +7596,8 @@ class ProjectsEventThreatDetectionSettingsCustomModulesResource {
   final commons.ApiRequester _requester;
 
   ProjectsEventThreatDetectionSettingsCustomModulesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Creates a resident Event Threat Detection custom module at the scope of
   /// the given Resource Manager parent, and also creates inherited custom
@@ -7698,8 +7644,7 @@ class ProjectsEventThreatDetectionSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return EventThreatDetectionCustomModule.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified Event Threat Detection custom module and all of its
@@ -7727,7 +7672,10 @@ class ProjectsEventThreatDetectionSettingsCustomModulesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7780,8 +7728,7 @@ class ProjectsEventThreatDetectionSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return EventThreatDetectionCustomModule.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all Event Threat Detection custom modules for the given Resource
@@ -7839,8 +7786,7 @@ class ProjectsEventThreatDetectionSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return ListEventThreatDetectionCustomModulesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all resident Event Threat Detection custom modules under the given
@@ -7899,8 +7845,7 @@ class ProjectsEventThreatDetectionSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return ListDescendantEventThreatDetectionCustomModulesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the Event Threat Detection custom module with the given name based
@@ -7959,8 +7904,7 @@ class ProjectsEventThreatDetectionSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return EventThreatDetectionCustomModule.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7968,8 +7912,8 @@ class ProjectsEventThreatDetectionSettingsEffectiveCustomModulesResource {
   final commons.ApiRequester _requester;
 
   ProjectsEventThreatDetectionSettingsEffectiveCustomModulesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Gets an effective Event Threat Detection custom module at the given level.
   ///
@@ -8011,8 +7955,7 @@ class ProjectsEventThreatDetectionSettingsEffectiveCustomModulesResource {
       queryParams: queryParams_,
     );
     return EffectiveEventThreatDetectionCustomModule.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all effective Event Threat Detection custom modules for the given
@@ -8071,8 +8014,7 @@ class ProjectsEventThreatDetectionSettingsEffectiveCustomModulesResource {
       queryParams: queryParams_,
     );
     return ListEffectiveEventThreatDetectionCustomModulesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8166,7 +8108,10 @@ class ProjectsLocationsMuteConfigsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8221,8 +8166,7 @@ class ProjectsLocationsMuteConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a mute config.
@@ -8275,8 +8219,7 @@ class ProjectsLocationsMuteConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8333,8 +8276,7 @@ class ProjectsMuteConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an existing mute config.
@@ -8360,7 +8302,10 @@ class ProjectsMuteConfigsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8414,8 +8359,7 @@ class ProjectsMuteConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists mute configs.
@@ -8467,8 +8411,7 @@ class ProjectsMuteConfigsResource {
       queryParams: queryParams_,
     );
     return ListMuteConfigsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a mute config.
@@ -8520,8 +8463,7 @@ class ProjectsMuteConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8578,8 +8520,7 @@ class ProjectsNotificationConfigsResource {
       queryParams: queryParams_,
     );
     return NotificationConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a notification config.
@@ -8602,7 +8543,10 @@ class ProjectsNotificationConfigsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8653,8 +8597,7 @@ class ProjectsNotificationConfigsResource {
       queryParams: queryParams_,
     );
     return NotificationConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists notification configs.
@@ -8706,8 +8649,7 @@ class ProjectsNotificationConfigsResource {
       queryParams: queryParams_,
     );
     return ListNotificationConfigsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   ///  Updates a notification config.
@@ -8761,8 +8703,7 @@ class ProjectsNotificationConfigsResource {
       queryParams: queryParams_,
     );
     return NotificationConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8776,8 +8717,7 @@ class ProjectsSecurityHealthAnalyticsSettingsResource {
   ProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource
       get effectiveCustomModules =>
           ProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource(
-            _requester,
-          );
+              _requester);
 
   ProjectsSecurityHealthAnalyticsSettingsResource(commons.ApiRequester client)
       : _requester = client;
@@ -8787,8 +8727,8 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
   final commons.ApiRequester _requester;
 
   ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the
   /// given CRM parent, and also creates inherited
@@ -8839,9 +8779,7 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified SecurityHealthAnalyticsCustomModule and all of its
@@ -8869,7 +8807,10 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8908,7 +8849,10 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
-      get(core.String name, {core.String? $fields}) async {
+      get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8921,9 +8865,7 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of all SecurityHealthAnalyticsCustomModules for the given
@@ -8977,8 +8919,7 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return ListSecurityHealthAnalyticsCustomModulesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of all resident SecurityHealthAnalyticsCustomModules under
@@ -9033,8 +8974,7 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return ListDescendantSecurityHealthAnalyticsCustomModulesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the SecurityHealthAnalyticsCustomModule under the given name based
@@ -9098,9 +9038,7 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Simulates a given SecurityHealthAnalyticsCustomModule and Resource.
@@ -9147,8 +9085,7 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return SimulateSecurityHealthAnalyticsCustomModuleResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9156,8 +9093,8 @@ class ProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource {
   final commons.ApiRequester _requester;
 
   ProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.
   ///
@@ -9185,7 +9122,10 @@ class ProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource {
   /// this method will complete with the same error.
   async.Future<
           GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule>
-      get(core.String name, {core.String? $fields}) async {
+      get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9198,9 +9138,7 @@ class ProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule
-        .fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for
@@ -9256,8 +9194,7 @@ class ProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource {
       queryParams: queryParams_,
     );
     return ListEffectiveSecurityHealthAnalyticsCustomModulesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9315,8 +9252,7 @@ class ProjectsSourcesResource {
       queryParams: queryParams_,
     );
     return ListSourcesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9379,8 +9315,7 @@ class ProjectsSourcesFindingsResource {
       queryParams: queryParams_,
     );
     return GroupFindingsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists an organization or source's findings.
@@ -9516,8 +9451,7 @@ class ProjectsSourcesFindingsResource {
       queryParams: queryParams_,
     );
     return ListFindingsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates or updates a finding.
@@ -9725,8 +9659,7 @@ class ProjectsSourcesFindingsResource {
       queryParams: queryParams_,
     );
     return SecurityMarks.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9785,8 +9718,7 @@ class ProjectsSourcesFindingsExternalSystemsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1ExternalSystem.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9880,19 +9812,15 @@ class Access {
           callerIp: json_['callerIp'] as core.String?,
           callerIpGeo: json_.containsKey('callerIpGeo')
               ? Geolocation.fromJson(
-                  json_['callerIpGeo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['callerIpGeo'] as core.Map<core.String, core.dynamic>)
               : null,
           methodName: json_['methodName'] as core.String?,
           principalEmail: json_['principalEmail'] as core.String?,
           principalSubject: json_['principalSubject'] as core.String?,
           serviceAccountDelegationInfo:
               (json_['serviceAccountDelegationInfo'] as core.List?)
-                  ?.map(
-                    (value) => ServiceAccountDelegationInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => ServiceAccountDelegationInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
           serviceAccountKeyName: json_['serviceAccountKeyName'] as core.String?,
           serviceName: json_['serviceName'] as core.String?,
@@ -10002,10 +9930,14 @@ class AdaptiveProtection {
   /// for further explanation.
   core.double? confidence;
 
-  AdaptiveProtection({this.confidence});
+  AdaptiveProtection({
+    this.confidence,
+  });
 
   AdaptiveProtection.fromJson(core.Map json_)
-      : this(confidence: (json_['confidence'] as core.num?)?.toDouble());
+      : this(
+          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
@@ -10025,7 +9957,10 @@ class Application {
   /// For example, `http://example.com?p=aMmYgI6H`.
   core.String? fullUri;
 
-  Application({this.baseUri, this.fullUri});
+  Application({
+    this.baseUri,
+    this.fullUri,
+  });
 
   Application.fromJson(core.Map json_)
       : this(
@@ -10112,8 +10047,7 @@ class Asset {
           createTime: json_['createTime'] as core.String?,
           iamPolicy: json_.containsKey('iamPolicy')
               ? IamPolicy.fromJson(
-                  json_['iamPolicy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['iamPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           resourceProperties: json_.containsKey('resourceProperties')
@@ -10124,13 +10058,11 @@ class Asset {
               json_.containsKey('securityCenterProperties')
                   ? SecurityCenterProperties.fromJson(
                       json_['securityCenterProperties']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           securityMarks: json_.containsKey('securityMarks')
               ? SecurityMarks.fromJson(
-                  json_['securityMarks'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['securityMarks'] as core.Map<core.String, core.dynamic>)
               : null,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -10169,7 +10101,11 @@ class AssetDiscoveryConfig {
   /// The project ids to use for filtering asset discovery.
   core.List<core.String>? projectIds;
 
-  AssetDiscoveryConfig({this.folderIds, this.inclusionMode, this.projectIds});
+  AssetDiscoveryConfig({
+    this.folderIds,
+    this.inclusionMode,
+    this.projectIds,
+  });
 
   AssetDiscoveryConfig.fromJson(core.Map json_)
       : this(
@@ -10200,7 +10136,11 @@ class Attack {
   /// Total PPS (packets per second) volume of attack.
   core.int? volumePps;
 
-  Attack({this.classification, this.volumeBps, this.volumePps});
+  Attack({
+    this.classification,
+    this.volumeBps,
+    this.volumePps,
+  });
 
   Attack.fromJson(core.Map json_)
       : this(
@@ -10307,24 +10247,22 @@ class AttackPath {
   /// A list of nodes that exist in this attack path.
   core.List<AttackPathNode>? pathNodes;
 
-  AttackPath({this.edges, this.name, this.pathNodes});
+  AttackPath({
+    this.edges,
+    this.name,
+    this.pathNodes,
+  });
 
   AttackPath.fromJson(core.Map json_)
       : this(
           edges: (json_['edges'] as core.List?)
-              ?.map(
-                (value) => AttackPathEdge.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AttackPathEdge.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           name: json_['name'] as core.String?,
           pathNodes: (json_['pathNodes'] as core.List?)
-              ?.map(
-                (value) => AttackPathNode.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AttackPathNode.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -10344,7 +10282,10 @@ class AttackPathEdge {
   /// The attack node uuid of the source node.
   core.String? source;
 
-  AttackPathEdge({this.destination, this.source});
+  AttackPathEdge({
+    this.destination,
+    this.source,
+  });
 
   AttackPathEdge.fromJson(core.Map json_)
       : this(
@@ -10394,18 +10335,12 @@ class AttackPathNode {
   AttackPathNode.fromJson(core.Map json_)
       : this(
           associatedFindings: (json_['associatedFindings'] as core.List?)
-              ?.map(
-                (value) => PathNodeAssociatedFinding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PathNodeAssociatedFinding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           attackSteps: (json_['attackSteps'] as core.List?)
-              ?.map(
-                (value) => AttackStepNode.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AttackStepNode.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           displayName: json_['displayName'] as core.String?,
           resource: json_['resource'] as core.String?,
@@ -10463,7 +10398,10 @@ class AttackStepNode {
           displayName: json_['displayName'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           type: json_['type'] as core.String?,
           uuid: json_['uuid'] as core.String?,
@@ -10505,16 +10443,16 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({this.auditLogConfigs, this.service});
+  AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
 
   AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map(
-                (value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -10541,7 +10479,10 @@ class AwsAccount {
   /// The friendly name of this account.
   core.String? name;
 
-  AwsAccount({this.id, this.name});
+  AwsAccount({
+    this.id,
+    this.name,
+  });
 
   AwsAccount.fromJson(core.Map json_)
       : this(
@@ -10568,26 +10509,25 @@ class AwsMetadata {
   /// from lowest level (closest to the account) to highest level.
   core.List<AwsOrganizationalUnit>? organizationalUnits;
 
-  AwsMetadata({this.account, this.organization, this.organizationalUnits});
+  AwsMetadata({
+    this.account,
+    this.organization,
+    this.organizationalUnits,
+  });
 
   AwsMetadata.fromJson(core.Map json_)
       : this(
           account: json_.containsKey('account')
               ? AwsAccount.fromJson(
-                  json_['account'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['account'] as core.Map<core.String, core.dynamic>)
               : null,
           organization: json_.containsKey('organization')
               ? AwsOrganization.fromJson(
-                  json_['organization'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['organization'] as core.Map<core.String, core.dynamic>)
               : null,
           organizationalUnits: (json_['organizationalUnits'] as core.List?)
-              ?.map(
-                (value) => AwsOrganizationalUnit.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AwsOrganizationalUnit.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -10609,12 +10549,18 @@ class AwsOrganization {
   /// from 10 to 32 lowercase letters or digits.
   core.String? id;
 
-  AwsOrganization({this.id});
+  AwsOrganization({
+    this.id,
+  });
 
   AwsOrganization.fromJson(core.Map json_)
-      : this(id: json_['id'] as core.String?);
+      : this(
+          id: json_['id'] as core.String?,
+        );
 
-  core.Map<core.String, core.dynamic> toJson() => {if (id != null) 'id': id!};
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+      };
 }
 
 /// An Organizational Unit (OU) is a container of AWS accounts within a root of
@@ -10635,7 +10581,10 @@ class AwsOrganizationalUnit {
   /// The friendly name of the OU.
   core.String? name;
 
-  AwsOrganizationalUnit({this.id, this.name});
+  AwsOrganizationalUnit({
+    this.id,
+    this.name,
+  });
 
   AwsOrganizationalUnit.fromJson(core.Map json_)
       : this(
@@ -10658,7 +10607,10 @@ class AzureManagementGroup {
   /// `20000000-0001-0000-0000-000000000000`.
   core.String? id;
 
-  AzureManagementGroup({this.displayName, this.id});
+  AzureManagementGroup({
+    this.displayName,
+    this.id,
+  });
 
   AzureManagementGroup.fromJson(core.Map json_)
       : this(
@@ -10698,26 +10650,20 @@ class AzureMetadata {
   AzureMetadata.fromJson(core.Map json_)
       : this(
           managementGroups: (json_['managementGroups'] as core.List?)
-              ?.map(
-                (value) => AzureManagementGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AzureManagementGroup.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           resourceGroup: json_.containsKey('resourceGroup')
               ? AzureResourceGroup.fromJson(
-                  json_['resourceGroup'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['resourceGroup'] as core.Map<core.String, core.dynamic>)
               : null,
           subscription: json_.containsKey('subscription')
               ? AzureSubscription.fromJson(
-                  json_['subscription'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['subscription'] as core.Map<core.String, core.dynamic>)
               : null,
           tenant: json_.containsKey('tenant')
               ? AzureTenant.fromJson(
-                  json_['tenant'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['tenant'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -10739,7 +10685,10 @@ class AzureResourceGroup {
   /// This is not a UUID.
   core.String? name;
 
-  AzureResourceGroup({this.id, this.name});
+  AzureResourceGroup({
+    this.id,
+    this.name,
+  });
 
   AzureResourceGroup.fromJson(core.Map json_)
       : this(
@@ -10762,7 +10711,10 @@ class AzureSubscription {
   /// `291bba3f-e0a5-47bc-a099-3bdcb2a50a05`.
   core.String? id;
 
-  AzureSubscription({this.displayName, this.id});
+  AzureSubscription({
+    this.displayName,
+    this.id,
+  });
 
   AzureSubscription.fromJson(core.Map json_)
       : this(
@@ -10785,7 +10737,10 @@ class AzureTenant {
   /// "a11aaa11-aa11-1aa1-11aa-1aaa11a".
   core.String? id;
 
-  AzureTenant({this.displayName, this.id});
+  AzureTenant({
+    this.displayName,
+    this.id,
+  });
 
   AzureTenant.fromJson(core.Map json_)
       : this(
@@ -10925,16 +10880,15 @@ class BatchCreateResourceValueConfigsRequest {
   /// Required.
   core.List<CreateResourceValueConfigRequest>? requests;
 
-  BatchCreateResourceValueConfigsRequest({this.requests});
+  BatchCreateResourceValueConfigsRequest({
+    this.requests,
+  });
 
   BatchCreateResourceValueConfigsRequest.fromJson(core.Map json_)
       : this(
           requests: (json_['requests'] as core.List?)
-              ?.map(
-                (value) => CreateResourceValueConfigRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CreateResourceValueConfigRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -10949,17 +10903,16 @@ class BatchCreateResourceValueConfigsResponse {
   core.List<GoogleCloudSecuritycenterV1ResourceValueConfig>?
       resourceValueConfigs;
 
-  BatchCreateResourceValueConfigsResponse({this.resourceValueConfigs});
+  BatchCreateResourceValueConfigsResponse({
+    this.resourceValueConfigs,
+  });
 
   BatchCreateResourceValueConfigsResponse.fromJson(core.Map json_)
       : this(
           resourceValueConfigs: (json_['resourceValueConfigs'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudSecuritycenterV1ResourceValueConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudSecuritycenterV1ResourceValueConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -11049,14 +11002,17 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({this.condition, this.members, this.role});
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -11110,7 +11066,11 @@ class BulkMuteFindingsRequest {
   /// - "UNDEFINED" : Matching findings will have their mute state cleared.
   core.String? muteState;
 
-  BulkMuteFindingsRequest({this.filter, this.muteAnnotation, this.muteState});
+  BulkMuteFindingsRequest({
+    this.filter,
+    this.muteAnnotation,
+    this.muteState,
+  });
 
   BulkMuteFindingsRequest.fromJson(core.Map json_)
       : this(
@@ -11167,27 +11127,21 @@ class CloudArmor {
   CloudArmor.fromJson(core.Map json_)
       : this(
           adaptiveProtection: json_.containsKey('adaptiveProtection')
-              ? AdaptiveProtection.fromJson(
-                  json_['adaptiveProtection']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AdaptiveProtection.fromJson(json_['adaptiveProtection']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           attack: json_.containsKey('attack')
               ? Attack.fromJson(
-                  json_['attack'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['attack'] as core.Map<core.String, core.dynamic>)
               : null,
           duration: json_['duration'] as core.String?,
           requests: json_.containsKey('requests')
               ? Requests.fromJson(
-                  json_['requests'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['requests'] as core.Map<core.String, core.dynamic>)
               : null,
           securityPolicy: json_.containsKey('securityPolicy')
-              ? SecurityPolicy.fromJson(
-                  json_['securityPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SecurityPolicy.fromJson(json_['securityPolicy']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           threatVector: json_['threatVector'] as core.String?,
         );
@@ -11217,7 +11171,10 @@ class CloudDlpDataProfile {
   /// - "PROJECT" : Project-level configurations.
   core.String? parentType;
 
-  CloudDlpDataProfile({this.dataProfile, this.parentType});
+  CloudDlpDataProfile({
+    this.dataProfile,
+    this.parentType,
+  });
 
   CloudDlpDataProfile.fromJson(core.Map json_)
       : this(
@@ -11331,7 +11288,11 @@ class Compliance {
   /// Version of the standard or benchmark, for example, 1.1
   core.String? version;
 
-  Compliance({this.ids, this.standard, this.version});
+  Compliance({
+    this.ids,
+    this.standard,
+    this.version,
+  });
 
   Compliance.fromJson(core.Map json_)
       : this(
@@ -11410,10 +11371,14 @@ class Contact {
   /// For example, "`person123@company.com`".
   core.String? email;
 
-  Contact({this.email});
+  Contact({
+    this.email,
+  });
 
   Contact.fromJson(core.Map json_)
-      : this(email: json_['email'] as core.String?);
+      : this(
+          email: json_['email'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
@@ -11425,16 +11390,15 @@ class ContactDetails {
   /// A list of contacts
   core.List<Contact>? contacts;
 
-  ContactDetails({this.contacts});
+  ContactDetails({
+    this.contacts,
+  });
 
   ContactDetails.fromJson(core.Map json_)
       : this(
           contacts: (json_['contacts'] as core.List?)
-              ?.map(
-                (value) => Contact.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Contact.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -11465,18 +11429,21 @@ class Container {
   /// This string can identify a container image version using mutable tags.
   core.String? uri;
 
-  Container({this.createTime, this.imageId, this.labels, this.name, this.uri});
+  Container({
+    this.createTime,
+    this.imageId,
+    this.labels,
+    this.name,
+    this.uri,
+  });
 
   Container.fromJson(core.Map json_)
       : this(
           createTime: json_['createTime'] as core.String?,
           imageId: json_['imageId'] as core.String?,
           labels: (json_['labels'] as core.List?)
-              ?.map(
-                (value) => Label.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Label.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           name: json_['name'] as core.String?,
           uri: json_['uri'] as core.String?,
@@ -11503,7 +11470,10 @@ class CreateResourceValueConfigRequest {
   /// Required.
   GoogleCloudSecuritycenterV1ResourceValueConfig? resourceValueConfig;
 
-  CreateResourceValueConfigRequest({this.parent, this.resourceValueConfig});
+  CreateResourceValueConfigRequest({
+    this.parent,
+    this.resourceValueConfig,
+  });
 
   CreateResourceValueConfigRequest.fromJson(core.Map json_)
       : this(
@@ -11511,8 +11481,7 @@ class CreateResourceValueConfigRequest {
           resourceValueConfig: json_.containsKey('resourceValueConfig')
               ? GoogleCloudSecuritycenterV1ResourceValueConfig.fromJson(
                   json_['resourceValueConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -11562,14 +11531,12 @@ class CustomModuleValidationError {
           description: json_['description'] as core.String?,
           end: json_.containsKey('end')
               ? Position.fromJson(
-                  json_['end'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['end'] as core.Map<core.String, core.dynamic>)
               : null,
           fieldPath: json_['fieldPath'] as core.String?,
           start: json_.containsKey('start')
               ? Position.fromJson(
-                  json_['start'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['start'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -11586,16 +11553,15 @@ class CustomModuleValidationError {
 class CustomModuleValidationErrors {
   core.List<CustomModuleValidationError>? errors;
 
-  CustomModuleValidationErrors({this.errors});
+  CustomModuleValidationErrors({
+    this.errors,
+  });
 
   CustomModuleValidationErrors.fromJson(core.Map json_)
       : this(
           errors: (json_['errors'] as core.List?)
-              ?.map(
-                (value) => CustomModuleValidationError.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CustomModuleValidationError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -11682,8 +11648,7 @@ class Cve {
       : this(
           cvssv3: json_.containsKey('cvssv3')
               ? Cvssv3.fromJson(
-                  json_['cvssv3'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['cvssv3'] as core.Map<core.String, core.dynamic>)
               : null,
           exploitReleaseDate: json_['exploitReleaseDate'] as core.String?,
           exploitationActivity: json_['exploitationActivity'] as core.String?,
@@ -11692,11 +11657,8 @@ class Cve {
           impact: json_['impact'] as core.String?,
           observedInTheWild: json_['observedInTheWild'] as core.bool?,
           references: (json_['references'] as core.List?)
-              ?.map(
-                (value) => Reference.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Reference.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           upstreamFixAvailable: json_['upstreamFixAvailable'] as core.bool?,
           zeroDay: json_['zeroDay'] as core.bool?,
@@ -12110,7 +12072,10 @@ class Detection {
   /// The percentage of memory page hashes in the signature that were matched.
   core.double? percentPagesMatched;
 
-  Detection({this.binary, this.percentPagesMatched});
+  Detection({
+    this.binary,
+    this.percentPagesMatched,
+  });
 
   Detection.fromJson(core.Map json_)
       : this(
@@ -12132,9 +12097,14 @@ class Disk {
   /// "https://www.googleapis.com/compute/v1/projects/project-id/zones/zone-id/disks/disk-id".
   core.String? name;
 
-  Disk({this.name});
+  Disk({
+    this.name,
+  });
 
-  Disk.fromJson(core.Map json_) : this(name: json_['name'] as core.String?);
+  Disk.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -12152,7 +12122,10 @@ class DiskPath {
   /// Example: /home/user1/executable_file.sh
   core.String? relativePath;
 
-  DiskPath({this.partitionUuid, this.relativePath});
+  DiskPath({
+    this.partitionUuid,
+    this.relativePath,
+  });
 
   DiskPath.fromJson(core.Map json_)
       : this(
@@ -12177,7 +12150,10 @@ class DynamicMuteRecord {
   /// `organizations/123/locations/global/muteConfigs/mymuteconfig`.
   core.String? muteConfig;
 
-  DynamicMuteRecord({this.matchTime, this.muteConfig});
+  DynamicMuteRecord({
+    this.matchTime,
+    this.muteConfig,
+  });
 
   DynamicMuteRecord.fromJson(core.Map json_)
       : this(
@@ -12309,7 +12285,10 @@ class EnvironmentVariable {
   /// Environment variable value as a JSON encoded string.
   core.String? val;
 
-  EnvironmentVariable({this.name, this.val});
+  EnvironmentVariable({
+    this.name,
+    this.val,
+  });
 
   EnvironmentVariable.fromJson(core.Map json_)
       : this(
@@ -12455,7 +12434,10 @@ class ExfilResource {
   /// [full resource name](https://cloud.google.com/apis/design/resource_names#full_resource_name).
   core.String? name;
 
-  ExfilResource({this.components, this.name});
+  ExfilResource({
+    this.components,
+    this.name,
+  });
 
   ExfilResource.fromJson(core.Map json_)
       : this(
@@ -12491,23 +12473,21 @@ class Exfiltration {
   /// Total exfiltrated bytes processed for the entire job.
   core.String? totalExfiltratedBytes;
 
-  Exfiltration({this.sources, this.targets, this.totalExfiltratedBytes});
+  Exfiltration({
+    this.sources,
+    this.targets,
+    this.totalExfiltratedBytes,
+  });
 
   Exfiltration.fromJson(core.Map json_)
       : this(
           sources: (json_['sources'] as core.List?)
-              ?.map(
-                (value) => ExfilResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ExfilResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           targets: (json_['targets'] as core.List?)
-              ?.map(
-                (value) => ExfilResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ExfilResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           totalExfiltratedBytes: json_['totalExfiltratedBytes'] as core.String?,
         );
@@ -12585,8 +12565,7 @@ class File {
           contents: json_['contents'] as core.String?,
           diskPath: json_.containsKey('diskPath')
               ? DiskPath.fromJson(
-                  json_['diskPath'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['diskPath'] as core.Map<core.String, core.dynamic>)
               : null,
           hashedSize: json_['hashedSize'] as core.String?,
           partiallyHashed: json_['partiallyHashed'] as core.bool?,
@@ -13011,114 +12990,81 @@ class Finding {
       : this(
           access: json_.containsKey('access')
               ? Access.fromJson(
-                  json_['access'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['access'] as core.Map<core.String, core.dynamic>)
               : null,
           application: json_.containsKey('application')
               ? Application.fromJson(
-                  json_['application'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['application'] as core.Map<core.String, core.dynamic>)
               : null,
           attackExposure: json_.containsKey('attackExposure')
-              ? AttackExposure.fromJson(
-                  json_['attackExposure']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AttackExposure.fromJson(json_['attackExposure']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           backupDisasterRecovery: json_.containsKey('backupDisasterRecovery')
-              ? BackupDisasterRecovery.fromJson(
-                  json_['backupDisasterRecovery']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? BackupDisasterRecovery.fromJson(json_['backupDisasterRecovery']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           canonicalName: json_['canonicalName'] as core.String?,
           category: json_['category'] as core.String?,
           cloudArmor: json_.containsKey('cloudArmor')
               ? CloudArmor.fromJson(
-                  json_['cloudArmor'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['cloudArmor'] as core.Map<core.String, core.dynamic>)
               : null,
           cloudDlpDataProfile: json_.containsKey('cloudDlpDataProfile')
-              ? CloudDlpDataProfile.fromJson(
-                  json_['cloudDlpDataProfile']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CloudDlpDataProfile.fromJson(json_['cloudDlpDataProfile']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           cloudDlpInspection: json_.containsKey('cloudDlpInspection')
-              ? CloudDlpInspection.fromJson(
-                  json_['cloudDlpInspection']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CloudDlpInspection.fromJson(json_['cloudDlpInspection']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           compliances: (json_['compliances'] as core.List?)
-              ?.map(
-                (value) => Compliance.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Compliance.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           connections: (json_['connections'] as core.List?)
-              ?.map(
-                (value) => Connection.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Connection.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           contacts:
               (json_['contacts'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
               key,
               ContactDetails.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
           containers: (json_['containers'] as core.List?)
-              ?.map(
-                (value) => Container.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Container.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           createTime: json_['createTime'] as core.String?,
           dataAccessEvents: (json_['dataAccessEvents'] as core.List?)
-              ?.map(
-                (value) => DataAccessEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DataAccessEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           dataFlowEvents: (json_['dataFlowEvents'] as core.List?)
-              ?.map(
-                (value) => DataFlowEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DataFlowEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           dataRetentionDeletionEvents:
               (json_['dataRetentionDeletionEvents'] as core.List?)
-                  ?.map(
-                    (value) => DataRetentionDeletionEvent.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => DataRetentionDeletionEvent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
           database: json_.containsKey('database')
               ? Database.fromJson(
-                  json_['database'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['database'] as core.Map<core.String, core.dynamic>)
               : null,
           description: json_['description'] as core.String?,
           disk: json_.containsKey('disk')
               ? Disk.fromJson(
-                  json_['disk'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['disk'] as core.Map<core.String, core.dynamic>)
               : null,
           eventTime: json_['eventTime'] as core.String?,
           exfiltration: json_.containsKey('exfiltration')
               ? Exfiltration.fromJson(
-                  json_['exfiltration'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['exfiltration'] as core.Map<core.String, core.dynamic>)
               : null,
           externalSystems:
               (json_['externalSystems'] as core.Map<core.String, core.dynamic>?)
@@ -13126,73 +13072,52 @@ class Finding {
             (key, value) => core.MapEntry(
               key,
               GoogleCloudSecuritycenterV1ExternalSystem.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
           externalUri: json_['externalUri'] as core.String?,
           files: (json_['files'] as core.List?)
-              ?.map(
-                (value) => File.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  File.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           findingClass: json_['findingClass'] as core.String?,
           groupMemberships: (json_['groupMemberships'] as core.List?)
-              ?.map(
-                (value) => GroupMembership.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GroupMembership.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           iamBindings: (json_['iamBindings'] as core.List?)
-              ?.map(
-                (value) => IamBinding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => IamBinding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           indicator: json_.containsKey('indicator')
               ? Indicator.fromJson(
-                  json_['indicator'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['indicator'] as core.Map<core.String, core.dynamic>)
               : null,
           kernelRootkit: json_.containsKey('kernelRootkit')
               ? KernelRootkit.fromJson(
-                  json_['kernelRootkit'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['kernelRootkit'] as core.Map<core.String, core.dynamic>)
               : null,
           kubernetes: json_.containsKey('kubernetes')
               ? Kubernetes.fromJson(
-                  json_['kubernetes'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['kubernetes'] as core.Map<core.String, core.dynamic>)
               : null,
           loadBalancers: (json_['loadBalancers'] as core.List?)
-              ?.map(
-                (value) => LoadBalancer.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => LoadBalancer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           logEntries: (json_['logEntries'] as core.List?)
-              ?.map(
-                (value) => LogEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => LogEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           mitreAttack: json_.containsKey('mitreAttack')
               ? MitreAttack.fromJson(
-                  json_['mitreAttack'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['mitreAttack'] as core.Map<core.String, core.dynamic>)
               : null,
           moduleName: json_['moduleName'] as core.String?,
           mute: json_['mute'] as core.String?,
           muteInfo: json_.containsKey('muteInfo')
               ? MuteInfo.fromJson(
-                  json_['muteInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['muteInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           muteInitiator: json_['muteInitiator'] as core.String?,
           muteUpdateTime: json_['muteUpdateTime'] as core.String?,
@@ -13200,36 +13125,26 @@ class Finding {
           nextSteps: json_['nextSteps'] as core.String?,
           notebook: json_.containsKey('notebook')
               ? Notebook.fromJson(
-                  json_['notebook'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['notebook'] as core.Map<core.String, core.dynamic>)
               : null,
           orgPolicies: (json_['orgPolicies'] as core.List?)
-              ?.map(
-                (value) => OrgPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => OrgPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           parent: json_['parent'] as core.String?,
           parentDisplayName: json_['parentDisplayName'] as core.String?,
           processes: (json_['processes'] as core.List?)
-              ?.map(
-                (value) => Process.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Process.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           resourceName: json_['resourceName'] as core.String?,
           securityMarks: json_.containsKey('securityMarks')
               ? SecurityMarks.fromJson(
-                  json_['securityMarks'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['securityMarks'] as core.Map<core.String, core.dynamic>)
               : null,
           securityPosture: json_.containsKey('securityPosture')
-              ? SecurityPosture.fromJson(
-                  json_['securityPosture']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SecurityPosture.fromJson(json_['securityPosture']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           severity: json_['severity'] as core.String?,
           sourceProperties: json_.containsKey('sourceProperties')
@@ -13237,15 +13152,12 @@ class Finding {
               : null,
           state: json_['state'] as core.String?,
           toxicCombination: json_.containsKey('toxicCombination')
-              ? ToxicCombination.fromJson(
-                  json_['toxicCombination']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ToxicCombination.fromJson(json_['toxicCombination']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           vulnerability: json_.containsKey('vulnerability')
               ? Vulnerability.fromJson(
-                  json_['vulnerability'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['vulnerability'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -13323,7 +13235,10 @@ class Folder {
   /// The user defined display name for this folder.
   core.String? resourceFolderDisplayName;
 
-  Folder({this.resourceFolder, this.resourceFolderDisplayName});
+  Folder({
+    this.resourceFolder,
+    this.resourceFolderDisplayName,
+  });
 
   Folder.fromJson(core.Map json_)
       : this(
@@ -13344,10 +13259,14 @@ class Geolocation {
   /// A CLDR.
   core.String? regionCode;
 
-  Geolocation({this.regionCode});
+  Geolocation({
+    this.regionCode,
+  });
 
   Geolocation.fromJson(core.Map json_)
-      : this(regionCode: json_['regionCode'] as core.String?);
+      : this(
+          regionCode: json_['regionCode'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (regionCode != null) 'regionCode': regionCode!,
@@ -13360,14 +13279,15 @@ class GetIamPolicyRequest {
   /// `GetIamPolicy`.
   GetPolicyOptions? options;
 
-  GetIamPolicyRequest({this.options});
+  GetIamPolicyRequest({
+    this.options,
+  });
 
   GetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           options: json_.containsKey('options')
               ? GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['options'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -13510,15 +13430,11 @@ class GoogleCloudSecuritycenterV1Binding {
           ns: json_['ns'] as core.String?,
           role: json_.containsKey('role')
               ? Role.fromJson(
-                  json_['role'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['role'] as core.Map<core.String, core.dynamic>)
               : null,
           subjects: (json_['subjects'] as core.List?)
-              ?.map(
-                (value) => Subject.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Subject.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -13587,21 +13503,18 @@ class GoogleCloudSecuritycenterV1CustomConfig {
       : this(
           customOutput: json_.containsKey('customOutput')
               ? GoogleCloudSecuritycenterV1CustomOutputSpec.fromJson(
-                  json_['customOutput'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['customOutput'] as core.Map<core.String, core.dynamic>)
               : null,
           description: json_['description'] as core.String?,
           predicate: json_.containsKey('predicate')
               ? Expr.fromJson(
-                  json_['predicate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['predicate'] as core.Map<core.String, core.dynamic>)
               : null,
           recommendation: json_['recommendation'] as core.String?,
           resourceSelector: json_.containsKey('resourceSelector')
               ? GoogleCloudSecuritycenterV1ResourceSelector.fromJson(
                   json_['resourceSelector']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           severity: json_['severity'] as core.String?,
         );
@@ -13625,16 +13538,15 @@ class GoogleCloudSecuritycenterV1CustomOutputSpec {
   /// A list of custom output properties to add to the finding.
   core.List<GoogleCloudSecuritycenterV1Property>? properties;
 
-  GoogleCloudSecuritycenterV1CustomOutputSpec({this.properties});
+  GoogleCloudSecuritycenterV1CustomOutputSpec({
+    this.properties,
+  });
 
   GoogleCloudSecuritycenterV1CustomOutputSpec.fromJson(core.Map json_)
       : this(
           properties: (json_['properties'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudSecuritycenterV1Property.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudSecuritycenterV1Property.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -13707,13 +13619,12 @@ class GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule {
   });
 
   GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           cloudProvider: json_['cloudProvider'] as core.String?,
           customConfig: json_.containsKey('customConfig')
               ? GoogleCloudSecuritycenterV1CustomConfig.fromJson(
-                  json_['customConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['customConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           displayName: json_['displayName'] as core.String?,
           enablementState: json_['enablementState'] as core.String?,
@@ -13802,8 +13713,7 @@ class GoogleCloudSecuritycenterV1ExternalSystem {
           status: json_['status'] as core.String?,
           ticketInfo: json_.containsKey('ticketInfo')
               ? TicketInfo.fromJson(
-                  json_['ticketInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['ticketInfo'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -13963,16 +13873,17 @@ class GoogleCloudSecuritycenterV1Property {
   /// or a text string enclosed in quotation marks.
   Expr? valueExpression;
 
-  GoogleCloudSecuritycenterV1Property({this.name, this.valueExpression});
+  GoogleCloudSecuritycenterV1Property({
+    this.name,
+    this.valueExpression,
+  });
 
   GoogleCloudSecuritycenterV1Property.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
           valueExpression: json_.containsKey('valueExpression')
-              ? Expr.fromJson(
-                  json_['valueExpression']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Expr.fromJson(json_['valueExpression']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -13987,7 +13898,9 @@ class GoogleCloudSecuritycenterV1ResourceSelector {
   /// The resource types to run the detector on.
   core.List<core.String>? resourceTypes;
 
-  GoogleCloudSecuritycenterV1ResourceSelector({this.resourceTypes});
+  GoogleCloudSecuritycenterV1ResourceSelector({
+    this.resourceTypes,
+  });
 
   GoogleCloudSecuritycenterV1ResourceSelector.fromJson(core.Map json_)
       : this(
@@ -14102,17 +14015,20 @@ class GoogleCloudSecuritycenterV1ResourceValueConfig {
           name: json_['name'] as core.String?,
           resourceLabelsSelector: (json_['resourceLabelsSelector']
                   as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           resourceType: json_['resourceType'] as core.String?,
           resourceValue: json_['resourceValue'] as core.String?,
           scope: json_['scope'] as core.String?,
           sensitiveDataProtectionMapping:
               json_.containsKey('sensitiveDataProtectionMapping')
                   ? GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping
-                      .fromJson(
-                      json_['sensitiveDataProtectionMapping']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                      .fromJson(json_['sensitiveDataProtectionMapping']
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           tagValues: (json_['tagValues'] as core.List?)
               ?.map((value) => value as core.String)
@@ -14220,14 +14136,13 @@ class GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule {
   });
 
   GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           ancestorModule: json_['ancestorModule'] as core.String?,
           cloudProvider: json_['cloudProvider'] as core.String?,
           customConfig: json_.containsKey('customConfig')
               ? GoogleCloudSecuritycenterV1CustomConfig.fromJson(
-                  json_['customConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['customConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           displayName: json_['displayName'] as core.String?,
           enablementState: json_['enablementState'] as core.String?,
@@ -14279,8 +14194,8 @@ class GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping {
   });
 
   GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           highSensitivityMapping:
               json_['highSensitivityMapping'] as core.String?,
           mediumSensitivityMapping:
@@ -14448,11 +14363,8 @@ class GroupAssetsResponse {
   GroupAssetsResponse.fromJson(core.Map json_)
       : this(
           groupByResults: (json_['groupByResults'] as core.List?)
-              ?.map(
-                (value) => GroupResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GroupResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           readTime: json_['readTime'] as core.String?,
@@ -14613,11 +14525,8 @@ class GroupFindingsResponse {
   GroupFindingsResponse.fromJson(core.Map json_)
       : this(
           groupByResults: (json_['groupByResults'] as core.List?)
-              ?.map(
-                (value) => GroupResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GroupResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           readTime: json_['readTime'] as core.String?,
@@ -14645,7 +14554,10 @@ class GroupMembership {
   /// - "GROUP_TYPE_TOXIC_COMBINATION" : Group represents a toxic combination.
   core.String? groupType;
 
-  GroupMembership({this.groupId, this.groupType});
+  GroupMembership({
+    this.groupId,
+    this.groupType,
+  });
 
   GroupMembership.fromJson(core.Map json_)
       : this(
@@ -14670,7 +14582,10 @@ class GroupResult {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? properties;
 
-  GroupResult({this.count, this.properties});
+  GroupResult({
+    this.count,
+    this.properties,
+  });
 
   GroupResult.fromJson(core.Map json_)
       : this(
@@ -14705,7 +14620,11 @@ class IamBinding {
   /// For example, "roles/viewer", "roles/editor", or "roles/owner".
   core.String? role;
 
-  IamBinding({this.action, this.member, this.role});
+  IamBinding({
+    this.action,
+    this.member,
+    this.role,
+  });
 
   IamBinding.fromJson(core.Map json_)
       : this(
@@ -14733,10 +14652,14 @@ class IamPolicy {
   /// details.
   core.String? policyBlob;
 
-  IamPolicy({this.policyBlob});
+  IamPolicy({
+    this.policyBlob,
+  });
 
   IamPolicy.fromJson(core.Map json_)
-      : this(policyBlob: json_['policyBlob'] as core.String?);
+      : this(
+          policyBlob: json_['policyBlob'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (policyBlob != null) 'policyBlob': policyBlob!,
@@ -14764,7 +14687,12 @@ class Indicator {
   /// The list of URIs associated to the Findings.
   core.List<core.String>? uris;
 
-  Indicator({this.domains, this.ipAddresses, this.signatures, this.uris});
+  Indicator({
+    this.domains,
+    this.ipAddresses,
+    this.signatures,
+    this.uris,
+  });
 
   Indicator.fromJson(core.Map json_)
       : this(
@@ -14775,11 +14703,8 @@ class Indicator {
               ?.map((value) => value as core.String)
               .toList(),
           signatures: (json_['signatures'] as core.List?)
-              ?.map(
-                (value) => ProcessSignature.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ProcessSignature.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           uris: (json_['uris'] as core.List?)
               ?.map((value) => value as core.String)
@@ -14936,53 +14861,32 @@ class Kubernetes {
   Kubernetes.fromJson(core.Map json_)
       : this(
           accessReviews: (json_['accessReviews'] as core.List?)
-              ?.map(
-                (value) => AccessReview.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AccessReview.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudSecuritycenterV1Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudSecuritycenterV1Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nodePools: (json_['nodePools'] as core.List?)
-              ?.map(
-                (value) => NodePool.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => NodePool.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nodes: (json_['nodes'] as core.List?)
-              ?.map(
-                (value) => Node.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Node.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           objects: (json_['objects'] as core.List?)
-              ?.map(
-                (value) => Object.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Object.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           pods: (json_['pods'] as core.List?)
-              ?.map(
-                (value) => Pod.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Pod.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           roles: (json_['roles'] as core.List?)
-              ?.map(
-                (value) => Role.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Role.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -15009,7 +14913,10 @@ class Label {
   /// Value that corresponds to the label's name.
   core.String? value;
 
-  Label({this.name, this.value});
+  Label({
+    this.name,
+    this.value,
+  });
 
   Label.fromJson(core.Map json_)
       : this(
@@ -15048,11 +14955,8 @@ class ListAssetsResponse {
   ListAssetsResponse.fromJson(core.Map json_)
       : this(
           listAssetsResults: (json_['listAssetsResults'] as core.List?)
-              ?.map(
-                (value) => ListAssetsResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ListAssetsResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           readTime: json_['readTime'] as core.String?,
@@ -15081,14 +14985,16 @@ class ListAssetsResult {
   /// - "ACTIVE" : Asset was present at both point(s) in time.
   core.String? stateChange;
 
-  ListAssetsResult({this.asset, this.stateChange});
+  ListAssetsResult({
+    this.asset,
+    this.stateChange,
+  });
 
   ListAssetsResult.fromJson(core.Map json_)
       : this(
           asset: json_.containsKey('asset')
               ? Asset.fromJson(
-                  json_['asset'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['asset'] as core.Map<core.String, core.dynamic>)
               : null,
           stateChange: json_['stateChange'] as core.String?,
         );
@@ -15109,16 +15015,16 @@ class ListAttackPathsResponse {
   /// results.
   core.String? nextPageToken;
 
-  ListAttackPathsResponse({this.attackPaths, this.nextPageToken});
+  ListAttackPathsResponse({
+    this.attackPaths,
+    this.nextPageToken,
+  });
 
   ListAttackPathsResponse.fromJson(core.Map json_)
       : this(
           attackPaths: (json_['attackPaths'] as core.List?)
-              ?.map(
-                (value) => AttackPath.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AttackPath.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -15139,16 +15045,17 @@ class ListBigQueryExportsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListBigQueryExportsResponse({this.bigQueryExports, this.nextPageToken});
+  ListBigQueryExportsResponse({
+    this.bigQueryExports,
+    this.nextPageToken,
+  });
 
   ListBigQueryExportsResponse.fromJson(core.Map json_)
       : this(
           bigQueryExports: (json_['bigQueryExports'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -15177,15 +15084,12 @@ class ListDescendantEventThreatDetectionCustomModulesResponse {
   });
 
   ListDescendantEventThreatDetectionCustomModulesResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           eventThreatDetectionCustomModules:
               (json_['eventThreatDetectionCustomModules'] as core.List?)
-                  ?.map(
-                    (value) => EventThreatDetectionCustomModule.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => EventThreatDetectionCustomModule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -15215,19 +15119,15 @@ class ListDescendantSecurityHealthAnalyticsCustomModulesResponse {
   });
 
   ListDescendantSecurityHealthAnalyticsCustomModulesResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          securityHealthAnalyticsCustomModules:
-              (json_['securityHealthAnalyticsCustomModules'] as core.List?)
-                  ?.map(
-                    (value) =>
-                        GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
-                            .fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
-                  .toList(),
+          securityHealthAnalyticsCustomModules: (json_[
+                  'securityHealthAnalyticsCustomModules'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15255,17 +15155,14 @@ class ListEffectiveEventThreatDetectionCustomModulesResponse {
   });
 
   ListEffectiveEventThreatDetectionCustomModulesResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           effectiveEventThreatDetectionCustomModules:
               (json_['effectiveEventThreatDetectionCustomModules']
                       as core.List?)
-                  ?.map(
-                    (value) =>
-                        EffectiveEventThreatDetectionCustomModule.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) =>
+                      EffectiveEventThreatDetectionCustomModule.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -15296,19 +15193,15 @@ class ListEffectiveSecurityHealthAnalyticsCustomModulesResponse {
   });
 
   ListEffectiveSecurityHealthAnalyticsCustomModulesResponse.fromJson(
-    core.Map json_,
-  ) : this(
-          effectiveSecurityHealthAnalyticsCustomModules:
-              (json_['effectiveSecurityHealthAnalyticsCustomModules']
-                      as core.List?)
-                  ?.map(
-                    (value) =>
-                        GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule
-                            .fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
-                  .toList(),
+      core.Map json_)
+      : this(
+          effectiveSecurityHealthAnalyticsCustomModules: (json_[
+                      'effectiveSecurityHealthAnalyticsCustomModules']
+                  as core.List?)
+              ?.map((value) =>
+                  GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -15340,11 +15233,8 @@ class ListEventThreatDetectionCustomModulesResponse {
       : this(
           eventThreatDetectionCustomModules:
               (json_['eventThreatDetectionCustomModules'] as core.List?)
-                  ?.map(
-                    (value) => EventThreatDetectionCustomModule.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => EventThreatDetectionCustomModule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -15382,11 +15272,8 @@ class ListFindingsResponse {
   ListFindingsResponse.fromJson(core.Map json_)
       : this(
           listFindingsResults: (json_['listFindingsResults'] as core.List?)
-              ?.map(
-                (value) => ListFindingsResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ListFindingsResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           readTime: json_['readTime'] as core.String?,
@@ -15425,19 +15312,21 @@ class ListFindingsResult {
   /// specified, but it did at timestamp - compare_duration.
   core.String? stateChange;
 
-  ListFindingsResult({this.finding, this.resource, this.stateChange});
+  ListFindingsResult({
+    this.finding,
+    this.resource,
+    this.stateChange,
+  });
 
   ListFindingsResult.fromJson(core.Map json_)
       : this(
           finding: json_.containsKey('finding')
               ? Finding.fromJson(
-                  json_['finding'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['finding'] as core.Map<core.String, core.dynamic>)
               : null,
           resource: json_.containsKey('resource')
               ? Resource.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['resource'] as core.Map<core.String, core.dynamic>)
               : null,
           stateChange: json_['stateChange'] as core.String?,
         );
@@ -15459,16 +15348,16 @@ class ListMuteConfigsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListMuteConfigsResponse({this.muteConfigs, this.nextPageToken});
+  ListMuteConfigsResponse({
+    this.muteConfigs,
+    this.nextPageToken,
+  });
 
   ListMuteConfigsResponse.fromJson(core.Map json_)
       : this(
           muteConfigs: (json_['muteConfigs'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudSecuritycenterV1MuteConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudSecuritycenterV1MuteConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -15497,11 +15386,8 @@ class ListNotificationConfigsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           notificationConfigs: (json_['notificationConfigs'] as core.List?)
-              ?.map(
-                (value) => NotificationConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => NotificationConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -15520,17 +15406,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map(
-                (value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -15560,12 +15446,9 @@ class ListResourceValueConfigsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           resourceValueConfigs: (json_['resourceValueConfigs'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudSecuritycenterV1ResourceValueConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudSecuritycenterV1ResourceValueConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -15594,16 +15477,12 @@ class ListSecurityHealthAnalyticsCustomModulesResponse {
   ListSecurityHealthAnalyticsCustomModulesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          securityHealthAnalyticsCustomModules:
-              (json_['securityHealthAnalyticsCustomModules'] as core.List?)
-                  ?.map(
-                    (value) =>
-                        GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
-                            .fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
-                  .toList(),
+          securityHealthAnalyticsCustomModules: (json_[
+                  'securityHealthAnalyticsCustomModules'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15623,17 +15502,17 @@ class ListSourcesResponse {
   /// Sources belonging to the requested parent.
   core.List<Source>? sources;
 
-  ListSourcesResponse({this.nextPageToken, this.sources});
+  ListSourcesResponse({
+    this.nextPageToken,
+    this.sources,
+  });
 
   ListSourcesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           sources: (json_['sources'] as core.List?)
-              ?.map(
-                (value) => Source.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Source.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -15666,11 +15545,8 @@ class ListValuedResourcesResponse {
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
           valuedResources: (json_['valuedResources'] as core.List?)
-              ?.map(
-                (value) => ValuedResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ValuedResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -15687,10 +15563,14 @@ class LoadBalancer {
   /// The name of the load balancer associated with the finding.
   core.String? name;
 
-  LoadBalancer({this.name});
+  LoadBalancer({
+    this.name,
+  });
 
   LoadBalancer.fromJson(core.Map json_)
-      : this(name: json_['name'] as core.String?);
+      : this(
+          name: json_['name'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -15702,15 +15582,15 @@ class LogEntry {
   /// An individual entry in a log stored in Cloud Logging.
   CloudLoggingEntry? cloudLoggingEntry;
 
-  LogEntry({this.cloudLoggingEntry});
+  LogEntry({
+    this.cloudLoggingEntry,
+  });
 
   LogEntry.fromJson(core.Map json_)
       : this(
           cloudLoggingEntry: json_.containsKey('cloudLoggingEntry')
-              ? CloudLoggingEntry.fromJson(
-                  json_['cloudLoggingEntry']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CloudLoggingEntry.fromJson(json_['cloudLoggingEntry']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -15728,17 +15608,17 @@ class MemoryHashSignature {
   /// match.
   core.List<Detection>? detections;
 
-  MemoryHashSignature({this.binaryFamily, this.detections});
+  MemoryHashSignature({
+    this.binaryFamily,
+    this.detections,
+  });
 
   MemoryHashSignature.fromJson(core.Map json_)
       : this(
           binaryFamily: json_['binaryFamily'] as core.String?,
           detections: (json_['detections'] as core.List?)
-              ?.map(
-                (value) => Detection.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Detection.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -15837,21 +15717,20 @@ class MuteInfo {
   /// Static mutes override dynamic mutes. If unset, there is no static mute.
   StaticMute? staticMute;
 
-  MuteInfo({this.dynamicMuteRecords, this.staticMute});
+  MuteInfo({
+    this.dynamicMuteRecords,
+    this.staticMute,
+  });
 
   MuteInfo.fromJson(core.Map json_)
       : this(
           dynamicMuteRecords: (json_['dynamicMuteRecords'] as core.List?)
-              ?.map(
-                (value) => DynamicMuteRecord.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DynamicMuteRecord.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           staticMute: json_.containsKey('staticMute')
               ? StaticMute.fromJson(
-                  json_['staticMute'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['staticMute'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -15868,9 +15747,14 @@ class Node {
   /// the Compute Engine VM running the cluster node.
   core.String? name;
 
-  Node({this.name});
+  Node({
+    this.name,
+  });
 
-  Node.fromJson(core.Map json_) : this(name: json_['name'] as core.String?);
+  Node.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -15885,17 +15769,17 @@ class NodePool {
   /// Nodes associated with the finding.
   core.List<Node>? nodes;
 
-  NodePool({this.name, this.nodes});
+  NodePool({
+    this.name,
+    this.nodes,
+  });
 
   NodePool.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
           nodes: (json_['nodes'] as core.List?)
-              ?.map(
-                (value) => Node.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Node.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -15921,7 +15805,12 @@ class Notebook {
   /// The source notebook service, for example, "Colab Enterprise".
   core.String? service;
 
-  Notebook({this.lastAuthor, this.name, this.notebookUpdateTime, this.service});
+  Notebook({
+    this.lastAuthor,
+    this.name,
+    this.notebookUpdateTime,
+    this.service,
+  });
 
   Notebook.fromJson(core.Map json_)
       : this(
@@ -15988,10 +15877,8 @@ class NotificationConfig {
           pubsubTopic: json_['pubsubTopic'] as core.String?,
           serviceAccount: json_['serviceAccount'] as core.String?,
           streamingConfig: json_.containsKey('streamingConfig')
-              ? StreamingConfig.fromJson(
-                  json_['streamingConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? StreamingConfig.fromJson(json_['streamingConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -16031,16 +15918,19 @@ class Object {
   /// https://kubernetes.io/docs/tasks/administer-cluster/namespaces/.
   core.String? ns;
 
-  Object({this.containers, this.group, this.kind, this.name, this.ns});
+  Object({
+    this.containers,
+    this.group,
+    this.kind,
+    this.name,
+    this.ns,
+  });
 
   Object.fromJson(core.Map json_)
       : this(
           containers: (json_['containers'] as core.List?)
-              ?.map(
-                (value) => Container.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Container.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           group: json_['group'] as core.String?,
           kind: json_['kind'] as core.String?,
@@ -16100,15 +15990,20 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({this.done, this.error, this.metadata, this.name, this.response});
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -16135,10 +16030,14 @@ class OrgPolicy {
   /// Example: "organizations/{organization_id}/policies/{constraint_name}"
   core.String? name;
 
-  OrgPolicy({this.name});
+  OrgPolicy({
+    this.name,
+  });
 
   OrgPolicy.fromJson(core.Map json_)
-      : this(name: json_['name'] as core.String?);
+      : this(
+          name: json_['name'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -16174,10 +16073,8 @@ class OrganizationSettings {
   OrganizationSettings.fromJson(core.Map json_)
       : this(
           assetDiscoveryConfig: json_.containsKey('assetDiscoveryConfig')
-              ? AssetDiscoveryConfig.fromJson(
-                  json_['assetDiscoveryConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AssetDiscoveryConfig.fromJson(json_['assetDiscoveryConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           enableAssetDiscovery: json_['enableAssetDiscovery'] as core.bool?,
           name: json_['name'] as core.String?,
@@ -16278,23 +16175,22 @@ class Pod {
   /// Kubernetes Pod namespace.
   core.String? ns;
 
-  Pod({this.containers, this.labels, this.name, this.ns});
+  Pod({
+    this.containers,
+    this.labels,
+    this.name,
+    this.ns,
+  });
 
   Pod.fromJson(core.Map json_)
       : this(
           containers: (json_['containers'] as core.List?)
-              ?.map(
-                (value) => Container.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Container.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           labels: (json_['labels'] as core.List?)
-              ?.map(
-                (value) => Label.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Label.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           name: json_['name'] as core.String?,
           ns: json_['ns'] as core.String?,
@@ -16394,23 +16290,22 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
+  Policy({
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
   Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map(
-                (value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map(
-                (value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -16439,7 +16334,11 @@ class PolicyDriftDetails {
   /// constraint.implementation.policy_rules\[0\].enforce
   core.String? field;
 
-  PolicyDriftDetails({this.detectedValue, this.expectedValue, this.field});
+  PolicyDriftDetails({
+    this.detectedValue,
+    this.expectedValue,
+    this.field,
+  });
 
   PolicyDriftDetails.fromJson(core.Map json_)
       : this(
@@ -16460,7 +16359,10 @@ class Position {
   core.int? columnNumber;
   core.int? lineNumber;
 
-  Position({this.columnNumber, this.lineNumber});
+  Position({
+    this.columnNumber,
+    this.lineNumber,
+  });
 
   Position.fromJson(core.Map json_)
       : this(
@@ -16532,31 +16434,23 @@ class Process {
           argumentsTruncated: json_['argumentsTruncated'] as core.bool?,
           binary: json_.containsKey('binary')
               ? File.fromJson(
-                  json_['binary'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['binary'] as core.Map<core.String, core.dynamic>)
               : null,
           envVariables: (json_['envVariables'] as core.List?)
-              ?.map(
-                (value) => EnvironmentVariable.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => EnvironmentVariable.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           envVariablesTruncated: json_['envVariablesTruncated'] as core.bool?,
           libraries: (json_['libraries'] as core.List?)
-              ?.map(
-                (value) => File.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  File.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           name: json_['name'] as core.String?,
           parentPid: json_['parentPid'] as core.String?,
           pid: json_['pid'] as core.String?,
           script: json_.containsKey('script')
               ? File.fromJson(
-                  json_['script'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['script'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -16600,17 +16494,13 @@ class ProcessSignature {
   ProcessSignature.fromJson(core.Map json_)
       : this(
           memoryHashSignature: json_.containsKey('memoryHashSignature')
-              ? MemoryHashSignature.fromJson(
-                  json_['memoryHashSignature']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? MemoryHashSignature.fromJson(json_['memoryHashSignature']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           signatureType: json_['signatureType'] as core.String?,
           yaraRuleSignature: json_.containsKey('yaraRuleSignature')
-              ? YaraRuleSignature.fromJson(
-                  json_['yaraRuleSignature']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? YaraRuleSignature.fromJson(json_['yaraRuleSignature']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -16631,7 +16521,10 @@ class Reference {
   /// https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-34527.
   core.String? uri;
 
-  Reference({this.source, this.uri});
+  Reference({
+    this.source,
+    this.uri,
+  });
 
   Reference.fromJson(core.Map json_)
       : this(
@@ -16780,22 +16673,17 @@ class Resource {
       : this(
           awsMetadata: json_.containsKey('awsMetadata')
               ? AwsMetadata.fromJson(
-                  json_['awsMetadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['awsMetadata'] as core.Map<core.String, core.dynamic>)
               : null,
           azureMetadata: json_.containsKey('azureMetadata')
               ? AzureMetadata.fromJson(
-                  json_['azureMetadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['azureMetadata'] as core.Map<core.String, core.dynamic>)
               : null,
           cloudProvider: json_['cloudProvider'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           folders: (json_['folders'] as core.List?)
-              ?.map(
-                (value) => Folder.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Folder.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           location: json_['location'] as core.String?,
           name: json_['name'] as core.String?,
@@ -16806,8 +16694,7 @@ class Resource {
           projectName: json_['projectName'] as core.String?,
           resourcePath: json_.containsKey('resourcePath')
               ? ResourcePath.fromJson(
-                  json_['resourcePath'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['resourcePath'] as core.Map<core.String, core.dynamic>)
               : null,
           resourcePathString: json_['resourcePathString'] as core.String?,
           service: json_['service'] as core.String?,
@@ -16843,16 +16730,15 @@ class ResourcePath {
   /// level to highest level.
   core.List<ResourcePathNode>? nodes;
 
-  ResourcePath({this.nodes});
+  ResourcePath({
+    this.nodes,
+  });
 
   ResourcePath.fromJson(core.Map json_)
       : this(
           nodes: (json_['nodes'] as core.List?)
-              ?.map(
-                (value) => ResourcePathNode.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ResourcePathNode.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -16887,7 +16773,11 @@ class ResourcePathNode {
   /// - "AZURE_RESOURCE_GROUP" : The node represents an Azure resource group.
   core.String? nodeType;
 
-  ResourcePathNode({this.displayName, this.id, this.nodeType});
+  ResourcePathNode({
+    this.displayName,
+    this.id,
+    this.nodeType,
+  });
 
   ResourcePathNode.fromJson(core.Map json_)
       : this(
@@ -16910,10 +16800,14 @@ class ResourceValueConfigMetadata {
   /// Resource value config name
   core.String? name;
 
-  ResourceValueConfigMetadata({this.name});
+  ResourceValueConfigMetadata({
+    this.name,
+  });
 
   ResourceValueConfigMetadata.fromJson(core.Map json_)
-      : this(name: json_['name'] as core.String?);
+      : this(
+          name: json_['name'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -16935,7 +16829,11 @@ class Role {
   /// Role namespace.
   core.String? ns;
 
-  Role({this.kind, this.name, this.ns});
+  Role({
+    this.kind,
+    this.name,
+    this.ns,
+  });
 
   Role.fromJson(core.Map json_)
       : this(
@@ -17053,11 +16951,8 @@ class SecurityCenterProperties {
   SecurityCenterProperties.fromJson(core.Map json_)
       : this(
           folders: (json_['folders'] as core.List?)
-              ?.map(
-                (value) => Folder.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Folder.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           resourceDisplayName: json_['resourceDisplayName'] as core.String?,
           resourceName: json_['resourceName'] as core.String?,
@@ -17125,13 +17020,20 @@ class SecurityMarks {
   /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
   core.String? name;
 
-  SecurityMarks({this.canonicalName, this.marks, this.name});
+  SecurityMarks({
+    this.canonicalName,
+    this.marks,
+    this.name,
+  });
 
   SecurityMarks.fromJson(core.Map json_)
       : this(
           canonicalName: json_['canonicalName'] as core.String?,
           marks: (json_['marks'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
         );
@@ -17159,7 +17061,11 @@ class SecurityPolicy {
   /// or 'always-on DDoS protection'.
   core.String? type;
 
-  SecurityPolicy({this.name, this.preview, this.type});
+  SecurityPolicy({
+    this.name,
+    this.preview,
+    this.type,
+  });
 
   SecurityPolicy.fromJson(core.Map json_)
       : this(
@@ -17226,11 +17132,8 @@ class SecurityPosture {
           name: json_['name'] as core.String?,
           policy: json_['policy'] as core.String?,
           policyDriftDetails: (json_['policyDriftDetails'] as core.List?)
-              ?.map(
-                (value) => PolicyDriftDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PolicyDriftDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           policySet: json_['policySet'] as core.String?,
           postureDeployment: json_['postureDeployment'] as core.String?,
@@ -17268,7 +17171,10 @@ class ServiceAccountDelegationInfo {
   /// format `serviceAccount:{identity pool name}[{subject}]`
   core.String? principalSubject;
 
-  ServiceAccountDelegationInfo({this.principalEmail, this.principalSubject});
+  ServiceAccountDelegationInfo({
+    this.principalEmail,
+    this.principalSubject,
+  });
 
   ServiceAccountDelegationInfo.fromJson(core.Map json_)
       : this(
@@ -17305,7 +17211,10 @@ class SetFindingStateRequest {
   /// otherwise addressed and is no longer active.
   core.String? state;
 
-  SetFindingStateRequest({this.startTime, this.state});
+  SetFindingStateRequest({
+    this.startTime,
+    this.state,
+  });
 
   SetFindingStateRequest.fromJson(core.Map json_)
       : this(
@@ -17334,14 +17243,16 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({this.policy, this.updateMask});
+  SetIamPolicyRequest({
+    this.policy,
+    this.updateMask,
+  });
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -17364,10 +17275,14 @@ class SetMuteRequest {
   /// - "UNDEFINED" : Finding has never been muted/unmuted.
   core.String? mute;
 
-  SetMuteRequest({this.mute});
+  SetMuteRequest({
+    this.mute,
+  });
 
   SetMuteRequest.fromJson(core.Map json_)
-      : this(mute: json_['mute'] as core.String?);
+      : this(
+          mute: json_['mute'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mute != null) 'mute': mute!,
@@ -17397,13 +17312,11 @@ class SimulateSecurityHealthAnalyticsCustomModuleRequest {
       : this(
           customConfig: json_.containsKey('customConfig')
               ? GoogleCloudSecuritycenterV1CustomConfig.fromJson(
-                  json_['customConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['customConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           resource: json_.containsKey('resource')
               ? SimulatedResource.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['resource'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -17419,14 +17332,15 @@ class SimulateSecurityHealthAnalyticsCustomModuleResponse {
   /// Result for test case in the corresponding request.
   SimulatedResult? result;
 
-  SimulateSecurityHealthAnalyticsCustomModuleResponse({this.result});
+  SimulateSecurityHealthAnalyticsCustomModuleResponse({
+    this.result,
+  });
 
   SimulateSecurityHealthAnalyticsCustomModuleResponse.fromJson(core.Map json_)
       : this(
           result: json_.containsKey('result')
               ? SimulatedResult.fromJson(
-                  json_['result'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['result'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -17461,14 +17375,17 @@ class SimulatedResource {
   /// Required.
   core.String? resourceType;
 
-  SimulatedResource({this.iamPolicyData, this.resourceData, this.resourceType});
+  SimulatedResource({
+    this.iamPolicyData,
+    this.resourceData,
+    this.resourceType,
+  });
 
   SimulatedResource.fromJson(core.Map json_)
       : this(
           iamPolicyData: json_.containsKey('iamPolicyData')
               ? Policy.fromJson(
-                  json_['iamPolicyData'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['iamPolicyData'] as core.Map<core.String, core.dynamic>)
               : null,
           resourceData: json_.containsKey('resourceData')
               ? json_['resourceData'] as core.Map<core.String, core.dynamic>
@@ -17495,24 +17412,25 @@ class SimulatedResult {
   /// Indicates that the test case does not trigger any violation.
   Empty? noViolation;
 
-  SimulatedResult({this.error, this.finding, this.noViolation});
+  SimulatedResult({
+    this.error,
+    this.finding,
+    this.noViolation,
+  });
 
   SimulatedResult.fromJson(core.Map json_)
       : this(
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           finding: json_.containsKey('finding')
               ? Finding.fromJson(
-                  json_['finding'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['finding'] as core.Map<core.String, core.dynamic>)
               : null,
           noViolation: json_.containsKey('noViolation')
               ? Empty.fromJson(
-                  json_['noViolation'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['noViolation'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -17560,11 +17478,8 @@ class Simulation {
           name: json_['name'] as core.String?,
           resourceValueConfigsMetadata:
               (json_['resourceValueConfigsMetadata'] as core.List?)
-                  ?.map(
-                    (value) => ResourceValueConfigMetadata.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => ResourceValueConfigMetadata.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
         );
 
@@ -17614,7 +17529,12 @@ class Source {
   /// Example: "organizations/{organization_id}/sources/{source_id}"
   core.String? name;
 
-  Source({this.canonicalName, this.description, this.displayName, this.name});
+  Source({
+    this.canonicalName,
+    this.description,
+    this.displayName,
+    this.name,
+  });
 
   Source.fromJson(core.Map json_)
       : this(
@@ -17652,7 +17572,10 @@ class StaticMute {
   /// - "UNDEFINED" : Finding has never been muted/unmuted.
   core.String? state;
 
-  StaticMute({this.applyTime, this.state});
+  StaticMute({
+    this.applyTime,
+    this.state,
+  });
 
   StaticMute.fromJson(core.Map json_)
       : this(
@@ -17692,10 +17615,14 @@ class StreamingConfig {
   /// literals `true` and `false` without quotes.
   core.String? filter;
 
-  StreamingConfig({this.filter});
+  StreamingConfig({
+    this.filter,
+  });
 
   StreamingConfig.fromJson(core.Map json_)
-      : this(filter: json_['filter'] as core.String?);
+      : this(
+          filter: json_['filter'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filter != null) 'filter': filter!,
@@ -17719,7 +17646,11 @@ class Subject {
   /// Namespace for the subject.
   core.String? ns;
 
-  Subject({this.kind, this.name, this.ns});
+  Subject({
+    this.kind,
+    this.name,
+    this.ns,
+  });
 
   Subject.fromJson(core.Map json_)
       : this(
@@ -17811,7 +17742,10 @@ class ToxicCombination {
   /// For example, `organizations/123/sources/456/findings/789`.
   core.List<core.String>? relatedFindings;
 
-  ToxicCombination({this.attackExposureScore, this.relatedFindings});
+  ToxicCombination({
+    this.attackExposureScore,
+    this.relatedFindings,
+  });
 
   ToxicCombination.fromJson(core.Map json_)
       : this(
@@ -17843,7 +17777,10 @@ class ValidateEventThreatDetectionCustomModuleRequest {
   /// Required.
   core.String? type;
 
-  ValidateEventThreatDetectionCustomModuleRequest({this.rawText, this.type});
+  ValidateEventThreatDetectionCustomModuleRequest({
+    this.rawText,
+    this.type,
+  });
 
   ValidateEventThreatDetectionCustomModuleRequest.fromJson(core.Map json_)
       : this(
@@ -17864,14 +17801,15 @@ class ValidateEventThreatDetectionCustomModuleResponse {
   /// If the list is empty, there were no errors.
   CustomModuleValidationErrors? errors;
 
-  ValidateEventThreatDetectionCustomModuleResponse({this.errors});
+  ValidateEventThreatDetectionCustomModuleResponse({
+    this.errors,
+  });
 
   ValidateEventThreatDetectionCustomModuleResponse.fromJson(core.Map json_)
       : this(
           errors: json_.containsKey('errors')
               ? CustomModuleValidationErrors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['errors'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -17938,11 +17876,8 @@ class ValuedResource {
           resourceValue: json_['resourceValue'] as core.String?,
           resourceValueConfigsUsed:
               (json_['resourceValueConfigsUsed'] as core.List?)
-                  ?.map(
-                    (value) => ResourceValueConfigMetadata.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => ResourceValueConfigMetadata.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
         );
 
@@ -17984,25 +17919,19 @@ class Vulnerability {
       : this(
           cve: json_.containsKey('cve')
               ? Cve.fromJson(
-                  json_['cve'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['cve'] as core.Map<core.String, core.dynamic>)
               : null,
           fixedPackage: json_.containsKey('fixedPackage')
               ? Package.fromJson(
-                  json_['fixedPackage'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['fixedPackage'] as core.Map<core.String, core.dynamic>)
               : null,
           offendingPackage: json_.containsKey('offendingPackage')
-              ? Package.fromJson(
-                  json_['offendingPackage']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Package.fromJson(json_['offendingPackage']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           securityBulletin: json_.containsKey('securityBulletin')
-              ? SecurityBulletin.fromJson(
-                  json_['securityBulletin']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SecurityBulletin.fromJson(json_['securityBulletin']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -18019,10 +17948,14 @@ class YaraRuleSignature {
   /// The name of the YARA rule.
   core.String? yaraRule;
 
-  YaraRuleSignature({this.yaraRule});
+  YaraRuleSignature({
+    this.yaraRule,
+  });
 
   YaraRuleSignature.fromJson(core.Map json_)
-      : this(yaraRule: json_['yaraRule'] as core.String?);
+      : this(
+          yaraRule: json_['yaraRule'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (yaraRule != null) 'yaraRule': yaraRule!,

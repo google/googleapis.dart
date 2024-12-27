@@ -62,16 +62,11 @@ class AdsenseApi {
 
   AccountsResource get accounts => AccountsResource(_requester);
 
-  AdsenseApi(
-    http.Client client, {
-    core.String rootUrl = 'https://adsense.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  AdsenseApi(http.Client client,
+      {core.String rootUrl = 'https://adsense.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class AccountsResource {
@@ -106,7 +101,10 @@ class AccountsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Account> get(core.String name, {core.String? $fields}) async {
+  async.Future<Account> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -156,8 +154,7 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return AdBlockingRecoveryTag.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all accounts available to this user.
@@ -202,8 +199,7 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return ListAccountsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all accounts directly managed by the given AdSense account.
@@ -253,8 +249,7 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return ListChildAccountsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -288,7 +283,10 @@ class AccountsAdclientsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AdClient> get(core.String name, {core.String? $fields}) async {
+  async.Future<AdClient> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -342,8 +340,7 @@ class AccountsAdclientsResource {
       queryParams: queryParams_,
     );
     return AdClientAdCode.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the ad clients available in an account.
@@ -394,8 +391,7 @@ class AccountsAdclientsResource {
       queryParams: queryParams_,
     );
     return ListAdClientsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -475,7 +471,10 @@ class AccountsAdclientsAdunitsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AdUnit> get(core.String name, {core.String? $fields}) async {
+  async.Future<AdUnit> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -530,8 +529,7 @@ class AccountsAdclientsAdunitsResource {
       queryParams: queryParams_,
     );
     return AdUnitAdCode.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all ad units under a specified account and ad client.
@@ -581,8 +579,7 @@ class AccountsAdclientsAdunitsResource {
       queryParams: queryParams_,
     );
     return ListAdUnitsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the custom channels available for an ad unit.
@@ -636,8 +633,7 @@ class AccountsAdclientsAdunitsResource {
       queryParams: queryParams_,
     );
     return ListLinkedCustomChannelsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an ad unit.
@@ -745,8 +741,7 @@ class AccountsAdclientsCustomchannelsResource {
       queryParams: queryParams_,
     );
     return CustomChannel.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a custom channel.
@@ -773,7 +768,10 @@ class AccountsAdclientsCustomchannelsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -823,8 +821,7 @@ class AccountsAdclientsCustomchannelsResource {
       queryParams: queryParams_,
     );
     return CustomChannel.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the custom channels available in an ad client.
@@ -875,8 +872,7 @@ class AccountsAdclientsCustomchannelsResource {
       queryParams: queryParams_,
     );
     return ListCustomChannelsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the ad units available for a custom channel.
@@ -928,8 +924,7 @@ class AccountsAdclientsCustomchannelsResource {
       queryParams: queryParams_,
     );
     return ListLinkedAdUnitsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a custom channel.
@@ -982,8 +977,7 @@ class AccountsAdclientsCustomchannelsResource {
       queryParams: queryParams_,
     );
     return CustomChannel.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1012,7 +1006,10 @@ class AccountsAdclientsUrlchannelsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UrlChannel> get(core.String name, {core.String? $fields}) async {
+  async.Future<UrlChannel> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1025,8 +1022,7 @@ class AccountsAdclientsUrlchannelsResource {
       queryParams: queryParams_,
     );
     return UrlChannel.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists active url channels.
@@ -1077,8 +1073,7 @@ class AccountsAdclientsUrlchannelsResource {
       queryParams: queryParams_,
     );
     return ListUrlChannelsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1129,8 +1124,7 @@ class AccountsAlertsResource {
       queryParams: queryParams_,
     );
     return ListAlertsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1173,8 +1167,7 @@ class AccountsPaymentsResource {
       queryParams: queryParams_,
     );
     return ListPaymentsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1218,8 +1211,7 @@ class AccountsPolicyIssuesResource {
       queryParams: queryParams_,
     );
     return PolicyIssue.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the policy issues where the specified account is involved, both
@@ -1271,8 +1263,7 @@ class AccountsPolicyIssuesResource {
       queryParams: queryParams_,
     );
     return ListPolicyIssuesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1426,8 +1417,7 @@ class AccountsReportsResource {
       queryParams: queryParams_,
     );
     return ReportResult.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Generates a csv formatted ad hoc report.
@@ -1609,8 +1599,7 @@ class AccountsReportsResource {
       queryParams: queryParams_,
     );
     return SavedReport.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1732,8 +1721,7 @@ class AccountsReportsSavedResource {
       queryParams: queryParams_,
     );
     return ReportResult.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Generates a csv formatted saved report.
@@ -1897,8 +1885,7 @@ class AccountsReportsSavedResource {
       queryParams: queryParams_,
     );
     return ListSavedReportsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1925,7 +1912,10 @@ class AccountsSitesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Site> get(core.String name, {core.String? $fields}) async {
+  async.Future<Site> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1987,8 +1977,7 @@ class AccountsSitesResource {
       queryParams: queryParams_,
     );
     return ListSitesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2063,8 +2052,7 @@ class Account {
           state: json_['state'] as core.String?,
           timeZone: json_.containsKey('timeZone')
               ? TimeZone.fromJson(
-                  json_['timeZone'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['timeZone'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2096,7 +2084,10 @@ class AdBlockingRecoveryTag {
   /// to use it in conjunction with the error protection code.
   core.String? tag;
 
-  AdBlockingRecoveryTag({this.errorProtectionCode, this.tag});
+  AdBlockingRecoveryTag({
+    this.errorProtectionCode,
+    this.tag,
+  });
 
   AdBlockingRecoveryTag.fromJson(core.Map json_)
       : this(
@@ -2196,7 +2187,11 @@ class AdClientAdCode {
   /// Output only.
   core.String? ampHead;
 
-  AdClientAdCode({this.adCode, this.ampBody, this.ampHead});
+  AdClientAdCode({
+    this.adCode,
+    this.ampBody,
+    this.ampHead,
+  });
 
   AdClientAdCode.fromJson(core.Map json_)
       : this(
@@ -2261,10 +2256,8 @@ class AdUnit {
   AdUnit.fromJson(core.Map json_)
       : this(
           contentAdsSettings: json_.containsKey('contentAdsSettings')
-              ? ContentAdsSettings.fromJson(
-                  json_['contentAdsSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ContentAdsSettings.fromJson(json_['contentAdsSettings']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           displayName: json_['displayName'] as core.String?,
           name: json_['name'] as core.String?,
@@ -2295,10 +2288,14 @@ class AdUnitAdCode {
   /// Output only.
   core.String? adCode;
 
-  AdUnitAdCode({this.adCode});
+  AdUnitAdCode({
+    this.adCode,
+  });
 
   AdUnitAdCode.fromJson(core.Map json_)
-      : this(adCode: json_['adCode'] as core.String?);
+      : this(
+          adCode: json_['adCode'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adCode != null) 'adCode': adCode!,
@@ -2340,7 +2337,12 @@ class Alert {
   /// Output only.
   core.String? type;
 
-  Alert({this.message, this.name, this.severity, this.type});
+  Alert({
+    this.message,
+    this.name,
+    this.severity,
+    this.type,
+  });
 
   Alert.fromJson(core.Map json_)
       : this(
@@ -2365,9 +2367,14 @@ class Cell {
   /// The dimension cells contain strings, and the metric cells contain numbers.
   core.String? value;
 
-  Cell({this.value});
+  Cell({
+    this.value,
+  });
 
-  Cell.fromJson(core.Map json_) : this(value: json_['value'] as core.String?);
+  Cell.fromJson(core.Map json_)
+      : this(
+          value: json_['value'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
@@ -2396,7 +2403,10 @@ class ContentAdsSettings {
   /// see https://support.google.com/adsense/answer/9987221.
   core.String? type;
 
-  ContentAdsSettings({this.size, this.type});
+  ContentAdsSettings({
+    this.size,
+    this.type,
+  });
 
   ContentAdsSettings.fromJson(core.Map json_)
       : this(
@@ -2506,7 +2516,11 @@ class Header {
   /// - "METRIC_DECIMAL" : Decimal header type.
   core.String? type;
 
-  Header({this.currencyCode, this.name, this.type});
+  Header({
+    this.currencyCode,
+    this.name,
+    this.type,
+  });
 
   Header.fromJson(core.Map json_)
       : this(
@@ -2553,16 +2567,16 @@ class ListAccountsResponse {
   /// "page_token" value to this.
   core.String? nextPageToken;
 
-  ListAccountsResponse({this.accounts, this.nextPageToken});
+  ListAccountsResponse({
+    this.accounts,
+    this.nextPageToken,
+  });
 
   ListAccountsResponse.fromJson(core.Map json_)
       : this(
           accounts: (json_['accounts'] as core.List?)
-              ?.map(
-                (value) => Account.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Account.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2584,16 +2598,16 @@ class ListAdClientsResponse {
   /// "page_token" value to this.
   core.String? nextPageToken;
 
-  ListAdClientsResponse({this.adClients, this.nextPageToken});
+  ListAdClientsResponse({
+    this.adClients,
+    this.nextPageToken,
+  });
 
   ListAdClientsResponse.fromJson(core.Map json_)
       : this(
           adClients: (json_['adClients'] as core.List?)
-              ?.map(
-                (value) => AdClient.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AdClient.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2615,16 +2629,16 @@ class ListAdUnitsResponse {
   /// "page_token" value to this.
   core.String? nextPageToken;
 
-  ListAdUnitsResponse({this.adUnits, this.nextPageToken});
+  ListAdUnitsResponse({
+    this.adUnits,
+    this.nextPageToken,
+  });
 
   ListAdUnitsResponse.fromJson(core.Map json_)
       : this(
           adUnits: (json_['adUnits'] as core.List?)
-              ?.map(
-                (value) => AdUnit.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  AdUnit.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2640,16 +2654,15 @@ class ListAlertsResponse {
   /// The alerts returned in this list response.
   core.List<Alert>? alerts;
 
-  ListAlertsResponse({this.alerts});
+  ListAlertsResponse({
+    this.alerts,
+  });
 
   ListAlertsResponse.fromJson(core.Map json_)
       : this(
           alerts: (json_['alerts'] as core.List?)
-              ?.map(
-                (value) => Alert.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Alert.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2669,16 +2682,16 @@ class ListChildAccountsResponse {
   /// "page_token" value to this.
   core.String? nextPageToken;
 
-  ListChildAccountsResponse({this.accounts, this.nextPageToken});
+  ListChildAccountsResponse({
+    this.accounts,
+    this.nextPageToken,
+  });
 
   ListChildAccountsResponse.fromJson(core.Map json_)
       : this(
           accounts: (json_['accounts'] as core.List?)
-              ?.map(
-                (value) => Account.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Account.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2700,16 +2713,16 @@ class ListCustomChannelsResponse {
   /// "page_token" value to this.
   core.String? nextPageToken;
 
-  ListCustomChannelsResponse({this.customChannels, this.nextPageToken});
+  ListCustomChannelsResponse({
+    this.customChannels,
+    this.nextPageToken,
+  });
 
   ListCustomChannelsResponse.fromJson(core.Map json_)
       : this(
           customChannels: (json_['customChannels'] as core.List?)
-              ?.map(
-                (value) => CustomChannel.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CustomChannel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2731,16 +2744,16 @@ class ListLinkedAdUnitsResponse {
   /// "page_token" value to this.
   core.String? nextPageToken;
 
-  ListLinkedAdUnitsResponse({this.adUnits, this.nextPageToken});
+  ListLinkedAdUnitsResponse({
+    this.adUnits,
+    this.nextPageToken,
+  });
 
   ListLinkedAdUnitsResponse.fromJson(core.Map json_)
       : this(
           adUnits: (json_['adUnits'] as core.List?)
-              ?.map(
-                (value) => AdUnit.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  AdUnit.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2762,16 +2775,16 @@ class ListLinkedCustomChannelsResponse {
   /// "page_token" value to this.
   core.String? nextPageToken;
 
-  ListLinkedCustomChannelsResponse({this.customChannels, this.nextPageToken});
+  ListLinkedCustomChannelsResponse({
+    this.customChannels,
+    this.nextPageToken,
+  });
 
   ListLinkedCustomChannelsResponse.fromJson(core.Map json_)
       : this(
           customChannels: (json_['customChannels'] as core.List?)
-              ?.map(
-                (value) => CustomChannel.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CustomChannel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2787,16 +2800,15 @@ class ListPaymentsResponse {
   /// The payments returned in this list response.
   core.List<Payment>? payments;
 
-  ListPaymentsResponse({this.payments});
+  ListPaymentsResponse({
+    this.payments,
+  });
 
   ListPaymentsResponse.fromJson(core.Map json_)
       : this(
           payments: (json_['payments'] as core.List?)
-              ?.map(
-                (value) => Payment.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Payment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2820,17 +2832,17 @@ class ListPolicyIssuesResponse {
   /// The policy issues returned in the list response.
   core.List<PolicyIssue>? policyIssues;
 
-  ListPolicyIssuesResponse({this.nextPageToken, this.policyIssues});
+  ListPolicyIssuesResponse({
+    this.nextPageToken,
+    this.policyIssues,
+  });
 
   ListPolicyIssuesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           policyIssues: (json_['policyIssues'] as core.List?)
-              ?.map(
-                (value) => PolicyIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PolicyIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2851,17 +2863,17 @@ class ListSavedReportsResponse {
   /// The reports returned in this list response.
   core.List<SavedReport>? savedReports;
 
-  ListSavedReportsResponse({this.nextPageToken, this.savedReports});
+  ListSavedReportsResponse({
+    this.nextPageToken,
+    this.savedReports,
+  });
 
   ListSavedReportsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           savedReports: (json_['savedReports'] as core.List?)
-              ?.map(
-                (value) => SavedReport.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SavedReport.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2882,17 +2894,17 @@ class ListSitesResponse {
   /// The sites returned in this list response.
   core.List<Site>? sites;
 
-  ListSitesResponse({this.nextPageToken, this.sites});
+  ListSitesResponse({
+    this.nextPageToken,
+    this.sites,
+  });
 
   ListSitesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           sites: (json_['sites'] as core.List?)
-              ?.map(
-                (value) => Site.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Site.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2913,17 +2925,17 @@ class ListUrlChannelsResponse {
   /// The url channels returned in this list response.
   core.List<UrlChannel>? urlChannels;
 
-  ListUrlChannelsResponse({this.nextPageToken, this.urlChannels});
+  ListUrlChannelsResponse({
+    this.nextPageToken,
+    this.urlChannels,
+  });
 
   ListUrlChannelsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           urlChannels: (json_['urlChannels'] as core.List?)
-              ?.map(
-                (value) => UrlChannel.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => UrlChannel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2968,15 +2980,18 @@ class Payment {
   /// Output only.
   core.String? name;
 
-  Payment({this.amount, this.date, this.name});
+  Payment({
+    this.amount,
+    this.date,
+    this.name,
+  });
 
   Payment.fromJson(core.Map json_)
       : this(
           amount: json_['amount'] as core.String?,
           date: json_.containsKey('date')
               ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['date'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
         );
@@ -3130,33 +3145,24 @@ class PolicyIssue {
           adRequestCount: json_['adRequestCount'] as core.String?,
           entityType: json_['entityType'] as core.String?,
           firstDetectedDate: json_.containsKey('firstDetectedDate')
-              ? Date.fromJson(
-                  json_['firstDetectedDate']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Date.fromJson(json_['firstDetectedDate']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           lastDetectedDate: json_.containsKey('lastDetectedDate')
-              ? Date.fromJson(
-                  json_['lastDetectedDate']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Date.fromJson(json_['lastDetectedDate']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           policyTopics: (json_['policyTopics'] as core.List?)
-              ?.map(
-                (value) => PolicyTopic.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PolicyTopic.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           site: json_['site'] as core.String?,
           siteSection: json_['siteSection'] as core.String?,
           uri: json_['uri'] as core.String?,
           warningEscalationDate: json_.containsKey('warningEscalationDate')
-              ? Date.fromJson(
-                  json_['warningEscalationDate']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Date.fromJson(json_['warningEscalationDate']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3201,7 +3207,10 @@ class PolicyTopic {
   /// Required.
   core.String? topic;
 
-  PolicyTopic({this.mustFix, this.topic});
+  PolicyTopic({
+    this.mustFix,
+    this.topic,
+  });
 
   PolicyTopic.fromJson(core.Map json_)
       : this(
@@ -3272,38 +3281,28 @@ class ReportResult {
       : this(
           averages: json_.containsKey('averages')
               ? Row.fromJson(
-                  json_['averages'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['averages'] as core.Map<core.String, core.dynamic>)
               : null,
           endDate: json_.containsKey('endDate')
               ? Date.fromJson(
-                  json_['endDate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['endDate'] as core.Map<core.String, core.dynamic>)
               : null,
           headers: (json_['headers'] as core.List?)
-              ?.map(
-                (value) => Header.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Header.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           rows: (json_['rows'] as core.List?)
-              ?.map(
-                (value) => Row.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Row.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           startDate: json_.containsKey('startDate')
               ? Date.fromJson(
-                  json_['startDate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['startDate'] as core.Map<core.String, core.dynamic>)
               : null,
           totalMatchedRows: json_['totalMatchedRows'] as core.String?,
           totals: json_.containsKey('totals')
               ? Row.fromJson(
-                  json_['totals'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['totals'] as core.Map<core.String, core.dynamic>)
               : null,
           warnings: (json_['warnings'] as core.List?)
               ?.map((value) => value as core.String)
@@ -3327,16 +3326,15 @@ class Row {
   /// Cells in the row.
   core.List<Cell>? cells;
 
-  Row({this.cells});
+  Row({
+    this.cells,
+  });
 
   Row.fromJson(core.Map json_)
       : this(
           cells: (json_['cells'] as core.List?)
-              ?.map(
-                (value) => Cell.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Cell.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3357,7 +3355,10 @@ class SavedReport {
   /// Report title as specified by publisher.
   core.String? title;
 
-  SavedReport({this.name, this.title});
+  SavedReport({
+    this.name,
+    this.title,
+  });
 
   SavedReport.fromJson(core.Map json_)
       : this(
@@ -3467,7 +3468,11 @@ class UrlChannel {
   /// Does not include "http://" or "https://". Example: www.example.com/home
   core.String? uriPattern;
 
-  UrlChannel({this.name, this.reportingDimensionId, this.uriPattern});
+  UrlChannel({
+    this.name,
+    this.reportingDimensionId,
+    this.uriPattern,
+  });
 
   UrlChannel.fromJson(core.Map json_)
       : this(

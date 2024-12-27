@@ -51,8 +51,7 @@ void checkGooglePrivacyDlpV2Action(api.GooglePrivacyDlpV2Action o) {
     checkGooglePrivacyDlpV2JobNotificationEmails(o.jobNotificationEmails!);
     checkGooglePrivacyDlpV2PublishToPubSub(o.pubSub!);
     checkGooglePrivacyDlpV2PublishFindingsToCloudDataCatalog(
-      o.publishFindingsToCloudDataCatalog!,
-    );
+        o.publishFindingsToCloudDataCatalog!);
     checkGooglePrivacyDlpV2PublishSummaryToCscc(o.publishSummaryToCscc!);
     checkGooglePrivacyDlpV2PublishToStackdriver(o.publishToStackdriver!);
     checkGooglePrivacyDlpV2SaveFindings(o.saveFindings!);
@@ -72,8 +71,7 @@ api.GooglePrivacyDlpV2ActionDetails buildGooglePrivacyDlpV2ActionDetails() {
 }
 
 void checkGooglePrivacyDlpV2ActionDetails(
-  api.GooglePrivacyDlpV2ActionDetails o,
-) {
+    api.GooglePrivacyDlpV2ActionDetails o) {
   buildCounterGooglePrivacyDlpV2ActionDetails++;
   if (buildCounterGooglePrivacyDlpV2ActionDetails < 3) {
     checkGooglePrivacyDlpV2DeidentifyDataSourceDetails(o.deidentifyDetails!);
@@ -92,8 +90,7 @@ api.GooglePrivacyDlpV2ActivateJobTriggerRequest
 }
 
 void checkGooglePrivacyDlpV2ActivateJobTriggerRequest(
-  api.GooglePrivacyDlpV2ActivateJobTriggerRequest o,
-) {
+    api.GooglePrivacyDlpV2ActivateJobTriggerRequest o) {
   buildCounterGooglePrivacyDlpV2ActivateJobTriggerRequest++;
   if (buildCounterGooglePrivacyDlpV2ActivateJobTriggerRequest < 3) {}
   buildCounterGooglePrivacyDlpV2ActivateJobTriggerRequest--;
@@ -125,8 +122,7 @@ api.GooglePrivacyDlpV2AllOtherBigQueryTables
 }
 
 void checkGooglePrivacyDlpV2AllOtherBigQueryTables(
-  api.GooglePrivacyDlpV2AllOtherBigQueryTables o,
-) {
+    api.GooglePrivacyDlpV2AllOtherBigQueryTables o) {
   buildCounterGooglePrivacyDlpV2AllOtherBigQueryTables++;
   if (buildCounterGooglePrivacyDlpV2AllOtherBigQueryTables < 3) {}
   buildCounterGooglePrivacyDlpV2AllOtherBigQueryTables--;
@@ -143,8 +139,7 @@ api.GooglePrivacyDlpV2AllOtherDatabaseResources
 }
 
 void checkGooglePrivacyDlpV2AllOtherDatabaseResources(
-  api.GooglePrivacyDlpV2AllOtherDatabaseResources o,
-) {
+    api.GooglePrivacyDlpV2AllOtherDatabaseResources o) {
   buildCounterGooglePrivacyDlpV2AllOtherDatabaseResources++;
   if (buildCounterGooglePrivacyDlpV2AllOtherDatabaseResources < 3) {}
   buildCounterGooglePrivacyDlpV2AllOtherDatabaseResources--;
@@ -161,8 +156,7 @@ api.GooglePrivacyDlpV2AllOtherResources
 }
 
 void checkGooglePrivacyDlpV2AllOtherResources(
-  api.GooglePrivacyDlpV2AllOtherResources o,
-) {
+    api.GooglePrivacyDlpV2AllOtherResources o) {
   buildCounterGooglePrivacyDlpV2AllOtherResources++;
   if (buildCounterGooglePrivacyDlpV2AllOtherResources < 3) {}
   buildCounterGooglePrivacyDlpV2AllOtherResources--;
@@ -196,30 +190,50 @@ api.GooglePrivacyDlpV2AmazonS3Bucket buildGooglePrivacyDlpV2AmazonS3Bucket() {
 }
 
 void checkGooglePrivacyDlpV2AmazonS3Bucket(
-  api.GooglePrivacyDlpV2AmazonS3Bucket o,
-) {
+    api.GooglePrivacyDlpV2AmazonS3Bucket o) {
   buildCounterGooglePrivacyDlpV2AmazonS3Bucket++;
   if (buildCounterGooglePrivacyDlpV2AmazonS3Bucket < 3) {
     checkGooglePrivacyDlpV2AwsAccount(o.awsAccount!);
-    unittest.expect(o.bucketName!, unittest.equals('foo'));
+    unittest.expect(
+      o.bucketName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2AmazonS3Bucket--;
 }
 
-core.List<core.String> buildUnnamed0() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed0() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed0(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
-core.List<core.String> buildUnnamed1() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed1() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2AmazonS3BucketConditions = 0;
@@ -236,8 +250,7 @@ api.GooglePrivacyDlpV2AmazonS3BucketConditions
 }
 
 void checkGooglePrivacyDlpV2AmazonS3BucketConditions(
-  api.GooglePrivacyDlpV2AmazonS3BucketConditions o,
-) {
+    api.GooglePrivacyDlpV2AmazonS3BucketConditions o) {
   buildCounterGooglePrivacyDlpV2AmazonS3BucketConditions++;
   if (buildCounterGooglePrivacyDlpV2AmazonS3BucketConditions < 3) {
     checkUnnamed0(o.bucketTypes!);
@@ -260,12 +273,14 @@ api.GooglePrivacyDlpV2AmazonS3BucketRegex
 }
 
 void checkGooglePrivacyDlpV2AmazonS3BucketRegex(
-  api.GooglePrivacyDlpV2AmazonS3BucketRegex o,
-) {
+    api.GooglePrivacyDlpV2AmazonS3BucketRegex o) {
   buildCounterGooglePrivacyDlpV2AmazonS3BucketRegex++;
   if (buildCounterGooglePrivacyDlpV2AmazonS3BucketRegex < 3) {
     checkGooglePrivacyDlpV2AwsAccountRegex(o.awsAccountRegex!);
-    unittest.expect(o.bucketNameRegex!, unittest.equals('foo'));
+    unittest.expect(
+      o.bucketNameRegex!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2AmazonS3BucketRegex--;
 }
@@ -292,14 +307,12 @@ api.GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails
 }
 
 void checkGooglePrivacyDlpV2AnalyzeDataSourceRiskDetails(
-  api.GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails o,
-) {
+    api.GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails o) {
   buildCounterGooglePrivacyDlpV2AnalyzeDataSourceRiskDetails++;
   if (buildCounterGooglePrivacyDlpV2AnalyzeDataSourceRiskDetails < 3) {
     checkGooglePrivacyDlpV2CategoricalStatsResult(o.categoricalStatsResult!);
     checkGooglePrivacyDlpV2DeltaPresenceEstimationResult(
-      o.deltaPresenceEstimationResult!,
-    );
+        o.deltaPresenceEstimationResult!);
     checkGooglePrivacyDlpV2KAnonymityResult(o.kAnonymityResult!);
     checkGooglePrivacyDlpV2KMapEstimationResult(o.kMapEstimationResult!);
     checkGooglePrivacyDlpV2LDiversityResult(o.lDiversityResult!);
@@ -336,8 +349,7 @@ api.GooglePrivacyDlpV2AuxiliaryTable buildGooglePrivacyDlpV2AuxiliaryTable() {
 }
 
 void checkGooglePrivacyDlpV2AuxiliaryTable(
-  api.GooglePrivacyDlpV2AuxiliaryTable o,
-) {
+    api.GooglePrivacyDlpV2AuxiliaryTable o) {
   buildCounterGooglePrivacyDlpV2AuxiliaryTable++;
   if (buildCounterGooglePrivacyDlpV2AuxiliaryTable < 3) {
     checkUnnamed2(o.quasiIds!);
@@ -361,7 +373,10 @@ api.GooglePrivacyDlpV2AwsAccount buildGooglePrivacyDlpV2AwsAccount() {
 void checkGooglePrivacyDlpV2AwsAccount(api.GooglePrivacyDlpV2AwsAccount o) {
   buildCounterGooglePrivacyDlpV2AwsAccount++;
   if (buildCounterGooglePrivacyDlpV2AwsAccount < 3) {
-    unittest.expect(o.accountId!, unittest.equals('foo'));
+    unittest.expect(
+      o.accountId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2AwsAccount--;
 }
@@ -378,11 +393,13 @@ api.GooglePrivacyDlpV2AwsAccountRegex buildGooglePrivacyDlpV2AwsAccountRegex() {
 }
 
 void checkGooglePrivacyDlpV2AwsAccountRegex(
-  api.GooglePrivacyDlpV2AwsAccountRegex o,
-) {
+    api.GooglePrivacyDlpV2AwsAccountRegex o) {
   buildCounterGooglePrivacyDlpV2AwsAccountRegex++;
   if (buildCounterGooglePrivacyDlpV2AwsAccountRegex < 3) {
-    unittest.expect(o.accountIdRegex!, unittest.equals('foo'));
+    unittest.expect(
+      o.accountIdRegex!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2AwsAccountRegex--;
 }
@@ -401,11 +418,13 @@ api.GooglePrivacyDlpV2AwsDiscoveryStartingLocation
 }
 
 void checkGooglePrivacyDlpV2AwsDiscoveryStartingLocation(
-  api.GooglePrivacyDlpV2AwsDiscoveryStartingLocation o,
-) {
+    api.GooglePrivacyDlpV2AwsDiscoveryStartingLocation o) {
   buildCounterGooglePrivacyDlpV2AwsDiscoveryStartingLocation++;
   if (buildCounterGooglePrivacyDlpV2AwsDiscoveryStartingLocation < 3) {
-    unittest.expect(o.accountId!, unittest.equals('foo'));
+    unittest.expect(
+      o.accountId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.allAssetInventoryAssets!, unittest.isTrue);
   }
   buildCounterGooglePrivacyDlpV2AwsDiscoveryStartingLocation--;
@@ -427,8 +446,7 @@ api.GooglePrivacyDlpV2BigQueryDiscoveryTarget
 }
 
 void checkGooglePrivacyDlpV2BigQueryDiscoveryTarget(
-  api.GooglePrivacyDlpV2BigQueryDiscoveryTarget o,
-) {
+    api.GooglePrivacyDlpV2BigQueryDiscoveryTarget o) {
   buildCounterGooglePrivacyDlpV2BigQueryDiscoveryTarget++;
   if (buildCounterGooglePrivacyDlpV2BigQueryDiscoveryTarget < 3) {
     checkGooglePrivacyDlpV2DiscoveryGenerationCadence(o.cadence!);
@@ -452,8 +470,7 @@ api.GooglePrivacyDlpV2BigQueryField buildGooglePrivacyDlpV2BigQueryField() {
 }
 
 void checkGooglePrivacyDlpV2BigQueryField(
-  api.GooglePrivacyDlpV2BigQueryField o,
-) {
+    api.GooglePrivacyDlpV2BigQueryField o) {
   buildCounterGooglePrivacyDlpV2BigQueryField++;
   if (buildCounterGooglePrivacyDlpV2BigQueryField < 3) {
     checkGooglePrivacyDlpV2FieldId(o.field!);
@@ -477,7 +494,10 @@ api.GooglePrivacyDlpV2BigQueryKey buildGooglePrivacyDlpV2BigQueryKey() {
 void checkGooglePrivacyDlpV2BigQueryKey(api.GooglePrivacyDlpV2BigQueryKey o) {
   buildCounterGooglePrivacyDlpV2BigQueryKey++;
   if (buildCounterGooglePrivacyDlpV2BigQueryKey < 3) {
-    unittest.expect(o.rowNumber!, unittest.equals('foo'));
+    unittest.expect(
+      o.rowNumber!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2BigQueryTable(o.tableReference!);
   }
   buildCounterGooglePrivacyDlpV2BigQueryKey--;
@@ -534,16 +554,24 @@ api.GooglePrivacyDlpV2BigQueryOptions buildGooglePrivacyDlpV2BigQueryOptions() {
 }
 
 void checkGooglePrivacyDlpV2BigQueryOptions(
-  api.GooglePrivacyDlpV2BigQueryOptions o,
-) {
+    api.GooglePrivacyDlpV2BigQueryOptions o) {
   buildCounterGooglePrivacyDlpV2BigQueryOptions++;
   if (buildCounterGooglePrivacyDlpV2BigQueryOptions < 3) {
     checkUnnamed3(o.excludedFields!);
     checkUnnamed4(o.identifyingFields!);
     checkUnnamed5(o.includedFields!);
-    unittest.expect(o.rowsLimit!, unittest.equals('foo'));
-    unittest.expect(o.rowsLimitPercent!, unittest.equals(42));
-    unittest.expect(o.sampleMethod!, unittest.equals('foo'));
+    unittest.expect(
+      o.rowsLimit!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.rowsLimitPercent!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.sampleMethod!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2BigQueryTable(o.tableReference!);
   }
   buildCounterGooglePrivacyDlpV2BigQueryOptions--;
@@ -563,13 +591,21 @@ api.GooglePrivacyDlpV2BigQueryRegex buildGooglePrivacyDlpV2BigQueryRegex() {
 }
 
 void checkGooglePrivacyDlpV2BigQueryRegex(
-  api.GooglePrivacyDlpV2BigQueryRegex o,
-) {
+    api.GooglePrivacyDlpV2BigQueryRegex o) {
   buildCounterGooglePrivacyDlpV2BigQueryRegex++;
   if (buildCounterGooglePrivacyDlpV2BigQueryRegex < 3) {
-    unittest.expect(o.datasetIdRegex!, unittest.equals('foo'));
-    unittest.expect(o.projectIdRegex!, unittest.equals('foo'));
-    unittest.expect(o.tableIdRegex!, unittest.equals('foo'));
+    unittest.expect(
+      o.datasetIdRegex!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectIdRegex!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tableIdRegex!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2BigQueryRegex--;
 }
@@ -597,8 +633,7 @@ api.GooglePrivacyDlpV2BigQueryRegexes buildGooglePrivacyDlpV2BigQueryRegexes() {
 }
 
 void checkGooglePrivacyDlpV2BigQueryRegexes(
-  api.GooglePrivacyDlpV2BigQueryRegexes o,
-) {
+    api.GooglePrivacyDlpV2BigQueryRegexes o) {
   buildCounterGooglePrivacyDlpV2BigQueryRegexes++;
   if (buildCounterGooglePrivacyDlpV2BigQueryRegexes < 3) {
     checkUnnamed6(o.patterns!);
@@ -620,13 +655,21 @@ api.GooglePrivacyDlpV2BigQueryTable buildGooglePrivacyDlpV2BigQueryTable() {
 }
 
 void checkGooglePrivacyDlpV2BigQueryTable(
-  api.GooglePrivacyDlpV2BigQueryTable o,
-) {
+    api.GooglePrivacyDlpV2BigQueryTable o) {
   buildCounterGooglePrivacyDlpV2BigQueryTable++;
   if (buildCounterGooglePrivacyDlpV2BigQueryTable < 3) {
-    unittest.expect(o.datasetId!, unittest.equals('foo'));
-    unittest.expect(o.projectId!, unittest.equals('foo'));
-    unittest.expect(o.tableId!, unittest.equals('foo'));
+    unittest.expect(
+      o.datasetId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tableId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2BigQueryTable--;
 }
@@ -644,8 +687,7 @@ api.GooglePrivacyDlpV2BigQueryTableCollection
 }
 
 void checkGooglePrivacyDlpV2BigQueryTableCollection(
-  api.GooglePrivacyDlpV2BigQueryTableCollection o,
-) {
+    api.GooglePrivacyDlpV2BigQueryTableCollection o) {
   buildCounterGooglePrivacyDlpV2BigQueryTableCollection++;
   if (buildCounterGooglePrivacyDlpV2BigQueryTableCollection < 3) {
     checkGooglePrivacyDlpV2BigQueryRegexes(o.includeRegexes!);
@@ -653,12 +695,21 @@ void checkGooglePrivacyDlpV2BigQueryTableCollection(
   buildCounterGooglePrivacyDlpV2BigQueryTableCollection--;
 }
 
-core.List<core.String> buildUnnamed7() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed7() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2BigQueryTableTypes = 0;
@@ -674,8 +725,7 @@ api.GooglePrivacyDlpV2BigQueryTableTypes
 }
 
 void checkGooglePrivacyDlpV2BigQueryTableTypes(
-  api.GooglePrivacyDlpV2BigQueryTableTypes o,
-) {
+    api.GooglePrivacyDlpV2BigQueryTableTypes o) {
   buildCounterGooglePrivacyDlpV2BigQueryTableTypes++;
   if (buildCounterGooglePrivacyDlpV2BigQueryTableTypes < 3) {
     checkUnnamed7(o.types!);
@@ -700,10 +750,22 @@ api.GooglePrivacyDlpV2BoundingBox buildGooglePrivacyDlpV2BoundingBox() {
 void checkGooglePrivacyDlpV2BoundingBox(api.GooglePrivacyDlpV2BoundingBox o) {
   buildCounterGooglePrivacyDlpV2BoundingBox++;
   if (buildCounterGooglePrivacyDlpV2BoundingBox < 3) {
-    unittest.expect(o.height!, unittest.equals(42));
-    unittest.expect(o.left!, unittest.equals(42));
-    unittest.expect(o.top!, unittest.equals(42));
-    unittest.expect(o.width!, unittest.equals(42));
+    unittest.expect(
+      o.height!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.left!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.top!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.width!,
+      unittest.equals(42),
+    );
   }
   buildCounterGooglePrivacyDlpV2BoundingBox--;
 }
@@ -754,8 +816,7 @@ api.GooglePrivacyDlpV2BucketingConfig buildGooglePrivacyDlpV2BucketingConfig() {
 }
 
 void checkGooglePrivacyDlpV2BucketingConfig(
-  api.GooglePrivacyDlpV2BucketingConfig o,
-) {
+    api.GooglePrivacyDlpV2BucketingConfig o) {
   buildCounterGooglePrivacyDlpV2BucketingConfig++;
   if (buildCounterGooglePrivacyDlpV2BucketingConfig < 3) {
     checkUnnamed8(o.buckets!);
@@ -776,12 +837,17 @@ api.GooglePrivacyDlpV2ByteContentItem buildGooglePrivacyDlpV2ByteContentItem() {
 }
 
 void checkGooglePrivacyDlpV2ByteContentItem(
-  api.GooglePrivacyDlpV2ByteContentItem o,
-) {
+    api.GooglePrivacyDlpV2ByteContentItem o) {
   buildCounterGooglePrivacyDlpV2ByteContentItem++;
   if (buildCounterGooglePrivacyDlpV2ByteContentItem < 3) {
-    unittest.expect(o.data!, unittest.equals('foo'));
-    unittest.expect(o.type!, unittest.equals('foo'));
+    unittest.expect(
+      o.data!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2ByteContentItem--;
 }
@@ -797,8 +863,7 @@ api.GooglePrivacyDlpV2CancelDlpJobRequest
 }
 
 void checkGooglePrivacyDlpV2CancelDlpJobRequest(
-  api.GooglePrivacyDlpV2CancelDlpJobRequest o,
-) {
+    api.GooglePrivacyDlpV2CancelDlpJobRequest o) {
   buildCounterGooglePrivacyDlpV2CancelDlpJobRequest++;
   if (buildCounterGooglePrivacyDlpV2CancelDlpJobRequest < 3) {}
   buildCounterGooglePrivacyDlpV2CancelDlpJobRequest--;
@@ -817,8 +882,7 @@ api.GooglePrivacyDlpV2CategoricalStatsConfig
 }
 
 void checkGooglePrivacyDlpV2CategoricalStatsConfig(
-  api.GooglePrivacyDlpV2CategoricalStatsConfig o,
-) {
+    api.GooglePrivacyDlpV2CategoricalStatsConfig o) {
   buildCounterGooglePrivacyDlpV2CategoricalStatsConfig++;
   if (buildCounterGooglePrivacyDlpV2CategoricalStatsConfig < 3) {
     checkGooglePrivacyDlpV2FieldId(o.field!);
@@ -854,15 +918,26 @@ api.GooglePrivacyDlpV2CategoricalStatsHistogramBucket
 }
 
 void checkGooglePrivacyDlpV2CategoricalStatsHistogramBucket(
-  api.GooglePrivacyDlpV2CategoricalStatsHistogramBucket o,
-) {
+    api.GooglePrivacyDlpV2CategoricalStatsHistogramBucket o) {
   buildCounterGooglePrivacyDlpV2CategoricalStatsHistogramBucket++;
   if (buildCounterGooglePrivacyDlpV2CategoricalStatsHistogramBucket < 3) {
-    unittest.expect(o.bucketSize!, unittest.equals('foo'));
-    unittest.expect(o.bucketValueCount!, unittest.equals('foo'));
+    unittest.expect(
+      o.bucketSize!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.bucketValueCount!,
+      unittest.equals('foo'),
+    );
     checkUnnamed9(o.bucketValues!);
-    unittest.expect(o.valueFrequencyLowerBound!, unittest.equals('foo'));
-    unittest.expect(o.valueFrequencyUpperBound!, unittest.equals('foo'));
+    unittest.expect(
+      o.valueFrequencyLowerBound!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.valueFrequencyUpperBound!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2CategoricalStatsHistogramBucket--;
 }
@@ -874,8 +949,7 @@ core.List<api.GooglePrivacyDlpV2CategoricalStatsHistogramBucket>
         ];
 
 void checkUnnamed10(
-  core.List<api.GooglePrivacyDlpV2CategoricalStatsHistogramBucket> o,
-) {
+    core.List<api.GooglePrivacyDlpV2CategoricalStatsHistogramBucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2CategoricalStatsHistogramBucket(o[0]);
   checkGooglePrivacyDlpV2CategoricalStatsHistogramBucket(o[1]);
@@ -894,8 +968,7 @@ api.GooglePrivacyDlpV2CategoricalStatsResult
 }
 
 void checkGooglePrivacyDlpV2CategoricalStatsResult(
-  api.GooglePrivacyDlpV2CategoricalStatsResult o,
-) {
+    api.GooglePrivacyDlpV2CategoricalStatsResult o) {
   buildCounterGooglePrivacyDlpV2CategoricalStatsResult++;
   if (buildCounterGooglePrivacyDlpV2CategoricalStatsResult < 3) {
     checkUnnamed10(o.valueFrequencyHistogramBuckets!);
@@ -930,13 +1003,18 @@ api.GooglePrivacyDlpV2CharacterMaskConfig
 }
 
 void checkGooglePrivacyDlpV2CharacterMaskConfig(
-  api.GooglePrivacyDlpV2CharacterMaskConfig o,
-) {
+    api.GooglePrivacyDlpV2CharacterMaskConfig o) {
   buildCounterGooglePrivacyDlpV2CharacterMaskConfig++;
   if (buildCounterGooglePrivacyDlpV2CharacterMaskConfig < 3) {
     checkUnnamed11(o.charactersToIgnore!);
-    unittest.expect(o.maskingCharacter!, unittest.equals('foo'));
-    unittest.expect(o.numberToMask!, unittest.equals(42));
+    unittest.expect(
+      o.maskingCharacter!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numberToMask!,
+      unittest.equals(42),
+    );
     unittest.expect(o.reverseOrder!, unittest.isTrue);
   }
   buildCounterGooglePrivacyDlpV2CharacterMaskConfig--;
@@ -955,12 +1033,17 @@ api.GooglePrivacyDlpV2CharsToIgnore buildGooglePrivacyDlpV2CharsToIgnore() {
 }
 
 void checkGooglePrivacyDlpV2CharsToIgnore(
-  api.GooglePrivacyDlpV2CharsToIgnore o,
-) {
+    api.GooglePrivacyDlpV2CharsToIgnore o) {
   buildCounterGooglePrivacyDlpV2CharsToIgnore++;
   if (buildCounterGooglePrivacyDlpV2CharsToIgnore < 3) {
-    unittest.expect(o.charactersToSkip!, unittest.equals('foo'));
-    unittest.expect(o.commonCharactersToIgnore!, unittest.equals('foo'));
+    unittest.expect(
+      o.charactersToSkip!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.commonCharactersToIgnore!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2CharsToIgnore--;
 }
@@ -982,16 +1065,14 @@ api.GooglePrivacyDlpV2CloudSqlDiscoveryTarget
 }
 
 void checkGooglePrivacyDlpV2CloudSqlDiscoveryTarget(
-  api.GooglePrivacyDlpV2CloudSqlDiscoveryTarget o,
-) {
+    api.GooglePrivacyDlpV2CloudSqlDiscoveryTarget o) {
   buildCounterGooglePrivacyDlpV2CloudSqlDiscoveryTarget++;
   if (buildCounterGooglePrivacyDlpV2CloudSqlDiscoveryTarget < 3) {
     checkGooglePrivacyDlpV2DiscoveryCloudSqlConditions(o.conditions!);
     checkGooglePrivacyDlpV2Disabled(o.disabled!);
     checkGooglePrivacyDlpV2DiscoveryCloudSqlFilter(o.filter!);
     checkGooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence(
-      o.generationCadence!,
-    );
+        o.generationCadence!);
   }
   buildCounterGooglePrivacyDlpV2CloudSqlDiscoveryTarget--;
 }
@@ -1007,8 +1088,7 @@ api.GooglePrivacyDlpV2CloudSqlIamCredential
 }
 
 void checkGooglePrivacyDlpV2CloudSqlIamCredential(
-  api.GooglePrivacyDlpV2CloudSqlIamCredential o,
-) {
+    api.GooglePrivacyDlpV2CloudSqlIamCredential o) {
   buildCounterGooglePrivacyDlpV2CloudSqlIamCredential++;
   if (buildCounterGooglePrivacyDlpV2CloudSqlIamCredential < 3) {}
   buildCounterGooglePrivacyDlpV2CloudSqlIamCredential--;
@@ -1031,14 +1111,22 @@ api.GooglePrivacyDlpV2CloudSqlProperties
 }
 
 void checkGooglePrivacyDlpV2CloudSqlProperties(
-  api.GooglePrivacyDlpV2CloudSqlProperties o,
-) {
+    api.GooglePrivacyDlpV2CloudSqlProperties o) {
   buildCounterGooglePrivacyDlpV2CloudSqlProperties++;
   if (buildCounterGooglePrivacyDlpV2CloudSqlProperties < 3) {
     checkGooglePrivacyDlpV2CloudSqlIamCredential(o.cloudSqlIam!);
-    unittest.expect(o.connectionName!, unittest.equals('foo'));
-    unittest.expect(o.databaseEngine!, unittest.equals('foo'));
-    unittest.expect(o.maxConnections!, unittest.equals(42));
+    unittest.expect(
+      o.connectionName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.databaseEngine!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxConnections!,
+      unittest.equals(42),
+    );
     checkGooglePrivacyDlpV2SecretManagerCredential(o.usernamePassword!);
   }
   buildCounterGooglePrivacyDlpV2CloudSqlProperties--;
@@ -1061,16 +1149,14 @@ api.GooglePrivacyDlpV2CloudStorageDiscoveryTarget
 }
 
 void checkGooglePrivacyDlpV2CloudStorageDiscoveryTarget(
-  api.GooglePrivacyDlpV2CloudStorageDiscoveryTarget o,
-) {
+    api.GooglePrivacyDlpV2CloudStorageDiscoveryTarget o) {
   buildCounterGooglePrivacyDlpV2CloudStorageDiscoveryTarget++;
   if (buildCounterGooglePrivacyDlpV2CloudStorageDiscoveryTarget < 3) {
     checkGooglePrivacyDlpV2DiscoveryFileStoreConditions(o.conditions!);
     checkGooglePrivacyDlpV2Disabled(o.disabled!);
     checkGooglePrivacyDlpV2DiscoveryCloudStorageFilter(o.filter!);
     checkGooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence(
-      o.generationCadence!,
-    );
+        o.generationCadence!);
   }
   buildCounterGooglePrivacyDlpV2CloudStorageDiscoveryTarget--;
 }
@@ -1088,21 +1174,32 @@ api.GooglePrivacyDlpV2CloudStorageFileSet
 }
 
 void checkGooglePrivacyDlpV2CloudStorageFileSet(
-  api.GooglePrivacyDlpV2CloudStorageFileSet o,
-) {
+    api.GooglePrivacyDlpV2CloudStorageFileSet o) {
   buildCounterGooglePrivacyDlpV2CloudStorageFileSet++;
   if (buildCounterGooglePrivacyDlpV2CloudStorageFileSet < 3) {
-    unittest.expect(o.url!, unittest.equals('foo'));
+    unittest.expect(
+      o.url!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2CloudStorageFileSet--;
 }
 
-core.List<core.String> buildUnnamed12() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed12() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed12(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2CloudStorageOptions = 0;
@@ -1123,16 +1220,27 @@ api.GooglePrivacyDlpV2CloudStorageOptions
 }
 
 void checkGooglePrivacyDlpV2CloudStorageOptions(
-  api.GooglePrivacyDlpV2CloudStorageOptions o,
-) {
+    api.GooglePrivacyDlpV2CloudStorageOptions o) {
   buildCounterGooglePrivacyDlpV2CloudStorageOptions++;
   if (buildCounterGooglePrivacyDlpV2CloudStorageOptions < 3) {
-    unittest.expect(o.bytesLimitPerFile!, unittest.equals('foo'));
-    unittest.expect(o.bytesLimitPerFilePercent!, unittest.equals(42));
+    unittest.expect(
+      o.bytesLimitPerFile!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.bytesLimitPerFilePercent!,
+      unittest.equals(42),
+    );
     checkGooglePrivacyDlpV2FileSet(o.fileSet!);
     checkUnnamed12(o.fileTypes!);
-    unittest.expect(o.filesLimitPercent!, unittest.equals(42));
-    unittest.expect(o.sampleMethod!, unittest.equals('foo'));
+    unittest.expect(
+      o.filesLimitPercent!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.sampleMethod!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2CloudStorageOptions--;
 }
@@ -1150,11 +1258,13 @@ api.GooglePrivacyDlpV2CloudStoragePath
 }
 
 void checkGooglePrivacyDlpV2CloudStoragePath(
-  api.GooglePrivacyDlpV2CloudStoragePath o,
-) {
+    api.GooglePrivacyDlpV2CloudStoragePath o) {
   buildCounterGooglePrivacyDlpV2CloudStoragePath++;
   if (buildCounterGooglePrivacyDlpV2CloudStoragePath < 3) {
-    unittest.expect(o.path!, unittest.equals('foo'));
+    unittest.expect(
+      o.path!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2CloudStoragePath--;
 }
@@ -1173,30 +1283,53 @@ api.GooglePrivacyDlpV2CloudStorageRegex
 }
 
 void checkGooglePrivacyDlpV2CloudStorageRegex(
-  api.GooglePrivacyDlpV2CloudStorageRegex o,
-) {
+    api.GooglePrivacyDlpV2CloudStorageRegex o) {
   buildCounterGooglePrivacyDlpV2CloudStorageRegex++;
   if (buildCounterGooglePrivacyDlpV2CloudStorageRegex < 3) {
-    unittest.expect(o.bucketNameRegex!, unittest.equals('foo'));
-    unittest.expect(o.projectIdRegex!, unittest.equals('foo'));
+    unittest.expect(
+      o.bucketNameRegex!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectIdRegex!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2CloudStorageRegex--;
 }
 
-core.List<core.String> buildUnnamed13() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed13() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed13(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
-core.List<core.String> buildUnnamed14() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed14() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed14(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2CloudStorageRegexFileSet = 0;
@@ -1214,11 +1347,13 @@ api.GooglePrivacyDlpV2CloudStorageRegexFileSet
 }
 
 void checkGooglePrivacyDlpV2CloudStorageRegexFileSet(
-  api.GooglePrivacyDlpV2CloudStorageRegexFileSet o,
-) {
+    api.GooglePrivacyDlpV2CloudStorageRegexFileSet o) {
   buildCounterGooglePrivacyDlpV2CloudStorageRegexFileSet++;
   if (buildCounterGooglePrivacyDlpV2CloudStorageRegexFileSet < 3) {
-    unittest.expect(o.bucketName!, unittest.equals('foo'));
+    unittest.expect(
+      o.bucketName!,
+      unittest.equals('foo'),
+    );
     checkUnnamed13(o.excludeRegex!);
     checkUnnamed14(o.includeRegex!);
   }
@@ -1239,12 +1374,17 @@ api.GooglePrivacyDlpV2CloudStorageResourceReference
 }
 
 void checkGooglePrivacyDlpV2CloudStorageResourceReference(
-  api.GooglePrivacyDlpV2CloudStorageResourceReference o,
-) {
+    api.GooglePrivacyDlpV2CloudStorageResourceReference o) {
   buildCounterGooglePrivacyDlpV2CloudStorageResourceReference++;
   if (buildCounterGooglePrivacyDlpV2CloudStorageResourceReference < 3) {
-    unittest.expect(o.bucketName!, unittest.equals('foo'));
-    unittest.expect(o.projectId!, unittest.equals('foo'));
+    unittest.expect(
+      o.bucketName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2CloudStorageResourceReference--;
 }
@@ -1265,9 +1405,18 @@ api.GooglePrivacyDlpV2Color buildGooglePrivacyDlpV2Color() {
 void checkGooglePrivacyDlpV2Color(api.GooglePrivacyDlpV2Color o) {
   buildCounterGooglePrivacyDlpV2Color++;
   if (buildCounterGooglePrivacyDlpV2Color < 3) {
-    unittest.expect(o.blue!, unittest.equals(42.0));
-    unittest.expect(o.green!, unittest.equals(42.0));
-    unittest.expect(o.red!, unittest.equals(42.0));
+    unittest.expect(
+      o.blue!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.green!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.red!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterGooglePrivacyDlpV2Color--;
 }
@@ -1315,30 +1464,74 @@ api.GooglePrivacyDlpV2ColumnDataProfile
 }
 
 void checkGooglePrivacyDlpV2ColumnDataProfile(
-  api.GooglePrivacyDlpV2ColumnDataProfile o,
-) {
+    api.GooglePrivacyDlpV2ColumnDataProfile o) {
   buildCounterGooglePrivacyDlpV2ColumnDataProfile++;
   if (buildCounterGooglePrivacyDlpV2ColumnDataProfile < 3) {
-    unittest.expect(o.column!, unittest.equals('foo'));
+    unittest.expect(
+      o.column!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2InfoTypeSummary(o.columnInfoType!);
-    unittest.expect(o.columnType!, unittest.equals('foo'));
+    unittest.expect(
+      o.columnType!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2DataRiskLevel(o.dataRiskLevel!);
-    unittest.expect(o.datasetId!, unittest.equals('foo'));
-    unittest.expect(o.datasetLocation!, unittest.equals('foo'));
-    unittest.expect(o.datasetProjectId!, unittest.equals('foo'));
-    unittest.expect(o.estimatedNullPercentage!, unittest.equals('foo'));
-    unittest.expect(o.estimatedUniquenessScore!, unittest.equals('foo'));
-    unittest.expect(o.freeTextScore!, unittest.equals(42.0));
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.datasetId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.datasetLocation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.datasetProjectId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.estimatedNullPercentage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.estimatedUniquenessScore!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.freeTextScore!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkUnnamed15(o.otherMatches!);
-    unittest.expect(o.policyState!, unittest.equals('foo'));
-    unittest.expect(o.profileLastGenerated!, unittest.equals('foo'));
+    unittest.expect(
+      o.policyState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.profileLastGenerated!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2ProfileStatus(o.profileStatus!);
     checkGooglePrivacyDlpV2SensitivityScore(o.sensitivityScore!);
-    unittest.expect(o.state!, unittest.equals('foo'));
-    unittest.expect(o.tableDataProfile!, unittest.equals('foo'));
-    unittest.expect(o.tableFullResource!, unittest.equals('foo'));
-    unittest.expect(o.tableId!, unittest.equals('foo'));
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tableDataProfile!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tableFullResource!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tableId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2ColumnDataProfile--;
 }
@@ -1360,7 +1553,10 @@ void checkGooglePrivacyDlpV2Condition(api.GooglePrivacyDlpV2Condition o) {
   buildCounterGooglePrivacyDlpV2Condition++;
   if (buildCounterGooglePrivacyDlpV2Condition < 3) {
     checkGooglePrivacyDlpV2FieldId(o.field!);
-    unittest.expect(o.operator!, unittest.equals('foo'));
+    unittest.expect(
+      o.operator!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2Value(o.value!);
   }
   buildCounterGooglePrivacyDlpV2Condition--;
@@ -1426,8 +1622,14 @@ void checkGooglePrivacyDlpV2Connection(api.GooglePrivacyDlpV2Connection o) {
   if (buildCounterGooglePrivacyDlpV2Connection < 3) {
     checkGooglePrivacyDlpV2CloudSqlProperties(o.cloudSql!);
     checkUnnamed17(o.errors!);
-    unittest.expect(o.name!, unittest.equals('foo'));
-    unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2Connection--;
 }
@@ -1452,13 +1654,34 @@ api.GooglePrivacyDlpV2Container buildGooglePrivacyDlpV2Container() {
 void checkGooglePrivacyDlpV2Container(api.GooglePrivacyDlpV2Container o) {
   buildCounterGooglePrivacyDlpV2Container++;
   if (buildCounterGooglePrivacyDlpV2Container < 3) {
-    unittest.expect(o.fullPath!, unittest.equals('foo'));
-    unittest.expect(o.projectId!, unittest.equals('foo'));
-    unittest.expect(o.relativePath!, unittest.equals('foo'));
-    unittest.expect(o.rootPath!, unittest.equals('foo'));
-    unittest.expect(o.type!, unittest.equals('foo'));
-    unittest.expect(o.updateTime!, unittest.equals('foo'));
-    unittest.expect(o.version!, unittest.equals('foo'));
+    unittest.expect(
+      o.fullPath!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.relativePath!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.rootPath!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2Container--;
 }
@@ -1481,7 +1704,10 @@ void checkGooglePrivacyDlpV2ContentItem(api.GooglePrivacyDlpV2ContentItem o) {
   if (buildCounterGooglePrivacyDlpV2ContentItem < 3) {
     checkGooglePrivacyDlpV2ByteContentItem(o.byteItem!);
     checkGooglePrivacyDlpV2Table(o.table!);
-    unittest.expect(o.value!, unittest.equals('foo'));
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2ContentItem--;
 }
@@ -1504,13 +1730,21 @@ api.GooglePrivacyDlpV2ContentLocation buildGooglePrivacyDlpV2ContentLocation() {
 }
 
 void checkGooglePrivacyDlpV2ContentLocation(
-  api.GooglePrivacyDlpV2ContentLocation o,
-) {
+    api.GooglePrivacyDlpV2ContentLocation o) {
   buildCounterGooglePrivacyDlpV2ContentLocation++;
   if (buildCounterGooglePrivacyDlpV2ContentLocation < 3) {
-    unittest.expect(o.containerName!, unittest.equals('foo'));
-    unittest.expect(o.containerTimestamp!, unittest.equals('foo'));
-    unittest.expect(o.containerVersion!, unittest.equals('foo'));
+    unittest.expect(
+      o.containerName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.containerTimestamp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.containerVersion!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2DocumentLocation(o.documentLocation!);
     checkGooglePrivacyDlpV2ImageLocation(o.imageLocation!);
     checkGooglePrivacyDlpV2MetadataLocation(o.metadataLocation!);
@@ -1532,8 +1766,7 @@ api.GooglePrivacyDlpV2CreateConnectionRequest
 }
 
 void checkGooglePrivacyDlpV2CreateConnectionRequest(
-  api.GooglePrivacyDlpV2CreateConnectionRequest o,
-) {
+    api.GooglePrivacyDlpV2CreateConnectionRequest o) {
   buildCounterGooglePrivacyDlpV2CreateConnectionRequest++;
   if (buildCounterGooglePrivacyDlpV2CreateConnectionRequest < 3) {
     checkGooglePrivacyDlpV2Connection(o.connection!);
@@ -1556,13 +1789,18 @@ api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest
 }
 
 void checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(
-  api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest o,
-) {
+    api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest o) {
   buildCounterGooglePrivacyDlpV2CreateDeidentifyTemplateRequest++;
   if (buildCounterGooglePrivacyDlpV2CreateDeidentifyTemplateRequest < 3) {
     checkGooglePrivacyDlpV2DeidentifyTemplate(o.deidentifyTemplate!);
-    unittest.expect(o.locationId!, unittest.equals('foo'));
-    unittest.expect(o.templateId!, unittest.equals('foo'));
+    unittest.expect(
+      o.locationId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.templateId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2CreateDeidentifyTemplateRequest--;
 }
@@ -1581,11 +1819,13 @@ api.GooglePrivacyDlpV2CreateDiscoveryConfigRequest
 }
 
 void checkGooglePrivacyDlpV2CreateDiscoveryConfigRequest(
-  api.GooglePrivacyDlpV2CreateDiscoveryConfigRequest o,
-) {
+    api.GooglePrivacyDlpV2CreateDiscoveryConfigRequest o) {
   buildCounterGooglePrivacyDlpV2CreateDiscoveryConfigRequest++;
   if (buildCounterGooglePrivacyDlpV2CreateDiscoveryConfigRequest < 3) {
-    unittest.expect(o.configId!, unittest.equals('foo'));
+    unittest.expect(
+      o.configId!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2DiscoveryConfig(o.discoveryConfig!);
   }
   buildCounterGooglePrivacyDlpV2CreateDiscoveryConfigRequest--;
@@ -1607,13 +1847,18 @@ api.GooglePrivacyDlpV2CreateDlpJobRequest
 }
 
 void checkGooglePrivacyDlpV2CreateDlpJobRequest(
-  api.GooglePrivacyDlpV2CreateDlpJobRequest o,
-) {
+    api.GooglePrivacyDlpV2CreateDlpJobRequest o) {
   buildCounterGooglePrivacyDlpV2CreateDlpJobRequest++;
   if (buildCounterGooglePrivacyDlpV2CreateDlpJobRequest < 3) {
     checkGooglePrivacyDlpV2InspectJobConfig(o.inspectJob!);
-    unittest.expect(o.jobId!, unittest.equals('foo'));
-    unittest.expect(o.locationId!, unittest.equals('foo'));
+    unittest.expect(
+      o.jobId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.locationId!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2RiskAnalysisJobConfig(o.riskJob!);
   }
   buildCounterGooglePrivacyDlpV2CreateDlpJobRequest--;
@@ -1634,13 +1879,18 @@ api.GooglePrivacyDlpV2CreateInspectTemplateRequest
 }
 
 void checkGooglePrivacyDlpV2CreateInspectTemplateRequest(
-  api.GooglePrivacyDlpV2CreateInspectTemplateRequest o,
-) {
+    api.GooglePrivacyDlpV2CreateInspectTemplateRequest o) {
   buildCounterGooglePrivacyDlpV2CreateInspectTemplateRequest++;
   if (buildCounterGooglePrivacyDlpV2CreateInspectTemplateRequest < 3) {
     checkGooglePrivacyDlpV2InspectTemplate(o.inspectTemplate!);
-    unittest.expect(o.locationId!, unittest.equals('foo'));
-    unittest.expect(o.templateId!, unittest.equals('foo'));
+    unittest.expect(
+      o.locationId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.templateId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2CreateInspectTemplateRequest--;
 }
@@ -1660,13 +1910,18 @@ api.GooglePrivacyDlpV2CreateJobTriggerRequest
 }
 
 void checkGooglePrivacyDlpV2CreateJobTriggerRequest(
-  api.GooglePrivacyDlpV2CreateJobTriggerRequest o,
-) {
+    api.GooglePrivacyDlpV2CreateJobTriggerRequest o) {
   buildCounterGooglePrivacyDlpV2CreateJobTriggerRequest++;
   if (buildCounterGooglePrivacyDlpV2CreateJobTriggerRequest < 3) {
     checkGooglePrivacyDlpV2JobTrigger(o.jobTrigger!);
-    unittest.expect(o.locationId!, unittest.equals('foo'));
-    unittest.expect(o.triggerId!, unittest.equals('foo'));
+    unittest.expect(
+      o.locationId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.triggerId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2CreateJobTriggerRequest--;
 }
@@ -1686,13 +1941,18 @@ api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest
 }
 
 void checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(
-  api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest o,
-) {
+    api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest o) {
   buildCounterGooglePrivacyDlpV2CreateStoredInfoTypeRequest++;
   if (buildCounterGooglePrivacyDlpV2CreateStoredInfoTypeRequest < 3) {
     checkGooglePrivacyDlpV2StoredInfoTypeConfig(o.config!);
-    unittest.expect(o.locationId!, unittest.equals('foo'));
-    unittest.expect(o.storedInfoTypeId!, unittest.equals('foo'));
+    unittest.expect(
+      o.locationId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.storedInfoTypeId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2CreateStoredInfoTypeRequest--;
 }
@@ -1712,8 +1972,7 @@ api.GooglePrivacyDlpV2CryptoDeterministicConfig
 }
 
 void checkGooglePrivacyDlpV2CryptoDeterministicConfig(
-  api.GooglePrivacyDlpV2CryptoDeterministicConfig o,
-) {
+    api.GooglePrivacyDlpV2CryptoDeterministicConfig o) {
   buildCounterGooglePrivacyDlpV2CryptoDeterministicConfig++;
   if (buildCounterGooglePrivacyDlpV2CryptoDeterministicConfig < 3) {
     checkGooglePrivacyDlpV2FieldId(o.context!);
@@ -1736,8 +1995,7 @@ api.GooglePrivacyDlpV2CryptoHashConfig
 }
 
 void checkGooglePrivacyDlpV2CryptoHashConfig(
-  api.GooglePrivacyDlpV2CryptoHashConfig o,
-) {
+    api.GooglePrivacyDlpV2CryptoHashConfig o) {
   buildCounterGooglePrivacyDlpV2CryptoHashConfig++;
   if (buildCounterGooglePrivacyDlpV2CryptoHashConfig < 3) {
     checkGooglePrivacyDlpV2CryptoKey(o.cryptoKey!);
@@ -1786,15 +2044,23 @@ api.GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig
 }
 
 void checkGooglePrivacyDlpV2CryptoReplaceFfxFpeConfig(
-  api.GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig o,
-) {
+    api.GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig o) {
   buildCounterGooglePrivacyDlpV2CryptoReplaceFfxFpeConfig++;
   if (buildCounterGooglePrivacyDlpV2CryptoReplaceFfxFpeConfig < 3) {
-    unittest.expect(o.commonAlphabet!, unittest.equals('foo'));
+    unittest.expect(
+      o.commonAlphabet!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2FieldId(o.context!);
     checkGooglePrivacyDlpV2CryptoKey(o.cryptoKey!);
-    unittest.expect(o.customAlphabet!, unittest.equals('foo'));
-    unittest.expect(o.radix!, unittest.equals(42));
+    unittest.expect(
+      o.customAlphabet!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.radix!,
+      unittest.equals(42),
+    );
     checkGooglePrivacyDlpV2InfoType(o.surrogateInfoType!);
   }
   buildCounterGooglePrivacyDlpV2CryptoReplaceFfxFpeConfig--;
@@ -1831,15 +2097,20 @@ api.GooglePrivacyDlpV2CustomInfoType buildGooglePrivacyDlpV2CustomInfoType() {
 }
 
 void checkGooglePrivacyDlpV2CustomInfoType(
-  api.GooglePrivacyDlpV2CustomInfoType o,
-) {
+    api.GooglePrivacyDlpV2CustomInfoType o) {
   buildCounterGooglePrivacyDlpV2CustomInfoType++;
   if (buildCounterGooglePrivacyDlpV2CustomInfoType < 3) {
     checkUnnamed18(o.detectionRules!);
     checkGooglePrivacyDlpV2Dictionary(o.dictionary!);
-    unittest.expect(o.exclusionType!, unittest.equals('foo'));
+    unittest.expect(
+      o.exclusionType!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2InfoType(o.infoType!);
-    unittest.expect(o.likelihood!, unittest.equals('foo'));
+    unittest.expect(
+      o.likelihood!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2Regex(o.regex!);
     checkGooglePrivacyDlpV2SensitivityScore(o.sensitivityScore!);
     checkGooglePrivacyDlpV2StoredType(o.storedType!);
@@ -1865,8 +2136,7 @@ api.GooglePrivacyDlpV2DataProfileAction
 }
 
 void checkGooglePrivacyDlpV2DataProfileAction(
-  api.GooglePrivacyDlpV2DataProfileAction o,
-) {
+    api.GooglePrivacyDlpV2DataProfileAction o) {
   buildCounterGooglePrivacyDlpV2DataProfileAction++;
   if (buildCounterGooglePrivacyDlpV2DataProfileAction < 3) {
     checkGooglePrivacyDlpV2Export(o.exportData!);
@@ -1895,15 +2165,20 @@ api.GooglePrivacyDlpV2DataProfileConfigSnapshot
 }
 
 void checkGooglePrivacyDlpV2DataProfileConfigSnapshot(
-  api.GooglePrivacyDlpV2DataProfileConfigSnapshot o,
-) {
+    api.GooglePrivacyDlpV2DataProfileConfigSnapshot o) {
   buildCounterGooglePrivacyDlpV2DataProfileConfigSnapshot++;
   if (buildCounterGooglePrivacyDlpV2DataProfileConfigSnapshot < 3) {
     checkGooglePrivacyDlpV2DataProfileJobConfig(o.dataProfileJob!);
     checkGooglePrivacyDlpV2DiscoveryConfig(o.discoveryConfig!);
     checkGooglePrivacyDlpV2InspectConfig(o.inspectConfig!);
-    unittest.expect(o.inspectTemplateModifiedTime!, unittest.equals('foo'));
-    unittest.expect(o.inspectTemplateName!, unittest.equals('foo'));
+    unittest.expect(
+      o.inspectTemplateModifiedTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.inspectTemplateName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2DataProfileConfigSnapshot--;
 }
@@ -1919,12 +2194,21 @@ void checkUnnamed19(core.List<api.GooglePrivacyDlpV2DataProfileAction> o) {
   checkGooglePrivacyDlpV2DataProfileAction(o[1]);
 }
 
-core.List<core.String> buildUnnamed20() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed20() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed20(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2DataProfileJobConfig = 0;
@@ -1945,17 +2229,18 @@ api.GooglePrivacyDlpV2DataProfileJobConfig
 }
 
 void checkGooglePrivacyDlpV2DataProfileJobConfig(
-  api.GooglePrivacyDlpV2DataProfileJobConfig o,
-) {
+    api.GooglePrivacyDlpV2DataProfileJobConfig o) {
   buildCounterGooglePrivacyDlpV2DataProfileJobConfig++;
   if (buildCounterGooglePrivacyDlpV2DataProfileJobConfig < 3) {
     checkUnnamed19(o.dataProfileActions!);
     checkUnnamed20(o.inspectTemplates!);
     checkGooglePrivacyDlpV2DataProfileLocation(o.location!);
     checkGooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation(
-      o.otherCloudStartingLocation!,
+        o.otherCloudStartingLocation!);
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
     );
-    unittest.expect(o.projectId!, unittest.equals('foo'));
   }
   buildCounterGooglePrivacyDlpV2DataProfileJobConfig--;
 }
@@ -1974,12 +2259,17 @@ api.GooglePrivacyDlpV2DataProfileLocation
 }
 
 void checkGooglePrivacyDlpV2DataProfileLocation(
-  api.GooglePrivacyDlpV2DataProfileLocation o,
-) {
+    api.GooglePrivacyDlpV2DataProfileLocation o) {
   buildCounterGooglePrivacyDlpV2DataProfileLocation++;
   if (buildCounterGooglePrivacyDlpV2DataProfileLocation < 3) {
-    unittest.expect(o.folderId!, unittest.equals('foo'));
-    unittest.expect(o.organizationId!, unittest.equals('foo'));
+    unittest.expect(
+      o.folderId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.organizationId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2DataProfileLocation--;
 }
@@ -1997,8 +2287,7 @@ api.GooglePrivacyDlpV2DataProfilePubSubCondition
 }
 
 void checkGooglePrivacyDlpV2DataProfilePubSubCondition(
-  api.GooglePrivacyDlpV2DataProfilePubSubCondition o,
-) {
+    api.GooglePrivacyDlpV2DataProfilePubSubCondition o) {
   buildCounterGooglePrivacyDlpV2DataProfilePubSubCondition++;
   if (buildCounterGooglePrivacyDlpV2DataProfilePubSubCondition < 3) {
     checkGooglePrivacyDlpV2PubSubExpressions(o.expressions!);
@@ -2018,11 +2307,13 @@ api.GooglePrivacyDlpV2DataRiskLevel buildGooglePrivacyDlpV2DataRiskLevel() {
 }
 
 void checkGooglePrivacyDlpV2DataRiskLevel(
-  api.GooglePrivacyDlpV2DataRiskLevel o,
-) {
+    api.GooglePrivacyDlpV2DataRiskLevel o) {
   buildCounterGooglePrivacyDlpV2DataRiskLevel++;
   if (buildCounterGooglePrivacyDlpV2DataRiskLevel < 3) {
-    unittest.expect(o.score!, unittest.equals('foo'));
+    unittest.expect(
+      o.score!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2DataRiskLevel--;
 }
@@ -2039,11 +2330,13 @@ api.GooglePrivacyDlpV2DataSourceType buildGooglePrivacyDlpV2DataSourceType() {
 }
 
 void checkGooglePrivacyDlpV2DataSourceType(
-  api.GooglePrivacyDlpV2DataSourceType o,
-) {
+    api.GooglePrivacyDlpV2DataSourceType o) {
   buildCounterGooglePrivacyDlpV2DataSourceType++;
   if (buildCounterGooglePrivacyDlpV2DataSourceType < 3) {
-    unittest.expect(o.dataSource!, unittest.equals('foo'));
+    unittest.expect(
+      o.dataSource!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2DataSourceType--;
 }
@@ -2061,8 +2354,7 @@ api.GooglePrivacyDlpV2DatabaseResourceCollection
 }
 
 void checkGooglePrivacyDlpV2DatabaseResourceCollection(
-  api.GooglePrivacyDlpV2DatabaseResourceCollection o,
-) {
+    api.GooglePrivacyDlpV2DatabaseResourceCollection o) {
   buildCounterGooglePrivacyDlpV2DatabaseResourceCollection++;
   if (buildCounterGooglePrivacyDlpV2DatabaseResourceCollection < 3) {
     checkGooglePrivacyDlpV2DatabaseResourceRegexes(o.includeRegexes!);
@@ -2086,14 +2378,25 @@ api.GooglePrivacyDlpV2DatabaseResourceReference
 }
 
 void checkGooglePrivacyDlpV2DatabaseResourceReference(
-  api.GooglePrivacyDlpV2DatabaseResourceReference o,
-) {
+    api.GooglePrivacyDlpV2DatabaseResourceReference o) {
   buildCounterGooglePrivacyDlpV2DatabaseResourceReference++;
   if (buildCounterGooglePrivacyDlpV2DatabaseResourceReference < 3) {
-    unittest.expect(o.database!, unittest.equals('foo'));
-    unittest.expect(o.databaseResource!, unittest.equals('foo'));
-    unittest.expect(o.instance!, unittest.equals('foo'));
-    unittest.expect(o.projectId!, unittest.equals('foo'));
+    unittest.expect(
+      o.database!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.databaseResource!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.instance!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2DatabaseResourceReference--;
 }
@@ -2114,14 +2417,25 @@ api.GooglePrivacyDlpV2DatabaseResourceRegex
 }
 
 void checkGooglePrivacyDlpV2DatabaseResourceRegex(
-  api.GooglePrivacyDlpV2DatabaseResourceRegex o,
-) {
+    api.GooglePrivacyDlpV2DatabaseResourceRegex o) {
   buildCounterGooglePrivacyDlpV2DatabaseResourceRegex++;
   if (buildCounterGooglePrivacyDlpV2DatabaseResourceRegex < 3) {
-    unittest.expect(o.databaseRegex!, unittest.equals('foo'));
-    unittest.expect(o.databaseResourceNameRegex!, unittest.equals('foo'));
-    unittest.expect(o.instanceRegex!, unittest.equals('foo'));
-    unittest.expect(o.projectIdRegex!, unittest.equals('foo'));
+    unittest.expect(
+      o.databaseRegex!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.databaseResourceNameRegex!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.instanceRegex!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectIdRegex!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2DatabaseResourceRegex--;
 }
@@ -2150,8 +2464,7 @@ api.GooglePrivacyDlpV2DatabaseResourceRegexes
 }
 
 void checkGooglePrivacyDlpV2DatabaseResourceRegexes(
-  api.GooglePrivacyDlpV2DatabaseResourceRegexes o,
-) {
+    api.GooglePrivacyDlpV2DatabaseResourceRegexes o) {
   buildCounterGooglePrivacyDlpV2DatabaseResourceRegexes++;
   if (buildCounterGooglePrivacyDlpV2DatabaseResourceRegexes < 3) {
     checkUnnamed21(o.patterns!);
@@ -2192,8 +2505,7 @@ api.GooglePrivacyDlpV2DatastoreOptions
 }
 
 void checkGooglePrivacyDlpV2DatastoreOptions(
-  api.GooglePrivacyDlpV2DatastoreOptions o,
-) {
+    api.GooglePrivacyDlpV2DatastoreOptions o) {
   buildCounterGooglePrivacyDlpV2DatastoreOptions++;
   if (buildCounterGooglePrivacyDlpV2DatastoreOptions < 3) {
     checkGooglePrivacyDlpV2KindExpression(o.kind!);
@@ -2217,14 +2529,19 @@ api.GooglePrivacyDlpV2DateShiftConfig buildGooglePrivacyDlpV2DateShiftConfig() {
 }
 
 void checkGooglePrivacyDlpV2DateShiftConfig(
-  api.GooglePrivacyDlpV2DateShiftConfig o,
-) {
+    api.GooglePrivacyDlpV2DateShiftConfig o) {
   buildCounterGooglePrivacyDlpV2DateShiftConfig++;
   if (buildCounterGooglePrivacyDlpV2DateShiftConfig < 3) {
     checkGooglePrivacyDlpV2FieldId(o.context!);
     checkGooglePrivacyDlpV2CryptoKey(o.cryptoKey!);
-    unittest.expect(o.lowerBoundDays!, unittest.equals(42));
-    unittest.expect(o.upperBoundDays!, unittest.equals(42));
+    unittest.expect(
+      o.lowerBoundDays!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.upperBoundDays!,
+      unittest.equals(42),
+    );
   }
   buildCounterGooglePrivacyDlpV2DateShiftConfig--;
 }
@@ -2247,19 +2564,31 @@ void checkGooglePrivacyDlpV2DateTime(api.GooglePrivacyDlpV2DateTime o) {
   buildCounterGooglePrivacyDlpV2DateTime++;
   if (buildCounterGooglePrivacyDlpV2DateTime < 3) {
     checkGoogleTypeDate(o.date!);
-    unittest.expect(o.dayOfWeek!, unittest.equals('foo'));
+    unittest.expect(
+      o.dayOfWeek!,
+      unittest.equals('foo'),
+    );
     checkGoogleTypeTimeOfDay(o.time!);
     checkGooglePrivacyDlpV2TimeZone(o.timeZone!);
   }
   buildCounterGooglePrivacyDlpV2DateTime--;
 }
 
-core.List<core.String> buildUnnamed22() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed22() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed22(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2Deidentify = 0;
@@ -2280,12 +2609,14 @@ api.GooglePrivacyDlpV2Deidentify buildGooglePrivacyDlpV2Deidentify() {
 void checkGooglePrivacyDlpV2Deidentify(api.GooglePrivacyDlpV2Deidentify o) {
   buildCounterGooglePrivacyDlpV2Deidentify++;
   if (buildCounterGooglePrivacyDlpV2Deidentify < 3) {
-    unittest.expect(o.cloudStorageOutput!, unittest.equals('foo'));
+    unittest.expect(
+      o.cloudStorageOutput!,
+      unittest.equals('foo'),
+    );
     checkUnnamed22(o.fileTypesToTransform!);
     checkGooglePrivacyDlpV2TransformationConfig(o.transformationConfig!);
     checkGooglePrivacyDlpV2TransformationDetailsStorageConfig(
-      o.transformationDetailsStorageConfig!,
-    );
+        o.transformationDetailsStorageConfig!);
   }
   buildCounterGooglePrivacyDlpV2Deidentify--;
 }
@@ -2308,16 +2639,14 @@ api.GooglePrivacyDlpV2DeidentifyConfig
 }
 
 void checkGooglePrivacyDlpV2DeidentifyConfig(
-  api.GooglePrivacyDlpV2DeidentifyConfig o,
-) {
+    api.GooglePrivacyDlpV2DeidentifyConfig o) {
   buildCounterGooglePrivacyDlpV2DeidentifyConfig++;
   if (buildCounterGooglePrivacyDlpV2DeidentifyConfig < 3) {
     checkGooglePrivacyDlpV2ImageTransformations(o.imageTransformations!);
     checkGooglePrivacyDlpV2InfoTypeTransformations(o.infoTypeTransformations!);
     checkGooglePrivacyDlpV2RecordTransformations(o.recordTransformations!);
     checkGooglePrivacyDlpV2TransformationErrorHandling(
-      o.transformationErrorHandling!,
-    );
+        o.transformationErrorHandling!);
   }
   buildCounterGooglePrivacyDlpV2DeidentifyConfig--;
 }
@@ -2340,16 +2669,24 @@ api.GooglePrivacyDlpV2DeidentifyContentRequest
 }
 
 void checkGooglePrivacyDlpV2DeidentifyContentRequest(
-  api.GooglePrivacyDlpV2DeidentifyContentRequest o,
-) {
+    api.GooglePrivacyDlpV2DeidentifyContentRequest o) {
   buildCounterGooglePrivacyDlpV2DeidentifyContentRequest++;
   if (buildCounterGooglePrivacyDlpV2DeidentifyContentRequest < 3) {
     checkGooglePrivacyDlpV2DeidentifyConfig(o.deidentifyConfig!);
-    unittest.expect(o.deidentifyTemplateName!, unittest.equals('foo'));
+    unittest.expect(
+      o.deidentifyTemplateName!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2InspectConfig(o.inspectConfig!);
-    unittest.expect(o.inspectTemplateName!, unittest.equals('foo'));
+    unittest.expect(
+      o.inspectTemplateName!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2ContentItem(o.item!);
-    unittest.expect(o.locationId!, unittest.equals('foo'));
+    unittest.expect(
+      o.locationId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2DeidentifyContentRequest--;
 }
@@ -2368,8 +2705,7 @@ api.GooglePrivacyDlpV2DeidentifyContentResponse
 }
 
 void checkGooglePrivacyDlpV2DeidentifyContentResponse(
-  api.GooglePrivacyDlpV2DeidentifyContentResponse o,
-) {
+    api.GooglePrivacyDlpV2DeidentifyContentResponse o) {
   buildCounterGooglePrivacyDlpV2DeidentifyContentResponse++;
   if (buildCounterGooglePrivacyDlpV2DeidentifyContentResponse < 3) {
     checkGooglePrivacyDlpV2ContentItem(o.item!);
@@ -2392,8 +2728,7 @@ api.GooglePrivacyDlpV2DeidentifyDataSourceDetails
 }
 
 void checkGooglePrivacyDlpV2DeidentifyDataSourceDetails(
-  api.GooglePrivacyDlpV2DeidentifyDataSourceDetails o,
-) {
+    api.GooglePrivacyDlpV2DeidentifyDataSourceDetails o) {
   buildCounterGooglePrivacyDlpV2DeidentifyDataSourceDetails++;
   if (buildCounterGooglePrivacyDlpV2DeidentifyDataSourceDetails < 3) {
     checkGooglePrivacyDlpV2DeidentifyDataSourceStats(o.deidentifyStats!);
@@ -2417,13 +2752,21 @@ api.GooglePrivacyDlpV2DeidentifyDataSourceStats
 }
 
 void checkGooglePrivacyDlpV2DeidentifyDataSourceStats(
-  api.GooglePrivacyDlpV2DeidentifyDataSourceStats o,
-) {
+    api.GooglePrivacyDlpV2DeidentifyDataSourceStats o) {
   buildCounterGooglePrivacyDlpV2DeidentifyDataSourceStats++;
   if (buildCounterGooglePrivacyDlpV2DeidentifyDataSourceStats < 3) {
-    unittest.expect(o.transformationCount!, unittest.equals('foo'));
-    unittest.expect(o.transformationErrorCount!, unittest.equals('foo'));
-    unittest.expect(o.transformedBytes!, unittest.equals('foo'));
+    unittest.expect(
+      o.transformationCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.transformationErrorCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.transformedBytes!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2DeidentifyDataSourceStats--;
 }
@@ -2446,16 +2789,30 @@ api.GooglePrivacyDlpV2DeidentifyTemplate
 }
 
 void checkGooglePrivacyDlpV2DeidentifyTemplate(
-  api.GooglePrivacyDlpV2DeidentifyTemplate o,
-) {
+    api.GooglePrivacyDlpV2DeidentifyTemplate o) {
   buildCounterGooglePrivacyDlpV2DeidentifyTemplate++;
   if (buildCounterGooglePrivacyDlpV2DeidentifyTemplate < 3) {
-    unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2DeidentifyConfig(o.deidentifyConfig!);
-    unittest.expect(o.description!, unittest.equals('foo'));
-    unittest.expect(o.displayName!, unittest.equals('foo'));
-    unittest.expect(o.name!, unittest.equals('foo'));
-    unittest.expect(o.updateTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2DeidentifyTemplate--;
 }
@@ -2497,13 +2854,15 @@ api.GooglePrivacyDlpV2DeltaPresenceEstimationConfig
 }
 
 void checkGooglePrivacyDlpV2DeltaPresenceEstimationConfig(
-  api.GooglePrivacyDlpV2DeltaPresenceEstimationConfig o,
-) {
+    api.GooglePrivacyDlpV2DeltaPresenceEstimationConfig o) {
   buildCounterGooglePrivacyDlpV2DeltaPresenceEstimationConfig++;
   if (buildCounterGooglePrivacyDlpV2DeltaPresenceEstimationConfig < 3) {
     checkUnnamed23(o.auxiliaryTables!);
     checkUnnamed24(o.quasiIds!);
-    unittest.expect(o.regionCode!, unittest.equals('foo'));
+    unittest.expect(
+      o.regionCode!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2DeltaPresenceEstimationConfig--;
 }
@@ -2515,8 +2874,7 @@ core.List<api.GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues>
         ];
 
 void checkUnnamed25(
-  core.List<api.GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues> o,
-) {
+    core.List<api.GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues(o[0]);
   checkGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues(o[1]);
@@ -2541,16 +2899,27 @@ api.GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket
 }
 
 void checkGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket(
-  api.GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket o,
-) {
+    api.GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket o) {
   buildCounterGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket++;
   if (buildCounterGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket <
       3) {
-    unittest.expect(o.bucketSize!, unittest.equals('foo'));
-    unittest.expect(o.bucketValueCount!, unittest.equals('foo'));
+    unittest.expect(
+      o.bucketSize!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.bucketValueCount!,
+      unittest.equals('foo'),
+    );
     checkUnnamed25(o.bucketValues!);
-    unittest.expect(o.maxProbability!, unittest.equals(42.0));
-    unittest.expect(o.minProbability!, unittest.equals(42.0));
+    unittest.expect(
+      o.maxProbability!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.minProbability!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket--;
 }
@@ -2580,11 +2949,13 @@ api.GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues
 }
 
 void checkGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues(
-  api.GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues o,
-) {
+    api.GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues o) {
   buildCounterGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues++;
   if (buildCounterGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues < 3) {
-    unittest.expect(o.estimatedProbability!, unittest.equals(42.0));
+    unittest.expect(
+      o.estimatedProbability!,
+      unittest.equals(42.0),
+    );
     checkUnnamed26(o.quasiIdsValues!);
   }
   buildCounterGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues--;
@@ -2597,8 +2968,7 @@ core.List<api.GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket>
         ];
 
 void checkUnnamed27(
-  core.List<api.GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket> o,
-) {
+    core.List<api.GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket(o[0]);
   checkGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket(o[1]);
@@ -2617,8 +2987,7 @@ api.GooglePrivacyDlpV2DeltaPresenceEstimationResult
 }
 
 void checkGooglePrivacyDlpV2DeltaPresenceEstimationResult(
-  api.GooglePrivacyDlpV2DeltaPresenceEstimationResult o,
-) {
+    api.GooglePrivacyDlpV2DeltaPresenceEstimationResult o) {
   buildCounterGooglePrivacyDlpV2DeltaPresenceEstimationResult++;
   if (buildCounterGooglePrivacyDlpV2DeltaPresenceEstimationResult < 3) {
     checkUnnamed27(o.deltaPresenceEstimationHistogram!);
@@ -2638,8 +3007,7 @@ api.GooglePrivacyDlpV2DetectionRule buildGooglePrivacyDlpV2DetectionRule() {
 }
 
 void checkGooglePrivacyDlpV2DetectionRule(
-  api.GooglePrivacyDlpV2DetectionRule o,
-) {
+    api.GooglePrivacyDlpV2DetectionRule o) {
   buildCounterGooglePrivacyDlpV2DetectionRule++;
   if (buildCounterGooglePrivacyDlpV2DetectionRule < 3) {
     checkGooglePrivacyDlpV2HotwordRule(o.hotwordRule!);
@@ -2699,13 +3067,18 @@ api.GooglePrivacyDlpV2DiscoveryBigQueryConditions
 }
 
 void checkGooglePrivacyDlpV2DiscoveryBigQueryConditions(
-  api.GooglePrivacyDlpV2DiscoveryBigQueryConditions o,
-) {
+    api.GooglePrivacyDlpV2DiscoveryBigQueryConditions o) {
   buildCounterGooglePrivacyDlpV2DiscoveryBigQueryConditions++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryBigQueryConditions < 3) {
-    unittest.expect(o.createdAfter!, unittest.equals('foo'));
+    unittest.expect(
+      o.createdAfter!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2OrConditions(o.orConditions!);
-    unittest.expect(o.typeCollection!, unittest.equals('foo'));
+    unittest.expect(
+      o.typeCollection!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2BigQueryTableTypes(o.types!);
   }
   buildCounterGooglePrivacyDlpV2DiscoveryBigQueryConditions--;
@@ -2726,8 +3099,7 @@ api.GooglePrivacyDlpV2DiscoveryBigQueryFilter
 }
 
 void checkGooglePrivacyDlpV2DiscoveryBigQueryFilter(
-  api.GooglePrivacyDlpV2DiscoveryBigQueryFilter o,
-) {
+    api.GooglePrivacyDlpV2DiscoveryBigQueryFilter o) {
   buildCounterGooglePrivacyDlpV2DiscoveryBigQueryFilter++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryBigQueryFilter < 3) {
     checkGooglePrivacyDlpV2AllOtherBigQueryTables(o.otherTables!);
@@ -2737,20 +3109,38 @@ void checkGooglePrivacyDlpV2DiscoveryBigQueryFilter(
   buildCounterGooglePrivacyDlpV2DiscoveryBigQueryFilter--;
 }
 
-core.List<core.String> buildUnnamed28() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed28() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed28(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
-core.List<core.String> buildUnnamed29() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed29() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed29(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2DiscoveryCloudSqlConditions = 0;
@@ -2767,8 +3157,7 @@ api.GooglePrivacyDlpV2DiscoveryCloudSqlConditions
 }
 
 void checkGooglePrivacyDlpV2DiscoveryCloudSqlConditions(
-  api.GooglePrivacyDlpV2DiscoveryCloudSqlConditions o,
-) {
+    api.GooglePrivacyDlpV2DiscoveryCloudSqlConditions o) {
   buildCounterGooglePrivacyDlpV2DiscoveryCloudSqlConditions++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryCloudSqlConditions < 3) {
     checkUnnamed28(o.databaseEngines!);
@@ -2793,14 +3182,12 @@ api.GooglePrivacyDlpV2DiscoveryCloudSqlFilter
 }
 
 void checkGooglePrivacyDlpV2DiscoveryCloudSqlFilter(
-  api.GooglePrivacyDlpV2DiscoveryCloudSqlFilter o,
-) {
+    api.GooglePrivacyDlpV2DiscoveryCloudSqlFilter o) {
   buildCounterGooglePrivacyDlpV2DiscoveryCloudSqlFilter++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryCloudSqlFilter < 3) {
     checkGooglePrivacyDlpV2DatabaseResourceCollection(o.collection!);
     checkGooglePrivacyDlpV2DatabaseResourceReference(
-      o.databaseResourceReference!,
-    );
+        o.databaseResourceReference!);
     checkGooglePrivacyDlpV2AllOtherDatabaseResources(o.others!);
   }
   buildCounterGooglePrivacyDlpV2DiscoveryCloudSqlFilter--;
@@ -2822,33 +3209,52 @@ api.GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence
 }
 
 void checkGooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence(
-  api.GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence o,
-) {
+    api.GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence o) {
   buildCounterGooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence < 3) {
     checkGooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence(
-      o.inspectTemplateModifiedCadence!,
+        o.inspectTemplateModifiedCadence!);
+    unittest.expect(
+      o.refreshFrequency!,
+      unittest.equals('foo'),
     );
-    unittest.expect(o.refreshFrequency!, unittest.equals('foo'));
     checkGooglePrivacyDlpV2SchemaModifiedCadence(o.schemaModifiedCadence!);
   }
   buildCounterGooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence--;
 }
 
-core.List<core.String> buildUnnamed30() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed30() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed30(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
-core.List<core.String> buildUnnamed31() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed31() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed31(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2DiscoveryCloudStorageConditions = 0;
@@ -2865,8 +3271,7 @@ api.GooglePrivacyDlpV2DiscoveryCloudStorageConditions
 }
 
 void checkGooglePrivacyDlpV2DiscoveryCloudStorageConditions(
-  api.GooglePrivacyDlpV2DiscoveryCloudStorageConditions o,
-) {
+    api.GooglePrivacyDlpV2DiscoveryCloudStorageConditions o) {
   buildCounterGooglePrivacyDlpV2DiscoveryCloudStorageConditions++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryCloudStorageConditions < 3) {
     checkUnnamed30(o.includedBucketAttributes!);
@@ -2891,13 +3296,11 @@ api.GooglePrivacyDlpV2DiscoveryCloudStorageFilter
 }
 
 void checkGooglePrivacyDlpV2DiscoveryCloudStorageFilter(
-  api.GooglePrivacyDlpV2DiscoveryCloudStorageFilter o,
-) {
+    api.GooglePrivacyDlpV2DiscoveryCloudStorageFilter o) {
   buildCounterGooglePrivacyDlpV2DiscoveryCloudStorageFilter++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryCloudStorageFilter < 3) {
     checkGooglePrivacyDlpV2CloudStorageResourceReference(
-      o.cloudStorageResourceReference!,
-    );
+        o.cloudStorageResourceReference!);
     checkGooglePrivacyDlpV2FileStoreCollection(o.collection!);
     checkGooglePrivacyDlpV2AllOtherResources(o.others!);
   }
@@ -2921,15 +3324,16 @@ api.GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence
 }
 
 void checkGooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence(
-  api.GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence o,
-) {
+    api.GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence o) {
   buildCounterGooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence <
       3) {
     checkGooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence(
-      o.inspectTemplateModifiedCadence!,
+        o.inspectTemplateModifiedCadence!);
+    unittest.expect(
+      o.refreshFrequency!,
+      unittest.equals('foo'),
     );
-    unittest.expect(o.refreshFrequency!, unittest.equals('foo'));
   }
   buildCounterGooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence--;
 }
@@ -2956,12 +3360,21 @@ void checkUnnamed33(core.List<api.GooglePrivacyDlpV2Error> o) {
   checkGooglePrivacyDlpV2Error(o[1]);
 }
 
-core.List<core.String> buildUnnamed34() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed34() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed34(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.GooglePrivacyDlpV2DiscoveryTarget> buildUnnamed35() => [
@@ -2999,24 +3412,40 @@ api.GooglePrivacyDlpV2DiscoveryConfig buildGooglePrivacyDlpV2DiscoveryConfig() {
 }
 
 void checkGooglePrivacyDlpV2DiscoveryConfig(
-  api.GooglePrivacyDlpV2DiscoveryConfig o,
-) {
+    api.GooglePrivacyDlpV2DiscoveryConfig o) {
   buildCounterGooglePrivacyDlpV2DiscoveryConfig++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryConfig < 3) {
     checkUnnamed32(o.actions!);
-    unittest.expect(o.createTime!, unittest.equals('foo'));
-    unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
     checkUnnamed33(o.errors!);
     checkUnnamed34(o.inspectTemplates!);
-    unittest.expect(o.lastRunTime!, unittest.equals('foo'));
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.lastRunTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2OrgConfig(o.orgConfig!);
     checkGooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation(
-      o.otherCloudStartingLocation!,
+        o.otherCloudStartingLocation!);
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
     );
-    unittest.expect(o.status!, unittest.equals('foo'));
     checkUnnamed35(o.targets!);
-    unittest.expect(o.updateTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2DiscoveryConfig--;
 }
@@ -3037,15 +3466,19 @@ api.GooglePrivacyDlpV2DiscoveryFileStoreConditions
 }
 
 void checkGooglePrivacyDlpV2DiscoveryFileStoreConditions(
-  api.GooglePrivacyDlpV2DiscoveryFileStoreConditions o,
-) {
+    api.GooglePrivacyDlpV2DiscoveryFileStoreConditions o) {
   buildCounterGooglePrivacyDlpV2DiscoveryFileStoreConditions++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryFileStoreConditions < 3) {
     checkGooglePrivacyDlpV2DiscoveryCloudStorageConditions(
-      o.cloudStorageConditions!,
+        o.cloudStorageConditions!);
+    unittest.expect(
+      o.createdAfter!,
+      unittest.equals('foo'),
     );
-    unittest.expect(o.createdAfter!, unittest.equals('foo'));
-    unittest.expect(o.minAge!, unittest.equals('foo'));
+    unittest.expect(
+      o.minAge!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2DiscoveryFileStoreConditions--;
 }
@@ -3069,20 +3502,19 @@ api.GooglePrivacyDlpV2DiscoveryGenerationCadence
 }
 
 void checkGooglePrivacyDlpV2DiscoveryGenerationCadence(
-  api.GooglePrivacyDlpV2DiscoveryGenerationCadence o,
-) {
+    api.GooglePrivacyDlpV2DiscoveryGenerationCadence o) {
   buildCounterGooglePrivacyDlpV2DiscoveryGenerationCadence++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryGenerationCadence < 3) {
     checkGooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence(
-      o.inspectTemplateModifiedCadence!,
+        o.inspectTemplateModifiedCadence!);
+    unittest.expect(
+      o.refreshFrequency!,
+      unittest.equals('foo'),
     );
-    unittest.expect(o.refreshFrequency!, unittest.equals('foo'));
     checkGooglePrivacyDlpV2DiscoverySchemaModifiedCadence(
-      o.schemaModifiedCadence!,
-    );
+        o.schemaModifiedCadence!);
     checkGooglePrivacyDlpV2DiscoveryTableModifiedCadence(
-      o.tableModifiedCadence!,
-    );
+        o.tableModifiedCadence!);
   }
   buildCounterGooglePrivacyDlpV2DiscoveryGenerationCadence--;
 }
@@ -3102,12 +3534,14 @@ api.GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence
 }
 
 void checkGooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence(
-  api.GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence o,
-) {
+    api.GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence o) {
   buildCounterGooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence <
       3) {
-    unittest.expect(o.frequency!, unittest.equals('foo'));
+    unittest.expect(
+      o.frequency!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence--;
 }
@@ -3127,14 +3561,15 @@ api.GooglePrivacyDlpV2DiscoveryOtherCloudConditions
 }
 
 void checkGooglePrivacyDlpV2DiscoveryOtherCloudConditions(
-  api.GooglePrivacyDlpV2DiscoveryOtherCloudConditions o,
-) {
+    api.GooglePrivacyDlpV2DiscoveryOtherCloudConditions o) {
   buildCounterGooglePrivacyDlpV2DiscoveryOtherCloudConditions++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryOtherCloudConditions < 3) {
     checkGooglePrivacyDlpV2AmazonS3BucketConditions(
-      o.amazonS3BucketConditions!,
+        o.amazonS3BucketConditions!);
+    unittest.expect(
+      o.minAge!,
+      unittest.equals('foo'),
     );
-    unittest.expect(o.minAge!, unittest.equals('foo'));
   }
   buildCounterGooglePrivacyDlpV2DiscoveryOtherCloudConditions--;
 }
@@ -3155,8 +3590,7 @@ api.GooglePrivacyDlpV2DiscoveryOtherCloudFilter
 }
 
 void checkGooglePrivacyDlpV2DiscoveryOtherCloudFilter(
-  api.GooglePrivacyDlpV2DiscoveryOtherCloudFilter o,
-) {
+    api.GooglePrivacyDlpV2DiscoveryOtherCloudFilter o) {
   buildCounterGooglePrivacyDlpV2DiscoveryOtherCloudFilter++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryOtherCloudFilter < 3) {
     checkGooglePrivacyDlpV2OtherCloudResourceCollection(o.collection!);
@@ -3181,24 +3615,34 @@ api.GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence
 }
 
 void checkGooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence(
-  api.GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence o,
-) {
+    api.GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence o) {
   buildCounterGooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence < 3) {
     checkGooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence(
-      o.inspectTemplateModifiedCadence!,
+        o.inspectTemplateModifiedCadence!);
+    unittest.expect(
+      o.refreshFrequency!,
+      unittest.equals('foo'),
     );
-    unittest.expect(o.refreshFrequency!, unittest.equals('foo'));
   }
   buildCounterGooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence--;
 }
 
-core.List<core.String> buildUnnamed36() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed36() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed36(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2DiscoverySchemaModifiedCadence = 0;
@@ -3215,11 +3659,13 @@ api.GooglePrivacyDlpV2DiscoverySchemaModifiedCadence
 }
 
 void checkGooglePrivacyDlpV2DiscoverySchemaModifiedCadence(
-  api.GooglePrivacyDlpV2DiscoverySchemaModifiedCadence o,
-) {
+    api.GooglePrivacyDlpV2DiscoverySchemaModifiedCadence o) {
   buildCounterGooglePrivacyDlpV2DiscoverySchemaModifiedCadence++;
   if (buildCounterGooglePrivacyDlpV2DiscoverySchemaModifiedCadence < 3) {
-    unittest.expect(o.frequency!, unittest.equals('foo'));
+    unittest.expect(
+      o.frequency!,
+      unittest.equals('foo'),
+    );
     checkUnnamed36(o.types!);
   }
   buildCounterGooglePrivacyDlpV2DiscoverySchemaModifiedCadence--;
@@ -3239,22 +3685,36 @@ api.GooglePrivacyDlpV2DiscoveryStartingLocation
 }
 
 void checkGooglePrivacyDlpV2DiscoveryStartingLocation(
-  api.GooglePrivacyDlpV2DiscoveryStartingLocation o,
-) {
+    api.GooglePrivacyDlpV2DiscoveryStartingLocation o) {
   buildCounterGooglePrivacyDlpV2DiscoveryStartingLocation++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryStartingLocation < 3) {
-    unittest.expect(o.folderId!, unittest.equals('foo'));
-    unittest.expect(o.organizationId!, unittest.equals('foo'));
+    unittest.expect(
+      o.folderId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.organizationId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2DiscoveryStartingLocation--;
 }
 
-core.List<core.String> buildUnnamed37() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed37() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed37(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2DiscoveryTableModifiedCadence = 0;
@@ -3271,11 +3731,13 @@ api.GooglePrivacyDlpV2DiscoveryTableModifiedCadence
 }
 
 void checkGooglePrivacyDlpV2DiscoveryTableModifiedCadence(
-  api.GooglePrivacyDlpV2DiscoveryTableModifiedCadence o,
-) {
+    api.GooglePrivacyDlpV2DiscoveryTableModifiedCadence o) {
   buildCounterGooglePrivacyDlpV2DiscoveryTableModifiedCadence++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryTableModifiedCadence < 3) {
-    unittest.expect(o.frequency!, unittest.equals('foo'));
+    unittest.expect(
+      o.frequency!,
+      unittest.equals('foo'),
+    );
     checkUnnamed37(o.types!);
   }
   buildCounterGooglePrivacyDlpV2DiscoveryTableModifiedCadence--;
@@ -3297,8 +3759,7 @@ api.GooglePrivacyDlpV2DiscoveryTarget buildGooglePrivacyDlpV2DiscoveryTarget() {
 }
 
 void checkGooglePrivacyDlpV2DiscoveryTarget(
-  api.GooglePrivacyDlpV2DiscoveryTarget o,
-) {
+    api.GooglePrivacyDlpV2DiscoveryTarget o) {
   buildCounterGooglePrivacyDlpV2DiscoveryTarget++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryTarget < 3) {
     checkGooglePrivacyDlpV2BigQueryDiscoveryTarget(o.bigQueryTarget!);
@@ -3358,17 +3819,41 @@ void checkGooglePrivacyDlpV2DlpJob(api.GooglePrivacyDlpV2DlpJob o) {
   buildCounterGooglePrivacyDlpV2DlpJob++;
   if (buildCounterGooglePrivacyDlpV2DlpJob < 3) {
     checkUnnamed38(o.actionDetails!);
-    unittest.expect(o.createTime!, unittest.equals('foo'));
-    unittest.expect(o.endTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
     checkUnnamed39(o.errors!);
     checkGooglePrivacyDlpV2InspectDataSourceDetails(o.inspectDetails!);
-    unittest.expect(o.jobTriggerName!, unittest.equals('foo'));
-    unittest.expect(o.lastModified!, unittest.equals('foo'));
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.jobTriggerName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lastModified!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2AnalyzeDataSourceRiskDetails(o.riskDetails!);
-    unittest.expect(o.startTime!, unittest.equals('foo'));
-    unittest.expect(o.state!, unittest.equals('foo'));
-    unittest.expect(o.type!, unittest.equals('foo'));
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2DlpJob--;
 }
@@ -3386,11 +3871,13 @@ api.GooglePrivacyDlpV2DocumentLocation
 }
 
 void checkGooglePrivacyDlpV2DocumentLocation(
-  api.GooglePrivacyDlpV2DocumentLocation o,
-) {
+    api.GooglePrivacyDlpV2DocumentLocation o) {
   buildCounterGooglePrivacyDlpV2DocumentLocation++;
   if (buildCounterGooglePrivacyDlpV2DocumentLocation < 3) {
-    unittest.expect(o.fileOffset!, unittest.equals('foo'));
+    unittest.expect(
+      o.fileOffset!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2DocumentLocation--;
 }
@@ -3414,12 +3901,21 @@ void checkGooglePrivacyDlpV2EntityId(api.GooglePrivacyDlpV2EntityId o) {
   buildCounterGooglePrivacyDlpV2EntityId--;
 }
 
-core.List<core.String> buildUnnamed40() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed40() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed40(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2Error = 0;
@@ -3439,7 +3935,10 @@ void checkGooglePrivacyDlpV2Error(api.GooglePrivacyDlpV2Error o) {
   buildCounterGooglePrivacyDlpV2Error++;
   if (buildCounterGooglePrivacyDlpV2Error < 3) {
     checkGoogleRpcStatus(o.details!);
-    unittest.expect(o.extraInfo!, unittest.equals('foo'));
+    unittest.expect(
+      o.extraInfo!,
+      unittest.equals('foo'),
+    );
     checkUnnamed40(o.timestamps!);
   }
   buildCounterGooglePrivacyDlpV2Error--;
@@ -3459,8 +3958,7 @@ api.GooglePrivacyDlpV2ExcludeByHotword
 }
 
 void checkGooglePrivacyDlpV2ExcludeByHotword(
-  api.GooglePrivacyDlpV2ExcludeByHotword o,
-) {
+    api.GooglePrivacyDlpV2ExcludeByHotword o) {
   buildCounterGooglePrivacyDlpV2ExcludeByHotword++;
   if (buildCounterGooglePrivacyDlpV2ExcludeByHotword < 3) {
     checkGooglePrivacyDlpV2Regex(o.hotwordRegex!);
@@ -3493,8 +3991,7 @@ api.GooglePrivacyDlpV2ExcludeInfoTypes
 }
 
 void checkGooglePrivacyDlpV2ExcludeInfoTypes(
-  api.GooglePrivacyDlpV2ExcludeInfoTypes o,
-) {
+    api.GooglePrivacyDlpV2ExcludeInfoTypes o) {
   buildCounterGooglePrivacyDlpV2ExcludeInfoTypes++;
   if (buildCounterGooglePrivacyDlpV2ExcludeInfoTypes < 3) {
     checkUnnamed41(o.infoTypes!);
@@ -3518,14 +4015,16 @@ api.GooglePrivacyDlpV2ExclusionRule buildGooglePrivacyDlpV2ExclusionRule() {
 }
 
 void checkGooglePrivacyDlpV2ExclusionRule(
-  api.GooglePrivacyDlpV2ExclusionRule o,
-) {
+    api.GooglePrivacyDlpV2ExclusionRule o) {
   buildCounterGooglePrivacyDlpV2ExclusionRule++;
   if (buildCounterGooglePrivacyDlpV2ExclusionRule < 3) {
     checkGooglePrivacyDlpV2Dictionary(o.dictionary!);
     checkGooglePrivacyDlpV2ExcludeByHotword(o.excludeByHotword!);
     checkGooglePrivacyDlpV2ExcludeInfoTypes(o.excludeInfoTypes!);
-    unittest.expect(o.matchingType!, unittest.equals('foo'));
+    unittest.expect(
+      o.matchingType!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2Regex(o.regex!);
   }
   buildCounterGooglePrivacyDlpV2ExclusionRule--;
@@ -3566,7 +4065,10 @@ void checkGooglePrivacyDlpV2Expressions(api.GooglePrivacyDlpV2Expressions o) {
   buildCounterGooglePrivacyDlpV2Expressions++;
   if (buildCounterGooglePrivacyDlpV2Expressions < 3) {
     checkGooglePrivacyDlpV2Conditions(o.conditions!);
-    unittest.expect(o.logicalOperator!, unittest.equals('foo'));
+    unittest.expect(
+      o.logicalOperator!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2Expressions--;
 }
@@ -3585,7 +4087,10 @@ api.GooglePrivacyDlpV2FieldId buildGooglePrivacyDlpV2FieldId() {
 void checkGooglePrivacyDlpV2FieldId(api.GooglePrivacyDlpV2FieldId o) {
   buildCounterGooglePrivacyDlpV2FieldId++;
   if (buildCounterGooglePrivacyDlpV2FieldId < 3) {
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2FieldId--;
 }
@@ -3619,8 +4124,7 @@ api.GooglePrivacyDlpV2FieldTransformation
 }
 
 void checkGooglePrivacyDlpV2FieldTransformation(
-  api.GooglePrivacyDlpV2FieldTransformation o,
-) {
+    api.GooglePrivacyDlpV2FieldTransformation o) {
   buildCounterGooglePrivacyDlpV2FieldTransformation++;
   if (buildCounterGooglePrivacyDlpV2FieldTransformation < 3) {
     checkGooglePrivacyDlpV2RecordCondition(o.condition!);
@@ -3670,8 +4174,7 @@ core.List<api.GooglePrivacyDlpV2FileStoreInfoTypeSummary> buildUnnamed46() => [
     ];
 
 void checkUnnamed46(
-  core.List<api.GooglePrivacyDlpV2FileStoreInfoTypeSummary> o,
-) {
+    core.List<api.GooglePrivacyDlpV2FileStoreInfoTypeSummary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2FileStoreInfoTypeSummary(o[0]);
   checkGooglePrivacyDlpV2FileStoreInfoTypeSummary(o[1]);
@@ -3697,8 +4200,7 @@ api.GooglePrivacyDlpV2FileClusterSummary
 }
 
 void checkGooglePrivacyDlpV2FileClusterSummary(
-  api.GooglePrivacyDlpV2FileClusterSummary o,
-) {
+    api.GooglePrivacyDlpV2FileClusterSummary o) {
   buildCounterGooglePrivacyDlpV2FileClusterSummary++;
   if (buildCounterGooglePrivacyDlpV2FileClusterSummary < 3) {
     checkGooglePrivacyDlpV2DataRiskLevel(o.dataRiskLevel!);
@@ -3725,11 +4227,13 @@ api.GooglePrivacyDlpV2FileClusterType buildGooglePrivacyDlpV2FileClusterType() {
 }
 
 void checkGooglePrivacyDlpV2FileClusterType(
-  api.GooglePrivacyDlpV2FileClusterType o,
-) {
+    api.GooglePrivacyDlpV2FileClusterType o) {
   buildCounterGooglePrivacyDlpV2FileClusterType++;
   if (buildCounterGooglePrivacyDlpV2FileClusterType < 3) {
-    unittest.expect(o.cluster!, unittest.equals('foo'));
+    unittest.expect(
+      o.cluster!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2FileClusterType--;
 }
@@ -3747,11 +4251,13 @@ api.GooglePrivacyDlpV2FileExtensionInfo
 }
 
 void checkGooglePrivacyDlpV2FileExtensionInfo(
-  api.GooglePrivacyDlpV2FileExtensionInfo o,
-) {
+    api.GooglePrivacyDlpV2FileExtensionInfo o) {
   buildCounterGooglePrivacyDlpV2FileExtensionInfo++;
   if (buildCounterGooglePrivacyDlpV2FileExtensionInfo < 3) {
-    unittest.expect(o.fileExtension!, unittest.equals('foo'));
+    unittest.expect(
+      o.fileExtension!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2FileExtensionInfo--;
 }
@@ -3772,7 +4278,10 @@ void checkGooglePrivacyDlpV2FileSet(api.GooglePrivacyDlpV2FileSet o) {
   buildCounterGooglePrivacyDlpV2FileSet++;
   if (buildCounterGooglePrivacyDlpV2FileSet < 3) {
     checkGooglePrivacyDlpV2CloudStorageRegexFileSet(o.regexFileSet!);
-    unittest.expect(o.url!, unittest.equals('foo'));
+    unittest.expect(
+      o.url!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2FileSet--;
 }
@@ -3790,8 +4299,7 @@ api.GooglePrivacyDlpV2FileStoreCollection
 }
 
 void checkGooglePrivacyDlpV2FileStoreCollection(
-  api.GooglePrivacyDlpV2FileStoreCollection o,
-) {
+    api.GooglePrivacyDlpV2FileStoreCollection o) {
   buildCounterGooglePrivacyDlpV2FileStoreCollection++;
   if (buildCounterGooglePrivacyDlpV2FileStoreCollection < 3) {
     checkGooglePrivacyDlpV2FileStoreRegexes(o.includeRegexes!);
@@ -3799,12 +4307,21 @@ void checkGooglePrivacyDlpV2FileStoreCollection(
   buildCounterGooglePrivacyDlpV2FileStoreCollection--;
 }
 
-core.List<core.String> buildUnnamed47() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed47() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed47(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.GooglePrivacyDlpV2FileClusterSummary> buildUnnamed48() => [
@@ -3824,8 +4341,7 @@ core.List<api.GooglePrivacyDlpV2FileStoreInfoTypeSummary> buildUnnamed49() => [
     ];
 
 void checkUnnamed49(
-  core.List<api.GooglePrivacyDlpV2FileStoreInfoTypeSummary> o,
-) {
+    core.List<api.GooglePrivacyDlpV2FileStoreInfoTypeSummary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2FileStoreInfoTypeSummary(o[0]);
   checkGooglePrivacyDlpV2FileStoreInfoTypeSummary(o[1]);
@@ -3842,12 +4358,21 @@ void checkUnnamed50(core.Map<core.String, api.GooglePrivacyDlpV2Value> o) {
   checkGooglePrivacyDlpV2Value(o['y']!);
 }
 
-core.Map<core.String, core.String> buildUnnamed51() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed51() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed51(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x']!, unittest.equals('foo'));
-  unittest.expect(o['y']!, unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2FileStoreDataProfile = 0;
@@ -3885,33 +4410,68 @@ api.GooglePrivacyDlpV2FileStoreDataProfile
 }
 
 void checkGooglePrivacyDlpV2FileStoreDataProfile(
-  api.GooglePrivacyDlpV2FileStoreDataProfile o,
-) {
+    api.GooglePrivacyDlpV2FileStoreDataProfile o) {
   buildCounterGooglePrivacyDlpV2FileStoreDataProfile++;
   if (buildCounterGooglePrivacyDlpV2FileStoreDataProfile < 3) {
     checkGooglePrivacyDlpV2DataProfileConfigSnapshot(o.configSnapshot!);
-    unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2DataRiskLevel(o.dataRiskLevel!);
     checkGooglePrivacyDlpV2DataSourceType(o.dataSourceType!);
     checkUnnamed47(o.dataStorageLocations!);
     checkUnnamed48(o.fileClusterSummaries!);
     checkUnnamed49(o.fileStoreInfoTypeSummaries!);
     unittest.expect(o.fileStoreIsEmpty!, unittest.isTrue);
-    unittest.expect(o.fileStoreLocation!, unittest.equals('foo'));
-    unittest.expect(o.fileStorePath!, unittest.equals('foo'));
-    unittest.expect(o.fullResource!, unittest.equals('foo'));
-    unittest.expect(o.lastModifiedTime!, unittest.equals('foo'));
-    unittest.expect(o.locationType!, unittest.equals('foo'));
-    unittest.expect(o.name!, unittest.equals('foo'));
-    unittest.expect(o.profileLastGenerated!, unittest.equals('foo'));
+    unittest.expect(
+      o.fileStoreLocation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fileStorePath!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fullResource!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lastModifiedTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.locationType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.profileLastGenerated!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2ProfileStatus(o.profileStatus!);
-    unittest.expect(o.projectDataProfile!, unittest.equals('foo'));
-    unittest.expect(o.projectId!, unittest.equals('foo'));
+    unittest.expect(
+      o.projectDataProfile!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
     checkUnnamed50(o.resourceAttributes!);
     checkUnnamed51(o.resourceLabels!);
-    unittest.expect(o.resourceVisibility!, unittest.equals('foo'));
+    unittest.expect(
+      o.resourceVisibility!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2SensitivityScore(o.sensitivityScore!);
-    unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2FileStoreDataProfile--;
 }
@@ -3929,8 +4489,7 @@ api.GooglePrivacyDlpV2FileStoreInfoTypeSummary
 }
 
 void checkGooglePrivacyDlpV2FileStoreInfoTypeSummary(
-  api.GooglePrivacyDlpV2FileStoreInfoTypeSummary o,
-) {
+    api.GooglePrivacyDlpV2FileStoreInfoTypeSummary o) {
   buildCounterGooglePrivacyDlpV2FileStoreInfoTypeSummary++;
   if (buildCounterGooglePrivacyDlpV2FileStoreInfoTypeSummary < 3) {
     checkGooglePrivacyDlpV2InfoType(o.infoType!);
@@ -3950,8 +4509,7 @@ api.GooglePrivacyDlpV2FileStoreRegex buildGooglePrivacyDlpV2FileStoreRegex() {
 }
 
 void checkGooglePrivacyDlpV2FileStoreRegex(
-  api.GooglePrivacyDlpV2FileStoreRegex o,
-) {
+    api.GooglePrivacyDlpV2FileStoreRegex o) {
   buildCounterGooglePrivacyDlpV2FileStoreRegex++;
   if (buildCounterGooglePrivacyDlpV2FileStoreRegex < 3) {
     checkGooglePrivacyDlpV2CloudStorageRegex(o.cloudStorageRegex!);
@@ -3983,8 +4541,7 @@ api.GooglePrivacyDlpV2FileStoreRegexes
 }
 
 void checkGooglePrivacyDlpV2FileStoreRegexes(
-  api.GooglePrivacyDlpV2FileStoreRegexes o,
-) {
+    api.GooglePrivacyDlpV2FileStoreRegexes o) {
   buildCounterGooglePrivacyDlpV2FileStoreRegexes++;
   if (buildCounterGooglePrivacyDlpV2FileStoreRegexes < 3) {
     checkUnnamed52(o.patterns!);
@@ -3992,12 +4549,21 @@ void checkGooglePrivacyDlpV2FileStoreRegexes(
   buildCounterGooglePrivacyDlpV2FileStoreRegexes--;
 }
 
-core.Map<core.String, core.String> buildUnnamed53() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed53() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed53(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x']!, unittest.equals('foo'));
-  unittest.expect(o['y']!, unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2Finding = 0;
@@ -4026,19 +4592,46 @@ api.GooglePrivacyDlpV2Finding buildGooglePrivacyDlpV2Finding() {
 void checkGooglePrivacyDlpV2Finding(api.GooglePrivacyDlpV2Finding o) {
   buildCounterGooglePrivacyDlpV2Finding++;
   if (buildCounterGooglePrivacyDlpV2Finding < 3) {
-    unittest.expect(o.createTime!, unittest.equals('foo'));
-    unittest.expect(o.findingId!, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.findingId!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2InfoType(o.infoType!);
-    unittest.expect(o.jobCreateTime!, unittest.equals('foo'));
-    unittest.expect(o.jobName!, unittest.equals('foo'));
+    unittest.expect(
+      o.jobCreateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.jobName!,
+      unittest.equals('foo'),
+    );
     checkUnnamed53(o.labels!);
-    unittest.expect(o.likelihood!, unittest.equals('foo'));
+    unittest.expect(
+      o.likelihood!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2Location(o.location!);
-    unittest.expect(o.name!, unittest.equals('foo'));
-    unittest.expect(o.quote!, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.quote!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2QuoteInfo(o.quoteInfo!);
-    unittest.expect(o.resourceName!, unittest.equals('foo'));
-    unittest.expect(o.triggerName!, unittest.equals('foo'));
+    unittest.expect(
+      o.resourceName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.triggerName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2Finding--;
 }
@@ -4068,13 +4661,18 @@ api.GooglePrivacyDlpV2FindingLimits buildGooglePrivacyDlpV2FindingLimits() {
 }
 
 void checkGooglePrivacyDlpV2FindingLimits(
-  api.GooglePrivacyDlpV2FindingLimits o,
-) {
+    api.GooglePrivacyDlpV2FindingLimits o) {
   buildCounterGooglePrivacyDlpV2FindingLimits++;
   if (buildCounterGooglePrivacyDlpV2FindingLimits < 3) {
     checkUnnamed54(o.maxFindingsPerInfoType!);
-    unittest.expect(o.maxFindingsPerItem!, unittest.equals(42));
-    unittest.expect(o.maxFindingsPerRequest!, unittest.equals(42));
+    unittest.expect(
+      o.maxFindingsPerItem!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.maxFindingsPerRequest!,
+      unittest.equals(42),
+    );
   }
   buildCounterGooglePrivacyDlpV2FindingLimits--;
 }
@@ -4090,8 +4688,7 @@ api.GooglePrivacyDlpV2FinishDlpJobRequest
 }
 
 void checkGooglePrivacyDlpV2FinishDlpJobRequest(
-  api.GooglePrivacyDlpV2FinishDlpJobRequest o,
-) {
+    api.GooglePrivacyDlpV2FinishDlpJobRequest o) {
   buildCounterGooglePrivacyDlpV2FinishDlpJobRequest++;
   if (buildCounterGooglePrivacyDlpV2FinishDlpJobRequest < 3) {}
   buildCounterGooglePrivacyDlpV2FinishDlpJobRequest--;
@@ -4112,11 +4709,13 @@ api.GooglePrivacyDlpV2FixedSizeBucketingConfig
 }
 
 void checkGooglePrivacyDlpV2FixedSizeBucketingConfig(
-  api.GooglePrivacyDlpV2FixedSizeBucketingConfig o,
-) {
+    api.GooglePrivacyDlpV2FixedSizeBucketingConfig o) {
   buildCounterGooglePrivacyDlpV2FixedSizeBucketingConfig++;
   if (buildCounterGooglePrivacyDlpV2FixedSizeBucketingConfig < 3) {
-    unittest.expect(o.bucketSize!, unittest.equals(42.0));
+    unittest.expect(
+      o.bucketSize!,
+      unittest.equals(42.0),
+    );
     checkGooglePrivacyDlpV2Value(o.lowerBound!);
     checkGooglePrivacyDlpV2Value(o.upperBound!);
   }
@@ -4160,8 +4759,7 @@ api.GooglePrivacyDlpV2HybridContentItem
 }
 
 void checkGooglePrivacyDlpV2HybridContentItem(
-  api.GooglePrivacyDlpV2HybridContentItem o,
-) {
+    api.GooglePrivacyDlpV2HybridContentItem o) {
   buildCounterGooglePrivacyDlpV2HybridContentItem++;
   if (buildCounterGooglePrivacyDlpV2HybridContentItem < 3) {
     checkGooglePrivacyDlpV2HybridFindingDetails(o.findingDetails!);
@@ -4170,12 +4768,21 @@ void checkGooglePrivacyDlpV2HybridContentItem(
   buildCounterGooglePrivacyDlpV2HybridContentItem--;
 }
 
-core.Map<core.String, core.String> buildUnnamed55() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed55() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed55(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x']!, unittest.equals('foo'));
-  unittest.expect(o['y']!, unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2HybridFindingDetails = 0;
@@ -4195,14 +4802,19 @@ api.GooglePrivacyDlpV2HybridFindingDetails
 }
 
 void checkGooglePrivacyDlpV2HybridFindingDetails(
-  api.GooglePrivacyDlpV2HybridFindingDetails o,
-) {
+    api.GooglePrivacyDlpV2HybridFindingDetails o) {
   buildCounterGooglePrivacyDlpV2HybridFindingDetails++;
   if (buildCounterGooglePrivacyDlpV2HybridFindingDetails < 3) {
     checkGooglePrivacyDlpV2Container(o.containerDetails!);
-    unittest.expect(o.fileOffset!, unittest.equals('foo'));
+    unittest.expect(
+      o.fileOffset!,
+      unittest.equals('foo'),
+    );
     checkUnnamed55(o.labels!);
-    unittest.expect(o.rowOffset!, unittest.equals('foo'));
+    unittest.expect(
+      o.rowOffset!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2TableOptions(o.tableOptions!);
   }
   buildCounterGooglePrivacyDlpV2HybridFindingDetails--;
@@ -4221,8 +4833,7 @@ api.GooglePrivacyDlpV2HybridInspectDlpJobRequest
 }
 
 void checkGooglePrivacyDlpV2HybridInspectDlpJobRequest(
-  api.GooglePrivacyDlpV2HybridInspectDlpJobRequest o,
-) {
+    api.GooglePrivacyDlpV2HybridInspectDlpJobRequest o) {
   buildCounterGooglePrivacyDlpV2HybridInspectDlpJobRequest++;
   if (buildCounterGooglePrivacyDlpV2HybridInspectDlpJobRequest < 3) {
     checkGooglePrivacyDlpV2HybridContentItem(o.hybridItem!);
@@ -4243,8 +4854,7 @@ api.GooglePrivacyDlpV2HybridInspectJobTriggerRequest
 }
 
 void checkGooglePrivacyDlpV2HybridInspectJobTriggerRequest(
-  api.GooglePrivacyDlpV2HybridInspectJobTriggerRequest o,
-) {
+    api.GooglePrivacyDlpV2HybridInspectJobTriggerRequest o) {
   buildCounterGooglePrivacyDlpV2HybridInspectJobTriggerRequest++;
   if (buildCounterGooglePrivacyDlpV2HybridInspectJobTriggerRequest < 3) {
     checkGooglePrivacyDlpV2HybridContentItem(o.hybridItem!);
@@ -4263,8 +4873,7 @@ api.GooglePrivacyDlpV2HybridInspectResponse
 }
 
 void checkGooglePrivacyDlpV2HybridInspectResponse(
-  api.GooglePrivacyDlpV2HybridInspectResponse o,
-) {
+    api.GooglePrivacyDlpV2HybridInspectResponse o) {
   buildCounterGooglePrivacyDlpV2HybridInspectResponse++;
   if (buildCounterGooglePrivacyDlpV2HybridInspectResponse < 3) {}
   buildCounterGooglePrivacyDlpV2HybridInspectResponse--;
@@ -4285,31 +4894,57 @@ api.GooglePrivacyDlpV2HybridInspectStatistics
 }
 
 void checkGooglePrivacyDlpV2HybridInspectStatistics(
-  api.GooglePrivacyDlpV2HybridInspectStatistics o,
-) {
+    api.GooglePrivacyDlpV2HybridInspectStatistics o) {
   buildCounterGooglePrivacyDlpV2HybridInspectStatistics++;
   if (buildCounterGooglePrivacyDlpV2HybridInspectStatistics < 3) {
-    unittest.expect(o.abortedCount!, unittest.equals('foo'));
-    unittest.expect(o.pendingCount!, unittest.equals('foo'));
-    unittest.expect(o.processedCount!, unittest.equals('foo'));
+    unittest.expect(
+      o.abortedCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pendingCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.processedCount!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2HybridInspectStatistics--;
 }
 
-core.Map<core.String, core.String> buildUnnamed56() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed56() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed56(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x']!, unittest.equals('foo'));
-  unittest.expect(o['y']!, unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
-core.List<core.String> buildUnnamed57() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed57() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed57(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2HybridOptions = 0;
@@ -4327,11 +4962,13 @@ api.GooglePrivacyDlpV2HybridOptions buildGooglePrivacyDlpV2HybridOptions() {
 }
 
 void checkGooglePrivacyDlpV2HybridOptions(
-  api.GooglePrivacyDlpV2HybridOptions o,
-) {
+    api.GooglePrivacyDlpV2HybridOptions o) {
   buildCounterGooglePrivacyDlpV2HybridOptions++;
   if (buildCounterGooglePrivacyDlpV2HybridOptions < 3) {
-    unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
     checkUnnamed56(o.labels!);
     checkUnnamed57(o.requiredFindingLabelKeys!);
     checkGooglePrivacyDlpV2TableOptions(o.tableOptions!);
@@ -4362,8 +4999,7 @@ api.GooglePrivacyDlpV2ImageLocation buildGooglePrivacyDlpV2ImageLocation() {
 }
 
 void checkGooglePrivacyDlpV2ImageLocation(
-  api.GooglePrivacyDlpV2ImageLocation o,
-) {
+    api.GooglePrivacyDlpV2ImageLocation o) {
   buildCounterGooglePrivacyDlpV2ImageLocation++;
   if (buildCounterGooglePrivacyDlpV2ImageLocation < 3) {
     checkUnnamed58(o.boundingBoxes!);
@@ -4386,8 +5022,7 @@ api.GooglePrivacyDlpV2ImageRedactionConfig
 }
 
 void checkGooglePrivacyDlpV2ImageRedactionConfig(
-  api.GooglePrivacyDlpV2ImageRedactionConfig o,
-) {
+    api.GooglePrivacyDlpV2ImageRedactionConfig o) {
   buildCounterGooglePrivacyDlpV2ImageRedactionConfig++;
   if (buildCounterGooglePrivacyDlpV2ImageRedactionConfig < 3) {
     checkGooglePrivacyDlpV2InfoType(o.infoType!);
@@ -4413,8 +5048,7 @@ api.GooglePrivacyDlpV2ImageTransformation
 }
 
 void checkGooglePrivacyDlpV2ImageTransformation(
-  api.GooglePrivacyDlpV2ImageTransformation o,
-) {
+    api.GooglePrivacyDlpV2ImageTransformation o) {
   buildCounterGooglePrivacyDlpV2ImageTransformation++;
   if (buildCounterGooglePrivacyDlpV2ImageTransformation < 3) {
     checkGooglePrivacyDlpV2AllInfoTypes(o.allInfoTypes!);
@@ -4449,8 +5083,7 @@ api.GooglePrivacyDlpV2ImageTransformations
 }
 
 void checkGooglePrivacyDlpV2ImageTransformations(
-  api.GooglePrivacyDlpV2ImageTransformations o,
-) {
+    api.GooglePrivacyDlpV2ImageTransformations o) {
   buildCounterGooglePrivacyDlpV2ImageTransformations++;
   if (buildCounterGooglePrivacyDlpV2ImageTransformations < 3) {
     checkUnnamed59(o.transforms!);
@@ -4474,9 +5107,15 @@ api.GooglePrivacyDlpV2InfoType buildGooglePrivacyDlpV2InfoType() {
 void checkGooglePrivacyDlpV2InfoType(api.GooglePrivacyDlpV2InfoType o) {
   buildCounterGooglePrivacyDlpV2InfoType++;
   if (buildCounterGooglePrivacyDlpV2InfoType < 3) {
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2SensitivityScore(o.sensitivityScore!);
-    unittest.expect(o.version!, unittest.equals('foo'));
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2InfoType--;
 }
@@ -4496,13 +5135,21 @@ api.GooglePrivacyDlpV2InfoTypeCategory
 }
 
 void checkGooglePrivacyDlpV2InfoTypeCategory(
-  api.GooglePrivacyDlpV2InfoTypeCategory o,
-) {
+    api.GooglePrivacyDlpV2InfoTypeCategory o) {
   buildCounterGooglePrivacyDlpV2InfoTypeCategory++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeCategory < 3) {
-    unittest.expect(o.industryCategory!, unittest.equals('foo'));
-    unittest.expect(o.locationCategory!, unittest.equals('foo'));
-    unittest.expect(o.typeCategory!, unittest.equals('foo'));
+    unittest.expect(
+      o.industryCategory!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.locationCategory!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.typeCategory!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2InfoTypeCategory--;
 }
@@ -4518,12 +5165,21 @@ void checkUnnamed60(core.List<api.GooglePrivacyDlpV2InfoTypeCategory> o) {
   checkGooglePrivacyDlpV2InfoTypeCategory(o[1]);
 }
 
-core.List<core.String> buildUnnamed61() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed61() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed61(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.GooglePrivacyDlpV2VersionDescription> buildUnnamed62() => [
@@ -4557,15 +5213,26 @@ api.GooglePrivacyDlpV2InfoTypeDescription
 }
 
 void checkGooglePrivacyDlpV2InfoTypeDescription(
-  api.GooglePrivacyDlpV2InfoTypeDescription o,
-) {
+    api.GooglePrivacyDlpV2InfoTypeDescription o) {
   buildCounterGooglePrivacyDlpV2InfoTypeDescription++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeDescription < 3) {
     checkUnnamed60(o.categories!);
-    unittest.expect(o.description!, unittest.equals('foo'));
-    unittest.expect(o.displayName!, unittest.equals('foo'));
-    unittest.expect(o.example!, unittest.equals('foo'));
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.example!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2SensitivityScore(o.sensitivityScore!);
     checkUnnamed61(o.supportedBy!);
     checkUnnamed62(o.versions!);
@@ -4587,12 +5254,14 @@ api.GooglePrivacyDlpV2InfoTypeLikelihood
 }
 
 void checkGooglePrivacyDlpV2InfoTypeLikelihood(
-  api.GooglePrivacyDlpV2InfoTypeLikelihood o,
-) {
+    api.GooglePrivacyDlpV2InfoTypeLikelihood o) {
   buildCounterGooglePrivacyDlpV2InfoTypeLikelihood++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeLikelihood < 3) {
     checkGooglePrivacyDlpV2InfoType(o.infoType!);
-    unittest.expect(o.minLikelihood!, unittest.equals('foo'));
+    unittest.expect(
+      o.minLikelihood!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2InfoTypeLikelihood--;
 }
@@ -4610,12 +5279,14 @@ api.GooglePrivacyDlpV2InfoTypeLimit buildGooglePrivacyDlpV2InfoTypeLimit() {
 }
 
 void checkGooglePrivacyDlpV2InfoTypeLimit(
-  api.GooglePrivacyDlpV2InfoTypeLimit o,
-) {
+    api.GooglePrivacyDlpV2InfoTypeLimit o) {
   buildCounterGooglePrivacyDlpV2InfoTypeLimit++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeLimit < 3) {
     checkGooglePrivacyDlpV2InfoType(o.infoType!);
-    unittest.expect(o.maxFindings!, unittest.equals(42));
+    unittest.expect(
+      o.maxFindings!,
+      unittest.equals(42),
+    );
   }
   buildCounterGooglePrivacyDlpV2InfoTypeLimit--;
 }
@@ -4633,11 +5304,13 @@ api.GooglePrivacyDlpV2InfoTypeStats buildGooglePrivacyDlpV2InfoTypeStats() {
 }
 
 void checkGooglePrivacyDlpV2InfoTypeStats(
-  api.GooglePrivacyDlpV2InfoTypeStats o,
-) {
+    api.GooglePrivacyDlpV2InfoTypeStats o) {
   buildCounterGooglePrivacyDlpV2InfoTypeStats++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeStats < 3) {
-    unittest.expect(o.count!, unittest.equals('foo'));
+    unittest.expect(
+      o.count!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2InfoType(o.infoType!);
   }
   buildCounterGooglePrivacyDlpV2InfoTypeStats--;
@@ -4656,11 +5329,13 @@ api.GooglePrivacyDlpV2InfoTypeSummary buildGooglePrivacyDlpV2InfoTypeSummary() {
 }
 
 void checkGooglePrivacyDlpV2InfoTypeSummary(
-  api.GooglePrivacyDlpV2InfoTypeSummary o,
-) {
+    api.GooglePrivacyDlpV2InfoTypeSummary o) {
   buildCounterGooglePrivacyDlpV2InfoTypeSummary++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeSummary < 3) {
-    unittest.expect(o.estimatedPrevalence!, unittest.equals(42));
+    unittest.expect(
+      o.estimatedPrevalence!,
+      unittest.equals(42),
+    );
     checkGooglePrivacyDlpV2InfoType(o.infoType!);
   }
   buildCounterGooglePrivacyDlpV2InfoTypeSummary--;
@@ -4692,8 +5367,7 @@ api.GooglePrivacyDlpV2InfoTypeTransformation
 }
 
 void checkGooglePrivacyDlpV2InfoTypeTransformation(
-  api.GooglePrivacyDlpV2InfoTypeTransformation o,
-) {
+    api.GooglePrivacyDlpV2InfoTypeTransformation o) {
   buildCounterGooglePrivacyDlpV2InfoTypeTransformation++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeTransformation < 3) {
     checkUnnamed63(o.infoTypes!);
@@ -4726,8 +5400,7 @@ api.GooglePrivacyDlpV2InfoTypeTransformations
 }
 
 void checkGooglePrivacyDlpV2InfoTypeTransformations(
-  api.GooglePrivacyDlpV2InfoTypeTransformations o,
-) {
+    api.GooglePrivacyDlpV2InfoTypeTransformations o) {
   buildCounterGooglePrivacyDlpV2InfoTypeTransformations++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeTransformations < 3) {
     checkUnnamed64(o.transformations!);
@@ -4735,12 +5408,21 @@ void checkGooglePrivacyDlpV2InfoTypeTransformations(
   buildCounterGooglePrivacyDlpV2InfoTypeTransformations--;
 }
 
-core.List<core.String> buildUnnamed65() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed65() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed65(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.GooglePrivacyDlpV2CustomInfoType> buildUnnamed66() => [
@@ -4807,8 +5489,7 @@ api.GooglePrivacyDlpV2InspectConfig buildGooglePrivacyDlpV2InspectConfig() {
 }
 
 void checkGooglePrivacyDlpV2InspectConfig(
-  api.GooglePrivacyDlpV2InspectConfig o,
-) {
+    api.GooglePrivacyDlpV2InspectConfig o) {
   buildCounterGooglePrivacyDlpV2InspectConfig++;
   if (buildCounterGooglePrivacyDlpV2InspectConfig < 3) {
     checkUnnamed65(o.contentOptions!);
@@ -4817,7 +5498,10 @@ void checkGooglePrivacyDlpV2InspectConfig(
     unittest.expect(o.includeQuote!, unittest.isTrue);
     checkUnnamed67(o.infoTypes!);
     checkGooglePrivacyDlpV2FindingLimits(o.limits!);
-    unittest.expect(o.minLikelihood!, unittest.equals('foo'));
+    unittest.expect(
+      o.minLikelihood!,
+      unittest.equals('foo'),
+    );
     checkUnnamed68(o.minLikelihoodPerInfoType!);
     checkUnnamed69(o.ruleSet!);
   }
@@ -4840,14 +5524,19 @@ api.GooglePrivacyDlpV2InspectContentRequest
 }
 
 void checkGooglePrivacyDlpV2InspectContentRequest(
-  api.GooglePrivacyDlpV2InspectContentRequest o,
-) {
+    api.GooglePrivacyDlpV2InspectContentRequest o) {
   buildCounterGooglePrivacyDlpV2InspectContentRequest++;
   if (buildCounterGooglePrivacyDlpV2InspectContentRequest < 3) {
     checkGooglePrivacyDlpV2InspectConfig(o.inspectConfig!);
-    unittest.expect(o.inspectTemplateName!, unittest.equals('foo'));
+    unittest.expect(
+      o.inspectTemplateName!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2ContentItem(o.item!);
-    unittest.expect(o.locationId!, unittest.equals('foo'));
+    unittest.expect(
+      o.locationId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2InspectContentRequest--;
 }
@@ -4865,8 +5554,7 @@ api.GooglePrivacyDlpV2InspectContentResponse
 }
 
 void checkGooglePrivacyDlpV2InspectContentResponse(
-  api.GooglePrivacyDlpV2InspectContentResponse o,
-) {
+    api.GooglePrivacyDlpV2InspectContentResponse o) {
   buildCounterGooglePrivacyDlpV2InspectContentResponse++;
   if (buildCounterGooglePrivacyDlpV2InspectContentResponse < 3) {
     checkGooglePrivacyDlpV2InspectResult(o.result!);
@@ -4888,8 +5576,7 @@ api.GooglePrivacyDlpV2InspectDataSourceDetails
 }
 
 void checkGooglePrivacyDlpV2InspectDataSourceDetails(
-  api.GooglePrivacyDlpV2InspectDataSourceDetails o,
-) {
+    api.GooglePrivacyDlpV2InspectDataSourceDetails o) {
   buildCounterGooglePrivacyDlpV2InspectDataSourceDetails++;
   if (buildCounterGooglePrivacyDlpV2InspectDataSourceDetails < 3) {
     checkGooglePrivacyDlpV2RequestedOptions(o.requestedOptions!);
@@ -4925,13 +5612,15 @@ api.GooglePrivacyDlpV2InspectJobConfig
 }
 
 void checkGooglePrivacyDlpV2InspectJobConfig(
-  api.GooglePrivacyDlpV2InspectJobConfig o,
-) {
+    api.GooglePrivacyDlpV2InspectJobConfig o) {
   buildCounterGooglePrivacyDlpV2InspectJobConfig++;
   if (buildCounterGooglePrivacyDlpV2InspectJobConfig < 3) {
     checkUnnamed70(o.actions!);
     checkGooglePrivacyDlpV2InspectConfig(o.inspectConfig!);
-    unittest.expect(o.inspectTemplateName!, unittest.equals('foo'));
+    unittest.expect(
+      o.inspectTemplateName!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2StorageConfig(o.storageConfig!);
   }
   buildCounterGooglePrivacyDlpV2InspectJobConfig--;
@@ -4961,8 +5650,7 @@ api.GooglePrivacyDlpV2InspectResult buildGooglePrivacyDlpV2InspectResult() {
 }
 
 void checkGooglePrivacyDlpV2InspectResult(
-  api.GooglePrivacyDlpV2InspectResult o,
-) {
+    api.GooglePrivacyDlpV2InspectResult o) {
   buildCounterGooglePrivacyDlpV2InspectResult++;
   if (buildCounterGooglePrivacyDlpV2InspectResult < 3) {
     checkUnnamed71(o.findings!);
@@ -4988,16 +5676,30 @@ api.GooglePrivacyDlpV2InspectTemplate buildGooglePrivacyDlpV2InspectTemplate() {
 }
 
 void checkGooglePrivacyDlpV2InspectTemplate(
-  api.GooglePrivacyDlpV2InspectTemplate o,
-) {
+    api.GooglePrivacyDlpV2InspectTemplate o) {
   buildCounterGooglePrivacyDlpV2InspectTemplate++;
   if (buildCounterGooglePrivacyDlpV2InspectTemplate < 3) {
-    unittest.expect(o.createTime!, unittest.equals('foo'));
-    unittest.expect(o.description!, unittest.equals('foo'));
-    unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2InspectConfig(o.inspectConfig!);
-    unittest.expect(o.name!, unittest.equals('foo'));
-    unittest.expect(o.updateTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2InspectTemplate--;
 }
@@ -5015,8 +5717,7 @@ api.GooglePrivacyDlpV2InspectionRule buildGooglePrivacyDlpV2InspectionRule() {
 }
 
 void checkGooglePrivacyDlpV2InspectionRule(
-  api.GooglePrivacyDlpV2InspectionRule o,
-) {
+    api.GooglePrivacyDlpV2InspectionRule o) {
   buildCounterGooglePrivacyDlpV2InspectionRule++;
   if (buildCounterGooglePrivacyDlpV2InspectionRule < 3) {
     checkGooglePrivacyDlpV2ExclusionRule(o.exclusionRule!);
@@ -5061,8 +5762,7 @@ api.GooglePrivacyDlpV2InspectionRuleSet
 }
 
 void checkGooglePrivacyDlpV2InspectionRuleSet(
-  api.GooglePrivacyDlpV2InspectionRuleSet o,
-) {
+    api.GooglePrivacyDlpV2InspectionRuleSet o) {
   buildCounterGooglePrivacyDlpV2InspectionRuleSet++;
   if (buildCounterGooglePrivacyDlpV2InspectionRuleSet < 3) {
     checkUnnamed72(o.infoTypes!);
@@ -5082,8 +5782,7 @@ api.GooglePrivacyDlpV2JobNotificationEmails
 }
 
 void checkGooglePrivacyDlpV2JobNotificationEmails(
-  api.GooglePrivacyDlpV2JobNotificationEmails o,
-) {
+    api.GooglePrivacyDlpV2JobNotificationEmails o) {
   buildCounterGooglePrivacyDlpV2JobNotificationEmails++;
   if (buildCounterGooglePrivacyDlpV2JobNotificationEmails < 3) {}
   buildCounterGooglePrivacyDlpV2JobNotificationEmails--;
@@ -5134,16 +5833,37 @@ api.GooglePrivacyDlpV2JobTrigger buildGooglePrivacyDlpV2JobTrigger() {
 void checkGooglePrivacyDlpV2JobTrigger(api.GooglePrivacyDlpV2JobTrigger o) {
   buildCounterGooglePrivacyDlpV2JobTrigger++;
   if (buildCounterGooglePrivacyDlpV2JobTrigger < 3) {
-    unittest.expect(o.createTime!, unittest.equals('foo'));
-    unittest.expect(o.description!, unittest.equals('foo'));
-    unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
     checkUnnamed74(o.errors!);
     checkGooglePrivacyDlpV2InspectJobConfig(o.inspectJob!);
-    unittest.expect(o.lastRunTime!, unittest.equals('foo'));
-    unittest.expect(o.name!, unittest.equals('foo'));
-    unittest.expect(o.status!, unittest.equals('foo'));
+    unittest.expect(
+      o.lastRunTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
+    );
     checkUnnamed75(o.triggers!);
-    unittest.expect(o.updateTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2JobTrigger--;
 }
@@ -5173,8 +5893,7 @@ api.GooglePrivacyDlpV2KAnonymityConfig
 }
 
 void checkGooglePrivacyDlpV2KAnonymityConfig(
-  api.GooglePrivacyDlpV2KAnonymityConfig o,
-) {
+    api.GooglePrivacyDlpV2KAnonymityConfig o) {
   buildCounterGooglePrivacyDlpV2KAnonymityConfig++;
   if (buildCounterGooglePrivacyDlpV2KAnonymityConfig < 3) {
     checkGooglePrivacyDlpV2EntityId(o.entityId!);
@@ -5208,11 +5927,13 @@ api.GooglePrivacyDlpV2KAnonymityEquivalenceClass
 }
 
 void checkGooglePrivacyDlpV2KAnonymityEquivalenceClass(
-  api.GooglePrivacyDlpV2KAnonymityEquivalenceClass o,
-) {
+    api.GooglePrivacyDlpV2KAnonymityEquivalenceClass o) {
   buildCounterGooglePrivacyDlpV2KAnonymityEquivalenceClass++;
   if (buildCounterGooglePrivacyDlpV2KAnonymityEquivalenceClass < 3) {
-    unittest.expect(o.equivalenceClassSize!, unittest.equals('foo'));
+    unittest.expect(
+      o.equivalenceClassSize!,
+      unittest.equals('foo'),
+    );
     checkUnnamed77(o.quasiIdsValues!);
   }
   buildCounterGooglePrivacyDlpV2KAnonymityEquivalenceClass--;
@@ -5225,8 +5946,7 @@ core.List<api.GooglePrivacyDlpV2KAnonymityEquivalenceClass> buildUnnamed78() =>
     ];
 
 void checkUnnamed78(
-  core.List<api.GooglePrivacyDlpV2KAnonymityEquivalenceClass> o,
-) {
+    core.List<api.GooglePrivacyDlpV2KAnonymityEquivalenceClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2KAnonymityEquivalenceClass(o[0]);
   checkGooglePrivacyDlpV2KAnonymityEquivalenceClass(o[1]);
@@ -5249,15 +5969,26 @@ api.GooglePrivacyDlpV2KAnonymityHistogramBucket
 }
 
 void checkGooglePrivacyDlpV2KAnonymityHistogramBucket(
-  api.GooglePrivacyDlpV2KAnonymityHistogramBucket o,
-) {
+    api.GooglePrivacyDlpV2KAnonymityHistogramBucket o) {
   buildCounterGooglePrivacyDlpV2KAnonymityHistogramBucket++;
   if (buildCounterGooglePrivacyDlpV2KAnonymityHistogramBucket < 3) {
-    unittest.expect(o.bucketSize!, unittest.equals('foo'));
-    unittest.expect(o.bucketValueCount!, unittest.equals('foo'));
+    unittest.expect(
+      o.bucketSize!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.bucketValueCount!,
+      unittest.equals('foo'),
+    );
     checkUnnamed78(o.bucketValues!);
-    unittest.expect(o.equivalenceClassSizeLowerBound!, unittest.equals('foo'));
-    unittest.expect(o.equivalenceClassSizeUpperBound!, unittest.equals('foo'));
+    unittest.expect(
+      o.equivalenceClassSizeLowerBound!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.equivalenceClassSizeUpperBound!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2KAnonymityHistogramBucket--;
 }
@@ -5268,8 +5999,7 @@ core.List<api.GooglePrivacyDlpV2KAnonymityHistogramBucket> buildUnnamed79() => [
     ];
 
 void checkUnnamed79(
-  core.List<api.GooglePrivacyDlpV2KAnonymityHistogramBucket> o,
-) {
+    core.List<api.GooglePrivacyDlpV2KAnonymityHistogramBucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2KAnonymityHistogramBucket(o[0]);
   checkGooglePrivacyDlpV2KAnonymityHistogramBucket(o[1]);
@@ -5288,8 +6018,7 @@ api.GooglePrivacyDlpV2KAnonymityResult
 }
 
 void checkGooglePrivacyDlpV2KAnonymityResult(
-  api.GooglePrivacyDlpV2KAnonymityResult o,
-) {
+    api.GooglePrivacyDlpV2KAnonymityResult o) {
   buildCounterGooglePrivacyDlpV2KAnonymityResult++;
   if (buildCounterGooglePrivacyDlpV2KAnonymityResult < 3) {
     checkUnnamed79(o.equivalenceClassHistogramBuckets!);
@@ -5334,13 +6063,15 @@ api.GooglePrivacyDlpV2KMapEstimationConfig
 }
 
 void checkGooglePrivacyDlpV2KMapEstimationConfig(
-  api.GooglePrivacyDlpV2KMapEstimationConfig o,
-) {
+    api.GooglePrivacyDlpV2KMapEstimationConfig o) {
   buildCounterGooglePrivacyDlpV2KMapEstimationConfig++;
   if (buildCounterGooglePrivacyDlpV2KMapEstimationConfig < 3) {
     checkUnnamed80(o.auxiliaryTables!);
     checkUnnamed81(o.quasiIds!);
-    unittest.expect(o.regionCode!, unittest.equals('foo'));
+    unittest.expect(
+      o.regionCode!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2KMapEstimationConfig--;
 }
@@ -5352,8 +6083,7 @@ core.List<api.GooglePrivacyDlpV2KMapEstimationQuasiIdValues> buildUnnamed82() =>
     ];
 
 void checkUnnamed82(
-  core.List<api.GooglePrivacyDlpV2KMapEstimationQuasiIdValues> o,
-) {
+    core.List<api.GooglePrivacyDlpV2KMapEstimationQuasiIdValues> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2KMapEstimationQuasiIdValues(o[0]);
   checkGooglePrivacyDlpV2KMapEstimationQuasiIdValues(o[1]);
@@ -5376,15 +6106,26 @@ api.GooglePrivacyDlpV2KMapEstimationHistogramBucket
 }
 
 void checkGooglePrivacyDlpV2KMapEstimationHistogramBucket(
-  api.GooglePrivacyDlpV2KMapEstimationHistogramBucket o,
-) {
+    api.GooglePrivacyDlpV2KMapEstimationHistogramBucket o) {
   buildCounterGooglePrivacyDlpV2KMapEstimationHistogramBucket++;
   if (buildCounterGooglePrivacyDlpV2KMapEstimationHistogramBucket < 3) {
-    unittest.expect(o.bucketSize!, unittest.equals('foo'));
-    unittest.expect(o.bucketValueCount!, unittest.equals('foo'));
+    unittest.expect(
+      o.bucketSize!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.bucketValueCount!,
+      unittest.equals('foo'),
+    );
     checkUnnamed82(o.bucketValues!);
-    unittest.expect(o.maxAnonymity!, unittest.equals('foo'));
-    unittest.expect(o.minAnonymity!, unittest.equals('foo'));
+    unittest.expect(
+      o.maxAnonymity!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.minAnonymity!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2KMapEstimationHistogramBucket--;
 }
@@ -5414,11 +6155,13 @@ api.GooglePrivacyDlpV2KMapEstimationQuasiIdValues
 }
 
 void checkGooglePrivacyDlpV2KMapEstimationQuasiIdValues(
-  api.GooglePrivacyDlpV2KMapEstimationQuasiIdValues o,
-) {
+    api.GooglePrivacyDlpV2KMapEstimationQuasiIdValues o) {
   buildCounterGooglePrivacyDlpV2KMapEstimationQuasiIdValues++;
   if (buildCounterGooglePrivacyDlpV2KMapEstimationQuasiIdValues < 3) {
-    unittest.expect(o.estimatedAnonymity!, unittest.equals('foo'));
+    unittest.expect(
+      o.estimatedAnonymity!,
+      unittest.equals('foo'),
+    );
     checkUnnamed83(o.quasiIdsValues!);
   }
   buildCounterGooglePrivacyDlpV2KMapEstimationQuasiIdValues--;
@@ -5431,8 +6174,7 @@ core.List<api.GooglePrivacyDlpV2KMapEstimationHistogramBucket>
         ];
 
 void checkUnnamed84(
-  core.List<api.GooglePrivacyDlpV2KMapEstimationHistogramBucket> o,
-) {
+    core.List<api.GooglePrivacyDlpV2KMapEstimationHistogramBucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2KMapEstimationHistogramBucket(o[0]);
   checkGooglePrivacyDlpV2KMapEstimationHistogramBucket(o[1]);
@@ -5451,8 +6193,7 @@ api.GooglePrivacyDlpV2KMapEstimationResult
 }
 
 void checkGooglePrivacyDlpV2KMapEstimationResult(
-  api.GooglePrivacyDlpV2KMapEstimationResult o,
-) {
+    api.GooglePrivacyDlpV2KMapEstimationResult o) {
   buildCounterGooglePrivacyDlpV2KMapEstimationResult++;
   if (buildCounterGooglePrivacyDlpV2KMapEstimationResult < 3) {
     checkUnnamed84(o.kMapEstimationHistogram!);
@@ -5504,11 +6245,13 @@ api.GooglePrivacyDlpV2KindExpression buildGooglePrivacyDlpV2KindExpression() {
 }
 
 void checkGooglePrivacyDlpV2KindExpression(
-  api.GooglePrivacyDlpV2KindExpression o,
-) {
+    api.GooglePrivacyDlpV2KindExpression o) {
   buildCounterGooglePrivacyDlpV2KindExpression++;
   if (buildCounterGooglePrivacyDlpV2KindExpression < 3) {
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2KindExpression--;
 }
@@ -5527,12 +6270,17 @@ api.GooglePrivacyDlpV2KmsWrappedCryptoKey
 }
 
 void checkGooglePrivacyDlpV2KmsWrappedCryptoKey(
-  api.GooglePrivacyDlpV2KmsWrappedCryptoKey o,
-) {
+    api.GooglePrivacyDlpV2KmsWrappedCryptoKey o) {
   buildCounterGooglePrivacyDlpV2KmsWrappedCryptoKey++;
   if (buildCounterGooglePrivacyDlpV2KmsWrappedCryptoKey < 3) {
-    unittest.expect(o.cryptoKeyName!, unittest.equals('foo'));
-    unittest.expect(o.wrappedKey!, unittest.equals('foo'));
+    unittest.expect(
+      o.cryptoKeyName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.wrappedKey!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2KmsWrappedCryptoKey--;
 }
@@ -5562,8 +6310,7 @@ api.GooglePrivacyDlpV2LDiversityConfig
 }
 
 void checkGooglePrivacyDlpV2LDiversityConfig(
-  api.GooglePrivacyDlpV2LDiversityConfig o,
-) {
+    api.GooglePrivacyDlpV2LDiversityConfig o) {
   buildCounterGooglePrivacyDlpV2LDiversityConfig++;
   if (buildCounterGooglePrivacyDlpV2LDiversityConfig < 3) {
     checkUnnamed86(o.quasiIds!);
@@ -5610,12 +6357,17 @@ api.GooglePrivacyDlpV2LDiversityEquivalenceClass
 }
 
 void checkGooglePrivacyDlpV2LDiversityEquivalenceClass(
-  api.GooglePrivacyDlpV2LDiversityEquivalenceClass o,
-) {
+    api.GooglePrivacyDlpV2LDiversityEquivalenceClass o) {
   buildCounterGooglePrivacyDlpV2LDiversityEquivalenceClass++;
   if (buildCounterGooglePrivacyDlpV2LDiversityEquivalenceClass < 3) {
-    unittest.expect(o.equivalenceClassSize!, unittest.equals('foo'));
-    unittest.expect(o.numDistinctSensitiveValues!, unittest.equals('foo'));
+    unittest.expect(
+      o.equivalenceClassSize!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numDistinctSensitiveValues!,
+      unittest.equals('foo'),
+    );
     checkUnnamed87(o.quasiIdsValues!);
     checkUnnamed88(o.topSensitiveValues!);
   }
@@ -5629,8 +6381,7 @@ core.List<api.GooglePrivacyDlpV2LDiversityEquivalenceClass> buildUnnamed89() =>
     ];
 
 void checkUnnamed89(
-  core.List<api.GooglePrivacyDlpV2LDiversityEquivalenceClass> o,
-) {
+    core.List<api.GooglePrivacyDlpV2LDiversityEquivalenceClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2LDiversityEquivalenceClass(o[0]);
   checkGooglePrivacyDlpV2LDiversityEquivalenceClass(o[1]);
@@ -5653,12 +6404,17 @@ api.GooglePrivacyDlpV2LDiversityHistogramBucket
 }
 
 void checkGooglePrivacyDlpV2LDiversityHistogramBucket(
-  api.GooglePrivacyDlpV2LDiversityHistogramBucket o,
-) {
+    api.GooglePrivacyDlpV2LDiversityHistogramBucket o) {
   buildCounterGooglePrivacyDlpV2LDiversityHistogramBucket++;
   if (buildCounterGooglePrivacyDlpV2LDiversityHistogramBucket < 3) {
-    unittest.expect(o.bucketSize!, unittest.equals('foo'));
-    unittest.expect(o.bucketValueCount!, unittest.equals('foo'));
+    unittest.expect(
+      o.bucketSize!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.bucketValueCount!,
+      unittest.equals('foo'),
+    );
     checkUnnamed89(o.bucketValues!);
     unittest.expect(
       o.sensitiveValueFrequencyLowerBound!,
@@ -5678,8 +6434,7 @@ core.List<api.GooglePrivacyDlpV2LDiversityHistogramBucket> buildUnnamed90() => [
     ];
 
 void checkUnnamed90(
-  core.List<api.GooglePrivacyDlpV2LDiversityHistogramBucket> o,
-) {
+    core.List<api.GooglePrivacyDlpV2LDiversityHistogramBucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2LDiversityHistogramBucket(o[0]);
   checkGooglePrivacyDlpV2LDiversityHistogramBucket(o[1]);
@@ -5698,8 +6453,7 @@ api.GooglePrivacyDlpV2LDiversityResult
 }
 
 void checkGooglePrivacyDlpV2LDiversityResult(
-  api.GooglePrivacyDlpV2LDiversityResult o,
-) {
+    api.GooglePrivacyDlpV2LDiversityResult o) {
   buildCounterGooglePrivacyDlpV2LDiversityResult++;
   if (buildCounterGooglePrivacyDlpV2LDiversityResult < 3) {
     checkUnnamed90(o.sensitiveValueFrequencyHistogramBuckets!);
@@ -5722,8 +6476,7 @@ api.GooglePrivacyDlpV2LargeCustomDictionaryConfig
 }
 
 void checkGooglePrivacyDlpV2LargeCustomDictionaryConfig(
-  api.GooglePrivacyDlpV2LargeCustomDictionaryConfig o,
-) {
+    api.GooglePrivacyDlpV2LargeCustomDictionaryConfig o) {
   buildCounterGooglePrivacyDlpV2LargeCustomDictionaryConfig++;
   if (buildCounterGooglePrivacyDlpV2LargeCustomDictionaryConfig < 3) {
     checkGooglePrivacyDlpV2BigQueryField(o.bigQueryField!);
@@ -5746,11 +6499,13 @@ api.GooglePrivacyDlpV2LargeCustomDictionaryStats
 }
 
 void checkGooglePrivacyDlpV2LargeCustomDictionaryStats(
-  api.GooglePrivacyDlpV2LargeCustomDictionaryStats o,
-) {
+    api.GooglePrivacyDlpV2LargeCustomDictionaryStats o) {
   buildCounterGooglePrivacyDlpV2LargeCustomDictionaryStats++;
   if (buildCounterGooglePrivacyDlpV2LargeCustomDictionaryStats < 3) {
-    unittest.expect(o.approxNumPhrases!, unittest.equals('foo'));
+    unittest.expect(
+      o.approxNumPhrases!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2LargeCustomDictionaryStats--;
 }
@@ -5766,8 +6521,7 @@ api.GooglePrivacyDlpV2LeaveUntransformed
 }
 
 void checkGooglePrivacyDlpV2LeaveUntransformed(
-  api.GooglePrivacyDlpV2LeaveUntransformed o,
-) {
+    api.GooglePrivacyDlpV2LeaveUntransformed o) {
   buildCounterGooglePrivacyDlpV2LeaveUntransformed++;
   if (buildCounterGooglePrivacyDlpV2LeaveUntransformed < 3) {}
   buildCounterGooglePrivacyDlpV2LeaveUntransformed--;
@@ -5787,12 +6541,17 @@ api.GooglePrivacyDlpV2LikelihoodAdjustment
 }
 
 void checkGooglePrivacyDlpV2LikelihoodAdjustment(
-  api.GooglePrivacyDlpV2LikelihoodAdjustment o,
-) {
+    api.GooglePrivacyDlpV2LikelihoodAdjustment o) {
   buildCounterGooglePrivacyDlpV2LikelihoodAdjustment++;
   if (buildCounterGooglePrivacyDlpV2LikelihoodAdjustment < 3) {
-    unittest.expect(o.fixedLikelihood!, unittest.equals('foo'));
-    unittest.expect(o.relativeLikelihood!, unittest.equals(42));
+    unittest.expect(
+      o.fixedLikelihood!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.relativeLikelihood!,
+      unittest.equals(42),
+    );
   }
   buildCounterGooglePrivacyDlpV2LikelihoodAdjustment--;
 }
@@ -5822,12 +6581,14 @@ api.GooglePrivacyDlpV2ListColumnDataProfilesResponse
 }
 
 void checkGooglePrivacyDlpV2ListColumnDataProfilesResponse(
-  api.GooglePrivacyDlpV2ListColumnDataProfilesResponse o,
-) {
+    api.GooglePrivacyDlpV2ListColumnDataProfilesResponse o) {
   buildCounterGooglePrivacyDlpV2ListColumnDataProfilesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListColumnDataProfilesResponse < 3) {
     checkUnnamed91(o.columnDataProfiles!);
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2ListColumnDataProfilesResponse--;
 }
@@ -5857,12 +6618,14 @@ api.GooglePrivacyDlpV2ListConnectionsResponse
 }
 
 void checkGooglePrivacyDlpV2ListConnectionsResponse(
-  api.GooglePrivacyDlpV2ListConnectionsResponse o,
-) {
+    api.GooglePrivacyDlpV2ListConnectionsResponse o) {
   buildCounterGooglePrivacyDlpV2ListConnectionsResponse++;
   if (buildCounterGooglePrivacyDlpV2ListConnectionsResponse < 3) {
     checkUnnamed92(o.connections!);
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2ListConnectionsResponse--;
 }
@@ -5892,12 +6655,14 @@ api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
 }
 
 void checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(
-  api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse o,
-) {
+    api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse o) {
   buildCounterGooglePrivacyDlpV2ListDeidentifyTemplatesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListDeidentifyTemplatesResponse < 3) {
     checkUnnamed93(o.deidentifyTemplates!);
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2ListDeidentifyTemplatesResponse--;
 }
@@ -5927,12 +6692,14 @@ api.GooglePrivacyDlpV2ListDiscoveryConfigsResponse
 }
 
 void checkGooglePrivacyDlpV2ListDiscoveryConfigsResponse(
-  api.GooglePrivacyDlpV2ListDiscoveryConfigsResponse o,
-) {
+    api.GooglePrivacyDlpV2ListDiscoveryConfigsResponse o) {
   buildCounterGooglePrivacyDlpV2ListDiscoveryConfigsResponse++;
   if (buildCounterGooglePrivacyDlpV2ListDiscoveryConfigsResponse < 3) {
     checkUnnamed94(o.discoveryConfigs!);
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2ListDiscoveryConfigsResponse--;
 }
@@ -5962,12 +6729,14 @@ api.GooglePrivacyDlpV2ListDlpJobsResponse
 }
 
 void checkGooglePrivacyDlpV2ListDlpJobsResponse(
-  api.GooglePrivacyDlpV2ListDlpJobsResponse o,
-) {
+    api.GooglePrivacyDlpV2ListDlpJobsResponse o) {
   buildCounterGooglePrivacyDlpV2ListDlpJobsResponse++;
   if (buildCounterGooglePrivacyDlpV2ListDlpJobsResponse < 3) {
     checkUnnamed95(o.jobs!);
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2ListDlpJobsResponse--;
 }
@@ -5997,12 +6766,14 @@ api.GooglePrivacyDlpV2ListFileStoreDataProfilesResponse
 }
 
 void checkGooglePrivacyDlpV2ListFileStoreDataProfilesResponse(
-  api.GooglePrivacyDlpV2ListFileStoreDataProfilesResponse o,
-) {
+    api.GooglePrivacyDlpV2ListFileStoreDataProfilesResponse o) {
   buildCounterGooglePrivacyDlpV2ListFileStoreDataProfilesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListFileStoreDataProfilesResponse < 3) {
     checkUnnamed96(o.fileStoreDataProfiles!);
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2ListFileStoreDataProfilesResponse--;
 }
@@ -6031,8 +6802,7 @@ api.GooglePrivacyDlpV2ListInfoTypesResponse
 }
 
 void checkGooglePrivacyDlpV2ListInfoTypesResponse(
-  api.GooglePrivacyDlpV2ListInfoTypesResponse o,
-) {
+    api.GooglePrivacyDlpV2ListInfoTypesResponse o) {
   buildCounterGooglePrivacyDlpV2ListInfoTypesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListInfoTypesResponse < 3) {
     checkUnnamed97(o.infoTypes!);
@@ -6065,12 +6835,14 @@ api.GooglePrivacyDlpV2ListInspectTemplatesResponse
 }
 
 void checkGooglePrivacyDlpV2ListInspectTemplatesResponse(
-  api.GooglePrivacyDlpV2ListInspectTemplatesResponse o,
-) {
+    api.GooglePrivacyDlpV2ListInspectTemplatesResponse o) {
   buildCounterGooglePrivacyDlpV2ListInspectTemplatesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListInspectTemplatesResponse < 3) {
     checkUnnamed98(o.inspectTemplates!);
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2ListInspectTemplatesResponse--;
 }
@@ -6100,12 +6872,14 @@ api.GooglePrivacyDlpV2ListJobTriggersResponse
 }
 
 void checkGooglePrivacyDlpV2ListJobTriggersResponse(
-  api.GooglePrivacyDlpV2ListJobTriggersResponse o,
-) {
+    api.GooglePrivacyDlpV2ListJobTriggersResponse o) {
   buildCounterGooglePrivacyDlpV2ListJobTriggersResponse++;
   if (buildCounterGooglePrivacyDlpV2ListJobTriggersResponse < 3) {
     checkUnnamed99(o.jobTriggers!);
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2ListJobTriggersResponse--;
 }
@@ -6135,11 +6909,13 @@ api.GooglePrivacyDlpV2ListProjectDataProfilesResponse
 }
 
 void checkGooglePrivacyDlpV2ListProjectDataProfilesResponse(
-  api.GooglePrivacyDlpV2ListProjectDataProfilesResponse o,
-) {
+    api.GooglePrivacyDlpV2ListProjectDataProfilesResponse o) {
   buildCounterGooglePrivacyDlpV2ListProjectDataProfilesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListProjectDataProfilesResponse < 3) {
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
     checkUnnamed100(o.projectDataProfiles!);
   }
   buildCounterGooglePrivacyDlpV2ListProjectDataProfilesResponse--;
@@ -6170,11 +6946,13 @@ api.GooglePrivacyDlpV2ListStoredInfoTypesResponse
 }
 
 void checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(
-  api.GooglePrivacyDlpV2ListStoredInfoTypesResponse o,
-) {
+    api.GooglePrivacyDlpV2ListStoredInfoTypesResponse o) {
   buildCounterGooglePrivacyDlpV2ListStoredInfoTypesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListStoredInfoTypesResponse < 3) {
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
     checkUnnamed101(o.storedInfoTypes!);
   }
   buildCounterGooglePrivacyDlpV2ListStoredInfoTypesResponse--;
@@ -6205,11 +6983,13 @@ api.GooglePrivacyDlpV2ListTableDataProfilesResponse
 }
 
 void checkGooglePrivacyDlpV2ListTableDataProfilesResponse(
-  api.GooglePrivacyDlpV2ListTableDataProfilesResponse o,
-) {
+    api.GooglePrivacyDlpV2ListTableDataProfilesResponse o) {
   buildCounterGooglePrivacyDlpV2ListTableDataProfilesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListTableDataProfilesResponse < 3) {
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
     checkUnnamed102(o.tableDataProfiles!);
   }
   buildCounterGooglePrivacyDlpV2ListTableDataProfilesResponse--;
@@ -6280,12 +7060,14 @@ api.GooglePrivacyDlpV2MetadataLocation
 }
 
 void checkGooglePrivacyDlpV2MetadataLocation(
-  api.GooglePrivacyDlpV2MetadataLocation o,
-) {
+    api.GooglePrivacyDlpV2MetadataLocation o) {
   buildCounterGooglePrivacyDlpV2MetadataLocation++;
   if (buildCounterGooglePrivacyDlpV2MetadataLocation < 3) {
     checkGooglePrivacyDlpV2StorageMetadataLabel(o.storageLabel!);
-    unittest.expect(o.type!, unittest.equals('foo'));
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2MetadataLocation--;
 }
@@ -6303,8 +7085,7 @@ api.GooglePrivacyDlpV2NumericalStatsConfig
 }
 
 void checkGooglePrivacyDlpV2NumericalStatsConfig(
-  api.GooglePrivacyDlpV2NumericalStatsConfig o,
-) {
+    api.GooglePrivacyDlpV2NumericalStatsConfig o) {
   buildCounterGooglePrivacyDlpV2NumericalStatsConfig++;
   if (buildCounterGooglePrivacyDlpV2NumericalStatsConfig < 3) {
     checkGooglePrivacyDlpV2FieldId(o.field!);
@@ -6338,8 +7119,7 @@ api.GooglePrivacyDlpV2NumericalStatsResult
 }
 
 void checkGooglePrivacyDlpV2NumericalStatsResult(
-  api.GooglePrivacyDlpV2NumericalStatsResult o,
-) {
+    api.GooglePrivacyDlpV2NumericalStatsResult o) {
   buildCounterGooglePrivacyDlpV2NumericalStatsResult++;
   if (buildCounterGooglePrivacyDlpV2NumericalStatsResult < 3) {
     checkGooglePrivacyDlpV2Value(o.maxValue!);
@@ -6364,8 +7144,14 @@ api.GooglePrivacyDlpV2OrConditions buildGooglePrivacyDlpV2OrConditions() {
 void checkGooglePrivacyDlpV2OrConditions(api.GooglePrivacyDlpV2OrConditions o) {
   buildCounterGooglePrivacyDlpV2OrConditions++;
   if (buildCounterGooglePrivacyDlpV2OrConditions < 3) {
-    unittest.expect(o.minAge!, unittest.equals('foo'));
-    unittest.expect(o.minRowCount!, unittest.equals(42));
+    unittest.expect(
+      o.minAge!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.minRowCount!,
+      unittest.equals(42),
+    );
   }
   buildCounterGooglePrivacyDlpV2OrConditions--;
 }
@@ -6386,7 +7172,10 @@ void checkGooglePrivacyDlpV2OrgConfig(api.GooglePrivacyDlpV2OrgConfig o) {
   buildCounterGooglePrivacyDlpV2OrgConfig++;
   if (buildCounterGooglePrivacyDlpV2OrgConfig < 3) {
     checkGooglePrivacyDlpV2DiscoveryStartingLocation(o.location!);
-    unittest.expect(o.projectId!, unittest.equals('foo'));
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2OrgConfig--;
 }
@@ -6404,8 +7193,7 @@ api.GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation
 }
 
 void checkGooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation(
-  api.GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation o,
-) {
+    api.GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation o) {
   buildCounterGooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation++;
   if (buildCounterGooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation < 3) {
     checkGooglePrivacyDlpV2AwsDiscoveryStartingLocation(o.awsLocation!);
@@ -6431,8 +7219,7 @@ api.GooglePrivacyDlpV2OtherCloudDiscoveryTarget
 }
 
 void checkGooglePrivacyDlpV2OtherCloudDiscoveryTarget(
-  api.GooglePrivacyDlpV2OtherCloudDiscoveryTarget o,
-) {
+    api.GooglePrivacyDlpV2OtherCloudDiscoveryTarget o) {
   buildCounterGooglePrivacyDlpV2OtherCloudDiscoveryTarget++;
   if (buildCounterGooglePrivacyDlpV2OtherCloudDiscoveryTarget < 3) {
     checkGooglePrivacyDlpV2DiscoveryOtherCloudConditions(o.conditions!);
@@ -6440,8 +7227,7 @@ void checkGooglePrivacyDlpV2OtherCloudDiscoveryTarget(
     checkGooglePrivacyDlpV2Disabled(o.disabled!);
     checkGooglePrivacyDlpV2DiscoveryOtherCloudFilter(o.filter!);
     checkGooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence(
-      o.generationCadence!,
-    );
+        o.generationCadence!);
   }
   buildCounterGooglePrivacyDlpV2OtherCloudDiscoveryTarget--;
 }
@@ -6459,8 +7245,7 @@ api.GooglePrivacyDlpV2OtherCloudResourceCollection
 }
 
 void checkGooglePrivacyDlpV2OtherCloudResourceCollection(
-  api.GooglePrivacyDlpV2OtherCloudResourceCollection o,
-) {
+    api.GooglePrivacyDlpV2OtherCloudResourceCollection o) {
   buildCounterGooglePrivacyDlpV2OtherCloudResourceCollection++;
   if (buildCounterGooglePrivacyDlpV2OtherCloudResourceCollection < 3) {
     checkGooglePrivacyDlpV2OtherCloudResourceRegexes(o.includeRegexes!);
@@ -6481,8 +7266,7 @@ api.GooglePrivacyDlpV2OtherCloudResourceRegex
 }
 
 void checkGooglePrivacyDlpV2OtherCloudResourceRegex(
-  api.GooglePrivacyDlpV2OtherCloudResourceRegex o,
-) {
+    api.GooglePrivacyDlpV2OtherCloudResourceRegex o) {
   buildCounterGooglePrivacyDlpV2OtherCloudResourceRegex++;
   if (buildCounterGooglePrivacyDlpV2OtherCloudResourceRegex < 3) {
     checkGooglePrivacyDlpV2AmazonS3BucketRegex(o.amazonS3BucketRegex!);
@@ -6496,8 +7280,7 @@ core.List<api.GooglePrivacyDlpV2OtherCloudResourceRegex> buildUnnamed105() => [
     ];
 
 void checkUnnamed105(
-  core.List<api.GooglePrivacyDlpV2OtherCloudResourceRegex> o,
-) {
+    core.List<api.GooglePrivacyDlpV2OtherCloudResourceRegex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2OtherCloudResourceRegex(o[0]);
   checkGooglePrivacyDlpV2OtherCloudResourceRegex(o[1]);
@@ -6516,8 +7299,7 @@ api.GooglePrivacyDlpV2OtherCloudResourceRegexes
 }
 
 void checkGooglePrivacyDlpV2OtherCloudResourceRegexes(
-  api.GooglePrivacyDlpV2OtherCloudResourceRegexes o,
-) {
+    api.GooglePrivacyDlpV2OtherCloudResourceRegexes o) {
   buildCounterGooglePrivacyDlpV2OtherCloudResourceRegexes++;
   if (buildCounterGooglePrivacyDlpV2OtherCloudResourceRegexes < 3) {
     checkUnnamed105(o.patterns!);
@@ -6538,8 +7320,7 @@ api.GooglePrivacyDlpV2OtherCloudSingleResourceReference
 }
 
 void checkGooglePrivacyDlpV2OtherCloudSingleResourceReference(
-  api.GooglePrivacyDlpV2OtherCloudSingleResourceReference o,
-) {
+    api.GooglePrivacyDlpV2OtherCloudSingleResourceReference o) {
   buildCounterGooglePrivacyDlpV2OtherCloudSingleResourceReference++;
   if (buildCounterGooglePrivacyDlpV2OtherCloudSingleResourceReference < 3) {
     checkGooglePrivacyDlpV2AmazonS3Bucket(o.amazonS3Bucket!);
@@ -6562,11 +7343,13 @@ api.GooglePrivacyDlpV2OtherInfoTypeSummary
 }
 
 void checkGooglePrivacyDlpV2OtherInfoTypeSummary(
-  api.GooglePrivacyDlpV2OtherInfoTypeSummary o,
-) {
+    api.GooglePrivacyDlpV2OtherInfoTypeSummary o) {
   buildCounterGooglePrivacyDlpV2OtherInfoTypeSummary++;
   if (buildCounterGooglePrivacyDlpV2OtherInfoTypeSummary < 3) {
-    unittest.expect(o.estimatedPrevalence!, unittest.equals(42));
+    unittest.expect(
+      o.estimatedPrevalence!,
+      unittest.equals(42),
+    );
     unittest.expect(o.excludedFromAnalysis!, unittest.isTrue);
     checkGooglePrivacyDlpV2InfoType(o.infoType!);
   }
@@ -6587,11 +7370,13 @@ api.GooglePrivacyDlpV2OutputStorageConfig
 }
 
 void checkGooglePrivacyDlpV2OutputStorageConfig(
-  api.GooglePrivacyDlpV2OutputStorageConfig o,
-) {
+    api.GooglePrivacyDlpV2OutputStorageConfig o) {
   buildCounterGooglePrivacyDlpV2OutputStorageConfig++;
   if (buildCounterGooglePrivacyDlpV2OutputStorageConfig < 3) {
-    unittest.expect(o.outputSchema!, unittest.equals('foo'));
+    unittest.expect(
+      o.outputSchema!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2BigQueryTable(o.table!);
   }
   buildCounterGooglePrivacyDlpV2OutputStorageConfig--;
@@ -6612,8 +7397,14 @@ api.GooglePrivacyDlpV2PartitionId buildGooglePrivacyDlpV2PartitionId() {
 void checkGooglePrivacyDlpV2PartitionId(api.GooglePrivacyDlpV2PartitionId o) {
   buildCounterGooglePrivacyDlpV2PartitionId++;
   if (buildCounterGooglePrivacyDlpV2PartitionId < 3) {
-    unittest.expect(o.namespaceId!, unittest.equals('foo'));
-    unittest.expect(o.projectId!, unittest.equals('foo'));
+    unittest.expect(
+      o.namespaceId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2PartitionId--;
 }
@@ -6634,9 +7425,18 @@ api.GooglePrivacyDlpV2PathElement buildGooglePrivacyDlpV2PathElement() {
 void checkGooglePrivacyDlpV2PathElement(api.GooglePrivacyDlpV2PathElement o) {
   buildCounterGooglePrivacyDlpV2PathElement++;
   if (buildCounterGooglePrivacyDlpV2PathElement < 3) {
-    unittest.expect(o.id!, unittest.equals('foo'));
-    unittest.expect(o.kind!, unittest.equals('foo'));
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2PathElement--;
 }
@@ -6670,29 +7470,24 @@ api.GooglePrivacyDlpV2PrimitiveTransformation
 }
 
 void checkGooglePrivacyDlpV2PrimitiveTransformation(
-  api.GooglePrivacyDlpV2PrimitiveTransformation o,
-) {
+    api.GooglePrivacyDlpV2PrimitiveTransformation o) {
   buildCounterGooglePrivacyDlpV2PrimitiveTransformation++;
   if (buildCounterGooglePrivacyDlpV2PrimitiveTransformation < 3) {
     checkGooglePrivacyDlpV2BucketingConfig(o.bucketingConfig!);
     checkGooglePrivacyDlpV2CharacterMaskConfig(o.characterMaskConfig!);
     checkGooglePrivacyDlpV2CryptoDeterministicConfig(
-      o.cryptoDeterministicConfig!,
-    );
+        o.cryptoDeterministicConfig!);
     checkGooglePrivacyDlpV2CryptoHashConfig(o.cryptoHashConfig!);
     checkGooglePrivacyDlpV2CryptoReplaceFfxFpeConfig(
-      o.cryptoReplaceFfxFpeConfig!,
-    );
+        o.cryptoReplaceFfxFpeConfig!);
     checkGooglePrivacyDlpV2DateShiftConfig(o.dateShiftConfig!);
     checkGooglePrivacyDlpV2FixedSizeBucketingConfig(
-      o.fixedSizeBucketingConfig!,
-    );
+        o.fixedSizeBucketingConfig!);
     checkGooglePrivacyDlpV2RedactConfig(o.redactConfig!);
     checkGooglePrivacyDlpV2ReplaceValueConfig(o.replaceConfig!);
     checkGooglePrivacyDlpV2ReplaceDictionaryConfig(o.replaceDictionaryConfig!);
     checkGooglePrivacyDlpV2ReplaceWithInfoTypeConfig(
-      o.replaceWithInfoTypeConfig!,
-    );
+        o.replaceWithInfoTypeConfig!);
     checkGooglePrivacyDlpV2TimePartConfig(o.timePartConfig!);
   }
   buildCounterGooglePrivacyDlpV2PrimitiveTransformation--;
@@ -6716,14 +7511,12 @@ api.GooglePrivacyDlpV2PrivacyMetric buildGooglePrivacyDlpV2PrivacyMetric() {
 }
 
 void checkGooglePrivacyDlpV2PrivacyMetric(
-  api.GooglePrivacyDlpV2PrivacyMetric o,
-) {
+    api.GooglePrivacyDlpV2PrivacyMetric o) {
   buildCounterGooglePrivacyDlpV2PrivacyMetric++;
   if (buildCounterGooglePrivacyDlpV2PrivacyMetric < 3) {
     checkGooglePrivacyDlpV2CategoricalStatsConfig(o.categoricalStatsConfig!);
     checkGooglePrivacyDlpV2DeltaPresenceEstimationConfig(
-      o.deltaPresenceEstimationConfig!,
-    );
+        o.deltaPresenceEstimationConfig!);
     checkGooglePrivacyDlpV2KAnonymityConfig(o.kAnonymityConfig!);
     checkGooglePrivacyDlpV2KMapEstimationConfig(o.kMapEstimationConfig!);
     checkGooglePrivacyDlpV2LDiversityConfig(o.lDiversityConfig!);
@@ -6745,12 +7538,14 @@ api.GooglePrivacyDlpV2ProfileStatus buildGooglePrivacyDlpV2ProfileStatus() {
 }
 
 void checkGooglePrivacyDlpV2ProfileStatus(
-  api.GooglePrivacyDlpV2ProfileStatus o,
-) {
+    api.GooglePrivacyDlpV2ProfileStatus o) {
   buildCounterGooglePrivacyDlpV2ProfileStatus++;
   if (buildCounterGooglePrivacyDlpV2ProfileStatus < 3) {
     checkGoogleRpcStatus(o.status!);
-    unittest.expect(o.timestamp!, unittest.equals('foo'));
+    unittest.expect(
+      o.timestamp!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2ProfileStatus--;
 }
@@ -6775,18 +7570,32 @@ api.GooglePrivacyDlpV2ProjectDataProfile
 }
 
 void checkGooglePrivacyDlpV2ProjectDataProfile(
-  api.GooglePrivacyDlpV2ProjectDataProfile o,
-) {
+    api.GooglePrivacyDlpV2ProjectDataProfile o) {
   buildCounterGooglePrivacyDlpV2ProjectDataProfile++;
   if (buildCounterGooglePrivacyDlpV2ProjectDataProfile < 3) {
     checkGooglePrivacyDlpV2DataRiskLevel(o.dataRiskLevel!);
-    unittest.expect(o.fileStoreDataProfileCount!, unittest.equals('foo'));
-    unittest.expect(o.name!, unittest.equals('foo'));
-    unittest.expect(o.profileLastGenerated!, unittest.equals('foo'));
+    unittest.expect(
+      o.fileStoreDataProfileCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.profileLastGenerated!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2ProfileStatus(o.profileStatus!);
-    unittest.expect(o.projectId!, unittest.equals('foo'));
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2SensitivityScore(o.sensitivityScore!);
-    unittest.expect(o.tableDataProfileCount!, unittest.equals('foo'));
+    unittest.expect(
+      o.tableDataProfileCount!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2ProjectDataProfile--;
 }
@@ -6806,8 +7615,14 @@ api.GooglePrivacyDlpV2Proximity buildGooglePrivacyDlpV2Proximity() {
 void checkGooglePrivacyDlpV2Proximity(api.GooglePrivacyDlpV2Proximity o) {
   buildCounterGooglePrivacyDlpV2Proximity++;
   if (buildCounterGooglePrivacyDlpV2Proximity < 3) {
-    unittest.expect(o.windowAfter!, unittest.equals(42));
-    unittest.expect(o.windowBefore!, unittest.equals(42));
+    unittest.expect(
+      o.windowAfter!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.windowBefore!,
+      unittest.equals(42),
+    );
   }
   buildCounterGooglePrivacyDlpV2Proximity--;
 }
@@ -6825,12 +7640,17 @@ api.GooglePrivacyDlpV2PubSubCondition buildGooglePrivacyDlpV2PubSubCondition() {
 }
 
 void checkGooglePrivacyDlpV2PubSubCondition(
-  api.GooglePrivacyDlpV2PubSubCondition o,
-) {
+    api.GooglePrivacyDlpV2PubSubCondition o) {
   buildCounterGooglePrivacyDlpV2PubSubCondition++;
   if (buildCounterGooglePrivacyDlpV2PubSubCondition < 3) {
-    unittest.expect(o.minimumRiskScore!, unittest.equals('foo'));
-    unittest.expect(o.minimumSensitivityScore!, unittest.equals('foo'));
+    unittest.expect(
+      o.minimumRiskScore!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.minimumSensitivityScore!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2PubSubCondition--;
 }
@@ -6860,12 +7680,14 @@ api.GooglePrivacyDlpV2PubSubExpressions
 }
 
 void checkGooglePrivacyDlpV2PubSubExpressions(
-  api.GooglePrivacyDlpV2PubSubExpressions o,
-) {
+    api.GooglePrivacyDlpV2PubSubExpressions o) {
   buildCounterGooglePrivacyDlpV2PubSubExpressions++;
   if (buildCounterGooglePrivacyDlpV2PubSubExpressions < 3) {
     checkUnnamed106(o.conditions!);
-    unittest.expect(o.logicalOperator!, unittest.equals('foo'));
+    unittest.expect(
+      o.logicalOperator!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2PubSubExpressions--;
 }
@@ -6886,14 +7708,22 @@ api.GooglePrivacyDlpV2PubSubNotification
 }
 
 void checkGooglePrivacyDlpV2PubSubNotification(
-  api.GooglePrivacyDlpV2PubSubNotification o,
-) {
+    api.GooglePrivacyDlpV2PubSubNotification o) {
   buildCounterGooglePrivacyDlpV2PubSubNotification++;
   if (buildCounterGooglePrivacyDlpV2PubSubNotification < 3) {
-    unittest.expect(o.detailOfMessage!, unittest.equals('foo'));
-    unittest.expect(o.event!, unittest.equals('foo'));
+    unittest.expect(
+      o.detailOfMessage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.event!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2DataProfilePubSubCondition(o.pubsubCondition!);
-    unittest.expect(o.topic!, unittest.equals('foo'));
+    unittest.expect(
+      o.topic!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2PubSubNotification--;
 }
@@ -6909,8 +7739,7 @@ api.GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog
 }
 
 void checkGooglePrivacyDlpV2PublishFindingsToCloudDataCatalog(
-  api.GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog o,
-) {
+    api.GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog o) {
   buildCounterGooglePrivacyDlpV2PublishFindingsToCloudDataCatalog++;
   if (buildCounterGooglePrivacyDlpV2PublishFindingsToCloudDataCatalog < 3) {}
   buildCounterGooglePrivacyDlpV2PublishFindingsToCloudDataCatalog--;
@@ -6927,8 +7756,7 @@ api.GooglePrivacyDlpV2PublishSummaryToCscc
 }
 
 void checkGooglePrivacyDlpV2PublishSummaryToCscc(
-  api.GooglePrivacyDlpV2PublishSummaryToCscc o,
-) {
+    api.GooglePrivacyDlpV2PublishSummaryToCscc o) {
   buildCounterGooglePrivacyDlpV2PublishSummaryToCscc++;
   if (buildCounterGooglePrivacyDlpV2PublishSummaryToCscc < 3) {}
   buildCounterGooglePrivacyDlpV2PublishSummaryToCscc--;
@@ -6945,8 +7773,7 @@ api.GooglePrivacyDlpV2PublishToChronicle
 }
 
 void checkGooglePrivacyDlpV2PublishToChronicle(
-  api.GooglePrivacyDlpV2PublishToChronicle o,
-) {
+    api.GooglePrivacyDlpV2PublishToChronicle o) {
   buildCounterGooglePrivacyDlpV2PublishToChronicle++;
   if (buildCounterGooglePrivacyDlpV2PublishToChronicle < 3) {}
   buildCounterGooglePrivacyDlpV2PublishToChronicle--;
@@ -6964,11 +7791,13 @@ api.GooglePrivacyDlpV2PublishToPubSub buildGooglePrivacyDlpV2PublishToPubSub() {
 }
 
 void checkGooglePrivacyDlpV2PublishToPubSub(
-  api.GooglePrivacyDlpV2PublishToPubSub o,
-) {
+    api.GooglePrivacyDlpV2PublishToPubSub o) {
   buildCounterGooglePrivacyDlpV2PublishToPubSub++;
   if (buildCounterGooglePrivacyDlpV2PublishToPubSub < 3) {
-    unittest.expect(o.topic!, unittest.equals('foo'));
+    unittest.expect(
+      o.topic!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2PublishToPubSub--;
 }
@@ -6984,8 +7813,7 @@ api.GooglePrivacyDlpV2PublishToSecurityCommandCenter
 }
 
 void checkGooglePrivacyDlpV2PublishToSecurityCommandCenter(
-  api.GooglePrivacyDlpV2PublishToSecurityCommandCenter o,
-) {
+    api.GooglePrivacyDlpV2PublishToSecurityCommandCenter o) {
   buildCounterGooglePrivacyDlpV2PublishToSecurityCommandCenter++;
   if (buildCounterGooglePrivacyDlpV2PublishToSecurityCommandCenter < 3) {}
   buildCounterGooglePrivacyDlpV2PublishToSecurityCommandCenter--;
@@ -7002,8 +7830,7 @@ api.GooglePrivacyDlpV2PublishToStackdriver
 }
 
 void checkGooglePrivacyDlpV2PublishToStackdriver(
-  api.GooglePrivacyDlpV2PublishToStackdriver o,
-) {
+    api.GooglePrivacyDlpV2PublishToStackdriver o) {
   buildCounterGooglePrivacyDlpV2PublishToStackdriver++;
   if (buildCounterGooglePrivacyDlpV2PublishToStackdriver < 3) {}
   buildCounterGooglePrivacyDlpV2PublishToStackdriver--;
@@ -7026,7 +7853,10 @@ api.GooglePrivacyDlpV2QuasiId buildGooglePrivacyDlpV2QuasiId() {
 void checkGooglePrivacyDlpV2QuasiId(api.GooglePrivacyDlpV2QuasiId o) {
   buildCounterGooglePrivacyDlpV2QuasiId++;
   if (buildCounterGooglePrivacyDlpV2QuasiId < 3) {
-    unittest.expect(o.customTag!, unittest.equals('foo'));
+    unittest.expect(
+      o.customTag!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2FieldId(o.field!);
     checkGoogleProtobufEmpty(o.inferred!);
     checkGooglePrivacyDlpV2InfoType(o.infoType!);
@@ -7049,7 +7879,10 @@ api.GooglePrivacyDlpV2QuasiIdField buildGooglePrivacyDlpV2QuasiIdField() {
 void checkGooglePrivacyDlpV2QuasiIdField(api.GooglePrivacyDlpV2QuasiIdField o) {
   buildCounterGooglePrivacyDlpV2QuasiIdField++;
   if (buildCounterGooglePrivacyDlpV2QuasiIdField < 3) {
-    unittest.expect(o.customTag!, unittest.equals('foo'));
+    unittest.expect(
+      o.customTag!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2FieldId(o.field!);
   }
   buildCounterGooglePrivacyDlpV2QuasiIdField--;
@@ -7069,11 +7902,13 @@ api.GooglePrivacyDlpV2QuasiIdentifierField
 }
 
 void checkGooglePrivacyDlpV2QuasiIdentifierField(
-  api.GooglePrivacyDlpV2QuasiIdentifierField o,
-) {
+    api.GooglePrivacyDlpV2QuasiIdentifierField o) {
   buildCounterGooglePrivacyDlpV2QuasiIdentifierField++;
   if (buildCounterGooglePrivacyDlpV2QuasiIdentifierField < 3) {
-    unittest.expect(o.customTag!, unittest.equals('foo'));
+    unittest.expect(
+      o.customTag!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2FieldId(o.field!);
   }
   buildCounterGooglePrivacyDlpV2QuasiIdentifierField--;
@@ -7113,8 +7948,14 @@ api.GooglePrivacyDlpV2Range buildGooglePrivacyDlpV2Range() {
 void checkGooglePrivacyDlpV2Range(api.GooglePrivacyDlpV2Range o) {
   buildCounterGooglePrivacyDlpV2Range++;
   if (buildCounterGooglePrivacyDlpV2Range < 3) {
-    unittest.expect(o.end!, unittest.equals('foo'));
-    unittest.expect(o.start!, unittest.equals('foo'));
+    unittest.expect(
+      o.end!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.start!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2Range--;
 }
@@ -7131,8 +7972,7 @@ api.GooglePrivacyDlpV2RecordCondition buildGooglePrivacyDlpV2RecordCondition() {
 }
 
 void checkGooglePrivacyDlpV2RecordCondition(
-  api.GooglePrivacyDlpV2RecordCondition o,
-) {
+    api.GooglePrivacyDlpV2RecordCondition o) {
   buildCounterGooglePrivacyDlpV2RecordCondition++;
   if (buildCounterGooglePrivacyDlpV2RecordCondition < 3) {
     checkGooglePrivacyDlpV2Expressions(o.expressions!);
@@ -7140,12 +7980,21 @@ void checkGooglePrivacyDlpV2RecordCondition(
   buildCounterGooglePrivacyDlpV2RecordCondition--;
 }
 
-core.List<core.String> buildUnnamed107() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed107() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed107(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2RecordKey = 0;
@@ -7185,8 +8034,7 @@ api.GooglePrivacyDlpV2RecordLocation buildGooglePrivacyDlpV2RecordLocation() {
 }
 
 void checkGooglePrivacyDlpV2RecordLocation(
-  api.GooglePrivacyDlpV2RecordLocation o,
-) {
+    api.GooglePrivacyDlpV2RecordLocation o) {
   buildCounterGooglePrivacyDlpV2RecordLocation++;
   if (buildCounterGooglePrivacyDlpV2RecordLocation < 3) {
     checkGooglePrivacyDlpV2FieldId(o.fieldId!);
@@ -7209,8 +8057,7 @@ api.GooglePrivacyDlpV2RecordSuppression
 }
 
 void checkGooglePrivacyDlpV2RecordSuppression(
-  api.GooglePrivacyDlpV2RecordSuppression o,
-) {
+    api.GooglePrivacyDlpV2RecordSuppression o) {
   buildCounterGooglePrivacyDlpV2RecordSuppression++;
   if (buildCounterGooglePrivacyDlpV2RecordSuppression < 3) {
     checkGooglePrivacyDlpV2RecordCondition(o.condition!);
@@ -7254,8 +8101,7 @@ api.GooglePrivacyDlpV2RecordTransformations
 }
 
 void checkGooglePrivacyDlpV2RecordTransformations(
-  api.GooglePrivacyDlpV2RecordTransformations o,
-) {
+    api.GooglePrivacyDlpV2RecordTransformations o) {
   buildCounterGooglePrivacyDlpV2RecordTransformations++;
   if (buildCounterGooglePrivacyDlpV2RecordTransformations < 3) {
     checkUnnamed108(o.fieldTransformations!);
@@ -7307,15 +8153,17 @@ api.GooglePrivacyDlpV2RedactImageRequest
 }
 
 void checkGooglePrivacyDlpV2RedactImageRequest(
-  api.GooglePrivacyDlpV2RedactImageRequest o,
-) {
+    api.GooglePrivacyDlpV2RedactImageRequest o) {
   buildCounterGooglePrivacyDlpV2RedactImageRequest++;
   if (buildCounterGooglePrivacyDlpV2RedactImageRequest < 3) {
     checkGooglePrivacyDlpV2ByteContentItem(o.byteItem!);
     checkUnnamed110(o.imageRedactionConfigs!);
     unittest.expect(o.includeFindings!, unittest.isTrue);
     checkGooglePrivacyDlpV2InspectConfig(o.inspectConfig!);
-    unittest.expect(o.locationId!, unittest.equals('foo'));
+    unittest.expect(
+      o.locationId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2RedactImageRequest--;
 }
@@ -7335,23 +8183,37 @@ api.GooglePrivacyDlpV2RedactImageResponse
 }
 
 void checkGooglePrivacyDlpV2RedactImageResponse(
-  api.GooglePrivacyDlpV2RedactImageResponse o,
-) {
+    api.GooglePrivacyDlpV2RedactImageResponse o) {
   buildCounterGooglePrivacyDlpV2RedactImageResponse++;
   if (buildCounterGooglePrivacyDlpV2RedactImageResponse < 3) {
-    unittest.expect(o.extractedText!, unittest.equals('foo'));
+    unittest.expect(
+      o.extractedText!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2InspectResult(o.inspectResult!);
-    unittest.expect(o.redactedImage!, unittest.equals('foo'));
+    unittest.expect(
+      o.redactedImage!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2RedactImageResponse--;
 }
 
-core.List<core.int> buildUnnamed111() => [42, 42];
+core.List<core.int> buildUnnamed111() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed111(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals(42));
-  unittest.expect(o[1], unittest.equals(42));
+  unittest.expect(
+    o[0],
+    unittest.equals(42),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2Regex = 0;
@@ -7370,7 +8232,10 @@ void checkGooglePrivacyDlpV2Regex(api.GooglePrivacyDlpV2Regex o) {
   buildCounterGooglePrivacyDlpV2Regex++;
   if (buildCounterGooglePrivacyDlpV2Regex < 3) {
     checkUnnamed111(o.groupIndexes!);
-    unittest.expect(o.pattern!, unittest.equals('foo'));
+    unittest.expect(
+      o.pattern!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2Regex--;
 }
@@ -7393,16 +8258,24 @@ api.GooglePrivacyDlpV2ReidentifyContentRequest
 }
 
 void checkGooglePrivacyDlpV2ReidentifyContentRequest(
-  api.GooglePrivacyDlpV2ReidentifyContentRequest o,
-) {
+    api.GooglePrivacyDlpV2ReidentifyContentRequest o) {
   buildCounterGooglePrivacyDlpV2ReidentifyContentRequest++;
   if (buildCounterGooglePrivacyDlpV2ReidentifyContentRequest < 3) {
     checkGooglePrivacyDlpV2InspectConfig(o.inspectConfig!);
-    unittest.expect(o.inspectTemplateName!, unittest.equals('foo'));
+    unittest.expect(
+      o.inspectTemplateName!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2ContentItem(o.item!);
-    unittest.expect(o.locationId!, unittest.equals('foo'));
+    unittest.expect(
+      o.locationId!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2DeidentifyConfig(o.reidentifyConfig!);
-    unittest.expect(o.reidentifyTemplateName!, unittest.equals('foo'));
+    unittest.expect(
+      o.reidentifyTemplateName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2ReidentifyContentRequest--;
 }
@@ -7421,8 +8294,7 @@ api.GooglePrivacyDlpV2ReidentifyContentResponse
 }
 
 void checkGooglePrivacyDlpV2ReidentifyContentResponse(
-  api.GooglePrivacyDlpV2ReidentifyContentResponse o,
-) {
+    api.GooglePrivacyDlpV2ReidentifyContentResponse o) {
   buildCounterGooglePrivacyDlpV2ReidentifyContentResponse++;
   if (buildCounterGooglePrivacyDlpV2ReidentifyContentResponse < 3) {
     checkGooglePrivacyDlpV2ContentItem(o.item!);
@@ -7444,8 +8316,7 @@ api.GooglePrivacyDlpV2ReplaceDictionaryConfig
 }
 
 void checkGooglePrivacyDlpV2ReplaceDictionaryConfig(
-  api.GooglePrivacyDlpV2ReplaceDictionaryConfig o,
-) {
+    api.GooglePrivacyDlpV2ReplaceDictionaryConfig o) {
   buildCounterGooglePrivacyDlpV2ReplaceDictionaryConfig++;
   if (buildCounterGooglePrivacyDlpV2ReplaceDictionaryConfig < 3) {
     checkGooglePrivacyDlpV2WordList(o.wordList!);
@@ -7466,8 +8337,7 @@ api.GooglePrivacyDlpV2ReplaceValueConfig
 }
 
 void checkGooglePrivacyDlpV2ReplaceValueConfig(
-  api.GooglePrivacyDlpV2ReplaceValueConfig o,
-) {
+    api.GooglePrivacyDlpV2ReplaceValueConfig o) {
   buildCounterGooglePrivacyDlpV2ReplaceValueConfig++;
   if (buildCounterGooglePrivacyDlpV2ReplaceValueConfig < 3) {
     checkGooglePrivacyDlpV2Value(o.newValue!);
@@ -7486,8 +8356,7 @@ api.GooglePrivacyDlpV2ReplaceWithInfoTypeConfig
 }
 
 void checkGooglePrivacyDlpV2ReplaceWithInfoTypeConfig(
-  api.GooglePrivacyDlpV2ReplaceWithInfoTypeConfig o,
-) {
+    api.GooglePrivacyDlpV2ReplaceWithInfoTypeConfig o) {
   buildCounterGooglePrivacyDlpV2ReplaceWithInfoTypeConfig++;
   if (buildCounterGooglePrivacyDlpV2ReplaceWithInfoTypeConfig < 3) {}
   buildCounterGooglePrivacyDlpV2ReplaceWithInfoTypeConfig--;
@@ -7509,15 +8378,13 @@ api.GooglePrivacyDlpV2RequestedDeidentifyOptions
 }
 
 void checkGooglePrivacyDlpV2RequestedDeidentifyOptions(
-  api.GooglePrivacyDlpV2RequestedDeidentifyOptions o,
-) {
+    api.GooglePrivacyDlpV2RequestedDeidentifyOptions o) {
   buildCounterGooglePrivacyDlpV2RequestedDeidentifyOptions++;
   if (buildCounterGooglePrivacyDlpV2RequestedDeidentifyOptions < 3) {
     checkGooglePrivacyDlpV2DeidentifyTemplate(o.snapshotDeidentifyTemplate!);
     checkGooglePrivacyDlpV2DeidentifyTemplate(o.snapshotImageRedactTemplate!);
     checkGooglePrivacyDlpV2DeidentifyTemplate(
-      o.snapshotStructuredDeidentifyTemplate!,
-    );
+        o.snapshotStructuredDeidentifyTemplate!);
   }
   buildCounterGooglePrivacyDlpV2RequestedDeidentifyOptions--;
 }
@@ -7536,8 +8403,7 @@ api.GooglePrivacyDlpV2RequestedOptions
 }
 
 void checkGooglePrivacyDlpV2RequestedOptions(
-  api.GooglePrivacyDlpV2RequestedOptions o,
-) {
+    api.GooglePrivacyDlpV2RequestedOptions o) {
   buildCounterGooglePrivacyDlpV2RequestedOptions++;
   if (buildCounterGooglePrivacyDlpV2RequestedOptions < 3) {
     checkGooglePrivacyDlpV2InspectJobConfig(o.jobConfig!);
@@ -7559,8 +8425,7 @@ api.GooglePrivacyDlpV2RequestedRiskAnalysisOptions
 }
 
 void checkGooglePrivacyDlpV2RequestedRiskAnalysisOptions(
-  api.GooglePrivacyDlpV2RequestedRiskAnalysisOptions o,
-) {
+    api.GooglePrivacyDlpV2RequestedRiskAnalysisOptions o) {
   buildCounterGooglePrivacyDlpV2RequestedRiskAnalysisOptions++;
   if (buildCounterGooglePrivacyDlpV2RequestedRiskAnalysisOptions < 3) {
     checkGooglePrivacyDlpV2RiskAnalysisJobConfig(o.jobConfig!);
@@ -7599,9 +8464,18 @@ void checkGooglePrivacyDlpV2Result(api.GooglePrivacyDlpV2Result o) {
   if (buildCounterGooglePrivacyDlpV2Result < 3) {
     checkGooglePrivacyDlpV2HybridInspectStatistics(o.hybridStats!);
     checkUnnamed112(o.infoTypeStats!);
-    unittest.expect(o.numRowsProcessed!, unittest.equals('foo'));
-    unittest.expect(o.processedBytes!, unittest.equals('foo'));
-    unittest.expect(o.totalEstimatedBytes!, unittest.equals('foo'));
+    unittest.expect(
+      o.numRowsProcessed!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.processedBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.totalEstimatedBytes!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2Result--;
 }
@@ -7632,8 +8506,7 @@ api.GooglePrivacyDlpV2RiskAnalysisJobConfig
 }
 
 void checkGooglePrivacyDlpV2RiskAnalysisJobConfig(
-  api.GooglePrivacyDlpV2RiskAnalysisJobConfig o,
-) {
+    api.GooglePrivacyDlpV2RiskAnalysisJobConfig o) {
   buildCounterGooglePrivacyDlpV2RiskAnalysisJobConfig++;
   if (buildCounterGooglePrivacyDlpV2RiskAnalysisJobConfig < 3) {
     checkUnnamed113(o.actions!);
@@ -7706,17 +8579,29 @@ api.GooglePrivacyDlpV2Schedule buildGooglePrivacyDlpV2Schedule() {
 void checkGooglePrivacyDlpV2Schedule(api.GooglePrivacyDlpV2Schedule o) {
   buildCounterGooglePrivacyDlpV2Schedule++;
   if (buildCounterGooglePrivacyDlpV2Schedule < 3) {
-    unittest.expect(o.recurrencePeriodDuration!, unittest.equals('foo'));
+    unittest.expect(
+      o.recurrencePeriodDuration!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2Schedule--;
 }
 
-core.List<core.String> buildUnnamed115() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed115() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed115(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2SchemaModifiedCadence = 0;
@@ -7733,11 +8618,13 @@ api.GooglePrivacyDlpV2SchemaModifiedCadence
 }
 
 void checkGooglePrivacyDlpV2SchemaModifiedCadence(
-  api.GooglePrivacyDlpV2SchemaModifiedCadence o,
-) {
+    api.GooglePrivacyDlpV2SchemaModifiedCadence o) {
   buildCounterGooglePrivacyDlpV2SchemaModifiedCadence++;
   if (buildCounterGooglePrivacyDlpV2SchemaModifiedCadence < 3) {
-    unittest.expect(o.frequency!, unittest.equals('foo'));
+    unittest.expect(
+      o.frequency!,
+      unittest.equals('foo'),
+    );
     checkUnnamed115(o.types!);
   }
   buildCounterGooglePrivacyDlpV2SchemaModifiedCadence--;
@@ -7768,12 +8655,14 @@ api.GooglePrivacyDlpV2SearchConnectionsResponse
 }
 
 void checkGooglePrivacyDlpV2SearchConnectionsResponse(
-  api.GooglePrivacyDlpV2SearchConnectionsResponse o,
-) {
+    api.GooglePrivacyDlpV2SearchConnectionsResponse o) {
   buildCounterGooglePrivacyDlpV2SearchConnectionsResponse++;
   if (buildCounterGooglePrivacyDlpV2SearchConnectionsResponse < 3) {
     checkUnnamed116(o.connections!);
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2SearchConnectionsResponse--;
 }
@@ -7792,12 +8681,17 @@ api.GooglePrivacyDlpV2SecretManagerCredential
 }
 
 void checkGooglePrivacyDlpV2SecretManagerCredential(
-  api.GooglePrivacyDlpV2SecretManagerCredential o,
-) {
+    api.GooglePrivacyDlpV2SecretManagerCredential o) {
   buildCounterGooglePrivacyDlpV2SecretManagerCredential++;
   if (buildCounterGooglePrivacyDlpV2SecretManagerCredential < 3) {
-    unittest.expect(o.passwordSecretVersionName!, unittest.equals('foo'));
-    unittest.expect(o.username!, unittest.equals('foo'));
+    unittest.expect(
+      o.passwordSecretVersionName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.username!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2SecretManagerCredential--;
 }
@@ -7813,8 +8707,7 @@ api.GooglePrivacyDlpV2SecretsDiscoveryTarget
 }
 
 void checkGooglePrivacyDlpV2SecretsDiscoveryTarget(
-  api.GooglePrivacyDlpV2SecretsDiscoveryTarget o,
-) {
+    api.GooglePrivacyDlpV2SecretsDiscoveryTarget o) {
   buildCounterGooglePrivacyDlpV2SecretsDiscoveryTarget++;
   if (buildCounterGooglePrivacyDlpV2SecretsDiscoveryTarget < 3) {}
   buildCounterGooglePrivacyDlpV2SecretsDiscoveryTarget--;
@@ -7844,8 +8737,7 @@ api.GooglePrivacyDlpV2SelectedInfoTypes
 }
 
 void checkGooglePrivacyDlpV2SelectedInfoTypes(
-  api.GooglePrivacyDlpV2SelectedInfoTypes o,
-) {
+    api.GooglePrivacyDlpV2SelectedInfoTypes o) {
   buildCounterGooglePrivacyDlpV2SelectedInfoTypes++;
   if (buildCounterGooglePrivacyDlpV2SelectedInfoTypes < 3) {
     checkUnnamed117(o.infoTypes!);
@@ -7866,11 +8758,13 @@ api.GooglePrivacyDlpV2SensitivityScore
 }
 
 void checkGooglePrivacyDlpV2SensitivityScore(
-  api.GooglePrivacyDlpV2SensitivityScore o,
-) {
+    api.GooglePrivacyDlpV2SensitivityScore o) {
   buildCounterGooglePrivacyDlpV2SensitivityScore++;
   if (buildCounterGooglePrivacyDlpV2SensitivityScore < 3) {
-    unittest.expect(o.score!, unittest.equals('foo'));
+    unittest.expect(
+      o.score!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2SensitivityScore--;
 }
@@ -7901,8 +8795,7 @@ api.GooglePrivacyDlpV2StatisticalTable
 }
 
 void checkGooglePrivacyDlpV2StatisticalTable(
-  api.GooglePrivacyDlpV2StatisticalTable o,
-) {
+    api.GooglePrivacyDlpV2StatisticalTable o) {
   buildCounterGooglePrivacyDlpV2StatisticalTable++;
   if (buildCounterGooglePrivacyDlpV2StatisticalTable < 3) {
     checkUnnamed118(o.quasiIds!);
@@ -7928,8 +8821,7 @@ api.GooglePrivacyDlpV2StorageConfig buildGooglePrivacyDlpV2StorageConfig() {
 }
 
 void checkGooglePrivacyDlpV2StorageConfig(
-  api.GooglePrivacyDlpV2StorageConfig o,
-) {
+    api.GooglePrivacyDlpV2StorageConfig o) {
   buildCounterGooglePrivacyDlpV2StorageConfig++;
   if (buildCounterGooglePrivacyDlpV2StorageConfig < 3) {
     checkGooglePrivacyDlpV2BigQueryOptions(o.bigQueryOptions!);
@@ -7954,11 +8846,13 @@ api.GooglePrivacyDlpV2StorageMetadataLabel
 }
 
 void checkGooglePrivacyDlpV2StorageMetadataLabel(
-  api.GooglePrivacyDlpV2StorageMetadataLabel o,
-) {
+    api.GooglePrivacyDlpV2StorageMetadataLabel o) {
   buildCounterGooglePrivacyDlpV2StorageMetadataLabel++;
   if (buildCounterGooglePrivacyDlpV2StorageMetadataLabel < 3) {
-    unittest.expect(o.key!, unittest.equals('foo'));
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2StorageMetadataLabel--;
 }
@@ -7988,12 +8882,14 @@ api.GooglePrivacyDlpV2StoredInfoType buildGooglePrivacyDlpV2StoredInfoType() {
 }
 
 void checkGooglePrivacyDlpV2StoredInfoType(
-  api.GooglePrivacyDlpV2StoredInfoType o,
-) {
+    api.GooglePrivacyDlpV2StoredInfoType o) {
   buildCounterGooglePrivacyDlpV2StoredInfoType++;
   if (buildCounterGooglePrivacyDlpV2StoredInfoType < 3) {
     checkGooglePrivacyDlpV2StoredInfoTypeVersion(o.currentVersion!);
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkUnnamed119(o.pendingVersions!);
   }
   buildCounterGooglePrivacyDlpV2StoredInfoType--;
@@ -8017,16 +8913,20 @@ api.GooglePrivacyDlpV2StoredInfoTypeConfig
 }
 
 void checkGooglePrivacyDlpV2StoredInfoTypeConfig(
-  api.GooglePrivacyDlpV2StoredInfoTypeConfig o,
-) {
+    api.GooglePrivacyDlpV2StoredInfoTypeConfig o) {
   buildCounterGooglePrivacyDlpV2StoredInfoTypeConfig++;
   if (buildCounterGooglePrivacyDlpV2StoredInfoTypeConfig < 3) {
-    unittest.expect(o.description!, unittest.equals('foo'));
-    checkGooglePrivacyDlpV2Dictionary(o.dictionary!);
-    unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkGooglePrivacyDlpV2LargeCustomDictionaryConfig(
-      o.largeCustomDictionary!,
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
     );
+    checkGooglePrivacyDlpV2Dictionary(o.dictionary!);
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    checkGooglePrivacyDlpV2LargeCustomDictionaryConfig(
+        o.largeCustomDictionary!);
     checkGooglePrivacyDlpV2Regex(o.regex!);
   }
   buildCounterGooglePrivacyDlpV2StoredInfoTypeConfig--;
@@ -8046,8 +8946,7 @@ api.GooglePrivacyDlpV2StoredInfoTypeStats
 }
 
 void checkGooglePrivacyDlpV2StoredInfoTypeStats(
-  api.GooglePrivacyDlpV2StoredInfoTypeStats o,
-) {
+    api.GooglePrivacyDlpV2StoredInfoTypeStats o) {
   buildCounterGooglePrivacyDlpV2StoredInfoTypeStats++;
   if (buildCounterGooglePrivacyDlpV2StoredInfoTypeStats < 3) {
     checkGooglePrivacyDlpV2LargeCustomDictionaryStats(o.largeCustomDictionary!);
@@ -8083,14 +8982,19 @@ api.GooglePrivacyDlpV2StoredInfoTypeVersion
 }
 
 void checkGooglePrivacyDlpV2StoredInfoTypeVersion(
-  api.GooglePrivacyDlpV2StoredInfoTypeVersion o,
-) {
+    api.GooglePrivacyDlpV2StoredInfoTypeVersion o) {
   buildCounterGooglePrivacyDlpV2StoredInfoTypeVersion++;
   if (buildCounterGooglePrivacyDlpV2StoredInfoTypeVersion < 3) {
     checkGooglePrivacyDlpV2StoredInfoTypeConfig(o.config!);
-    unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
     checkUnnamed120(o.errors!);
-    unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2StoredInfoTypeStats(o.stats!);
   }
   buildCounterGooglePrivacyDlpV2StoredInfoTypeVersion--;
@@ -8111,8 +9015,14 @@ api.GooglePrivacyDlpV2StoredType buildGooglePrivacyDlpV2StoredType() {
 void checkGooglePrivacyDlpV2StoredType(api.GooglePrivacyDlpV2StoredType o) {
   buildCounterGooglePrivacyDlpV2StoredType++;
   if (buildCounterGooglePrivacyDlpV2StoredType < 3) {
-    unittest.expect(o.createTime!, unittest.equals('foo'));
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2StoredType--;
 }
@@ -8131,13 +9041,21 @@ api.GooglePrivacyDlpV2SummaryResult buildGooglePrivacyDlpV2SummaryResult() {
 }
 
 void checkGooglePrivacyDlpV2SummaryResult(
-  api.GooglePrivacyDlpV2SummaryResult o,
-) {
+    api.GooglePrivacyDlpV2SummaryResult o) {
   buildCounterGooglePrivacyDlpV2SummaryResult++;
   if (buildCounterGooglePrivacyDlpV2SummaryResult < 3) {
-    unittest.expect(o.code!, unittest.equals('foo'));
-    unittest.expect(o.count!, unittest.equals('foo'));
-    unittest.expect(o.details!, unittest.equals('foo'));
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.count!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.details!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2SummaryResult--;
 }
@@ -8152,8 +9070,7 @@ api.GooglePrivacyDlpV2SurrogateType buildGooglePrivacyDlpV2SurrogateType() {
 }
 
 void checkGooglePrivacyDlpV2SurrogateType(
-  api.GooglePrivacyDlpV2SurrogateType o,
-) {
+    api.GooglePrivacyDlpV2SurrogateType o) {
   buildCounterGooglePrivacyDlpV2SurrogateType++;
   if (buildCounterGooglePrivacyDlpV2SurrogateType < 3) {}
   buildCounterGooglePrivacyDlpV2SurrogateType--;
@@ -8231,8 +9148,14 @@ core.Map<core.String, core.String> buildUnnamed125() => {
 
 void checkUnnamed125(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x']!, unittest.equals('foo'));
-  unittest.expect(o['y']!, unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2TableDataProfile = 0;
@@ -8273,36 +9196,89 @@ api.GooglePrivacyDlpV2TableDataProfile
 }
 
 void checkGooglePrivacyDlpV2TableDataProfile(
-  api.GooglePrivacyDlpV2TableDataProfile o,
-) {
+    api.GooglePrivacyDlpV2TableDataProfile o) {
   buildCounterGooglePrivacyDlpV2TableDataProfile++;
   if (buildCounterGooglePrivacyDlpV2TableDataProfile < 3) {
     checkGooglePrivacyDlpV2DataProfileConfigSnapshot(o.configSnapshot!);
-    unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2DataRiskLevel(o.dataRiskLevel!);
     checkGooglePrivacyDlpV2DataSourceType(o.dataSourceType!);
-    unittest.expect(o.datasetId!, unittest.equals('foo'));
-    unittest.expect(o.datasetLocation!, unittest.equals('foo'));
-    unittest.expect(o.datasetProjectId!, unittest.equals('foo'));
-    unittest.expect(o.encryptionStatus!, unittest.equals('foo'));
-    unittest.expect(o.expirationTime!, unittest.equals('foo'));
-    unittest.expect(o.failedColumnCount!, unittest.equals('foo'));
-    unittest.expect(o.fullResource!, unittest.equals('foo'));
-    unittest.expect(o.lastModifiedTime!, unittest.equals('foo'));
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.datasetId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.datasetLocation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.datasetProjectId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.encryptionStatus!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expirationTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.failedColumnCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fullResource!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lastModifiedTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkUnnamed123(o.otherInfoTypes!);
     checkUnnamed124(o.predictedInfoTypes!);
-    unittest.expect(o.profileLastGenerated!, unittest.equals('foo'));
+    unittest.expect(
+      o.profileLastGenerated!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2ProfileStatus(o.profileStatus!);
-    unittest.expect(o.projectDataProfile!, unittest.equals('foo'));
+    unittest.expect(
+      o.projectDataProfile!,
+      unittest.equals('foo'),
+    );
     checkUnnamed125(o.resourceLabels!);
-    unittest.expect(o.resourceVisibility!, unittest.equals('foo'));
-    unittest.expect(o.rowCount!, unittest.equals('foo'));
-    unittest.expect(o.scannedColumnCount!, unittest.equals('foo'));
+    unittest.expect(
+      o.resourceVisibility!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.rowCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.scannedColumnCount!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2SensitivityScore(o.sensitivityScore!);
-    unittest.expect(o.state!, unittest.equals('foo'));
-    unittest.expect(o.tableId!, unittest.equals('foo'));
-    unittest.expect(o.tableSizeBytes!, unittest.equals('foo'));
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tableId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tableSizeBytes!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2TableDataProfile--;
 }
@@ -8319,11 +9295,13 @@ api.GooglePrivacyDlpV2TableLocation buildGooglePrivacyDlpV2TableLocation() {
 }
 
 void checkGooglePrivacyDlpV2TableLocation(
-  api.GooglePrivacyDlpV2TableLocation o,
-) {
+    api.GooglePrivacyDlpV2TableLocation o) {
   buildCounterGooglePrivacyDlpV2TableLocation++;
   if (buildCounterGooglePrivacyDlpV2TableLocation < 3) {
-    unittest.expect(o.rowIndex!, unittest.equals('foo'));
+    unittest.expect(
+      o.rowIndex!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2TableLocation--;
 }
@@ -8371,12 +9349,17 @@ api.GooglePrivacyDlpV2TableReference buildGooglePrivacyDlpV2TableReference() {
 }
 
 void checkGooglePrivacyDlpV2TableReference(
-  api.GooglePrivacyDlpV2TableReference o,
-) {
+    api.GooglePrivacyDlpV2TableReference o) {
   buildCounterGooglePrivacyDlpV2TableReference++;
   if (buildCounterGooglePrivacyDlpV2TableReference < 3) {
-    unittest.expect(o.datasetId!, unittest.equals('foo'));
-    unittest.expect(o.tableId!, unittest.equals('foo'));
+    unittest.expect(
+      o.datasetId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tableId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2TableReference--;
 }
@@ -8402,12 +9385,21 @@ void checkGooglePrivacyDlpV2TagCondition(api.GooglePrivacyDlpV2TagCondition o) {
   buildCounterGooglePrivacyDlpV2TagCondition--;
 }
 
-core.List<core.String> buildUnnamed127() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed127() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed127(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.GooglePrivacyDlpV2TagCondition> buildUnnamed128() => [
@@ -8458,7 +9450,10 @@ api.GooglePrivacyDlpV2TagValue buildGooglePrivacyDlpV2TagValue() {
 void checkGooglePrivacyDlpV2TagValue(api.GooglePrivacyDlpV2TagValue o) {
   buildCounterGooglePrivacyDlpV2TagValue++;
   if (buildCounterGooglePrivacyDlpV2TagValue < 3) {
-    unittest.expect(o.namespacedValue!, unittest.equals('foo'));
+    unittest.expect(
+      o.namespacedValue!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2TagValue--;
 }
@@ -8480,7 +9475,10 @@ api.GooglePrivacyDlpV2TaggedField buildGooglePrivacyDlpV2TaggedField() {
 void checkGooglePrivacyDlpV2TaggedField(api.GooglePrivacyDlpV2TaggedField o) {
   buildCounterGooglePrivacyDlpV2TaggedField++;
   if (buildCounterGooglePrivacyDlpV2TaggedField < 3) {
-    unittest.expect(o.customTag!, unittest.equals('foo'));
+    unittest.expect(
+      o.customTag!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2FieldId(o.field!);
     checkGoogleProtobufEmpty(o.inferred!);
     checkGooglePrivacyDlpV2InfoType(o.infoType!);
@@ -8515,11 +9513,13 @@ api.GooglePrivacyDlpV2TimePartConfig buildGooglePrivacyDlpV2TimePartConfig() {
 }
 
 void checkGooglePrivacyDlpV2TimePartConfig(
-  api.GooglePrivacyDlpV2TimePartConfig o,
-) {
+    api.GooglePrivacyDlpV2TimePartConfig o) {
   buildCounterGooglePrivacyDlpV2TimePartConfig++;
   if (buildCounterGooglePrivacyDlpV2TimePartConfig < 3) {
-    unittest.expect(o.partToExtract!, unittest.equals('foo'));
+    unittest.expect(
+      o.partToExtract!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2TimePartConfig--;
 }
@@ -8538,7 +9538,10 @@ api.GooglePrivacyDlpV2TimeZone buildGooglePrivacyDlpV2TimeZone() {
 void checkGooglePrivacyDlpV2TimeZone(api.GooglePrivacyDlpV2TimeZone o) {
   buildCounterGooglePrivacyDlpV2TimeZone++;
   if (buildCounterGooglePrivacyDlpV2TimeZone < 3) {
-    unittest.expect(o.offsetMinutes!, unittest.equals(42));
+    unittest.expect(
+      o.offsetMinutes!,
+      unittest.equals(42),
+    );
   }
   buildCounterGooglePrivacyDlpV2TimeZone--;
 }
@@ -8558,13 +9561,18 @@ api.GooglePrivacyDlpV2TimespanConfig buildGooglePrivacyDlpV2TimespanConfig() {
 }
 
 void checkGooglePrivacyDlpV2TimespanConfig(
-  api.GooglePrivacyDlpV2TimespanConfig o,
-) {
+    api.GooglePrivacyDlpV2TimespanConfig o) {
   buildCounterGooglePrivacyDlpV2TimespanConfig++;
   if (buildCounterGooglePrivacyDlpV2TimespanConfig < 3) {
     unittest.expect(o.enableAutoPopulationOfTimespanConfig!, unittest.isTrue);
-    unittest.expect(o.endTime!, unittest.equals('foo'));
-    unittest.expect(o.startTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2FieldId(o.timestampField!);
   }
   buildCounterGooglePrivacyDlpV2TimespanConfig--;
@@ -8585,13 +9593,21 @@ api.GooglePrivacyDlpV2TransformationConfig
 }
 
 void checkGooglePrivacyDlpV2TransformationConfig(
-  api.GooglePrivacyDlpV2TransformationConfig o,
-) {
+    api.GooglePrivacyDlpV2TransformationConfig o) {
   buildCounterGooglePrivacyDlpV2TransformationConfig++;
   if (buildCounterGooglePrivacyDlpV2TransformationConfig < 3) {
-    unittest.expect(o.deidentifyTemplate!, unittest.equals('foo'));
-    unittest.expect(o.imageRedactTemplate!, unittest.equals('foo'));
-    unittest.expect(o.structuredDeidentifyTemplate!, unittest.equals('foo'));
+    unittest.expect(
+      o.deidentifyTemplate!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.imageRedactTemplate!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.structuredDeidentifyTemplate!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2TransformationConfig--;
 }
@@ -8609,8 +9625,7 @@ api.GooglePrivacyDlpV2TransformationDetailsStorageConfig
 }
 
 void checkGooglePrivacyDlpV2TransformationDetailsStorageConfig(
-  api.GooglePrivacyDlpV2TransformationDetailsStorageConfig o,
-) {
+    api.GooglePrivacyDlpV2TransformationDetailsStorageConfig o) {
   buildCounterGooglePrivacyDlpV2TransformationDetailsStorageConfig++;
   if (buildCounterGooglePrivacyDlpV2TransformationDetailsStorageConfig < 3) {
     checkGooglePrivacyDlpV2BigQueryTable(o.table!);
@@ -8632,8 +9647,7 @@ api.GooglePrivacyDlpV2TransformationErrorHandling
 }
 
 void checkGooglePrivacyDlpV2TransformationErrorHandling(
-  api.GooglePrivacyDlpV2TransformationErrorHandling o,
-) {
+    api.GooglePrivacyDlpV2TransformationErrorHandling o) {
   buildCounterGooglePrivacyDlpV2TransformationErrorHandling++;
   if (buildCounterGooglePrivacyDlpV2TransformationErrorHandling < 3) {
     checkGooglePrivacyDlpV2LeaveUntransformed(o.leaveUntransformed!);
@@ -8667,12 +9681,14 @@ api.GooglePrivacyDlpV2TransformationOverview
 }
 
 void checkGooglePrivacyDlpV2TransformationOverview(
-  api.GooglePrivacyDlpV2TransformationOverview o,
-) {
+    api.GooglePrivacyDlpV2TransformationOverview o) {
   buildCounterGooglePrivacyDlpV2TransformationOverview++;
   if (buildCounterGooglePrivacyDlpV2TransformationOverview < 3) {
     checkUnnamed129(o.transformationSummaries!);
-    unittest.expect(o.transformedBytes!, unittest.equals('foo'));
+    unittest.expect(
+      o.transformedBytes!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2TransformationOverview--;
 }
@@ -8718,8 +9734,7 @@ api.GooglePrivacyDlpV2TransformationSummary
 }
 
 void checkGooglePrivacyDlpV2TransformationSummary(
-  api.GooglePrivacyDlpV2TransformationSummary o,
-) {
+    api.GooglePrivacyDlpV2TransformationSummary o) {
   buildCounterGooglePrivacyDlpV2TransformationSummary++;
   if (buildCounterGooglePrivacyDlpV2TransformationSummary < 3) {
     checkGooglePrivacyDlpV2FieldId(o.field!);
@@ -8728,7 +9743,10 @@ void checkGooglePrivacyDlpV2TransformationSummary(
     checkGooglePrivacyDlpV2RecordSuppression(o.recordSuppress!);
     checkUnnamed131(o.results!);
     checkGooglePrivacyDlpV2PrimitiveTransformation(o.transformation!);
-    unittest.expect(o.transformedBytes!, unittest.equals('foo'));
+    unittest.expect(
+      o.transformedBytes!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2TransformationSummary--;
 }
@@ -8746,11 +9764,13 @@ api.GooglePrivacyDlpV2TransientCryptoKey
 }
 
 void checkGooglePrivacyDlpV2TransientCryptoKey(
-  api.GooglePrivacyDlpV2TransientCryptoKey o,
-) {
+    api.GooglePrivacyDlpV2TransientCryptoKey o) {
   buildCounterGooglePrivacyDlpV2TransientCryptoKey++;
   if (buildCounterGooglePrivacyDlpV2TransientCryptoKey < 3) {
-    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2TransientCryptoKey--;
 }
@@ -8789,11 +9809,13 @@ api.GooglePrivacyDlpV2UnwrappedCryptoKey
 }
 
 void checkGooglePrivacyDlpV2UnwrappedCryptoKey(
-  api.GooglePrivacyDlpV2UnwrappedCryptoKey o,
-) {
+    api.GooglePrivacyDlpV2UnwrappedCryptoKey o) {
   buildCounterGooglePrivacyDlpV2UnwrappedCryptoKey++;
   if (buildCounterGooglePrivacyDlpV2UnwrappedCryptoKey < 3) {
-    unittest.expect(o.key!, unittest.equals('foo'));
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2UnwrappedCryptoKey--;
 }
@@ -8812,12 +9834,14 @@ api.GooglePrivacyDlpV2UpdateConnectionRequest
 }
 
 void checkGooglePrivacyDlpV2UpdateConnectionRequest(
-  api.GooglePrivacyDlpV2UpdateConnectionRequest o,
-) {
+    api.GooglePrivacyDlpV2UpdateConnectionRequest o) {
   buildCounterGooglePrivacyDlpV2UpdateConnectionRequest++;
   if (buildCounterGooglePrivacyDlpV2UpdateConnectionRequest < 3) {
     checkGooglePrivacyDlpV2Connection(o.connection!);
-    unittest.expect(o.updateMask!, unittest.equals('foo'));
+    unittest.expect(
+      o.updateMask!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2UpdateConnectionRequest--;
 }
@@ -8836,12 +9860,14 @@ api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest
 }
 
 void checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(
-  api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest o,
-) {
+    api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest o) {
   buildCounterGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest++;
   if (buildCounterGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest < 3) {
     checkGooglePrivacyDlpV2DeidentifyTemplate(o.deidentifyTemplate!);
-    unittest.expect(o.updateMask!, unittest.equals('foo'));
+    unittest.expect(
+      o.updateMask!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest--;
 }
@@ -8860,12 +9886,14 @@ api.GooglePrivacyDlpV2UpdateDiscoveryConfigRequest
 }
 
 void checkGooglePrivacyDlpV2UpdateDiscoveryConfigRequest(
-  api.GooglePrivacyDlpV2UpdateDiscoveryConfigRequest o,
-) {
+    api.GooglePrivacyDlpV2UpdateDiscoveryConfigRequest o) {
   buildCounterGooglePrivacyDlpV2UpdateDiscoveryConfigRequest++;
   if (buildCounterGooglePrivacyDlpV2UpdateDiscoveryConfigRequest < 3) {
     checkGooglePrivacyDlpV2DiscoveryConfig(o.discoveryConfig!);
-    unittest.expect(o.updateMask!, unittest.equals('foo'));
+    unittest.expect(
+      o.updateMask!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2UpdateDiscoveryConfigRequest--;
 }
@@ -8884,12 +9912,14 @@ api.GooglePrivacyDlpV2UpdateInspectTemplateRequest
 }
 
 void checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(
-  api.GooglePrivacyDlpV2UpdateInspectTemplateRequest o,
-) {
+    api.GooglePrivacyDlpV2UpdateInspectTemplateRequest o) {
   buildCounterGooglePrivacyDlpV2UpdateInspectTemplateRequest++;
   if (buildCounterGooglePrivacyDlpV2UpdateInspectTemplateRequest < 3) {
     checkGooglePrivacyDlpV2InspectTemplate(o.inspectTemplate!);
-    unittest.expect(o.updateMask!, unittest.equals('foo'));
+    unittest.expect(
+      o.updateMask!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2UpdateInspectTemplateRequest--;
 }
@@ -8908,12 +9938,14 @@ api.GooglePrivacyDlpV2UpdateJobTriggerRequest
 }
 
 void checkGooglePrivacyDlpV2UpdateJobTriggerRequest(
-  api.GooglePrivacyDlpV2UpdateJobTriggerRequest o,
-) {
+    api.GooglePrivacyDlpV2UpdateJobTriggerRequest o) {
   buildCounterGooglePrivacyDlpV2UpdateJobTriggerRequest++;
   if (buildCounterGooglePrivacyDlpV2UpdateJobTriggerRequest < 3) {
     checkGooglePrivacyDlpV2JobTrigger(o.jobTrigger!);
-    unittest.expect(o.updateMask!, unittest.equals('foo'));
+    unittest.expect(
+      o.updateMask!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2UpdateJobTriggerRequest--;
 }
@@ -8932,12 +9964,14 @@ api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest
 }
 
 void checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(
-  api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest o,
-) {
+    api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest o) {
   buildCounterGooglePrivacyDlpV2UpdateStoredInfoTypeRequest++;
   if (buildCounterGooglePrivacyDlpV2UpdateStoredInfoTypeRequest < 3) {
     checkGooglePrivacyDlpV2StoredInfoTypeConfig(o.config!);
-    unittest.expect(o.updateMask!, unittest.equals('foo'));
+    unittest.expect(
+      o.updateMask!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2UpdateStoredInfoTypeRequest--;
 }
@@ -8965,12 +9999,27 @@ void checkGooglePrivacyDlpV2Value(api.GooglePrivacyDlpV2Value o) {
   if (buildCounterGooglePrivacyDlpV2Value < 3) {
     unittest.expect(o.booleanValue!, unittest.isTrue);
     checkGoogleTypeDate(o.dateValue!);
-    unittest.expect(o.dayOfWeekValue!, unittest.equals('foo'));
-    unittest.expect(o.floatValue!, unittest.equals(42.0));
-    unittest.expect(o.integerValue!, unittest.equals('foo'));
-    unittest.expect(o.stringValue!, unittest.equals('foo'));
+    unittest.expect(
+      o.dayOfWeekValue!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.floatValue!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.integerValue!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.stringValue!,
+      unittest.equals('foo'),
+    );
     checkGoogleTypeTimeOfDay(o.timeValue!);
-    unittest.expect(o.timestampValue!, unittest.equals('foo'));
+    unittest.expect(
+      o.timestampValue!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2Value--;
 }
@@ -8988,11 +10037,13 @@ api.GooglePrivacyDlpV2ValueFrequency buildGooglePrivacyDlpV2ValueFrequency() {
 }
 
 void checkGooglePrivacyDlpV2ValueFrequency(
-  api.GooglePrivacyDlpV2ValueFrequency o,
-) {
+    api.GooglePrivacyDlpV2ValueFrequency o) {
   buildCounterGooglePrivacyDlpV2ValueFrequency++;
   if (buildCounterGooglePrivacyDlpV2ValueFrequency < 3) {
-    unittest.expect(o.count!, unittest.equals('foo'));
+    unittest.expect(
+      o.count!,
+      unittest.equals('foo'),
+    );
     checkGooglePrivacyDlpV2Value(o.value!);
   }
   buildCounterGooglePrivacyDlpV2ValueFrequency--;
@@ -9012,22 +10063,36 @@ api.GooglePrivacyDlpV2VersionDescription
 }
 
 void checkGooglePrivacyDlpV2VersionDescription(
-  api.GooglePrivacyDlpV2VersionDescription o,
-) {
+    api.GooglePrivacyDlpV2VersionDescription o) {
   buildCounterGooglePrivacyDlpV2VersionDescription++;
   if (buildCounterGooglePrivacyDlpV2VersionDescription < 3) {
-    unittest.expect(o.description!, unittest.equals('foo'));
-    unittest.expect(o.version!, unittest.equals('foo'));
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePrivacyDlpV2VersionDescription--;
 }
 
-core.List<core.String> buildUnnamed132() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed132() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed132(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGooglePrivacyDlpV2WordList = 0;
@@ -9068,12 +10133,12 @@ core.Map<core.String, core.Object?> buildUnnamed133() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
       'y': {
         'list': [1, 2, 3],
         'bool': true,
-        'string': 'foo',
+        'string': 'foo'
       },
     };
 
@@ -9081,14 +10146,32 @@ void checkUnnamed133(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1['bool'], unittest.equals(true));
-  unittest.expect(casted1['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted1['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted1['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted1['string'],
+    unittest.equals('foo'),
+  );
   var casted2 = (o['y']!) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2['bool'], unittest.equals(true));
-  unittest.expect(casted2['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted2['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted2['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted2['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.Map<core.String, core.Object?>> buildUnnamed134() => [
@@ -9118,9 +10201,15 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
 void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
-    unittest.expect(o.code!, unittest.equals(42));
+    unittest.expect(
+      o.code!,
+      unittest.equals(42),
+    );
     checkUnnamed134(o.details!);
-    unittest.expect(o.message!, unittest.equals('foo'));
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleRpcStatus--;
 }
@@ -9141,9 +10230,18 @@ api.GoogleTypeDate buildGoogleTypeDate() {
 void checkGoogleTypeDate(api.GoogleTypeDate o) {
   buildCounterGoogleTypeDate++;
   if (buildCounterGoogleTypeDate < 3) {
-    unittest.expect(o.day!, unittest.equals(42));
-    unittest.expect(o.month!, unittest.equals(42));
-    unittest.expect(o.year!, unittest.equals(42));
+    unittest.expect(
+      o.day!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.month!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.year!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleTypeDate--;
 }
@@ -9165,10 +10263,22 @@ api.GoogleTypeTimeOfDay buildGoogleTypeTimeOfDay() {
 void checkGoogleTypeTimeOfDay(api.GoogleTypeTimeOfDay o) {
   buildCounterGoogleTypeTimeOfDay++;
   if (buildCounterGoogleTypeTimeOfDay < 3) {
-    unittest.expect(o.hours!, unittest.equals(42));
-    unittest.expect(o.minutes!, unittest.equals(42));
-    unittest.expect(o.nanos!, unittest.equals(42));
-    unittest.expect(o.seconds!, unittest.equals(42));
+    unittest.expect(
+      o.hours!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.minutes!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.nanos!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.seconds!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleTypeTimeOfDay--;
 }
@@ -9179,8 +10289,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Action();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Action.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Action(od);
     });
   });
@@ -9190,8 +10299,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ActionDetails();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ActionDetails.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ActionDetails(od);
     });
   });
@@ -9201,8 +10309,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ActivateJobTriggerRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ActivateJobTriggerRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ActivateJobTriggerRequest(od);
     });
   });
@@ -9212,8 +10319,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2AllInfoTypes();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2AllInfoTypes.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2AllInfoTypes(od);
     });
   });
@@ -9223,8 +10329,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2AllOtherBigQueryTables();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2AllOtherBigQueryTables.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2AllOtherBigQueryTables(od);
     });
   });
@@ -9234,8 +10339,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2AllOtherDatabaseResources();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2AllOtherDatabaseResources.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2AllOtherDatabaseResources(od);
     });
   });
@@ -9245,8 +10349,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2AllOtherResources();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2AllOtherResources.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2AllOtherResources(od);
     });
   });
@@ -9256,8 +10359,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2AllText();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2AllText.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2AllText(od);
     });
   });
@@ -9267,8 +10369,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2AmazonS3Bucket();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2AmazonS3Bucket.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2AmazonS3Bucket(od);
     });
   });
@@ -9278,8 +10379,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2AmazonS3BucketConditions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2AmazonS3BucketConditions.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2AmazonS3BucketConditions(od);
     });
   });
@@ -9289,33 +10389,28 @@ void main() {
       final o = buildGooglePrivacyDlpV2AmazonS3BucketRegex();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2AmazonS3BucketRegex.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2AmazonS3BucketRegex(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2AnalyzeDataSourceRiskDetails();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2AnalyzeDataSourceRiskDetails(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2AnalyzeDataSourceRiskDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2AnalyzeDataSourceRiskDetails(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2AuxiliaryTable', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2AuxiliaryTable();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2AuxiliaryTable.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2AuxiliaryTable(od);
     });
   });
@@ -9325,8 +10420,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2AwsAccount();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2AwsAccount.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2AwsAccount(od);
     });
   });
@@ -9336,33 +10430,28 @@ void main() {
       final o = buildGooglePrivacyDlpV2AwsAccountRegex();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2AwsAccountRegex.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2AwsAccountRegex(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2AwsDiscoveryStartingLocation',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2AwsDiscoveryStartingLocation();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2AwsDiscoveryStartingLocation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2AwsDiscoveryStartingLocation(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2AwsDiscoveryStartingLocation',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2AwsDiscoveryStartingLocation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2AwsDiscoveryStartingLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2AwsDiscoveryStartingLocation(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2BigQueryDiscoveryTarget', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2BigQueryDiscoveryTarget();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2BigQueryDiscoveryTarget.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2BigQueryDiscoveryTarget(od);
     });
   });
@@ -9372,8 +10461,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2BigQueryField();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2BigQueryField.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2BigQueryField(od);
     });
   });
@@ -9383,8 +10471,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2BigQueryKey();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2BigQueryKey.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2BigQueryKey(od);
     });
   });
@@ -9394,8 +10481,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2BigQueryOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2BigQueryOptions.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2BigQueryOptions(od);
     });
   });
@@ -9405,8 +10491,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2BigQueryRegex();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2BigQueryRegex.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2BigQueryRegex(od);
     });
   });
@@ -9416,8 +10501,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2BigQueryRegexes();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2BigQueryRegexes.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2BigQueryRegexes(od);
     });
   });
@@ -9427,8 +10511,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2BigQueryTable();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2BigQueryTable.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2BigQueryTable(od);
     });
   });
@@ -9438,8 +10521,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2BigQueryTableCollection();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2BigQueryTableCollection.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2BigQueryTableCollection(od);
     });
   });
@@ -9449,8 +10531,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2BigQueryTableTypes();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2BigQueryTableTypes.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2BigQueryTableTypes(od);
     });
   });
@@ -9460,8 +10541,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2BoundingBox();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2BoundingBox.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2BoundingBox(od);
     });
   });
@@ -9471,8 +10551,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Bucket();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Bucket.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Bucket(od);
     });
   });
@@ -9482,8 +10561,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2BucketingConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2BucketingConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2BucketingConfig(od);
     });
   });
@@ -9493,8 +10571,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ByteContentItem();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ByteContentItem.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ByteContentItem(od);
     });
   });
@@ -9504,8 +10581,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2CancelDlpJobRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CancelDlpJobRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CancelDlpJobRequest(od);
     });
   });
@@ -9515,34 +10591,28 @@ void main() {
       final o = buildGooglePrivacyDlpV2CategoricalStatsConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CategoricalStatsConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CategoricalStatsConfig(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2CategoricalStatsHistogramBucket',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2CategoricalStatsHistogramBucket();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GooglePrivacyDlpV2CategoricalStatsHistogramBucket.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2CategoricalStatsHistogramBucket(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2CategoricalStatsHistogramBucket',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2CategoricalStatsHistogramBucket();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2CategoricalStatsHistogramBucket.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2CategoricalStatsHistogramBucket(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CategoricalStatsResult', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2CategoricalStatsResult();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CategoricalStatsResult.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CategoricalStatsResult(od);
     });
   });
@@ -9552,8 +10622,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2CharacterMaskConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CharacterMaskConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CharacterMaskConfig(od);
     });
   });
@@ -9563,8 +10632,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2CharsToIgnore();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CharsToIgnore.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CharsToIgnore(od);
     });
   });
@@ -9574,8 +10642,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2CloudSqlDiscoveryTarget();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CloudSqlDiscoveryTarget.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CloudSqlDiscoveryTarget(od);
     });
   });
@@ -9585,8 +10652,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2CloudSqlIamCredential();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CloudSqlIamCredential.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CloudSqlIamCredential(od);
     });
   });
@@ -9596,33 +10662,28 @@ void main() {
       final o = buildGooglePrivacyDlpV2CloudSqlProperties();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CloudSqlProperties.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CloudSqlProperties(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2CloudStorageDiscoveryTarget',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2CloudStorageDiscoveryTarget();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2CloudStorageDiscoveryTarget.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2CloudStorageDiscoveryTarget(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2CloudStorageDiscoveryTarget',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2CloudStorageDiscoveryTarget();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2CloudStorageDiscoveryTarget.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2CloudStorageDiscoveryTarget(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CloudStorageFileSet', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2CloudStorageFileSet();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CloudStorageFileSet.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CloudStorageFileSet(od);
     });
   });
@@ -9632,8 +10693,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2CloudStorageOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CloudStorageOptions.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CloudStorageOptions(od);
     });
   });
@@ -9643,8 +10703,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2CloudStoragePath();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CloudStoragePath.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CloudStoragePath(od);
     });
   });
@@ -9654,8 +10713,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2CloudStorageRegex();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CloudStorageRegex.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CloudStorageRegex(od);
     });
   });
@@ -9665,33 +10723,28 @@ void main() {
       final o = buildGooglePrivacyDlpV2CloudStorageRegexFileSet();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CloudStorageRegexFileSet.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CloudStorageRegexFileSet(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2CloudStorageResourceReference',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2CloudStorageResourceReference();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2CloudStorageResourceReference.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2CloudStorageResourceReference(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2CloudStorageResourceReference',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2CloudStorageResourceReference();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2CloudStorageResourceReference.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2CloudStorageResourceReference(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Color', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2Color();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Color.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Color(od);
     });
   });
@@ -9701,8 +10754,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ColumnDataProfile();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ColumnDataProfile.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ColumnDataProfile(od);
     });
   });
@@ -9712,8 +10764,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Condition();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Condition.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Condition(od);
     });
   });
@@ -9723,8 +10774,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Conditions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Conditions.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Conditions(od);
     });
   });
@@ -9734,8 +10784,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Connection();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Connection.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Connection(od);
     });
   });
@@ -9745,8 +10794,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Container();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Container.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Container(od);
     });
   });
@@ -9756,8 +10804,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ContentItem();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ContentItem.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ContentItem(od);
     });
   });
@@ -9767,8 +10814,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ContentLocation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ContentLocation.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ContentLocation(od);
     });
   });
@@ -9778,98 +10824,81 @@ void main() {
       final o = buildGooglePrivacyDlpV2CreateConnectionRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CreateConnectionRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CreateConnectionRequest(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2CreateDeidentifyTemplateRequest',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2CreateDeidentifyTemplateRequest();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2CreateDeidentifyTemplateRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2CreateDeidentifyTemplateRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(od);
+    });
+  });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2CreateDiscoveryConfigRequest',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2CreateDiscoveryConfigRequest();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2CreateDiscoveryConfigRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2CreateDiscoveryConfigRequest(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2CreateDiscoveryConfigRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2CreateDiscoveryConfigRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2CreateDiscoveryConfigRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2CreateDiscoveryConfigRequest(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CreateDlpJobRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2CreateDlpJobRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CreateDlpJobRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CreateDlpJobRequest(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2CreateInspectTemplateRequest',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2CreateInspectTemplateRequest();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2CreateInspectTemplateRequest(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2CreateInspectTemplateRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2CreateInspectTemplateRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2CreateInspectTemplateRequest(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CreateJobTriggerRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2CreateJobTriggerRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CreateJobTriggerRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CreateJobTriggerRequest(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2CreateStoredInfoTypeRequest',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2CreateStoredInfoTypeRequest();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2CreateStoredInfoTypeRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2CreateStoredInfoTypeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CryptoDeterministicConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2CryptoDeterministicConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CryptoDeterministicConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CryptoDeterministicConfig(od);
     });
   });
@@ -9879,8 +10908,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2CryptoHashConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CryptoHashConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CryptoHashConfig(od);
     });
   });
@@ -9890,8 +10918,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2CryptoKey();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CryptoKey.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CryptoKey(od);
     });
   });
@@ -9901,8 +10928,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2CryptoReplaceFfxFpeConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CryptoReplaceFfxFpeConfig(od);
     });
   });
@@ -9912,8 +10938,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2CustomInfoType();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2CustomInfoType.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CustomInfoType(od);
     });
   });
@@ -9923,8 +10948,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2DataProfileAction();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DataProfileAction.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DataProfileAction(od);
     });
   });
@@ -9934,8 +10958,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2DataProfileConfigSnapshot();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DataProfileConfigSnapshot.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DataProfileConfigSnapshot(od);
     });
   });
@@ -9945,8 +10968,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2DataProfileJobConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DataProfileJobConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DataProfileJobConfig(od);
     });
   });
@@ -9956,8 +10978,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2DataProfileLocation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DataProfileLocation.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DataProfileLocation(od);
     });
   });
@@ -9967,8 +10988,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2DataProfilePubSubCondition();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DataProfilePubSubCondition.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DataProfilePubSubCondition(od);
     });
   });
@@ -9978,8 +10998,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2DataRiskLevel();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DataRiskLevel.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DataRiskLevel(od);
     });
   });
@@ -9989,8 +11008,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2DataSourceType();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DataSourceType.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DataSourceType(od);
     });
   });
@@ -10000,8 +11018,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2DatabaseResourceCollection();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DatabaseResourceCollection.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DatabaseResourceCollection(od);
     });
   });
@@ -10011,8 +11028,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2DatabaseResourceReference();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DatabaseResourceReference.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DatabaseResourceReference(od);
     });
   });
@@ -10022,8 +11038,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2DatabaseResourceRegex();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DatabaseResourceRegex.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DatabaseResourceRegex(od);
     });
   });
@@ -10033,8 +11048,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2DatabaseResourceRegexes();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DatabaseResourceRegexes.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DatabaseResourceRegexes(od);
     });
   });
@@ -10044,8 +11058,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2DatastoreKey();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DatastoreKey.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DatastoreKey(od);
     });
   });
@@ -10055,8 +11068,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2DatastoreOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DatastoreOptions.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DatastoreOptions(od);
     });
   });
@@ -10066,8 +11078,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2DateShiftConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DateShiftConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DateShiftConfig(od);
     });
   });
@@ -10077,8 +11088,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2DateTime();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DateTime.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DateTime(od);
     });
   });
@@ -10088,8 +11098,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Deidentify();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Deidentify.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Deidentify(od);
     });
   });
@@ -10099,8 +11108,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2DeidentifyConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DeidentifyConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DeidentifyConfig(od);
     });
   });
@@ -10110,8 +11118,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2DeidentifyContentRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DeidentifyContentRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DeidentifyContentRequest(od);
     });
   });
@@ -10121,33 +11128,28 @@ void main() {
       final o = buildGooglePrivacyDlpV2DeidentifyContentResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DeidentifyContentResponse(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2DeidentifyDataSourceDetails',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2DeidentifyDataSourceDetails();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2DeidentifyDataSourceDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2DeidentifyDataSourceDetails(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2DeidentifyDataSourceDetails',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DeidentifyDataSourceDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2DeidentifyDataSourceDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DeidentifyDataSourceDetails(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DeidentifyDataSourceStats', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2DeidentifyDataSourceStats();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DeidentifyDataSourceStats.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DeidentifyDataSourceStats(od);
     });
   });
@@ -10157,78 +11159,64 @@ void main() {
       final o = buildGooglePrivacyDlpV2DeidentifyTemplate();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DeidentifyTemplate(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2DeltaPresenceEstimationConfig',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2DeltaPresenceEstimationConfig();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2DeltaPresenceEstimationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2DeltaPresenceEstimationConfig(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2DeltaPresenceEstimationConfig',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DeltaPresenceEstimationConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2DeltaPresenceEstimationConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DeltaPresenceEstimationConfig(od);
+    });
+  });
 
   unittest.group(
-    'obj-schema-GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o =
-            buildGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket
-            .fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket(od);
-      });
-    },
-  );
+      'obj-schema-GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket(od);
+    });
+  });
 
   unittest.group(
-    'obj-schema-GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues(od);
-      });
-    },
-  );
+      'obj-schema-GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues(od);
+    });
+  });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2DeltaPresenceEstimationResult',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2DeltaPresenceEstimationResult();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2DeltaPresenceEstimationResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2DeltaPresenceEstimationResult(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2DeltaPresenceEstimationResult',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DeltaPresenceEstimationResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2DeltaPresenceEstimationResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DeltaPresenceEstimationResult(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DetectionRule', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2DetectionRule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DetectionRule.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DetectionRule(od);
     });
   });
@@ -10238,8 +11226,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Dictionary();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Dictionary.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Dictionary(od);
     });
   });
@@ -10249,261 +11236,215 @@ void main() {
       final o = buildGooglePrivacyDlpV2Disabled();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Disabled.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Disabled(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2DiscoveryBigQueryConditions',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2DiscoveryBigQueryConditions();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2DiscoveryBigQueryConditions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2DiscoveryBigQueryConditions(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2DiscoveryBigQueryConditions',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DiscoveryBigQueryConditions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2DiscoveryBigQueryConditions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DiscoveryBigQueryConditions(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DiscoveryBigQueryFilter', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2DiscoveryBigQueryFilter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DiscoveryBigQueryFilter.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DiscoveryBigQueryFilter(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2DiscoveryCloudSqlConditions',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2DiscoveryCloudSqlConditions();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2DiscoveryCloudSqlConditions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2DiscoveryCloudSqlConditions(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2DiscoveryCloudSqlConditions',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DiscoveryCloudSqlConditions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2DiscoveryCloudSqlConditions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DiscoveryCloudSqlConditions(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DiscoveryCloudSqlFilter', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2DiscoveryCloudSqlFilter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DiscoveryCloudSqlFilter.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DiscoveryCloudSqlFilter(od);
     });
   });
 
   unittest.group(
-    'obj-schema-GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence(od);
-      });
-    },
-  );
+      'obj-schema-GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence(od);
+    });
+  });
+
+  unittest.group('obj-schema-GooglePrivacyDlpV2DiscoveryCloudStorageConditions',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DiscoveryCloudStorageConditions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2DiscoveryCloudStorageConditions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DiscoveryCloudStorageConditions(od);
+    });
+  });
+
+  unittest.group('obj-schema-GooglePrivacyDlpV2DiscoveryCloudStorageFilter',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DiscoveryCloudStorageFilter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2DiscoveryCloudStorageFilter.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DiscoveryCloudStorageFilter(od);
+    });
+  });
 
   unittest.group(
-    'obj-schema-GooglePrivacyDlpV2DiscoveryCloudStorageConditions',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2DiscoveryCloudStorageConditions();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GooglePrivacyDlpV2DiscoveryCloudStorageConditions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2DiscoveryCloudStorageConditions(od);
-      });
-    },
-  );
-
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2DiscoveryCloudStorageFilter',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2DiscoveryCloudStorageFilter();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2DiscoveryCloudStorageFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2DiscoveryCloudStorageFilter(od);
-      });
-    },
-  );
-
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o =
-            buildGooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence
-            .fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence(od);
-      });
-    },
-  );
+      'obj-schema-GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DiscoveryConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2DiscoveryConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DiscoveryConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DiscoveryConfig(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2DiscoveryFileStoreConditions',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2DiscoveryFileStoreConditions();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2DiscoveryFileStoreConditions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2DiscoveryFileStoreConditions(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2DiscoveryFileStoreConditions',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DiscoveryFileStoreConditions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2DiscoveryFileStoreConditions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DiscoveryFileStoreConditions(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DiscoveryGenerationCadence', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2DiscoveryGenerationCadence();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DiscoveryGenerationCadence.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DiscoveryGenerationCadence(od);
     });
   });
 
   unittest.group(
-    'obj-schema-GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o =
-            buildGooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence
-            .fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence(od);
-      });
-    },
-  );
+      'obj-schema-GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence(od);
+    });
+  });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2DiscoveryOtherCloudConditions',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2DiscoveryOtherCloudConditions();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2DiscoveryOtherCloudConditions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2DiscoveryOtherCloudConditions(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2DiscoveryOtherCloudConditions',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DiscoveryOtherCloudConditions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2DiscoveryOtherCloudConditions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DiscoveryOtherCloudConditions(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DiscoveryOtherCloudFilter', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2DiscoveryOtherCloudFilter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DiscoveryOtherCloudFilter.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DiscoveryOtherCloudFilter(od);
     });
   });
 
   unittest.group(
-    'obj-schema-GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence(od);
-      });
-    },
-  );
+      'obj-schema-GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence(od);
+    });
+  });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2DiscoverySchemaModifiedCadence',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2DiscoverySchemaModifiedCadence();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GooglePrivacyDlpV2DiscoverySchemaModifiedCadence.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2DiscoverySchemaModifiedCadence(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2DiscoverySchemaModifiedCadence',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DiscoverySchemaModifiedCadence();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2DiscoverySchemaModifiedCadence.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DiscoverySchemaModifiedCadence(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DiscoveryStartingLocation', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2DiscoveryStartingLocation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DiscoveryStartingLocation.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DiscoveryStartingLocation(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2DiscoveryTableModifiedCadence',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2DiscoveryTableModifiedCadence();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2DiscoveryTableModifiedCadence.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2DiscoveryTableModifiedCadence(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2DiscoveryTableModifiedCadence',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DiscoveryTableModifiedCadence();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2DiscoveryTableModifiedCadence.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DiscoveryTableModifiedCadence(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DiscoveryTarget', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2DiscoveryTarget();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DiscoveryTarget.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DiscoveryTarget(od);
     });
   });
@@ -10513,8 +11454,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2DlpJob();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DlpJob.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DlpJob(od);
     });
   });
@@ -10524,8 +11464,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2DocumentLocation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2DocumentLocation.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DocumentLocation(od);
     });
   });
@@ -10535,8 +11474,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2EntityId();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2EntityId.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2EntityId(od);
     });
   });
@@ -10546,8 +11484,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Error();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Error.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Error(od);
     });
   });
@@ -10557,8 +11494,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ExcludeByHotword();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ExcludeByHotword.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ExcludeByHotword(od);
     });
   });
@@ -10568,8 +11504,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ExcludeInfoTypes();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ExcludeInfoTypes.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ExcludeInfoTypes(od);
     });
   });
@@ -10579,8 +11514,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ExclusionRule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ExclusionRule.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ExclusionRule(od);
     });
   });
@@ -10590,8 +11524,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Export();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Export.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Export(od);
     });
   });
@@ -10601,8 +11534,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Expressions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Expressions.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Expressions(od);
     });
   });
@@ -10612,8 +11544,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2FieldId();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2FieldId.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FieldId(od);
     });
   });
@@ -10623,8 +11554,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2FieldTransformation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2FieldTransformation.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FieldTransformation(od);
     });
   });
@@ -10634,8 +11564,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2FileClusterSummary();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2FileClusterSummary.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FileClusterSummary(od);
     });
   });
@@ -10645,8 +11574,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2FileClusterType();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2FileClusterType.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FileClusterType(od);
     });
   });
@@ -10656,8 +11584,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2FileExtensionInfo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2FileExtensionInfo.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FileExtensionInfo(od);
     });
   });
@@ -10667,8 +11594,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2FileSet();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2FileSet.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FileSet(od);
     });
   });
@@ -10678,8 +11604,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2FileStoreCollection();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2FileStoreCollection.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FileStoreCollection(od);
     });
   });
@@ -10689,8 +11614,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2FileStoreDataProfile();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2FileStoreDataProfile.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FileStoreDataProfile(od);
     });
   });
@@ -10700,8 +11624,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2FileStoreInfoTypeSummary();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2FileStoreInfoTypeSummary.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FileStoreInfoTypeSummary(od);
     });
   });
@@ -10711,8 +11634,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2FileStoreRegex();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2FileStoreRegex.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FileStoreRegex(od);
     });
   });
@@ -10722,8 +11644,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2FileStoreRegexes();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2FileStoreRegexes.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FileStoreRegexes(od);
     });
   });
@@ -10733,8 +11654,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Finding();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Finding.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Finding(od);
     });
   });
@@ -10744,8 +11664,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2FindingLimits();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2FindingLimits.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FindingLimits(od);
     });
   });
@@ -10755,8 +11674,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2FinishDlpJobRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2FinishDlpJobRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FinishDlpJobRequest(od);
     });
   });
@@ -10766,8 +11684,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2FixedSizeBucketingConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2FixedSizeBucketingConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FixedSizeBucketingConfig(od);
     });
   });
@@ -10777,8 +11694,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2HotwordRule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2HotwordRule.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2HotwordRule(od);
     });
   });
@@ -10788,8 +11704,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2HybridContentItem();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2HybridContentItem.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2HybridContentItem(od);
     });
   });
@@ -10799,8 +11714,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2HybridFindingDetails();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2HybridFindingDetails.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2HybridFindingDetails(od);
     });
   });
@@ -10810,34 +11724,28 @@ void main() {
       final o = buildGooglePrivacyDlpV2HybridInspectDlpJobRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2HybridInspectDlpJobRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2HybridInspectDlpJobRequest(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2HybridInspectJobTriggerRequest',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2HybridInspectJobTriggerRequest();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GooglePrivacyDlpV2HybridInspectJobTriggerRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2HybridInspectJobTriggerRequest(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2HybridInspectJobTriggerRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2HybridInspectJobTriggerRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2HybridInspectJobTriggerRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2HybridInspectJobTriggerRequest(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2HybridInspectResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2HybridInspectResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2HybridInspectResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2HybridInspectResponse(od);
     });
   });
@@ -10847,8 +11755,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2HybridInspectStatistics();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2HybridInspectStatistics.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2HybridInspectStatistics(od);
     });
   });
@@ -10858,8 +11765,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2HybridOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2HybridOptions.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2HybridOptions(od);
     });
   });
@@ -10869,8 +11775,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ImageLocation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ImageLocation.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ImageLocation(od);
     });
   });
@@ -10880,8 +11785,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ImageRedactionConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ImageRedactionConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ImageRedactionConfig(od);
     });
   });
@@ -10891,8 +11795,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ImageTransformation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ImageTransformation.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ImageTransformation(od);
     });
   });
@@ -10902,8 +11805,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ImageTransformations();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ImageTransformations.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ImageTransformations(od);
     });
   });
@@ -10913,8 +11815,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2InfoType();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2InfoType.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InfoType(od);
     });
   });
@@ -10924,8 +11825,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2InfoTypeCategory();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2InfoTypeCategory.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InfoTypeCategory(od);
     });
   });
@@ -10935,8 +11835,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2InfoTypeDescription();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2InfoTypeDescription.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InfoTypeDescription(od);
     });
   });
@@ -10946,8 +11845,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2InfoTypeLikelihood();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2InfoTypeLikelihood.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InfoTypeLikelihood(od);
     });
   });
@@ -10957,8 +11855,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2InfoTypeLimit();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2InfoTypeLimit.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InfoTypeLimit(od);
     });
   });
@@ -10968,8 +11865,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2InfoTypeStats();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2InfoTypeStats.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InfoTypeStats(od);
     });
   });
@@ -10979,8 +11875,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2InfoTypeSummary();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2InfoTypeSummary.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InfoTypeSummary(od);
     });
   });
@@ -10990,8 +11885,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2InfoTypeTransformation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2InfoTypeTransformation.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InfoTypeTransformation(od);
     });
   });
@@ -11001,8 +11895,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2InfoTypeTransformations();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2InfoTypeTransformations.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InfoTypeTransformations(od);
     });
   });
@@ -11012,8 +11905,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2InspectConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2InspectConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InspectConfig(od);
     });
   });
@@ -11023,8 +11915,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2InspectContentRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2InspectContentRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InspectContentRequest(od);
     });
   });
@@ -11034,8 +11925,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2InspectContentResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2InspectContentResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InspectContentResponse(od);
     });
   });
@@ -11045,8 +11935,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2InspectDataSourceDetails();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2InspectDataSourceDetails.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InspectDataSourceDetails(od);
     });
   });
@@ -11056,8 +11945,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2InspectJobConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2InspectJobConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InspectJobConfig(od);
     });
   });
@@ -11067,8 +11955,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2InspectResult();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2InspectResult.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InspectResult(od);
     });
   });
@@ -11078,8 +11965,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2InspectTemplate();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2InspectTemplate.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InspectTemplate(od);
     });
   });
@@ -11089,8 +11975,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2InspectionRule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2InspectionRule.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InspectionRule(od);
     });
   });
@@ -11100,8 +11985,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2InspectionRuleSet();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2InspectionRuleSet.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InspectionRuleSet(od);
     });
   });
@@ -11111,8 +11995,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2JobNotificationEmails();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2JobNotificationEmails.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2JobNotificationEmails(od);
     });
   });
@@ -11122,8 +12005,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2JobTrigger();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2JobTrigger.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2JobTrigger(od);
     });
   });
@@ -11133,8 +12015,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2KAnonymityConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2KAnonymityConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2KAnonymityConfig(od);
     });
   });
@@ -11144,8 +12025,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2KAnonymityEquivalenceClass();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2KAnonymityEquivalenceClass.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2KAnonymityEquivalenceClass(od);
     });
   });
@@ -11155,8 +12035,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2KAnonymityHistogramBucket();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2KAnonymityHistogramBucket.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2KAnonymityHistogramBucket(od);
     });
   });
@@ -11166,8 +12045,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2KAnonymityResult();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2KAnonymityResult.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2KAnonymityResult(od);
     });
   });
@@ -11177,47 +12055,39 @@ void main() {
       final o = buildGooglePrivacyDlpV2KMapEstimationConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2KMapEstimationConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2KMapEstimationConfig(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2KMapEstimationHistogramBucket',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2KMapEstimationHistogramBucket();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2KMapEstimationHistogramBucket.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2KMapEstimationHistogramBucket(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2KMapEstimationHistogramBucket',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2KMapEstimationHistogramBucket();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2KMapEstimationHistogramBucket.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2KMapEstimationHistogramBucket(od);
+    });
+  });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2KMapEstimationQuasiIdValues',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2KMapEstimationQuasiIdValues();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2KMapEstimationQuasiIdValues.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2KMapEstimationQuasiIdValues(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2KMapEstimationQuasiIdValues',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2KMapEstimationQuasiIdValues();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2KMapEstimationQuasiIdValues.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2KMapEstimationQuasiIdValues(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2KMapEstimationResult', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2KMapEstimationResult();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2KMapEstimationResult.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2KMapEstimationResult(od);
     });
   });
@@ -11227,8 +12097,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Key();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Key.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Key(od);
     });
   });
@@ -11238,8 +12107,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2KindExpression();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2KindExpression.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2KindExpression(od);
     });
   });
@@ -11249,8 +12117,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2KmsWrappedCryptoKey();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2KmsWrappedCryptoKey.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2KmsWrappedCryptoKey(od);
     });
   });
@@ -11260,8 +12127,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2LDiversityConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2LDiversityConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2LDiversityConfig(od);
     });
   });
@@ -11271,8 +12137,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2LDiversityEquivalenceClass();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2LDiversityEquivalenceClass.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2LDiversityEquivalenceClass(od);
     });
   });
@@ -11282,8 +12147,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2LDiversityHistogramBucket();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2LDiversityHistogramBucket.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2LDiversityHistogramBucket(od);
     });
   });
@@ -11293,33 +12157,28 @@ void main() {
       final o = buildGooglePrivacyDlpV2LDiversityResult();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2LDiversityResult.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2LDiversityResult(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2LargeCustomDictionaryConfig',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2LargeCustomDictionaryConfig();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2LargeCustomDictionaryConfig(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2LargeCustomDictionaryConfig',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2LargeCustomDictionaryConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2LargeCustomDictionaryConfig(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2LargeCustomDictionaryStats', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2LargeCustomDictionaryStats();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2LargeCustomDictionaryStats.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2LargeCustomDictionaryStats(od);
     });
   });
@@ -11329,8 +12188,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2LeaveUntransformed();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2LeaveUntransformed.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2LeaveUntransformed(od);
     });
   });
@@ -11340,179 +12198,146 @@ void main() {
       final o = buildGooglePrivacyDlpV2LikelihoodAdjustment();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2LikelihoodAdjustment.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2LikelihoodAdjustment(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2ListColumnDataProfilesResponse',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2ListColumnDataProfilesResponse();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GooglePrivacyDlpV2ListColumnDataProfilesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2ListColumnDataProfilesResponse(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2ListColumnDataProfilesResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2ListColumnDataProfilesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2ListColumnDataProfilesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2ListColumnDataProfilesResponse(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ListConnectionsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2ListConnectionsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ListConnectionsResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ListConnectionsResponse(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2ListDeidentifyTemplatesResponse',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2ListDeidentifyTemplatesResponse();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2ListDeidentifyTemplatesResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2ListDeidentifyTemplatesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(od);
+    });
+  });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2ListDiscoveryConfigsResponse',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2ListDiscoveryConfigsResponse();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2ListDiscoveryConfigsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2ListDiscoveryConfigsResponse(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2ListDiscoveryConfigsResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2ListDiscoveryConfigsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2ListDiscoveryConfigsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2ListDiscoveryConfigsResponse(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ListDlpJobsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2ListDlpJobsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ListDlpJobsResponse(od);
     });
   });
 
   unittest.group(
-    'obj-schema-GooglePrivacyDlpV2ListFileStoreDataProfilesResponse',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2ListFileStoreDataProfilesResponse();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GooglePrivacyDlpV2ListFileStoreDataProfilesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2ListFileStoreDataProfilesResponse(od);
-      });
-    },
-  );
+      'obj-schema-GooglePrivacyDlpV2ListFileStoreDataProfilesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2ListFileStoreDataProfilesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GooglePrivacyDlpV2ListFileStoreDataProfilesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2ListFileStoreDataProfilesResponse(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ListInfoTypesResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2ListInfoTypesResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ListInfoTypesResponse(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2ListInspectTemplatesResponse',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2ListInspectTemplatesResponse();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2ListInspectTemplatesResponse(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2ListInspectTemplatesResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2ListInspectTemplatesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2ListInspectTemplatesResponse(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ListJobTriggersResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2ListJobTriggersResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ListJobTriggersResponse(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2ListProjectDataProfilesResponse',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2ListProjectDataProfilesResponse();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GooglePrivacyDlpV2ListProjectDataProfilesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2ListProjectDataProfilesResponse(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2ListProjectDataProfilesResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2ListProjectDataProfilesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2ListProjectDataProfilesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2ListProjectDataProfilesResponse(od);
+    });
+  });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2ListStoredInfoTypesResponse',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2ListStoredInfoTypesResponse();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2ListStoredInfoTypesResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2ListStoredInfoTypesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(od);
+    });
+  });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2ListTableDataProfilesResponse',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2ListTableDataProfilesResponse();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2ListTableDataProfilesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2ListTableDataProfilesResponse(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2ListTableDataProfilesResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2ListTableDataProfilesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2ListTableDataProfilesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2ListTableDataProfilesResponse(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Location', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2Location();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Location.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Location(od);
     });
   });
@@ -11522,8 +12347,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Manual();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Manual.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Manual(od);
     });
   });
@@ -11533,8 +12357,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2MetadataLocation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2MetadataLocation.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2MetadataLocation(od);
     });
   });
@@ -11544,8 +12367,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2NumericalStatsConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2NumericalStatsConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2NumericalStatsConfig(od);
     });
   });
@@ -11555,8 +12377,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2NumericalStatsResult();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2NumericalStatsResult.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2NumericalStatsResult(od);
     });
   });
@@ -11566,8 +12387,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2OrConditions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2OrConditions.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2OrConditions(od);
     });
   });
@@ -11577,59 +12397,50 @@ void main() {
       final o = buildGooglePrivacyDlpV2OrgConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2OrgConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2OrgConfig(od);
     });
   });
 
   unittest.group(
-    'obj-schema-GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation(od);
-      });
-    },
-  );
+      'obj-schema-GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2OtherCloudDiscoveryTarget', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2OtherCloudDiscoveryTarget();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2OtherCloudDiscoveryTarget.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2OtherCloudDiscoveryTarget(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2OtherCloudResourceCollection',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2OtherCloudResourceCollection();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2OtherCloudResourceCollection.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2OtherCloudResourceCollection(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2OtherCloudResourceCollection',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2OtherCloudResourceCollection();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2OtherCloudResourceCollection.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2OtherCloudResourceCollection(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2OtherCloudResourceRegex', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2OtherCloudResourceRegex();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2OtherCloudResourceRegex.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2OtherCloudResourceRegex(od);
     });
   });
@@ -11639,34 +12450,29 @@ void main() {
       final o = buildGooglePrivacyDlpV2OtherCloudResourceRegexes();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2OtherCloudResourceRegexes.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2OtherCloudResourceRegexes(od);
     });
   });
 
   unittest.group(
-    'obj-schema-GooglePrivacyDlpV2OtherCloudSingleResourceReference',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2OtherCloudSingleResourceReference();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GooglePrivacyDlpV2OtherCloudSingleResourceReference.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2OtherCloudSingleResourceReference(od);
-      });
-    },
-  );
+      'obj-schema-GooglePrivacyDlpV2OtherCloudSingleResourceReference', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2OtherCloudSingleResourceReference();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GooglePrivacyDlpV2OtherCloudSingleResourceReference.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2OtherCloudSingleResourceReference(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2OtherInfoTypeSummary', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2OtherInfoTypeSummary();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2OtherInfoTypeSummary.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2OtherInfoTypeSummary(od);
     });
   });
@@ -11676,8 +12482,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2OutputStorageConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2OutputStorageConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2OutputStorageConfig(od);
     });
   });
@@ -11687,8 +12492,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2PartitionId();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2PartitionId.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PartitionId(od);
     });
   });
@@ -11698,8 +12502,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2PathElement();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2PathElement.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PathElement(od);
     });
   });
@@ -11709,8 +12512,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2PrimitiveTransformation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2PrimitiveTransformation.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PrimitiveTransformation(od);
     });
   });
@@ -11720,8 +12522,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2PrivacyMetric();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2PrivacyMetric.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PrivacyMetric(od);
     });
   });
@@ -11731,8 +12532,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ProfileStatus();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ProfileStatus.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ProfileStatus(od);
     });
   });
@@ -11742,8 +12542,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ProjectDataProfile();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ProjectDataProfile.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ProjectDataProfile(od);
     });
   });
@@ -11753,8 +12552,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Proximity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Proximity.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Proximity(od);
     });
   });
@@ -11764,8 +12562,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2PubSubCondition();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2PubSubCondition.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PubSubCondition(od);
     });
   });
@@ -11775,8 +12572,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2PubSubExpressions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2PubSubExpressions.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PubSubExpressions(od);
     });
   });
@@ -11786,34 +12582,29 @@ void main() {
       final o = buildGooglePrivacyDlpV2PubSubNotification();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2PubSubNotification.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PubSubNotification(od);
     });
   });
 
   unittest.group(
-    'obj-schema-GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2PublishFindingsToCloudDataCatalog();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2PublishFindingsToCloudDataCatalog(od);
-      });
-    },
-  );
+      'obj-schema-GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2PublishFindingsToCloudDataCatalog();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2PublishFindingsToCloudDataCatalog(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2PublishSummaryToCscc', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2PublishSummaryToCscc();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2PublishSummaryToCscc.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PublishSummaryToCscc(od);
     });
   });
@@ -11823,8 +12614,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2PublishToChronicle();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2PublishToChronicle.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PublishToChronicle(od);
     });
   });
@@ -11834,34 +12624,28 @@ void main() {
       final o = buildGooglePrivacyDlpV2PublishToPubSub();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2PublishToPubSub.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PublishToPubSub(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2PublishToSecurityCommandCenter',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2PublishToSecurityCommandCenter();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GooglePrivacyDlpV2PublishToSecurityCommandCenter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2PublishToSecurityCommandCenter(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2PublishToSecurityCommandCenter',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2PublishToSecurityCommandCenter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2PublishToSecurityCommandCenter.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2PublishToSecurityCommandCenter(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2PublishToStackdriver', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2PublishToStackdriver();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2PublishToStackdriver.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PublishToStackdriver(od);
     });
   });
@@ -11871,8 +12655,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2QuasiId();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2QuasiId.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2QuasiId(od);
     });
   });
@@ -11882,8 +12665,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2QuasiIdField();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2QuasiIdField.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2QuasiIdField(od);
     });
   });
@@ -11893,8 +12675,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2QuasiIdentifierField();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2QuasiIdentifierField.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2QuasiIdentifierField(od);
     });
   });
@@ -11904,8 +12685,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2QuoteInfo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2QuoteInfo.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2QuoteInfo(od);
     });
   });
@@ -11915,8 +12695,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Range();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Range.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Range(od);
     });
   });
@@ -11926,8 +12705,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2RecordCondition();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2RecordCondition.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RecordCondition(od);
     });
   });
@@ -11937,8 +12715,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2RecordKey();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2RecordKey.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RecordKey(od);
     });
   });
@@ -11948,8 +12725,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2RecordLocation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2RecordLocation.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RecordLocation(od);
     });
   });
@@ -11959,8 +12735,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2RecordSuppression();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2RecordSuppression.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RecordSuppression(od);
     });
   });
@@ -11970,8 +12745,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2RecordTransformations();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2RecordTransformations.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RecordTransformations(od);
     });
   });
@@ -11981,8 +12755,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2RedactConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2RedactConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RedactConfig(od);
     });
   });
@@ -11992,8 +12765,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2RedactImageRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2RedactImageRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RedactImageRequest(od);
     });
   });
@@ -12003,8 +12775,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2RedactImageResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2RedactImageResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RedactImageResponse(od);
     });
   });
@@ -12014,8 +12785,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Regex();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Regex.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Regex(od);
     });
   });
@@ -12025,8 +12795,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ReidentifyContentRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ReidentifyContentRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ReidentifyContentRequest(od);
     });
   });
@@ -12036,8 +12805,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ReidentifyContentResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ReidentifyContentResponse(od);
     });
   });
@@ -12047,8 +12815,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ReplaceDictionaryConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ReplaceDictionaryConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ReplaceDictionaryConfig(od);
     });
   });
@@ -12058,8 +12825,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ReplaceValueConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ReplaceValueConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ReplaceValueConfig(od);
     });
   });
@@ -12069,8 +12835,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ReplaceWithInfoTypeConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ReplaceWithInfoTypeConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ReplaceWithInfoTypeConfig(od);
     });
   });
@@ -12080,8 +12845,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2RequestedDeidentifyOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2RequestedDeidentifyOptions.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RequestedDeidentifyOptions(od);
     });
   });
@@ -12091,33 +12855,28 @@ void main() {
       final o = buildGooglePrivacyDlpV2RequestedOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2RequestedOptions.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RequestedOptions(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2RequestedRiskAnalysisOptions',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2RequestedRiskAnalysisOptions();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2RequestedRiskAnalysisOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2RequestedRiskAnalysisOptions(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2RequestedRiskAnalysisOptions',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2RequestedRiskAnalysisOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2RequestedRiskAnalysisOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2RequestedRiskAnalysisOptions(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Result', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2Result();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Result.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Result(od);
     });
   });
@@ -12127,8 +12886,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2RiskAnalysisJobConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RiskAnalysisJobConfig(od);
     });
   });
@@ -12138,8 +12896,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Row();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Row.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Row(od);
     });
   });
@@ -12149,8 +12906,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2SaveFindings();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2SaveFindings.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2SaveFindings(od);
     });
   });
@@ -12160,8 +12916,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Schedule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Schedule.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Schedule(od);
     });
   });
@@ -12171,8 +12926,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2SchemaModifiedCadence();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2SchemaModifiedCadence.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2SchemaModifiedCadence(od);
     });
   });
@@ -12182,8 +12936,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2SearchConnectionsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2SearchConnectionsResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2SearchConnectionsResponse(od);
     });
   });
@@ -12193,8 +12946,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2SecretManagerCredential();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2SecretManagerCredential.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2SecretManagerCredential(od);
     });
   });
@@ -12204,8 +12956,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2SecretsDiscoveryTarget();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2SecretsDiscoveryTarget.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2SecretsDiscoveryTarget(od);
     });
   });
@@ -12215,8 +12966,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2SelectedInfoTypes();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2SelectedInfoTypes.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2SelectedInfoTypes(od);
     });
   });
@@ -12226,8 +12976,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2SensitivityScore();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2SensitivityScore.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2SensitivityScore(od);
     });
   });
@@ -12237,8 +12986,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2StatisticalTable();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2StatisticalTable.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2StatisticalTable(od);
     });
   });
@@ -12248,8 +12996,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2StorageConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2StorageConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2StorageConfig(od);
     });
   });
@@ -12259,8 +13006,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2StorageMetadataLabel();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2StorageMetadataLabel.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2StorageMetadataLabel(od);
     });
   });
@@ -12270,8 +13016,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2StoredInfoType();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2StoredInfoType.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2StoredInfoType(od);
     });
   });
@@ -12281,8 +13026,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2StoredInfoTypeConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2StoredInfoTypeConfig(od);
     });
   });
@@ -12292,8 +13036,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2StoredInfoTypeStats();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2StoredInfoTypeStats.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2StoredInfoTypeStats(od);
     });
   });
@@ -12303,8 +13046,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2StoredInfoTypeVersion();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2StoredInfoTypeVersion.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2StoredInfoTypeVersion(od);
     });
   });
@@ -12314,8 +13056,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2StoredType();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2StoredType.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2StoredType(od);
     });
   });
@@ -12325,8 +13066,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2SummaryResult();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2SummaryResult.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2SummaryResult(od);
     });
   });
@@ -12336,8 +13076,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2SurrogateType();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2SurrogateType.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2SurrogateType(od);
     });
   });
@@ -12347,8 +13086,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Table();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Table.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Table(od);
     });
   });
@@ -12358,8 +13096,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2TableDataProfile();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2TableDataProfile.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TableDataProfile(od);
     });
   });
@@ -12369,8 +13106,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2TableLocation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2TableLocation.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TableLocation(od);
     });
   });
@@ -12380,8 +13116,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2TableOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2TableOptions.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TableOptions(od);
     });
   });
@@ -12391,8 +13126,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2TableReference();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2TableReference.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TableReference(od);
     });
   });
@@ -12402,8 +13136,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2TagCondition();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2TagCondition.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TagCondition(od);
     });
   });
@@ -12413,8 +13146,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2TagResources();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2TagResources.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TagResources(od);
     });
   });
@@ -12424,8 +13156,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2TagValue();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2TagValue.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TagValue(od);
     });
   });
@@ -12435,8 +13166,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2TaggedField();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2TaggedField.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TaggedField(od);
     });
   });
@@ -12446,8 +13176,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ThrowError();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ThrowError.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ThrowError(od);
     });
   });
@@ -12457,8 +13186,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2TimePartConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2TimePartConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TimePartConfig(od);
     });
   });
@@ -12468,8 +13196,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2TimeZone();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2TimeZone.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TimeZone(od);
     });
   });
@@ -12479,8 +13206,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2TimespanConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2TimespanConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TimespanConfig(od);
     });
   });
@@ -12490,48 +13216,40 @@ void main() {
       final o = buildGooglePrivacyDlpV2TransformationConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2TransformationConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TransformationConfig(od);
     });
   });
 
   unittest.group(
-    'obj-schema-GooglePrivacyDlpV2TransformationDetailsStorageConfig',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2TransformationDetailsStorageConfig();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GooglePrivacyDlpV2TransformationDetailsStorageConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2TransformationDetailsStorageConfig(od);
-      });
-    },
-  );
+      'obj-schema-GooglePrivacyDlpV2TransformationDetailsStorageConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2TransformationDetailsStorageConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GooglePrivacyDlpV2TransformationDetailsStorageConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2TransformationDetailsStorageConfig(od);
+    });
+  });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2TransformationErrorHandling',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2TransformationErrorHandling();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2TransformationErrorHandling.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2TransformationErrorHandling(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2TransformationErrorHandling',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2TransformationErrorHandling();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2TransformationErrorHandling.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2TransformationErrorHandling(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2TransformationOverview', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2TransformationOverview();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2TransformationOverview.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TransformationOverview(od);
     });
   });
@@ -12541,8 +13259,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2TransformationSummary();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2TransformationSummary.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TransformationSummary(od);
     });
   });
@@ -12552,8 +13269,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2TransientCryptoKey();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2TransientCryptoKey.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TransientCryptoKey(od);
     });
   });
@@ -12563,8 +13279,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2Trigger();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Trigger.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Trigger(od);
     });
   });
@@ -12574,8 +13289,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2UnwrappedCryptoKey();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2UnwrappedCryptoKey.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2UnwrappedCryptoKey(od);
     });
   });
@@ -12585,87 +13299,71 @@ void main() {
       final o = buildGooglePrivacyDlpV2UpdateConnectionRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2UpdateConnectionRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2UpdateConnectionRequest(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(od);
+    });
+  });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2UpdateDiscoveryConfigRequest',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2UpdateDiscoveryConfigRequest();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2UpdateDiscoveryConfigRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2UpdateDiscoveryConfigRequest(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2UpdateDiscoveryConfigRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2UpdateDiscoveryConfigRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2UpdateDiscoveryConfigRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2UpdateDiscoveryConfigRequest(od);
+    });
+  });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2UpdateInspectTemplateRequest',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2UpdateInspectTemplateRequest();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2UpdateInspectTemplateRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2UpdateInspectTemplateRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2UpdateJobTriggerRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2UpdateJobTriggerRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2UpdateJobTriggerRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2UpdateJobTriggerRequest(od);
     });
   });
 
-  unittest.group(
-    'obj-schema-GooglePrivacyDlpV2UpdateStoredInfoTypeRequest',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGooglePrivacyDlpV2UpdateStoredInfoTypeRequest();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(od);
-      });
-    },
-  );
+  unittest.group('obj-schema-GooglePrivacyDlpV2UpdateStoredInfoTypeRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2UpdateStoredInfoTypeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(od);
+    });
+  });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Value', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2Value();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2Value.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Value(od);
     });
   });
@@ -12675,8 +13373,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2ValueFrequency();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2ValueFrequency.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ValueFrequency(od);
     });
   });
@@ -12686,8 +13383,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2VersionDescription();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2VersionDescription.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2VersionDescription(od);
     });
   });
@@ -12697,8 +13393,7 @@ void main() {
       final o = buildGooglePrivacyDlpV2WordList();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePrivacyDlpV2WordList.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2WordList(od);
     });
   });
@@ -12708,8 +13403,7 @@ void main() {
       final o = buildGoogleProtobufEmpty();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleProtobufEmpty.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleProtobufEmpty(od);
     });
   });
@@ -12719,8 +13413,7 @@ void main() {
       final o = buildGoogleRpcStatus();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleRpcStatus.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleRpcStatus(od);
     });
   });
@@ -12730,8 +13423,7 @@ void main() {
       final o = buildGoogleTypeDate();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleTypeDate.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleTypeDate(od);
     });
   });
@@ -12741,8 +13433,7 @@ void main() {
       final o = buildGoogleTypeTimeOfDay();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleTypeTimeOfDay.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleTypeTimeOfDay(od);
     });
   });
@@ -12756,77 +13447,73 @@ void main() {
       final arg_locationId = 'foo';
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 12),
-            unittest.equals('v2/infoTypes'),
-          );
-          pathOffset += 12;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('v2/infoTypes'),
+        );
+        pathOffset += 12;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            queryMap['languageCode']!.first,
-            unittest.equals(arg_languageCode),
-          );
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['parent']!.first,
-            unittest.equals(arg_parent),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['languageCode']!.first,
+          unittest.equals(arg_languageCode),
+        );
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['parent']!.first,
+          unittest.equals(arg_parent),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListInfoTypesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2ListInfoTypesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.list(
-        filter: arg_filter,
-        languageCode: arg_languageCode,
-        locationId: arg_locationId,
-        parent: arg_parent,
-        $fields: arg_$fields,
-      );
+          filter: arg_filter,
+          languageCode: arg_languageCode,
+          locationId: arg_locationId,
+          parent: arg_parent,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListInfoTypesResponse(
-        response as api.GooglePrivacyDlpV2ListInfoTypesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListInfoTypesResponse);
     });
   });
 
@@ -12839,74 +13526,69 @@ void main() {
       final arg_languageCode = 'foo';
       final arg_locationId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            queryMap['languageCode']!.first,
-            unittest.equals(arg_languageCode),
-          );
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['languageCode']!.first,
+          unittest.equals(arg_languageCode),
+        );
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListInfoTypesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        filter: arg_filter,
-        languageCode: arg_languageCode,
-        locationId: arg_locationId,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2ListInfoTypesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          languageCode: arg_languageCode,
+          locationId: arg_locationId,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListInfoTypesResponse(
-        response as api.GooglePrivacyDlpV2ListInfoTypesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListInfoTypesResponse);
     });
   });
 
@@ -12918,66 +13600,59 @@ void main() {
           buildGooglePrivacyDlpV2CreateDeidentifyTemplateRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DeidentifyTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DeidentifyTemplate(
-        response as api.GooglePrivacyDlpV2DeidentifyTemplate,
-      );
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
 
     unittest.test('method--delete', () async {
@@ -12985,50 +13660,49 @@ void main() {
       final res = api.DLPApi(mock).organizations.deidentifyTemplates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -13038,56 +13712,53 @@ void main() {
       final res = api.DLPApi(mock).organizations.deidentifyTemplates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DeidentifyTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DeidentifyTemplate(
-        response as api.GooglePrivacyDlpV2DeidentifyTemplate,
-      );
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
 
     unittest.test('method--list', () async {
@@ -13099,79 +13770,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        locationId: arg_locationId,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListDeidentifyTemplatesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(
-        response as api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse);
     });
 
     unittest.test('method--patch', () async {
@@ -13181,66 +13847,59 @@ void main() {
           buildGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DeidentifyTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DeidentifyTemplate(
-        response as api.GooglePrivacyDlpV2DeidentifyTemplate,
-      );
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
   });
 
@@ -13251,66 +13910,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2CreateInspectTemplateRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateInspectTemplateRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateInspectTemplateRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2InspectTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2InspectTemplate(
-        response as api.GooglePrivacyDlpV2InspectTemplate,
-      );
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
 
     unittest.test('method--delete', () async {
@@ -13318,50 +13969,49 @@ void main() {
       final res = api.DLPApi(mock).organizations.inspectTemplates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -13371,56 +14021,53 @@ void main() {
       final res = api.DLPApi(mock).organizations.inspectTemplates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2InspectTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2InspectTemplate(
-        response as api.GooglePrivacyDlpV2InspectTemplate,
-      );
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
 
     unittest.test('method--list', () async {
@@ -13432,79 +14079,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListInspectTemplatesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        locationId: arg_locationId,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListInspectTemplatesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListInspectTemplatesResponse(
-        response as api.GooglePrivacyDlpV2ListInspectTemplatesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListInspectTemplatesResponse);
     });
 
     unittest.test('method--patch', () async {
@@ -13513,66 +14155,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2UpdateInspectTemplateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2InspectTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2InspectTemplate(
-        response as api.GooglePrivacyDlpV2InspectTemplate,
-      );
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
   });
 
@@ -13583,56 +14217,53 @@ void main() {
       final res = api.DLPApi(mock).organizations.locations.columnDataProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ColumnDataProfile(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2ColumnDataProfile());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2ColumnDataProfile(
-        response as api.GooglePrivacyDlpV2ColumnDataProfile,
-      );
+          response as api.GooglePrivacyDlpV2ColumnDataProfile);
     });
 
     unittest.test('method--list', () async {
@@ -13644,79 +14275,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListColumnDataProfilesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        filter: arg_filter,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListColumnDataProfilesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListColumnDataProfilesResponse(
-        response as api.GooglePrivacyDlpV2ListColumnDataProfilesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListColumnDataProfilesResponse);
     });
   });
 
@@ -13727,63 +14353,57 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2CreateConnectionRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2CreateConnectionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateConnectionRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2CreateConnectionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateConnectionRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2Connection());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2Connection());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2Connection(
-        response as api.GooglePrivacyDlpV2Connection,
-      );
+          response as api.GooglePrivacyDlpV2Connection);
     });
 
     unittest.test('method--delete', () async {
@@ -13791,50 +14411,49 @@ void main() {
       final res = api.DLPApi(mock).organizations.locations.connections;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -13844,54 +14463,52 @@ void main() {
       final res = api.DLPApi(mock).organizations.locations.connections;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2Connection());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2Connection());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2Connection(
-        response as api.GooglePrivacyDlpV2Connection,
-      );
+          response as api.GooglePrivacyDlpV2Connection);
     });
 
     unittest.test('method--list', () async {
@@ -13902,74 +14519,69 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListConnectionsResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        filter: arg_filter,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListConnectionsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListConnectionsResponse(
-        response as api.GooglePrivacyDlpV2ListConnectionsResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListConnectionsResponse);
     });
 
     unittest.test('method--patch', () async {
@@ -13978,63 +14590,57 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2UpdateConnectionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2UpdateConnectionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2UpdateConnectionRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2UpdateConnectionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2UpdateConnectionRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2Connection());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2Connection());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2Connection(
-        response as api.GooglePrivacyDlpV2Connection,
-      );
+          response as api.GooglePrivacyDlpV2Connection);
     });
 
     unittest.test('method--search', () async {
@@ -14045,74 +14651,69 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2SearchConnectionsResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.search(
-        arg_parent,
-        filter: arg_filter,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2SearchConnectionsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.search(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2SearchConnectionsResponse(
-        response as api.GooglePrivacyDlpV2SearchConnectionsResponse,
-      );
+          response as api.GooglePrivacyDlpV2SearchConnectionsResponse);
     });
   });
 
@@ -14125,66 +14726,59 @@ void main() {
           buildGooglePrivacyDlpV2CreateDeidentifyTemplateRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DeidentifyTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DeidentifyTemplate(
-        response as api.GooglePrivacyDlpV2DeidentifyTemplate,
-      );
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
 
     unittest.test('method--delete', () async {
@@ -14192,50 +14786,49 @@ void main() {
       final res = api.DLPApi(mock).organizations.locations.deidentifyTemplates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -14245,56 +14838,53 @@ void main() {
       final res = api.DLPApi(mock).organizations.locations.deidentifyTemplates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DeidentifyTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DeidentifyTemplate(
-        response as api.GooglePrivacyDlpV2DeidentifyTemplate,
-      );
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
 
     unittest.test('method--list', () async {
@@ -14306,79 +14896,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        locationId: arg_locationId,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListDeidentifyTemplatesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(
-        response as api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse);
     });
 
     unittest.test('method--patch', () async {
@@ -14388,66 +14973,59 @@ void main() {
           buildGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DeidentifyTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DeidentifyTemplate(
-        response as api.GooglePrivacyDlpV2DeidentifyTemplate,
-      );
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
   });
 
@@ -14458,66 +15036,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2CreateDiscoveryConfigRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2CreateDiscoveryConfigRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateDiscoveryConfigRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2CreateDiscoveryConfigRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateDiscoveryConfigRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DiscoveryConfig(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2DiscoveryConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DiscoveryConfig(
-        response as api.GooglePrivacyDlpV2DiscoveryConfig,
-      );
+          response as api.GooglePrivacyDlpV2DiscoveryConfig);
     });
 
     unittest.test('method--delete', () async {
@@ -14525,50 +15095,49 @@ void main() {
       final res = api.DLPApi(mock).organizations.locations.discoveryConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -14578,56 +15147,53 @@ void main() {
       final res = api.DLPApi(mock).organizations.locations.discoveryConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DiscoveryConfig(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2DiscoveryConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DiscoveryConfig(
-        response as api.GooglePrivacyDlpV2DiscoveryConfig,
-      );
+          response as api.GooglePrivacyDlpV2DiscoveryConfig);
     });
 
     unittest.test('method--list', () async {
@@ -14638,74 +15204,69 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListDiscoveryConfigsResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListDiscoveryConfigsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListDiscoveryConfigsResponse(
-        response as api.GooglePrivacyDlpV2ListDiscoveryConfigsResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListDiscoveryConfigsResponse);
     });
 
     unittest.test('method--patch', () async {
@@ -14714,66 +15275,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2UpdateDiscoveryConfigRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2UpdateDiscoveryConfigRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2UpdateDiscoveryConfigRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2UpdateDiscoveryConfigRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2UpdateDiscoveryConfigRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DiscoveryConfig(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2DiscoveryConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DiscoveryConfig(
-        response as api.GooglePrivacyDlpV2DiscoveryConfig,
-      );
+          response as api.GooglePrivacyDlpV2DiscoveryConfig);
     });
   });
 
@@ -14789,86 +15342,84 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_type = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(queryMap['type']!.first, unittest.equals(arg_type));
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['type']!.first,
+          unittest.equals(arg_type),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListDlpJobsResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        filter: arg_filter,
-        locationId: arg_locationId,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        type: arg_type,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2ListDlpJobsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          type: arg_type,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListDlpJobsResponse(
-        response as api.GooglePrivacyDlpV2ListDlpJobsResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListDlpJobsResponse);
     });
   });
 
@@ -14880,50 +15431,49 @@ void main() {
           api.DLPApi(mock).organizations.locations.fileStoreDataProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -14934,56 +15484,53 @@ void main() {
           api.DLPApi(mock).organizations.locations.fileStoreDataProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2FileStoreDataProfile(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2FileStoreDataProfile());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2FileStoreDataProfile(
-        response as api.GooglePrivacyDlpV2FileStoreDataProfile,
-      );
+          response as api.GooglePrivacyDlpV2FileStoreDataProfile);
     });
 
     unittest.test('method--list', () async {
@@ -14996,79 +15543,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListFileStoreDataProfilesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        filter: arg_filter,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListFileStoreDataProfilesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListFileStoreDataProfilesResponse(
-        response as api.GooglePrivacyDlpV2ListFileStoreDataProfilesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListFileStoreDataProfilesResponse);
     });
   });
 
@@ -15079,66 +15621,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2CreateInspectTemplateRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateInspectTemplateRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateInspectTemplateRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2InspectTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2InspectTemplate(
-        response as api.GooglePrivacyDlpV2InspectTemplate,
-      );
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
 
     unittest.test('method--delete', () async {
@@ -15146,50 +15680,49 @@ void main() {
       final res = api.DLPApi(mock).organizations.locations.inspectTemplates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -15199,56 +15732,53 @@ void main() {
       final res = api.DLPApi(mock).organizations.locations.inspectTemplates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2InspectTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2InspectTemplate(
-        response as api.GooglePrivacyDlpV2InspectTemplate,
-      );
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
 
     unittest.test('method--list', () async {
@@ -15260,79 +15790,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListInspectTemplatesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        locationId: arg_locationId,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListInspectTemplatesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListInspectTemplatesResponse(
-        response as api.GooglePrivacyDlpV2ListInspectTemplatesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListInspectTemplatesResponse);
     });
 
     unittest.test('method--patch', () async {
@@ -15341,66 +15866,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2UpdateInspectTemplateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2InspectTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2InspectTemplate(
-        response as api.GooglePrivacyDlpV2InspectTemplate,
-      );
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
   });
 
@@ -15411,63 +15928,57 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2CreateJobTriggerRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2CreateJobTriggerRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateJobTriggerRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2CreateJobTriggerRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateJobTriggerRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2JobTrigger(
-        response as api.GooglePrivacyDlpV2JobTrigger,
-      );
+          response as api.GooglePrivacyDlpV2JobTrigger);
     });
 
     unittest.test('method--delete', () async {
@@ -15475,50 +15986,49 @@ void main() {
       final res = api.DLPApi(mock).organizations.locations.jobTriggers;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -15528,54 +16038,52 @@ void main() {
       final res = api.DLPApi(mock).organizations.locations.jobTriggers;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2JobTrigger(
-        response as api.GooglePrivacyDlpV2JobTrigger,
-      );
+          response as api.GooglePrivacyDlpV2JobTrigger);
     });
 
     unittest.test('method--list', () async {
@@ -15589,86 +16097,84 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_type = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(queryMap['type']!.first, unittest.equals(arg_type));
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['type']!.first,
+          unittest.equals(arg_type),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListJobTriggersResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        filter: arg_filter,
-        locationId: arg_locationId,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        type: arg_type,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListJobTriggersResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          type: arg_type,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListJobTriggersResponse(
-        response as api.GooglePrivacyDlpV2ListJobTriggersResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListJobTriggersResponse);
     });
 
     unittest.test('method--patch', () async {
@@ -15677,63 +16183,57 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2UpdateJobTriggerRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2UpdateJobTriggerRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2UpdateJobTriggerRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2UpdateJobTriggerRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2UpdateJobTriggerRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2JobTrigger(
-        response as api.GooglePrivacyDlpV2JobTrigger,
-      );
+          response as api.GooglePrivacyDlpV2JobTrigger);
     });
   });
 
@@ -15744,56 +16244,53 @@ void main() {
       final res = api.DLPApi(mock).organizations.locations.projectDataProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ProjectDataProfile(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2ProjectDataProfile());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2ProjectDataProfile(
-        response as api.GooglePrivacyDlpV2ProjectDataProfile,
-      );
+          response as api.GooglePrivacyDlpV2ProjectDataProfile);
     });
 
     unittest.test('method--list', () async {
@@ -15805,79 +16302,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListProjectDataProfilesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        filter: arg_filter,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListProjectDataProfilesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListProjectDataProfilesResponse(
-        response as api.GooglePrivacyDlpV2ListProjectDataProfilesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListProjectDataProfilesResponse);
     });
   });
 
@@ -15888,66 +16380,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2CreateStoredInfoTypeRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2StoredInfoType(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2StoredInfoType(
-        response as api.GooglePrivacyDlpV2StoredInfoType,
-      );
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
 
     unittest.test('method--delete', () async {
@@ -15955,50 +16439,49 @@ void main() {
       final res = api.DLPApi(mock).organizations.locations.storedInfoTypes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -16008,56 +16491,53 @@ void main() {
       final res = api.DLPApi(mock).organizations.locations.storedInfoTypes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2StoredInfoType(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2StoredInfoType(
-        response as api.GooglePrivacyDlpV2StoredInfoType,
-      );
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
 
     unittest.test('method--list', () async {
@@ -16069,79 +16549,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListStoredInfoTypesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        locationId: arg_locationId,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListStoredInfoTypesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(
-        response as api.GooglePrivacyDlpV2ListStoredInfoTypesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListStoredInfoTypesResponse);
     });
 
     unittest.test('method--patch', () async {
@@ -16150,66 +16625,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2UpdateStoredInfoTypeRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2StoredInfoType(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2StoredInfoType(
-        response as api.GooglePrivacyDlpV2StoredInfoType,
-      );
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
   });
 
@@ -16220,50 +16687,49 @@ void main() {
       final res = api.DLPApi(mock).organizations.locations.tableDataProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -16273,56 +16739,53 @@ void main() {
       final res = api.DLPApi(mock).organizations.locations.tableDataProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2TableDataProfile(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2TableDataProfile());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2TableDataProfile(
-        response as api.GooglePrivacyDlpV2TableDataProfile,
-      );
+          response as api.GooglePrivacyDlpV2TableDataProfile);
     });
 
     unittest.test('method--list', () async {
@@ -16334,79 +16797,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListTableDataProfilesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        filter: arg_filter,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListTableDataProfilesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListTableDataProfilesResponse(
-        response as api.GooglePrivacyDlpV2ListTableDataProfilesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListTableDataProfilesResponse);
     });
   });
 
@@ -16417,66 +16875,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2CreateStoredInfoTypeRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2StoredInfoType(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2StoredInfoType(
-        response as api.GooglePrivacyDlpV2StoredInfoType,
-      );
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
 
     unittest.test('method--delete', () async {
@@ -16484,50 +16934,49 @@ void main() {
       final res = api.DLPApi(mock).organizations.storedInfoTypes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -16537,56 +16986,53 @@ void main() {
       final res = api.DLPApi(mock).organizations.storedInfoTypes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2StoredInfoType(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2StoredInfoType(
-        response as api.GooglePrivacyDlpV2StoredInfoType,
-      );
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
 
     unittest.test('method--list', () async {
@@ -16598,79 +17044,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListStoredInfoTypesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        locationId: arg_locationId,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListStoredInfoTypesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(
-        response as api.GooglePrivacyDlpV2ListStoredInfoTypesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListStoredInfoTypesResponse);
     });
 
     unittest.test('method--patch', () async {
@@ -16679,66 +17120,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2UpdateStoredInfoTypeRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2StoredInfoType(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2StoredInfoType(
-        response as api.GooglePrivacyDlpV2StoredInfoType,
-      );
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
   });
 
@@ -16749,65 +17182,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2DeidentifyContentRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2DeidentifyContentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2DeidentifyContentRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2DeidentifyContentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2DeidentifyContentRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DeidentifyContentResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.deidentify(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2DeidentifyContentResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.deidentify(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DeidentifyContentResponse(
-        response as api.GooglePrivacyDlpV2DeidentifyContentResponse,
-      );
+          response as api.GooglePrivacyDlpV2DeidentifyContentResponse);
     });
 
     unittest.test('method--inspect', () async {
@@ -16816,65 +17242,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2InspectContentRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2InspectContentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2InspectContentRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2InspectContentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2InspectContentRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2InspectContentResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.inspect(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2InspectContentResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.inspect(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2InspectContentResponse(
-        response as api.GooglePrivacyDlpV2InspectContentResponse,
-      );
+          response as api.GooglePrivacyDlpV2InspectContentResponse);
     });
 
     unittest.test('method--reidentify', () async {
@@ -16883,65 +17302,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2ReidentifyContentRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2ReidentifyContentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2ReidentifyContentRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2ReidentifyContentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2ReidentifyContentRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ReidentifyContentResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.reidentify(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ReidentifyContentResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.reidentify(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2ReidentifyContentResponse(
-        response as api.GooglePrivacyDlpV2ReidentifyContentResponse,
-      );
+          response as api.GooglePrivacyDlpV2ReidentifyContentResponse);
     });
   });
 
@@ -16953,66 +17365,59 @@ void main() {
           buildGooglePrivacyDlpV2CreateDeidentifyTemplateRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DeidentifyTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DeidentifyTemplate(
-        response as api.GooglePrivacyDlpV2DeidentifyTemplate,
-      );
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
 
     unittest.test('method--delete', () async {
@@ -17020,50 +17425,49 @@ void main() {
       final res = api.DLPApi(mock).projects.deidentifyTemplates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -17073,56 +17477,53 @@ void main() {
       final res = api.DLPApi(mock).projects.deidentifyTemplates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DeidentifyTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DeidentifyTemplate(
-        response as api.GooglePrivacyDlpV2DeidentifyTemplate,
-      );
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
 
     unittest.test('method--list', () async {
@@ -17134,79 +17535,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        locationId: arg_locationId,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListDeidentifyTemplatesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(
-        response as api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse);
     });
 
     unittest.test('method--patch', () async {
@@ -17216,66 +17612,59 @@ void main() {
           buildGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DeidentifyTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DeidentifyTemplate(
-        response as api.GooglePrivacyDlpV2DeidentifyTemplate,
-      );
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
   });
 
@@ -17286,60 +17675,55 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2CancelDlpJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2CancelDlpJobRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CancelDlpJobRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2CancelDlpJobRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CancelDlpJobRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.cancel(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
@@ -17349,60 +17733,55 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2CreateDlpJobRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2CreateDlpJobRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateDlpJobRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2CreateDlpJobRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateDlpJobRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2DlpJob());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2DlpJob());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DlpJob(response as api.GooglePrivacyDlpV2DlpJob);
     });
 
@@ -17411,50 +17790,49 @@ void main() {
       final res = api.DLPApi(mock).projects.dlpJobs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -17464,50 +17842,49 @@ void main() {
       final res = api.DLPApi(mock).projects.dlpJobs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2DlpJob());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2DlpJob());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DlpJob(response as api.GooglePrivacyDlpV2DlpJob);
     });
@@ -17523,86 +17900,84 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_type = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(queryMap['type']!.first, unittest.equals(arg_type));
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['type']!.first,
+          unittest.equals(arg_type),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListDlpJobsResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        filter: arg_filter,
-        locationId: arg_locationId,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        type: arg_type,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2ListDlpJobsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          type: arg_type,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListDlpJobsResponse(
-        response as api.GooglePrivacyDlpV2ListDlpJobsResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListDlpJobsResponse);
     });
   });
 
@@ -17613,65 +17988,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2RedactImageRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2RedactImageRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2RedactImageRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2RedactImageRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2RedactImageRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2RedactImageResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.redact(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2RedactImageResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.redact(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2RedactImageResponse(
-        response as api.GooglePrivacyDlpV2RedactImageResponse,
-      );
+          response as api.GooglePrivacyDlpV2RedactImageResponse);
     });
   });
 
@@ -17682,66 +18050,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2CreateInspectTemplateRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateInspectTemplateRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateInspectTemplateRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2InspectTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2InspectTemplate(
-        response as api.GooglePrivacyDlpV2InspectTemplate,
-      );
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
 
     unittest.test('method--delete', () async {
@@ -17749,50 +18109,49 @@ void main() {
       final res = api.DLPApi(mock).projects.inspectTemplates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -17802,56 +18161,53 @@ void main() {
       final res = api.DLPApi(mock).projects.inspectTemplates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2InspectTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2InspectTemplate(
-        response as api.GooglePrivacyDlpV2InspectTemplate,
-      );
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
 
     unittest.test('method--list', () async {
@@ -17863,79 +18219,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListInspectTemplatesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        locationId: arg_locationId,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListInspectTemplatesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListInspectTemplatesResponse(
-        response as api.GooglePrivacyDlpV2ListInspectTemplatesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListInspectTemplatesResponse);
     });
 
     unittest.test('method--patch', () async {
@@ -17944,66 +18295,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2UpdateInspectTemplateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2InspectTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2InspectTemplate(
-        response as api.GooglePrivacyDlpV2InspectTemplate,
-      );
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
   });
 
@@ -18014,60 +18357,55 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2ActivateJobTriggerRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2ActivateJobTriggerRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2ActivateJobTriggerRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2ActivateJobTriggerRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2ActivateJobTriggerRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2DlpJob());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.activate(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2DlpJob());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.activate(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DlpJob(response as api.GooglePrivacyDlpV2DlpJob);
     });
 
@@ -18077,63 +18415,57 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2CreateJobTriggerRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2CreateJobTriggerRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateJobTriggerRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2CreateJobTriggerRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateJobTriggerRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2JobTrigger(
-        response as api.GooglePrivacyDlpV2JobTrigger,
-      );
+          response as api.GooglePrivacyDlpV2JobTrigger);
     });
 
     unittest.test('method--delete', () async {
@@ -18141,50 +18473,49 @@ void main() {
       final res = api.DLPApi(mock).projects.jobTriggers;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -18194,54 +18525,52 @@ void main() {
       final res = api.DLPApi(mock).projects.jobTriggers;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2JobTrigger(
-        response as api.GooglePrivacyDlpV2JobTrigger,
-      );
+          response as api.GooglePrivacyDlpV2JobTrigger);
     });
 
     unittest.test('method--list', () async {
@@ -18255,86 +18584,84 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_type = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(queryMap['type']!.first, unittest.equals(arg_type));
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['type']!.first,
+          unittest.equals(arg_type),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListJobTriggersResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        filter: arg_filter,
-        locationId: arg_locationId,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        type: arg_type,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListJobTriggersResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          type: arg_type,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListJobTriggersResponse(
-        response as api.GooglePrivacyDlpV2ListJobTriggersResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListJobTriggersResponse);
     });
 
     unittest.test('method--patch', () async {
@@ -18343,63 +18670,57 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2UpdateJobTriggerRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2UpdateJobTriggerRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2UpdateJobTriggerRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2UpdateJobTriggerRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2UpdateJobTriggerRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2JobTrigger(
-        response as api.GooglePrivacyDlpV2JobTrigger,
-      );
+          response as api.GooglePrivacyDlpV2JobTrigger);
     });
   });
 
@@ -18409,56 +18730,53 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.columnDataProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ColumnDataProfile(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2ColumnDataProfile());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2ColumnDataProfile(
-        response as api.GooglePrivacyDlpV2ColumnDataProfile,
-      );
+          response as api.GooglePrivacyDlpV2ColumnDataProfile);
     });
 
     unittest.test('method--list', () async {
@@ -18470,79 +18788,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListColumnDataProfilesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        filter: arg_filter,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListColumnDataProfilesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListColumnDataProfilesResponse(
-        response as api.GooglePrivacyDlpV2ListColumnDataProfilesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListColumnDataProfilesResponse);
     });
   });
 
@@ -18553,63 +18866,57 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2CreateConnectionRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2CreateConnectionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateConnectionRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2CreateConnectionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateConnectionRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2Connection());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2Connection());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2Connection(
-        response as api.GooglePrivacyDlpV2Connection,
-      );
+          response as api.GooglePrivacyDlpV2Connection);
     });
 
     unittest.test('method--delete', () async {
@@ -18617,50 +18924,49 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.connections;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -18670,54 +18976,52 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.connections;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2Connection());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2Connection());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2Connection(
-        response as api.GooglePrivacyDlpV2Connection,
-      );
+          response as api.GooglePrivacyDlpV2Connection);
     });
 
     unittest.test('method--list', () async {
@@ -18728,74 +19032,69 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListConnectionsResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        filter: arg_filter,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListConnectionsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListConnectionsResponse(
-        response as api.GooglePrivacyDlpV2ListConnectionsResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListConnectionsResponse);
     });
 
     unittest.test('method--patch', () async {
@@ -18804,63 +19103,57 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2UpdateConnectionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2UpdateConnectionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2UpdateConnectionRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2UpdateConnectionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2UpdateConnectionRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2Connection());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2Connection());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2Connection(
-        response as api.GooglePrivacyDlpV2Connection,
-      );
+          response as api.GooglePrivacyDlpV2Connection);
     });
 
     unittest.test('method--search', () async {
@@ -18871,74 +19164,69 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2SearchConnectionsResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.search(
-        arg_parent,
-        filter: arg_filter,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2SearchConnectionsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.search(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2SearchConnectionsResponse(
-        response as api.GooglePrivacyDlpV2SearchConnectionsResponse,
-      );
+          response as api.GooglePrivacyDlpV2SearchConnectionsResponse);
     });
   });
 
@@ -18949,65 +19237,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2DeidentifyContentRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2DeidentifyContentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2DeidentifyContentRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2DeidentifyContentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2DeidentifyContentRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DeidentifyContentResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.deidentify(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2DeidentifyContentResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.deidentify(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DeidentifyContentResponse(
-        response as api.GooglePrivacyDlpV2DeidentifyContentResponse,
-      );
+          response as api.GooglePrivacyDlpV2DeidentifyContentResponse);
     });
 
     unittest.test('method--inspect', () async {
@@ -19016,65 +19297,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2InspectContentRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2InspectContentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2InspectContentRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2InspectContentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2InspectContentRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2InspectContentResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.inspect(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2InspectContentResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.inspect(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2InspectContentResponse(
-        response as api.GooglePrivacyDlpV2InspectContentResponse,
-      );
+          response as api.GooglePrivacyDlpV2InspectContentResponse);
     });
 
     unittest.test('method--reidentify', () async {
@@ -19083,65 +19357,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2ReidentifyContentRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2ReidentifyContentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2ReidentifyContentRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2ReidentifyContentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2ReidentifyContentRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ReidentifyContentResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.reidentify(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ReidentifyContentResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.reidentify(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2ReidentifyContentResponse(
-        response as api.GooglePrivacyDlpV2ReidentifyContentResponse,
-      );
+          response as api.GooglePrivacyDlpV2ReidentifyContentResponse);
     });
   });
 
@@ -19153,66 +19420,59 @@ void main() {
           buildGooglePrivacyDlpV2CreateDeidentifyTemplateRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DeidentifyTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DeidentifyTemplate(
-        response as api.GooglePrivacyDlpV2DeidentifyTemplate,
-      );
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
 
     unittest.test('method--delete', () async {
@@ -19220,50 +19480,49 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.deidentifyTemplates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -19273,56 +19532,53 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.deidentifyTemplates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DeidentifyTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DeidentifyTemplate(
-        response as api.GooglePrivacyDlpV2DeidentifyTemplate,
-      );
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
 
     unittest.test('method--list', () async {
@@ -19334,79 +19590,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        locationId: arg_locationId,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListDeidentifyTemplatesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(
-        response as api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse);
     });
 
     unittest.test('method--patch', () async {
@@ -19416,66 +19667,59 @@ void main() {
           buildGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DeidentifyTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DeidentifyTemplate(
-        response as api.GooglePrivacyDlpV2DeidentifyTemplate,
-      );
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
   });
 
@@ -19486,66 +19730,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2CreateDiscoveryConfigRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2CreateDiscoveryConfigRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateDiscoveryConfigRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2CreateDiscoveryConfigRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateDiscoveryConfigRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DiscoveryConfig(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2DiscoveryConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DiscoveryConfig(
-        response as api.GooglePrivacyDlpV2DiscoveryConfig,
-      );
+          response as api.GooglePrivacyDlpV2DiscoveryConfig);
     });
 
     unittest.test('method--delete', () async {
@@ -19553,50 +19789,49 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.discoveryConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -19606,56 +19841,53 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.discoveryConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DiscoveryConfig(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2DiscoveryConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DiscoveryConfig(
-        response as api.GooglePrivacyDlpV2DiscoveryConfig,
-      );
+          response as api.GooglePrivacyDlpV2DiscoveryConfig);
     });
 
     unittest.test('method--list', () async {
@@ -19666,74 +19898,69 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListDiscoveryConfigsResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListDiscoveryConfigsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListDiscoveryConfigsResponse(
-        response as api.GooglePrivacyDlpV2ListDiscoveryConfigsResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListDiscoveryConfigsResponse);
     });
 
     unittest.test('method--patch', () async {
@@ -19742,66 +19969,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2UpdateDiscoveryConfigRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2UpdateDiscoveryConfigRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2UpdateDiscoveryConfigRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2UpdateDiscoveryConfigRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2UpdateDiscoveryConfigRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2DiscoveryConfig(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2DiscoveryConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DiscoveryConfig(
-        response as api.GooglePrivacyDlpV2DiscoveryConfig,
-      );
+          response as api.GooglePrivacyDlpV2DiscoveryConfig);
     });
   });
 
@@ -19812,60 +20031,55 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2CancelDlpJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2CancelDlpJobRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CancelDlpJobRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2CancelDlpJobRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CancelDlpJobRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.cancel(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
@@ -19875,60 +20089,55 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2CreateDlpJobRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2CreateDlpJobRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateDlpJobRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2CreateDlpJobRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateDlpJobRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2DlpJob());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2DlpJob());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DlpJob(response as api.GooglePrivacyDlpV2DlpJob);
     });
 
@@ -19937,50 +20146,49 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.dlpJobs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -19991,60 +20199,55 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2FinishDlpJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2FinishDlpJobRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2FinishDlpJobRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2FinishDlpJobRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2FinishDlpJobRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.finish(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.finish(arg_request, arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
@@ -20053,50 +20256,49 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.dlpJobs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2DlpJob());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2DlpJob());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DlpJob(response as api.GooglePrivacyDlpV2DlpJob);
     });
@@ -20107,65 +20309,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2HybridInspectDlpJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2HybridInspectDlpJobRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2HybridInspectDlpJobRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2HybridInspectDlpJobRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2HybridInspectDlpJobRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2HybridInspectResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.hybridInspect(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2HybridInspectResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.hybridInspect(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2HybridInspectResponse(
-        response as api.GooglePrivacyDlpV2HybridInspectResponse,
-      );
+          response as api.GooglePrivacyDlpV2HybridInspectResponse);
     });
 
     unittest.test('method--list', () async {
@@ -20179,86 +20374,84 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_type = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(queryMap['type']!.first, unittest.equals(arg_type));
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['type']!.first,
+          unittest.equals(arg_type),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListDlpJobsResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        filter: arg_filter,
-        locationId: arg_locationId,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        type: arg_type,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2ListDlpJobsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          type: arg_type,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListDlpJobsResponse(
-        response as api.GooglePrivacyDlpV2ListDlpJobsResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListDlpJobsResponse);
     });
   });
 
@@ -20268,50 +20461,49 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.fileStoreDataProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -20321,56 +20513,53 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.fileStoreDataProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2FileStoreDataProfile(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2FileStoreDataProfile());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2FileStoreDataProfile(
-        response as api.GooglePrivacyDlpV2FileStoreDataProfile,
-      );
+          response as api.GooglePrivacyDlpV2FileStoreDataProfile);
     });
 
     unittest.test('method--list', () async {
@@ -20382,79 +20571,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListFileStoreDataProfilesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        filter: arg_filter,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListFileStoreDataProfilesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListFileStoreDataProfilesResponse(
-        response as api.GooglePrivacyDlpV2ListFileStoreDataProfilesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListFileStoreDataProfilesResponse);
     });
   });
 
@@ -20465,65 +20649,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2RedactImageRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2RedactImageRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2RedactImageRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2RedactImageRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2RedactImageRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2RedactImageResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.redact(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2RedactImageResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.redact(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2RedactImageResponse(
-        response as api.GooglePrivacyDlpV2RedactImageResponse,
-      );
+          response as api.GooglePrivacyDlpV2RedactImageResponse);
     });
   });
 
@@ -20534,66 +20711,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2CreateInspectTemplateRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateInspectTemplateRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateInspectTemplateRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2InspectTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2InspectTemplate(
-        response as api.GooglePrivacyDlpV2InspectTemplate,
-      );
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
 
     unittest.test('method--delete', () async {
@@ -20601,50 +20770,49 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.inspectTemplates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -20654,56 +20822,53 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.inspectTemplates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2InspectTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2InspectTemplate(
-        response as api.GooglePrivacyDlpV2InspectTemplate,
-      );
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
 
     unittest.test('method--list', () async {
@@ -20715,79 +20880,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListInspectTemplatesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        locationId: arg_locationId,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListInspectTemplatesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListInspectTemplatesResponse(
-        response as api.GooglePrivacyDlpV2ListInspectTemplatesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListInspectTemplatesResponse);
     });
 
     unittest.test('method--patch', () async {
@@ -20796,66 +20956,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2UpdateInspectTemplateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2InspectTemplate(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2InspectTemplate(
-        response as api.GooglePrivacyDlpV2InspectTemplate,
-      );
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
   });
 
@@ -20866,60 +21018,55 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2ActivateJobTriggerRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2ActivateJobTriggerRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2ActivateJobTriggerRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2ActivateJobTriggerRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2ActivateJobTriggerRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2DlpJob());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.activate(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2DlpJob());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.activate(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2DlpJob(response as api.GooglePrivacyDlpV2DlpJob);
     });
 
@@ -20929,63 +21076,57 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2CreateJobTriggerRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2CreateJobTriggerRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateJobTriggerRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2CreateJobTriggerRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateJobTriggerRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2JobTrigger(
-        response as api.GooglePrivacyDlpV2JobTrigger,
-      );
+          response as api.GooglePrivacyDlpV2JobTrigger);
     });
 
     unittest.test('method--delete', () async {
@@ -20993,50 +21134,49 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.jobTriggers;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -21046,54 +21186,52 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.jobTriggers;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2JobTrigger(
-        response as api.GooglePrivacyDlpV2JobTrigger,
-      );
+          response as api.GooglePrivacyDlpV2JobTrigger);
     });
 
     unittest.test('method--hybridInspect', () async {
@@ -21103,66 +21241,59 @@ void main() {
           buildGooglePrivacyDlpV2HybridInspectJobTriggerRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2HybridInspectJobTriggerRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2HybridInspectJobTriggerRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GooglePrivacyDlpV2HybridInspectJobTriggerRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2HybridInspectJobTriggerRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2HybridInspectResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.hybridInspect(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2HybridInspectResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.hybridInspect(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2HybridInspectResponse(
-        response as api.GooglePrivacyDlpV2HybridInspectResponse,
-      );
+          response as api.GooglePrivacyDlpV2HybridInspectResponse);
     });
 
     unittest.test('method--list', () async {
@@ -21176,86 +21307,84 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_type = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(queryMap['type']!.first, unittest.equals(arg_type));
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['type']!.first,
+          unittest.equals(arg_type),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListJobTriggersResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        filter: arg_filter,
-        locationId: arg_locationId,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        type: arg_type,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListJobTriggersResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          type: arg_type,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListJobTriggersResponse(
-        response as api.GooglePrivacyDlpV2ListJobTriggersResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListJobTriggersResponse);
     });
 
     unittest.test('method--patch', () async {
@@ -21264,63 +21393,57 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2UpdateJobTriggerRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GooglePrivacyDlpV2UpdateJobTriggerRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2UpdateJobTriggerRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2UpdateJobTriggerRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2UpdateJobTriggerRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2JobTrigger(
-        response as api.GooglePrivacyDlpV2JobTrigger,
-      );
+          response as api.GooglePrivacyDlpV2JobTrigger);
     });
   });
 
@@ -21330,56 +21453,53 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.projectDataProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ProjectDataProfile(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2ProjectDataProfile());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2ProjectDataProfile(
-        response as api.GooglePrivacyDlpV2ProjectDataProfile,
-      );
+          response as api.GooglePrivacyDlpV2ProjectDataProfile);
     });
 
     unittest.test('method--list', () async {
@@ -21391,79 +21511,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListProjectDataProfilesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        filter: arg_filter,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListProjectDataProfilesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListProjectDataProfilesResponse(
-        response as api.GooglePrivacyDlpV2ListProjectDataProfilesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListProjectDataProfilesResponse);
     });
   });
 
@@ -21474,66 +21589,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2CreateStoredInfoTypeRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2StoredInfoType(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2StoredInfoType(
-        response as api.GooglePrivacyDlpV2StoredInfoType,
-      );
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
 
     unittest.test('method--delete', () async {
@@ -21541,50 +21648,49 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.storedInfoTypes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -21594,56 +21700,53 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.storedInfoTypes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2StoredInfoType(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2StoredInfoType(
-        response as api.GooglePrivacyDlpV2StoredInfoType,
-      );
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
 
     unittest.test('method--list', () async {
@@ -21655,79 +21758,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListStoredInfoTypesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        locationId: arg_locationId,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListStoredInfoTypesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(
-        response as api.GooglePrivacyDlpV2ListStoredInfoTypesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListStoredInfoTypesResponse);
     });
 
     unittest.test('method--patch', () async {
@@ -21736,66 +21834,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2UpdateStoredInfoTypeRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2StoredInfoType(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2StoredInfoType(
-        response as api.GooglePrivacyDlpV2StoredInfoType,
-      );
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
   });
 
@@ -21805,50 +21895,49 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.tableDataProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -21858,56 +21947,53 @@ void main() {
       final res = api.DLPApi(mock).projects.locations.tableDataProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2TableDataProfile(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2TableDataProfile());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2TableDataProfile(
-        response as api.GooglePrivacyDlpV2TableDataProfile,
-      );
+          response as api.GooglePrivacyDlpV2TableDataProfile);
     });
 
     unittest.test('method--list', () async {
@@ -21919,79 +22005,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['filter']!.first,
-            unittest.equals(arg_filter),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListTableDataProfilesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        filter: arg_filter,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListTableDataProfilesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListTableDataProfilesResponse(
-        response as api.GooglePrivacyDlpV2ListTableDataProfilesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListTableDataProfilesResponse);
     });
   });
 
@@ -22002,66 +22083,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2CreateStoredInfoTypeRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2StoredInfoType(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGooglePrivacyDlpV2StoredInfoType(
-        response as api.GooglePrivacyDlpV2StoredInfoType,
-      );
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
 
     unittest.test('method--delete', () async {
@@ -22069,50 +22142,49 @@ void main() {
       final res = api.DLPApi(mock).projects.storedInfoTypes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleProtobufEmpty());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -22122,56 +22194,53 @@ void main() {
       final res = api.DLPApi(mock).projects.storedInfoTypes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2StoredInfoType(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2StoredInfoType(
-        response as api.GooglePrivacyDlpV2StoredInfoType,
-      );
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
 
     unittest.test('method--list', () async {
@@ -22183,79 +22252,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['locationId']!.first,
-            unittest.equals(arg_locationId),
-          );
-          unittest.expect(
-            queryMap['orderBy']!.first,
-            unittest.equals(arg_orderBy),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['locationId']!.first,
+          unittest.equals(arg_locationId),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2ListStoredInfoTypesResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        locationId: arg_locationId,
-        orderBy: arg_orderBy,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGooglePrivacyDlpV2ListStoredInfoTypesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(
-        response as api.GooglePrivacyDlpV2ListStoredInfoTypesResponse,
-      );
+          response as api.GooglePrivacyDlpV2ListStoredInfoTypesResponse);
     });
 
     unittest.test('method--patch', () async {
@@ -22264,66 +22328,58 @@ void main() {
       final arg_request = buildGooglePrivacyDlpV2UpdateStoredInfoTypeRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v2/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGooglePrivacyDlpV2StoredInfoType(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
       checkGooglePrivacyDlpV2StoredInfoType(
-        response as api.GooglePrivacyDlpV2StoredInfoType,
-      );
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
   });
 }

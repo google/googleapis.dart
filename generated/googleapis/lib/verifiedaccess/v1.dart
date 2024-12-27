@@ -49,16 +49,11 @@ class VerifiedaccessApi {
 
   ChallengeResource get challenge => ChallengeResource(_requester);
 
-  VerifiedaccessApi(
-    http.Client client, {
-    core.String rootUrl = 'https://verifiedaccess.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  VerifiedaccessApi(http.Client client,
+      {core.String rootUrl = 'https://verifiedaccess.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ChallengeResource {
@@ -82,7 +77,10 @@ class ChallengeResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Challenge> create(Empty request, {core.String? $fields}) async {
+  async.Future<Challenge> create(
+    Empty request, {
+    core.String? $fields,
+  }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -133,8 +131,7 @@ class ChallengeResource {
       queryParams: queryParams_,
     );
     return VerifyChallengeResponseResult.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -147,20 +144,20 @@ class Challenge {
   /// Generated challenge
   SignedData? challenge;
 
-  Challenge({this.alternativeChallenge, this.challenge});
+  Challenge({
+    this.alternativeChallenge,
+    this.challenge,
+  });
 
   Challenge.fromJson(core.Map json_)
       : this(
           alternativeChallenge: json_.containsKey('alternativeChallenge')
-              ? SignedData.fromJson(
-                  json_['alternativeChallenge']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SignedData.fromJson(json_['alternativeChallenge']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           challenge: json_.containsKey('challenge')
               ? SignedData.fromJson(
-                  json_['challenge'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['challenge'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -199,7 +196,10 @@ class SignedData {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  SignedData({this.data, this.signature});
+  SignedData({
+    this.data,
+    this.signature,
+  });
 
   SignedData.fromJson(core.Map json_)
       : this(
@@ -234,10 +234,8 @@ class VerifyChallengeResponseRequest {
   VerifyChallengeResponseRequest.fromJson(core.Map json_)
       : this(
           challengeResponse: json_.containsKey('challengeResponse')
-              ? SignedData.fromJson(
-                  json_['challengeResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SignedData.fromJson(json_['challengeResponse']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           expectedIdentity: json_['expectedIdentity'] as core.String?,
         );

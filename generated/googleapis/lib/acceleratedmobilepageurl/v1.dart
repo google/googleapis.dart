@@ -44,16 +44,11 @@ class AcceleratedmobilepageurlApi {
 
   AmpUrlsResource get ampUrls => AmpUrlsResource(_requester);
 
-  AcceleratedmobilepageurlApi(
-    http.Client client, {
-    core.String rootUrl = 'https://acceleratedmobilepageurl.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  AcceleratedmobilepageurlApi(http.Client client,
+      {core.String rootUrl = 'https://acceleratedmobilepageurl.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class AmpUrlsResource {
@@ -96,8 +91,7 @@ class AmpUrlsResource {
       queryParams: queryParams_,
     );
     return BatchGetAmpUrlsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -113,7 +107,11 @@ class AmpUrl {
   /// The original non-AMP URL.
   core.String? originalUrl;
 
-  AmpUrl({this.ampUrl, this.cdnAmpUrl, this.originalUrl});
+  AmpUrl({
+    this.ampUrl,
+    this.cdnAmpUrl,
+    this.originalUrl,
+  });
 
   AmpUrl.fromJson(core.Map json_)
       : this(
@@ -154,7 +152,11 @@ class AmpUrlError {
   /// The original non-AMP URL.
   core.String? originalUrl;
 
-  AmpUrlError({this.errorCode, this.errorMessage, this.originalUrl});
+  AmpUrlError({
+    this.errorCode,
+    this.errorMessage,
+    this.originalUrl,
+  });
 
   AmpUrlError.fromJson(core.Map json_)
       : this(
@@ -191,7 +193,10 @@ class BatchGetAmpUrlsRequest {
   /// Limits\](/amp/cache/reference/limits)).
   core.List<core.String>? urls;
 
-  BatchGetAmpUrlsRequest({this.lookupStrategy, this.urls});
+  BatchGetAmpUrlsRequest({
+    this.lookupStrategy,
+    this.urls,
+  });
 
   BatchGetAmpUrlsRequest.fromJson(core.Map json_)
       : this(
@@ -219,23 +224,20 @@ class BatchGetAmpUrlsResponse {
   /// The errors for requested URLs that have no AMP URL.
   core.List<AmpUrlError>? urlErrors;
 
-  BatchGetAmpUrlsResponse({this.ampUrls, this.urlErrors});
+  BatchGetAmpUrlsResponse({
+    this.ampUrls,
+    this.urlErrors,
+  });
 
   BatchGetAmpUrlsResponse.fromJson(core.Map json_)
       : this(
           ampUrls: (json_['ampUrls'] as core.List?)
-              ?.map(
-                (value) => AmpUrl.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  AmpUrl.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           urlErrors: (json_['urlErrors'] as core.List?)
-              ?.map(
-                (value) => AmpUrlError.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AmpUrlError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 

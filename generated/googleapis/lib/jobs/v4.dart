@@ -58,16 +58,11 @@ class CloudTalentSolutionApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  CloudTalentSolutionApi(
-    http.Client client, {
-    core.String rootUrl = 'https://jobs.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  CloudTalentSolutionApi(http.Client client,
+      {core.String rootUrl = 'https://jobs.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -105,7 +100,10 @@ class ProjectsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -221,8 +219,7 @@ class ProjectsTenantsResource {
       queryParams: queryParams_,
     );
     return CompleteQueryResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new tenant entity.
@@ -286,7 +283,10 @@ class ProjectsTenantsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -320,7 +320,10 @@ class ProjectsTenantsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Tenant> get(core.String name, {core.String? $fields}) async {
+  async.Future<Tenant> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -379,8 +382,7 @@ class ProjectsTenantsResource {
       queryParams: queryParams_,
     );
     return ListTenantsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates specified tenant.
@@ -486,8 +488,7 @@ class ProjectsTenantsClientEventsResource {
       queryParams: queryParams_,
     );
     return ClientEvent.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -562,7 +563,10 @@ class ProjectsTenantsCompaniesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -598,7 +602,10 @@ class ProjectsTenantsCompaniesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Company> get(core.String name, {core.String? $fields}) async {
+  async.Future<Company> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -663,8 +670,7 @@ class ProjectsTenantsCompaniesResource {
       queryParams: queryParams_,
     );
     return ListCompaniesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates specified company.
@@ -919,7 +925,10 @@ class ProjectsTenantsJobsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -954,7 +963,10 @@ class ProjectsTenantsJobsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Job> get(core.String name, {core.String? $fields}) async {
+  async.Future<Job> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1047,8 +1059,7 @@ class ProjectsTenantsJobsResource {
       queryParams: queryParams_,
     );
     return ListJobsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates specified job.
@@ -1149,8 +1160,7 @@ class ProjectsTenantsJobsResource {
       queryParams: queryParams_,
     );
     return SearchJobsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Searches for jobs using the provided SearchJobsRequest.
@@ -1201,8 +1211,7 @@ class ProjectsTenantsJobsResource {
       queryParams: queryParams_,
     );
     return SearchJobsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1228,7 +1237,11 @@ class ApplicationInfo {
   /// The maximum number of allowed characters for each entry is 2,000.
   core.List<core.String>? uris;
 
-  ApplicationInfo({this.emails, this.instruction, this.uris});
+  ApplicationInfo({
+    this.emails,
+    this.instruction,
+    this.uris,
+  });
 
   ApplicationInfo.fromJson(core.Map json_)
       : this(
@@ -1257,16 +1270,15 @@ class BatchCreateJobsRequest {
   /// Required.
   core.List<Job>? jobs;
 
-  BatchCreateJobsRequest({this.jobs});
+  BatchCreateJobsRequest({
+    this.jobs,
+  });
 
   BatchCreateJobsRequest.fromJson(core.Map json_)
       : this(
           jobs: (json_['jobs'] as core.List?)
-              ?.map(
-                (value) => Job.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Job.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1284,7 +1296,9 @@ class BatchDeleteJobsRequest {
   /// can be deleted in a batch.
   core.List<core.String>? names;
 
-  BatchDeleteJobsRequest({this.names});
+  BatchDeleteJobsRequest({
+    this.names,
+  });
 
   BatchDeleteJobsRequest.fromJson(core.Map json_)
       : this(
@@ -1318,16 +1332,16 @@ class BatchUpdateJobsRequest {
   /// will include all fields, which can yield a very large response.
   core.String? updateMask;
 
-  BatchUpdateJobsRequest({this.jobs, this.updateMask});
+  BatchUpdateJobsRequest({
+    this.jobs,
+    this.updateMask,
+  });
 
   BatchUpdateJobsRequest.fromJson(core.Map json_)
       : this(
           jobs: (json_['jobs'] as core.List?)
-              ?.map(
-                (value) => Job.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Job.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -1385,8 +1399,7 @@ class ClientEvent {
           eventNotes: json_['eventNotes'] as core.String?,
           jobEvent: json_.containsKey('jobEvent')
               ? JobEvent.fromJson(
-                  json_['jobEvent'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['jobEvent'] as core.Map<core.String, core.dynamic>)
               : null,
           requestId: json_['requestId'] as core.String?,
         );
@@ -1468,15 +1481,12 @@ class CommuteFilter {
           commuteMethod: json_['commuteMethod'] as core.String?,
           departureTime: json_.containsKey('departureTime')
               ? TimeOfDay.fromJson(
-                  json_['departureTime'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['departureTime'] as core.Map<core.String, core.dynamic>)
               : null,
           roadTraffic: json_['roadTraffic'] as core.String?,
           startCoordinates: json_.containsKey('startCoordinates')
-              ? LatLng.fromJson(
-                  json_['startCoordinates']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? LatLng.fromJson(json_['startCoordinates']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           travelDuration: json_['travelDuration'] as core.String?,
         );
@@ -1504,14 +1514,16 @@ class CommuteInfo {
   /// requested duration, but was returned as part of an expanded query.
   core.String? travelDuration;
 
-  CommuteInfo({this.jobLocation, this.travelDuration});
+  CommuteInfo({
+    this.jobLocation,
+    this.travelDuration,
+  });
 
   CommuteInfo.fromJson(core.Map json_)
       : this(
           jobLocation: json_.containsKey('jobLocation')
               ? Location.fromJson(
-                  json_['jobLocation'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['jobLocation'] as core.Map<core.String, core.dynamic>)
               : null,
           travelDuration: json_['travelDuration'] as core.String?,
         );
@@ -1638,8 +1650,7 @@ class Company {
           careerSiteUri: json_['careerSiteUri'] as core.String?,
           derivedInfo: json_.containsKey('derivedInfo')
               ? CompanyDerivedInfo.fromJson(
-                  json_['derivedInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['derivedInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           displayName: json_['displayName'] as core.String?,
           eeoText: json_['eeoText'] as core.String?,
@@ -1683,15 +1694,15 @@ class CompanyDerivedInfo {
   /// Company.headquarters_address if provided.
   Location? headquartersLocation;
 
-  CompanyDerivedInfo({this.headquartersLocation});
+  CompanyDerivedInfo({
+    this.headquartersLocation,
+  });
 
   CompanyDerivedInfo.fromJson(core.Map json_)
       : this(
           headquartersLocation: json_.containsKey('headquartersLocation')
-              ? Location.fromJson(
-                  json_['headquartersLocation']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Location.fromJson(json_['headquartersLocation']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1773,16 +1784,14 @@ class CompensationEntry {
       : this(
           amount: json_.containsKey('amount')
               ? Money.fromJson(
-                  json_['amount'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['amount'] as core.Map<core.String, core.dynamic>)
               : null,
           description: json_['description'] as core.String?,
           expectedUnitsPerYear:
               (json_['expectedUnitsPerYear'] as core.num?)?.toDouble(),
           range: json_.containsKey('range')
               ? CompensationRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['range'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
           unit: json_['unit'] as core.String?,
@@ -1853,8 +1862,7 @@ class CompensationFilter {
                   as core.bool?,
           range: json_.containsKey('range')
               ? CompensationRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['range'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
           units: (json_['units'] as core.List?)
@@ -1910,22 +1918,17 @@ class CompensationInfo {
               json_.containsKey('annualizedBaseCompensationRange')
                   ? CompensationRange.fromJson(
                       json_['annualizedBaseCompensationRange']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           annualizedTotalCompensationRange:
               json_.containsKey('annualizedTotalCompensationRange')
                   ? CompensationRange.fromJson(
                       json_['annualizedTotalCompensationRange']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           entries: (json_['entries'] as core.List?)
-              ?.map(
-                (value) => CompensationEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CompensationEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1952,21 +1955,20 @@ class CompensationRange {
   /// match the currency code of max_compensation.
   Money? minCompensation;
 
-  CompensationRange({this.maxCompensation, this.minCompensation});
+  CompensationRange({
+    this.maxCompensation,
+    this.minCompensation,
+  });
 
   CompensationRange.fromJson(core.Map json_)
       : this(
           maxCompensation: json_.containsKey('maxCompensation')
-              ? Money.fromJson(
-                  json_['maxCompensation']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Money.fromJson(json_['maxCompensation']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           minCompensation: json_.containsKey('minCompensation')
-              ? Money.fromJson(
-                  json_['minCompensation']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Money.fromJson(json_['minCompensation']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1985,21 +1987,20 @@ class CompleteQueryResponse {
   /// tracking id.
   ResponseMetadata? metadata;
 
-  CompleteQueryResponse({this.completionResults, this.metadata});
+  CompleteQueryResponse({
+    this.completionResults,
+    this.metadata,
+  });
 
   CompleteQueryResponse.fromJson(core.Map json_)
       : this(
           completionResults: (json_['completionResults'] as core.List?)
-              ?.map(
-                (value) => CompletionResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CompletionResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           metadata: json_.containsKey('metadata')
               ? ResponseMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2032,7 +2033,11 @@ class CompletionResult {
   /// language_codes are returned.
   core.String? type;
 
-  CompletionResult({this.imageUri, this.suggestion, this.type});
+  CompletionResult({
+    this.imageUri,
+    this.suggestion,
+    this.type,
+  });
 
   CompletionResult.fromJson(core.Map json_)
       : this(
@@ -2159,7 +2164,10 @@ class CustomRankingInfo {
   /// Required.
   core.String? rankingExpression;
 
-  CustomRankingInfo({this.importanceLevel, this.rankingExpression});
+  CustomRankingInfo({
+    this.importanceLevel,
+    this.rankingExpression,
+  });
 
   CustomRankingInfo.fromJson(core.Map json_)
       : this(
@@ -2199,7 +2207,10 @@ class DeviceInfo {
   /// other devices.
   core.String? id;
 
-  DeviceInfo({this.deviceType, this.id});
+  DeviceInfo({
+    this.deviceType,
+    this.id,
+  });
 
   DeviceInfo.fromJson(core.Map json_)
       : this(
@@ -2229,10 +2240,14 @@ class HistogramQuery {
   /// See SearchJobsRequest.histogram_queries for details about syntax.
   core.String? histogramQuery;
 
-  HistogramQuery({this.histogramQuery});
+  HistogramQuery({
+    this.histogramQuery,
+  });
 
   HistogramQuery.fromJson(core.Map json_)
-      : this(histogramQuery: json_['histogramQuery'] as core.String?);
+      : this(
+          histogramQuery: json_['histogramQuery'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (histogramQuery != null) 'histogramQuery': histogramQuery!,
@@ -2254,13 +2269,20 @@ class HistogramQueryResult {
   /// Requested histogram expression.
   core.String? histogramQuery;
 
-  HistogramQueryResult({this.histogram, this.histogramQuery});
+  HistogramQueryResult({
+    this.histogram,
+    this.histogramQuery,
+  });
 
   HistogramQueryResult.fromJson(core.Map json_)
       : this(
-          histogram: (json_['histogram']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          histogram:
+              (json_['histogram'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           histogramQuery: json_['histogramQuery'] as core.String?,
         );
 
@@ -2597,18 +2619,14 @@ class Job {
               ?.map((value) => value as core.String)
               .toList(),
           applicationInfo: json_.containsKey('applicationInfo')
-              ? ApplicationInfo.fromJson(
-                  json_['applicationInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ApplicationInfo.fromJson(json_['applicationInfo']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           company: json_['company'] as core.String?,
           companyDisplayName: json_['companyDisplayName'] as core.String?,
           compensationInfo: json_.containsKey('compensationInfo')
-              ? CompensationInfo.fromJson(
-                  json_['compensationInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CompensationInfo.fromJson(json_['compensationInfo']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           customAttributes: (json_['customAttributes']
                   as core.Map<core.String, core.dynamic>?)
@@ -2616,8 +2634,7 @@ class Job {
             (key, value) => core.MapEntry(
               key,
               CustomAttribute.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
           degreeTypes: (json_['degreeTypes'] as core.List?)
@@ -2626,8 +2643,7 @@ class Job {
           department: json_['department'] as core.String?,
           derivedInfo: json_.containsKey('derivedInfo')
               ? JobDerivedInfo.fromJson(
-                  json_['derivedInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['derivedInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           description: json_['description'] as core.String?,
           employmentTypes: (json_['employmentTypes'] as core.List?)
@@ -2648,10 +2664,8 @@ class Job {
           postingRegion: json_['postingRegion'] as core.String?,
           postingUpdateTime: json_['postingUpdateTime'] as core.String?,
           processingOptions: json_.containsKey('processingOptions')
-              ? ProcessingOptions.fromJson(
-                  json_['processingOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ProcessingOptions.fromJson(json_['processingOptions']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           promotionValue: json_['promotionValue'] as core.int?,
           qualifications: json_['qualifications'] as core.String?,
@@ -2707,7 +2721,10 @@ class JobDerivedInfo {
   /// locations are exactly matched to Job.addresses in the same order.
   core.List<Location>? locations;
 
-  JobDerivedInfo({this.jobCategories, this.locations});
+  JobDerivedInfo({
+    this.jobCategories,
+    this.locations,
+  });
 
   JobDerivedInfo.fromJson(core.Map json_)
       : this(
@@ -2715,11 +2732,8 @@ class JobDerivedInfo {
               ?.map((value) => value as core.String)
               .toList(),
           locations: (json_['locations'] as core.List?)
-              ?.map(
-                (value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2811,7 +2825,10 @@ class JobEvent {
   /// Solution service.
   core.String? type;
 
-  JobEvent({this.jobs, this.type});
+  JobEvent({
+    this.jobs,
+    this.type,
+  });
 
   JobEvent.fromJson(core.Map json_)
       : this(
@@ -2978,8 +2995,7 @@ class JobQuery {
       : this(
           commuteFilter: json_.containsKey('commuteFilter')
               ? CommuteFilter.fromJson(
-                  json_['commuteFilter'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['commuteFilter'] as core.Map<core.String, core.dynamic>)
               : null,
           companies: (json_['companies'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2988,10 +3004,8 @@ class JobQuery {
               ?.map((value) => value as core.String)
               .toList(),
           compensationFilter: json_.containsKey('compensationFilter')
-              ? CompensationFilter.fromJson(
-                  json_['compensationFilter']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CompensationFilter.fromJson(json_['compensationFilter']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           customAttributeFilter: json_['customAttributeFilter'] as core.String?,
           disableSpellCheck: json_['disableSpellCheck'] as core.bool?,
@@ -3008,17 +3022,12 @@ class JobQuery {
               ?.map((value) => value as core.String)
               .toList(),
           locationFilters: (json_['locationFilters'] as core.List?)
-              ?.map(
-                (value) => LocationFilter.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => LocationFilter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           publishTimeRange: json_.containsKey('publishTimeRange')
-              ? TimestampRange.fromJson(
-                  json_['publishTimeRange']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? TimestampRange.fromJson(json_['publishTimeRange']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           query: json_['query'] as core.String?,
           queryLanguageCode: json_['queryLanguageCode'] as core.String?,
@@ -3064,21 +3073,21 @@ class ListCompaniesResponse {
   /// A token to retrieve the next page of results.
   core.String? nextPageToken;
 
-  ListCompaniesResponse({this.companies, this.metadata, this.nextPageToken});
+  ListCompaniesResponse({
+    this.companies,
+    this.metadata,
+    this.nextPageToken,
+  });
 
   ListCompaniesResponse.fromJson(core.Map json_)
       : this(
           companies: (json_['companies'] as core.List?)
-              ?.map(
-                (value) => Company.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Company.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           metadata: json_.containsKey('metadata')
               ? ResponseMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -3105,21 +3114,21 @@ class ListJobsResponse {
   /// A token to retrieve the next page of results.
   core.String? nextPageToken;
 
-  ListJobsResponse({this.jobs, this.metadata, this.nextPageToken});
+  ListJobsResponse({
+    this.jobs,
+    this.metadata,
+    this.nextPageToken,
+  });
 
   ListJobsResponse.fromJson(core.Map json_)
       : this(
           jobs: (json_['jobs'] as core.List?)
-              ?.map(
-                (value) => Job.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Job.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           metadata: json_.containsKey('metadata')
               ? ResponseMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -3143,22 +3152,22 @@ class ListTenantsResponse {
   /// Tenants for the current client.
   core.List<Tenant>? tenants;
 
-  ListTenantsResponse({this.metadata, this.nextPageToken, this.tenants});
+  ListTenantsResponse({
+    this.metadata,
+    this.nextPageToken,
+    this.tenants,
+  });
 
   ListTenantsResponse.fromJson(core.Map json_)
       : this(
           metadata: json_.containsKey('metadata')
               ? ResponseMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           nextPageToken: json_['nextPageToken'] as core.String?,
           tenants: (json_['tenants'] as core.List?)
-              ?.map(
-                (value) => Tenant.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Tenant.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3224,14 +3233,12 @@ class Location {
       : this(
           latLng: json_.containsKey('latLng')
               ? LatLng.fromJson(
-                  json_['latLng'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['latLng'] as core.Map<core.String, core.dynamic>)
               : null,
           locationType: json_['locationType'] as core.String?,
           postalAddress: json_.containsKey('postalAddress')
               ? PostalAddress.fromJson(
-                  json_['postalAddress'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['postalAddress'] as core.Map<core.String, core.dynamic>)
               : null,
           radiusMiles: (json_['radiusMiles'] as core.num?)?.toDouble(),
         );
@@ -3316,8 +3323,7 @@ class LocationFilter {
           distanceInMiles: (json_['distanceInMiles'] as core.num?)?.toDouble(),
           latLng: json_.containsKey('latLng')
               ? LatLng.fromJson(
-                  json_['latLng'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['latLng'] as core.Map<core.String, core.dynamic>)
               : null,
           regionCode: json_['regionCode'] as core.String?,
           telecommutePreference: json_['telecommutePreference'] as core.String?,
@@ -3370,13 +3376,11 @@ class MatchingJob {
       : this(
           commuteInfo: json_.containsKey('commuteInfo')
               ? CommuteInfo.fromJson(
-                  json_['commuteInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['commuteInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           job: json_.containsKey('job')
               ? Job.fromJson(
-                  json_['job'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['job'] as core.Map<core.String, core.dynamic>)
               : null,
           jobSummary: json_['jobSummary'] as core.String?,
           jobTitleSnippet: json_['jobTitleSnippet'] as core.String?,
@@ -3438,15 +3442,20 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({this.done, this.error, this.metadata, this.name, this.response});
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -3579,8 +3588,7 @@ class RequestMetadata {
           allowMissingIds: json_['allowMissingIds'] as core.bool?,
           deviceInfo: json_.containsKey('deviceInfo')
               ? DeviceInfo.fromJson(
-                  json_['deviceInfo'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['deviceInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           domain: json_['domain'] as core.String?,
           sessionId: json_['sessionId'] as core.String?,
@@ -3895,25 +3903,19 @@ class SearchJobsRequest {
   SearchJobsRequest.fromJson(core.Map json_)
       : this(
           customRankingInfo: json_.containsKey('customRankingInfo')
-              ? CustomRankingInfo.fromJson(
-                  json_['customRankingInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CustomRankingInfo.fromJson(json_['customRankingInfo']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           disableKeywordMatch: json_['disableKeywordMatch'] as core.bool?,
           diversificationLevel: json_['diversificationLevel'] as core.String?,
           enableBroadening: json_['enableBroadening'] as core.bool?,
           histogramQueries: (json_['histogramQueries'] as core.List?)
-              ?.map(
-                (value) => HistogramQuery.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => HistogramQuery.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           jobQuery: json_.containsKey('jobQuery')
               ? JobQuery.fromJson(
-                  json_['jobQuery'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['jobQuery'] as core.Map<core.String, core.dynamic>)
               : null,
           jobView: json_['jobView'] as core.String?,
           keywordMatchMode: json_['keywordMatchMode'] as core.String?,
@@ -3923,10 +3925,8 @@ class SearchJobsRequest {
           pageToken: json_['pageToken'] as core.String?,
           relevanceThreshold: json_['relevanceThreshold'] as core.String?,
           requestMetadata: json_.containsKey('requestMetadata')
-              ? RequestMetadata.fromJson(
-                  json_['requestMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? RequestMetadata.fromJson(json_['requestMetadata']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           searchMode: json_['searchMode'] as core.String?,
         );
@@ -4013,37 +4013,25 @@ class SearchJobsResponse {
           broadenedQueryJobsCount:
               json_['broadenedQueryJobsCount'] as core.int?,
           histogramQueryResults: (json_['histogramQueryResults'] as core.List?)
-              ?.map(
-                (value) => HistogramQueryResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => HistogramQueryResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           locationFilters: (json_['locationFilters'] as core.List?)
-              ?.map(
-                (value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           matchingJobs: (json_['matchingJobs'] as core.List?)
-              ?.map(
-                (value) => MatchingJob.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => MatchingJob.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           metadata: json_.containsKey('metadata')
               ? ResponseMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           nextPageToken: json_['nextPageToken'] as core.String?,
           spellCorrection: json_.containsKey('spellCorrection')
-              ? SpellingCorrection.fromJson(
-                  json_['spellCorrection']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? SpellingCorrection.fromJson(json_['spellCorrection']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -4078,7 +4066,11 @@ class SpellingCorrection {
   /// Correction output consisting of the corrected keyword string.
   core.String? correctedText;
 
-  SpellingCorrection({this.corrected, this.correctedHtml, this.correctedText});
+  SpellingCorrection({
+    this.corrected,
+    this.correctedHtml,
+    this.correctedText,
+  });
 
   SpellingCorrection.fromJson(core.Map json_)
       : this(
@@ -4124,7 +4116,10 @@ class Tenant {
   /// "projects/foo/tenants/bar".
   core.String? name;
 
-  Tenant({this.externalId, this.name});
+  Tenant({
+    this.externalId,
+    this.name,
+  });
 
   Tenant.fromJson(core.Map json_)
       : this(
@@ -4153,7 +4148,10 @@ class TimestampRange {
   /// Begin of the period (inclusive).
   core.String? startTime;
 
-  TimestampRange({this.endTime, this.startTime});
+  TimestampRange({
+    this.endTime,
+    this.startTime,
+  });
 
   TimestampRange.fromJson(core.Map json_)
       : this(

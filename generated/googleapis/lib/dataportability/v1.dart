@@ -326,16 +326,11 @@ class DataPortabilityApi {
   PortabilityArchiveResource get portabilityArchive =>
       PortabilityArchiveResource(_requester);
 
-  DataPortabilityApi(
-    http.Client client, {
-    core.String rootUrl = 'https://dataportability.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  DataPortabilityApi(http.Client client,
+      {core.String rootUrl = 'https://dataportability.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ArchiveJobsResource {
@@ -379,8 +374,7 @@ class ArchiveJobsResource {
       queryParams: queryParams_,
     );
     return PortabilityArchiveState.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retries a failed Portability Archive job.
@@ -423,8 +417,7 @@ class ArchiveJobsResource {
       queryParams: queryParams_,
     );
     return RetryPortabilityArchiveResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -514,8 +507,7 @@ class PortabilityArchiveResource {
       queryParams: queryParams_,
     );
     return InitiatePortabilityArchiveResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -534,7 +526,9 @@ class InitiatePortabilityArchiveRequest {
   /// These values have a 1:1 correspondence with the OAuth scopes.
   core.List<core.String>? resources;
 
-  InitiatePortabilityArchiveRequest({this.resources});
+  InitiatePortabilityArchiveRequest({
+    this.resources,
+  });
 
   InitiatePortabilityArchiveRequest.fromJson(core.Map json_)
       : this(
@@ -555,10 +549,14 @@ class InitiatePortabilityArchiveResponse {
   /// This can be used to get the state of the job.
   core.String? archiveJobId;
 
-  InitiatePortabilityArchiveResponse({this.archiveJobId});
+  InitiatePortabilityArchiveResponse({
+    this.archiveJobId,
+  });
 
   InitiatePortabilityArchiveResponse.fromJson(core.Map json_)
-      : this(archiveJobId: json_['archiveJobId'] as core.String?);
+      : this(
+          archiveJobId: json_['archiveJobId'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (archiveJobId != null) 'archiveJobId': archiveJobId!,
@@ -586,7 +584,11 @@ class PortabilityArchiveState {
   /// objects in the Cloud Storage bucket.
   core.List<core.String>? urls;
 
-  PortabilityArchiveState({this.name, this.state, this.urls});
+  PortabilityArchiveState({
+    this.name,
+    this.state,
+    this.urls,
+  });
 
   PortabilityArchiveState.fromJson(core.Map json_)
       : this(
@@ -617,10 +619,14 @@ class RetryPortabilityArchiveResponse {
   /// This can be used to get the state of the new job.
   core.String? archiveJobId;
 
-  RetryPortabilityArchiveResponse({this.archiveJobId});
+  RetryPortabilityArchiveResponse({
+    this.archiveJobId,
+  });
 
   RetryPortabilityArchiveResponse.fromJson(core.Map json_)
-      : this(archiveJobId: json_['archiveJobId'] as core.String?);
+      : this(
+          archiveJobId: json_['archiveJobId'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (archiveJobId != null) 'archiveJobId': archiveJobId!,

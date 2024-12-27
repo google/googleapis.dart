@@ -49,16 +49,11 @@ class VerifiedaccessApi {
 
   ChallengeResource get challenge => ChallengeResource(_requester);
 
-  VerifiedaccessApi(
-    http.Client client, {
-    core.String rootUrl = 'https://verifiedaccess.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  VerifiedaccessApi(http.Client client,
+      {core.String rootUrl = 'https://verifiedaccess.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ChallengeResource {
@@ -136,8 +131,7 @@ class ChallengeResource {
       queryParams: queryParams_,
     );
     return VerifyChallengeResponseResult.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -152,10 +146,14 @@ class Challenge {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  Challenge({this.challenge});
+  Challenge({
+    this.challenge,
+  });
 
   Challenge.fromJson(core.Map json_)
-      : this(challenge: json_['challenge'] as core.String?);
+      : this(
+          challenge: json_['challenge'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (challenge != null) 'challenge': challenge!,
@@ -170,7 +168,10 @@ class CrowdStrikeAgent {
   /// The Customer ID to which the agent belongs to.
   core.String? customerId;
 
-  CrowdStrikeAgent({this.agentId, this.customerId});
+  CrowdStrikeAgent({
+    this.agentId,
+    this.customerId,
+  });
 
   CrowdStrikeAgent.fromJson(core.Map json_)
       : this(
@@ -454,10 +455,8 @@ class DeviceSignals {
           chromeRemoteDesktopAppBlocked:
               json_['chromeRemoteDesktopAppBlocked'] as core.bool?,
           crowdStrikeAgent: json_.containsKey('crowdStrikeAgent')
-              ? CrowdStrikeAgent.fromJson(
-                  json_['crowdStrikeAgent']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CrowdStrikeAgent.fromJson(json_['crowdStrikeAgent']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           deviceAffiliationIds: (json_['deviceAffiliationIds'] as core.List?)
               ?.map((value) => value as core.String)
@@ -700,8 +699,7 @@ class VerifyChallengeResponseResult {
           deviceSignal: json_['deviceSignal'] as core.String?,
           deviceSignals: json_.containsKey('deviceSignals')
               ? DeviceSignals.fromJson(
-                  json_['deviceSignals'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['deviceSignals'] as core.Map<core.String, core.dynamic>)
               : null,
           keyTrustLevel: json_['keyTrustLevel'] as core.String?,
           profileCustomerId: json_['profileCustomerId'] as core.String?,

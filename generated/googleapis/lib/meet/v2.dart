@@ -59,16 +59,11 @@ class MeetApi {
       ConferenceRecordsResource(_requester);
   SpacesResource get spaces => SpacesResource(_requester);
 
-  MeetApi(
-    http.Client client, {
-    core.String rootUrl = 'https://meet.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  MeetApi(http.Client client,
+      {core.String rootUrl = 'https://meet.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ConferenceRecordsResource {
@@ -116,8 +111,7 @@ class ConferenceRecordsResource {
       queryParams: queryParams_,
     );
     return ConferenceRecord.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the conference records.
@@ -172,8 +166,7 @@ class ConferenceRecordsResource {
       queryParams: queryParams_,
     );
     return ListConferenceRecordsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -221,8 +214,7 @@ class ConferenceRecordsParticipantsResource {
       queryParams: queryParams_,
     );
     return Participant.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the participants in a conference record.
@@ -282,8 +274,7 @@ class ConferenceRecordsParticipantsResource {
       queryParams: queryParams_,
     );
     return ListParticipantsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -291,8 +282,8 @@ class ConferenceRecordsParticipantsParticipantSessionsResource {
   final commons.ApiRequester _requester;
 
   ConferenceRecordsParticipantsParticipantSessionsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Gets a participant session by participant session ID.
   ///
@@ -328,8 +319,7 @@ class ConferenceRecordsParticipantsParticipantSessionsResource {
       queryParams: queryParams_,
     );
     return ParticipantSession.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the participant sessions of a participant in a conference record.
@@ -392,8 +382,7 @@ class ConferenceRecordsParticipantsParticipantSessionsResource {
       queryParams: queryParams_,
     );
     return ListParticipantSessionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -420,7 +409,10 @@ class ConferenceRecordsRecordingsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Recording> get(core.String name, {core.String? $fields}) async {
+  async.Future<Recording> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -481,8 +473,7 @@ class ConferenceRecordsRecordingsResource {
       queryParams: queryParams_,
     );
     return ListRecordingsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -512,7 +503,10 @@ class ConferenceRecordsTranscriptsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Transcript> get(core.String name, {core.String? $fields}) async {
+  async.Future<Transcript> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -525,8 +519,7 @@ class ConferenceRecordsTranscriptsResource {
       queryParams: queryParams_,
     );
     return Transcript.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the set of transcripts from the conference record.
@@ -575,8 +568,7 @@ class ConferenceRecordsTranscriptsResource {
       queryParams: queryParams_,
     );
     return ListTranscriptsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -624,8 +616,7 @@ class ConferenceRecordsTranscriptsEntriesResource {
       queryParams: queryParams_,
     );
     return TranscriptEntry.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the structured transcript entries per transcript.
@@ -678,8 +669,7 @@ class ConferenceRecordsTranscriptsEntriesResource {
       queryParams: queryParams_,
     );
     return ListTranscriptEntriesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -704,7 +694,10 @@ class SpacesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Space> create(Space request, {core.String? $fields}) async {
+  async.Future<Space> create(
+    Space request, {
+    core.String? $fields,
+  }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -800,7 +793,10 @@ class SpacesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Space> get(core.String name, {core.String? $fields}) async {
+  async.Future<Space> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -882,10 +878,14 @@ class ActiveConference {
   /// Output only.
   core.String? conferenceRecord;
 
-  ActiveConference({this.conferenceRecord});
+  ActiveConference({
+    this.conferenceRecord,
+  });
 
   ActiveConference.fromJson(core.Map json_)
-      : this(conferenceRecord: json_['conferenceRecord'] as core.String?);
+      : this(
+          conferenceRecord: json_['conferenceRecord'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conferenceRecord != null) 'conferenceRecord': conferenceRecord!,
@@ -899,10 +899,14 @@ class AnonymousUser {
   /// Output only.
   core.String? displayName;
 
-  AnonymousUser({this.displayName});
+  AnonymousUser({
+    this.displayName,
+  });
 
   AnonymousUser.fromJson(core.Map json_)
-      : this(displayName: json_['displayName'] as core.String?);
+      : this(
+          displayName: json_['displayName'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -991,7 +995,10 @@ class DocsDestination {
   /// Output only.
   core.String? exportUri;
 
-  DocsDestination({this.document, this.exportUri});
+  DocsDestination({
+    this.document,
+    this.exportUri,
+  });
 
   DocsDestination.fromJson(core.Map json_)
       : this(
@@ -1024,7 +1031,10 @@ class DriveDestination {
   /// Output only.
   core.String? file;
 
-  DriveDestination({this.exportUri, this.file});
+  DriveDestination({
+    this.exportUri,
+    this.file,
+  });
 
   DriveDestination.fromJson(core.Map json_)
       : this(
@@ -1060,16 +1070,16 @@ class ListConferenceRecordsResponse {
   /// Unset if all conferences have been returned.
   core.String? nextPageToken;
 
-  ListConferenceRecordsResponse({this.conferenceRecords, this.nextPageToken});
+  ListConferenceRecordsResponse({
+    this.conferenceRecords,
+    this.nextPageToken,
+  });
 
   ListConferenceRecordsResponse.fromJson(core.Map json_)
       : this(
           conferenceRecords: (json_['conferenceRecords'] as core.List?)
-              ?.map(
-                (value) => ConferenceRecord.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ConferenceRecord.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1100,11 +1110,8 @@ class ListParticipantSessionsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           participantSessions: (json_['participantSessions'] as core.List?)
-              ?.map(
-                (value) => ParticipantSession.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ParticipantSession.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1144,11 +1151,8 @@ class ListParticipantsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           participants: (json_['participants'] as core.List?)
-              ?.map(
-                (value) => Participant.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Participant.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -1171,17 +1175,17 @@ class ListRecordingsResponse {
   /// List of recordings in one page.
   core.List<Recording>? recordings;
 
-  ListRecordingsResponse({this.nextPageToken, this.recordings});
+  ListRecordingsResponse({
+    this.nextPageToken,
+    this.recordings,
+  });
 
   ListRecordingsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           recordings: (json_['recordings'] as core.List?)
-              ?.map(
-                (value) => Recording.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Recording.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1202,17 +1206,17 @@ class ListTranscriptEntriesResponse {
   /// List of TranscriptEntries in one page.
   core.List<TranscriptEntry>? transcriptEntries;
 
-  ListTranscriptEntriesResponse({this.nextPageToken, this.transcriptEntries});
+  ListTranscriptEntriesResponse({
+    this.nextPageToken,
+    this.transcriptEntries,
+  });
 
   ListTranscriptEntriesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           transcriptEntries: (json_['transcriptEntries'] as core.List?)
-              ?.map(
-                (value) => TranscriptEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => TranscriptEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1233,17 +1237,17 @@ class ListTranscriptsResponse {
   /// List of transcripts in one page.
   core.List<Transcript>? transcripts;
 
-  ListTranscriptsResponse({this.nextPageToken, this.transcripts});
+  ListTranscriptsResponse({
+    this.nextPageToken,
+    this.transcripts,
+  });
 
   ListTranscriptsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           transcripts: (json_['transcripts'] as core.List?)
-              ?.map(
-                (value) => Transcript.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Transcript.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -1296,21 +1300,18 @@ class Participant {
       : this(
           anonymousUser: json_.containsKey('anonymousUser')
               ? AnonymousUser.fromJson(
-                  json_['anonymousUser'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['anonymousUser'] as core.Map<core.String, core.dynamic>)
               : null,
           earliestStartTime: json_['earliestStartTime'] as core.String?,
           latestEndTime: json_['latestEndTime'] as core.String?,
           name: json_['name'] as core.String?,
           phoneUser: json_.containsKey('phoneUser')
               ? PhoneUser.fromJson(
-                  json_['phoneUser'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['phoneUser'] as core.Map<core.String, core.dynamic>)
               : null,
           signedinUser: json_.containsKey('signedinUser')
               ? SignedinUser.fromJson(
-                  json_['signedinUser'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['signedinUser'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1349,7 +1350,11 @@ class ParticipantSession {
   /// Output only.
   core.String? startTime;
 
-  ParticipantSession({this.endTime, this.name, this.startTime});
+  ParticipantSession({
+    this.endTime,
+    this.name,
+    this.startTime,
+  });
 
   ParticipantSession.fromJson(core.Map json_)
       : this(
@@ -1373,10 +1378,14 @@ class PhoneUser {
   /// Output only.
   core.String? displayName;
 
-  PhoneUser({this.displayName});
+  PhoneUser({
+    this.displayName,
+  });
 
   PhoneUser.fromJson(core.Map json_)
-      : this(displayName: json_['displayName'] as core.String?);
+      : this(
+          displayName: json_['displayName'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -1434,10 +1443,8 @@ class Recording {
   Recording.fromJson(core.Map json_)
       : this(
           driveDestination: json_.containsKey('driveDestination')
-              ? DriveDestination.fromJson(
-                  json_['driveDestination']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? DriveDestination.fromJson(json_['driveDestination']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           endTime: json_['endTime'] as core.String?,
           name: json_['name'] as core.String?,
@@ -1474,7 +1481,10 @@ class SignedinUser {
   /// Output only.
   core.String? user;
 
-  SignedinUser({this.displayName, this.user});
+  SignedinUser({
+    this.displayName,
+    this.user,
+  });
 
   SignedinUser.fromJson(core.Map json_)
       : this(
@@ -1536,15 +1546,12 @@ class Space {
   Space.fromJson(core.Map json_)
       : this(
           activeConference: json_.containsKey('activeConference')
-              ? ActiveConference.fromJson(
-                  json_['activeConference']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ActiveConference.fromJson(json_['activeConference']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           config: json_.containsKey('config')
               ? SpaceConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
           meetingCode: json_['meetingCode'] as core.String?,
           meetingUri: json_['meetingUri'] as core.String?,
@@ -1592,7 +1599,10 @@ class SpaceConfig {
   /// points.
   core.String? entryPointAccess;
 
-  SpaceConfig({this.accessType, this.entryPointAccess});
+  SpaceConfig({
+    this.accessType,
+    this.entryPointAccess,
+  });
 
   SpaceConfig.fromJson(core.Map json_)
       : this(
@@ -1657,10 +1667,8 @@ class Transcript {
   Transcript.fromJson(core.Map json_)
       : this(
           docsDestination: json_.containsKey('docsDestination')
-              ? DocsDestination.fromJson(
-                  json_['docsDestination']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? DocsDestination.fromJson(json_['docsDestination']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           endTime: json_['endTime'] as core.String?,
           name: json_['name'] as core.String?,

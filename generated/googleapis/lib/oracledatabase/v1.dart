@@ -62,16 +62,11 @@ class OracleDatabaseApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  OracleDatabaseApi(
-    http.Client client, {
-    core.String rootUrl = 'https://oracledatabase.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  OracleDatabaseApi(http.Client client,
+      {core.String rootUrl = 'https://oracledatabase.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -129,7 +124,10 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(core.String name, {core.String? $fields}) async {
+  async.Future<Location> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -193,8 +191,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -202,8 +199,8 @@ class ProjectsLocationsAutonomousDatabaseBackupsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAutonomousDatabaseBackupsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Lists the long-term and automatic backups of an Autonomous Database.
   ///
@@ -261,8 +258,7 @@ class ProjectsLocationsAutonomousDatabaseBackupsResource {
       queryParams: queryParams_,
     );
     return ListAutonomousDatabaseBackupsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -270,8 +266,8 @@ class ProjectsLocationsAutonomousDatabaseCharacterSetsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAutonomousDatabaseCharacterSetsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Lists Autonomous Database Character Sets in a given project and location.
   ///
@@ -327,8 +323,7 @@ class ProjectsLocationsAutonomousDatabaseCharacterSetsResource {
       queryParams: queryParams_,
     );
     return ListAutonomousDatabaseCharacterSetsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -487,8 +482,7 @@ class ProjectsLocationsAutonomousDatabasesResource {
       queryParams: queryParams_,
     );
     return GenerateAutonomousDatabaseWalletResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the details of a single Autonomous Database.
@@ -527,8 +521,7 @@ class ProjectsLocationsAutonomousDatabasesResource {
       queryParams: queryParams_,
     );
     return AutonomousDatabase.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the Autonomous Databases in a given project and location.
@@ -587,8 +580,7 @@ class ProjectsLocationsAutonomousDatabasesResource {
       queryParams: queryParams_,
     );
     return ListAutonomousDatabasesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Restores a single Autonomous Database.
@@ -688,8 +680,7 @@ class ProjectsLocationsAutonomousDbVersionsResource {
       queryParams: queryParams_,
     );
     return ListAutonomousDbVersionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -700,8 +691,8 @@ class ProjectsLocationsCloudExadataInfrastructuresResource {
       ProjectsLocationsCloudExadataInfrastructuresDbServersResource(_requester);
 
   ProjectsLocationsCloudExadataInfrastructuresResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Creates a new Exadata Infrastructure in a given project and location.
   ///
@@ -854,8 +845,7 @@ class ProjectsLocationsCloudExadataInfrastructuresResource {
       queryParams: queryParams_,
     );
     return CloudExadataInfrastructure.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Exadata Infrastructures in a given project and location.
@@ -904,8 +894,7 @@ class ProjectsLocationsCloudExadataInfrastructuresResource {
       queryParams: queryParams_,
     );
     return ListCloudExadataInfrastructuresResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -913,8 +902,8 @@ class ProjectsLocationsCloudExadataInfrastructuresDbServersResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCloudExadataInfrastructuresDbServersResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Lists the database servers of an Exadata Infrastructure instance.
   ///
@@ -963,8 +952,7 @@ class ProjectsLocationsCloudExadataInfrastructuresDbServersResource {
       queryParams: queryParams_,
     );
     return ListDbServersResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1125,8 +1113,7 @@ class ProjectsLocationsCloudVmClustersResource {
       queryParams: queryParams_,
     );
     return CloudVmCluster.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the VM Clusters in a given project and location.
@@ -1179,8 +1166,7 @@ class ProjectsLocationsCloudVmClustersResource {
       queryParams: queryParams_,
     );
     return ListCloudVmClustersResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1237,8 +1223,7 @@ class ProjectsLocationsCloudVmClustersDbNodesResource {
       queryParams: queryParams_,
     );
     return ListDbNodesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1293,8 +1278,7 @@ class ProjectsLocationsDbSystemShapesResource {
       queryParams: queryParams_,
     );
     return ListDbSystemShapesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1349,8 +1333,7 @@ class ProjectsLocationsEntitlementsResource {
       queryParams: queryParams_,
     );
     return ListEntitlementsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1407,8 +1390,7 @@ class ProjectsLocationsGiVersionsResource {
       queryParams: queryParams_,
     );
     return ListGiVersionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1490,7 +1472,10 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1526,7 +1511,10 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1588,8 +1576,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1614,7 +1601,11 @@ class AllConnectionStrings {
   /// Output only.
   core.String? medium;
 
-  AllConnectionStrings({this.high, this.low, this.medium});
+  AllConnectionStrings({
+    this.high,
+    this.low,
+    this.medium,
+  });
 
   AllConnectionStrings.fromJson(core.Map json_)
       : this(
@@ -1715,14 +1706,16 @@ class AutonomousDatabase {
           entitlementId: json_['entitlementId'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           network: json_['network'] as core.String?,
           properties: json_.containsKey('properties')
               ? AutonomousDatabaseProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['properties'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1754,7 +1747,10 @@ class AutonomousDatabaseApex {
   /// Output only.
   core.String? ordsVersion;
 
-  AutonomousDatabaseApex({this.apexVersion, this.ordsVersion});
+  AutonomousDatabaseApex({
+    this.apexVersion,
+    this.ordsVersion,
+  });
 
   AutonomousDatabaseApex.fromJson(core.Map json_)
       : this(
@@ -1818,13 +1814,15 @@ class AutonomousDatabaseBackup {
           displayName: json_['displayName'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           properties: json_.containsKey('properties')
               ? AutonomousDatabaseBackupProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['properties'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2132,21 +2130,16 @@ class AutonomousDatabaseConnectionStrings {
   AutonomousDatabaseConnectionStrings.fromJson(core.Map json_)
       : this(
           allConnectionStrings: json_.containsKey('allConnectionStrings')
-              ? AllConnectionStrings.fromJson(
-                  json_['allConnectionStrings']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? AllConnectionStrings.fromJson(json_['allConnectionStrings']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           dedicated: json_['dedicated'] as core.String?,
           high: json_['high'] as core.String?,
           low: json_['low'] as core.String?,
           medium: json_['medium'] as core.String?,
           profiles: (json_['profiles'] as core.List?)
-              ?.map(
-                (value) => DatabaseConnectionStringProfile.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DatabaseConnectionStringProfile.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2750,8 +2743,7 @@ class AutonomousDatabaseProperties {
               (json_['allocatedStorageSizeTb'] as core.num?)?.toDouble(),
           apexDetails: json_.containsKey('apexDetails')
               ? AutonomousDatabaseApex.fromJson(
-                  json_['apexDetails'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['apexDetails'] as core.Map<core.String, core.dynamic>)
               : null,
           arePrimaryAllowlistedIpsUsed:
               json_['arePrimaryAllowlistedIpsUsed'] as core.bool?,
@@ -2768,22 +2760,17 @@ class AutonomousDatabaseProperties {
           connectionStrings: json_.containsKey('connectionStrings')
               ? AutonomousDatabaseConnectionStrings.fromJson(
                   json_['connectionStrings']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           connectionUrls: json_.containsKey('connectionUrls')
               ? AutonomousDatabaseConnectionUrls.fromJson(
                   json_['connectionUrls']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           cpuCoreCount: json_['cpuCoreCount'] as core.int?,
           customerContacts: (json_['customerContacts'] as core.List?)
-              ?.map(
-                (value) => CustomerContact.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CustomerContact.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           dataSafeState: json_['dataSafeState'] as core.String?,
           dataStorageSizeGb: json_['dataStorageSizeGb'] as core.int?,
@@ -2809,8 +2796,7 @@ class AutonomousDatabaseProperties {
           localStandbyDb: json_.containsKey('localStandbyDb')
               ? AutonomousDatabaseStandbySummary.fromJson(
                   json_['localStandbyDb']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           maintenanceBeginTime: json_['maintenanceBeginTime'] as core.String?,
           maintenanceEndTime: json_['maintenanceEndTime'] as core.String?,
@@ -2840,11 +2826,8 @@ class AutonomousDatabaseProperties {
           role: json_['role'] as core.String?,
           scheduledOperationDetails:
               (json_['scheduledOperationDetails'] as core.List?)
-                  ?.map(
-                    (value) => ScheduledOperationDetails.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => ScheduledOperationDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
           secretId: json_['secretId'] as core.String?,
           sqlWebDeveloperUrl: json_['sqlWebDeveloperUrl'] as core.String?,
@@ -3219,13 +3202,15 @@ class CloudExadataInfrastructure {
           gcpOracleZone: json_['gcpOracleZone'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           properties: json_.containsKey('properties')
               ? CloudExadataInfrastructureProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['properties'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3443,21 +3428,16 @@ class CloudExadataInfrastructureProperties {
           computeCount: json_['computeCount'] as core.int?,
           cpuCount: json_['cpuCount'] as core.int?,
           customerContacts: (json_['customerContacts'] as core.List?)
-              ?.map(
-                (value) => CustomerContact.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CustomerContact.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           dataStorageSizeTb:
               (json_['dataStorageSizeTb'] as core.num?)?.toDouble(),
           dbNodeStorageSizeGb: json_['dbNodeStorageSizeGb'] as core.int?,
           dbServerVersion: json_['dbServerVersion'] as core.String?,
           maintenanceWindow: json_.containsKey('maintenanceWindow')
-              ? MaintenanceWindow.fromJson(
-                  json_['maintenanceWindow']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? MaintenanceWindow.fromJson(json_['maintenanceWindow']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           maxCpuCount: json_['maxCpuCount'] as core.int?,
           maxDataStorageTb:
@@ -3612,14 +3592,16 @@ class CloudVmCluster {
           gcpOracleZone: json_['gcpOracleZone'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           network: json_['network'] as core.String?,
           properties: json_.containsKey('properties')
               ? CloudVmClusterProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['properties'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3879,8 +3861,7 @@ class CloudVmClusterProperties {
               json_.containsKey('diagnosticsDataCollectionOptions')
                   ? DataCollectionOptions.fromJson(
                       json_['diagnosticsDataCollectionOptions']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           diskRedundancy: json_['diskRedundancy'] as core.String?,
           dnsListenerIp: json_['dnsListenerIp'] as core.String?,
@@ -3912,8 +3893,7 @@ class CloudVmClusterProperties {
           systemVersion: json_['systemVersion'] as core.String?,
           timeZone: json_.containsKey('timeZone')
               ? TimeZone.fromJson(
-                  json_['timeZone'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['timeZone'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3969,10 +3949,14 @@ class CustomerContact {
   /// Required.
   core.String? email;
 
-  CustomerContact({this.email});
+  CustomerContact({
+    this.email,
+  });
 
   CustomerContact.fromJson(core.Map json_)
-      : this(email: json_['email'] as core.String?);
+      : this(
+          email: json_['email'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
@@ -4153,15 +4137,17 @@ class DbNode {
   /// Optional.
   DbNodeProperties? properties;
 
-  DbNode({this.name, this.properties});
+  DbNode({
+    this.name,
+    this.properties,
+  });
 
   DbNode.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
           properties: json_.containsKey('properties')
               ? DbNodeProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['properties'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4276,7 +4262,11 @@ class DbServer {
   /// Optional.
   DbServerProperties? properties;
 
-  DbServer({this.displayName, this.name, this.properties});
+  DbServer({
+    this.displayName,
+    this.name,
+    this.properties,
+  });
 
   DbServer.fromJson(core.Map json_)
       : this(
@@ -4284,8 +4274,7 @@ class DbServer {
           name: json_['name'] as core.String?,
           properties: json_.containsKey('properties')
               ? DbServerProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['properties'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4566,10 +4555,8 @@ class Entitlement {
   Entitlement.fromJson(core.Map json_)
       : this(
           cloudAccountDetails: json_.containsKey('cloudAccountDetails')
-              ? CloudAccountDetails.fromJson(
-                  json_['cloudAccountDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? CloudAccountDetails.fromJson(json_['cloudAccountDetails']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           entitlementId: json_['entitlementId'] as core.String?,
           name: json_['name'] as core.String?,
@@ -4645,10 +4632,14 @@ class GenerateAutonomousDatabaseWalletResponse {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  GenerateAutonomousDatabaseWalletResponse({this.archiveContent});
+  GenerateAutonomousDatabaseWalletResponse({
+    this.archiveContent,
+  });
 
   GenerateAutonomousDatabaseWalletResponse.fromJson(core.Map json_)
-      : this(archiveContent: json_['archiveContent'] as core.String?);
+      : this(
+          archiveContent: json_['archiveContent'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (archiveContent != null) 'archiveContent': archiveContent!,
@@ -4670,7 +4661,10 @@ class GiVersion {
   /// Optional.
   core.String? version;
 
-  GiVersion({this.name, this.version});
+  GiVersion({
+    this.name,
+    this.version,
+  });
 
   GiVersion.fromJson(core.Map json_)
       : this(
@@ -4701,11 +4695,8 @@ class ListAutonomousDatabaseBackupsResponse {
       : this(
           autonomousDatabaseBackups:
               (json_['autonomousDatabaseBackups'] as core.List?)
-                  ?.map(
-                    (value) => AutonomousDatabaseBackup.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => AutonomousDatabaseBackup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -4734,11 +4725,8 @@ class ListAutonomousDatabaseCharacterSetsResponse {
       : this(
           autonomousDatabaseCharacterSets:
               (json_['autonomousDatabaseCharacterSets'] as core.List?)
-                  ?.map(
-                    (value) => AutonomousDatabaseCharacterSet.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => AutonomousDatabaseCharacterSet.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -4766,11 +4754,8 @@ class ListAutonomousDatabasesResponse {
   ListAutonomousDatabasesResponse.fromJson(core.Map json_)
       : this(
           autonomousDatabases: (json_['autonomousDatabases'] as core.List?)
-              ?.map(
-                (value) => AutonomousDatabase.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AutonomousDatabase.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -4798,11 +4783,8 @@ class ListAutonomousDbVersionsResponse {
   ListAutonomousDbVersionsResponse.fromJson(core.Map json_)
       : this(
           autonomousDbVersions: (json_['autonomousDbVersions'] as core.List?)
-              ?.map(
-                (value) => AutonomousDbVersion.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AutonomousDbVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -4831,11 +4813,8 @@ class ListCloudExadataInfrastructuresResponse {
       : this(
           cloudExadataInfrastructures:
               (json_['cloudExadataInfrastructures'] as core.List?)
-                  ?.map(
-                    (value) => CloudExadataInfrastructure.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => CloudExadataInfrastructure.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -4855,16 +4834,16 @@ class ListCloudVmClustersResponse {
   /// A token to fetch the next page of results.
   core.String? nextPageToken;
 
-  ListCloudVmClustersResponse({this.cloudVmClusters, this.nextPageToken});
+  ListCloudVmClustersResponse({
+    this.cloudVmClusters,
+    this.nextPageToken,
+  });
 
   ListCloudVmClustersResponse.fromJson(core.Map json_)
       : this(
           cloudVmClusters: (json_['cloudVmClusters'] as core.List?)
-              ?.map(
-                (value) => CloudVmCluster.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => CloudVmCluster.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -4883,16 +4862,16 @@ class ListDbNodesResponse {
   /// A token identifying a page of results the node should return.
   core.String? nextPageToken;
 
-  ListDbNodesResponse({this.dbNodes, this.nextPageToken});
+  ListDbNodesResponse({
+    this.dbNodes,
+    this.nextPageToken,
+  });
 
   ListDbNodesResponse.fromJson(core.Map json_)
       : this(
           dbNodes: (json_['dbNodes'] as core.List?)
-              ?.map(
-                (value) => DbNode.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  DbNode.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -4911,16 +4890,16 @@ class ListDbServersResponse {
   /// A token identifying a page of results the server should return.
   core.String? nextPageToken;
 
-  ListDbServersResponse({this.dbServers, this.nextPageToken});
+  ListDbServersResponse({
+    this.dbServers,
+    this.nextPageToken,
+  });
 
   ListDbServersResponse.fromJson(core.Map json_)
       : this(
           dbServers: (json_['dbServers'] as core.List?)
-              ?.map(
-                (value) => DbServer.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DbServer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -4939,16 +4918,16 @@ class ListDbSystemShapesResponse {
   /// A token identifying a page of results the server should return.
   core.String? nextPageToken;
 
-  ListDbSystemShapesResponse({this.dbSystemShapes, this.nextPageToken});
+  ListDbSystemShapesResponse({
+    this.dbSystemShapes,
+    this.nextPageToken,
+  });
 
   ListDbSystemShapesResponse.fromJson(core.Map json_)
       : this(
           dbSystemShapes: (json_['dbSystemShapes'] as core.List?)
-              ?.map(
-                (value) => DbSystemShape.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => DbSystemShape.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -4967,16 +4946,16 @@ class ListEntitlementsResponse {
   /// A token identifying a page of results the server should return.
   core.String? nextPageToken;
 
-  ListEntitlementsResponse({this.entitlements, this.nextPageToken});
+  ListEntitlementsResponse({
+    this.entitlements,
+    this.nextPageToken,
+  });
 
   ListEntitlementsResponse.fromJson(core.Map json_)
       : this(
           entitlements: (json_['entitlements'] as core.List?)
-              ?.map(
-                (value) => Entitlement.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Entitlement.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -4995,16 +4974,16 @@ class ListGiVersionsResponse {
   /// A token identifying a page of results the server should return.
   core.String? nextPageToken;
 
-  ListGiVersionsResponse({this.giVersions, this.nextPageToken});
+  ListGiVersionsResponse({
+    this.giVersions,
+    this.nextPageToken,
+  });
 
   ListGiVersionsResponse.fromJson(core.Map json_)
       : this(
           giVersions: (json_['giVersions'] as core.List?)
-              ?.map(
-                (value) => GiVersion.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GiVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -5023,16 +5002,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({this.locations, this.nextPageToken});
+  ListLocationsResponse({
+    this.locations,
+    this.nextPageToken,
+  });
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map(
-                (value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -5051,17 +5030,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map(
-                (value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5248,15 +5227,20 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({this.done, this.error, this.metadata, this.name, this.response});
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -5283,10 +5267,14 @@ class RestoreAutonomousDatabaseRequest {
   /// Required.
   core.String? restoreTime;
 
-  RestoreAutonomousDatabaseRequest({this.restoreTime});
+  RestoreAutonomousDatabaseRequest({
+    this.restoreTime,
+  });
 
   RestoreAutonomousDatabaseRequest.fromJson(core.Map json_)
-      : this(restoreTime: json_['restoreTime'] as core.String?);
+      : this(
+          restoreTime: json_['restoreTime'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (restoreTime != null) 'restoreTime': restoreTime!,
@@ -5321,20 +5309,22 @@ class ScheduledOperationDetails {
   /// Output only.
   TimeOfDay? stopTime;
 
-  ScheduledOperationDetails({this.dayOfWeek, this.startTime, this.stopTime});
+  ScheduledOperationDetails({
+    this.dayOfWeek,
+    this.startTime,
+    this.stopTime,
+  });
 
   ScheduledOperationDetails.fromJson(core.Map json_)
       : this(
           dayOfWeek: json_['dayOfWeek'] as core.String?,
           startTime: json_.containsKey('startTime')
               ? TimeOfDay.fromJson(
-                  json_['startTime'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['startTime'] as core.Map<core.String, core.dynamic>)
               : null,
           stopTime: json_.containsKey('stopTime')
               ? TimeOfDay.fromJson(
-                  json_['stopTime'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['stopTime'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 

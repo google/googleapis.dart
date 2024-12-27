@@ -46,16 +46,11 @@ class GroupssettingsApi {
 
   GroupsResource get groups => GroupsResource(_requester);
 
-  GroupssettingsApi(
-    http.Client client, {
-    core.String rootUrl = 'https://www.googleapis.com/',
-    core.String servicePath = 'groups/v1/groups/',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  GroupssettingsApi(http.Client client,
+      {core.String rootUrl = 'https://www.googleapis.com/',
+      core.String servicePath = 'groups/v1/groups/'})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class GroupsResource {

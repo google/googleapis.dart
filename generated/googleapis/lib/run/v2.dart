@@ -63,16 +63,11 @@ class CloudRunApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  CloudRunApi(
-    http.Client client, {
-    core.String rootUrl = 'https://run.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  CloudRunApi(http.Client client,
+      {core.String rootUrl = 'https://run.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -141,8 +136,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRunV2ExportImageResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Export image metadata for a given resource.
@@ -183,8 +177,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRunV2Metadata.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Export generated customer metadata for a given resource.
@@ -227,8 +220,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRunV2Metadata.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Export generated customer metadata for a given project.
@@ -267,8 +259,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRunV2Metadata.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -318,8 +309,7 @@ class ProjectsLocationsBuildsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRunV2SubmitBuildResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -383,8 +373,7 @@ class ProjectsLocationsJobsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a Job.
@@ -433,8 +422,7 @@ class ProjectsLocationsJobsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about a Job.
@@ -473,8 +461,7 @@ class ProjectsLocationsJobsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRunV2Job.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the IAM Access Control policy currently in effect for the given Job.
@@ -531,8 +518,7 @@ class ProjectsLocationsJobsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Jobs.
@@ -586,8 +572,7 @@ class ProjectsLocationsJobsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRunV2ListJobsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a Job.
@@ -642,8 +627,7 @@ class ProjectsLocationsJobsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Triggers creation of a new Execution of this Job.
@@ -687,8 +671,7 @@ class ProjectsLocationsJobsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the IAM Access control policy for the specified Job.
@@ -735,8 +718,7 @@ class ProjectsLocationsJobsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified Project.
@@ -784,8 +766,7 @@ class ProjectsLocationsJobsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -839,8 +820,7 @@ class ProjectsLocationsJobsExecutionsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an Execution.
@@ -889,8 +869,7 @@ class ProjectsLocationsJobsExecutionsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Read the status of an image export operation.
@@ -940,8 +919,7 @@ class ProjectsLocationsJobsExecutionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRunV2ExportStatusResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about an Execution.
@@ -980,8 +958,7 @@ class ProjectsLocationsJobsExecutionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRunV2Execution.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Executions from a Job.
@@ -1037,8 +1014,7 @@ class ProjectsLocationsJobsExecutionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRunV2ListExecutionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1083,8 +1059,7 @@ class ProjectsLocationsJobsExecutionsTasksResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRunV2Task.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Tasks from an Execution of a Job.
@@ -1138,8 +1113,7 @@ class ProjectsLocationsJobsExecutionsTasksResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRunV2ListTasksResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1187,8 +1161,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -1228,8 +1201,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -1286,8 +1258,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Waits until the specified long-running operation is done or reaches at
@@ -1338,8 +1309,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1406,8 +1376,7 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a Service.
@@ -1459,8 +1428,7 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about a Service.
@@ -1499,8 +1467,7 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRunV2Service.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the IAM Access Control policy currently in effect for the given Cloud
@@ -1558,8 +1525,7 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Services.
@@ -1614,8 +1580,7 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRunV2ListServicesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a Service.
@@ -1677,8 +1642,7 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the IAM Access control policy for the specified Service.
@@ -1725,8 +1689,7 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified Project.
@@ -1774,8 +1737,7 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1830,8 +1792,7 @@ class ProjectsLocationsServicesRevisionsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Read the status of an image export operation.
@@ -1881,8 +1842,7 @@ class ProjectsLocationsServicesRevisionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRunV2ExportStatusResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about a Revision.
@@ -1920,8 +1880,7 @@ class ProjectsLocationsServicesRevisionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRunV2Revision.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Revisions from a given Service, or from a given location.
@@ -1976,8 +1935,7 @@ class ProjectsLocationsServicesRevisionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRunV2ListRevisionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2100,7 +2058,12 @@ class GoogleCloudRunV2BuildpacksBuild {
           enableAutomaticUpdates: json_['enableAutomaticUpdates'] as core.bool?,
           environmentVariables: (json_['environmentVariables']
                   as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           functionTarget: json_['functionTarget'] as core.String?,
           projectDescriptor: json_['projectDescriptor'] as core.String?,
           runtime: json_['runtime'] as core.String?,
@@ -2130,7 +2093,10 @@ class GoogleCloudRunV2CancelExecutionRequest {
   /// any resources.
   core.bool? validateOnly;
 
-  GoogleCloudRunV2CancelExecutionRequest({this.etag, this.validateOnly});
+  GoogleCloudRunV2CancelExecutionRequest({
+    this.etag,
+    this.validateOnly,
+  });
 
   GoogleCloudRunV2CancelExecutionRequest.fromJson(core.Map json_)
       : this(
@@ -2158,7 +2124,9 @@ class GoogleCloudRunV2CloudSqlInstance {
   /// {project}:{location}:{instance}
   core.List<core.String>? instances;
 
-  GoogleCloudRunV2CloudSqlInstance({this.instances});
+  GoogleCloudRunV2CloudSqlInstance({
+    this.instances,
+  });
 
   GoogleCloudRunV2CloudSqlInstance.fromJson(core.Map json_)
       : this(
@@ -2409,42 +2377,30 @@ class GoogleCloudRunV2Container {
               ?.map((value) => value as core.String)
               .toList(),
           env: (json_['env'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2EnvVar.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2EnvVar.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           image: json_['image'] as core.String?,
           livenessProbe: json_.containsKey('livenessProbe')
               ? GoogleCloudRunV2Probe.fromJson(
-                  json_['livenessProbe'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['livenessProbe'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           ports: (json_['ports'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2ContainerPort.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2ContainerPort.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           resources: json_.containsKey('resources')
               ? GoogleCloudRunV2ResourceRequirements.fromJson(
-                  json_['resources'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['resources'] as core.Map<core.String, core.dynamic>)
               : null,
           startupProbe: json_.containsKey('startupProbe')
               ? GoogleCloudRunV2Probe.fromJson(
-                  json_['startupProbe'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['startupProbe'] as core.Map<core.String, core.dynamic>)
               : null,
           volumeMounts: (json_['volumeMounts'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2VolumeMount.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2VolumeMount.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           workingDir: json_['workingDir'] as core.String?,
         );
@@ -2501,11 +2457,8 @@ class GoogleCloudRunV2ContainerOverride {
               .toList(),
           clearArgs: json_['clearArgs'] as core.bool?,
           env: (json_['env'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2EnvVar.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2EnvVar.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           name: json_['name'] as core.String?,
         );
@@ -2530,7 +2483,10 @@ class GoogleCloudRunV2ContainerPort {
   /// Allowed values are "http1" and "h2c".
   core.String? name;
 
-  GoogleCloudRunV2ContainerPort({this.containerPort, this.name});
+  GoogleCloudRunV2ContainerPort({
+    this.containerPort,
+    this.name,
+  });
 
   GoogleCloudRunV2ContainerPort.fromJson(core.Map json_)
       : this(
@@ -2575,7 +2531,10 @@ class GoogleCloudRunV2EmptyDirVolumeSource {
   /// https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
   core.String? sizeLimit;
 
-  GoogleCloudRunV2EmptyDirVolumeSource({this.medium, this.sizeLimit});
+  GoogleCloudRunV2EmptyDirVolumeSource({
+    this.medium,
+    this.sizeLimit,
+  });
 
   GoogleCloudRunV2EmptyDirVolumeSource.fromJson(core.Map json_)
       : this(
@@ -2607,7 +2566,11 @@ class GoogleCloudRunV2EnvVar {
   /// Source for the environment variable's value.
   GoogleCloudRunV2EnvVarSource? valueSource;
 
-  GoogleCloudRunV2EnvVar({this.name, this.value, this.valueSource});
+  GoogleCloudRunV2EnvVar({
+    this.name,
+    this.value,
+    this.valueSource,
+  });
 
   GoogleCloudRunV2EnvVar.fromJson(core.Map json_)
       : this(
@@ -2615,8 +2578,7 @@ class GoogleCloudRunV2EnvVar {
           value: json_['value'] as core.String?,
           valueSource: json_.containsKey('valueSource')
               ? GoogleCloudRunV2EnvVarSource.fromJson(
-                  json_['valueSource'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['valueSource'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2632,14 +2594,15 @@ class GoogleCloudRunV2EnvVarSource {
   /// Selects a secret and a specific version from Cloud Secret Manager.
   GoogleCloudRunV2SecretKeySelector? secretKeyRef;
 
-  GoogleCloudRunV2EnvVarSource({this.secretKeyRef});
+  GoogleCloudRunV2EnvVarSource({
+    this.secretKeyRef,
+  });
 
   GoogleCloudRunV2EnvVarSource.fromJson(core.Map json_)
       : this(
           secretKeyRef: json_.containsKey('secretKeyRef')
               ? GoogleCloudRunV2SecretKeySelector.fromJson(
-                  json_['secretKeyRef'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['secretKeyRef'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2904,17 +2867,19 @@ class GoogleCloudRunV2Execution {
 
   GoogleCloudRunV2Execution.fromJson(core.Map json_)
       : this(
-          annotations: (json_['annotations']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           cancelledCount: json_['cancelledCount'] as core.int?,
           completionTime: json_['completionTime'] as core.String?,
           conditions: (json_['conditions'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2Condition.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2Condition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           createTime: json_['createTime'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
@@ -2925,7 +2890,10 @@ class GoogleCloudRunV2Execution {
           job: json_['job'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           launchStage: json_['launchStage'] as core.String?,
           logUri: json_['logUri'] as core.String?,
@@ -2941,8 +2909,7 @@ class GoogleCloudRunV2Execution {
           taskCount: json_['taskCount'] as core.int?,
           template: json_.containsKey('template')
               ? GoogleCloudRunV2TaskTemplate.fromJson(
-                  json_['template'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['template'] as core.Map<core.String, core.dynamic>)
               : null,
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -3096,19 +3063,26 @@ class GoogleCloudRunV2ExecutionTemplate {
 
   GoogleCloudRunV2ExecutionTemplate.fromJson(core.Map json_)
       : this(
-          annotations: (json_['annotations']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           parallelism: json_['parallelism'] as core.int?,
           taskCount: json_['taskCount'] as core.int?,
           template: json_.containsKey('template')
               ? GoogleCloudRunV2TaskTemplate.fromJson(
-                  json_['template'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['template'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3128,10 +3102,14 @@ class GoogleCloudRunV2ExportImageRequest {
   /// Required.
   core.String? destinationRepo;
 
-  GoogleCloudRunV2ExportImageRequest({this.destinationRepo});
+  GoogleCloudRunV2ExportImageRequest({
+    this.destinationRepo,
+  });
 
   GoogleCloudRunV2ExportImageRequest.fromJson(core.Map json_)
-      : this(destinationRepo: json_['destinationRepo'] as core.String?);
+      : this(
+          destinationRepo: json_['destinationRepo'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinationRepo != null) 'destinationRepo': destinationRepo!,
@@ -3145,10 +3123,14 @@ class GoogleCloudRunV2ExportImageResponse {
   /// original pod ID in the request.
   core.String? operationId;
 
-  GoogleCloudRunV2ExportImageResponse({this.operationId});
+  GoogleCloudRunV2ExportImageResponse({
+    this.operationId,
+  });
 
   GoogleCloudRunV2ExportImageResponse.fromJson(core.Map json_)
-      : this(operationId: json_['operationId'] as core.String?);
+      : this(
+          operationId: json_['operationId'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operationId != null) 'operationId': operationId!,
@@ -3182,11 +3164,8 @@ class GoogleCloudRunV2ExportStatusResponse {
   GoogleCloudRunV2ExportStatusResponse.fromJson(core.Map json_)
       : this(
           imageExportStatuses: (json_['imageExportStatuses'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2ImageExportStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2ImageExportStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           operationId: json_['operationId'] as core.String?,
           operationState: json_['operationState'] as core.String?,
@@ -3255,7 +3234,10 @@ class GoogleCloudRunV2GRPCAction {
   /// Optional.
   core.String? service;
 
-  GoogleCloudRunV2GRPCAction({this.port, this.service});
+  GoogleCloudRunV2GRPCAction({
+    this.port,
+    this.service,
+  });
 
   GoogleCloudRunV2GRPCAction.fromJson(core.Map json_)
       : this(
@@ -3294,16 +3276,17 @@ class GoogleCloudRunV2HTTPGetAction {
   /// Optional.
   core.int? port;
 
-  GoogleCloudRunV2HTTPGetAction({this.httpHeaders, this.path, this.port});
+  GoogleCloudRunV2HTTPGetAction({
+    this.httpHeaders,
+    this.path,
+    this.port,
+  });
 
   GoogleCloudRunV2HTTPGetAction.fromJson(core.Map json_)
       : this(
           httpHeaders: (json_['httpHeaders'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2HTTPHeader.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2HTTPHeader.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           path: json_['path'] as core.String?,
           port: json_['port'] as core.int?,
@@ -3328,7 +3311,10 @@ class GoogleCloudRunV2HTTPHeader {
   /// Optional.
   core.String? value;
 
-  GoogleCloudRunV2HTTPHeader({this.name, this.value});
+  GoogleCloudRunV2HTTPHeader({
+    this.name,
+    this.value,
+  });
 
   GoogleCloudRunV2HTTPHeader.fromJson(core.Map json_)
       : this(
@@ -3375,8 +3361,7 @@ class GoogleCloudRunV2ImageExportStatus {
           exportedImageDigest: json_['exportedImageDigest'] as core.String?,
           status: json_.containsKey('status')
               ? UtilStatusProto.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
           tag: json_['tag'] as core.String?,
         );
@@ -3638,23 +3623,24 @@ class GoogleCloudRunV2Job {
 
   GoogleCloudRunV2Job.fromJson(core.Map json_)
       : this(
-          annotations: (json_['annotations']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           binaryAuthorization: json_.containsKey('binaryAuthorization')
               ? GoogleCloudRunV2BinaryAuthorization.fromJson(
                   json_['binaryAuthorization']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           client: json_['client'] as core.String?,
           clientVersion: json_['clientVersion'] as core.String?,
           conditions: (json_['conditions'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2Condition.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2Condition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           createTime: json_['createTime'] as core.String?,
           creator: json_['creator'] as core.String?,
@@ -3665,14 +3651,16 @@ class GoogleCloudRunV2Job {
           generation: json_['generation'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           lastModifier: json_['lastModifier'] as core.String?,
           latestCreatedExecution: json_.containsKey('latestCreatedExecution')
               ? GoogleCloudRunV2ExecutionReference.fromJson(
                   json_['latestCreatedExecution']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           launchStage: json_['launchStage'] as core.String?,
           name: json_['name'] as core.String?,
@@ -3683,14 +3671,11 @@ class GoogleCloudRunV2Job {
           startExecutionToken: json_['startExecutionToken'] as core.String?,
           template: json_.containsKey('template')
               ? GoogleCloudRunV2ExecutionTemplate.fromJson(
-                  json_['template'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['template'] as core.Map<core.String, core.dynamic>)
               : null,
           terminalCondition: json_.containsKey('terminalCondition')
-              ? GoogleCloudRunV2Condition.fromJson(
-                  json_['terminalCondition']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleCloudRunV2Condition.fromJson(json_['terminalCondition']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -3740,16 +3725,16 @@ class GoogleCloudRunV2ListExecutionsResponse {
   /// Use it in the next ListExecutions request to continue.
   core.String? nextPageToken;
 
-  GoogleCloudRunV2ListExecutionsResponse({this.executions, this.nextPageToken});
+  GoogleCloudRunV2ListExecutionsResponse({
+    this.executions,
+    this.nextPageToken,
+  });
 
   GoogleCloudRunV2ListExecutionsResponse.fromJson(core.Map json_)
       : this(
           executions: (json_['executions'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2Execution.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2Execution.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -3770,16 +3755,16 @@ class GoogleCloudRunV2ListJobsResponse {
   /// Use it in the next ListJobs request to continue.
   core.String? nextPageToken;
 
-  GoogleCloudRunV2ListJobsResponse({this.jobs, this.nextPageToken});
+  GoogleCloudRunV2ListJobsResponse({
+    this.jobs,
+    this.nextPageToken,
+  });
 
   GoogleCloudRunV2ListJobsResponse.fromJson(core.Map json_)
       : this(
           jobs: (json_['jobs'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2Job.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2Job.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -3800,17 +3785,17 @@ class GoogleCloudRunV2ListRevisionsResponse {
   /// The resulting list of Revisions.
   core.List<GoogleCloudRunV2Revision>? revisions;
 
-  GoogleCloudRunV2ListRevisionsResponse({this.nextPageToken, this.revisions});
+  GoogleCloudRunV2ListRevisionsResponse({
+    this.nextPageToken,
+    this.revisions,
+  });
 
   GoogleCloudRunV2ListRevisionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           revisions: (json_['revisions'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2Revision.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2Revision.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3830,17 +3815,17 @@ class GoogleCloudRunV2ListServicesResponse {
   /// The resulting list of Services.
   core.List<GoogleCloudRunV2Service>? services;
 
-  GoogleCloudRunV2ListServicesResponse({this.nextPageToken, this.services});
+  GoogleCloudRunV2ListServicesResponse({
+    this.nextPageToken,
+    this.services,
+  });
 
   GoogleCloudRunV2ListServicesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           services: (json_['services'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2Service.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2Service.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3860,17 +3845,17 @@ class GoogleCloudRunV2ListTasksResponse {
   /// The resulting list of Tasks.
   core.List<GoogleCloudRunV2Task>? tasks;
 
-  GoogleCloudRunV2ListTasksResponse({this.nextPageToken, this.tasks});
+  GoogleCloudRunV2ListTasksResponse({
+    this.nextPageToken,
+    this.tasks,
+  });
 
   GoogleCloudRunV2ListTasksResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           tasks: (json_['tasks'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2Task.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2Task.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3886,10 +3871,14 @@ class GoogleCloudRunV2Metadata {
   /// resource/project.
   core.String? metadata;
 
-  GoogleCloudRunV2Metadata({this.metadata});
+  GoogleCloudRunV2Metadata({
+    this.metadata,
+  });
 
   GoogleCloudRunV2Metadata.fromJson(core.Map json_)
-      : this(metadata: json_['metadata'] as core.String?);
+      : this(
+          metadata: json_['metadata'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!,
@@ -3907,7 +3896,11 @@ class GoogleCloudRunV2NFSVolumeSource {
   /// Hostname or IP address of the NFS server
   core.String? server;
 
-  GoogleCloudRunV2NFSVolumeSource({this.path, this.readOnly, this.server});
+  GoogleCloudRunV2NFSVolumeSource({
+    this.path,
+    this.readOnly,
+    this.server,
+  });
 
   GoogleCloudRunV2NFSVolumeSource.fromJson(core.Map json_)
       : this(
@@ -3951,7 +3944,11 @@ class GoogleCloudRunV2NetworkInterface {
   /// Optional.
   core.List<core.String>? tags;
 
-  GoogleCloudRunV2NetworkInterface({this.network, this.subnetwork, this.tags});
+  GoogleCloudRunV2NetworkInterface({
+    this.network,
+    this.subnetwork,
+    this.tags,
+  });
 
   GoogleCloudRunV2NetworkInterface.fromJson(core.Map json_)
       : this(
@@ -3976,10 +3973,14 @@ class GoogleCloudRunV2NodeSelector {
   /// Required.
   core.String? accelerator;
 
-  GoogleCloudRunV2NodeSelector({this.accelerator});
+  GoogleCloudRunV2NodeSelector({
+    this.accelerator,
+  });
 
   GoogleCloudRunV2NodeSelector.fromJson(core.Map json_)
-      : this(accelerator: json_['accelerator'] as core.String?);
+      : this(
+          accelerator: json_['accelerator'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accelerator != null) 'accelerator': accelerator!,
@@ -4013,11 +4014,8 @@ class GoogleCloudRunV2Overrides {
   GoogleCloudRunV2Overrides.fromJson(core.Map json_)
       : this(
           containerOverrides: (json_['containerOverrides'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2ContainerOverride.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2ContainerOverride.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           taskCount: json_['taskCount'] as core.int?,
           timeout: json_['timeout'] as core.String?,
@@ -4104,20 +4102,17 @@ class GoogleCloudRunV2Probe {
           failureThreshold: json_['failureThreshold'] as core.int?,
           grpc: json_.containsKey('grpc')
               ? GoogleCloudRunV2GRPCAction.fromJson(
-                  json_['grpc'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['grpc'] as core.Map<core.String, core.dynamic>)
               : null,
           httpGet: json_.containsKey('httpGet')
               ? GoogleCloudRunV2HTTPGetAction.fromJson(
-                  json_['httpGet'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['httpGet'] as core.Map<core.String, core.dynamic>)
               : null,
           initialDelaySeconds: json_['initialDelaySeconds'] as core.int?,
           periodSeconds: json_['periodSeconds'] as core.int?,
           tcpSocket: json_.containsKey('tcpSocket')
               ? GoogleCloudRunV2TCPSocketAction.fromJson(
-                  json_['tcpSocket'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['tcpSocket'] as core.Map<core.String, core.dynamic>)
               : null,
           timeoutSeconds: json_['timeoutSeconds'] as core.int?,
         );
@@ -4168,7 +4163,10 @@ class GoogleCloudRunV2ResourceRequirements {
           cpuIdle: json_['cpuIdle'] as core.bool?,
           limits:
               (json_['limits'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           startupCpuBoost: json_['startupCpuBoost'] as core.bool?,
         );
@@ -4444,22 +4442,21 @@ class GoogleCloudRunV2Revision {
 
   GoogleCloudRunV2Revision.fromJson(core.Map json_)
       : this(
-          annotations: (json_['annotations']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           conditions: (json_['conditions'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2Condition.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2Condition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           containers: (json_['containers'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2Container.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2Container.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           createTime: json_['createTime'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
@@ -4474,7 +4471,10 @@ class GoogleCloudRunV2Revision {
           generation: json_['generation'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           launchStage: json_['launchStage'] as core.String?,
           logUri: json_['logUri'] as core.String?,
@@ -4483,44 +4483,36 @@ class GoogleCloudRunV2Revision {
           name: json_['name'] as core.String?,
           nodeSelector: json_.containsKey('nodeSelector')
               ? GoogleCloudRunV2NodeSelector.fromJson(
-                  json_['nodeSelector'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['nodeSelector'] as core.Map<core.String, core.dynamic>)
               : null,
           observedGeneration: json_['observedGeneration'] as core.String?,
           reconciling: json_['reconciling'] as core.bool?,
           satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           scaling: json_.containsKey('scaling')
               ? GoogleCloudRunV2RevisionScaling.fromJson(
-                  json_['scaling'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['scaling'] as core.Map<core.String, core.dynamic>)
               : null,
           scalingStatus: json_.containsKey('scalingStatus')
               ? GoogleCloudRunV2RevisionScalingStatus.fromJson(
-                  json_['scalingStatus'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['scalingStatus'] as core.Map<core.String, core.dynamic>)
               : null,
           service: json_['service'] as core.String?,
           serviceAccount: json_['serviceAccount'] as core.String?,
           serviceMesh: json_.containsKey('serviceMesh')
               ? GoogleCloudRunV2ServiceMesh.fromJson(
-                  json_['serviceMesh'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['serviceMesh'] as core.Map<core.String, core.dynamic>)
               : null,
           sessionAffinity: json_['sessionAffinity'] as core.bool?,
           timeout: json_['timeout'] as core.String?,
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
           volumes: (json_['volumes'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2Volume.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2Volume.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           vpcAccess: json_.containsKey('vpcAccess')
               ? GoogleCloudRunV2VpcAccess.fromJson(
-                  json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['vpcAccess'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4603,7 +4595,9 @@ class GoogleCloudRunV2RevisionScalingStatus {
   /// The current number of min instances provisioned for this revision.
   core.int? desiredMinInstanceCount;
 
-  GoogleCloudRunV2RevisionScalingStatus({this.desiredMinInstanceCount});
+  GoogleCloudRunV2RevisionScalingStatus({
+    this.desiredMinInstanceCount,
+  });
 
   GoogleCloudRunV2RevisionScalingStatus.fromJson(core.Map json_)
       : this(
@@ -4781,15 +4775,17 @@ class GoogleCloudRunV2RevisionTemplate {
 
   GoogleCloudRunV2RevisionTemplate.fromJson(core.Map json_)
       : this(
-          annotations: (json_['annotations']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           containers: (json_['containers'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2Container.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2Container.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           encryptionKey: json_['encryptionKey'] as core.String?,
           encryptionKeyRevocationAction:
@@ -4800,40 +4796,36 @@ class GoogleCloudRunV2RevisionTemplate {
           healthCheckDisabled: json_['healthCheckDisabled'] as core.bool?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           maxInstanceRequestConcurrency:
               json_['maxInstanceRequestConcurrency'] as core.int?,
           nodeSelector: json_.containsKey('nodeSelector')
               ? GoogleCloudRunV2NodeSelector.fromJson(
-                  json_['nodeSelector'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['nodeSelector'] as core.Map<core.String, core.dynamic>)
               : null,
           revision: json_['revision'] as core.String?,
           scaling: json_.containsKey('scaling')
               ? GoogleCloudRunV2RevisionScaling.fromJson(
-                  json_['scaling'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['scaling'] as core.Map<core.String, core.dynamic>)
               : null,
           serviceAccount: json_['serviceAccount'] as core.String?,
           serviceMesh: json_.containsKey('serviceMesh')
               ? GoogleCloudRunV2ServiceMesh.fromJson(
-                  json_['serviceMesh'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['serviceMesh'] as core.Map<core.String, core.dynamic>)
               : null,
           sessionAffinity: json_['sessionAffinity'] as core.bool?,
           timeout: json_['timeout'] as core.String?,
           volumes: (json_['volumes'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2Volume.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2Volume.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           vpcAccess: json_.containsKey('vpcAccess')
               ? GoogleCloudRunV2VpcAccess.fromJson(
-                  json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['vpcAccess'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4881,15 +4873,18 @@ class GoogleCloudRunV2RunJobRequest {
   /// any resources.
   core.bool? validateOnly;
 
-  GoogleCloudRunV2RunJobRequest({this.etag, this.overrides, this.validateOnly});
+  GoogleCloudRunV2RunJobRequest({
+    this.etag,
+    this.overrides,
+    this.validateOnly,
+  });
 
   GoogleCloudRunV2RunJobRequest.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
           overrides: json_.containsKey('overrides')
               ? GoogleCloudRunV2Overrides.fromJson(
-                  json_['overrides'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['overrides'] as core.Map<core.String, core.dynamic>)
               : null,
           validateOnly: json_['validateOnly'] as core.bool?,
         );
@@ -4918,7 +4913,10 @@ class GoogleCloudRunV2SecretKeySelector {
   /// or a version alias.
   core.String? version;
 
-  GoogleCloudRunV2SecretKeySelector({this.secret, this.version});
+  GoogleCloudRunV2SecretKeySelector({
+    this.secret,
+    this.version,
+  });
 
   GoogleCloudRunV2SecretKeySelector.fromJson(core.Map json_)
       : this(
@@ -4979,11 +4977,8 @@ class GoogleCloudRunV2SecretVolumeSource {
       : this(
           defaultMode: json_['defaultMode'] as core.int?,
           items: (json_['items'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2VersionToPath.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2VersionToPath.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           secret: json_['secret'] as core.String?,
         );
@@ -5342,23 +5337,24 @@ class GoogleCloudRunV2Service {
 
   GoogleCloudRunV2Service.fromJson(core.Map json_)
       : this(
-          annotations: (json_['annotations']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           binaryAuthorization: json_.containsKey('binaryAuthorization')
               ? GoogleCloudRunV2BinaryAuthorization.fromJson(
                   json_['binaryAuthorization']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           client: json_['client'] as core.String?,
           clientVersion: json_['clientVersion'] as core.String?,
           conditions: (json_['conditions'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2Condition.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2Condition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           createTime: json_['createTime'] as core.String?,
           creator: json_['creator'] as core.String?,
@@ -5375,7 +5371,10 @@ class GoogleCloudRunV2Service {
           invokerIamDisabled: json_['invokerIamDisabled'] as core.bool?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           lastModifier: json_['lastModifier'] as core.String?,
           latestCreatedRevision: json_['latestCreatedRevision'] as core.String?,
@@ -5387,33 +5386,23 @@ class GoogleCloudRunV2Service {
           satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           scaling: json_.containsKey('scaling')
               ? GoogleCloudRunV2ServiceScaling.fromJson(
-                  json_['scaling'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['scaling'] as core.Map<core.String, core.dynamic>)
               : null,
           template: json_.containsKey('template')
               ? GoogleCloudRunV2RevisionTemplate.fromJson(
-                  json_['template'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['template'] as core.Map<core.String, core.dynamic>)
               : null,
           terminalCondition: json_.containsKey('terminalCondition')
-              ? GoogleCloudRunV2Condition.fromJson(
-                  json_['terminalCondition']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleCloudRunV2Condition.fromJson(json_['terminalCondition']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           traffic: (json_['traffic'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2TrafficTarget.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2TrafficTarget.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           trafficStatuses: (json_['trafficStatuses'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2TrafficTargetStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2TrafficTargetStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -5478,10 +5467,14 @@ class GoogleCloudRunV2ServiceMesh {
   /// `{project}` can be project id or number.
   core.String? mesh;
 
-  GoogleCloudRunV2ServiceMesh({this.mesh});
+  GoogleCloudRunV2ServiceMesh({
+    this.mesh,
+  });
 
   GoogleCloudRunV2ServiceMesh.fromJson(core.Map json_)
-      : this(mesh: json_['mesh'] as core.String?);
+      : this(
+          mesh: json_['mesh'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mesh != null) 'mesh': mesh!,
@@ -5571,7 +5564,11 @@ class GoogleCloudRunV2StorageSource {
   /// Required.
   core.String? object;
 
-  GoogleCloudRunV2StorageSource({this.bucket, this.generation, this.object});
+  GoogleCloudRunV2StorageSource({
+    this.bucket,
+    this.generation,
+    this.object,
+  });
 
   GoogleCloudRunV2StorageSource.fromJson(core.Map json_)
       : this(
@@ -5645,22 +5642,18 @@ class GoogleCloudRunV2SubmitBuildRequest {
   GoogleCloudRunV2SubmitBuildRequest.fromJson(core.Map json_)
       : this(
           buildpackBuild: json_.containsKey('buildpackBuild')
-              ? GoogleCloudRunV2BuildpacksBuild.fromJson(
-                  json_['buildpackBuild']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleCloudRunV2BuildpacksBuild.fromJson(json_['buildpackBuild']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           dockerBuild: json_.containsKey('dockerBuild')
               ? GoogleCloudRunV2DockerBuild.fromJson(
-                  json_['dockerBuild'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['dockerBuild'] as core.Map<core.String, core.dynamic>)
               : null,
           imageUri: json_['imageUri'] as core.String?,
           serviceAccount: json_['serviceAccount'] as core.String?,
           storageSource: json_.containsKey('storageSource')
               ? GoogleCloudRunV2StorageSource.fromJson(
-                  json_['storageSource'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['storageSource'] as core.Map<core.String, core.dynamic>)
               : null,
           tags: (json_['tags'] as core.List?)
               ?.map((value) => value as core.String)
@@ -5704,10 +5697,8 @@ class GoogleCloudRunV2SubmitBuildResponse {
           baseImageUri: json_['baseImageUri'] as core.String?,
           baseImageWarning: json_['baseImageWarning'] as core.String?,
           buildOperation: json_.containsKey('buildOperation')
-              ? GoogleLongrunningOperation.fromJson(
-                  json_['buildOperation']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? GoogleLongrunningOperation.fromJson(json_['buildOperation']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5729,10 +5720,14 @@ class GoogleCloudRunV2TCPSocketAction {
   /// Optional.
   core.int? port;
 
-  GoogleCloudRunV2TCPSocketAction({this.port});
+  GoogleCloudRunV2TCPSocketAction({
+    this.port,
+  });
 
   GoogleCloudRunV2TCPSocketAction.fromJson(core.Map json_)
-      : this(port: json_['port'] as core.int?);
+      : this(
+          port: json_['port'] as core.int?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (port != null) 'port': port!,
@@ -5983,23 +5978,22 @@ class GoogleCloudRunV2Task {
 
   GoogleCloudRunV2Task.fromJson(core.Map json_)
       : this(
-          annotations: (json_['annotations']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           completionTime: json_['completionTime'] as core.String?,
           conditions: (json_['conditions'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2Condition.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2Condition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           containers: (json_['containers'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2Container.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2Container.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           createTime: json_['createTime'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
@@ -6013,13 +6007,15 @@ class GoogleCloudRunV2Task {
           job: json_['job'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           lastAttemptResult: json_.containsKey('lastAttemptResult')
               ? GoogleCloudRunV2TaskAttemptResult.fromJson(
                   json_['lastAttemptResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           logUri: json_['logUri'] as core.String?,
           maxRetries: json_['maxRetries'] as core.int?,
@@ -6035,16 +6031,12 @@ class GoogleCloudRunV2Task {
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
           volumes: (json_['volumes'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2Volume.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2Volume.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           vpcAccess: json_.containsKey('vpcAccess')
               ? GoogleCloudRunV2VpcAccess.fromJson(
-                  json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['vpcAccess'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6102,15 +6094,17 @@ class GoogleCloudRunV2TaskAttemptResult {
   /// Output only.
   GoogleRpcStatus? status;
 
-  GoogleCloudRunV2TaskAttemptResult({this.exitCode, this.status});
+  GoogleCloudRunV2TaskAttemptResult({
+    this.exitCode,
+    this.status,
+  });
 
   GoogleCloudRunV2TaskAttemptResult.fromJson(core.Map json_)
       : this(
           exitCode: json_['exitCode'] as core.int?,
           status: json_.containsKey('status')
               ? GoogleRpcStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6194,11 +6188,8 @@ class GoogleCloudRunV2TaskTemplate {
   GoogleCloudRunV2TaskTemplate.fromJson(core.Map json_)
       : this(
           containers: (json_['containers'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2Container.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2Container.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           encryptionKey: json_['encryptionKey'] as core.String?,
           executionEnvironment: json_['executionEnvironment'] as core.String?,
@@ -6206,16 +6197,12 @@ class GoogleCloudRunV2TaskTemplate {
           serviceAccount: json_['serviceAccount'] as core.String?,
           timeout: json_['timeout'] as core.String?,
           volumes: (json_['volumes'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2Volume.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2Volume.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           vpcAccess: json_.containsKey('vpcAccess')
               ? GoogleCloudRunV2VpcAccess.fromJson(
-                  json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['vpcAccess'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6360,7 +6347,11 @@ class GoogleCloudRunV2VersionToPath {
   /// a specific version.
   core.String? version;
 
-  GoogleCloudRunV2VersionToPath({this.mode, this.path, this.version});
+  GoogleCloudRunV2VersionToPath({
+    this.mode,
+    this.path,
+    this.version,
+  });
 
   GoogleCloudRunV2VersionToPath.fromJson(core.Map json_)
       : this(
@@ -6416,29 +6407,24 @@ class GoogleCloudRunV2Volume {
           cloudSqlInstance: json_.containsKey('cloudSqlInstance')
               ? GoogleCloudRunV2CloudSqlInstance.fromJson(
                   json_['cloudSqlInstance']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           emptyDir: json_.containsKey('emptyDir')
               ? GoogleCloudRunV2EmptyDirVolumeSource.fromJson(
-                  json_['emptyDir'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['emptyDir'] as core.Map<core.String, core.dynamic>)
               : null,
           gcs: json_.containsKey('gcs')
               ? GoogleCloudRunV2GCSVolumeSource.fromJson(
-                  json_['gcs'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['gcs'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           nfs: json_.containsKey('nfs')
               ? GoogleCloudRunV2NFSVolumeSource.fromJson(
-                  json_['nfs'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['nfs'] as core.Map<core.String, core.dynamic>)
               : null,
           secret: json_.containsKey('secret')
               ? GoogleCloudRunV2SecretVolumeSource.fromJson(
-                  json_['secret'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['secret'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6469,7 +6455,10 @@ class GoogleCloudRunV2VolumeMount {
   /// Required.
   core.String? name;
 
-  GoogleCloudRunV2VolumeMount({this.mountPath, this.name});
+  GoogleCloudRunV2VolumeMount({
+    this.mountPath,
+    this.name,
+  });
 
   GoogleCloudRunV2VolumeMount.fromJson(core.Map json_)
       : this(
@@ -6527,11 +6516,8 @@ class GoogleCloudRunV2VpcAccess {
           connector: json_['connector'] as core.String?,
           egress: json_['egress'] as core.String?,
           networkInterfaces: (json_['networkInterfaces'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudRunV2NetworkInterface.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudRunV2NetworkInterface.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -6569,16 +6555,16 @@ class GoogleIamV1AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  GoogleIamV1AuditConfig({this.auditLogConfigs, this.service});
+  GoogleIamV1AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
 
   GoogleIamV1AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map(
-                (value) => GoogleIamV1AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleIamV1AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -6677,14 +6663,17 @@ class GoogleIamV1Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  GoogleIamV1Binding({this.condition, this.members, this.role});
+  GoogleIamV1Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
   GoogleIamV1Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? GoogleTypeExpr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -6795,18 +6784,12 @@ class GoogleIamV1Policy {
   GoogleIamV1Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map(
-                (value) => GoogleIamV1AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleIamV1AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map(
-                (value) => GoogleIamV1Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleIamV1Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -6835,14 +6818,16 @@ class GoogleIamV1SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  GoogleIamV1SetIamPolicyRequest({this.policy, this.updateMask});
+  GoogleIamV1SetIamPolicyRequest({
+    this.policy,
+    this.updateMask,
+  });
 
   GoogleIamV1SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? GoogleIamV1Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -6876,11 +6861,8 @@ class GoogleLongrunningListOperationsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map(
-                (value) => GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -6946,8 +6928,7 @@ class GoogleLongrunningOperation {
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -7050,8 +7031,7 @@ class UtilStatusProto {
           message: json_['message'] as core.String?,
           messageSet: json_.containsKey('messageSet')
               ? Proto2BridgeMessageSet.fromJson(
-                  json_['messageSet'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['messageSet'] as core.Map<core.String, core.dynamic>)
               : null,
           space: json_['space'] as core.String?,
         );

@@ -64,10 +64,22 @@ api.AndroidInfo buildAndroidInfo() {
 void checkAndroidInfo(api.AndroidInfo o) {
   buildCounterAndroidInfo++;
   if (buildCounterAndroidInfo < 3) {
-    unittest.expect(o.androidFallbackLink!, unittest.equals('foo'));
-    unittest.expect(o.androidLink!, unittest.equals('foo'));
-    unittest.expect(o.androidMinPackageVersionCode!, unittest.equals('foo'));
-    unittest.expect(o.androidPackageName!, unittest.equals('foo'));
+    unittest.expect(
+      o.androidFallbackLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.androidLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.androidMinPackageVersionCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.androidPackageName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAndroidInfo--;
 }
@@ -91,9 +103,18 @@ void checkCreateManagedShortLinkRequest(api.CreateManagedShortLinkRequest o) {
   buildCounterCreateManagedShortLinkRequest++;
   if (buildCounterCreateManagedShortLinkRequest < 3) {
     checkDynamicLinkInfo(o.dynamicLinkInfo!);
-    unittest.expect(o.longDynamicLink!, unittest.equals('foo'));
-    unittest.expect(o.name!, unittest.equals('foo'));
-    unittest.expect(o.sdkVersion!, unittest.equals('foo'));
+    unittest.expect(
+      o.longDynamicLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sdkVersion!,
+      unittest.equals('foo'),
+    );
     checkSuffix(o.suffix!);
   }
   buildCounterCreateManagedShortLinkRequest--;
@@ -127,7 +148,10 @@ void checkCreateManagedShortLinkResponse(api.CreateManagedShortLinkResponse o) {
   buildCounterCreateManagedShortLinkResponse++;
   if (buildCounterCreateManagedShortLinkResponse < 3) {
     checkManagedShortLink(o.managedShortLink!);
-    unittest.expect(o.previewLink!, unittest.equals('foo'));
+    unittest.expect(
+      o.previewLink!,
+      unittest.equals('foo'),
+    );
     checkUnnamed0(o.warning!);
   }
   buildCounterCreateManagedShortLinkResponse--;
@@ -151,8 +175,14 @@ void checkCreateShortDynamicLinkRequest(api.CreateShortDynamicLinkRequest o) {
   buildCounterCreateShortDynamicLinkRequest++;
   if (buildCounterCreateShortDynamicLinkRequest < 3) {
     checkDynamicLinkInfo(o.dynamicLinkInfo!);
-    unittest.expect(o.longDynamicLink!, unittest.equals('foo'));
-    unittest.expect(o.sdkVersion!, unittest.equals('foo'));
+    unittest.expect(
+      o.longDynamicLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sdkVersion!,
+      unittest.equals('foo'),
+    );
     checkSuffix(o.suffix!);
   }
   buildCounterCreateShortDynamicLinkRequest--;
@@ -185,8 +215,14 @@ api.CreateShortDynamicLinkResponse buildCreateShortDynamicLinkResponse() {
 void checkCreateShortDynamicLinkResponse(api.CreateShortDynamicLinkResponse o) {
   buildCounterCreateShortDynamicLinkResponse++;
   if (buildCounterCreateShortDynamicLinkResponse < 3) {
-    unittest.expect(o.previewLink!, unittest.equals('foo'));
-    unittest.expect(o.shortLink!, unittest.equals('foo'));
+    unittest.expect(
+      o.previewLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.shortLink!,
+      unittest.equals('foo'),
+    );
     checkUnnamed1(o.warning!);
   }
   buildCounterCreateShortDynamicLinkResponse--;
@@ -206,7 +242,10 @@ api.DesktopInfo buildDesktopInfo() {
 void checkDesktopInfo(api.DesktopInfo o) {
   buildCounterDesktopInfo++;
   if (buildCounterDesktopInfo < 3) {
-    unittest.expect(o.desktopFallbackLink!, unittest.equals('foo'));
+    unittest.expect(
+      o.desktopFallbackLink!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDesktopInfo--;
 }
@@ -231,13 +270,34 @@ api.DeviceInfo buildDeviceInfo() {
 void checkDeviceInfo(api.DeviceInfo o) {
   buildCounterDeviceInfo++;
   if (buildCounterDeviceInfo < 3) {
-    unittest.expect(o.deviceModelName!, unittest.equals('foo'));
-    unittest.expect(o.languageCode!, unittest.equals('foo'));
-    unittest.expect(o.languageCodeFromWebview!, unittest.equals('foo'));
-    unittest.expect(o.languageCodeRaw!, unittest.equals('foo'));
-    unittest.expect(o.screenResolutionHeight!, unittest.equals('foo'));
-    unittest.expect(o.screenResolutionWidth!, unittest.equals('foo'));
-    unittest.expect(o.timezone!, unittest.equals('foo'));
+    unittest.expect(
+      o.deviceModelName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.languageCodeFromWebview!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.languageCodeRaw!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.screenResolutionHeight!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.screenResolutionWidth!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timezone!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDeviceInfo--;
 }
@@ -258,9 +318,18 @@ api.DynamicLinkEventStat buildDynamicLinkEventStat() {
 void checkDynamicLinkEventStat(api.DynamicLinkEventStat o) {
   buildCounterDynamicLinkEventStat++;
   if (buildCounterDynamicLinkEventStat < 3) {
-    unittest.expect(o.count!, unittest.equals('foo'));
-    unittest.expect(o.event!, unittest.equals('foo'));
-    unittest.expect(o.platform!, unittest.equals('foo'));
+    unittest.expect(
+      o.count!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.event!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.platform!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDynamicLinkEventStat--;
 }
@@ -290,10 +359,19 @@ void checkDynamicLinkInfo(api.DynamicLinkInfo o) {
     checkAnalyticsInfo(o.analyticsInfo!);
     checkAndroidInfo(o.androidInfo!);
     checkDesktopInfo(o.desktopInfo!);
-    unittest.expect(o.domainUriPrefix!, unittest.equals('foo'));
-    unittest.expect(o.dynamicLinkDomain!, unittest.equals('foo'));
+    unittest.expect(
+      o.domainUriPrefix!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dynamicLinkDomain!,
+      unittest.equals('foo'),
+    );
     checkIosInfo(o.iosInfo!);
-    unittest.expect(o.link!, unittest.equals('foo'));
+    unittest.expect(
+      o.link!,
+      unittest.equals('foo'),
+    );
     checkNavigationInfo(o.navigationInfo!);
     checkSocialMetaTagInfo(o.socialMetaTagInfo!);
   }
@@ -359,9 +437,18 @@ api.DynamicLinkWarning buildDynamicLinkWarning() {
 void checkDynamicLinkWarning(api.DynamicLinkWarning o) {
   buildCounterDynamicLinkWarning++;
   if (buildCounterDynamicLinkWarning < 3) {
-    unittest.expect(o.warningCode!, unittest.equals('foo'));
-    unittest.expect(o.warningDocumentLink!, unittest.equals('foo'));
-    unittest.expect(o.warningMessage!, unittest.equals('foo'));
+    unittest.expect(
+      o.warningCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.warningDocumentLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.warningMessage!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDynamicLinkWarning--;
 }
@@ -386,18 +473,38 @@ api.GetIosPostInstallAttributionRequest
 }
 
 void checkGetIosPostInstallAttributionRequest(
-  api.GetIosPostInstallAttributionRequest o,
-) {
+    api.GetIosPostInstallAttributionRequest o) {
   buildCounterGetIosPostInstallAttributionRequest++;
   if (buildCounterGetIosPostInstallAttributionRequest < 3) {
-    unittest.expect(o.appInstallationTime!, unittest.equals('foo'));
-    unittest.expect(o.bundleId!, unittest.equals('foo'));
+    unittest.expect(
+      o.appInstallationTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.bundleId!,
+      unittest.equals('foo'),
+    );
     checkDeviceInfo(o.device!);
-    unittest.expect(o.iosVersion!, unittest.equals('foo'));
-    unittest.expect(o.retrievalMethod!, unittest.equals('foo'));
-    unittest.expect(o.sdkVersion!, unittest.equals('foo'));
-    unittest.expect(o.uniqueMatchLinkToCheck!, unittest.equals('foo'));
-    unittest.expect(o.visualStyle!, unittest.equals('foo'));
+    unittest.expect(
+      o.iosVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.retrievalMethod!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sdkVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uniqueMatchLinkToCheck!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.visualStyle!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGetIosPostInstallAttributionRequest--;
 }
@@ -430,26 +537,70 @@ api.GetIosPostInstallAttributionResponse
 }
 
 void checkGetIosPostInstallAttributionResponse(
-  api.GetIosPostInstallAttributionResponse o,
-) {
+    api.GetIosPostInstallAttributionResponse o) {
   buildCounterGetIosPostInstallAttributionResponse++;
   if (buildCounterGetIosPostInstallAttributionResponse < 3) {
-    unittest.expect(o.appMinimumVersion!, unittest.equals('foo'));
-    unittest.expect(o.attributionConfidence!, unittest.equals('foo'));
-    unittest.expect(o.deepLink!, unittest.equals('foo'));
-    unittest.expect(o.externalBrowserDestinationLink!, unittest.equals('foo'));
-    unittest.expect(o.fallbackLink!, unittest.equals('foo'));
-    unittest.expect(o.invitationId!, unittest.equals('foo'));
+    unittest.expect(
+      o.appMinimumVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.attributionConfidence!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.deepLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.externalBrowserDestinationLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fallbackLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.invitationId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.isStrongMatchExecutable!, unittest.isTrue);
-    unittest.expect(o.matchMessage!, unittest.equals('foo'));
-    unittest.expect(o.requestIpVersion!, unittest.equals('foo'));
-    unittest.expect(o.requestedLink!, unittest.equals('foo'));
-    unittest.expect(o.resolvedLink!, unittest.equals('foo'));
-    unittest.expect(o.utmCampaign!, unittest.equals('foo'));
-    unittest.expect(o.utmContent!, unittest.equals('foo'));
-    unittest.expect(o.utmMedium!, unittest.equals('foo'));
-    unittest.expect(o.utmSource!, unittest.equals('foo'));
-    unittest.expect(o.utmTerm!, unittest.equals('foo'));
+    unittest.expect(
+      o.matchMessage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestIpVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestedLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resolvedLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmCampaign!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmContent!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmMedium!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmSource!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmTerm!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGetIosPostInstallAttributionResponse--;
 }
@@ -470,9 +621,18 @@ api.GetIosReopenAttributionRequest buildGetIosReopenAttributionRequest() {
 void checkGetIosReopenAttributionRequest(api.GetIosReopenAttributionRequest o) {
   buildCounterGetIosReopenAttributionRequest++;
   if (buildCounterGetIosReopenAttributionRequest < 3) {
-    unittest.expect(o.bundleId!, unittest.equals('foo'));
-    unittest.expect(o.requestedLink!, unittest.equals('foo'));
-    unittest.expect(o.sdkVersion!, unittest.equals('foo'));
+    unittest.expect(
+      o.bundleId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestedLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sdkVersion!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGetIosReopenAttributionRequest--;
 }
@@ -509,19 +669,45 @@ api.GetIosReopenAttributionResponse buildGetIosReopenAttributionResponse() {
 }
 
 void checkGetIosReopenAttributionResponse(
-  api.GetIosReopenAttributionResponse o,
-) {
+    api.GetIosReopenAttributionResponse o) {
   buildCounterGetIosReopenAttributionResponse++;
   if (buildCounterGetIosReopenAttributionResponse < 3) {
-    unittest.expect(o.deepLink!, unittest.equals('foo'));
-    unittest.expect(o.invitationId!, unittest.equals('foo'));
-    unittest.expect(o.iosMinAppVersion!, unittest.equals('foo'));
-    unittest.expect(o.resolvedLink!, unittest.equals('foo'));
-    unittest.expect(o.utmCampaign!, unittest.equals('foo'));
-    unittest.expect(o.utmContent!, unittest.equals('foo'));
-    unittest.expect(o.utmMedium!, unittest.equals('foo'));
-    unittest.expect(o.utmSource!, unittest.equals('foo'));
-    unittest.expect(o.utmTerm!, unittest.equals('foo'));
+    unittest.expect(
+      o.deepLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.invitationId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iosMinAppVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resolvedLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmCampaign!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmContent!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmMedium!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmSource!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmTerm!,
+      unittest.equals('foo'),
+    );
     checkUnnamed4(o.warning!);
   }
   buildCounterGetIosReopenAttributionResponse--;
@@ -546,12 +732,30 @@ api.GooglePlayAnalytics buildGooglePlayAnalytics() {
 void checkGooglePlayAnalytics(api.GooglePlayAnalytics o) {
   buildCounterGooglePlayAnalytics++;
   if (buildCounterGooglePlayAnalytics < 3) {
-    unittest.expect(o.gclid!, unittest.equals('foo'));
-    unittest.expect(o.utmCampaign!, unittest.equals('foo'));
-    unittest.expect(o.utmContent!, unittest.equals('foo'));
-    unittest.expect(o.utmMedium!, unittest.equals('foo'));
-    unittest.expect(o.utmSource!, unittest.equals('foo'));
-    unittest.expect(o.utmTerm!, unittest.equals('foo'));
+    unittest.expect(
+      o.gclid!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmCampaign!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmContent!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmMedium!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmSource!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmTerm!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePlayAnalytics--;
 }
@@ -573,10 +777,22 @@ api.ITunesConnectAnalytics buildITunesConnectAnalytics() {
 void checkITunesConnectAnalytics(api.ITunesConnectAnalytics o) {
   buildCounterITunesConnectAnalytics++;
   if (buildCounterITunesConnectAnalytics < 3) {
-    unittest.expect(o.at!, unittest.equals('foo'));
-    unittest.expect(o.ct!, unittest.equals('foo'));
-    unittest.expect(o.mt!, unittest.equals('foo'));
-    unittest.expect(o.pt!, unittest.equals('foo'));
+    unittest.expect(
+      o.at!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ct!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.mt!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pt!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterITunesConnectAnalytics--;
 }
@@ -601,23 +817,53 @@ api.IosInfo buildIosInfo() {
 void checkIosInfo(api.IosInfo o) {
   buildCounterIosInfo++;
   if (buildCounterIosInfo < 3) {
-    unittest.expect(o.iosAppStoreId!, unittest.equals('foo'));
-    unittest.expect(o.iosBundleId!, unittest.equals('foo'));
-    unittest.expect(o.iosCustomScheme!, unittest.equals('foo'));
-    unittest.expect(o.iosFallbackLink!, unittest.equals('foo'));
-    unittest.expect(o.iosIpadBundleId!, unittest.equals('foo'));
-    unittest.expect(o.iosIpadFallbackLink!, unittest.equals('foo'));
-    unittest.expect(o.iosMinimumVersion!, unittest.equals('foo'));
+    unittest.expect(
+      o.iosAppStoreId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iosBundleId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iosCustomScheme!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iosFallbackLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iosIpadBundleId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iosIpadFallbackLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iosMinimumVersion!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterIosInfo--;
 }
 
-core.List<core.String> buildUnnamed5() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed5() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterManagedShortLink = 0;
@@ -639,12 +885,24 @@ api.ManagedShortLink buildManagedShortLink() {
 void checkManagedShortLink(api.ManagedShortLink o) {
   buildCounterManagedShortLink++;
   if (buildCounterManagedShortLink < 3) {
-    unittest.expect(o.creationTime!, unittest.equals('foo'));
+    unittest.expect(
+      o.creationTime!,
+      unittest.equals('foo'),
+    );
     checkUnnamed5(o.flaggedAttribute!);
     checkDynamicLinkInfo(o.info!);
-    unittest.expect(o.link!, unittest.equals('foo'));
-    unittest.expect(o.linkName!, unittest.equals('foo'));
-    unittest.expect(o.visibility!, unittest.equals('foo'));
+    unittest.expect(
+      o.link!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.linkName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.visibility!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterManagedShortLink--;
 }
@@ -684,9 +942,18 @@ api.SocialMetaTagInfo buildSocialMetaTagInfo() {
 void checkSocialMetaTagInfo(api.SocialMetaTagInfo o) {
   buildCounterSocialMetaTagInfo++;
   if (buildCounterSocialMetaTagInfo < 3) {
-    unittest.expect(o.socialDescription!, unittest.equals('foo'));
-    unittest.expect(o.socialImageLink!, unittest.equals('foo'));
-    unittest.expect(o.socialTitle!, unittest.equals('foo'));
+    unittest.expect(
+      o.socialDescription!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.socialImageLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.socialTitle!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSocialMetaTagInfo--;
 }
@@ -706,8 +973,14 @@ api.Suffix buildSuffix() {
 void checkSuffix(api.Suffix o) {
   buildCounterSuffix++;
   if (buildCounterSuffix < 3) {
-    unittest.expect(o.customSuffix!, unittest.equals('foo'));
-    unittest.expect(o.option!, unittest.equals('foo'));
+    unittest.expect(
+      o.customSuffix!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.option!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSuffix--;
 }
@@ -718,8 +991,7 @@ void main() {
       final o = buildAnalyticsInfo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AnalyticsInfo.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkAnalyticsInfo(od);
     });
   });
@@ -729,8 +1001,7 @@ void main() {
       final o = buildAndroidInfo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AndroidInfo.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkAndroidInfo(od);
     });
   });
@@ -740,8 +1011,7 @@ void main() {
       final o = buildCreateManagedShortLinkRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CreateManagedShortLinkRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreateManagedShortLinkRequest(od);
     });
   });
@@ -751,8 +1021,7 @@ void main() {
       final o = buildCreateManagedShortLinkResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CreateManagedShortLinkResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreateManagedShortLinkResponse(od);
     });
   });
@@ -762,8 +1031,7 @@ void main() {
       final o = buildCreateShortDynamicLinkRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CreateShortDynamicLinkRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreateShortDynamicLinkRequest(od);
     });
   });
@@ -773,8 +1041,7 @@ void main() {
       final o = buildCreateShortDynamicLinkResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CreateShortDynamicLinkResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreateShortDynamicLinkResponse(od);
     });
   });
@@ -784,8 +1051,7 @@ void main() {
       final o = buildDesktopInfo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DesktopInfo.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkDesktopInfo(od);
     });
   });
@@ -794,9 +1060,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildDeviceInfo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.DeviceInfo.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.DeviceInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDeviceInfo(od);
     });
   });
@@ -806,8 +1071,7 @@ void main() {
       final o = buildDynamicLinkEventStat();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DynamicLinkEventStat.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkDynamicLinkEventStat(od);
     });
   });
@@ -817,8 +1081,7 @@ void main() {
       final o = buildDynamicLinkInfo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DynamicLinkInfo.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkDynamicLinkInfo(od);
     });
   });
@@ -828,8 +1091,7 @@ void main() {
       final o = buildDynamicLinkStats();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DynamicLinkStats.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkDynamicLinkStats(od);
     });
   });
@@ -839,8 +1101,7 @@ void main() {
       final o = buildDynamicLinkWarning();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DynamicLinkWarning.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkDynamicLinkWarning(od);
     });
   });
@@ -850,8 +1111,7 @@ void main() {
       final o = buildGetIosPostInstallAttributionRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GetIosPostInstallAttributionRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetIosPostInstallAttributionRequest(od);
     });
   });
@@ -861,8 +1121,7 @@ void main() {
       final o = buildGetIosPostInstallAttributionResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GetIosPostInstallAttributionResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetIosPostInstallAttributionResponse(od);
     });
   });
@@ -872,8 +1131,7 @@ void main() {
       final o = buildGetIosReopenAttributionRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GetIosReopenAttributionRequest.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetIosReopenAttributionRequest(od);
     });
   });
@@ -883,8 +1141,7 @@ void main() {
       final o = buildGetIosReopenAttributionResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GetIosReopenAttributionResponse.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetIosReopenAttributionResponse(od);
     });
   });
@@ -894,8 +1151,7 @@ void main() {
       final o = buildGooglePlayAnalytics();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GooglePlayAnalytics.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePlayAnalytics(od);
     });
   });
@@ -905,8 +1161,7 @@ void main() {
       final o = buildITunesConnectAnalytics();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ITunesConnectAnalytics.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkITunesConnectAnalytics(od);
     });
   });
@@ -915,9 +1170,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildIosInfo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.IosInfo.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.IosInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkIosInfo(od);
     });
   });
@@ -927,8 +1181,7 @@ void main() {
       final o = buildManagedShortLink();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ManagedShortLink.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkManagedShortLink(od);
     });
   });
@@ -938,8 +1191,7 @@ void main() {
       final o = buildNavigationInfo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.NavigationInfo.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkNavigationInfo(od);
     });
   });
@@ -949,8 +1201,7 @@ void main() {
       final o = buildSocialMetaTagInfo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SocialMetaTagInfo.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+          oJson as core.Map<core.String, core.dynamic>);
       checkSocialMetaTagInfo(od);
     });
   });
@@ -959,9 +1210,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildSuffix();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.Suffix.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
+      final od =
+          api.Suffix.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkSuffix(od);
     });
   });
@@ -972,60 +1222,55 @@ void main() {
       final res = api.FirebaseDynamicLinksApi(mock).managedShortLinks;
       final arg_request = buildCreateManagedShortLinkRequest();
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.CreateManagedShortLinkRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkCreateManagedShortLinkRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.CreateManagedShortLinkRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCreateManagedShortLinkRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 27),
-            unittest.equals('v1/managedShortLinks:create'),
-          );
-          pathOffset += 27;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 27),
+          unittest.equals('v1/managedShortLinks:create'),
+        );
+        pathOffset += 27;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildCreateManagedShortLinkResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCreateManagedShortLinkResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.create(arg_request, $fields: arg_$fields);
       checkCreateManagedShortLinkResponse(
-        response as api.CreateManagedShortLinkResponse,
-      );
+          response as api.CreateManagedShortLinkResponse);
     });
   });
 
@@ -1035,60 +1280,55 @@ void main() {
       final res = api.FirebaseDynamicLinksApi(mock).shortLinks;
       final arg_request = buildCreateShortDynamicLinkRequest();
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.CreateShortDynamicLinkRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkCreateShortDynamicLinkRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.CreateShortDynamicLinkRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCreateShortDynamicLinkRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 13),
-            unittest.equals('v1/shortLinks'),
-          );
-          pathOffset += 13;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('v1/shortLinks'),
+        );
+        pathOffset += 13;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildCreateShortDynamicLinkResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCreateShortDynamicLinkResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
       final response = await res.create(arg_request, $fields: arg_$fields);
       checkCreateShortDynamicLinkResponse(
-        response as api.CreateShortDynamicLinkResponse,
-      );
+          response as api.CreateShortDynamicLinkResponse);
     });
   });
 
@@ -1100,75 +1340,74 @@ void main() {
       final arg_durationDays = 'foo';
       final arg_sdkVersion = 'foo';
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          index = path.indexOf('/linkStats', pathOffset);
-          unittest.expect(index >= 0, unittest.isTrue);
-          subPart = core.Uri.decodeQueryComponent(
-            path.substring(pathOffset, index),
-          );
-          pathOffset = index;
-          unittest.expect(subPart, unittest.equals('$arg_dynamicLink'));
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 10),
-            unittest.equals('/linkStats'),
-          );
-          pathOffset += 10;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        index = path.indexOf('/linkStats', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_dynamicLink'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals('/linkStats'),
+        );
+        pathOffset += 10;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['durationDays']!.first,
-            unittest.equals(arg_durationDays),
-          );
-          unittest.expect(
-            queryMap['sdkVersion']!.first,
-            unittest.equals(arg_sdkVersion),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['durationDays']!.first,
+          unittest.equals(arg_durationDays),
+        );
+        unittest.expect(
+          queryMap['sdkVersion']!.first,
+          unittest.equals(arg_sdkVersion),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildDynamicLinkStats());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.getLinkStats(
-        arg_dynamicLink,
-        durationDays: arg_durationDays,
-        sdkVersion: arg_sdkVersion,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildDynamicLinkStats());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getLinkStats(arg_dynamicLink,
+          durationDays: arg_durationDays,
+          sdkVersion: arg_sdkVersion,
+          $fields: arg_$fields);
       checkDynamicLinkStats(response as api.DynamicLinkStats);
     });
 
@@ -1177,63 +1416,57 @@ void main() {
       final res = api.FirebaseDynamicLinksApi(mock).v1;
       final arg_request = buildGetIosPostInstallAttributionRequest();
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GetIosPostInstallAttributionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGetIosPostInstallAttributionRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GetIosPostInstallAttributionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetIosPostInstallAttributionRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 21),
-            unittest.equals('v1/installAttribution'),
-          );
-          pathOffset += 21;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('v1/installAttribution'),
+        );
+        pathOffset += 21;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGetIosPostInstallAttributionResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.installAttribution(
-        arg_request,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGetIosPostInstallAttributionResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.installAttribution(arg_request, $fields: arg_$fields);
       checkGetIosPostInstallAttributionResponse(
-        response as api.GetIosPostInstallAttributionResponse,
-      );
+          response as api.GetIosPostInstallAttributionResponse);
     });
 
     unittest.test('method--reopenAttribution', () async {
@@ -1241,63 +1474,57 @@ void main() {
       final res = api.FirebaseDynamicLinksApi(mock).v1;
       final arg_request = buildGetIosReopenAttributionRequest();
       final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GetIosReopenAttributionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGetIosReopenAttributionRequest(obj);
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GetIosReopenAttributionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetIosReopenAttributionRequest(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 20),
-            unittest.equals('v1/reopenAttribution'),
-          );
-          pathOffset += 20;
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals('v1/reopenAttribution'),
+        );
+        pathOffset += 20;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGetIosReopenAttributionResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.reopenAttribution(
-        arg_request,
-        $fields: arg_$fields,
-      );
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGetIosReopenAttributionResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.reopenAttribution(arg_request, $fields: arg_$fields);
       checkGetIosReopenAttributionResponse(
-        response as api.GetIosReopenAttributionResponse,
-      );
+          response as api.GetIosReopenAttributionResponse);
     });
   });
 }

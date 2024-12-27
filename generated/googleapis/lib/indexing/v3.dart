@@ -46,16 +46,11 @@ class IndexingApi {
   UrlNotificationsResource get urlNotifications =>
       UrlNotificationsResource(_requester);
 
-  IndexingApi(
-    http.Client client, {
-    core.String rootUrl = 'https://indexing.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  IndexingApi(http.Client client,
+      {core.String rootUrl = 'https://indexing.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class UrlNotificationsResource {
@@ -100,8 +95,7 @@ class UrlNotificationsResource {
       queryParams: queryParams_,
     );
     return UrlNotificationMetadata.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Notifies that a URL has been updated or deleted.
@@ -138,8 +132,7 @@ class UrlNotificationsResource {
       queryParams: queryParams_,
     );
     return PublishUrlNotificationResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -148,15 +141,16 @@ class PublishUrlNotificationResponse {
   /// Description of the notification events received for this URL.
   UrlNotificationMetadata? urlNotificationMetadata;
 
-  PublishUrlNotificationResponse({this.urlNotificationMetadata});
+  PublishUrlNotificationResponse({
+    this.urlNotificationMetadata,
+  });
 
   PublishUrlNotificationResponse.fromJson(core.Map json_)
       : this(
           urlNotificationMetadata: json_.containsKey('urlNotificationMetadata')
               ? UrlNotificationMetadata.fromJson(
                   json_['urlNotificationMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -188,7 +182,11 @@ class UrlNotification {
   /// of `URL_UPDATED` notifications, it _must_ be crawlable by Google.
   core.String? url;
 
-  UrlNotification({this.notifyTime, this.type, this.url});
+  UrlNotification({
+    this.notifyTime,
+    this.type,
+    this.url,
+  });
 
   UrlNotification.fromJson(core.Map json_)
       : this(
@@ -216,19 +214,21 @@ class UrlNotificationMetadata {
   /// URL to which this metadata refers.
   core.String? url;
 
-  UrlNotificationMetadata({this.latestRemove, this.latestUpdate, this.url});
+  UrlNotificationMetadata({
+    this.latestRemove,
+    this.latestUpdate,
+    this.url,
+  });
 
   UrlNotificationMetadata.fromJson(core.Map json_)
       : this(
           latestRemove: json_.containsKey('latestRemove')
               ? UrlNotification.fromJson(
-                  json_['latestRemove'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['latestRemove'] as core.Map<core.String, core.dynamic>)
               : null,
           latestUpdate: json_.containsKey('latestUpdate')
               ? UrlNotification.fromJson(
-                  json_['latestUpdate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['latestUpdate'] as core.Map<core.String, core.dynamic>)
               : null,
           url: json_['url'] as core.String?,
         );

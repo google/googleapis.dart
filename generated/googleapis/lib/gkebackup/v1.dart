@@ -58,16 +58,11 @@ class BackupForGKEApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  BackupForGKEApi(
-    http.Client client, {
-    core.String rootUrl = 'https://gkebackup.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  BackupForGKEApi(http.Client client,
+      {core.String rootUrl = 'https://gkebackup.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -108,7 +103,10 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(core.String name, {core.String? $fields}) async {
+  async.Future<Location> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -172,8 +170,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -233,8 +230,7 @@ class ProjectsLocationsBackupPlansResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an existing BackupPlan.
@@ -277,8 +273,7 @@ class ProjectsLocationsBackupPlansResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieve the details of a single BackupPlan.
@@ -300,7 +295,10 @@ class ProjectsLocationsBackupPlansResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<BackupPlan> get(core.String name, {core.String? $fields}) async {
+  async.Future<BackupPlan> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -313,8 +311,7 @@ class ProjectsLocationsBackupPlansResource {
       queryParams: queryParams_,
     );
     return BackupPlan.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -432,8 +429,7 @@ class ProjectsLocationsBackupPlansResource {
       queryParams: queryParams_,
     );
     return ListBackupPlansResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a BackupPlan.
@@ -488,8 +484,7 @@ class ProjectsLocationsBackupPlansResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -587,8 +582,7 @@ class ProjectsLocationsBackupPlansResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -649,8 +643,7 @@ class ProjectsLocationsBackupPlansBackupsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an existing Backup.
@@ -699,8 +692,7 @@ class ProjectsLocationsBackupPlansBackupsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieve the details of a single Backup.
@@ -722,7 +714,10 @@ class ProjectsLocationsBackupPlansBackupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Backup> get(core.String name, {core.String? $fields}) async {
+  async.Future<Backup> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -773,8 +768,7 @@ class ProjectsLocationsBackupPlansBackupsResource {
       queryParams: queryParams_,
     );
     return GetBackupIndexDownloadUrlResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -893,8 +887,7 @@ class ProjectsLocationsBackupPlansBackupsResource {
       queryParams: queryParams_,
     );
     return ListBackupsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a Backup.
@@ -947,8 +940,7 @@ class ProjectsLocationsBackupPlansBackupsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1046,8 +1038,7 @@ class ProjectsLocationsBackupPlansBackupsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1055,8 +1046,8 @@ class ProjectsLocationsBackupPlansBackupsVolumeBackupsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsBackupPlansBackupsVolumeBackupsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Retrieve the details of a single VolumeBackup.
   ///
@@ -1094,8 +1085,7 @@ class ProjectsLocationsBackupPlansBackupsVolumeBackupsResource {
       queryParams: queryParams_,
     );
     return VolumeBackup.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -1214,8 +1204,7 @@ class ProjectsLocationsBackupPlansBackupsVolumeBackupsResource {
       queryParams: queryParams_,
     );
     return ListVolumeBackupsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1313,8 +1302,7 @@ class ProjectsLocationsBackupPlansBackupsVolumeBackupsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1396,7 +1384,10 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1448,8 +1439,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -1499,8 +1489,7 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1560,8 +1549,7 @@ class ProjectsLocationsRestorePlansResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an existing RestorePlan.
@@ -1610,8 +1598,7 @@ class ProjectsLocationsRestorePlansResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieve the details of a single RestorePlan.
@@ -1649,8 +1636,7 @@ class ProjectsLocationsRestorePlansResource {
       queryParams: queryParams_,
     );
     return RestorePlan.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -1768,8 +1754,7 @@ class ProjectsLocationsRestorePlansResource {
       queryParams: queryParams_,
     );
     return ListRestorePlansResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a RestorePlan.
@@ -1823,8 +1808,7 @@ class ProjectsLocationsRestorePlansResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1922,8 +1906,7 @@ class ProjectsLocationsRestorePlansResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1986,8 +1969,7 @@ class ProjectsLocationsRestorePlansRestoresResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an existing Restore.
@@ -2036,8 +2018,7 @@ class ProjectsLocationsRestorePlansRestoresResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the details of a single Restore.
@@ -2059,7 +2040,10 @@ class ProjectsLocationsRestorePlansRestoresResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Restore> get(core.String name, {core.String? $fields}) async {
+  async.Future<Restore> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2190,8 +2174,7 @@ class ProjectsLocationsRestorePlansRestoresResource {
       queryParams: queryParams_,
     );
     return ListRestoresResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a Restore.
@@ -2244,8 +2227,7 @@ class ProjectsLocationsRestorePlansRestoresResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2343,8 +2325,7 @@ class ProjectsLocationsRestorePlansRestoresResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2352,8 +2333,8 @@ class ProjectsLocationsRestorePlansRestoresVolumeRestoresResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRestorePlansRestoresVolumeRestoresResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Retrieve the details of a single VolumeRestore.
   ///
@@ -2391,8 +2372,7 @@ class ProjectsLocationsRestorePlansRestoresVolumeRestoresResource {
       queryParams: queryParams_,
     );
     return VolumeRestore.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -2511,8 +2491,7 @@ class ProjectsLocationsRestorePlansRestoresVolumeRestoresResource {
       queryParams: queryParams_,
     );
     return ListVolumeRestoresResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2610,8 +2589,7 @@ class ProjectsLocationsRestorePlansRestoresVolumeRestoresResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2642,16 +2620,16 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({this.auditLogConfigs, this.service});
+  AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
 
   AuditConfig.fromJson(core.Map json_)
       : this(
           auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map(
-                (value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           service: json_['service'] as core.String?,
         );
@@ -2902,10 +2880,8 @@ class Backup {
       : this(
           allNamespaces: json_['allNamespaces'] as core.bool?,
           clusterMetadata: json_.containsKey('clusterMetadata')
-              ? ClusterMetadata.fromJson(
-                  json_['clusterMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ClusterMetadata.fromJson(json_['clusterMetadata']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           completeTime: json_['completeTime'] as core.String?,
           configBackupSizeBytes: json_['configBackupSizeBytes'] as core.String?,
@@ -2917,13 +2893,15 @@ class Backup {
           description: json_['description'] as core.String?,
           encryptionKey: json_.containsKey('encryptionKey')
               ? EncryptionKey.fromJson(
-                  json_['encryptionKey'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['encryptionKey'] as core.Map<core.String, core.dynamic>)
               : null,
           etag: json_['etag'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           manual: json_['manual'] as core.bool?,
           name: json_['name'] as core.String?,
@@ -2933,16 +2911,12 @@ class Backup {
           retainDays: json_['retainDays'] as core.int?,
           retainExpireTime: json_['retainExpireTime'] as core.String?,
           selectedApplications: json_.containsKey('selectedApplications')
-              ? NamespacedNames.fromJson(
-                  json_['selectedApplications']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? NamespacedNames.fromJson(json_['selectedApplications']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           selectedNamespaces: json_.containsKey('selectedNamespaces')
-              ? Namespaces.fromJson(
-                  json_['selectedNamespaces']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Namespaces.fromJson(json_['selectedNamespaces']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           sizeBytes: json_['sizeBytes'] as core.String?,
           state: json_['state'] as core.String?,
@@ -3051,23 +3025,18 @@ class BackupConfig {
           allNamespaces: json_['allNamespaces'] as core.bool?,
           encryptionKey: json_.containsKey('encryptionKey')
               ? EncryptionKey.fromJson(
-                  json_['encryptionKey'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['encryptionKey'] as core.Map<core.String, core.dynamic>)
               : null,
           includeSecrets: json_['includeSecrets'] as core.bool?,
           includeVolumeData: json_['includeVolumeData'] as core.bool?,
           permissiveMode: json_['permissiveMode'] as core.bool?,
           selectedApplications: json_.containsKey('selectedApplications')
-              ? NamespacedNames.fromJson(
-                  json_['selectedApplications']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? NamespacedNames.fromJson(json_['selectedApplications']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           selectedNamespaces: json_.containsKey('selectedNamespaces')
-              ? Namespaces.fromJson(
-                  json_['selectedNamespaces']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Namespaces.fromJson(json_['selectedNamespaces']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3231,14 +3200,11 @@ class BackupPlan {
       : this(
           backupConfig: json_.containsKey('backupConfig')
               ? BackupConfig.fromJson(
-                  json_['backupConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['backupConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           backupSchedule: json_.containsKey('backupSchedule')
-              ? Schedule.fromJson(
-                  json_['backupSchedule']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Schedule.fromJson(json_['backupSchedule']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           cluster: json_['cluster'] as core.String?,
           createTime: json_['createTime'] as core.String?,
@@ -3247,15 +3213,16 @@ class BackupPlan {
           etag: json_['etag'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           protectedPodCount: json_['protectedPodCount'] as core.int?,
           retentionPolicy: json_.containsKey('retentionPolicy')
-              ? RetentionPolicy.fromJson(
-                  json_['retentionPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? RetentionPolicy.fromJson(json_['retentionPolicy']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           rpoRiskLevel: json_['rpoRiskLevel'] as core.int?,
           rpoRiskReason: json_['rpoRiskReason'] as core.String?,
@@ -3366,14 +3333,17 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({this.condition, this.members, this.role});
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -3432,7 +3402,12 @@ class ClusterMetadata {
           anthosVersion: json_['anthosVersion'] as core.String?,
           backupCrdVersions: (json_['backupCrdVersions']
                   as core.Map<core.String, core.dynamic>?)
-              ?.map((key, value) => core.MapEntry(key, value as core.String)),
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           cluster: json_['cluster'] as core.String?,
           gkeVersion: json_['gkeVersion'] as core.String?,
           k8sVersion: json_['k8sVersion'] as core.String?,
@@ -3504,19 +3479,13 @@ class ClusterResourceRestoreScope {
       : this(
           allGroupKinds: json_['allGroupKinds'] as core.bool?,
           excludedGroupKinds: (json_['excludedGroupKinds'] as core.List?)
-              ?.map(
-                (value) => GroupKind.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GroupKind.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           noGroupKinds: json_['noGroupKinds'] as core.bool?,
           selectedGroupKinds: (json_['selectedGroupKinds'] as core.List?)
-              ?.map(
-                (value) => GroupKind.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GroupKind.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3549,7 +3518,9 @@ class DayOfWeekList {
   /// Optional.
   core.List<core.String>? daysOfWeek;
 
-  DayOfWeekList({this.daysOfWeek});
+  DayOfWeekList({
+    this.daysOfWeek,
+  });
 
   DayOfWeekList.fromJson(core.Map json_)
       : this(
@@ -3581,10 +3552,14 @@ class EncryptionKey {
   /// Optional.
   core.String? gcpKmsEncryptionKey;
 
-  EncryptionKey({this.gcpKmsEncryptionKey});
+  EncryptionKey({
+    this.gcpKmsEncryptionKey,
+  });
 
   EncryptionKey.fromJson(core.Map json_)
-      : this(gcpKmsEncryptionKey: json_['gcpKmsEncryptionKey'] as core.String?);
+      : this(
+          gcpKmsEncryptionKey: json_['gcpKmsEncryptionKey'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcpKmsEncryptionKey != null)
@@ -3640,20 +3615,16 @@ class ExclusionWindow {
           daily: json_['daily'] as core.bool?,
           daysOfWeek: json_.containsKey('daysOfWeek')
               ? DayOfWeekList.fromJson(
-                  json_['daysOfWeek'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['daysOfWeek'] as core.Map<core.String, core.dynamic>)
               : null,
           duration: json_['duration'] as core.String?,
           singleOccurrenceDate: json_.containsKey('singleOccurrenceDate')
-              ? Date.fromJson(
-                  json_['singleOccurrenceDate']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Date.fromJson(json_['singleOccurrenceDate']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           startTime: json_.containsKey('startTime')
               ? TimeOfDay.fromJson(
-                  json_['startTime'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['startTime'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3712,23 +3683,20 @@ class Filter {
   /// Optional.
   core.List<ResourceSelector>? inclusionFilters;
 
-  Filter({this.exclusionFilters, this.inclusionFilters});
+  Filter({
+    this.exclusionFilters,
+    this.inclusionFilters,
+  });
 
   Filter.fromJson(core.Map json_)
       : this(
           exclusionFilters: (json_['exclusionFilters'] as core.List?)
-              ?.map(
-                (value) => ResourceSelector.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ResourceSelector.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           inclusionFilters: (json_['inclusionFilters'] as core.List?)
-              ?.map(
-                (value) => ResourceSelector.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ResourceSelector.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3742,10 +3710,14 @@ class Filter {
 class GetBackupIndexDownloadUrlResponse {
   core.String? signedUrl;
 
-  GetBackupIndexDownloadUrlResponse({this.signedUrl});
+  GetBackupIndexDownloadUrlResponse({
+    this.signedUrl,
+  });
 
   GetBackupIndexDownloadUrlResponse.fromJson(core.Map json_)
-      : this(signedUrl: json_['signedUrl'] as core.String?);
+      : this(
+          signedUrl: json_['signedUrl'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (signedUrl != null) 'signedUrl': signedUrl!,
@@ -3772,11 +3744,8 @@ class GoogleLongrunningListOperationsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map(
-                (value) => GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3842,8 +3811,7 @@ class GoogleLongrunningOperation {
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -3892,7 +3860,10 @@ class GroupKind {
   /// Optional.
   core.String? resourceKind;
 
-  GroupKind({this.resourceGroup, this.resourceKind});
+  GroupKind({
+    this.resourceGroup,
+    this.resourceKind,
+  });
 
   GroupKind.fromJson(core.Map json_)
       : this(
@@ -3920,19 +3891,20 @@ class GroupKindDependency {
   /// Required.
   GroupKind? satisfying;
 
-  GroupKindDependency({this.requiring, this.satisfying});
+  GroupKindDependency({
+    this.requiring,
+    this.satisfying,
+  });
 
   GroupKindDependency.fromJson(core.Map json_)
       : this(
           requiring: json_.containsKey('requiring')
               ? GroupKind.fromJson(
-                  json_['requiring'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['requiring'] as core.Map<core.String, core.dynamic>)
               : null,
           satisfying: json_.containsKey('satisfying')
               ? GroupKind.fromJson(
-                  json_['satisfying'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['satisfying'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3966,11 +3938,8 @@ class ListBackupPlansResponse {
   ListBackupPlansResponse.fromJson(core.Map json_)
       : this(
           backupPlans: (json_['backupPlans'] as core.List?)
-              ?.map(
-                (value) => BackupPlan.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => BackupPlan.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -3997,16 +3966,16 @@ class ListBackupsResponse {
   /// return.
   core.String? nextPageToken;
 
-  ListBackupsResponse({this.backups, this.nextPageToken});
+  ListBackupsResponse({
+    this.backups,
+    this.nextPageToken,
+  });
 
   ListBackupsResponse.fromJson(core.Map json_)
       : this(
           backups: (json_['backups'] as core.List?)
-              ?.map(
-                (value) => Backup.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Backup.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -4025,16 +3994,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({this.locations, this.nextPageToken});
+  ListLocationsResponse({
+    this.locations,
+    this.nextPageToken,
+  });
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map(
-                (value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -4070,11 +4039,8 @@ class ListRestorePlansResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           restorePlans: (json_['restorePlans'] as core.List?)
-              ?.map(
-                (value) => RestorePlan.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => RestorePlan.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -4103,17 +4069,18 @@ class ListRestoresResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListRestoresResponse({this.nextPageToken, this.restores, this.unreachable});
+  ListRestoresResponse({
+    this.nextPageToken,
+    this.restores,
+    this.unreachable,
+  });
 
   ListRestoresResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           restores: (json_['restores'] as core.List?)
-              ?.map(
-                (value) => Restore.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Restore.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -4139,17 +4106,17 @@ class ListVolumeBackupsResponse {
   /// The list of VolumeBackups matching the given criteria.
   core.List<VolumeBackup>? volumeBackups;
 
-  ListVolumeBackupsResponse({this.nextPageToken, this.volumeBackups});
+  ListVolumeBackupsResponse({
+    this.nextPageToken,
+    this.volumeBackups,
+  });
 
   ListVolumeBackupsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           volumeBackups: (json_['volumeBackups'] as core.List?)
-              ?.map(
-                (value) => VolumeBackup.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => VolumeBackup.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4171,17 +4138,17 @@ class ListVolumeRestoresResponse {
   /// The list of VolumeRestores matching the given criteria.
   core.List<VolumeRestore>? volumeRestores;
 
-  ListVolumeRestoresResponse({this.nextPageToken, this.volumeRestores});
+  ListVolumeRestoresResponse({
+    this.nextPageToken,
+    this.volumeRestores,
+  });
 
   ListVolumeRestoresResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           volumeRestores: (json_['volumeRestores'] as core.List?)
-              ?.map(
-                (value) => VolumeRestore.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => VolumeRestore.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4206,7 +4173,10 @@ class NamespacedName {
   /// Optional.
   core.String? namespace;
 
-  NamespacedName({this.name, this.namespace});
+  NamespacedName({
+    this.name,
+    this.namespace,
+  });
 
   NamespacedName.fromJson(core.Map json_)
       : this(
@@ -4227,16 +4197,15 @@ class NamespacedNames {
   /// Optional.
   core.List<NamespacedName>? namespacedNames;
 
-  NamespacedNames({this.namespacedNames});
+  NamespacedNames({
+    this.namespacedNames,
+  });
 
   NamespacedNames.fromJson(core.Map json_)
       : this(
           namespacedNames: (json_['namespacedNames'] as core.List?)
-              ?.map(
-                (value) => NamespacedName.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => NamespacedName.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -4252,7 +4221,9 @@ class Namespaces {
   /// Optional.
   core.List<core.String>? namespaces;
 
-  Namespaces({this.namespaces});
+  Namespaces({
+    this.namespaces,
+  });
 
   Namespaces.fromJson(core.Map json_)
       : this(
@@ -4352,23 +4323,22 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
+  Policy({
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
   Policy.fromJson(core.Map json_)
       : this(
           auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map(
-                (value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           bindings: (json_['bindings'] as core.List?)
-              ?.map(
-                (value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -4415,16 +4385,17 @@ class ResourceFilter {
   /// Optional.
   core.List<core.String>? namespaces;
 
-  ResourceFilter({this.groupKinds, this.jsonPath, this.namespaces});
+  ResourceFilter({
+    this.groupKinds,
+    this.jsonPath,
+    this.namespaces,
+  });
 
   ResourceFilter.fromJson(core.Map json_)
       : this(
           groupKinds: (json_['groupKinds'] as core.List?)
-              ?.map(
-                (value) => GroupKind.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GroupKind.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           jsonPath: json_['jsonPath'] as core.String?,
           namespaces: (json_['namespaces'] as core.List?)
@@ -4482,18 +4453,25 @@ class ResourceSelector {
   /// Optional.
   core.String? namespace;
 
-  ResourceSelector({this.groupKind, this.labels, this.name, this.namespace});
+  ResourceSelector({
+    this.groupKind,
+    this.labels,
+    this.name,
+    this.namespace,
+  });
 
   ResourceSelector.fromJson(core.Map json_)
       : this(
           groupKind: json_.containsKey('groupKind')
               ? GroupKind.fromJson(
-                  json_['groupKind'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['groupKind'] as core.Map<core.String, core.dynamic>)
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           namespace: json_['namespace'] as core.String?,
@@ -4679,12 +4657,14 @@ class Restore {
           etag: json_['etag'] as core.String?,
           filter: json_.containsKey('filter')
               ? Filter.fromJson(
-                  json_['filter'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['filter'] as core.Map<core.String, core.dynamic>)
               : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           resourcesExcludedCount: json_['resourcesExcludedCount'] as core.int?,
@@ -4692,8 +4672,7 @@ class Restore {
           resourcesRestoredCount: json_['resourcesRestoredCount'] as core.int?,
           restoreConfig: json_.containsKey('restoreConfig')
               ? RestoreConfig.fromJson(
-                  json_['restoreConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['restoreConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           state: json_['state'] as core.String?,
           stateReason: json_['stateReason'] as core.String?,
@@ -4701,11 +4680,8 @@ class Restore {
           updateTime: json_['updateTime'] as core.String?,
           volumeDataRestorePolicyOverrides:
               (json_['volumeDataRestorePolicyOverrides'] as core.List?)
-                  ?.map(
-                    (value) => VolumeDataRestorePolicyOverride.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => VolumeDataRestorePolicyOverride.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
           volumesRestoredCount: json_['volumesRestoredCount'] as core.int?,
         );
@@ -4923,58 +4899,41 @@ class RestoreConfig {
               json_.containsKey('clusterResourceRestoreScope')
                   ? ClusterResourceRestoreScope.fromJson(
                       json_['clusterResourceRestoreScope']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           excludedNamespaces: json_.containsKey('excludedNamespaces')
-              ? Namespaces.fromJson(
-                  json_['excludedNamespaces']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Namespaces.fromJson(json_['excludedNamespaces']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           namespacedResourceRestoreMode:
               json_['namespacedResourceRestoreMode'] as core.String?,
           noNamespaces: json_['noNamespaces'] as core.bool?,
           restoreOrder: json_.containsKey('restoreOrder')
               ? RestoreOrder.fromJson(
-                  json_['restoreOrder'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['restoreOrder'] as core.Map<core.String, core.dynamic>)
               : null,
           selectedApplications: json_.containsKey('selectedApplications')
-              ? NamespacedNames.fromJson(
-                  json_['selectedApplications']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? NamespacedNames.fromJson(json_['selectedApplications']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           selectedNamespaces: json_.containsKey('selectedNamespaces')
-              ? Namespaces.fromJson(
-                  json_['selectedNamespaces']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Namespaces.fromJson(json_['selectedNamespaces']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           substitutionRules: (json_['substitutionRules'] as core.List?)
-              ?.map(
-                (value) => SubstitutionRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SubstitutionRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           transformationRules: (json_['transformationRules'] as core.List?)
-              ?.map(
-                (value) => TransformationRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => TransformationRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           volumeDataRestorePolicy:
               json_['volumeDataRestorePolicy'] as core.String?,
           volumeDataRestorePolicyBindings:
               (json_['volumeDataRestorePolicyBindings'] as core.List?)
-                  ?.map(
-                    (value) => VolumeDataRestorePolicyBinding.fromJson(
-                      value as core.Map<core.String, core.dynamic>,
-                    ),
-                  )
+                  ?.map((value) => VolumeDataRestorePolicyBinding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList(),
         );
 
@@ -5013,16 +4972,15 @@ class RestoreOrder {
   /// Optional.
   core.List<GroupKindDependency>? groupKindDependencies;
 
-  RestoreOrder({this.groupKindDependencies});
+  RestoreOrder({
+    this.groupKindDependencies,
+  });
 
   RestoreOrder.fromJson(core.Map json_)
       : this(
           groupKindDependencies: (json_['groupKindDependencies'] as core.List?)
-              ?.map(
-                (value) => GroupKindDependency.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GroupKindDependency.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -5149,13 +5107,15 @@ class RestorePlan {
           etag: json_['etag'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           restoreConfig: json_.containsKey('restoreConfig')
               ? RestoreConfig.fromJson(
-                  json_['restoreConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['restoreConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           state: json_['state'] as core.String?,
           stateReason: json_['stateReason'] as core.String?,
@@ -5264,16 +5224,16 @@ class RpoConfig {
   /// Required.
   core.int? targetRpoMinutes;
 
-  RpoConfig({this.exclusionWindows, this.targetRpoMinutes});
+  RpoConfig({
+    this.exclusionWindows,
+    this.targetRpoMinutes,
+  });
 
   RpoConfig.fromJson(core.Map json_)
       : this(
           exclusionWindows: (json_['exclusionWindows'] as core.List?)
-              ?.map(
-                (value) => ExclusionWindow.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => ExclusionWindow.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           targetRpoMinutes: json_['targetRpoMinutes'] as core.int?,
         );
@@ -5337,8 +5297,7 @@ class Schedule {
           paused: json_['paused'] as core.bool?,
           rpoConfig: json_.containsKey('rpoConfig')
               ? RpoConfig.fromJson(
-                  json_['rpoConfig'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['rpoConfig'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5366,14 +5325,16 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({this.policy, this.updateMask});
+  SetIamPolicyRequest({
+    this.policy,
+    this.updateMask,
+  });
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_['updateMask'] as core.String?,
         );
@@ -5459,11 +5420,8 @@ class SubstitutionRule {
           newValue: json_['newValue'] as core.String?,
           originalValuePattern: json_['originalValuePattern'] as core.String?,
           targetGroupKinds: (json_['targetGroupKinds'] as core.List?)
-              ?.map(
-                (value) => GroupKind.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GroupKind.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           targetJsonPath: json_['targetJsonPath'] as core.String?,
           targetNamespaces: (json_['targetNamespaces'] as core.List?)
@@ -5533,17 +5491,12 @@ class TransformationRule {
       : this(
           description: json_['description'] as core.String?,
           fieldActions: (json_['fieldActions'] as core.List?)
-              ?.map(
-                (value) => TransformationRuleAction.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => TransformationRuleAction.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           resourceFilter: json_.containsKey('resourceFilter')
-              ? ResourceFilter.fromJson(
-                  json_['resourceFilter']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? ResourceFilter.fromJson(json_['resourceFilter']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5600,7 +5553,12 @@ class TransformationRuleAction {
   /// Optional.
   core.String? value;
 
-  TransformationRuleAction({this.fromPath, this.op, this.path, this.value});
+  TransformationRuleAction({
+    this.fromPath,
+    this.op,
+    this.path,
+    this.value,
+  });
 
   TransformationRuleAction.fromJson(core.Map json_)
       : this(
@@ -5751,8 +5709,7 @@ class VolumeBackup {
           name: json_['name'] as core.String?,
           sourcePvc: json_.containsKey('sourcePvc')
               ? NamespacedName.fromJson(
-                  json_['sourcePvc'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['sourcePvc'] as core.Map<core.String, core.dynamic>)
               : null,
           state: json_['state'] as core.String?,
           stateMessage: json_['stateMessage'] as core.String?,
@@ -5808,7 +5765,10 @@ class VolumeDataRestorePolicyBinding {
   /// - "GCE_PERSISTENT_DISK" : Compute Engine Persistent Disk volume
   core.String? volumeType;
 
-  VolumeDataRestorePolicyBinding({this.policy, this.volumeType});
+  VolumeDataRestorePolicyBinding({
+    this.policy,
+    this.volumeType,
+  });
 
   VolumeDataRestorePolicyBinding.fromJson(core.Map json_)
       : this(
@@ -5846,15 +5806,17 @@ class VolumeDataRestorePolicyOverride {
   /// A list of PVCs to apply the policy override to.
   NamespacedNames? selectedPvcs;
 
-  VolumeDataRestorePolicyOverride({this.policy, this.selectedPvcs});
+  VolumeDataRestorePolicyOverride({
+    this.policy,
+    this.selectedPvcs,
+  });
 
   VolumeDataRestorePolicyOverride.fromJson(core.Map json_)
       : this(
           policy: json_['policy'] as core.String?,
           selectedPvcs: json_.containsKey('selectedPvcs')
               ? NamespacedNames.fromJson(
-                  json_['selectedPvcs'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['selectedPvcs'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5979,8 +5941,7 @@ class VolumeRestore {
           stateMessage: json_['stateMessage'] as core.String?,
           targetPvc: json_.containsKey('targetPvc')
               ? NamespacedName.fromJson(
-                  json_['targetPvc'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['targetPvc'] as core.Map<core.String, core.dynamic>)
               : null,
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,

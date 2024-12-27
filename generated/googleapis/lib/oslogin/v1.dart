@@ -61,16 +61,11 @@ class CloudOSLoginApi {
 
   UsersResource get users => UsersResource(_requester);
 
-  CloudOSLoginApi(
-    http.Client client, {
-    core.String rootUrl = 'https://oslogin.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  CloudOSLoginApi(http.Client client,
+      {core.String rootUrl = 'https://oslogin.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class UsersResource {
@@ -124,8 +119,7 @@ class UsersResource {
       queryParams: queryParams_,
     );
     return LoginProfile.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Adds an SSH public key and returns the profile information.
@@ -179,8 +173,7 @@ class UsersResource {
       queryParams: queryParams_,
     );
     return ImportSshPublicKeyResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -209,7 +202,10 @@ class UsersProjectsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -268,8 +264,7 @@ class UsersSshPublicKeysResource {
       queryParams: queryParams_,
     );
     return SshPublicKey.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an SSH public key.
@@ -291,7 +286,10 @@ class UsersSshPublicKeysResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -341,8 +339,7 @@ class UsersSshPublicKeysResource {
       queryParams: queryParams_,
     );
     return SshPublicKey.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an SSH public key and returns the profile information.
@@ -392,8 +389,7 @@ class UsersSshPublicKeysResource {
       queryParams: queryParams_,
     );
     return SshPublicKey.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -413,15 +409,17 @@ class ImportSshPublicKeyResponse {
   /// The login profile information for the user.
   LoginProfile? loginProfile;
 
-  ImportSshPublicKeyResponse({this.details, this.loginProfile});
+  ImportSshPublicKeyResponse({
+    this.details,
+    this.loginProfile,
+  });
 
   ImportSshPublicKeyResponse.fromJson(core.Map json_)
       : this(
           details: json_['details'] as core.String?,
           loginProfile: json_.containsKey('loginProfile')
               ? LoginProfile.fromJson(
-                  json_['loginProfile'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['loginProfile'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -445,17 +443,18 @@ class LoginProfile {
   /// A map from SSH public key fingerprint to the associated key object.
   core.Map<core.String, SshPublicKey>? sshPublicKeys;
 
-  LoginProfile({this.name, this.posixAccounts, this.sshPublicKeys});
+  LoginProfile({
+    this.name,
+    this.posixAccounts,
+    this.sshPublicKeys,
+  });
 
   LoginProfile.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
           posixAccounts: (json_['posixAccounts'] as core.List?)
-              ?.map(
-                (value) => PosixAccount.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => PosixAccount.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           sshPublicKeys:
               (json_['sshPublicKeys'] as core.Map<core.String, core.dynamic>?)
@@ -463,8 +462,7 @@ class LoginProfile {
             (key, value) => core.MapEntry(
               key,
               SshPublicKey.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
         );

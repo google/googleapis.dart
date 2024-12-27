@@ -53,16 +53,11 @@ class IAMCredentialsApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  IAMCredentialsApi(
-    http.Client client, {
-    core.String rootUrl = 'https://iamcredentials.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  IAMCredentialsApi(http.Client client,
+      {core.String rootUrl = 'https://iamcredentials.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -121,8 +116,7 @@ class ProjectsServiceAccountsResource {
       queryParams: queryParams_,
     );
     return GenerateAccessTokenResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Generates an OpenID Connect ID token for a service account.
@@ -166,8 +160,7 @@ class ProjectsServiceAccountsResource {
       queryParams: queryParams_,
     );
     return GenerateIdTokenResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the trust boundary info for a given service account.
@@ -203,8 +196,7 @@ class ProjectsServiceAccountsResource {
       queryParams: queryParams_,
     );
     return ServiceAccountAllowedLocations.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Signs a blob using a service account's system-managed private key.
@@ -248,8 +240,7 @@ class ProjectsServiceAccountsResource {
       queryParams: queryParams_,
     );
     return SignBlobResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Signs a JWT using a service account's system-managed private key.
@@ -293,8 +284,7 @@ class ProjectsServiceAccountsResource {
       queryParams: queryParams_,
     );
     return SignJwtResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -334,7 +324,11 @@ class GenerateAccessTokenRequest {
   /// Required.
   core.List<core.String>? scope;
 
-  GenerateAccessTokenRequest({this.delegates, this.lifetime, this.scope});
+  GenerateAccessTokenRequest({
+    this.delegates,
+    this.lifetime,
+    this.scope,
+  });
 
   GenerateAccessTokenRequest.fromJson(core.Map json_)
       : this(
@@ -363,7 +357,10 @@ class GenerateAccessTokenResponse {
   /// The expiration time is always set.
   core.String? expireTime;
 
-  GenerateAccessTokenResponse({this.accessToken, this.expireTime});
+  GenerateAccessTokenResponse({
+    this.accessToken,
+    this.expireTime,
+  });
 
   GenerateAccessTokenResponse.fromJson(core.Map json_)
       : this(
@@ -402,7 +399,11 @@ class GenerateIdTokenRequest {
   /// claims.
   core.bool? includeEmail;
 
-  GenerateIdTokenRequest({this.audience, this.delegates, this.includeEmail});
+  GenerateIdTokenRequest({
+    this.audience,
+    this.delegates,
+    this.includeEmail,
+  });
 
   GenerateIdTokenRequest.fromJson(core.Map json_)
       : this(
@@ -424,10 +425,14 @@ class GenerateIdTokenResponse {
   /// The OpenId Connect ID token.
   core.String? token;
 
-  GenerateIdTokenResponse({this.token});
+  GenerateIdTokenResponse({
+    this.token,
+  });
 
   GenerateIdTokenResponse.fromJson(core.Map json_)
-      : this(token: json_['token'] as core.String?);
+      : this(
+          token: json_['token'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (token != null) 'token': token!,
@@ -448,7 +453,10 @@ class ServiceAccountAllowedLocations {
   /// Output only.
   core.List<core.String>? locations;
 
-  ServiceAccountAllowedLocations({this.encodedLocations, this.locations});
+  ServiceAccountAllowedLocations({
+    this.encodedLocations,
+    this.locations,
+  });
 
   ServiceAccountAllowedLocations.fromJson(core.Map json_)
       : this(
@@ -488,7 +496,10 @@ class SignBlobRequest {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  SignBlobRequest({this.delegates, this.payload});
+  SignBlobRequest({
+    this.delegates,
+    this.payload,
+  });
 
   SignBlobRequest.fromJson(core.Map json_)
       : this(
@@ -533,7 +544,10 @@ class SignBlobResponse {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  SignBlobResponse({this.keyId, this.signedBlob});
+  SignBlobResponse({
+    this.keyId,
+    this.signedBlob,
+  });
 
   SignBlobResponse.fromJson(core.Map json_)
       : this(
@@ -570,7 +584,10 @@ class SignJwtRequest {
   /// Required.
   core.String? payload;
 
-  SignJwtRequest({this.delegates, this.payload});
+  SignJwtRequest({
+    this.delegates,
+    this.payload,
+  });
 
   SignJwtRequest.fromJson(core.Map json_)
       : this(
@@ -610,7 +627,10 @@ class SignJwtResponse {
   /// the signature.
   core.String? signedJwt;
 
-  SignJwtResponse({this.keyId, this.signedJwt});
+  SignJwtResponse({
+    this.keyId,
+    this.signedJwt,
+  });
 
   SignJwtResponse.fromJson(core.Map json_)
       : this(

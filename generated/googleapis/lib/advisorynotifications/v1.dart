@@ -52,16 +52,11 @@ class AdvisorynotificationsApi {
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  AdvisorynotificationsApi(
-    http.Client client, {
-    core.String rootUrl = 'https://advisorynotifications.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  AdvisorynotificationsApi(http.Client client,
+      {core.String rootUrl = 'https://advisorynotifications.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class OrganizationsResource {
@@ -118,8 +113,7 @@ class OrganizationsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAdvisorynotificationsV1Settings.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update notification settings.
@@ -163,8 +157,7 @@ class OrganizationsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAdvisorynotificationsV1Settings.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -218,8 +211,7 @@ class OrganizationsLocationsNotificationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAdvisorynotificationsV1Notification.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists notifications under a given parent.
@@ -293,8 +285,7 @@ class OrganizationsLocationsNotificationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAdvisorynotificationsV1ListNotificationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -350,8 +341,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAdvisorynotificationsV1Settings.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update notification settings.
@@ -394,8 +384,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAdvisorynotificationsV1Settings.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -449,8 +438,7 @@ class ProjectsLocationsNotificationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAdvisorynotificationsV1Notification.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists notifications under a given parent.
@@ -524,8 +512,7 @@ class ProjectsLocationsNotificationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAdvisorynotificationsV1ListNotificationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -539,14 +526,16 @@ class GoogleCloudAdvisorynotificationsV1Attachment {
   /// The title of the attachment.
   core.String? displayName;
 
-  GoogleCloudAdvisorynotificationsV1Attachment({this.csv, this.displayName});
+  GoogleCloudAdvisorynotificationsV1Attachment({
+    this.csv,
+    this.displayName,
+  });
 
   GoogleCloudAdvisorynotificationsV1Attachment.fromJson(core.Map json_)
       : this(
           csv: json_.containsKey('csv')
               ? GoogleCloudAdvisorynotificationsV1Csv.fromJson(
-                  json_['csv'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['csv'] as core.Map<core.String, core.dynamic>)
               : null,
           displayName: json_['displayName'] as core.String?,
         );
@@ -567,16 +556,17 @@ class GoogleCloudAdvisorynotificationsV1Csv {
   /// The list of headers for data columns in a CSV file.
   core.List<core.String>? headers;
 
-  GoogleCloudAdvisorynotificationsV1Csv({this.dataRows, this.headers});
+  GoogleCloudAdvisorynotificationsV1Csv({
+    this.dataRows,
+    this.headers,
+  });
 
   GoogleCloudAdvisorynotificationsV1Csv.fromJson(core.Map json_)
       : this(
           dataRows: (json_['dataRows'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudAdvisorynotificationsV1CsvCsvRow.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudAdvisorynotificationsV1CsvCsvRow.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           headers: (json_['headers'] as core.List?)
               ?.map((value) => value as core.String)
@@ -595,7 +585,9 @@ class GoogleCloudAdvisorynotificationsV1CsvCsvRow {
   /// comma-separated string.
   core.List<core.String>? entries;
 
-  GoogleCloudAdvisorynotificationsV1CsvCsvRow({this.entries});
+  GoogleCloudAdvisorynotificationsV1CsvCsvRow({
+    this.entries,
+  });
 
   GoogleCloudAdvisorynotificationsV1CsvCsvRow.fromJson(core.Map json_)
       : this(
@@ -629,16 +621,13 @@ class GoogleCloudAdvisorynotificationsV1ListNotificationsResponse {
   });
 
   GoogleCloudAdvisorynotificationsV1ListNotificationsResponse.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           notifications: (json_['notifications'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudAdvisorynotificationsV1Notification.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudAdvisorynotificationsV1Notification.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -674,17 +663,13 @@ class GoogleCloudAdvisorynotificationsV1Message {
   GoogleCloudAdvisorynotificationsV1Message.fromJson(core.Map json_)
       : this(
           attachments: (json_['attachments'] as core.List?)
-              ?.map(
-                (value) =>
-                    GoogleCloudAdvisorynotificationsV1Attachment.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudAdvisorynotificationsV1Attachment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           body: json_.containsKey('body')
               ? GoogleCloudAdvisorynotificationsV1MessageBody.fromJson(
-                  json_['body'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['body'] as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_['createTime'] as core.String?,
           localizationTime: json_['localizationTime'] as core.String?,
@@ -703,14 +688,15 @@ class GoogleCloudAdvisorynotificationsV1MessageBody {
   /// The text content of the message body.
   GoogleCloudAdvisorynotificationsV1Text? text;
 
-  GoogleCloudAdvisorynotificationsV1MessageBody({this.text});
+  GoogleCloudAdvisorynotificationsV1MessageBody({
+    this.text,
+  });
 
   GoogleCloudAdvisorynotificationsV1MessageBody.fromJson(core.Map json_)
       : this(
           text: json_.containsKey('text')
               ? GoogleCloudAdvisorynotificationsV1Text.fromJson(
-                  json_['text'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['text'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -762,18 +748,15 @@ class GoogleCloudAdvisorynotificationsV1Notification {
       : this(
           createTime: json_['createTime'] as core.String?,
           messages: (json_['messages'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudAdvisorynotificationsV1Message.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudAdvisorynotificationsV1Message.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           name: json_['name'] as core.String?,
           notificationType: json_['notificationType'] as core.String?,
           subject: json_.containsKey('subject')
               ? GoogleCloudAdvisorynotificationsV1Subject.fromJson(
-                  json_['subject'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['subject'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -791,11 +774,15 @@ class GoogleCloudAdvisorynotificationsV1NotificationSettings {
   /// Whether the associated NotificationType is enabled.
   core.bool? enabled;
 
-  GoogleCloudAdvisorynotificationsV1NotificationSettings({this.enabled});
+  GoogleCloudAdvisorynotificationsV1NotificationSettings({
+    this.enabled,
+  });
 
   GoogleCloudAdvisorynotificationsV1NotificationSettings.fromJson(
-    core.Map json_,
-  ) : this(enabled: json_['enabled'] as core.bool?);
+      core.Map json_)
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -845,8 +832,7 @@ class GoogleCloudAdvisorynotificationsV1Settings {
             (key, value) => core.MapEntry(
               key,
               GoogleCloudAdvisorynotificationsV1NotificationSettings.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  value as core.Map<core.String, core.dynamic>),
             ),
           ),
         );
@@ -864,14 +850,15 @@ class GoogleCloudAdvisorynotificationsV1Subject {
   /// The text content.
   GoogleCloudAdvisorynotificationsV1Text? text;
 
-  GoogleCloudAdvisorynotificationsV1Subject({this.text});
+  GoogleCloudAdvisorynotificationsV1Subject({
+    this.text,
+  });
 
   GoogleCloudAdvisorynotificationsV1Subject.fromJson(core.Map json_)
       : this(
           text: json_.containsKey('text')
               ? GoogleCloudAdvisorynotificationsV1Text.fromJson(
-                  json_['text'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['text'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 

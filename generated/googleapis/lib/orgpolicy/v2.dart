@@ -61,16 +61,11 @@ class OrgPolicyApi {
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  OrgPolicyApi(
-    http.Client client, {
-    core.String rootUrl = 'https://orgpolicy.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  OrgPolicyApi(http.Client client,
+      {core.String rootUrl = 'https://orgpolicy.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class FoldersResource {
@@ -136,8 +131,7 @@ class FoldersConstraintsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2ListConstraintsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -192,8 +186,7 @@ class FoldersPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a policy.
@@ -239,8 +232,7 @@ class FoldersPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a policy on a resource.
@@ -281,8 +273,7 @@ class FoldersPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the effective policy on a resource.
@@ -325,8 +316,7 @@ class FoldersPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves all of the policies that exist on a particular resource.
@@ -378,8 +368,7 @@ class FoldersPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2ListPoliciesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a policy.
@@ -441,8 +430,7 @@ class FoldersPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -513,8 +501,7 @@ class OrganizationsConstraintsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2ListConstraintsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -568,8 +555,7 @@ class OrganizationsCustomConstraintsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a custom constraint.
@@ -610,8 +596,7 @@ class OrganizationsCustomConstraintsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a custom constraint.
@@ -652,8 +637,7 @@ class OrganizationsCustomConstraintsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves all of the custom constraints that exist on a particular
@@ -704,8 +688,7 @@ class OrganizationsCustomConstraintsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2ListCustomConstraintsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a custom constraint.
@@ -757,8 +740,7 @@ class OrganizationsCustomConstraintsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -814,8 +796,7 @@ class OrganizationsPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a policy.
@@ -861,8 +842,7 @@ class OrganizationsPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a policy on a resource.
@@ -903,8 +883,7 @@ class OrganizationsPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the effective policy on a resource.
@@ -947,8 +926,7 @@ class OrganizationsPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves all of the policies that exist on a particular resource.
@@ -1000,8 +978,7 @@ class OrganizationsPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2ListPoliciesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a policy.
@@ -1063,8 +1040,7 @@ class OrganizationsPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1132,8 +1108,7 @@ class ProjectsConstraintsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2ListConstraintsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1188,8 +1163,7 @@ class ProjectsPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a policy.
@@ -1235,8 +1209,7 @@ class ProjectsPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a policy on a resource.
@@ -1277,8 +1250,7 @@ class ProjectsPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the effective policy on a resource.
@@ -1321,8 +1293,7 @@ class ProjectsPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves all of the policies that exist on a particular resource.
@@ -1374,8 +1345,7 @@ class ProjectsPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2ListPoliciesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a policy.
@@ -1437,8 +1407,7 @@ class ProjectsPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1455,15 +1424,17 @@ class GoogleCloudOrgpolicyV2AlternatePolicySpec {
   /// Specify constraint for configurations of Google Cloud resources.
   GoogleCloudOrgpolicyV2PolicySpec? spec;
 
-  GoogleCloudOrgpolicyV2AlternatePolicySpec({this.launch, this.spec});
+  GoogleCloudOrgpolicyV2AlternatePolicySpec({
+    this.launch,
+    this.spec,
+  });
 
   GoogleCloudOrgpolicyV2AlternatePolicySpec.fromJson(core.Map json_)
       : this(
           launch: json_['launch'] as core.String?,
           spec: json_.containsKey('spec')
               ? GoogleCloudOrgpolicyV2PolicySpec.fromJson(
-                  json_['spec'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['spec'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1548,8 +1519,7 @@ class GoogleCloudOrgpolicyV2Constraint {
           booleanConstraint: json_.containsKey('booleanConstraint')
               ? GoogleCloudOrgpolicyV2ConstraintBooleanConstraint.fromJson(
                   json_['booleanConstraint']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           constraintDefault: json_['constraintDefault'] as core.String?,
           description: json_['description'] as core.String?,
@@ -1557,8 +1527,7 @@ class GoogleCloudOrgpolicyV2Constraint {
           listConstraint: json_.containsKey('listConstraint')
               ? GoogleCloudOrgpolicyV2ConstraintListConstraint.fromJson(
                   json_['listConstraint']
-                      as core.Map<core.String, core.dynamic>,
-                )
+                      as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
           supportsDryRun: json_['supportsDryRun'] as core.bool?,
@@ -1599,10 +1568,8 @@ class GoogleCloudOrgpolicyV2ConstraintBooleanConstraint {
           customConstraintDefinition:
               json_.containsKey('customConstraintDefinition')
                   ? GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition
-                      .fromJson(
-                      json_['customConstraintDefinition']
-                          as core.Map<core.String, core.dynamic>,
-                    )
+                      .fromJson(json_['customConstraintDefinition']
+                          as core.Map<core.String, core.dynamic>)
                   : null,
         );
 
@@ -1656,8 +1623,8 @@ class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition {
   });
 
   GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           actionType: json_['actionType'] as core.String?,
           condition: json_['condition'] as core.String?,
           methodTypes: (json_['methodTypes'] as core.List?)
@@ -1669,9 +1636,7 @@ class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition {
             (key, value) => core.MapEntry(
               key,
               GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter
-                  .fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
+                  .fromJson(value as core.Map<core.String, core.dynamic>),
             ),
           ),
           resourceTypes: (json_['resourceTypes'] as core.List?)
@@ -1735,15 +1700,14 @@ class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter {
   });
 
   GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter.fromJson(
-    core.Map json_,
-  ) : this(
+      core.Map json_)
+      : this(
           defaultValue: json_['defaultValue'],
           item: json_['item'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata
                   .fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
+                      json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
           validValuesExpr: json_['validValuesExpr'] as core.String?,
@@ -1770,8 +1734,10 @@ class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadat
   });
 
   GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata.fromJson(
-    core.Map json_,
-  ) : this(description: json_['description'] as core.String?);
+      core.Map json_)
+      : this(
+          description: json_['description'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -1930,11 +1896,8 @@ class GoogleCloudOrgpolicyV2ListConstraintsResponse {
   GoogleCloudOrgpolicyV2ListConstraintsResponse.fromJson(core.Map json_)
       : this(
           constraints: (json_['constraints'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudOrgpolicyV2Constraint.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudOrgpolicyV2Constraint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1969,11 +1932,8 @@ class GoogleCloudOrgpolicyV2ListCustomConstraintsResponse {
   GoogleCloudOrgpolicyV2ListCustomConstraintsResponse.fromJson(core.Map json_)
       : this(
           customConstraints: (json_['customConstraints'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2008,11 +1968,8 @@ class GoogleCloudOrgpolicyV2ListPoliciesResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           policies: (json_['policies'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudOrgpolicyV2Policy.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => GoogleCloudOrgpolicyV2Policy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2077,20 +2034,17 @@ class GoogleCloudOrgpolicyV2Policy {
       : this(
           alternate: json_.containsKey('alternate')
               ? GoogleCloudOrgpolicyV2AlternatePolicySpec.fromJson(
-                  json_['alternate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['alternate'] as core.Map<core.String, core.dynamic>)
               : null,
           dryRunSpec: json_.containsKey('dryRunSpec')
               ? GoogleCloudOrgpolicyV2PolicySpec.fromJson(
-                  json_['dryRunSpec'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['dryRunSpec'] as core.Map<core.String, core.dynamic>)
               : null,
           etag: json_['etag'] as core.String?,
           name: json_['name'] as core.String?,
           spec: json_.containsKey('spec')
               ? GoogleCloudOrgpolicyV2PolicySpec.fromJson(
-                  json_['spec'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['spec'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2164,11 +2118,9 @@ class GoogleCloudOrgpolicyV2PolicySpec {
           inheritFromParent: json_['inheritFromParent'] as core.bool?,
           reset: json_['reset'] as core.bool?,
           rules: (json_['rules'] as core.List?)
-              ?.map(
-                (value) => GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList(),
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -2246,8 +2198,7 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
           allowAll: json_['allowAll'] as core.bool?,
           condition: json_.containsKey('condition')
               ? GoogleTypeExpr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           denyAll: json_['denyAll'] as core.bool?,
           enforce: json_['enforce'] as core.bool?,
@@ -2256,8 +2207,7 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
               : null,
           values: json_.containsKey('values')
               ? GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromJson(
-                  json_['values'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['values'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 

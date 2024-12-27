@@ -59,16 +59,11 @@ class ManagedServiceForMicrosoftActiveDirectoryConsumerApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-    http.Client client, {
-    core.String rootUrl = 'https://managedidentities.googleapis.com/',
-    core.String servicePath = '',
-  }) : _requester = commons.ApiRequester(
-          client,
-          rootUrl,
-          servicePath,
-          requestHeaders,
-        );
+  ManagedServiceForMicrosoftActiveDirectoryConsumerApi(http.Client client,
+      {core.String rootUrl = 'https://managedidentities.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {
@@ -105,7 +100,10 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(core.String name, {core.String? $fields}) async {
+  async.Future<Location> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -169,8 +167,7 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -283,8 +280,7 @@ class ProjectsLocationsGlobalDomainsResource {
       queryParams: queryParams_,
     );
     return CheckMigrationPermissionResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a Microsoft AD domain.
@@ -500,8 +496,7 @@ class ProjectsLocationsGlobalDomainsResource {
       queryParams: queryParams_,
     );
     return DomainJoinMachineResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Enable Domain Migration
@@ -607,7 +602,10 @@ class ProjectsLocationsGlobalDomainsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Domain> get(core.String name, {core.String? $fields}) async {
+  async.Future<Domain> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -714,8 +712,7 @@ class ProjectsLocationsGlobalDomainsResource {
       queryParams: queryParams_,
     );
     return LDAPSSettings.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists domains in a project.
@@ -776,8 +773,7 @@ class ProjectsLocationsGlobalDomainsResource {
       queryParams: queryParams_,
     );
     return ListDomainsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the metadata and configuration of a domain.
@@ -912,8 +908,7 @@ class ProjectsLocationsGlobalDomainsResource {
       queryParams: queryParams_,
     );
     return ResetAdminPasswordResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// RestoreDomain restores domain backup mentioned in the RestoreDomainRequest
@@ -1053,8 +1048,7 @@ class ProjectsLocationsGlobalDomainsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches a single ldaps settings.
@@ -1262,7 +1256,10 @@ class ProjectsLocationsGlobalDomainsBackupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Backup> get(core.String name, {core.String? $fields}) async {
+  async.Future<Backup> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1391,8 +1388,7 @@ class ProjectsLocationsGlobalDomainsBackupsResource {
       queryParams: queryParams_,
     );
     return ListBackupsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the labels for specified Backup.
@@ -1538,8 +1534,7 @@ class ProjectsLocationsGlobalDomainsBackupsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1547,8 +1542,8 @@ class ProjectsLocationsGlobalDomainsSqlIntegrationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsGlobalDomainsSqlIntegrationsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Gets details of a single sqlIntegration.
   ///
@@ -1585,8 +1580,7 @@ class ProjectsLocationsGlobalDomainsSqlIntegrationsResource {
       queryParams: queryParams_,
     );
     return SqlIntegration.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists SqlIntegrations in a given domain.
@@ -1647,8 +1641,7 @@ class ProjectsLocationsGlobalDomainsSqlIntegrationsResource {
       queryParams: queryParams_,
     );
     return ListSqlIntegrationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1730,7 +1723,10 @@ class ProjectsLocationsGlobalOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1766,7 +1762,10 @@ class ProjectsLocationsGlobalOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1828,8 +1827,7 @@ class ProjectsLocationsGlobalOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1942,7 +1940,10 @@ class ProjectsLocationsGlobalPeeringsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Peering> get(core.String name, {core.String? $fields}) async {
+  async.Future<Peering> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2072,8 +2073,7 @@ class ProjectsLocationsGlobalPeeringsResource {
       queryParams: queryParams_,
     );
     return ListPeeringsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the labels for specified Peering.
@@ -2220,8 +2220,7 @@ class ProjectsLocationsGlobalPeeringsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2232,14 +2231,15 @@ class AttachTrustRequest {
   /// Required.
   Trust? trust;
 
-  AttachTrustRequest({this.trust});
+  AttachTrustRequest({
+    this.trust,
+  });
 
   AttachTrustRequest.fromJson(core.Map json_)
       : this(
           trust: json_.containsKey('trust')
               ? Trust.fromJson(
-                  json_['trust'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['trust'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2312,7 +2312,10 @@ class Backup {
           createTime: json_['createTime'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           state: json_['state'] as core.String?,
@@ -2412,14 +2415,17 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({this.condition, this.members, this.role});
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
   Binding.fromJson(core.Map json_)
       : this(
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           members: (json_['members'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2466,10 +2472,8 @@ class Certificate {
       : this(
           expireTime: json_['expireTime'] as core.String?,
           issuingCertificate: json_.containsKey('issuingCertificate')
-              ? Certificate.fromJson(
-                  json_['issuingCertificate']
-                      as core.Map<core.String, core.dynamic>,
-                )
+              ? Certificate.fromJson(json_['issuingCertificate']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           subject: json_['subject'] as core.String?,
           subjectAlternativeName:
@@ -2508,16 +2512,16 @@ class CheckMigrationPermissionResponse {
   /// - "NEEDS_MAINTENANCE" : Domain Migration is not in valid state.
   core.String? state;
 
-  CheckMigrationPermissionResponse({this.onpremDomains, this.state});
+  CheckMigrationPermissionResponse({
+    this.onpremDomains,
+    this.state,
+  });
 
   CheckMigrationPermissionResponse.fromJson(core.Map json_)
       : this(
           onpremDomains: (json_['onpremDomains'] as core.List?)
-              ?.map(
-                (value) => OnPremDomainSIDDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => OnPremDomainSIDDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           state: json_['state'] as core.String?,
         );
@@ -2535,14 +2539,15 @@ class DetachTrustRequest {
   /// Required.
   Trust? trust;
 
-  DetachTrustRequest({this.trust});
+  DetachTrustRequest({
+    this.trust,
+  });
 
   DetachTrustRequest.fromJson(core.Map json_)
       : this(
           trust: json_.containsKey('trust')
               ? Trust.fromJson(
-                  json_['trust'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['trust'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2689,7 +2694,10 @@ class Domain {
           fqdn: json_['fqdn'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           locations: (json_['locations'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2699,11 +2707,8 @@ class Domain {
           state: json_['state'] as core.String?,
           statusMessage: json_['statusMessage'] as core.String?,
           trusts: (json_['trusts'] as core.List?)
-              ?.map(
-                (value) => Trust.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Trust.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -2747,7 +2752,11 @@ class DomainJoinMachineRequest {
   /// Required.
   core.String? vmIdToken;
 
-  DomainJoinMachineRequest({this.force, this.ouName, this.vmIdToken});
+  DomainJoinMachineRequest({
+    this.force,
+    this.ouName,
+    this.vmIdToken,
+  });
 
   DomainJoinMachineRequest.fromJson(core.Map json_)
       : this(
@@ -2769,10 +2778,14 @@ class DomainJoinMachineResponse {
   /// Offline domain join blob as the response
   core.String? domainJoinBlob;
 
-  DomainJoinMachineResponse({this.domainJoinBlob});
+  DomainJoinMachineResponse({
+    this.domainJoinBlob,
+  });
 
   DomainJoinMachineResponse.fromJson(core.Map json_)
-      : this(domainJoinBlob: json_['domainJoinBlob'] as core.String?);
+      : this(
+          domainJoinBlob: json_['domainJoinBlob'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (domainJoinBlob != null) 'domainJoinBlob': domainJoinBlob!,
@@ -2794,16 +2807,15 @@ class EnableMigrationRequest {
   /// Required.
   core.List<OnPremDomainDetails>? migratingDomains;
 
-  EnableMigrationRequest({this.migratingDomains});
+  EnableMigrationRequest({
+    this.migratingDomains,
+  });
 
   EnableMigrationRequest.fromJson(core.Map json_)
       : this(
           migratingDomains: (json_['migratingDomains'] as core.List?)
-              ?.map(
-                (value) => OnPremDomainDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => OnPremDomainDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -2854,7 +2866,11 @@ class ExtendSchemaRequest {
   /// should be in the same project as the domain.
   core.String? gcsPath;
 
-  ExtendSchemaRequest({this.description, this.fileContents, this.gcsPath});
+  ExtendSchemaRequest({
+    this.description,
+    this.fileContents,
+    this.gcsPath,
+  });
 
   ExtendSchemaRequest.fromJson(core.Map json_)
       : this(
@@ -2951,8 +2967,7 @@ class LDAPSSettings {
       : this(
           certificate: json_.containsKey('certificate')
               ? Certificate.fromJson(
-                  json_['certificate'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['certificate'] as core.Map<core.String, core.dynamic>)
               : null,
           certificatePassword: json_['certificatePassword'] as core.String?,
           certificatePfx: json_['certificatePfx'] as core.String?,
@@ -2984,16 +2999,17 @@ class ListBackupsResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListBackupsResponse({this.backups, this.nextPageToken, this.unreachable});
+  ListBackupsResponse({
+    this.backups,
+    this.nextPageToken,
+    this.unreachable,
+  });
 
   ListBackupsResponse.fromJson(core.Map json_)
       : this(
           backups: (json_['backups'] as core.List?)
-              ?.map(
-                (value) => Backup.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Backup.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -3020,16 +3036,17 @@ class ListDomainsResponse {
   /// A list of locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListDomainsResponse({this.domains, this.nextPageToken, this.unreachable});
+  ListDomainsResponse({
+    this.domains,
+    this.nextPageToken,
+    this.unreachable,
+  });
 
   ListDomainsResponse.fromJson(core.Map json_)
       : this(
           domains: (json_['domains'] as core.List?)
-              ?.map(
-                (value) => Domain.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) =>
+                  Domain.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: (json_['unreachable'] as core.List?)
@@ -3052,16 +3069,16 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({this.locations, this.nextPageToken});
+  ListLocationsResponse({
+    this.locations,
+    this.nextPageToken,
+  });
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
           locations: (json_['locations'] as core.List?)
-              ?.map(
-                (value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -3080,17 +3097,17 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
-              ?.map(
-                (value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
         );
 
@@ -3112,17 +3129,18 @@ class ListPeeringsResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListPeeringsResponse({this.nextPageToken, this.peerings, this.unreachable});
+  ListPeeringsResponse({
+    this.nextPageToken,
+    this.peerings,
+    this.unreachable,
+  });
 
   ListPeeringsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           peerings: (json_['peerings'] as core.List?)
-              ?.map(
-                (value) => Peering.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Peering.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -3159,11 +3177,8 @@ class ListSqlIntegrationsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           sqlIntegrations: (json_['sqlIntegrations'] as core.List?)
-              ?.map(
-                (value) => SqlIntegration.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => SqlIntegration.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           unreachable: (json_['unreachable'] as core.List?)
               ?.map((value) => value as core.String)
@@ -3193,7 +3208,10 @@ class OnPremDomainDetails {
   /// Required.
   core.String? domainName;
 
-  OnPremDomainDetails({this.disableSidFiltering, this.domainName});
+  OnPremDomainDetails({
+    this.disableSidFiltering,
+    this.domainName,
+  });
 
   OnPremDomainDetails.fromJson(core.Map json_)
       : this(
@@ -3222,7 +3240,10 @@ class OnPremDomainSIDDetails {
   /// - "DISABLED" : SID Filtering is Disabled.
   core.String? sidFilteringState;
 
-  OnPremDomainSIDDetails({this.name, this.sidFilteringState});
+  OnPremDomainSIDDetails({
+    this.name,
+    this.sidFilteringState,
+  });
 
   OnPremDomainSIDDetails.fromJson(core.Map json_)
       : this(
@@ -3279,15 +3300,20 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({this.done, this.error, this.metadata, this.name, this.response});
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
   Operation.fromJson(core.Map json_)
       : this(
           done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -3384,7 +3410,10 @@ class Peering {
           domainResource: json_['domainResource'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(key, value as core.String),
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
           ),
           name: json_['name'] as core.String?,
           state: json_['state'] as core.String?,
@@ -3487,16 +3516,17 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({this.bindings, this.etag, this.version});
+  Policy({
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
   Policy.fromJson(core.Map json_)
       : this(
           bindings: (json_['bindings'] as core.List?)
-              ?.map(
-                (value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
@@ -3523,7 +3553,10 @@ class ReconfigureTrustRequest {
   /// Required.
   core.String? targetDomainName;
 
-  ReconfigureTrustRequest({this.targetDnsIpAddresses, this.targetDomainName});
+  ReconfigureTrustRequest({
+    this.targetDnsIpAddresses,
+    this.targetDomainName,
+  });
 
   ReconfigureTrustRequest.fromJson(core.Map json_)
       : this(
@@ -3550,10 +3583,14 @@ class ResetAdminPasswordResponse {
   /// See admin for more information.
   core.String? password;
 
-  ResetAdminPasswordResponse({this.password});
+  ResetAdminPasswordResponse({
+    this.password,
+  });
 
   ResetAdminPasswordResponse.fromJson(core.Map json_)
-      : this(password: json_['password'] as core.String?);
+      : this(
+          password: json_['password'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (password != null) 'password': password!,
@@ -3567,10 +3604,14 @@ class RestoreDomainRequest {
   /// Required.
   core.String? backupId;
 
-  RestoreDomainRequest({this.backupId});
+  RestoreDomainRequest({
+    this.backupId,
+  });
 
   RestoreDomainRequest.fromJson(core.Map json_)
-      : this(backupId: json_['backupId'] as core.String?);
+      : this(
+          backupId: json_['backupId'] as core.String?,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backupId != null) 'backupId': backupId!,
@@ -3586,14 +3627,15 @@ class SetIamPolicyRequest {
   /// reject them.
   Policy? policy;
 
-  SetIamPolicyRequest({this.policy});
+  SetIamPolicyRequest({
+    this.policy,
+  });
 
   SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3817,14 +3859,15 @@ class ValidateTrustRequest {
   /// Required.
   Trust? trust;
 
-  ValidateTrustRequest({this.trust});
+  ValidateTrustRequest({
+    this.trust,
+  });
 
   ValidateTrustRequest.fromJson(core.Map json_)
       : this(
           trust: json_.containsKey('trust')
               ? Trust.fromJson(
-                  json_['trust'] as core.Map<core.String, core.dynamic>,
-                )
+                  json_['trust'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
