@@ -1,7 +1,14 @@
 ## 2.0.0-wip
 
-- Remove deprecated browser flows.
+- Removed deprecated `RefreshFailedException`.
+- Removed deprecated `auth.dart` library.
 - Require `sdk: ^3.6.0`
+
+### `auth_browser.dart`
+  - Enable use via WebAssembly.
+  - Remove deprecated browser flows.
+  - Removed local definition of `CodeResponse`.
+    Exports the same class from `package:google_identity_serivces_web`.
 
 ## 1.6.0
 

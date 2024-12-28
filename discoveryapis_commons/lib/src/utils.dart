@@ -18,4 +18,4 @@ bool isJson(String? contentType) {
 String escapeVariable(String name) =>
     Uri.encodeQueryComponent(name).replaceAll('+', '%20');
 
-const isWeb = bool.fromEnvironment('dart.library.html');
+const isWeb = bool.fromEnvironment('dart.library.js_interop');

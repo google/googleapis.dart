@@ -2,10 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-/// No longer used. Replaced by [ServerRequestFailedException].
-@Deprecated('No longer used. Replaced by ServerRequestFailedException.')
-typedef RefreshFailedException = ServerRequestFailedException;
-
 /// Thrown if an attempt to make an authorized request failed.
 class AccessDeniedException implements Exception {
   final String message;

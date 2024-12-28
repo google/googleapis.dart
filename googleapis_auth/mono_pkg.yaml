@@ -14,4 +14,4 @@ stages:
     sdk: pubspec
 - unittest:
   - test: -p vm
-  - test: -p chrome
+  - test: -p chrome --compiler dart2js,dart2wasm

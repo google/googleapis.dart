@@ -1,6 +1,5 @@
-import 'dart:html';
-
 import 'package:googleapis_auth/auth_browser.dart';
+import 'package:web/web.dart';
 
 const _clientId = String.fromEnvironment('clientId');
 
@@ -11,8 +10,8 @@ ClientId clientId() {
   return ClientId(_clientId);
 }
 
-final _textArea = querySelector('textarea') as TextAreaElement;
+final _textArea = document.querySelector('textarea') as HTMLTextAreaElement;
 
 void logToTextArea(Object value) {
-  _textArea.text = '$value\n\n\n${_textArea.text!}';
+  _textArea.text = '$value\n\n\n${_textArea.textContent!}';
 }

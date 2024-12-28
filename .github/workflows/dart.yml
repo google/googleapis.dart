@@ -450,7 +450,7 @@ jobs:
       - job_002
       - job_003
   job_009:
-    name: "unittest; Dart 3.6.0; PKG: googleapis_auth; `dart test -p chrome`"
+    name: "unittest; Dart 3.6.0; PKG: googleapis_auth; `dart test -p chrome --compiler dart2js,dart2wasm`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -475,8 +475,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: googleapis_auth
-      - name: "googleapis_auth; dart test -p chrome"
-        run: dart test -p chrome
+      - name: "googleapis_auth; dart test -p chrome --compiler dart2js,dart2wasm"
+        run: "dart test -p chrome --compiler dart2js,dart2wasm"
         if: "always() && steps.googleapis_auth_pub_upgrade.conclusion == 'success'"
         working-directory: googleapis_auth
     needs:
@@ -688,7 +688,7 @@ jobs:
       - job_002
       - job_003
   job_016:
-    name: "unittest; Dart dev; PKG: googleapis_auth; `dart test -p chrome`"
+    name: "unittest; Dart dev; PKG: googleapis_auth; `dart test -p chrome --compiler dart2js,dart2wasm`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -713,8 +713,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: googleapis_auth
-      - name: "googleapis_auth; dart test -p chrome"
-        run: dart test -p chrome
+      - name: "googleapis_auth; dart test -p chrome --compiler dart2js,dart2wasm"
+        run: "dart test -p chrome --compiler dart2js,dart2wasm"
         if: "always() && steps.googleapis_auth_pub_upgrade.conclusion == 'success'"
         working-directory: googleapis_auth
     needs:
