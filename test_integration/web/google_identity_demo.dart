@@ -1,18 +1,19 @@
-import 'dart:html' show ButtonElement, querySelector;
-
 import 'package:googleapis_auth/auth_browser.dart';
+import 'package:web/web.dart'
+    show ElementEventGetters, HTMLButtonElement, document;
 
 import 'web_shared.dart';
 
 String? _accessToken;
 
-final _revokeButton = querySelector('#revoke') as ButtonElement;
+final _revokeButton = document.querySelector('#revoke') as HTMLButtonElement;
 
 void main() {
-  final loginButton = querySelector('#login') as ButtonElement;
+  final loginButton = document.querySelector('#login') as HTMLButtonElement;
   loginButton.onClick.listen((event) => _login());
 
-  final loginCodeButton = querySelector('#loginCode') as ButtonElement;
+  final loginCodeButton =
+      document.querySelector('#loginCode') as HTMLButtonElement;
   loginCodeButton.onClick.listen((event) => _loginCode());
 
   _revokeButton.onClick.listen((event) async {
@@ -53,6 +54,6 @@ Future<void> _loginCode() async {
 
   logToTextArea([
     response.code,
-    response.scopes,
+    response.scope,
   ].join('\n'));
 }

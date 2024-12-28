@@ -1,5 +1,6 @@
 ## 1.0.8-wip
 
+- Fix detection of web usage.
 - Require Dart 3.6 or later.
 
 ## 1.0.7

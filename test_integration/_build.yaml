@@ -1,0 +1,13 @@
+# See https://github.com/dart-lang/build/tree/master/build_web_compilers#configuration
+# TODO: this mostly works to enable wasm, but one still needs to manually set the
+# environment variable for the clientId
+targets:
+  $default:
+    builders:
+      build_web_compilers|entrypoint:
+        options:
+          compilers:
+            dart2wasm:
+            #  args:
+            #    - --no-strip-wasm
+            dart2js:

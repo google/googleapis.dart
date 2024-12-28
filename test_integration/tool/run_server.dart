@@ -14,6 +14,11 @@ Future<void> main() async {
         'web',
         '--define=build_web_compilers:ddc=environment='
             '{"clientId":"${clientId.identifier}"}',
+        // TODO: file a bug on build_web_compilers. not sure why this doesn't
+        // work!!
+        //'--define=build_web_compilers:dart2wasm=environment='
+        //    '{"clientId":"${clientId.identifier}"}',
+        '--verbose',
       ],
       mode: ProcessStartMode.inheritStdio);
 

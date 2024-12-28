@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'dart:html';
 import 'dart:js_interop';
 
 import 'package:google_identity_services_web/loader.dart' as gis_loader;
-import 'package:google_identity_services_web/oauth2.dart' as gis;
+import 'package:google_identity_services_web/oauth2.dart';
+import 'package:web/web.dart';
 
 import '../access_credentials.dart';
 import '../access_token.dart';
@@ -41,13 +41,15 @@ Future<AccessCredentials> requestAccessCredentials({
   String? logLevel,
 }) async {
   await gis_loader.loadWebSdk();
-  if (logLevel != null) _googleAccountsId.setLogLevel(logLevel);
+  if (logLevel != null) {
+    _googleAccountsId.setLogLevel(logLevel);
+  }
 
   final completer = Completer<AccessCredentials>();
 
-  void callback(gis.TokenResponse response) {
+  void callback(TokenResponse response) {
     if (response.error != null) {
-      window.console.log(response);
+      console.log(response);
       completer.completeError(
         AuthenticationException(
           response.error!,
@@ -69,7 +71,7 @@ Future<AccessCredentials> requestAccessCredentials({
     completer.complete(creds);
   }
 
-  void errorCallback(gis.GoogleIdentityServicesError? error) {
+  void errorCallback(GoogleIdentityServicesError? error) {
     if (error != null) {
       completer.completeError(
         AuthenticationException(
@@ -82,7 +84,7 @@ Future<AccessCredentials> requestAccessCredentials({
     }
   }
 
-  final config = gis.TokenClientConfig(
+  final config = TokenClientConfig(
     callback: callback,
     client_id: clientId,
     scope: scopes.toList(),
@@ -90,7 +92,7 @@ Future<AccessCredentials> requestAccessCredentials({
     error_callback: errorCallback,
   );
 
-  final client = gis.oauth2.initTokenClient(config);
+  final client = oauth2.initTokenClient(config);
 
   client.requestAccessToken();
 
@@ -119,13 +121,15 @@ Future<CodeResponse> requestAuthorizationCode({
   String? logLevel,
 }) async {
   await gis_loader.loadWebSdk();
-  if (logLevel != null) _googleAccountsId.setLogLevel(logLevel);
+  if (logLevel != null) {
+    _googleAccountsId.setLogLevel(logLevel);
+  }
 
   final completer = Completer<CodeResponse>();
 
-  void callback(gis.CodeResponse response) {
+  void callback(CodeResponse response) {
     if (response.error != null) {
-      window.console.log(response);
+      console.log(response);
       completer.completeError(
         AuthenticationException(
           response.error!,
@@ -136,14 +140,10 @@ Future<CodeResponse> requestAuthorizationCode({
       return;
     }
 
-    completer.complete(CodeResponse._(
-      code: response.code!,
-      scopes: response.scope,
-      state: response.state,
-    ));
+    completer.complete(response);
   }
 
-  void errorCallback(gis.GoogleIdentityServicesError? error) {
+  void errorCallback(GoogleIdentityServicesError? error) {
     if (error != null) {
       completer.completeError(
         AuthenticationException(
@@ -156,7 +156,7 @@ Future<CodeResponse> requestAuthorizationCode({
     }
   }
 
-  final config = gis.CodeClientConfig(
+  final config = CodeClientConfig(
     callback: callback,
     client_id: clientId,
     scope: scopes.toList(),
@@ -166,7 +166,7 @@ Future<CodeResponse> requestAuthorizationCode({
     error_callback: errorCallback,
   );
 
-  final client = gis.oauth2.initCodeClient(config);
+  final client = oauth2.initCodeClient(config);
 
   client.requestCode();
 
@@ -179,35 +179,12 @@ Future<CodeResponse> requestAuthorizationCode({
 Future<void> revokeConsent(String accessTokenValue) {
   final completer = Completer<void>();
 
-  void done(JSAny? arg) {
-    window.console.log(arg);
+  void done(TokenRevocationResponse arg) {
+    console.log(arg);
     completer.complete();
   }
 
-  // TODO(srujzs): Once `TokenRevocationResponse` is an extension type that
-  // extends `JSObject`, this cast can be removed.
-  gis.oauth2.revoke(accessTokenValue, done as gis.RevokeTokenDoneFn);
+  oauth2.revoke(accessTokenValue, done);
 
   return completer.future;
-}
-
-/// Result from a successful call to [requestAuthorizationCode].
-///
-/// See https://developers.google.com/identity/oauth2/web/reference/js-reference#CodeResponse
-/// for more details.
-class CodeResponse {
-  CodeResponse._({required this.code, required this.scopes, this.state});
-
-  /// The authorization code of a successful token response.
-  final String code;
-
-  /// The list of scopes that are approved by the user.
-  final List<String> scopes;
-
-  /// The string value that your application uses to maintain state between your
-  /// authorization request and the response.
-  final String? state;
-
-  @override
-  String toString() => 'CodeResponse: $code';
 }

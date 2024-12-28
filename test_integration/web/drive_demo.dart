@@ -2,17 +2,18 @@
 
 import 'dart:async';
 import 'dart:convert';
-import 'dart:html';
+import 'dart:js_interop';
 import 'dart:typed_data';
 
 import 'package:googleapis/drive/v3.dart' as drive;
 import 'package:googleapis_auth/auth_browser.dart';
 import 'package:http/browser_client.dart';
+import 'package:web/web.dart';
 
 import 'web_shared.dart';
 
-final _loginButton = querySelector('#login') as ButtonElement;
-final _uploadInput = querySelector('#upload') as FileUploadInputElement;
+final _loginButton = document.querySelector('#login') as HTMLButtonElement;
+final _uploadInput = document.querySelector('#upload') as HTMLInputElement;
 
 AccessCredentials? _credentials;
 
@@ -61,7 +62,7 @@ Future<void> _upload() async {
   try {
     final api = drive.DriveApi(client).files;
     final options = drive.UploadOptions.resumable;
-    final file = files.single;
+    final file = files.item(0)!;
 
     logToTextArea('starting upload');
 
@@ -101,7 +102,7 @@ extension on File {
       assert(blob.size > 0);
       reader.readAsArrayBuffer(blob);
       await reader.onLoadEnd.first;
-      final bytes = reader.result as Uint8List;
+      final bytes = (reader.result as JSArrayBuffer).toDart.asUint8List();
       loaded += bytes.length;
       yield bytes;
       logToTextArea(
