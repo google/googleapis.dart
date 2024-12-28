@@ -3,7 +3,6 @@ import 'dart:js_interop';
 
 import 'package:google_identity_services_web/loader.dart' as gis_loader;
 import 'package:google_identity_services_web/oauth2.dart';
-import 'package:web/web.dart';
 
 import '../access_credentials.dart';
 import '../access_token.dart';
@@ -49,7 +48,6 @@ Future<AccessCredentials> requestAccessCredentials({
 
   void callback(TokenResponse response) {
     if (response.error != null) {
-      console.log(response);
       completer.completeError(
         AuthenticationException(
           response.error!,
@@ -129,7 +127,6 @@ Future<CodeResponse> requestAuthorizationCode({
 
   void callback(CodeResponse response) {
     if (response.error != null) {
-      console.log(response);
       completer.completeError(
         AuthenticationException(
           response.error!,
@@ -180,7 +177,6 @@ Future<void> revokeConsent(String accessTokenValue) {
   final completer = Completer<void>();
 
   void done(TokenRevocationResponse arg) {
-    console.log(arg);
     completer.complete();
   }
 
