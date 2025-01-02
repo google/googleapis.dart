@@ -504,14 +504,6 @@ class EnterprisesResource {
   ///
   /// [enterpriseId] - Required. The ID of the enterprise.
   ///
-  /// [deviceType] - Deprecated: Use enrollment_token instead. this field will
-  /// be removed in the future.
-  /// Possible string values are:
-  /// - "unknown" : This value is unused
-  /// - "dedicatedDevice" : This device is a dedicated device.
-  /// - "knowledgeWorker" : This device is required to have an authenticated
-  /// user.
-  ///
   /// [enrollmentToken_duration] - \[Optional\] The length of time the
   /// enrollment token is valid, ranging from 1 minute to
   /// \[`Durations.MAX_VALUE`\](https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/util/Durations.html#MAX_VALUE),
@@ -541,14 +533,12 @@ class EnterprisesResource {
   /// this method will complete with the same error.
   async.Future<CreateEnrollmentTokenResponse> createEnrollmentToken(
     core.String enterpriseId, {
-    core.String? deviceType,
     core.String? enrollmentToken_duration,
     core.String? enrollmentToken_enrollmentTokenType,
     core.String? enrollmentToken_token,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (deviceType != null) 'deviceType': [deviceType],
       if (enrollmentToken_duration != null)
         'enrollmentToken.duration': [enrollmentToken_duration],
       if (enrollmentToken_enrollmentTokenType != null)
@@ -4559,36 +4549,25 @@ class ConfigurationVariables {
 
 /// Response message for create enrollment token.
 class CreateEnrollmentTokenResponse {
-  /// Deprecated: Use token instead.
-  ///
-  /// This field will be removed in the future.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? enrollmentToken;
-
   /// The created enrollment token.
   ///
   /// Required.
-  EnrollmentToken? token;
+  EnrollmentToken? enrollmentToken;
 
   CreateEnrollmentTokenResponse({
     this.enrollmentToken,
-    this.token,
   });
 
   CreateEnrollmentTokenResponse.fromJson(core.Map json_)
       : this(
-          enrollmentToken: json_['enrollmentToken'] as core.String?,
-          token: json_.containsKey('token')
-              ? EnrollmentToken.fromJson(
-                  json_['token'] as core.Map<core.String, core.dynamic>)
+          enrollmentToken: json_.containsKey('enrollmentToken')
+              ? EnrollmentToken.fromJson(json_['enrollmentToken']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enrollmentToken != null) 'enrollmentToken': enrollmentToken!,
-        if (token != null) 'token': token!,
       };
 }
 
