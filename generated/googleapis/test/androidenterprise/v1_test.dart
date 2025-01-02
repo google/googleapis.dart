@@ -732,8 +732,7 @@ api.CreateEnrollmentTokenResponse buildCreateEnrollmentTokenResponse() {
   final o = api.CreateEnrollmentTokenResponse();
   buildCounterCreateEnrollmentTokenResponse++;
   if (buildCounterCreateEnrollmentTokenResponse < 3) {
-    o.enrollmentToken = 'foo';
-    o.token = buildEnrollmentToken();
+    o.enrollmentToken = buildEnrollmentToken();
   }
   buildCounterCreateEnrollmentTokenResponse--;
   return o;
@@ -742,11 +741,7 @@ api.CreateEnrollmentTokenResponse buildCreateEnrollmentTokenResponse() {
 void checkCreateEnrollmentTokenResponse(api.CreateEnrollmentTokenResponse o) {
   buildCounterCreateEnrollmentTokenResponse++;
   if (buildCounterCreateEnrollmentTokenResponse < 3) {
-    unittest.expect(
-      o.enrollmentToken!,
-      unittest.equals('foo'),
-    );
-    checkEnrollmentToken(o.token!);
+    checkEnrollmentToken(o.enrollmentToken!);
   }
   buildCounterCreateEnrollmentTokenResponse--;
 }
@@ -4874,7 +4869,6 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AndroidEnterpriseApi(mock).enterprises;
       final arg_enterpriseId = 'foo';
-      final arg_deviceType = 'foo';
       final arg_enrollmentToken_duration = 'foo';
       final arg_enrollmentToken_enrollmentTokenType = 'foo';
       final arg_enrollmentToken_token = 'foo';
@@ -4925,10 +4919,6 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap['deviceType']!.first,
-          unittest.equals(arg_deviceType),
-        );
-        unittest.expect(
           queryMap['enrollmentToken.duration']!.first,
           unittest.equals(arg_enrollmentToken_duration),
         );
@@ -4952,7 +4942,6 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.createEnrollmentToken(arg_enterpriseId,
-          deviceType: arg_deviceType,
           enrollmentToken_duration: arg_enrollmentToken_duration,
           enrollmentToken_enrollmentTokenType:
               arg_enrollmentToken_enrollmentTokenType,
