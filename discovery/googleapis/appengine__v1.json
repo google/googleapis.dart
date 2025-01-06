@@ -30,7 +30,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241205",
+    "revision": "20250223",
     "rootUrl": "https://appengine.googleapis.com/",
     "servicePath": "",
     "title": "App Engine Admin API",
@@ -2007,6 +2007,20 @@
                         "Application has been disabled by the system."
                     ],
                     "type": "string"
+                },
+                "sslPolicy": {
+                    "description": "The SSL policy that will be applied to the application. If set to Modern it will restrict traffic with TLS < 1.2 and allow only Modern Ciphers suite",
+                    "enum": [
+                        "SSL_POLICY_UNSPECIFIED",
+                        "DEFAULT",
+                        "MODERN"
+                    ],
+                    "enumDescriptions": [
+                        "Required by linter. Will work same as DEFAULT",
+                        "DEFAULT is to allow all TLS versions and cipher suites supported by App Engine",
+                        "MODERN is to allow only TLS 1.2 and TLS 1.3 along with Modern cipher suites only"
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3901,7 +3915,7 @@
                     "enumDescriptions": [
                         "Defaults to AUTOMATIC.",
                         "SSL support for this domain is configured automatically. The mapped SSL certificate will be automatically renewed.",
-                        "SSL support for this domain is configured manually by the user. Either the domain has no SSL support or a user-obtained SSL certificate has been explictly mapped to this domain."
+                        "SSL support for this domain is configured manually by the user. Either the domain has no SSL support or a user-obtained SSL certificate has been explicitly mapped to this domain."
                     ],
                     "type": "string"
                 }
@@ -3913,7 +3927,7 @@
             "id": "StandardSchedulerSettings",
             "properties": {
                 "maxInstances": {
-                    "description": "Maximum number of instances to run for this version. Set to zero to disable max_instances configuration.",
+                    "description": "Maximum number of instances to run for this version. Set to 2147483647 to disable max_instances configuration.",
                     "format": "int32",
                     "type": "integer"
                 },

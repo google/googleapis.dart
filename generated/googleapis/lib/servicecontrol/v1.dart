@@ -389,8 +389,8 @@ class Attributes {
   /// Each attribute's key can be up to 128 bytes long. The value can be a
   /// string up to 256 bytes, a signed 64-bit integer, or the Boolean values
   /// `true` and `false`. For example: "/instance_id": "my-instance"
-  /// "/http/user_agent": "" "/http/request_bytes": 300 "abc.com/myattribute":
-  /// true
+  /// "/http/user_agent": "" "/http/request_bytes": 300
+  /// "example.com/myattribute": true
   core.Map<core.String, AttributeValue>? attributeMap;
 
   /// The number of attributes that were discarded.
@@ -492,9 +492,10 @@ class CheckError {
   /// backend server is unavailable.
   /// - "SECURITY_POLICY_BACKEND_UNAVAILABLE" : NOTE: for customers in the scope
   /// of Beta/GA of https://cloud.google.com/vpc-service-controls, this error is
-  /// no longer returned. If the security backend is unavailable, rpc
-  /// UNAVAILABLE status will be returned instead. It should be ignored and
-  /// should not be used to reject client requests.
+  /// no longer returned. If the security backend is unavailable: For Fail open
+  /// requests, error is ignored and request is allowed. For Fail close
+  /// requests, rpc UNAVAILABLE status will be returned instead. It should be
+  /// ignored and should not be used to reject client requests.
   /// - "LOCATION_POLICY_BACKEND_UNAVAILABLE" : Backend server for evaluating
   /// location policy is unavailable.
   /// - "INJECTED_ERROR" : Part of the project of fault injection:
@@ -1027,7 +1028,7 @@ class HttpRequest {
   core.String? protocol;
 
   /// The referer URL of the request, as defined in
-  /// [HTTP/1.1 Header Field Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+  /// [HTTP/1.1 Header Field Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
   core.String? referer;
 
   /// The IP address (IPv4 or IPv6) of the client that issued the HTTP request.

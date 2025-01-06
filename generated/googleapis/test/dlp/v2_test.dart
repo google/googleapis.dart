@@ -3403,6 +3403,7 @@ api.GooglePrivacyDlpV2DiscoveryConfig buildGooglePrivacyDlpV2DiscoveryConfig() {
     o.orgConfig = buildGooglePrivacyDlpV2OrgConfig();
     o.otherCloudStartingLocation =
         buildGooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation();
+    o.processingLocation = buildGooglePrivacyDlpV2ProcessingLocation();
     o.status = 'foo';
     o.targets = buildUnnamed35();
     o.updateTime = 'foo';
@@ -3437,6 +3438,7 @@ void checkGooglePrivacyDlpV2DiscoveryConfig(
     checkGooglePrivacyDlpV2OrgConfig(o.orgConfig!);
     checkGooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation(
         o.otherCloudStartingLocation!);
+    checkGooglePrivacyDlpV2ProcessingLocation(o.processingLocation!);
     unittest.expect(
       o.status!,
       unittest.equals('foo'),
@@ -3753,6 +3755,8 @@ api.GooglePrivacyDlpV2DiscoveryTarget buildGooglePrivacyDlpV2DiscoveryTarget() {
     o.cloudStorageTarget = buildGooglePrivacyDlpV2CloudStorageDiscoveryTarget();
     o.otherCloudTarget = buildGooglePrivacyDlpV2OtherCloudDiscoveryTarget();
     o.secretsTarget = buildGooglePrivacyDlpV2SecretsDiscoveryTarget();
+    o.vertexDatasetTarget =
+        buildGooglePrivacyDlpV2VertexDatasetDiscoveryTarget();
   }
   buildCounterGooglePrivacyDlpV2DiscoveryTarget--;
   return o;
@@ -3767,8 +3771,96 @@ void checkGooglePrivacyDlpV2DiscoveryTarget(
     checkGooglePrivacyDlpV2CloudStorageDiscoveryTarget(o.cloudStorageTarget!);
     checkGooglePrivacyDlpV2OtherCloudDiscoveryTarget(o.otherCloudTarget!);
     checkGooglePrivacyDlpV2SecretsDiscoveryTarget(o.secretsTarget!);
+    checkGooglePrivacyDlpV2VertexDatasetDiscoveryTarget(o.vertexDatasetTarget!);
   }
   buildCounterGooglePrivacyDlpV2DiscoveryTarget--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetConditions = 0;
+api.GooglePrivacyDlpV2DiscoveryVertexDatasetConditions
+    buildGooglePrivacyDlpV2DiscoveryVertexDatasetConditions() {
+  final o = api.GooglePrivacyDlpV2DiscoveryVertexDatasetConditions();
+  buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetConditions++;
+  if (buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetConditions < 3) {
+    o.createdAfter = 'foo';
+    o.minAge = 'foo';
+  }
+  buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetConditions--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2DiscoveryVertexDatasetConditions(
+    api.GooglePrivacyDlpV2DiscoveryVertexDatasetConditions o) {
+  buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetConditions++;
+  if (buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetConditions < 3) {
+    unittest.expect(
+      o.createdAfter!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.minAge!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetConditions--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetFilter = 0;
+api.GooglePrivacyDlpV2DiscoveryVertexDatasetFilter
+    buildGooglePrivacyDlpV2DiscoveryVertexDatasetFilter() {
+  final o = api.GooglePrivacyDlpV2DiscoveryVertexDatasetFilter();
+  buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetFilter++;
+  if (buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetFilter < 3) {
+    o.collection = buildGooglePrivacyDlpV2VertexDatasetCollection();
+    o.others = buildGooglePrivacyDlpV2AllOtherResources();
+    o.vertexDatasetResourceReference =
+        buildGooglePrivacyDlpV2VertexDatasetResourceReference();
+  }
+  buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetFilter--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2DiscoveryVertexDatasetFilter(
+    api.GooglePrivacyDlpV2DiscoveryVertexDatasetFilter o) {
+  buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetFilter++;
+  if (buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetFilter < 3) {
+    checkGooglePrivacyDlpV2VertexDatasetCollection(o.collection!);
+    checkGooglePrivacyDlpV2AllOtherResources(o.others!);
+    checkGooglePrivacyDlpV2VertexDatasetResourceReference(
+        o.vertexDatasetResourceReference!);
+  }
+  buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetFilter--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence =
+    0;
+api.GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence
+    buildGooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence() {
+  final o = api.GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence();
+  buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence++;
+  if (buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence <
+      3) {
+    o.inspectTemplateModifiedCadence =
+        buildGooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence();
+    o.refreshFrequency = 'foo';
+  }
+  buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence(
+    api.GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence o) {
+  buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence++;
+  if (buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence <
+      3) {
+    checkGooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence(
+        o.inspectTemplateModifiedCadence!);
+    unittest.expect(
+      o.refreshFrequency!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence--;
 }
 
 core.List<api.GooglePrivacyDlpV2ActionDetails> buildUnnamed38() => [
@@ -4036,6 +4128,7 @@ api.GooglePrivacyDlpV2Export buildGooglePrivacyDlpV2Export() {
   buildCounterGooglePrivacyDlpV2Export++;
   if (buildCounterGooglePrivacyDlpV2Export < 3) {
     o.profileTable = buildGooglePrivacyDlpV2BigQueryTable();
+    o.sampleFindingsTable = buildGooglePrivacyDlpV2BigQueryTable();
   }
   buildCounterGooglePrivacyDlpV2Export--;
   return o;
@@ -4045,6 +4138,7 @@ void checkGooglePrivacyDlpV2Export(api.GooglePrivacyDlpV2Export o) {
   buildCounterGooglePrivacyDlpV2Export++;
   if (buildCounterGooglePrivacyDlpV2Export < 3) {
     checkGooglePrivacyDlpV2BigQueryTable(o.profileTable!);
+    checkGooglePrivacyDlpV2BigQueryTable(o.sampleFindingsTable!);
   }
   buildCounterGooglePrivacyDlpV2Export--;
 }
@@ -4347,23 +4441,34 @@ void checkUnnamed49(
   checkGooglePrivacyDlpV2FileStoreInfoTypeSummary(o[1]);
 }
 
-core.Map<core.String, api.GooglePrivacyDlpV2Value> buildUnnamed50() => {
+core.List<api.GooglePrivacyDlpV2RelatedResource> buildUnnamed50() => [
+      buildGooglePrivacyDlpV2RelatedResource(),
+      buildGooglePrivacyDlpV2RelatedResource(),
+    ];
+
+void checkUnnamed50(core.List<api.GooglePrivacyDlpV2RelatedResource> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2RelatedResource(o[0]);
+  checkGooglePrivacyDlpV2RelatedResource(o[1]);
+}
+
+core.Map<core.String, api.GooglePrivacyDlpV2Value> buildUnnamed51() => {
       'x': buildGooglePrivacyDlpV2Value(),
       'y': buildGooglePrivacyDlpV2Value(),
     };
 
-void checkUnnamed50(core.Map<core.String, api.GooglePrivacyDlpV2Value> o) {
+void checkUnnamed51(core.Map<core.String, api.GooglePrivacyDlpV2Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Value(o['x']!);
   checkGooglePrivacyDlpV2Value(o['y']!);
 }
 
-core.Map<core.String, core.String> buildUnnamed51() => {
+core.Map<core.String, core.String> buildUnnamed52() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed51(core.Map<core.String, core.String> o) {
+void checkUnnamed52(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4399,9 +4504,11 @@ api.GooglePrivacyDlpV2FileStoreDataProfile
     o.profileStatus = buildGooglePrivacyDlpV2ProfileStatus();
     o.projectDataProfile = 'foo';
     o.projectId = 'foo';
-    o.resourceAttributes = buildUnnamed50();
-    o.resourceLabels = buildUnnamed51();
+    o.relatedResources = buildUnnamed50();
+    o.resourceAttributes = buildUnnamed51();
+    o.resourceLabels = buildUnnamed52();
     o.resourceVisibility = 'foo';
+    o.sampleFindingsTable = buildGooglePrivacyDlpV2BigQueryTable();
     o.sensitivityScore = buildGooglePrivacyDlpV2SensitivityScore();
     o.state = 'foo';
   }
@@ -4461,12 +4568,14 @@ void checkGooglePrivacyDlpV2FileStoreDataProfile(
       o.projectId!,
       unittest.equals('foo'),
     );
-    checkUnnamed50(o.resourceAttributes!);
-    checkUnnamed51(o.resourceLabels!);
+    checkUnnamed50(o.relatedResources!);
+    checkUnnamed51(o.resourceAttributes!);
+    checkUnnamed52(o.resourceLabels!);
     unittest.expect(
       o.resourceVisibility!,
       unittest.equals('foo'),
     );
+    checkGooglePrivacyDlpV2BigQueryTable(o.sampleFindingsTable!);
     checkGooglePrivacyDlpV2SensitivityScore(o.sensitivityScore!);
     unittest.expect(
       o.state!,
@@ -4517,12 +4626,12 @@ void checkGooglePrivacyDlpV2FileStoreRegex(
   buildCounterGooglePrivacyDlpV2FileStoreRegex--;
 }
 
-core.List<api.GooglePrivacyDlpV2FileStoreRegex> buildUnnamed52() => [
+core.List<api.GooglePrivacyDlpV2FileStoreRegex> buildUnnamed53() => [
       buildGooglePrivacyDlpV2FileStoreRegex(),
       buildGooglePrivacyDlpV2FileStoreRegex(),
     ];
 
-void checkUnnamed52(core.List<api.GooglePrivacyDlpV2FileStoreRegex> o) {
+void checkUnnamed53(core.List<api.GooglePrivacyDlpV2FileStoreRegex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2FileStoreRegex(o[0]);
   checkGooglePrivacyDlpV2FileStoreRegex(o[1]);
@@ -4534,7 +4643,7 @@ api.GooglePrivacyDlpV2FileStoreRegexes
   final o = api.GooglePrivacyDlpV2FileStoreRegexes();
   buildCounterGooglePrivacyDlpV2FileStoreRegexes++;
   if (buildCounterGooglePrivacyDlpV2FileStoreRegexes < 3) {
-    o.patterns = buildUnnamed52();
+    o.patterns = buildUnnamed53();
   }
   buildCounterGooglePrivacyDlpV2FileStoreRegexes--;
   return o;
@@ -4544,17 +4653,17 @@ void checkGooglePrivacyDlpV2FileStoreRegexes(
     api.GooglePrivacyDlpV2FileStoreRegexes o) {
   buildCounterGooglePrivacyDlpV2FileStoreRegexes++;
   if (buildCounterGooglePrivacyDlpV2FileStoreRegexes < 3) {
-    checkUnnamed52(o.patterns!);
+    checkUnnamed53(o.patterns!);
   }
   buildCounterGooglePrivacyDlpV2FileStoreRegexes--;
 }
 
-core.Map<core.String, core.String> buildUnnamed53() => {
+core.Map<core.String, core.String> buildUnnamed54() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed53(core.Map<core.String, core.String> o) {
+void checkUnnamed54(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4576,7 +4685,7 @@ api.GooglePrivacyDlpV2Finding buildGooglePrivacyDlpV2Finding() {
     o.infoType = buildGooglePrivacyDlpV2InfoType();
     o.jobCreateTime = 'foo';
     o.jobName = 'foo';
-    o.labels = buildUnnamed53();
+    o.labels = buildUnnamed54();
     o.likelihood = 'foo';
     o.location = buildGooglePrivacyDlpV2Location();
     o.name = 'foo';
@@ -4609,7 +4718,7 @@ void checkGooglePrivacyDlpV2Finding(api.GooglePrivacyDlpV2Finding o) {
       o.jobName!,
       unittest.equals('foo'),
     );
-    checkUnnamed53(o.labels!);
+    checkUnnamed54(o.labels!);
     unittest.expect(
       o.likelihood!,
       unittest.equals('foo'),
@@ -4636,12 +4745,12 @@ void checkGooglePrivacyDlpV2Finding(api.GooglePrivacyDlpV2Finding o) {
   buildCounterGooglePrivacyDlpV2Finding--;
 }
 
-core.List<api.GooglePrivacyDlpV2InfoTypeLimit> buildUnnamed54() => [
+core.List<api.GooglePrivacyDlpV2InfoTypeLimit> buildUnnamed55() => [
       buildGooglePrivacyDlpV2InfoTypeLimit(),
       buildGooglePrivacyDlpV2InfoTypeLimit(),
     ];
 
-void checkUnnamed54(core.List<api.GooglePrivacyDlpV2InfoTypeLimit> o) {
+void checkUnnamed55(core.List<api.GooglePrivacyDlpV2InfoTypeLimit> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoTypeLimit(o[0]);
   checkGooglePrivacyDlpV2InfoTypeLimit(o[1]);
@@ -4652,7 +4761,7 @@ api.GooglePrivacyDlpV2FindingLimits buildGooglePrivacyDlpV2FindingLimits() {
   final o = api.GooglePrivacyDlpV2FindingLimits();
   buildCounterGooglePrivacyDlpV2FindingLimits++;
   if (buildCounterGooglePrivacyDlpV2FindingLimits < 3) {
-    o.maxFindingsPerInfoType = buildUnnamed54();
+    o.maxFindingsPerInfoType = buildUnnamed55();
     o.maxFindingsPerItem = 42;
     o.maxFindingsPerRequest = 42;
   }
@@ -4664,7 +4773,7 @@ void checkGooglePrivacyDlpV2FindingLimits(
     api.GooglePrivacyDlpV2FindingLimits o) {
   buildCounterGooglePrivacyDlpV2FindingLimits++;
   if (buildCounterGooglePrivacyDlpV2FindingLimits < 3) {
-    checkUnnamed54(o.maxFindingsPerInfoType!);
+    checkUnnamed55(o.maxFindingsPerInfoType!);
     unittest.expect(
       o.maxFindingsPerItem!,
       unittest.equals(42),
@@ -4722,6 +4831,23 @@ void checkGooglePrivacyDlpV2FixedSizeBucketingConfig(
   buildCounterGooglePrivacyDlpV2FixedSizeBucketingConfig--;
 }
 
+core.int buildCounterGooglePrivacyDlpV2GlobalProcessing = 0;
+api.GooglePrivacyDlpV2GlobalProcessing
+    buildGooglePrivacyDlpV2GlobalProcessing() {
+  final o = api.GooglePrivacyDlpV2GlobalProcessing();
+  buildCounterGooglePrivacyDlpV2GlobalProcessing++;
+  if (buildCounterGooglePrivacyDlpV2GlobalProcessing < 3) {}
+  buildCounterGooglePrivacyDlpV2GlobalProcessing--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2GlobalProcessing(
+    api.GooglePrivacyDlpV2GlobalProcessing o) {
+  buildCounterGooglePrivacyDlpV2GlobalProcessing++;
+  if (buildCounterGooglePrivacyDlpV2GlobalProcessing < 3) {}
+  buildCounterGooglePrivacyDlpV2GlobalProcessing--;
+}
+
 core.int buildCounterGooglePrivacyDlpV2HotwordRule = 0;
 api.GooglePrivacyDlpV2HotwordRule buildGooglePrivacyDlpV2HotwordRule() {
   final o = api.GooglePrivacyDlpV2HotwordRule();
@@ -4768,12 +4894,12 @@ void checkGooglePrivacyDlpV2HybridContentItem(
   buildCounterGooglePrivacyDlpV2HybridContentItem--;
 }
 
-core.Map<core.String, core.String> buildUnnamed55() => {
+core.Map<core.String, core.String> buildUnnamed56() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed55(core.Map<core.String, core.String> o) {
+void checkUnnamed56(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4793,7 +4919,7 @@ api.GooglePrivacyDlpV2HybridFindingDetails
   if (buildCounterGooglePrivacyDlpV2HybridFindingDetails < 3) {
     o.containerDetails = buildGooglePrivacyDlpV2Container();
     o.fileOffset = 'foo';
-    o.labels = buildUnnamed55();
+    o.labels = buildUnnamed56();
     o.rowOffset = 'foo';
     o.tableOptions = buildGooglePrivacyDlpV2TableOptions();
   }
@@ -4810,7 +4936,7 @@ void checkGooglePrivacyDlpV2HybridFindingDetails(
       o.fileOffset!,
       unittest.equals('foo'),
     );
-    checkUnnamed55(o.labels!);
+    checkUnnamed56(o.labels!);
     unittest.expect(
       o.rowOffset!,
       unittest.equals('foo'),
@@ -4913,12 +5039,12 @@ void checkGooglePrivacyDlpV2HybridInspectStatistics(
   buildCounterGooglePrivacyDlpV2HybridInspectStatistics--;
 }
 
-core.Map<core.String, core.String> buildUnnamed56() => {
+core.Map<core.String, core.String> buildUnnamed57() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed56(core.Map<core.String, core.String> o) {
+void checkUnnamed57(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4930,12 +5056,12 @@ void checkUnnamed56(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed57() => [
+core.List<core.String> buildUnnamed58() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed57(core.List<core.String> o) {
+void checkUnnamed58(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4953,8 +5079,8 @@ api.GooglePrivacyDlpV2HybridOptions buildGooglePrivacyDlpV2HybridOptions() {
   buildCounterGooglePrivacyDlpV2HybridOptions++;
   if (buildCounterGooglePrivacyDlpV2HybridOptions < 3) {
     o.description = 'foo';
-    o.labels = buildUnnamed56();
-    o.requiredFindingLabelKeys = buildUnnamed57();
+    o.labels = buildUnnamed57();
+    o.requiredFindingLabelKeys = buildUnnamed58();
     o.tableOptions = buildGooglePrivacyDlpV2TableOptions();
   }
   buildCounterGooglePrivacyDlpV2HybridOptions--;
@@ -4969,19 +5095,42 @@ void checkGooglePrivacyDlpV2HybridOptions(
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed56(o.labels!);
-    checkUnnamed57(o.requiredFindingLabelKeys!);
+    checkUnnamed57(o.labels!);
+    checkUnnamed58(o.requiredFindingLabelKeys!);
     checkGooglePrivacyDlpV2TableOptions(o.tableOptions!);
   }
   buildCounterGooglePrivacyDlpV2HybridOptions--;
 }
 
-core.List<api.GooglePrivacyDlpV2BoundingBox> buildUnnamed58() => [
+core.int buildCounterGooglePrivacyDlpV2ImageFallbackLocation = 0;
+api.GooglePrivacyDlpV2ImageFallbackLocation
+    buildGooglePrivacyDlpV2ImageFallbackLocation() {
+  final o = api.GooglePrivacyDlpV2ImageFallbackLocation();
+  buildCounterGooglePrivacyDlpV2ImageFallbackLocation++;
+  if (buildCounterGooglePrivacyDlpV2ImageFallbackLocation < 3) {
+    o.globalProcessing = buildGooglePrivacyDlpV2GlobalProcessing();
+    o.multiRegionProcessing = buildGooglePrivacyDlpV2MultiRegionProcessing();
+  }
+  buildCounterGooglePrivacyDlpV2ImageFallbackLocation--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2ImageFallbackLocation(
+    api.GooglePrivacyDlpV2ImageFallbackLocation o) {
+  buildCounterGooglePrivacyDlpV2ImageFallbackLocation++;
+  if (buildCounterGooglePrivacyDlpV2ImageFallbackLocation < 3) {
+    checkGooglePrivacyDlpV2GlobalProcessing(o.globalProcessing!);
+    checkGooglePrivacyDlpV2MultiRegionProcessing(o.multiRegionProcessing!);
+  }
+  buildCounterGooglePrivacyDlpV2ImageFallbackLocation--;
+}
+
+core.List<api.GooglePrivacyDlpV2BoundingBox> buildUnnamed59() => [
       buildGooglePrivacyDlpV2BoundingBox(),
       buildGooglePrivacyDlpV2BoundingBox(),
     ];
 
-void checkUnnamed58(core.List<api.GooglePrivacyDlpV2BoundingBox> o) {
+void checkUnnamed59(core.List<api.GooglePrivacyDlpV2BoundingBox> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2BoundingBox(o[0]);
   checkGooglePrivacyDlpV2BoundingBox(o[1]);
@@ -4992,7 +5141,7 @@ api.GooglePrivacyDlpV2ImageLocation buildGooglePrivacyDlpV2ImageLocation() {
   final o = api.GooglePrivacyDlpV2ImageLocation();
   buildCounterGooglePrivacyDlpV2ImageLocation++;
   if (buildCounterGooglePrivacyDlpV2ImageLocation < 3) {
-    o.boundingBoxes = buildUnnamed58();
+    o.boundingBoxes = buildUnnamed59();
   }
   buildCounterGooglePrivacyDlpV2ImageLocation--;
   return o;
@@ -5002,7 +5151,7 @@ void checkGooglePrivacyDlpV2ImageLocation(
     api.GooglePrivacyDlpV2ImageLocation o) {
   buildCounterGooglePrivacyDlpV2ImageLocation++;
   if (buildCounterGooglePrivacyDlpV2ImageLocation < 3) {
-    checkUnnamed58(o.boundingBoxes!);
+    checkUnnamed59(o.boundingBoxes!);
   }
   buildCounterGooglePrivacyDlpV2ImageLocation--;
 }
@@ -5059,12 +5208,12 @@ void checkGooglePrivacyDlpV2ImageTransformation(
   buildCounterGooglePrivacyDlpV2ImageTransformation--;
 }
 
-core.List<api.GooglePrivacyDlpV2ImageTransformation> buildUnnamed59() => [
+core.List<api.GooglePrivacyDlpV2ImageTransformation> buildUnnamed60() => [
       buildGooglePrivacyDlpV2ImageTransformation(),
       buildGooglePrivacyDlpV2ImageTransformation(),
     ];
 
-void checkUnnamed59(core.List<api.GooglePrivacyDlpV2ImageTransformation> o) {
+void checkUnnamed60(core.List<api.GooglePrivacyDlpV2ImageTransformation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2ImageTransformation(o[0]);
   checkGooglePrivacyDlpV2ImageTransformation(o[1]);
@@ -5076,7 +5225,7 @@ api.GooglePrivacyDlpV2ImageTransformations
   final o = api.GooglePrivacyDlpV2ImageTransformations();
   buildCounterGooglePrivacyDlpV2ImageTransformations++;
   if (buildCounterGooglePrivacyDlpV2ImageTransformations < 3) {
-    o.transforms = buildUnnamed59();
+    o.transforms = buildUnnamed60();
   }
   buildCounterGooglePrivacyDlpV2ImageTransformations--;
   return o;
@@ -5086,7 +5235,7 @@ void checkGooglePrivacyDlpV2ImageTransformations(
     api.GooglePrivacyDlpV2ImageTransformations o) {
   buildCounterGooglePrivacyDlpV2ImageTransformations++;
   if (buildCounterGooglePrivacyDlpV2ImageTransformations < 3) {
-    checkUnnamed59(o.transforms!);
+    checkUnnamed60(o.transforms!);
   }
   buildCounterGooglePrivacyDlpV2ImageTransformations--;
 }
@@ -5154,23 +5303,23 @@ void checkGooglePrivacyDlpV2InfoTypeCategory(
   buildCounterGooglePrivacyDlpV2InfoTypeCategory--;
 }
 
-core.List<api.GooglePrivacyDlpV2InfoTypeCategory> buildUnnamed60() => [
+core.List<api.GooglePrivacyDlpV2InfoTypeCategory> buildUnnamed61() => [
       buildGooglePrivacyDlpV2InfoTypeCategory(),
       buildGooglePrivacyDlpV2InfoTypeCategory(),
     ];
 
-void checkUnnamed60(core.List<api.GooglePrivacyDlpV2InfoTypeCategory> o) {
+void checkUnnamed61(core.List<api.GooglePrivacyDlpV2InfoTypeCategory> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoTypeCategory(o[0]);
   checkGooglePrivacyDlpV2InfoTypeCategory(o[1]);
 }
 
-core.List<core.String> buildUnnamed61() => [
+core.List<core.String> buildUnnamed62() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed61(core.List<core.String> o) {
+void checkUnnamed62(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5182,12 +5331,12 @@ void checkUnnamed61(core.List<core.String> o) {
   );
 }
 
-core.List<api.GooglePrivacyDlpV2VersionDescription> buildUnnamed62() => [
+core.List<api.GooglePrivacyDlpV2VersionDescription> buildUnnamed63() => [
       buildGooglePrivacyDlpV2VersionDescription(),
       buildGooglePrivacyDlpV2VersionDescription(),
     ];
 
-void checkUnnamed62(core.List<api.GooglePrivacyDlpV2VersionDescription> o) {
+void checkUnnamed63(core.List<api.GooglePrivacyDlpV2VersionDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2VersionDescription(o[0]);
   checkGooglePrivacyDlpV2VersionDescription(o[1]);
@@ -5199,14 +5348,14 @@ api.GooglePrivacyDlpV2InfoTypeDescription
   final o = api.GooglePrivacyDlpV2InfoTypeDescription();
   buildCounterGooglePrivacyDlpV2InfoTypeDescription++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeDescription < 3) {
-    o.categories = buildUnnamed60();
+    o.categories = buildUnnamed61();
     o.description = 'foo';
     o.displayName = 'foo';
     o.example = 'foo';
     o.name = 'foo';
     o.sensitivityScore = buildGooglePrivacyDlpV2SensitivityScore();
-    o.supportedBy = buildUnnamed61();
-    o.versions = buildUnnamed62();
+    o.supportedBy = buildUnnamed62();
+    o.versions = buildUnnamed63();
   }
   buildCounterGooglePrivacyDlpV2InfoTypeDescription--;
   return o;
@@ -5216,7 +5365,7 @@ void checkGooglePrivacyDlpV2InfoTypeDescription(
     api.GooglePrivacyDlpV2InfoTypeDescription o) {
   buildCounterGooglePrivacyDlpV2InfoTypeDescription++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeDescription < 3) {
-    checkUnnamed60(o.categories!);
+    checkUnnamed61(o.categories!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -5234,8 +5383,8 @@ void checkGooglePrivacyDlpV2InfoTypeDescription(
       unittest.equals('foo'),
     );
     checkGooglePrivacyDlpV2SensitivityScore(o.sensitivityScore!);
-    checkUnnamed61(o.supportedBy!);
-    checkUnnamed62(o.versions!);
+    checkUnnamed62(o.supportedBy!);
+    checkUnnamed63(o.versions!);
   }
   buildCounterGooglePrivacyDlpV2InfoTypeDescription--;
 }
@@ -5341,12 +5490,12 @@ void checkGooglePrivacyDlpV2InfoTypeSummary(
   buildCounterGooglePrivacyDlpV2InfoTypeSummary--;
 }
 
-core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed63() => [
+core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed64() => [
       buildGooglePrivacyDlpV2InfoType(),
       buildGooglePrivacyDlpV2InfoType(),
     ];
 
-void checkUnnamed63(core.List<api.GooglePrivacyDlpV2InfoType> o) {
+void checkUnnamed64(core.List<api.GooglePrivacyDlpV2InfoType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoType(o[0]);
   checkGooglePrivacyDlpV2InfoType(o[1]);
@@ -5358,7 +5507,7 @@ api.GooglePrivacyDlpV2InfoTypeTransformation
   final o = api.GooglePrivacyDlpV2InfoTypeTransformation();
   buildCounterGooglePrivacyDlpV2InfoTypeTransformation++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeTransformation < 3) {
-    o.infoTypes = buildUnnamed63();
+    o.infoTypes = buildUnnamed64();
     o.primitiveTransformation =
         buildGooglePrivacyDlpV2PrimitiveTransformation();
   }
@@ -5370,18 +5519,18 @@ void checkGooglePrivacyDlpV2InfoTypeTransformation(
     api.GooglePrivacyDlpV2InfoTypeTransformation o) {
   buildCounterGooglePrivacyDlpV2InfoTypeTransformation++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeTransformation < 3) {
-    checkUnnamed63(o.infoTypes!);
+    checkUnnamed64(o.infoTypes!);
     checkGooglePrivacyDlpV2PrimitiveTransformation(o.primitiveTransformation!);
   }
   buildCounterGooglePrivacyDlpV2InfoTypeTransformation--;
 }
 
-core.List<api.GooglePrivacyDlpV2InfoTypeTransformation> buildUnnamed64() => [
+core.List<api.GooglePrivacyDlpV2InfoTypeTransformation> buildUnnamed65() => [
       buildGooglePrivacyDlpV2InfoTypeTransformation(),
       buildGooglePrivacyDlpV2InfoTypeTransformation(),
     ];
 
-void checkUnnamed64(core.List<api.GooglePrivacyDlpV2InfoTypeTransformation> o) {
+void checkUnnamed65(core.List<api.GooglePrivacyDlpV2InfoTypeTransformation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoTypeTransformation(o[0]);
   checkGooglePrivacyDlpV2InfoTypeTransformation(o[1]);
@@ -5393,7 +5542,7 @@ api.GooglePrivacyDlpV2InfoTypeTransformations
   final o = api.GooglePrivacyDlpV2InfoTypeTransformations();
   buildCounterGooglePrivacyDlpV2InfoTypeTransformations++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeTransformations < 3) {
-    o.transformations = buildUnnamed64();
+    o.transformations = buildUnnamed65();
   }
   buildCounterGooglePrivacyDlpV2InfoTypeTransformations--;
   return o;
@@ -5403,17 +5552,17 @@ void checkGooglePrivacyDlpV2InfoTypeTransformations(
     api.GooglePrivacyDlpV2InfoTypeTransformations o) {
   buildCounterGooglePrivacyDlpV2InfoTypeTransformations++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeTransformations < 3) {
-    checkUnnamed64(o.transformations!);
+    checkUnnamed65(o.transformations!);
   }
   buildCounterGooglePrivacyDlpV2InfoTypeTransformations--;
 }
 
-core.List<core.String> buildUnnamed65() => [
+core.List<core.String> buildUnnamed66() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed65(core.List<core.String> o) {
+void checkUnnamed66(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5425,45 +5574,45 @@ void checkUnnamed65(core.List<core.String> o) {
   );
 }
 
-core.List<api.GooglePrivacyDlpV2CustomInfoType> buildUnnamed66() => [
+core.List<api.GooglePrivacyDlpV2CustomInfoType> buildUnnamed67() => [
       buildGooglePrivacyDlpV2CustomInfoType(),
       buildGooglePrivacyDlpV2CustomInfoType(),
     ];
 
-void checkUnnamed66(core.List<api.GooglePrivacyDlpV2CustomInfoType> o) {
+void checkUnnamed67(core.List<api.GooglePrivacyDlpV2CustomInfoType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2CustomInfoType(o[0]);
   checkGooglePrivacyDlpV2CustomInfoType(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed67() => [
+core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed68() => [
       buildGooglePrivacyDlpV2InfoType(),
       buildGooglePrivacyDlpV2InfoType(),
     ];
 
-void checkUnnamed67(core.List<api.GooglePrivacyDlpV2InfoType> o) {
+void checkUnnamed68(core.List<api.GooglePrivacyDlpV2InfoType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoType(o[0]);
   checkGooglePrivacyDlpV2InfoType(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2InfoTypeLikelihood> buildUnnamed68() => [
+core.List<api.GooglePrivacyDlpV2InfoTypeLikelihood> buildUnnamed69() => [
       buildGooglePrivacyDlpV2InfoTypeLikelihood(),
       buildGooglePrivacyDlpV2InfoTypeLikelihood(),
     ];
 
-void checkUnnamed68(core.List<api.GooglePrivacyDlpV2InfoTypeLikelihood> o) {
+void checkUnnamed69(core.List<api.GooglePrivacyDlpV2InfoTypeLikelihood> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoTypeLikelihood(o[0]);
   checkGooglePrivacyDlpV2InfoTypeLikelihood(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2InspectionRuleSet> buildUnnamed69() => [
+core.List<api.GooglePrivacyDlpV2InspectionRuleSet> buildUnnamed70() => [
       buildGooglePrivacyDlpV2InspectionRuleSet(),
       buildGooglePrivacyDlpV2InspectionRuleSet(),
     ];
 
-void checkUnnamed69(core.List<api.GooglePrivacyDlpV2InspectionRuleSet> o) {
+void checkUnnamed70(core.List<api.GooglePrivacyDlpV2InspectionRuleSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InspectionRuleSet(o[0]);
   checkGooglePrivacyDlpV2InspectionRuleSet(o[1]);
@@ -5474,15 +5623,15 @@ api.GooglePrivacyDlpV2InspectConfig buildGooglePrivacyDlpV2InspectConfig() {
   final o = api.GooglePrivacyDlpV2InspectConfig();
   buildCounterGooglePrivacyDlpV2InspectConfig++;
   if (buildCounterGooglePrivacyDlpV2InspectConfig < 3) {
-    o.contentOptions = buildUnnamed65();
-    o.customInfoTypes = buildUnnamed66();
+    o.contentOptions = buildUnnamed66();
+    o.customInfoTypes = buildUnnamed67();
     o.excludeInfoTypes = true;
     o.includeQuote = true;
-    o.infoTypes = buildUnnamed67();
+    o.infoTypes = buildUnnamed68();
     o.limits = buildGooglePrivacyDlpV2FindingLimits();
     o.minLikelihood = 'foo';
-    o.minLikelihoodPerInfoType = buildUnnamed68();
-    o.ruleSet = buildUnnamed69();
+    o.minLikelihoodPerInfoType = buildUnnamed69();
+    o.ruleSet = buildUnnamed70();
   }
   buildCounterGooglePrivacyDlpV2InspectConfig--;
   return o;
@@ -5492,18 +5641,18 @@ void checkGooglePrivacyDlpV2InspectConfig(
     api.GooglePrivacyDlpV2InspectConfig o) {
   buildCounterGooglePrivacyDlpV2InspectConfig++;
   if (buildCounterGooglePrivacyDlpV2InspectConfig < 3) {
-    checkUnnamed65(o.contentOptions!);
-    checkUnnamed66(o.customInfoTypes!);
+    checkUnnamed66(o.contentOptions!);
+    checkUnnamed67(o.customInfoTypes!);
     unittest.expect(o.excludeInfoTypes!, unittest.isTrue);
     unittest.expect(o.includeQuote!, unittest.isTrue);
-    checkUnnamed67(o.infoTypes!);
+    checkUnnamed68(o.infoTypes!);
     checkGooglePrivacyDlpV2FindingLimits(o.limits!);
     unittest.expect(
       o.minLikelihood!,
       unittest.equals('foo'),
     );
-    checkUnnamed68(o.minLikelihoodPerInfoType!);
-    checkUnnamed69(o.ruleSet!);
+    checkUnnamed69(o.minLikelihoodPerInfoType!);
+    checkUnnamed70(o.ruleSet!);
   }
   buildCounterGooglePrivacyDlpV2InspectConfig--;
 }
@@ -5585,12 +5734,12 @@ void checkGooglePrivacyDlpV2InspectDataSourceDetails(
   buildCounterGooglePrivacyDlpV2InspectDataSourceDetails--;
 }
 
-core.List<api.GooglePrivacyDlpV2Action> buildUnnamed70() => [
+core.List<api.GooglePrivacyDlpV2Action> buildUnnamed71() => [
       buildGooglePrivacyDlpV2Action(),
       buildGooglePrivacyDlpV2Action(),
     ];
 
-void checkUnnamed70(core.List<api.GooglePrivacyDlpV2Action> o) {
+void checkUnnamed71(core.List<api.GooglePrivacyDlpV2Action> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Action(o[0]);
   checkGooglePrivacyDlpV2Action(o[1]);
@@ -5602,7 +5751,7 @@ api.GooglePrivacyDlpV2InspectJobConfig
   final o = api.GooglePrivacyDlpV2InspectJobConfig();
   buildCounterGooglePrivacyDlpV2InspectJobConfig++;
   if (buildCounterGooglePrivacyDlpV2InspectJobConfig < 3) {
-    o.actions = buildUnnamed70();
+    o.actions = buildUnnamed71();
     o.inspectConfig = buildGooglePrivacyDlpV2InspectConfig();
     o.inspectTemplateName = 'foo';
     o.storageConfig = buildGooglePrivacyDlpV2StorageConfig();
@@ -5615,7 +5764,7 @@ void checkGooglePrivacyDlpV2InspectJobConfig(
     api.GooglePrivacyDlpV2InspectJobConfig o) {
   buildCounterGooglePrivacyDlpV2InspectJobConfig++;
   if (buildCounterGooglePrivacyDlpV2InspectJobConfig < 3) {
-    checkUnnamed70(o.actions!);
+    checkUnnamed71(o.actions!);
     checkGooglePrivacyDlpV2InspectConfig(o.inspectConfig!);
     unittest.expect(
       o.inspectTemplateName!,
@@ -5626,12 +5775,12 @@ void checkGooglePrivacyDlpV2InspectJobConfig(
   buildCounterGooglePrivacyDlpV2InspectJobConfig--;
 }
 
-core.List<api.GooglePrivacyDlpV2Finding> buildUnnamed71() => [
+core.List<api.GooglePrivacyDlpV2Finding> buildUnnamed72() => [
       buildGooglePrivacyDlpV2Finding(),
       buildGooglePrivacyDlpV2Finding(),
     ];
 
-void checkUnnamed71(core.List<api.GooglePrivacyDlpV2Finding> o) {
+void checkUnnamed72(core.List<api.GooglePrivacyDlpV2Finding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Finding(o[0]);
   checkGooglePrivacyDlpV2Finding(o[1]);
@@ -5642,7 +5791,7 @@ api.GooglePrivacyDlpV2InspectResult buildGooglePrivacyDlpV2InspectResult() {
   final o = api.GooglePrivacyDlpV2InspectResult();
   buildCounterGooglePrivacyDlpV2InspectResult++;
   if (buildCounterGooglePrivacyDlpV2InspectResult < 3) {
-    o.findings = buildUnnamed71();
+    o.findings = buildUnnamed72();
     o.findingsTruncated = true;
   }
   buildCounterGooglePrivacyDlpV2InspectResult--;
@@ -5653,7 +5802,7 @@ void checkGooglePrivacyDlpV2InspectResult(
     api.GooglePrivacyDlpV2InspectResult o) {
   buildCounterGooglePrivacyDlpV2InspectResult++;
   if (buildCounterGooglePrivacyDlpV2InspectResult < 3) {
-    checkUnnamed71(o.findings!);
+    checkUnnamed72(o.findings!);
     unittest.expect(o.findingsTruncated!, unittest.isTrue);
   }
   buildCounterGooglePrivacyDlpV2InspectResult--;
@@ -5726,23 +5875,23 @@ void checkGooglePrivacyDlpV2InspectionRule(
   buildCounterGooglePrivacyDlpV2InspectionRule--;
 }
 
-core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed72() => [
+core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed73() => [
       buildGooglePrivacyDlpV2InfoType(),
       buildGooglePrivacyDlpV2InfoType(),
     ];
 
-void checkUnnamed72(core.List<api.GooglePrivacyDlpV2InfoType> o) {
+void checkUnnamed73(core.List<api.GooglePrivacyDlpV2InfoType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoType(o[0]);
   checkGooglePrivacyDlpV2InfoType(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2InspectionRule> buildUnnamed73() => [
+core.List<api.GooglePrivacyDlpV2InspectionRule> buildUnnamed74() => [
       buildGooglePrivacyDlpV2InspectionRule(),
       buildGooglePrivacyDlpV2InspectionRule(),
     ];
 
-void checkUnnamed73(core.List<api.GooglePrivacyDlpV2InspectionRule> o) {
+void checkUnnamed74(core.List<api.GooglePrivacyDlpV2InspectionRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InspectionRule(o[0]);
   checkGooglePrivacyDlpV2InspectionRule(o[1]);
@@ -5754,8 +5903,8 @@ api.GooglePrivacyDlpV2InspectionRuleSet
   final o = api.GooglePrivacyDlpV2InspectionRuleSet();
   buildCounterGooglePrivacyDlpV2InspectionRuleSet++;
   if (buildCounterGooglePrivacyDlpV2InspectionRuleSet < 3) {
-    o.infoTypes = buildUnnamed72();
-    o.rules = buildUnnamed73();
+    o.infoTypes = buildUnnamed73();
+    o.rules = buildUnnamed74();
   }
   buildCounterGooglePrivacyDlpV2InspectionRuleSet--;
   return o;
@@ -5765,8 +5914,8 @@ void checkGooglePrivacyDlpV2InspectionRuleSet(
     api.GooglePrivacyDlpV2InspectionRuleSet o) {
   buildCounterGooglePrivacyDlpV2InspectionRuleSet++;
   if (buildCounterGooglePrivacyDlpV2InspectionRuleSet < 3) {
-    checkUnnamed72(o.infoTypes!);
-    checkUnnamed73(o.rules!);
+    checkUnnamed73(o.infoTypes!);
+    checkUnnamed74(o.rules!);
   }
   buildCounterGooglePrivacyDlpV2InspectionRuleSet--;
 }
@@ -5788,23 +5937,23 @@ void checkGooglePrivacyDlpV2JobNotificationEmails(
   buildCounterGooglePrivacyDlpV2JobNotificationEmails--;
 }
 
-core.List<api.GooglePrivacyDlpV2Error> buildUnnamed74() => [
+core.List<api.GooglePrivacyDlpV2Error> buildUnnamed75() => [
       buildGooglePrivacyDlpV2Error(),
       buildGooglePrivacyDlpV2Error(),
     ];
 
-void checkUnnamed74(core.List<api.GooglePrivacyDlpV2Error> o) {
+void checkUnnamed75(core.List<api.GooglePrivacyDlpV2Error> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Error(o[0]);
   checkGooglePrivacyDlpV2Error(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2Trigger> buildUnnamed75() => [
+core.List<api.GooglePrivacyDlpV2Trigger> buildUnnamed76() => [
       buildGooglePrivacyDlpV2Trigger(),
       buildGooglePrivacyDlpV2Trigger(),
     ];
 
-void checkUnnamed75(core.List<api.GooglePrivacyDlpV2Trigger> o) {
+void checkUnnamed76(core.List<api.GooglePrivacyDlpV2Trigger> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Trigger(o[0]);
   checkGooglePrivacyDlpV2Trigger(o[1]);
@@ -5818,12 +5967,12 @@ api.GooglePrivacyDlpV2JobTrigger buildGooglePrivacyDlpV2JobTrigger() {
     o.createTime = 'foo';
     o.description = 'foo';
     o.displayName = 'foo';
-    o.errors = buildUnnamed74();
+    o.errors = buildUnnamed75();
     o.inspectJob = buildGooglePrivacyDlpV2InspectJobConfig();
     o.lastRunTime = 'foo';
     o.name = 'foo';
     o.status = 'foo';
-    o.triggers = buildUnnamed75();
+    o.triggers = buildUnnamed76();
     o.updateTime = 'foo';
   }
   buildCounterGooglePrivacyDlpV2JobTrigger--;
@@ -5845,7 +5994,7 @@ void checkGooglePrivacyDlpV2JobTrigger(api.GooglePrivacyDlpV2JobTrigger o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed74(o.errors!);
+    checkUnnamed75(o.errors!);
     checkGooglePrivacyDlpV2InspectJobConfig(o.inspectJob!);
     unittest.expect(
       o.lastRunTime!,
@@ -5859,7 +6008,7 @@ void checkGooglePrivacyDlpV2JobTrigger(api.GooglePrivacyDlpV2JobTrigger o) {
       o.status!,
       unittest.equals('foo'),
     );
-    checkUnnamed75(o.triggers!);
+    checkUnnamed76(o.triggers!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -5868,12 +6017,12 @@ void checkGooglePrivacyDlpV2JobTrigger(api.GooglePrivacyDlpV2JobTrigger o) {
   buildCounterGooglePrivacyDlpV2JobTrigger--;
 }
 
-core.List<api.GooglePrivacyDlpV2FieldId> buildUnnamed76() => [
+core.List<api.GooglePrivacyDlpV2FieldId> buildUnnamed77() => [
       buildGooglePrivacyDlpV2FieldId(),
       buildGooglePrivacyDlpV2FieldId(),
     ];
 
-void checkUnnamed76(core.List<api.GooglePrivacyDlpV2FieldId> o) {
+void checkUnnamed77(core.List<api.GooglePrivacyDlpV2FieldId> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2FieldId(o[0]);
   checkGooglePrivacyDlpV2FieldId(o[1]);
@@ -5886,7 +6035,7 @@ api.GooglePrivacyDlpV2KAnonymityConfig
   buildCounterGooglePrivacyDlpV2KAnonymityConfig++;
   if (buildCounterGooglePrivacyDlpV2KAnonymityConfig < 3) {
     o.entityId = buildGooglePrivacyDlpV2EntityId();
-    o.quasiIds = buildUnnamed76();
+    o.quasiIds = buildUnnamed77();
   }
   buildCounterGooglePrivacyDlpV2KAnonymityConfig--;
   return o;
@@ -5897,17 +6046,17 @@ void checkGooglePrivacyDlpV2KAnonymityConfig(
   buildCounterGooglePrivacyDlpV2KAnonymityConfig++;
   if (buildCounterGooglePrivacyDlpV2KAnonymityConfig < 3) {
     checkGooglePrivacyDlpV2EntityId(o.entityId!);
-    checkUnnamed76(o.quasiIds!);
+    checkUnnamed77(o.quasiIds!);
   }
   buildCounterGooglePrivacyDlpV2KAnonymityConfig--;
 }
 
-core.List<api.GooglePrivacyDlpV2Value> buildUnnamed77() => [
+core.List<api.GooglePrivacyDlpV2Value> buildUnnamed78() => [
       buildGooglePrivacyDlpV2Value(),
       buildGooglePrivacyDlpV2Value(),
     ];
 
-void checkUnnamed77(core.List<api.GooglePrivacyDlpV2Value> o) {
+void checkUnnamed78(core.List<api.GooglePrivacyDlpV2Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Value(o[0]);
   checkGooglePrivacyDlpV2Value(o[1]);
@@ -5920,7 +6069,7 @@ api.GooglePrivacyDlpV2KAnonymityEquivalenceClass
   buildCounterGooglePrivacyDlpV2KAnonymityEquivalenceClass++;
   if (buildCounterGooglePrivacyDlpV2KAnonymityEquivalenceClass < 3) {
     o.equivalenceClassSize = 'foo';
-    o.quasiIdsValues = buildUnnamed77();
+    o.quasiIdsValues = buildUnnamed78();
   }
   buildCounterGooglePrivacyDlpV2KAnonymityEquivalenceClass--;
   return o;
@@ -5934,18 +6083,18 @@ void checkGooglePrivacyDlpV2KAnonymityEquivalenceClass(
       o.equivalenceClassSize!,
       unittest.equals('foo'),
     );
-    checkUnnamed77(o.quasiIdsValues!);
+    checkUnnamed78(o.quasiIdsValues!);
   }
   buildCounterGooglePrivacyDlpV2KAnonymityEquivalenceClass--;
 }
 
-core.List<api.GooglePrivacyDlpV2KAnonymityEquivalenceClass> buildUnnamed78() =>
+core.List<api.GooglePrivacyDlpV2KAnonymityEquivalenceClass> buildUnnamed79() =>
     [
       buildGooglePrivacyDlpV2KAnonymityEquivalenceClass(),
       buildGooglePrivacyDlpV2KAnonymityEquivalenceClass(),
     ];
 
-void checkUnnamed78(
+void checkUnnamed79(
     core.List<api.GooglePrivacyDlpV2KAnonymityEquivalenceClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2KAnonymityEquivalenceClass(o[0]);
@@ -5960,7 +6109,7 @@ api.GooglePrivacyDlpV2KAnonymityHistogramBucket
   if (buildCounterGooglePrivacyDlpV2KAnonymityHistogramBucket < 3) {
     o.bucketSize = 'foo';
     o.bucketValueCount = 'foo';
-    o.bucketValues = buildUnnamed78();
+    o.bucketValues = buildUnnamed79();
     o.equivalenceClassSizeLowerBound = 'foo';
     o.equivalenceClassSizeUpperBound = 'foo';
   }
@@ -5980,7 +6129,7 @@ void checkGooglePrivacyDlpV2KAnonymityHistogramBucket(
       o.bucketValueCount!,
       unittest.equals('foo'),
     );
-    checkUnnamed78(o.bucketValues!);
+    checkUnnamed79(o.bucketValues!);
     unittest.expect(
       o.equivalenceClassSizeLowerBound!,
       unittest.equals('foo'),
@@ -5993,12 +6142,12 @@ void checkGooglePrivacyDlpV2KAnonymityHistogramBucket(
   buildCounterGooglePrivacyDlpV2KAnonymityHistogramBucket--;
 }
 
-core.List<api.GooglePrivacyDlpV2KAnonymityHistogramBucket> buildUnnamed79() => [
+core.List<api.GooglePrivacyDlpV2KAnonymityHistogramBucket> buildUnnamed80() => [
       buildGooglePrivacyDlpV2KAnonymityHistogramBucket(),
       buildGooglePrivacyDlpV2KAnonymityHistogramBucket(),
     ];
 
-void checkUnnamed79(
+void checkUnnamed80(
     core.List<api.GooglePrivacyDlpV2KAnonymityHistogramBucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2KAnonymityHistogramBucket(o[0]);
@@ -6011,7 +6160,7 @@ api.GooglePrivacyDlpV2KAnonymityResult
   final o = api.GooglePrivacyDlpV2KAnonymityResult();
   buildCounterGooglePrivacyDlpV2KAnonymityResult++;
   if (buildCounterGooglePrivacyDlpV2KAnonymityResult < 3) {
-    o.equivalenceClassHistogramBuckets = buildUnnamed79();
+    o.equivalenceClassHistogramBuckets = buildUnnamed80();
   }
   buildCounterGooglePrivacyDlpV2KAnonymityResult--;
   return o;
@@ -6021,28 +6170,28 @@ void checkGooglePrivacyDlpV2KAnonymityResult(
     api.GooglePrivacyDlpV2KAnonymityResult o) {
   buildCounterGooglePrivacyDlpV2KAnonymityResult++;
   if (buildCounterGooglePrivacyDlpV2KAnonymityResult < 3) {
-    checkUnnamed79(o.equivalenceClassHistogramBuckets!);
+    checkUnnamed80(o.equivalenceClassHistogramBuckets!);
   }
   buildCounterGooglePrivacyDlpV2KAnonymityResult--;
 }
 
-core.List<api.GooglePrivacyDlpV2AuxiliaryTable> buildUnnamed80() => [
+core.List<api.GooglePrivacyDlpV2AuxiliaryTable> buildUnnamed81() => [
       buildGooglePrivacyDlpV2AuxiliaryTable(),
       buildGooglePrivacyDlpV2AuxiliaryTable(),
     ];
 
-void checkUnnamed80(core.List<api.GooglePrivacyDlpV2AuxiliaryTable> o) {
+void checkUnnamed81(core.List<api.GooglePrivacyDlpV2AuxiliaryTable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2AuxiliaryTable(o[0]);
   checkGooglePrivacyDlpV2AuxiliaryTable(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2TaggedField> buildUnnamed81() => [
+core.List<api.GooglePrivacyDlpV2TaggedField> buildUnnamed82() => [
       buildGooglePrivacyDlpV2TaggedField(),
       buildGooglePrivacyDlpV2TaggedField(),
     ];
 
-void checkUnnamed81(core.List<api.GooglePrivacyDlpV2TaggedField> o) {
+void checkUnnamed82(core.List<api.GooglePrivacyDlpV2TaggedField> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2TaggedField(o[0]);
   checkGooglePrivacyDlpV2TaggedField(o[1]);
@@ -6054,8 +6203,8 @@ api.GooglePrivacyDlpV2KMapEstimationConfig
   final o = api.GooglePrivacyDlpV2KMapEstimationConfig();
   buildCounterGooglePrivacyDlpV2KMapEstimationConfig++;
   if (buildCounterGooglePrivacyDlpV2KMapEstimationConfig < 3) {
-    o.auxiliaryTables = buildUnnamed80();
-    o.quasiIds = buildUnnamed81();
+    o.auxiliaryTables = buildUnnamed81();
+    o.quasiIds = buildUnnamed82();
     o.regionCode = 'foo';
   }
   buildCounterGooglePrivacyDlpV2KMapEstimationConfig--;
@@ -6066,8 +6215,8 @@ void checkGooglePrivacyDlpV2KMapEstimationConfig(
     api.GooglePrivacyDlpV2KMapEstimationConfig o) {
   buildCounterGooglePrivacyDlpV2KMapEstimationConfig++;
   if (buildCounterGooglePrivacyDlpV2KMapEstimationConfig < 3) {
-    checkUnnamed80(o.auxiliaryTables!);
-    checkUnnamed81(o.quasiIds!);
+    checkUnnamed81(o.auxiliaryTables!);
+    checkUnnamed82(o.quasiIds!);
     unittest.expect(
       o.regionCode!,
       unittest.equals('foo'),
@@ -6076,13 +6225,13 @@ void checkGooglePrivacyDlpV2KMapEstimationConfig(
   buildCounterGooglePrivacyDlpV2KMapEstimationConfig--;
 }
 
-core.List<api.GooglePrivacyDlpV2KMapEstimationQuasiIdValues> buildUnnamed82() =>
+core.List<api.GooglePrivacyDlpV2KMapEstimationQuasiIdValues> buildUnnamed83() =>
     [
       buildGooglePrivacyDlpV2KMapEstimationQuasiIdValues(),
       buildGooglePrivacyDlpV2KMapEstimationQuasiIdValues(),
     ];
 
-void checkUnnamed82(
+void checkUnnamed83(
     core.List<api.GooglePrivacyDlpV2KMapEstimationQuasiIdValues> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2KMapEstimationQuasiIdValues(o[0]);
@@ -6097,7 +6246,7 @@ api.GooglePrivacyDlpV2KMapEstimationHistogramBucket
   if (buildCounterGooglePrivacyDlpV2KMapEstimationHistogramBucket < 3) {
     o.bucketSize = 'foo';
     o.bucketValueCount = 'foo';
-    o.bucketValues = buildUnnamed82();
+    o.bucketValues = buildUnnamed83();
     o.maxAnonymity = 'foo';
     o.minAnonymity = 'foo';
   }
@@ -6117,7 +6266,7 @@ void checkGooglePrivacyDlpV2KMapEstimationHistogramBucket(
       o.bucketValueCount!,
       unittest.equals('foo'),
     );
-    checkUnnamed82(o.bucketValues!);
+    checkUnnamed83(o.bucketValues!);
     unittest.expect(
       o.maxAnonymity!,
       unittest.equals('foo'),
@@ -6130,12 +6279,12 @@ void checkGooglePrivacyDlpV2KMapEstimationHistogramBucket(
   buildCounterGooglePrivacyDlpV2KMapEstimationHistogramBucket--;
 }
 
-core.List<api.GooglePrivacyDlpV2Value> buildUnnamed83() => [
+core.List<api.GooglePrivacyDlpV2Value> buildUnnamed84() => [
       buildGooglePrivacyDlpV2Value(),
       buildGooglePrivacyDlpV2Value(),
     ];
 
-void checkUnnamed83(core.List<api.GooglePrivacyDlpV2Value> o) {
+void checkUnnamed84(core.List<api.GooglePrivacyDlpV2Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Value(o[0]);
   checkGooglePrivacyDlpV2Value(o[1]);
@@ -6148,7 +6297,7 @@ api.GooglePrivacyDlpV2KMapEstimationQuasiIdValues
   buildCounterGooglePrivacyDlpV2KMapEstimationQuasiIdValues++;
   if (buildCounterGooglePrivacyDlpV2KMapEstimationQuasiIdValues < 3) {
     o.estimatedAnonymity = 'foo';
-    o.quasiIdsValues = buildUnnamed83();
+    o.quasiIdsValues = buildUnnamed84();
   }
   buildCounterGooglePrivacyDlpV2KMapEstimationQuasiIdValues--;
   return o;
@@ -6162,18 +6311,18 @@ void checkGooglePrivacyDlpV2KMapEstimationQuasiIdValues(
       o.estimatedAnonymity!,
       unittest.equals('foo'),
     );
-    checkUnnamed83(o.quasiIdsValues!);
+    checkUnnamed84(o.quasiIdsValues!);
   }
   buildCounterGooglePrivacyDlpV2KMapEstimationQuasiIdValues--;
 }
 
 core.List<api.GooglePrivacyDlpV2KMapEstimationHistogramBucket>
-    buildUnnamed84() => [
+    buildUnnamed85() => [
           buildGooglePrivacyDlpV2KMapEstimationHistogramBucket(),
           buildGooglePrivacyDlpV2KMapEstimationHistogramBucket(),
         ];
 
-void checkUnnamed84(
+void checkUnnamed85(
     core.List<api.GooglePrivacyDlpV2KMapEstimationHistogramBucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2KMapEstimationHistogramBucket(o[0]);
@@ -6186,7 +6335,7 @@ api.GooglePrivacyDlpV2KMapEstimationResult
   final o = api.GooglePrivacyDlpV2KMapEstimationResult();
   buildCounterGooglePrivacyDlpV2KMapEstimationResult++;
   if (buildCounterGooglePrivacyDlpV2KMapEstimationResult < 3) {
-    o.kMapEstimationHistogram = buildUnnamed84();
+    o.kMapEstimationHistogram = buildUnnamed85();
   }
   buildCounterGooglePrivacyDlpV2KMapEstimationResult--;
   return o;
@@ -6196,17 +6345,17 @@ void checkGooglePrivacyDlpV2KMapEstimationResult(
     api.GooglePrivacyDlpV2KMapEstimationResult o) {
   buildCounterGooglePrivacyDlpV2KMapEstimationResult++;
   if (buildCounterGooglePrivacyDlpV2KMapEstimationResult < 3) {
-    checkUnnamed84(o.kMapEstimationHistogram!);
+    checkUnnamed85(o.kMapEstimationHistogram!);
   }
   buildCounterGooglePrivacyDlpV2KMapEstimationResult--;
 }
 
-core.List<api.GooglePrivacyDlpV2PathElement> buildUnnamed85() => [
+core.List<api.GooglePrivacyDlpV2PathElement> buildUnnamed86() => [
       buildGooglePrivacyDlpV2PathElement(),
       buildGooglePrivacyDlpV2PathElement(),
     ];
 
-void checkUnnamed85(core.List<api.GooglePrivacyDlpV2PathElement> o) {
+void checkUnnamed86(core.List<api.GooglePrivacyDlpV2PathElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2PathElement(o[0]);
   checkGooglePrivacyDlpV2PathElement(o[1]);
@@ -6218,7 +6367,7 @@ api.GooglePrivacyDlpV2Key buildGooglePrivacyDlpV2Key() {
   buildCounterGooglePrivacyDlpV2Key++;
   if (buildCounterGooglePrivacyDlpV2Key < 3) {
     o.partitionId = buildGooglePrivacyDlpV2PartitionId();
-    o.path = buildUnnamed85();
+    o.path = buildUnnamed86();
   }
   buildCounterGooglePrivacyDlpV2Key--;
   return o;
@@ -6228,7 +6377,7 @@ void checkGooglePrivacyDlpV2Key(api.GooglePrivacyDlpV2Key o) {
   buildCounterGooglePrivacyDlpV2Key++;
   if (buildCounterGooglePrivacyDlpV2Key < 3) {
     checkGooglePrivacyDlpV2PartitionId(o.partitionId!);
-    checkUnnamed85(o.path!);
+    checkUnnamed86(o.path!);
   }
   buildCounterGooglePrivacyDlpV2Key--;
 }
@@ -6285,12 +6434,12 @@ void checkGooglePrivacyDlpV2KmsWrappedCryptoKey(
   buildCounterGooglePrivacyDlpV2KmsWrappedCryptoKey--;
 }
 
-core.List<api.GooglePrivacyDlpV2FieldId> buildUnnamed86() => [
+core.List<api.GooglePrivacyDlpV2FieldId> buildUnnamed87() => [
       buildGooglePrivacyDlpV2FieldId(),
       buildGooglePrivacyDlpV2FieldId(),
     ];
 
-void checkUnnamed86(core.List<api.GooglePrivacyDlpV2FieldId> o) {
+void checkUnnamed87(core.List<api.GooglePrivacyDlpV2FieldId> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2FieldId(o[0]);
   checkGooglePrivacyDlpV2FieldId(o[1]);
@@ -6302,7 +6451,7 @@ api.GooglePrivacyDlpV2LDiversityConfig
   final o = api.GooglePrivacyDlpV2LDiversityConfig();
   buildCounterGooglePrivacyDlpV2LDiversityConfig++;
   if (buildCounterGooglePrivacyDlpV2LDiversityConfig < 3) {
-    o.quasiIds = buildUnnamed86();
+    o.quasiIds = buildUnnamed87();
     o.sensitiveAttribute = buildGooglePrivacyDlpV2FieldId();
   }
   buildCounterGooglePrivacyDlpV2LDiversityConfig--;
@@ -6313,29 +6462,29 @@ void checkGooglePrivacyDlpV2LDiversityConfig(
     api.GooglePrivacyDlpV2LDiversityConfig o) {
   buildCounterGooglePrivacyDlpV2LDiversityConfig++;
   if (buildCounterGooglePrivacyDlpV2LDiversityConfig < 3) {
-    checkUnnamed86(o.quasiIds!);
+    checkUnnamed87(o.quasiIds!);
     checkGooglePrivacyDlpV2FieldId(o.sensitiveAttribute!);
   }
   buildCounterGooglePrivacyDlpV2LDiversityConfig--;
 }
 
-core.List<api.GooglePrivacyDlpV2Value> buildUnnamed87() => [
+core.List<api.GooglePrivacyDlpV2Value> buildUnnamed88() => [
       buildGooglePrivacyDlpV2Value(),
       buildGooglePrivacyDlpV2Value(),
     ];
 
-void checkUnnamed87(core.List<api.GooglePrivacyDlpV2Value> o) {
+void checkUnnamed88(core.List<api.GooglePrivacyDlpV2Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Value(o[0]);
   checkGooglePrivacyDlpV2Value(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2ValueFrequency> buildUnnamed88() => [
+core.List<api.GooglePrivacyDlpV2ValueFrequency> buildUnnamed89() => [
       buildGooglePrivacyDlpV2ValueFrequency(),
       buildGooglePrivacyDlpV2ValueFrequency(),
     ];
 
-void checkUnnamed88(core.List<api.GooglePrivacyDlpV2ValueFrequency> o) {
+void checkUnnamed89(core.List<api.GooglePrivacyDlpV2ValueFrequency> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2ValueFrequency(o[0]);
   checkGooglePrivacyDlpV2ValueFrequency(o[1]);
@@ -6349,8 +6498,8 @@ api.GooglePrivacyDlpV2LDiversityEquivalenceClass
   if (buildCounterGooglePrivacyDlpV2LDiversityEquivalenceClass < 3) {
     o.equivalenceClassSize = 'foo';
     o.numDistinctSensitiveValues = 'foo';
-    o.quasiIdsValues = buildUnnamed87();
-    o.topSensitiveValues = buildUnnamed88();
+    o.quasiIdsValues = buildUnnamed88();
+    o.topSensitiveValues = buildUnnamed89();
   }
   buildCounterGooglePrivacyDlpV2LDiversityEquivalenceClass--;
   return o;
@@ -6368,19 +6517,19 @@ void checkGooglePrivacyDlpV2LDiversityEquivalenceClass(
       o.numDistinctSensitiveValues!,
       unittest.equals('foo'),
     );
-    checkUnnamed87(o.quasiIdsValues!);
-    checkUnnamed88(o.topSensitiveValues!);
+    checkUnnamed88(o.quasiIdsValues!);
+    checkUnnamed89(o.topSensitiveValues!);
   }
   buildCounterGooglePrivacyDlpV2LDiversityEquivalenceClass--;
 }
 
-core.List<api.GooglePrivacyDlpV2LDiversityEquivalenceClass> buildUnnamed89() =>
+core.List<api.GooglePrivacyDlpV2LDiversityEquivalenceClass> buildUnnamed90() =>
     [
       buildGooglePrivacyDlpV2LDiversityEquivalenceClass(),
       buildGooglePrivacyDlpV2LDiversityEquivalenceClass(),
     ];
 
-void checkUnnamed89(
+void checkUnnamed90(
     core.List<api.GooglePrivacyDlpV2LDiversityEquivalenceClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2LDiversityEquivalenceClass(o[0]);
@@ -6395,7 +6544,7 @@ api.GooglePrivacyDlpV2LDiversityHistogramBucket
   if (buildCounterGooglePrivacyDlpV2LDiversityHistogramBucket < 3) {
     o.bucketSize = 'foo';
     o.bucketValueCount = 'foo';
-    o.bucketValues = buildUnnamed89();
+    o.bucketValues = buildUnnamed90();
     o.sensitiveValueFrequencyLowerBound = 'foo';
     o.sensitiveValueFrequencyUpperBound = 'foo';
   }
@@ -6415,7 +6564,7 @@ void checkGooglePrivacyDlpV2LDiversityHistogramBucket(
       o.bucketValueCount!,
       unittest.equals('foo'),
     );
-    checkUnnamed89(o.bucketValues!);
+    checkUnnamed90(o.bucketValues!);
     unittest.expect(
       o.sensitiveValueFrequencyLowerBound!,
       unittest.equals('foo'),
@@ -6428,12 +6577,12 @@ void checkGooglePrivacyDlpV2LDiversityHistogramBucket(
   buildCounterGooglePrivacyDlpV2LDiversityHistogramBucket--;
 }
 
-core.List<api.GooglePrivacyDlpV2LDiversityHistogramBucket> buildUnnamed90() => [
+core.List<api.GooglePrivacyDlpV2LDiversityHistogramBucket> buildUnnamed91() => [
       buildGooglePrivacyDlpV2LDiversityHistogramBucket(),
       buildGooglePrivacyDlpV2LDiversityHistogramBucket(),
     ];
 
-void checkUnnamed90(
+void checkUnnamed91(
     core.List<api.GooglePrivacyDlpV2LDiversityHistogramBucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2LDiversityHistogramBucket(o[0]);
@@ -6446,7 +6595,7 @@ api.GooglePrivacyDlpV2LDiversityResult
   final o = api.GooglePrivacyDlpV2LDiversityResult();
   buildCounterGooglePrivacyDlpV2LDiversityResult++;
   if (buildCounterGooglePrivacyDlpV2LDiversityResult < 3) {
-    o.sensitiveValueFrequencyHistogramBuckets = buildUnnamed90();
+    o.sensitiveValueFrequencyHistogramBuckets = buildUnnamed91();
   }
   buildCounterGooglePrivacyDlpV2LDiversityResult--;
   return o;
@@ -6456,7 +6605,7 @@ void checkGooglePrivacyDlpV2LDiversityResult(
     api.GooglePrivacyDlpV2LDiversityResult o) {
   buildCounterGooglePrivacyDlpV2LDiversityResult++;
   if (buildCounterGooglePrivacyDlpV2LDiversityResult < 3) {
-    checkUnnamed90(o.sensitiveValueFrequencyHistogramBuckets!);
+    checkUnnamed91(o.sensitiveValueFrequencyHistogramBuckets!);
   }
   buildCounterGooglePrivacyDlpV2LDiversityResult--;
 }
@@ -6556,12 +6705,12 @@ void checkGooglePrivacyDlpV2LikelihoodAdjustment(
   buildCounterGooglePrivacyDlpV2LikelihoodAdjustment--;
 }
 
-core.List<api.GooglePrivacyDlpV2ColumnDataProfile> buildUnnamed91() => [
+core.List<api.GooglePrivacyDlpV2ColumnDataProfile> buildUnnamed92() => [
       buildGooglePrivacyDlpV2ColumnDataProfile(),
       buildGooglePrivacyDlpV2ColumnDataProfile(),
     ];
 
-void checkUnnamed91(core.List<api.GooglePrivacyDlpV2ColumnDataProfile> o) {
+void checkUnnamed92(core.List<api.GooglePrivacyDlpV2ColumnDataProfile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2ColumnDataProfile(o[0]);
   checkGooglePrivacyDlpV2ColumnDataProfile(o[1]);
@@ -6573,7 +6722,7 @@ api.GooglePrivacyDlpV2ListColumnDataProfilesResponse
   final o = api.GooglePrivacyDlpV2ListColumnDataProfilesResponse();
   buildCounterGooglePrivacyDlpV2ListColumnDataProfilesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListColumnDataProfilesResponse < 3) {
-    o.columnDataProfiles = buildUnnamed91();
+    o.columnDataProfiles = buildUnnamed92();
     o.nextPageToken = 'foo';
   }
   buildCounterGooglePrivacyDlpV2ListColumnDataProfilesResponse--;
@@ -6584,7 +6733,7 @@ void checkGooglePrivacyDlpV2ListColumnDataProfilesResponse(
     api.GooglePrivacyDlpV2ListColumnDataProfilesResponse o) {
   buildCounterGooglePrivacyDlpV2ListColumnDataProfilesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListColumnDataProfilesResponse < 3) {
-    checkUnnamed91(o.columnDataProfiles!);
+    checkUnnamed92(o.columnDataProfiles!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -6593,12 +6742,12 @@ void checkGooglePrivacyDlpV2ListColumnDataProfilesResponse(
   buildCounterGooglePrivacyDlpV2ListColumnDataProfilesResponse--;
 }
 
-core.List<api.GooglePrivacyDlpV2Connection> buildUnnamed92() => [
+core.List<api.GooglePrivacyDlpV2Connection> buildUnnamed93() => [
       buildGooglePrivacyDlpV2Connection(),
       buildGooglePrivacyDlpV2Connection(),
     ];
 
-void checkUnnamed92(core.List<api.GooglePrivacyDlpV2Connection> o) {
+void checkUnnamed93(core.List<api.GooglePrivacyDlpV2Connection> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Connection(o[0]);
   checkGooglePrivacyDlpV2Connection(o[1]);
@@ -6610,7 +6759,7 @@ api.GooglePrivacyDlpV2ListConnectionsResponse
   final o = api.GooglePrivacyDlpV2ListConnectionsResponse();
   buildCounterGooglePrivacyDlpV2ListConnectionsResponse++;
   if (buildCounterGooglePrivacyDlpV2ListConnectionsResponse < 3) {
-    o.connections = buildUnnamed92();
+    o.connections = buildUnnamed93();
     o.nextPageToken = 'foo';
   }
   buildCounterGooglePrivacyDlpV2ListConnectionsResponse--;
@@ -6621,7 +6770,7 @@ void checkGooglePrivacyDlpV2ListConnectionsResponse(
     api.GooglePrivacyDlpV2ListConnectionsResponse o) {
   buildCounterGooglePrivacyDlpV2ListConnectionsResponse++;
   if (buildCounterGooglePrivacyDlpV2ListConnectionsResponse < 3) {
-    checkUnnamed92(o.connections!);
+    checkUnnamed93(o.connections!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -6630,12 +6779,12 @@ void checkGooglePrivacyDlpV2ListConnectionsResponse(
   buildCounterGooglePrivacyDlpV2ListConnectionsResponse--;
 }
 
-core.List<api.GooglePrivacyDlpV2DeidentifyTemplate> buildUnnamed93() => [
+core.List<api.GooglePrivacyDlpV2DeidentifyTemplate> buildUnnamed94() => [
       buildGooglePrivacyDlpV2DeidentifyTemplate(),
       buildGooglePrivacyDlpV2DeidentifyTemplate(),
     ];
 
-void checkUnnamed93(core.List<api.GooglePrivacyDlpV2DeidentifyTemplate> o) {
+void checkUnnamed94(core.List<api.GooglePrivacyDlpV2DeidentifyTemplate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2DeidentifyTemplate(o[0]);
   checkGooglePrivacyDlpV2DeidentifyTemplate(o[1]);
@@ -6647,7 +6796,7 @@ api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
   final o = api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse();
   buildCounterGooglePrivacyDlpV2ListDeidentifyTemplatesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListDeidentifyTemplatesResponse < 3) {
-    o.deidentifyTemplates = buildUnnamed93();
+    o.deidentifyTemplates = buildUnnamed94();
     o.nextPageToken = 'foo';
   }
   buildCounterGooglePrivacyDlpV2ListDeidentifyTemplatesResponse--;
@@ -6658,7 +6807,7 @@ void checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(
     api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse o) {
   buildCounterGooglePrivacyDlpV2ListDeidentifyTemplatesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListDeidentifyTemplatesResponse < 3) {
-    checkUnnamed93(o.deidentifyTemplates!);
+    checkUnnamed94(o.deidentifyTemplates!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -6667,12 +6816,12 @@ void checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(
   buildCounterGooglePrivacyDlpV2ListDeidentifyTemplatesResponse--;
 }
 
-core.List<api.GooglePrivacyDlpV2DiscoveryConfig> buildUnnamed94() => [
+core.List<api.GooglePrivacyDlpV2DiscoveryConfig> buildUnnamed95() => [
       buildGooglePrivacyDlpV2DiscoveryConfig(),
       buildGooglePrivacyDlpV2DiscoveryConfig(),
     ];
 
-void checkUnnamed94(core.List<api.GooglePrivacyDlpV2DiscoveryConfig> o) {
+void checkUnnamed95(core.List<api.GooglePrivacyDlpV2DiscoveryConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2DiscoveryConfig(o[0]);
   checkGooglePrivacyDlpV2DiscoveryConfig(o[1]);
@@ -6684,7 +6833,7 @@ api.GooglePrivacyDlpV2ListDiscoveryConfigsResponse
   final o = api.GooglePrivacyDlpV2ListDiscoveryConfigsResponse();
   buildCounterGooglePrivacyDlpV2ListDiscoveryConfigsResponse++;
   if (buildCounterGooglePrivacyDlpV2ListDiscoveryConfigsResponse < 3) {
-    o.discoveryConfigs = buildUnnamed94();
+    o.discoveryConfigs = buildUnnamed95();
     o.nextPageToken = 'foo';
   }
   buildCounterGooglePrivacyDlpV2ListDiscoveryConfigsResponse--;
@@ -6695,7 +6844,7 @@ void checkGooglePrivacyDlpV2ListDiscoveryConfigsResponse(
     api.GooglePrivacyDlpV2ListDiscoveryConfigsResponse o) {
   buildCounterGooglePrivacyDlpV2ListDiscoveryConfigsResponse++;
   if (buildCounterGooglePrivacyDlpV2ListDiscoveryConfigsResponse < 3) {
-    checkUnnamed94(o.discoveryConfigs!);
+    checkUnnamed95(o.discoveryConfigs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -6704,12 +6853,12 @@ void checkGooglePrivacyDlpV2ListDiscoveryConfigsResponse(
   buildCounterGooglePrivacyDlpV2ListDiscoveryConfigsResponse--;
 }
 
-core.List<api.GooglePrivacyDlpV2DlpJob> buildUnnamed95() => [
+core.List<api.GooglePrivacyDlpV2DlpJob> buildUnnamed96() => [
       buildGooglePrivacyDlpV2DlpJob(),
       buildGooglePrivacyDlpV2DlpJob(),
     ];
 
-void checkUnnamed95(core.List<api.GooglePrivacyDlpV2DlpJob> o) {
+void checkUnnamed96(core.List<api.GooglePrivacyDlpV2DlpJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2DlpJob(o[0]);
   checkGooglePrivacyDlpV2DlpJob(o[1]);
@@ -6721,7 +6870,7 @@ api.GooglePrivacyDlpV2ListDlpJobsResponse
   final o = api.GooglePrivacyDlpV2ListDlpJobsResponse();
   buildCounterGooglePrivacyDlpV2ListDlpJobsResponse++;
   if (buildCounterGooglePrivacyDlpV2ListDlpJobsResponse < 3) {
-    o.jobs = buildUnnamed95();
+    o.jobs = buildUnnamed96();
     o.nextPageToken = 'foo';
   }
   buildCounterGooglePrivacyDlpV2ListDlpJobsResponse--;
@@ -6732,7 +6881,7 @@ void checkGooglePrivacyDlpV2ListDlpJobsResponse(
     api.GooglePrivacyDlpV2ListDlpJobsResponse o) {
   buildCounterGooglePrivacyDlpV2ListDlpJobsResponse++;
   if (buildCounterGooglePrivacyDlpV2ListDlpJobsResponse < 3) {
-    checkUnnamed95(o.jobs!);
+    checkUnnamed96(o.jobs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -6741,12 +6890,12 @@ void checkGooglePrivacyDlpV2ListDlpJobsResponse(
   buildCounterGooglePrivacyDlpV2ListDlpJobsResponse--;
 }
 
-core.List<api.GooglePrivacyDlpV2FileStoreDataProfile> buildUnnamed96() => [
+core.List<api.GooglePrivacyDlpV2FileStoreDataProfile> buildUnnamed97() => [
       buildGooglePrivacyDlpV2FileStoreDataProfile(),
       buildGooglePrivacyDlpV2FileStoreDataProfile(),
     ];
 
-void checkUnnamed96(core.List<api.GooglePrivacyDlpV2FileStoreDataProfile> o) {
+void checkUnnamed97(core.List<api.GooglePrivacyDlpV2FileStoreDataProfile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2FileStoreDataProfile(o[0]);
   checkGooglePrivacyDlpV2FileStoreDataProfile(o[1]);
@@ -6758,7 +6907,7 @@ api.GooglePrivacyDlpV2ListFileStoreDataProfilesResponse
   final o = api.GooglePrivacyDlpV2ListFileStoreDataProfilesResponse();
   buildCounterGooglePrivacyDlpV2ListFileStoreDataProfilesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListFileStoreDataProfilesResponse < 3) {
-    o.fileStoreDataProfiles = buildUnnamed96();
+    o.fileStoreDataProfiles = buildUnnamed97();
     o.nextPageToken = 'foo';
   }
   buildCounterGooglePrivacyDlpV2ListFileStoreDataProfilesResponse--;
@@ -6769,7 +6918,7 @@ void checkGooglePrivacyDlpV2ListFileStoreDataProfilesResponse(
     api.GooglePrivacyDlpV2ListFileStoreDataProfilesResponse o) {
   buildCounterGooglePrivacyDlpV2ListFileStoreDataProfilesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListFileStoreDataProfilesResponse < 3) {
-    checkUnnamed96(o.fileStoreDataProfiles!);
+    checkUnnamed97(o.fileStoreDataProfiles!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -6778,12 +6927,12 @@ void checkGooglePrivacyDlpV2ListFileStoreDataProfilesResponse(
   buildCounterGooglePrivacyDlpV2ListFileStoreDataProfilesResponse--;
 }
 
-core.List<api.GooglePrivacyDlpV2InfoTypeDescription> buildUnnamed97() => [
+core.List<api.GooglePrivacyDlpV2InfoTypeDescription> buildUnnamed98() => [
       buildGooglePrivacyDlpV2InfoTypeDescription(),
       buildGooglePrivacyDlpV2InfoTypeDescription(),
     ];
 
-void checkUnnamed97(core.List<api.GooglePrivacyDlpV2InfoTypeDescription> o) {
+void checkUnnamed98(core.List<api.GooglePrivacyDlpV2InfoTypeDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoTypeDescription(o[0]);
   checkGooglePrivacyDlpV2InfoTypeDescription(o[1]);
@@ -6795,7 +6944,7 @@ api.GooglePrivacyDlpV2ListInfoTypesResponse
   final o = api.GooglePrivacyDlpV2ListInfoTypesResponse();
   buildCounterGooglePrivacyDlpV2ListInfoTypesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListInfoTypesResponse < 3) {
-    o.infoTypes = buildUnnamed97();
+    o.infoTypes = buildUnnamed98();
   }
   buildCounterGooglePrivacyDlpV2ListInfoTypesResponse--;
   return o;
@@ -6805,17 +6954,17 @@ void checkGooglePrivacyDlpV2ListInfoTypesResponse(
     api.GooglePrivacyDlpV2ListInfoTypesResponse o) {
   buildCounterGooglePrivacyDlpV2ListInfoTypesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListInfoTypesResponse < 3) {
-    checkUnnamed97(o.infoTypes!);
+    checkUnnamed98(o.infoTypes!);
   }
   buildCounterGooglePrivacyDlpV2ListInfoTypesResponse--;
 }
 
-core.List<api.GooglePrivacyDlpV2InspectTemplate> buildUnnamed98() => [
+core.List<api.GooglePrivacyDlpV2InspectTemplate> buildUnnamed99() => [
       buildGooglePrivacyDlpV2InspectTemplate(),
       buildGooglePrivacyDlpV2InspectTemplate(),
     ];
 
-void checkUnnamed98(core.List<api.GooglePrivacyDlpV2InspectTemplate> o) {
+void checkUnnamed99(core.List<api.GooglePrivacyDlpV2InspectTemplate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InspectTemplate(o[0]);
   checkGooglePrivacyDlpV2InspectTemplate(o[1]);
@@ -6827,7 +6976,7 @@ api.GooglePrivacyDlpV2ListInspectTemplatesResponse
   final o = api.GooglePrivacyDlpV2ListInspectTemplatesResponse();
   buildCounterGooglePrivacyDlpV2ListInspectTemplatesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListInspectTemplatesResponse < 3) {
-    o.inspectTemplates = buildUnnamed98();
+    o.inspectTemplates = buildUnnamed99();
     o.nextPageToken = 'foo';
   }
   buildCounterGooglePrivacyDlpV2ListInspectTemplatesResponse--;
@@ -6838,7 +6987,7 @@ void checkGooglePrivacyDlpV2ListInspectTemplatesResponse(
     api.GooglePrivacyDlpV2ListInspectTemplatesResponse o) {
   buildCounterGooglePrivacyDlpV2ListInspectTemplatesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListInspectTemplatesResponse < 3) {
-    checkUnnamed98(o.inspectTemplates!);
+    checkUnnamed99(o.inspectTemplates!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -6847,12 +6996,12 @@ void checkGooglePrivacyDlpV2ListInspectTemplatesResponse(
   buildCounterGooglePrivacyDlpV2ListInspectTemplatesResponse--;
 }
 
-core.List<api.GooglePrivacyDlpV2JobTrigger> buildUnnamed99() => [
+core.List<api.GooglePrivacyDlpV2JobTrigger> buildUnnamed100() => [
       buildGooglePrivacyDlpV2JobTrigger(),
       buildGooglePrivacyDlpV2JobTrigger(),
     ];
 
-void checkUnnamed99(core.List<api.GooglePrivacyDlpV2JobTrigger> o) {
+void checkUnnamed100(core.List<api.GooglePrivacyDlpV2JobTrigger> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2JobTrigger(o[0]);
   checkGooglePrivacyDlpV2JobTrigger(o[1]);
@@ -6864,7 +7013,7 @@ api.GooglePrivacyDlpV2ListJobTriggersResponse
   final o = api.GooglePrivacyDlpV2ListJobTriggersResponse();
   buildCounterGooglePrivacyDlpV2ListJobTriggersResponse++;
   if (buildCounterGooglePrivacyDlpV2ListJobTriggersResponse < 3) {
-    o.jobTriggers = buildUnnamed99();
+    o.jobTriggers = buildUnnamed100();
     o.nextPageToken = 'foo';
   }
   buildCounterGooglePrivacyDlpV2ListJobTriggersResponse--;
@@ -6875,7 +7024,7 @@ void checkGooglePrivacyDlpV2ListJobTriggersResponse(
     api.GooglePrivacyDlpV2ListJobTriggersResponse o) {
   buildCounterGooglePrivacyDlpV2ListJobTriggersResponse++;
   if (buildCounterGooglePrivacyDlpV2ListJobTriggersResponse < 3) {
-    checkUnnamed99(o.jobTriggers!);
+    checkUnnamed100(o.jobTriggers!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -6884,12 +7033,12 @@ void checkGooglePrivacyDlpV2ListJobTriggersResponse(
   buildCounterGooglePrivacyDlpV2ListJobTriggersResponse--;
 }
 
-core.List<api.GooglePrivacyDlpV2ProjectDataProfile> buildUnnamed100() => [
+core.List<api.GooglePrivacyDlpV2ProjectDataProfile> buildUnnamed101() => [
       buildGooglePrivacyDlpV2ProjectDataProfile(),
       buildGooglePrivacyDlpV2ProjectDataProfile(),
     ];
 
-void checkUnnamed100(core.List<api.GooglePrivacyDlpV2ProjectDataProfile> o) {
+void checkUnnamed101(core.List<api.GooglePrivacyDlpV2ProjectDataProfile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2ProjectDataProfile(o[0]);
   checkGooglePrivacyDlpV2ProjectDataProfile(o[1]);
@@ -6902,7 +7051,7 @@ api.GooglePrivacyDlpV2ListProjectDataProfilesResponse
   buildCounterGooglePrivacyDlpV2ListProjectDataProfilesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListProjectDataProfilesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.projectDataProfiles = buildUnnamed100();
+    o.projectDataProfiles = buildUnnamed101();
   }
   buildCounterGooglePrivacyDlpV2ListProjectDataProfilesResponse--;
   return o;
@@ -6916,17 +7065,17 @@ void checkGooglePrivacyDlpV2ListProjectDataProfilesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed100(o.projectDataProfiles!);
+    checkUnnamed101(o.projectDataProfiles!);
   }
   buildCounterGooglePrivacyDlpV2ListProjectDataProfilesResponse--;
 }
 
-core.List<api.GooglePrivacyDlpV2StoredInfoType> buildUnnamed101() => [
+core.List<api.GooglePrivacyDlpV2StoredInfoType> buildUnnamed102() => [
       buildGooglePrivacyDlpV2StoredInfoType(),
       buildGooglePrivacyDlpV2StoredInfoType(),
     ];
 
-void checkUnnamed101(core.List<api.GooglePrivacyDlpV2StoredInfoType> o) {
+void checkUnnamed102(core.List<api.GooglePrivacyDlpV2StoredInfoType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2StoredInfoType(o[0]);
   checkGooglePrivacyDlpV2StoredInfoType(o[1]);
@@ -6939,7 +7088,7 @@ api.GooglePrivacyDlpV2ListStoredInfoTypesResponse
   buildCounterGooglePrivacyDlpV2ListStoredInfoTypesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListStoredInfoTypesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.storedInfoTypes = buildUnnamed101();
+    o.storedInfoTypes = buildUnnamed102();
   }
   buildCounterGooglePrivacyDlpV2ListStoredInfoTypesResponse--;
   return o;
@@ -6953,17 +7102,17 @@ void checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed101(o.storedInfoTypes!);
+    checkUnnamed102(o.storedInfoTypes!);
   }
   buildCounterGooglePrivacyDlpV2ListStoredInfoTypesResponse--;
 }
 
-core.List<api.GooglePrivacyDlpV2TableDataProfile> buildUnnamed102() => [
+core.List<api.GooglePrivacyDlpV2TableDataProfile> buildUnnamed103() => [
       buildGooglePrivacyDlpV2TableDataProfile(),
       buildGooglePrivacyDlpV2TableDataProfile(),
     ];
 
-void checkUnnamed102(core.List<api.GooglePrivacyDlpV2TableDataProfile> o) {
+void checkUnnamed103(core.List<api.GooglePrivacyDlpV2TableDataProfile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2TableDataProfile(o[0]);
   checkGooglePrivacyDlpV2TableDataProfile(o[1]);
@@ -6976,7 +7125,7 @@ api.GooglePrivacyDlpV2ListTableDataProfilesResponse
   buildCounterGooglePrivacyDlpV2ListTableDataProfilesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListTableDataProfilesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.tableDataProfiles = buildUnnamed102();
+    o.tableDataProfiles = buildUnnamed103();
   }
   buildCounterGooglePrivacyDlpV2ListTableDataProfilesResponse--;
   return o;
@@ -6990,17 +7139,17 @@ void checkGooglePrivacyDlpV2ListTableDataProfilesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed102(o.tableDataProfiles!);
+    checkUnnamed103(o.tableDataProfiles!);
   }
   buildCounterGooglePrivacyDlpV2ListTableDataProfilesResponse--;
 }
 
-core.List<api.GooglePrivacyDlpV2ContentLocation> buildUnnamed103() => [
+core.List<api.GooglePrivacyDlpV2ContentLocation> buildUnnamed104() => [
       buildGooglePrivacyDlpV2ContentLocation(),
       buildGooglePrivacyDlpV2ContentLocation(),
     ];
 
-void checkUnnamed103(core.List<api.GooglePrivacyDlpV2ContentLocation> o) {
+void checkUnnamed104(core.List<api.GooglePrivacyDlpV2ContentLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2ContentLocation(o[0]);
   checkGooglePrivacyDlpV2ContentLocation(o[1]);
@@ -7014,7 +7163,7 @@ api.GooglePrivacyDlpV2Location buildGooglePrivacyDlpV2Location() {
     o.byteRange = buildGooglePrivacyDlpV2Range();
     o.codepointRange = buildGooglePrivacyDlpV2Range();
     o.container = buildGooglePrivacyDlpV2Container();
-    o.contentLocations = buildUnnamed103();
+    o.contentLocations = buildUnnamed104();
   }
   buildCounterGooglePrivacyDlpV2Location--;
   return o;
@@ -7026,7 +7175,7 @@ void checkGooglePrivacyDlpV2Location(api.GooglePrivacyDlpV2Location o) {
     checkGooglePrivacyDlpV2Range(o.byteRange!);
     checkGooglePrivacyDlpV2Range(o.codepointRange!);
     checkGooglePrivacyDlpV2Container(o.container!);
-    checkUnnamed103(o.contentLocations!);
+    checkUnnamed104(o.contentLocations!);
   }
   buildCounterGooglePrivacyDlpV2Location--;
 }
@@ -7072,6 +7221,23 @@ void checkGooglePrivacyDlpV2MetadataLocation(
   buildCounterGooglePrivacyDlpV2MetadataLocation--;
 }
 
+core.int buildCounterGooglePrivacyDlpV2MultiRegionProcessing = 0;
+api.GooglePrivacyDlpV2MultiRegionProcessing
+    buildGooglePrivacyDlpV2MultiRegionProcessing() {
+  final o = api.GooglePrivacyDlpV2MultiRegionProcessing();
+  buildCounterGooglePrivacyDlpV2MultiRegionProcessing++;
+  if (buildCounterGooglePrivacyDlpV2MultiRegionProcessing < 3) {}
+  buildCounterGooglePrivacyDlpV2MultiRegionProcessing--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2MultiRegionProcessing(
+    api.GooglePrivacyDlpV2MultiRegionProcessing o) {
+  buildCounterGooglePrivacyDlpV2MultiRegionProcessing++;
+  if (buildCounterGooglePrivacyDlpV2MultiRegionProcessing < 3) {}
+  buildCounterGooglePrivacyDlpV2MultiRegionProcessing--;
+}
+
 core.int buildCounterGooglePrivacyDlpV2NumericalStatsConfig = 0;
 api.GooglePrivacyDlpV2NumericalStatsConfig
     buildGooglePrivacyDlpV2NumericalStatsConfig() {
@@ -7093,12 +7259,12 @@ void checkGooglePrivacyDlpV2NumericalStatsConfig(
   buildCounterGooglePrivacyDlpV2NumericalStatsConfig--;
 }
 
-core.List<api.GooglePrivacyDlpV2Value> buildUnnamed104() => [
+core.List<api.GooglePrivacyDlpV2Value> buildUnnamed105() => [
       buildGooglePrivacyDlpV2Value(),
       buildGooglePrivacyDlpV2Value(),
     ];
 
-void checkUnnamed104(core.List<api.GooglePrivacyDlpV2Value> o) {
+void checkUnnamed105(core.List<api.GooglePrivacyDlpV2Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Value(o[0]);
   checkGooglePrivacyDlpV2Value(o[1]);
@@ -7112,7 +7278,7 @@ api.GooglePrivacyDlpV2NumericalStatsResult
   if (buildCounterGooglePrivacyDlpV2NumericalStatsResult < 3) {
     o.maxValue = buildGooglePrivacyDlpV2Value();
     o.minValue = buildGooglePrivacyDlpV2Value();
-    o.quantileValues = buildUnnamed104();
+    o.quantileValues = buildUnnamed105();
   }
   buildCounterGooglePrivacyDlpV2NumericalStatsResult--;
   return o;
@@ -7124,7 +7290,7 @@ void checkGooglePrivacyDlpV2NumericalStatsResult(
   if (buildCounterGooglePrivacyDlpV2NumericalStatsResult < 3) {
     checkGooglePrivacyDlpV2Value(o.maxValue!);
     checkGooglePrivacyDlpV2Value(o.minValue!);
-    checkUnnamed104(o.quantileValues!);
+    checkUnnamed105(o.quantileValues!);
   }
   buildCounterGooglePrivacyDlpV2NumericalStatsResult--;
 }
@@ -7274,12 +7440,12 @@ void checkGooglePrivacyDlpV2OtherCloudResourceRegex(
   buildCounterGooglePrivacyDlpV2OtherCloudResourceRegex--;
 }
 
-core.List<api.GooglePrivacyDlpV2OtherCloudResourceRegex> buildUnnamed105() => [
+core.List<api.GooglePrivacyDlpV2OtherCloudResourceRegex> buildUnnamed106() => [
       buildGooglePrivacyDlpV2OtherCloudResourceRegex(),
       buildGooglePrivacyDlpV2OtherCloudResourceRegex(),
     ];
 
-void checkUnnamed105(
+void checkUnnamed106(
     core.List<api.GooglePrivacyDlpV2OtherCloudResourceRegex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2OtherCloudResourceRegex(o[0]);
@@ -7292,7 +7458,7 @@ api.GooglePrivacyDlpV2OtherCloudResourceRegexes
   final o = api.GooglePrivacyDlpV2OtherCloudResourceRegexes();
   buildCounterGooglePrivacyDlpV2OtherCloudResourceRegexes++;
   if (buildCounterGooglePrivacyDlpV2OtherCloudResourceRegexes < 3) {
-    o.patterns = buildUnnamed105();
+    o.patterns = buildUnnamed106();
   }
   buildCounterGooglePrivacyDlpV2OtherCloudResourceRegexes--;
   return o;
@@ -7302,7 +7468,7 @@ void checkGooglePrivacyDlpV2OtherCloudResourceRegexes(
     api.GooglePrivacyDlpV2OtherCloudResourceRegexes o) {
   buildCounterGooglePrivacyDlpV2OtherCloudResourceRegexes++;
   if (buildCounterGooglePrivacyDlpV2OtherCloudResourceRegexes < 3) {
-    checkUnnamed105(o.patterns!);
+    checkUnnamed106(o.patterns!);
   }
   buildCounterGooglePrivacyDlpV2OtherCloudResourceRegexes--;
 }
@@ -7525,6 +7691,27 @@ void checkGooglePrivacyDlpV2PrivacyMetric(
   buildCounterGooglePrivacyDlpV2PrivacyMetric--;
 }
 
+core.int buildCounterGooglePrivacyDlpV2ProcessingLocation = 0;
+api.GooglePrivacyDlpV2ProcessingLocation
+    buildGooglePrivacyDlpV2ProcessingLocation() {
+  final o = api.GooglePrivacyDlpV2ProcessingLocation();
+  buildCounterGooglePrivacyDlpV2ProcessingLocation++;
+  if (buildCounterGooglePrivacyDlpV2ProcessingLocation < 3) {
+    o.imageFallbackLocation = buildGooglePrivacyDlpV2ImageFallbackLocation();
+  }
+  buildCounterGooglePrivacyDlpV2ProcessingLocation--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2ProcessingLocation(
+    api.GooglePrivacyDlpV2ProcessingLocation o) {
+  buildCounterGooglePrivacyDlpV2ProcessingLocation++;
+  if (buildCounterGooglePrivacyDlpV2ProcessingLocation < 3) {
+    checkGooglePrivacyDlpV2ImageFallbackLocation(o.imageFallbackLocation!);
+  }
+  buildCounterGooglePrivacyDlpV2ProcessingLocation--;
+}
+
 core.int buildCounterGooglePrivacyDlpV2ProfileStatus = 0;
 api.GooglePrivacyDlpV2ProfileStatus buildGooglePrivacyDlpV2ProfileStatus() {
   final o = api.GooglePrivacyDlpV2ProfileStatus();
@@ -7655,12 +7842,12 @@ void checkGooglePrivacyDlpV2PubSubCondition(
   buildCounterGooglePrivacyDlpV2PubSubCondition--;
 }
 
-core.List<api.GooglePrivacyDlpV2PubSubCondition> buildUnnamed106() => [
+core.List<api.GooglePrivacyDlpV2PubSubCondition> buildUnnamed107() => [
       buildGooglePrivacyDlpV2PubSubCondition(),
       buildGooglePrivacyDlpV2PubSubCondition(),
     ];
 
-void checkUnnamed106(core.List<api.GooglePrivacyDlpV2PubSubCondition> o) {
+void checkUnnamed107(core.List<api.GooglePrivacyDlpV2PubSubCondition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2PubSubCondition(o[0]);
   checkGooglePrivacyDlpV2PubSubCondition(o[1]);
@@ -7672,7 +7859,7 @@ api.GooglePrivacyDlpV2PubSubExpressions
   final o = api.GooglePrivacyDlpV2PubSubExpressions();
   buildCounterGooglePrivacyDlpV2PubSubExpressions++;
   if (buildCounterGooglePrivacyDlpV2PubSubExpressions < 3) {
-    o.conditions = buildUnnamed106();
+    o.conditions = buildUnnamed107();
     o.logicalOperator = 'foo';
   }
   buildCounterGooglePrivacyDlpV2PubSubExpressions--;
@@ -7683,7 +7870,7 @@ void checkGooglePrivacyDlpV2PubSubExpressions(
     api.GooglePrivacyDlpV2PubSubExpressions o) {
   buildCounterGooglePrivacyDlpV2PubSubExpressions++;
   if (buildCounterGooglePrivacyDlpV2PubSubExpressions < 3) {
-    checkUnnamed106(o.conditions!);
+    checkUnnamed107(o.conditions!);
     unittest.expect(
       o.logicalOperator!,
       unittest.equals('foo'),
@@ -7980,12 +8167,12 @@ void checkGooglePrivacyDlpV2RecordCondition(
   buildCounterGooglePrivacyDlpV2RecordCondition--;
 }
 
-core.List<core.String> buildUnnamed107() => [
+core.List<core.String> buildUnnamed108() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed107(core.List<core.String> o) {
+void checkUnnamed108(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -8004,7 +8191,7 @@ api.GooglePrivacyDlpV2RecordKey buildGooglePrivacyDlpV2RecordKey() {
   if (buildCounterGooglePrivacyDlpV2RecordKey < 3) {
     o.bigQueryKey = buildGooglePrivacyDlpV2BigQueryKey();
     o.datastoreKey = buildGooglePrivacyDlpV2DatastoreKey();
-    o.idValues = buildUnnamed107();
+    o.idValues = buildUnnamed108();
   }
   buildCounterGooglePrivacyDlpV2RecordKey--;
   return o;
@@ -8015,7 +8202,7 @@ void checkGooglePrivacyDlpV2RecordKey(api.GooglePrivacyDlpV2RecordKey o) {
   if (buildCounterGooglePrivacyDlpV2RecordKey < 3) {
     checkGooglePrivacyDlpV2BigQueryKey(o.bigQueryKey!);
     checkGooglePrivacyDlpV2DatastoreKey(o.datastoreKey!);
-    checkUnnamed107(o.idValues!);
+    checkUnnamed108(o.idValues!);
   }
   buildCounterGooglePrivacyDlpV2RecordKey--;
 }
@@ -8065,23 +8252,23 @@ void checkGooglePrivacyDlpV2RecordSuppression(
   buildCounterGooglePrivacyDlpV2RecordSuppression--;
 }
 
-core.List<api.GooglePrivacyDlpV2FieldTransformation> buildUnnamed108() => [
+core.List<api.GooglePrivacyDlpV2FieldTransformation> buildUnnamed109() => [
       buildGooglePrivacyDlpV2FieldTransformation(),
       buildGooglePrivacyDlpV2FieldTransformation(),
     ];
 
-void checkUnnamed108(core.List<api.GooglePrivacyDlpV2FieldTransformation> o) {
+void checkUnnamed109(core.List<api.GooglePrivacyDlpV2FieldTransformation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2FieldTransformation(o[0]);
   checkGooglePrivacyDlpV2FieldTransformation(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2RecordSuppression> buildUnnamed109() => [
+core.List<api.GooglePrivacyDlpV2RecordSuppression> buildUnnamed110() => [
       buildGooglePrivacyDlpV2RecordSuppression(),
       buildGooglePrivacyDlpV2RecordSuppression(),
     ];
 
-void checkUnnamed109(core.List<api.GooglePrivacyDlpV2RecordSuppression> o) {
+void checkUnnamed110(core.List<api.GooglePrivacyDlpV2RecordSuppression> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2RecordSuppression(o[0]);
   checkGooglePrivacyDlpV2RecordSuppression(o[1]);
@@ -8093,8 +8280,8 @@ api.GooglePrivacyDlpV2RecordTransformations
   final o = api.GooglePrivacyDlpV2RecordTransformations();
   buildCounterGooglePrivacyDlpV2RecordTransformations++;
   if (buildCounterGooglePrivacyDlpV2RecordTransformations < 3) {
-    o.fieldTransformations = buildUnnamed108();
-    o.recordSuppressions = buildUnnamed109();
+    o.fieldTransformations = buildUnnamed109();
+    o.recordSuppressions = buildUnnamed110();
   }
   buildCounterGooglePrivacyDlpV2RecordTransformations--;
   return o;
@@ -8104,8 +8291,8 @@ void checkGooglePrivacyDlpV2RecordTransformations(
     api.GooglePrivacyDlpV2RecordTransformations o) {
   buildCounterGooglePrivacyDlpV2RecordTransformations++;
   if (buildCounterGooglePrivacyDlpV2RecordTransformations < 3) {
-    checkUnnamed108(o.fieldTransformations!);
-    checkUnnamed109(o.recordSuppressions!);
+    checkUnnamed109(o.fieldTransformations!);
+    checkUnnamed110(o.recordSuppressions!);
   }
   buildCounterGooglePrivacyDlpV2RecordTransformations--;
 }
@@ -8125,12 +8312,12 @@ void checkGooglePrivacyDlpV2RedactConfig(api.GooglePrivacyDlpV2RedactConfig o) {
   buildCounterGooglePrivacyDlpV2RedactConfig--;
 }
 
-core.List<api.GooglePrivacyDlpV2ImageRedactionConfig> buildUnnamed110() => [
+core.List<api.GooglePrivacyDlpV2ImageRedactionConfig> buildUnnamed111() => [
       buildGooglePrivacyDlpV2ImageRedactionConfig(),
       buildGooglePrivacyDlpV2ImageRedactionConfig(),
     ];
 
-void checkUnnamed110(core.List<api.GooglePrivacyDlpV2ImageRedactionConfig> o) {
+void checkUnnamed111(core.List<api.GooglePrivacyDlpV2ImageRedactionConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2ImageRedactionConfig(o[0]);
   checkGooglePrivacyDlpV2ImageRedactionConfig(o[1]);
@@ -8143,7 +8330,7 @@ api.GooglePrivacyDlpV2RedactImageRequest
   buildCounterGooglePrivacyDlpV2RedactImageRequest++;
   if (buildCounterGooglePrivacyDlpV2RedactImageRequest < 3) {
     o.byteItem = buildGooglePrivacyDlpV2ByteContentItem();
-    o.imageRedactionConfigs = buildUnnamed110();
+    o.imageRedactionConfigs = buildUnnamed111();
     o.includeFindings = true;
     o.inspectConfig = buildGooglePrivacyDlpV2InspectConfig();
     o.locationId = 'foo';
@@ -8157,7 +8344,7 @@ void checkGooglePrivacyDlpV2RedactImageRequest(
   buildCounterGooglePrivacyDlpV2RedactImageRequest++;
   if (buildCounterGooglePrivacyDlpV2RedactImageRequest < 3) {
     checkGooglePrivacyDlpV2ByteContentItem(o.byteItem!);
-    checkUnnamed110(o.imageRedactionConfigs!);
+    checkUnnamed111(o.imageRedactionConfigs!);
     unittest.expect(o.includeFindings!, unittest.isTrue);
     checkGooglePrivacyDlpV2InspectConfig(o.inspectConfig!);
     unittest.expect(
@@ -8199,12 +8386,12 @@ void checkGooglePrivacyDlpV2RedactImageResponse(
   buildCounterGooglePrivacyDlpV2RedactImageResponse--;
 }
 
-core.List<core.int> buildUnnamed111() => [
+core.List<core.int> buildUnnamed112() => [
       42,
       42,
     ];
 
-void checkUnnamed111(core.List<core.int> o) {
+void checkUnnamed112(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -8221,7 +8408,7 @@ api.GooglePrivacyDlpV2Regex buildGooglePrivacyDlpV2Regex() {
   final o = api.GooglePrivacyDlpV2Regex();
   buildCounterGooglePrivacyDlpV2Regex++;
   if (buildCounterGooglePrivacyDlpV2Regex < 3) {
-    o.groupIndexes = buildUnnamed111();
+    o.groupIndexes = buildUnnamed112();
     o.pattern = 'foo';
   }
   buildCounterGooglePrivacyDlpV2Regex--;
@@ -8231,7 +8418,7 @@ api.GooglePrivacyDlpV2Regex buildGooglePrivacyDlpV2Regex() {
 void checkGooglePrivacyDlpV2Regex(api.GooglePrivacyDlpV2Regex o) {
   buildCounterGooglePrivacyDlpV2Regex++;
   if (buildCounterGooglePrivacyDlpV2Regex < 3) {
-    checkUnnamed111(o.groupIndexes!);
+    checkUnnamed112(o.groupIndexes!);
     unittest.expect(
       o.pattern!,
       unittest.equals('foo'),
@@ -8301,6 +8488,29 @@ void checkGooglePrivacyDlpV2ReidentifyContentResponse(
     checkGooglePrivacyDlpV2TransformationOverview(o.overview!);
   }
   buildCounterGooglePrivacyDlpV2ReidentifyContentResponse--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2RelatedResource = 0;
+api.GooglePrivacyDlpV2RelatedResource buildGooglePrivacyDlpV2RelatedResource() {
+  final o = api.GooglePrivacyDlpV2RelatedResource();
+  buildCounterGooglePrivacyDlpV2RelatedResource++;
+  if (buildCounterGooglePrivacyDlpV2RelatedResource < 3) {
+    o.fullResource = 'foo';
+  }
+  buildCounterGooglePrivacyDlpV2RelatedResource--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2RelatedResource(
+    api.GooglePrivacyDlpV2RelatedResource o) {
+  buildCounterGooglePrivacyDlpV2RelatedResource++;
+  if (buildCounterGooglePrivacyDlpV2RelatedResource < 3) {
+    unittest.expect(
+      o.fullResource!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGooglePrivacyDlpV2RelatedResource--;
 }
 
 core.int buildCounterGooglePrivacyDlpV2ReplaceDictionaryConfig = 0;
@@ -8433,12 +8643,12 @@ void checkGooglePrivacyDlpV2RequestedRiskAnalysisOptions(
   buildCounterGooglePrivacyDlpV2RequestedRiskAnalysisOptions--;
 }
 
-core.List<api.GooglePrivacyDlpV2InfoTypeStats> buildUnnamed112() => [
+core.List<api.GooglePrivacyDlpV2InfoTypeStats> buildUnnamed113() => [
       buildGooglePrivacyDlpV2InfoTypeStats(),
       buildGooglePrivacyDlpV2InfoTypeStats(),
     ];
 
-void checkUnnamed112(core.List<api.GooglePrivacyDlpV2InfoTypeStats> o) {
+void checkUnnamed113(core.List<api.GooglePrivacyDlpV2InfoTypeStats> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoTypeStats(o[0]);
   checkGooglePrivacyDlpV2InfoTypeStats(o[1]);
@@ -8450,7 +8660,7 @@ api.GooglePrivacyDlpV2Result buildGooglePrivacyDlpV2Result() {
   buildCounterGooglePrivacyDlpV2Result++;
   if (buildCounterGooglePrivacyDlpV2Result < 3) {
     o.hybridStats = buildGooglePrivacyDlpV2HybridInspectStatistics();
-    o.infoTypeStats = buildUnnamed112();
+    o.infoTypeStats = buildUnnamed113();
     o.numRowsProcessed = 'foo';
     o.processedBytes = 'foo';
     o.totalEstimatedBytes = 'foo';
@@ -8463,7 +8673,7 @@ void checkGooglePrivacyDlpV2Result(api.GooglePrivacyDlpV2Result o) {
   buildCounterGooglePrivacyDlpV2Result++;
   if (buildCounterGooglePrivacyDlpV2Result < 3) {
     checkGooglePrivacyDlpV2HybridInspectStatistics(o.hybridStats!);
-    checkUnnamed112(o.infoTypeStats!);
+    checkUnnamed113(o.infoTypeStats!);
     unittest.expect(
       o.numRowsProcessed!,
       unittest.equals('foo'),
@@ -8480,12 +8690,12 @@ void checkGooglePrivacyDlpV2Result(api.GooglePrivacyDlpV2Result o) {
   buildCounterGooglePrivacyDlpV2Result--;
 }
 
-core.List<api.GooglePrivacyDlpV2Action> buildUnnamed113() => [
+core.List<api.GooglePrivacyDlpV2Action> buildUnnamed114() => [
       buildGooglePrivacyDlpV2Action(),
       buildGooglePrivacyDlpV2Action(),
     ];
 
-void checkUnnamed113(core.List<api.GooglePrivacyDlpV2Action> o) {
+void checkUnnamed114(core.List<api.GooglePrivacyDlpV2Action> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Action(o[0]);
   checkGooglePrivacyDlpV2Action(o[1]);
@@ -8497,7 +8707,7 @@ api.GooglePrivacyDlpV2RiskAnalysisJobConfig
   final o = api.GooglePrivacyDlpV2RiskAnalysisJobConfig();
   buildCounterGooglePrivacyDlpV2RiskAnalysisJobConfig++;
   if (buildCounterGooglePrivacyDlpV2RiskAnalysisJobConfig < 3) {
-    o.actions = buildUnnamed113();
+    o.actions = buildUnnamed114();
     o.privacyMetric = buildGooglePrivacyDlpV2PrivacyMetric();
     o.sourceTable = buildGooglePrivacyDlpV2BigQueryTable();
   }
@@ -8509,19 +8719,19 @@ void checkGooglePrivacyDlpV2RiskAnalysisJobConfig(
     api.GooglePrivacyDlpV2RiskAnalysisJobConfig o) {
   buildCounterGooglePrivacyDlpV2RiskAnalysisJobConfig++;
   if (buildCounterGooglePrivacyDlpV2RiskAnalysisJobConfig < 3) {
-    checkUnnamed113(o.actions!);
+    checkUnnamed114(o.actions!);
     checkGooglePrivacyDlpV2PrivacyMetric(o.privacyMetric!);
     checkGooglePrivacyDlpV2BigQueryTable(o.sourceTable!);
   }
   buildCounterGooglePrivacyDlpV2RiskAnalysisJobConfig--;
 }
 
-core.List<api.GooglePrivacyDlpV2Value> buildUnnamed114() => [
+core.List<api.GooglePrivacyDlpV2Value> buildUnnamed115() => [
       buildGooglePrivacyDlpV2Value(),
       buildGooglePrivacyDlpV2Value(),
     ];
 
-void checkUnnamed114(core.List<api.GooglePrivacyDlpV2Value> o) {
+void checkUnnamed115(core.List<api.GooglePrivacyDlpV2Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Value(o[0]);
   checkGooglePrivacyDlpV2Value(o[1]);
@@ -8532,7 +8742,7 @@ api.GooglePrivacyDlpV2Row buildGooglePrivacyDlpV2Row() {
   final o = api.GooglePrivacyDlpV2Row();
   buildCounterGooglePrivacyDlpV2Row++;
   if (buildCounterGooglePrivacyDlpV2Row < 3) {
-    o.values = buildUnnamed114();
+    o.values = buildUnnamed115();
   }
   buildCounterGooglePrivacyDlpV2Row--;
   return o;
@@ -8541,7 +8751,7 @@ api.GooglePrivacyDlpV2Row buildGooglePrivacyDlpV2Row() {
 void checkGooglePrivacyDlpV2Row(api.GooglePrivacyDlpV2Row o) {
   buildCounterGooglePrivacyDlpV2Row++;
   if (buildCounterGooglePrivacyDlpV2Row < 3) {
-    checkUnnamed114(o.values!);
+    checkUnnamed115(o.values!);
   }
   buildCounterGooglePrivacyDlpV2Row--;
 }
@@ -8587,12 +8797,12 @@ void checkGooglePrivacyDlpV2Schedule(api.GooglePrivacyDlpV2Schedule o) {
   buildCounterGooglePrivacyDlpV2Schedule--;
 }
 
-core.List<core.String> buildUnnamed115() => [
+core.List<core.String> buildUnnamed116() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed115(core.List<core.String> o) {
+void checkUnnamed116(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -8611,7 +8821,7 @@ api.GooglePrivacyDlpV2SchemaModifiedCadence
   buildCounterGooglePrivacyDlpV2SchemaModifiedCadence++;
   if (buildCounterGooglePrivacyDlpV2SchemaModifiedCadence < 3) {
     o.frequency = 'foo';
-    o.types = buildUnnamed115();
+    o.types = buildUnnamed116();
   }
   buildCounterGooglePrivacyDlpV2SchemaModifiedCadence--;
   return o;
@@ -8625,17 +8835,17 @@ void checkGooglePrivacyDlpV2SchemaModifiedCadence(
       o.frequency!,
       unittest.equals('foo'),
     );
-    checkUnnamed115(o.types!);
+    checkUnnamed116(o.types!);
   }
   buildCounterGooglePrivacyDlpV2SchemaModifiedCadence--;
 }
 
-core.List<api.GooglePrivacyDlpV2Connection> buildUnnamed116() => [
+core.List<api.GooglePrivacyDlpV2Connection> buildUnnamed117() => [
       buildGooglePrivacyDlpV2Connection(),
       buildGooglePrivacyDlpV2Connection(),
     ];
 
-void checkUnnamed116(core.List<api.GooglePrivacyDlpV2Connection> o) {
+void checkUnnamed117(core.List<api.GooglePrivacyDlpV2Connection> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Connection(o[0]);
   checkGooglePrivacyDlpV2Connection(o[1]);
@@ -8647,7 +8857,7 @@ api.GooglePrivacyDlpV2SearchConnectionsResponse
   final o = api.GooglePrivacyDlpV2SearchConnectionsResponse();
   buildCounterGooglePrivacyDlpV2SearchConnectionsResponse++;
   if (buildCounterGooglePrivacyDlpV2SearchConnectionsResponse < 3) {
-    o.connections = buildUnnamed116();
+    o.connections = buildUnnamed117();
     o.nextPageToken = 'foo';
   }
   buildCounterGooglePrivacyDlpV2SearchConnectionsResponse--;
@@ -8658,7 +8868,7 @@ void checkGooglePrivacyDlpV2SearchConnectionsResponse(
     api.GooglePrivacyDlpV2SearchConnectionsResponse o) {
   buildCounterGooglePrivacyDlpV2SearchConnectionsResponse++;
   if (buildCounterGooglePrivacyDlpV2SearchConnectionsResponse < 3) {
-    checkUnnamed116(o.connections!);
+    checkUnnamed117(o.connections!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -8713,12 +8923,12 @@ void checkGooglePrivacyDlpV2SecretsDiscoveryTarget(
   buildCounterGooglePrivacyDlpV2SecretsDiscoveryTarget--;
 }
 
-core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed117() => [
+core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed118() => [
       buildGooglePrivacyDlpV2InfoType(),
       buildGooglePrivacyDlpV2InfoType(),
     ];
 
-void checkUnnamed117(core.List<api.GooglePrivacyDlpV2InfoType> o) {
+void checkUnnamed118(core.List<api.GooglePrivacyDlpV2InfoType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoType(o[0]);
   checkGooglePrivacyDlpV2InfoType(o[1]);
@@ -8730,7 +8940,7 @@ api.GooglePrivacyDlpV2SelectedInfoTypes
   final o = api.GooglePrivacyDlpV2SelectedInfoTypes();
   buildCounterGooglePrivacyDlpV2SelectedInfoTypes++;
   if (buildCounterGooglePrivacyDlpV2SelectedInfoTypes < 3) {
-    o.infoTypes = buildUnnamed117();
+    o.infoTypes = buildUnnamed118();
   }
   buildCounterGooglePrivacyDlpV2SelectedInfoTypes--;
   return o;
@@ -8740,7 +8950,7 @@ void checkGooglePrivacyDlpV2SelectedInfoTypes(
     api.GooglePrivacyDlpV2SelectedInfoTypes o) {
   buildCounterGooglePrivacyDlpV2SelectedInfoTypes++;
   if (buildCounterGooglePrivacyDlpV2SelectedInfoTypes < 3) {
-    checkUnnamed117(o.infoTypes!);
+    checkUnnamed118(o.infoTypes!);
   }
   buildCounterGooglePrivacyDlpV2SelectedInfoTypes--;
 }
@@ -8769,12 +8979,12 @@ void checkGooglePrivacyDlpV2SensitivityScore(
   buildCounterGooglePrivacyDlpV2SensitivityScore--;
 }
 
-core.List<api.GooglePrivacyDlpV2QuasiIdentifierField> buildUnnamed118() => [
+core.List<api.GooglePrivacyDlpV2QuasiIdentifierField> buildUnnamed119() => [
       buildGooglePrivacyDlpV2QuasiIdentifierField(),
       buildGooglePrivacyDlpV2QuasiIdentifierField(),
     ];
 
-void checkUnnamed118(core.List<api.GooglePrivacyDlpV2QuasiIdentifierField> o) {
+void checkUnnamed119(core.List<api.GooglePrivacyDlpV2QuasiIdentifierField> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2QuasiIdentifierField(o[0]);
   checkGooglePrivacyDlpV2QuasiIdentifierField(o[1]);
@@ -8786,7 +8996,7 @@ api.GooglePrivacyDlpV2StatisticalTable
   final o = api.GooglePrivacyDlpV2StatisticalTable();
   buildCounterGooglePrivacyDlpV2StatisticalTable++;
   if (buildCounterGooglePrivacyDlpV2StatisticalTable < 3) {
-    o.quasiIds = buildUnnamed118();
+    o.quasiIds = buildUnnamed119();
     o.relativeFrequency = buildGooglePrivacyDlpV2FieldId();
     o.table = buildGooglePrivacyDlpV2BigQueryTable();
   }
@@ -8798,7 +9008,7 @@ void checkGooglePrivacyDlpV2StatisticalTable(
     api.GooglePrivacyDlpV2StatisticalTable o) {
   buildCounterGooglePrivacyDlpV2StatisticalTable++;
   if (buildCounterGooglePrivacyDlpV2StatisticalTable < 3) {
-    checkUnnamed118(o.quasiIds!);
+    checkUnnamed119(o.quasiIds!);
     checkGooglePrivacyDlpV2FieldId(o.relativeFrequency!);
     checkGooglePrivacyDlpV2BigQueryTable(o.table!);
   }
@@ -8857,12 +9067,12 @@ void checkGooglePrivacyDlpV2StorageMetadataLabel(
   buildCounterGooglePrivacyDlpV2StorageMetadataLabel--;
 }
 
-core.List<api.GooglePrivacyDlpV2StoredInfoTypeVersion> buildUnnamed119() => [
+core.List<api.GooglePrivacyDlpV2StoredInfoTypeVersion> buildUnnamed120() => [
       buildGooglePrivacyDlpV2StoredInfoTypeVersion(),
       buildGooglePrivacyDlpV2StoredInfoTypeVersion(),
     ];
 
-void checkUnnamed119(core.List<api.GooglePrivacyDlpV2StoredInfoTypeVersion> o) {
+void checkUnnamed120(core.List<api.GooglePrivacyDlpV2StoredInfoTypeVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2StoredInfoTypeVersion(o[0]);
   checkGooglePrivacyDlpV2StoredInfoTypeVersion(o[1]);
@@ -8875,7 +9085,7 @@ api.GooglePrivacyDlpV2StoredInfoType buildGooglePrivacyDlpV2StoredInfoType() {
   if (buildCounterGooglePrivacyDlpV2StoredInfoType < 3) {
     o.currentVersion = buildGooglePrivacyDlpV2StoredInfoTypeVersion();
     o.name = 'foo';
-    o.pendingVersions = buildUnnamed119();
+    o.pendingVersions = buildUnnamed120();
   }
   buildCounterGooglePrivacyDlpV2StoredInfoType--;
   return o;
@@ -8890,7 +9100,7 @@ void checkGooglePrivacyDlpV2StoredInfoType(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed119(o.pendingVersions!);
+    checkUnnamed120(o.pendingVersions!);
   }
   buildCounterGooglePrivacyDlpV2StoredInfoType--;
 }
@@ -8954,12 +9164,12 @@ void checkGooglePrivacyDlpV2StoredInfoTypeStats(
   buildCounterGooglePrivacyDlpV2StoredInfoTypeStats--;
 }
 
-core.List<api.GooglePrivacyDlpV2Error> buildUnnamed120() => [
+core.List<api.GooglePrivacyDlpV2Error> buildUnnamed121() => [
       buildGooglePrivacyDlpV2Error(),
       buildGooglePrivacyDlpV2Error(),
     ];
 
-void checkUnnamed120(core.List<api.GooglePrivacyDlpV2Error> o) {
+void checkUnnamed121(core.List<api.GooglePrivacyDlpV2Error> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Error(o[0]);
   checkGooglePrivacyDlpV2Error(o[1]);
@@ -8973,7 +9183,7 @@ api.GooglePrivacyDlpV2StoredInfoTypeVersion
   if (buildCounterGooglePrivacyDlpV2StoredInfoTypeVersion < 3) {
     o.config = buildGooglePrivacyDlpV2StoredInfoTypeConfig();
     o.createTime = 'foo';
-    o.errors = buildUnnamed120();
+    o.errors = buildUnnamed121();
     o.state = 'foo';
     o.stats = buildGooglePrivacyDlpV2StoredInfoTypeStats();
   }
@@ -8990,7 +9200,7 @@ void checkGooglePrivacyDlpV2StoredInfoTypeVersion(
       o.createTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed120(o.errors!);
+    checkUnnamed121(o.errors!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -9076,23 +9286,23 @@ void checkGooglePrivacyDlpV2SurrogateType(
   buildCounterGooglePrivacyDlpV2SurrogateType--;
 }
 
-core.List<api.GooglePrivacyDlpV2FieldId> buildUnnamed121() => [
+core.List<api.GooglePrivacyDlpV2FieldId> buildUnnamed122() => [
       buildGooglePrivacyDlpV2FieldId(),
       buildGooglePrivacyDlpV2FieldId(),
     ];
 
-void checkUnnamed121(core.List<api.GooglePrivacyDlpV2FieldId> o) {
+void checkUnnamed122(core.List<api.GooglePrivacyDlpV2FieldId> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2FieldId(o[0]);
   checkGooglePrivacyDlpV2FieldId(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2Row> buildUnnamed122() => [
+core.List<api.GooglePrivacyDlpV2Row> buildUnnamed123() => [
       buildGooglePrivacyDlpV2Row(),
       buildGooglePrivacyDlpV2Row(),
     ];
 
-void checkUnnamed122(core.List<api.GooglePrivacyDlpV2Row> o) {
+void checkUnnamed123(core.List<api.GooglePrivacyDlpV2Row> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Row(o[0]);
   checkGooglePrivacyDlpV2Row(o[1]);
@@ -9103,8 +9313,8 @@ api.GooglePrivacyDlpV2Table buildGooglePrivacyDlpV2Table() {
   final o = api.GooglePrivacyDlpV2Table();
   buildCounterGooglePrivacyDlpV2Table++;
   if (buildCounterGooglePrivacyDlpV2Table < 3) {
-    o.headers = buildUnnamed121();
-    o.rows = buildUnnamed122();
+    o.headers = buildUnnamed122();
+    o.rows = buildUnnamed123();
   }
   buildCounterGooglePrivacyDlpV2Table--;
   return o;
@@ -9113,40 +9323,51 @@ api.GooglePrivacyDlpV2Table buildGooglePrivacyDlpV2Table() {
 void checkGooglePrivacyDlpV2Table(api.GooglePrivacyDlpV2Table o) {
   buildCounterGooglePrivacyDlpV2Table++;
   if (buildCounterGooglePrivacyDlpV2Table < 3) {
-    checkUnnamed121(o.headers!);
-    checkUnnamed122(o.rows!);
+    checkUnnamed122(o.headers!);
+    checkUnnamed123(o.rows!);
   }
   buildCounterGooglePrivacyDlpV2Table--;
 }
 
-core.List<api.GooglePrivacyDlpV2OtherInfoTypeSummary> buildUnnamed123() => [
+core.List<api.GooglePrivacyDlpV2OtherInfoTypeSummary> buildUnnamed124() => [
       buildGooglePrivacyDlpV2OtherInfoTypeSummary(),
       buildGooglePrivacyDlpV2OtherInfoTypeSummary(),
     ];
 
-void checkUnnamed123(core.List<api.GooglePrivacyDlpV2OtherInfoTypeSummary> o) {
+void checkUnnamed124(core.List<api.GooglePrivacyDlpV2OtherInfoTypeSummary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2OtherInfoTypeSummary(o[0]);
   checkGooglePrivacyDlpV2OtherInfoTypeSummary(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2InfoTypeSummary> buildUnnamed124() => [
+core.List<api.GooglePrivacyDlpV2InfoTypeSummary> buildUnnamed125() => [
       buildGooglePrivacyDlpV2InfoTypeSummary(),
       buildGooglePrivacyDlpV2InfoTypeSummary(),
     ];
 
-void checkUnnamed124(core.List<api.GooglePrivacyDlpV2InfoTypeSummary> o) {
+void checkUnnamed125(core.List<api.GooglePrivacyDlpV2InfoTypeSummary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoTypeSummary(o[0]);
   checkGooglePrivacyDlpV2InfoTypeSummary(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed125() => {
+core.List<api.GooglePrivacyDlpV2RelatedResource> buildUnnamed126() => [
+      buildGooglePrivacyDlpV2RelatedResource(),
+      buildGooglePrivacyDlpV2RelatedResource(),
+    ];
+
+void checkUnnamed126(core.List<api.GooglePrivacyDlpV2RelatedResource> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2RelatedResource(o[0]);
+  checkGooglePrivacyDlpV2RelatedResource(o[1]);
+}
+
+core.Map<core.String, core.String> buildUnnamed127() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed125(core.Map<core.String, core.String> o) {
+void checkUnnamed127(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -9177,14 +9398,16 @@ api.GooglePrivacyDlpV2TableDataProfile
     o.fullResource = 'foo';
     o.lastModifiedTime = 'foo';
     o.name = 'foo';
-    o.otherInfoTypes = buildUnnamed123();
-    o.predictedInfoTypes = buildUnnamed124();
+    o.otherInfoTypes = buildUnnamed124();
+    o.predictedInfoTypes = buildUnnamed125();
     o.profileLastGenerated = 'foo';
     o.profileStatus = buildGooglePrivacyDlpV2ProfileStatus();
     o.projectDataProfile = 'foo';
-    o.resourceLabels = buildUnnamed125();
+    o.relatedResources = buildUnnamed126();
+    o.resourceLabels = buildUnnamed127();
     o.resourceVisibility = 'foo';
     o.rowCount = 'foo';
+    o.sampleFindingsTable = buildGooglePrivacyDlpV2BigQueryTable();
     o.scannedColumnCount = 'foo';
     o.sensitivityScore = buildGooglePrivacyDlpV2SensitivityScore();
     o.state = 'foo';
@@ -9242,8 +9465,8 @@ void checkGooglePrivacyDlpV2TableDataProfile(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed123(o.otherInfoTypes!);
-    checkUnnamed124(o.predictedInfoTypes!);
+    checkUnnamed124(o.otherInfoTypes!);
+    checkUnnamed125(o.predictedInfoTypes!);
     unittest.expect(
       o.profileLastGenerated!,
       unittest.equals('foo'),
@@ -9253,7 +9476,8 @@ void checkGooglePrivacyDlpV2TableDataProfile(
       o.projectDataProfile!,
       unittest.equals('foo'),
     );
-    checkUnnamed125(o.resourceLabels!);
+    checkUnnamed126(o.relatedResources!);
+    checkUnnamed127(o.resourceLabels!);
     unittest.expect(
       o.resourceVisibility!,
       unittest.equals('foo'),
@@ -9262,6 +9486,7 @@ void checkGooglePrivacyDlpV2TableDataProfile(
       o.rowCount!,
       unittest.equals('foo'),
     );
+    checkGooglePrivacyDlpV2BigQueryTable(o.sampleFindingsTable!);
     unittest.expect(
       o.scannedColumnCount!,
       unittest.equals('foo'),
@@ -9306,12 +9531,12 @@ void checkGooglePrivacyDlpV2TableLocation(
   buildCounterGooglePrivacyDlpV2TableLocation--;
 }
 
-core.List<api.GooglePrivacyDlpV2FieldId> buildUnnamed126() => [
+core.List<api.GooglePrivacyDlpV2FieldId> buildUnnamed128() => [
       buildGooglePrivacyDlpV2FieldId(),
       buildGooglePrivacyDlpV2FieldId(),
     ];
 
-void checkUnnamed126(core.List<api.GooglePrivacyDlpV2FieldId> o) {
+void checkUnnamed128(core.List<api.GooglePrivacyDlpV2FieldId> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2FieldId(o[0]);
   checkGooglePrivacyDlpV2FieldId(o[1]);
@@ -9322,7 +9547,7 @@ api.GooglePrivacyDlpV2TableOptions buildGooglePrivacyDlpV2TableOptions() {
   final o = api.GooglePrivacyDlpV2TableOptions();
   buildCounterGooglePrivacyDlpV2TableOptions++;
   if (buildCounterGooglePrivacyDlpV2TableOptions < 3) {
-    o.identifyingFields = buildUnnamed126();
+    o.identifyingFields = buildUnnamed128();
   }
   buildCounterGooglePrivacyDlpV2TableOptions--;
   return o;
@@ -9331,7 +9556,7 @@ api.GooglePrivacyDlpV2TableOptions buildGooglePrivacyDlpV2TableOptions() {
 void checkGooglePrivacyDlpV2TableOptions(api.GooglePrivacyDlpV2TableOptions o) {
   buildCounterGooglePrivacyDlpV2TableOptions++;
   if (buildCounterGooglePrivacyDlpV2TableOptions < 3) {
-    checkUnnamed126(o.identifyingFields!);
+    checkUnnamed128(o.identifyingFields!);
   }
   buildCounterGooglePrivacyDlpV2TableOptions--;
 }
@@ -9385,12 +9610,12 @@ void checkGooglePrivacyDlpV2TagCondition(api.GooglePrivacyDlpV2TagCondition o) {
   buildCounterGooglePrivacyDlpV2TagCondition--;
 }
 
-core.List<core.String> buildUnnamed127() => [
+core.List<core.String> buildUnnamed129() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed127(core.List<core.String> o) {
+void checkUnnamed129(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -9402,12 +9627,12 @@ void checkUnnamed127(core.List<core.String> o) {
   );
 }
 
-core.List<api.GooglePrivacyDlpV2TagCondition> buildUnnamed128() => [
+core.List<api.GooglePrivacyDlpV2TagCondition> buildUnnamed130() => [
       buildGooglePrivacyDlpV2TagCondition(),
       buildGooglePrivacyDlpV2TagCondition(),
     ];
 
-void checkUnnamed128(core.List<api.GooglePrivacyDlpV2TagCondition> o) {
+void checkUnnamed130(core.List<api.GooglePrivacyDlpV2TagCondition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2TagCondition(o[0]);
   checkGooglePrivacyDlpV2TagCondition(o[1]);
@@ -9419,8 +9644,8 @@ api.GooglePrivacyDlpV2TagResources buildGooglePrivacyDlpV2TagResources() {
   buildCounterGooglePrivacyDlpV2TagResources++;
   if (buildCounterGooglePrivacyDlpV2TagResources < 3) {
     o.lowerDataRiskToLow = true;
-    o.profileGenerationsToTag = buildUnnamed127();
-    o.tagConditions = buildUnnamed128();
+    o.profileGenerationsToTag = buildUnnamed129();
+    o.tagConditions = buildUnnamed130();
   }
   buildCounterGooglePrivacyDlpV2TagResources--;
   return o;
@@ -9430,8 +9655,8 @@ void checkGooglePrivacyDlpV2TagResources(api.GooglePrivacyDlpV2TagResources o) {
   buildCounterGooglePrivacyDlpV2TagResources++;
   if (buildCounterGooglePrivacyDlpV2TagResources < 3) {
     unittest.expect(o.lowerDataRiskToLow!, unittest.isTrue);
-    checkUnnamed127(o.profileGenerationsToTag!);
-    checkUnnamed128(o.tagConditions!);
+    checkUnnamed129(o.profileGenerationsToTag!);
+    checkUnnamed130(o.tagConditions!);
   }
   buildCounterGooglePrivacyDlpV2TagResources--;
 }
@@ -9656,12 +9881,12 @@ void checkGooglePrivacyDlpV2TransformationErrorHandling(
   buildCounterGooglePrivacyDlpV2TransformationErrorHandling--;
 }
 
-core.List<api.GooglePrivacyDlpV2TransformationSummary> buildUnnamed129() => [
+core.List<api.GooglePrivacyDlpV2TransformationSummary> buildUnnamed131() => [
       buildGooglePrivacyDlpV2TransformationSummary(),
       buildGooglePrivacyDlpV2TransformationSummary(),
     ];
 
-void checkUnnamed129(core.List<api.GooglePrivacyDlpV2TransformationSummary> o) {
+void checkUnnamed131(core.List<api.GooglePrivacyDlpV2TransformationSummary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2TransformationSummary(o[0]);
   checkGooglePrivacyDlpV2TransformationSummary(o[1]);
@@ -9673,7 +9898,7 @@ api.GooglePrivacyDlpV2TransformationOverview
   final o = api.GooglePrivacyDlpV2TransformationOverview();
   buildCounterGooglePrivacyDlpV2TransformationOverview++;
   if (buildCounterGooglePrivacyDlpV2TransformationOverview < 3) {
-    o.transformationSummaries = buildUnnamed129();
+    o.transformationSummaries = buildUnnamed131();
     o.transformedBytes = 'foo';
   }
   buildCounterGooglePrivacyDlpV2TransformationOverview--;
@@ -9684,7 +9909,7 @@ void checkGooglePrivacyDlpV2TransformationOverview(
     api.GooglePrivacyDlpV2TransformationOverview o) {
   buildCounterGooglePrivacyDlpV2TransformationOverview++;
   if (buildCounterGooglePrivacyDlpV2TransformationOverview < 3) {
-    checkUnnamed129(o.transformationSummaries!);
+    checkUnnamed131(o.transformationSummaries!);
     unittest.expect(
       o.transformedBytes!,
       unittest.equals('foo'),
@@ -9693,23 +9918,23 @@ void checkGooglePrivacyDlpV2TransformationOverview(
   buildCounterGooglePrivacyDlpV2TransformationOverview--;
 }
 
-core.List<api.GooglePrivacyDlpV2FieldTransformation> buildUnnamed130() => [
+core.List<api.GooglePrivacyDlpV2FieldTransformation> buildUnnamed132() => [
       buildGooglePrivacyDlpV2FieldTransformation(),
       buildGooglePrivacyDlpV2FieldTransformation(),
     ];
 
-void checkUnnamed130(core.List<api.GooglePrivacyDlpV2FieldTransformation> o) {
+void checkUnnamed132(core.List<api.GooglePrivacyDlpV2FieldTransformation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2FieldTransformation(o[0]);
   checkGooglePrivacyDlpV2FieldTransformation(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2SummaryResult> buildUnnamed131() => [
+core.List<api.GooglePrivacyDlpV2SummaryResult> buildUnnamed133() => [
       buildGooglePrivacyDlpV2SummaryResult(),
       buildGooglePrivacyDlpV2SummaryResult(),
     ];
 
-void checkUnnamed131(core.List<api.GooglePrivacyDlpV2SummaryResult> o) {
+void checkUnnamed133(core.List<api.GooglePrivacyDlpV2SummaryResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2SummaryResult(o[0]);
   checkGooglePrivacyDlpV2SummaryResult(o[1]);
@@ -9722,10 +9947,10 @@ api.GooglePrivacyDlpV2TransformationSummary
   buildCounterGooglePrivacyDlpV2TransformationSummary++;
   if (buildCounterGooglePrivacyDlpV2TransformationSummary < 3) {
     o.field = buildGooglePrivacyDlpV2FieldId();
-    o.fieldTransformations = buildUnnamed130();
+    o.fieldTransformations = buildUnnamed132();
     o.infoType = buildGooglePrivacyDlpV2InfoType();
     o.recordSuppress = buildGooglePrivacyDlpV2RecordSuppression();
-    o.results = buildUnnamed131();
+    o.results = buildUnnamed133();
     o.transformation = buildGooglePrivacyDlpV2PrimitiveTransformation();
     o.transformedBytes = 'foo';
   }
@@ -9738,10 +9963,10 @@ void checkGooglePrivacyDlpV2TransformationSummary(
   buildCounterGooglePrivacyDlpV2TransformationSummary++;
   if (buildCounterGooglePrivacyDlpV2TransformationSummary < 3) {
     checkGooglePrivacyDlpV2FieldId(o.field!);
-    checkUnnamed130(o.fieldTransformations!);
+    checkUnnamed132(o.fieldTransformations!);
     checkGooglePrivacyDlpV2InfoType(o.infoType!);
     checkGooglePrivacyDlpV2RecordSuppression(o.recordSuppress!);
-    checkUnnamed131(o.results!);
+    checkUnnamed133(o.results!);
     checkGooglePrivacyDlpV2PrimitiveTransformation(o.transformation!);
     unittest.expect(
       o.transformedBytes!,
@@ -10078,12 +10303,142 @@ void checkGooglePrivacyDlpV2VersionDescription(
   buildCounterGooglePrivacyDlpV2VersionDescription--;
 }
 
-core.List<core.String> buildUnnamed132() => [
+core.int buildCounterGooglePrivacyDlpV2VertexDatasetCollection = 0;
+api.GooglePrivacyDlpV2VertexDatasetCollection
+    buildGooglePrivacyDlpV2VertexDatasetCollection() {
+  final o = api.GooglePrivacyDlpV2VertexDatasetCollection();
+  buildCounterGooglePrivacyDlpV2VertexDatasetCollection++;
+  if (buildCounterGooglePrivacyDlpV2VertexDatasetCollection < 3) {
+    o.vertexDatasetRegexes = buildGooglePrivacyDlpV2VertexDatasetRegexes();
+  }
+  buildCounterGooglePrivacyDlpV2VertexDatasetCollection--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2VertexDatasetCollection(
+    api.GooglePrivacyDlpV2VertexDatasetCollection o) {
+  buildCounterGooglePrivacyDlpV2VertexDatasetCollection++;
+  if (buildCounterGooglePrivacyDlpV2VertexDatasetCollection < 3) {
+    checkGooglePrivacyDlpV2VertexDatasetRegexes(o.vertexDatasetRegexes!);
+  }
+  buildCounterGooglePrivacyDlpV2VertexDatasetCollection--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2VertexDatasetDiscoveryTarget = 0;
+api.GooglePrivacyDlpV2VertexDatasetDiscoveryTarget
+    buildGooglePrivacyDlpV2VertexDatasetDiscoveryTarget() {
+  final o = api.GooglePrivacyDlpV2VertexDatasetDiscoveryTarget();
+  buildCounterGooglePrivacyDlpV2VertexDatasetDiscoveryTarget++;
+  if (buildCounterGooglePrivacyDlpV2VertexDatasetDiscoveryTarget < 3) {
+    o.conditions = buildGooglePrivacyDlpV2DiscoveryVertexDatasetConditions();
+    o.disabled = buildGooglePrivacyDlpV2Disabled();
+    o.filter = buildGooglePrivacyDlpV2DiscoveryVertexDatasetFilter();
+    o.generationCadence =
+        buildGooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence();
+  }
+  buildCounterGooglePrivacyDlpV2VertexDatasetDiscoveryTarget--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2VertexDatasetDiscoveryTarget(
+    api.GooglePrivacyDlpV2VertexDatasetDiscoveryTarget o) {
+  buildCounterGooglePrivacyDlpV2VertexDatasetDiscoveryTarget++;
+  if (buildCounterGooglePrivacyDlpV2VertexDatasetDiscoveryTarget < 3) {
+    checkGooglePrivacyDlpV2DiscoveryVertexDatasetConditions(o.conditions!);
+    checkGooglePrivacyDlpV2Disabled(o.disabled!);
+    checkGooglePrivacyDlpV2DiscoveryVertexDatasetFilter(o.filter!);
+    checkGooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence(
+        o.generationCadence!);
+  }
+  buildCounterGooglePrivacyDlpV2VertexDatasetDiscoveryTarget--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2VertexDatasetRegex = 0;
+api.GooglePrivacyDlpV2VertexDatasetRegex
+    buildGooglePrivacyDlpV2VertexDatasetRegex() {
+  final o = api.GooglePrivacyDlpV2VertexDatasetRegex();
+  buildCounterGooglePrivacyDlpV2VertexDatasetRegex++;
+  if (buildCounterGooglePrivacyDlpV2VertexDatasetRegex < 3) {
+    o.projectIdRegex = 'foo';
+  }
+  buildCounterGooglePrivacyDlpV2VertexDatasetRegex--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2VertexDatasetRegex(
+    api.GooglePrivacyDlpV2VertexDatasetRegex o) {
+  buildCounterGooglePrivacyDlpV2VertexDatasetRegex++;
+  if (buildCounterGooglePrivacyDlpV2VertexDatasetRegex < 3) {
+    unittest.expect(
+      o.projectIdRegex!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGooglePrivacyDlpV2VertexDatasetRegex--;
+}
+
+core.List<api.GooglePrivacyDlpV2VertexDatasetRegex> buildUnnamed134() => [
+      buildGooglePrivacyDlpV2VertexDatasetRegex(),
+      buildGooglePrivacyDlpV2VertexDatasetRegex(),
+    ];
+
+void checkUnnamed134(core.List<api.GooglePrivacyDlpV2VertexDatasetRegex> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2VertexDatasetRegex(o[0]);
+  checkGooglePrivacyDlpV2VertexDatasetRegex(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2VertexDatasetRegexes = 0;
+api.GooglePrivacyDlpV2VertexDatasetRegexes
+    buildGooglePrivacyDlpV2VertexDatasetRegexes() {
+  final o = api.GooglePrivacyDlpV2VertexDatasetRegexes();
+  buildCounterGooglePrivacyDlpV2VertexDatasetRegexes++;
+  if (buildCounterGooglePrivacyDlpV2VertexDatasetRegexes < 3) {
+    o.patterns = buildUnnamed134();
+  }
+  buildCounterGooglePrivacyDlpV2VertexDatasetRegexes--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2VertexDatasetRegexes(
+    api.GooglePrivacyDlpV2VertexDatasetRegexes o) {
+  buildCounterGooglePrivacyDlpV2VertexDatasetRegexes++;
+  if (buildCounterGooglePrivacyDlpV2VertexDatasetRegexes < 3) {
+    checkUnnamed134(o.patterns!);
+  }
+  buildCounterGooglePrivacyDlpV2VertexDatasetRegexes--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2VertexDatasetResourceReference = 0;
+api.GooglePrivacyDlpV2VertexDatasetResourceReference
+    buildGooglePrivacyDlpV2VertexDatasetResourceReference() {
+  final o = api.GooglePrivacyDlpV2VertexDatasetResourceReference();
+  buildCounterGooglePrivacyDlpV2VertexDatasetResourceReference++;
+  if (buildCounterGooglePrivacyDlpV2VertexDatasetResourceReference < 3) {
+    o.datasetResourceName = 'foo';
+  }
+  buildCounterGooglePrivacyDlpV2VertexDatasetResourceReference--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2VertexDatasetResourceReference(
+    api.GooglePrivacyDlpV2VertexDatasetResourceReference o) {
+  buildCounterGooglePrivacyDlpV2VertexDatasetResourceReference++;
+  if (buildCounterGooglePrivacyDlpV2VertexDatasetResourceReference < 3) {
+    unittest.expect(
+      o.datasetResourceName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGooglePrivacyDlpV2VertexDatasetResourceReference--;
+}
+
+core.List<core.String> buildUnnamed135() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed132(core.List<core.String> o) {
+void checkUnnamed135(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10100,7 +10455,7 @@ api.GooglePrivacyDlpV2WordList buildGooglePrivacyDlpV2WordList() {
   final o = api.GooglePrivacyDlpV2WordList();
   buildCounterGooglePrivacyDlpV2WordList++;
   if (buildCounterGooglePrivacyDlpV2WordList < 3) {
-    o.words = buildUnnamed132();
+    o.words = buildUnnamed135();
   }
   buildCounterGooglePrivacyDlpV2WordList--;
   return o;
@@ -10109,7 +10464,7 @@ api.GooglePrivacyDlpV2WordList buildGooglePrivacyDlpV2WordList() {
 void checkGooglePrivacyDlpV2WordList(api.GooglePrivacyDlpV2WordList o) {
   buildCounterGooglePrivacyDlpV2WordList++;
   if (buildCounterGooglePrivacyDlpV2WordList < 3) {
-    checkUnnamed132(o.words!);
+    checkUnnamed135(o.words!);
   }
   buildCounterGooglePrivacyDlpV2WordList--;
 }
@@ -10129,7 +10484,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed133() => {
+core.Map<core.String, core.Object?> buildUnnamed136() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -10142,7 +10497,7 @@ core.Map<core.String, core.Object?> buildUnnamed133() => {
       },
     };
 
-void checkUnnamed133(core.Map<core.String, core.Object?> o) {
+void checkUnnamed136(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -10174,15 +10529,15 @@ void checkUnnamed133(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed134() => [
-      buildUnnamed133(),
-      buildUnnamed133(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed137() => [
+      buildUnnamed136(),
+      buildUnnamed136(),
     ];
 
-void checkUnnamed134(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed137(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed133(o[0]);
-  checkUnnamed133(o[1]);
+  checkUnnamed136(o[0]);
+  checkUnnamed136(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -10191,7 +10546,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed134();
+    o.details = buildUnnamed137();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -10205,7 +10560,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed134(o.details!);
+    checkUnnamed137(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -11449,6 +11804,42 @@ void main() {
     });
   });
 
+  unittest.group(
+      'obj-schema-GooglePrivacyDlpV2DiscoveryVertexDatasetConditions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DiscoveryVertexDatasetConditions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GooglePrivacyDlpV2DiscoveryVertexDatasetConditions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DiscoveryVertexDatasetConditions(od);
+    });
+  });
+
+  unittest.group('obj-schema-GooglePrivacyDlpV2DiscoveryVertexDatasetFilter',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DiscoveryVertexDatasetFilter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2DiscoveryVertexDatasetFilter.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DiscoveryVertexDatasetFilter(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence(od);
+    });
+  });
+
   unittest.group('obj-schema-GooglePrivacyDlpV2DlpJob', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2DlpJob();
@@ -11689,6 +12080,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GooglePrivacyDlpV2GlobalProcessing', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2GlobalProcessing();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2GlobalProcessing.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2GlobalProcessing(od);
+    });
+  });
+
   unittest.group('obj-schema-GooglePrivacyDlpV2HotwordRule', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2HotwordRule();
@@ -11767,6 +12168,16 @@ void main() {
       final od = api.GooglePrivacyDlpV2HybridOptions.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2HybridOptions(od);
+    });
+  });
+
+  unittest.group('obj-schema-GooglePrivacyDlpV2ImageFallbackLocation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2ImageFallbackLocation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2ImageFallbackLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2ImageFallbackLocation(od);
     });
   });
 
@@ -12362,6 +12773,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GooglePrivacyDlpV2MultiRegionProcessing', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2MultiRegionProcessing();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2MultiRegionProcessing.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2MultiRegionProcessing(od);
+    });
+  });
+
   unittest.group('obj-schema-GooglePrivacyDlpV2NumericalStatsConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2NumericalStatsConfig();
@@ -12524,6 +12945,16 @@ void main() {
       final od = api.GooglePrivacyDlpV2PrivacyMetric.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PrivacyMetric(od);
+    });
+  });
+
+  unittest.group('obj-schema-GooglePrivacyDlpV2ProcessingLocation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2ProcessingLocation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2ProcessingLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2ProcessingLocation(od);
     });
   });
 
@@ -12807,6 +13238,16 @@ void main() {
       final od = api.GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ReidentifyContentResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-GooglePrivacyDlpV2RelatedResource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2RelatedResource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2RelatedResource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2RelatedResource(od);
     });
   });
 
@@ -13385,6 +13826,58 @@ void main() {
       final od = api.GooglePrivacyDlpV2VersionDescription.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2VersionDescription(od);
+    });
+  });
+
+  unittest.group('obj-schema-GooglePrivacyDlpV2VertexDatasetCollection', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2VertexDatasetCollection();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2VertexDatasetCollection.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2VertexDatasetCollection(od);
+    });
+  });
+
+  unittest.group('obj-schema-GooglePrivacyDlpV2VertexDatasetDiscoveryTarget',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2VertexDatasetDiscoveryTarget();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2VertexDatasetDiscoveryTarget.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2VertexDatasetDiscoveryTarget(od);
+    });
+  });
+
+  unittest.group('obj-schema-GooglePrivacyDlpV2VertexDatasetRegex', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2VertexDatasetRegex();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2VertexDatasetRegex.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2VertexDatasetRegex(od);
+    });
+  });
+
+  unittest.group('obj-schema-GooglePrivacyDlpV2VertexDatasetRegexes', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2VertexDatasetRegexes();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2VertexDatasetRegexes.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2VertexDatasetRegexes(od);
+    });
+  });
+
+  unittest.group('obj-schema-GooglePrivacyDlpV2VertexDatasetResourceReference',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2VertexDatasetResourceReference();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2VertexDatasetResourceReference.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2VertexDatasetResourceReference(od);
     });
   });
 

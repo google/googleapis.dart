@@ -1174,8 +1174,8 @@ class AcceleratorConfig {
   /// - "V3" : TPU v3.
   /// - "V4" : TPU v4.
   /// - "V5LITE_POD" : TPU v5lite pod.
-  /// - "V5P" : TPU v5p
-  /// - "V6E" : TPU v6e
+  /// - "V5P" : TPU v5p.
+  /// - "V6E" : TPU v6e.
   core.String? type;
 
   AcceleratorConfig({
@@ -1707,7 +1707,7 @@ typedef Location = $Location00;
 class MultisliceParams {
   /// Number of nodes with this spec.
   ///
-  /// The system will attempt to provison "node_count" nodes as part of the
+  /// The system will attempt to provision "node_count" nodes as part of the
   /// request. This needs to be \> 1.
   ///
   /// Required.
@@ -1918,7 +1918,19 @@ class Node {
   core.String? name;
 
   /// Network configurations for the TPU node.
+  ///
+  /// network_config and network_configs are mutually exclusive, you can only
+  /// specify one of them. If both are specified, an error will be returned.
   NetworkConfig? networkConfig;
+
+  /// Repeated network configurations for the TPU node.
+  ///
+  /// This field is used to specify multiple networks configs for the TPU node.
+  /// network_config and network_configs are mutually exclusive, you can only
+  /// specify one of them. If both are specified, an error will be returned.
+  ///
+  /// Optional.
+  core.List<NetworkConfig>? networkConfigs;
 
   /// The network endpoints where TPU workers can be accessed and sent work.
   ///
@@ -2000,6 +2012,7 @@ class Node {
     this.multisliceNode,
     this.name,
     this.networkConfig,
+    this.networkConfigs,
     this.networkEndpoints,
     this.queuedResource,
     this.runtimeVersion,
@@ -2049,6 +2062,10 @@ class Node {
               ? NetworkConfig.fromJson(
                   json_['networkConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          networkConfigs: (json_['networkConfigs'] as core.List?)
+              ?.map((value) => NetworkConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           networkEndpoints: (json_['networkEndpoints'] as core.List?)
               ?.map((value) => NetworkEndpoint.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -2093,6 +2110,7 @@ class Node {
         if (multisliceNode != null) 'multisliceNode': multisliceNode!,
         if (name != null) 'name': name!,
         if (networkConfig != null) 'networkConfig': networkConfig!,
+        if (networkConfigs != null) 'networkConfigs': networkConfigs!,
         if (networkEndpoints != null) 'networkEndpoints': networkEndpoints!,
         if (queuedResource != null) 'queuedResource': queuedResource!,
         if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,

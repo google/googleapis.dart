@@ -342,8 +342,8 @@ api.Instance buildInstance() {
   final o = api.Instance();
   buildCounterInstance++;
   if (buildCounterInstance < 3) {
-    o.configurablePerformanceEnabled = true;
     o.createTime = 'foo';
+    o.customPerformanceSupported = true;
     o.deletionProtectionEnabled = true;
     o.deletionProtectionReason = 'foo';
     o.description = 'foo';
@@ -372,11 +372,11 @@ api.Instance buildInstance() {
 void checkInstance(api.Instance o) {
   buildCounterInstance++;
   if (buildCounterInstance < 3) {
-    unittest.expect(o.configurablePerformanceEnabled!, unittest.isTrue);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.customPerformanceSupported!, unittest.isTrue);
     unittest.expect(o.deletionProtectionEnabled!, unittest.isTrue);
     unittest.expect(
       o.deletionProtectionReason!,
@@ -1030,6 +1030,7 @@ api.PerformanceLimits buildPerformanceLimits() {
   final o = api.PerformanceLimits();
   buildCounterPerformanceLimits++;
   if (buildCounterPerformanceLimits < 3) {
+    o.maxIops = 'foo';
     o.maxReadIops = 'foo';
     o.maxReadThroughputBps = 'foo';
     o.maxWriteIops = 'foo';
@@ -1042,6 +1043,10 @@ api.PerformanceLimits buildPerformanceLimits() {
 void checkPerformanceLimits(api.PerformanceLimits o) {
   buildCounterPerformanceLimits++;
   if (buildCounterPerformanceLimits < 3) {
+    unittest.expect(
+      o.maxIops!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.maxReadIops!,
       unittest.equals('foo'),
@@ -1066,14 +1071,21 @@ core.int buildCounterPromoteReplicaRequest = 0;
 api.PromoteReplicaRequest buildPromoteReplicaRequest() {
   final o = api.PromoteReplicaRequest();
   buildCounterPromoteReplicaRequest++;
-  if (buildCounterPromoteReplicaRequest < 3) {}
+  if (buildCounterPromoteReplicaRequest < 3) {
+    o.peerInstance = 'foo';
+  }
   buildCounterPromoteReplicaRequest--;
   return o;
 }
 
 void checkPromoteReplicaRequest(api.PromoteReplicaRequest o) {
   buildCounterPromoteReplicaRequest++;
-  if (buildCounterPromoteReplicaRequest < 3) {}
+  if (buildCounterPromoteReplicaRequest < 3) {
+    unittest.expect(
+      o.peerInstance!,
+      unittest.equals('foo'),
+    );
+  }
   buildCounterPromoteReplicaRequest--;
 }
 

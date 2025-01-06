@@ -258,6 +258,48 @@ class ProjectsLocationsGlobalHubsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Accepts a proposal to update a Network Connectivity Center spoke in a hub.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the hub to accept spoke update.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> acceptSpokeUpdate(
+    AcceptSpokeUpdateRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':acceptSpokeUpdate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a new Network Connectivity Center hub in the specified project.
   ///
   /// [request] - The metadata request object.
@@ -663,8 +705,8 @@ class ProjectsLocationsGlobalHubsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Query PSC propagation status the status of a Network Connectivity Center
-  /// hub.
+  /// Query the Private Service Connect propagation status of a Network
+  /// Connectivity Center hub.
   ///
   /// Request parameters:
   ///
@@ -674,26 +716,30 @@ class ProjectsLocationsGlobalHubsResource {
   ///
   /// [filter] - Optional. An expression that filters the list of results. The
   /// filter can be used to filter the results by the following fields: *
-  /// psc_propagation_status.source_spoke * psc_propagation_status.source_group
-  /// * psc_propagation_status.source_forwarding_rule *
-  /// psc_propagation_status.target_spoke * psc_propagation_status.target_group
-  /// * psc_propagation_status.code * psc_propagation_status.message
+  /// `psc_propagation_status.source_spoke` *
+  /// `psc_propagation_status.source_group` *
+  /// `psc_propagation_status.source_forwarding_rule` *
+  /// `psc_propagation_status.target_spoke` *
+  /// `psc_propagation_status.target_group` * `psc_propagation_status.code` *
+  /// `psc_propagation_status.message`
   ///
-  /// [groupBy] - Optional. A field that counts are grouped by. A
+  /// [groupBy] - Optional. Aggregate the results by the specified fields. A
   /// comma-separated list of any of these fields: *
-  /// psc_propagation_status.source_spoke * psc_propagation_status.source_group
-  /// * psc_propagation_status.source_forwarding_rule *
-  /// psc_propagation_status.target_spoke * psc_propagation_status.target_group
-  /// * psc_propagation_status.code
+  /// `psc_propagation_status.source_spoke` *
+  /// `psc_propagation_status.source_group` *
+  /// `psc_propagation_status.source_forwarding_rule` *
+  /// `psc_propagation_status.target_spoke` *
+  /// `psc_propagation_status.target_group` * `psc_propagation_status.code`
   ///
-  /// [orderBy] - Optional. Sort the results in the ascending order by specific
-  /// fields returned in the response. A comma-separated list of any of these
-  /// fields: * psc_propagation_status.source_spoke *
-  /// psc_propagation_status.source_group *
-  /// psc_propagation_status.source_forwarding_rule *
-  /// psc_propagation_status.target_spoke * psc_propagation_status.target_group
-  /// * psc_propagation_status.code If `group_by` is set, the value of the
-  /// `order_by` field must be the same as or a subset of the `group_by` field.
+  /// [orderBy] - Optional. Sort the results in ascending order by the specified
+  /// fields. A comma-separated list of any of these fields: *
+  /// `psc_propagation_status.source_spoke` *
+  /// `psc_propagation_status.source_group` *
+  /// `psc_propagation_status.source_forwarding_rule` *
+  /// `psc_propagation_status.target_spoke` *
+  /// `psc_propagation_status.target_group` * `psc_propagation_status.code` If
+  /// `group_by` is set, the value of the `order_by` field must be the same as
+  /// or a subset of the `group_by` field.
   ///
   /// [pageSize] - Optional. The maximum number of results to return per page.
   ///
@@ -773,6 +819,48 @@ class ProjectsLocationsGlobalHubsResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rejectSpoke';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Rejects a proposal to update a Network Connectivity Center spoke in a hub.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the hub to reject spoke update.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> rejectSpokeUpdate(
+    RejectSpokeUpdateRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rejectSpokeUpdate';
 
     final response_ = await _requester.request(
       url_,
@@ -1414,7 +1502,13 @@ class ProjectsLocationsGlobalPolicyBasedRoutesResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
   ///
   /// [policyBasedRouteId] - Required. Unique id for the policy-based route to
-  /// create.
+  /// create. Provided by the client when the resource is created. The name must
+  /// comply with https://google.aip.dev/122#resource-id-segments. Specifically,
+  /// the name must be 1-63 characters long and match the regular expression
+  /// \[a-z\](\[a-z0-9-\]*\[a-z0-9\])?. The first character must be a lowercase
+  /// letter, and all following characters (except for the last character) must
+  /// be a dash, lowercase letter, or digit. The last character must be a
+  /// lowercase letter or digit.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
@@ -2053,8 +2147,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4393,6 +4487,55 @@ class AcceptHubSpokeRequest {
       };
 }
 
+/// The request for HubService.AcceptSpokeUpdate.
+class AcceptSpokeUpdateRequest {
+  /// A request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server knows to ignore the request if it has already been completed. The
+  /// server guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check to see
+  /// whether the original operation was received. If it was, the server ignores
+  /// the second request. This behavior prevents clients from mistakenly
+  /// creating duplicate commitments. The request ID must be a valid UUID, with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  /// The etag of the spoke to accept update.
+  ///
+  /// Required.
+  core.String? spokeEtag;
+
+  /// The URI of the spoke to accept update.
+  ///
+  /// Required.
+  core.String? spokeUri;
+
+  AcceptSpokeUpdateRequest({
+    this.requestId,
+    this.spokeEtag,
+    this.spokeUri,
+  });
+
+  AcceptSpokeUpdateRequest.fromJson(core.Map json_)
+      : this(
+          requestId: json_['requestId'] as core.String?,
+          spokeEtag: json_['spokeEtag'] as core.String?,
+          spokeUri: json_['spokeUri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
+        if (spokeEtag != null) 'spokeEtag': spokeEtag!,
+        if (spokeUri != null) 'spokeUri': spokeUri!,
+      };
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -4461,6 +4604,8 @@ class AutoAccept {
   ///
   /// The auto-accept setting is applied to spokes being created or updated in
   /// these projects.
+  ///
+  /// Optional.
   core.List<core.String>? autoAcceptProjects;
 
   AutoAccept({
@@ -5097,7 +5242,60 @@ class GoogleLongrunningOperation {
 /// Spanner instance in a region that is out of stock: { "reason": "STOCKOUT"
 /// "domain": "spanner.googleapis.com", "metadata": { "availableRegions":
 /// "us-central1,us-east2" } }
-typedef GoogleRpcErrorInfo = $ErrorInfo;
+class GoogleRpcErrorInfo {
+  /// The logical grouping to which the "reason" belongs.
+  ///
+  /// The error domain is typically the registered service name of the tool or
+  /// product that generates the error. Example: "pubsub.googleapis.com". If the
+  /// error is generated by some common infrastructure, the error domain must be
+  /// a globally unique value that identifies the infrastructure. For Google API
+  /// infrastructure, the error domain is "googleapis.com".
+  core.String? domain;
+
+  /// Additional structured details about this error.
+  ///
+  /// Keys must match a regular expression of `a-z+` but should ideally be
+  /// lowerCamelCase. Also, they must be limited to 64 characters in length.
+  /// When identifying the current value of an exceeded limit, the units should
+  /// be contained in the key, not the value. For example, rather than
+  /// `{"instanceLimit": "100/request"}`, should be returned as,
+  /// `{"instanceLimitPerRequest": "100"}`, if the client exceeds the number of
+  /// instances that can be created in a single (batch) request.
+  core.Map<core.String, core.String>? metadata;
+
+  /// The reason of the error.
+  ///
+  /// This is a constant value that identifies the proximate cause of the error.
+  /// Error reasons are unique within a particular domain of errors. This should
+  /// be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`,
+  /// which represents UPPER_SNAKE_CASE.
+  core.String? reason;
+
+  GoogleRpcErrorInfo({
+    this.domain,
+    this.metadata,
+    this.reason,
+  });
+
+  GoogleRpcErrorInfo.fromJson(core.Map json_)
+      : this(
+          domain: json_['domain'] as core.String?,
+          metadata:
+              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          reason: json_['reason'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (domain != null) 'domain': domain!,
+        if (metadata != null) 'metadata': metadata!,
+        if (reason != null) 'reason': reason!,
+      };
+}
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -5163,6 +5361,9 @@ class Group {
   /// - "INACTIVE" : The resource is inactive.
   /// - "OBSOLETE" : The hub associated with this spoke resource has been
   /// deleted. This state applies to spoke resources only.
+  /// - "FAILED" : The resource is in an undefined state due to resource
+  /// creation or deletion failure. You can try to delete the resource later or
+  /// contact support for help.
   core.String? state;
 
   /// The Google-generated UUID for the group.
@@ -5241,9 +5442,12 @@ class Hub {
   core.String? createTime;
 
   /// An optional description of the hub.
+  ///
+  /// Optional.
   core.String? description;
 
-  /// Whether Private Service Connect transitivity is enabled for the hub.
+  /// Whether Private Service Connect connection propagation is enabled for the
+  /// hub.
   ///
   /// If true, Private Service Connect endpoints in VPC spokes attached to the
   /// hub are made accessible to other VPC spokes attached to the hub. The
@@ -5336,6 +5540,9 @@ class Hub {
   /// - "INACTIVE" : The resource is inactive.
   /// - "OBSOLETE" : The hub associated with this spoke resource has been
   /// deleted. This state applies to spoke resources only.
+  /// - "FAILED" : The resource is in an undefined state due to resource
+  /// creation or deletion failure. You can try to delete the resource later or
+  /// contact support for help.
   core.String? state;
 
   /// The Google-generated UUID for the hub.
@@ -5416,17 +5623,22 @@ class Hub {
       };
 }
 
-/// The hub status entry.
+/// A hub status entry represents the status of a set of propagated Private
+/// Service Connect connections grouped by certain fields.
 class HubStatusEntry {
-  /// The number of status.
+  /// The number of propagated Private Service Connect connections with this
+  /// status.
   ///
-  /// If group_by is not set in the request, the default is 1.
+  /// If the `group_by` field was not set in the request message, the value of
+  /// this field is 1.
   core.int? count;
 
-  /// The same group_by field from the request.
+  /// The fields that this entry is grouped by.
+  ///
+  /// This has the same value as the `group_by` field in the request message.
   core.String? groupBy;
 
-  /// The PSC propagation status.
+  /// The Private Service Connect propagation status.
   PscPropagationStatus? pscPropagationStatus;
 
   HubStatusEntry({
@@ -5480,7 +5692,7 @@ class InterconnectAttachment {
 /// The internal range resource for IPAM operations within a VPC network.
 ///
 /// Used to represent a private address range along with behavioral
-/// characterstics of that range (its usage and peering behavior). Networking
+/// characteristics of that range (its usage and peering behavior). Networking
 /// resources can link to this range if they are created as belonging to it.
 class InternalRange {
   /// Time when the internal range was created.
@@ -5500,8 +5712,6 @@ class InternalRange {
   core.Map<core.String, core.String>? labels;
 
   /// Must be present if usage is set to FOR_MIGRATION.
-  ///
-  /// This field is for internal use.
   ///
   /// Optional.
   Migration? migration;
@@ -5594,7 +5804,7 @@ class InternalRange {
   /// - "FOR_MIGRATION" : Ranges created FOR_MIGRATION can be used to lock a
   /// CIDR range between a source and target subnet. If usage is set to
   /// FOR_MIGRATION, the peering value has to be set to FOR_SELF or default to
-  /// FOR_SELF when unset. This value is for internal use.
+  /// FOR_SELF when unset.
   core.String? usage;
 
   /// The list of resources that refer to this internal range.
@@ -5764,6 +5974,12 @@ class LinkedProducerVpcNetwork {
   /// Output only.
   core.String? producerNetwork;
 
+  /// The proposed include export IP ranges waiting for hub administration's
+  /// approval.
+  ///
+  /// Optional.
+  core.List<core.String>? proposedIncludeExportRanges;
+
   /// The Service Consumer Network spoke.
   ///
   /// Output only.
@@ -5775,6 +5991,7 @@ class LinkedProducerVpcNetwork {
     this.network,
     this.peering,
     this.producerNetwork,
+    this.proposedIncludeExportRanges,
     this.serviceConsumerVpcSpoke,
   });
 
@@ -5789,6 +6006,10 @@ class LinkedProducerVpcNetwork {
           network: json_['network'] as core.String?,
           peering: json_['peering'] as core.String?,
           producerNetwork: json_['producerNetwork'] as core.String?,
+          proposedIncludeExportRanges:
+              (json_['proposedIncludeExportRanges'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           serviceConsumerVpcSpoke:
               json_['serviceConsumerVpcSpoke'] as core.String?,
         );
@@ -5801,6 +6022,8 @@ class LinkedProducerVpcNetwork {
         if (network != null) 'network': network!,
         if (peering != null) 'peering': peering!,
         if (producerNetwork != null) 'producerNetwork': producerNetwork!,
+        if (proposedIncludeExportRanges != null)
+          'proposedIncludeExportRanges': proposedIncludeExportRanges!,
         if (serviceConsumerVpcSpoke != null)
           'serviceConsumerVpcSpoke': serviceConsumerVpcSpoke!,
       };
@@ -5881,10 +6104,19 @@ class LinkedVpcNetwork {
   /// VPC spoke for.
   ///
   /// These producer VPCs are connected through VPC peering to this spoke's
-  /// backing VPC network.
+  /// backing VPC network. Because they are directly connected throuh VPC
+  /// peering, NCC export filters do not apply between the service consumer VPC
+  /// spoke and any of its producer VPC spokes. This VPC spoke cannot be deleted
+  /// as long as any of these producer VPC spokes are connected to the NCC Hub.
   ///
   /// Output only.
   core.List<core.String>? producerVpcSpokes;
+
+  /// The proposed include export IP ranges waiting for hub administration's
+  /// approval.
+  ///
+  /// Optional.
+  core.List<core.String>? proposedIncludeExportRanges;
 
   /// The URI of the VPC network resource.
   ///
@@ -5895,6 +6127,7 @@ class LinkedVpcNetwork {
     this.excludeExportRanges,
     this.includeExportRanges,
     this.producerVpcSpokes,
+    this.proposedIncludeExportRanges,
     this.uri,
   });
 
@@ -5909,6 +6142,10 @@ class LinkedVpcNetwork {
           producerVpcSpokes: (json_['producerVpcSpokes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          proposedIncludeExportRanges:
+              (json_['proposedIncludeExportRanges'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           uri: json_['uri'] as core.String?,
         );
 
@@ -5918,6 +6155,8 @@ class LinkedVpcNetwork {
         if (includeExportRanges != null)
           'includeExportRanges': includeExportRanges!,
         if (producerVpcSpokes != null) 'producerVpcSpokes': producerVpcSpokes!,
+        if (proposedIncludeExportRanges != null)
+          'proposedIncludeExportRanges': proposedIncludeExportRanges!,
         if (uri != null) 'uri': uri!,
       };
 }
@@ -6541,7 +6780,7 @@ class Migration {
   /// Resource path of the target resource.
   ///
   /// The target project can be different, as in the cases when migrating to
-  /// peer networks. The resource For example:
+  /// peer networks. For example:
   /// /projects/{project}/regions/{region}/subnetworks/{subnet}
   ///
   /// Immutable.
@@ -7258,30 +7497,36 @@ class PscConnection {
       };
 }
 
-/// The PSC propagation status in a hub.
+/// The status of one or more propagated Private Service Connect connections in
+/// a hub.
 class PscPropagationStatus {
   /// The propagation status.
   /// Possible string values are:
   /// - "CODE_UNSPECIFIED" : The code is unspecified.
-  /// - "READY" : The propagated PSC connection is ready.
-  /// - "PROPAGATING" : PSC connection is propagating. This is a transient
-  /// state.
-  /// - "ERROR_PRODUCER_PROPAGATED_CONNECTION_LIMIT_EXCEEDED" : The PSC
-  /// connection propagation failed because the VPC network or the project of
-  /// the target spoke has exceeded the connection limit set by the producer.
-  /// - "ERROR_PRODUCER_NAT_IP_SPACE_EXHAUSTED" : The PSC connection propagation
-  /// failed because the NAT IP subnet space has been exhausted. It is
-  /// equivalent to the `Needs attention` status of the PSC connection. See
+  /// - "READY" : The propagated Private Service Connect connection is ready.
+  /// - "PROPAGATING" : The Private Service Connect connection is propagating.
+  /// This is a transient state.
+  /// - "ERROR_PRODUCER_PROPAGATED_CONNECTION_LIMIT_EXCEEDED" : The Private
+  /// Service Connect connection propagation failed because the VPC network or
+  /// the project of the target spoke has exceeded the connection limit set by
+  /// the producer.
+  /// - "ERROR_PRODUCER_NAT_IP_SPACE_EXHAUSTED" : The Private Service Connect
+  /// connection propagation failed because the NAT IP subnet space has been
+  /// exhausted. It is equivalent to the `Needs attention` status of the Private
+  /// Service Connect connection. See
   /// https://cloud.google.com/vpc/docs/about-accessing-vpc-hosted-services-endpoints#connection-statuses.
-  /// - "ERROR_PRODUCER_QUOTA_EXCEEDED" : PSC connection propagation failed
-  /// because the `PSC_ILB_CONSUMER_FORWARDING_RULES_PER_PRODUCER_NETWORK` quota
-  /// in the producer VPC network has been exceeded.
-  /// - "ERROR_CONSUMER_QUOTA_EXCEEDED" : The PSC connection propagation failed
-  /// because the `PSC_PROPAGATED_CONNECTIONS_PER_VPC_NETWORK` quota in the
-  /// consumer VPC network has been exceeded.
+  /// - "ERROR_PRODUCER_QUOTA_EXCEEDED" : The Private Service Connect connection
+  /// propagation failed because the
+  /// `PSC_ILB_CONSUMER_FORWARDING_RULES_PER_PRODUCER_NETWORK` quota in the
+  /// producer VPC network has been exceeded.
+  /// - "ERROR_CONSUMER_QUOTA_EXCEEDED" : The Private Service Connect connection
+  /// propagation failed because the
+  /// `PSC_PROPAGATED_CONNECTIONS_PER_VPC_NETWORK` quota in the consumer VPC
+  /// network has been exceeded.
   core.String? code;
 
-  /// The human-readable summary of the PSC connection propagation status.
+  /// The human-readable summary of the Private Service Connect connection
+  /// propagation status.
   core.String? message;
 
   /// The name of the forwarding rule exported to the hub.
@@ -7555,6 +7800,63 @@ class RejectHubSpokeRequest {
       };
 }
 
+/// The request for HubService.RejectSpokeUpdate.
+class RejectSpokeUpdateRequest {
+  /// Additional information provided by the hub administrator.
+  ///
+  /// Optional.
+  core.String? details;
+
+  /// A request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server knows to ignore the request if it has already been completed. The
+  /// server guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check to see
+  /// whether the original operation was received. If it was, the server ignores
+  /// the second request. This behavior prevents clients from mistakenly
+  /// creating duplicate commitments. The request ID must be a valid UUID, with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  /// The etag of the spoke to reject update.
+  ///
+  /// Required.
+  core.String? spokeEtag;
+
+  /// The URI of the spoke to reject update.
+  ///
+  /// Required.
+  core.String? spokeUri;
+
+  RejectSpokeUpdateRequest({
+    this.details,
+    this.requestId,
+    this.spokeEtag,
+    this.spokeUri,
+  });
+
+  RejectSpokeUpdateRequest.fromJson(core.Map json_)
+      : this(
+          details: json_['details'] as core.String?,
+          requestId: json_['requestId'] as core.String?,
+          spokeEtag: json_['spokeEtag'] as core.String?,
+          spokeUri: json_['spokeUri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
+        if (requestId != null) 'requestId': requestId!,
+        if (spokeEtag != null) 'spokeEtag': spokeEtag!,
+        if (spokeUri != null) 'spokeUri': spokeUri!,
+      };
+}
+
 /// A route defines a path from VM instances within a spoke to a specific
 /// destination resource.
 ///
@@ -7643,6 +7945,9 @@ class Route {
   /// - "INACTIVE" : The resource is inactive.
   /// - "OBSOLETE" : The hub associated with this spoke resource has been
   /// deleted. This state applies to spoke resources only.
+  /// - "FAILED" : The resource is in an undefined state due to resource
+  /// creation or deletion failure. You can try to delete the resource later or
+  /// contact support for help.
   core.String? state;
 
   /// The route's type.
@@ -7795,6 +8100,9 @@ class RouteTable {
   /// - "INACTIVE" : The resource is inactive.
   /// - "OBSOLETE" : The hub associated with this spoke resource has been
   /// deleted. This state applies to spoke resources only.
+  /// - "FAILED" : The resource is in an undefined state due to resource
+  /// creation or deletion failure. You can try to delete the resource later or
+  /// contact support for help.
   core.String? state;
 
   /// The Google-generated UUID for the route table.
@@ -8056,7 +8364,7 @@ class ServiceConnectionMap {
 
   /// The token provided by the consumer.
   ///
-  /// This token authenticates that the consumer can create a connecton within
+  /// This token authenticates that the consumer can create a connection within
   /// the specified project and network.
   core.String? token;
 
@@ -8398,7 +8706,21 @@ class Spoke {
   core.String? createTime;
 
   /// An optional description of the spoke.
+  ///
+  /// Optional.
   core.String? description;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// The list of fields waiting for hub administration's approval.
+  ///
+  /// Optional.
+  core.List<core.String>? fieldPathsPendingUpdate;
 
   /// The name of the group that this spoke is associated with.
   ///
@@ -8417,6 +8739,8 @@ class Spoke {
   core.Map<core.String, core.String>? labels;
 
   /// VLAN attachments that are associated with the spoke.
+  ///
+  /// Optional.
   LinkedInterconnectAttachments? linkedInterconnectAttachments;
 
   /// The linked producer VPC that is associated with the spoke.
@@ -8425,6 +8749,8 @@ class Spoke {
   LinkedProducerVpcNetwork? linkedProducerVpcNetwork;
 
   /// Router appliance instances that are associated with the spoke.
+  ///
+  /// Optional.
   LinkedRouterApplianceInstances? linkedRouterApplianceInstances;
 
   /// VPC network that is associated with the spoke.
@@ -8433,6 +8759,8 @@ class Spoke {
   LinkedVpcNetwork? linkedVpcNetwork;
 
   /// VPN tunnels that are associated with the spoke.
+  ///
+  /// Optional.
   LinkedVpnTunnels? linkedVpnTunnels;
 
   /// The name of the spoke.
@@ -8475,6 +8803,9 @@ class Spoke {
   /// - "INACTIVE" : The resource is inactive.
   /// - "OBSOLETE" : The hub associated with this spoke resource has been
   /// deleted. This state applies to spoke resources only.
+  /// - "FAILED" : The resource is in an undefined state due to resource
+  /// creation or deletion failure. You can try to delete the resource later or
+  /// contact support for help.
   core.String? state;
 
   /// The Google-generated UUID for the spoke.
@@ -8494,6 +8825,8 @@ class Spoke {
   Spoke({
     this.createTime,
     this.description,
+    this.etag,
+    this.fieldPathsPendingUpdate,
     this.group,
     this.hub,
     this.labels,
@@ -8514,6 +8847,11 @@ class Spoke {
       : this(
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          fieldPathsPendingUpdate:
+              (json_['fieldPathsPendingUpdate'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           group: json_['group'] as core.String?,
           hub: json_['hub'] as core.String?,
           labels:
@@ -8563,6 +8901,9 @@ class Spoke {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (fieldPathsPendingUpdate != null)
+          'fieldPathsPendingUpdate': fieldPathsPendingUpdate!,
         if (group != null) 'group': group!,
         if (hub != null) 'hub': hub!,
         if (labels != null) 'labels': labels!,
@@ -8606,6 +8947,9 @@ class SpokeStateCount {
   /// - "INACTIVE" : The resource is inactive.
   /// - "OBSOLETE" : The hub associated with this spoke resource has been
   /// deleted. This state applies to spoke resources only.
+  /// - "FAILED" : The resource is in an undefined state due to resource
+  /// creation or deletion failure. You can try to delete the resource later or
+  /// contact support for help.
   core.String? state;
 
   SpokeStateCount({

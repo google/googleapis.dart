@@ -2010,6 +2010,7 @@ api.LabInfo buildLabInfo() {
   buildCounterLabInfo++;
   if (buildCounterLabInfo < 3) {
     o.name = 'foo';
+    o.regionCode = 'foo';
   }
   buildCounterLabInfo--;
   return o;
@@ -2020,6 +2021,10 @@ void checkLabInfo(api.LabInfo o) {
   if (buildCounterLabInfo < 3) {
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.regionCode!,
       unittest.equals('foo'),
     );
   }

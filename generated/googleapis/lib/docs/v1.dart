@@ -968,8 +968,8 @@ class CreateParagraphBulletsRequest {
 /// corresponding edge of crop rectangle is positioned inside of the image's
 /// original bounding rectangle. - If the offset is negative or greater than 1,
 /// the corresponding edge of crop rectangle is positioned outside of the
-/// image's original bounding rectangle. - If all offsets and rotation angle are
-/// 0, the image is not cropped.
+/// image's original bounding rectangle. - If all offsets and rotation angles
+/// are 0, the image is not cropped.
 class CropProperties {
   /// The clockwise rotation angle of the crop rectangle around its center, in
   /// radians.
@@ -1787,7 +1787,7 @@ class DocumentStyle {
   /// and DocumentStyle margin_footer, SectionStyle margin_footer are respected.
   ///
   /// When false, the default values in the Docs editor for header and footer
-  /// margin are used. This property is read-only.
+  /// margin is used. This property is read-only.
   core.bool? useCustomHeaderFooterMargins;
 
   /// Indicates whether to use the even page header / footer IDs for the even
@@ -4240,7 +4240,7 @@ class NestingLevel {
   core.String? glyphFormat;
 
   /// A custom glyph symbol used by bullets when paragraphs at this level of
-  /// nesting are unordered.
+  /// nesting is unordered.
   ///
   /// The glyph symbol replaces placeholders within the glyph_format. For
   /// example, if the glyph_symbol is the solid circle corresponding to Unicode
@@ -4249,14 +4249,14 @@ class NestingLevel {
   core.String? glyphSymbol;
 
   /// The type of glyph used by bullets when paragraphs at this level of nesting
-  /// are ordered.
+  /// is ordered.
   ///
   /// The glyph type determines the type of glyph used to replace placeholders
   /// within the glyph_format when paragraphs at this level of nesting are
   /// ordered. For example, if the nesting level is 0, the glyph_format is `%0.`
   /// and the glyph type is DECIMAL, then the rendered glyph would replace the
-  /// placeholder `%0` in the glyph format with a number corresponding to list
-  /// item's order within the list.
+  /// placeholder `%0` in the glyph format with a number corresponding to the
+  /// list item's order within the list.
   /// Possible string values are:
   /// - "GLYPH_TYPE_UNSPECIFIED" : The glyph type is unspecified or unsupported.
   /// - "NONE" : An empty string.

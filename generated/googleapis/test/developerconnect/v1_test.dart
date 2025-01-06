@@ -26,6 +26,80 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterBitbucketCloudConfig = 0;
+api.BitbucketCloudConfig buildBitbucketCloudConfig() {
+  final o = api.BitbucketCloudConfig();
+  buildCounterBitbucketCloudConfig++;
+  if (buildCounterBitbucketCloudConfig < 3) {
+    o.authorizerCredential = buildUserCredential();
+    o.readAuthorizerCredential = buildUserCredential();
+    o.webhookSecretSecretVersion = 'foo';
+    o.workspace = 'foo';
+  }
+  buildCounterBitbucketCloudConfig--;
+  return o;
+}
+
+void checkBitbucketCloudConfig(api.BitbucketCloudConfig o) {
+  buildCounterBitbucketCloudConfig++;
+  if (buildCounterBitbucketCloudConfig < 3) {
+    checkUserCredential(o.authorizerCredential!);
+    checkUserCredential(o.readAuthorizerCredential!);
+    unittest.expect(
+      o.webhookSecretSecretVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.workspace!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBitbucketCloudConfig--;
+}
+
+core.int buildCounterBitbucketDataCenterConfig = 0;
+api.BitbucketDataCenterConfig buildBitbucketDataCenterConfig() {
+  final o = api.BitbucketDataCenterConfig();
+  buildCounterBitbucketDataCenterConfig++;
+  if (buildCounterBitbucketDataCenterConfig < 3) {
+    o.authorizerCredential = buildUserCredential();
+    o.hostUri = 'foo';
+    o.readAuthorizerCredential = buildUserCredential();
+    o.serverVersion = 'foo';
+    o.serviceDirectoryConfig = buildServiceDirectoryConfig();
+    o.sslCaCertificate = 'foo';
+    o.webhookSecretSecretVersion = 'foo';
+  }
+  buildCounterBitbucketDataCenterConfig--;
+  return o;
+}
+
+void checkBitbucketDataCenterConfig(api.BitbucketDataCenterConfig o) {
+  buildCounterBitbucketDataCenterConfig++;
+  if (buildCounterBitbucketDataCenterConfig < 3) {
+    checkUserCredential(o.authorizerCredential!);
+    unittest.expect(
+      o.hostUri!,
+      unittest.equals('foo'),
+    );
+    checkUserCredential(o.readAuthorizerCredential!);
+    unittest.expect(
+      o.serverVersion!,
+      unittest.equals('foo'),
+    );
+    checkServiceDirectoryConfig(o.serviceDirectoryConfig!);
+    unittest.expect(
+      o.sslCaCertificate!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.webhookSecretSecretVersion!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBitbucketDataCenterConfig--;
+}
+
 core.int buildCounterCancelOperationRequest = 0;
 api.CancelOperationRequest buildCancelOperationRequest() {
   final o = api.CancelOperationRequest();
@@ -81,11 +155,14 @@ api.Connection buildConnection() {
   buildCounterConnection++;
   if (buildCounterConnection < 3) {
     o.annotations = buildUnnamed0();
+    o.bitbucketCloudConfig = buildBitbucketCloudConfig();
+    o.bitbucketDataCenterConfig = buildBitbucketDataCenterConfig();
     o.createTime = 'foo';
     o.cryptoKeyConfig = buildCryptoKeyConfig();
     o.deleteTime = 'foo';
     o.disabled = true;
     o.etag = 'foo';
+    o.gitProxyConfig = buildGitProxyConfig();
     o.githubConfig = buildGitHubConfig();
     o.githubEnterpriseConfig = buildGitHubEnterpriseConfig();
     o.gitlabConfig = buildGitLabConfig();
@@ -105,6 +182,8 @@ void checkConnection(api.Connection o) {
   buildCounterConnection++;
   if (buildCounterConnection < 3) {
     checkUnnamed0(o.annotations!);
+    checkBitbucketCloudConfig(o.bitbucketCloudConfig!);
+    checkBitbucketDataCenterConfig(o.bitbucketDataCenterConfig!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -119,6 +198,7 @@ void checkConnection(api.Connection o) {
       o.etag!,
       unittest.equals('foo'),
     );
+    checkGitProxyConfig(o.gitProxyConfig!);
     checkGitHubConfig(o.githubConfig!);
     checkGitHubEnterpriseConfig(o.githubEnterpriseConfig!);
     checkGitLabConfig(o.gitlabConfig!);
@@ -549,6 +629,25 @@ void checkGitLabEnterpriseConfig(api.GitLabEnterpriseConfig o) {
   buildCounterGitLabEnterpriseConfig--;
 }
 
+core.int buildCounterGitProxyConfig = 0;
+api.GitProxyConfig buildGitProxyConfig() {
+  final o = api.GitProxyConfig();
+  buildCounterGitProxyConfig++;
+  if (buildCounterGitProxyConfig < 3) {
+    o.enabled = true;
+  }
+  buildCounterGitProxyConfig--;
+  return o;
+}
+
+void checkGitProxyConfig(api.GitProxyConfig o) {
+  buildCounterGitProxyConfig++;
+  if (buildCounterGitProxyConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterGitProxyConfig--;
+}
+
 core.Map<core.String, core.String> buildUnnamed5() => {
       'x': 'foo',
       'y': 'foo',
@@ -593,6 +692,7 @@ api.GitRepositoryLink buildGitRepositoryLink() {
     o.createTime = 'foo';
     o.deleteTime = 'foo';
     o.etag = 'foo';
+    o.gitProxyUri = 'foo';
     o.labels = buildUnnamed6();
     o.name = 'foo';
     o.reconciling = true;
@@ -622,6 +722,10 @@ void checkGitRepositoryLink(api.GitRepositoryLink o) {
     );
     unittest.expect(
       o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gitProxyUri!,
       unittest.equals('foo'),
     );
     checkUnnamed6(o.labels!);
@@ -1240,6 +1344,48 @@ void checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
+core.int buildCounterProcessBitbucketCloudWebhookRequest = 0;
+api.ProcessBitbucketCloudWebhookRequest
+    buildProcessBitbucketCloudWebhookRequest() {
+  final o = api.ProcessBitbucketCloudWebhookRequest();
+  buildCounterProcessBitbucketCloudWebhookRequest++;
+  if (buildCounterProcessBitbucketCloudWebhookRequest < 3) {
+    o.body = buildHttpBody();
+  }
+  buildCounterProcessBitbucketCloudWebhookRequest--;
+  return o;
+}
+
+void checkProcessBitbucketCloudWebhookRequest(
+    api.ProcessBitbucketCloudWebhookRequest o) {
+  buildCounterProcessBitbucketCloudWebhookRequest++;
+  if (buildCounterProcessBitbucketCloudWebhookRequest < 3) {
+    checkHttpBody(o.body!);
+  }
+  buildCounterProcessBitbucketCloudWebhookRequest--;
+}
+
+core.int buildCounterProcessBitbucketDataCenterWebhookRequest = 0;
+api.ProcessBitbucketDataCenterWebhookRequest
+    buildProcessBitbucketDataCenterWebhookRequest() {
+  final o = api.ProcessBitbucketDataCenterWebhookRequest();
+  buildCounterProcessBitbucketDataCenterWebhookRequest++;
+  if (buildCounterProcessBitbucketDataCenterWebhookRequest < 3) {
+    o.body = buildHttpBody();
+  }
+  buildCounterProcessBitbucketDataCenterWebhookRequest--;
+  return o;
+}
+
+void checkProcessBitbucketDataCenterWebhookRequest(
+    api.ProcessBitbucketDataCenterWebhookRequest o) {
+  buildCounterProcessBitbucketDataCenterWebhookRequest++;
+  if (buildCounterProcessBitbucketDataCenterWebhookRequest < 3) {
+    checkHttpBody(o.body!);
+  }
+  buildCounterProcessBitbucketDataCenterWebhookRequest--;
+}
+
 core.int buildCounterProcessGitHubEnterpriseWebhookRequest = 0;
 api.ProcessGitHubEnterpriseWebhookRequest
     buildProcessGitHubEnterpriseWebhookRequest() {
@@ -1436,6 +1582,26 @@ void checkUserCredential(api.UserCredential o) {
 }
 
 void main() {
+  unittest.group('obj-schema-BitbucketCloudConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBitbucketCloudConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BitbucketCloudConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBitbucketCloudConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-BitbucketDataCenterConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBitbucketDataCenterConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BitbucketDataCenterConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBitbucketDataCenterConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-CancelOperationRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCancelOperationRequest();
@@ -1586,6 +1752,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GitProxyConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGitProxyConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GitProxyConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGitProxyConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-GitRepositoryLink', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGitRepositoryLink();
@@ -1703,6 +1879,26 @@ void main() {
       final od =
           api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOperation(od);
+    });
+  });
+
+  unittest.group('obj-schema-ProcessBitbucketCloudWebhookRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildProcessBitbucketCloudWebhookRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProcessBitbucketCloudWebhookRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkProcessBitbucketCloudWebhookRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ProcessBitbucketDataCenterWebhookRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildProcessBitbucketDataCenterWebhookRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProcessBitbucketDataCenterWebhookRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkProcessBitbucketDataCenterWebhookRequest(od);
     });
   });
 
@@ -2927,6 +3123,132 @@ void main() {
           $fields: arg_$fields);
       checkListGitRepositoryLinksResponse(
           response as api.ListGitRepositoryLinksResponse);
+    });
+
+    unittest.test('method--processBitbucketCloudWebhook', () async {
+      final mock = HttpServerMock();
+      final res = api.DeveloperConnectApi(mock)
+          .projects
+          .locations
+          .connections
+          .gitRepositoryLinks;
+      final arg_request = buildProcessBitbucketCloudWebhookRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ProcessBitbucketCloudWebhookRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkProcessBitbucketCloudWebhookRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.processBitbucketCloudWebhook(
+          arg_request, arg_name,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--processBitbucketDataCenterWebhook', () async {
+      final mock = HttpServerMock();
+      final res = api.DeveloperConnectApi(mock)
+          .projects
+          .locations
+          .connections
+          .gitRepositoryLinks;
+      final arg_request = buildProcessBitbucketDataCenterWebhookRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ProcessBitbucketDataCenterWebhookRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkProcessBitbucketDataCenterWebhookRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.processBitbucketDataCenterWebhook(
+          arg_request, arg_name,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
     unittest.test('method--processGitLabEnterpriseWebhook', () async {

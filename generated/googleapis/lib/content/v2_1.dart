@@ -7161,6 +7161,43 @@ class AccountIssue {
   /// you can hide everything with this class.
   core.String? prerenderedContent;
 
+  /// Pre-rendered HTML that contains a link to the external location where the
+  /// ODS can be requested and instructions for how to request it.
+  ///
+  /// HTML elements contain CSS classes that can be used to customize the style
+  /// of this snippet. Always sanitize the HTML before embedding it directly to
+  /// your application. The sanitizer needs to allow basic HTML tags, such as:
+  /// `div`, `span`, `p`, `a`, `ul`, `li`, `table`, `tr`, `td`. For example, you
+  /// can use [DOMPurify](https://www.npmjs.com/package/dompurify). CSS classes:
+  /// * `ods-section`* - wrapper around the out-of-court dispute resolution
+  /// section * `ods-description`* - intro text for the out-of-court dispute
+  /// resolution. It may contain multiple segments and a link. * `ods-param`* -
+  /// wrapper around the header-value pair for parameters that merchant may need
+  /// to provide during the ODS process. * `ods-routing-id`* - ods param for the
+  /// Routing ID. * `ods-reference-id`* - ods param for the Routing ID. *
+  /// `ods-param-header`* - header for the ODS parameter * `ods-param-value`* -
+  /// value of the ODS parameter. This value should be rendered in a way that it
+  /// is easy for merchants to identify and copy. * `segment` - section of the
+  /// text, `span` inside paragraph * `segment-attribute` - section of the text
+  /// that represents a product attribute, for example 'image\_link' *
+  /// `segment-literal` - section of the text that contains a special value, for
+  /// example '0-1000 kg' * `segment-bold` - section of the text that should be
+  /// rendered as bold * `segment-italic` - section of the text that should be
+  /// rendered as italic * `tooltip` - used on paragraphs that should be
+  /// rendered with a tooltip. A section of the text in such a paragraph will
+  /// have a class `tooltip-text` and is intended to be shown in a mouse over
+  /// dialog. If the style is not used, the `tooltip-text` section would be
+  /// shown on a new line, after the main part of the text. * `tooltip-text` -
+  /// marks a section of the text within a `tooltip`, that is intended to be
+  /// shown in a mouse over dialog. * `tooltip-icon` - marks a section of the
+  /// text within a `tooltip`, that can be replaced with a tooltip icon, for
+  /// example '?' or 'i'. By default, this section contains a `br` tag, that is
+  /// separating the main text and the tooltip text when the style is not used.
+  /// * `tooltip-style-question` - the tooltip shows helpful information, can
+  /// use the '?' as an icon. * `tooltip-style-info` - the tooltip adds
+  /// additional information fitting to the context, can use the 'i' as an icon.
+  core.String? prerenderedOutOfCourtDisputeSettlement;
+
   /// Title of the issue.
   core.String? title;
 
@@ -7168,6 +7205,7 @@ class AccountIssue {
     this.actions,
     this.impact,
     this.prerenderedContent,
+    this.prerenderedOutOfCourtDisputeSettlement,
     this.title,
   });
 
@@ -7182,6 +7220,8 @@ class AccountIssue {
                   json_['impact'] as core.Map<core.String, core.dynamic>)
               : null,
           prerenderedContent: json_['prerenderedContent'] as core.String?,
+          prerenderedOutOfCourtDisputeSettlement:
+              json_['prerenderedOutOfCourtDisputeSettlement'] as core.String?,
           title: json_['title'] as core.String?,
         );
 
@@ -7190,6 +7230,9 @@ class AccountIssue {
         if (impact != null) 'impact': impact!,
         if (prerenderedContent != null)
           'prerenderedContent': prerenderedContent!,
+        if (prerenderedOutOfCourtDisputeSettlement != null)
+          'prerenderedOutOfCourtDisputeSettlement':
+              prerenderedOutOfCourtDisputeSettlement!,
         if (title != null) 'title': title!,
       };
 }
@@ -9174,9 +9217,7 @@ class AttributionSettings {
   /// Required.
   core.int? attributionLookbackWindowInDays;
 
-  /// Attribution model.
   ///
-  /// Required.
   /// Possible string values are:
   /// - "ATTRIBUTION_MODEL_UNSPECIFIED"
   /// - "CROSS_CHANNEL_LAST_CLICK" : Cross-channel Last Click model.
@@ -16551,10 +16592,10 @@ class PostalCodeRange {
       };
 }
 
-typedef Price = $Shared10;
+typedef Price = $Shared11;
 
 /// The price represented as a number and currency.
-typedef PriceAmount = $Shared10;
+typedef PriceAmount = $Shared11;
 
 /// Price competitiveness fields requested by the merchant in the query.
 ///
@@ -18047,6 +18088,43 @@ class ProductIssue {
   /// this class.
   core.String? prerenderedContent;
 
+  /// Pre-rendered HTML that contains a link to the external location where the
+  /// ODS can be requested and instructions for how to request it.
+  ///
+  /// HTML elements contain CSS classes that can be used to customize the style
+  /// of this snippet. Always sanitize the HTML before embedding it directly to
+  /// your application. The sanitizer needs to allow basic HTML tags, such as:
+  /// `div`, `span`, `p`, `a`, `ul`, `li`, `table`, `tr`, `td`. For example, you
+  /// can use [DOMPurify](https://www.npmjs.com/package/dompurify). CSS classes:
+  /// * `ods-section`* - wrapper around the out-of-court dispute resolution
+  /// section * `ods-description`* - intro text for the out-of-court dispute
+  /// resolution. It may contain multiple segments and a link. * `ods-param`* -
+  /// wrapper around the header-value pair for parameters that merchant may need
+  /// to provide during the ODS process. * `ods-routing-id`* - ods param for the
+  /// Routing ID. * `ods-reference-id`* - ods param for the Routing ID. *
+  /// `ods-param-header`* - header for the ODS parameter * `ods-param-value`* -
+  /// value of the ODS parameter. This value should be rendered in a way that it
+  /// is easy for merchants to identify and copy. * `segment` - section of the
+  /// text, `span` inside paragraph * `segment-attribute` - section of the text
+  /// that represents a product attribute, for example 'image\_link' *
+  /// `segment-literal` - section of the text that contains a special value, for
+  /// example '0-1000 kg' * `segment-bold` - section of the text that should be
+  /// rendered as bold * `segment-italic` - section of the text that should be
+  /// rendered as italic * `tooltip` - used on paragraphs that should be
+  /// rendered with a tooltip. A section of the text in such a paragraph will
+  /// have a class `tooltip-text` and is intended to be shown in a mouse over
+  /// dialog. If the style is not used, the `tooltip-text` section would be
+  /// shown on a new line, after the main part of the text. * `tooltip-text` -
+  /// marks a section of the text within a `tooltip`, that is intended to be
+  /// shown in a mouse over dialog. * `tooltip-icon` - marks a section of the
+  /// text within a `tooltip`, that can be replaced with a tooltip icon, for
+  /// example '?' or 'i'. By default, this section contains a `br` tag, that is
+  /// separating the main text and the tooltip text when the style is not used.
+  /// * `tooltip-style-question` - the tooltip shows helpful information, can
+  /// use the '?' as an icon. * `tooltip-style-info` - the tooltip adds
+  /// additional information fitting to the context, can use the 'i' as an icon.
+  core.String? prerenderedOutOfCourtDisputeSettlement;
+
   /// Title of the issue.
   core.String? title;
 
@@ -18054,6 +18132,7 @@ class ProductIssue {
     this.actions,
     this.impact,
     this.prerenderedContent,
+    this.prerenderedOutOfCourtDisputeSettlement,
     this.title,
   });
 
@@ -18068,6 +18147,8 @@ class ProductIssue {
                   json_['impact'] as core.Map<core.String, core.dynamic>)
               : null,
           prerenderedContent: json_['prerenderedContent'] as core.String?,
+          prerenderedOutOfCourtDisputeSettlement:
+              json_['prerenderedOutOfCourtDisputeSettlement'] as core.String?,
           title: json_['title'] as core.String?,
         );
 
@@ -18076,6 +18157,9 @@ class ProductIssue {
         if (impact != null) 'impact': impact!,
         if (prerenderedContent != null)
           'prerenderedContent': prerenderedContent!,
+        if (prerenderedOutOfCourtDisputeSettlement != null)
+          'prerenderedOutOfCourtDisputeSettlement':
+              prerenderedOutOfCourtDisputeSettlement!,
         if (title != null) 'title': title!,
       };
 }
@@ -20927,12 +21011,12 @@ typedef RenderAccountIssuesRequestPayload = $IssuesRequestPayload;
 
 /// Response containing support content and actions for listed account issues.
 class RenderAccountIssuesResponse {
-  /// The Alternate Dispute Resolution (ADR) contains a link to a page where
-  /// merchant can bring their appeal to an
-  /// [external body](https://support.google.com/european-union-digital-services-act-redress-options/answer/13535501).
+  /// Alternate Dispute Resolution (ADR) is deprecated.
   ///
-  /// If the ADR is present, it MUST be available to the merchant on the page
-  /// that shows the list with their account issues.
+  /// Use `prerendered_out_of_court_dispute_settlement` instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   AlternateDisputeResolution? alternateDisputeResolution;
 
   /// List of account issues for a given account.
@@ -20974,12 +21058,12 @@ typedef RenderProductIssuesRequestPayload = $IssuesRequestPayload;
 
 /// Response containing support content and actions for listed product issues.
 class RenderProductIssuesResponse {
-  /// The Alternate Dispute Resolution (ADR) contains a link to a page where
-  /// merchant can bring their appeal to an
-  /// [external body](https://support.google.com/european-union-digital-services-act-redress-options/answer/13535501).
+  /// Alternate Dispute Resolution (ADR) is deprecated.
   ///
-  /// If present, the link should be shown on the same page as the list of
-  /// issues.
+  /// Use `prerendered_out_of_court_dispute_settlement` instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   AlternateDisputeResolution? alternateDisputeResolution;
 
   /// List of issues for a given product.
@@ -21684,6 +21768,10 @@ class ReturnPolicyOnlineRestockingFee {
 /// The return reason category info wrapper.
 class ReturnPolicyOnlineReturnReasonCategoryInfo {
   /// The corresponding return label source.
+  ///
+  /// If the `ReturnMethod` field includes `BY_MAIL`, it is required to specify
+  /// `ReturnLabelSource` for both `BUYER_REMORSE` and `ITEM_DEFECT` return
+  /// reason categories.
   /// Possible string values are:
   /// - "RETURN_LABEL_SOURCE_UNSPECIFIED" : Default value. This value is unused.
   /// - "DOWNLOAD_AND_PRINT" : Download and print the label.

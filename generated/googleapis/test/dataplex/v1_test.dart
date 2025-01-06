@@ -1757,6 +1757,7 @@ api.GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig
   if (buildCounterGoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig <
       3) {
     o.connection = 'foo';
+    o.location = 'foo';
     o.tableType = 'foo';
   }
   buildCounterGoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig--;
@@ -1770,6 +1771,10 @@ void checkGoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig(
       3) {
     unittest.expect(
       o.connection!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
       unittest.equals('foo'),
     );
     unittest.expect(

@@ -1037,7 +1037,7 @@ class V1Resource {
   /// [destinationParent] - Required. Name of the Google Cloud folder or
   /// organization to reparent the target resource. The analysis will be
   /// performed against hypothetically moving the resource to this specified
-  /// desitination parent. This can only be a folder number (such as
+  /// destination parent. This can only be a folder number (such as
   /// "folders/123") or an organization number (such as "organizations/123").
   ///
   /// [view] - Analysis view indicating what information should be included in
@@ -3660,7 +3660,7 @@ class GoogleCloudAssetV1BigQueryDestination {
   /// - "PARTITION_KEY_UNSPECIFIED" : Unspecified partition key. Tables won't be
   /// partitioned using this option.
   /// - "REQUEST_TIME" : The time when the request is received. If specified as
-  /// partition key, the result table(s) is partitoned by the RequestTime
+  /// partition key, the result table(s) is partitioned by the RequestTime
   /// column, an additional timestamp column representing when the request was
   /// received.
   core.String? partitionKey;
@@ -5793,7 +5793,7 @@ class IamPolicySearchResult {
   ///
   /// If an IAM policy is set on a resource (like VM instance, Cloud Storage
   /// bucket), the project field will indicate the project that contains the
-  /// resource. If an IAM policy is set on a folder or orgnization, this field
+  /// resource. If an IAM policy is set on a folder or organization, this field
   /// will be empty. To search against the `project`: * specify the `scope`
   /// field as this project in your search request.
   core.String? project;
@@ -6507,13 +6507,13 @@ class PartitionSpec {
   /// - "PARTITION_KEY_UNSPECIFIED" : Unspecified partition key. If used, it
   /// means using non-partitioned table.
   /// - "READ_TIME" : The time when the snapshot is taken. If specified as
-  /// partition key, the result table(s) is partitoned by the additional
+  /// partition key, the result table(s) is partitioned by the additional
   /// timestamp column, readTime. If \[read_time\] in ExportAssetsRequest is
   /// specified, the readTime column's value will be the same as it. Otherwise,
   /// its value will be the current time that is used to take the snapshot.
   /// - "REQUEST_TIME" : The time when the request is received and started to be
   /// processed. If specified as partition key, the result table(s) is
-  /// partitoned by the requestTime column, an additional timestamp column
+  /// partitioned by the requestTime column, an additional timestamp column
   /// representing when the request was received.
   core.String? partitionKey;
 

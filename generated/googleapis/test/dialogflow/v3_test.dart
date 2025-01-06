@@ -221,6 +221,8 @@ api.GoogleCloudDialogflowCxV3Agent buildGoogleCloudDialogflowCxV3Agent() {
     o.name = 'foo';
     o.personalizationSettings =
         buildGoogleCloudDialogflowCxV3AgentPersonalizationSettings();
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.securitySettings = 'foo';
     o.speechToTextSettings =
         buildGoogleCloudDialogflowCxV3SpeechToTextSettings();
@@ -272,6 +274,8 @@ void checkGoogleCloudDialogflowCxV3Agent(api.GoogleCloudDialogflowCxV3Agent o) {
     );
     checkGoogleCloudDialogflowCxV3AgentPersonalizationSettings(
         o.personalizationSettings!);
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.securitySettings!,
       unittest.equals('foo'),
@@ -1450,6 +1454,7 @@ api.GoogleCloudDialogflowCxV3DataStoreConnection
   if (buildCounterGoogleCloudDialogflowCxV3DataStoreConnection < 3) {
     o.dataStore = 'foo';
     o.dataStoreType = 'foo';
+    o.documentProcessingMode = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3DataStoreConnection--;
   return o;
@@ -1465,6 +1470,10 @@ void checkGoogleCloudDialogflowCxV3DataStoreConnection(
     );
     unittest.expect(
       o.dataStoreType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.documentProcessingMode!,
       unittest.equals('foo'),
     );
   }

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241114",
+    "revision": "20250213",
     "rootUrl": "https://iam.googleapis.com/",
     "servicePath": "",
     "title": "Identity and Access Management (IAM) API",
@@ -320,7 +320,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Output only. The resource name of the pool. Format: `locations/{location}/workforcePools/{workforce_pool_id}`",
+                                    "description": "Identifier. The resource name of the pool. Format: `locations/{location}/workforcePools/{workforce_pool_id}`",
                                     "location": "path",
                                     "pattern": "^locations/[^/]+/workforcePools/[^/]+$",
                                     "required": true,
@@ -595,7 +595,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Output only. The resource name of the provider. Format: `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`",
+                                            "description": "Identifier. The resource name of the provider. Format: `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`",
                                             "location": "path",
                                             "pattern": "^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+$",
                                             "required": true,
@@ -3553,11 +3553,13 @@
                     "description": "Required. Represents the IdP and type of claims that should be fetched.",
                     "enum": [
                         "ATTRIBUTES_TYPE_UNSPECIFIED",
-                        "AZURE_AD_GROUPS_MAIL"
+                        "AZURE_AD_GROUPS_MAIL",
+                        "AZURE_AD_GROUPS_ID"
                     ],
                     "enumDescriptions": [
                         "No AttributesType specified.",
-                        "Used to get the user's group claims from the Microsoft Entra ID identity provider using configuration provided in ExtraAttributesOAuth2Client and `mail` property of the `microsoft.graph.group` object is used for claim mapping. See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on `microsoft.graph.group` properties. The attributes obtained from idntity provider are mapped to `assertion.groups`."
+                        "Used to get the user's group claims from the Microsoft Entra ID identity provider using configuration provided in ExtraAttributesOAuth2Client and `mail` property of the `microsoft.graph.group` object is used for claim mapping. See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on `microsoft.graph.group` properties. The attributes obtained from idntity provider are mapped to `assertion.groups`.",
+                        "Used to get the user's group claims from the Microsoft Entra ID identity provider using configuration provided in ExtraAttributesOAuth2Client and `id` property of the `microsoft.graph.group` object is used for claim mapping. See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on `microsoft.graph.group` properties. The group IDs obtained from Microsoft Entra ID are present in `assertion. groups` for OIDC providers and `assertion.attributes.groups` for SAML providers for attribute mapping."
                     ],
                     "type": "string"
                 },
@@ -4055,7 +4057,7 @@
                     "type": "array"
                 },
                 "allowedScopes": {
-                    "description": "Required. The list of scopes that the OauthClient is allowed to request during OAuth flows. The following scopes are supported: * `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.",
+                    "description": "Required. The list of scopes that the OauthClient is allowed to request during OAuth flows. The following scopes are supported: * `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account. * `openid`: The OAuth client can associate you with your personal information on Google Cloud. * `email`: The OAuth client can read a federated identity's email address. * `groups`: The OAuth client can read a federated identity's groups.",
                     "items": {
                         "type": "string"
                     },
@@ -5018,8 +5020,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Output only. The resource name of the pool. Format: `locations/{location}/workforcePools/{workforce_pool_id}`",
-                    "readOnly": true,
+                    "description": "Identifier. The resource name of the pool. Format: `locations/{location}/workforcePools/{workforce_pool_id}`",
                     "type": "string"
                 },
                 "parent": {
@@ -5087,8 +5088,7 @@
                     "description": "Optional. The configuration for OAuth 2.0 client used to get the additional user attributes. This should be used when users can't get the desired claims in authentication credentials. Currently this configuration is only supported with OIDC protocol."
                 },
                 "name": {
-                    "description": "Output only. The resource name of the provider. Format: `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`",
-                    "readOnly": true,
+                    "description": "Identifier. The resource name of the provider. Format: `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`",
                     "type": "string"
                 },
                 "oidc": {
@@ -5132,8 +5132,7 @@
                     "description": "Immutable. Public half of the asymmetric key."
                 },
                 "name": {
-                    "description": "Output only. The resource name of the key.",
-                    "readOnly": true,
+                    "description": "Identifier. The resource name of the key. Format: `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}/keys/{key_id}`",
                     "type": "string"
                 },
                 "state": {

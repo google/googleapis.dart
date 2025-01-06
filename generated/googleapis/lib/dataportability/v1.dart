@@ -23,6 +23,7 @@
 ///
 /// Create an instance of [DataPortabilityApi] to access these resources:
 ///
+/// - [AccessTypeResource]
 /// - [ArchiveJobsResource]
 /// - [AuthorizationResource]
 /// - [PortabilityArchiveResource]
@@ -47,280 +48,284 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 ///
 /// This enables data portability and facilitates switching services.
 class DataPortabilityApi {
-  /// Move a copy of the Google Alerts subscriptions you created.
+  /// Move a copy of the Google Alerts subscriptions you created
   static const dataportabilityAlertsSubscriptionsScope =
       'https://www.googleapis.com/auth/dataportability.alerts.subscriptions';
 
   /// Move a copy of messages between you and the businesses you have
-  /// conversations with across Google services.
+  /// conversations with across Google services
   static const dataportabilityBusinessmessagingConversationsScope =
       'https://www.googleapis.com/auth/dataportability.businessmessaging.conversations';
 
-  /// Move a copy of the information you entered into online forms in Chrome.
+  /// Move a copy of the information you entered into online forms in Chrome
   static const dataportabilityChromeAutofillScope =
       'https://www.googleapis.com/auth/dataportability.chrome.autofill';
 
-  /// Move a copy of pages you bookmarked in Chrome.
+  /// Move a copy of pages you bookmarked in Chrome
   static const dataportabilityChromeBookmarksScope =
       'https://www.googleapis.com/auth/dataportability.chrome.bookmarks';
 
-  /// Move a copy of words you added to Chrome's dictionary.
+  /// Move a copy of words you added to Chrome's dictionary
   static const dataportabilityChromeDictionaryScope =
       'https://www.googleapis.com/auth/dataportability.chrome.dictionary';
 
-  /// Move a copy of extensions you installed from the Chrome Web Store.
+  /// Move a copy of extensions you installed from the Chrome Web Store
   static const dataportabilityChromeExtensionsScope =
       'https://www.googleapis.com/auth/dataportability.chrome.extensions';
 
-  /// Move a copy of sites you visited in Chrome.
+  /// Move a copy of sites you visited in Chrome
   static const dataportabilityChromeHistoryScope =
       'https://www.googleapis.com/auth/dataportability.chrome.history';
 
-  /// Move a copy of pages you added to your reading list in Chrome.
+  /// Move a copy of pages you added to your reading list in Chrome
   static const dataportabilityChromeReadingListScope =
       'https://www.googleapis.com/auth/dataportability.chrome.reading_list';
 
-  /// Move a copy of your settings in Chrome.
+  /// Move a copy of your settings in Chrome
   static const dataportabilityChromeSettingsScope =
       'https://www.googleapis.com/auth/dataportability.chrome.settings';
 
-  /// Move a copy of searches and sites you follow, saved by Discover.
+  /// Move a copy of searches and sites you follow, saved by Discover
   static const dataportabilityDiscoverFollowsScope =
       'https://www.googleapis.com/auth/dataportability.discover.follows';
 
-  /// Move a copy of links to your liked documents, saved by Discover.
+  /// Move a copy of links to your liked documents, saved by Discover
   static const dataportabilityDiscoverLikesScope =
       'https://www.googleapis.com/auth/dataportability.discover.likes';
 
-  /// Move a copy of content you marked as not interested, saved by Discover.
+  /// Move a copy of content you marked as not interested, saved by Discover
   static const dataportabilityDiscoverNotInterestedScope =
       'https://www.googleapis.com/auth/dataportability.discover.not_interested';
 
-  /// Move a copy of the places you labeled on Maps.
+  /// Move a copy of the places you labeled on Maps
   static const dataportabilityMapsAliasedPlacesScope =
       'https://www.googleapis.com/auth/dataportability.maps.aliased_places';
 
-  /// Move a copy of your pinned trips on Maps.
+  /// Move a copy of your pinned trips on Maps
   static const dataportabilityMapsCommuteRoutesScope =
       'https://www.googleapis.com/auth/dataportability.maps.commute_routes';
 
-  /// Move a copy of your commute settings on Maps.
+  /// Move a copy of your commute settings on Maps
   static const dataportabilityMapsCommuteSettingsScope =
       'https://www.googleapis.com/auth/dataportability.maps.commute_settings';
 
-  /// Move a copy of your electric vehicle profile on Maps.
+  /// Move a copy of your electric vehicle profile on Maps
   static const dataportabilityMapsEvProfileScope =
       'https://www.googleapis.com/auth/dataportability.maps.ev_profile';
 
   /// Move a copy of the corrections you made to places or map information on
-  /// Maps.
+  /// Maps
   static const dataportabilityMapsFactualContributionsScope =
       'https://www.googleapis.com/auth/dataportability.maps.factual_contributions';
 
-  /// Move a copy of your updates to places on Maps.
+  /// Move a copy of your updates to places on Maps
   static const dataportabilityMapsOfferingContributionsScope =
       'https://www.googleapis.com/auth/dataportability.maps.offering_contributions';
 
-  /// Move a copy of the photos and videos you posted on Maps.
+  /// Move a copy of the photos and videos you posted on Maps
   static const dataportabilityMapsPhotosVideosScope =
       'https://www.googleapis.com/auth/dataportability.maps.photos_videos';
 
-  /// Move a copy of the questions and answers you posted on Maps.
+  /// Move a copy of the questions and answers you posted on Maps
   static const dataportabilityMapsQuestionsAnswersScope =
       'https://www.googleapis.com/auth/dataportability.maps.questions_answers';
 
-  /// Move a copy of your reviews and posts on Maps.
+  /// Move a copy of your reviews and posts on Maps
   static const dataportabilityMapsReviewsScope =
       'https://www.googleapis.com/auth/dataportability.maps.reviews';
 
-  /// Move a copy of your Starred places list on Maps.
+  /// Move a copy of your Starred places list on Maps
   static const dataportabilityMapsStarredPlacesScope =
       'https://www.googleapis.com/auth/dataportability.maps.starred_places';
 
-  /// Move a copy of your Maps activity.
+  /// Move a copy of your Maps activity
   static const dataportabilityMyactivityMapsScope =
       'https://www.googleapis.com/auth/dataportability.myactivity.maps';
 
-  /// Move a copy of your My Ad Center activity.
+  /// Move a copy of your My Ad Center activity
   static const dataportabilityMyactivityMyadcenterScope =
       'https://www.googleapis.com/auth/dataportability.myactivity.myadcenter';
 
-  /// Move a copy of your Google Play activity.
+  /// Move a copy of your Google Play activity
   static const dataportabilityMyactivityPlayScope =
       'https://www.googleapis.com/auth/dataportability.myactivity.play';
 
-  /// Move a copy of your Google Search activity.
+  /// Move a copy of your Google Search activity
   static const dataportabilityMyactivitySearchScope =
       'https://www.googleapis.com/auth/dataportability.myactivity.search';
 
-  /// Move a copy of your Shopping activity.
+  /// Move a copy of your Shopping activity
   static const dataportabilityMyactivityShoppingScope =
       'https://www.googleapis.com/auth/dataportability.myactivity.shopping';
 
-  /// Move a copy of your YouTube activity.
+  /// Move a copy of your YouTube activity
   static const dataportabilityMyactivityYoutubeScope =
       'https://www.googleapis.com/auth/dataportability.myactivity.youtube';
 
-  /// Move a copy of the maps you created in My Maps.
+  /// Move a copy of the maps you created in My Maps
   static const dataportabilityMymapsMapsScope =
       'https://www.googleapis.com/auth/dataportability.mymaps.maps';
 
-  /// Move a copy of your food purchase and reservation activity.
+  /// Move a copy of your food purchase and reservation activity
   static const dataportabilityOrderReservePurchasesReservationsScope =
       'https://www.googleapis.com/auth/dataportability.order_reserve.purchases_reservations';
 
   /// Move a copy of information about your devices with Google Play Store
-  /// installed.
+  /// installed
   static const dataportabilityPlayDevicesScope =
       'https://www.googleapis.com/auth/dataportability.play.devices';
 
   /// Move a copy of your Google Play Store Grouping tags created by app
-  /// developers.
+  /// developers
   static const dataportabilityPlayGroupingScope =
       'https://www.googleapis.com/auth/dataportability.play.grouping';
 
-  /// Move a copy of your Google Play Store app installations.
+  /// Move a copy of your Google Play Store app installations
   static const dataportabilityPlayInstallsScope =
       'https://www.googleapis.com/auth/dataportability.play.installs';
 
   /// Move a copy of your Google Play Store downloads, including books, games,
-  /// and apps.
+  /// and apps
   static const dataportabilityPlayLibraryScope =
       'https://www.googleapis.com/auth/dataportability.play.library';
 
-  /// Move a copy of information about your Google Play Store Points.
+  /// Move a copy of information about your Google Play Store Points
   static const dataportabilityPlayPlaypointsScope =
       'https://www.googleapis.com/auth/dataportability.play.playpoints';
 
-  /// Move a copy of information about your Google Play Store promotions.
+  /// Move a copy of information about your Google Play Store promotions
   static const dataportabilityPlayPromotionsScope =
       'https://www.googleapis.com/auth/dataportability.play.promotions';
 
-  /// Move a copy of your Google Play Store purchases.
+  /// Move a copy of your Google Play Store purchases
   static const dataportabilityPlayPurchasesScope =
       'https://www.googleapis.com/auth/dataportability.play.purchases';
 
-  /// Move a copy of your Google Play Store redemption activities.
+  /// Move a copy of your Google Play Store redemption activities
   static const dataportabilityPlayRedemptionsScope =
       'https://www.googleapis.com/auth/dataportability.play.redemptions';
 
-  /// Move a copy of your Google Play Store subscriptions.
+  /// Move a copy of your Google Play Store subscriptions
   static const dataportabilityPlaySubscriptionsScope =
       'https://www.googleapis.com/auth/dataportability.play.subscriptions';
 
-  /// Move a copy of your Google Play Store user settings and preferences.
+  /// Move a copy of your Google Play Store user settings and preferences
   static const dataportabilityPlayUsersettingsScope =
       'https://www.googleapis.com/auth/dataportability.play.usersettings';
 
   /// Move a copy of your saved links, images, places, and collections from your
-  /// use of Google services.
+  /// use of Google services
   static const dataportabilitySavedCollectionsScope =
       'https://www.googleapis.com/auth/dataportability.saved.collections';
 
-  /// Move a copy of your media reviews on Google Search.
+  /// Move a copy of your comments on Google Search
+  static const dataportabilitySearchUgcCommentsScope =
+      'https://www.googleapis.com/auth/dataportability.search_ugc.comments';
+
+  /// Move a copy of your media reviews on Google Search
   static const dataportabilitySearchUgcMediaReviewsAndStarsScope =
       'https://www.googleapis.com/auth/dataportability.search_ugc.media.reviews_and_stars';
 
   /// Move a copy of your self-reported video streaming provider preferences
-  /// from Google Search and Google TV.
+  /// from Google Search and Google TV
   static const dataportabilitySearchUgcMediaStreamingVideoProvidersScope =
       'https://www.googleapis.com/auth/dataportability.search_ugc.media.streaming_video_providers';
 
   /// Move a copy of your indicated thumbs up and thumbs down on media in Google
-  /// Search and Google TV.
+  /// Search and Google TV
   static const dataportabilitySearchUgcMediaThumbsScope =
       'https://www.googleapis.com/auth/dataportability.search_ugc.media.thumbs';
 
   /// Move a copy of information about the movies and TV shows you marked as
-  /// watched on Google Search and Google TV.
+  /// watched on Google Search and Google TV
   static const dataportabilitySearchUgcMediaWatchedScope =
       'https://www.googleapis.com/auth/dataportability.search_ugc.media.watched';
 
-  /// Move a copy of your notification settings on the Google Search app.
+  /// Move a copy of your notification settings on the Google Search app
   static const dataportabilitySearchnotificationsSettingsScope =
       'https://www.googleapis.com/auth/dataportability.searchnotifications.settings';
 
-  /// Move a copy of your notification subscriptions on Google Search app.
+  /// Move a copy of your notification subscriptions on Google Search app
   static const dataportabilitySearchnotificationsSubscriptionsScope =
       'https://www.googleapis.com/auth/dataportability.searchnotifications.subscriptions';
 
-  /// Move a copy of your shipping information on Shopping.
+  /// Move a copy of your shipping information on Shopping
   static const dataportabilityShoppingAddressesScope =
       'https://www.googleapis.com/auth/dataportability.shopping.addresses';
 
   /// Move a copy of reviews you wrote about products or online stores on Google
-  /// Search.
+  /// Search
   static const dataportabilityShoppingReviewsScope =
       'https://www.googleapis.com/auth/dataportability.shopping.reviews';
 
-  /// Move a copy of the images and videos you uploaded to Street View.
+  /// Move a copy of the images and videos you uploaded to Street View
   static const dataportabilityStreetviewImageryScope =
       'https://www.googleapis.com/auth/dataportability.streetview.imagery';
 
-  /// Move a copy of information about your YouTube channel.
+  /// Move a copy of information about your YouTube channel
   static const dataportabilityYoutubeChannelScope =
       'https://www.googleapis.com/auth/dataportability.youtube.channel';
 
-  /// Move a copy of your YouTube clips metadata.
+  /// Move a copy of your YouTube clips metadata
   static const dataportabilityYoutubeClipsScope =
       'https://www.googleapis.com/auth/dataportability.youtube.clips';
 
-  /// Move a copy of your YouTube comments.
+  /// Move a copy of your YouTube comments
   static const dataportabilityYoutubeCommentsScope =
       'https://www.googleapis.com/auth/dataportability.youtube.comments';
 
-  /// Move a copy of your YouTube messages in live chat.
+  /// Move a copy of your YouTube messages in live chat
   static const dataportabilityYoutubeLiveChatScope =
       'https://www.googleapis.com/auth/dataportability.youtube.live_chat';
 
   /// Move a copy of your uploaded YouTube music tracks and your YouTube music
-  /// library.
+  /// library
   static const dataportabilityYoutubeMusicScope =
       'https://www.googleapis.com/auth/dataportability.youtube.music';
 
-  /// Move a copy of your YouTube playables saved game progress files.
+  /// Move a copy of your YouTube playables saved game progress files
   static const dataportabilityYoutubePlayableScope =
       'https://www.googleapis.com/auth/dataportability.youtube.playable';
 
-  /// Move a copy of your YouTube posts.
+  /// Move a copy of your YouTube posts
   static const dataportabilityYoutubePostsScope =
       'https://www.googleapis.com/auth/dataportability.youtube.posts';
 
-  /// Move a copy of your YouTube private playlists.
+  /// Move a copy of your YouTube private playlists
   static const dataportabilityYoutubePrivatePlaylistsScope =
       'https://www.googleapis.com/auth/dataportability.youtube.private_playlists';
 
-  /// Move a copy of your private YouTube videos and information about them.
+  /// Move a copy of your private YouTube videos and information about them
   static const dataportabilityYoutubePrivateVideosScope =
       'https://www.googleapis.com/auth/dataportability.youtube.private_videos';
 
-  /// Move a copy of your public YouTube playlists.
+  /// Move a copy of your public YouTube playlists
   static const dataportabilityYoutubePublicPlaylistsScope =
       'https://www.googleapis.com/auth/dataportability.youtube.public_playlists';
 
-  /// Move a copy of your public YouTube videos and information about them.
+  /// Move a copy of your public YouTube videos and information about them
   static const dataportabilityYoutubePublicVideosScope =
       'https://www.googleapis.com/auth/dataportability.youtube.public_videos';
 
-  /// Move a copy of your YouTube shopping wishlists, and wishlist items.
+  /// Move a copy of your YouTube shopping wishlists, and wishlist items
   static const dataportabilityYoutubeShoppingScope =
       'https://www.googleapis.com/auth/dataportability.youtube.shopping';
 
-  /// Move a copy of your YouTube channel subscriptions, even if they're
-  /// private.
+  /// Move a copy of your YouTube channel subscriptions, even if they're private
   static const dataportabilityYoutubeSubscriptionsScope =
       'https://www.googleapis.com/auth/dataportability.youtube.subscriptions';
 
-  /// Move a copy of your unlisted YouTube playlists.
+  /// Move a copy of your unlisted YouTube playlists
   static const dataportabilityYoutubeUnlistedPlaylistsScope =
       'https://www.googleapis.com/auth/dataportability.youtube.unlisted_playlists';
 
-  /// Move a copy of your unlisted YouTube videos and information about them.
+  /// Move a copy of your unlisted YouTube videos and information about them
   static const dataportabilityYoutubeUnlistedVideosScope =
       'https://www.googleapis.com/auth/dataportability.youtube.unlisted_videos';
 
   final commons.ApiRequester _requester;
 
+  AccessTypeResource get accessType => AccessTypeResource(_requester);
   ArchiveJobsResource get archiveJobs => ArchiveJobsResource(_requester);
   AuthorizationResource get authorization => AuthorizationResource(_requester);
   PortabilityArchiveResource get portabilityArchive =>
@@ -333,10 +338,97 @@ class DataPortabilityApi {
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
+class AccessTypeResource {
+  final commons.ApiRequester _requester;
+
+  AccessTypeResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets the access type of the token.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CheckAccessTypeResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CheckAccessTypeResponse> check(
+    CheckAccessTypeRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/accessType:check';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CheckAccessTypeResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ArchiveJobsResource {
   final commons.ApiRequester _requester;
 
   ArchiveJobsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Cancels a Portability Archive job.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The Archive job ID you're canceling. This is returned
+  /// by the InitiatePortabilityArchive response. The format is:
+  /// archiveJobs/{archive_job}. Canceling is only executed if the job is in
+  /// progress.
+  /// Value must have pattern `^archiveJobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CancelPortabilityArchiveResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CancelPortabilityArchiveResponse> cancel(
+    CancelPortabilityArchiveRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CancelPortabilityArchiveResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Retrieves the state of an Archive job for the Portability API.
   ///
@@ -511,6 +603,49 @@ class PortabilityArchiveResource {
   }
 }
 
+/// Request to cancel a Portability Archive job.
+typedef CancelPortabilityArchiveRequest = $Empty;
+
+/// Response to canceling a Data Portability Archive job.
+typedef CancelPortabilityArchiveResponse = $Empty;
+
+/// Request to check the token's access type.
+///
+/// All required information is derived from the attached OAuth token.
+typedef CheckAccessTypeRequest = $Empty;
+
+/// Response to checking the token's access type.
+class CheckAccessTypeResponse {
+  /// Jobs initiated with this token will be one-time if any requested resources
+  /// have one-time access.
+  core.List<core.String>? oneTimeResources;
+
+  /// Jobs initiated with this token will be time-based if all requested
+  /// resources have time-based access.
+  core.List<core.String>? timeBasedResources;
+
+  CheckAccessTypeResponse({
+    this.oneTimeResources,
+    this.timeBasedResources,
+  });
+
+  CheckAccessTypeResponse.fromJson(core.Map json_)
+      : this(
+          oneTimeResources: (json_['oneTimeResources'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          timeBasedResources: (json_['timeBasedResources'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (oneTimeResources != null) 'oneTimeResources': oneTimeResources!,
+        if (timeBasedResources != null)
+          'timeBasedResources': timeBasedResources!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -521,55 +656,106 @@ typedef Empty = $Empty;
 
 /// Request to kick off an Archive job.
 class InitiatePortabilityArchiveRequest {
+  /// The timestamp that represents the end point for the data you are
+  /// exporting.
+  ///
+  /// If the end_time is not specified in the InitiatePortabilityArchiveRequest,
+  /// this field is set to the latest available data.
+  ///
+  /// Optional.
+  core.String? endTime;
+
   /// The resources from which you're exporting data.
   ///
   /// These values have a 1:1 correspondence with the OAuth scopes.
   core.List<core.String>? resources;
 
+  /// The timestamp that represents the starting point for the data you are
+  /// exporting.
+  ///
+  /// If the start_time is not specified in the
+  /// InitiatePortabilityArchiveRequest, the field is set to the earliest
+  /// available data.
+  ///
+  /// Optional.
+  core.String? startTime;
+
   InitiatePortabilityArchiveRequest({
+    this.endTime,
     this.resources,
+    this.startTime,
   });
 
   InitiatePortabilityArchiveRequest.fromJson(core.Map json_)
       : this(
+          endTime: json_['endTime'] as core.String?,
           resources: (json_['resources'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          startTime: json_['startTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
         if (resources != null) 'resources': resources!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
 /// Response from initiating an Archive job.
 class InitiatePortabilityArchiveResponse {
+  /// The access type of the Archive job initiated by the API.
+  /// Possible string values are:
+  /// - "ACCESS_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACCESS_TYPE_ONE_TIME" : One-time access to the requested scopes.
+  /// - "ACCESS_TYPE_TIME_BASED" : Multiple exports allowed over 30 days. Enum
+  /// value subject to change before launch.
+  core.String? accessType;
+
   /// The archive job ID that is initiated in the API.
   ///
   /// This can be used to get the state of the job.
   core.String? archiveJobId;
 
   InitiatePortabilityArchiveResponse({
+    this.accessType,
     this.archiveJobId,
   });
 
   InitiatePortabilityArchiveResponse.fromJson(core.Map json_)
       : this(
+          accessType: json_['accessType'] as core.String?,
           archiveJobId: json_['archiveJobId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (accessType != null) 'accessType': accessType!,
         if (archiveJobId != null) 'archiveJobId': archiveJobId!,
       };
 }
 
 /// Resource that contains the state of an Archive job.
 class PortabilityArchiveState {
+  /// The timestamp that represents the end point for the data you are
+  /// exporting.
+  ///
+  /// If the end_time value is set in the InitiatePortabilityArchiveRequest,
+  /// this field is set to that value. If end_time is not set, this value is set
+  /// to the time the export was requested.
+  core.String? exportTime;
+
   /// The resource name of ArchiveJob's PortabilityArchiveState singleton.
   ///
   /// The format is: archiveJobs/{archive_job}/portabilityArchiveState.
   /// archive_job is the job ID provided in the request.
   core.String? name;
+
+  /// The timestamp that represents the starting point for the data you are
+  /// exporting.
+  ///
+  /// This field is set only if the start_time field is specified in the
+  /// InitiatePortabilityArchiveRequest.
+  core.String? startTime;
 
   /// Resource that represents the state of the Archive job.
   /// Possible string values are:
@@ -585,14 +771,18 @@ class PortabilityArchiveState {
   core.List<core.String>? urls;
 
   PortabilityArchiveState({
+    this.exportTime,
     this.name,
+    this.startTime,
     this.state,
     this.urls,
   });
 
   PortabilityArchiveState.fromJson(core.Map json_)
       : this(
+          exportTime: json_['exportTime'] as core.String?,
           name: json_['name'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
           state: json_['state'] as core.String?,
           urls: (json_['urls'] as core.List?)
               ?.map((value) => value as core.String)
@@ -600,7 +790,9 @@ class PortabilityArchiveState {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (exportTime != null) 'exportTime': exportTime!,
         if (name != null) 'name': name!,
+        if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
         if (urls != null) 'urls': urls!,
       };

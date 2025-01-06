@@ -513,7 +513,7 @@ class ProjectsLocationsCustomTargetTypesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Optional. Name of the `CustomTargetType`. Format is
+  /// [name] - Identifier. Name of the `CustomTargetType`. Format is
   /// `projects/{project}/locations/{location}/customTargetTypes/{customTargetType}`.
   /// The `customTargetType` component must match
   /// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
@@ -949,7 +949,7 @@ class ProjectsLocationsDeliveryPipelinesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Optional. Name of the `DeliveryPipeline`. Format is
+  /// [name] - Identifier. Name of the `DeliveryPipeline`. Format is
   /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}`.
   /// The `deliveryPipeline` component must match
   /// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
@@ -2594,6 +2594,63 @@ class ProjectsLocationsDeployPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deployPolicies/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists DeployPolicies in a given project and location.
   ///
   /// Request parameters:
@@ -2730,6 +2787,53 @@ class ProjectsLocationsDeployPoliciesResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deployPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3218,7 +3322,7 @@ class ProjectsLocationsTargetsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Optional. Name of the `Target`. Format is
+  /// [name] - Identifier. Name of the `Target`. Format is
   /// `projects/{project}/locations/{location}/targets/{target}`. The `target`
   /// component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
   /// Value must have pattern
@@ -3897,6 +4001,8 @@ class Automation {
 /// to which an Automation is going to be applied.
 class AutomationResourceSelector {
   /// Contains attributes about a target.
+  ///
+  /// Optional.
   core.List<TargetAttribute>? targets;
 
   AutomationResourceSelector({
@@ -4386,6 +4492,8 @@ class Binding {
 /// Description of an a image to use during Skaffold rendering.
 class BuildArtifact {
   /// Image name in Skaffold configuration.
+  ///
+  /// Optional.
   core.String? image;
 
   /// Image tag to use.
@@ -4393,6 +4501,8 @@ class BuildArtifact {
   /// This will generally be the full path to an image, such as
   /// "gcr.io/my-project/busybox:1.2.3" or
   /// "gcr.io/my-project/busybox@sha256:abc123".
+  ///
+  /// Optional.
   core.String? tag;
 
   BuildArtifact({
@@ -4415,11 +4525,15 @@ class BuildArtifact {
 /// Canary represents the canary deployment strategy.
 class Canary {
   /// Configures the progressive based deployment for a Target.
+  ///
+  /// Optional.
   CanaryDeployment? canaryDeployment;
 
   /// Configures the progressive based deployment for a Target, but allows
   /// customizing at the phase level where a phase represents each of the
   /// percentage deployments.
+  ///
+  /// Optional.
   CustomCanaryDeployment? customCanaryDeployment;
 
   /// Runtime specific configurations for the deployment strategy.
@@ -4486,6 +4600,8 @@ class CanaryDeployment {
   Predeploy? predeploy;
 
   /// Whether to run verify tests after each percentage deployment.
+  ///
+  /// Optional.
   core.bool? verify;
 
   CanaryDeployment({
@@ -4577,6 +4693,8 @@ class CloudRunConfig {
   ///
   /// This is required to be true for CanaryDeployments, but optional for
   /// CustomCanaryDeployments.
+  ///
+  /// Optional.
   core.bool? automaticTrafficControl;
 
   /// A list of tags that are added to the canary revision while the canary
@@ -4969,6 +5087,8 @@ class CustomTargetType {
 
   /// Configures render and deploy for the `CustomTargetType` using Skaffold
   /// custom actions.
+  ///
+  /// Optional.
   CustomTargetSkaffoldActions? customActions;
 
   /// Resource id of the `CustomTargetType`.
@@ -5003,14 +5123,12 @@ class CustomTargetType {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
-  /// Name of the `CustomTargetType`.
+  /// Identifier.
   ///
-  /// Format is
+  /// Name of the `CustomTargetType`. Format is
   /// `projects/{project}/locations/{location}/customTargetTypes/{customTargetType}`.
   /// The `customTargetType` component must match
   /// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
-  ///
-  /// Optional.
   core.String? name;
 
   /// Unique identifier of the `CustomTargetType`.
@@ -5138,6 +5256,8 @@ class DeliveryPipeline {
   ///
   /// These attributes can only be set and used by the user, and not by Cloud
   /// Deploy.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? annotations;
 
   /// Information around the state of the Delivery Pipeline.
@@ -5153,6 +5273,8 @@ class DeliveryPipeline {
   /// Description of the `DeliveryPipeline`.
   ///
   /// Max length is 255 characters.
+  ///
+  /// Optional.
   core.String? description;
 
   /// This checksum is computed by the server based on the value of other
@@ -5171,22 +5293,24 @@ class DeliveryPipeline {
   /// and values are additionally constrained to be \<= 128 bytes.
   core.Map<core.String, core.String>? labels;
 
-  /// Name of the `DeliveryPipeline`.
+  /// Identifier.
   ///
-  /// Format is
+  /// Name of the `DeliveryPipeline`. Format is
   /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}`.
   /// The `deliveryPipeline` component must match
   /// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
-  ///
-  /// Optional.
   core.String? name;
 
   /// SerialPipeline defines a sequential set of stages for a
   /// `DeliveryPipeline`.
+  ///
+  /// Optional.
   SerialPipeline? serialPipeline;
 
   /// When suspended, no new releases or rollouts can be created, but
   /// in-progress ones will complete.
+  ///
+  /// Optional.
   core.bool? suspended;
 
   /// Unique identifier of the `DeliveryPipeline`.
@@ -5268,6 +5392,8 @@ class DeliveryPipelineAttribute {
   ///
   /// The value of this field could be one of the following: * The last segment
   /// of a pipeline name * "*", all delivery pipelines in a location
+  ///
+  /// Optional.
   core.String? id;
 
   /// DeliveryPipeline labels.
@@ -5363,7 +5489,7 @@ class DeployJobRun {
   /// - "EXECUTION_FAILED" : The deploy operation did not complete successfully;
   /// check Cloud Build logs.
   /// - "DEADLINE_EXCEEDED" : The deploy job run did not complete within the
-  /// alloted time.
+  /// allotted time.
   /// - "MISSING_RESOURCES_FOR_CANARY" : There were missing resources in the
   /// runtime environment required for a canary deployment. Check the Cloud
   /// Build logs for more information.
@@ -5527,6 +5653,8 @@ class DeployPolicy {
   /// by a slash (`/`). See
   /// https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set
   /// for more details.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? annotations;
 
   /// Time at which the deploy policy was created.
@@ -5537,6 +5665,8 @@ class DeployPolicy {
   /// Description of the `DeployPolicy`.
   ///
   /// Max length is 255 characters.
+  ///
+  /// Optional.
   core.String? description;
 
   /// The weak etag of the `Automation` resource.
@@ -5584,6 +5714,8 @@ class DeployPolicy {
 
   /// When suspended, the policy will not prevent actions from occurring, even
   /// if the action violates the policy.
+  ///
+  /// Optional.
   core.bool? suspended;
 
   /// Unique identifier of the `DeployPolicy`.
@@ -5988,6 +6120,13 @@ class GkeCluster {
   /// Optional.
   core.String? cluster;
 
+  /// If set, the cluster will be accessed using the DNS endpoint.
+  ///
+  /// Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
+  ///
+  /// Optional.
+  core.bool? dnsEndpoint;
+
   /// If true, `cluster` is accessed using the private IP address of the control
   /// plane endpoint.
   ///
@@ -5996,6 +6135,7 @@ class GkeCluster {
   /// control-plane endpoints and the public IP address otherwise. Only specify
   /// this option when `cluster` is a
   /// [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+  /// Note that `internal_ip` and `dns_endpoint` cannot both be set to true.
   ///
   /// Optional.
   core.bool? internalIp;
@@ -6009,6 +6149,7 @@ class GkeCluster {
 
   GkeCluster({
     this.cluster,
+    this.dnsEndpoint,
     this.internalIp,
     this.proxyUrl,
   });
@@ -6016,12 +6157,14 @@ class GkeCluster {
   GkeCluster.fromJson(core.Map json_)
       : this(
           cluster: json_['cluster'] as core.String?,
+          dnsEndpoint: json_['dnsEndpoint'] as core.bool?,
           internalIp: json_['internalIp'] as core.bool?,
           proxyUrl: json_['proxyUrl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cluster != null) 'cluster': cluster!,
+        if (dnsEndpoint != null) 'dnsEndpoint': dnsEndpoint!,
         if (internalIp != null) 'internalIp': internalIp!,
         if (proxyUrl != null) 'proxyUrl': proxyUrl!,
       };
@@ -6244,7 +6387,7 @@ class JobRun {
   /// Format is
   /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{releases}/rollouts/{rollouts}/jobRuns/{uuid}`.
   ///
-  /// Optional.
+  /// Output only.
   core.String? name;
 
   /// ID of the `Rollout` phase this `JobRun` belongs in.
@@ -6372,9 +6515,13 @@ class JobRun {
 /// KubernetesConfig contains the Kubernetes runtime configuration.
 class KubernetesConfig {
   /// Kubernetes Gateway API service mesh configuration.
+  ///
+  /// Optional.
   GatewayServiceMesh? gatewayServiceMesh;
 
   /// Kubernetes Service networking configuration.
+  ///
+  /// Optional.
   ServiceNetworking? serviceNetworking;
 
   KubernetesConfig({
@@ -6723,7 +6870,7 @@ class ListReleasesResponse {
       };
 }
 
-/// ListRolloutsResponse is the response object reutrned by `ListRollouts`.
+/// ListRolloutsResponse is the response object returned by `ListRollouts`.
 class ListRolloutsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
@@ -7156,9 +7303,13 @@ class PhaseConfig {
   ///
   /// These are in addition to the profiles list specified in the
   /// `DeliveryPipeline` stage.
+  ///
+  /// Optional.
   core.List<core.String>? profiles;
 
   /// Whether to run verify tests after the deployment.
+  ///
+  /// Optional.
   core.bool? verify;
 
   PhaseConfig({
@@ -7391,6 +7542,8 @@ class Policy {
 /// Deploy Policy rule.
 class PolicyRule {
   /// Rollout restrictions.
+  ///
+  /// Optional.
   RolloutRestriction? rolloutRestriction;
 
   PolicyRule({
@@ -7546,7 +7699,7 @@ class PostdeployJobRun {
   /// - "EXECUTION_FAILED" : The postdeploy operation did not complete
   /// successfully; check Cloud Build logs.
   /// - "DEADLINE_EXCEEDED" : The postdeploy job run did not complete within the
-  /// alloted time.
+  /// allotted time.
   /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Cloud
   /// Deploy's request. See failure_message for additional details.
   core.String? failureCause;
@@ -7648,7 +7801,7 @@ class PredeployJobRun {
   /// - "EXECUTION_FAILED" : The predeploy operation did not complete
   /// successfully; check Cloud Build logs.
   /// - "DEADLINE_EXCEEDED" : The predeploy job run did not complete within the
-  /// alloted time.
+  /// allotted time.
   /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Cloud
   /// Deploy's request. See failure_message for additional details.
   core.String? failureCause;
@@ -7856,9 +8009,13 @@ class Release {
   /// These attributes can only be set and used by the user, and not by Cloud
   /// Deploy. See https://google.aip.dev/128#annotations for more details such
   /// as format and size limitations.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? annotations;
 
   /// List of artifacts to pass through to Skaffold command.
+  ///
+  /// Optional.
   core.List<BuildArtifact>? buildArtifacts;
 
   /// Information around the state of the Release.
@@ -7890,6 +8047,8 @@ class Release {
   /// Description of the `Release`.
   ///
   /// Max length is 255 characters.
+  ///
+  /// Optional.
   core.String? description;
 
   /// This checksum is computed by the server based on the value of other
@@ -7908,13 +8067,11 @@ class Release {
   /// and values are additionally constrained to be \<= 128 bytes.
   core.Map<core.String, core.String>? labels;
 
-  /// Name of the `Release`.
+  /// Identifier.
   ///
-  /// Format is
+  /// Name of the `Release`. Format is
   /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}`.
   /// The `release` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
-  ///
-  /// Optional.
   core.String? name;
 
   /// Time at which the render completed.
@@ -7939,9 +8096,13 @@ class Release {
   core.String? renderState;
 
   /// Filepath of the Skaffold config inside of the config URI.
+  ///
+  /// Optional.
   core.String? skaffoldConfigPath;
 
   /// Cloud Storage URI of tar.gz archive containing Skaffold configuration.
+  ///
+  /// Optional.
   core.String? skaffoldConfigUri;
 
   /// The Skaffold version to use when operating on this release, such as
@@ -8859,6 +9020,8 @@ class Rollout {
   /// These attributes can only be set and used by the user, and not by Cloud
   /// Deploy. See https://google.aip.dev/128#annotations for more details such
   /// as format and size limitations.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? annotations;
 
   /// Approval state of the `Rollout`.
@@ -8909,7 +9072,7 @@ class Rollout {
   /// [required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).
   /// - "EXECUTION_FAILED" : The deploy operation did not complete successfully;
   /// check Cloud Build logs.
-  /// - "DEADLINE_EXCEEDED" : Deployment did not complete within the alloted
+  /// - "DEADLINE_EXCEEDED" : Deployment did not complete within the allotted
   /// time.
   /// - "RELEASE_FAILED" : Release is in a failed state.
   /// - "RELEASE_ABANDONED" : Release is abandoned.
@@ -8937,6 +9100,8 @@ class Rollout {
   /// Description of the `Rollout` for user purposes.
   ///
   /// Max length is 255 characters.
+  ///
+  /// Optional.
   core.String? description;
 
   /// Time at which the `Rollout` was enqueued.
@@ -8970,13 +9135,11 @@ class Rollout {
   /// Output only.
   Metadata? metadata;
 
-  /// Name of the `Rollout`.
+  /// Identifier.
   ///
-  /// Format is
+  /// Name of the `Rollout`. Format is
   /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
   /// The `rollout` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
-  ///
-  /// Optional.
   core.String? name;
 
   /// The phases that represent the workflows of this `Rollout`.
@@ -9203,7 +9366,7 @@ class RouteDestinations {
   /// clusters.
   ///
   /// The Service will always be deployed to the Target cluster even if the
-  /// HTTPRoute is not. This option may be used to facilitiate successful DNS
+  /// HTTPRoute is not. This option may be used to facilitate successful DNS
   /// lookup in the route destination clusters. Can only be set to true if
   /// destinations are specified.
   ///
@@ -9233,9 +9396,13 @@ class RouteDestinations {
 /// strategy.
 class RuntimeConfig {
   /// Cloud Run runtime configuration.
+  ///
+  /// Optional.
   CloudRunConfig? cloudRun;
 
   /// Kubernetes runtime configuration.
+  ///
+  /// Optional.
   KubernetesConfig? kubernetes;
 
   RuntimeConfig({
@@ -9266,6 +9433,8 @@ class SerialPipeline {
   /// Each stage specifies configuration for a `Target`.
   ///
   /// The ordering of this list defines the promotion flow.
+  ///
+  /// Optional.
   core.List<Stage>? stages;
 
   SerialPipeline({
@@ -9492,12 +9661,18 @@ class SkaffoldModules {
   core.List<core.String>? configs;
 
   /// Remote git repository containing the Skaffold Config modules.
+  ///
+  /// Optional.
   SkaffoldGitSource? git;
 
   /// Cloud Build V2 repository containing the Skaffold Config modules.
+  ///
+  /// Optional.
   SkaffoldGCBRepoSource? googleCloudBuildRepo;
 
   /// Cloud Storage bucket containing the Skaffold Config modules.
+  ///
+  /// Optional.
   SkaffoldGCSSource? googleCloudStorage;
 
   SkaffoldModules({
@@ -9641,6 +9816,8 @@ class Stage {
 
   /// Skaffold profiles to use when rendering the manifest for this stage's
   /// `Target`.
+  ///
+  /// Optional.
   core.List<core.String>? profiles;
 
   /// The strategy to use for a `Rollout` to this stage.
@@ -9655,6 +9832,8 @@ class Stage {
   /// `projects/project/locations/location/targets/my-target`). The location of
   /// the `Target` is inferred to be the same as the location of the
   /// `DeliveryPipeline` that contains this `Stage`.
+  ///
+  /// Optional.
   core.String? targetId;
 
   Stage({
@@ -9705,6 +9884,8 @@ class Standard {
   Predeploy? predeploy;
 
   /// Whether to verify a deployment.
+  ///
+  /// Optional.
   core.bool? verify;
 
   Standard({
@@ -9746,10 +9927,14 @@ typedef Status = $Status00;
 class Strategy {
   /// Canary deployment strategy provides progressive percentage based
   /// deployments to a Target.
+  ///
+  /// Optional.
   Canary? canary;
 
   /// Standard deployment strategy executes a single deploy and allows verifying
   /// the deployment.
+  ///
+  /// Optional.
   Standard? standard;
 
   Strategy({
@@ -9844,6 +10029,8 @@ class Target {
   /// or more configurations are specified, they must include the `RENDER` and
   /// `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are
   /// specified, execution will use the default specified in `DefaultPool`.
+  ///
+  /// Optional.
   core.List<ExecutionConfig>? executionConfigs;
 
   /// Information specifying a GKE Cluster.
@@ -9869,12 +10056,11 @@ class Target {
   /// Optional.
   MultiTarget? multiTarget;
 
-  /// Name of the `Target`.
+  /// Identifier.
   ///
-  /// Format is `projects/{project}/locations/{location}/targets/{target}`. The
-  /// `target` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
-  ///
-  /// Optional.
+  /// Name of the `Target`. Format is
+  /// `projects/{project}/locations/{location}/targets/{target}`. The `target`
+  /// component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
   core.String? name;
 
   /// Whether or not the `Target` requires approval.
@@ -10024,7 +10210,8 @@ class TargetArtifact {
   /// Output only.
   core.String? artifactUri;
 
-  /// File path of the rendered manifest relative to the URI.
+  /// File path of the rendered manifest relative to the URI for the stable
+  /// phase.
   ///
   /// Output only.
   core.String? manifestPath;
@@ -10034,7 +10221,8 @@ class TargetArtifact {
   /// Output only.
   core.Map<core.String, PhaseArtifact>? phaseArtifacts;
 
-  /// File path of the resolved Skaffold configuration relative to the URI.
+  /// File path of the resolved Skaffold configuration for the stable phase,
+  /// relative to the URI.
   ///
   /// Output only.
   core.String? skaffoldConfigPath;
@@ -10080,6 +10268,8 @@ class TargetAttribute {
   ///
   /// The value of this field could be one of the following: * The last segment
   /// of a target name * "*", all targets in a location
+  ///
+  /// Optional.
   core.String? id;
 
   /// Target labels.
@@ -10129,9 +10319,9 @@ class TargetRender {
   /// successfully because the verification stanza required for verify was not
   /// found on the Skaffold configuration.
   /// - "CUSTOM_ACTION_NOT_FOUND" : The render operation did not complete
-  /// successfully because the custom action required for predeploy or
-  /// postdeploy was not found in the Skaffold configuration. See
-  /// failure_message for additional details.
+  /// successfully because the custom action(s) required for Rollout jobs were
+  /// not found in the Skaffold configuration. See failure_message for
+  /// additional details.
   /// - "DEPLOYMENT_STRATEGY_NOT_SUPPORTED" : Release failed during rendering
   /// because the release configuration is not supported with the specified
   /// deployment strategy.
@@ -10553,7 +10743,7 @@ class VerifyJobRun {
   /// - "EXECUTION_FAILED" : The verify operation did not complete successfully;
   /// check Cloud Build logs.
   /// - "DEADLINE_EXCEEDED" : The verify job run did not complete within the
-  /// alloted time.
+  /// allotted time.
   /// - "VERIFICATION_CONFIG_NOT_FOUND" : No Skaffold verify configuration was
   /// found.
   /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Cloud

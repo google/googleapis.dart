@@ -33,6 +33,7 @@
 ///     - [OrganizationsApiproductsAttributesResource]
 ///     - [OrganizationsApiproductsRateplansResource]
 ///   - [OrganizationsApisResource]
+///     - [OrganizationsApisDebugsessionsResource]
 ///     - [OrganizationsApisDeploymentsResource]
 ///     - [OrganizationsApisKeyvaluemapsResource]
 ///       - [OrganizationsApisKeyvaluemapsEntriesResource]
@@ -114,6 +115,7 @@
 ///   - [OrganizationsSitesResource]
 ///     - [OrganizationsSitesApicategoriesResource]
 ///     - [OrganizationsSitesApidocsResource]
+///   - [OrganizationsSpacesResource]
 /// - [ProjectsResource]
 library;
 
@@ -259,6 +261,8 @@ class OrganizationsResource {
       OrganizationsSharedflowsResource(_requester);
   OrganizationsSitesResource get sites =>
       OrganizationsSitesResource(_requester);
+  OrganizationsSpacesResource get spaces =>
+      OrganizationsSpacesResource(_requester);
 
   OrganizationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -1245,7 +1249,10 @@ class OrganizationsApiproductsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the API product. Use the following structure in
-  /// your request: `organizations/{org}/apiproducts/{apiproduct}`
+  /// your request: `organizations/{org}/apiproducts/{apiproduct}` If the API
+  /// Product resource has the `space` attribute set, IAM permissions are
+  /// checked against the Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+/apiproducts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1306,7 +1313,10 @@ class OrganizationsApiproductsResource {
   ///
   /// [parent] - Required. Name of the organization in which the API product
   /// will be created. Use the following structure in your request:
-  /// `organizations/{org}`
+  /// `organizations/{org}` If the resource has the `space` attribute set, IAM
+  /// permissions are checked against the Space resource path. To learn more,
+  /// read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1355,7 +1365,10 @@ class OrganizationsApiproductsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the API product. Use the following structure in
-  /// your request: `organizations/{org}/apiproducts/{apiproduct}`
+  /// your request: `organizations/{org}/apiproducts/{apiproduct}` If the
+  /// resource has the `space` attribute set, IAM permissions are checked
+  /// against the Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+/apiproducts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1397,7 +1410,10 @@ class OrganizationsApiproductsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the API product. Use the following structure in
-  /// your request: `organizations/{org}/apiproducts/{apiproduct}`
+  /// your request: `organizations/{org}/apiproducts/{apiproduct}` If the
+  /// resource has the `space` attribute set, IAM permissions are checked
+  /// against the Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+/apiproducts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1434,12 +1450,17 @@ class OrganizationsApiproductsResource {
   /// Filter the list by passing an `attributename` and `attibutevalue`. The
   /// maximum number of API products returned is 1000. You can paginate the list
   /// of API products returned using the `startKey` and `count` query
-  /// parameters.
+  /// parameters. If the resource has the `space` attribute set, the response
+  /// may not return all resources. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the organization. Use the following structure
-  /// in your request: `organizations/{org}`
+  /// in your request: `organizations/{org}` If the resource has the `space`
+  /// attribute set, IAM permissions are checked against the Space resource
+  /// path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [attributename] - Name of the attribute used to filter the search.
@@ -1451,6 +1472,13 @@ class OrganizationsApiproductsResource {
   ///
   /// [expand] - Flag that specifies whether to expand the results. Set to
   /// `true` to get expanded details about each API.
+  ///
+  /// [space] - Optional. The Space to list API products for. When none
+  /// provided, all the spaces the user has list access, will be used
+  /// implicitly, and the same following rules will apply. Can be used in
+  /// conjunction with start_key, expand and count for paginated response.
+  /// Composite queries with attributename and attributevalue are not supported
+  /// yet.
   ///
   /// [startKey] - Gets a list of API products starting with a specific API
   /// product in the list. For example, if you're returning 50 API products at a
@@ -1474,6 +1502,7 @@ class OrganizationsApiproductsResource {
     core.String? attributevalue,
     core.String? count,
     core.bool? expand,
+    core.String? space,
     core.String? startKey,
     core.String? $fields,
   }) async {
@@ -1482,6 +1511,7 @@ class OrganizationsApiproductsResource {
       if (attributevalue != null) 'attributevalue': [attributevalue],
       if (count != null) 'count': [count],
       if (expand != null) 'expand': ['${expand}'],
+      if (space != null) 'space': [space],
       if (startKey != null) 'startKey': [startKey],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1494,6 +1524,48 @@ class OrganizationsApiproductsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApigeeV1ListApiProductsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Moves an API product to a different space.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. API product to move in the following format:
+  /// \`organizations/{org}/apiproducts/{apiproduct}
+  /// Value must have pattern `^organizations/\[^/\]+/apiproducts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ApiProduct].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ApiProduct> move(
+    GoogleCloudApigeeV1MoveApiProductRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':move';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ApiProduct.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -1511,7 +1583,10 @@ class OrganizationsApiproductsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the API product. Use the following structure in
-  /// your request: `organizations/{org}/apiproducts/{apiproduct}`
+  /// your request: `organizations/{org}/apiproducts/{apiproduct}` If the
+  /// resource has the `space` attribute set, IAM permissions are checked
+  /// against the Space resource path.To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+/apiproducts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1559,7 +1634,10 @@ class OrganizationsApiproductsAttributesResource {
   ///
   /// [name] - Required. Name of the API product attribute. Use the following
   /// structure in your request:
-  /// `organizations/{org}/apiproducts/{apiproduct}/attributes/{attribute}`
+  /// `organizations/{org}/apiproducts/{apiproduct}/attributes/{attribute}` If
+  /// the API Product resource has the `space` attribute set, IAM permissions
+  /// are checked against the Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/apiproducts/\[^/\]+/attributes/\[^/\]+$`.
   ///
@@ -1598,7 +1676,10 @@ class OrganizationsApiproductsAttributesResource {
   ///
   /// [name] - Required. Name of the API product attribute. Use the following
   /// structure in your request:
-  /// `organizations/{org}/apiproducts/{apiproduct}/attributes/{attribute}`
+  /// `organizations/{org}/apiproducts/{apiproduct}/attributes/{attribute}` If
+  /// the API Product resource has the `space` attribute set, IAM permissions
+  /// are checked against the Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/apiproducts/\[^/\]+/attributes/\[^/\]+$`.
   ///
@@ -1636,7 +1717,10 @@ class OrganizationsApiproductsAttributesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the API product. Use the following structure
-  /// in your request: `organizations/{org}/apiproducts/{apiproduct}`
+  /// in your request: `organizations/{org}/apiproducts/{apiproduct}` If the API
+  /// Product resource has the `space` attribute set, IAM permissions are
+  /// checked against the Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+/apiproducts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1682,7 +1766,10 @@ class OrganizationsApiproductsAttributesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the API product. Use the following structure in
-  /// your request: `organizations/{org}/apiproducts/{apiproduct}`
+  /// your request: `organizations/{org}/apiproducts/{apiproduct}` If the API
+  /// Product resource has the `space` attribute set, IAM permissions are
+  /// checked against the Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/apiproducts/\[^/\]+/attributes/\[^/\]+$`.
   ///
@@ -1743,7 +1830,10 @@ class OrganizationsApiproductsRateplansResource {
   ///
   /// [parent] - Required. Name of the API product that is associated with the
   /// rate plan. Use the following structure in your request:
-  /// `organizations/{org}/apiproducts/{apiproduct}`
+  /// `organizations/{org}/apiproducts/{apiproduct}` If the API Product resource
+  /// has the `space` attribute set, IAM permissions are checked against the
+  /// Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+/apiproducts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1784,7 +1874,10 @@ class OrganizationsApiproductsRateplansResource {
   ///
   /// [name] - Required. ID of the rate plan. Use the following structure in
   /// your request:
-  /// `organizations/{org}/apiproducts/{apiproduct}/rateplans/{rateplan}`
+  /// `organizations/{org}/apiproducts/{apiproduct}/rateplans/{rateplan}` If the
+  /// API Product resource has the `space` attribute set, IAM permissions are
+  /// checked against the Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/apiproducts/\[^/\]+/rateplans/\[^/\]+$`.
   ///
@@ -1823,7 +1916,10 @@ class OrganizationsApiproductsRateplansResource {
   ///
   /// [name] - Required. Name of the rate plan. Use the following structure in
   /// your request:
-  /// `organizations/{org}/apiproducts/{apiproduct}/rateplans/{rateplan}`
+  /// `organizations/{org}/apiproducts/{apiproduct}/rateplans/{rateplan}` If the
+  /// API Product resource has the `space` attribute set, IAM permissions are
+  /// checked against the Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/apiproducts/\[^/\]+/rateplans/\[^/\]+$`.
   ///
@@ -1863,7 +1959,10 @@ class OrganizationsApiproductsRateplansResource {
   /// [parent] - Required. Name of the API product. Use the following structure
   /// in your request: `organizations/{org}/apiproducts/{apiproduct}` Use
   /// `organizations/{org}/apiproducts/-` to return rate plans for all API
-  /// products within the organization.
+  /// products within the organization. If the API Product resource has the
+  /// `space` attribute set, IAM permissions are checked against the Space
+  /// resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+/apiproducts/\[^/\]+$`.
   ///
   /// [count] - Number of rate plans to return in the API call. Use with the
@@ -1940,7 +2039,10 @@ class OrganizationsApiproductsRateplansResource {
   ///
   /// [name] - Required. Name of the rate plan. Use the following structure in
   /// your request:
-  /// `organizations/{org}/apiproducts/{apiproduct}/rateplans/{rateplan}`
+  /// `organizations/{org}/apiproducts/{apiproduct}/rateplans/{rateplan}` If the
+  /// API Product resource has the `space` attribute set, IAM permissions are
+  /// checked against the Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/apiproducts/\[^/\]+/rateplans/\[^/\]+$`.
   ///
@@ -1980,6 +2082,8 @@ class OrganizationsApiproductsRateplansResource {
 class OrganizationsApisResource {
   final commons.ApiRequester _requester;
 
+  OrganizationsApisDebugsessionsResource get debugsessions =>
+      OrganizationsApisDebugsessionsResource(_requester);
   OrganizationsApisDeploymentsResource get deployments =>
       OrganizationsApisDeploymentsResource(_requester);
   OrganizationsApisKeyvaluemapsResource get keyvaluemaps =>
@@ -2012,7 +2116,10 @@ class OrganizationsApisResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the organization in the following format:
-  /// `organizations/{org}`
+  /// `organizations/{org}` If the API Proxy resource has the `space` attribute
+  /// set, IAM permissions are checked against the Space resource path. To learn
+  /// more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [action] - Action to perform when importing an API proxy configuration
@@ -2022,6 +2129,11 @@ class OrganizationsApisResource {
   ///
   /// [name] - Name of the API proxy. Restrict the characters used to:
   /// A-Za-z0-9._-
+  ///
+  /// [space] - Optional. The ID of the space associated with this proxy. Any
+  /// IAM policies applied to the space will affect access to this proxy. Note
+  /// that this field is only respected when creating a new proxy. It has no
+  /// effect when creating a new revision for an existing proxy.
   ///
   /// [validate] - Ignored. All uploads are validated regardless of the value of
   /// this field. Maintained for compatibility with Apigee Edge API.
@@ -2041,6 +2153,7 @@ class OrganizationsApisResource {
     core.String parent, {
     core.String? action,
     core.String? name,
+    core.String? space,
     core.bool? validate,
     core.String? $fields,
   }) async {
@@ -2048,6 +2161,7 @@ class OrganizationsApisResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (action != null) 'action': [action],
       if (name != null) 'name': [name],
+      if (space != null) 'space': [space],
       if (validate != null) 'validate': ['${validate}'],
       if ($fields != null) 'fields': [$fields],
     };
@@ -2072,7 +2186,10 @@ class OrganizationsApisResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the API proxy in the following format:
-  /// `organizations/{org}/apis/{api}`
+  /// `organizations/{org}/apis/{api}` If the API Proxy resource has the `space`
+  /// attribute set, IAM permissions are checked against the Space resource
+  /// path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+/apis/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2109,7 +2226,10 @@ class OrganizationsApisResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the API proxy in the following format:
-  /// `organizations/{org}/apis/{api}`
+  /// `organizations/{org}/apis/{api}` If the API Proxy resource has the `space`
+  /// attribute set, IAM permissions are checked against the Space resource
+  /// path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+/apis/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2144,12 +2264,17 @@ class OrganizationsApisResource {
   /// Lists the names of all API proxies in an organization.
   ///
   /// The names returned correspond to the names defined in the configuration
-  /// files for each API proxy.
+  /// files for each API proxy. If the resource has the `space` attribute set,
+  /// the response may not return all resources. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the organization in the following format:
-  /// `organizations/{org}`
+  /// `organizations/{org}` If the resource has the `space` attribute set, IAM
+  /// permissions are checked against the Space resource path. To learn more,
+  /// read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [includeMetaData] - Flag that specifies whether to include API proxy
@@ -2157,6 +2282,9 @@ class OrganizationsApisResource {
   ///
   /// [includeRevisions] - Flag that specifies whether to include a list of
   /// revisions in the response.
+  ///
+  /// [space] - Optional. The space ID to filter the list of proxies (optional).
+  /// If unspecified, all proxies in the organization will be listed.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2172,11 +2300,13 @@ class OrganizationsApisResource {
     core.String parent, {
     core.bool? includeMetaData,
     core.bool? includeRevisions,
+    core.String? space,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (includeMetaData != null) 'includeMetaData': ['${includeMetaData}'],
       if (includeRevisions != null) 'includeRevisions': ['${includeRevisions}'],
+      if (space != null) 'space': [space],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2191,6 +2321,48 @@ class OrganizationsApisResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Moves an API proxy to a different space.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. API proxy to move in the following format:
+  /// `organizations/{org}/apis/{api}`
+  /// Value must have pattern `^organizations/\[^/\]+/apis/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ApiProxy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ApiProxy> move(
+    GoogleCloudApigeeV1MoveApiProxyRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':move';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ApiProxy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates an existing API proxy.
   ///
   /// [request] - The metadata request object.
@@ -2198,7 +2370,10 @@ class OrganizationsApisResource {
   /// Request parameters:
   ///
   /// [name] - Required. API proxy to update in the following format:
-  /// `organizations/{org}/apis/{api}`
+  /// `organizations/{org}/apis/{api}` If the resource has the `space` attribute
+  /// set, IAM permissions are checked against the Space resource path. To learn
+  /// more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+/apis/\[^/\]+$`.
   ///
   /// [updateMask] - Required. The list of fields to update.
@@ -2238,6 +2413,60 @@ class OrganizationsApisResource {
   }
 }
 
+class OrganizationsApisDebugsessionsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsApisDebugsessionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists debug sessions that are currently active in the given API Proxy.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the API Proxy for which to list debug
+  /// sessions. Must be of the form: `organizations/{organization}/apis/{api}`.
+  /// Value must have pattern `^organizations/\[^/\]+/apis/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of debug sessions to return. The
+  /// page size defaults to 25.
+  ///
+  /// [pageToken] - Optional. Page token, returned from a previous
+  /// ListApiDebugSessions call, that you can use to retrieve the next page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListApiDebugSessionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListApiDebugSessionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/debugsessions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ListApiDebugSessionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class OrganizationsApisDeploymentsResource {
   final commons.ApiRequester _requester;
 
@@ -2249,7 +2478,10 @@ class OrganizationsApisDeploymentsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the API proxy for which to return deployment
-  /// information in the following format: `organizations/{org}/apis/{api}`
+  /// information in the following format: `organizations/{org}/apis/{api}` If
+  /// the API proxy resource has the `space` attribute set, IAM permissions are
+  /// checked differently . To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+/apis/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2299,7 +2531,10 @@ class OrganizationsApisKeyvaluemapsResource {
   ///
   /// [parent] - Required. Name of the environment in which to create the key
   /// value map. Use the following structure in your request:
-  /// `organizations/{org}/apis/{api}`
+  /// `organizations/{org}/apis/{api}` If the API Proxy resource has the `space`
+  /// attribute set, IAM permissions are checked against the Space resource
+  /// path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+/apis/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2340,7 +2575,10 @@ class OrganizationsApisKeyvaluemapsResource {
   ///
   /// [name] - Required. Name of the key value map. Use the following structure
   /// in your request:
-  /// `organizations/{org}/apis/{api}/keyvaluemaps/{keyvaluemap}`
+  /// `organizations/{org}/apis/{api}/keyvaluemaps/{keyvaluemap}` If the API
+  /// Proxy resource has the `space` attribute set, IAM permissions are checked
+  /// against the Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/apis/\[^/\]+/keyvaluemaps/\[^/\]+$`.
   ///
@@ -2394,7 +2632,11 @@ class OrganizationsApisKeyvaluemapsEntriesResource {
   /// request: *
   /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. *
   /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
-  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.
+  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the
+  /// KeyValueMap is under an API Proxy resource that has the `space` attribute
+  /// set, IAM permissions are checked against the Space resource path. To learn
+  /// more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/apis/\[^/\]+/keyvaluemaps/\[^/\]+$`.
   ///
@@ -2448,6 +2690,10 @@ class OrganizationsApisKeyvaluemapsEntriesResource {
   /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}`
   /// *
   /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`.
+  /// If the KeyValueMap is under an API Proxy resource that has the `space`
+  /// attribute set, IAM permissions are checked against the Space resource
+  /// path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/apis/\[^/\]+/keyvaluemaps/\[^/\]+/entries/\[^/\]+$`.
   ///
@@ -2495,6 +2741,10 @@ class OrganizationsApisKeyvaluemapsEntriesResource {
   /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}`
   /// *
   /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`.
+  /// If the KeyValueMap is under an API Proxy resource that has the `space`
+  /// attribute set, IAM permissions are checked against the Space resource
+  /// path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/apis/\[^/\]+/keyvaluemaps/\[^/\]+/entries/\[^/\]+$`.
   ///
@@ -2538,7 +2788,11 @@ class OrganizationsApisKeyvaluemapsEntriesResource {
   /// value maps. Use **one** of the following structures in your request: *
   /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. *
   /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
-  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.
+  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the
+  /// KeyValueMap is under an API Proxy resource that has the `space` attribute
+  /// set, IAM permissions are checked against the Space resource path. To learn
+  /// more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/apis/\[^/\]+/keyvaluemaps/\[^/\]+$`.
   ///
@@ -2594,7 +2848,11 @@ class OrganizationsApisKeyvaluemapsEntriesResource {
   /// request: *
   /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. *
   /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
-  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.
+  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the
+  /// KeyValueMap is under an API Proxy resource that has the `space` attribute
+  /// set, IAM permissions are checked against the Space resource path. To learn
+  /// more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/apis/\[^/\]+/keyvaluemaps/\[^/\]+/entries/\[^/\]+$`.
   ///
@@ -2648,7 +2906,10 @@ class OrganizationsApisRevisionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. API proxy revision in the following format:
-  /// `organizations/{org}/apis/{api}/revisions/{rev}`
+  /// `organizations/{org}/apis/{api}/revisions/{rev}` If the API Proxy resource
+  /// has the `space` attribute set, IAM permissions are checked against the
+  /// Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -2694,7 +2955,10 @@ class OrganizationsApisRevisionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. API proxy revision in the following format:
-  /// `organizations/{org}/apis/{api}/revisions/{rev}`
+  /// `organizations/{org}/apis/{api}/revisions/{rev}` If the API Proxy resource
+  /// has the `space` attribute set, IAM permissions are checked against the
+  /// Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -2746,7 +3010,10 @@ class OrganizationsApisRevisionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. API proxy revision to update in the following format:
-  /// `organizations/{org}/apis/{api}/revisions/{rev}`
+  /// `organizations/{org}/apis/{api}/revisions/{rev}` If the API Proxy resource
+  /// has the `space` attribute set, IAM permissions are checked against the
+  /// Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -2800,7 +3067,10 @@ class OrganizationsApisRevisionsDeploymentsResource {
   ///
   /// [parent] - Required. Name of the API proxy revision for which to return
   /// deployment information in the following format:
-  /// `organizations/{org}/apis/{api}/revisions/{rev}`.
+  /// `organizations/{org}/apis/{api}/revisions/{rev}`. If the API proxy
+  /// resource has the `space` attribute set, IAM permissions are checked
+  /// differently . To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -2894,10 +3164,9 @@ class OrganizationsAppgroupsResource {
   ///
   /// All app and API keys associations with the AppGroup are also removed.
   /// **Warning**: This API will permanently delete the AppGroup and related
-  /// artifacts. **Note**: The delete operation is asynchronous. The AppGroup
-  /// app is deleted immediately, but its associated resources, such as apps and
-  /// API keys, may take anywhere from a few seconds to a few minutes to be
-  /// deleted.
+  /// artifacts. **Note**: The delete operation is asynchronous. The AppGroup is
+  /// deleted immediately, but its associated resources, such as apps and API
+  /// keys, may take anywhere from a few seconds to a few minutes to be deleted.
   ///
   /// Request parameters:
   ///
@@ -4173,9 +4442,9 @@ class OrganizationsDevelopersResource {
   /// **Warning**: This API will permanently delete the developer and related
   /// artifacts. To avoid permanently deleting developers and their artifacts,
   /// set the developer status to `inactive` using the SetDeveloperStatus API.
-  /// **Note**: The delete operation is asynchronous. The developer app is
-  /// deleted immediately, but its associated resources, such as apps and API
-  /// keys, may take anywhere from a few seconds to a few minutes to be deleted.
+  /// **Note**: The delete operation is asynchronous. The developer is deleted
+  /// immediately, but its associated resources, such as apps and API keys, may
+  /// take anywhere from a few seconds to a few minutes to be deleted.
   ///
   /// Request parameters:
   ///
@@ -7912,6 +8181,9 @@ class OrganizationsEnvironmentsApisDeploymentsResource {
   ///
   /// [parent] - Required. Name representing an API proxy in an environment in
   /// the following format: `organizations/{org}/environments/{env}/apis/{api}`
+  /// If the API proxy resource has the `space` attribute set, IAM permissions
+  /// are checked differently . To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+$`.
   ///
@@ -7970,13 +8242,22 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   /// two permissions are required: * `apigee.deployments.create` on the
   /// resource `organizations/{org}/environments/{env}` *
   /// `apigee.proxyrevisions.deploy` on the resource
-  /// `organizations/{org}/apis/{api}/revisions/{rev}`
+  /// `organizations/{org}/apis/{api}/revisions/{rev}` All successful API proxy
+  /// deployments to Apigee are \[zero-downtime
+  /// deployments\](https://cloud.google.com/apigee/docs/api-platform/deploy/ui-deploy-overview#zero-downtime-deployment).
+  /// Apigee hybrid validates the dependencies between shared flows and API
+  /// proxies at deployment time. For example, if the Flow Callout policy in an
+  /// API proxy references a shared flow that either doesn't exist or isn't
+  /// deployed, the API proxy deployment fails.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. Name of the API proxy revision deployment in the
   /// following format:
-  /// `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}`
+  /// `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}` If the
+  /// API proxy resource being deployed has the `space` attribute set, IAM
+  /// permissions are checked differently . To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -8046,7 +8327,10 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   ///
   /// [name] - Required. Name representing an API proxy revision in an
   /// environment in the following format:
-  /// `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}`
+  /// `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}` If the
+  /// API proxy resource has the `space` attribute set, IAM permissions are
+  /// checked differently . To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -8092,7 +8376,10 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   ///
   /// [name] - Required. Name of the API proxy revision deployment in the
   /// following format:
-  /// `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}`
+  /// `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}` If the
+  /// API proxy resource has the `space` attribute set, IAM permissions are
+  /// checked differently . To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -8159,6 +8446,9 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   /// [parent] - Required. The resource name of the API Proxy revision
   /// deployment for which to create the DebugSession. Must be of the form
   /// `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}`.
+  /// If the API proxy resource has the `space` attribute set, IAM permissions
+  /// are checked differently . To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -8209,6 +8499,9 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   /// [name] - Required. The name of the debug session to delete. Must be of the
   /// form:
   /// `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{debugsession}`.
+  /// If the API proxy resource has the `space` attribute set, IAM permissions
+  /// are checked differently . To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+/debugsessions/\[^/\]+$`.
   ///
@@ -8248,6 +8541,9 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   /// [name] - Required. The name of the debug session to retrieve. Must be of
   /// the form:
   /// `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{session}`.
+  /// If the API proxy resource has the `space` attribute set, IAM permissions
+  /// are checked differently . To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+/debugsessions/\[^/\]+$`.
   ///
@@ -8288,6 +8584,9 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   /// [parent] - Required. The name of the API Proxy revision deployment for
   /// which to list debug sessions. Must be of the form:
   /// `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}`.
+  /// If the API proxy resource has the `space` attribute set, IAM permissions
+  /// are checked differently . To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -8345,6 +8644,9 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource {
   /// [name] - Required. The name of the debug session transaction. Must be of
   /// the form:
   /// `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{session}/data/{transaction}`.
+  /// If the API proxy resource has the `space` attribute set, IAM permissions
+  /// are checked differently . To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+/debugsessions/\[^/\]+/data/\[^/\]+$`.
   ///
@@ -8404,7 +8706,10 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
   ///
   /// [name] - Name of the API proxy revision deployment in the following
   /// format:
-  /// `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}`
+  /// `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}` If the
+  /// API proxy resource has the `space` attribute set, IAM permissions are
+  /// checked differently . To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -9824,7 +10129,11 @@ class OrganizationsEnvironmentsKeyvaluemapsEntriesResource {
   /// request: *
   /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. *
   /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
-  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.
+  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the
+  /// KeyValueMap is under an API Proxy resource that has the `space` attribute
+  /// set, IAM permissions are checked against the Space resource path. To learn
+  /// more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/keyvaluemaps/\[^/\]+$`.
   ///
@@ -9878,6 +10187,10 @@ class OrganizationsEnvironmentsKeyvaluemapsEntriesResource {
   /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}`
   /// *
   /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`.
+  /// If the KeyValueMap is under an API Proxy resource that has the `space`
+  /// attribute set, IAM permissions are checked against the Space resource
+  /// path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/keyvaluemaps/\[^/\]+/entries/\[^/\]+$`.
   ///
@@ -9925,6 +10238,10 @@ class OrganizationsEnvironmentsKeyvaluemapsEntriesResource {
   /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}`
   /// *
   /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`.
+  /// If the KeyValueMap is under an API Proxy resource that has the `space`
+  /// attribute set, IAM permissions are checked against the Space resource
+  /// path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/keyvaluemaps/\[^/\]+/entries/\[^/\]+$`.
   ///
@@ -9968,7 +10285,11 @@ class OrganizationsEnvironmentsKeyvaluemapsEntriesResource {
   /// value maps. Use **one** of the following structures in your request: *
   /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. *
   /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
-  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.
+  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the
+  /// KeyValueMap is under an API Proxy resource that has the `space` attribute
+  /// set, IAM permissions are checked against the Space resource path. To learn
+  /// more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/keyvaluemaps/\[^/\]+$`.
   ///
@@ -10024,7 +10345,11 @@ class OrganizationsEnvironmentsKeyvaluemapsEntriesResource {
   /// request: *
   /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. *
   /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
-  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.
+  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the
+  /// KeyValueMap is under an API Proxy resource that has the `space` attribute
+  /// set, IAM permissions are checked against the Space resource path. To learn
+  /// more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/keyvaluemaps/\[^/\]+/entries/\[^/\]+$`.
   ///
@@ -11748,7 +12073,10 @@ class OrganizationsEnvironmentsSharedflowsDeploymentsResource {
   ///
   /// [parent] - Required. Name representing a shared flow in an environment in
   /// the following format:
-  /// `organizations/{org}/environments/{env}/sharedflows/{sharedflow}`
+  /// `organizations/{org}/environments/{env}/sharedflows/{sharedflow}` If the
+  /// shared flow resource has the `space` attribute set, IAM permissions are
+  /// checked differently . To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/sharedflows/\[^/\]+$`.
   ///
@@ -11806,6 +12134,9 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
   /// [name] - Required. Name of the shared flow revision to deploy in the
   /// following format:
   /// `organizations/{org}/environments/{env}/sharedflows/{sharedflow}/revisions/{rev}`
+  /// If the shared flow resource being deployed has the `space` attribute set,
+  /// IAM permissions are checked differently . To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/sharedflows/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -11861,6 +12192,9 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
   /// [name] - Required. Name representing a shared flow in an environment in
   /// the following format:
   /// `organizations/{org}/environments/{env}/sharedflows/{sharedflow}/revisions/{rev}`
+  /// If the shared flow resource has the `space` attribute set, IAM permissions
+  /// are checked differently . To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/sharedflows/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -11907,6 +12241,9 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
   /// [name] - Required. Name of the shared flow revision to undeploy in the
   /// following format:
   /// `organizations/{org}/environments/{env}/sharedflows/{sharedflow}/revisions/{rev}`
+  /// If the shared flow resource has the `space` attribute set, IAM permissions
+  /// are checked differently . To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/sharedflows/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -14015,7 +14352,11 @@ class OrganizationsKeyvaluemapsEntriesResource {
   /// request: *
   /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. *
   /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
-  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.
+  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the
+  /// KeyValueMap is under an API Proxy resource that has the `space` attribute
+  /// set, IAM permissions are checked against the Space resource path. To learn
+  /// more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+/keyvaluemaps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -14068,6 +14409,10 @@ class OrganizationsKeyvaluemapsEntriesResource {
   /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}`
   /// *
   /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`.
+  /// If the KeyValueMap is under an API Proxy resource that has the `space`
+  /// attribute set, IAM permissions are checked against the Space resource
+  /// path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/keyvaluemaps/\[^/\]+/entries/\[^/\]+$`.
   ///
@@ -14115,6 +14460,10 @@ class OrganizationsKeyvaluemapsEntriesResource {
   /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}`
   /// *
   /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`.
+  /// If the KeyValueMap is under an API Proxy resource that has the `space`
+  /// attribute set, IAM permissions are checked against the Space resource
+  /// path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/keyvaluemaps/\[^/\]+/entries/\[^/\]+$`.
   ///
@@ -14158,7 +14507,11 @@ class OrganizationsKeyvaluemapsEntriesResource {
   /// value maps. Use **one** of the following structures in your request: *
   /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. *
   /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
-  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.
+  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the
+  /// KeyValueMap is under an API Proxy resource that has the `space` attribute
+  /// set, IAM permissions are checked against the Space resource path. To learn
+  /// more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+/keyvaluemaps/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. Maximum number of key value entries to return. If
@@ -14213,7 +14566,11 @@ class OrganizationsKeyvaluemapsEntriesResource {
   /// request: *
   /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. *
   /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
-  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.
+  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the
+  /// KeyValueMap is under an API Proxy resource that has the `space` attribute
+  /// set, IAM permissions are checked against the Space resource path. To learn
+  /// more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/keyvaluemaps/\[^/\]+/entries/\[^/\]+$`.
   ///
@@ -15411,12 +15768,21 @@ class OrganizationsSharedflowsResource {
   ///
   /// [parent] - Required. The name of the parent organization under which to
   /// create the shared flow. Must be of the form:
-  /// `organizations/{organization_id}`
+  /// `organizations/{organization_id}` If the resource has the `space`
+  /// attribute set, IAM permissions are checked against the Space resource
+  /// path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [action] - Required. Must be set to either `import` or `validate`.
   ///
   /// [name] - Required. The name to give the shared flow
+  ///
+  /// [space] - Optional. The ID of the space to associated with this shared
+  /// flow. Any IAM policies applied to the space will affect access to this
+  /// shared flow. Note that this field is only respected when creating a new
+  /// shared flow. It has no effect when creating a new revision for an existing
+  /// shared flow.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -15433,12 +15799,14 @@ class OrganizationsSharedflowsResource {
     core.String parent, {
     core.String? action,
     core.String? name,
+    core.String? space,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (action != null) 'action': [action],
       if (name != null) 'name': [name],
+      if (space != null) 'space': [space],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -15461,7 +15829,10 @@ class OrganizationsSharedflowsResource {
   /// Request parameters:
   ///
   /// [name] - Required. shared flow name of the form:
-  /// `organizations/{organization_id}/sharedflows/{shared_flow_id}`
+  /// `organizations/{organization_id}/sharedflows/{shared_flow_id}` If the
+  /// resource has the `space` attribute set, IAM permissions are checked
+  /// against the Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+/sharedflows/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -15498,7 +15869,10 @@ class OrganizationsSharedflowsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the shared flow to get. Must be of the
-  /// form: `organizations/{organization_id}/sharedflows/{shared_flow_id}`
+  /// form: `organizations/{organization_id}/sharedflows/{shared_flow_id}` If
+  /// the resource has the `space` attribute set, IAM permissions are checked
+  /// against the Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+/sharedflows/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -15532,10 +15906,17 @@ class OrganizationsSharedflowsResource {
 
   /// Lists all shared flows in the organization.
   ///
+  /// If the resource has the `space` attribute set, the response may not return
+  /// all resources. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
+  ///
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent organization under which to
   /// get shared flows. Must be of the form: `organizations/{organization_id}`
+  /// If the resource has the `space` attribute set, IAM permissions are checked
+  /// against the Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [includeMetaData] - Indicates whether to include shared flow metadata in
@@ -15543,6 +15924,11 @@ class OrganizationsSharedflowsResource {
   ///
   /// [includeRevisions] - Indicates whether to include a list of revisions in
   /// the response.
+  ///
+  /// [space] - Optional. The space ID used to filter the list of shared flows
+  /// (optional). If unspecified, all shared flows in the organization will be
+  /// listed. To learn how Spaces can be used to manage resources, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -15558,11 +15944,13 @@ class OrganizationsSharedflowsResource {
     core.String parent, {
     core.bool? includeMetaData,
     core.bool? includeRevisions,
+    core.String? space,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (includeMetaData != null) 'includeMetaData': ['${includeMetaData}'],
       if (includeRevisions != null) 'includeRevisions': ['${includeRevisions}'],
+      if (space != null) 'space': [space],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -15574,6 +15962,48 @@ class OrganizationsSharedflowsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApigeeV1ListSharedFlowsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Moves an shared flow to a different space.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Shared Flow to move in the following format:
+  /// `organizations/{org}/sharedflows/{shared_flow}`
+  /// Value must have pattern `^organizations/\[^/\]+/sharedflows/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SharedFlow].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SharedFlow> move(
+    GoogleCloudApigeeV1MoveSharedFlowRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':move';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SharedFlow.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -15590,7 +16020,10 @@ class OrganizationsSharedflowsDeploymentsResource {
   ///
   /// [parent] - Required. Name of the shared flow for which to return
   /// deployment information in the following format:
-  /// `organizations/{org}/sharedflows/{sharedflow}`
+  /// `organizations/{org}/sharedflows/{sharedflow}` If the shared flow resource
+  /// has the `space` attribute set, IAM permissions are checked differently .
+  /// To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern `^organizations/\[^/\]+/sharedflows/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -15642,6 +16075,9 @@ class OrganizationsSharedflowsRevisionsResource {
   /// [name] - Required. The name of the shared flow revision to delete. Must be
   /// of the form:
   /// `organizations/{organization_id}/sharedflows/{shared_flow_id}/revisions/{revision_id}`
+  /// If the Shared Flow resource has the `space` attribute set, IAM permissions
+  /// are checked against the Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/sharedflows/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -15689,6 +16125,9 @@ class OrganizationsSharedflowsRevisionsResource {
   /// [name] - Required. The name of the shared flow revision to get. Must be of
   /// the form:
   /// `organizations/{organization_id}/sharedflows/{shared_flow_id}/revisions/{revision_id}`
+  /// If the Shared Flow resource has the `space` attribute set, IAM permissions
+  /// are checked against the Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/sharedflows/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -15740,6 +16179,9 @@ class OrganizationsSharedflowsRevisionsResource {
   /// [name] - Required. The name of the shared flow revision to update. Must be
   /// of the form:
   /// `organizations/{organization_id}/sharedflows/{shared_flow_id}/revisions/{revision_id}`
+  /// If the resource has the `space` attribute set, IAM permissions are checked
+  /// against the Space resource path. To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/sharedflows/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -15795,7 +16237,10 @@ class OrganizationsSharedflowsRevisionsDeploymentsResource {
   ///
   /// [parent] - Required. Name of the API proxy revision for which to return
   /// deployment information in the following format:
-  /// `organizations/{org}/sharedflows/{sharedflow}/revisions/{rev}`.
+  /// `organizations/{org}/sharedflows/{sharedflow}/revisions/{rev}`. If the
+  /// shared flow resource has the `space` attribute set, IAM permissions are
+  /// checked differently . To learn more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
   /// Value must have pattern
   /// `^organizations/\[^/\]+/sharedflows/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -16352,6 +16797,374 @@ class OrganizationsSitesApidocsResource {
   }
 }
 
+class OrganizationsSpacesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSpacesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Create a space under an organization.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the Google Cloud project in which to
+  /// associate the Apigee space. Pass the information as a query parameter
+  /// using the following structure in your request: `organizations/`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [spaceId] - Required. Resource ID of the space.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1Space].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1Space> create(
+    GoogleCloudApigeeV1Space request,
+    core.String parent, {
+    core.String? spaceId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (spaceId != null) 'spaceId': [spaceId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/spaces';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1Space.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an organization space.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Apigee organization space name in the following format:
+  /// `organizations/{org}/spaces/{space}`
+  /// Value must have pattern `^organizations/\[^/\]+/spaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a space under an Organization.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Apigee organization space name in the following format:
+  /// `organizations/{org}/spaces/{space}`
+  /// Value must have pattern `^organizations/\[^/\]+/spaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1Space].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1Space> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1Space.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Callers must have apigee.spaces.getIamPolicy.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern `^organizations/\[^/\]+/spaces/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists spaces under an organization.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Use the following structure in your request:
+  /// `organizations`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of spaces to return. The service
+  /// may return fewer than this value. If unspecified, at most 50 spaces will
+  /// be returned. The maximum value is 1000; values above 1000 will be coerced
+  /// to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListSpaces` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all parameters must match the original call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListSpacesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListSpacesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/spaces';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ListSpacesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a space.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the space in the following format:
+  /// `organizations/{org}/spaces/{space_id}`.
+  /// Value must have pattern `^organizations/\[^/\]+/spaces/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. List of fields to be updated. Fields that can be
+  /// updated: display_name.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1Space].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1Space> patch(
+    GoogleCloudApigeeV1Space request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1Space.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// IAM META APIs Callers must have apigee.spaces.setIamPolicy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern `^organizations/\[^/\]+/spaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Callers don't need any permissions.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern `^organizations/\[^/\]+/spaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
@@ -16489,7 +17302,7 @@ class GoogleCloudApigeeV1Access {
 /// Get action.
 ///
 /// For example, "Get" : { "name" : "target.name", "value" : "default" }
-typedef GoogleCloudApigeeV1AccessGet = $Shared05;
+typedef GoogleCloudApigeeV1AccessGet = $Shared06;
 
 /// Access logging configuration enables customers to ship the access logs from
 /// the tenant projects to their own project's cloud logging.
@@ -16929,6 +17742,44 @@ class GoogleCloudApigeeV1ApiCategoryResponse {
         if (message != null) 'message': message!,
         if (requestId != null) 'requestId': requestId!,
         if (status != null) 'status': status!,
+      };
+}
+
+/// Session carries the debug session id and its creation time.
+class GoogleCloudApigeeV1ApiDebugSession {
+  /// The revision ID of the deployed API proxy.
+  core.String? apiProxyRevisionId;
+
+  /// The first transaction creation timestamp in millisecond, recorded by UAP.
+  core.String? createTime;
+
+  /// The environment ID of the deployed API proxy.
+  core.String? environmentId;
+
+  /// The debug session ID.
+  core.String? id;
+
+  GoogleCloudApigeeV1ApiDebugSession({
+    this.apiProxyRevisionId,
+    this.createTime,
+    this.environmentId,
+    this.id,
+  });
+
+  GoogleCloudApigeeV1ApiDebugSession.fromJson(core.Map json_)
+      : this(
+          apiProxyRevisionId: json_['apiProxyRevisionId'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          environmentId: json_['environmentId'] as core.String?,
+          id: json_['id'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiProxyRevisionId != null)
+          'apiProxyRevisionId': apiProxyRevisionId!,
+        if (createTime != null) 'createTime': createTime!,
+        if (environmentId != null) 'environmentId': environmentId!,
+        if (id != null) 'id': id!,
       };
 }
 
@@ -17463,6 +18314,15 @@ class GoogleCloudApigeeV1ApiProduct {
   /// scopes defined in the OAuth policy associated with the API product.
   core.List<core.String>? scopes;
 
+  /// The resource ID of the parent Space.
+  ///
+  /// If not set, the parent resource will be the Organization. To learn how
+  /// Spaces can be used to manage resources, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
+  ///
+  /// Optional.
+  core.String? space;
+
   GoogleCloudApigeeV1ApiProduct({
     this.apiResources,
     this.approvalType,
@@ -17482,6 +18342,7 @@ class GoogleCloudApigeeV1ApiProduct {
     this.quotaInterval,
     this.quotaTimeUnit,
     this.scopes,
+    this.space,
   });
 
   GoogleCloudApigeeV1ApiProduct.fromJson(core.Map json_)
@@ -17527,6 +18388,7 @@ class GoogleCloudApigeeV1ApiProduct {
           scopes: (json_['scopes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          space: json_['space'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17550,6 +18412,7 @@ class GoogleCloudApigeeV1ApiProduct {
         if (quotaInterval != null) 'quotaInterval': quotaInterval!,
         if (quotaTimeUnit != null) 'quotaTimeUnit': quotaTimeUnit!,
         if (scopes != null) 'scopes': scopes!,
+        if (space != null) 'space': space!,
       };
 }
 
@@ -17628,6 +18491,15 @@ class GoogleCloudApigeeV1ApiProxy {
   /// Output only.
   core.List<core.String>? revision;
 
+  /// The id of the space this proxy is associated with.
+  ///
+  /// Any IAM policies applied to the space will control access to this proxy.
+  /// To learn how Spaces can be used to manage resources, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
+  ///
+  /// Optional.
+  core.String? space;
+
   GoogleCloudApigeeV1ApiProxy({
     this.apiProxyType,
     this.labels,
@@ -17636,6 +18508,7 @@ class GoogleCloudApigeeV1ApiProxy {
     this.name,
     this.readOnly,
     this.revision,
+    this.space,
   });
 
   GoogleCloudApigeeV1ApiProxy.fromJson(core.Map json_)
@@ -17658,6 +18531,7 @@ class GoogleCloudApigeeV1ApiProxy {
           revision: (json_['revision'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          space: json_['space'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17668,6 +18542,7 @@ class GoogleCloudApigeeV1ApiProxy {
         if (name != null) 'name': name!,
         if (readOnly != null) 'readOnly': readOnly!,
         if (revision != null) 'revision': revision!,
+        if (space != null) 'space': space!,
       };
 }
 
@@ -18822,11 +19697,13 @@ class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest {
       };
 }
 
-/// Message for include_all option.
+/// Message for include_all_resources option.
 typedef GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll
     = $Empty;
 
-/// An array of resource messages.
+/// Message for the array of resources.
+///
+/// For Apigee, the proxies are resources.
 class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray {
   /// The array of resources.
   ///
@@ -20338,6 +21215,7 @@ class GoogleCloudApigeeV1DeleteResponse {
       };
 }
 
+/// Deployment represents a deployment of an API proxy or shared flow.
 class GoogleCloudApigeeV1Deployment {
   /// API proxy.
   core.String? apiProxy;
@@ -21596,13 +22474,12 @@ class GoogleCloudApigeeV1Environment {
   /// URI of the forward proxy to be applied to the runtime instances in this
   /// environment.
   ///
-  /// Must be in the format of {scheme}://{hostname}:{port}. Note that the
-  /// scheme must be one of "http" or "https", and the port must be supplied. To
-  /// remove a forward proxy setting, update the field to an empty value. Note:
-  /// At this time, PUT operations to add forwardProxyUri to an existing
-  /// environment fail if the environment has nodeConfig set up. To successfully
-  /// add the forwardProxyUri setting in this case, include the NodeConfig
-  /// details with the request.
+  /// Must be in the format of {scheme}://{hostname}:{port}. Note that the only
+  /// supported scheme is "http". The port must be supplied. To remove a forward
+  /// proxy setting, update the field to an empty value. Note: At this time, PUT
+  /// operations to add forwardProxyUri to an existing environment fail if the
+  /// environment has nodeConfig set up. To successfully add the forwardProxyUri
+  /// setting in this case, include the NodeConfig details with the request.
   ///
   /// Optional.
   core.String? forwardProxyUri;
@@ -23510,6 +24387,38 @@ class GoogleCloudApigeeV1ListApiCategoriesResponse {
       };
 }
 
+/// Response for ListApiDebugSessions.
+class GoogleCloudApigeeV1ListApiDebugSessionsResponse {
+  /// Page token that you can include in a ListApiDebugSessionsRequest to
+  /// retrieve the next page.
+  ///
+  /// If omitted, no subsequent pages exist.
+  core.String? nextPageToken;
+
+  /// Session info that includes debug session ID, environment ID, api proxy
+  /// revision ID and the first transaction creation timestamp.
+  core.List<GoogleCloudApigeeV1ApiDebugSession>? sessions;
+
+  GoogleCloudApigeeV1ListApiDebugSessionsResponse({
+    this.nextPageToken,
+    this.sessions,
+  });
+
+  GoogleCloudApigeeV1ListApiDebugSessionsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          sessions: (json_['sessions'] as core.List?)
+              ?.map((value) => GoogleCloudApigeeV1ApiDebugSession.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sessions != null) 'sessions': sessions!,
+      };
+}
+
 class GoogleCloudApigeeV1ListApiDocsResponse {
   /// The catalog item resources.
   core.List<GoogleCloudApigeeV1ApiDoc>? data;
@@ -24511,6 +25420,37 @@ class GoogleCloudApigeeV1ListSharedFlowsResponse {
       };
 }
 
+/// A response to a ListSpaces request containing the list of organization
+/// spaces and a page token for the next page.
+class GoogleCloudApigeeV1ListSpacesResponse {
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// List of Apigee organization spaces.
+  core.List<GoogleCloudApigeeV1Space>? spaces;
+
+  GoogleCloudApigeeV1ListSpacesResponse({
+    this.nextPageToken,
+    this.spaces,
+  });
+
+  GoogleCloudApigeeV1ListSpacesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          spaces: (json_['spaces'] as core.List?)
+              ?.map((value) => GoogleCloudApigeeV1Space.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (spaces != null) 'spaces': spaces!,
+      };
+}
+
 /// Response for ListTraceConfigOverrides.
 class GoogleCloudApigeeV1ListTraceConfigOverridesResponse {
   /// Token value that can be passed as `page_token` to retrieve the next page
@@ -24674,6 +25614,75 @@ class GoogleCloudApigeeV1MonetizationConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// Moves API product to a different space.
+class GoogleCloudApigeeV1MoveApiProductRequest {
+  /// Resource ID of the space to move the API product to.
+  ///
+  /// If unspecified, the API product will be moved to the organization level.
+  ///
+  /// Optional.
+  core.String? space;
+
+  GoogleCloudApigeeV1MoveApiProductRequest({
+    this.space,
+  });
+
+  GoogleCloudApigeeV1MoveApiProductRequest.fromJson(core.Map json_)
+      : this(
+          space: json_['space'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (space != null) 'space': space!,
+      };
+}
+
+/// Moves an API Proxy to a different Space.
+class GoogleCloudApigeeV1MoveApiProxyRequest {
+  /// Resource ID of the space to move the proxy to.
+  ///
+  /// If unspecified, the proxy will be moved to the organization level.
+  ///
+  /// Optional.
+  core.String? space;
+
+  GoogleCloudApigeeV1MoveApiProxyRequest({
+    this.space,
+  });
+
+  GoogleCloudApigeeV1MoveApiProxyRequest.fromJson(core.Map json_)
+      : this(
+          space: json_['space'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (space != null) 'space': space!,
+      };
+}
+
+/// Moves a Shared Flow to a different space.
+class GoogleCloudApigeeV1MoveSharedFlowRequest {
+  /// Resource ID of the space to move the shared flow to.
+  ///
+  /// If unspecified, the shared flow will be moved to the organization level.
+  ///
+  /// Optional.
+  core.String? space;
+
+  GoogleCloudApigeeV1MoveSharedFlowRequest({
+    this.space,
+  });
+
+  GoogleCloudApigeeV1MoveSharedFlowRequest.fromJson(core.Map json_)
+      : this(
+          space: json_['space'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (space != null) 'space': space!,
       };
 }
 
@@ -28270,7 +29279,7 @@ class GoogleCloudApigeeV1SecurityAssessmentResultScoringResult {
   /// The security score of the assessment.
   core.int? score;
 
-  /// The severity of the assessment.
+  ///
   /// Possible string values are:
   /// - "SEVERITY_UNSPECIFIED" : Severity is not defined.
   /// - "LOW" : Severity is low.
@@ -29447,11 +30456,21 @@ class GoogleCloudApigeeV1SharedFlow {
   /// A list of revisions of this shared flow.
   core.List<core.String>? revision;
 
+  /// The ID of the space associated with this shared flow.
+  ///
+  /// Any IAM policies applied to the space will control access to this shared
+  /// flow. To learn how Spaces can be used to manage resources, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
+  ///
+  /// Optional.
+  core.String? space;
+
   GoogleCloudApigeeV1SharedFlow({
     this.latestRevisionId,
     this.metaData,
     this.name,
     this.revision,
+    this.space,
   });
 
   GoogleCloudApigeeV1SharedFlow.fromJson(core.Map json_)
@@ -29465,6 +30484,7 @@ class GoogleCloudApigeeV1SharedFlow {
           revision: (json_['revision'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          space: json_['space'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -29472,6 +30492,7 @@ class GoogleCloudApigeeV1SharedFlow {
         if (metaData != null) 'metaData': metaData!,
         if (name != null) 'name': name!,
         if (revision != null) 'revision': revision!,
+        if (space != null) 'space': space!,
       };
 }
 
@@ -29599,6 +30620,54 @@ class GoogleCloudApigeeV1SharedFlowRevision {
         if (revision != null) 'revision': revision!,
         if (sharedFlows != null) 'sharedFlows': sharedFlows!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Organization space resource.
+class GoogleCloudApigeeV1Space {
+  /// Create timestamp of the space.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Display name of the space.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Identifier.
+  ///
+  /// Id of the space. This field is used as the resource name, and must follow
+  /// \[AIP-122\](https://google.aip.dev/122) guidelines.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Last modified timestamp of the space.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudApigeeV1Space({
+    this.createTime,
+    this.displayName,
+    this.name,
+    this.updateTime,
+  });
+
+  GoogleCloudApigeeV1Space.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 

@@ -3141,6 +3141,78 @@ class BigTableIODetails {
       };
 }
 
+/// The message type used for encoding metrics of type bounded trie.
+class BoundedTrie {
+  /// The maximum number of elements to store before truncation.
+  core.int? bound;
+
+  /// A compact representation of all the elements in this trie.
+  BoundedTrieNode? root;
+
+  /// A more efficient representation for metrics consisting of a single value.
+  core.List<core.String>? singleton;
+
+  BoundedTrie({
+    this.bound,
+    this.root,
+    this.singleton,
+  });
+
+  BoundedTrie.fromJson(core.Map json_)
+      : this(
+          bound: json_['bound'] as core.int?,
+          root: json_.containsKey('root')
+              ? BoundedTrieNode.fromJson(
+                  json_['root'] as core.Map<core.String, core.dynamic>)
+              : null,
+          singleton: (json_['singleton'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bound != null) 'bound': bound!,
+        if (root != null) 'root': root!,
+        if (singleton != null) 'singleton': singleton!,
+      };
+}
+
+/// A single node in a BoundedTrie.
+class BoundedTrieNode {
+  /// Children of this node.
+  ///
+  /// Must be empty if truncated is true.
+  core.Map<core.String, BoundedTrieNode>? children;
+
+  /// Whether this node has been truncated.
+  ///
+  /// A truncated leaf represents possibly many children with the same prefix.
+  core.bool? truncated;
+
+  BoundedTrieNode({
+    this.children,
+    this.truncated,
+  });
+
+  BoundedTrieNode.fromJson(core.Map json_)
+      : this(
+          children:
+              (json_['children'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              BoundedTrieNode.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          truncated: json_['truncated'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (children != null) 'children': children!,
+        if (truncated != null) 'truncated': truncated!,
+      };
+}
+
 /// `BucketOptions` describes the bucket boundaries used in the histogram.
 class BucketOptions {
   /// Bucket boundaries grow exponentially.
@@ -3634,9 +3706,14 @@ class CounterStructuredNameAndMetadata {
 }
 
 /// An update to a Counter sent from a worker.
+///
+/// Next ID: 17
 class CounterUpdate {
   /// Boolean value for And, Or.
   core.bool? boolean;
+
+  /// Bounded trie data
+  BoundedTrie? boundedTrie;
 
   /// True if this counter is reported as the total cumulative aggregate value
   /// accumulated since the worker started working on this WorkItem.
@@ -3692,6 +3769,7 @@ class CounterUpdate {
 
   CounterUpdate({
     this.boolean,
+    this.boundedTrie,
     this.cumulative,
     this.distribution,
     this.floatingPoint,
@@ -3711,6 +3789,10 @@ class CounterUpdate {
   CounterUpdate.fromJson(core.Map json_)
       : this(
           boolean: json_['boolean'] as core.bool?,
+          boundedTrie: json_.containsKey('boundedTrie')
+              ? BoundedTrie.fromJson(
+                  json_['boundedTrie'] as core.Map<core.String, core.dynamic>)
+              : null,
           cumulative: json_['cumulative'] as core.bool?,
           distribution: json_.containsKey('distribution')
               ? DistributionUpdate.fromJson(
@@ -3761,6 +3843,7 @@ class CounterUpdate {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolean != null) 'boolean': boolean!,
+        if (boundedTrie != null) 'boundedTrie': boundedTrie!,
         if (cumulative != null) 'cumulative': cumulative!,
         if (distribution != null) 'distribution': distribution!,
         if (floatingPoint != null) 'floatingPoint': floatingPoint!,
@@ -4937,6 +5020,11 @@ class FlexTemplateRuntimeEnvironment {
   /// Additional experiment flags for the job.
   core.List<core.String>? additionalExperiments;
 
+  /// Additional pipeline option flags for the job.
+  ///
+  /// Optional.
+  core.List<core.String>? additionalPipelineOptions;
+
   /// Additional user labels to be specified for the job.
   ///
   /// Keys and values must follow the restrictions specified in the
@@ -5097,6 +5185,7 @@ class FlexTemplateRuntimeEnvironment {
 
   FlexTemplateRuntimeEnvironment({
     this.additionalExperiments,
+    this.additionalPipelineOptions,
     this.additionalUserLabels,
     this.autoscalingAlgorithm,
     this.diskSizeGb,
@@ -5128,6 +5217,10 @@ class FlexTemplateRuntimeEnvironment {
           additionalExperiments: (json_['additionalExperiments'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          additionalPipelineOptions:
+              (json_['additionalPipelineOptions'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           additionalUserLabels: (json_['additionalUserLabels']
                   as core.Map<core.String, core.dynamic>?)
               ?.map(
@@ -5166,6 +5259,8 @@ class FlexTemplateRuntimeEnvironment {
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalExperiments != null)
           'additionalExperiments': additionalExperiments!,
+        if (additionalPipelineOptions != null)
+          'additionalPipelineOptions': additionalPipelineOptions!,
         if (additionalUserLabels != null)
           'additionalUserLabels': additionalUserLabels!,
         if (autoscalingAlgorithm != null)
@@ -7272,12 +7367,20 @@ class MetricUpdate {
   /// Worker-computed aggregate value for the "Set" aggregation kind.
   ///
   /// The only possible value type is a list of Values whose type can be Long,
-  /// Double, or String, according to the metric's type. All Values in the list
-  /// must be of the same type.
+  /// Double, String, or BoundedTrie according to the metric's type. All Values
+  /// in the list must be of the same type.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? set;
+
+  /// Worker-computed aggregate value for the "Trie" aggregation kind.
+  ///
+  /// The only possible value type is a BoundedTrieNode.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? trie;
 
   /// Timestamp associated with the metric value.
   ///
@@ -7296,6 +7399,7 @@ class MetricUpdate {
     this.name,
     this.scalar,
     this.set,
+    this.trie,
     this.updateTime,
   });
 
@@ -7314,6 +7418,7 @@ class MetricUpdate {
               : null,
           scalar: json_['scalar'],
           set: json_['set'],
+          trie: json_['trie'],
           updateTime: json_['updateTime'] as core.String?,
         );
 
@@ -7328,6 +7433,7 @@ class MetricUpdate {
         if (name != null) 'name': name!,
         if (scalar != null) 'scalar': scalar!,
         if (set != null) 'set': set!,
+        if (trie != null) 'trie': trie!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -8617,6 +8723,11 @@ class RuntimeEnvironment {
   /// Optional.
   core.List<core.String>? additionalExperiments;
 
+  /// Additional pipeline option flags for the job.
+  ///
+  /// Optional.
+  core.List<core.String>? additionalPipelineOptions;
+
   /// Additional user labels to be specified for the job.
   ///
   /// Keys and values should follow the restrictions specified in the
@@ -8766,6 +8877,7 @@ class RuntimeEnvironment {
 
   RuntimeEnvironment({
     this.additionalExperiments,
+    this.additionalPipelineOptions,
     this.additionalUserLabels,
     this.bypassTempDirValidation,
     this.diskSizeGb,
@@ -8790,6 +8902,10 @@ class RuntimeEnvironment {
           additionalExperiments: (json_['additionalExperiments'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          additionalPipelineOptions:
+              (json_['additionalPipelineOptions'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           additionalUserLabels: (json_['additionalUserLabels']
                   as core.Map<core.String, core.dynamic>?)
               ?.map(
@@ -8820,6 +8936,8 @@ class RuntimeEnvironment {
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalExperiments != null)
           'additionalExperiments': additionalExperiments!,
+        if (additionalPipelineOptions != null)
+          'additionalPipelineOptions': additionalPipelineOptions!,
         if (additionalUserLabels != null)
           'additionalUserLabels': additionalUserLabels!,
         if (bypassTempDirValidation != null)
@@ -8930,6 +9048,7 @@ class SDKInfo {
   /// - "JAVA" : Java.
   /// - "PYTHON" : Python.
   /// - "GO" : Go.
+  /// - "YAML" : YAML.
   core.String? language;
 
   /// The SDK version.
@@ -11377,6 +11496,11 @@ class TemplateMetadata {
   /// Optional.
   core.bool? supportsExactlyOnce;
 
+  /// For future use.
+  ///
+  /// Optional.
+  core.String? yamlDefinition;
+
   TemplateMetadata({
     this.defaultStreamingMode,
     this.description,
@@ -11385,6 +11509,7 @@ class TemplateMetadata {
     this.streaming,
     this.supportsAtLeastOnce,
     this.supportsExactlyOnce,
+    this.yamlDefinition,
   });
 
   TemplateMetadata.fromJson(core.Map json_)
@@ -11399,6 +11524,7 @@ class TemplateMetadata {
           streaming: json_['streaming'] as core.bool?,
           supportsAtLeastOnce: json_['supportsAtLeastOnce'] as core.bool?,
           supportsExactlyOnce: json_['supportsExactlyOnce'] as core.bool?,
+          yamlDefinition: json_['yamlDefinition'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11412,6 +11538,7 @@ class TemplateMetadata {
           'supportsAtLeastOnce': supportsAtLeastOnce!,
         if (supportsExactlyOnce != null)
           'supportsExactlyOnce': supportsExactlyOnce!,
+        if (yamlDefinition != null) 'yamlDefinition': yamlDefinition!,
       };
 }
 

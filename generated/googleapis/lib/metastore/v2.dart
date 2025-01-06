@@ -1054,7 +1054,7 @@ class GoogleCloudMetastoreV2Backup {
 /// service.
 typedef GoogleCloudMetastoreV2DataCatalogConfig = $DataCatalogConfig;
 
-/// A specification of the location of and metadata about a database dump from a
+/// A specification of the location and metadata type for a database dump from a
 /// relational database management system.
 class GoogleCloudMetastoreV2DatabaseDump {
   /// A Cloud Storage object or folder URI that specifies the source from which

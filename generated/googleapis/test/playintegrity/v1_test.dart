@@ -95,8 +95,6 @@ api.AppAccessRiskVerdict buildAppAccessRiskVerdict() {
   buildCounterAppAccessRiskVerdict++;
   if (buildCounterAppAccessRiskVerdict < 3) {
     o.appsDetected = buildUnnamed0();
-    o.otherApps = 'foo';
-    o.playOrSystemApps = 'foo';
   }
   buildCounterAppAccessRiskVerdict--;
   return o;
@@ -106,14 +104,6 @@ void checkAppAccessRiskVerdict(api.AppAccessRiskVerdict o) {
   buildCounterAppAccessRiskVerdict++;
   if (buildCounterAppAccessRiskVerdict < 3) {
     checkUnnamed0(o.appsDetected!);
-    unittest.expect(
-      o.otherApps!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.playOrSystemApps!,
-      unittest.equals('foo'),
-    );
   }
   buildCounterAppAccessRiskVerdict--;
 }

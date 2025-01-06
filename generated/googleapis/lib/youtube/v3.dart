@@ -49,6 +49,7 @@
 /// - [ThumbnailsResource]
 /// - [VideoAbuseReportReasonsResource]
 /// - [VideoCategoriesResource]
+/// - [VideoTrainabilityResource]
 /// - [VideosResource]
 /// - [WatermarksResource]
 /// - [YoutubeResource]
@@ -151,6 +152,8 @@ class YouTubeApi {
       VideoAbuseReportReasonsResource(_requester);
   VideoCategoriesResource get videoCategories =>
       VideoCategoriesResource(_requester);
+  VideoTrainabilityResource get videoTrainability =>
+      VideoTrainabilityResource(_requester);
   VideosResource get videos => VideosResource(_requester);
   WatermarksResource get watermarks => WatermarksResource(_requester);
   YoutubeResource get youtube => YoutubeResource(_requester);
@@ -5153,6 +5156,48 @@ class VideoCategoriesResource {
   }
 }
 
+class VideoTrainabilityResource {
+  final commons.ApiRequester _requester;
+
+  VideoTrainabilityResource(commons.ApiRequester client) : _requester = client;
+
+  /// Returns the trainability status of a video.
+  ///
+  /// Request parameters:
+  ///
+  /// [id] - The ID of the video to retrieve.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VideoTrainability].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VideoTrainability> get({
+    core.String? id,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (id != null) 'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'youtube/v3/videoTrainability';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return VideoTrainability.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class VideosResource {
   final commons.ApiRequester _requester;
 
@@ -8161,6 +8206,11 @@ class ChannelStatistics {
 
 /// JSON template for the status part of a channel.
 class ChannelStatus {
+  /// Whether the channel is considered ypp monetization enabled.
+  ///
+  /// See go/yppornot for more details.
+  core.bool? isChannelMonetizationEnabled;
+
   /// If true, then the user is linked to either a YouTube username or G+
   /// account.
   ///
@@ -8187,6 +8237,7 @@ class ChannelStatus {
   core.bool? selfDeclaredMadeForKids;
 
   ChannelStatus({
+    this.isChannelMonetizationEnabled,
     this.isLinked,
     this.longUploadsStatus,
     this.madeForKids,
@@ -8196,6 +8247,8 @@ class ChannelStatus {
 
   ChannelStatus.fromJson(core.Map json_)
       : this(
+          isChannelMonetizationEnabled:
+              json_['isChannelMonetizationEnabled'] as core.bool?,
           isLinked: json_['isLinked'] as core.bool?,
           longUploadsStatus: json_['longUploadsStatus'] as core.String?,
           madeForKids: json_['madeForKids'] as core.bool?,
@@ -8205,6 +8258,8 @@ class ChannelStatus {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (isChannelMonetizationEnabled != null)
+          'isChannelMonetizationEnabled': isChannelMonetizationEnabled!,
         if (isLinked != null) 'isLinked': isLinked!,
         if (longUploadsStatus != null) 'longUploadsStatus': longUploadsStatus!,
         if (madeForKids != null) 'madeForKids': madeForKids!,
@@ -8615,7 +8670,7 @@ class CommentSnippet {
 }
 
 /// The id of the author's YouTube channel, if any.
-typedef CommentSnippetAuthorChannelId = $Shared15;
+typedef CommentSnippetAuthorChannelId = $Shared17;
 
 /// A *comment thread* represents information that applies to a top level
 /// comment and all its replies.
@@ -10895,7 +10950,7 @@ class InvideoTiming {
       };
 }
 
-typedef LanguageTag = $Shared15;
+typedef LanguageTag = $Shared17;
 
 class LevelDetails {
   /// The name that should be used when referring to this level.
@@ -17595,7 +17650,7 @@ class VideoSuggestions {
       };
 }
 
-/// A single tag suggestion with it's relevance information.
+/// A single tag suggestion with its relevance information.
 class VideoSuggestionsTagSuggestion {
   /// A set of video categories for which the tag is relevant.
   ///
@@ -17671,6 +17726,50 @@ class VideoTopicDetails {
         if (relevantTopicIds != null) 'relevantTopicIds': relevantTopicIds!,
         if (topicCategories != null) 'topicCategories': topicCategories!,
         if (topicIds != null) 'topicIds': topicIds!,
+      };
+}
+
+/// Specifies who is allowed to train on the video.
+class VideoTrainability {
+  /// Etag of this resource.
+  core.String? etag;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#videoTrainability".
+  core.String? kind;
+
+  /// Specifies who is allowed to train on the video.
+  ///
+  /// Valid values are: - a single string "all" - a single string "none" - a
+  /// list of allowed parties
+  core.List<core.String>? permitted;
+
+  /// The ID of the video.
+  core.String? videoId;
+
+  VideoTrainability({
+    this.etag,
+    this.kind,
+    this.permitted,
+    this.videoId,
+  });
+
+  VideoTrainability.fromJson(core.Map json_)
+      : this(
+          etag: json_['etag'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          permitted: (json_['permitted'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          videoId: json_['videoId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (permitted != null) 'permitted': permitted!,
+        if (videoId != null) 'videoId': videoId!,
       };
 }
 

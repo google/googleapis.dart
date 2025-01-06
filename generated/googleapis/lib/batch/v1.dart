@@ -178,6 +178,47 @@ class ProjectsLocationsJobsResource {
   ProjectsLocationsJobsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Cancel a Job.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Job name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> cancel(
+    CancelJobRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Create a Job.
   ///
   /// [request] - The metadata request object.
@@ -1622,6 +1663,9 @@ class Barrier {
       };
 }
 
+/// CancelJob Request.
+typedef CancelJobRequest = $Request00;
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -2423,6 +2467,10 @@ class JobStatus {
   /// - "DELETION_IN_PROGRESS" : The Job will be deleted, but has not been
   /// deleted yet. Typically this is because resources used by the Job are still
   /// being cleaned up.
+  /// - "CANCELLATION_IN_PROGRESS" : The Job cancellation is in progress, this
+  /// is because the resources used by the Job are still being cleaned up.
+  /// - "CANCELLED" : The Job has been cancelled, the task executions were
+  /// stopped and the resources were cleaned up.
   core.String? state;
 
   /// Job status events
@@ -2750,6 +2798,10 @@ class Message {
   /// - "DELETION_IN_PROGRESS" : The Job will be deleted, but has not been
   /// deleted yet. Typically this is because resources used by the Job are still
   /// being cleaned up.
+  /// - "CANCELLATION_IN_PROGRESS" : The Job cancellation is in progress, this
+  /// is because the resources used by the Job are still being cleaned up.
+  /// - "CANCELLED" : The Job has been cancelled, the task executions were
+  /// stopped and the resources were cleaned up.
   core.String? newJobState;
 
   /// The new task state.

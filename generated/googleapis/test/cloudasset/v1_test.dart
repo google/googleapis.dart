@@ -2634,6 +2634,7 @@ api.GoogleIdentityAccesscontextmanagerV1EgressSource
   buildCounterGoogleIdentityAccesscontextmanagerV1EgressSource++;
   if (buildCounterGoogleIdentityAccesscontextmanagerV1EgressSource < 3) {
     o.accessLevel = 'foo';
+    o.resource = 'foo';
   }
   buildCounterGoogleIdentityAccesscontextmanagerV1EgressSource--;
   return o;
@@ -2645,6 +2646,10 @@ void checkGoogleIdentityAccesscontextmanagerV1EgressSource(
   if (buildCounterGoogleIdentityAccesscontextmanagerV1EgressSource < 3) {
     unittest.expect(
       o.accessLevel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resource!,
       unittest.equals('foo'),
     );
   }

@@ -599,15 +599,15 @@ class OrganizationsCustomConstraintsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a custom constraint.
+  /// Gets a custom or managed constraint.
   ///
   /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
-  /// custom constraint does not exist.
+  /// custom or managed constraint does not exist.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of the custom constraint. See the custom
-  /// constraint entry for naming requirements.
+  /// [name] - Required. Resource name of the custom or managed constraint. See
+  /// the custom constraint entry for naming requirements.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/customConstraints/\[^/\]+$`.
   ///
@@ -1413,7 +1413,7 @@ class ProjectsPoliciesResource {
 
 /// Similar to PolicySpec but with an extra 'launch' field for launch reference.
 ///
-/// The PolicySpec here is specific for dry-run/darklaunch.
+/// The PolicySpec here is specific for dry-run.
 class GoogleCloudOrgpolicyV2AlternatePolicySpec {
   /// Reference to the launch that will be used while audit logging and to
   /// control the launch.
@@ -1453,19 +1453,18 @@ class GoogleCloudOrgpolicyV2AlternatePolicySpec {
 /// of the organization by setting a policy that includes constraints at
 /// different locations in the organization's resource hierarchy. Policies are
 /// inherited down the resource hierarchy from higher levels, but can also be
-/// overridden. For details about the inheritance rules please read about
-/// `policies`. Constraints have a default behavior determined by the
-/// `constraint_default` field, which is the enforcement behavior that is used
-/// in the absence of a policy being defined or inherited for the resource in
-/// question.
+/// overridden. For details about the inheritance rules, see `Policy`.
+/// Constraints have a default behavior determined by the `constraint_default`
+/// field, which is the enforcement behavior that is used in the absence of a
+/// policy being defined or inherited for the resource in question.
 class GoogleCloudOrgpolicyV2Constraint {
-  /// Defines this constraint as being a BooleanConstraint.
+  /// Defines this constraint as being a boolean constraint.
   GoogleCloudOrgpolicyV2ConstraintBooleanConstraint? booleanConstraint;
 
   /// The evaluation behavior of this constraint in the absence of a policy.
   /// Possible string values are:
   /// - "CONSTRAINT_DEFAULT_UNSPECIFIED" : This is only used for distinguishing
-  /// unset values and should never be used.
+  /// unset values and should never be used. Results in an error.
   /// - "ALLOW" : Indicate that all values are allowed for list constraints.
   /// Indicate that enforcement is off for boolean constraints.
   /// - "DENY" : Indicate that all values are denied for list constraints.
@@ -1483,7 +1482,7 @@ class GoogleCloudOrgpolicyV2Constraint {
   /// Mutable.
   core.String? displayName;
 
-  /// Defines this constraint as being a ListConstraint.
+  /// Defines this constraint as being a list constraint.
   GoogleCloudOrgpolicyV2ConstraintListConstraint? listConstraint;
 
   /// The resource name of the constraint.
@@ -1547,15 +1546,15 @@ class GoogleCloudOrgpolicyV2Constraint {
       };
 }
 
-/// A constraint that is either enforced or not.
+/// A constraint type is enforced or not enforced, which is configured in the
+/// `PolicyRule`.
 ///
-/// For example, a constraint `constraints/compute.disableSerialPortAccess`. If
-/// it is enforced on a VM instance, serial port connections will not be opened
-/// to that instance.
+/// If `customConstraintDefinition` is defined, this constraint is a managed
+/// constraint.
 class GoogleCloudOrgpolicyV2ConstraintBooleanConstraint {
   /// Custom constraint definition.
   ///
-  /// This is set only for Managed Constraints
+  /// Defines this as a managed constraint.
   GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition?
       customConstraintDefinition;
 
@@ -1579,14 +1578,14 @@ class GoogleCloudOrgpolicyV2ConstraintBooleanConstraint {
       };
 }
 
-/// Currently used for Managed Constraints.
+/// Custom constraint definition.
 ///
-/// This represents a subset of fields missing from Constraint proto that are
-/// required to describe CustomConstraint
+/// Defines this as a managed constraint.
 class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition {
   /// Allow or deny type.
   /// Possible string values are:
-  /// - "ACTION_TYPE_UNSPECIFIED" : Unspecified. Results in an error.
+  /// - "ACTION_TYPE_UNSPECIFIED" : This is only used for distinguishing unset
+  /// values and should never be used. Results in an error.
   /// - "ALLOW" : Allowed action type.
   /// - "DENY" : Deny action type.
   core.String? actionType;
@@ -1601,9 +1600,9 @@ class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition {
   /// All the operations being applied for this constraint.
   core.List<core.String>? methodTypes;
 
-  /// Stores Structure of parameters used by Constraint condition.
+  /// Stores the structure of `Parameters` used by the constraint condition.
   ///
-  /// Key of map represents name of the parameter.
+  /// The key of `map` represents the name of the parameter.
   core.Map<core.String,
           GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter>?
       parameters;
@@ -1661,12 +1660,13 @@ class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? defaultValue;
 
-  /// Determines the parameter’s value structure.
+  /// Determines the parameter's value structure.
   ///
-  /// For example, LIST can be specified by defining type : LIST, and item type
-  /// as : STRING.
+  /// For example, `LIST` can be specified by defining `type: LIST`, and `item:
+  /// STRING`.
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Unspecified. Results in an error.
+  /// - "TYPE_UNSPECIFIED" : This is only used for distinguishing unset values
+  /// and should never be used. Results in an error.
   /// - "LIST" : List parameter type.
   /// - "STRING" : String parameter type.
   /// - "BOOLEAN" : Boolean parameter type.
@@ -1679,7 +1679,8 @@ class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter {
 
   /// Type of the parameter.
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Unspecified. Results in an error.
+  /// - "TYPE_UNSPECIFIED" : This is only used for distinguishing unset values
+  /// and should never be used. Results in an error.
   /// - "LIST" : List parameter type.
   /// - "STRING" : String parameter type.
   /// - "BOOLEAN" : Boolean parameter type.
@@ -1722,7 +1723,7 @@ class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter {
       };
 }
 
-/// Defines Medata structure.
+/// Defines Metadata structure.
 class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata {
   /// Detailed description of what this `parameter` is and use of it.
   ///
@@ -1744,8 +1745,8 @@ class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadat
       };
 }
 
-/// A constraint that allows or disallows a list of string values, which are
-/// configured by an Organization Policy administrator with a policy.
+/// A constraint type that allows or disallows a list of string values, which
+/// are configured in the `PolicyRule`.
 class GoogleCloudOrgpolicyV2ConstraintListConstraint {
   /// Indicates whether values grouped into categories can be used in
   /// `Policy.allowed_values` and `Policy.denied_values`.
@@ -1786,12 +1787,14 @@ class GoogleCloudOrgpolicyV2ConstraintListConstraint {
 class GoogleCloudOrgpolicyV2CustomConstraint {
   /// Allow or deny type.
   /// Possible string values are:
-  /// - "ACTION_TYPE_UNSPECIFIED" : Unspecified. Results in an error.
+  /// - "ACTION_TYPE_UNSPECIFIED" : This is only used for distinguishing unset
+  /// values and should never be used. Results in an error.
   /// - "ALLOW" : Allowed action type.
   /// - "DENY" : Deny action type.
   core.String? actionType;
 
-  /// Org policy condition/expression.
+  /// A Common Expression Language (CEL) condition which is used in the
+  /// evaluation of the constraint.
   ///
   /// For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")`
   /// or, `resource.management.auto_upgrade == true` The max length of the
@@ -1834,7 +1837,7 @@ class GoogleCloudOrgpolicyV2CustomConstraint {
   /// The last time this custom constraint was updated.
   ///
   /// This represents the last time that the `CreateCustomConstraint` or
-  /// `UpdateCustomConstraint` RPC was called
+  /// `UpdateCustomConstraint` methods were called.
   ///
   /// Output only.
   core.String? updateTime;
@@ -1910,10 +1913,11 @@ class GoogleCloudOrgpolicyV2ListConstraintsResponse {
 
 /// The response returned from the ListCustomConstraints method.
 ///
-/// It will be empty if no custom constraints are set on the organization
-/// resource.
+/// It will be empty if no custom or managed constraints are set on the
+/// organization resource.
 class GoogleCloudOrgpolicyV2ListCustomConstraintsResponse {
-  /// All custom constraints that exist on the organization resource.
+  /// All custom and managed constraints that exist on the organization
+  /// resource.
   ///
   /// It will be empty if no custom constraints are set.
   core.List<GoogleCloudOrgpolicyV2CustomConstraint>? customConstraints;
@@ -2019,7 +2023,7 @@ class GoogleCloudOrgpolicyV2Policy {
   /// Immutable.
   core.String? name;
 
-  /// Basic information about the Organization Policy.
+  /// Basic information about the organization policy.
   GoogleCloudOrgpolicyV2PolicySpec? spec;
 
   GoogleCloudOrgpolicyV2Policy({
@@ -2166,9 +2170,9 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
   /// only in policies for boolean constraints.
   core.bool? enforce;
 
-  /// Required for GMCs if parameters defined in constraints.
+  /// Required for managed constraints if parameters are defined.
   ///
-  /// Pass parameter values when policy enforcement is enabled. Ensure that
+  /// Passes parameter values when policy enforcement is enabled. Ensure that
   /// parameter value types match those defined in the constraint definition.
   /// For example: { "allowedLocations" : \["us-east1", "us-west1"\], "allowAll"
   /// : true }

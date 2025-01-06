@@ -231,13 +231,12 @@ class ProjectsLocationsAuthzExtensionsResource {
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
   /// server can ignore the request if it has already been completed. The server
-  /// guarantees that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and the
-  /// request times out. If you make the request again with the same request ID,
-  /// the server can check if original operation with the same request ID was
-  /// received, and if so, ignores the second request. This prevents clients
-  /// from accidentally creating duplicate commitments. The request ID must be a
-  /// valid UUID with the exception that zero UUID is not supported
+  /// guarantees that for 60 minutes since the first request. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server ignores the second request This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -288,13 +287,12 @@ class ProjectsLocationsAuthzExtensionsResource {
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
   /// server can ignore the request if it has already been completed. The server
-  /// guarantees that for at least 60 minutes after the first request. For
-  /// example, consider a situation where you make an initial request and the
-  /// request times out. If you make the request again with the same request ID,
-  /// the server can check if original operation with the same request ID was
-  /// received, and if so, ignores the second request. This prevents clients
-  /// from accidentally creating duplicate commitments. The request ID must be a
-  /// valid UUID with the exception that zero UUID is not supported
+  /// guarantees that for 60 minutes after the first request. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server ignores the second request This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -371,13 +369,13 @@ class ProjectsLocationsAuthzExtensionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The project and location from which the
-  /// `AuthzExtension` resources are listed, specified in the following format:
-  /// `projects/{project}/locations/{location}`.
+  /// `AuthzExtension` resources are listed. These values are specified in the
+  /// following format: `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filtering results.
   ///
-  /// [orderBy] - Optional. Hint for how to order the results.
+  /// [orderBy] - Optional. Hint about how to order the results.
   ///
   /// [pageSize] - Optional. Requested page size. The server might return fewer
   /// items than requested. If unspecified, the server picks an appropriate
@@ -438,13 +436,12 @@ class ProjectsLocationsAuthzExtensionsResource {
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
   /// server can ignore the request if it has already been completed. The server
-  /// guarantees that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and the
-  /// request times out. If you make the request again with the same request ID,
-  /// the server can check if original operation with the same request ID was
-  /// received, and if so, ignores the second request. This prevents clients
-  /// from accidentally creating duplicate commitments. The request ID must be a
-  /// valid UUID with the exception that zero UUID is not supported
+  /// guarantees that for 60 minutes since the first request. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server ignores the second request This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [updateMask] - Required. Used to specify the fields to be overwritten in
@@ -1995,13 +1992,12 @@ class ProjectsLocationsLbRouteExtensionsResource {
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
   /// server can ignore the request if it has already been completed. The server
-  /// guarantees that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and the
-  /// request times out. If you make the request again with the same request ID,
-  /// the server can check if original operation with the same request ID was
-  /// received, and if so, ignores the second request. This prevents clients
-  /// from accidentally creating duplicate commitments. The request ID must be a
-  /// valid UUID with the exception that zero UUID is not supported
+  /// guarantees that for 60 minutes since the first request. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server ignores the second request This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2053,13 +2049,12 @@ class ProjectsLocationsLbRouteExtensionsResource {
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
   /// server can ignore the request if it has already been completed. The server
-  /// guarantees that for at least 60 minutes after the first request. For
-  /// example, consider a situation where you make an initial request and the
-  /// request times out. If you make the request again with the same request ID,
-  /// the server can check if original operation with the same request ID was
-  /// received, and if so, ignores the second request. This prevents clients
-  /// from accidentally creating duplicate commitments. The request ID must be a
-  /// valid UUID with the exception that zero UUID is not supported
+  /// guarantees that for 60 minutes after the first request. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server ignores the second request This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2136,13 +2131,13 @@ class ProjectsLocationsLbRouteExtensionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The project and location from which the
-  /// `LbRouteExtension` resources are listed, specified in the following
-  /// format: `projects/{project}/locations/{location}`.
+  /// `LbRouteExtension` resources are listed. These values are specified in the
+  /// following format: `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filtering results.
   ///
-  /// [orderBy] - Optional. Hint for how to order the results.
+  /// [orderBy] - Optional. Hint about how to order the results.
   ///
   /// [pageSize] - Optional. Requested page size. The server might return fewer
   /// items than requested. If unspecified, the server picks an appropriate
@@ -2203,13 +2198,12 @@ class ProjectsLocationsLbRouteExtensionsResource {
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
   /// server can ignore the request if it has already been completed. The server
-  /// guarantees that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and the
-  /// request times out. If you make the request again with the same request ID,
-  /// the server can check if original operation with the same request ID was
-  /// received, and if so, ignores the second request. This prevents clients
-  /// from accidentally creating duplicate commitments. The request ID must be a
-  /// valid UUID with the exception that zero UUID is not supported
+  /// guarantees that for 60 minutes since the first request. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server ignores the second request This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [updateMask] - Optional. Used to specify the fields to be overwritten in
@@ -2277,13 +2271,12 @@ class ProjectsLocationsLbTrafficExtensionsResource {
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
   /// server can ignore the request if it has already been completed. The server
-  /// guarantees that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and the
-  /// request times out. If you make the request again with the same request ID,
-  /// the server can check if original operation with the same request ID was
-  /// received, and if so, ignores the second request. This prevents clients
-  /// from accidentally creating duplicate commitments. The request ID must be a
-  /// valid UUID with the exception that zero UUID is not supported
+  /// guarantees that for 60 minutes since the first request. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server ignores the second request This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2336,13 +2329,12 @@ class ProjectsLocationsLbTrafficExtensionsResource {
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
   /// server can ignore the request if it has already been completed. The server
-  /// guarantees that for at least 60 minutes after the first request. For
-  /// example, consider a situation where you make an initial request and the
-  /// request times out. If you make the request again with the same request ID,
-  /// the server can check if original operation with the same request ID was
-  /// received, and if so, ignores the second request. This prevents clients
-  /// from accidentally creating duplicate commitments. The request ID must be a
-  /// valid UUID with the exception that zero UUID is not supported
+  /// guarantees that for 60 minutes after the first request. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server ignores the second request This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2419,13 +2411,13 @@ class ProjectsLocationsLbTrafficExtensionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The project and location from which the
-  /// `LbTrafficExtension` resources are listed, specified in the following
-  /// format: `projects/{project}/locations/{location}`.
+  /// `LbTrafficExtension` resources are listed. These values are specified in
+  /// the following format: `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filtering results.
   ///
-  /// [orderBy] - Optional. Hint for how to order the results.
+  /// [orderBy] - Optional. Hint about how to order the results.
   ///
   /// [pageSize] - Optional. Requested page size. The server might return fewer
   /// items than requested. If unspecified, the server picks an appropriate
@@ -2487,13 +2479,12 @@ class ProjectsLocationsLbTrafficExtensionsResource {
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
   /// server can ignore the request if it has already been completed. The server
-  /// guarantees that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and the
-  /// request times out. If you make the request again with the same request ID,
-  /// the server can check if original operation with the same request ID was
-  /// received, and if so, ignores the second request. This prevents clients
-  /// from accidentally creating duplicate commitments. The request ID must be a
-  /// valid UUID with the exception that zero UUID is not supported
+  /// guarantees that for 60 minutes since the first request. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server ignores the second request This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [updateMask] - Optional. Used to specify the fields to be overwritten in
@@ -2680,6 +2671,10 @@ class ProjectsLocationsMeshesResource {
   /// Indicates that this is a continuation of a prior `ListMeshes` call, and
   /// that the system should return the next page of data.
   ///
+  /// [returnPartialSuccess] - Optional. If true, allow partial responses for
+  /// multi-regional Aggregated List requests. Otherwise if one of the locations
+  /// is down or unreachable, the Aggregated List request will fail.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2694,11 +2689,14 @@ class ProjectsLocationsMeshesResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3056,7 +3054,7 @@ class ProjectsLocationsServiceBindingsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource of the ServiceBinding. Must be in
-  /// the format `projects / * /locations/global`.
+  /// the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [serviceBindingId] - Required. Short name of the ServiceBinding resource
@@ -3100,7 +3098,7 @@ class ProjectsLocationsServiceBindingsResource {
   /// Request parameters:
   ///
   /// [name] - Required. A name of the ServiceBinding to delete. Must be in the
-  /// format `projects / * /locations/global/serviceBindings / * `.
+  /// format `projects / * /locations / * /serviceBindings / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/serviceBindings/\[^/\]+$`.
   ///
@@ -3137,7 +3135,7 @@ class ProjectsLocationsServiceBindingsResource {
   /// Request parameters:
   ///
   /// [name] - Required. A name of the ServiceBinding to get. Must be in the
-  /// format `projects / * /locations/global/serviceBindings / * `.
+  /// format `projects / * /locations / * /serviceBindings / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/serviceBindings/\[^/\]+$`.
   ///
@@ -3176,7 +3174,7 @@ class ProjectsLocationsServiceBindingsResource {
   ///
   /// [parent] - Required. The project and location from which the
   /// ServiceBindings should be listed, specified in the format `projects / *
-  /// /locations/global`.
+  /// /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of ServiceBindings to return per call.
@@ -4508,7 +4506,7 @@ class AuthzExtension {
 
   /// The format of communication supported by the callout extension.
   ///
-  /// If not specified, the default is `EXT_PROC_GRPC`.
+  /// If not specified, the default value `EXT_PROC_GRPC` is used.
   ///
   /// Optional.
   /// Possible string values are:
@@ -4516,8 +4514,8 @@ class AuthzExtension {
   /// - "EXT_PROC_GRPC" : The extension service uses ExtProc GRPC API over a
   /// gRPC stream. This is the default value if the wire format is not
   /// specified. The backend service for the extension must use HTTP2 or H2C as
-  /// the protocol. All `supported_events` for a client request will be sent as
-  /// part of the same gRPC stream.
+  /// the protocol. All `supported_events` for a client request are sent as part
+  /// of the same gRPC stream.
   core.String? wireFormat;
 
   AuthzExtension({
@@ -5201,7 +5199,7 @@ class ExtensionChainMatchCondition {
 ///
 /// It captures the ip:port over which the services are exposed by the proxy,
 /// along with any policy configurations. Routes have reference to to Gateways
-/// to dictate how requests should be routed by this Gateway. Next id: 33
+/// to dictate how requests should be routed by this Gateway.
 class Gateway {
   /// Zero or one IPv4 or IPv6 address on which the Gateway will receive the
   /// traffic.
@@ -5322,7 +5320,7 @@ class Gateway {
   /// merged.
   ///
   /// The configuration for multiple Gateway instances with the same scope will
-  /// be merged as presented as a single coniguration to the proxy/load
+  /// be merged as presented as a single configuration to the proxy/load
   /// balancer. Max length 64 characters. Scope should start with a letter and
   /// can only have letters, numbers, hyphens.
   ///
@@ -7332,7 +7330,7 @@ class LbTrafficExtension {
   /// All backend services and forwarding rules referenced by this extension
   /// must share the same load balancing scheme.
   ///
-  /// Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more
+  /// Supported values: `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more
   /// information, refer to
   /// [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
   ///
@@ -7770,9 +7768,17 @@ class ListMeshesResponse {
   /// `next_page_token` as `page_token`.
   core.String? nextPageToken;
 
+  /// Unreachable resources.
+  ///
+  /// Populated when the request opts into `return_partial_success` and reading
+  /// across collections e.g. when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
   ListMeshesResponse({
     this.meshes,
     this.nextPageToken,
+    this.unreachable,
   });
 
   ListMeshesResponse.fromJson(core.Map json_)
@@ -7782,11 +7788,15 @@ class ListMeshesResponse {
                   Mesh.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (meshes != null) 'meshes': meshes!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -8369,8 +8379,11 @@ class Policy {
       };
 }
 
-/// ServiceBinding is the resource that defines a Service Directory Service to
-/// be used in a BackendService resource.
+/// ServiceBinding can be used to: - Bind a Service Directory Service to be used
+/// in a BackendService resource.
+///
+/// - Bind a Private Service Connect producer service to be used in consumer
+/// Cloud Service Mesh or Application Load Balancers.
 class ServiceBinding {
   /// The timestamp when the resource was created.
   ///
@@ -8392,17 +8405,19 @@ class ServiceBinding {
   /// Identifier.
   ///
   /// Name of the ServiceBinding resource. It matches pattern `projects / *
-  /// /locations/global/serviceBindings/service_binding_name`.
+  /// /locations / * /serviceBindings/`.
   core.String? name;
 
-  /// The full Service Directory Service name of the format projects / *
-  /// /locations / * /namespaces / * /services / *
+  /// The full Service Directory Service name of the format `projects / *
+  /// /locations / * /namespaces / * /services / * `.
   ///
-  /// Required.
+  /// This field must be set.
+  ///
+  /// Optional.
   core.String? service;
 
   /// The unique identifier of the Service Directory Service against which the
-  /// Service Binding resource is validated.
+  /// ServiceBinding resource is validated.
   ///
   /// This is populated when the Service Binding resource is used in another
   /// resource (like Backend Service). This is of the UUID4 format.
@@ -9145,8 +9160,7 @@ class TlsRouteRouteDestination {
 
 /// RouteMatch defines the predicate used to match requests to a given action.
 ///
-/// Multiple match types are "AND"ed for evaluation. If no routeMatch field is
-/// specified, this rule will unconditionally match traffic.
+/// Multiple match types are "AND"ed for evaluation.
 class TlsRouteRouteMatch {
   /// ALPN (Application-Layer Protocol Negotiation) to match against.
   ///
@@ -9198,7 +9212,8 @@ class TlsRouteRouteRule {
 
   /// RouteMatch defines the predicate used to match requests to a given action.
   ///
-  /// Multiple match types are "OR"ed for evaluation.
+  /// Multiple match types are "OR"ed for evaluation. Atleast one RouteMatch
+  /// must be supplied.
   ///
   /// Required.
   core.List<TlsRouteRouteMatch>? matches;

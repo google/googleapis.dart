@@ -6347,6 +6347,10 @@ class FolderEntities {
 /// Represents the link between a custom template and an entry on the Community
 /// Template Gallery site.
 class GalleryReference {
+  /// ID for the gallery template that is generated once during first sync and
+  /// travels with the template redirects.
+  core.String? galleryTemplateId;
+
   /// The name of the host for the community gallery template.
   core.String? host;
 
@@ -6375,6 +6379,7 @@ class GalleryReference {
   core.String? version;
 
   GalleryReference({
+    this.galleryTemplateId,
     this.host,
     this.isModified,
     this.owner,
@@ -6386,6 +6391,7 @@ class GalleryReference {
 
   GalleryReference.fromJson(core.Map json_)
       : this(
+          galleryTemplateId: json_['galleryTemplateId'] as core.String?,
           host: json_['host'] as core.String?,
           isModified: json_['isModified'] as core.bool?,
           owner: json_['owner'] as core.String?,
@@ -6396,6 +6402,7 @@ class GalleryReference {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (galleryTemplateId != null) 'galleryTemplateId': galleryTemplateId!,
         if (host != null) 'host': host!,
         if (isModified != null) 'isModified': isModified!,
         if (owner != null) 'owner': owner!,
@@ -6408,19 +6415,25 @@ class GalleryReference {
 }
 
 class GetContainerSnippetResponse {
+  /// Server container config param for manually provisioning a tagging server.
+  core.String? containerConfig;
+
   /// Tagging snippet for a Container.
   core.String? snippet;
 
   GetContainerSnippetResponse({
+    this.containerConfig,
     this.snippet,
   });
 
   GetContainerSnippetResponse.fromJson(core.Map json_)
       : this(
+          containerConfig: json_['containerConfig'] as core.String?,
           snippet: json_['snippet'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (containerConfig != null) 'containerConfig': containerConfig!,
         if (snippet != null) 'snippet': snippet!,
       };
 }

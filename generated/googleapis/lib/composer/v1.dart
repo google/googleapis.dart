@@ -747,7 +747,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource {
   /// Creates a user workloads ConfigMap.
   ///
   /// This method is supported for Cloud Composer environments in versions
-  /// composer-3.*.*-airflow-*.*.* and newer.
+  /// composer-3-airflow-*.*.*-build.* and newer.
   ///
   /// [request] - The metadata request object.
   ///
@@ -795,7 +795,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource {
   /// Deletes a user workloads ConfigMap.
   ///
   /// This method is supported for Cloud Composer environments in versions
-  /// composer-3.*.*-airflow-*.*.* and newer.
+  /// composer-3-airflow-*.*.*-build.* and newer.
   ///
   /// Request parameters:
   ///
@@ -835,7 +835,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource {
   /// Gets an existing user workloads ConfigMap.
   ///
   /// This method is supported for Cloud Composer environments in versions
-  /// composer-3.*.*-airflow-*.*.* and newer.
+  /// composer-3-airflow-*.*.*-build.* and newer.
   ///
   /// Request parameters:
   ///
@@ -876,7 +876,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource {
   /// Lists user workloads ConfigMaps.
   ///
   /// This method is supported for Cloud Composer environments in versions
-  /// composer-3.*.*-airflow-*.*.* and newer.
+  /// composer-3-airflow-*.*.*-build.* and newer.
   ///
   /// Request parameters:
   ///
@@ -928,7 +928,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource {
   /// Updates a user workloads ConfigMap.
   ///
   /// This method is supported for Cloud Composer environments in versions
-  /// composer-3.*.*-airflow-*.*.* and newer.
+  /// composer-3-airflow-*.*.*-build.* and newer.
   ///
   /// [request] - The metadata request object.
   ///
@@ -982,7 +982,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource {
   /// Creates a user workloads Secret.
   ///
   /// This method is supported for Cloud Composer environments in versions
-  /// composer-3.*.*-airflow-*.*.* and newer.
+  /// composer-3-airflow-*.*.*-build.* and newer.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1030,7 +1030,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource {
   /// Deletes a user workloads Secret.
   ///
   /// This method is supported for Cloud Composer environments in versions
-  /// composer-3.*.*-airflow-*.*.* and newer.
+  /// composer-3-airflow-*.*.*-build.* and newer.
   ///
   /// Request parameters:
   ///
@@ -1071,7 +1071,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource {
   ///
   /// Values of the "data" field in the response are cleared. This method is
   /// supported for Cloud Composer environments in versions
-  /// composer-3.*.*-airflow-*.*.* and newer.
+  /// composer-3-airflow-*.*.*-build.* and newer.
   ///
   /// Request parameters:
   ///
@@ -1112,7 +1112,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource {
   /// Lists user workloads Secrets.
   ///
   /// This method is supported for Cloud Composer environments in versions
-  /// composer-3.*.*-airflow-*.*.* and newer.
+  /// composer-3-airflow-*.*.*-build.* and newer.
   ///
   /// Request parameters:
   ///
@@ -1163,7 +1163,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource {
   /// Updates a user workloads Secret.
   ///
   /// This method is supported for Cloud Composer environments in versions
-  /// composer-3.*.*-airflow-*.*.* and newer.
+  /// composer-3-airflow-*.*.*-build.* and newer.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1724,7 +1724,7 @@ class ComposerWorkloadStatus {
 /// Configuration for resources used by Airflow DAG processors.
 ///
 /// This field is supported for Cloud Composer environments in versions
-/// composer-3.*.*-airflow-*.*.* and newer.
+/// composer-3-airflow-*.*.*-build.* and newer.
 class DagProcessorResource {
   /// The number of DAG processors.
   ///
@@ -2898,6 +2898,8 @@ class MasterAuthorizedNetworksConfig {
   core.List<CidrBlock>? cidrBlocks;
 
   /// Whether or not master authorized networks feature is enabled.
+  ///
+  /// Optional.
   core.bool? enabled;
 
   MasterAuthorizedNetworksConfig({
@@ -2923,7 +2925,7 @@ class MasterAuthorizedNetworksConfig {
 /// Configuration options for networking connections in the Composer 2
 /// environment.
 class NetworkingConfig {
-  /// Indicates the user requested specifc connection type between Tenant and
+  /// Indicates the user requested specific connection type between Tenant and
   /// Customer projects.
   ///
   /// You cannot set networking connection type in public IP environment.
@@ -2963,7 +2965,7 @@ class NodeConfig {
   /// not be accessible in the user's VPC network. Cannot be updated. If not
   /// specified, the default value of '100.64.128.0/20' is used. This field is
   /// supported for Cloud Composer environments in versions
-  /// composer-3.*.*-airflow-*.*.* and newer.
+  /// composer-3-airflow-*.*.*-build.* and newer.
   ///
   /// Optional.
   core.String? composerInternalIpv4CidrBlock;
@@ -2978,7 +2980,7 @@ class NodeConfig {
   /// must be provided in format
   /// projects/{project}/regions/{region}/networkAttachments/{networkAttachment}.
   /// This field is supported for Cloud Composer environments in versions
-  /// composer-3.*.*-airflow-*.*.* and newer.
+  /// composer-3-airflow-*.*.*-build.* and newer.
   ///
   /// Optional.
   core.String? composerNetworkAttachment;
@@ -3410,7 +3412,7 @@ class PrivateEnvironmentConfig {
   ///
   /// If `false`, the builds also have access to the internet. This field is
   /// supported for Cloud Composer environments in versions
-  /// composer-3.*.*-airflow-*.*.* and newer.
+  /// composer-3-airflow-*.*.*-build.* and newer.
   ///
   /// Optional.
   core.bool? enablePrivateBuildsOnly;
@@ -3775,7 +3777,7 @@ class SoftwareConfig {
   ///
   /// If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is
   /// supported for Cloud Composer environments in versions
-  /// composer-3.*.*-airflow-*.*.* and newer.
+  /// composer-3-airflow-*.*.*-build.* and newer.
   ///
   /// Optional.
   /// Possible string values are:
@@ -4242,7 +4244,7 @@ class WorkloadsConfig {
   /// Resources used by Airflow DAG processors.
   ///
   /// This field is supported for Cloud Composer environments in versions
-  /// composer-3.*.*-airflow-*.*.* and newer.
+  /// composer-3-airflow-*.*.*-build.* and newer.
   ///
   /// Optional.
   DagProcessorResource? dagProcessor;

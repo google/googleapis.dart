@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241211",
+    "revision": "20250219",
     "rootUrl": "https://config.googleapis.com/",
     "servicePath": "",
     "title": "Infrastructure Manager API",
@@ -1158,13 +1158,13 @@
                                             "type": "string"
                                         },
                                         "pageSize": {
-                                            "description": "Optional. When requesting a page of resources, 'page_size' specifies number of resources to return. If unspecified, at most 500 will be returned. The maximum value is 1000.",
+                                            "description": "Optional. When requesting a page of terraform versions, 'page_size' specifies number of terraform versions to return. If unspecified, at most 500 will be returned. The maximum value is 1000.",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
                                         },
                                         "pageToken": {
-                                            "description": "Optional. Token returned by previous call to 'ListTerraformVersions' which specifies the position in the list from where to continue listing the resources.",
+                                            "description": "Optional. Token returned by previous call to 'ListTerraformVersions' which specifies the position in the list from where to continue listing the terraform versions.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -2002,7 +2002,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Optional. Arbitrary key-value metadata storage e.g. to help client tools identifiy preview during automation. See https://google.aip.dev/148#annotations for details on format and size limitations.",
+                    "description": "Optional. Arbitrary key-value metadata storage e.g. to help client tools identify preview during automation. See https://google.aip.dev/148#annotations for details on format and size limitations.",
                     "type": "object"
                 },
                 "artifactsGcsBucket": {

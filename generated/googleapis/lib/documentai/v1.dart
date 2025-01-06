@@ -5180,8 +5180,20 @@ class GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig {
   GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig?
       chunkingConfig;
 
+  /// Whether to include bounding boxes in layout parser processor response.
+  ///
+  /// Optional.
+  core.bool? returnBoundingBoxes;
+
+  /// Whether to include images in layout parser processor response.
+  ///
+  /// Optional.
+  core.bool? returnImages;
+
   GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig({
     this.chunkingConfig,
+    this.returnBoundingBoxes,
+    this.returnImages,
   });
 
   GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig.fromJson(core.Map json_)
@@ -5191,10 +5203,15 @@ class GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig {
                   .fromJson(json_['chunkingConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          returnBoundingBoxes: json_['returnBoundingBoxes'] as core.bool?,
+          returnImages: json_['returnImages'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (chunkingConfig != null) 'chunkingConfig': chunkingConfig!,
+        if (returnBoundingBoxes != null)
+          'returnBoundingBoxes': returnBoundingBoxes!,
+        if (returnImages != null) 'returnImages': returnImages!,
       };
 }
 

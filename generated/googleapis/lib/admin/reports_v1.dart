@@ -226,7 +226,11 @@ class ActivitiesResource {
   /// [groupIdFilter] - Comma separated group ids (obfuscated) on which user
   /// activities are filtered, i.e. the response will contain activities for
   /// only those users that are a part of at least one of the group ids
-  /// mentioned here. Format: "id:abc123,id:xyz456"
+  /// mentioned here. Format: "id:abc123,id:xyz456" *Important:* To filter by
+  /// groups, you must explicitly add the groups to your filtering groups
+  /// allowlist. For more information about adding groups to filtering groups
+  /// allowlist, see
+  /// [Filter results by Google Group](https://support.google.com/a/answer/11482175)
   /// Value must have pattern `(id:\[a-z0-9\]+(,id:\[a-z0-9\]+)*)`.
   ///
   /// [maxResults] - Determines how many activity records are shown on each
@@ -453,7 +457,11 @@ class ActivitiesResource {
   /// [groupIdFilter] - Comma separated group ids (obfuscated) on which user
   /// activities are filtered, i.e. the response will contain activities for
   /// only those users that are a part of at least one of the group ids
-  /// mentioned here. Format: "id:abc123,id:xyz456"
+  /// mentioned here. Format: "id:abc123,id:xyz456" *Important:* To filter by
+  /// groups, you must explicitly add the groups to your filtering groups
+  /// allowlist. For more information about adding groups to filtering groups
+  /// allowlist, see
+  /// [Filter results by Google Group](https://support.google.com/a/answer/11482175)
   /// Value must have pattern `(id:\[a-z0-9\]+(,id:\[a-z0-9\]+)*)`.
   ///
   /// [maxResults] - Determines how many activity records are shown on each
@@ -624,7 +632,7 @@ class CustomerUsageReportsResource {
   /// parameter is one that does not belong to the application. If no parameters
   /// are requested, all parameters are returned.
   /// Value must have pattern
-  /// `(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)|(meet)):\[^,\]+,)*(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)|(meet)):\[^,\]+)`.
+  /// `(((accounts)|(app_maker)|(apps_scripts)|(chat)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)|(meet)):\[^,\]+,)*(((accounts)|(app_maker)|(apps_scripts)|(chat)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)|(meet)):\[^,\]+)`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -834,7 +842,7 @@ class UserUsageReportResource {
   /// 'greater than'. It is URL-encoded (%3E). - `>=` - 'greater than or equal
   /// to'. It is URL-encoded (%3E=).
   /// Value must have pattern
-  /// `(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[a-z0-9_\]+\[\<,\<=,==,\>=,\>,!=\]\[^,\]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[a-z0-9_\]+\[\<,\<=,==,\>=,\>,!=\]\[^,\]+)`.
+  /// `(((accounts)|(chat)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[a-z0-9_\]+\[\<,\<=,==,\>=,\>,!=\]\[^,\]+,)*(((accounts)|(chat)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[a-z0-9_\]+\[\<,\<=,==,\>=,\>,!=\]\[^,\]+)`.
   ///
   /// [groupIdFilter] - Comma separated group ids (obfuscated) on which user
   /// activities are filtered, i.e. the response will contain activities for
@@ -875,7 +883,7 @@ class UserUsageReportResource {
   /// parameter is one that does not belong to the application. If no parameters
   /// are requested, all parameters are returned.
   /// Value must have pattern
-  /// `(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[^,\]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[^,\]+)`.
+  /// `(((accounts)|(chat)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[^,\]+,)*(((accounts)|(chat)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[^,\]+)`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

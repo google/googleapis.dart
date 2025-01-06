@@ -538,6 +538,7 @@ api.CertificateAuthority buildCertificateAuthority() {
     o.tier = 'foo';
     o.type = 'foo';
     o.updateTime = 'foo';
+    o.userDefinedAccessUrls = buildUserDefinedAccessUrls();
   }
   buildCounterCertificateAuthority--;
   return o;
@@ -595,6 +596,7 @@ void checkCertificateAuthority(api.CertificateAuthority o) {
       o.updateTime!,
       unittest.equals('foo'),
     );
+    checkUserDefinedAccessUrls(o.userDefinedAccessUrls!);
   }
   buildCounterCertificateAuthority--;
 }
@@ -1236,6 +1238,7 @@ api.IssuancePolicy buildIssuancePolicy() {
   if (buildCounterIssuancePolicy < 3) {
     o.allowedIssuanceModes = buildIssuanceModes();
     o.allowedKeyTypes = buildUnnamed19();
+    o.backdateDuration = 'foo';
     o.baselineValues = buildX509Parameters();
     o.identityConstraints = buildCertificateIdentityConstraints();
     o.maximumLifetime = 'foo';
@@ -1250,6 +1253,10 @@ void checkIssuancePolicy(api.IssuancePolicy o) {
   if (buildCounterIssuancePolicy < 3) {
     checkIssuanceModes(o.allowedIssuanceModes!);
     checkUnnamed19(o.allowedKeyTypes!);
+    unittest.expect(
+      o.backdateDuration!,
+      unittest.equals('foo'),
+    );
     checkX509Parameters(o.baselineValues!);
     checkCertificateIdentityConstraints(o.identityConstraints!);
     unittest.expect(
@@ -2858,6 +2865,61 @@ void checkUndeleteCertificateAuthorityRequest(
   buildCounterUndeleteCertificateAuthorityRequest--;
 }
 
+core.List<core.String> buildUnnamed58() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed58(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed59() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed59(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterUserDefinedAccessUrls = 0;
+api.UserDefinedAccessUrls buildUserDefinedAccessUrls() {
+  final o = api.UserDefinedAccessUrls();
+  buildCounterUserDefinedAccessUrls++;
+  if (buildCounterUserDefinedAccessUrls < 3) {
+    o.aiaIssuingCertificateUrls = buildUnnamed58();
+    o.crlAccessUrls = buildUnnamed59();
+  }
+  buildCounterUserDefinedAccessUrls--;
+  return o;
+}
+
+void checkUserDefinedAccessUrls(api.UserDefinedAccessUrls o) {
+  buildCounterUserDefinedAccessUrls++;
+  if (buildCounterUserDefinedAccessUrls < 3) {
+    checkUnnamed58(o.aiaIssuingCertificateUrls!);
+    checkUnnamed59(o.crlAccessUrls!);
+  }
+  buildCounterUserDefinedAccessUrls--;
+}
+
 core.int buildCounterX509Extension = 0;
 api.X509Extension buildX509Extension() {
   final o = api.X509Extension();
@@ -2884,23 +2946,23 @@ void checkX509Extension(api.X509Extension o) {
   buildCounterX509Extension--;
 }
 
-core.List<api.X509Extension> buildUnnamed58() => [
+core.List<api.X509Extension> buildUnnamed60() => [
       buildX509Extension(),
       buildX509Extension(),
     ];
 
-void checkUnnamed58(core.List<api.X509Extension> o) {
+void checkUnnamed60(core.List<api.X509Extension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkX509Extension(o[0]);
   checkX509Extension(o[1]);
 }
 
-core.List<core.String> buildUnnamed59() => [
+core.List<core.String> buildUnnamed61() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed59(core.List<core.String> o) {
+void checkUnnamed61(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2912,12 +2974,12 @@ void checkUnnamed59(core.List<core.String> o) {
   );
 }
 
-core.List<api.ObjectId> buildUnnamed60() => [
+core.List<api.ObjectId> buildUnnamed62() => [
       buildObjectId(),
       buildObjectId(),
     ];
 
-void checkUnnamed60(core.List<api.ObjectId> o) {
+void checkUnnamed62(core.List<api.ObjectId> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectId(o[0]);
   checkObjectId(o[1]);
@@ -2928,12 +2990,12 @@ api.X509Parameters buildX509Parameters() {
   final o = api.X509Parameters();
   buildCounterX509Parameters++;
   if (buildCounterX509Parameters < 3) {
-    o.additionalExtensions = buildUnnamed58();
-    o.aiaOcspServers = buildUnnamed59();
+    o.additionalExtensions = buildUnnamed60();
+    o.aiaOcspServers = buildUnnamed61();
     o.caOptions = buildCaOptions();
     o.keyUsage = buildKeyUsage();
     o.nameConstraints = buildNameConstraints();
-    o.policyIds = buildUnnamed60();
+    o.policyIds = buildUnnamed62();
   }
   buildCounterX509Parameters--;
   return o;
@@ -2942,12 +3004,12 @@ api.X509Parameters buildX509Parameters() {
 void checkX509Parameters(api.X509Parameters o) {
   buildCounterX509Parameters++;
   if (buildCounterX509Parameters < 3) {
-    checkUnnamed58(o.additionalExtensions!);
-    checkUnnamed59(o.aiaOcspServers!);
+    checkUnnamed60(o.additionalExtensions!);
+    checkUnnamed61(o.aiaOcspServers!);
     checkCaOptions(o.caOptions!);
     checkKeyUsage(o.keyUsage!);
     checkNameConstraints(o.nameConstraints!);
-    checkUnnamed60(o.policyIds!);
+    checkUnnamed62(o.policyIds!);
   }
   buildCounterX509Parameters--;
 }
@@ -3590,6 +3652,16 @@ void main() {
       final od = api.UndeleteCertificateAuthorityRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUndeleteCertificateAuthorityRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-UserDefinedAccessUrls', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUserDefinedAccessUrls();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserDefinedAccessUrls.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUserDefinedAccessUrls(od);
     });
   });
 

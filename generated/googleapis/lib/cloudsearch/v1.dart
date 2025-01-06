@@ -3868,7 +3868,7 @@ class DoublePropertyOptions {
 }
 
 /// List of double values.
-typedef DoubleValues = $Shared06;
+typedef DoubleValues = $Shared07;
 
 /// A person's email address.
 class EmailAddress {
@@ -5018,7 +5018,7 @@ class IntegerPropertyOptions {
 }
 
 /// List of integer values.
-typedef IntegerValues = $Shared07;
+typedef IntegerValues = $Shared08;
 
 /// Represents an interaction between a user and an item.
 class Interaction {

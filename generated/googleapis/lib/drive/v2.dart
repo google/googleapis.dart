@@ -3017,6 +3017,9 @@ class PermissionsResource {
   ///
   /// [permissionId] - The ID for the permission.
   ///
+  /// [enforceExpansiveAccess] - Whether the request should enforce expansive
+  /// access rules.
+  ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
@@ -3038,12 +3041,15 @@ class PermissionsResource {
   async.Future<void> delete(
     core.String fileId,
     core.String permissionId, {
+    core.bool? enforceExpansiveAccess,
     core.bool? supportsAllDrives,
     core.bool? supportsTeamDrives,
     core.bool? useDomainAdminAccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (enforceExpansiveAccess != null)
+        'enforceExpansiveAccess': ['${enforceExpansiveAccess}'],
       if (supportsAllDrives != null)
         'supportsAllDrives': ['${supportsAllDrives}'],
       if (supportsTeamDrives != null)
@@ -3336,6 +3342,9 @@ class PermissionsResource {
   ///
   /// [permissionId] - The ID for the permission.
   ///
+  /// [enforceExpansiveAccess] - Whether the request should enforce expansive
+  /// access rules.
+  ///
   /// [removeExpiration] - Whether to remove the expiration date.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
@@ -3366,6 +3375,7 @@ class PermissionsResource {
     Permission request,
     core.String fileId,
     core.String permissionId, {
+    core.bool? enforceExpansiveAccess,
     core.bool? removeExpiration,
     core.bool? supportsAllDrives,
     core.bool? supportsTeamDrives,
@@ -3375,6 +3385,8 @@ class PermissionsResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (enforceExpansiveAccess != null)
+        'enforceExpansiveAccess': ['${enforceExpansiveAccess}'],
       if (removeExpiration != null) 'removeExpiration': ['${removeExpiration}'],
       if (supportsAllDrives != null)
         'supportsAllDrives': ['${supportsAllDrives}'],
@@ -3415,6 +3427,9 @@ class PermissionsResource {
   ///
   /// [permissionId] - The ID for the permission.
   ///
+  /// [enforceExpansiveAccess] - Whether the request should enforce expansive
+  /// access rules.
+  ///
   /// [removeExpiration] - Whether to remove the expiration date.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
@@ -3445,6 +3460,7 @@ class PermissionsResource {
     Permission request,
     core.String fileId,
     core.String permissionId, {
+    core.bool? enforceExpansiveAccess,
     core.bool? removeExpiration,
     core.bool? supportsAllDrives,
     core.bool? supportsTeamDrives,
@@ -3454,6 +3470,8 @@ class PermissionsResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (enforceExpansiveAccess != null)
+        'enforceExpansiveAccess': ['${enforceExpansiveAccess}'],
       if (removeExpiration != null) 'removeExpiration': ['${removeExpiration}'],
       if (supportsAllDrives != null)
         'supportsAllDrives': ['${supportsAllDrives}'],
@@ -6634,6 +6652,11 @@ class FileCapabilities {
   /// Output only.
   core.bool? canDeleteChildren;
 
+  /// Whether a user can disable inherited permissions.
+  ///
+  /// Output only.
+  core.bool? canDisableInheritedPermissions;
+
   /// Whether the current user can download this file.
   ///
   /// Output only.
@@ -6647,6 +6670,11 @@ class FileCapabilities {
   ///
   /// Output only.
   core.bool? canEdit;
+
+  /// Whether a user can re-enable inherited permissions.
+  ///
+  /// Output only.
+  core.bool? canEnableInheritedPermissions;
 
   /// Whether the current user can list the children of this folder.
   ///
@@ -6863,8 +6891,10 @@ class FileCapabilities {
     this.canCopy,
     this.canDelete,
     this.canDeleteChildren,
+    this.canDisableInheritedPermissions,
     this.canDownload,
     this.canEdit,
+    this.canEnableInheritedPermissions,
     this.canListChildren,
     this.canModifyContent,
     this.canModifyContentRestriction,
@@ -6912,8 +6942,12 @@ class FileCapabilities {
           canCopy: json_['canCopy'] as core.bool?,
           canDelete: json_['canDelete'] as core.bool?,
           canDeleteChildren: json_['canDeleteChildren'] as core.bool?,
+          canDisableInheritedPermissions:
+              json_['canDisableInheritedPermissions'] as core.bool?,
           canDownload: json_['canDownload'] as core.bool?,
           canEdit: json_['canEdit'] as core.bool?,
+          canEnableInheritedPermissions:
+              json_['canEnableInheritedPermissions'] as core.bool?,
           canListChildren: json_['canListChildren'] as core.bool?,
           canModifyContent: json_['canModifyContent'] as core.bool?,
           canModifyContentRestriction:
@@ -6974,8 +7008,12 @@ class FileCapabilities {
         if (canCopy != null) 'canCopy': canCopy!,
         if (canDelete != null) 'canDelete': canDelete!,
         if (canDeleteChildren != null) 'canDeleteChildren': canDeleteChildren!,
+        if (canDisableInheritedPermissions != null)
+          'canDisableInheritedPermissions': canDisableInheritedPermissions!,
         if (canDownload != null) 'canDownload': canDownload!,
         if (canEdit != null) 'canEdit': canEdit!,
+        if (canEnableInheritedPermissions != null)
+          'canEnableInheritedPermissions': canEnableInheritedPermissions!,
         if (canListChildren != null) 'canListChildren': canListChildren!,
         if (canModifyContent != null) 'canModifyContent': canModifyContent!,
         if (canModifyContentRestriction != null)
@@ -7711,6 +7749,11 @@ class File {
   /// Indexable text attributes for the file (can only be written)
   FileIndexableText? indexableText;
 
+  /// Whether this file has inherited permissions disabled.
+  ///
+  /// Inherited permissions are enabled by default.
+  core.bool? inheritedPermissionsDisabled;
+
   /// Whether the file was created or opened by the requesting app.
   ///
   /// Output only.
@@ -8030,6 +8073,7 @@ class File {
     this.id,
     this.imageMediaMetadata,
     this.indexableText,
+    this.inheritedPermissionsDisabled,
     this.isAppAuthorized,
     this.kind,
     this.labelInfo,
@@ -8132,6 +8176,8 @@ class File {
               ? FileIndexableText.fromJson(
                   json_['indexableText'] as core.Map<core.String, core.dynamic>)
               : null,
+          inheritedPermissionsDisabled:
+              json_['inheritedPermissionsDisabled'] as core.bool?,
           isAppAuthorized: json_['isAppAuthorized'] as core.bool?,
           kind: json_['kind'] as core.String?,
           labelInfo: json_.containsKey('labelInfo')
@@ -8284,6 +8330,8 @@ class File {
         if (imageMediaMetadata != null)
           'imageMediaMetadata': imageMediaMetadata!,
         if (indexableText != null) 'indexableText': indexableText!,
+        if (inheritedPermissionsDisabled != null)
+          'inheritedPermissionsDisabled': inheritedPermissionsDisabled!,
         if (isAppAuthorized != null) 'isAppAuthorized': isAppAuthorized!,
         if (kind != null) 'kind': kind!,
         if (labelInfo != null) 'labelInfo': labelInfo!,
@@ -8901,14 +8949,14 @@ class PermissionPermissionDetails {
 
   /// Whether this permission is inherited.
   ///
-  /// This field is always populated. This is an output-only field.
+  /// This field is always populated.
   ///
   /// Output only.
   core.bool? inherited;
 
   /// The ID of the item from which this permission is inherited.
   ///
-  /// This is an output-only field.
+  /// This is only populated for items in shared drives.
   ///
   /// Output only.
   core.String? inheritedFrom;
@@ -9093,6 +9141,10 @@ class Permission {
   /// `anyone`, in which case both `id` and `value` are ignored.
   core.String? id;
 
+  /// When true, only organizers, owners, and users with permissions added
+  /// directly on the item can access it.
+  core.bool? inheritedPermissionsDisabled;
+
   /// This is always `drive#permission`.
   ///
   /// Output only.
@@ -9109,10 +9161,8 @@ class Permission {
   /// shared drive.
   core.bool? pendingOwner;
 
-  /// Details of whether the permissions on this shared drive item are inherited
-  /// or directly on this item.
-  ///
-  /// This is an output-only field which is present only for shared drive items.
+  /// Details of whether the permissions on this item are inherited or directly
+  /// on this item.
   ///
   /// Output only.
   core.List<PermissionPermissionDetails>? permissionDetails;
@@ -9157,8 +9207,12 @@ class Permission {
 
   /// Indicates the view for this permission.
   ///
-  /// Only populated for permissions that belong to a view. `published` is the
-  /// only supported value.
+  /// Only populated for permissions that belong to a view. published and
+  /// metadata are the only supported values. - published: The permission's role
+  /// is published_reader. - metadata: The item is only visible to the metadata
+  /// view because the item has limited access and the scope has at least read
+  /// access to the parent. Note: The metadata view is currently only supported
+  /// on folders.
   core.String? view;
 
   /// Whether the link is required for this permission.
@@ -9173,6 +9227,7 @@ class Permission {
     this.etag,
     this.expirationDate,
     this.id,
+    this.inheritedPermissionsDisabled,
     this.kind,
     this.name,
     this.pendingOwner,
@@ -9201,6 +9256,8 @@ class Permission {
               ? core.DateTime.parse(json_['expirationDate'] as core.String)
               : null,
           id: json_['id'] as core.String?,
+          inheritedPermissionsDisabled:
+              json_['inheritedPermissionsDisabled'] as core.bool?,
           kind: json_['kind'] as core.String?,
           name: json_['name'] as core.String?,
           pendingOwner: json_['pendingOwner'] as core.bool?,
@@ -9232,6 +9289,8 @@ class Permission {
         if (expirationDate != null)
           'expirationDate': expirationDate!.toUtc().toIso8601String(),
         if (id != null) 'id': id!,
+        if (inheritedPermissionsDisabled != null)
+          'inheritedPermissionsDisabled': inheritedPermissionsDisabled!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
         if (pendingOwner != null) 'pendingOwner': pendingOwner!,
@@ -9528,7 +9587,7 @@ class Revision {
 
   /// A link to the published revision.
   ///
-  /// This is only populated for Google Sites files.
+  /// This is only populated for Docs Editors files.
   ///
   /// Output only.
   core.String? publishedLink;

@@ -596,6 +596,35 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse(
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse--;
 }
 
+core.int
+    buildCounterGoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload = 0;
+api.GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload
+    buildGoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload() {
+  final o = api.GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload();
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload <
+      3) {
+    o.attachedToGoogleStructure = true;
+    o.partnerStructureId = 'foo';
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload--;
+  return o;
+}
+
+void checkGoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload(
+    api.GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload o) {
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload <
+      3) {
+    unittest.expect(o.attachedToGoogleStructure!, unittest.isTrue);
+    unittest.expect(
+      o.partnerStructureId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload--;
+}
+
 core.List<core.String> buildUnnamed3() => [
       'foo',
       'foo',
@@ -919,6 +948,8 @@ api.GoogleCloudPaymentsResellerSubscriptionV1ProductPayload
   final o = api.GoogleCloudPaymentsResellerSubscriptionV1ProductPayload();
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1ProductPayload++;
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1ProductPayload < 3) {
+    o.googleHomePayload =
+        buildGoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload();
     o.googleOnePayload =
         buildGoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload();
     o.youtubePayload =
@@ -932,6 +963,8 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1ProductPayload(
     api.GoogleCloudPaymentsResellerSubscriptionV1ProductPayload o) {
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1ProductPayload++;
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1ProductPayload < 3) {
+    checkGoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload(
+        o.googleHomePayload!);
     checkGoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload(
         o.googleOnePayload!);
     checkGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload(
@@ -2120,6 +2153,19 @@ void main() {
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse(
           od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload(od);
     });
   });
 

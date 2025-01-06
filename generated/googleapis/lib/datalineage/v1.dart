@@ -1181,8 +1181,8 @@ class GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse {
 /// The soft reference to everything you can attach a lineage event to.
 class GoogleCloudDatacatalogLineageV1EntityReference {
   /// \[Fully Qualified Name
-  /// (FQN)\](https://cloud.google.com/data-catalog/docs/fully-qualified-names)
-  /// of the entity.
+  /// (FQN)\](https://cloud.google.com/dataplex/docs/fully-qualified-names) of
+  /// the entity.
   ///
   /// Required.
   core.String? fullyQualifiedName;
@@ -1456,8 +1456,8 @@ class GoogleCloudDatacatalogLineageV1ListRunsResponse {
 
 /// Origin of a process.
 class GoogleCloudDatacatalogLineageV1Origin {
-  /// If the source_type isn't CUSTOM, the value of this field should be a GCP
-  /// resource name of the system, which reports lineage.
+  /// If the source_type isn't CUSTOM, the value of this field should be a
+  /// Google Cloud resource name of the system, which reports lineage.
   ///
   /// The project and location parts of the resource name must match the project
   /// and location of the lineage resource being created. Examples: -

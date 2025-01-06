@@ -1362,8 +1362,8 @@ class ProjectsLocationsServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The relative resource name of the metastore service,
-  /// in the following
+  /// [name] - Immutable. Identifier. The relative resource name of the
+  /// metastore service, in the following
   /// format:projects/{project_number}/locations/{location_id}/services/{service_id}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
@@ -2380,8 +2380,8 @@ class ProjectsLocationsServicesMetadataImportsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The relative resource name of the metadata import, of
-  /// the
+  /// [name] - Immutable. Identifier. The relative resource name of the metadata
+  /// import, of the
   /// form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/metadataImports/\[^/\]+$`.
@@ -2714,6 +2714,8 @@ class AuxiliaryVersionConfig {
   /// If keys are present in both the auxiliary version's overrides and the
   /// primary version's overrides, the value from the auxiliary version's
   /// overrides takes precedence.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? configOverrides;
 
   /// The network configuration contains the endpoint URI(s) of the auxiliary
@@ -2725,6 +2727,8 @@ class AuxiliaryVersionConfig {
   /// The Hive metastore version of the auxiliary service.
   ///
   /// It must be less than the primary Hive metastore service's version.
+  ///
+  /// Optional.
   core.String? version;
 
   AuxiliaryVersionConfig({
@@ -2798,6 +2802,8 @@ class Backup {
   core.String? createTime;
 
   /// The description of the backup.
+  ///
+  /// Optional.
   core.String? description;
 
   /// The time when the backup finished creating.
@@ -2805,6 +2811,8 @@ class Backup {
   /// Output only.
   core.String? endTime;
 
+  /// Identifier.
+  ///
   /// The relative resource name of the backup, in the following
   /// form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
   ///
@@ -3288,9 +3296,13 @@ class DatabaseDump {
   /// to import metadata.
   ///
   /// It must begin with gs://.
+  ///
+  /// Optional.
   core.String? gcsUri;
 
   /// The name of the source database.
+  ///
+  /// Optional.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -3343,6 +3355,8 @@ class EncryptionConfig {
   /// The fully qualified customer provided Cloud KMS key name to use for
   /// customer data encryption, in the following
   /// format:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+  ///
+  /// Optional.
   core.String? kmsKey;
 
   EncryptionConfig({
@@ -3522,6 +3536,8 @@ class HiveMetastoreConfig {
   /// character must be a lowercase letter, and all the following characters
   /// must be hyphens, lowercase letters, or digits, except the last character,
   /// which cannot be a hyphen.
+  ///
+  /// Optional.
   core.Map<core.String, AuxiliaryVersionConfig>? auxiliaryVersions;
 
   /// A mapping of Hive metastore configuration key-value pairs to apply to the
@@ -3530,11 +3546,15 @@ class HiveMetastoreConfig {
   /// The mappings override system defaults (some keys cannot be overridden).
   /// These overrides are also applied to auxiliary versions and can be further
   /// customized in the auxiliary version's AuxiliaryVersionConfig.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? configOverrides;
 
   /// The protocol to use for the metastore service endpoint.
   ///
   /// If unspecified, defaults to THRIFT.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "ENDPOINT_PROTOCOL_UNSPECIFIED" : The protocol is not set.
   /// - "THRIFT" : Use the legacy Apache Thrift protocol for the metastore
@@ -3549,6 +3569,8 @@ class HiveMetastoreConfig {
   /// To disable Kerberos, use the UpdateService method and specify this field's
   /// path (hive_metastore_config.kerberos_config) in the request's update_mask
   /// while omitting this field from the request's service.
+  ///
+  /// Optional.
   KerberosConfig? kerberosConfig;
 
   /// The Hive metastore schema version.
@@ -3604,12 +3626,16 @@ class HiveMetastoreConfig {
 class KerberosConfig {
   /// A Kerberos keytab file that can be used to authenticate a service
   /// principal with a Kerberos Key Distribution Center (KDC).
+  ///
+  /// Optional.
   Secret? keytab;
 
   /// A Cloud Storage URI that specifies the path to a krb5.conf file.
   ///
   /// It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file
   /// does not need to be named krb5.conf explicitly.
+  ///
+  /// Optional.
   core.String? krb5ConfigGcsUri;
 
   /// A Kerberos principal that exists in the both the keytab the KDC to
@@ -3617,6 +3643,8 @@ class KerberosConfig {
   ///
   /// A typical principal is of the form primary/instance@REALM, but there is no
   /// exact format.
+  ///
+  /// Optional.
   core.String? principal;
 
   KerberosConfig({
@@ -3932,6 +3960,8 @@ typedef Location = $Location01;
 /// operation to the service.
 class MaintenanceWindow {
   /// The day of week, when the window starts.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
   /// - "MONDAY" : Monday
@@ -3944,6 +3974,8 @@ class MaintenanceWindow {
   core.String? dayOfWeek;
 
   /// The hour of day (0-23) when the window starts.
+  ///
+  /// Optional.
   core.int? hourOfDay;
 
   MaintenanceWindow({
@@ -4040,6 +4072,8 @@ class MetadataImport {
   DatabaseDump? databaseDump;
 
   /// The description of the metadata import.
+  ///
+  /// Optional.
   core.String? description;
 
   /// The time when the metadata import finished.
@@ -4047,6 +4081,8 @@ class MetadataImport {
   /// Output only.
   core.String? endTime;
 
+  /// Identifier.
+  ///
   /// The relative resource name of the metadata import, of the
   /// form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
   ///
@@ -4699,6 +4735,8 @@ class Secret {
   /// The relative resource name of a Secret Manager secret version, in the
   /// following
   /// form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
+  ///
+  /// Optional.
   core.String? cloudSecret;
 
   Secret({
@@ -4768,6 +4806,8 @@ class Service {
   /// This specifies when the service can be restarted for maintenance purposes
   /// in UTC time. Maintenance window is not needed for services with the
   /// SPANNER database type.
+  ///
+  /// Optional.
   MaintenanceWindow? maintenanceWindow;
 
   /// The setting that defines how metastore metadata should be integrated with
@@ -4781,6 +4821,8 @@ class Service {
   /// Output only.
   MetadataManagementActivity? metadataManagementActivity;
 
+  /// Identifier.
+  ///
   /// The relative resource name of the metastore service, in the following
   /// format:projects/{project_number}/locations/{location_id}/services/{service_id}.
   ///
@@ -4798,11 +4840,15 @@ class Service {
 
   /// The configuration specifying the network settings for the Dataproc
   /// Metastore service.
+  ///
+  /// Optional.
   NetworkConfig? networkConfig;
 
   /// The TCP port at which the metastore service is reached.
   ///
   /// Default: 9083.
+  ///
+  /// Optional.
   core.int? port;
 
   /// The release channel of the service.
@@ -4821,6 +4867,8 @@ class Service {
   core.String? releaseChannel;
 
   /// Scaling configuration of the metastore service.
+  ///
+  /// Optional.
   ScalingConfig? scalingConfig;
 
   /// The configuration of scheduled backup for the metastore service.
@@ -4860,9 +4908,13 @@ class Service {
   /// service.
   ///
   /// If unspecified defaults to JSON.
+  ///
+  /// Optional.
   TelemetryConfig? telemetryConfig;
 
   /// The tier of the service.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "TIER_UNSPECIFIED" : The tier is not set.
   /// - "DEVELOPER" : The developer tier provides limited scalability and no
@@ -5093,6 +5145,8 @@ typedef Status = $Status00;
 /// Telemetry Configuration for the Dataproc Metastore service.
 class TelemetryConfig {
   /// The output format of the Dataproc Metastore service's logs.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "LOG_FORMAT_UNSPECIFIED" : The LOG_FORMAT is not set.
   /// - "LEGACY" : Logging output uses the legacy textPayload format.

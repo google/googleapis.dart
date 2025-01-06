@@ -3740,12 +3740,29 @@ void checkUnnamed67(core.List<api.Container> o) {
   checkContainer(o[1]);
 }
 
-core.List<api.Volume> buildUnnamed68() => [
+core.Map<core.String, core.String> buildUnnamed68() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed68(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.Volume> buildUnnamed69() => [
       buildVolume(),
       buildVolume(),
     ];
 
-void checkUnnamed68(core.List<api.Volume> o) {
+void checkUnnamed69(core.List<api.Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolume(o[0]);
   checkVolume(o[1]);
@@ -3758,9 +3775,10 @@ api.TaskSpec buildTaskSpec() {
   if (buildCounterTaskSpec < 3) {
     o.containers = buildUnnamed67();
     o.maxRetries = 42;
+    o.nodeSelector = buildUnnamed68();
     o.serviceAccountName = 'foo';
     o.timeoutSeconds = 'foo';
-    o.volumes = buildUnnamed68();
+    o.volumes = buildUnnamed69();
   }
   buildCounterTaskSpec--;
   return o;
@@ -3774,6 +3792,7 @@ void checkTaskSpec(api.TaskSpec o) {
       o.maxRetries!,
       unittest.equals(42),
     );
+    checkUnnamed68(o.nodeSelector!);
     unittest.expect(
       o.serviceAccountName!,
       unittest.equals('foo'),
@@ -3782,17 +3801,17 @@ void checkTaskSpec(api.TaskSpec o) {
       o.timeoutSeconds!,
       unittest.equals('foo'),
     );
-    checkUnnamed68(o.volumes!);
+    checkUnnamed69(o.volumes!);
   }
   buildCounterTaskSpec--;
 }
 
-core.List<api.GoogleCloudRunV1Condition> buildUnnamed69() => [
+core.List<api.GoogleCloudRunV1Condition> buildUnnamed70() => [
       buildGoogleCloudRunV1Condition(),
       buildGoogleCloudRunV1Condition(),
     ];
 
-void checkUnnamed69(core.List<api.GoogleCloudRunV1Condition> o) {
+void checkUnnamed70(core.List<api.GoogleCloudRunV1Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV1Condition(o[0]);
   checkGoogleCloudRunV1Condition(o[1]);
@@ -3804,7 +3823,7 @@ api.TaskStatus buildTaskStatus() {
   buildCounterTaskStatus++;
   if (buildCounterTaskStatus < 3) {
     o.completionTime = 'foo';
-    o.conditions = buildUnnamed69();
+    o.conditions = buildUnnamed70();
     o.index = 42;
     o.lastAttemptResult = buildTaskAttemptResult();
     o.logUri = 'foo';
@@ -3823,7 +3842,7 @@ void checkTaskStatus(api.TaskStatus o) {
       o.completionTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed69(o.conditions!);
+    checkUnnamed70(o.conditions!);
     unittest.expect(
       o.index!,
       unittest.equals(42),
@@ -3868,42 +3887,6 @@ void checkTaskTemplateSpec(api.TaskTemplateSpec o) {
   buildCounterTaskTemplateSpec--;
 }
 
-core.List<core.String> buildUnnamed70() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed70(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTestIamPermissionsRequest = 0;
-api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
-  final o = api.TestIamPermissionsRequest();
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed70();
-  }
-  buildCounterTestIamPermissionsRequest--;
-  return o;
-}
-
-void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed70(o.permissions!);
-  }
-  buildCounterTestIamPermissionsRequest--;
-}
-
 core.List<core.String> buildUnnamed71() => [
       'foo',
       'foo',
@@ -3921,12 +3904,48 @@ void checkUnnamed71(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterTestIamPermissionsRequest = 0;
+api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
+  final o = api.TestIamPermissionsRequest();
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    o.permissions = buildUnnamed71();
+  }
+  buildCounterTestIamPermissionsRequest--;
+  return o;
+}
+
+void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    checkUnnamed71(o.permissions!);
+  }
+  buildCounterTestIamPermissionsRequest--;
+}
+
+core.List<core.String> buildUnnamed72() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed72(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterTestIamPermissionsResponse = 0;
 api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed71();
+    o.permissions = buildUnnamed72();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -3935,7 +3954,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed71(o.permissions!);
+    checkUnnamed72(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }

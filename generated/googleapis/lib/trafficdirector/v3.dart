@@ -437,6 +437,11 @@ class DynamicCluster {
   /// Requested Resource Does Not Exist" ` section.
   /// - "ACKED" : Client received this resource and replied with ACK.
   /// - "NACKED" : Client received this resource and replied with NACK.
+  /// - "RECEIVED_ERROR" : Client received an error from the control plane. The
+  /// attached config dump is the most recent accepted one. If no config is
+  /// accepted yet, the attached config dump will be empty.
+  /// - "TIMEOUT" : Client timed out waiting for the resource from the control
+  /// plane.
   core.String? clientStatus;
 
   /// The cluster config.
@@ -512,6 +517,11 @@ class DynamicEndpointConfig {
   /// Requested Resource Does Not Exist" ` section.
   /// - "ACKED" : Client received this resource and replied with ACK.
   /// - "NACKED" : Client received this resource and replied with NACK.
+  /// - "RECEIVED_ERROR" : Client received an error from the control plane. The
+  /// attached config dump is the most recent accepted one. If no config is
+  /// accepted yet, the attached config dump will be empty.
+  /// - "TIMEOUT" : Client timed out waiting for the resource from the control
+  /// plane.
   core.String? clientStatus;
 
   /// The endpoint config.
@@ -594,6 +604,11 @@ class DynamicListener {
   /// Requested Resource Does Not Exist" ` section.
   /// - "ACKED" : Client received this resource and replied with ACK.
   /// - "NACKED" : Client received this resource and replied with NACK.
+  /// - "RECEIVED_ERROR" : Client received an error from the control plane. The
+  /// attached config dump is the most recent accepted one. If no config is
+  /// accepted yet, the attached config dump will be empty.
+  /// - "TIMEOUT" : Client timed out waiting for the resource from the control
+  /// plane.
   core.String? clientStatus;
 
   /// The listener state for any draining listener by this name.
@@ -684,6 +699,11 @@ class DynamicRouteConfig {
   /// Requested Resource Does Not Exist" ` section.
   /// - "ACKED" : Client received this resource and replied with ACK.
   /// - "NACKED" : Client received this resource and replied with NACK.
+  /// - "RECEIVED_ERROR" : Client received an error from the control plane. The
+  /// attached config dump is the most recent accepted one. If no config is
+  /// accepted yet, the attached config dump will be empty.
+  /// - "TIMEOUT" : Client timed out waiting for the resource from the control
+  /// plane.
   core.String? clientStatus;
 
   /// Set if the last update failed, cleared after the next successful update.
@@ -758,6 +778,11 @@ class DynamicScopedRouteConfigs {
   /// Requested Resource Does Not Exist" ` section.
   /// - "ACKED" : Client received this resource and replied with ACK.
   /// - "NACKED" : Client received this resource and replied with NACK.
+  /// - "RECEIVED_ERROR" : Client received an error from the control plane. The
+  /// attached config dump is the most recent accepted one. If no config is
+  /// accepted yet, the attached config dump will be empty.
+  /// - "TIMEOUT" : Client timed out waiting for the resource from the control
+  /// plane.
   core.String? clientStatus;
 
   /// Set if the last update failed, cleared after the next successful update.
@@ -983,6 +1008,11 @@ class GenericXdsConfig {
   /// Requested Resource Does Not Exist" ` section.
   /// - "ACKED" : Client received this resource and replied with ACK.
   /// - "NACKED" : Client received this resource and replied with NACK.
+  /// - "RECEIVED_ERROR" : Client received an error from the control plane. The
+  /// attached config dump is the most recent accepted one. If no config is
+  /// accepted yet, the attached config dump will be empty.
+  /// - "TIMEOUT" : Client timed out waiting for the resource from the control
+  /// plane.
   core.String? clientStatus;
 
   /// Per xDS resource config status.
@@ -1428,6 +1458,9 @@ class PerXdsConfig {
   /// Notably, the attached config dump is not the NACKed version, but the most
   /// recent accepted one. If no config is accepted yet, the attached config
   /// dump will be empty.
+  /// - "CLIENT_RECEIVED_ERROR" : Client received an error from the control
+  /// plane. The attached config dump is the most recent accepted one. If no
+  /// config is accepted yet, the attached config dump will be empty.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )

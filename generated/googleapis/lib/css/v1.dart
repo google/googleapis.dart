@@ -228,7 +228,10 @@ class AccountsCssProductInputsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the CSS product input resource to delete.
-  /// Format: accounts/{account}/cssProductInputs/{css_product_input}
+  /// Format: accounts/{account}/cssProductInputs/{css_product_input}, where the
+  /// last section `css_product_input` consists of 3 parts:
+  /// contentLanguage~feedLabel~offerId. Example:
+  /// accounts/123/cssProductInputs/de~DE~rawProvidedId123
   /// Value must have pattern `^accounts/\[^/\]+/cssProductInputs/\[^/\]+$`.
   ///
   /// [supplementalFeedId] - The Content API Supplemental Feed ID. The field
@@ -282,11 +285,12 @@ class AccountsCssProductInputsResource {
   /// Format: accounts/{account}
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
-  /// [feedId] - Optional. The primary or supplemental feed id. If CSS Product
-  /// already exists and feed id provided is different, then the CSS Product
-  /// will be moved to a new feed. Note: For now, CSSs do not need to provide
-  /// feed ids as we create feeds on the fly. We do not have supplemental feed
-  /// support for CSS Products yet.
+  /// [feedId] - Optional. DEPRECATED. Feed id is not required for CSS Products.
+  /// The primary or supplemental feed id. If CSS Product already exists and
+  /// feed id provided is different, then the CSS Product will be moved to a new
+  /// feed. Note: For now, CSSs do not need to provide feed ids as we create
+  /// feeds on the fly. We do not have supplemental feed support for CSS
+  /// Products yet.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -333,7 +337,10 @@ class AccountsCssProductInputsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the CSS Product input. Format:
-  /// `accounts/{account}/cssProductInputs/{css_product_input}`
+  /// `accounts/{account}/cssProductInputs/{css_product_input}`, where the last
+  /// section `css_product_input` consists of 3 parts:
+  /// contentLanguage~feedLabel~offerId. Example:
+  /// accounts/123/cssProductInputs/de~DE~rawProvidedId123
   /// Value must have pattern `^accounts/\[^/\]+/cssProductInputs/\[^/\]+$`.
   ///
   /// [updateMask] - The list of CSS product attributes to be updated. If the
@@ -703,7 +710,9 @@ class Account {
   /// The CSS/MC account's parent resource.
   ///
   /// CSS group for CSS domains; CSS domain for MC accounts. Returned only if
-  /// the user has access to the parent account.
+  /// the user has access to the parent account. Note: For MC sub-accounts, this
+  /// is also the CSS domain that is the parent resource of the MCA account,
+  /// since we are effectively flattening the hierarchy."
   core.String? parent;
 
   Account({
@@ -1400,18 +1409,20 @@ class CssProductInput {
   /// Output only.
   core.String? finalName;
 
+  /// Use expiration_date instead.
+  ///
   /// Represents the existing version (freshness) of the CSS Product, which can
   /// be used to preserve the right order when multiple updates are done at the
-  /// same time.
+  /// same time. This field must not be set to the future time. If set, the
+  /// update is prevented if a newer version of the item already exists in our
+  /// system (that is the last update time of the existing CSS products is later
+  /// than the freshness time set in the update). If the update happens, the
+  /// last update time is then set to this freshness time. If not set, the
+  /// update will not be prevented and the last update time will default to when
+  /// this request was received by the CSS API. If the operation is prevented,
+  /// the aborted exception will be thrown.
   ///
-  /// This field must not be set to the future time. If set, the update is
-  /// prevented if a newer version of the item already exists in our system
-  /// (that is the last update time of the existing CSS products is later than
-  /// the freshness time set in the update). If the update happens, the last
-  /// update time is then set to this freshness time. If not set, the update
-  /// will not be prevented and the last update time will default to when this
-  /// request was received by the CSS API. If the operation is prevented, the
-  /// aborted exception will be thrown.
+  /// Deprecated.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -1419,7 +1430,10 @@ class CssProductInput {
 
   /// The name of the CSS Product input.
   ///
-  /// Format: `accounts/{account}/cssProductInputs/{css_product_input}`
+  /// Format: `accounts/{account}/cssProductInputs/{css_product_input}`, where
+  /// the last section `css_product_input` consists of 3 parts:
+  /// contentLanguage~feedLabel~offerId. Example:
+  /// accounts/123/cssProductInputs/de~DE~rawProvidedId123
   core.String? name;
 
   /// Your unique identifier for the CSS Product.

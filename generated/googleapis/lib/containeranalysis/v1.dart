@@ -3699,6 +3699,8 @@ typedef EnvelopeSignature = $EnvelopeSignature;
 class ExportSBOMRequest {
   /// Empty placeholder to denote that this is a Google Cloud Storage export
   /// request.
+  ///
+  /// Optional.
   CloudStorageLocation? cloudStorageLocation;
 
   ExportSBOMRequest({
@@ -3909,7 +3911,24 @@ typedef GetPolicyOptions = $GetPolicyOptions00;
 typedef GitSourceContext = $GitSourceContext;
 
 /// Indicates the location at which a package was found.
-typedef GrafeasV1FileLocation = $FileLocation;
+class GrafeasV1FileLocation {
+  /// For jars that are contained inside .war files, this filepath can indicate
+  /// the path to war file combined with the path to jar file.
+  core.String? filePath;
+
+  GrafeasV1FileLocation({
+    this.filePath,
+  });
+
+  GrafeasV1FileLocation.fromJson(core.Map json_)
+      : this(
+          filePath: json_['filePath'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (filePath != null) 'filePath': filePath!,
+      };
+}
 
 /// Identifies the entity that executed the recipe, which is trusted to have
 /// correctly performed the operation and populated this provenance.

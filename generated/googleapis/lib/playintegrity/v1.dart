@@ -247,58 +247,8 @@ class AppAccessRiskVerdict {
   /// List of detected app types signalled for App Access Risk.
   core.List<core.String>? appsDetected;
 
-  /// Deprecated: this field will be removed, please use apps_detected instead.
-  ///
-  /// App access risk verdict related to apps that are not installed by Google
-  /// Play, and are not preloaded on the system image by the device
-  /// manufacturer.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Risk type is unknown.
-  /// - "UNEVALUATED" : App access risk was not evaluated because a requirement
-  /// was missed, such as the device not being trusted enough.
-  /// - "NOT_INSTALLED" : No apps under this field are installed on the device.
-  /// This is only valid for the other apps field.
-  /// - "INSTALLED" : One or more apps under this field are installed on the
-  /// device.
-  /// - "CAPTURING" : Apps under this field are running that could be used to
-  /// read or capture inputs and outputs of the requesting app, such as screen
-  /// recording apps.
-  /// - "CONTROLLING" : Apps under this field are running that could be used to
-  /// control the device and inputs and outputs of the requesting app, such as
-  /// remote controlling apps.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? otherApps;
-
-  /// Deprecated: this field will be removed, please use apps_detected instead.
-  ///
-  /// App access risk verdict related to apps that are not installed by the
-  /// Google Play Store, and are not preloaded on the system image by the device
-  /// manufacturer.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Risk type is unknown.
-  /// - "UNEVALUATED" : App access risk was not evaluated because a requirement
-  /// was missed, such as the device not being trusted enough.
-  /// - "NOT_INSTALLED" : No apps under this field are installed on the device.
-  /// This is only valid for the other apps field.
-  /// - "INSTALLED" : One or more apps under this field are installed on the
-  /// device.
-  /// - "CAPTURING" : Apps under this field are running that could be used to
-  /// read or capture inputs and outputs of the requesting app, such as screen
-  /// recording apps.
-  /// - "CONTROLLING" : Apps under this field are running that could be used to
-  /// control the device and inputs and outputs of the requesting app, such as
-  /// remote controlling apps.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? playOrSystemApps;
-
   AppAccessRiskVerdict({
     this.appsDetected,
-    this.otherApps,
-    this.playOrSystemApps,
   });
 
   AppAccessRiskVerdict.fromJson(core.Map json_)
@@ -306,14 +256,10 @@ class AppAccessRiskVerdict {
           appsDetected: (json_['appsDetected'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          otherApps: json_['otherApps'] as core.String?,
-          playOrSystemApps: json_['playOrSystemApps'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appsDetected != null) 'appsDetected': appsDetected!,
-        if (otherApps != null) 'otherApps': otherApps!,
-        if (playOrSystemApps != null) 'playOrSystemApps': playOrSystemApps!,
       };
 }
 

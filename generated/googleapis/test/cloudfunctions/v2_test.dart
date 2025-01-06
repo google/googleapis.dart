@@ -306,6 +306,21 @@ void checkDate(api.Date o) {
   buildCounterDate--;
 }
 
+core.int buildCounterDetachFunctionRequest = 0;
+api.DetachFunctionRequest buildDetachFunctionRequest() {
+  final o = api.DetachFunctionRequest();
+  buildCounterDetachFunctionRequest++;
+  if (buildCounterDetachFunctionRequest < 3) {}
+  buildCounterDetachFunctionRequest--;
+  return o;
+}
+
+void checkDetachFunctionRequest(api.DetachFunctionRequest o) {
+  buildCounterDetachFunctionRequest++;
+  if (buildCounterDetachFunctionRequest < 3) {}
+  buildCounterDetachFunctionRequest--;
+}
+
 core.int buildCounterEventFilter = 0;
 api.EventFilter buildEventFilter() {
   final o = api.EventFilter();
@@ -486,6 +501,7 @@ api.Function_ buildFunction_() {
     o.kmsKeyName = 'foo';
     o.labels = buildUnnamed5();
     o.name = 'foo';
+    o.satisfiesPzi = true;
     o.satisfiesPzs = true;
     o.serviceConfig = buildServiceConfig();
     o.state = 'foo';
@@ -524,6 +540,7 @@ void checkFunction_(api.Function_ o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     checkServiceConfig(o.serviceConfig!);
     unittest.expect(
@@ -1897,6 +1914,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DetachFunctionRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDetachFunctionRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DetachFunctionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDetachFunctionRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-EventFilter', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEventFilter();
@@ -2539,6 +2566,64 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--detachFunction', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudFunctionsApi(mock).projects.locations.functions;
+      final arg_request = buildDetachFunctionRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.DetachFunctionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDetachFunctionRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.detachFunction(arg_request, arg_name, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 

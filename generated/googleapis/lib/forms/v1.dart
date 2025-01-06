@@ -16,7 +16,8 @@
 ///
 /// Reads and writes Google Forms and responses.
 ///
-/// For more information, see <https://developers.google.com/forms/api>
+/// For more information, see
+/// <https://developers.google.com/workspace/forms/api>
 ///
 /// Create an instance of [FormsApi] to access these resources:
 ///
@@ -136,6 +137,10 @@ class FormsResource {
   ///
   /// Request parameters:
   ///
+  /// [unpublished] - Optional. Whether the form is unpublished. If set to
+  /// `true`, the form doesn't accept responses. If set to `false` or unset, the
+  /// form is published and accepts responses.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -148,10 +153,12 @@ class FormsResource {
   /// this method will complete with the same error.
   async.Future<Form> create(
     Form request, {
+    core.bool? unpublished,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (unpublished != null) 'unpublished': ['${unpublished}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -198,6 +205,51 @@ class FormsResource {
       queryParams: queryParams_,
     );
     return Form.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the publish settings of a form.
+  ///
+  /// Legacy forms aren't supported because they don't have the
+  /// `publish_settings` field.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [formId] - Required. The ID of the form. You can get the id from
+  /// `Form.form_id` field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SetPublishSettingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SetPublishSettingsResponse> setPublishSettings(
+    SetPublishSettingsRequest request,
+    core.String formId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/forms/' + commons.escapeVariable('$formId') + ':setPublishSettings';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SetPublishSettingsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1112,6 +1164,16 @@ class Form {
   /// Output only.
   core.String? linkedSheetId;
 
+  /// The publishing settings for a form.
+  ///
+  /// This field isn't set for legacy forms because they don't have the
+  /// `publish_settings` field. All newly created forms support publish
+  /// settings. Forms with `publish_settings` value set can call
+  /// UpdatePublishSettings API to publish or unpublish the form.
+  ///
+  /// Output only.
+  PublishSettings? publishSettings;
+
   /// The form URI to share with responders.
   ///
   /// This opens a page that allows the user to submit responses but not edit
@@ -1145,6 +1207,7 @@ class Form {
     this.info,
     this.items,
     this.linkedSheetId,
+    this.publishSettings,
     this.responderUri,
     this.revisionId,
     this.settings,
@@ -1162,6 +1225,10 @@ class Form {
                   Item.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           linkedSheetId: json_['linkedSheetId'] as core.String?,
+          publishSettings: json_.containsKey('publishSettings')
+              ? PublishSettings.fromJson(json_['publishSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           responderUri: json_['responderUri'] as core.String?,
           revisionId: json_['revisionId'] as core.String?,
           settings: json_.containsKey('settings')
@@ -1175,6 +1242,7 @@ class Form {
         if (info != null) 'info': info!,
         if (items != null) 'items': items!,
         if (linkedSheetId != null) 'linkedSheetId': linkedSheetId!,
+        if (publishSettings != null) 'publishSettings': publishSettings!,
         if (responderUri != null) 'responderUri': responderUri!,
         if (revisionId != null) 'revisionId': revisionId!,
         if (settings != null) 'settings': settings!,
@@ -1264,15 +1332,32 @@ class FormResponse {
 
 /// A form's settings.
 class FormSettings {
+  /// The setting that determines whether the form collects email addresses from
+  /// respondents.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EMAIL_COLLECTION_TYPE_UNSPECIFIED" : Unspecified. This value is unused.
+  /// - "DO_NOT_COLLECT" : The form doesn't collect email addresses. Default
+  /// value if the form owner uses a Google account.
+  /// - "VERIFIED" : The form collects email addresses automatically based on
+  /// the account of the signed-in user. Default value if the form owner uses a
+  /// Google Workspace account.
+  /// - "RESPONDER_INPUT" : The form collects email addresses using a field that
+  /// the respondent completes on the form.
+  core.String? emailCollectionType;
+
   /// Settings related to quiz forms and grading.
   QuizSettings? quizSettings;
 
   FormSettings({
+    this.emailCollectionType,
     this.quizSettings,
   });
 
   FormSettings.fromJson(core.Map json_)
       : this(
+          emailCollectionType: json_['emailCollectionType'] as core.String?,
           quizSettings: json_.containsKey('quizSettings')
               ? QuizSettings.fromJson(
                   json_['quizSettings'] as core.Map<core.String, core.dynamic>)
@@ -1280,6 +1365,8 @@ class FormSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (emailCollectionType != null)
+          'emailCollectionType': emailCollectionType!,
         if (quizSettings != null) 'quizSettings': quizSettings!,
       };
 }
@@ -1854,6 +1941,67 @@ class Option {
 /// The title and description of this item are shown at the top of the new page.
 typedef PageBreakItem = $Empty;
 
+/// The publishing settings of a form.
+class PublishSettings {
+  /// The publishing state of a form.
+  ///
+  /// When updating `publish_state`, both `is_published` and
+  /// `is_accepting_responses` must be set. However, setting
+  /// `is_accepting_responses` to `true` and `is_published` to `false` isn't
+  /// supported and returns an error.
+  ///
+  /// Optional.
+  PublishState? publishState;
+
+  PublishSettings({
+    this.publishState,
+  });
+
+  PublishSettings.fromJson(core.Map json_)
+      : this(
+          publishState: json_.containsKey('publishState')
+              ? PublishState.fromJson(
+                  json_['publishState'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (publishState != null) 'publishState': publishState!,
+      };
+}
+
+/// The publishing state of a form.
+class PublishState {
+  /// Whether the form accepts responses.
+  ///
+  /// If `is_published` is set to `false`, this field is forced to `false`.
+  ///
+  /// Required.
+  core.bool? isAcceptingResponses;
+
+  /// Whether the form is published and visible to others.
+  ///
+  /// Required.
+  core.bool? isPublished;
+
+  PublishState({
+    this.isAcceptingResponses,
+    this.isPublished,
+  });
+
+  PublishState.fromJson(core.Map json_)
+      : this(
+          isAcceptingResponses: json_['isAcceptingResponses'] as core.bool?,
+          isPublished: json_['isPublished'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (isAcceptingResponses != null)
+          'isAcceptingResponses': isAcceptingResponses!,
+        if (isPublished != null) 'isPublished': isPublished!,
+      };
+}
+
 /// Any question.
 ///
 /// The specific type of question is known by its `kind`.
@@ -2262,6 +2410,74 @@ class ScaleQuestion {
         if (highLabel != null) 'highLabel': highLabel!,
         if (low != null) 'low': low!,
         if (lowLabel != null) 'lowLabel': lowLabel!,
+      };
+}
+
+/// Updates the publish settings of a Form.
+class SetPublishSettingsRequest {
+  /// The desired publish settings to apply to the form.
+  ///
+  /// Required.
+  PublishSettings? publishSettings;
+
+  /// The `publish_settings` fields to update.
+  ///
+  /// This field mask accepts the following values: * `publish_state`: Updates
+  /// or replaces all `publish_state` settings. * `"*"`: Updates or replaces all
+  /// `publish_settings` fields.
+  ///
+  /// Optional.
+  core.String? updateMask;
+
+  SetPublishSettingsRequest({
+    this.publishSettings,
+    this.updateMask,
+  });
+
+  SetPublishSettingsRequest.fromJson(core.Map json_)
+      : this(
+          publishSettings: json_.containsKey('publishSettings')
+              ? PublishSettings.fromJson(json_['publishSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_['updateMask'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (publishSettings != null) 'publishSettings': publishSettings!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// The response of a `SetPublishSettings` request.
+class SetPublishSettingsResponse {
+  /// The ID of the Form.
+  ///
+  /// This is same as the `Form.form_id` field.
+  ///
+  /// Required.
+  core.String? formId;
+
+  /// The publish settings of the form.
+  PublishSettings? publishSettings;
+
+  SetPublishSettingsResponse({
+    this.formId,
+    this.publishSettings,
+  });
+
+  SetPublishSettingsResponse.fromJson(core.Map json_)
+      : this(
+          formId: json_['formId'] as core.String?,
+          publishSettings: json_.containsKey('publishSettings')
+              ? PublishSettings.fromJson(json_['publishSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (formId != null) 'formId': formId!,
+        if (publishSettings != null) 'publishSettings': publishSettings!,
       };
 }
 

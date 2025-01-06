@@ -43,7 +43,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241203",
+    "revision": "20250224",
     "rootUrl": "https://youtube.googleapis.com/",
     "servicePath": "",
     "title": "YouTube Data API v3",
@@ -3613,6 +3613,34 @@
                 }
             }
         },
+        "videoTrainability": {
+            "methods": {
+                "get": {
+                    "description": "Returns the trainability status of a video.",
+                    "flatPath": "youtube/v3/videoTrainability",
+                    "httpMethod": "GET",
+                    "id": "youtube.videoTrainability.get",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "id": {
+                            "description": "The ID of the video to retrieve.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "youtube/v3/videoTrainability",
+                    "response": {
+                        "$ref": "VideoTrainability"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/youtube",
+                        "https://www.googleapis.com/auth/youtube.force-ssl",
+                        "https://www.googleapis.com/auth/youtube.readonly",
+                        "https://www.googleapis.com/auth/youtubepartner"
+                    ]
+                }
+            }
+        },
         "videos": {
             "methods": {
                 "delete": {
@@ -5501,6 +5529,10 @@
             "description": "JSON template for the status part of a channel.",
             "id": "ChannelStatus",
             "properties": {
+                "isChannelMonetizationEnabled": {
+                    "description": "Whether the channel is considered ypp monetization enabled. See go/yppornot for more details.",
+                    "type": "boolean"
+                },
                 "isLinked": {
                     "description": "If true, then the user is linked to either a YouTube username or G+ account. Otherwise, the user doesn't have a public YouTube identity.",
                     "type": "boolean"
@@ -6459,7 +6491,11 @@
                             "djctqIllegalDrugs",
                             "djctqInappropriateLanguage",
                             "djctqCriminalActs",
-                            "djctqImpactingContent"
+                            "djctqImpactingContent",
+                            "djctqFear",
+                            "djctqMedicalProcedures",
+                            "djctqSensitiveTopics",
+                            "djctqFantasyViolence"
                         ],
                         "enumDescriptions": [
                             "",
@@ -6474,7 +6510,11 @@
                             "Drogas Ilícitas (Illegal drugs)",
                             "Linguagem Imprópria (Inappropriate language)",
                             "Atos Criminosos (Criminal Acts)",
-                            "Conteúdo Impactante (Impacting content)"
+                            "Conteúdo Impactante (Impacting content)",
+                            "Temer (Fear)",
+                            "Procedimentos médicos (Medical Procedures)",
+                            "Tópicos sensíveis (Sensitive Topics)",
+                            "Fantasia Violência (Fantasy Violence)"
                         ],
                         "type": "string"
                     },
@@ -12220,7 +12260,7 @@
             "type": "object"
         },
         "VideoSuggestionsTagSuggestion": {
-            "description": "A single tag suggestion with it's relevance information.",
+            "description": "A single tag suggestion with its relevance information.",
             "id": "VideoSuggestionsTagSuggestion",
             "properties": {
                 "categoryRestricts": {
@@ -12261,6 +12301,33 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "VideoTrainability": {
+            "description": "Specifies who is allowed to train on the video.",
+            "id": "VideoTrainability",
+            "properties": {
+                "etag": {
+                    "description": "Etag of this resource.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "youtube#videoTrainability",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"youtube#videoTrainability\".",
+                    "type": "string"
+                },
+                "permitted": {
+                    "description": "Specifies who is allowed to train on the video. Valid values are: - a single string \"all\" - a single string \"none\" - a list of allowed parties",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "videoId": {
+                    "description": "The ID of the video.",
+                    "type": "string"
                 }
             },
             "type": "object"

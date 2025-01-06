@@ -24,6 +24,7 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsAnnouncementsResource]
 ///     - [ProjectsLocationsDnsBindPermissionResource]
 ///     - [ProjectsLocationsNetworkPeeringsResource]
 ///       - [ProjectsLocationsNetworkPeeringsPeeringRoutesResource]
@@ -39,6 +40,7 @@
 ///       - [ProjectsLocationsPrivateCloudsLoggingServersResource]
 ///       - [ProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResource]
 ///       - [ProjectsLocationsPrivateCloudsSubnetsResource]
+///       - [ProjectsLocationsPrivateCloudsUpgradesResource]
 ///     - [ProjectsLocationsPrivateConnectionsResource]
 ///       - [ProjectsLocationsPrivateConnectionsPeeringRoutesResource]
 ///     - [ProjectsLocationsVmwareEngineNetworksResource]
@@ -88,6 +90,8 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsAnnouncementsResource get announcements =>
+      ProjectsLocationsAnnouncementsResource(_requester);
   ProjectsLocationsDnsBindPermissionResource get dnsBindPermission =>
       ProjectsLocationsDnsBindPermissionResource(_requester);
   ProjectsLocationsNetworkPeeringsResource get networkPeerings =>
@@ -236,6 +240,129 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAnnouncementsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAnnouncementsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieves a `Announcement` by its resource name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the announcement to retrieve.
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-west1-a/announcements/announcement-uuid`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/announcements/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Announcement].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Announcement> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Announcement.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists `Announcements` for a given region and project
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the location to be queried for
+  /// announcements. Resource names are schemeless URIs that follow the
+  /// conventions in https://cloud.google.com/apis/design/resource_names. For
+  /// example: `projects/my-project/locations/us-west1-a`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - A filter expression that matches resources returned in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be `=`,
+  /// `!=`, `>`, or `<`. For example, if you are filtering a list of
+  /// announcement runs, you can exclude the ones named `example-announcement`
+  /// by specifying `name != "example-announcement"`. You can also filter nested
+  /// fields. To filter on multiple expressions, provide each separate
+  /// expression within parentheses. For example: ``` (name =
+  /// "example-announcement") (createTime > "2021-04-12T08:15:10.40Z") ``` By
+  /// default, each expression is an `AND` expression. However, you can include
+  /// `AND` and `OR` expressions explicitly. For example: ``` (name =
+  /// "announcement-1") AND (createTime > "2021-04-12T08:15:10.40Z") OR (name =
+  /// "announcement-2") ```
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, returned
+  /// results are ordered by `name` in ascending order. You can also sort
+  /// results in descending order based on the `name` value using `orderBy="name
+  /// desc"`. Currently, only ordering by `name` is supported.
+  ///
+  /// [pageSize] - The maximum number of announcements to return in one page.
+  /// The service may return fewer than this value. The maximum value is coerced
+  /// to 1000. The default value of this field is 500.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListAnnouncements`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListAnnouncements` must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAnnouncementsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAnnouncementsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/announcements';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAnnouncementsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1739,6 +1866,8 @@ class ProjectsLocationsPrivateCloudsResource {
               _requester);
   ProjectsLocationsPrivateCloudsSubnetsResource get subnets =>
       ProjectsLocationsPrivateCloudsSubnetsResource(_requester);
+  ProjectsLocationsPrivateCloudsUpgradesResource get upgrades =>
+      ProjectsLocationsPrivateCloudsUpgradesResource(_requester);
 
   ProjectsLocationsPrivateCloudsResource(commons.ApiRequester client)
       : _requester = client;
@@ -4647,6 +4776,199 @@ class ProjectsLocationsPrivateCloudsSubnetsResource {
   }
 }
 
+class ProjectsLocationsPrivateCloudsUpgradesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsPrivateCloudsUpgradesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieves a private cloud `Upgrade` resource by its resource name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the `Upgrade` resource to be retrieved.
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-west1-a/privateClouds/my-cloud/upgrades/my-upgrade`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+/upgrades/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Upgrade].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Upgrade> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Upgrade.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists past, ongoing and upcoming `Upgrades` for the given private cloud.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Query a list of `Upgrades` for the given private
+  /// cloud resource name. Resource names are schemeless URIs that follow the
+  /// conventions in https://cloud.google.com/apis/design/resource_names. For
+  /// example: `projects/my-project/locations/us-west1-a/privateClouds/my-cloud`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+$`.
+  ///
+  /// [filter] - A filter expression that matches resources returned in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be `=`,
+  /// `!=`, `>`, or `<`. For example, if you are filtering a list of upgrades,
+  /// you can exclude the ones named `example-upgrade1` by specifying `name !=
+  /// "example-upgrade1"`. You can also filter nested fields. To filter on
+  /// multiple expressions, provide each separate expression within parentheses.
+  /// For example: ``` (name = "example-upgrade") (createTime >
+  /// "2021-04-12T08:15:10.40Z") ``` By default, each expression is an `AND`
+  /// expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (name = "upgrade-1") AND (createTime >
+  /// "2021-04-12T08:15:10.40Z") OR (name = "upgrade-2") ```
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, returned
+  /// results are ordered by `name` in ascending order. You can also sort
+  /// results in descending order based on the `name` value using `orderBy="name
+  /// desc"`. Currently, only ordering by `name` is supported.
+  ///
+  /// [pageSize] - The maximum number of `Upgrades` to return in one page. The
+  /// service may return fewer resources than this value. The maximum value is
+  /// coerced to 1000. The default value of this field is 500.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListUpgrades` call.
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters provided to `ListUpgrades` must match the call that provided
+  /// the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListUpgradesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListUpgradesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/upgrades';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListUpgradesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update the private cloud `Upgrade` resource.
+  ///
+  /// Only `schedule` field can updated. The schedule can only be updated when
+  /// the upgrade has not started and schedule edit window is open. Only fields
+  /// specified in `update_mask` are considered.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Identifier. The resource name of the private cloud
+  /// `Upgrade`. Resource names are schemeless URIs that follow the conventions
+  /// in https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-west1-a/privateClouds/my-cloud/upgrades/my-upgrade`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+/upgrades/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check if
+  /// original operation with the same request ID was received, and if so, will
+  /// ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the `Upgrade` resource by the update. The fields specified
+  /// in the `update_mask` are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. If the user does not
+  /// provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Upgrade request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsPrivateConnectionsResource {
   final commons.ApiRequester _requester;
 
@@ -5378,6 +5700,129 @@ class ProjectsLocationsVmwareEngineNetworksResource {
   }
 }
 
+/// Announcement for the resources of Vmware Engine.
+class Announcement {
+  /// Activity type of the announcement There can be only one active
+  /// announcement for a given activity type and target resource.
+  ///
+  /// Optional.
+  core.String? activityType;
+
+  /// A Cluster resource name.
+  core.String? cluster;
+
+  /// Code of the announcement.
+  ///
+  /// Indicates the presence of a VMware Engine related announcement and
+  /// corresponds to a related message in the `description` field.
+  ///
+  /// Required.
+  core.String? code;
+
+  /// Creation time of this resource.
+  ///
+  /// It also serves as start time of notification.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the announcement.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// Additional structured details about this announcement.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? metadata;
+
+  /// The resource name of the announcement.
+  ///
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-west1-a/announcements/my-announcement-id`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// A Private Cloud resource name.
+  core.String? privateCloud;
+
+  /// State of the resource.
+  ///
+  /// New values may be added to this enum when appropriate.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The default value. This value should never be
+  /// used.
+  /// - "ACTIVE" : Active announcement which should be visible to user.
+  /// - "INACTIVE" : Inactive announcement which should not be visible to user.
+  /// - "DELETING" : Announcement which is being deleted
+  /// - "CREATING" : Announcement which being created
+  core.String? state;
+
+  /// Target Resource Type defines the type of the target for the announcement
+  ///
+  /// Output only.
+  core.String? targetResourceType;
+
+  /// Last update time of this resource.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Announcement({
+    this.activityType,
+    this.cluster,
+    this.code,
+    this.createTime,
+    this.description,
+    this.metadata,
+    this.name,
+    this.privateCloud,
+    this.state,
+    this.targetResourceType,
+    this.updateTime,
+  });
+
+  Announcement.fromJson(core.Map json_)
+      : this(
+          activityType: json_['activityType'] as core.String?,
+          cluster: json_['cluster'] as core.String?,
+          code: json_['code'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          metadata:
+              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          name: json_['name'] as core.String?,
+          privateCloud: json_['privateCloud'] as core.String?,
+          state: json_['state'] as core.String?,
+          targetResourceType: json_['targetResourceType'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activityType != null) 'activityType': activityType!,
+        if (cluster != null) 'cluster': cluster!,
+        if (code != null) 'code': code!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (privateCloud != null) 'privateCloud': privateCloud!,
+        if (state != null) 'state': state!,
+        if (targetResourceType != null)
+          'targetResourceType': targetResourceType!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -5817,6 +6262,56 @@ class Cluster {
           'stretchedClusterConfig': stretchedClusterConfig!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Constraints to be applied while editing a schedule.
+///
+/// These constraints ensure that `Upgrade` specific requirements are met.
+class Constraints {
+  /// Minimum number of hours must be allotted for the upgrade activities for
+  /// each selected day.
+  ///
+  /// This is a minimum; the upgrade schedule can allot more hours for the given
+  /// day.
+  ///
+  /// Output only.
+  core.int? minHoursDay;
+
+  /// The minimum number of weekly hours must be allotted for the upgrade
+  /// activities.
+  ///
+  /// This is just a minimum; the schedule can assign more weekly hours.
+  ///
+  /// Output only.
+  core.int? minHoursWeek;
+
+  /// The user can only reschedule an upgrade that starts within this range.
+  ///
+  /// Output only.
+  Interval? rescheduleDateRange;
+
+  Constraints({
+    this.minHoursDay,
+    this.minHoursWeek,
+    this.rescheduleDateRange,
+  });
+
+  Constraints.fromJson(core.Map json_)
+      : this(
+          minHoursDay: json_['minHoursDay'] as core.int?,
+          minHoursWeek: json_['minHoursWeek'] as core.int?,
+          rescheduleDateRange: json_.containsKey('rescheduleDateRange')
+              ? Interval.fromJson(json_['rescheduleDateRange']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (minHoursDay != null) 'minHoursDay': minHoursDay!,
+        if (minHoursWeek != null) 'minHoursWeek': minHoursWeek!,
+        if (rescheduleDateRange != null)
+          'rescheduleDateRange': rescheduleDateRange!,
       };
 }
 
@@ -6442,6 +6937,14 @@ class HcxActivationKey {
       };
 }
 
+/// Represents a time interval, encoded as a Timestamp start (inclusive) and a
+/// Timestamp end (exclusive).
+///
+/// The start must be less than or equal to the end. When the start equals the
+/// end, the interval is empty (matches no time). When both start and end are
+/// unspecified, the interval matches any time.
+typedef Interval = $Interval;
+
 /// An IP range provided in any one of the supported formats.
 class IpRange {
   /// The name of an `ExternalAddress` resource.
@@ -6481,6 +6984,44 @@ class IpRange {
         if (externalAddress != null) 'externalAddress': externalAddress!,
         if (ipAddress != null) 'ipAddress': ipAddress!,
         if (ipAddressRange != null) 'ipAddressRange': ipAddressRange!,
+      };
+}
+
+/// Response message for VmwareEngine.ListAnnouncements
+class ListAnnouncementsResponse {
+  /// A list of announcement runs.
+  core.List<Announcement>? announcements;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// list of unreachable locations
+  core.List<core.String>? unreachable;
+
+  ListAnnouncementsResponse({
+    this.announcements,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListAnnouncementsResponse.fromJson(core.Map json_)
+      : this(
+          announcements: (json_['announcements'] as core.List?)
+              ?.map((value) => Announcement.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (announcements != null) 'announcements': announcements!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -7097,6 +7638,44 @@ class ListSubnetsResponse {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (subnets != null) 'subnets': subnets!,
         if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for VmwareEngine.ListUpgrades.
+class ListUpgradesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// List of unreachable resources.
+  core.List<core.String>? unreachable;
+
+  /// A list of `Upgrades`.
+  core.List<Upgrade>? upgrades;
+
+  ListUpgradesResponse({
+    this.nextPageToken,
+    this.unreachable,
+    this.upgrades,
+  });
+
+  ListUpgradesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          upgrades: (json_['upgrades'] as core.List?)
+              ?.map((value) => Upgrade.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+        if (upgrades != null) 'upgrades': upgrades!,
       };
 }
 
@@ -8094,7 +8673,7 @@ class NodeTypeConfig {
 }
 
 /// Details about a NSX Manager appliance.
-typedef Nsx = $Shared14;
+typedef Nsx = $Shared15;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -8911,6 +9490,80 @@ class RevokeDnsBindPermissionRequest {
       };
 }
 
+/// Schedule for the upgrade.
+class Schedule {
+  /// Constraints applied to the schedule.
+  ///
+  /// These constraints should be applicable at the time of any rescheduling.
+  ///
+  /// Output only.
+  Constraints? constraints;
+
+  /// The schedule is open for edits during this time interval or window.
+  ///
+  /// Output only.
+  Interval? editWindow;
+
+  /// Indicates who most recently edited the upgrade schedule.
+  ///
+  /// The value is updated whenever the upgrade is rescheduled.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "EDITOR_UNSPECIFIED" : The default value. This value should never be
+  /// used.
+  /// - "SYSTEM" : The upgrade is scheduled by the System or internal service.
+  /// - "USER" : The upgrade is scheduled by the end user.
+  core.String? lastEditor;
+
+  /// The scheduled start time for the upgrade.
+  ///
+  /// Required.
+  core.String? startTime;
+
+  /// Weekly time windows for upgrade activities.
+  ///
+  /// The server performs upgrade activities during these time windows to
+  /// minimize disruptions.
+  ///
+  /// Required.
+  core.List<TimeWindow>? weeklyWindows;
+
+  Schedule({
+    this.constraints,
+    this.editWindow,
+    this.lastEditor,
+    this.startTime,
+    this.weeklyWindows,
+  });
+
+  Schedule.fromJson(core.Map json_)
+      : this(
+          constraints: json_.containsKey('constraints')
+              ? Constraints.fromJson(
+                  json_['constraints'] as core.Map<core.String, core.dynamic>)
+              : null,
+          editWindow: json_.containsKey('editWindow')
+              ? Interval.fromJson(
+                  json_['editWindow'] as core.Map<core.String, core.dynamic>)
+              : null,
+          lastEditor: json_['lastEditor'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          weeklyWindows: (json_['weeklyWindows'] as core.List?)
+              ?.map((value) => TimeWindow.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (constraints != null) 'constraints': constraints!,
+        if (editWindow != null) 'editWindow': editWindow!,
+        if (lastEditor != null) 'lastEditor': lastEditor!,
+        if (startTime != null) 'startTime': startTime!,
+        if (weeklyWindows != null) 'weeklyWindows': weeklyWindows!,
+      };
+}
+
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
@@ -9109,6 +9762,64 @@ class Thresholds {
       };
 }
 
+/// Represents a time of day.
+///
+/// The date and time zone are either not significant or are specified
+/// elsewhere. An API may choose to allow leap seconds. Related types are
+/// google.type.Date and `google.protobuf.Timestamp`.
+typedef TimeOfDay = $TimeOfDay;
+
+/// Represents the time window to perform upgrade activities.
+class TimeWindow {
+  /// Day of the week for this window.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
+  /// - "MONDAY" : Monday
+  /// - "TUESDAY" : Tuesday
+  /// - "WEDNESDAY" : Wednesday
+  /// - "THURSDAY" : Thursday
+  /// - "FRIDAY" : Friday
+  /// - "SATURDAY" : Saturday
+  /// - "SUNDAY" : Sunday
+  core.String? dayOfWeek;
+
+  /// The duration of the window.
+  ///
+  /// The max allowed duration for any window is 24 hours.
+  ///
+  /// Required.
+  core.String? duration;
+
+  /// Time in UTC when the window starts.
+  ///
+  /// Required.
+  TimeOfDay? startTime;
+
+  TimeWindow({
+    this.dayOfWeek,
+    this.duration,
+    this.startTime,
+  });
+
+  TimeWindow.fromJson(core.Map json_)
+      : this(
+          dayOfWeek: json_['dayOfWeek'] as core.String?,
+          duration: json_['duration'] as core.String?,
+          startTime: json_.containsKey('startTime')
+              ? TimeOfDay.fromJson(
+                  json_['startTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
+        if (duration != null) 'duration': duration!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
 /// Request message for VmwareEngine.UndeletePrivateCloud
 class UndeletePrivateCloudRequest {
   /// The request ID must be a valid UUID with the exception that zero UUID is
@@ -9131,8 +9842,185 @@ class UndeletePrivateCloudRequest {
       };
 }
 
+/// Describes Private cloud Upgrade.
+class Upgrade {
+  /// The list of component upgrades.
+  ///
+  /// Output only.
+  core.List<VmwareUpgradeComponent>? componentUpgrades;
+
+  /// Creation time of this resource.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The description of the upgrade.
+  ///
+  /// This is used to provide additional information about the private cloud
+  /// upgrade, such as the upgrade's purpose, the changes included in the
+  /// upgrade, or any other relevant information about the upgrade.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// End time of the upgrade.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// The estimated total duration of the upgrade.
+  ///
+  /// This information can be used to plan or schedule upgrades to minimize
+  /// disruptions. Please note that the estimated duration is only an estimate.
+  /// The actual upgrade duration may vary.
+  ///
+  /// Output only.
+  core.String? estimatedDuration;
+
+  /// The etag for the upgrade resource.
+  ///
+  /// If this is provided on update, it must match the server's etag.
+  core.String? etag;
+
+  /// Identifier.
+  ///
+  /// The resource name of the private cloud `Upgrade`. Resource names are
+  /// schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-west1-a/privateClouds/my-cloud/upgrades/my-upgrade`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Schedule details for the upgrade.
+  Schedule? schedule;
+
+  /// The start version
+  ///
+  /// Output only.
+  core.String? startVersion;
+
+  /// The current state of the upgrade.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The default value. This value should never be
+  /// used.
+  /// - "SCHEDULED" : The upgrade is scheduled but not started yet.
+  /// - "ONGOING" : The upgrade is currently in progress and has not completed
+  /// yet.
+  /// - "SUCCEEDED" : The upgrade completed successfully.
+  /// - "PAUSED" : The upgrade is currently paused.
+  /// - "FAILED" : The upgrade failed.
+  /// - "CANCELLING" : The upgrade is in process of being canceled.
+  /// - "CANCELLED" : The upgrade is canceled.
+  /// - "RESCHEDULING" : The upgrade is in process of being rescheduled.
+  core.String? state;
+
+  /// The target version
+  ///
+  /// Output only.
+  core.String? targetVersion;
+
+  /// The type of upgrade.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : The default value. This value should never be used.
+  /// - "VSPHERE_UPGRADE" : Upgrade of vmware components when a major version is
+  /// available. 7.0u2 -\> 7.0u3.
+  /// - "VSPHERE_PATCH" : Patching of vmware components when a minor version is
+  /// available. 7.0u2c -\> 7.0u2d.
+  /// - "WORKAROUND" : Workarounds are hotfixes for vulnerabilities or issues
+  /// applied to mitigate the known vulnerability or issue until a patch or
+  /// update is released. The description of the upgrade will have more details.
+  /// - "FIRMWARE_UPGRADE" : Firmware upgrade for VMware product used in the
+  /// private cloud.
+  /// - "SWITCH_UPGRADE" : Switch upgrade.
+  /// - "OTHER" : The upgrade type that doesn't fall into any other category.
+  /// - "INFRASTRUCTURE_UPGRADE" : Infrastructure upgrade in BM node
+  /// maintenance.
+  core.String? type;
+
+  /// System-generated unique identifier for the resource.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Last update time of this resource.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  ///
+  ///
+  /// Output only.
+  core.String? version;
+
+  Upgrade({
+    this.componentUpgrades,
+    this.createTime,
+    this.description,
+    this.endTime,
+    this.estimatedDuration,
+    this.etag,
+    this.name,
+    this.schedule,
+    this.startVersion,
+    this.state,
+    this.targetVersion,
+    this.type,
+    this.uid,
+    this.updateTime,
+    this.version,
+  });
+
+  Upgrade.fromJson(core.Map json_)
+      : this(
+          componentUpgrades: (json_['componentUpgrades'] as core.List?)
+              ?.map((value) => VmwareUpgradeComponent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          endTime: json_['endTime'] as core.String?,
+          estimatedDuration: json_['estimatedDuration'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          name: json_['name'] as core.String?,
+          schedule: json_.containsKey('schedule')
+              ? Schedule.fromJson(
+                  json_['schedule'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startVersion: json_['startVersion'] as core.String?,
+          state: json_['state'] as core.String?,
+          targetVersion: json_['targetVersion'] as core.String?,
+          type: json_['type'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          version: json_['version'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (componentUpgrades != null) 'componentUpgrades': componentUpgrades!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (endTime != null) 'endTime': endTime!,
+        if (estimatedDuration != null) 'estimatedDuration': estimatedDuration!,
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (schedule != null) 'schedule': schedule!,
+        if (startVersion != null) 'startVersion': startVersion!,
+        if (state != null) 'state': state!,
+        if (targetVersion != null) 'targetVersion': targetVersion!,
+        if (type != null) 'type': type!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// Details about a vCenter Server management appliance.
-typedef Vcenter = $Shared14;
+typedef Vcenter = $Shared15;
 
 /// VMware Engine network resource that provides connectivity for VMware Engine
 /// private clouds.
@@ -9240,6 +10128,63 @@ class VmwareEngineNetwork {
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (vpcNetworks != null) 'vpcNetworks': vpcNetworks!,
+      };
+}
+
+/// Per component upgrade resource
+class VmwareUpgradeComponent {
+  /// Type of component
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "VMWARE_COMPONENT_TYPE_UNSPECIFIED" : The default value. This value
+  /// should never be used.
+  /// - "VCENTER" : vcenter
+  /// - "ESXI" : esxi nodes + transport nodes
+  /// - "NSXT_UC" : nsxt upgrade coordinator
+  /// - "NSXT_EDGE" : nsxt edges cluster
+  /// - "NSXT_MGR" : nsxt managers/management plane
+  /// - "HCX" : hcx
+  /// - "VSAN" : VSAN cluster
+  /// - "DVS" : DVS switch
+  /// - "NAMESERVER_VM" : Nameserver VMs
+  /// - "KMS_VM" : KMS VM used for vsan encryption
+  /// - "WITNESS_VM" : witness VM in case of stretch PC
+  /// - "NSXT" : nsxt
+  /// - "CLUSTER" : Cluster is used in case of BM
+  core.String? componentType;
+
+  /// Component's upgrade state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The default value. This value should never be
+  /// used.
+  /// - "RUNNING" : Component's upgrade is in progress
+  /// - "PAUSED" : The component's upgrade is paused. Will be resumed when
+  /// upgrade job is resumed
+  /// - "SUCCEEDED" : The component's upgrade is successfully completed
+  /// - "FAILED" : The component's upgrade has failed. This will move to resume
+  /// if upgrade is resumed or stay as is
+  /// - "NOT_STARTED" : Component's upgrade has not started yet
+  /// - "NOT_APPLICABLE" : Component's upgrade is not applicable in this
+  /// upgrade. It will be skipped.
+  core.String? state;
+
+  VmwareUpgradeComponent({
+    this.componentType,
+    this.state,
+  });
+
+  VmwareUpgradeComponent.fromJson(core.Map json_)
+      : this(
+          componentType: json_['componentType'] as core.String?,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (componentType != null) 'componentType': componentType!,
+        if (state != null) 'state': state!,
       };
 }
 

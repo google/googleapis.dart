@@ -1340,6 +1340,7 @@ api.GoogleMapsPlacesV1Place buildGoogleMapsPlacesV1Place() {
     o.shortFormattedAddress = 'foo';
     o.subDestinations = buildUnnamed22();
     o.takeout = true;
+    o.timeZone = buildGoogleTypeTimeZone();
     o.types = buildUnnamed23();
     o.userRatingCount = 42;
     o.utcOffsetMinutes = 42;
@@ -1458,6 +1459,7 @@ void checkGoogleMapsPlacesV1Place(api.GoogleMapsPlacesV1Place o) {
     );
     checkUnnamed22(o.subDestinations!);
     unittest.expect(o.takeout!, unittest.isTrue);
+    checkGoogleTypeTimeZone(o.timeZone!);
     checkUnnamed23(o.types!);
     unittest.expect(
       o.userRatingCount!,
@@ -2873,6 +2875,33 @@ void checkGoogleTypeMoney(api.GoogleTypeMoney o) {
   buildCounterGoogleTypeMoney--;
 }
 
+core.int buildCounterGoogleTypeTimeZone = 0;
+api.GoogleTypeTimeZone buildGoogleTypeTimeZone() {
+  final o = api.GoogleTypeTimeZone();
+  buildCounterGoogleTypeTimeZone++;
+  if (buildCounterGoogleTypeTimeZone < 3) {
+    o.id = 'foo';
+    o.version = 'foo';
+  }
+  buildCounterGoogleTypeTimeZone--;
+  return o;
+}
+
+void checkGoogleTypeTimeZone(api.GoogleTypeTimeZone o) {
+  buildCounterGoogleTypeTimeZone++;
+  if (buildCounterGoogleTypeTimeZone < 3) {
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleTypeTimeZone--;
+}
+
 void main() {
   unittest.group('obj-schema-GoogleGeoTypeViewport', () {
     unittest.test('to-json--from-json', () async {
@@ -3599,6 +3628,16 @@ void main() {
       final od = api.GoogleTypeMoney.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleTypeMoney(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleTypeTimeZone', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleTypeTimeZone();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleTypeTimeZone.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleTypeTimeZone(od);
     });
   });
 

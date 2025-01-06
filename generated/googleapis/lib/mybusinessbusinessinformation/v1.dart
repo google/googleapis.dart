@@ -1966,7 +1966,13 @@ class Metadata {
 
   /// Indicates if the listing can manage local posts.
   ///
+  /// Deprecated: This field is no longer populated and will be removed in a
+  /// future version.
+  ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? canOperateLocalPost;
 
   /// Indicates whether the location can operate on Lodging data.

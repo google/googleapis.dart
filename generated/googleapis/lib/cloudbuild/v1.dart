@@ -3553,6 +3553,14 @@ class ArtifactObjects {
 /// Artifacts produced by a build that should be uploaded upon successful
 /// completion of all build steps.
 class Artifacts {
+  /// A list of Go modules to be uploaded to Artifact Registry upon successful
+  /// completion of all build steps.
+  ///
+  /// If any objects fail to be pushed, the build is marked FAILURE.
+  ///
+  /// Optional.
+  core.List<GoModule>? goModules;
+
   /// A list of images to be pushed upon the successful completion of all build
   /// steps.
   ///
@@ -3598,6 +3606,7 @@ class Artifacts {
   core.List<PythonPackage>? pythonPackages;
 
   Artifacts({
+    this.goModules,
     this.images,
     this.mavenArtifacts,
     this.npmPackages,
@@ -3607,6 +3616,10 @@ class Artifacts {
 
   Artifacts.fromJson(core.Map json_)
       : this(
+          goModules: (json_['goModules'] as core.List?)
+              ?.map((value) => GoModule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           images: (json_['images'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -3629,6 +3642,7 @@ class Artifacts {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (goModules != null) 'goModules': goModules!,
         if (images != null) 'images': images!,
         if (mavenArtifacts != null) 'mavenArtifacts': mavenArtifacts!,
         if (npmPackages != null) 'npmPackages': npmPackages!,
@@ -4114,6 +4128,12 @@ class Build {
   /// Output only.
   core.String? createTime;
 
+  /// Dependencies that the Cloud Build worker will fetch before executing user
+  /// steps.
+  ///
+  /// Optional.
+  core.List<Dependency>? dependencies;
+
   /// Contains information about the build when status=FAILURE.
   ///
   /// Output only.
@@ -4279,6 +4299,7 @@ class Build {
     this.availableSecrets,
     this.buildTriggerId,
     this.createTime,
+    this.dependencies,
     this.failureInfo,
     this.finishTime,
     this.gitConfig,
@@ -4322,6 +4343,10 @@ class Build {
               : null,
           buildTriggerId: json_['buildTriggerId'] as core.String?,
           createTime: json_['createTime'] as core.String?,
+          dependencies: (json_['dependencies'] as core.List?)
+              ?.map((value) => Dependency.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           failureInfo: json_.containsKey('failureInfo')
               ? FailureInfo.fromJson(
                   json_['failureInfo'] as core.Map<core.String, core.dynamic>)
@@ -4399,6 +4424,7 @@ class Build {
         if (availableSecrets != null) 'availableSecrets': availableSecrets!,
         if (buildTriggerId != null) 'buildTriggerId': buildTriggerId!,
         if (createTime != null) 'createTime': createTime!,
+        if (dependencies != null) 'dependencies': dependencies!,
         if (failureInfo != null) 'failureInfo': failureInfo!,
         if (finishTime != null) 'finishTime': finishTime!,
         if (gitConfig != null) 'gitConfig': gitConfig!,
@@ -4510,6 +4536,13 @@ class BuildOptions {
   /// in the build configuration file.
   core.bool? dynamicSubstitutions;
 
+  /// Option to specify whether structured logging is enabled.
+  ///
+  /// If true, JSON-formatted logs are parsed as structured logs.
+  ///
+  /// Optional.
+  core.bool? enableStructuredLogging;
+
   /// A list of global environment variable definitions that will exist for all
   /// build steps in this build.
   ///
@@ -4562,6 +4595,11 @@ class BuildOptions {
   /// Optional.
   PoolOption? pool;
 
+  /// Option to specify the Pub/Sub topic to receive build status updates.
+  ///
+  /// Optional.
+  core.String? pubsubTopic;
+
   /// Requested verifiability options.
   /// Possible string values are:
   /// - "NOT_VERIFIED" : Not a verifiable build (the default).
@@ -4610,11 +4648,13 @@ class BuildOptions {
     this.defaultLogsBucketBehavior,
     this.diskSizeGb,
     this.dynamicSubstitutions,
+    this.enableStructuredLogging,
     this.env,
     this.logStreamingOption,
     this.logging,
     this.machineType,
     this.pool,
+    this.pubsubTopic,
     this.requestedVerifyOption,
     this.secretEnv,
     this.sourceProvenanceHash,
@@ -4630,6 +4670,8 @@ class BuildOptions {
               json_['defaultLogsBucketBehavior'] as core.String?,
           diskSizeGb: json_['diskSizeGb'] as core.String?,
           dynamicSubstitutions: json_['dynamicSubstitutions'] as core.bool?,
+          enableStructuredLogging:
+              json_['enableStructuredLogging'] as core.bool?,
           env: (json_['env'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -4640,6 +4682,7 @@ class BuildOptions {
               ? PoolOption.fromJson(
                   json_['pool'] as core.Map<core.String, core.dynamic>)
               : null,
+          pubsubTopic: json_['pubsubTopic'] as core.String?,
           requestedVerifyOption: json_['requestedVerifyOption'] as core.String?,
           secretEnv: (json_['secretEnv'] as core.List?)
               ?.map((value) => value as core.String)
@@ -4663,12 +4706,15 @@ class BuildOptions {
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (dynamicSubstitutions != null)
           'dynamicSubstitutions': dynamicSubstitutions!,
+        if (enableStructuredLogging != null)
+          'enableStructuredLogging': enableStructuredLogging!,
         if (env != null) 'env': env!,
         if (logStreamingOption != null)
           'logStreamingOption': logStreamingOption!,
         if (logging != null) 'logging': logging!,
         if (machineType != null) 'machineType': machineType!,
         if (pool != null) 'pool': pool!,
+        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
         if (requestedVerifyOption != null)
           'requestedVerifyOption': requestedVerifyOption!,
         if (secretEnv != null) 'secretEnv': secretEnv!,
@@ -5440,6 +5486,36 @@ class DefaultServiceAccount {
         if (name != null) 'name': name!,
         if (serviceAccountEmail != null)
           'serviceAccountEmail': serviceAccountEmail!,
+      };
+}
+
+/// A dependency that the Cloud Build worker will fetch before executing user
+/// steps.
+class Dependency {
+  /// If set to true disable all dependency fetching (ignoring the default
+  /// source as well).
+  core.bool? empty;
+
+  /// Represents a git repository as a build dependency.
+  GitSourceDependency? gitSource;
+
+  Dependency({
+    this.empty,
+    this.gitSource,
+  });
+
+  Dependency.fromJson(core.Map json_)
+      : this(
+          empty: json_['empty'] as core.bool?,
+          gitSource: json_.containsKey('gitSource')
+              ? GitSourceDependency.fromJson(
+                  json_['gitSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (empty != null) 'empty': empty!,
+        if (gitSource != null) 'gitSource': gitSource!,
       };
 }
 
@@ -6383,6 +6459,172 @@ class GitSource {
       };
 }
 
+/// Represents a git repository as a build dependency.
+class GitSourceDependency {
+  /// How much history should be fetched for the build (default 1, -1 for all
+  /// history).
+  ///
+  /// Optional.
+  core.String? depth;
+
+  /// Where should the files be placed on the worker.
+  ///
+  /// Required.
+  core.String? destPath;
+
+  /// True if submodules should be fetched too (default false).
+  ///
+  /// Optional.
+  core.bool? recurseSubmodules;
+
+  /// The kind of repo (url or dev connect).
+  ///
+  /// Required.
+  GitSourceRepository? repository;
+
+  /// The revision that we will fetch the repo at.
+  ///
+  /// Required.
+  core.String? revision;
+
+  GitSourceDependency({
+    this.depth,
+    this.destPath,
+    this.recurseSubmodules,
+    this.repository,
+    this.revision,
+  });
+
+  GitSourceDependency.fromJson(core.Map json_)
+      : this(
+          depth: json_['depth'] as core.String?,
+          destPath: json_['destPath'] as core.String?,
+          recurseSubmodules: json_['recurseSubmodules'] as core.bool?,
+          repository: json_.containsKey('repository')
+              ? GitSourceRepository.fromJson(
+                  json_['repository'] as core.Map<core.String, core.dynamic>)
+              : null,
+          revision: json_['revision'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (depth != null) 'depth': depth!,
+        if (destPath != null) 'destPath': destPath!,
+        if (recurseSubmodules != null) 'recurseSubmodules': recurseSubmodules!,
+        if (repository != null) 'repository': repository!,
+        if (revision != null) 'revision': revision!,
+      };
+}
+
+/// A repository for a git source.
+class GitSourceRepository {
+  /// The Developer Connect Git repository link or the url that matches a
+  /// repository link in the current project, formatted as `projects / *
+  /// /locations / * /connections / * /gitRepositoryLink / * `
+  core.String? developerConnect;
+
+  /// Location of the Git repository.
+  core.String? url;
+
+  GitSourceRepository({
+    this.developerConnect,
+    this.url,
+  });
+
+  GitSourceRepository.fromJson(core.Map json_)
+      : this(
+          developerConnect: json_['developerConnect'] as core.String?,
+          url: json_['url'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (developerConnect != null) 'developerConnect': developerConnect!,
+        if (url != null) 'url': url!,
+      };
+}
+
+/// Go module to upload to Artifact Registry upon successful completion of all
+/// build steps.
+///
+/// A module refers to all dependencies in a go.mod file.
+class GoModule {
+  /// The Go module's "module path".
+  ///
+  /// e.g. example.com/foo/v2
+  ///
+  /// Optional.
+  core.String? modulePath;
+
+  /// The Go module's semantic version in the form vX.Y.Z. e.g. v0.1.1
+  /// Pre-release identifiers can also be added by appending a dash and dot
+  /// separated ASCII alphanumeric characters and hyphens.
+  ///
+  /// e.g. v0.2.3-alpha.x.12m.5
+  ///
+  /// Optional.
+  core.String? moduleVersion;
+
+  /// Location of the Artifact Registry repository.
+  ///
+  /// i.e. us-east1 Defaults to the build’s location.
+  ///
+  /// Optional.
+  core.String? repositoryLocation;
+
+  /// Artifact Registry repository name.
+  ///
+  /// Specified Go modules will be zipped and uploaded to Artifact Registry with
+  /// this location as a prefix. e.g. my-go-repo
+  ///
+  /// Optional.
+  core.String? repositoryName;
+
+  /// Project ID of the Artifact Registry repository.
+  ///
+  /// Defaults to the build project.
+  ///
+  /// Optional.
+  core.String? repositoryProjectId;
+
+  /// Source path of the go.mod file in the build's workspace.
+  ///
+  /// If not specified, this will default to the current directory. e.g.
+  /// ~/code/go/mypackage
+  ///
+  /// Optional.
+  core.String? sourcePath;
+
+  GoModule({
+    this.modulePath,
+    this.moduleVersion,
+    this.repositoryLocation,
+    this.repositoryName,
+    this.repositoryProjectId,
+    this.sourcePath,
+  });
+
+  GoModule.fromJson(core.Map json_)
+      : this(
+          modulePath: json_['modulePath'] as core.String?,
+          moduleVersion: json_['moduleVersion'] as core.String?,
+          repositoryLocation: json_['repositoryLocation'] as core.String?,
+          repositoryName: json_['repositoryName'] as core.String?,
+          repositoryProjectId: json_['repositoryProjectId'] as core.String?,
+          sourcePath: json_['sourcePath'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (modulePath != null) 'modulePath': modulePath!,
+        if (moduleVersion != null) 'moduleVersion': moduleVersion!,
+        if (repositoryLocation != null)
+          'repositoryLocation': repositoryLocation!,
+        if (repositoryName != null) 'repositoryName': repositoryName!,
+        if (repositoryProjectId != null)
+          'repositoryProjectId': repositoryProjectId!,
+        if (sourcePath != null) 'sourcePath': sourcePath!,
+      };
+}
+
 /// Container message for hash values.
 class Hash {
   /// The type of hash that was performed.
@@ -6390,6 +6632,8 @@ class Hash {
   /// - "NONE" : No hash requested.
   /// - "SHA256" : Use a sha256 hash.
   /// - "MD5" : Use a md5 hash.
+  /// - "GO_MODULE_H1" : Dirhash of a Go module's source code which is then
+  /// hex-encoded.
   /// - "SHA512" : Use a sha512 hash.
   core.String? type;
 
@@ -7497,6 +7741,11 @@ class Results {
   /// read-only and can't be substituted.
   core.List<core.String>? buildStepOutputs;
 
+  /// Go module artifacts uploaded to Artifact Registry at the end of the build.
+  ///
+  /// Optional.
+  core.List<UploadedGoModule>? goModules;
+
   /// Container images that were built as a part of the build.
   core.List<BuiltImage>? images;
 
@@ -7519,6 +7768,7 @@ class Results {
     this.artifactTiming,
     this.buildStepImages,
     this.buildStepOutputs,
+    this.goModules,
     this.images,
     this.mavenArtifacts,
     this.npmPackages,
@@ -7538,6 +7788,10 @@ class Results {
               .toList(),
           buildStepOutputs: (json_['buildStepOutputs'] as core.List?)
               ?.map((value) => value as core.String)
+              .toList(),
+          goModules: (json_['goModules'] as core.List?)
+              ?.map((value) => UploadedGoModule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           images: (json_['images'] as core.List?)
               ?.map((value) => BuiltImage.fromJson(
@@ -7563,6 +7817,7 @@ class Results {
         if (artifactTiming != null) 'artifactTiming': artifactTiming!,
         if (buildStepImages != null) 'buildStepImages': buildStepImages!,
         if (buildStepOutputs != null) 'buildStepOutputs': buildStepOutputs!,
+        if (goModules != null) 'goModules': goModules!,
         if (images != null) 'images': images!,
         if (mavenArtifacts != null) 'mavenArtifacts': mavenArtifacts!,
         if (npmPackages != null) 'npmPackages': npmPackages!,
@@ -8082,6 +8337,46 @@ class TimeSpan {
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// A Go module artifact uploaded to Artifact Registry using the GoModule
+/// directive.
+class UploadedGoModule {
+  /// Hash types and values of the Go Module Artifact.
+  FileHashes? fileHashes;
+
+  /// Stores timing information for pushing the specified artifact.
+  ///
+  /// Output only.
+  TimeSpan? pushTiming;
+
+  /// URI of the uploaded artifact.
+  core.String? uri;
+
+  UploadedGoModule({
+    this.fileHashes,
+    this.pushTiming,
+    this.uri,
+  });
+
+  UploadedGoModule.fromJson(core.Map json_)
+      : this(
+          fileHashes: json_.containsKey('fileHashes')
+              ? FileHashes.fromJson(
+                  json_['fileHashes'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pushTiming: json_.containsKey('pushTiming')
+              ? TimeSpan.fromJson(
+                  json_['pushTiming'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uri: json_['uri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fileHashes != null) 'fileHashes': fileHashes!,
+        if (pushTiming != null) 'pushTiming': pushTiming!,
+        if (uri != null) 'uri': uri!,
       };
 }
 

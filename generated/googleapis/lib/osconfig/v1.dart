@@ -3030,7 +3030,7 @@ class OSPolicyAssignmentInstanceFilter {
 }
 
 /// VM inventory details.
-typedef OSPolicyAssignmentInstanceFilterInventory = $Shared13;
+typedef OSPolicyAssignmentInstanceFilterInventory = $Shared14;
 
 /// Message representing label set.
 ///
@@ -3395,7 +3395,7 @@ class OSPolicyAssignmentRollout {
 }
 
 /// Filtering criteria to select VMs based on inventory details.
-typedef OSPolicyInventoryFilter = $Shared13;
+typedef OSPolicyInventoryFilter = $Shared14;
 
 /// An OS policy resource is used to define the desired state configuration and
 /// provides a specific functionality like installing/removing packages,

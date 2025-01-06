@@ -581,17 +581,19 @@ class $CustomMetric {
 /// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaDataRetentionSettings
 class $DataRetentionSettings {
   /// The length of time that event-level data is retained.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "RETENTION_DURATION_UNSPECIFIED" : Data retention time duration is not
   /// specified.
   /// - "TWO_MONTHS" : The data retention time duration is 2 months.
   /// - "FOURTEEN_MONTHS" : The data retention time duration is 14 months.
   /// - "TWENTY_SIX_MONTHS" : The data retention time duration is 26 months.
-  /// Available to 360 properties only.
+  /// Available to 360 properties only. Available for event data only.
   /// - "THIRTY_EIGHT_MONTHS" : The data retention time duration is 38 months.
-  /// Available to 360 properties only.
+  /// Available to 360 properties only. Available for event data only.
   /// - "FIFTY_MONTHS" : The data retention time duration is 50 months.
-  /// Available to 360 properties only.
+  /// Available to 360 properties only. Available for event data only.
   core.String? eventDataRetention;
 
   /// Resource name for this DataRetentionSetting resource.
@@ -605,10 +607,27 @@ class $DataRetentionSettings {
   /// event from that user.
   core.bool? resetUserDataOnNewActivity;
 
+  /// The length of time that user-level data is retained.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RETENTION_DURATION_UNSPECIFIED" : Data retention time duration is not
+  /// specified.
+  /// - "TWO_MONTHS" : The data retention time duration is 2 months.
+  /// - "FOURTEEN_MONTHS" : The data retention time duration is 14 months.
+  /// - "TWENTY_SIX_MONTHS" : The data retention time duration is 26 months.
+  /// Available to 360 properties only. Available for event data only.
+  /// - "THIRTY_EIGHT_MONTHS" : The data retention time duration is 38 months.
+  /// Available to 360 properties only. Available for event data only.
+  /// - "FIFTY_MONTHS" : The data retention time duration is 50 months.
+  /// Available to 360 properties only. Available for event data only.
+  core.String? userDataRetention;
+
   $DataRetentionSettings({
     this.eventDataRetention,
     this.name,
     this.resetUserDataOnNewActivity,
+    this.userDataRetention,
   });
 
   $DataRetentionSettings.fromJson(core.Map json_)
@@ -617,6 +636,7 @@ class $DataRetentionSettings {
           name: json_['name'] as core.String?,
           resetUserDataOnNewActivity:
               json_['resetUserDataOnNewActivity'] as core.bool?,
+          userDataRetention: json_['userDataRetention'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -625,6 +645,7 @@ class $DataRetentionSettings {
         if (name != null) 'name': name!,
         if (resetUserDataOnNewActivity != null)
           'resetUserDataOnNewActivity': resetUserDataOnNewActivity!,
+        if (userDataRetention != null) 'userDataRetention': userDataRetention!,
       };
 }
 
@@ -641,25 +662,48 @@ class $DataSharingSettings {
   /// Output only.
   core.String? name;
 
-  /// Allows any of Google sales to access the data in order to suggest
-  /// configuration changes to improve results.
+  /// This field is no longer used and always returns false.
+  ///
+  /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? sharingWithGoogleAnySalesEnabled;
 
-  /// Allows Google sales teams that are assigned to the customer to access the
-  /// data in order to suggest configuration changes to improve results.
+  /// Allows Google access to your Google Analytics account data, including
+  /// account usage and configuration data, product spending, and users
+  /// associated with your Google Analytics account, so that Google can help you
+  /// make the most of Google products, providing you with insights, offers,
+  /// recommendations, and optimization tips across Google Analytics and other
+  /// Google products for business.
   ///
-  /// Sales team restrictions still apply when enabled.
+  /// This field maps to the "Recommendations for your business" field in the
+  /// Google Analytics Admin UI.
   core.bool? sharingWithGoogleAssignedSalesEnabled;
 
   /// Allows Google to use the data to improve other Google products or
   /// services.
+  ///
+  /// This fields maps to the "Google products & services" field in the Google
+  /// Analytics Admin UI.
   core.bool? sharingWithGoogleProductsEnabled;
 
-  /// Allows Google support to access the data in order to help troubleshoot
-  /// issues.
+  /// Allows Google technical support representatives access to your Google
+  /// Analytics data and account when necessary to provide service and find
+  /// solutions to technical issues.
+  ///
+  /// This field maps to the "Technical support" field in the Google Analytics
+  /// Admin UI.
   core.bool? sharingWithGoogleSupportEnabled;
 
-  /// Allows Google to share the data anonymously in aggregate form with others.
+  /// Enable features like predictions, modeled data, and benchmarking that can
+  /// provide you with richer business insights when you contribute aggregated
+  /// measurement data.
+  ///
+  /// The data you share (including information about the property from which it
+  /// is shared) is aggregated and de-identified before being used to generate
+  /// business insights. This field maps to the "Modeling contributions &
+  /// business insights" field in the Google Analytics Admin UI.
   core.bool? sharingWithOthersEnabled;
 
   $DataSharingSettings({

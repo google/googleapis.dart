@@ -220,6 +220,7 @@ api.AuctionPackage buildAuctionPackage() {
   if (buildCounterAuctionPackage < 3) {
     o.createTime = 'foo';
     o.creator = 'foo';
+    o.dealOwnerSeatId = 'foo';
     o.description = 'foo';
     o.displayName = 'foo';
     o.eligibleSeatIds = buildUnnamed0();
@@ -242,6 +243,10 @@ void checkAuctionPackage(api.AuctionPackage o) {
     );
     unittest.expect(
       o.creator!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dealOwnerSeatId!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -663,6 +668,7 @@ api.Deal buildDeal() {
   if (buildCounterDeal < 3) {
     o.billedBuyer = 'foo';
     o.buyer = 'foo';
+    o.buyerPermissionType = 'foo';
     o.client = 'foo';
     o.createTime = 'foo';
     o.creativeRequirements = buildCreativeRequirements();
@@ -698,6 +704,10 @@ void checkDeal(api.Deal o) {
     );
     unittest.expect(
       o.buyer!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.buyerPermissionType!,
       unittest.equals('foo'),
     );
     unittest.expect(

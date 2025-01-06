@@ -460,6 +460,33 @@ void checkCertificateChains(api.CertificateChains o) {
   buildCounterCertificateChains--;
 }
 
+core.int buildCounterChecksummedData = 0;
+api.ChecksummedData buildChecksummedData() {
+  final o = api.ChecksummedData();
+  buildCounterChecksummedData++;
+  if (buildCounterChecksummedData < 3) {
+    o.crc32cChecksum = 'foo';
+    o.data = 'foo';
+  }
+  buildCounterChecksummedData--;
+  return o;
+}
+
+void checkChecksummedData(api.ChecksummedData o) {
+  buildCounterChecksummedData++;
+  if (buildCounterChecksummedData < 3) {
+    unittest.expect(
+      o.crc32cChecksum!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.data!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterChecksummedData--;
+}
+
 core.Map<core.String, core.String> buildUnnamed7() => {
       'x': 'foo',
       'y': 'foo',
@@ -1967,6 +1994,8 @@ api.PublicKey buildPublicKey() {
     o.pem = 'foo';
     o.pemCrc32c = 'foo';
     o.protectionLevel = 'foo';
+    o.publicKey = buildChecksummedData();
+    o.publicKeyFormat = 'foo';
   }
   buildCounterPublicKey--;
   return o;
@@ -1993,6 +2022,11 @@ void checkPublicKey(api.PublicKey o) {
     );
     unittest.expect(
       o.protectionLevel!,
+      unittest.equals('foo'),
+    );
+    checkChecksummedData(o.publicKey!);
+    unittest.expect(
+      o.publicKeyFormat!,
       unittest.equals('foo'),
     );
   }
@@ -2620,6 +2654,16 @@ void main() {
       final od = api.CertificateChains.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCertificateChains(od);
+    });
+  });
+
+  unittest.group('obj-schema-ChecksummedData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildChecksummedData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ChecksummedData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkChecksummedData(od);
     });
   });
 
@@ -5762,6 +5806,7 @@ void main() {
           .cryptoKeys
           .cryptoKeyVersions;
       final arg_name = 'foo';
+      final arg_publicKeyFormat = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -5796,6 +5841,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['publicKeyFormat']!.first,
+          unittest.equals(arg_publicKeyFormat),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -5806,7 +5855,8 @@ void main() {
         final resp = convert.json.encode(buildPublicKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.getPublicKey(arg_name, $fields: arg_$fields);
+      final response = await res.getPublicKey(arg_name,
+          publicKeyFormat: arg_publicKeyFormat, $fields: arg_$fields);
       checkPublicKey(response as api.PublicKey);
     });
 

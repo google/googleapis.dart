@@ -2826,6 +2826,9 @@ class Backup {
 
   /// Human-readable description of why the backup is in the current `state`.
   ///
+  /// This field is only meant for human readability and should not be used
+  /// programmatically as this field is not guaranteed to be consistent.
+  ///
   /// Output only.
   core.String? stateReason;
 
@@ -3111,6 +3114,15 @@ class BackupPlan {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// Completion time of the last successful Backup.
+  ///
+  /// This is sourced from a successful Backup's complete_time field. This field
+  /// is added to maintain consistency with BackupPlanBinding to display last
+  /// successful backup time.
+  ///
+  /// Output only.
+  core.String? lastSuccessfulBackupTime;
+
   /// The full name of the BackupPlan resource.
   ///
   /// Format: `projects / * /locations / * /backupPlans / * `
@@ -3159,7 +3171,10 @@ class BackupPlan {
   /// - "DELETING" : The BackupPlan is in the process of being deleted.
   core.String? state;
 
-  /// Human-readable description of why BackupPlan is in the current `state`
+  /// Human-readable description of why BackupPlan is in the current `state`.
+  ///
+  /// This field is only meant for human readability and should not be used
+  /// programmatically as this field is not guaranteed to be consistent.
   ///
   /// Output only.
   core.String? stateReason;
@@ -3185,6 +3200,7 @@ class BackupPlan {
     this.description,
     this.etag,
     this.labels,
+    this.lastSuccessfulBackupTime,
     this.name,
     this.protectedPodCount,
     this.retentionPolicy,
@@ -3218,6 +3234,8 @@ class BackupPlan {
               value as core.String,
             ),
           ),
+          lastSuccessfulBackupTime:
+              json_['lastSuccessfulBackupTime'] as core.String?,
           name: json_['name'] as core.String?,
           protectedPodCount: json_['protectedPodCount'] as core.int?,
           retentionPolicy: json_.containsKey('retentionPolicy')
@@ -3241,6 +3259,8 @@ class BackupPlan {
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
         if (labels != null) 'labels': labels!,
+        if (lastSuccessfulBackupTime != null)
+          'lastSuccessfulBackupTime': lastSuccessfulBackupTime!,
         if (name != null) 'name': name!,
         if (protectedPodCount != null) 'protectedPodCount': protectedPodCount!,
         if (retentionPolicy != null) 'retentionPolicy': retentionPolicy!,
@@ -4537,7 +4557,7 @@ class Restore {
   ///
   /// If not specified, the scope of the restore will remain the same as defined
   /// in the `RestorePlan`. If this is specified and no resources are matched by
-  /// the `inclusion_filters` or everyting is excluded by the
+  /// the `inclusion_filters` or everything is excluded by the
   /// `exclusion_filters`, nothing will be restored. This filter can only be
   /// specified if the value of namespaced_resource_restore_mode is set to
   /// `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT` or
@@ -4598,6 +4618,9 @@ class Restore {
   core.String? state;
 
   /// Human-readable description of why the Restore is in its current state.
+  ///
+  /// This field is only meant for human readability and should not be used
+  /// programmatically as this field is not guaranteed to be consistent.
   ///
   /// Output only.
   core.String? stateReason;
@@ -5066,7 +5089,10 @@ class RestorePlan {
   /// - "DELETING" : The RestorePlan is in the process of being deleted.
   core.String? state;
 
-  /// Human-readable description of why RestorePlan is in the current `state`
+  /// Human-readable description of why RestorePlan is in the current `state`.
+  ///
+  /// This field is only meant for human readability and should not be used
+  /// programmatically as this field is not guaranteed to be consistent.
   ///
   /// Output only.
   core.String? stateReason;
@@ -5647,10 +5673,15 @@ class VolumeBackup {
   /// - "FAILED" : The volume backup operation has failed.
   /// - "DELETING" : This VolumeBackup resource (and its associated artifacts)
   /// is in the process of being deleted.
+  /// - "CLEANED_UP" : The underlying artifacts of a volume backup (eg:
+  /// persistent disk snapshots) are deleted.
   core.String? state;
 
   /// A human readable message explaining why the VolumeBackup is in its current
   /// state.
+  ///
+  /// This field is only meant for human consumption and should not be used
+  /// programmatically as this field is not guaranteed to be consistent.
   ///
   /// Output only.
   core.String? stateMessage;

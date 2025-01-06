@@ -1099,6 +1099,7 @@ api.PolicyTopic buildPolicyTopic() {
   if (buildCounterPolicyTopic < 3) {
     o.mustFix = true;
     o.topic = 'foo';
+    o.type = 'foo';
   }
   buildCounterPolicyTopic--;
   return o;
@@ -1110,6 +1111,10 @@ void checkPolicyTopic(api.PolicyTopic o) {
     unittest.expect(o.mustFix!, unittest.isTrue);
     unittest.expect(
       o.topic!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
       unittest.equals('foo'),
     );
   }

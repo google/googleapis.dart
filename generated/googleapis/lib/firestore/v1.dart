@@ -3461,8 +3461,8 @@ class FindNearest {
   /// The behavior of the specified `distance_measure` will affect the meaning
   /// of the distance threshold. Since DOT_PRODUCT distances increase when the
   /// vectors are more similar, the comparison is inverted. * For EUCLIDEAN,
-  /// COSINE: WHERE distance \<= distance_threshold * For DOT_PRODUCT: WHERE
-  /// distance \>= distance_threshold
+  /// COSINE: `WHERE distance <= distance_threshold` * For DOT_PRODUCT: `WHERE
+  /// distance >= distance_threshold`
   ///
   /// Optional.
   core.double? distanceThreshold;

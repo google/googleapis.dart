@@ -4690,11 +4690,11 @@ class ExecutionSpec {
   /// Specifies the maximum desired number of tasks the execution should run at
   /// given time.
   ///
-  /// Must be \<= task_count. When the job is run, if this field is 0 or unset,
-  /// the maximum possible value will be used for that execution. The actual
-  /// number of tasks running in steady state will be less than this number when
-  /// there are fewer tasks waiting to be completed, i.e. when the work left to
-  /// do is less than max parallelism.
+  /// When the job is run, if this field is 0 or unset, the maximum possible
+  /// value will be used for that execution. The actual number of tasks running
+  /// in steady state will be less than this number when there are fewer tasks
+  /// waiting to be completed, i.e. when the work left to do is less than max
+  /// parallelism.
   ///
   /// Optional.
   core.int? parallelism;
@@ -7843,6 +7843,13 @@ class TaskSpec {
   /// Optional.
   core.int? maxRetries;
 
+  /// The Node Selector configuration.
+  ///
+  /// Map of selector key to a value which matches a node.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? nodeSelector;
+
   /// Email address of the IAM service account associated with the task of a job
   /// execution.
   ///
@@ -7870,6 +7877,7 @@ class TaskSpec {
   TaskSpec({
     this.containers,
     this.maxRetries,
+    this.nodeSelector,
     this.serviceAccountName,
     this.timeoutSeconds,
     this.volumes,
@@ -7882,6 +7890,14 @@ class TaskSpec {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           maxRetries: json_['maxRetries'] as core.int?,
+          nodeSelector:
+              (json_['nodeSelector'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           serviceAccountName: json_['serviceAccountName'] as core.String?,
           timeoutSeconds: json_['timeoutSeconds'] as core.String?,
           volumes: (json_['volumes'] as core.List?)
@@ -7893,6 +7909,7 @@ class TaskSpec {
   core.Map<core.String, core.dynamic> toJson() => {
         if (containers != null) 'containers': containers!,
         if (maxRetries != null) 'maxRetries': maxRetries!,
+        if (nodeSelector != null) 'nodeSelector': nodeSelector!,
         if (serviceAccountName != null)
           'serviceAccountName': serviceAccountName!,
         if (timeoutSeconds != null) 'timeoutSeconds': timeoutSeconds!,

@@ -8336,6 +8336,35 @@ class Binding {
       };
 }
 
+/// Native Build Info
+class BuildInfo {
+  /// Build key.
+  ///
+  /// Optional.
+  core.String? buildKey;
+
+  /// Build value.
+  ///
+  /// Optional.
+  core.String? buildValue;
+
+  BuildInfo({
+    this.buildKey,
+    this.buildValue,
+  });
+
+  BuildInfo.fromJson(core.Map json_)
+      : this(
+          buildKey: json_['buildKey'] as core.String?,
+          buildValue: json_['buildValue'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildKey != null) 'buildKey': buildKey!,
+        if (buildValue != null) 'buildValue': buildValue!,
+      };
+}
+
 /// A request to cancel a job.
 typedef CancelJobRequest = $Empty;
 
@@ -8824,6 +8853,9 @@ class ClusterStatus {
   /// - "STOPPED" : The cluster is currently stopped. It is not ready for use.
   /// - "STARTING" : The cluster is being started. It is not ready for use.
   /// - "REPAIRING" : The cluster is being repaired. It is not ready for use.
+  /// - "SCHEDULED" : Cluster creation is currently waiting for resources to be
+  /// available. Once all resources are available, it will transition to
+  /// CREATING and then RUNNING.
   core.String? state;
 
   /// Time when this state was entered (see JSON representation of Timestamp
@@ -9114,7 +9146,7 @@ class DiskConfig {
   /// Indicates how many IOPS to provision for the disk.
   ///
   /// This sets the number of I/O operations per second that the disk can
-  /// handle. Note: This field is only supported if boot_disk_type is
+  /// handle. This field is supported only if boot_disk_type is
   /// hyperdisk-balanced.
   ///
   /// Optional.
@@ -9123,8 +9155,8 @@ class DiskConfig {
   /// Indicates how much throughput to provision for the disk.
   ///
   /// This sets the number of throughput mb per second that the disk can handle.
-  /// Values must be greater than or equal to 1. Note: This field is only
-  /// supported if boot_disk_type is hyperdisk-balanced.
+  /// Values must be greater than or equal to 1. This field is supported only if
+  /// boot_disk_type is hyperdisk-balanced.
   ///
   /// Optional.
   core.String? bootDiskProvisionedThroughput;
@@ -9951,6 +9983,35 @@ class ExecutorSummary {
 /// information.
 typedef Expr = $Expr;
 
+/// Native SQL Execution Data
+class FallbackReason {
+  /// Fallback node information.
+  ///
+  /// Optional.
+  core.String? fallbackNode;
+
+  /// Fallback to Spark reason.
+  ///
+  /// Optional.
+  core.String? fallbackReason;
+
+  FallbackReason({
+    this.fallbackNode,
+    this.fallbackReason,
+  });
+
+  FallbackReason.fromJson(core.Map json_)
+      : this(
+          fallbackNode: json_['fallbackNode'] as core.String?,
+          fallbackReason: json_['fallbackReason'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fallbackNode != null) 'fallbackNode': fallbackNode!,
+        if (fallbackReason != null) 'fallbackReason': fallbackReason!,
+      };
+}
+
 /// A Dataproc job for running Apache Flink applications on YARN.
 class FlinkJob {
   /// The arguments to pass to the driver.
@@ -10112,6 +10173,13 @@ class GceClusterConfig {
   /// Optional.
   ReservationAffinity? reservationAffinity;
 
+  /// Resource manager tags to add to all instances (see Resource manager tags
+  /// resources
+  /// (https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)).
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? resourceManagerTags;
+
   /// The Dataproc service account
   /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc)
   /// (also see VM Data Plane identity
@@ -10179,6 +10247,7 @@ class GceClusterConfig {
     this.nodeGroupAffinity,
     this.privateIpv6GoogleAccess,
     this.reservationAffinity,
+    this.resourceManagerTags,
     this.serviceAccount,
     this.serviceAccountScopes,
     this.shieldedInstanceConfig,
@@ -10214,6 +10283,14 @@ class GceClusterConfig {
               ? ReservationAffinity.fromJson(json_['reservationAffinity']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          resourceManagerTags: (json_['resourceManagerTags']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           serviceAccount: json_['serviceAccount'] as core.String?,
           serviceAccountScopes: (json_['serviceAccountScopes'] as core.List?)
               ?.map((value) => value as core.String)
@@ -10240,6 +10317,8 @@ class GceClusterConfig {
           'privateIpv6GoogleAccess': privateIpv6GoogleAccess!,
         if (reservationAffinity != null)
           'reservationAffinity': reservationAffinity!,
+        if (resourceManagerTags != null)
+          'resourceManagerTags': resourceManagerTags!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (serviceAccountScopes != null)
           'serviceAccountScopes': serviceAccountScopes!,
@@ -13073,6 +13152,103 @@ class NamespacedGkeDeploymentTarget {
       };
 }
 
+class NativeBuildInfoUiData {
+  /// Build class of Native.
+  ///
+  /// Optional.
+  core.String? buildClass;
+
+  /// Build related details.
+  ///
+  /// Optional.
+  core.List<BuildInfo>? buildInfo;
+
+  NativeBuildInfoUiData({
+    this.buildClass,
+    this.buildInfo,
+  });
+
+  NativeBuildInfoUiData.fromJson(core.Map json_)
+      : this(
+          buildClass: json_['buildClass'] as core.String?,
+          buildInfo: (json_['buildInfo'] as core.List?)
+              ?.map((value) => BuildInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildClass != null) 'buildClass': buildClass!,
+        if (buildInfo != null) 'buildInfo': buildInfo!,
+      };
+}
+
+/// Native SQL Execution Data
+class NativeSqlExecutionUiData {
+  /// Description of the execution.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Execution ID of the Native SQL Execution.
+  ///
+  /// Required.
+  core.String? executionId;
+
+  /// Description of the fallback.
+  ///
+  /// Optional.
+  core.String? fallbackDescription;
+
+  /// Fallback node to reason.
+  ///
+  /// Optional.
+  core.List<FallbackReason>? fallbackNodeToReason;
+
+  /// Number of nodes fallen back to Spark.
+  ///
+  /// Optional.
+  core.int? numFallbackNodes;
+
+  /// Number of nodes in Native.
+  ///
+  /// Optional.
+  core.int? numNativeNodes;
+
+  NativeSqlExecutionUiData({
+    this.description,
+    this.executionId,
+    this.fallbackDescription,
+    this.fallbackNodeToReason,
+    this.numFallbackNodes,
+    this.numNativeNodes,
+  });
+
+  NativeSqlExecutionUiData.fromJson(core.Map json_)
+      : this(
+          description: json_['description'] as core.String?,
+          executionId: json_['executionId'] as core.String?,
+          fallbackDescription: json_['fallbackDescription'] as core.String?,
+          fallbackNodeToReason: (json_['fallbackNodeToReason'] as core.List?)
+              ?.map((value) => FallbackReason.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          numFallbackNodes: json_['numFallbackNodes'] as core.int?,
+          numNativeNodes: json_['numNativeNodes'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (executionId != null) 'executionId': executionId!,
+        if (fallbackDescription != null)
+          'fallbackDescription': fallbackDescription!,
+        if (fallbackNodeToReason != null)
+          'fallbackNodeToReason': fallbackNodeToReason!,
+        if (numFallbackNodes != null) 'numFallbackNodes': numFallbackNodes!,
+        if (numNativeNodes != null) 'numNativeNodes': numNativeNodes!,
+      };
+}
+
 /// Dataproc Node Group.
 ///
 /// The Dataproc NodeGroup resource is not related to the Dataproc
@@ -15762,9 +15938,9 @@ class Session {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
-  /// The resource name of the session.
+  /// Identifier.
   ///
-  /// Required.
+  /// The resource name of the session.
   core.String? name;
 
   /// Runtime configuration for the session execution.
@@ -17410,6 +17586,12 @@ class SparkWrapperObject {
   ExecutorStageSummary? executorStageSummary;
   ExecutorSummary? executorSummary;
   JobData? jobData;
+
+  /// Native Build Info
+  NativeBuildInfoUiData? nativeBuildInfoUiData;
+
+  /// Native SQL Execution Info
+  NativeSqlExecutionUiData? nativeSqlExecutionUiData;
   PoolData? poolData;
   ProcessSummary? processSummary;
   RddOperationGraph? rddOperationGraph;
@@ -17433,6 +17615,8 @@ class SparkWrapperObject {
     this.executorStageSummary,
     this.executorSummary,
     this.jobData,
+    this.nativeBuildInfoUiData,
+    this.nativeSqlExecutionUiData,
     this.poolData,
     this.processSummary,
     this.rddOperationGraph,
@@ -17478,6 +17662,16 @@ class SparkWrapperObject {
               ? JobData.fromJson(
                   json_['jobData'] as core.Map<core.String, core.dynamic>)
               : null,
+          nativeBuildInfoUiData: json_.containsKey('nativeBuildInfoUiData')
+              ? NativeBuildInfoUiData.fromJson(json_['nativeBuildInfoUiData']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          nativeSqlExecutionUiData:
+              json_.containsKey('nativeSqlExecutionUiData')
+                  ? NativeSqlExecutionUiData.fromJson(
+                      json_['nativeSqlExecutionUiData']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           poolData: json_.containsKey('poolData')
               ? PoolData.fromJson(
                   json_['poolData'] as core.Map<core.String, core.dynamic>)
@@ -17544,6 +17738,10 @@ class SparkWrapperObject {
           'executorStageSummary': executorStageSummary!,
         if (executorSummary != null) 'executorSummary': executorSummary!,
         if (jobData != null) 'jobData': jobData!,
+        if (nativeBuildInfoUiData != null)
+          'nativeBuildInfoUiData': nativeBuildInfoUiData!,
+        if (nativeSqlExecutionUiData != null)
+          'nativeSqlExecutionUiData': nativeSqlExecutionUiData!,
         if (poolData != null) 'poolData': poolData!,
         if (processSummary != null) 'processSummary': processSummary!,
         if (rddOperationGraph != null) 'rddOperationGraph': rddOperationGraph!,

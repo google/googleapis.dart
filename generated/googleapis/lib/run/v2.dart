@@ -32,6 +32,8 @@
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsServicesResource]
 ///       - [ProjectsLocationsServicesRevisionsResource]
+///     - [ProjectsLocationsWorkerPoolsResource]
+///       - [ProjectsLocationsWorkerPoolsRevisionsResource]
 library;
 
 import 'dart:async' as async;
@@ -90,6 +92,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsServicesResource get services =>
       ProjectsLocationsServicesResource(_requester);
+  ProjectsLocationsWorkerPoolsResource get workerPools =>
+      ProjectsLocationsWorkerPoolsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -1939,6 +1943,589 @@ class ProjectsLocationsServicesRevisionsResource {
   }
 }
 
+class ProjectsLocationsWorkerPoolsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkerPoolsRevisionsResource get revisions =>
+      ProjectsLocationsWorkerPoolsRevisionsResource(_requester);
+
+  ProjectsLocationsWorkerPoolsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new WorkerPool in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The location and project in which this worker pool
+  /// should be created. Format: projects/{project}/locations/{location}, where
+  /// {project} can be project id or number. Only lowercase characters, digits,
+  /// and hyphens.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [validateOnly] - Optional. Indicates that the request should be validated
+  /// and default values populated, without persisting the request or creating
+  /// any resources.
+  ///
+  /// [workerPoolId] - Required. The unique identifier for the WorkerPool. It
+  /// must begin with letter, and cannot end with hyphen; must contain fewer
+  /// than 50 characters. The name of the worker pool becomes
+  /// {parent}/workerPools/{worker_pool_id}.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudRunV2WorkerPool request,
+    core.String parent, {
+    core.bool? validateOnly,
+    core.String? workerPoolId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if (workerPoolId != null) 'workerPoolId': [workerPoolId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/workerPools';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a WorkerPool.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full name of the WorkerPool. Format:
+  /// projects/{project}/locations/{location}/workerPools/{worker_pool}, where
+  /// {project} can be project id or number.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workerPools/\[^/\]+$`.
+  ///
+  /// [etag] - A system-generated fingerprint for this version of the resource.
+  /// May be used to detect modification conflict during updates.
+  ///
+  /// [validateOnly] - Optional. Indicates that the request should be validated
+  /// without actually deleting any resources.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? etag,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets information about a WorkerPool.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full name of the WorkerPool. Format:
+  /// projects/{project}/locations/{location}/workerPools/{worker_pool}, where
+  /// {project} can be project id or number.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workerPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRunV2WorkerPool].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRunV2WorkerPool> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRunV2WorkerPool.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the IAM Access Control policy currently in effect for the given Cloud
+  /// Run WorkerPool.
+  ///
+  /// This result does not include any inherited policies.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workerPools/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists WorkerPools.
+  ///
+  /// Results are sorted by creation time, descending.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The location and project to list resources on.
+  /// Location must be a valid Google Cloud region, and cannot be the "-"
+  /// wildcard. Format: projects/{project}/locations/{location}, where {project}
+  /// can be project id or number.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of WorkerPools to return in this call.
+  ///
+  /// [pageToken] - A page token received from a previous call to
+  /// ListWorkerPools. All other parameters must match.
+  ///
+  /// [showDeleted] - If true, returns deleted (but unexpired) resources along
+  /// with active ones.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRunV2ListWorkerPoolsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRunV2ListWorkerPoolsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/workerPools';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRunV2ListWorkerPoolsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a WorkerPool.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The fully qualified name of this WorkerPool. In
+  /// CreateWorkerPoolRequest, this field is ignored, and instead composed from
+  /// CreateWorkerPoolRequest.parent and CreateWorkerPoolRequest.worker_id.
+  /// Format: projects/{project}/locations/{location}/workerPools/{worker_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workerPools/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, and if the WorkerPool does not
+  /// exist, it will create a new one. The caller must have
+  /// 'run.workerpools.create' permissions if this is set to true and the
+  /// WorkerPool does not exist.
+  ///
+  /// [forceNewRevision] - Optional. If set to true, a new revision will be
+  /// created from the template even if the system doesn't detect any changes
+  /// from the previously deployed revision. This may be useful for cases where
+  /// the underlying resources need to be recreated or reinitialized. For
+  /// example if the image is specified by label, but the underlying image
+  /// digest has changed) or if the container performs deployment initialization
+  /// work that needs to be performed again.
+  ///
+  /// [updateMask] - Optional. The list of fields to be updated.
+  ///
+  /// [validateOnly] - Optional. Indicates that the request should be validated
+  /// and default values populated, without persisting the request or updating
+  /// any resources.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudRunV2WorkerPool request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.bool? forceNewRevision,
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (forceNewRevision != null) 'forceNewRevision': ['${forceNewRevision}'],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the IAM Access control policy for the specified WorkerPool.
+  ///
+  /// Overwrites any existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workerPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified Project.
+  ///
+  /// There are no permissions required for making this API call.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workerPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsWorkerPoolsRevisionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkerPoolsRevisionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes a Revision.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Revision to delete. Format:
+  /// projects/{project}/locations/{location}/services/{service}/revisions/{revision}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workerPools/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [etag] - A system-generated fingerprint for this version of the resource.
+  /// This may be used to detect modification conflict during updates.
+  ///
+  /// [validateOnly] - Indicates that the request should be validated without
+  /// actually deleting any resources.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? etag,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets information about a Revision.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full name of the Revision. Format:
+  /// projects/{project}/locations/{location}/services/{service}/revisions/{revision}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workerPools/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRunV2Revision].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRunV2Revision> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRunV2Revision.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Revisions from a given Service, or from a given location.
+  ///
+  /// Results are sorted by creation time, descending.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The Service from which the Revisions should be
+  /// listed. To list all Revisions across Services, use "-" instead of Service
+  /// name. Format: projects/{project}/locations/{location}/services/{service}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workerPools/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of revisions to return in this call.
+  ///
+  /// [pageToken] - A page token received from a previous call to ListRevisions.
+  /// All other parameters must match.
+  ///
+  /// [showDeleted] - If true, returns deleted (but unexpired) resources along
+  /// with active ones.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRunV2ListRevisionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRunV2ListRevisionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/revisions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRunV2ListRevisionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Settings for Binary Authorization feature.
 class GoogleCloudRunV2BinaryAuthorization {
   /// If present, indicates to use Breakglass using this justification.
@@ -1987,9 +2574,146 @@ class GoogleCloudRunV2BinaryAuthorization {
       };
 }
 
+/// Describes the Build step of the function that builds a container from the
+/// given source.
+class GoogleCloudRunV2BuildConfig {
+  /// The base image used to build the function.
+  ///
+  /// Optional.
+  core.String? baseImage;
+
+  /// Sets whether the function will receive automatic base image updates.
+  ///
+  /// Optional.
+  core.bool? enableAutomaticUpdates;
+
+  /// User-provided build-time environment variables for the function
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? environmentVariables;
+
+  /// The name of the function (as defined in source code) that will be
+  /// executed.
+  ///
+  /// Defaults to the resource name suffix, if not specified. For backward
+  /// compatibility, if function with given name is not found, then the system
+  /// will try to use function named "function".
+  ///
+  /// Optional.
+  core.String? functionTarget;
+
+  /// Artifact Registry URI to store the built image.
+  ///
+  /// Optional.
+  core.String? imageUri;
+
+  /// The Cloud Build name of the latest successful deployment of the function.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Service account to be used for building the container.
+  ///
+  /// The format of this field is
+  /// `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`.
+  ///
+  /// Optional.
+  core.String? serviceAccount;
+
+  /// The Cloud Storage bucket URI where the function source code is located.
+  core.String? sourceLocation;
+
+  /// Name of the Cloud Build Custom Worker Pool that should be used to build
+  /// the Cloud Run function.
+  ///
+  /// The format of this field is
+  /// `projects/{project}/locations/{region}/workerPools/{workerPool}` where
+  /// `{project}` and `{region}` are the project id and region respectively
+  /// where the worker pool is defined and `{workerPool}` is the short name of
+  /// the worker pool.
+  ///
+  /// Optional.
+  core.String? workerPool;
+
+  GoogleCloudRunV2BuildConfig({
+    this.baseImage,
+    this.enableAutomaticUpdates,
+    this.environmentVariables,
+    this.functionTarget,
+    this.imageUri,
+    this.name,
+    this.serviceAccount,
+    this.sourceLocation,
+    this.workerPool,
+  });
+
+  GoogleCloudRunV2BuildConfig.fromJson(core.Map json_)
+      : this(
+          baseImage: json_['baseImage'] as core.String?,
+          enableAutomaticUpdates: json_['enableAutomaticUpdates'] as core.bool?,
+          environmentVariables: (json_['environmentVariables']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          functionTarget: json_['functionTarget'] as core.String?,
+          imageUri: json_['imageUri'] as core.String?,
+          name: json_['name'] as core.String?,
+          serviceAccount: json_['serviceAccount'] as core.String?,
+          sourceLocation: json_['sourceLocation'] as core.String?,
+          workerPool: json_['workerPool'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseImage != null) 'baseImage': baseImage!,
+        if (enableAutomaticUpdates != null)
+          'enableAutomaticUpdates': enableAutomaticUpdates!,
+        if (environmentVariables != null)
+          'environmentVariables': environmentVariables!,
+        if (functionTarget != null) 'functionTarget': functionTarget!,
+        if (imageUri != null) 'imageUri': imageUri!,
+        if (name != null) 'name': name!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (sourceLocation != null) 'sourceLocation': sourceLocation!,
+        if (workerPool != null) 'workerPool': workerPool!,
+      };
+}
+
+/// Build information of the image.
+class GoogleCloudRunV2BuildInfo {
+  /// Entry point of the function when the image is a Cloud Run function.
+  ///
+  /// Output only.
+  core.String? functionTarget;
+
+  /// Source code location of the image.
+  ///
+  /// Output only.
+  core.String? sourceLocation;
+
+  GoogleCloudRunV2BuildInfo({
+    this.functionTarget,
+    this.sourceLocation,
+  });
+
+  GoogleCloudRunV2BuildInfo.fromJson(core.Map json_)
+      : this(
+          functionTarget: json_['functionTarget'] as core.String?,
+          sourceLocation: json_['sourceLocation'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (functionTarget != null) 'functionTarget': functionTarget!,
+        if (sourceLocation != null) 'sourceLocation': sourceLocation!,
+      };
+}
+
 /// Build the source using Buildpacks.
 class GoogleCloudRunV2BuildpacksBuild {
-  /// The base image used to opt into automatic base image updates.
+  /// The base image to use for the build.
   ///
   /// Optional.
   core.String? baseImage;
@@ -2295,6 +3019,17 @@ class GoogleCloudRunV2Container {
   /// The docker image's CMD is used if this is not provided.
   core.List<core.String>? args;
 
+  /// Base image for this container.
+  ///
+  /// Only supported for services. If set, it indicates that the service is
+  /// enrolled into automatic base image update.
+  core.String? baseImageUri;
+
+  /// The build info of the container image.
+  ///
+  /// Output only.
+  GoogleCloudRunV2BuildInfo? buildInfo;
+
   /// Entrypoint array.
   ///
   /// Not executed within a shell. The docker image's ENTRYPOINT is used if this
@@ -2352,6 +3087,8 @@ class GoogleCloudRunV2Container {
 
   GoogleCloudRunV2Container({
     this.args,
+    this.baseImageUri,
+    this.buildInfo,
     this.command,
     this.dependsOn,
     this.env,
@@ -2370,6 +3107,11 @@ class GoogleCloudRunV2Container {
           args: (json_['args'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          baseImageUri: json_['baseImageUri'] as core.String?,
+          buildInfo: json_.containsKey('buildInfo')
+              ? GoogleCloudRunV2BuildInfo.fromJson(
+                  json_['buildInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
           command: (json_['command'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -2407,6 +3149,8 @@ class GoogleCloudRunV2Container {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (args != null) 'args': args!,
+        if (baseImageUri != null) 'baseImageUri': baseImageUri!,
+        if (buildInfo != null) 'buildInfo': buildInfo!,
         if (command != null) 'command': command!,
         if (dependsOn != null) 'dependsOn': dependsOn!,
         if (env != null) 'env': env!,
@@ -2652,6 +3396,11 @@ class GoogleCloudRunV2Execution {
   /// Output only.
   core.String? createTime;
 
+  /// Email address of the authenticated creator.
+  ///
+  /// Output only.
+  core.String? creator;
+
   /// For a deleted resource, the deletion time.
   ///
   /// It is only populated as a response to a Delete request.
@@ -2841,6 +3590,7 @@ class GoogleCloudRunV2Execution {
     this.completionTime,
     this.conditions,
     this.createTime,
+    this.creator,
     this.deleteTime,
     this.etag,
     this.expireTime,
@@ -2882,6 +3632,7 @@ class GoogleCloudRunV2Execution {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           createTime: json_['createTime'] as core.String?,
+          creator: json_['creator'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
           etag: json_['etag'] as core.String?,
           expireTime: json_['expireTime'] as core.String?,
@@ -2921,6 +3672,7 @@ class GoogleCloudRunV2Execution {
         if (completionTime != null) 'completionTime': completionTime!,
         if (conditions != null) 'conditions': conditions!,
         if (createTime != null) 'createTime': createTime!,
+        if (creator != null) 'creator': creator!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (etag != null) 'etag': etag!,
         if (expireTime != null) 'expireTime': expireTime!,
@@ -3035,11 +3787,13 @@ class GoogleCloudRunV2ExecutionTemplate {
   /// Specifies the maximum desired number of tasks the execution should run at
   /// given time.
   ///
-  /// Must be \<= task_count. When the job is run, if this field is 0 or unset,
-  /// the maximum possible value will be used for that execution. The actual
-  /// number of tasks running in steady state will be less than this number when
-  /// there are fewer tasks waiting to be completed remaining, i.e. when the
-  /// work left to do is less than max parallelism.
+  /// When the job is run, if this field is 0 or unset, the maximum possible
+  /// value will be used for that execution. The actual number of tasks running
+  /// in steady state will be less than this number when there are fewer tasks
+  /// waiting to be completed remaining, i.e. when the work left to do is less
+  /// than max parallelism.
+  ///
+  /// Optional.
   core.int? parallelism;
 
   /// Specifies the desired number of tasks the execution should run.
@@ -3372,6 +4126,88 @@ class GoogleCloudRunV2ImageExportStatus {
           'exportedImageDigest': exportedImageDigest!,
         if (status != null) 'status': status!,
         if (tag != null) 'tag': tag!,
+      };
+}
+
+/// Holds a single instance split entry for the Worker.
+///
+/// Allocations can be done to a specific Revision name, or pointing to the
+/// latest Ready Revision.
+class GoogleCloudRunV2InstanceSplit {
+  /// Specifies percent of the instance split to this Revision.
+  ///
+  /// This defaults to zero if unspecified.
+  core.int? percent;
+
+  /// Revision to which to assign this portion of instances, if split allocation
+  /// is by revision.
+  core.String? revision;
+
+  /// The allocation type for this instance split.
+  /// Possible string values are:
+  /// - "INSTANCE_SPLIT_ALLOCATION_TYPE_UNSPECIFIED" : Unspecified instance
+  /// allocation type.
+  /// - "INSTANCE_SPLIT_ALLOCATION_TYPE_LATEST" : Allocates instances to the
+  /// Service's latest ready Revision.
+  /// - "INSTANCE_SPLIT_ALLOCATION_TYPE_REVISION" : Allocates instances to a
+  /// Revision by name.
+  core.String? type;
+
+  GoogleCloudRunV2InstanceSplit({
+    this.percent,
+    this.revision,
+    this.type,
+  });
+
+  GoogleCloudRunV2InstanceSplit.fromJson(core.Map json_)
+      : this(
+          percent: json_['percent'] as core.int?,
+          revision: json_['revision'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (percent != null) 'percent': percent!,
+        if (revision != null) 'revision': revision!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Represents the observed state of a single `InstanceSplit` entry.
+class GoogleCloudRunV2InstanceSplitStatus {
+  /// Specifies percent of the instance split to this Revision.
+  core.int? percent;
+
+  /// Revision to which this instance split is assigned.
+  core.String? revision;
+
+  /// The allocation type for this instance split.
+  /// Possible string values are:
+  /// - "INSTANCE_SPLIT_ALLOCATION_TYPE_UNSPECIFIED" : Unspecified instance
+  /// allocation type.
+  /// - "INSTANCE_SPLIT_ALLOCATION_TYPE_LATEST" : Allocates instances to the
+  /// Service's latest ready Revision.
+  /// - "INSTANCE_SPLIT_ALLOCATION_TYPE_REVISION" : Allocates instances to a
+  /// Revision by name.
+  core.String? type;
+
+  GoogleCloudRunV2InstanceSplitStatus({
+    this.percent,
+    this.revision,
+    this.type,
+  });
+
+  GoogleCloudRunV2InstanceSplitStatus.fromJson(core.Map json_)
+      : this(
+          percent: json_['percent'] as core.int?,
+          revision: json_['revision'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (percent != null) 'percent': percent!,
+        if (revision != null) 'revision': revision!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3865,6 +4701,36 @@ class GoogleCloudRunV2ListTasksResponse {
       };
 }
 
+/// Response message containing a list of WorkerPools.
+class GoogleCloudRunV2ListWorkerPoolsResponse {
+  /// A token indicating there are more items than page_size.
+  ///
+  /// Use it in the next ListWorkerPools request to continue.
+  core.String? nextPageToken;
+
+  /// The resulting list of WorkerPools.
+  core.List<GoogleCloudRunV2WorkerPool>? workerPools;
+
+  GoogleCloudRunV2ListWorkerPoolsResponse({
+    this.nextPageToken,
+    this.workerPools,
+  });
+
+  GoogleCloudRunV2ListWorkerPoolsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          workerPools: (json_['workerPools'] as core.List?)
+              ?.map((value) => GoogleCloudRunV2WorkerPool.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (workerPools != null) 'workerPools': workerPools!,
+      };
+}
+
 /// Metadata represents the JSON encoded generated customer metadata.
 class GoogleCloudRunV2Metadata {
   /// JSON encoded Google-generated Customer Metadata for a given
@@ -4206,6 +5072,11 @@ class GoogleCloudRunV2Revision {
   /// Output only.
   core.String? createTime;
 
+  /// Email address of the authenticated creator.
+  ///
+  /// Output only.
+  core.String? creator;
+
   /// For a deleted resource, the deletion time.
   ///
   /// It is only populated as a response to a Delete request.
@@ -4410,6 +5281,7 @@ class GoogleCloudRunV2Revision {
     this.conditions,
     this.containers,
     this.createTime,
+    this.creator,
     this.deleteTime,
     this.encryptionKey,
     this.encryptionKeyRevocationAction,
@@ -4459,6 +5331,7 @@ class GoogleCloudRunV2Revision {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           createTime: json_['createTime'] as core.String?,
+          creator: json_['creator'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
           encryptionKey: json_['encryptionKey'] as core.String?,
           encryptionKeyRevocationAction:
@@ -4521,6 +5394,7 @@ class GoogleCloudRunV2Revision {
         if (conditions != null) 'conditions': conditions!,
         if (containers != null) 'containers': containers!,
         if (createTime != null) 'createTime': createTime!,
+        if (creator != null) 'creator': creator!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (encryptionKey != null) 'encryptionKey': encryptionKey!,
         if (encryptionKeyRevocationAction != null)
@@ -4897,38 +5771,7 @@ class GoogleCloudRunV2RunJobRequest {
 }
 
 /// SecretEnvVarSource represents a source for the value of an EnvVar.
-class GoogleCloudRunV2SecretKeySelector {
-  /// The name of the secret in Cloud Secret Manager.
-  ///
-  /// Format: {secret_name} if the secret is in the same project.
-  /// projects/{project}/secrets/{secret_name} if the secret is in a different
-  /// project.
-  ///
-  /// Required.
-  core.String? secret;
-
-  /// The Cloud Secret Manager secret version.
-  ///
-  /// Can be 'latest' for the latest version, an integer for a specific version,
-  /// or a version alias.
-  core.String? version;
-
-  GoogleCloudRunV2SecretKeySelector({
-    this.secret,
-    this.version,
-  });
-
-  GoogleCloudRunV2SecretKeySelector.fromJson(core.Map json_)
-      : this(
-          secret: json_['secret'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (secret != null) 'secret': secret!,
-        if (version != null) 'version': version!,
-      };
-}
+typedef GoogleCloudRunV2SecretKeySelector = $Shared05;
 
 /// The secret's value will be presented as the content of a file whose name is
 /// defined in the item path.
@@ -5016,6 +5859,11 @@ class GoogleCloudRunV2Service {
   /// Optional.
   GoogleCloudRunV2BinaryAuthorization? binaryAuthorization;
 
+  /// Configuration for building a Cloud Run function.
+  ///
+  /// Optional.
+  GoogleCloudRunV2BuildConfig? buildConfig;
+
   /// Arbitrary identifier for the API client.
   core.String? client;
 
@@ -5073,7 +5921,7 @@ class GoogleCloudRunV2Service {
   /// Output only.
   core.String? etag;
 
-  /// For a deleted resource, the time after which it will be permamently
+  /// For a deleted resource, the time after which it will be permanently
   /// deleted.
   ///
   /// Output only.
@@ -5218,7 +6066,7 @@ class GoogleCloudRunV2Service {
   /// will asynchronously perform all necessary steps to bring the Service to
   /// the desired serving state. This process is called reconciliation. While
   /// reconciliation is in process, `observed_generation`,
-  /// `latest_ready_revison`, `traffic_statuses`, and `uri` will have transient
+  /// `latest_ready_revision`, `traffic_statuses`, and `uri` will have transient
   /// values that might mismatch the intended state: Once reconciliation is over
   /// (and this field is false), there are two possible outcomes: reconciliation
   /// succeeded and the serving state matches the Service, or there was an
@@ -5301,6 +6149,7 @@ class GoogleCloudRunV2Service {
   GoogleCloudRunV2Service({
     this.annotations,
     this.binaryAuthorization,
+    this.buildConfig,
     this.client,
     this.clientVersion,
     this.conditions,
@@ -5349,6 +6198,10 @@ class GoogleCloudRunV2Service {
               ? GoogleCloudRunV2BinaryAuthorization.fromJson(
                   json_['binaryAuthorization']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          buildConfig: json_.containsKey('buildConfig')
+              ? GoogleCloudRunV2BuildConfig.fromJson(
+                  json_['buildConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           client: json_['client'] as core.String?,
           clientVersion: json_['clientVersion'] as core.String?,
@@ -5416,6 +6269,7 @@ class GoogleCloudRunV2Service {
         if (annotations != null) 'annotations': annotations!,
         if (binaryAuthorization != null)
           'binaryAuthorization': binaryAuthorization!,
+        if (buildConfig != null) 'buildConfig': buildConfig!,
         if (client != null) 'client': client!,
         if (clientVersion != null) 'clientVersion': clientVersion!,
         if (conditions != null) 'conditions': conditions!,
@@ -5859,6 +6713,11 @@ class GoogleCloudRunV2Task {
   /// Output only.
   core.String? name;
 
+  /// The node selector for the task.
+  ///
+  /// Output only.
+  GoogleCloudRunV2NodeSelector? nodeSelector;
+
   /// The generation of this Task.
   ///
   /// See comments in `Job.reconciling` for additional information on
@@ -5962,6 +6821,7 @@ class GoogleCloudRunV2Task {
     this.logUri,
     this.maxRetries,
     this.name,
+    this.nodeSelector,
     this.observedGeneration,
     this.reconciling,
     this.retried,
@@ -6020,6 +6880,10 @@ class GoogleCloudRunV2Task {
           logUri: json_['logUri'] as core.String?,
           maxRetries: json_['maxRetries'] as core.int?,
           name: json_['name'] as core.String?,
+          nodeSelector: json_.containsKey('nodeSelector')
+              ? GoogleCloudRunV2NodeSelector.fromJson(
+                  json_['nodeSelector'] as core.Map<core.String, core.dynamic>)
+              : null,
           observedGeneration: json_['observedGeneration'] as core.String?,
           reconciling: json_['reconciling'] as core.bool?,
           retried: json_['retried'] as core.int?,
@@ -6061,6 +6925,7 @@ class GoogleCloudRunV2Task {
         if (logUri != null) 'logUri': logUri!,
         if (maxRetries != null) 'maxRetries': maxRetries!,
         if (name != null) 'name': name!,
+        if (nodeSelector != null) 'nodeSelector': nodeSelector!,
         if (observedGeneration != null)
           'observedGeneration': observedGeneration!,
         if (reconciling != null) 'reconciling': reconciling!,
@@ -6142,6 +7007,11 @@ class GoogleCloudRunV2TaskTemplate {
   /// Defaults to 3.
   core.int? maxRetries;
 
+  /// The node selector for the task template.
+  ///
+  /// Optional.
+  GoogleCloudRunV2NodeSelector? nodeSelector;
+
   /// Email address of the IAM service account associated with the Task of a
   /// Job.
   ///
@@ -6179,6 +7049,7 @@ class GoogleCloudRunV2TaskTemplate {
     this.encryptionKey,
     this.executionEnvironment,
     this.maxRetries,
+    this.nodeSelector,
     this.serviceAccount,
     this.timeout,
     this.volumes,
@@ -6194,6 +7065,10 @@ class GoogleCloudRunV2TaskTemplate {
           encryptionKey: json_['encryptionKey'] as core.String?,
           executionEnvironment: json_['executionEnvironment'] as core.String?,
           maxRetries: json_['maxRetries'] as core.int?,
+          nodeSelector: json_.containsKey('nodeSelector')
+              ? GoogleCloudRunV2NodeSelector.fromJson(
+                  json_['nodeSelector'] as core.Map<core.String, core.dynamic>)
+              : null,
           serviceAccount: json_['serviceAccount'] as core.String?,
           timeout: json_['timeout'] as core.String?,
           volumes: (json_['volumes'] as core.List?)
@@ -6212,6 +7087,7 @@ class GoogleCloudRunV2TaskTemplate {
         if (executionEnvironment != null)
           'executionEnvironment': executionEnvironment!,
         if (maxRetries != null) 'maxRetries': maxRetries!,
+        if (nodeSelector != null) 'nodeSelector': nodeSelector!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (timeout != null) 'timeout': timeout!,
         if (volumes != null) 'volumes': volumes!,
@@ -6525,6 +7401,688 @@ class GoogleCloudRunV2VpcAccess {
         if (connector != null) 'connector': connector!,
         if (egress != null) 'egress': egress!,
         if (networkInterfaces != null) 'networkInterfaces': networkInterfaces!,
+      };
+}
+
+/// WorkerPool acts as a top-level container that manages a set of
+/// configurations and revision templates which implement a pull-based workload.
+///
+/// WorkerPool exists to provide a singular abstraction which can be access
+/// controlled, reasoned about, and which encapsulates software lifecycle
+/// decisions such as rollout policy and team resource ownership.
+class GoogleCloudRunV2WorkerPool {
+  /// Unstructured key value map that may be set by external tools to store and
+  /// arbitrary metadata.
+  ///
+  /// They are not queryable and should be preserved when modifying objects.
+  /// Cloud Run API v2 does not support annotations with `run.googleapis.com`,
+  /// `cloud.googleapis.com`, `serving.knative.dev`, or
+  /// `autoscaling.knative.dev` namespaces, and they will be rejected in new
+  /// resources. All system annotations in v1 now have a corresponding field in
+  /// v2 WorkerPool. This field follows Kubernetes annotations' namespacing,
+  /// limits, and rules.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
+  /// Settings for the Binary Authorization feature.
+  ///
+  /// Optional.
+  GoogleCloudRunV2BinaryAuthorization? binaryAuthorization;
+
+  /// Arbitrary identifier for the API client.
+  core.String? client;
+
+  /// Arbitrary version identifier for the API client.
+  core.String? clientVersion;
+
+  /// The Conditions of all other associated sub-resources.
+  ///
+  /// They contain additional diagnostics information in case the WorkerPool
+  /// does not reach its Serving state. See comments in `reconciling` for
+  /// additional information on reconciliation process in Cloud Run.
+  ///
+  /// Output only.
+  core.List<GoogleCloudRunV2Condition>? conditions;
+
+  /// The creation time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Email address of the authenticated creator.
+  ///
+  /// Output only.
+  core.String? creator;
+
+  /// One or more custom audiences that you want this worker pool to support.
+  ///
+  /// Specify each custom audience as the full URL in a string. The custom
+  /// audiences are encoded in the token and used to authenticate requests. For
+  /// more information, see
+  /// https://cloud.google.com/run/docs/configuring/custom-audiences.
+  core.List<core.String>? customAudiences;
+
+  /// The deletion time.
+  ///
+  /// It is only populated as a response to a Delete request.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// User-provided description of the WorkerPool.
+  ///
+  /// This field currently has a 512-character limit.
+  core.String? description;
+
+  /// A system-generated fingerprint for this version of the resource.
+  ///
+  /// May be used to detect modification conflict during updates.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// For a deleted resource, the time after which it will be permamently
+  /// deleted.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// A number that monotonically increases every time the user modifies the
+  /// desired state.
+  ///
+  /// Please note that unlike v1, this is an int64 value. As with most Google
+  /// APIs, its JSON representation will be a `string` instead of an `integer`.
+  ///
+  /// Output only.
+  core.String? generation;
+
+  /// Detailed status information for corresponding instance splits.
+  ///
+  /// See comments in `reconciling` for additional information on reconciliation
+  /// process in Cloud Run.
+  ///
+  /// Output only.
+  core.List<GoogleCloudRunV2InstanceSplitStatus>? instanceSplitStatuses;
+
+  /// Specifies how to distribute instances over a collection of Revisions
+  /// belonging to the WorkerPool.
+  ///
+  /// If instance split is empty or not provided, defaults to 100% instances
+  /// assigned to the latest `Ready` Revision.
+  ///
+  /// Optional.
+  core.List<GoogleCloudRunV2InstanceSplit>? instanceSplits;
+
+  /// Unstructured key value map that can be used to organize and categorize
+  /// objects.
+  ///
+  /// User-provided labels are shared with Google's billing system, so they can
+  /// be used to filter, or break down billing charges by team, component,
+  /// environment, state, etc. For more information, visit
+  /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+  /// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2
+  /// does not support labels with `run.googleapis.com`, `cloud.googleapis.com`,
+  /// `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they
+  /// will be rejected. All system labels in v1 now have a corresponding field
+  /// in v2 WorkerPool.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Email address of the last authenticated modifier.
+  ///
+  /// Output only.
+  core.String? lastModifier;
+
+  /// Name of the last created revision.
+  ///
+  /// See comments in `reconciling` for additional information on reconciliation
+  /// process in Cloud Run.
+  ///
+  /// Output only.
+  core.String? latestCreatedRevision;
+
+  /// Name of the latest revision that is serving traffic.
+  ///
+  /// See comments in `reconciling` for additional information on reconciliation
+  /// process in Cloud Run.
+  ///
+  /// Output only.
+  core.String? latestReadyRevision;
+
+  /// The launch stage as defined by
+  /// [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages).
+  ///
+  /// Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA
+  /// is assumed. Set the launch stage to a preview stage on input to allow use
+  /// of preview features in that stage. On read (or output), describes whether
+  /// the resource uses preview features. For example, if ALPHA is provided as
+  /// input, but only BETA and GA-level features are used, this field will be
+  /// BETA on output.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
+  /// it.
+  /// - "PRELAUNCH" : Prelaunch features are hidden from users and are only
+  /// visible internally.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use these features, you must sign up in advance and sign a
+  /// Trusted Tester agreement (which includes confidentiality provisions).
+  /// These features may be unstable, changed in backward-incompatible ways, and
+  /// are not guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared for widespread use. By Alpha, all significant design issues
+  /// are resolved and we are in the process of verifying functionality. Alpha
+  /// customers need to apply for access, agree to applicable terms, and have
+  /// their projects allowlisted. Alpha releases don't have to be feature
+  /// complete, no SLAs are provided, and there are no technical support
+  /// obligations, but they will be far enough along that customers can actually
+  /// use them in test environments or for limited-use tests -- just like they
+  /// would in normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any customer to use. There are no SLA or technical support obligations in
+  /// a Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more information, see the "Deprecation Policy" section of our
+  /// [Terms of Service](https://cloud.google.com/terms/) and the
+  /// [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation)
+  /// documentation.
+  core.String? launchStage;
+
+  /// The fully qualified name of this WorkerPool.
+  ///
+  /// In CreateWorkerPoolRequest, this field is ignored, and instead composed
+  /// from CreateWorkerPoolRequest.parent and CreateWorkerPoolRequest.worker_id.
+  /// Format: projects/{project}/locations/{location}/workerPools/{worker_id}
+  core.String? name;
+
+  /// The generation of this WorkerPool currently serving traffic.
+  ///
+  /// See comments in `reconciling` for additional information on reconciliation
+  /// process in Cloud Run. Please note that unlike v1, this is an int64 value.
+  /// As with most Google APIs, its JSON representation will be a `string`
+  /// instead of an `integer`.
+  ///
+  /// Output only.
+  core.String? observedGeneration;
+
+  /// Returns true if the WorkerPool is currently being acted upon by the system
+  /// to bring it into the desired state.
+  ///
+  /// When a new WorkerPool is created, or an existing one is updated, Cloud Run
+  /// will asynchronously perform all necessary steps to bring the WorkerPool to
+  /// the desired serving state. This process is called reconciliation. While
+  /// reconciliation is in process, `observed_generation`,
+  /// `latest_ready_revison`, `traffic_statuses`, and `uri` will have transient
+  /// values that might mismatch the intended state: Once reconciliation is over
+  /// (and this field is false), there are two possible outcomes: reconciliation
+  /// succeeded and the serving state matches the WorkerPool, or there was an
+  /// error, and reconciliation failed. This state can be found in
+  /// `terminal_condition.state`. If reconciliation succeeded, the following
+  /// fields will match: `traffic` and `traffic_statuses`, `observed_generation`
+  /// and `generation`, `latest_ready_revision` and `latest_created_revision`.
+  /// If reconciliation failed, `traffic_statuses`, `observed_generation`, and
+  /// `latest_ready_revision` will have the state of the last serving revision,
+  /// or empty for newly created WorkerPools. Additional information on the
+  /// failure can be found in `terminal_condition` and `conditions`.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
+  /// Specifies worker-pool-level scaling settings
+  ///
+  /// Optional.
+  GoogleCloudRunV2WorkerPoolScaling? scaling;
+
+  /// The template used to create revisions for this WorkerPool.
+  ///
+  /// Required.
+  GoogleCloudRunV2WorkerPoolRevisionTemplate? template;
+
+  /// The Condition of this WorkerPool, containing its readiness status, and
+  /// detailed error information in case it did not reach a serving state.
+  ///
+  /// See comments in `reconciling` for additional information on reconciliation
+  /// process in Cloud Run.
+  ///
+  /// Output only.
+  GoogleCloudRunV2Condition? terminalCondition;
+
+  /// Server assigned unique identifier for the trigger.
+  ///
+  /// The value is a UUID4 string and guaranteed to remain unchanged until the
+  /// resource is deleted.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The last-modified time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudRunV2WorkerPool({
+    this.annotations,
+    this.binaryAuthorization,
+    this.client,
+    this.clientVersion,
+    this.conditions,
+    this.createTime,
+    this.creator,
+    this.customAudiences,
+    this.deleteTime,
+    this.description,
+    this.etag,
+    this.expireTime,
+    this.generation,
+    this.instanceSplitStatuses,
+    this.instanceSplits,
+    this.labels,
+    this.lastModifier,
+    this.latestCreatedRevision,
+    this.latestReadyRevision,
+    this.launchStage,
+    this.name,
+    this.observedGeneration,
+    this.reconciling,
+    this.satisfiesPzs,
+    this.scaling,
+    this.template,
+    this.terminalCondition,
+    this.uid,
+    this.updateTime,
+  });
+
+  GoogleCloudRunV2WorkerPool.fromJson(core.Map json_)
+      : this(
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          binaryAuthorization: json_.containsKey('binaryAuthorization')
+              ? GoogleCloudRunV2BinaryAuthorization.fromJson(
+                  json_['binaryAuthorization']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          client: json_['client'] as core.String?,
+          clientVersion: json_['clientVersion'] as core.String?,
+          conditions: (json_['conditions'] as core.List?)
+              ?.map((value) => GoogleCloudRunV2Condition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          createTime: json_['createTime'] as core.String?,
+          creator: json_['creator'] as core.String?,
+          customAudiences: (json_['customAudiences'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          deleteTime: json_['deleteTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
+          generation: json_['generation'] as core.String?,
+          instanceSplitStatuses: (json_['instanceSplitStatuses'] as core.List?)
+              ?.map((value) => GoogleCloudRunV2InstanceSplitStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          instanceSplits: (json_['instanceSplits'] as core.List?)
+              ?.map((value) => GoogleCloudRunV2InstanceSplit.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          lastModifier: json_['lastModifier'] as core.String?,
+          latestCreatedRevision: json_['latestCreatedRevision'] as core.String?,
+          latestReadyRevision: json_['latestReadyRevision'] as core.String?,
+          launchStage: json_['launchStage'] as core.String?,
+          name: json_['name'] as core.String?,
+          observedGeneration: json_['observedGeneration'] as core.String?,
+          reconciling: json_['reconciling'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+          scaling: json_.containsKey('scaling')
+              ? GoogleCloudRunV2WorkerPoolScaling.fromJson(
+                  json_['scaling'] as core.Map<core.String, core.dynamic>)
+              : null,
+          template: json_.containsKey('template')
+              ? GoogleCloudRunV2WorkerPoolRevisionTemplate.fromJson(
+                  json_['template'] as core.Map<core.String, core.dynamic>)
+              : null,
+          terminalCondition: json_.containsKey('terminalCondition')
+              ? GoogleCloudRunV2Condition.fromJson(json_['terminalCondition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (binaryAuthorization != null)
+          'binaryAuthorization': binaryAuthorization!,
+        if (client != null) 'client': client!,
+        if (clientVersion != null) 'clientVersion': clientVersion!,
+        if (conditions != null) 'conditions': conditions!,
+        if (createTime != null) 'createTime': createTime!,
+        if (creator != null) 'creator': creator!,
+        if (customAudiences != null) 'customAudiences': customAudiences!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (generation != null) 'generation': generation!,
+        if (instanceSplitStatuses != null)
+          'instanceSplitStatuses': instanceSplitStatuses!,
+        if (instanceSplits != null) 'instanceSplits': instanceSplits!,
+        if (labels != null) 'labels': labels!,
+        if (lastModifier != null) 'lastModifier': lastModifier!,
+        if (latestCreatedRevision != null)
+          'latestCreatedRevision': latestCreatedRevision!,
+        if (latestReadyRevision != null)
+          'latestReadyRevision': latestReadyRevision!,
+        if (launchStage != null) 'launchStage': launchStage!,
+        if (name != null) 'name': name!,
+        if (observedGeneration != null)
+          'observedGeneration': observedGeneration!,
+        if (reconciling != null) 'reconciling': reconciling!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+        if (scaling != null) 'scaling': scaling!,
+        if (template != null) 'template': template!,
+        if (terminalCondition != null) 'terminalCondition': terminalCondition!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// WorkerPoolRevisionTemplate describes the data a worker pool revision should
+/// have when created from a template.
+class GoogleCloudRunV2WorkerPoolRevisionTemplate {
+  /// Unstructured key value map that may be set by external tools to store and
+  /// arbitrary metadata.
+  ///
+  /// They are not queryable and should be preserved when modifying objects.
+  /// Cloud Run API v2 does not support annotations with `run.googleapis.com`,
+  /// `cloud.googleapis.com`, `serving.knative.dev`, or
+  /// `autoscaling.knative.dev` namespaces, and they will be rejected. All
+  /// system annotations in v1 now have a corresponding field in v2
+  /// WorkerPoolRevisionTemplate. This field follows Kubernetes annotations'
+  /// namespacing, limits, and rules.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
+  /// Holds list of the containers that defines the unit of execution for this
+  /// Revision.
+  core.List<GoogleCloudRunV2Container>? containers;
+
+  /// A reference to a customer managed encryption key (CMEK) to use to encrypt
+  /// this container image.
+  ///
+  /// For more information, go to
+  /// https://cloud.google.com/run/docs/securing/using-cmek
+  core.String? encryptionKey;
+
+  /// The action to take if the encryption key is revoked.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENCRYPTION_KEY_REVOCATION_ACTION_UNSPECIFIED" : Unspecified
+  /// - "PREVENT_NEW" : Prevents the creation of new instances.
+  /// - "SHUTDOWN" : Shuts down existing instances, and prevents creation of new
+  /// ones.
+  core.String? encryptionKeyRevocationAction;
+
+  /// If encryption_key_revocation_action is SHUTDOWN, the duration before
+  /// shutting down all instances.
+  ///
+  /// The minimum increment is 1 hour.
+  ///
+  /// Optional.
+  core.String? encryptionKeyShutdownDuration;
+
+  /// Unstructured key value map that can be used to organize and categorize
+  /// objects.
+  ///
+  /// User-provided labels are shared with Google's billing system, so they can
+  /// be used to filter, or break down billing charges by team, component,
+  /// environment, state, etc. For more information, visit
+  /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+  /// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2
+  /// does not support labels with `run.googleapis.com`, `cloud.googleapis.com`,
+  /// `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they
+  /// will be rejected. All system labels in v1 now have a corresponding field
+  /// in v2 WorkerPoolRevisionTemplate.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The node selector for the revision template.
+  ///
+  /// Optional.
+  GoogleCloudRunV2NodeSelector? nodeSelector;
+
+  /// The unique name for the revision.
+  ///
+  /// If this field is omitted, it will be automatically generated based on the
+  /// WorkerPool name.
+  ///
+  /// Optional.
+  core.String? revision;
+
+  /// Email address of the IAM service account associated with the revision of
+  /// the service.
+  ///
+  /// The service account represents the identity of the running revision, and
+  /// determines what permissions the revision has. If not provided, the
+  /// revision will use the project's default service account.
+  ///
+  /// Optional.
+  core.String? serviceAccount;
+
+  /// Enables service mesh connectivity.
+  ///
+  /// Optional.
+  GoogleCloudRunV2ServiceMesh? serviceMesh;
+
+  /// Enable session affinity.
+  ///
+  /// Optional.
+  core.bool? sessionAffinity;
+
+  /// A list of Volumes to make available to containers.
+  ///
+  /// Optional.
+  core.List<GoogleCloudRunV2Volume>? volumes;
+
+  /// VPC Access configuration to use for this Revision.
+  ///
+  /// For more information, visit
+  /// https://cloud.google.com/run/docs/configuring/connecting-vpc.
+  ///
+  /// Optional.
+  GoogleCloudRunV2VpcAccess? vpcAccess;
+
+  GoogleCloudRunV2WorkerPoolRevisionTemplate({
+    this.annotations,
+    this.containers,
+    this.encryptionKey,
+    this.encryptionKeyRevocationAction,
+    this.encryptionKeyShutdownDuration,
+    this.labels,
+    this.nodeSelector,
+    this.revision,
+    this.serviceAccount,
+    this.serviceMesh,
+    this.sessionAffinity,
+    this.volumes,
+    this.vpcAccess,
+  });
+
+  GoogleCloudRunV2WorkerPoolRevisionTemplate.fromJson(core.Map json_)
+      : this(
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          containers: (json_['containers'] as core.List?)
+              ?.map((value) => GoogleCloudRunV2Container.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          encryptionKey: json_['encryptionKey'] as core.String?,
+          encryptionKeyRevocationAction:
+              json_['encryptionKeyRevocationAction'] as core.String?,
+          encryptionKeyShutdownDuration:
+              json_['encryptionKeyShutdownDuration'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          nodeSelector: json_.containsKey('nodeSelector')
+              ? GoogleCloudRunV2NodeSelector.fromJson(
+                  json_['nodeSelector'] as core.Map<core.String, core.dynamic>)
+              : null,
+          revision: json_['revision'] as core.String?,
+          serviceAccount: json_['serviceAccount'] as core.String?,
+          serviceMesh: json_.containsKey('serviceMesh')
+              ? GoogleCloudRunV2ServiceMesh.fromJson(
+                  json_['serviceMesh'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sessionAffinity: json_['sessionAffinity'] as core.bool?,
+          volumes: (json_['volumes'] as core.List?)
+              ?.map((value) => GoogleCloudRunV2Volume.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          vpcAccess: json_.containsKey('vpcAccess')
+              ? GoogleCloudRunV2VpcAccess.fromJson(
+                  json_['vpcAccess'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (containers != null) 'containers': containers!,
+        if (encryptionKey != null) 'encryptionKey': encryptionKey!,
+        if (encryptionKeyRevocationAction != null)
+          'encryptionKeyRevocationAction': encryptionKeyRevocationAction!,
+        if (encryptionKeyShutdownDuration != null)
+          'encryptionKeyShutdownDuration': encryptionKeyShutdownDuration!,
+        if (labels != null) 'labels': labels!,
+        if (nodeSelector != null) 'nodeSelector': nodeSelector!,
+        if (revision != null) 'revision': revision!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (serviceMesh != null) 'serviceMesh': serviceMesh!,
+        if (sessionAffinity != null) 'sessionAffinity': sessionAffinity!,
+        if (volumes != null) 'volumes': volumes!,
+        if (vpcAccess != null) 'vpcAccess': vpcAccess!,
+      };
+}
+
+/// Worker pool scaling settings.
+class GoogleCloudRunV2WorkerPoolScaling {
+  /// The total number of instances in manual scaling mode.
+  ///
+  /// Optional.
+  core.int? manualInstanceCount;
+
+  /// The maximum count of instances distributed among revisions based on the
+  /// specified instance split percentages.
+  ///
+  /// Optional.
+  core.int? maxInstanceCount;
+
+  /// A maximum percentage of instances that will be moved in each step of
+  /// traffic split changes.
+  ///
+  /// When set to a positive value, the server will bring up, at most, that
+  /// percentage of new instances at a time before moving traffic to them. After
+  /// moving traffic, the server will bring down instances of the old revision.
+  /// This can reduce a spike of total active instances during changes from one
+  /// revision to another but specifying how many extra instances can be brought
+  /// up at a time.
+  ///
+  /// Optional.
+  core.int? maxSurge;
+
+  /// A maximum percentage of instances that may be unavailable during changes
+  /// from one revision to another.
+  ///
+  /// When set to a positive value, the server may bring down instances before
+  /// bringing up new instances. This can prevent a spike of total active
+  /// instances during changes from one revision by reducing the pool of
+  /// instances before bringing up new ones. Some requests may be slow or fail
+  /// to serve during the transition.
+  ///
+  /// Optional.
+  core.int? maxUnavailable;
+
+  /// The minimum count of instances distributed among revisions based on the
+  /// specified instance split percentages.
+  ///
+  /// Optional.
+  core.int? minInstanceCount;
+
+  /// The scaling mode for the worker pool.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SCALING_MODE_UNSPECIFIED" : Unspecified.
+  /// - "AUTOMATIC" : Automatically scale between min and max instances.
+  /// - "MANUAL" : Scale to exactly min instances and ignore the max instances.
+  core.String? scalingMode;
+
+  GoogleCloudRunV2WorkerPoolScaling({
+    this.manualInstanceCount,
+    this.maxInstanceCount,
+    this.maxSurge,
+    this.maxUnavailable,
+    this.minInstanceCount,
+    this.scalingMode,
+  });
+
+  GoogleCloudRunV2WorkerPoolScaling.fromJson(core.Map json_)
+      : this(
+          manualInstanceCount: json_['manualInstanceCount'] as core.int?,
+          maxInstanceCount: json_['maxInstanceCount'] as core.int?,
+          maxSurge: json_['maxSurge'] as core.int?,
+          maxUnavailable: json_['maxUnavailable'] as core.int?,
+          minInstanceCount: json_['minInstanceCount'] as core.int?,
+          scalingMode: json_['scalingMode'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (manualInstanceCount != null)
+          'manualInstanceCount': manualInstanceCount!,
+        if (maxInstanceCount != null) 'maxInstanceCount': maxInstanceCount!,
+        if (maxSurge != null) 'maxSurge': maxSurge!,
+        if (maxUnavailable != null) 'maxUnavailable': maxUnavailable!,
+        if (minInstanceCount != null) 'minInstanceCount': minInstanceCount!,
+        if (scalingMode != null) 'scalingMode': scalingMode!,
       };
 }
 
@@ -6997,23 +8555,30 @@ class UtilStatusProto {
   /// to this status.
   ///
   /// This may be missing, and in the common case of the generic space, it
-  /// definitely will be.
+  /// definitely will be. copybara:strip_begin(b/383363683)
+  /// copybara:strip_end_and_replace optional int32 canonical_code = 6;
   core.int? canonicalCode;
 
   /// Numeric code drawn from the space specified below.
   ///
   /// Often, this is the canonical error space, and code is drawn from
-  /// google3/util/task/codes.proto
+  /// google3/util/task/codes.proto copybara:strip_begin(b/383363683)
+  /// copybara:strip_end_and_replace optional int32 code = 1;
   core.int? code;
 
-  /// Detail message
+  /// Detail message copybara:strip_begin(b/383363683)
+  /// copybara:strip_end_and_replace optional string message = 3;
   core.String? message;
 
   /// message_set associates an arbitrary proto message with the status.
+  ///
+  /// copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional
+  /// proto2.bridge.MessageSet message_set = 5;
   Proto2BridgeMessageSet? messageSet;
 
   /// The following are usually only present when code != 0 Space to which this
-  /// status belongs
+  /// status belongs copybara:strip_begin(b/383363683)
+  /// copybara:strip_end_and_replace optional string space = 2;
   core.String? space;
 
   UtilStatusProto({

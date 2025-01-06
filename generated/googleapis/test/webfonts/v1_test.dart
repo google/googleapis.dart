@@ -299,6 +299,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.WebfontsApi(mock).webfonts;
       final arg_capability = buildUnnamed6();
+      final arg_category = 'foo';
       final arg_family = buildUnnamed7();
       final arg_sort = 'foo';
       final arg_subset = 'foo';
@@ -339,6 +340,10 @@ void main() {
           unittest.equals(arg_capability),
         );
         unittest.expect(
+          queryMap['category']!.first,
+          unittest.equals(arg_category),
+        );
+        unittest.expect(
           queryMap['family']!,
           unittest.equals(arg_family),
         );
@@ -363,6 +368,7 @@ void main() {
       }), true);
       final response = await res.list(
           capability: arg_capability,
+          category: arg_category,
           family: arg_family,
           sort: arg_sort,
           subset: arg_subset,

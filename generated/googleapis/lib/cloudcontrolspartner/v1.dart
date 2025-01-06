@@ -1080,7 +1080,7 @@ class EkmMetadata {
   /// - "FORTANIX" : EKM Partner Fortanix
   /// - "FUTUREX" : EKM Partner FutureX
   /// - "THALES" : EKM Partner Thales
-  /// - "VIRTRU" : EKM Partner Virtu
+  /// - "VIRTRU" : This enum value is never used.
   core.String? ekmSolution;
 
   EkmMetadata({

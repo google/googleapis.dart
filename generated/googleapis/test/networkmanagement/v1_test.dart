@@ -576,6 +576,48 @@ void checkDeliverInfo(api.DeliverInfo o) {
   buildCounterDeliverInfo--;
 }
 
+core.int buildCounterDirectVpcEgressConnectionInfo = 0;
+api.DirectVpcEgressConnectionInfo buildDirectVpcEgressConnectionInfo() {
+  final o = api.DirectVpcEgressConnectionInfo();
+  buildCounterDirectVpcEgressConnectionInfo++;
+  if (buildCounterDirectVpcEgressConnectionInfo < 3) {
+    o.networkUri = 'foo';
+    o.region = 'foo';
+    o.selectedIpAddress = 'foo';
+    o.selectedIpRange = 'foo';
+    o.subnetworkUri = 'foo';
+  }
+  buildCounterDirectVpcEgressConnectionInfo--;
+  return o;
+}
+
+void checkDirectVpcEgressConnectionInfo(api.DirectVpcEgressConnectionInfo o) {
+  buildCounterDirectVpcEgressConnectionInfo++;
+  if (buildCounterDirectVpcEgressConnectionInfo < 3) {
+    unittest.expect(
+      o.networkUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.region!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.selectedIpAddress!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.selectedIpRange!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.subnetworkUri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDirectVpcEgressConnectionInfo--;
+}
+
 core.int buildCounterDropInfo = 0;
 api.DropInfo buildDropInfo() {
   final o = api.DropInfo();
@@ -2479,6 +2521,29 @@ void checkRouteInfo(api.RouteInfo o) {
   buildCounterRouteInfo--;
 }
 
+core.int buildCounterServerlessExternalConnectionInfo = 0;
+api.ServerlessExternalConnectionInfo buildServerlessExternalConnectionInfo() {
+  final o = api.ServerlessExternalConnectionInfo();
+  buildCounterServerlessExternalConnectionInfo++;
+  if (buildCounterServerlessExternalConnectionInfo < 3) {
+    o.selectedIpAddress = 'foo';
+  }
+  buildCounterServerlessExternalConnectionInfo--;
+  return o;
+}
+
+void checkServerlessExternalConnectionInfo(
+    api.ServerlessExternalConnectionInfo o) {
+  buildCounterServerlessExternalConnectionInfo++;
+  if (buildCounterServerlessExternalConnectionInfo < 3) {
+    unittest.expect(
+      o.selectedIpAddress!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterServerlessExternalConnectionInfo--;
+}
+
 core.int buildCounterServerlessNegInfo = 0;
 api.ServerlessNegInfo buildServerlessNegInfo() {
   final o = api.ServerlessNegInfo();
@@ -2623,6 +2688,7 @@ api.Step buildStep() {
     o.cloudSqlInstance = buildCloudSQLInstanceInfo();
     o.deliver = buildDeliverInfo();
     o.description = 'foo';
+    o.directVpcEgressConnection = buildDirectVpcEgressConnectionInfo();
     o.drop = buildDropInfo();
     o.endpoint = buildEndpointInfo();
     o.firewall = buildFirewallInfo();
@@ -2640,6 +2706,7 @@ api.Step buildStep() {
     o.redisCluster = buildRedisClusterInfo();
     o.redisInstance = buildRedisInstanceInfo();
     o.route = buildRouteInfo();
+    o.serverlessExternalConnection = buildServerlessExternalConnectionInfo();
     o.serverlessNeg = buildServerlessNegInfo();
     o.state = 'foo';
     o.storageBucket = buildStorageBucketInfo();
@@ -2665,6 +2732,7 @@ void checkStep(api.Step o) {
       o.description!,
       unittest.equals('foo'),
     );
+    checkDirectVpcEgressConnectionInfo(o.directVpcEgressConnection!);
     checkDropInfo(o.drop!);
     checkEndpointInfo(o.endpoint!);
     checkFirewallInfo(o.firewall!);
@@ -2685,6 +2753,7 @@ void checkStep(api.Step o) {
     checkRedisClusterInfo(o.redisCluster!);
     checkRedisInstanceInfo(o.redisInstance!);
     checkRouteInfo(o.route!);
+    checkServerlessExternalConnectionInfo(o.serverlessExternalConnection!);
     checkServerlessNegInfo(o.serverlessNeg!);
     unittest.expect(
       o.state!,
@@ -3226,6 +3295,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DirectVpcEgressConnectionInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDirectVpcEgressConnectionInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DirectVpcEgressConnectionInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDirectVpcEgressConnectionInfo(od);
+    });
+  });
+
   unittest.group('obj-schema-DropInfo', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDropInfo();
@@ -3553,6 +3632,16 @@ void main() {
       final od =
           api.RouteInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkRouteInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-ServerlessExternalConnectionInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildServerlessExternalConnectionInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ServerlessExternalConnectionInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkServerlessExternalConnectionInfo(od);
     });
   });
 

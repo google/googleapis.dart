@@ -1770,6 +1770,7 @@ api.ChannelStatus buildChannelStatus() {
   final o = api.ChannelStatus();
   buildCounterChannelStatus++;
   if (buildCounterChannelStatus < 3) {
+    o.isChannelMonetizationEnabled = true;
     o.isLinked = true;
     o.longUploadsStatus = 'foo';
     o.madeForKids = true;
@@ -1783,6 +1784,7 @@ api.ChannelStatus buildChannelStatus() {
 void checkChannelStatus(api.ChannelStatus o) {
   buildCounterChannelStatus++;
   if (buildCounterChannelStatus < 3) {
+    unittest.expect(o.isChannelMonetizationEnabled!, unittest.isTrue);
     unittest.expect(o.isLinked!, unittest.isTrue);
     unittest.expect(
       o.longUploadsStatus!,
@@ -8339,6 +8341,57 @@ void checkVideoTopicDetails(api.VideoTopicDetails o) {
   buildCounterVideoTopicDetails--;
 }
 
+core.List<core.String> buildUnnamed69() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed69(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterVideoTrainability = 0;
+api.VideoTrainability buildVideoTrainability() {
+  final o = api.VideoTrainability();
+  buildCounterVideoTrainability++;
+  if (buildCounterVideoTrainability < 3) {
+    o.etag = 'foo';
+    o.kind = 'foo';
+    o.permitted = buildUnnamed69();
+    o.videoId = 'foo';
+  }
+  buildCounterVideoTrainability--;
+  return o;
+}
+
+void checkVideoTrainability(api.VideoTrainability o) {
+  buildCounterVideoTrainability++;
+  if (buildCounterVideoTrainability < 3) {
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed69(o.permitted!);
+    unittest.expect(
+      o.videoId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterVideoTrainability--;
+}
+
 core.int buildCounterWatchSettings = 0;
 api.WatchSettings buildWatchSettings() {
   final o = api.WatchSettings();
@@ -8369,23 +8422,6 @@ void checkWatchSettings(api.WatchSettings o) {
     );
   }
   buildCounterWatchSettings--;
-}
-
-core.List<core.String> buildUnnamed69() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed69(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.List<core.String> buildUnnamed70() => [
@@ -9601,6 +9637,23 @@ core.List<core.String> buildUnnamed141() => [
     ];
 
 void checkUnnamed141(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed142() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed142(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -11586,6 +11639,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-VideoTrainability', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVideoTrainability();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VideoTrainability.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkVideoTrainability(od);
+    });
+  });
+
   unittest.group('obj-schema-WatchSettings', () {
     unittest.test('to-json--from-json', () async {
       final o = buildWatchSettings();
@@ -11601,7 +11664,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).abuseReports;
       final arg_request = buildAbuseReport();
-      final arg_part = buildUnnamed69();
+      final arg_part = buildUnnamed70();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.AbuseReport.fromJson(
@@ -11663,7 +11726,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).activities;
-      final arg_part = buildUnnamed70();
+      final arg_part = buildUnnamed71();
       final arg_channelId = 'foo';
       final arg_home = true;
       final arg_maxResults = 42;
@@ -11924,7 +11987,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).captions;
       final arg_request = buildCaption();
-      final arg_part = buildUnnamed71();
+      final arg_part = buildUnnamed72();
       final arg_onBehalfOf = 'foo';
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_sync = true;
@@ -12002,9 +12065,9 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).captions;
-      final arg_part = buildUnnamed72();
+      final arg_part = buildUnnamed73();
       final arg_videoId = 'foo';
-      final arg_id = buildUnnamed73();
+      final arg_id = buildUnnamed74();
       final arg_onBehalfOf = 'foo';
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
@@ -12085,7 +12148,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).captions;
       final arg_request = buildCaption();
-      final arg_part = buildUnnamed74();
+      final arg_part = buildUnnamed75();
       final arg_onBehalfOf = 'foo';
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_sync = true;
@@ -12306,7 +12369,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).channelSections;
       final arg_request = buildChannelSection();
-      final arg_part = buildUnnamed75();
+      final arg_part = buildUnnamed76();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_onBehalfOfContentOwnerChannel = 'foo';
       final arg_$fields = 'foo';
@@ -12378,10 +12441,10 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).channelSections;
-      final arg_part = buildUnnamed76();
+      final arg_part = buildUnnamed77();
       final arg_channelId = 'foo';
       final arg_hl = 'foo';
-      final arg_id = buildUnnamed77();
+      final arg_id = buildUnnamed78();
       final arg_mine = true;
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
@@ -12466,7 +12529,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).channelSections;
       final arg_request = buildChannelSection();
-      final arg_part = buildUnnamed78();
+      final arg_part = buildUnnamed79();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12534,12 +12597,12 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).channels;
-      final arg_part = buildUnnamed79();
+      final arg_part = buildUnnamed80();
       final arg_categoryId = 'foo';
       final arg_forHandle = 'foo';
       final arg_forUsername = 'foo';
       final arg_hl = 'foo';
-      final arg_id = buildUnnamed80();
+      final arg_id = buildUnnamed81();
       final arg_managedByMe = true;
       final arg_maxResults = 42;
       final arg_mine = true;
@@ -12657,7 +12720,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).channels;
       final arg_request = buildChannel();
-      final arg_part = buildUnnamed81();
+      final arg_part = buildUnnamed82();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12726,7 +12789,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).commentThreads;
       final arg_request = buildCommentThread();
-      final arg_part = buildUnnamed82();
+      final arg_part = buildUnnamed83();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.CommentThread.fromJson(
@@ -12786,10 +12849,10 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).commentThreads;
-      final arg_part = buildUnnamed83();
+      final arg_part = buildUnnamed84();
       final arg_allThreadsRelatedToChannelId = 'foo';
       final arg_channelId = 'foo';
-      final arg_id = buildUnnamed84();
+      final arg_id = buildUnnamed85();
       final arg_maxResults = 42;
       final arg_moderationStatus = 'foo';
       final arg_order = 'foo';
@@ -12959,7 +13022,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).comments;
       final arg_request = buildComment();
-      final arg_part = buildUnnamed85();
+      final arg_part = buildUnnamed86();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
@@ -13019,8 +13082,8 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).comments;
-      final arg_part = buildUnnamed86();
-      final arg_id = buildUnnamed87();
+      final arg_part = buildUnnamed87();
+      final arg_id = buildUnnamed88();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_parentId = 'foo';
@@ -13105,7 +13168,7 @@ void main() {
     unittest.test('method--markAsSpam', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).comments;
-      final arg_id = buildUnnamed88();
+      final arg_id = buildUnnamed89();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -13159,7 +13222,7 @@ void main() {
     unittest.test('method--setModerationStatus', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).comments;
-      final arg_id = buildUnnamed89();
+      final arg_id = buildUnnamed90();
       final arg_moderationStatus = 'foo';
       final arg_banAuthor = true;
       final arg_$fields = 'foo';
@@ -13225,7 +13288,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).comments;
       final arg_request = buildComment();
-      final arg_part = buildUnnamed90();
+      final arg_part = buildUnnamed91();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
@@ -13287,7 +13350,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).i18nLanguages;
-      final arg_part = buildUnnamed91();
+      final arg_part = buildUnnamed92();
       final arg_hl = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13350,7 +13413,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).i18nRegions;
-      final arg_part = buildUnnamed92();
+      final arg_part = buildUnnamed93();
       final arg_hl = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13414,7 +13477,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveBroadcasts;
       final arg_id = 'foo';
-      final arg_part = buildUnnamed93();
+      final arg_part = buildUnnamed94();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_onBehalfOfContentOwnerChannel = 'foo';
       final arg_streamId = 'foo';
@@ -13560,7 +13623,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveBroadcasts;
       final arg_request = buildLiveBroadcast();
-      final arg_part = buildUnnamed94();
+      final arg_part = buildUnnamed95();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_onBehalfOfContentOwnerChannel = 'foo';
       final arg_$fields = 'foo';
@@ -13636,7 +13699,7 @@ void main() {
       final arg_id = 'foo';
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_onBehalfOfContentOwnerChannel = 'foo';
-      final arg_part = buildUnnamed95();
+      final arg_part = buildUnnamed96();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
@@ -13712,10 +13775,10 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveBroadcasts;
-      final arg_part = buildUnnamed96();
+      final arg_part = buildUnnamed97();
       final arg_broadcastStatus = 'foo';
       final arg_broadcastType = 'foo';
-      final arg_id = buildUnnamed97();
+      final arg_id = buildUnnamed98();
       final arg_maxResults = 42;
       final arg_mine = true;
       final arg_onBehalfOfContentOwner = 'foo';
@@ -13818,7 +13881,7 @@ void main() {
       final res = api.YouTubeApi(mock).liveBroadcasts;
       final arg_broadcastStatus = 'foo';
       final arg_id = 'foo';
-      final arg_part = buildUnnamed98();
+      final arg_part = buildUnnamed99();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_onBehalfOfContentOwnerChannel = 'foo';
       final arg_$fields = 'foo';
@@ -13896,7 +13959,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveBroadcasts;
       final arg_request = buildLiveBroadcast();
-      final arg_part = buildUnnamed99();
+      final arg_part = buildUnnamed100();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_onBehalfOfContentOwnerChannel = 'foo';
       final arg_$fields = 'foo';
@@ -14025,7 +14088,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveChatBans;
       final arg_request = buildLiveChatBan();
-      final arg_part = buildUnnamed100();
+      final arg_part = buildUnnamed101();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.LiveChatBan.fromJson(
@@ -14142,7 +14205,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveChatMessages;
       final arg_request = buildLiveChatMessage();
-      final arg_part = buildUnnamed101();
+      final arg_part = buildUnnamed102();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.LiveChatMessage.fromJson(
@@ -14203,7 +14266,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveChatMessages;
       final arg_liveChatId = 'foo';
-      final arg_part = buildUnnamed102();
+      final arg_part = buildUnnamed103();
       final arg_hl = 'foo';
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
@@ -14406,7 +14469,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveChatModerators;
       final arg_request = buildLiveChatModerator();
-      final arg_part = buildUnnamed103();
+      final arg_part = buildUnnamed104();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.LiveChatModerator.fromJson(
@@ -14467,7 +14530,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveChatModerators;
       final arg_liveChatId = 'foo';
-      final arg_part = buildUnnamed104();
+      final arg_part = buildUnnamed105();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -14610,7 +14673,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveStreams;
       final arg_request = buildLiveStream();
-      final arg_part = buildUnnamed105();
+      final arg_part = buildUnnamed106();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_onBehalfOfContentOwnerChannel = 'foo';
       final arg_$fields = 'foo';
@@ -14682,8 +14745,8 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveStreams;
-      final arg_part = buildUnnamed106();
-      final arg_id = buildUnnamed107();
+      final arg_part = buildUnnamed107();
+      final arg_id = buildUnnamed108();
       final arg_maxResults = 42;
       final arg_mine = true;
       final arg_onBehalfOfContentOwner = 'foo';
@@ -14775,7 +14838,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveStreams;
       final arg_request = buildLiveStream();
-      final arg_part = buildUnnamed108();
+      final arg_part = buildUnnamed109();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_onBehalfOfContentOwnerChannel = 'foo';
       final arg_$fields = 'foo';
@@ -14849,7 +14912,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).members;
-      final arg_part = buildUnnamed109();
+      final arg_part = buildUnnamed110();
       final arg_filterByMemberChannelId = 'foo';
       final arg_hasAccessToLevel = 'foo';
       final arg_maxResults = 42;
@@ -14937,7 +15000,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).membershipsLevels;
-      final arg_part = buildUnnamed110();
+      final arg_part = buildUnnamed111();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -15063,7 +15126,7 @@ void main() {
       final arg_request = buildPlaylistImage();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_onBehalfOfContentOwnerChannel = 'foo';
-      final arg_part = buildUnnamed111();
+      final arg_part = buildUnnamed112();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.PlaylistImage.fromJson(
@@ -15139,7 +15202,7 @@ void main() {
       final arg_onBehalfOfContentOwnerChannel = 'foo';
       final arg_pageToken = 'foo';
       final arg_parent = 'foo';
-      final arg_part = buildUnnamed112();
+      final arg_part = buildUnnamed113();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -15226,7 +15289,7 @@ void main() {
       final res = api.YouTubeApi(mock).playlistImages;
       final arg_request = buildPlaylistImage();
       final arg_onBehalfOfContentOwner = 'foo';
-      final arg_part = buildUnnamed113();
+      final arg_part = buildUnnamed114();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.PlaylistImage.fromJson(
@@ -15356,7 +15419,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).playlistItems;
       final arg_request = buildPlaylistItem();
-      final arg_part = buildUnnamed114();
+      final arg_part = buildUnnamed115();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15422,8 +15485,8 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).playlistItems;
-      final arg_part = buildUnnamed115();
-      final arg_id = buildUnnamed116();
+      final arg_part = buildUnnamed116();
+      final arg_id = buildUnnamed117();
       final arg_maxResults = 42;
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_pageToken = 'foo';
@@ -15515,7 +15578,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).playlistItems;
       final arg_request = buildPlaylistItem();
-      final arg_part = buildUnnamed117();
+      final arg_part = buildUnnamed118();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15645,7 +15708,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).playlists;
       final arg_request = buildPlaylist();
-      final arg_part = buildUnnamed118();
+      final arg_part = buildUnnamed119();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_onBehalfOfContentOwnerChannel = 'foo';
       final arg_$fields = 'foo';
@@ -15717,10 +15780,10 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).playlists;
-      final arg_part = buildUnnamed119();
+      final arg_part = buildUnnamed120();
       final arg_channelId = 'foo';
       final arg_hl = 'foo';
-      final arg_id = buildUnnamed120();
+      final arg_id = buildUnnamed121();
       final arg_maxResults = 42;
       final arg_mine = true;
       final arg_onBehalfOfContentOwner = 'foo';
@@ -15822,7 +15885,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).playlists;
       final arg_request = buildPlaylist();
-      final arg_part = buildUnnamed121();
+      final arg_part = buildUnnamed122();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15890,7 +15953,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).search;
-      final arg_part = buildUnnamed122();
+      final arg_part = buildUnnamed123();
       final arg_channelId = 'foo';
       final arg_channelType = 'foo';
       final arg_eventType = 'foo';
@@ -15910,7 +15973,7 @@ void main() {
       final arg_relevanceLanguage = 'foo';
       final arg_safeSearch = 'foo';
       final arg_topicId = 'foo';
-      final arg_type = buildUnnamed123();
+      final arg_type = buildUnnamed124();
       final arg_videoCaption = 'foo';
       final arg_videoCategoryId = 'foo';
       final arg_videoDefinition = 'foo';
@@ -16183,7 +16246,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).subscriptions;
       final arg_request = buildSubscription();
-      final arg_part = buildUnnamed124();
+      final arg_part = buildUnnamed125();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.Subscription.fromJson(
@@ -16243,10 +16306,10 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).subscriptions;
-      final arg_part = buildUnnamed125();
+      final arg_part = buildUnnamed126();
       final arg_channelId = 'foo';
       final arg_forChannelId = 'foo';
-      final arg_id = buildUnnamed126();
+      final arg_id = buildUnnamed127();
       final arg_maxResults = 42;
       final arg_mine = true;
       final arg_myRecentSubscribers = true;
@@ -16367,7 +16430,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).superChatEvents;
-      final arg_part = buildUnnamed127();
+      final arg_part = buildUnnamed128();
       final arg_hl = 'foo';
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
@@ -16445,7 +16508,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).tests;
       final arg_request = buildTestItem();
-      final arg_part = buildUnnamed128();
+      final arg_part = buildUnnamed129();
       final arg_externalChannelId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16515,7 +16578,7 @@ void main() {
       final arg_linkingToken = 'foo';
       final arg_type = 'foo';
       final arg_externalChannelId = 'foo';
-      final arg_part = buildUnnamed129();
+      final arg_part = buildUnnamed130();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -16585,7 +16648,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).thirdPartyLinks;
       final arg_request = buildThirdPartyLink();
-      final arg_part = buildUnnamed130();
+      final arg_part = buildUnnamed131();
       final arg_externalChannelId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16650,7 +16713,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).thirdPartyLinks;
-      final arg_part = buildUnnamed131();
+      final arg_part = buildUnnamed132();
       final arg_externalChannelId = 'foo';
       final arg_linkingToken = 'foo';
       final arg_type = 'foo';
@@ -16726,7 +16789,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).thirdPartyLinks;
       final arg_request = buildThirdPartyLink();
-      final arg_part = buildUnnamed132();
+      final arg_part = buildUnnamed133();
       final arg_externalChannelId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16860,7 +16923,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).videoAbuseReportReasons;
-      final arg_part = buildUnnamed133();
+      final arg_part = buildUnnamed134();
       final arg_hl = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16925,9 +16988,9 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).videoCategories;
-      final arg_part = buildUnnamed134();
+      final arg_part = buildUnnamed135();
       final arg_hl = 'foo';
-      final arg_id = buildUnnamed135();
+      final arg_id = buildUnnamed136();
       final arg_regionCode = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16997,6 +17060,63 @@ void main() {
     });
   });
 
+  unittest.group('resource-VideoTrainabilityResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.YouTubeApi(mock).videoTrainability;
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 28),
+          unittest.equals('youtube/v3/videoTrainability'),
+        );
+        pathOffset += 28;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['id']!.first,
+          unittest.equals(arg_id),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildVideoTrainability());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(id: arg_id, $fields: arg_$fields);
+      checkVideoTrainability(response as api.VideoTrainability);
+    });
+  });
+
   unittest.group('resource-VideosResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
@@ -17062,7 +17182,7 @@ void main() {
     unittest.test('method--getRating', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).videos;
-      final arg_id = buildUnnamed136();
+      final arg_id = buildUnnamed137();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -17128,7 +17248,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).videos;
       final arg_request = buildVideo();
-      final arg_part = buildUnnamed137();
+      final arg_part = buildUnnamed138();
       final arg_autoLevels = true;
       final arg_notifySubscribers = true;
       final arg_onBehalfOfContentOwner = 'foo';
@@ -17218,10 +17338,10 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).videos;
-      final arg_part = buildUnnamed138();
+      final arg_part = buildUnnamed139();
       final arg_chart = 'foo';
       final arg_hl = 'foo';
-      final arg_id = buildUnnamed139();
+      final arg_id = buildUnnamed140();
       final arg_locale = 'foo';
       final arg_maxHeight = 42;
       final arg_maxResults = 42;
@@ -17467,7 +17587,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).videos;
       final arg_request = buildVideo();
-      final arg_part = buildUnnamed140();
+      final arg_part = buildUnnamed141();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -17668,7 +17788,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).youtube.v3;
       final arg_request = buildCommentThread();
-      final arg_part = buildUnnamed141();
+      final arg_part = buildUnnamed142();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.CommentThread.fromJson(

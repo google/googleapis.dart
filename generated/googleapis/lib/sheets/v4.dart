@@ -6615,7 +6615,7 @@ class DeleteDimensionGroupResponse {
       };
 }
 
-/// Deletes the dimensions from the sheet.
+///  Deletes the dimensions from the sheet.
 class DeleteDimensionRequest {
   /// The dimensions to delete from the sheet.
   DimensionRange? range;
@@ -8443,6 +8443,8 @@ class InsertDimensionRequest {
 /// Inserts cells into a range, shifting the existing cells over or down.
 class InsertRangeRequest {
   /// The range to insert new cells into.
+  ///
+  /// The range is constrained to the current sheet boundaries.
   GridRange? range;
 
   /// The dimension which will be shifted when inserting cells.

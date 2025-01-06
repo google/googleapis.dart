@@ -30,6 +30,7 @@
 ///       - [ProjectsLocationsImportJobsImportDataFilesResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsPreferenceSetsResource]
+///     - [ProjectsLocationsRelationsResource]
 ///     - [ProjectsLocationsReportConfigsResource]
 ///       - [ProjectsLocationsReportConfigsReportsResource]
 ///     - [ProjectsLocationsSourcesResource]
@@ -92,6 +93,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsPreferenceSetsResource get preferenceSets =>
       ProjectsLocationsPreferenceSetsResource(_requester);
+  ProjectsLocationsRelationsResource get relations =>
+      ProjectsLocationsRelationsResource(_requester);
   ProjectsLocationsReportConfigsResource get reportConfigs =>
       ProjectsLocationsReportConfigsResource(_requester);
   ProjectsLocationsSourcesResource get sources =>
@@ -479,6 +482,10 @@ class ProjectsLocationsAssetsResource {
   /// asset.
   /// - "ASSET_VIEW_FULL" : The asset view includes all the metadata of an asset
   /// and performance data.
+  /// - "ASSET_VIEW_STANDARD" : The asset view includes the standard metadata of
+  /// an asset.
+  /// - "ASSET_VIEW_UI" : The asset view includes fields needed by UI.
+  /// - "ASSET_VIEW_LABELS" : The asset view includes asset name and labels.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -536,6 +543,10 @@ class ProjectsLocationsAssetsResource {
   /// asset.
   /// - "ASSET_VIEW_FULL" : The asset view includes all the metadata of an asset
   /// and performance data.
+  /// - "ASSET_VIEW_STANDARD" : The asset view includes the standard metadata of
+  /// an asset.
+  /// - "ASSET_VIEW_UI" : The asset view includes fields needed by UI.
+  /// - "ASSET_VIEW_LABELS" : The asset view includes asset name and labels.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2416,6 +2427,104 @@ class ProjectsLocationsPreferenceSetsResource {
   }
 }
 
+class ProjectsLocationsRelationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRelationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the details of an relation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/relations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Relation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Relation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Relation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all the relations in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for `ListRelationsRequest`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Field to sort by. See
+  /// https://google.aip.dev/132#ordering for more details.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRelationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRelationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/relations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRelationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsReportConfigsResource {
   final commons.ApiRequester _requester;
 
@@ -3995,6 +4104,9 @@ class AwsEc2PlatformDetails {
       };
 }
 
+/// Specific details for an AWS RDS database deployment.
+typedef AwsRds = $Empty;
+
 /// Azure VM specific details.
 class AzureVmPlatformDetails {
   /// Whether the machine is hyperthreaded.
@@ -4615,6 +4727,11 @@ class DatabaseDeploymentDetails {
   /// Output only.
   DatabaseDeploymentDetailsAggregatedStats? aggregatedStats;
 
+  /// Details of an AWS RDS instance.
+  ///
+  /// Optional.
+  AwsRds? awsRds;
+
   /// The database deployment edition.
   ///
   /// Optional.
@@ -4657,6 +4774,7 @@ class DatabaseDeploymentDetails {
 
   DatabaseDeploymentDetails({
     this.aggregatedStats,
+    this.awsRds,
     this.edition,
     this.generatedId,
     this.manualUniqueId,
@@ -4673,6 +4791,10 @@ class DatabaseDeploymentDetails {
               ? DatabaseDeploymentDetailsAggregatedStats.fromJson(
                   json_['aggregatedStats']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          awsRds: json_.containsKey('awsRds')
+              ? AwsRds.fromJson(
+                  json_['awsRds'] as core.Map<core.String, core.dynamic>)
               : null,
           edition: json_['edition'] as core.String?,
           generatedId: json_['generatedId'] as core.String?,
@@ -4698,6 +4820,7 @@ class DatabaseDeploymentDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aggregatedStats != null) 'aggregatedStats': aggregatedStats!,
+        if (awsRds != null) 'awsRds': awsRds!,
         if (edition != null) 'edition': edition!,
         if (generatedId != null) 'generatedId': generatedId!,
         if (manualUniqueId != null) 'manualUniqueId': manualUniqueId!,
@@ -5388,7 +5511,7 @@ class DiskPartition {
   /// Partition free space.
   core.String? freeBytes;
 
-  /// Mount pount (Linux/Windows) or drive letter (Windows).
+  /// Mount point (Linux/Windows) or drive letter (Windows).
   core.String? mountPoint;
 
   /// Sub-partitions.
@@ -5435,6 +5558,47 @@ class DiskPartition {
       };
 }
 
+/// Disk partition details.
+class DiskPartitionDetails {
+  /// Total free space of all partitions.
+  ///
+  /// Output only.
+  core.String? freeSpaceBytes;
+
+  /// List of partitions.
+  ///
+  /// Optional.
+  DiskPartitionList? partitions;
+
+  /// Total capacity of all partitions.
+  ///
+  /// Output only.
+  core.String? totalCapacityBytes;
+
+  DiskPartitionDetails({
+    this.freeSpaceBytes,
+    this.partitions,
+    this.totalCapacityBytes,
+  });
+
+  DiskPartitionDetails.fromJson(core.Map json_)
+      : this(
+          freeSpaceBytes: json_['freeSpaceBytes'] as core.String?,
+          partitions: json_.containsKey('partitions')
+              ? DiskPartitionList.fromJson(
+                  json_['partitions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          totalCapacityBytes: json_['totalCapacityBytes'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (freeSpaceBytes != null) 'freeSpaceBytes': freeSpaceBytes!,
+        if (partitions != null) 'partitions': partitions!,
+        if (totalCapacityBytes != null)
+          'totalCapacityBytes': totalCapacityBytes!,
+      };
+}
+
 /// Disk partition list.
 class DiskPartitionList {
   /// Partition entries.
@@ -5463,22 +5627,22 @@ class DiskPartitionList {
 class DiskUsageSample {
   /// Average IOPS sampled over a short window.
   ///
-  /// Must be non-negative. Must be equal to the sum of read and write if one of
-  /// them is positive. if both read and write are zero they are ignored.
+  /// Must be non-negative. If read or write are set, the sum of read and write
+  /// will override the value of the average_iops.
   ///
   /// Optional.
   core.double? averageIops;
 
   /// Average read IOPS sampled over a short window.
   ///
-  /// Must be non-negative.
+  /// Must be non-negative. If both read and write are zero they are ignored.
   ///
   /// Optional.
   core.double? averageReadIops;
 
   /// Average write IOPS sampled over a short window.
   ///
-  /// Must be non-negative.
+  /// Must be non-negative. If both read and write are zero they are ignored.
   ///
   /// Optional.
   core.double? averageWriteIops;
@@ -7008,6 +7172,34 @@ class ListPreferenceSetsResponse {
       };
 }
 
+/// Response message for listing relations.
+class ListRelationsResponse {
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// A list of relations.
+  core.List<Relation>? relations;
+
+  ListRelationsResponse({
+    this.nextPageToken,
+    this.relations,
+  });
+
+  ListRelationsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          relations: (json_['relations'] as core.List?)
+              ?.map((value) => Relation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (relations != null) 'relations': relations!,
+      };
+}
+
 /// Response message for listing report configs.
 class ListReportConfigsResponse {
   /// A token identifying a page of results the server should return.
@@ -7217,6 +7409,14 @@ class MachineDetails {
   /// Machine creation time.
   core.String? createTime;
 
+  /// Disk partitions details.
+  ///
+  /// Note: Partitions are not necessarily mounted on local disks and therefore
+  /// might not have a one-to-one correspondence with local disks.
+  ///
+  /// Optional.
+  DiskPartitionDetails? diskPartitions;
+
   /// Disk details.
   MachineDiskDetails? disks;
 
@@ -7257,6 +7457,7 @@ class MachineDetails {
     this.architecture,
     this.coreCount,
     this.createTime,
+    this.diskPartitions,
     this.disks,
     this.guestOs,
     this.machineName,
@@ -7275,6 +7476,10 @@ class MachineDetails {
               : null,
           coreCount: json_['coreCount'] as core.int?,
           createTime: json_['createTime'] as core.String?,
+          diskPartitions: json_.containsKey('diskPartitions')
+              ? DiskPartitionDetails.fromJson(json_['diskPartitions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           disks: json_.containsKey('disks')
               ? MachineDiskDetails.fromJson(
                   json_['disks'] as core.Map<core.String, core.dynamic>)
@@ -7301,6 +7506,7 @@ class MachineDetails {
         if (architecture != null) 'architecture': architecture!,
         if (coreCount != null) 'coreCount': coreCount!,
         if (createTime != null) 'createTime': createTime!,
+        if (diskPartitions != null) 'diskPartitions': diskPartitions!,
         if (disks != null) 'disks': disks!,
         if (guestOs != null) 'guestOs': guestOs!,
         if (machineName != null) 'machineName': machineName!,
@@ -7775,7 +7981,7 @@ class NetworkAddress {
   /// Whether DHCP is used to assign addresses.
   /// Possible string values are:
   /// - "ADDRESS_ASSIGNMENT_UNSPECIFIED" : Unknown (default value).
-  /// - "ADDRESS_ASSIGNMENT_STATIC" : Staticly assigned IP.
+  /// - "ADDRESS_ASSIGNMENT_STATIC" : Statically assigned IP.
   /// - "ADDRESS_ASSIGNMENT_DHCP" : Dynamically assigned IP (DHCP).
   core.String? assignment;
 
@@ -8553,6 +8759,66 @@ class RegionPreferences {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (preferredRegions != null) 'preferredRegions': preferredRegions!,
+      };
+}
+
+/// Message representing a relation between 2 resource.
+class Relation {
+  /// The timestamp when the relation was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The destination asset name in the relation.
+  ///
+  /// Output only.
+  core.String? dstAsset;
+
+  /// Identifier.
+  ///
+  /// The identifier of the relation.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The source asset name in the relation.
+  ///
+  /// Output only.
+  core.String? srcAsset;
+
+  /// The type of the relation.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default value.
+  /// - "LOGICAL_DATABASE" : DBDeployment -\> Database
+  /// - "DATABASE_DEPLOYMENT_HOSTING_SERVER" : A relation between a machine/VM
+  /// and the database deployment it hosts.
+  core.String? type;
+
+  Relation({
+    this.createTime,
+    this.dstAsset,
+    this.name,
+    this.srcAsset,
+    this.type,
+  });
+
+  Relation.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          dstAsset: json_['dstAsset'] as core.String?,
+          name: json_['name'] as core.String?,
+          srcAsset: json_['srcAsset'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (dstAsset != null) 'dstAsset': dstAsset!,
+        if (name != null) 'name': name!,
+        if (srcAsset != null) 'srcAsset': srcAsset!,
+        if (type != null) 'type': type!,
       };
 }
 

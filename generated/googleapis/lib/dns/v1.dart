@@ -3859,6 +3859,9 @@ class Policy {
   /// Has no effect on the policy's function.
   core.String? description;
 
+  /// Configurations related to DNS64 for this Policy.
+  PolicyDns64Config? dns64Config;
+
   /// Allows networks bound to this policy to receive DNS queries sent by VMs or
   /// applications over VPN connections.
   ///
@@ -3884,6 +3887,7 @@ class Policy {
   Policy({
     this.alternativeNameServerConfig,
     this.description,
+    this.dns64Config,
     this.enableInboundForwarding,
     this.enableLogging,
     this.id,
@@ -3901,6 +3905,10 @@ class Policy {
                           as core.Map<core.String, core.dynamic>)
                   : null,
           description: json_['description'] as core.String?,
+          dns64Config: json_.containsKey('dns64Config')
+              ? PolicyDns64Config.fromJson(
+                  json_['dns64Config'] as core.Map<core.String, core.dynamic>)
+              : null,
           enableInboundForwarding:
               json_['enableInboundForwarding'] as core.bool?,
           enableLogging: json_['enableLogging'] as core.bool?,
@@ -3917,6 +3925,7 @@ class Policy {
         if (alternativeNameServerConfig != null)
           'alternativeNameServerConfig': alternativeNameServerConfig!,
         if (description != null) 'description': description!,
+        if (dns64Config != null) 'dns64Config': dns64Config!,
         if (enableInboundForwarding != null)
           'enableInboundForwarding': enableInboundForwarding!,
         if (enableLogging != null) 'enableLogging': enableLogging!,
@@ -4002,6 +4011,55 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
         if (forwardingPath != null) 'forwardingPath': forwardingPath!,
         if (ipv4Address != null) 'ipv4Address': ipv4Address!,
         if (ipv6Address != null) 'ipv6Address': ipv6Address!,
+        if (kind != null) 'kind': kind!,
+      };
+}
+
+/// DNS64 policies
+class PolicyDns64Config {
+  core.String? kind;
+
+  /// The scope to which DNS64 config will be applied to.
+  PolicyDns64ConfigScope? scope;
+
+  PolicyDns64Config({
+    this.kind,
+    this.scope,
+  });
+
+  PolicyDns64Config.fromJson(core.Map json_)
+      : this(
+          kind: json_['kind'] as core.String?,
+          scope: json_.containsKey('scope')
+              ? PolicyDns64ConfigScope.fromJson(
+                  json_['scope'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (scope != null) 'scope': scope!,
+      };
+}
+
+class PolicyDns64ConfigScope {
+  /// Controls whether DNS64 is enabled globally at the network level.
+  core.bool? allQueries;
+  core.String? kind;
+
+  PolicyDns64ConfigScope({
+    this.allQueries,
+    this.kind,
+  });
+
+  PolicyDns64ConfigScope.fromJson(core.Map json_)
+      : this(
+          allQueries: json_['allQueries'] as core.bool?,
+          kind: json_['kind'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allQueries != null) 'allQueries': allQueries!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -4293,9 +4351,11 @@ class Quota {
 class RRSetRoutingPolicy {
   RRSetRoutingPolicyGeoPolicy? geo;
 
-  /// The selfLink attribute of the HealthCheck resource to use for this
+  /// The fully qualified URL of the HealthCheck to use for this
   /// RRSetRoutingPolicy.
   ///
+  /// Format this URL like
+  /// `https://www.googleapis.com/compute/v1/projects/{project}/global/healthChecks/{healthCheck}`.
   /// https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks
   core.String? healthCheck;
   core.String? kind;
@@ -4399,8 +4459,8 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
 
   /// DNSSEC generated signatures for all the `rrdata` within this item.
   ///
-  /// If health checked targets are provided for DNSSEC enabled zones, there's a
-  /// restriction of 1 IP address per item.
+  /// When using health-checked targets for DNSSEC-enabled zones, you can only
+  /// use at most one health-checked IP address per item.
   core.List<core.String>? signatureRrdatas;
 
   RRSetRoutingPolicyGeoPolicyGeoPolicyItem({
@@ -4441,7 +4501,8 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
 /// HealthCheckTargets describes endpoints to health-check when responding to
 /// Routing Policy queries.
 ///
-/// Only the healthy endpoints will be included in the response.
+/// Only the healthy endpoints will be included in the response. Set either
+/// `internal_load_balancer` or `external_endpoints`. Do not set both.
 class RRSetRoutingPolicyHealthCheckTargets {
   /// The Internet IP addresses to be health checked.
   ///
@@ -4652,8 +4713,8 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
 
   /// DNSSEC generated signatures for all the `rrdata` within this item.
   ///
-  /// Note that if health checked targets are provided for DNSSEC enabled zones,
-  /// there's a restriction of 1 IP address per item.
+  /// When using health-checked targets for DNSSEC-enabled zones, you can only
+  /// use at most one health-checked IP address per item.
   core.List<core.String>? signatureRrdatas;
 
   /// The weight corresponding to this `WrrPolicyItem` object.

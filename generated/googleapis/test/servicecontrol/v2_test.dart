@@ -239,7 +239,6 @@ api.Auth buildAuth() {
     o.accessLevels = buildUnnamed2();
     o.audiences = buildUnnamed3();
     o.claims = buildUnnamed4();
-    o.credentialId = 'foo';
     o.presenter = 'foo';
     o.principal = 'foo';
   }
@@ -253,10 +252,6 @@ void checkAuth(api.Auth o) {
     checkUnnamed2(o.accessLevels!);
     checkUnnamed3(o.audiences!);
     checkUnnamed4(o.claims!);
-    unittest.expect(
-      o.credentialId!,
-      unittest.equals('foo'),
-    );
     unittest.expect(
       o.presenter!,
       unittest.equals('foo'),
@@ -578,6 +573,7 @@ api.Request buildRequest() {
     o.host = 'foo';
     o.id = 'foo';
     o.method = 'foo';
+    o.origin = 'foo';
     o.path = 'foo';
     o.protocol = 'foo';
     o.query = 'foo';
@@ -605,6 +601,10 @@ void checkRequest(api.Request o) {
     );
     unittest.expect(
       o.method!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.origin!,
       unittest.equals('foo'),
     );
     unittest.expect(

@@ -58,6 +58,15 @@ class ChromeManagementApi {
   static const chromeManagementAppdetailsReadonlyScope =
       'https://www.googleapis.com/auth/chrome.management.appdetails.readonly';
 
+  /// See, edit, delete, and take other necessary actions on Chrome browser
+  /// profiles managed by your organization
+  static const chromeManagementProfilesScope =
+      'https://www.googleapis.com/auth/chrome.management.profiles';
+
+  /// See Chrome browser profiles managed by your organization
+  static const chromeManagementProfilesReadonlyScope =
+      'https://www.googleapis.com/auth/chrome.management.profiles.readonly';
+
   /// See reports about devices and Chrome browsers managed within your
   /// organization
   static const chromeManagementReportsReadonlyScope =
@@ -2059,7 +2068,8 @@ class GoogleChromeManagementV1AppUsageData {
   /// Possible string values are:
   /// - "TELEMETRY_APPLICATION_TYPE_UNSPECIFIED" : Application type unknown.
   /// - "APPLICATION_TYPE_ARC" : Application type arc (Android app).
-  /// - "APPLICATION_TYPE_BUILT_IN" : Application type built-in.
+  /// - "APPLICATION_TYPE_BUILT_IN" : Deprecated. This vaule is no longer used.
+  /// Application type built-in.
   /// - "APPLICATION_TYPE_CROSTINI" : Application type Linux (via Crostini).
   /// - "APPLICATION_TYPE_CHROME_APP" : Application type Chrome app.
   /// - "APPLICATION_TYPE_WEB" : Application type web.
@@ -2505,6 +2515,7 @@ class GoogleChromeManagementV1BrowserVersion {
   /// - "DEV" : Dev release channel.
   /// - "BETA" : Beta release channel.
   /// - "STABLE" : Stable release channel.
+  /// - "LTS" : Long-term support release channel.
   core.String? channel;
 
   /// Count grouped by device_system and major version
@@ -5621,7 +5632,8 @@ class GoogleChromeManagementV1TelemetryAppInstallEvent {
   /// Possible string values are:
   /// - "TELEMETRY_APPLICATION_TYPE_UNSPECIFIED" : Application type unknown.
   /// - "APPLICATION_TYPE_ARC" : Application type arc (Android app).
-  /// - "APPLICATION_TYPE_BUILT_IN" : Application type built-in.
+  /// - "APPLICATION_TYPE_BUILT_IN" : Deprecated. This vaule is no longer used.
+  /// Application type built-in.
   /// - "APPLICATION_TYPE_CROSTINI" : Application type Linux (via Crostini).
   /// - "APPLICATION_TYPE_CHROME_APP" : Application type Chrome app.
   /// - "APPLICATION_TYPE_WEB" : Application type web.
@@ -5766,7 +5778,8 @@ class GoogleChromeManagementV1TelemetryAppLaunchEvent {
   /// Possible string values are:
   /// - "TELEMETRY_APPLICATION_TYPE_UNSPECIFIED" : Application type unknown.
   /// - "APPLICATION_TYPE_ARC" : Application type arc (Android app).
-  /// - "APPLICATION_TYPE_BUILT_IN" : Application type built-in.
+  /// - "APPLICATION_TYPE_BUILT_IN" : Deprecated. This vaule is no longer used.
+  /// Application type built-in.
   /// - "APPLICATION_TYPE_CROSTINI" : Application type Linux (via Crostini).
   /// - "APPLICATION_TYPE_CHROME_APP" : Application type Chrome app.
   /// - "APPLICATION_TYPE_WEB" : Application type web.
@@ -5817,7 +5830,8 @@ class GoogleChromeManagementV1TelemetryAppUninstallEvent {
   /// Possible string values are:
   /// - "TELEMETRY_APPLICATION_TYPE_UNSPECIFIED" : Application type unknown.
   /// - "APPLICATION_TYPE_ARC" : Application type arc (Android app).
-  /// - "APPLICATION_TYPE_BUILT_IN" : Application type built-in.
+  /// - "APPLICATION_TYPE_BUILT_IN" : Deprecated. This vaule is no longer used.
+  /// Application type built-in.
   /// - "APPLICATION_TYPE_CROSTINI" : Application type Linux (via Crostini).
   /// - "APPLICATION_TYPE_CHROME_APP" : Application type Chrome app.
   /// - "APPLICATION_TYPE_WEB" : Application type web.

@@ -21,6 +21,7 @@
 /// Create an instance of [SQLAdminApi] to access these resources:
 ///
 /// - [BackupRunsResource]
+/// - [BackupsResource]
 /// - [ConnectResource]
 /// - [DatabasesResource]
 /// - [FlagsResource]
@@ -60,6 +61,7 @@ class SQLAdminApi {
   final commons.ApiRequester _requester;
 
   BackupRunsResource get backupRuns => BackupRunsResource(_requester);
+  BackupsResource get backups => BackupsResource(_requester);
   ConnectResource get connect => ConnectResource(_requester);
   DatabasesResource get databases => DatabasesResource(_requester);
   FlagsResource get flags => FlagsResource(_requester);
@@ -273,6 +275,234 @@ class BackupRunsResource {
     );
     return BackupRunsListResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BackupsResource {
+  final commons.ApiRequester _requester;
+
+  BackupsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a backup for a Cloud SQL instance.
+  ///
+  /// This API can be used only to create on-demand backups.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this backup is created.
+  /// Format: projects/{project}
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> createBackup(
+    Backup request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/' + core.Uri.encodeFull('$parent') + '/backups';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the backup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the backup to delete. Format:
+  /// projects/{project}/backups/{backup}
+  /// Value must have pattern `^projects/\[^/\]+/backups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> deleteBackup(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a resource containing information about a backup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the backup to retrieve. Format:
+  /// projects/{project}/backups/{backup}
+  /// Value must have pattern `^projects/\[^/\]+/backups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Backup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Backup> getBackup(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Backup.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all backups associated with the project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent that owns this collection of backups.
+  /// Format: projects/{project}
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [filter] - Multiple filter queries are separated by spaces. For example,
+  /// 'instance:abc AND type:FINAL, 'location:us',
+  /// 'backupInterval.startTime\>=1950-01-01T01:01:25.771Z'. You can filter by
+  /// type, instance, backupInterval.startTime (creation time), or location.
+  ///
+  /// [pageSize] - The maximum number of backups to return per response. The
+  /// service might return fewer backups than this value. If a value for this
+  /// parameter isn't specified, then, at most, 500 backups are returned. The
+  /// maximum value is 2,000. Any values that you set, which are greater than
+  /// 2,000, are changed to 2,000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListBackups` call.
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters provided to `ListBackups` must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBackupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBackupsResponse> listBackups(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/' + core.Uri.encodeFull('$parent') + '/backups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBackupsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the retention period and the description of the backup.
+  ///
+  /// You can use this API to update final backups only.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the backup. Format:
+  /// projects/{project}/backups/{backup}.
+  /// Value must have pattern `^projects/\[^/\]+/backups/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields that you can update. You can update only
+  /// the description and retention period of the final backup.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateBackup(
+    Backup request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1033,6 +1263,16 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [enableFinalBackup] - Flag to opt-in for final backup. By default, it is
+  /// turned off.
+  ///
+  /// [finalBackupDescription] - Optional. The description of the final backup.
+  ///
+  /// [finalBackupExpiryTime] - Optional. Final Backup expiration time.
+  /// Timestamp in UTC of when this resource is considered expired.
+  ///
+  /// [finalBackupTtlDays] - Optional. Retention period of the final backup.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1046,9 +1286,21 @@ class InstancesResource {
   async.Future<Operation> delete(
     core.String project,
     core.String instance, {
+    core.bool? enableFinalBackup,
+    core.String? finalBackupDescription,
+    core.String? finalBackupExpiryTime,
+    core.String? finalBackupTtlDays,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (enableFinalBackup != null)
+        'enableFinalBackup': ['${enableFinalBackup}'],
+      if (finalBackupDescription != null)
+        'finalBackupDescription': [finalBackupDescription],
+      if (finalBackupExpiryTime != null)
+        'finalBackupExpiryTime': [finalBackupExpiryTime],
+      if (finalBackupTtlDays != null)
+        'finalBackupTtlDays': [finalBackupTtlDays],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3278,6 +3530,240 @@ class AvailableDatabaseVersion {
       };
 }
 
+/// A backup resource.
+class Backup {
+  /// This output contains the following values: start_time: All database writes
+  /// up to this time are available.
+  ///
+  /// end_time: Any database writes after this time aren't available.
+  ///
+  /// Output only.
+  Interval? backupInterval;
+
+  /// Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SQL_BACKUP_KIND_UNSPECIFIED" : This is an unknown BackupKind.
+  /// - "SNAPSHOT" : Snapshot-based backups.
+  /// - "PHYSICAL" : Physical backups.
+  core.String? backupKind;
+
+  /// The mapping to backup run resource used for IAM validations.
+  ///
+  /// Output only.
+  core.String? backupRun;
+
+  /// The description of this backup.
+  core.String? description;
+
+  /// Information about why the backup operation fails (for example, when the
+  /// backup state fails).
+  ///
+  /// Output only.
+  OperationError? error;
+
+  /// Backup expiration time.
+  ///
+  /// A UTC timestamp of when this resource expired.
+  core.String? expiryTime;
+
+  /// The name of the database instance.
+  core.String? instance;
+
+  /// Timestamp in UTC of when the instance associated with this backup is
+  /// deleted.
+  ///
+  /// Optional. Output only.
+  core.String? instanceDeletionTime;
+
+  /// Instance setting of the source instance that's associated with this
+  /// backup.
+  ///
+  /// Optional. Output only.
+  DatabaseInstance? instanceSettings;
+
+  /// This is always `sql#backup`.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This output contains the encryption configuration for a backup and the
+  /// resource name of the KMS key for disk encryption.
+  ///
+  /// Output only.
+  core.String? kmsKey;
+
+  /// This output contains the encryption status for a backup and the version of
+  /// the KMS key that's used to encrypt the Cloud SQL instance.
+  ///
+  /// Output only.
+  core.String? kmsKeyVersion;
+
+  /// The storage location of the backups.
+  ///
+  /// The location can be multi-regional.
+  core.String? location;
+
+  /// The maximum chargeable bytes for the backup.
+  ///
+  /// Output only.
+  core.String? maxChargeableBytes;
+
+  /// The resource name of the backup.
+  ///
+  /// Format: projects/{project}/backups/{backup}.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// This status indicates whether the backup satisfies PZI.
+  ///
+  /// The status is reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// This status indicates whether the backup satisfies PZS.
+  ///
+  /// The status is reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
+  /// The URI of this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// The state of this backup.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SQL_BACKUP_STATE_UNSPECIFIED" : The state of the backup is unknown.
+  /// - "ENQUEUED" : The backup that's added to a queue.
+  /// - "RUNNING" : The backup is in progress.
+  /// - "FAILED" : The backup failed.
+  /// - "SUCCESSFUL" : The backup is successful.
+  /// - "DELETING" : The backup is being deleted.
+  /// - "DELETION_FAILED" : Deletion of the backup failed.
+  core.String? state;
+
+  /// This output contains a backup time zone.
+  ///
+  /// If a Cloud SQL for SQL Server instance has a different time zone from the
+  /// backup's time zone, then the restore to the instance doesn't happen.
+  ///
+  /// Output only.
+  core.String? timeZone;
+
+  /// Input only.
+  ///
+  /// The time-to-live (TTL) interval for this resource (in days). For example:
+  /// ttlDays:7, means 7 days from the current time. The expiration time can't
+  /// exceed 365 days from the time that the backup is created.
+  core.String? ttlDays;
+
+  /// The type of this backup.
+  ///
+  /// The type can be "AUTOMATED", "ON_DEMAND", or “FINAL”.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SQL_BACKUP_TYPE_UNSPECIFIED" : This is an unknown backup type.
+  /// - "AUTOMATED" : The backup schedule triggers a backup automatically.
+  /// - "ON_DEMAND" : The user triggers a backup manually.
+  /// - "FINAL" : The backup that's created when the instance is deleted.
+  core.String? type;
+
+  Backup({
+    this.backupInterval,
+    this.backupKind,
+    this.backupRun,
+    this.description,
+    this.error,
+    this.expiryTime,
+    this.instance,
+    this.instanceDeletionTime,
+    this.instanceSettings,
+    this.kind,
+    this.kmsKey,
+    this.kmsKeyVersion,
+    this.location,
+    this.maxChargeableBytes,
+    this.name,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
+    this.selfLink,
+    this.state,
+    this.timeZone,
+    this.ttlDays,
+    this.type,
+  });
+
+  Backup.fromJson(core.Map json_)
+      : this(
+          backupInterval: json_.containsKey('backupInterval')
+              ? Interval.fromJson(json_['backupInterval']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          backupKind: json_['backupKind'] as core.String?,
+          backupRun: json_['backupRun'] as core.String?,
+          description: json_['description'] as core.String?,
+          error: json_.containsKey('error')
+              ? OperationError.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          expiryTime: json_['expiryTime'] as core.String?,
+          instance: json_['instance'] as core.String?,
+          instanceDeletionTime: json_['instanceDeletionTime'] as core.String?,
+          instanceSettings: json_.containsKey('instanceSettings')
+              ? DatabaseInstance.fromJson(json_['instanceSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          kind: json_['kind'] as core.String?,
+          kmsKey: json_['kmsKey'] as core.String?,
+          kmsKeyVersion: json_['kmsKeyVersion'] as core.String?,
+          location: json_['location'] as core.String?,
+          maxChargeableBytes: json_['maxChargeableBytes'] as core.String?,
+          name: json_['name'] as core.String?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+          selfLink: json_['selfLink'] as core.String?,
+          state: json_['state'] as core.String?,
+          timeZone: json_['timeZone'] as core.String?,
+          ttlDays: json_['ttlDays'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupInterval != null) 'backupInterval': backupInterval!,
+        if (backupKind != null) 'backupKind': backupKind!,
+        if (backupRun != null) 'backupRun': backupRun!,
+        if (description != null) 'description': description!,
+        if (error != null) 'error': error!,
+        if (expiryTime != null) 'expiryTime': expiryTime!,
+        if (instance != null) 'instance': instance!,
+        if (instanceDeletionTime != null)
+          'instanceDeletionTime': instanceDeletionTime!,
+        if (instanceSettings != null) 'instanceSettings': instanceSettings!,
+        if (kind != null) 'kind': kind!,
+        if (kmsKey != null) 'kmsKey': kmsKey!,
+        if (kmsKeyVersion != null) 'kmsKeyVersion': kmsKeyVersion!,
+        if (location != null) 'location': location!,
+        if (maxChargeableBytes != null)
+          'maxChargeableBytes': maxChargeableBytes!,
+        if (name != null) 'name': name!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (state != null) 'state': state!,
+        if (timeZone != null) 'timeZone': timeZone!,
+        if (ttlDays != null) 'ttlDays': ttlDays!,
+        if (type != null) 'type': type!,
+      };
+}
+
 /// Database instance backup configuration.
 class BackupConfiguration {
   /// Backup retention settings.
@@ -3391,20 +3877,28 @@ class BackupContext {
   /// This is always `sql#backupContext`.
   core.String? kind;
 
+  /// The name of the backup.
+  ///
+  /// Format: projects/{project}/backups/{backup}
+  core.String? name;
+
   BackupContext({
     this.backupId,
     this.kind,
+    this.name,
   });
 
   BackupContext.fromJson(core.Map json_)
       : this(
           backupId: json_['backupId'] as core.String?,
           kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backupId != null) 'backupId': backupId!,
         if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3928,6 +4422,11 @@ class ConnectSettings {
   /// The dns name of the instance.
   core.String? dnsName;
 
+  /// The list of DNS names used by this instance.
+  ///
+  /// Output only.
+  core.List<DnsNameMapping>? dnsNames;
+
   /// The assigned IP addresses for the instance.
   core.List<IpMapping>? ipAddresses;
 
@@ -3953,6 +4452,8 @@ class ConnectSettings {
   /// - "GOOGLE_MANAGED_INTERNAL_CA" : Google-managed self-signed internal CA.
   /// - "GOOGLE_MANAGED_CAS_CA" : Google-managed regional CA part of root CA
   /// hierarchy hosted on Google Cloud's Certificate Authority Service (CAS).
+  /// - "CUSTOMER_MANAGED_CAS_CA" : Customer-managed CA hosted on Google Cloud's
+  /// Certificate Authority Service (CAS).
   core.String? serverCaMode;
 
   ConnectSettings({
@@ -3960,6 +4461,7 @@ class ConnectSettings {
     this.customSubjectAlternativeNames,
     this.databaseVersion,
     this.dnsName,
+    this.dnsNames,
     this.ipAddresses,
     this.kind,
     this.pscEnabled,
@@ -3977,6 +4479,10 @@ class ConnectSettings {
                   .toList(),
           databaseVersion: json_['databaseVersion'] as core.String?,
           dnsName: json_['dnsName'] as core.String?,
+          dnsNames: (json_['dnsNames'] as core.List?)
+              ?.map((value) => DnsNameMapping.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           ipAddresses: (json_['ipAddresses'] as core.List?)
               ?.map((value) => IpMapping.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -3997,6 +4503,7 @@ class ConnectSettings {
           'customSubjectAlternativeNames': customSubjectAlternativeNames!,
         if (databaseVersion != null) 'databaseVersion': databaseVersion!,
         if (dnsName != null) 'dnsName': dnsName!,
+        if (dnsNames != null) 'dnsNames': dnsNames!,
         if (ipAddresses != null) 'ipAddresses': ipAddresses!,
         if (kind != null) 'kind': kind!,
         if (pscEnabled != null) 'pscEnabled': pscEnabled!,
@@ -4308,6 +4815,11 @@ class DatabaseInstance {
   /// Output only.
   core.String? dnsName;
 
+  /// The list of DNS names used by this instance.
+  ///
+  /// Output only.
+  core.List<DnsNameMapping>? dnsNames;
+
   /// This field is deprecated and will be removed from a future version of the
   /// API.
   ///
@@ -4326,6 +4838,12 @@ class DatabaseInstance {
 
   /// Gemini instance configuration.
   GeminiInstanceConfig? geminiConfig;
+
+  /// Input only.
+  ///
+  /// Determines whether an in-place major version upgrade of replicas happens
+  /// when an in-place major version upgrade of a primary instance is initiated.
+  core.bool? includeReplicasForMajorVersionUpgrade;
 
   /// The instance type.
   /// Possible string values are:
@@ -4528,10 +5046,12 @@ class DatabaseInstance {
     this.diskEncryptionConfiguration,
     this.diskEncryptionStatus,
     this.dnsName,
+    this.dnsNames,
     this.etag,
     this.failoverReplica,
     this.gceZone,
     this.geminiConfig,
+    this.includeReplicasForMajorVersionUpgrade,
     this.instanceType,
     this.ipAddresses,
     this.ipv6Address,
@@ -4591,6 +5111,10 @@ class DatabaseInstance {
                   as core.Map<core.String, core.dynamic>)
               : null,
           dnsName: json_['dnsName'] as core.String?,
+          dnsNames: (json_['dnsNames'] as core.List?)
+              ?.map((value) => DnsNameMapping.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           failoverReplica: json_.containsKey('failoverReplica')
               ? DatabaseInstanceFailoverReplica.fromJson(
@@ -4602,6 +5126,8 @@ class DatabaseInstance {
               ? GeminiInstanceConfig.fromJson(
                   json_['geminiConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          includeReplicasForMajorVersionUpgrade:
+              json_['includeReplicasForMajorVersionUpgrade'] as core.bool?,
           instanceType: json_['instanceType'] as core.String?,
           ipAddresses: (json_['ipAddresses'] as core.List?)
               ?.map((value) => IpMapping.fromJson(
@@ -4694,10 +5220,14 @@ class DatabaseInstance {
         if (diskEncryptionStatus != null)
           'diskEncryptionStatus': diskEncryptionStatus!,
         if (dnsName != null) 'dnsName': dnsName!,
+        if (dnsNames != null) 'dnsNames': dnsNames!,
         if (etag != null) 'etag': etag!,
         if (failoverReplica != null) 'failoverReplica': failoverReplica!,
         if (gceZone != null) 'gceZone': gceZone!,
         if (geminiConfig != null) 'geminiConfig': geminiConfig!,
+        if (includeReplicasForMajorVersionUpgrade != null)
+          'includeReplicasForMajorVersionUpgrade':
+              includeReplicasForMajorVersionUpgrade!,
         if (instanceType != null) 'instanceType': instanceType!,
         if (ipAddresses != null) 'ipAddresses': ipAddresses!,
         if (ipv6Address != null) 'ipv6Address': ipv6Address!,
@@ -4913,7 +5443,7 @@ class DemoteMasterMySqlReplicaConfiguration {
 
   /// PEM representation of the replica's private key.
   ///
-  /// The corresponsing public key is encoded in the client's certificate. The
+  /// The corresponding public key is encoded in the client's certificate. The
   /// format of the replica's private key can be either PKCS #1 or PKCS #8.
   core.String? clientKey;
 
@@ -5048,6 +5578,49 @@ class DiskEncryptionStatus {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
+      };
+}
+
+/// DNS metadata.
+class DnsNameMapping {
+  /// The connection type of the DNS name.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CONNECTION_TYPE_UNSPECIFIED" : Unknown connection type.
+  /// - "PUBLIC" : Public IP.
+  /// - "PRIVATE_SERVICES_ACCESS" : Private services access (private IP).
+  /// - "PRIVATE_SERVICE_CONNECT" : Private Service Connect.
+  core.String? connectionType;
+
+  /// The scope that the DNS name applies to.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DNS_SCOPE_UNSPECIFIED" : Unknown DNS scope.
+  /// - "INSTANCE" : Indicates a instance-level DNS name.
+  core.String? dnsScope;
+
+  /// The DNS name.
+  core.String? name;
+
+  DnsNameMapping({
+    this.connectionType,
+    this.dnsScope,
+    this.name,
+  });
+
+  DnsNameMapping.fromJson(core.Map json_)
+      : this(
+          connectionType: json_['connectionType'] as core.String?,
+          dnsScope: json_['dnsScope'] as core.String?,
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectionType != null) 'connectionType': connectionType!,
+        if (dnsScope != null) 'dnsScope': dnsScope!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -5321,6 +5894,64 @@ class ExportContextSqlExportOptions {
       };
 }
 
+/// Export parameters specific to SQL Server TDE certificates
+///
+/// Optional.
+class ExportContextTdeExportOptions {
+  /// Path to the TDE certificate public key in the form
+  /// gs://bucketName/fileName.
+  ///
+  /// The instance must have write access to the location. Applicable only for
+  /// SQL Server instances.
+  ///
+  /// Required.
+  core.String? certificatePath;
+
+  /// Certificate name.
+  ///
+  /// Applicable only for SQL Server instances.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Password that encrypts the private key.
+  ///
+  /// Required.
+  core.String? privateKeyPassword;
+
+  /// Path to the TDE certificate private key in the form
+  /// gs://bucketName/fileName.
+  ///
+  /// The instance must have write access to the location. Applicable only for
+  /// SQL Server instances.
+  ///
+  /// Required.
+  core.String? privateKeyPath;
+
+  ExportContextTdeExportOptions({
+    this.certificatePath,
+    this.name,
+    this.privateKeyPassword,
+    this.privateKeyPath,
+  });
+
+  ExportContextTdeExportOptions.fromJson(core.Map json_)
+      : this(
+          certificatePath: json_['certificatePath'] as core.String?,
+          name: json_['name'] as core.String?,
+          privateKeyPassword: json_['privateKeyPassword'] as core.String?,
+          privateKeyPath: json_['privateKeyPath'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certificatePath != null) 'certificatePath': certificatePath!,
+        if (name != null) 'name': name!,
+        if (privateKeyPassword != null)
+          'privateKeyPassword': privateKeyPassword!,
+        if (privateKeyPath != null) 'privateKeyPath': privateKeyPath!,
+      };
+}
+
 /// Database instance export context.
 class ExportContext {
   /// Options for exporting BAK files (SQL Server-only)
@@ -5337,11 +5968,14 @@ class ExportContext {
   /// all databases are exported, except for the `mysql` system database. If
   /// `fileType` is `CSV`, you can specify one database, either by using this
   /// property or by using the `csvExportOptions.selectQuery` property, which
-  /// takes precedence over this property. `PostgreSQL instances:` You must
-  /// specify one database to be exported. If `fileType` is `CSV`, this database
-  /// must match the one specified in the `csvExportOptions.selectQuery`
-  /// property. `SQL Server instances:` You must specify one database to be
-  /// exported, and the `fileType` must be `BAK`.
+  /// takes precedence over this property. `PostgreSQL instances:` If you don't
+  /// specify a database by name, all user databases in the instance are
+  /// exported. This excludes system databases and Cloud SQL databases used to
+  /// manage internal operations. Exporting all user databases is only available
+  /// for directory-formatted parallel export. If `fileType` is `CSV`, this
+  /// database must match the one specified in the
+  /// `csvExportOptions.selectQuery` property. `SQL Server instances:` You must
+  /// specify one database to be exported, and the `fileType` must be `BAK`.
   core.List<core.String>? databases;
 
   /// The file type for the specified uri.
@@ -5350,6 +5984,7 @@ class ExportContext {
   /// - "SQL" : File containing SQL statements.
   /// - "CSV" : File in CSV format.
   /// - "BAK"
+  /// - "TDE" : TDE certificate.
   core.String? fileType;
 
   /// This is always `sql#exportContext`.
@@ -5360,6 +5995,11 @@ class ExportContext {
 
   /// Options for exporting data as SQL statements.
   ExportContextSqlExportOptions? sqlExportOptions;
+
+  /// Export parameters specific to SQL Server TDE certificates
+  ///
+  /// Optional.
+  ExportContextTdeExportOptions? tdeExportOptions;
 
   /// The path to the file in Google Cloud Storage where the export will be
   /// stored.
@@ -5377,6 +6017,7 @@ class ExportContext {
     this.kind,
     this.offload,
     this.sqlExportOptions,
+    this.tdeExportOptions,
     this.uri,
   });
 
@@ -5400,6 +6041,10 @@ class ExportContext {
               ? ExportContextSqlExportOptions.fromJson(json_['sqlExportOptions']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          tdeExportOptions: json_.containsKey('tdeExportOptions')
+              ? ExportContextTdeExportOptions.fromJson(json_['tdeExportOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           uri: json_['uri'] as core.String?,
         );
 
@@ -5411,6 +6056,7 @@ class ExportContext {
         if (kind != null) 'kind': kind!,
         if (offload != null) 'offload': offload!,
         if (sqlExportOptions != null) 'sqlExportOptions': sqlExportOptions!,
+        if (tdeExportOptions != null) 'tdeExportOptions': tdeExportOptions!,
         if (uri != null) 'uri': uri!,
       };
 }
@@ -5741,6 +6387,11 @@ class ImportContextBakImportOptionsEncryptionOptions {
   /// the file.
   core.String? certPath;
 
+  /// Whether the imported file remains encrypted.
+  ///
+  /// Optional.
+  core.bool? keepEncrypted;
+
   /// Password that encrypts the private key
   core.String? pvkPassword;
 
@@ -5753,6 +6404,7 @@ class ImportContextBakImportOptionsEncryptionOptions {
 
   ImportContextBakImportOptionsEncryptionOptions({
     this.certPath,
+    this.keepEncrypted,
     this.pvkPassword,
     this.pvkPath,
   });
@@ -5760,12 +6412,14 @@ class ImportContextBakImportOptionsEncryptionOptions {
   ImportContextBakImportOptionsEncryptionOptions.fromJson(core.Map json_)
       : this(
           certPath: json_['certPath'] as core.String?,
+          keepEncrypted: json_['keepEncrypted'] as core.bool?,
           pvkPassword: json_['pvkPassword'] as core.String?,
           pvkPath: json_['pvkPath'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (certPath != null) 'certPath': certPath!,
+        if (keepEncrypted != null) 'keepEncrypted': keepEncrypted!,
         if (pvkPassword != null) 'pvkPassword': pvkPassword!,
         if (pvkPath != null) 'pvkPath': pvkPath!,
       };
@@ -5992,6 +6646,65 @@ class ImportContextSqlImportOptions {
       };
 }
 
+/// Import parameters specific to SQL Server .TDE files Import parameters
+/// specific to SQL Server TDE certificates
+///
+/// Optional.
+class ImportContextTdeImportOptions {
+  /// Path to the TDE certificate public key in the form
+  /// gs://bucketName/fileName.
+  ///
+  /// The instance must have read access to the file. Applicable only for SQL
+  /// Server instances.
+  ///
+  /// Required.
+  core.String? certificatePath;
+
+  /// Certificate name.
+  ///
+  /// Applicable only for SQL Server instances.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Password that encrypts the private key.
+  ///
+  /// Required.
+  core.String? privateKeyPassword;
+
+  /// Path to the TDE certificate private key in the form
+  /// gs://bucketName/fileName.
+  ///
+  /// The instance must have read access to the file. Applicable only for SQL
+  /// Server instances.
+  ///
+  /// Required.
+  core.String? privateKeyPath;
+
+  ImportContextTdeImportOptions({
+    this.certificatePath,
+    this.name,
+    this.privateKeyPassword,
+    this.privateKeyPath,
+  });
+
+  ImportContextTdeImportOptions.fromJson(core.Map json_)
+      : this(
+          certificatePath: json_['certificatePath'] as core.String?,
+          name: json_['name'] as core.String?,
+          privateKeyPassword: json_['privateKeyPassword'] as core.String?,
+          privateKeyPath: json_['privateKeyPath'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certificatePath != null) 'certificatePath': certificatePath!,
+        if (name != null) 'name': name!,
+        if (privateKeyPassword != null)
+          'privateKeyPassword': privateKeyPassword!,
+        if (privateKeyPath != null) 'privateKeyPath': privateKeyPath!,
+      };
+}
+
 /// Database instance import context.
 class ImportContext {
   /// Import parameters specific to SQL Server .BAK files
@@ -6004,8 +6717,9 @@ class ImportContext {
   ///
   /// If `fileType` is `SQL`, this field is required only if the import file
   /// does not specify a database, and is overridden by any database
-  /// specification in the import file. If `fileType` is `CSV`, one database
-  /// must be specified.
+  /// specification in the import file. For entire instance parallel import
+  /// operations, the database is overridden by the database name stored in
+  /// subdirectory name. If `fileType` is `CSV`, one database must be specified.
   core.String? database;
 
   /// The file type for the specified uri.
@@ -6017,6 +6731,7 @@ class ImportContext {
   /// - "SQL" : File containing SQL statements.
   /// - "CSV" : File in CSV format.
   /// - "BAK"
+  /// - "TDE" : TDE certificate.
   core.String? fileType;
 
   /// The PostgreSQL user for this import operation.
@@ -6031,6 +6746,12 @@ class ImportContext {
   ///
   /// Optional.
   ImportContextSqlImportOptions? sqlImportOptions;
+
+  /// Import parameters specific to SQL Server .TDE files Import parameters
+  /// specific to SQL Server TDE certificates
+  ///
+  /// Optional.
+  ImportContextTdeImportOptions? tdeImportOptions;
 
   /// Path to the import file in Cloud Storage, in the form
   /// `gs://bucketName/fileName`.
@@ -6048,6 +6769,7 @@ class ImportContext {
     this.importUser,
     this.kind,
     this.sqlImportOptions,
+    this.tdeImportOptions,
     this.uri,
   });
 
@@ -6069,6 +6791,10 @@ class ImportContext {
               ? ImportContextSqlImportOptions.fromJson(json_['sqlImportOptions']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          tdeImportOptions: json_.containsKey('tdeImportOptions')
+              ? ImportContextTdeImportOptions.fromJson(json_['tdeImportOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           uri: json_['uri'] as core.String?,
         );
 
@@ -6080,6 +6806,7 @@ class ImportContext {
         if (importUser != null) 'importUser': importUser!,
         if (kind != null) 'kind': kind!,
         if (sqlImportOptions != null) 'sqlImportOptions': sqlImportOptions!,
+        if (tdeImportOptions != null) 'tdeImportOptions': tdeImportOptions!,
         if (uri != null) 'uri': uri!,
       };
 }
@@ -6489,24 +7216,51 @@ class InstancesReencryptRequest {
 
 /// Database instance restore backup request.
 class InstancesRestoreBackupRequest {
+  /// The name of the backup that's used to restore a Cloud SQL instance:
+  /// Format: projects/{project-id}/backups/{backup-uid}.
+  ///
+  /// Only one of restore_backup_context, backup, backupdr_backup can be passed
+  /// to the input.
+  core.String? backup;
+
   /// Parameters required to perform the restore backup operation.
   RestoreBackupContext? restoreBackupContext;
 
+  /// By using this parameter, Cloud SQL overrides any instance settings stored
+  /// in the backup you are restoring from.
+  ///
+  /// You can't change the instance's major database version and you can only
+  /// increase the disk size. You can use this field to restore new instances
+  /// only. This field is not applicable for restore to existing instances.
+  ///
+  /// Optional.
+  DatabaseInstance? restoreInstanceSettings;
+
   InstancesRestoreBackupRequest({
+    this.backup,
     this.restoreBackupContext,
+    this.restoreInstanceSettings,
   });
 
   InstancesRestoreBackupRequest.fromJson(core.Map json_)
       : this(
+          backup: json_['backup'] as core.String?,
           restoreBackupContext: json_.containsKey('restoreBackupContext')
               ? RestoreBackupContext.fromJson(json_['restoreBackupContext']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          restoreInstanceSettings: json_.containsKey('restoreInstanceSettings')
+              ? DatabaseInstance.fromJson(json_['restoreInstanceSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (backup != null) 'backup': backup!,
         if (restoreBackupContext != null)
           'restoreBackupContext': restoreBackupContext!,
+        if (restoreInstanceSettings != null)
+          'restoreInstanceSettings': restoreInstanceSettings!,
       };
 }
 
@@ -6583,6 +7337,46 @@ class InstancesTruncateLogRequest {
       };
 }
 
+/// Represents a time interval, encoded as a Timestamp start (inclusive) and a
+/// Timestamp end (exclusive).
+///
+/// The start must be less than or equal to the end. When the start equals the
+/// end, the interval is empty (matches no time). When both start and end are
+/// unspecified, the interval matches any time.
+class Interval {
+  /// Exclusive end of the interval.
+  ///
+  /// If specified, a Timestamp matching this interval will have to be before
+  /// the end.
+  ///
+  /// Optional.
+  core.String? endTime;
+
+  /// Inclusive start of the interval.
+  ///
+  /// If specified, a Timestamp matching this interval will have to be the same
+  /// or after the start.
+  ///
+  /// Optional.
+  core.String? startTime;
+
+  Interval({
+    this.endTime,
+    this.startTime,
+  });
+
+  Interval.fromJson(core.Map json_)
+      : this(
+          endTime: json_['endTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
 /// IP Management configuration.
 class IpConfiguration {
   /// The name of the allocated ip range for the private ip Cloud SQL instance.
@@ -6648,7 +7442,7 @@ class IpConfiguration {
   /// The resource name of the server CA pool for an instance with
   /// `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
   ///
-  /// Format: projects//locations//caPools/
+  /// Format: projects/{PROJECT}/locations/{REGION}/caPools/{CA_POOL_ID}
   ///
   /// Optional.
   core.String? serverCaPool;
@@ -6801,6 +7595,46 @@ class IpMapping {
       };
 }
 
+/// The response payload containing a list of the backups.
+class ListBackupsResponse {
+  /// A list of backups.
+  core.List<Backup>? backups;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, then there aren't subsequent pages.
+  core.String? nextPageToken;
+
+  /// If a region isn't unavailable or if an unknown error occurs, then a
+  /// warning message is returned.
+  core.List<ApiWarning>? warnings;
+
+  ListBackupsResponse({
+    this.backups,
+    this.nextPageToken,
+    this.warnings,
+  });
+
+  ListBackupsResponse.fromJson(core.Map json_)
+      : this(
+          backups: (json_['backups'] as core.List?)
+              ?.map((value) =>
+                  Backup.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          warnings: (json_['warnings'] as core.List?)
+              ?.map((value) => ApiWarning.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backups != null) 'backups': backups!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (warnings != null) 'warnings': warnings!,
+      };
+}
+
 /// Preferred location.
 ///
 /// This specifies where a Cloud SQL instance is located. Note that if the
@@ -6928,7 +7762,7 @@ class MySqlReplicaConfiguration {
 
   /// PEM representation of the replica's private key.
   ///
-  /// The corresponsing public key is encoded in the client's certificate.
+  /// The corresponding public key is encoded in the client's certificate.
   core.String? clientKey;
 
   /// Seconds to wait between connect retries.
@@ -7044,7 +7878,7 @@ class OnPremisesConfiguration {
 
   /// PEM representation of the replica's private key.
   ///
-  /// The corresponsing public key is encoded in the client's certificate.
+  /// The corresponding public key is encoded in the client's certificate.
   core.String? clientKey;
 
   /// The dump file to create the Cloud SQL replica.
@@ -7233,6 +8067,7 @@ class Operation {
   /// - "REENCRYPT" : Re-encrypts CMEK instances with latest key version.
   /// - "SWITCHOVER" : Switches the roles of the primary and replica pair. The
   /// target instance should be the replica.
+  /// - "UPDATE_BACKUP" : Update a backup.
   /// - "ACQUIRE_SSRS_LEASE" : Acquire a lease for the setup of SQL Server
   /// Reporting Services (SSRS).
   /// - "RELEASE_SSRS_LEASE" : Release a lease for the setup of SQL Server
@@ -7255,7 +8090,10 @@ class Operation {
   /// instance.
   /// - "MAJOR_VERSION_UPGRADE" : Updates the major version of a Cloud SQL
   /// instance.
-  /// - "ADVANCED_BACKUP" : Creates a backup for an Advanced BackupTier Cloud
+  /// - "ADVANCED_BACKUP" : Deprecated: ADVANCED_BACKUP is deprecated. Use
+  /// ENHANCED_BACKUP instead.
+  /// - "MANAGE_BACKUP" : Changes the BackupTier of a Cloud SQL instance.
+  /// - "ENHANCED_BACKUP" : Creates a backup for an Enhanced BackupTier Cloud
   /// SQL instance.
   core.String? operationType;
 
@@ -7281,7 +8119,7 @@ class Operation {
   /// Optional.
   SqlSubOperationType? subOperationType;
 
-  /// Name of the database instance related to this operation.
+  /// Name of the resource on which this operation runs.
   core.String? targetId;
   core.String? targetLink;
 
@@ -8072,6 +8910,7 @@ class Settings {
   /// - "PD_HDD" : An HDD data disk.
   /// - "OBSOLETE_LOCAL_SSD" : This field is deprecated and will be removed from
   /// a future version of the API.
+  /// - "HYPERDISK_BALANCED" : A Hyperdisk Balanced data disk.
   core.String? dataDiskType;
 
   /// The database flags passed to the instance at startup.
@@ -8157,6 +8996,12 @@ class Settings {
   /// - "PER_USE" : The instance is billed per usage.
   core.String? pricingPlan;
 
+  /// Configuration value for recreation of replica after certain replication
+  /// lag
+  ///
+  /// Optional.
+  core.int? replicationLagMaxSeconds;
+
   /// The type of replication this instance uses.
   ///
   /// This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This
@@ -8174,6 +9019,16 @@ class Settings {
     'Not supported. Member documentation may have more information.',
   )
   core.String? replicationType;
+
+  /// When this parameter is set to true, Cloud SQL retains backups of the
+  /// instance even after the instance is deleted.
+  ///
+  /// The ON_DEMAND backup will be retained until customer deletes the backup or
+  /// the project. The AUTOMATED backup will be retained based on the backups
+  /// retention setting.
+  ///
+  /// Optional.
+  core.bool? retainBackupsOnDelete;
 
   /// The version of instance settings.
   ///
@@ -8235,7 +9090,9 @@ class Settings {
     this.maintenanceWindow,
     this.passwordValidationPolicy,
     this.pricingPlan,
+    this.replicationLagMaxSeconds,
     this.replicationType,
+    this.retainBackupsOnDelete,
     this.settingsVersion,
     this.sqlServerAuditConfig,
     this.storageAutoResize,
@@ -8318,7 +9175,10 @@ class Settings {
                           as core.Map<core.String, core.dynamic>)
                   : null,
           pricingPlan: json_['pricingPlan'] as core.String?,
+          replicationLagMaxSeconds:
+              json_['replicationLagMaxSeconds'] as core.int?,
           replicationType: json_['replicationType'] as core.String?,
+          retainBackupsOnDelete: json_['retainBackupsOnDelete'] as core.bool?,
           settingsVersion: json_['settingsVersion'] as core.String?,
           sqlServerAuditConfig: json_.containsKey('sqlServerAuditConfig')
               ? SqlServerAuditConfig.fromJson(json_['sqlServerAuditConfig']
@@ -8379,7 +9239,11 @@ class Settings {
         if (passwordValidationPolicy != null)
           'passwordValidationPolicy': passwordValidationPolicy!,
         if (pricingPlan != null) 'pricingPlan': pricingPlan!,
+        if (replicationLagMaxSeconds != null)
+          'replicationLagMaxSeconds': replicationLagMaxSeconds!,
         if (replicationType != null) 'replicationType': replicationType!,
+        if (retainBackupsOnDelete != null)
+          'retainBackupsOnDelete': retainBackupsOnDelete!,
         if (settingsVersion != null) 'settingsVersion': settingsVersion!,
         if (sqlServerAuditConfig != null)
           'sqlServerAuditConfig': sqlServerAuditConfig!,

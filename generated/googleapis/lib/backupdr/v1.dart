@@ -28,6 +28,7 @@
 ///         - [ProjectsLocationsBackupVaultsDataSourcesBackupsResource]
 ///     - [ProjectsLocationsManagementServersResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsResourceBackupConfigsResource]
 ///     - [ProjectsLocationsServiceConfigResource]
 library;
 
@@ -83,6 +84,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsManagementServersResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsResourceBackupConfigsResource get resourceBackupConfigs =>
+      ProjectsLocationsResourceBackupConfigsResource(_requester);
   ProjectsLocationsServiceConfigResource get serviceConfig =>
       ProjectsLocationsServiceConfigResource(_requester);
 
@@ -2417,6 +2420,71 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+class ProjectsLocationsResourceBackupConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResourceBackupConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists ResourceBackupConfigs.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location for which to retrieve
+  /// resource backup configs. Format:
+  /// 'projects/{project_id}/locations/{location}'. In Cloud Backup and DR,
+  /// locations map to Google Cloud regions, for example **us-central1**.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListResourceBackupConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListResourceBackupConfigsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/resourceBackupConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListResourceBackupConfigsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsServiceConfigResource {
   final commons.ApiRequester _requester;
 
@@ -3398,6 +3466,156 @@ class BackupApplianceLockInfo {
       };
 }
 
+/// BackupConfigDetails has information about how the resource is configured for
+/// backups and about the most recent backup taken for this configuration.
+class BackupConfigDetails {
+  /// The
+  /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+  /// of the resource that is applicable for the backup configuration.
+  ///
+  /// Example:
+  /// "//compute.googleapis.com/projects/{project}/zones/{zone}/instances/{instance}"
+  ///
+  /// Output only.
+  core.String? applicableResource;
+
+  /// The full resource name of the backup config source resource.
+  ///
+  /// For example,
+  /// "//backupdr.googleapis.com/v1/projects/{project}/locations/{region}/backupPlans/{backupplanId}"
+  /// or
+  /// "//compute.googleapis.com/projects/{project}/locations/{region}/resourcePolicies/{resourcePolicyId}".
+  ///
+  /// Output only.
+  core.String? backupConfigSource;
+
+  /// The display name of the backup config source resource.
+  ///
+  /// Output only.
+  core.String? backupConfigSourceDisplayName;
+
+  /// Backup and DR's Backup Plan specific data.
+  BackupDrPlanConfig? backupDrPlanConfig;
+
+  /// Backup and DR's Template specific data.
+  BackupDrTemplateConfig? backupDrTemplateConfig;
+
+  /// The locations where the backups are to be stored.
+  core.List<BackupLocation>? backupLocations;
+
+  /// The
+  /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+  /// of the backup vault that will store the backups generated through this
+  /// backup configuration.
+  ///
+  /// Example:
+  /// "//backupdr.googleapis.com/v1/projects/{project}/locations/{region}/backupVaults/{backupvaultId}"
+  ///
+  /// Output only.
+  core.String? backupVault;
+
+  /// Timestamp of the latest successful backup created via this backup
+  /// configuration.
+  ///
+  /// Output only.
+  core.String? latestSuccessfulBackupTime;
+
+  /// Point in time recovery settings of the backup configuration resource.
+  ///
+  /// Output only.
+  PitrSettings? pitrSettings;
+
+  /// The state of the backup config resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Backup config state not set.
+  /// - "ACTIVE" : The config is in an active state protecting the resource
+  /// - "INACTIVE" : The config is currently not protecting the resource. Either
+  /// because it is disabled or the owning project has been deleted without
+  /// cleanup of the actual resource.
+  /// - "ERROR" : The config still exists but because of some error state it is
+  /// not protecting the resource. Like the source project is deleted. For eg.
+  /// PlanAssociation, BackupPlan is deleted.
+  core.String? state;
+
+  /// The type of the backup config resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Backup config type is unspecified.
+  /// - "CLOUD_SQL_INSTANCE_BACKUP_CONFIG" : Backup config is Cloud SQL
+  /// instance's automated backup config.
+  /// - "COMPUTE_ENGINE_RESOURCE_POLICY" : Backup config is Compute Engine
+  /// Resource Policy.
+  /// - "BACKUPDR_BACKUP_PLAN" : Backup config is Backup and DR's Backup Plan.
+  /// - "BACKUPDR_TEMPLATE" : Backup config is Backup and DR's Template.
+  core.String? type;
+
+  BackupConfigDetails({
+    this.applicableResource,
+    this.backupConfigSource,
+    this.backupConfigSourceDisplayName,
+    this.backupDrPlanConfig,
+    this.backupDrTemplateConfig,
+    this.backupLocations,
+    this.backupVault,
+    this.latestSuccessfulBackupTime,
+    this.pitrSettings,
+    this.state,
+    this.type,
+  });
+
+  BackupConfigDetails.fromJson(core.Map json_)
+      : this(
+          applicableResource: json_['applicableResource'] as core.String?,
+          backupConfigSource: json_['backupConfigSource'] as core.String?,
+          backupConfigSourceDisplayName:
+              json_['backupConfigSourceDisplayName'] as core.String?,
+          backupDrPlanConfig: json_.containsKey('backupDrPlanConfig')
+              ? BackupDrPlanConfig.fromJson(json_['backupDrPlanConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          backupDrTemplateConfig: json_.containsKey('backupDrTemplateConfig')
+              ? BackupDrTemplateConfig.fromJson(json_['backupDrTemplateConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          backupLocations: (json_['backupLocations'] as core.List?)
+              ?.map((value) => BackupLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          backupVault: json_['backupVault'] as core.String?,
+          latestSuccessfulBackupTime:
+              json_['latestSuccessfulBackupTime'] as core.String?,
+          pitrSettings: json_.containsKey('pitrSettings')
+              ? PitrSettings.fromJson(
+                  json_['pitrSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state: json_['state'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applicableResource != null)
+          'applicableResource': applicableResource!,
+        if (backupConfigSource != null)
+          'backupConfigSource': backupConfigSource!,
+        if (backupConfigSourceDisplayName != null)
+          'backupConfigSourceDisplayName': backupConfigSourceDisplayName!,
+        if (backupDrPlanConfig != null)
+          'backupDrPlanConfig': backupDrPlanConfig!,
+        if (backupDrTemplateConfig != null)
+          'backupDrTemplateConfig': backupDrTemplateConfig!,
+        if (backupLocations != null) 'backupLocations': backupLocations!,
+        if (backupVault != null) 'backupVault': backupVault!,
+        if (latestSuccessfulBackupTime != null)
+          'latestSuccessfulBackupTime': latestSuccessfulBackupTime!,
+        if (pitrSettings != null) 'pitrSettings': pitrSettings!,
+        if (state != null) 'state': state!,
+        if (type != null) 'type': type!,
+      };
+}
+
 /// BackupConfigInfo has information about how the resource is configured for
 /// Backup and about the most recent backup to this vault.
 class BackupConfigInfo {
@@ -3467,6 +3685,132 @@ class BackupConfigInfo {
         if (lastSuccessfulBackupConsistencyTime != null)
           'lastSuccessfulBackupConsistencyTime':
               lastSuccessfulBackupConsistencyTime!,
+      };
+}
+
+/// BackupDrPlanConfig has additional information about Backup and DR's Plan
+/// backup configuration.
+class BackupDrPlanConfig {
+  /// Backup rules of the backup plan resource.
+  core.List<BackupDrPlanRule>? backupDrPlanRules;
+
+  BackupDrPlanConfig({
+    this.backupDrPlanRules,
+  });
+
+  BackupDrPlanConfig.fromJson(core.Map json_)
+      : this(
+          backupDrPlanRules: (json_['backupDrPlanRules'] as core.List?)
+              ?.map((value) => BackupDrPlanRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupDrPlanRules != null) 'backupDrPlanRules': backupDrPlanRules!,
+      };
+}
+
+/// BackupDrPlanRule has rule specific information of the backup plan resource.
+class BackupDrPlanRule {
+  /// Timestamp of the latest successful backup created via this backup rule.
+  ///
+  /// Output only.
+  core.String? lastSuccessfulBackupTime;
+
+  /// Unique Id of the backup rule.
+  ///
+  /// Output only.
+  core.String? ruleId;
+
+  BackupDrPlanRule({
+    this.lastSuccessfulBackupTime,
+    this.ruleId,
+  });
+
+  BackupDrPlanRule.fromJson(core.Map json_)
+      : this(
+          lastSuccessfulBackupTime:
+              json_['lastSuccessfulBackupTime'] as core.String?,
+          ruleId: json_['ruleId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lastSuccessfulBackupTime != null)
+          'lastSuccessfulBackupTime': lastSuccessfulBackupTime!,
+        if (ruleId != null) 'ruleId': ruleId!,
+      };
+}
+
+/// BackupDrTemplateConfig has additional information about Backup and DR's
+/// Template backup configuration.
+class BackupDrTemplateConfig {
+  /// The URI of the BackupDr template resource for the first party identity
+  /// users.
+  ///
+  /// Output only.
+  core.String? firstPartyManagementUri;
+
+  /// The URI of the BackupDr template resource for the third party identity
+  /// users.
+  ///
+  /// Output only.
+  core.String? thirdPartyManagementUri;
+
+  BackupDrTemplateConfig({
+    this.firstPartyManagementUri,
+    this.thirdPartyManagementUri,
+  });
+
+  BackupDrTemplateConfig.fromJson(core.Map json_)
+      : this(
+          firstPartyManagementUri:
+              json_['firstPartyManagementUri'] as core.String?,
+          thirdPartyManagementUri:
+              json_['thirdPartyManagementUri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (firstPartyManagementUri != null)
+          'firstPartyManagementUri': firstPartyManagementUri!,
+        if (thirdPartyManagementUri != null)
+          'thirdPartyManagementUri': thirdPartyManagementUri!,
+      };
+}
+
+/// BackupLocation represents a cloud location where a backup can be stored.
+class BackupLocation {
+  /// The id of the cloud location.
+  ///
+  /// Example: "us-central1"
+  ///
+  /// Output only.
+  core.String? locationId;
+
+  /// The type of the location.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Location type is unspecified.
+  /// - "ZONAL" : Location type is zonal.
+  /// - "REGIONAL" : Location type is regional.
+  /// - "MULTI_REGIONAL" : Location type is multi regional.
+  core.String? type;
+
+  BackupLocation({
+    this.locationId,
+    this.type,
+  });
+
+  BackupLocation.fromJson(core.Map json_)
+      : this(
+          locationId: json_['locationId'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (locationId != null) 'locationId': locationId!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3585,10 +3929,7 @@ class BackupPlan {
   /// Output only.
   core.String? name;
 
-  /// The resource type to which the `BackupPlan` will be applied.
   ///
-  /// Examples include, "compute.googleapis.com/Instance",
-  /// "sqladmin.googleapis.com/Instance", or "alloydb.googleapis.com/Cluster".
   ///
   /// Required.
   core.String? resourceType;
@@ -3701,7 +4042,7 @@ class BackupPlanAssociation {
   /// Required. Immutable.
   core.String? resource;
 
-  /// Resource type of workload on which backupplan is applied
+  ///
   ///
   /// Required. Immutable.
   core.String? resourceType;
@@ -5928,6 +6269,35 @@ class ListOperationsResponse {
       };
 }
 
+/// Response for ListResourceBackupConfigs.
+class ListResourceBackupConfigsResponse {
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// The list of ResourceBackupConfigs for the specified scope.
+  core.List<ResourceBackupConfig>? resourceBackupConfigs;
+
+  ListResourceBackupConfigsResponse({
+    this.nextPageToken,
+    this.resourceBackupConfigs,
+  });
+
+  ListResourceBackupConfigsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          resourceBackupConfigs: (json_['resourceBackupConfigs'] as core.List?)
+              ?.map((value) => ResourceBackupConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (resourceBackupConfigs != null)
+          'resourceBackupConfigs': resourceBackupConfigs!,
+      };
+}
+
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
@@ -6554,6 +6924,27 @@ class Operation {
       };
 }
 
+/// Point in time recovery settings of the backup configuration resource.
+class PitrSettings {
+  /// Number of days to retain the backup.
+  ///
+  /// Output only.
+  core.int? retentionDays;
+
+  PitrSettings({
+    this.retentionDays,
+  });
+
+  PitrSettings.fromJson(core.Map json_)
+      : this(
+          retentionDays: json_['retentionDays'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (retentionDays != null) 'retentionDays': retentionDays!,
+      };
+}
+
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///
@@ -6671,6 +7062,123 @@ class Policy {
 
 /// Message for deleting a DataSource.
 typedef RemoveDataSourceRequest = $Request00;
+
+/// ResourceBackupConfig represents a resource along with its backup
+/// configurations.
+class ResourceBackupConfig {
+  /// Backup configurations applying to the target resource, including those
+  /// targeting its related/child resources.
+  ///
+  /// For example, backup configuration applicable to Compute Engine disks will
+  /// be populated in this field for a Compute Engine VM which has the disk
+  /// associated.
+  core.List<BackupConfigDetails>? backupConfigsDetails;
+
+  /// Whether the target resource is configured for backup.
+  ///
+  /// This is true if the backup_configs_details is not empty.
+  ///
+  /// Output only.
+  core.bool? backupConfigured;
+
+  /// Identifier.
+  ///
+  /// The resource name of the ResourceBackupConfig. Format:
+  /// projects/{project}/locations/{location}/resourceBackupConfigs/{uid}
+  core.String? name;
+
+  /// The
+  /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+  /// of the cloud resource that this configuration applies to.
+  ///
+  /// Supported resource types are ResourceBackupConfig.ResourceType.
+  ///
+  /// Output only.
+  core.String? targetResource;
+
+  /// The human friendly name of the target resource.
+  ///
+  /// Output only.
+  core.String? targetResourceDisplayName;
+
+  /// Labels associated with the target resource.
+  core.Map<core.String, core.String>? targetResourceLabels;
+
+  /// The type of the target resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "RESOURCE_TYPE_UNSPECIFIED" : Resource type not set.
+  /// - "CLOUD_SQL_INSTANCE" : Cloud SQL instance.
+  /// - "COMPUTE_ENGINE_VM" : Compute Engine VM.
+  core.String? targetResourceType;
+
+  /// The unique identifier of the resource backup config.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Whether the target resource is protected by a backup vault.
+  ///
+  /// This is true if the backup_configs_details is not empty and any of the
+  /// ResourceBackupConfig.backup_configs_details has a backup configuration
+  /// with BackupConfigDetails.backup_vault set. set.
+  ///
+  /// Output only.
+  core.bool? vaulted;
+
+  ResourceBackupConfig({
+    this.backupConfigsDetails,
+    this.backupConfigured,
+    this.name,
+    this.targetResource,
+    this.targetResourceDisplayName,
+    this.targetResourceLabels,
+    this.targetResourceType,
+    this.uid,
+    this.vaulted,
+  });
+
+  ResourceBackupConfig.fromJson(core.Map json_)
+      : this(
+          backupConfigsDetails: (json_['backupConfigsDetails'] as core.List?)
+              ?.map((value) => BackupConfigDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          backupConfigured: json_['backupConfigured'] as core.bool?,
+          name: json_['name'] as core.String?,
+          targetResource: json_['targetResource'] as core.String?,
+          targetResourceDisplayName:
+              json_['targetResourceDisplayName'] as core.String?,
+          targetResourceLabels: (json_['targetResourceLabels']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          targetResourceType: json_['targetResourceType'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          vaulted: json_['vaulted'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupConfigsDetails != null)
+          'backupConfigsDetails': backupConfigsDetails!,
+        if (backupConfigured != null) 'backupConfigured': backupConfigured!,
+        if (name != null) 'name': name!,
+        if (targetResource != null) 'targetResource': targetResource!,
+        if (targetResourceDisplayName != null)
+          'targetResourceDisplayName': targetResourceDisplayName!,
+        if (targetResourceLabels != null)
+          'targetResourceLabels': targetResourceLabels!,
+        if (targetResourceType != null)
+          'targetResourceType': targetResourceType!,
+        if (uid != null) 'uid': uid!,
+        if (vaulted != null) 'vaulted': vaulted!,
+      };
+}
 
 /// Request message for restoring from a Backup.
 class RestoreBackupRequest {
@@ -7123,7 +7631,7 @@ class StandardSchedule {
   /// till end time defined. This is required for `recurrence_type`, `HOURLY`
   /// and is not applicable otherwise. A validation error will occur if a value
   /// is supplied and `recurrence_type` is not `HOURLY`. Value of hourly
-  /// frequency should be between 6 and 23. Reason for limit : We found that
+  /// frequency should be between 4 and 23. Reason for limit : We found that
   /// there is bandwidth limitation of 3GB/S for GMI while taking a backup and
   /// 5GB/S while doing a restore. Given the amount of parallel backups and
   /// restore we are targeting, this will potentially take the backup time to

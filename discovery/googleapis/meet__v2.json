@@ -7,6 +7,9 @@
                 },
                 "https://www.googleapis.com/auth/meetings.space.readonly": {
                     "description": "Read information about any of your Google Meet conferences"
+                },
+                "https://www.googleapis.com/auth/meetings.space.settings": {
+                    "description": "Edit, and see settings for all of your Google Meet calls."
                 }
             }
         }
@@ -28,7 +31,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240808",
+    "revision": "20250127",
     "rootUrl": "https://meet.googleapis.com/",
     "servicePath": "",
     "title": "Google Meet API",
@@ -597,7 +600,8 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/meetings.space.created",
-                        "https://www.googleapis.com/auth/meetings.space.readonly"
+                        "https://www.googleapis.com/auth/meetings.space.readonly",
+                        "https://www.googleapis.com/auth/meetings.space.settings"
                     ]
                 },
                 "patch": {
@@ -631,7 +635,8 @@
                         "$ref": "Space"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/meetings.space.created"
+                        "https://www.googleapis.com/auth/meetings.space.created",
+                        "https://www.googleapis.com/auth/meetings.space.settings"
                     ]
                 }
             }

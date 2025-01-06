@@ -1717,6 +1717,9 @@ class UrlInspectionResult {
   core.String? inspectionResultLink;
 
   /// Result of the Mobile usability analysis.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   MobileUsabilityInspectionResult? mobileUsabilityResult;
 
   /// Result of the Rich Results analysis.

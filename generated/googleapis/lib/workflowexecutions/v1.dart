@@ -826,13 +826,12 @@ class Execution {
   /// Output only.
   Error? error;
 
-  /// Describes the level of the execution history feature to apply to this
-  /// execution.
+  /// Describes the execution history level to apply to this execution.
   ///
-  /// If not specified, the level of the execution history feature will be
-  /// determined by its workflow's execution history level. If the value is
-  /// different from its workflow's value, it will override the workflow's
-  /// execution history level for this exeuction.
+  /// If not specified, the execution history level is determined by its
+  /// workflow's execution history level. If the levels are different, the
+  /// executionHistoryLevel overrides the workflow's execution history level for
+  /// this execution.
   ///
   /// Optional.
   /// Possible string values are:
@@ -1335,7 +1334,7 @@ class StepEntry {
   /// Output only.
   core.String? name;
 
-  /// The NavigationInfo associated to this step.
+  /// The NavigationInfo associated with this step.
   ///
   /// Output only.
   NavigationInfo? navigationInfo;
@@ -1364,7 +1363,7 @@ class StepEntry {
   /// Output only.
   core.String? step;
 
-  /// The StepEntryMetadata associated to this step.
+  /// The StepEntryMetadata associated with this step.
   ///
   /// Output only.
   StepEntryMetadata? stepEntryMetadata;
@@ -1407,7 +1406,7 @@ class StepEntry {
   /// Output only.
   core.String? updateTime;
 
-  /// The VariableData associated to this step.
+  /// The VariableData associated with this step.
   ///
   /// Output only.
   VariableData? variableData;

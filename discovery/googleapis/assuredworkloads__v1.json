@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241206",
+    "revision": "20250213",
     "rootUrl": "https://assuredworkloads.googleapis.com/",
     "servicePath": "",
     "title": "Assured Workloads API",
@@ -1677,7 +1677,7 @@
                     ],
                     "enumDescriptions": [
                         "KAJ Enrollment type is unspecified",
-                        "KAT sets External, Hardware, and Software key feature logging only to TRUE. (no enforcement)"
+                        "KAT sets External, Hardware, and Software key feature logging only to TRUE."
                     ],
                     "type": "string"
                 }

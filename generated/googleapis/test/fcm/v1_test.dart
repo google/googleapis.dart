@@ -48,6 +48,7 @@ api.AndroidConfig buildAndroidConfig() {
   final o = api.AndroidConfig();
   buildCounterAndroidConfig++;
   if (buildCounterAndroidConfig < 3) {
+    o.bandwidthConstrainedOk = true;
     o.collapseKey = 'foo';
     o.data = buildUnnamed0();
     o.directBootOk = true;
@@ -64,6 +65,7 @@ api.AndroidConfig buildAndroidConfig() {
 void checkAndroidConfig(api.AndroidConfig o) {
   buildCounterAndroidConfig++;
   if (buildCounterAndroidConfig < 3) {
+    unittest.expect(o.bandwidthConstrainedOk!, unittest.isTrue);
     unittest.expect(
       o.collapseKey!,
       unittest.equals('foo'),

@@ -455,7 +455,7 @@ class LocationsWorkforcePoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name of the pool. Format:
+  /// [name] - Identifier. The resource name of the pool. Format:
   /// `locations/{location}/workforcePools/{workforce_pool_id}`
   /// Value must have pattern `^locations/\[^/\]+/workforcePools/\[^/\]+$`.
   ///
@@ -879,7 +879,7 @@ class LocationsWorkforcePoolsProvidersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name of the provider. Format:
+  /// [name] - Identifier. The resource name of the provider. Format:
   /// `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`
   /// Value must have pattern
   /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+$`.
@@ -5866,6 +5866,15 @@ class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client {
   /// https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
   /// for more details on `microsoft.graph.group` properties. The attributes
   /// obtained from idntity provider are mapped to `assertion.groups`.
+  /// - "AZURE_AD_GROUPS_ID" : Used to get the user's group claims from the
+  /// Microsoft Entra ID identity provider using configuration provided in
+  /// ExtraAttributesOAuth2Client and `id` property of the
+  /// `microsoft.graph.group` object is used for claim mapping. See
+  /// https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+  /// for more details on `microsoft.graph.group` properties. The group IDs
+  /// obtained from Microsoft Entra ID are present in `assertion. groups` for
+  /// OIDC providers and `assertion.attributes.groups` for SAML providers for
+  /// attribute mapping.
   core.String? attributesType;
 
   /// The OAuth 2.0 client ID for retrieving extra attributes from the identity
@@ -6756,7 +6765,10 @@ class OauthClient {
   /// The following scopes are supported: *
   /// `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure,
   /// and delete your Google Cloud data and see the email address for your
-  /// Google Account.
+  /// Google Account. * `openid`: The OAuth client can associate you with your
+  /// personal information on Google Cloud. * `email`: The OAuth client can read
+  /// a federated identity's email address. * `groups`: The OAuth client can
+  /// read a federated identity's groups.
   ///
   /// Required.
   core.List<core.String>? allowedScopes;
@@ -8296,11 +8308,10 @@ class WorkforcePool {
   /// Output only.
   core.String? expireTime;
 
-  /// The resource name of the pool.
+  /// Identifier.
   ///
-  /// Format: `locations/{location}/workforcePools/{workforce_pool_id}`
-  ///
-  /// Output only.
+  /// The resource name of the pool. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool_id}`
   core.String? name;
 
   /// The resource name of the parent.
@@ -8489,12 +8500,10 @@ class WorkforcePoolProvider {
   GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client?
       extraAttributesOauth2Client;
 
-  /// The resource name of the provider.
+  /// Identifier.
   ///
-  /// Format:
+  /// The resource name of the provider. Format:
   /// `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`
-  ///
-  /// Output only.
   core.String? name;
 
   /// An OpenId Connect 1.0 identity provider configuration.
@@ -8599,9 +8608,10 @@ class WorkforcePoolProviderKey {
   /// Immutable.
   KeyData? keyData;
 
-  /// The resource name of the key.
+  /// Identifier.
   ///
-  /// Output only.
+  /// The resource name of the key. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}/keys/{key_id}`
   core.String? name;
 
   /// The state of the key.

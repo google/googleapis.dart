@@ -592,6 +592,38 @@ void checkGceInstance(api.GceInstance o) {
   buildCounterGceInstance--;
 }
 
+core.int buildCounterGceInstanceHost = 0;
+api.GceInstanceHost buildGceInstanceHost() {
+  final o = api.GceInstanceHost();
+  buildCounterGceInstanceHost++;
+  if (buildCounterGceInstanceHost < 3) {
+    o.id = 'foo';
+    o.name = 'foo';
+    o.zone = 'foo';
+  }
+  buildCounterGceInstanceHost--;
+  return o;
+}
+
+void checkGceInstanceHost(api.GceInstanceHost o) {
+  buildCounterGceInstanceHost++;
+  if (buildCounterGceInstanceHost < 3) {
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.zone!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGceInstanceHost--;
+}
+
 core.int buildCounterGcePersistentDisk = 0;
 api.GcePersistentDisk buildGcePersistentDisk() {
   final o = api.GcePersistentDisk();
@@ -1524,6 +1556,25 @@ void checkReadinessCheck(api.ReadinessCheck o) {
   buildCounterReadinessCheck--;
 }
 
+core.int buildCounterRuntimeHost = 0;
+api.RuntimeHost buildRuntimeHost() {
+  final o = api.RuntimeHost();
+  buildCounterRuntimeHost++;
+  if (buildCounterRuntimeHost < 3) {
+    o.gceInstanceHost = buildGceInstanceHost();
+  }
+  buildCounterRuntimeHost--;
+  return o;
+}
+
+void checkRuntimeHost(api.RuntimeHost o) {
+  buildCounterRuntimeHost++;
+  if (buildCounterRuntimeHost < 3) {
+    checkGceInstanceHost(o.gceInstanceHost!);
+  }
+  buildCounterRuntimeHost--;
+}
+
 core.int buildCounterSetIamPolicyRequest = 0;
 api.SetIamPolicyRequest buildSetIamPolicyRequest() {
   final o = api.SetIamPolicyRequest();
@@ -1553,6 +1604,7 @@ api.StartWorkstationRequest buildStartWorkstationRequest() {
   final o = api.StartWorkstationRequest();
   buildCounterStartWorkstationRequest++;
   if (buildCounterStartWorkstationRequest < 3) {
+    o.boostConfig = 'foo';
     o.etag = 'foo';
     o.validateOnly = true;
   }
@@ -1563,6 +1615,10 @@ api.StartWorkstationRequest buildStartWorkstationRequest() {
 void checkStartWorkstationRequest(api.StartWorkstationRequest o) {
   buildCounterStartWorkstationRequest++;
   if (buildCounterStartWorkstationRequest < 3) {
+    unittest.expect(
+      o.boostConfig!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -1820,6 +1876,8 @@ api.Workstation buildWorkstation() {
     o.labels = buildUnnamed37();
     o.name = 'foo';
     o.reconciling = true;
+    o.runtimeHost = buildRuntimeHost();
+    o.sourceWorkstation = 'foo';
     o.startTime = 'foo';
     o.state = 'foo';
     o.uid = 'foo';
@@ -1864,6 +1922,11 @@ void checkWorkstation(api.Workstation o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.reconciling!, unittest.isTrue);
+    checkRuntimeHost(o.runtimeHost!);
+    unittest.expect(
+      o.sourceWorkstation!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.startTime!,
       unittest.equals('foo'),
@@ -2365,6 +2428,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GceInstanceHost', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGceInstanceHost();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GceInstanceHost.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGceInstanceHost(od);
+    });
+  });
+
   unittest.group('obj-schema-GcePersistentDisk', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGcePersistentDisk();
@@ -2572,6 +2645,16 @@ void main() {
       final od = api.ReadinessCheck.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkReadinessCheck(od);
+    });
+  });
+
+  unittest.group('obj-schema-RuntimeHost', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRuntimeHost();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RuntimeHost.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRuntimeHost(od);
     });
   });
 

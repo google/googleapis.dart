@@ -6152,6 +6152,53 @@ void checkSecurityAnimation(api.SecurityAnimation o) {
   buildCounterSecurityAnimation--;
 }
 
+core.int buildCounterSetPassUpdateNoticeRequest = 0;
+api.SetPassUpdateNoticeRequest buildSetPassUpdateNoticeRequest() {
+  final o = api.SetPassUpdateNoticeRequest();
+  buildCounterSetPassUpdateNoticeRequest++;
+  if (buildCounterSetPassUpdateNoticeRequest < 3) {
+    o.externalPassId = 'foo';
+    o.updateUri = 'foo';
+    o.updatedPassJwtSignature = 'foo';
+  }
+  buildCounterSetPassUpdateNoticeRequest--;
+  return o;
+}
+
+void checkSetPassUpdateNoticeRequest(api.SetPassUpdateNoticeRequest o) {
+  buildCounterSetPassUpdateNoticeRequest++;
+  if (buildCounterSetPassUpdateNoticeRequest < 3) {
+    unittest.expect(
+      o.externalPassId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updatedPassJwtSignature!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSetPassUpdateNoticeRequest--;
+}
+
+core.int buildCounterSetPassUpdateNoticeResponse = 0;
+api.SetPassUpdateNoticeResponse buildSetPassUpdateNoticeResponse() {
+  final o = api.SetPassUpdateNoticeResponse();
+  buildCounterSetPassUpdateNoticeResponse++;
+  if (buildCounterSetPassUpdateNoticeResponse < 3) {}
+  buildCounterSetPassUpdateNoticeResponse--;
+  return o;
+}
+
+void checkSetPassUpdateNoticeResponse(api.SetPassUpdateNoticeResponse o) {
+  buildCounterSetPassUpdateNoticeResponse++;
+  if (buildCounterSetPassUpdateNoticeResponse < 3) {}
+  buildCounterSetPassUpdateNoticeResponse--;
+}
+
 core.int buildCounterSignUpInfo = 0;
 api.SignUpInfo buildSignUpInfo() {
   final o = api.SignUpInfo();
@@ -8513,6 +8560,26 @@ void main() {
       final od = api.SecurityAnimation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSecurityAnimation(od);
+    });
+  });
+
+  unittest.group('obj-schema-SetPassUpdateNoticeRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSetPassUpdateNoticeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SetPassUpdateNoticeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSetPassUpdateNoticeRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-SetPassUpdateNoticeResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSetPassUpdateNoticeResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SetPassUpdateNoticeResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSetPassUpdateNoticeResponse(od);
     });
   });
 
@@ -14896,6 +14963,66 @@ void main() {
       final response =
           await res.update(arg_request, arg_resourceId, $fields: arg_$fields);
       checkTransitObject(response as api.TransitObject);
+    });
+  });
+
+  unittest.group('resource-WalletobjectsV1PrivateContentResource', () {
+    unittest.test('method--setPassUpdateNotice', () async {
+      final mock = HttpServerMock();
+      final res = api.WalletobjectsApi(mock).walletobjects.v1.privateContent;
+      final arg_request = buildSetPassUpdateNoticeRequest();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SetPassUpdateNoticeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetPassUpdateNoticeRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 51),
+          unittest
+              .equals('walletobjects/v1/privateContent/setPassUpdateNotice'),
+        );
+        pathOffset += 51;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildSetPassUpdateNoticeResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.setPassUpdateNotice(arg_request, $fields: arg_$fields);
+      checkSetPassUpdateNoticeResponse(
+          response as api.SetPassUpdateNoticeResponse);
     });
   });
 }

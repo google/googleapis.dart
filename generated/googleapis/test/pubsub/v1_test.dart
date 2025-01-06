@@ -167,6 +167,105 @@ void checkAwsKinesis(api.AwsKinesis o) {
   buildCounterAwsKinesis--;
 }
 
+core.int buildCounterAwsMsk = 0;
+api.AwsMsk buildAwsMsk() {
+  final o = api.AwsMsk();
+  buildCounterAwsMsk++;
+  if (buildCounterAwsMsk < 3) {
+    o.awsRoleArn = 'foo';
+    o.clusterArn = 'foo';
+    o.gcpServiceAccount = 'foo';
+    o.state = 'foo';
+    o.topic = 'foo';
+  }
+  buildCounterAwsMsk--;
+  return o;
+}
+
+void checkAwsMsk(api.AwsMsk o) {
+  buildCounterAwsMsk++;
+  if (buildCounterAwsMsk < 3) {
+    unittest.expect(
+      o.awsRoleArn!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.clusterArn!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gcpServiceAccount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.topic!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAwsMsk--;
+}
+
+core.int buildCounterAzureEventHubs = 0;
+api.AzureEventHubs buildAzureEventHubs() {
+  final o = api.AzureEventHubs();
+  buildCounterAzureEventHubs++;
+  if (buildCounterAzureEventHubs < 3) {
+    o.clientId = 'foo';
+    o.eventHub = 'foo';
+    o.gcpServiceAccount = 'foo';
+    o.namespace = 'foo';
+    o.resourceGroup = 'foo';
+    o.state = 'foo';
+    o.subscriptionId = 'foo';
+    o.tenantId = 'foo';
+  }
+  buildCounterAzureEventHubs--;
+  return o;
+}
+
+void checkAzureEventHubs(api.AzureEventHubs o) {
+  buildCounterAzureEventHubs++;
+  if (buildCounterAzureEventHubs < 3) {
+    unittest.expect(
+      o.clientId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.eventHub!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gcpServiceAccount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.namespace!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resourceGroup!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.subscriptionId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tenantId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAzureEventHubs--;
+}
+
 core.int buildCounterBigQueryConfig = 0;
 api.BigQueryConfig buildBigQueryConfig() {
   final o = api.BigQueryConfig();
@@ -378,6 +477,53 @@ void checkCommitSchemaRequest(api.CommitSchemaRequest o) {
   buildCounterCommitSchemaRequest--;
 }
 
+core.int buildCounterConfluentCloud = 0;
+api.ConfluentCloud buildConfluentCloud() {
+  final o = api.ConfluentCloud();
+  buildCounterConfluentCloud++;
+  if (buildCounterConfluentCloud < 3) {
+    o.bootstrapServer = 'foo';
+    o.clusterId = 'foo';
+    o.gcpServiceAccount = 'foo';
+    o.identityPoolId = 'foo';
+    o.state = 'foo';
+    o.topic = 'foo';
+  }
+  buildCounterConfluentCloud--;
+  return o;
+}
+
+void checkConfluentCloud(api.ConfluentCloud o) {
+  buildCounterConfluentCloud++;
+  if (buildCounterConfluentCloud < 3) {
+    unittest.expect(
+      o.bootstrapServer!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.clusterId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gcpServiceAccount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.identityPoolId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.topic!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConfluentCloud--;
+}
+
 core.Map<core.String, core.String> buildUnnamed2() => {
       'x': 'foo',
       'y': 'foo',
@@ -541,7 +687,10 @@ api.IngestionDataSourceSettings buildIngestionDataSourceSettings() {
   buildCounterIngestionDataSourceSettings++;
   if (buildCounterIngestionDataSourceSettings < 3) {
     o.awsKinesis = buildAwsKinesis();
+    o.awsMsk = buildAwsMsk();
+    o.azureEventHubs = buildAzureEventHubs();
     o.cloudStorage = buildCloudStorage();
+    o.confluentCloud = buildConfluentCloud();
     o.platformLogsSettings = buildPlatformLogsSettings();
   }
   buildCounterIngestionDataSourceSettings--;
@@ -552,10 +701,40 @@ void checkIngestionDataSourceSettings(api.IngestionDataSourceSettings o) {
   buildCounterIngestionDataSourceSettings++;
   if (buildCounterIngestionDataSourceSettings < 3) {
     checkAwsKinesis(o.awsKinesis!);
+    checkAwsMsk(o.awsMsk!);
+    checkAzureEventHubs(o.azureEventHubs!);
     checkCloudStorage(o.cloudStorage!);
+    checkConfluentCloud(o.confluentCloud!);
     checkPlatformLogsSettings(o.platformLogsSettings!);
   }
   buildCounterIngestionDataSourceSettings--;
+}
+
+core.int buildCounterJavaScriptUDF = 0;
+api.JavaScriptUDF buildJavaScriptUDF() {
+  final o = api.JavaScriptUDF();
+  buildCounterJavaScriptUDF++;
+  if (buildCounterJavaScriptUDF < 3) {
+    o.code = 'foo';
+    o.functionName = 'foo';
+  }
+  buildCounterJavaScriptUDF--;
+  return o;
+}
+
+void checkJavaScriptUDF(api.JavaScriptUDF o) {
+  buildCounterJavaScriptUDF++;
+  if (buildCounterJavaScriptUDF < 3) {
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.functionName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterJavaScriptUDF--;
 }
 
 core.List<api.Schema> buildUnnamed3() => [
@@ -851,6 +1030,27 @@ void checkMessageStoragePolicy(api.MessageStoragePolicy o) {
     unittest.expect(o.enforceInTransit!, unittest.isTrue);
   }
   buildCounterMessageStoragePolicy--;
+}
+
+core.int buildCounterMessageTransform = 0;
+api.MessageTransform buildMessageTransform() {
+  final o = api.MessageTransform();
+  buildCounterMessageTransform++;
+  if (buildCounterMessageTransform < 3) {
+    o.enabled = true;
+    o.javascriptUdf = buildJavaScriptUDF();
+  }
+  buildCounterMessageTransform--;
+  return o;
+}
+
+void checkMessageTransform(api.MessageTransform o) {
+  buildCounterMessageTransform++;
+  if (buildCounterMessageTransform < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+    checkJavaScriptUDF(o.javascriptUdf!);
+  }
+  buildCounterMessageTransform--;
 }
 
 core.List<core.String> buildUnnamed11() => [
@@ -1560,6 +1760,17 @@ void checkUnnamed19(core.Map<core.String, core.String> o) {
   );
 }
 
+core.List<api.MessageTransform> buildUnnamed20() => [
+      buildMessageTransform(),
+      buildMessageTransform(),
+    ];
+
+void checkUnnamed20(core.List<api.MessageTransform> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMessageTransform(o[0]);
+  checkMessageTransform(o[1]);
+}
+
 core.int buildCounterSubscription = 0;
 api.Subscription buildSubscription() {
   final o = api.Subscription();
@@ -1577,6 +1788,7 @@ api.Subscription buildSubscription() {
     o.filter = 'foo';
     o.labels = buildUnnamed19();
     o.messageRetentionDuration = 'foo';
+    o.messageTransforms = buildUnnamed20();
     o.name = 'foo';
     o.pushConfig = buildPushConfig();
     o.retainAckedMessages = true;
@@ -1613,6 +1825,7 @@ void checkSubscription(api.Subscription o) {
       o.messageRetentionDuration!,
       unittest.equals('foo'),
     );
+    checkUnnamed20(o.messageTransforms!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1636,42 +1849,6 @@ void checkSubscription(api.Subscription o) {
   buildCounterSubscription--;
 }
 
-core.List<core.String> buildUnnamed20() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed20(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTestIamPermissionsRequest = 0;
-api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
-  final o = api.TestIamPermissionsRequest();
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed20();
-  }
-  buildCounterTestIamPermissionsRequest--;
-  return o;
-}
-
-void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed20(o.permissions!);
-  }
-  buildCounterTestIamPermissionsRequest--;
-}
-
 core.List<core.String> buildUnnamed21() => [
       'foo',
       'foo',
@@ -1689,12 +1866,48 @@ void checkUnnamed21(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterTestIamPermissionsRequest = 0;
+api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
+  final o = api.TestIamPermissionsRequest();
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    o.permissions = buildUnnamed21();
+  }
+  buildCounterTestIamPermissionsRequest--;
+  return o;
+}
+
+void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    checkUnnamed21(o.permissions!);
+  }
+  buildCounterTestIamPermissionsRequest--;
+}
+
+core.List<core.String> buildUnnamed22() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed22(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterTestIamPermissionsResponse = 0;
 api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed21();
+    o.permissions = buildUnnamed22();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1703,7 +1916,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed21(o.permissions!);
+    checkUnnamed22(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -1745,12 +1958,12 @@ void checkTextFormat(api.TextFormat o) {
   buildCounterTextFormat--;
 }
 
-core.Map<core.String, core.String> buildUnnamed22() => {
+core.Map<core.String, core.String> buildUnnamed23() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed22(core.Map<core.String, core.String> o) {
+void checkUnnamed23(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1762,6 +1975,17 @@ void checkUnnamed22(core.Map<core.String, core.String> o) {
   );
 }
 
+core.List<api.MessageTransform> buildUnnamed24() => [
+      buildMessageTransform(),
+      buildMessageTransform(),
+    ];
+
+void checkUnnamed24(core.List<api.MessageTransform> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMessageTransform(o[0]);
+  checkMessageTransform(o[1]);
+}
+
 core.int buildCounterTopic = 0;
 api.Topic buildTopic() {
   final o = api.Topic();
@@ -1769,9 +1993,10 @@ api.Topic buildTopic() {
   if (buildCounterTopic < 3) {
     o.ingestionDataSourceSettings = buildIngestionDataSourceSettings();
     o.kmsKeyName = 'foo';
-    o.labels = buildUnnamed22();
+    o.labels = buildUnnamed23();
     o.messageRetentionDuration = 'foo';
     o.messageStoragePolicy = buildMessageStoragePolicy();
+    o.messageTransforms = buildUnnamed24();
     o.name = 'foo';
     o.satisfiesPzs = true;
     o.schemaSettings = buildSchemaSettings();
@@ -1789,12 +2014,13 @@ void checkTopic(api.Topic o) {
       o.kmsKeyName!,
       unittest.equals('foo'),
     );
-    checkUnnamed22(o.labels!);
+    checkUnnamed23(o.labels!);
     unittest.expect(
       o.messageRetentionDuration!,
       unittest.equals('foo'),
     );
     checkMessageStoragePolicy(o.messageStoragePolicy!);
+    checkUnnamed24(o.messageTransforms!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -2015,6 +2241,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-AwsMsk', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAwsMsk();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.AwsMsk.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkAwsMsk(od);
+    });
+  });
+
+  unittest.group('obj-schema-AzureEventHubs', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAzureEventHubs();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AzureEventHubs.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAzureEventHubs(od);
+    });
+  });
+
   unittest.group('obj-schema-BigQueryConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildBigQueryConfig();
@@ -2062,6 +2308,16 @@ void main() {
       final od = api.CommitSchemaRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCommitSchemaRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ConfluentCloud', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildConfluentCloud();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ConfluentCloud.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfluentCloud(od);
     });
   });
 
@@ -2132,6 +2388,16 @@ void main() {
       final od = api.IngestionDataSourceSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkIngestionDataSourceSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-JavaScriptUDF', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildJavaScriptUDF();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.JavaScriptUDF.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkJavaScriptUDF(od);
     });
   });
 
@@ -2212,6 +2478,16 @@ void main() {
       final od = api.MessageStoragePolicy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkMessageStoragePolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-MessageTransform', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMessageTransform();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MessageTransform.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMessageTransform(od);
     });
   });
 

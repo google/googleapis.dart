@@ -5569,7 +5569,8 @@ class UsersResource {
   /// - "familyName" : User's family name.
   /// - "givenName" : User's given name.
   ///
-  /// [pageToken] - Token to specify next page in the list
+  /// [pageToken] - Token to specify next page in the list. The page token is
+  /// only valid for three days.
   ///
   /// [projection] - What subset of fields to fetch for this user.
   /// Possible string values are:
@@ -12362,6 +12363,8 @@ class Users {
   core.String? kind;
 
   /// Token used to access next page of this result.
+  ///
+  /// The page token is only valid for three days.
   core.String? nextPageToken;
 
   /// Event that triggered this response (only used in case of Push Response)

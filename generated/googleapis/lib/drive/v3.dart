@@ -28,7 +28,6 @@
 /// - [CommentsResource]
 /// - [DrivesResource]
 /// - [FilesResource]
-/// - [OperationResource]
 /// - [OperationsResource]
 /// - [PermissionsResource]
 /// - [RepliesResource]
@@ -110,7 +109,6 @@ class DriveApi {
   CommentsResource get comments => CommentsResource(_requester);
   DrivesResource get drives => DrivesResource(_requester);
   FilesResource get files => FilesResource(_requester);
-  OperationResource get operation => OperationResource(_requester);
   OperationsResource get operations => OperationsResource(_requester);
   PermissionsResource get permissions => PermissionsResource(_requester);
   RepliesResource get replies => RepliesResource(_requester);
@@ -2288,10 +2286,10 @@ class FilesResource {
   }
 }
 
-class OperationResource {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationResource(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -2324,7 +2322,7 @@ class OperationResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'operation/' + commons.escapeVariable('$name') + ':cancel';
+    final url_ = 'operations/' + commons.escapeVariable('$name') + ':cancel';
 
     await _requester.request(
       url_,
@@ -2360,7 +2358,7 @@ class OperationResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'operation/' + commons.escapeVariable('$name');
+    final url_ = 'operations/' + commons.escapeVariable('$name');
 
     await _requester.request(
       url_,
@@ -2369,12 +2367,6 @@ class OperationResource {
       downloadOptions: null,
     );
   }
-}
-
-class OperationsResource {
-  final commons.ApiRequester _requester;
-
-  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the latest state of a long-running operation.
   ///
@@ -2576,6 +2568,9 @@ class PermissionsResource {
   ///
   /// [permissionId] - The ID of the permission.
   ///
+  /// [enforceExpansiveAccess] - Whether the request should enforce expansive
+  /// access rules.
+  ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
@@ -2597,12 +2592,15 @@ class PermissionsResource {
   async.Future<void> delete(
     core.String fileId,
     core.String permissionId, {
+    core.bool? enforceExpansiveAccess,
     core.bool? supportsAllDrives,
     core.bool? supportsTeamDrives,
     core.bool? useDomainAdminAccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (enforceExpansiveAccess != null)
+        'enforceExpansiveAccess': ['${enforceExpansiveAccess}'],
       if (supportsAllDrives != null)
         'supportsAllDrives': ['${supportsAllDrives}'],
       if (supportsTeamDrives != null)
@@ -2772,6 +2770,9 @@ class PermissionsResource {
   ///
   /// [permissionId] - The ID of the permission.
   ///
+  /// [enforceExpansiveAccess] - Whether the request should enforce expansive
+  /// access rules.
+  ///
   /// [removeExpiration] - Whether to remove the expiration date.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
@@ -2802,6 +2803,7 @@ class PermissionsResource {
     Permission request,
     core.String fileId,
     core.String permissionId, {
+    core.bool? enforceExpansiveAccess,
     core.bool? removeExpiration,
     core.bool? supportsAllDrives,
     core.bool? supportsTeamDrives,
@@ -2811,6 +2813,8 @@ class PermissionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (enforceExpansiveAccess != null)
+        'enforceExpansiveAccess': ['${enforceExpansiveAccess}'],
       if (removeExpiration != null) 'removeExpiration': ['${removeExpiration}'],
       if (supportsAllDrives != null)
         'supportsAllDrives': ['${supportsAllDrives}'],
@@ -4609,6 +4613,35 @@ class ContentRestriction {
       };
 }
 
+/// A restriction for copy and download of the file.
+class DownloadRestriction {
+  /// Whether download and copy is restricted for readers.
+  core.bool? restrictedForReaders;
+
+  /// Whether download and copy is restricted for writers.
+  ///
+  /// If true, download is also restricted for readers.
+  core.bool? restrictedForWriters;
+
+  DownloadRestriction({
+    this.restrictedForReaders,
+    this.restrictedForWriters,
+  });
+
+  DownloadRestriction.fromJson(core.Map json_)
+      : this(
+          restrictedForReaders: json_['restrictedForReaders'] as core.bool?,
+          restrictedForWriters: json_['restrictedForWriters'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (restrictedForReaders != null)
+          'restrictedForReaders': restrictedForReaders!,
+        if (restrictedForWriters != null)
+          'restrictedForWriters': restrictedForWriters!,
+      };
+}
+
 /// An image file and cropping parameters from which a background image for this
 /// shared drive is set.
 ///
@@ -4899,6 +4932,9 @@ class DriveRestrictions {
   /// outside of this shared drive.
   core.bool? domainUsersOnly;
 
+  /// Download restrictions applied by shared drive managers.
+  DownloadRestriction? downloadRestriction;
+
   /// Whether access to items inside this shared drive is restricted to its
   /// members.
   core.bool? driveMembersOnly;
@@ -4913,6 +4949,7 @@ class DriveRestrictions {
     this.adminManagedRestrictions,
     this.copyRequiresWriterPermission,
     this.domainUsersOnly,
+    this.downloadRestriction,
     this.driveMembersOnly,
     this.sharingFoldersRequiresOrganizerPermission,
   });
@@ -4924,6 +4961,10 @@ class DriveRestrictions {
           copyRequiresWriterPermission:
               json_['copyRequiresWriterPermission'] as core.bool?,
           domainUsersOnly: json_['domainUsersOnly'] as core.bool?,
+          downloadRestriction: json_.containsKey('downloadRestriction')
+              ? DownloadRestriction.fromJson(json_['downloadRestriction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           driveMembersOnly: json_['driveMembersOnly'] as core.bool?,
           sharingFoldersRequiresOrganizerPermission:
               json_['sharingFoldersRequiresOrganizerPermission'] as core.bool?,
@@ -4935,6 +4976,8 @@ class DriveRestrictions {
         if (copyRequiresWriterPermission != null)
           'copyRequiresWriterPermission': copyRequiresWriterPermission!,
         if (domainUsersOnly != null) 'domainUsersOnly': domainUsersOnly!,
+        if (downloadRestriction != null)
+          'downloadRestriction': downloadRestriction!,
         if (driveMembersOnly != null) 'driveMembersOnly': driveMembersOnly!,
         if (sharingFoldersRequiresOrganizerPermission != null)
           'sharingFoldersRequiresOrganizerPermission':
@@ -5206,6 +5249,9 @@ class FileCapabilities {
   /// Output only.
   core.bool? canDeleteChildren;
 
+  /// Whether a user can disable inherited permissions.
+  core.bool? canDisableInheritedPermissions;
+
   /// Whether the current user can download this file.
   ///
   /// Output only.
@@ -5219,6 +5265,9 @@ class FileCapabilities {
   ///
   /// Output only.
   core.bool? canEdit;
+
+  /// Whether a user can re-enable inherited permissions.
+  core.bool? canEnableInheritedPermissions;
 
   /// Whether the current user can list the children of this folder.
   ///
@@ -5434,8 +5483,10 @@ class FileCapabilities {
     this.canCopy,
     this.canDelete,
     this.canDeleteChildren,
+    this.canDisableInheritedPermissions,
     this.canDownload,
     this.canEdit,
+    this.canEnableInheritedPermissions,
     this.canListChildren,
     this.canModifyContent,
     this.canModifyContentRestriction,
@@ -5483,8 +5534,12 @@ class FileCapabilities {
           canCopy: json_['canCopy'] as core.bool?,
           canDelete: json_['canDelete'] as core.bool?,
           canDeleteChildren: json_['canDeleteChildren'] as core.bool?,
+          canDisableInheritedPermissions:
+              json_['canDisableInheritedPermissions'] as core.bool?,
           canDownload: json_['canDownload'] as core.bool?,
           canEdit: json_['canEdit'] as core.bool?,
+          canEnableInheritedPermissions:
+              json_['canEnableInheritedPermissions'] as core.bool?,
           canListChildren: json_['canListChildren'] as core.bool?,
           canModifyContent: json_['canModifyContent'] as core.bool?,
           canModifyContentRestriction:
@@ -5545,8 +5600,12 @@ class FileCapabilities {
         if (canCopy != null) 'canCopy': canCopy!,
         if (canDelete != null) 'canDelete': canDelete!,
         if (canDeleteChildren != null) 'canDeleteChildren': canDeleteChildren!,
+        if (canDisableInheritedPermissions != null)
+          'canDisableInheritedPermissions': canDisableInheritedPermissions!,
         if (canDownload != null) 'canDownload': canDownload!,
         if (canEdit != null) 'canEdit': canEdit!,
+        if (canEnableInheritedPermissions != null)
+          'canEnableInheritedPermissions': canEnableInheritedPermissions!,
         if (canListChildren != null) 'canListChildren': canListChildren!,
         if (canModifyContent != null) 'canModifyContent': canModifyContent!,
         if (canModifyContentRestriction != null)
@@ -6156,6 +6215,11 @@ class File {
   /// Output only.
   FileImageMediaMetadata? imageMediaMetadata;
 
+  /// Whether this file has inherited permissions disabled.
+  ///
+  /// Inherited permissions are enabled by default.
+  core.bool? inheritedPermissionsDisabled;
+
   /// Whether the file was created or opened by the requesting app.
   ///
   /// Output only.
@@ -6453,6 +6517,7 @@ class File {
     this.iconLink,
     this.id,
     this.imageMediaMetadata,
+    this.inheritedPermissionsDisabled,
     this.isAppAuthorized,
     this.kind,
     this.labelInfo,
@@ -6549,6 +6614,8 @@ class File {
               ? FileImageMediaMetadata.fromJson(json_['imageMediaMetadata']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          inheritedPermissionsDisabled:
+              json_['inheritedPermissionsDisabled'] as core.bool?,
           isAppAuthorized: json_['isAppAuthorized'] as core.bool?,
           kind: json_['kind'] as core.String?,
           labelInfo: json_.containsKey('labelInfo')
@@ -6669,6 +6736,8 @@ class File {
         if (id != null) 'id': id!,
         if (imageMediaMetadata != null)
           'imageMediaMetadata': imageMediaMetadata!,
+        if (inheritedPermissionsDisabled != null)
+          'inheritedPermissionsDisabled': inheritedPermissionsDisabled!,
         if (isAppAuthorized != null) 'isAppAuthorized': isAppAuthorized!,
         if (kind != null) 'kind': kind!,
         if (labelInfo != null) 'labelInfo': labelInfo!,
@@ -7313,7 +7382,7 @@ class PermissionPermissionDetails {
 
   /// The ID of the item from which this permission is inherited.
   ///
-  /// This is an output-only field.
+  /// This is only populated for items in shared drives.
   ///
   /// Output only.
   core.String? inheritedFrom;
@@ -7329,8 +7398,8 @@ class PermissionPermissionDetails {
   /// The primary role for this user.
   ///
   /// While new values may be added in the future, the following are currently
-  /// possible: * `organizer` * `fileOrganizer` * `writer` * `commenter` *
-  /// `reader`
+  /// possible: * `owner` * `organizer` * `fileOrganizer` * `writer` *
+  /// `commenter` * `reader`
   ///
   /// Output only.
   core.String? role;
@@ -7471,6 +7540,10 @@ class Permission {
   /// Output only.
   core.String? id;
 
+  /// When true, only organizers, owners, and users with permissions added
+  /// directly on the item can access it.
+  core.bool? inheritedPermissionsDisabled;
+
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string `"drive#permission"`.
@@ -7484,10 +7557,8 @@ class Permission {
   /// shared drive.
   core.bool? pendingOwner;
 
-  /// Details of whether the permissions on this shared drive item are inherited
-  /// or directly on this item.
-  ///
-  /// This is an output-only field which is present only for shared drive items.
+  /// Details of whether the permissions on this item are inherited or directly
+  /// on this item.
   ///
   /// Output only.
   core.List<PermissionPermissionDetails>? permissionDetails;
@@ -7525,8 +7596,12 @@ class Permission {
 
   /// Indicates the view for this permission.
   ///
-  /// Only populated for permissions that belong to a view. 'published' is the
-  /// only supported value.
+  /// Only populated for permissions that belong to a view. published and
+  /// metadata are the only supported values. - published: The permission's role
+  /// is published_reader. - metadata: The item is only visible to the metadata
+  /// view because the item has limited access and the scope has at least read
+  /// access to the parent. Note: The metadata view is currently only supported
+  /// on folders.
   core.String? view;
 
   Permission({
@@ -7537,6 +7612,7 @@ class Permission {
     this.emailAddress,
     this.expirationTime,
     this.id,
+    this.inheritedPermissionsDisabled,
     this.kind,
     this.pendingOwner,
     this.permissionDetails,
@@ -7558,6 +7634,8 @@ class Permission {
               ? core.DateTime.parse(json_['expirationTime'] as core.String)
               : null,
           id: json_['id'] as core.String?,
+          inheritedPermissionsDisabled:
+              json_['inheritedPermissionsDisabled'] as core.bool?,
           kind: json_['kind'] as core.String?,
           pendingOwner: json_['pendingOwner'] as core.bool?,
           permissionDetails: (json_['permissionDetails'] as core.List?)
@@ -7585,6 +7663,8 @@ class Permission {
         if (expirationTime != null)
           'expirationTime': expirationTime!.toUtc().toIso8601String(),
         if (id != null) 'id': id!,
+        if (inheritedPermissionsDisabled != null)
+          'inheritedPermissionsDisabled': inheritedPermissionsDisabled!,
         if (kind != null) 'kind': kind!,
         if (pendingOwner != null) 'pendingOwner': pendingOwner!,
         if (permissionDetails != null) 'permissionDetails': permissionDetails!,
@@ -7917,7 +7997,7 @@ class Revision {
 
   /// A link to the published revision.
   ///
-  /// This is only populated for Google Sites files.
+  /// This is only populated for Docs Editors files.
   ///
   /// Output only.
   core.String? publishedLink;
@@ -8338,6 +8418,9 @@ class TeamDriveRestrictions {
   /// outside of this Team Drive.
   core.bool? domainUsersOnly;
 
+  /// Download restrictions applied by shared drive managers.
+  DownloadRestriction? downloadRestriction;
+
   /// If true, only users with the organizer role can share folders.
   ///
   /// If false, users with either the organizer role or the file organizer role
@@ -8352,6 +8435,7 @@ class TeamDriveRestrictions {
     this.adminManagedRestrictions,
     this.copyRequiresWriterPermission,
     this.domainUsersOnly,
+    this.downloadRestriction,
     this.sharingFoldersRequiresOrganizerPermission,
     this.teamMembersOnly,
   });
@@ -8363,6 +8447,10 @@ class TeamDriveRestrictions {
           copyRequiresWriterPermission:
               json_['copyRequiresWriterPermission'] as core.bool?,
           domainUsersOnly: json_['domainUsersOnly'] as core.bool?,
+          downloadRestriction: json_.containsKey('downloadRestriction')
+              ? DownloadRestriction.fromJson(json_['downloadRestriction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           sharingFoldersRequiresOrganizerPermission:
               json_['sharingFoldersRequiresOrganizerPermission'] as core.bool?,
           teamMembersOnly: json_['teamMembersOnly'] as core.bool?,
@@ -8374,6 +8462,8 @@ class TeamDriveRestrictions {
         if (copyRequiresWriterPermission != null)
           'copyRequiresWriterPermission': copyRequiresWriterPermission!,
         if (domainUsersOnly != null) 'domainUsersOnly': domainUsersOnly!,
+        if (downloadRestriction != null)
+          'downloadRestriction': downloadRestriction!,
         if (sharingFoldersRequiresOrganizerPermission != null)
           'sharingFoldersRequiresOrganizerPermission':
               sharingFoldersRequiresOrganizerPermission!,

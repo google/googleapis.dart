@@ -4021,6 +4021,30 @@ class AuthenticatorGroupsConfig {
       };
 }
 
+/// AutoMonitoringConfig defines the configuration for GKE Workload
+/// Auto-Monitoring.
+class AutoMonitoringConfig {
+  /// Scope for GKE Workload Auto-Monitoring.
+  /// Possible string values are:
+  /// - "SCOPE_UNSPECIFIED" : Not set.
+  /// - "ALL" : Auto-Monitoring is enabled for all supported applications.
+  /// - "NONE" : Disable Auto-Monitoring.
+  core.String? scope;
+
+  AutoMonitoringConfig({
+    this.scope,
+  });
+
+  AutoMonitoringConfig.fromJson(core.Map json_)
+      : this(
+          scope: json_['scope'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scope != null) 'scope': scope!,
+      };
+}
+
 /// AutoUpgradeOptions defines the set of options for the user to control how
 /// the Auto Upgrades will proceed.
 class AutoUpgradeOptions {
@@ -4093,7 +4117,7 @@ class AutopilotCompatibilityIssue {
   /// The description of the issue.
   core.String? description;
 
-  /// A URL to a public documnetation, which addresses resolving this issue.
+  /// A URL to a public documentation, which addresses resolving this issue.
   core.String? documentationUrl;
 
   /// The incompatibility type of this issue.
@@ -4143,6 +4167,26 @@ class AutopilotCompatibilityIssue {
           'incompatibilityType': incompatibilityType!,
         if (lastObservation != null) 'lastObservation': lastObservation!,
         if (subjects != null) 'subjects': subjects!,
+      };
+}
+
+/// AutopilotConfig contains configuration of autopilot feature for this
+/// nodepool.
+class AutopilotConfig {
+  /// Denotes that nodes belonging to this node pool are Autopilot nodes.
+  core.bool? enabled;
+
+  AutopilotConfig({
+    this.enabled,
+  });
+
+  AutopilotConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -4525,7 +4569,7 @@ class CancelOperationRequest {
 class CertificateAuthorityDomainConfig {
   /// List of fully qualified domain names (FQDN).
   ///
-  /// Specifying port is supported. Wilcards are NOT supported. Examples: -
+  /// Specifying port is supported. Wildcards are NOT supported. Examples: -
   /// my.customdomain.com - 10.0.1.2:5000
   core.List<core.String>? fqdns;
 
@@ -4764,6 +4808,12 @@ class Cluster {
   core.bool? enableKubernetesAlpha;
 
   /// Enable the ability to use Cloud TPUs in this cluster.
+  ///
+  /// This field is deprecated due to the deprecation of 2VM TPU. The end of
+  /// life date for 2VM TPU is 2025-04-25.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? enableTpu;
 
   /// The IP address of this cluster's master endpoint.
@@ -4844,14 +4894,6 @@ class Cluster {
 
   /// Configuration for the legacy ABAC authorization mode.
   LegacyAbac? legacyAbac;
-
-  /// The name of the Google Compute Engine
-  /// [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available)
-  /// or
-  /// [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available)
-  /// in which the cluster resides.
-  ///
-  /// Output only.
   core.String? location;
 
   /// The list of Google Compute Engine
@@ -5087,7 +5129,13 @@ class Cluster {
   /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
   /// notation (e.g. `1.2.3.4/29`).
   ///
+  /// This field is deprecated due to the deprecation of 2VM TPU. The end of
+  /// life date for 2VM TPU is 2025-04-25.
+  ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? tpuIpv4CidrBlock;
 
   /// The Custom keys configuration for the cluster.
@@ -5669,6 +5717,9 @@ class ClusterUpdate {
   /// The desired status of whether to disable default sNAT for this cluster.
   DefaultSnatStatus? desiredDefaultSnatStatus;
 
+  /// Enable/Disable L4 LB VPC firewall reconciliation for the cluster.
+  core.bool? desiredDisableL4LbFirewallReconciliation;
+
   /// DNSConfig contains clusterDNS config for this cluster.
   DNSConfig? desiredDnsConfig;
 
@@ -5947,6 +5998,7 @@ class ClusterUpdate {
     this.desiredDatapathProvider,
     this.desiredDefaultEnablePrivateNodes,
     this.desiredDefaultSnatStatus,
+    this.desiredDisableL4LbFirewallReconciliation,
     this.desiredDnsConfig,
     this.desiredEnableCiliumClusterwideNetworkPolicy,
     this.desiredEnableFqdnNetworkPolicy,
@@ -6070,6 +6122,8 @@ class ClusterUpdate {
                   ? DefaultSnatStatus.fromJson(json_['desiredDefaultSnatStatus']
                       as core.Map<core.String, core.dynamic>)
                   : null,
+          desiredDisableL4LbFirewallReconciliation:
+              json_['desiredDisableL4LbFirewallReconciliation'] as core.bool?,
           desiredDnsConfig: json_.containsKey('desiredDnsConfig')
               ? DNSConfig.fromJson(json_['desiredDnsConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -6313,6 +6367,9 @@ class ClusterUpdate {
           'desiredDefaultEnablePrivateNodes': desiredDefaultEnablePrivateNodes!,
         if (desiredDefaultSnatStatus != null)
           'desiredDefaultSnatStatus': desiredDefaultSnatStatus!,
+        if (desiredDisableL4LbFirewallReconciliation != null)
+          'desiredDisableL4LbFirewallReconciliation':
+              desiredDisableL4LbFirewallReconciliation!,
         if (desiredDnsConfig != null) 'desiredDnsConfig': desiredDnsConfig!,
         if (desiredEnableCiliumClusterwideNetworkPolicy != null)
           'desiredEnableCiliumClusterwideNetworkPolicy':
@@ -7407,7 +7464,7 @@ class GcsFuseCsiDriverConfig {
       };
 }
 
-/// GetJSONWebKeysResponse is a valid JSON Web Key Set as specififed in rfc 7517
+/// GetJSONWebKeysResponse is a valid JSON Web Key Set as specified in rfc 7517
 class GetJSONWebKeysResponse {
   /// For HTTP requests, this field is automatically extracted into the
   /// Cache-Control HTTP header.
@@ -7813,7 +7870,11 @@ class IPAllocationPolicy {
   /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
   /// notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
   /// `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
-  /// to use.
+  /// to use. This field is deprecated due to the deprecation of 2VM TPU. The
+  /// end of life date for 2VM TPU is 2025-04-25.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? tpuIpv4CidrBlock;
 
   /// Whether alias IPs will be used for pod IPs in the cluster.
@@ -8206,9 +8267,15 @@ class LinuxNodeConfig {
   ///
   /// The following parameters are supported. net.core.busy_poll
   /// net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max
-  /// net.core.wmem_default net.core.wmem_max net.core.optmem_max
-  /// net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem
-  /// net.ipv4.tcp_tw_reuse kernel.shmmni kernel.shmmax kernel.shmall
+  /// net.core.rmem_default net.core.wmem_default net.core.wmem_max
+  /// net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem
+  /// net.ipv4.tcp_tw_reuse net.netfilter.nf_conntrack_max
+  /// net.netfilter.nf_conntrack_buckets
+  /// net.netfilter.nf_conntrack_tcp_timeout_close_wait
+  /// net.netfilter.nf_conntrack_tcp_timeout_time_wait
+  /// net.netfilter.nf_conntrack_tcp_timeout_established
+  /// net.netfilter.nf_conntrack_acct kernel.shmmni kernel.shmmax kernel.shmall
+  /// vm.max_map_count
   core.Map<core.String, core.String>? sysctls;
 
   LinuxNodeConfig({
@@ -8579,19 +8646,29 @@ class MaintenanceWindow {
 /// ManagedPrometheusConfig defines the configuration for Google Cloud Managed
 /// Service for Prometheus.
 class ManagedPrometheusConfig {
+  /// GKE Workload Auto-Monitoring Configuration.
+  AutoMonitoringConfig? autoMonitoringConfig;
+
   /// Enable Managed Collection.
   core.bool? enabled;
 
   ManagedPrometheusConfig({
+    this.autoMonitoringConfig,
     this.enabled,
   });
 
   ManagedPrometheusConfig.fromJson(core.Map json_)
       : this(
+          autoMonitoringConfig: json_.containsKey('autoMonitoringConfig')
+              ? AutoMonitoringConfig.fromJson(json_['autoMonitoringConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           enabled: json_['enabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (autoMonitoringConfig != null)
+          'autoMonitoringConfig': autoMonitoringConfig!,
         if (enabled != null) 'enabled': enabled!,
       };
 }
@@ -8701,7 +8778,7 @@ class MasterAuthorizedNetworksConfig {
   /// Whether or not master authorized networks is enabled.
   core.bool? enabled;
 
-  /// Whether master is accessbile via Google Compute Engine Public IP
+  /// Whether master is accessible via Google Compute Engine Public IP
   /// addresses.
   core.bool? gcpPublicCidrsAccessEnabled;
 
@@ -8919,6 +8996,9 @@ class NetworkConfig {
   /// to the nodes to prevent sNAT on cluster internal traffic.
   DefaultSnatStatus? defaultSnatStatus;
 
+  /// Disable L4 load balancer VPC firewalls to enable firewall policies.
+  core.bool? disableL4LbFirewallReconciliation;
+
   /// DNSConfig contains clusterDNS config for this cluster.
   DNSConfig? dnsConfig;
 
@@ -8955,7 +9035,7 @@ class NetworkConfig {
   core.String? inTransitEncryptionConfig;
 
   /// The relative name of the Google Compute Engine
-  /// network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks)
+  /// [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks)
   /// to which the cluster is connected.
   ///
   /// Example: projects/my-project/global/networks/my-network
@@ -8998,6 +9078,7 @@ class NetworkConfig {
     this.datapathProvider,
     this.defaultEnablePrivateNodes,
     this.defaultSnatStatus,
+    this.disableL4LbFirewallReconciliation,
     this.dnsConfig,
     this.enableCiliumClusterwideNetworkPolicy,
     this.enableFqdnNetworkPolicy,
@@ -9022,6 +9103,8 @@ class NetworkConfig {
               ? DefaultSnatStatus.fromJson(json_['defaultSnatStatus']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          disableL4LbFirewallReconciliation:
+              json_['disableL4LbFirewallReconciliation'] as core.bool?,
           dnsConfig: json_.containsKey('dnsConfig')
               ? DNSConfig.fromJson(
                   json_['dnsConfig'] as core.Map<core.String, core.dynamic>)
@@ -9063,6 +9146,9 @@ class NetworkConfig {
         if (defaultEnablePrivateNodes != null)
           'defaultEnablePrivateNodes': defaultEnablePrivateNodes!,
         if (defaultSnatStatus != null) 'defaultSnatStatus': defaultSnatStatus!,
+        if (disableL4LbFirewallReconciliation != null)
+          'disableL4LbFirewallReconciliation':
+              disableL4LbFirewallReconciliation!,
         if (dnsConfig != null) 'dnsConfig': dnsConfig!,
         if (enableCiliumClusterwideNetworkPolicy != null)
           'enableCiliumClusterwideNetworkPolicy':
@@ -9338,7 +9424,7 @@ class NodeConfig {
   core.int? localSsdCount;
 
   /// Specifies which method should be used for encrypting the Local SSDs
-  /// attahced to the node.
+  /// attached to the node.
   /// Possible string values are:
   /// - "LOCAL_SSD_ENCRYPTION_MODE_UNSPECIFIED" : The given node will be
   /// encrypted using keys managed by Google infrastructure and the keys will be
@@ -9782,6 +9868,45 @@ class NodeConfigDefaults {
 
 /// Node kubelet configs.
 class NodeKubeletConfig {
+  /// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns
+  /// (ending in `*`).
+  ///
+  /// The unsafe namespaced sysctl groups are `kernel.shm*`, `kernel.msg*`,
+  /// `kernel.sem`, `fs.mqueue.*`, and `net.*`. Leaving this allowlist empty
+  /// means they cannot be set on Pods. To allow certain sysctls or sysctl
+  /// patterns to be set on Pods, list them separated by commas. For example:
+  /// `kernel.msg*,net.ipv4.route.min_pmtu`. See
+  /// https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/ for
+  /// more details.
+  ///
+  /// Optional.
+  core.List<core.String>? allowedUnsafeSysctls;
+
+  /// Defines the maximum number of container log files that can be present for
+  /// a container.
+  ///
+  /// See
+  /// https://kubernetes.io/docs/concepts/cluster-administration/logging/#log-rotation
+  /// The value must be an integer between 2 and 10, inclusive. The default
+  /// value is 5 if unspecified.
+  ///
+  /// Optional.
+  core.int? containerLogMaxFiles;
+
+  /// Defines the maximum size of the container log file before it is rotated.
+  ///
+  /// See
+  /// https://kubernetes.io/docs/concepts/cluster-administration/logging/#log-rotation
+  /// Valid format is positive number + unit, e.g. 100Ki, 10Mi. Valid units are
+  /// Ki, Mi, Gi. The value must be between 10Mi and 500Mi, inclusive. Note that
+  /// the total container log size (container_log_max_size *
+  /// container_log_max_files) cannot exceed 1% of the total storage of the
+  /// node, to avoid disk pressure caused by log files. The default value is
+  /// 10Mi if unspecified.
+  ///
+  /// Optional.
+  core.String? containerLogMaxSize;
+
   /// Enable CPU CFS quota enforcement for containers that specify CPU limits.
   ///
   /// This option is enabled by default which makes kubelet use CFS quota
@@ -9810,6 +9935,52 @@ class NodeKubeletConfig {
   /// exclusivity on the node. The default value is 'none' if unspecified.
   core.String? cpuManagerPolicy;
 
+  /// Defines the percent of disk usage after which image garbage collection is
+  /// always run.
+  ///
+  /// The percent is calculated as this field value out of 100. The value must
+  /// be between 10 and 85, inclusive and greater than
+  /// image_gc_low_threshold_percent. The default value is 85 if unspecified.
+  ///
+  /// Optional.
+  core.int? imageGcHighThresholdPercent;
+
+  /// Defines the percent of disk usage before which image garbage collection is
+  /// never run.
+  ///
+  /// Lowest disk usage to garbage collect to. The percent is calculated as this
+  /// field value out of 100. The value must be between 10 and 85, inclusive and
+  /// smaller than image_gc_high_threshold_percent. The default value is 80 if
+  /// unspecified.
+  ///
+  /// Optional.
+  core.int? imageGcLowThresholdPercent;
+
+  /// Defines the maximum age an image can be unused before it is garbage
+  /// collected.
+  ///
+  /// The string must be a sequence of decimal numbers, each with optional
+  /// fraction and a unit suffix, such as "300s", "1.5h", and "2h45m". Valid
+  /// time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must
+  /// be a positive duration greater than image_minimum_gc_age or "0s". The
+  /// default value is "0s" if unspecified, which disables this field, meaning
+  /// images won't be garbage collected based on being unused for too long.
+  ///
+  /// Optional.
+  core.String? imageMaximumGcAge;
+
+  /// Defines the minimum age for an unused image before it is garbage
+  /// collected.
+  ///
+  /// The string must be a sequence of decimal numbers, each with optional
+  /// fraction and a unit suffix, such as "300s", "1.5h", and "2h45m". Valid
+  /// time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must
+  /// be a positive duration less than or equal to 2 minutes. The default value
+  /// is "2m0s" if unspecified.
+  ///
+  /// Optional.
+  core.String? imageMinimumGcAge;
+
   /// Enable or disable Kubelet read only port.
   core.bool? insecureKubeletReadonlyPortEnabled;
 
@@ -9822,27 +9993,57 @@ class NodeKubeletConfig {
   core.String? podPidsLimit;
 
   NodeKubeletConfig({
+    this.allowedUnsafeSysctls,
+    this.containerLogMaxFiles,
+    this.containerLogMaxSize,
     this.cpuCfsQuota,
     this.cpuCfsQuotaPeriod,
     this.cpuManagerPolicy,
+    this.imageGcHighThresholdPercent,
+    this.imageGcLowThresholdPercent,
+    this.imageMaximumGcAge,
+    this.imageMinimumGcAge,
     this.insecureKubeletReadonlyPortEnabled,
     this.podPidsLimit,
   });
 
   NodeKubeletConfig.fromJson(core.Map json_)
       : this(
+          allowedUnsafeSysctls: (json_['allowedUnsafeSysctls'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          containerLogMaxFiles: json_['containerLogMaxFiles'] as core.int?,
+          containerLogMaxSize: json_['containerLogMaxSize'] as core.String?,
           cpuCfsQuota: json_['cpuCfsQuota'] as core.bool?,
           cpuCfsQuotaPeriod: json_['cpuCfsQuotaPeriod'] as core.String?,
           cpuManagerPolicy: json_['cpuManagerPolicy'] as core.String?,
+          imageGcHighThresholdPercent:
+              json_['imageGcHighThresholdPercent'] as core.int?,
+          imageGcLowThresholdPercent:
+              json_['imageGcLowThresholdPercent'] as core.int?,
+          imageMaximumGcAge: json_['imageMaximumGcAge'] as core.String?,
+          imageMinimumGcAge: json_['imageMinimumGcAge'] as core.String?,
           insecureKubeletReadonlyPortEnabled:
               json_['insecureKubeletReadonlyPortEnabled'] as core.bool?,
           podPidsLimit: json_['podPidsLimit'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedUnsafeSysctls != null)
+          'allowedUnsafeSysctls': allowedUnsafeSysctls!,
+        if (containerLogMaxFiles != null)
+          'containerLogMaxFiles': containerLogMaxFiles!,
+        if (containerLogMaxSize != null)
+          'containerLogMaxSize': containerLogMaxSize!,
         if (cpuCfsQuota != null) 'cpuCfsQuota': cpuCfsQuota!,
         if (cpuCfsQuotaPeriod != null) 'cpuCfsQuotaPeriod': cpuCfsQuotaPeriod!,
         if (cpuManagerPolicy != null) 'cpuManagerPolicy': cpuManagerPolicy!,
+        if (imageGcHighThresholdPercent != null)
+          'imageGcHighThresholdPercent': imageGcHighThresholdPercent!,
+        if (imageGcLowThresholdPercent != null)
+          'imageGcLowThresholdPercent': imageGcLowThresholdPercent!,
+        if (imageMaximumGcAge != null) 'imageMaximumGcAge': imageMaximumGcAge!,
+        if (imageMinimumGcAge != null) 'imageMinimumGcAge': imageMinimumGcAge!,
         if (insecureKubeletReadonlyPortEnabled != null)
           'insecureKubeletReadonlyPortEnabled':
               insecureKubeletReadonlyPortEnabled!,
@@ -10039,6 +10240,12 @@ class NodeNetworkConfig {
 /// during pod scheduling. They may also be resized up or down, to accommodate
 /// the workload.
 class NodePool {
+  /// Specifies the autopilot configuration for this node pool.
+  ///
+  /// This field is exclusively reserved for Cluster Autoscaler to implement
+  /// go/gke-managed-nodes-ccc-api
+  AutopilotConfig? autopilotConfig;
+
   /// Autoscaler configuration for this NodePool.
   ///
   /// Autoscaler is enabled only if a valid configuration is present.
@@ -10165,6 +10372,7 @@ class NodePool {
   core.String? version;
 
   NodePool({
+    this.autopilotConfig,
     this.autoscaling,
     this.bestEffortProvisioning,
     this.conditions,
@@ -10190,6 +10398,10 @@ class NodePool {
 
   NodePool.fromJson(core.Map json_)
       : this(
+          autopilotConfig: json_.containsKey('autopilotConfig')
+              ? AutopilotConfig.fromJson(json_['autopilotConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           autoscaling: json_.containsKey('autoscaling')
               ? NodePoolAutoscaling.fromJson(
                   json_['autoscaling'] as core.Map<core.String, core.dynamic>)
@@ -10251,6 +10463,7 @@ class NodePool {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (autopilotConfig != null) 'autopilotConfig': autopilotConfig!,
         if (autoscaling != null) 'autoscaling': autoscaling!,
         if (bestEffortProvisioning != null)
           'bestEffortProvisioning': bestEffortProvisioning!,
@@ -13227,6 +13440,8 @@ class StatusCondition {
   /// - "CLOUD_KMS_KEY_ERROR" : Unable to perform an encrypt operation against
   /// the CloudKMS key used for etcd level encryption.
   /// - "CA_EXPIRING" : Cluster CA is expiring soon.
+  /// - "NODE_SERVICE_ACCOUNT_MISSING_PERMISSIONS" : Node service account is
+  /// missing permissions.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -14239,16 +14454,26 @@ class WorkloadPolicyConfig {
   /// If true, workloads can use NET_ADMIN capability.
   core.bool? allowNetAdmin;
 
+  /// If true, enables the GCW Auditor that audits workloads on standard
+  /// clusters.
+  core.bool? autopilotCompatibilityAuditingEnabled;
+
   WorkloadPolicyConfig({
     this.allowNetAdmin,
+    this.autopilotCompatibilityAuditingEnabled,
   });
 
   WorkloadPolicyConfig.fromJson(core.Map json_)
       : this(
           allowNetAdmin: json_['allowNetAdmin'] as core.bool?,
+          autopilotCompatibilityAuditingEnabled:
+              json_['autopilotCompatibilityAuditingEnabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowNetAdmin != null) 'allowNetAdmin': allowNetAdmin!,
+        if (autopilotCompatibilityAuditingEnabled != null)
+          'autopilotCompatibilityAuditingEnabled':
+              autopilotCompatibilityAuditingEnabled!,
       };
 }

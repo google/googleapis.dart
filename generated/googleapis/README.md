@@ -764,6 +764,13 @@ Display & Video 360 API allows users to automate complex Display & Video 360 wor
 - [Original documentation](https://developers.google.com/display-video/)
 - [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/displayvideo_v3/displayvideo_v3-library.html)
 
+#### Display & Video 360 API - `displayvideo/v4`
+
+Display & Video 360 API allows users to automate complex Display & Video 360 workflows, such as creating insertion orders and setting targeting options for individual line items.
+
+- [Original documentation](https://developers.google.com/display-video/)
+- [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/displayvideo_v4/displayvideo_v4-library.html)
+
 #### Sensitive Data Protection (DLP) - `dlp/v2`
 
 Discover and protect your sensitive data. A fully managed service designed to help you discover, classify, and protect your valuable data assets with ease.
@@ -853,7 +860,7 @@ Build event-driven applications on Google Cloud Platform.
 
 #### Firebase Cloud Messaging API - `fcm/v1`
 
-FCM send API that provides a cross-platform messaging solution to reliably deliver messages at no cost.
+FCM send API that provides a cross-platform messaging solution to reliably deliver messages.
 
 - [Original documentation](https://firebase.google.com/docs/cloud-messaging)
 - [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/fcm_v1/fcm_v1-library.html)
@@ -923,7 +930,7 @@ The Fitness API for managing users' fitness tracking data.
 
 Reads and writes Google Forms and responses.
 
-- [Original documentation](https://developers.google.com/forms/api)
+- [Original documentation](https://developers.google.com/workspace/forms/api)
 - [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/forms_v1/forms_v1-library.html)
 
 #### Google Play Game Services - `games/v1`
@@ -964,7 +971,7 @@ Backup for GKE is a managed Kubernetes workload backup and restore service for G
 - [Original documentation](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster)
 - [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/gkehub_v2/gkehub_v2-library.html)
 
-#### GDC Virtual API - `gkeonprem/v1`
+#### GKE On-Prem API - `gkeonprem/v1`
 
 - [Original documentation](https://cloud.google.com/anthos/clusters/docs/on-prem/)
 - [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/gkeonprem_v1/gkeonprem_v1-library.html)
@@ -1463,7 +1470,7 @@ readerrevenuesubscriptionlinking.googleapis.com API.
 
 #### Real-time Bidding API - `realtimebidding/v1`
 
-Allows external bidders to manage their RTB integration with Google. This includes managing bidder endpoints, QPS quotas, configuring what ad inventory to receive via pretargeting, submitting creatives for verification, and accessing creative metadata such as approval status.
+Allows external bidders to manage their RTB integration with Google. This includes managing bidder endpoints, QPS quotas, configuring what ad inventory to receive with pretargeting, submitting creatives for verification, and accessing creative metadata such as approval status.
 
 - [Original documentation](https://developers.google.com/authorized-buyers/apis/realtimebidding/reference/rest/)
 - [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/realtimebidding_v1/realtimebidding_v1-library.html)
@@ -1494,16 +1501,9 @@ Perform common functions that are available on the Channel Services console at s
 - [Original documentation](https://developers.google.com/google-apps/reseller/)
 - [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/reseller_v1/reseller_v1-library.html)
 
-#### Resource Settings API - `resourcesettings/v1`
+#### Vertex AI Search for commerce API - `retail/v2`
 
-The Resource Settings API allows users to control and modify the behavior of their GCP resources (e.g., VM, firewall, Project, etc.) across the Cloud Resource Hierarchy.
-
-- [Original documentation](https://cloud.google.com/resource-manager/docs/resource-settings/overview)
-- [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/resourcesettings_v1/resourcesettings_v1-library.html)
-
-#### Vertex AI Search for Retail API - `retail/v2`
-
-Vertex AI Search for Retail API is made up of Retail Search, Browse and Recommendations. These discovery AI solutions help you implement personalized search, browse and recommendations, based on machine learning models, across your websites and mobile applications.
+Vertex AI Search for commerce API is made up of Retail Search, Browse and Recommendations. These discovery AI solutions help you implement personalized search, browse and recommendations, based on machine learning models, across your websites and mobile applications.
 
 - [Original documentation](https://cloud.google.com/recommendations)
 - [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/retail_v2/retail_v2-library.html)

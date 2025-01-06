@@ -68,6 +68,8 @@
 ///     - [PartnersTargetingTypesAssignedTargetingOptionsResource]
 /// - [SdfdownloadtasksResource]
 ///   - [SdfdownloadtasksOperationsResource]
+/// - [SdfuploadtasksResource]
+///   - [SdfuploadtasksOperationsResource]
 /// - [TargetingTypesResource]
 ///   - [TargetingTypesTargetingOptionsResource]
 /// - [UsersResource]
@@ -141,6 +143,8 @@ class DisplayVideoApi {
   PartnersResource get partners => PartnersResource(_requester);
   SdfdownloadtasksResource get sdfdownloadtasks =>
       SdfdownloadtasksResource(_requester);
+  SdfuploadtasksResource get sdfuploadtasks =>
+      SdfuploadtasksResource(_requester);
   TargetingTypesResource get targetingTypes =>
       TargetingTypesResource(_requester);
   UsersResource get users => UsersResource(_requester);
@@ -7796,7 +7800,11 @@ class CustomBiddingAlgorithmsResource {
 
   /// Updates an existing custom bidding algorithm.
   ///
-  /// Returns the updated custom bidding algorithm if successful.
+  /// Returns the updated custom bidding algorithm if successful. *Warning*:
+  /// Starting **April 1, 2025**, requests updating custom bidding algorithms
+  /// that are assigned to line items will return an error. \[Read more about
+  /// this announced
+  /// change\](/display-video/api/deprecations#features.custom_bidding_floodlight).
   ///
   /// [request] - The metadata request object.
   ///
@@ -7959,7 +7967,11 @@ class CustomBiddingAlgorithmsRulesResource {
 
   /// Creates a new rules resource.
   ///
-  /// Returns the newly created rules resource if successful.
+  /// Returns the newly created rules resource if successful. *Warning*:
+  /// Starting **April 1, 2025**, requests updating custom bidding algorithms
+  /// that are assigned to line items will return an error. \[Read more about
+  /// this announced
+  /// change\](/display-video/api/deprecations#features.custom_bidding_floodlight).
   ///
   /// [request] - The metadata request object.
   ///
@@ -8149,7 +8161,11 @@ class CustomBiddingAlgorithmsScriptsResource {
 
   /// Creates a new custom bidding script.
   ///
-  /// Returns the newly created script if successful.
+  /// Returns the newly created script if successful. *Warning*: Starting
+  /// **April 1, 2025**, requests updating custom bidding algorithms that are
+  /// assigned to line items will return an error. \[Read more about this
+  /// announced
+  /// change\](/display-video/api/deprecations#features.custom_bidding_floodlight).
   ///
   /// [request] - The metadata request object.
   ///
@@ -8625,7 +8641,8 @@ class FirstAndThirdPartyAudiencesResource {
   ///
   /// [pageSize] - Requested page size. Must be between `1` and `5000`. If
   /// unspecified, this value defaults to `100`. Returns error code
-  /// `INVALID_ARGUMENT` if an invalid value is specified.
+  /// `INVALID_ARGUMENT` if an invalid value is specified. *Warning*: Starting
+  /// **March 6, 2025**, this value will default to `5000` if not set.
   ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of next_page_token returned from the
@@ -11805,6 +11822,59 @@ class SdfdownloadtasksOperationsResource {
   }
 }
 
+class SdfuploadtasksResource {
+  final commons.ApiRequester _requester;
+
+  SdfuploadtasksOperationsResource get operations =>
+      SdfuploadtasksOperationsResource(_requester);
+
+  SdfuploadtasksResource(commons.ApiRequester client) : _requester = client;
+}
+
+class SdfuploadtasksOperationsResource {
+  final commons.ApiRequester _requester;
+
+  SdfuploadtasksOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of an asynchronous SDF download task operation.
+  ///
+  /// Clients should poll this method at intervals of 30 seconds.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern `^sdfuploadtasks/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class TargetingTypesResource {
   final commons.ApiRequester _requester;
 
@@ -13005,323 +13075,7 @@ class AdGroupAssignedTargetingOption {
 typedef AdUrl = $AdUrl;
 
 /// Details of Adloox brand safety settings.
-class Adloox {
-  /// Adult and Explicit Sexual Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? adultExplicitSexualContent;
-
-  /// Arms and Ammunition Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? armsAmmunitionContent;
-
-  /// Crime and Harmful Acts Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent;
-
-  /// Death, Injury, or Military Conflict Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? deathInjuryMilitaryConflictContent;
-
-  /// Debated Sensitive Social Issue Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? debatedSensitiveSocialIssueContent;
-
-  /// IAB viewability threshold for display ads.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "DISPLAY_IAB_VIEWABILITY_UNSPECIFIED" : Default value when not specified
-  /// or is unknown in this version.
-  /// - "DISPLAY_IAB_VIEWABILITY_10" : 10%+ in view (IAB display viewability
-  /// standard).
-  /// - "DISPLAY_IAB_VIEWABILITY_20" : 20%+ in view (IAB display viewability
-  /// standard).
-  /// - "DISPLAY_IAB_VIEWABILITY_35" : 35%+ in view (IAB display viewability
-  /// standard).
-  /// - "DISPLAY_IAB_VIEWABILITY_50" : 50%+ in view (IAB display viewability
-  /// standard).
-  /// - "DISPLAY_IAB_VIEWABILITY_75" : 75%+ in view (IAB display viewability
-  /// standard).
-  core.String? displayIabViewability;
-
-  /// Adloox categories to exclude.
-  core.List<core.String>? excludedAdlooxCategories;
-
-  /// Adloox's fraud IVT MFA categories to exclude.
-  ///
-  /// Optional.
-  core.List<core.String>? excludedFraudIvtMfaCategories;
-
-  /// Hate Speech and Acts of Aggression Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? hateSpeechActsAggressionContent;
-
-  /// Illegal Drugs/Alcohol Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? illegalDrugsTobaccoEcigarettesVapingAlcoholContent;
-
-  /// Misinformation Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? misinformationContent;
-
-  /// Obscenity and Profanity Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? obscenityProfanityContent;
-
-  /// Online Piracy Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? onlinePiracyContent;
-
-  /// Spam or Harmful Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? spamHarmfulContent;
-
-  /// Terrorism Content [GARM](https://wfanet.org/leadership/garm/about-garm)
-  /// risk ranges to exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? terrorismContent;
-
-  /// IAB viewability threshold for video ads.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "VIDEO_IAB_VIEWABILITY_UNSPECIFIED" : Default value when not specified
-  /// or is unknown in this version.
-  /// - "VIDEO_IAB_VIEWABILITY_10" : 10%+ in view (IAB video viewability
-  /// standard).
-  /// - "VIDEO_IAB_VIEWABILITY_20" : 20%+ in view (IAB video viewability
-  /// standard).
-  /// - "VIDEO_IAB_VIEWABILITY_35" : 35%+ in view (IAB video viewability
-  /// standard).
-  /// - "VIDEO_IAB_VIEWABILITY_50" : 50%+ in view (IAB video viewability
-  /// standard).
-  /// - "VIDEO_IAB_VIEWABILITY_75" : 75%+ in view (IAB video viewability
-  /// standard).
-  core.String? videoIabViewability;
-
-  Adloox({
-    this.adultExplicitSexualContent,
-    this.armsAmmunitionContent,
-    this.crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent,
-    this.deathInjuryMilitaryConflictContent,
-    this.debatedSensitiveSocialIssueContent,
-    this.displayIabViewability,
-    this.excludedAdlooxCategories,
-    this.excludedFraudIvtMfaCategories,
-    this.hateSpeechActsAggressionContent,
-    this.illegalDrugsTobaccoEcigarettesVapingAlcoholContent,
-    this.misinformationContent,
-    this.obscenityProfanityContent,
-    this.onlinePiracyContent,
-    this.spamHarmfulContent,
-    this.terrorismContent,
-    this.videoIabViewability,
-  });
-
-  Adloox.fromJson(core.Map json_)
-      : this(
-          adultExplicitSexualContent:
-              json_['adultExplicitSexualContent'] as core.String?,
-          armsAmmunitionContent: json_['armsAmmunitionContent'] as core.String?,
-          crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent: json_[
-                  'crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent']
-              as core.String?,
-          deathInjuryMilitaryConflictContent:
-              json_['deathInjuryMilitaryConflictContent'] as core.String?,
-          debatedSensitiveSocialIssueContent:
-              json_['debatedSensitiveSocialIssueContent'] as core.String?,
-          displayIabViewability: json_['displayIabViewability'] as core.String?,
-          excludedAdlooxCategories:
-              (json_['excludedAdlooxCategories'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          excludedFraudIvtMfaCategories:
-              (json_['excludedFraudIvtMfaCategories'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          hateSpeechActsAggressionContent:
-              json_['hateSpeechActsAggressionContent'] as core.String?,
-          illegalDrugsTobaccoEcigarettesVapingAlcoholContent:
-              json_['illegalDrugsTobaccoEcigarettesVapingAlcoholContent']
-                  as core.String?,
-          misinformationContent: json_['misinformationContent'] as core.String?,
-          obscenityProfanityContent:
-              json_['obscenityProfanityContent'] as core.String?,
-          onlinePiracyContent: json_['onlinePiracyContent'] as core.String?,
-          spamHarmfulContent: json_['spamHarmfulContent'] as core.String?,
-          terrorismContent: json_['terrorismContent'] as core.String?,
-          videoIabViewability: json_['videoIabViewability'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (adultExplicitSexualContent != null)
-          'adultExplicitSexualContent': adultExplicitSexualContent!,
-        if (armsAmmunitionContent != null)
-          'armsAmmunitionContent': armsAmmunitionContent!,
-        if (crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent !=
-            null)
-          'crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent':
-              crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent!,
-        if (deathInjuryMilitaryConflictContent != null)
-          'deathInjuryMilitaryConflictContent':
-              deathInjuryMilitaryConflictContent!,
-        if (debatedSensitiveSocialIssueContent != null)
-          'debatedSensitiveSocialIssueContent':
-              debatedSensitiveSocialIssueContent!,
-        if (displayIabViewability != null)
-          'displayIabViewability': displayIabViewability!,
-        if (excludedAdlooxCategories != null)
-          'excludedAdlooxCategories': excludedAdlooxCategories!,
-        if (excludedFraudIvtMfaCategories != null)
-          'excludedFraudIvtMfaCategories': excludedFraudIvtMfaCategories!,
-        if (hateSpeechActsAggressionContent != null)
-          'hateSpeechActsAggressionContent': hateSpeechActsAggressionContent!,
-        if (illegalDrugsTobaccoEcigarettesVapingAlcoholContent != null)
-          'illegalDrugsTobaccoEcigarettesVapingAlcoholContent':
-              illegalDrugsTobaccoEcigarettesVapingAlcoholContent!,
-        if (misinformationContent != null)
-          'misinformationContent': misinformationContent!,
-        if (obscenityProfanityContent != null)
-          'obscenityProfanityContent': obscenityProfanityContent!,
-        if (onlinePiracyContent != null)
-          'onlinePiracyContent': onlinePiracyContent!,
-        if (spamHarmfulContent != null)
-          'spamHarmfulContent': spamHarmfulContent!,
-        if (terrorismContent != null) 'terrorismContent': terrorismContent!,
-        if (videoIabViewability != null)
-          'videoIabViewability': videoIabViewability!,
-      };
-}
+typedef Adloox = $Adloox;
 
 /// A single advertiser in Display & Video 360 (DV360).
 class Advertiser {
@@ -13644,9 +13398,13 @@ typedef Asset = $Asset;
 /// Asset association for the creative.
 class AssetAssociation {
   /// The associated asset.
+  ///
+  /// Optional.
   Asset? asset;
 
   /// The role of this asset for the creative.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "ASSET_ROLE_UNSPECIFIED" : Asset role is not specified or is unknown in
   /// this version.
@@ -13656,20 +13414,20 @@ class AssetAssociation {
   /// creative.
   /// - "ASSET_ROLE_HEADLINE" : Headline of a native creative. The content must
   /// be UTF-8 encoded with a length of no more than 25 characters. This role is
-  /// only supported in following creative_type: * `CREATIVE_TYPE_NATIVE` *
+  /// only supported in the following creative_type: * `CREATIVE_TYPE_NATIVE` *
   /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
   /// - "ASSET_ROLE_LONG_HEADLINE" : Long headline of a native creative. The
   /// content must be UTF-8 encoded with a length of no more than 50 characters.
-  /// This role is only supported in following creative_type: *
+  /// This role is only supported in the following creative_type: *
   /// `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` *
   /// `CREATIVE_TYPE_NATIVE_VIDEO`
   /// - "ASSET_ROLE_BODY" : Body text of a native creative. The content must be
   /// UTF-8 encoded with a length of no more than 90 characters. This role is
-  /// only supported in following creative_type: * `CREATIVE_TYPE_NATIVE` *
+  /// only supported in the following creative_type: * `CREATIVE_TYPE_NATIVE` *
   /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
   /// - "ASSET_ROLE_LONG_BODY" : Long body text of a native creative. The
   /// content must be UTF-8 encoded with a length of no more than 150
-  /// characters. This role is only supported in following creative_type: *
+  /// characters. This role is only supported in the following creative_type: *
   /// `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` *
   /// `CREATIVE_TYPE_NATIVE_VIDEO`
   /// - "ASSET_ROLE_CAPTION_URL" : A short, friendly version of the landing page
@@ -13678,17 +13436,17 @@ class AssetAssociation {
   /// encoded with a length of no more than 30 characters. For example, if the
   /// landing page URL is 'http://www.example.com/page', the caption URL can be
   /// 'example.com'. The protocol (http://) is optional, but the URL can't
-  /// contain spaces or special characters. This role is only supported in
+  /// contain spaces or special characters. This role is only supported in the
   /// following creative_type: * `CREATIVE_TYPE_NATIVE` *
   /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
   /// - "ASSET_ROLE_CALL_TO_ACTION" : The text to use on the call-to-action
   /// button of a native creative. The content must be UTF-8 encoded with a
-  /// length of no more than 15 characters. This role is only supported in
+  /// length of no more than 15 characters. This role is only supported in the
   /// following creative_type: * `CREATIVE_TYPE_NATIVE` *
   /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
   /// - "ASSET_ROLE_ADVERTISER_NAME" : The text that identifies the advertiser
   /// or brand name. The content must be UTF-8 encoded with a length of no more
-  /// than 25 characters. This role is only supported in following
+  /// than 25 characters. This role is only supported in the following
   /// creative_type: * `CREATIVE_TYPE_NATIVE` *
   /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
   /// - "ASSET_ROLE_PRICE" : The purchase price of your app in the Google play
@@ -13700,38 +13458,38 @@ class AssetAssociation {
   /// - "ASSET_ROLE_ANDROID_APP_ID" : The ID of an Android app in the Google
   /// play store. You can find this ID in the App’s Google Play Store URL after
   /// ‘id’. For example, in
-  /// https://play.google.com/store/apps/details?id=com.company.appname the
+  /// `https://play.google.com/store/apps/details?id=com.company.appname` the
   /// identifier is com.company.appname. Assets of this role are read-only.
   /// - "ASSET_ROLE_IOS_APP_ID" : The ID of an iOS app in the Apple app store.
   /// This ID number can be found in the Apple App Store URL as the string of
   /// numbers directly after "id". For example, in
-  /// https://apps.apple.com/us/app/gmail-email-by-google/id422689480 the ID is
-  /// 422689480. Assets of this role are read-only.
+  /// `https://apps.apple.com/us/app/gmail-email-by-google/id422689480` the ID
+  /// is 422689480. Assets of this role are read-only.
   /// - "ASSET_ROLE_RATING" : The rating of an app in the Google play store or
   /// iOS app store. Note that this value is not automatically synced with the
   /// actual rating in the store. It will always be the one provided when save
   /// the creative. Assets of this role are read-only.
   /// - "ASSET_ROLE_ICON" : The icon of a creative. This role is only supported
-  /// and required in following creative_type: * `CREATIVE_TYPE_NATIVE` *
+  /// and required in the following creative_type: * `CREATIVE_TYPE_NATIVE` *
   /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE`
   /// - "ASSET_ROLE_COVER_IMAGE" : The cover image of a native video creative.
-  /// This role is only supported and required in following creative_type: *
+  /// This role is only supported and required in the following creative_type: *
   /// `CREATIVE_TYPE_VIDEO`
   /// - "ASSET_ROLE_BACKGROUND_COLOR" : The main color to use in a creative.
-  /// This role is only supported and required in following creative_type: *
+  /// This role is only supported and required in the following creative_type: *
   /// `CREATIVE_TYPE_ASSET_BASED_CREATIVE`
   /// - "ASSET_ROLE_ACCENT_COLOR" : The accent color to use in a creative. This
-  /// role is only supported and required in following creative_type: *
+  /// role is only supported and required in the following creative_type: *
   /// `CREATIVE_TYPE_ASSET_BASED_CREATIVE`
   /// - "ASSET_ROLE_REQUIRE_LOGO" : Whether the creative must use a logo asset.
-  /// This role is only supported and required in following creative_type: *
+  /// This role is only supported and required in the following creative_type: *
   /// `CREATIVE_TYPE_ASSET_BASED_CREATIVE`
   /// - "ASSET_ROLE_REQUIRE_IMAGE" : Whether the creative must use an image
-  /// asset. This role is only supported and required in following
+  /// asset. This role is only supported and required in the following
   /// creative_type: * `CREATIVE_TYPE_ASSET_BASED_CREATIVE`
   /// - "ASSET_ROLE_ENABLE_ASSET_ENHANCEMENTS" : Whether asset enhancements can
   /// be applied to the creative. This role is only supported and required in
-  /// following creative_type: * `CREATIVE_TYPE_ASSET_BASED_CREATIVE`
+  /// the following creative_type: * `CREATIVE_TYPE_ASSET_BASED_CREATIVE`
   core.String? role;
 
   AssetAssociation({
@@ -14668,6 +14426,8 @@ class AudienceGroupAssignedTargetingOptionDetails {
   /// Used for negative targeting. The COMPLEMENT of the UNION of this group and
   /// other excluded audience groups is used as an INTERSECTION to any positive
   /// audience targeting. All items are logically ‘OR’ of each other.
+  ///
+  /// Optional.
   FirstAndThirdPartyAudienceGroup? excludedFirstAndThirdPartyAudienceGroup;
 
   /// The Google audience ids of the excluded Google audience group.
@@ -14676,16 +14436,22 @@ class AudienceGroupAssignedTargetingOptionDetails {
   /// other excluded audience groups is used as an INTERSECTION to any positive
   /// audience targeting. Only contains Affinity, In-market and Installed-apps
   /// type Google audiences. All items are logically ‘OR’ of each other.
+  ///
+  /// Optional.
   GoogleAudienceGroup? excludedGoogleAudienceGroup;
 
   /// The combined audience ids of the included combined audience group.
   ///
   /// Contains combined audience ids only.
+  ///
+  /// Optional.
   CombinedAudienceGroup? includedCombinedAudienceGroup;
 
   /// The custom list ids of the included custom list group.
   ///
   /// Contains custom list ids only.
+  ///
+  /// Optional.
   CustomListGroup? includedCustomListGroup;
 
   /// The first and third party audience ids and recencies of included first and
@@ -14694,13 +14460,17 @@ class AudienceGroupAssignedTargetingOptionDetails {
   /// Each first and third party audience group contains first and third party
   /// audience ids only. The relation between each first and third party
   /// audience group is INTERSECTION, and the result is UNION'ed with other
-  /// audience groups. Repeated groups with same settings will be ignored.
+  /// audience groups. Repeated groups with the same settings will be ignored.
+  ///
+  /// Optional.
   core.List<FirstAndThirdPartyAudienceGroup>?
       includedFirstAndThirdPartyAudienceGroups;
 
   /// The Google audience ids of the included Google audience group.
   ///
   /// Contains Google audience ids only.
+  ///
+  /// Optional.
   GoogleAudienceGroup? includedGoogleAudienceGroup;
 
   AudienceGroupAssignedTargetingOptionDetails({
@@ -15982,6 +15752,10 @@ class Campaign {
 
   /// The frequency cap setting of the campaign.
   ///
+  /// *Warning*: On **February 28, 2025**, frequency cap time periods greater
+  /// than 30 days will no longer be accepted. \[Read more about this announced
+  /// change\](/display-video/api/deprecations#features.lifetime_frequency_cap)
+  ///
   /// Required.
   FrequencyCap? frequencyCap;
 
@@ -16319,7 +16093,7 @@ typedef CombinedAudience = $CombinedAudience;
 class CombinedAudienceGroup {
   /// All combined audience targeting settings in combined audience group.
   ///
-  /// Repeated settings with same id will be ignored. The number of combined
+  /// Repeated settings with the same id will be ignored. The number of combined
   /// audience settings should be no more than five, error will be thrown
   /// otherwise.
   ///
@@ -16540,6 +16314,12 @@ class ConversionCountingConfig {
   ///
   /// The number of conversions counted is the sum of all of the conversions
   /// counted by all of the Floodlight activity IDs specified in this field.
+  /// *Warning*: Starting **April 1, 2025**, this field will no longer be
+  /// writable while a custom bidding algorithm is assigned to the line item. If
+  /// you set this field and assign a custom bidding algorithm in the same
+  /// request, the floodlight activities must match the ones used by the custom
+  /// bidding algorithm. \[Read more about this announced
+  /// change\](/display-video/api/deprecations#features.custom_bidding_floodlight).
   core.List<TrackingFloodlightActivityConfig>? floodlightActivityConfigs;
 
   /// The percentage of post-view conversions to count, in millis (1/1000 of a
@@ -16849,6 +16629,8 @@ class Creative {
   /// `CREATIVE_TYPE_PUBLISHER_HOSTED` If this field is specified, width_pixels
   /// and height_pixels are both required and must be greater than or equal to
   /// 0.
+  ///
+  /// Optional.
   core.List<Dimensions>? additionalDimensions;
 
   /// The unique ID of the advertiser the creative belongs to.
@@ -16857,6 +16639,8 @@ class Creative {
   core.String? advertiserId;
 
   /// Third-party HTML tracking tag to be appended to the creative tag.
+  ///
+  /// Optional.
   core.String? appendedTag;
 
   /// Assets associated to this creative.
@@ -16879,6 +16663,8 @@ class Creative {
   /// that uses both Campaign Manager 360 and third-party ad serving: *
   /// `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` Output only
   /// for other cases.
+  ///
+  /// Optional.
   CmTrackingAd? cmTrackingAd;
 
   /// The IDs of companion creatives for a video creative.
@@ -16887,8 +16673,10 @@ class Creative {
   /// serve surrounding the publisher's video player. Companions display around
   /// the video player while the video is playing and remain after the video has
   /// completed. Creatives contain additional dimensions can not be companion
-  /// creatives. This field is only supported for following creative_type: *
+  /// creatives. This field is only supported for the following creative_type: *
   /// `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO`
+  ///
+  /// Optional.
   core.List<core.String>? companionCreativeIds;
 
   /// Counter events for a rich media creative.
@@ -16898,6 +16686,8 @@ class Creative {
   /// taps, data loading, keyboard entries, etc.). Any event that can be
   /// captured in the creative can be recorded as a counter. Leave it empty or
   /// unset for creatives containing image assets only.
+  ///
+  /// Optional.
   core.List<CounterEvent>? counterEvents;
 
   /// The timestamp when the creative was created.
@@ -16964,7 +16754,7 @@ class Creative {
   /// - "CREATIVE_TYPE_TEMPLATED_APP_INSTALL_VIDEO" : Templated app install
   /// mobile video creative. Create and update methods are **not** supported for
   /// this creative type.
-  /// - "CREATIVE_TYPE_ASSET_BASED_CREATIVE" : Asset based creative. Create and
+  /// - "CREATIVE_TYPE_ASSET_BASED_CREATIVE" : Asset-based creative. Create and
   /// update methods are supported for this creative type if the hosting_source
   /// is `HOSTING_SOURCE_HOSTED`.
   core.String? creativeType;
@@ -17102,19 +16892,25 @@ class Creative {
   /// To enable this for the creative, make sure the
   /// Advertiser.creative_config.ias_client_id has been set to your IAS client
   /// ID.
+  ///
+  /// Optional.
   core.bool? iasCampaignMonitoring;
 
   /// ID information used to link this creative to an external system.
   ///
   /// Must be UTF-8 encoded with a length of no more than 10,000 characters.
+  ///
+  /// Optional.
   core.String? integrationCode;
 
   /// JavaScript measurement URL from supported third-party verification
   /// providers (ComScore, DoubleVerify, IAS, Moat).
   ///
-  /// HTML script tags are not supported. This field is only writeable in
+  /// HTML script tags are not supported. This field is only writeable in the
   /// following creative_type: * `CREATIVE_TYPE_NATIVE` *
   /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
+  ///
+  /// Optional.
   core.String? jsTrackerUrl;
 
   /// The IDs of the line items this creative is associated with.
@@ -17151,12 +16947,16 @@ class Creative {
   /// User notes for this creative.
   ///
   /// Must be UTF-8 encoded with a length of no more than 20,000 characters.
+  ///
+  /// Optional.
   core.String? notes;
 
   /// Specifies the OBA icon for a video creative.
   ///
-  /// This field is only supported in following creative_type: *
+  /// This field is only supported in the following creative_type: *
   /// `CREATIVE_TYPE_VIDEO`
+  ///
+  /// Optional.
   ObaIcon? obaIcon;
 
   /// Indicates the third-party audio creative supports OGG.
@@ -17173,6 +16973,8 @@ class Creative {
   ///
   /// This field is required when skippable is true. This field is only
   /// supported for the following creative_type: * `CREATIVE_TYPE_VIDEO`
+  ///
+  /// Optional.
   AudioVideoOffset? progressOffset;
 
   /// Indicates that the creative relies on HTML5 to render properly.
@@ -17221,12 +17023,16 @@ class Creative {
   ///
   /// This field is required when skippable is true. This field is only
   /// supported for the following creative_type: * `CREATIVE_TYPE_VIDEO`
+  ///
+  /// Optional.
   AudioVideoOffset? skipOffset;
 
   /// Whether the user can choose to skip a video creative.
   ///
   /// This field is only supported for the following creative_type: *
   /// `CREATIVE_TYPE_VIDEO`
+  ///
+  /// Optional.
   core.bool? skippable;
 
   /// The original third-party tag used for the creative.
@@ -17245,6 +17051,8 @@ class Creative {
   /// This field is only supported for the following creative_type: *
   /// `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO` *
   /// `CREATIVE_TYPE_NATIVE_VIDEO`
+  ///
+  /// Optional.
   core.List<ThirdPartyUrl>? thirdPartyUrls;
 
   /// Timer custom events for a rich media creative.
@@ -17253,16 +17061,21 @@ class Creative {
   /// specified part of a rich media creative. A creative can have multiple
   /// timer events, each timed independently. Leave it empty or unset for
   /// creatives containing image assets only.
+  ///
+  /// Optional.
   core.List<TimerEvent>? timerEvents;
 
   /// Tracking URLs for analytics providers or third-party ad technology
   /// vendors.
   ///
-  /// The URLs must start with https (except on inventory that doesn't require
-  /// SSL compliance). If using macros in your URL, use only macros supported by
-  /// Display & Video 360. Standard URLs only, no IMG or SCRIPT tags. This field
-  /// is only writeable in following creative_type: * `CREATIVE_TYPE_NATIVE` *
-  /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
+  /// The URLs must start with `https:` (except on inventory that doesn't
+  /// require SSL compliance). If using macros in your URL, use only macros
+  /// supported by Display & Video 360. Standard URLs only, no IMG or SCRIPT
+  /// tags. This field is only writeable in the following creative_type: *
+  /// `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` *
+  /// `CREATIVE_TYPE_NATIVE_VIDEO`
+  ///
+  /// Optional.
   core.List<core.String>? trackerUrls;
 
   /// Audio/Video transcodes.
@@ -17273,8 +17086,8 @@ class Creative {
   /// specific video players or bandwidths. These transcodes give a publisher's
   /// system more options to choose from for each impression on your video and
   /// ensures that the appropriate file serves based on the viewer’s connection
-  /// and screen size. This field is only supported in following creative_type:
-  /// * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_NATIVE_VIDEO` *
+  /// and screen size. This field is only supported in the following
+  /// creative_type: * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_NATIVE_VIDEO` *
   /// `CREATIVE_TYPE_AUDIO`
   ///
   /// Output only.
@@ -17576,7 +17389,7 @@ class CreativeConfig {
   /// - "CREATIVE_TYPE_TEMPLATED_APP_INSTALL_VIDEO" : Templated app install
   /// mobile video creative. Create and update methods are **not** supported for
   /// this creative type.
-  /// - "CREATIVE_TYPE_ASSET_BASED_CREATIVE" : Asset based creative. Create and
+  /// - "CREATIVE_TYPE_ASSET_BASED_CREATIVE" : Asset-based creative. Create and
   /// update methods are supported for this creative type if the hosting_source
   /// is `HOSTING_SOURCE_HOSTED`.
   core.String? creativeType;
@@ -17643,8 +17456,12 @@ class CustomBiddingAlgorithm {
   /// specified or is unknown in this version.
   /// - "SCRIPT_BASED" : Algorithm generated through customer-uploaded custom
   /// bidding script files.
-  /// - "ADS_DATA_HUB_BASED" : Algorithm created through Ads Data Hub product.
-  /// - "GOAL_BUILDER_BASED" : Algorithm created through goal builder in DV3 UI.
+  /// - "ADS_DATA_HUB_BASED" : DEPRECATED: ADS_DATA_HUB_BASED has been
+  /// deprecated. Algorithm created through Ads Data Hub product.
+  /// - "GOAL_BUILDER_BASED" : DEPRECATED: GOAL_BUILDER_BASED has been
+  /// deprecated, is not longer supported, and has been replaced by RULE_BASED.
+  /// Algorithm created through goal builder in DV3 UI. **Existing algorithms of
+  /// this type have been migrated to `RULE_BASED`.**
   /// - "RULE_BASED" : Algorithm based in defined rules. These rules are defined
   /// in the API using the AlgorithmRules object. This algorithm type is only
   /// available to allowlisted customers. Other customers attempting to use this
@@ -17853,118 +17670,17 @@ class CustomBiddingAlgorithmRules {
 }
 
 /// An error message for a CustomBiddingAlgorithmRules resource.
-class CustomBiddingAlgorithmRulesError {
-  /// The type of error.
-  /// Possible string values are:
-  /// - "ERROR_CODE_UNSPECIFIED" : The error is not specified or is unknown in
-  /// this version.
-  /// - "SYNTAX_ERROR" : The rules have a syntax error.
-  /// - "CONSTRAINT_VIOLATION_ERROR" : The rules have a constraint violation
-  /// error.
-  /// - "INTERNAL_ERROR" : Internal errors were thrown while processing the
-  /// rules.
-  core.String? errorCode;
-
-  CustomBiddingAlgorithmRulesError({
-    this.errorCode,
-  });
-
-  CustomBiddingAlgorithmRulesError.fromJson(core.Map json_)
-      : this(
-          errorCode: json_['errorCode'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (errorCode != null) 'errorCode': errorCode!,
-      };
-}
+typedef CustomBiddingAlgorithmRulesError = $CustomBiddingAlgorithmRulesError;
 
 /// The reference to the uploaded AlgorithmRules file.
 ///
 /// Retrieve the location to upload new AlgorithmRules file to using
 /// customBiddingAlgorithms.uploadRules.
-class CustomBiddingAlgorithmRulesRef {
-  /// A resource name to be used in media.download to download the rules files.
-  ///
-  /// Or media.upload to upload the rules files. Resource names have the format
-  /// `customBiddingAlgorithms/{custom_bidding_algorithm_id}/rulesRef/{ref_id}`.
-  core.String? resourceName;
-
-  CustomBiddingAlgorithmRulesRef({
-    this.resourceName,
-  });
-
-  CustomBiddingAlgorithmRulesRef.fromJson(core.Map json_)
-      : this(
-          resourceName: json_['resourceName'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceName != null) 'resourceName': resourceName!,
-      };
-}
+typedef CustomBiddingAlgorithmRulesRef = $CustomBiddingAlgorithmRulesRef;
 
 /// The details of a custom bidding algorithm model for a single shared
 /// advertiser.
-class CustomBiddingModelDetails {
-  /// The unique ID of the relevant advertiser.
-  core.String? advertiserId;
-
-  /// The readiness state of custom bidding model.
-  /// Possible string values are:
-  /// - "READINESS_STATE_UNSPECIFIED" : State is not specified or is unknown in
-  /// this version.
-  /// - "READINESS_STATE_ACTIVE" : The model is trained and ready for serving.
-  /// - "READINESS_STATE_INSUFFICIENT_DATA" : There is not enough data to train
-  /// the serving model.
-  /// - "READINESS_STATE_TRAINING" : The model is training and not ready for
-  /// serving.
-  /// - "READINESS_STATE_NO_VALID_SCRIPT" : A valid custom bidding script has
-  /// not been provided with which to train the model. This state will only be
-  /// applied to algorithms whose `custom_bidding_algorithm_type` is
-  /// `SCRIPT_BASED`.
-  /// - "READINESS_STATE_EVALUATION_FAILURE" : A valid script was provided but
-  /// failed evaluation. This is applicable for scripts that could not be
-  /// evaluated in the alloted time.
-  core.String? readinessState;
-
-  /// The suspension state of custom bidding model.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "SUSPENSION_STATE_UNSPECIFIED" : State is not specified or is unknown in
-  /// this version.
-  /// - "SUSPENSION_STATE_ENABLED" : Model is enabled, either recently used,
-  /// currently used or scheduled to be used. The algorithm is actively scoring
-  /// impressions for this advertiser.
-  /// - "SUSPENSION_STATE_DORMANT" : Model has not been used recently. Although
-  /// the model still acts as `ENABLED`, it will eventually be suspended if not
-  /// used.
-  /// - "SUSPENSION_STATE_SUSPENDED" : Model is suspended from scoring
-  /// impressions and cannot serve. If the algorithm is assigned to a line item
-  /// under this advertiser or otherwise updated, it will switch back to the
-  /// `ENABLED` state and require time to prepare the serving model again.
-  core.String? suspensionState;
-
-  CustomBiddingModelDetails({
-    this.advertiserId,
-    this.readinessState,
-    this.suspensionState,
-  });
-
-  CustomBiddingModelDetails.fromJson(core.Map json_)
-      : this(
-          advertiserId: json_['advertiserId'] as core.String?,
-          readinessState: json_['readinessState'] as core.String?,
-          suspensionState: json_['suspensionState'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (readinessState != null) 'readinessState': readinessState!,
-        if (suspensionState != null) 'suspensionState': suspensionState!,
-      };
-}
+typedef CustomBiddingModelDetails = $CustomBiddingModelDetails;
 
 /// A single custom bidding script.
 class CustomBiddingScript {
@@ -18076,7 +17792,7 @@ typedef CustomList = $CustomList;
 class CustomListGroup {
   /// All custom list targeting settings in custom list group.
   ///
-  /// Repeated settings with same id will be ignored.
+  /// Repeated settings with the same id will be ignored.
   ///
   /// Required.
   core.List<CustomListTargetingSetting>? settings;
@@ -18384,7 +18100,27 @@ class EditCustomerMatchMembersRequest {
 }
 
 /// The response of FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.
-typedef EditCustomerMatchMembersResponse = $EditCustomerMatchMembersResponse;
+class EditCustomerMatchMembersResponse {
+  /// The ID of the updated Customer Match FirstAndThirdPartyAudience.
+  ///
+  /// Required.
+  core.String? firstAndThirdPartyAudienceId;
+
+  EditCustomerMatchMembersResponse({
+    this.firstAndThirdPartyAudienceId,
+  });
+
+  EditCustomerMatchMembersResponse.fromJson(core.Map json_)
+      : this(
+          firstAndThirdPartyAudienceId:
+              json_['firstAndThirdPartyAudienceId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (firstAndThirdPartyAudienceId != null)
+          'firstAndThirdPartyAudienceId': firstAndThirdPartyAudienceId!,
+      };
+}
 
 /// Request message for GuaranteedOrderService.EditGuaranteedOrderReadAccessors.
 typedef EditGuaranteedOrderReadAccessorsRequest
@@ -18649,7 +18385,13 @@ class FirstAndThirdPartyAudience {
   /// Otherwise, the set value must be greater than 0 and less than or equal to
   /// 540. Only applicable to first party audiences. This field is required if
   /// one of the following audience_type is used: *
-  /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
+  /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID` *Warning*:
+  /// Starting on **April 7, 2025**, audiences will no longer be able to have
+  /// infinite membership duration. This field will no longer accept the value
+  /// 10000 and all audiences with membership durations greater than 540 days
+  /// will be updated to a membership duration of 540 days. \[Read more about
+  /// this announced
+  /// change\](/display-video/api/deprecations#features.audience_duration).
   core.String? membershipDurationDays;
 
   /// Input only.
@@ -18769,7 +18511,7 @@ class FirstAndThirdPartyAudienceGroup {
   /// All first and third party audience targeting settings in first and third
   /// party audience group.
   ///
-  /// Repeated settings with same id are not allowed.
+  /// Repeated settings with the same id are not allowed.
   ///
   /// Required.
   core.List<FirstAndThirdPartyAudienceTargetingSetting>? settings;
@@ -18793,8 +18535,74 @@ class FirstAndThirdPartyAudienceGroup {
 }
 
 /// Details of first and third party audience targeting setting.
-typedef FirstAndThirdPartyAudienceTargetingSetting
-    = $FirstAndThirdPartyAudienceTargetingSetting;
+class FirstAndThirdPartyAudienceTargetingSetting {
+  /// First and third party audience id of the first and third party audience
+  /// targeting setting.
+  ///
+  /// This id is first_and_third_party_audience_id.
+  ///
+  /// Required.
+  core.String? firstAndThirdPartyAudienceId;
+
+  /// The recency of the first and third party audience targeting setting.
+  ///
+  /// Only applicable to first party audiences, otherwise will be ignored. For
+  /// more info, refer to
+  /// https://support.google.com/displayvideo/answer/2949947#recency When
+  /// unspecified, no recency limit will be used.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RECENCY_NO_LIMIT" : No limit of recency.
+  /// - "RECENCY_1_MINUTE" : Recency is 1 minute.
+  /// - "RECENCY_5_MINUTES" : Recency is 5 minutes.
+  /// - "RECENCY_10_MINUTES" : Recency is 10 minutes.
+  /// - "RECENCY_15_MINUTES" : Recency is 15 minutes.
+  /// - "RECENCY_30_MINUTES" : Recency is 30 minutes.
+  /// - "RECENCY_1_HOUR" : Recency is 1 hour.
+  /// - "RECENCY_2_HOURS" : Recency is 2 hours.
+  /// - "RECENCY_3_HOURS" : Recency is 3 hours.
+  /// - "RECENCY_6_HOURS" : Recency is 6 hours.
+  /// - "RECENCY_12_HOURS" : Recency is 12 hours.
+  /// - "RECENCY_1_DAY" : Recency is 1 day.
+  /// - "RECENCY_2_DAYS" : Recency is 2 days.
+  /// - "RECENCY_3_DAYS" : Recency is 3 days.
+  /// - "RECENCY_5_DAYS" : Recency is 5 days.
+  /// - "RECENCY_7_DAYS" : Recency is 7 days.
+  /// - "RECENCY_10_DAYS" : Recency is 10 days.
+  /// - "RECENCY_14_DAYS" : Recency is 14 days.
+  /// - "RECENCY_15_DAYS" : Recency is 15 days.
+  /// - "RECENCY_21_DAYS" : Recency is 21 days.
+  /// - "RECENCY_28_DAYS" : Recency is 28 days.
+  /// - "RECENCY_30_DAYS" : Recency is 30 days.
+  /// - "RECENCY_40_DAYS" : Recency is 40 days.
+  /// - "RECENCY_45_DAYS" : Recency is 45 days.
+  /// - "RECENCY_60_DAYS" : Recency is 60 days.
+  /// - "RECENCY_90_DAYS" : Recency is 90 days.
+  /// - "RECENCY_120_DAYS" : Recency is 120 days.
+  /// - "RECENCY_180_DAYS" : Recency is 180 days.
+  /// - "RECENCY_270_DAYS" : Recency is 270 days.
+  /// - "RECENCY_365_DAYS" : Recency is 365 days.
+  core.String? recency;
+
+  FirstAndThirdPartyAudienceTargetingSetting({
+    this.firstAndThirdPartyAudienceId,
+    this.recency,
+  });
+
+  FirstAndThirdPartyAudienceTargetingSetting.fromJson(core.Map json_)
+      : this(
+          firstAndThirdPartyAudienceId:
+              json_['firstAndThirdPartyAudienceId'] as core.String?,
+          recency: json_['recency'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (firstAndThirdPartyAudienceId != null)
+          'firstAndThirdPartyAudienceId': firstAndThirdPartyAudienceId!,
+        if (recency != null) 'recency': recency!,
+      };
+}
 
 /// A strategy that uses a fixed bidding price.
 typedef FixedBidStrategy = $FixedBidStrategy;
@@ -19164,7 +18972,7 @@ typedef GoogleAudience = $GoogleAudience;
 class GoogleAudienceGroup {
   /// All Google audience targeting settings in Google audience group.
   ///
-  /// Repeated settings with same id will be ignored.
+  /// Repeated settings with the same id will be ignored.
   ///
   /// Required.
   core.List<GoogleAudienceTargetingSetting>? settings;
@@ -19456,109 +19264,7 @@ typedef HouseholdIncomeTargetingOptionDetails
     = $HouseholdIncomeTargetingOptionDetails;
 
 /// A filtering option that filters entities by their entity IDs.
-class IdFilter {
-  /// YouTube Ads to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? adGroupAdIds;
-
-  /// YouTube Ad Groups to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? adGroupIds;
-
-  /// YouTube Ad Groups, by ID, to download in QA format.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  ///
-  /// Optional.
-  core.List<core.String>? adGroupQaIds;
-
-  /// Campaigns to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? campaignIds;
-
-  /// Insertion Orders to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? insertionOrderIds;
-
-  /// Line Items to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? lineItemIds;
-
-  /// Line Items, by ID, to download in QA format.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  ///
-  /// Optional.
-  core.List<core.String>? lineItemQaIds;
-
-  /// Media Products to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? mediaProductIds;
-
-  IdFilter({
-    this.adGroupAdIds,
-    this.adGroupIds,
-    this.adGroupQaIds,
-    this.campaignIds,
-    this.insertionOrderIds,
-    this.lineItemIds,
-    this.lineItemQaIds,
-    this.mediaProductIds,
-  });
-
-  IdFilter.fromJson(core.Map json_)
-      : this(
-          adGroupAdIds: (json_['adGroupAdIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          adGroupIds: (json_['adGroupIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          adGroupQaIds: (json_['adGroupQaIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          campaignIds: (json_['campaignIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          insertionOrderIds: (json_['insertionOrderIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          lineItemIds: (json_['lineItemIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          lineItemQaIds: (json_['lineItemQaIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          mediaProductIds: (json_['mediaProductIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (adGroupAdIds != null) 'adGroupAdIds': adGroupAdIds!,
-        if (adGroupIds != null) 'adGroupIds': adGroupIds!,
-        if (adGroupQaIds != null) 'adGroupQaIds': adGroupQaIds!,
-        if (campaignIds != null) 'campaignIds': campaignIds!,
-        if (insertionOrderIds != null) 'insertionOrderIds': insertionOrderIds!,
-        if (lineItemIds != null) 'lineItemIds': lineItemIds!,
-        if (lineItemQaIds != null) 'lineItemQaIds': lineItemQaIds!,
-        if (mediaProductIds != null) 'mediaProductIds': mediaProductIds!,
-      };
-}
+typedef IdFilter = $IdFilter;
 
 /// Meta data of an image asset.
 class ImageAsset {
@@ -19641,6 +19347,8 @@ class InsertionOrder {
   /// The bidding strategy of the insertion order.
   ///
   /// By default, fixed_bid is set.
+  ///
+  /// Optional.
   BiddingStrategy? bidStrategy;
 
   /// The budget allocation settings of the insertion order.
@@ -19688,6 +19396,10 @@ class InsertionOrder {
 
   /// The frequency capping setting of the insertion order.
   ///
+  /// *Warning*: On **February 28, 2025**, frequency cap time periods greater
+  /// than 30 days will no longer be accepted. \[Read more about this announced
+  /// change\](/display-video/api/deprecations#features.lifetime_frequency_cap)
+  ///
   /// Required.
   FrequencyCap? frequencyCap;
 
@@ -19701,6 +19413,8 @@ class InsertionOrder {
   /// The type of insertion order.
   ///
   /// If this field is unspecified in creation, the value defaults to `RTB`.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "INSERTION_ORDER_TYPE_UNSPECIFIED" : Insertion order type is not
   /// specified or is unknown.
@@ -19709,6 +19423,8 @@ class InsertionOrder {
   core.String? insertionOrderType;
 
   /// Additional integration details of the insertion order.
+  ///
+  /// Optional.
   IntegrationDetails? integrationDetails;
 
   /// The key performance indicator (KPI) of the insertion order.
@@ -19726,11 +19442,7 @@ class InsertionOrder {
 
   /// The optimization objective of the insertion order.
   ///
-  /// **This field is only available to allowlisted customers.** If a customer
-  /// is not allowlisted, this field will be null and attempts to set it will
-  /// return an error.
-  ///
-  /// Optional.
+  /// Optional. Required.
   /// Possible string values are:
   /// - "OPTIMIZATION_OBJECTIVE_UNSPECIFIED" : Type value is not specified or is
   /// unknown in this version.
@@ -19757,6 +19469,8 @@ class InsertionOrder {
   ///
   /// If absent or empty in CreateInsertionOrder method, the newly created
   /// insertion order will inherit partner costs from the partner settings.
+  ///
+  /// Optional.
   core.List<PartnerCost>? partnerCosts;
 
   /// The reservation type of the insertion order.
@@ -19877,6 +19591,8 @@ class InsertionOrderBudget {
   ///
   /// If this field is unspecified in creation, the value defaults to
   /// `INSERTION_ORDER_AUTOMATION_TYPE_NONE`.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "INSERTION_ORDER_AUTOMATION_TYPE_UNSPECIFIED" : Insertion order
   /// automation option is not specified or is unknown in this version.
@@ -19945,6 +19661,8 @@ class InsertionOrderBudgetSegment {
 
   /// The budget_id of the campaign budget that this insertion order budget
   /// segment is a part of.
+  ///
+  /// Optional.
   core.String? campaignBudgetId;
 
   /// The start and end date settings of the budget segment.
@@ -19962,6 +19680,8 @@ class InsertionOrderBudgetSegment {
   ///
   /// It can be used to enter Purchase Order information for each budget segment
   /// and have that information printed on the invoices. Must be UTF-8 encoded.
+  ///
+  /// Optional.
   core.String? description;
 
   InsertionOrderBudgetSegment({
@@ -20630,103 +20350,7 @@ typedef KeywordAssignedTargetingOptionDetails
 
 /// Settings that control the key performance indicator, or KPI, of an insertion
 /// order.
-class Kpi {
-  /// Custom Bidding Algorithm ID associated with
-  /// KPI_CUSTOM_IMPRESSION_VALUE_OVER_COST.
-  ///
-  /// This field is ignored if the proper KPI is not selected.
-  ///
-  /// Optional.
-  core.String? kpiAlgorithmId;
-
-  /// The goal amount, in micros of the advertiser's currency.
-  ///
-  /// Applicable when kpi_type is one of: * `KPI_TYPE_CPM` * `KPI_TYPE_CPC` *
-  /// `KPI_TYPE_CPA` * `KPI_TYPE_CPIAVC` * `KPI_TYPE_VCPM` For example: 1500000
-  /// represents 1.5 standard units of the currency.
-  core.String? kpiAmountMicros;
-
-  /// The decimal representation of the goal percentage in micros.
-  ///
-  /// Applicable when kpi_type is one of: * `KPI_TYPE_CTR` *
-  /// `KPI_TYPE_VIEWABILITY` * `KPI_TYPE_CLICK_CVR` * `KPI_TYPE_IMPRESSION_CVR`
-  /// * `KPI_TYPE_VTR` * `KPI_TYPE_AUDIO_COMPLETION_RATE` *
-  /// `KPI_TYPE_VIDEO_COMPLETION_RATE` For example: 70000 represents 7% (decimal
-  /// 0.07).
-  core.String? kpiPercentageMicros;
-
-  /// A KPI string, which can be empty.
-  ///
-  /// Must be UTF-8 encoded with a length of no more than 100 characters.
-  /// Applicable when kpi_type is `KPI_TYPE_OTHER`.
-  core.String? kpiString;
-
-  /// The type of KPI.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "KPI_TYPE_UNSPECIFIED" : KPI type is not specified or is unknown in this
-  /// version.
-  /// - "KPI_TYPE_CPM" : The KPI is CPM (cost per mille).
-  /// - "KPI_TYPE_CPC" : The KPI is CPC (cost per click).
-  /// - "KPI_TYPE_CPA" : The KPI is CPA (cost per action).
-  /// - "KPI_TYPE_CTR" : The KPI is CTR (click-through rate) percentage.
-  /// - "KPI_TYPE_VIEWABILITY" : The KPI is Viewability percentage.
-  /// - "KPI_TYPE_CPIAVC" : The KPI is CPIAVC (cost per impression audible and
-  /// visible at completion).
-  /// - "KPI_TYPE_CPE" : The KPI is CPE (cost per engagement).
-  /// - "KPI_TYPE_CPV" : The KPI is set in CPV (cost per view).
-  /// - "KPI_TYPE_CLICK_CVR" : The KPI is click conversion rate (conversions per
-  /// click) percentage.
-  /// - "KPI_TYPE_IMPRESSION_CVR" : The KPI is impression conversion rate
-  /// (conversions per impression) percentage.
-  /// - "KPI_TYPE_VCPM" : The KPI is VCPM (cost per thousand viewable
-  /// impressions).
-  /// - "KPI_TYPE_VTR" : The KPI is YouTube view rate (YouTube views per
-  /// impression) percentage.
-  /// - "KPI_TYPE_AUDIO_COMPLETION_RATE" : The KPI is audio completion rate
-  /// (complete audio listens per impression) percentage.
-  /// - "KPI_TYPE_VIDEO_COMPLETION_RATE" : The KPI is video completion rate
-  /// (complete video views per impression) percentage.
-  /// - "KPI_TYPE_CPCL" : The KPI is set in CPCL (cost per complete audio
-  /// listen).
-  /// - "KPI_TYPE_CPCV" : The KPI is set in CPCV (cost per complete video view).
-  /// - "KPI_TYPE_TOS10" : The KPI is set in rate of time on screen 10+ seconds
-  /// (Percentage of measurable, non-skippable impressions that were on the
-  /// screen for at least 10 seconds).
-  /// - "KPI_TYPE_MAXIMIZE_PACING" : The KPI is set to maximize brand impact
-  /// while prioritizing spending the full budget.
-  /// - "KPI_TYPE_CUSTOM_IMPRESSION_VALUE_OVER_COST" : The KPI is set in custom
-  /// impression value divided by cost.
-  /// - "KPI_TYPE_OTHER" : The KPI is some other value.
-  core.String? kpiType;
-
-  Kpi({
-    this.kpiAlgorithmId,
-    this.kpiAmountMicros,
-    this.kpiPercentageMicros,
-    this.kpiString,
-    this.kpiType,
-  });
-
-  Kpi.fromJson(core.Map json_)
-      : this(
-          kpiAlgorithmId: json_['kpiAlgorithmId'] as core.String?,
-          kpiAmountMicros: json_['kpiAmountMicros'] as core.String?,
-          kpiPercentageMicros: json_['kpiPercentageMicros'] as core.String?,
-          kpiString: json_['kpiString'] as core.String?,
-          kpiType: json_['kpiType'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kpiAlgorithmId != null) 'kpiAlgorithmId': kpiAlgorithmId!,
-        if (kpiAmountMicros != null) 'kpiAmountMicros': kpiAmountMicros!,
-        if (kpiPercentageMicros != null)
-          'kpiPercentageMicros': kpiPercentageMicros!,
-        if (kpiString != null) 'kpiString': kpiString!,
-        if (kpiType != null) 'kpiType': kpiType!,
-      };
-}
+typedef Kpi = $Kpi;
 
 /// Details for assigned language targeting option.
 ///
@@ -20764,6 +20388,14 @@ class LineItem {
   core.String? campaignId;
 
   /// The conversion tracking setting of the line item.
+  ///
+  /// *Warning*: Starting **April 1, 2025**, the floodlight_activity_configs
+  /// field will no longer be writable while a custom bidding algorithm is
+  /// assigned to the line item. If you set this field and assign a custom
+  /// bidding algorithm in the same request, the floodlight activities must
+  /// match the ones used by the custom bidding algorithm. \[Read more about
+  /// this announced
+  /// change\](/display-video/api/deprecations#features.custom_bidding_floodlight).
   ConversionCountingConfig? conversionCounting;
 
   /// The IDs of the creatives associated with the line item.
@@ -20816,7 +20448,10 @@ class LineItem {
   /// The impression frequency cap settings of the line item.
   ///
   /// The max_impressions field in this settings object must be used if
-  /// assigning a limited cap.
+  /// assigning a limited cap. *Warning*: On **February 28, 2025**, frequency
+  /// cap time periods greater than 30 days will no longer be accepted. \[Read
+  /// more about this announced
+  /// change\](/display-video/api/deprecations#features.lifetime_frequency_cap)
   ///
   /// Required.
   FrequencyCap? frequencyCap;
@@ -22605,24 +22240,28 @@ class NonSkippableAd {
 class ObaIcon {
   /// The click tracking URL of the OBA icon.
   ///
-  /// Only URLs of the following domains are allowed: * https://info.evidon.com
-  /// * https://l.betrad.com
+  /// Only URLs of the following domains are allowed: *
+  /// `https://info.evidon.com` * `https://l.betrad.com`
   ///
   /// Required.
   core.String? clickTrackingUrl;
 
   /// The dimensions of the OBA icon.
+  ///
+  /// Optional.
   Dimensions? dimensions;
 
   /// The landing page URL of the OBA icon.
   ///
-  /// Only URLs of the following domains are allowed: * https://info.evidon.com
-  /// * https://l.betrad.com
+  /// Only URLs of the following domains are allowed: *
+  /// `https://info.evidon.com` * `https://l.betrad.com`
   ///
   /// Required.
   core.String? landingPageUrl;
 
   /// The position of the OBA icon on the creative.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "OBA_ICON_POSITION_UNSPECIFIED" : The OBA icon position is not
   /// specified.
@@ -22637,18 +22276,24 @@ class ObaIcon {
   /// The program of the OBA icon.
   ///
   /// For example: “AdChoices”.
+  ///
+  /// Optional.
   core.String? program;
 
   /// The MIME type of the OBA icon resource.
+  ///
+  /// Optional.
   core.String? resourceMimeType;
 
   /// The URL of the OBA icon resource.
+  ///
+  /// Optional.
   core.String? resourceUrl;
 
   /// The view tracking URL of the OBA icon.
   ///
-  /// Only URLs of the following domains are allowed: * https://info.evidon.com
-  /// * https://l.betrad.com
+  /// Only URLs of the following domains are allowed: *
+  /// `https://info.evidon.com` * `https://l.betrad.com`
   ///
   /// Required.
   core.String? viewTrackingUrl;
@@ -22814,73 +22459,7 @@ typedef Pacing = $Pacing;
 
 /// A filtering option that filters on selected file types belonging to a chosen
 /// set of filter entities.
-class ParentEntityFilter {
-  /// File types that will be returned.
-  ///
-  /// Required.
-  core.List<core.String>? fileType;
-
-  /// The IDs of the specified filter type.
-  ///
-  /// This is used to filter entities to fetch. If filter type is not
-  /// `FILTER_TYPE_NONE`, at least one ID must be specified.
-  core.List<core.String>? filterIds;
-
-  /// Filter type used to filter fetched entities.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "FILTER_TYPE_UNSPECIFIED" : Default value when type is unspecified or is
-  /// unknown in this version.
-  /// - "FILTER_TYPE_NONE" : If selected, no filter will be applied to the
-  /// download. Can only be used if an Advertiser is specified in
-  /// CreateSdfDownloadTaskRequest.
-  /// - "FILTER_TYPE_ADVERTISER_ID" : Advertiser ID. If selected, all filter IDs
-  /// must be Advertiser IDs that belong to the Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  /// - "FILTER_TYPE_CAMPAIGN_ID" : Campaign ID. If selected, all filter IDs
-  /// must be Campaign IDs that belong to the Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  /// - "FILTER_TYPE_MEDIA_PRODUCT_ID" : Media Product ID. If selected, all
-  /// filter IDs must be Media Product IDs that belong to the Advertiser or
-  /// Partner specified in CreateSdfDownloadTaskRequest. Can only be used for
-  /// downloading `FILE_TYPE_MEDIA_PRODUCT`.
-  /// - "FILTER_TYPE_INSERTION_ORDER_ID" : Insertion Order ID. If selected, all
-  /// filter IDs must be Insertion Order IDs that belong to the Advertiser or
-  /// Partner specified in CreateSdfDownloadTaskRequest. Can only be used for
-  /// downloading `FILE_TYPE_INSERTION_ORDER`, `FILE_TYPE_LINE_ITEM`,
-  /// `FILE_TYPE_LINE_ITEM_QA`, `FILE_TYPE_AD_GROUP`, `FILE_TYPE_AD_GROUP_QA`,
-  /// and `FILE_TYPE_AD`.
-  /// - "FILTER_TYPE_LINE_ITEM_ID" : Line Item ID. If selected, all filter IDs
-  /// must be Line Item IDs that belong to the Advertiser or Partner specified
-  /// in CreateSdfDownloadTaskRequest. Can only be used for downloading
-  /// `FILE_TYPE_LINE_ITEM`, `FILE_TYPE_LINE_ITEM_QA`,`FILE_TYPE_AD_GROUP`,
-  /// `FILE_TYPE_AD_GROUP_QA`, and `FILE_TYPE_AD`.
-  core.String? filterType;
-
-  ParentEntityFilter({
-    this.fileType,
-    this.filterIds,
-    this.filterType,
-  });
-
-  ParentEntityFilter.fromJson(core.Map json_)
-      : this(
-          fileType: (json_['fileType'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          filterIds: (json_['filterIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          filterType: json_['filterType'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fileType != null) 'fileType': fileType!,
-        if (filterIds != null) 'filterIds': filterIds!,
-        if (filterType != null) 'filterType': filterType!,
-      };
-}
+typedef ParentEntityFilter = $ParentEntityFilter;
 
 /// Details for assigned parental status targeting option.
 ///
@@ -23034,23 +22613,7 @@ class PartnerAdServerConfig {
 }
 
 /// Billing related settings of a partner.
-class PartnerBillingConfig {
-  /// The ID of a partner default billing profile.
-  core.String? billingProfileId;
-
-  PartnerBillingConfig({
-    this.billingProfileId,
-  });
-
-  PartnerBillingConfig.fromJson(core.Map json_)
-      : this(
-          billingProfileId: json_['billingProfileId'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (billingProfileId != null) 'billingProfileId': billingProfileId!,
-      };
-}
+typedef PartnerBillingConfig = $PartnerBillingConfig;
 
 /// Settings that control a partner cost.
 ///
@@ -23686,72 +23249,7 @@ typedef TargetFrequency = $TargetFrequency;
 /// Settings that control the \[optimized
 /// targeting\](//support.google.com/displayvideo/answer/12060859) settings of
 /// the line item.
-class TargetingExpansionConfig {
-  /// Magnitude of expansion for eligible first-party user lists under this ad
-  /// group.
-  ///
-  /// This field only applies to YouTube and Partners line item and ad group
-  /// resources.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Audience expansion level is not specified or is unknown in
-  /// this version.
-  /// - "NO_REACH" : Audience expansion off.
-  /// - "LEAST_REACH" : Conservative audience expansion.
-  /// - "MID_REACH" : Moderate audience expansion.
-  /// - "MOST_REACH" : Aggressive audience expansion.
-  core.String? audienceExpansionLevel;
-
-  /// Whether to exclude seed list for audience expansion.
-  ///
-  /// This field only applies to YouTube and Partners line item and ad group
-  /// resources.
-  ///
-  /// Output only.
-  core.bool? audienceExpansionSeedListExcluded;
-
-  /// Whether to enable Optimized Targeting for the line item.
-  ///
-  /// Optimized targeting is not compatible with all bid strategies. Attempting
-  /// to set this field to `true` for a line item using one of the following
-  /// combinations of BiddingStrategy fields and
-  /// BiddingStrategyPerformanceGoalType will result in an error:
-  /// maximize_auto_spend_bid: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` *
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` *
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED`
-  /// performance_goal_auto_bid: *
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`
-  ///
-  /// Required.
-  core.bool? enableOptimizedTargeting;
-
-  TargetingExpansionConfig({
-    this.audienceExpansionLevel,
-    this.audienceExpansionSeedListExcluded,
-    this.enableOptimizedTargeting,
-  });
-
-  TargetingExpansionConfig.fromJson(core.Map json_)
-      : this(
-          audienceExpansionLevel:
-              json_['audienceExpansionLevel'] as core.String?,
-          audienceExpansionSeedListExcluded:
-              json_['audienceExpansionSeedListExcluded'] as core.bool?,
-          enableOptimizedTargeting:
-              json_['enableOptimizedTargeting'] as core.bool?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (audienceExpansionLevel != null)
-          'audienceExpansionLevel': audienceExpansionLevel!,
-        if (audienceExpansionSeedListExcluded != null)
-          'audienceExpansionSeedListExcluded':
-              audienceExpansionSeedListExcluded!,
-        if (enableOptimizedTargeting != null)
-          'enableOptimizedTargeting': enableOptimizedTargeting!,
-      };
-}
+typedef TargetingExpansionConfig = $TargetingExpansionConfig;
 
 /// Represents a single targeting option, which is a targetable concept in
 /// DV360.
@@ -24403,31 +23901,49 @@ typedef TrackingFloodlightActivityConfig = $TrackingFloodlightActivityConfig;
 class Transcode {
   /// The bit rate for the audio stream of the transcoded video, or the bit rate
   /// for the transcoded audio, in kilobits per second.
+  ///
+  /// Optional.
   core.String? audioBitRateKbps;
 
   /// The sample rate for the audio stream of the transcoded video, or the
   /// sample rate for the transcoded audio, in hertz.
+  ///
+  /// Optional.
   core.String? audioSampleRateHz;
 
   /// The transcoding bit rate of the transcoded video, in kilobits per second.
+  ///
+  /// Optional.
   core.String? bitRateKbps;
 
   /// The dimensions of the transcoded video.
+  ///
+  /// Optional.
   Dimensions? dimensions;
 
   /// The size of the transcoded file, in bytes.
+  ///
+  /// Optional.
   core.String? fileSizeBytes;
 
   /// The frame rate of the transcoded video, in frames per second.
+  ///
+  /// Optional.
   core.double? frameRate;
 
   /// The MIME type of the transcoded file.
+  ///
+  /// Optional.
   core.String? mimeType;
 
   /// The name of the transcoded file.
+  ///
+  /// Optional.
   core.String? name;
 
   /// Indicates if the transcoding was successful.
+  ///
+  /// Optional.
   core.bool? transcoded;
 
   Transcode({
@@ -24798,44 +24314,8 @@ typedef YoutubeAndPartnersBiddingStrategy = $YoutubeAndPartnersBiddingStrategy;
 
 /// Settings that control what YouTube related inventories the YouTube and
 /// Partners line item will target.
-class YoutubeAndPartnersInventorySourceConfig {
-  /// Whether to target inventory in video apps available with Google TV.
-  ///
-  /// Optional.
-  core.bool? includeGoogleTv;
-
-  /// Whether to target inventory on YouTube.
-  ///
-  /// This includes both search, channels and videos.
-  ///
-  /// Optional.
-  core.bool? includeYoutube;
-
-  /// Whether to target inventory on a collection of partner sites and apps that
-  /// follow the same brand safety standards as YouTube.
-  core.bool? includeYoutubeVideoPartners;
-
-  YoutubeAndPartnersInventorySourceConfig({
-    this.includeGoogleTv,
-    this.includeYoutube,
-    this.includeYoutubeVideoPartners,
-  });
-
-  YoutubeAndPartnersInventorySourceConfig.fromJson(core.Map json_)
-      : this(
-          includeGoogleTv: json_['includeGoogleTv'] as core.bool?,
-          includeYoutube: json_['includeYoutube'] as core.bool?,
-          includeYoutubeVideoPartners:
-              json_['includeYoutubeVideoPartners'] as core.bool?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (includeGoogleTv != null) 'includeGoogleTv': includeGoogleTv!,
-        if (includeYoutube != null) 'includeYoutube': includeYoutube!,
-        if (includeYoutubeVideoPartners != null)
-          'includeYoutubeVideoPartners': includeYoutubeVideoPartners!,
-      };
-}
+typedef YoutubeAndPartnersInventorySourceConfig
+    = $YoutubeAndPartnersInventorySourceConfig;
 
 /// Settings for YouTube and Partners line items.
 class YoutubeAndPartnersSettings {
@@ -24915,7 +24395,10 @@ class YoutubeAndPartnersSettings {
   /// The view frequency cap settings of the line item.
   ///
   /// The max_views field in this settings object must be used if assigning a
-  /// limited cap.
+  /// limited cap. *Warning*: On **February 28, 2025**, frequency cap time
+  /// periods greater than 30 days will no longer be accepted. \[Read more about
+  /// this announced
+  /// change\](/display-video/api/deprecations#features.lifetime_frequency_cap)
   FrequencyCap? viewFrequencyCap;
 
   YoutubeAndPartnersSettings({

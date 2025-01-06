@@ -1668,8 +1668,8 @@ class BuyersProposalsResource {
   /// FieldMask. Only fields specified in the UpdateProposalRequest.update_mask
   /// will be updated; Fields noted as 'Immutable' or 'Output only' yet
   /// specified in the UpdateProposalRequest.update_mask will be ignored and
-  /// left unchanged. Updating a private auction proposal is not allowed and
-  /// will result in an error.
+  /// left unchanged. Updating a private auction proposal is only allowed for
+  /// buyer private data, all other fields are immutable.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2209,6 +2209,14 @@ class AuctionPackage {
   /// Output only.
   core.String? creator;
 
+  /// If set, this field contains the DSP specific seat id set by the media
+  /// planner account that is considered the owner of this deal.
+  ///
+  /// The seat ID is in the calling DSP's namespace.
+  ///
+  /// Output only.
+  core.String? dealOwnerSeatId;
+
   /// A description of the auction package.
   ///
   /// Output only.
@@ -2217,10 +2225,11 @@ class AuctionPackage {
   /// The display_name assigned to the auction package.
   core.String? displayName;
 
-  /// If set, this field contains the list of DSP specific seat ids set by media
-  /// planners that are eligible to transact on this deal.
+  /// If set, this field identifies a seat that the media planner selected as
+  /// the owner of this auction package.
   ///
-  /// The seat ID is in the calling DSP's namespace.
+  /// This is a seat ID in the DSP's namespace that was provided to the media
+  /// planner.
   ///
   /// Output only.
   core.List<core.String>? eligibleSeatIds;
@@ -2270,6 +2279,7 @@ class AuctionPackage {
   AuctionPackage({
     this.createTime,
     this.creator,
+    this.dealOwnerSeatId,
     this.description,
     this.displayName,
     this.eligibleSeatIds,
@@ -2284,6 +2294,7 @@ class AuctionPackage {
       : this(
           createTime: json_['createTime'] as core.String?,
           creator: json_['creator'] as core.String?,
+          dealOwnerSeatId: json_['dealOwnerSeatId'] as core.String?,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           eligibleSeatIds: (json_['eligibleSeatIds'] as core.List?)
@@ -2307,6 +2318,7 @@ class AuctionPackage {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (creator != null) 'creator': creator!,
+        if (dealOwnerSeatId != null) 'dealOwnerSeatId': dealOwnerSeatId!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (eligibleSeatIds != null) 'eligibleSeatIds': eligibleSeatIds!,
@@ -2811,6 +2823,18 @@ class Deal {
   /// Output only.
   core.String? buyer;
 
+  /// The buyer permission type of the deal.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "BUYER_PERMISSION_TYPE_UNSPECIFIED" : A placeholder for an undefined
+  /// buyer permission type.
+  /// - "NEGOTIATOR_ONLY" : Only the \[Deal.negotiating_buyer\] can transact on
+  /// the deal.
+  /// - "BIDDER" : All buyers under the \[Deal.negotiating_buyer\]'s bidder can
+  /// transact on the deal.
+  core.String? buyerPermissionType;
+
   /// Refers to a Client.
   ///
   /// Format: `buyers/{buyerAccountId}/clients/{clientAccountid}`
@@ -2949,6 +2973,7 @@ class Deal {
   Deal({
     this.billedBuyer,
     this.buyer,
+    this.buyerPermissionType,
     this.client,
     this.createTime,
     this.creativeRequirements,
@@ -2976,6 +3001,7 @@ class Deal {
       : this(
           billedBuyer: json_['billedBuyer'] as core.String?,
           buyer: json_['buyer'] as core.String?,
+          buyerPermissionType: json_['buyerPermissionType'] as core.String?,
           client: json_['client'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           creativeRequirements: json_.containsKey('creativeRequirements')
@@ -3033,6 +3059,8 @@ class Deal {
   core.Map<core.String, core.dynamic> toJson() => {
         if (billedBuyer != null) 'billedBuyer': billedBuyer!,
         if (buyer != null) 'buyer': buyer!,
+        if (buyerPermissionType != null)
+          'buyerPermissionType': buyerPermissionType!,
         if (client != null) 'client': client!,
         if (createTime != null) 'createTime': createTime!,
         if (creativeRequirements != null)
@@ -4044,8 +4072,7 @@ class PrivateAuctionTerms {
       };
 }
 
-/// Buyers are allowed to store certain types of private data in a proposal or
-/// deal.
+/// Buyers are allowed to store certain types of private data in a proposal.
 class PrivateData {
   /// A buyer specified reference ID.
   ///

@@ -1426,7 +1426,7 @@ class Instance {
   /// Optional.
   core.bool? enableRbac;
 
-  /// Option to enable Stackdriver Logging.
+  /// Option to enable Dataproc Stackdriver Logging.
   ///
   /// Optional.
   core.bool? enableStackdriverLogging;
@@ -1457,6 +1457,18 @@ class Instance {
   /// The character '=' is not allowed to be used within the labels.
   core.Map<core.String, core.String>? labels;
 
+  /// The logging configuration for this instance.
+  ///
+  /// This field is supported only in CDF versions 6.11.0 and above.
+  ///
+  /// Optional.
+  LoggingConfig? loggingConfig;
+
+  /// The maintenance events for this instance.
+  ///
+  /// Output only.
+  core.List<MaintenanceEvent>? maintenanceEvents;
+
   /// Configure the maintenance policy for this instance.
   ///
   /// Optional.
@@ -1477,6 +1489,8 @@ class Instance {
 
   /// Map of additional options used to configure the behavior of Data Fusion
   /// instance.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? options;
 
   /// Service agent for the customer project.
@@ -1496,6 +1510,11 @@ class Instance {
   ///
   /// Optional.
   core.bool? privateInstance;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
 
   /// Reserved for future use.
   ///
@@ -1604,6 +1623,8 @@ class Instance {
     this.eventPublishConfig,
     this.gcsBucket,
     this.labels,
+    this.loggingConfig,
+    this.maintenanceEvents,
     this.maintenancePolicy,
     this.name,
     this.networkConfig,
@@ -1611,6 +1632,7 @@ class Instance {
     this.p4ServiceAccount,
     this.patchRevision,
     this.privateInstance,
+    this.satisfiesPzi,
     this.satisfiesPzs,
     this.serviceAccount,
     this.serviceEndpoint,
@@ -1667,6 +1689,14 @@ class Instance {
               value as core.String,
             ),
           ),
+          loggingConfig: json_.containsKey('loggingConfig')
+              ? LoggingConfig.fromJson(
+                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          maintenanceEvents: (json_['maintenanceEvents'] as core.List?)
+              ?.map((value) => MaintenanceEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           maintenancePolicy: json_.containsKey('maintenancePolicy')
               ? MaintenancePolicy.fromJson(json_['maintenancePolicy']
                   as core.Map<core.String, core.dynamic>)
@@ -1686,6 +1716,7 @@ class Instance {
           p4ServiceAccount: json_['p4ServiceAccount'] as core.String?,
           patchRevision: json_['patchRevision'] as core.String?,
           privateInstance: json_['privateInstance'] as core.bool?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
           satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           serviceAccount: json_['serviceAccount'] as core.String?,
           serviceEndpoint: json_['serviceEndpoint'] as core.String?,
@@ -1725,6 +1756,8 @@ class Instance {
           'eventPublishConfig': eventPublishConfig!,
         if (gcsBucket != null) 'gcsBucket': gcsBucket!,
         if (labels != null) 'labels': labels!,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!,
+        if (maintenanceEvents != null) 'maintenanceEvents': maintenanceEvents!,
         if (maintenancePolicy != null) 'maintenancePolicy': maintenancePolicy!,
         if (name != null) 'name': name!,
         if (networkConfig != null) 'networkConfig': networkConfig!,
@@ -1732,6 +1765,7 @@ class Instance {
         if (p4ServiceAccount != null) 'p4ServiceAccount': p4ServiceAccount!,
         if (patchRevision != null) 'patchRevision': patchRevision!,
         if (privateInstance != null) 'privateInstance': privateInstance!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (serviceEndpoint != null) 'serviceEndpoint': serviceEndpoint!,
@@ -1915,6 +1949,81 @@ class ListOperationsResponse {
 
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
+
+/// Logging configuration for a Data Fusion instance.
+class LoggingConfig {
+  /// Option to determine whether instance logs should be written to Cloud
+  /// Logging.
+  ///
+  /// By default, instance logs are written to Cloud Logging.
+  ///
+  /// Optional.
+  core.bool? instanceCloudLoggingDisabled;
+
+  LoggingConfig({
+    this.instanceCloudLoggingDisabled,
+  });
+
+  LoggingConfig.fromJson(core.Map json_)
+      : this(
+          instanceCloudLoggingDisabled:
+              json_['instanceCloudLoggingDisabled'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instanceCloudLoggingDisabled != null)
+          'instanceCloudLoggingDisabled': instanceCloudLoggingDisabled!,
+      };
+}
+
+/// Represents a maintenance event.
+class MaintenanceEvent {
+  /// The end time of the maintenance event provided in
+  /// [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format.
+  ///
+  /// Example: "2024-01-02T12:04:06-06:00" This field will be empty if the
+  /// maintenance event is not yet complete.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// The start time of the maintenance event provided in
+  /// [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format.
+  ///
+  /// Example: "2024-01-01T12:04:06-04:00"
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// The state of the maintenance event.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state of the maintenance event is unspecified.
+  /// - "SCHEDULED" : The maintenance is scheduled but has not started.
+  /// - "STARTED" : The maintenance has been started.
+  /// - "COMPLETED" : The maintenance has been completed.
+  core.String? state;
+
+  MaintenanceEvent({
+    this.endTime,
+    this.startTime,
+    this.state,
+  });
+
+  MaintenanceEvent.fromJson(core.Map json_)
+      : this(
+          endTime: json_['endTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+      };
+}
 
 /// Maintenance policy of the instance.
 class MaintenancePolicy {

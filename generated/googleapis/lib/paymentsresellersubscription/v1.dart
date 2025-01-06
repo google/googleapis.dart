@@ -1276,6 +1276,43 @@ class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse {
       };
 }
 
+/// Payload specific for Google Home products.
+class GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload {
+  /// This identifies whether the subscription is attached to a Google Home
+  /// structure.
+  ///
+  /// Output only.
+  core.bool? attachedToGoogleStructure;
+
+  /// This identifies the structure ID on partner side that the subscription
+  /// should be applied to.
+  ///
+  /// Only required when the partner requires structure mapping.
+  ///
+  /// Optional.
+  core.String? partnerStructureId;
+
+  GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload({
+    this.attachedToGoogleStructure,
+    this.partnerStructureId,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload.fromJson(
+      core.Map json_)
+      : this(
+          attachedToGoogleStructure:
+              json_['attachedToGoogleStructure'] as core.bool?,
+          partnerStructureId: json_['partnerStructureId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attachedToGoogleStructure != null)
+          'attachedToGoogleStructure': attachedToGoogleStructure!,
+        if (partnerStructureId != null)
+          'partnerStructureId': partnerStructureId!,
+      };
+}
+
 /// Payload specific to Google One products.
 class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload {
   /// Campaign attributed to sales of this subscription.
@@ -1607,6 +1644,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement
 
 /// Specifies product specific payload.
 class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload {
+  /// Payload specific to Google Home products.
+  GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload? googleHomePayload;
+
   /// Product-specific payloads.
   ///
   /// Payload specific to Google One products.
@@ -1616,6 +1656,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload {
   GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload? youtubePayload;
 
   GoogleCloudPaymentsResellerSubscriptionV1ProductPayload({
+    this.googleHomePayload,
     this.googleOnePayload,
     this.youtubePayload,
   });
@@ -1623,6 +1664,11 @@ class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload {
   GoogleCloudPaymentsResellerSubscriptionV1ProductPayload.fromJson(
       core.Map json_)
       : this(
+          googleHomePayload: json_.containsKey('googleHomePayload')
+              ? GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload
+                  .fromJson(json_['googleHomePayload']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           googleOnePayload: json_.containsKey('googleOnePayload')
               ? GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload
                   .fromJson(json_['googleOnePayload']
@@ -1636,6 +1682,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (googleHomePayload != null) 'googleHomePayload': googleHomePayload!,
         if (googleOnePayload != null) 'googleOnePayload': googleOnePayload!,
         if (youtubePayload != null) 'youtubePayload': youtubePayload!,
       };

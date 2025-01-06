@@ -307,6 +307,7 @@ api.BackupPlan buildBackupPlan() {
     o.description = 'foo';
     o.etag = 'foo';
     o.labels = buildUnnamed3();
+    o.lastSuccessfulBackupTime = 'foo';
     o.name = 'foo';
     o.protectedPodCount = 42;
     o.retentionPolicy = buildRetentionPolicy();
@@ -344,6 +345,10 @@ void checkBackupPlan(api.BackupPlan o) {
       unittest.equals('foo'),
     );
     checkUnnamed3(o.labels!);
+    unittest.expect(
+      o.lastSuccessfulBackupTime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.name!,
       unittest.equals('foo'),

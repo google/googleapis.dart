@@ -14363,19 +14363,20 @@ class CartData {
   /// The feed labels associated with the feed where your items are uploaded.
   ///
   /// For more information, please refer to ​​
-  /// https://support.google.com/merchants/answer/12453549. This is a required
-  /// field.
+  /// https://support.google.com/merchants/answer/12453549. Providing the feed
+  /// label reduces ambiguity in identifying the right offer details.
   core.String? merchantFeedLabel;
 
   /// The language associated with the feed where your items are uploaded.
   ///
-  /// Use ISO 639-1 language codes. This field is needed only when item IDs are
-  /// not unique across multiple Merchant Center feeds.
+  /// Use ISO 639-1 language codes. Providing the feed language reduces
+  /// ambiguity in identifying the right offer details.
   core.String? merchantFeedLanguage;
 
   /// The Merchant Center ID where the items are uploaded.
   ///
-  /// This is a required field.
+  /// Providing Merchant Center ID reduces ambiguity in identifying the right
+  /// offer details.
   core.String? merchantId;
 
   CartData({
@@ -15268,6 +15269,7 @@ class Conversion {
 
   /// The value of the conversion.
   ///
+  /// Interpreted in CM360 Floodlight config parent advertiser's currency code.
   /// This is a required field.
   core.double? value;
 
@@ -27012,6 +27014,14 @@ class TagSetting {
   /// Whether click-tracking string should be included in the tags.
   core.bool? includeClickTracking;
 
+  /// Indicates that the unescapedlpurl macro should be included in the tag for
+  /// the static landing page.
+  ///
+  /// New placements will default to the value set on their site.
+  ///
+  /// Optional.
+  core.bool? includeUnescapedlpurlMacro;
+
   /// Option specifying how keywords are embedded in ad tags.
   ///
   /// This setting can be used to specify whether keyword placeholders are
@@ -27035,6 +27045,7 @@ class TagSetting {
     this.additionalKeyValues,
     this.includeClickThroughUrls,
     this.includeClickTracking,
+    this.includeUnescapedlpurlMacro,
     this.keywordOption,
   });
 
@@ -27044,6 +27055,8 @@ class TagSetting {
           includeClickThroughUrls:
               json_['includeClickThroughUrls'] as core.bool?,
           includeClickTracking: json_['includeClickTracking'] as core.bool?,
+          includeUnescapedlpurlMacro:
+              json_['includeUnescapedlpurlMacro'] as core.bool?,
           keywordOption: json_['keywordOption'] as core.String?,
         );
 
@@ -27054,6 +27067,8 @@ class TagSetting {
           'includeClickThroughUrls': includeClickThroughUrls!,
         if (includeClickTracking != null)
           'includeClickTracking': includeClickTracking!,
+        if (includeUnescapedlpurlMacro != null)
+          'includeUnescapedlpurlMacro': includeUnescapedlpurlMacro!,
         if (keywordOption != null) 'keywordOption': keywordOption!,
       };
 }

@@ -586,6 +586,28 @@ void checkBlobStorageSettings(api.BlobStorageSettings o) {
   buildCounterBlobStorageSettings--;
 }
 
+core.int buildCounterBulkExportGcsDestination = 0;
+api.BulkExportGcsDestination buildBulkExportGcsDestination() {
+  final o = api.BulkExportGcsDestination();
+  buildCounterBulkExportGcsDestination++;
+  if (buildCounterBulkExportGcsDestination < 3) {
+    o.uriPrefix = 'foo';
+  }
+  buildCounterBulkExportGcsDestination--;
+  return o;
+}
+
+void checkBulkExportGcsDestination(api.BulkExportGcsDestination o) {
+  buildCounterBulkExportGcsDestination++;
+  if (buildCounterBulkExportGcsDestination < 3) {
+    unittest.expect(
+      o.uriPrefix!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBulkExportGcsDestination--;
+}
+
 core.int buildCounterCancelOperationRequest = 0;
 api.CancelOperationRequest buildCancelOperationRequest() {
   final o = api.CancelOperationRequest();
@@ -1119,6 +1141,8 @@ api.Dataset buildDataset() {
   if (buildCounterDataset < 3) {
     o.encryptionSpec = buildEncryptionSpec();
     o.name = 'foo';
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.timeZone = 'foo';
   }
   buildCounterDataset--;
@@ -1133,6 +1157,8 @@ void checkDataset(api.Dataset o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.timeZone!,
       unittest.equals('foo'),
@@ -2191,6 +2217,7 @@ api.FhirStore buildFhirStore() {
   final o = api.FhirStore();
   buildCounterFhirStore++;
   if (buildCounterFhirStore < 3) {
+    o.bulkExportGcsDestination = buildBulkExportGcsDestination();
     o.complexDataTypeReferenceParsing = 'foo';
     o.consentConfig = buildConsentConfig();
     o.defaultSearchHandlingStrict = true;
@@ -2212,6 +2239,7 @@ api.FhirStore buildFhirStore() {
 void checkFhirStore(api.FhirStore o) {
   buildCounterFhirStore++;
   if (buildCounterFhirStore < 3) {
+    checkBulkExportGcsDestination(o.bulkExportGcsDestination!);
     unittest.expect(
       o.complexDataTypeReferenceParsing!,
       unittest.equals('foo'),
@@ -5829,6 +5857,16 @@ void main() {
       final od = api.BlobStorageSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkBlobStorageSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-BulkExportGcsDestination', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBulkExportGcsDestination();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BulkExportGcsDestination.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBulkExportGcsDestination(od);
     });
   });
 
@@ -12457,6 +12495,7 @@ void main() {
           .instances;
       final arg_parent = 'foo';
       final arg_dicomWebPath = 'foo';
+      final arg_viewport = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -12491,6 +12530,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['viewport']!.first,
+          unittest.equals(arg_viewport),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -12502,7 +12545,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.retrieveRendered(arg_parent, arg_dicomWebPath,
-          $fields: arg_$fields);
+          viewport: arg_viewport, $fields: arg_$fields);
       checkHttpBody(response as api.HttpBody);
     });
   });
@@ -12585,6 +12628,7 @@ void main() {
           .frames;
       final arg_parent = 'foo';
       final arg_dicomWebPath = 'foo';
+      final arg_viewport = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -12619,6 +12663,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['viewport']!.first,
+          unittest.equals(arg_viewport),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -12630,7 +12678,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.retrieveRendered(arg_parent, arg_dicomWebPath,
-          $fields: arg_$fields);
+          viewport: arg_viewport, $fields: arg_$fields);
       checkHttpBody(response as api.HttpBody);
     });
   });
@@ -12752,6 +12800,84 @@ void main() {
       final response =
           await res.applyConsents(arg_request, arg_name, $fields: arg_$fields);
       checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--bulkExportGroup', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
+      final arg_name = 'foo';
+      final arg_P_since = 'foo';
+      final arg_P_type = 'foo';
+      final arg_organizeOutputBy = 'foo';
+      final arg_outputFormat = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['_since']!.first,
+          unittest.equals(arg_P_since),
+        );
+        unittest.expect(
+          queryMap['_type']!.first,
+          unittest.equals(arg_P_type),
+        );
+        unittest.expect(
+          queryMap['organizeOutputBy']!.first,
+          unittest.equals(arg_organizeOutputBy),
+        );
+        unittest.expect(
+          queryMap['outputFormat']!.first,
+          unittest.equals(arg_outputFormat),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildHttpBody());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.bulkExportGroup(arg_name,
+          P_since: arg_P_since,
+          P_type: arg_P_type,
+          organizeOutputBy: arg_organizeOutputBy,
+          outputFormat: arg_outputFormat,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
     unittest.test('method--create', () async {
@@ -14180,6 +14306,82 @@ void main() {
       checkHttpBody(response as api.HttpBody);
     });
 
+    unittest.test('method--bulkExport', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudHealthcareApi(mock)
+          .projects
+          .locations
+          .datasets
+          .fhirStores
+          .fhir;
+      final arg_name = 'foo';
+      final arg_P_since = 'foo';
+      final arg_P_type = 'foo';
+      final arg_outputFormat = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['_since']!.first,
+          unittest.equals(arg_P_since),
+        );
+        unittest.expect(
+          queryMap['_type']!.first,
+          unittest.equals(arg_P_type),
+        );
+        unittest.expect(
+          queryMap['outputFormat']!.first,
+          unittest.equals(arg_outputFormat),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildHttpBody());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.bulkExport(arg_name,
+          P_since: arg_P_since,
+          P_type: arg_P_type,
+          outputFormat: arg_outputFormat,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
+    });
+
     unittest.test('method--capabilities', () async {
       final mock = HttpServerMock();
       final res = api.CloudHealthcareApi(mock)
@@ -15057,6 +15259,125 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.vread(arg_name, $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
+    });
+  });
+
+  unittest.group(
+      'resource-ProjectsLocationsDatasetsFhirStoresOperationsResource', () {
+    unittest.test('method--deleteFhirOperation', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudHealthcareApi(mock)
+          .projects
+          .locations
+          .datasets
+          .fhirStores
+          .operations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildHttpBody());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.deleteFhirOperation(arg_name, $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
+    });
+
+    unittest.test('method--getFhirOperationStatus', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudHealthcareApi(mock)
+          .projects
+          .locations
+          .datasets
+          .fhirStores
+          .operations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildHttpBody());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getFhirOperationStatus(arg_name, $fields: arg_$fields);
       checkHttpBody(response as api.HttpBody);
     });
   });

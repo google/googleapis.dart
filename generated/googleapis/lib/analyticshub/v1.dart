@@ -692,6 +692,10 @@ class ProjectsLocationsDataExchangesListingsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+/listings/\[^/\]+$`.
   ///
+  /// [deleteCommercial] - Optional. If the listing is commercial then this
+  /// field must be set to true, otherwise a failure is thrown. This acts as a
+  /// safety guard to avoid deleting commercial listings accidentally.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -704,9 +708,11 @@ class ProjectsLocationsDataExchangesListingsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
+    core.bool? deleteCommercial,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (deleteCommercial != null) 'deleteCommercial': ['${deleteCommercial}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1407,8 +1413,8 @@ class ProjectsLocationsSubscriptionsResource {
   }
 }
 
-/// Information about an associated Analytics Hub subscription
-/// (https://cloud.google.com/bigquery/docs/analytics-hub-manage-subscriptions).
+/// Information about an associated
+/// [Analytics Hub subscription](https://cloud.google.com/bigquery/docs/analytics-hub-manage-subscriptions).
 typedef AnalyticsHubSubscriptionInfo = $AnalyticsHubSubscriptionInfo;
 
 /// Specifies the audit configuration for a service.
@@ -1485,6 +1491,8 @@ class BigQueryDatasetSource {
   /// Resource name of the dataset source for this listing.
   ///
   /// e.g. `projects/myproject/datasets/123`
+  ///
+  /// Optional.
   core.String? dataset;
 
   /// If set, restricted export policy will be propagated and enforced on the
@@ -1687,7 +1695,7 @@ class CloudStorageConfig {
   /// created.
   ///
   /// Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the
-  /// subscription's acknowledgement deadline.
+  /// subscription's acknowledgment deadline.
   ///
   /// Optional.
   core.String? maxDuration;
@@ -1854,6 +1862,13 @@ class DataExchange {
   /// Output only.
   core.int? listingCount;
 
+  /// By default, false.
+  ///
+  /// If true, the DataExchange has an email sharing mandate enabled.
+  ///
+  /// Optional.
+  core.bool? logLinkedDatasetQueryUserEmail;
+
   /// The resource name of the data exchange.
   ///
   /// e.g. `projects/myproject/locations/US/dataExchanges/123`.
@@ -1880,6 +1895,7 @@ class DataExchange {
     this.documentation,
     this.icon,
     this.listingCount,
+    this.logLinkedDatasetQueryUserEmail,
     this.name,
     this.primaryContact,
     this.sharingEnvironmentConfig,
@@ -1893,6 +1909,8 @@ class DataExchange {
           documentation: json_['documentation'] as core.String?,
           icon: json_['icon'] as core.String?,
           listingCount: json_['listingCount'] as core.int?,
+          logLinkedDatasetQueryUserEmail:
+              json_['logLinkedDatasetQueryUserEmail'] as core.bool?,
           name: json_['name'] as core.String?,
           primaryContact: json_['primaryContact'] as core.String?,
           sharingEnvironmentConfig:
@@ -1910,6 +1928,8 @@ class DataExchange {
         if (documentation != null) 'documentation': documentation!,
         if (icon != null) 'icon': icon!,
         if (listingCount != null) 'listingCount': listingCount!,
+        if (logLinkedDatasetQueryUserEmail != null)
+          'logLinkedDatasetQueryUserEmail': logLinkedDatasetQueryUserEmail!,
         if (name != null) 'name': name!,
         if (primaryContact != null) 'primaryContact': primaryContact!,
         if (sharingEnvironmentConfig != null)
@@ -2074,7 +2094,6 @@ class DestinationDataset {
       };
 }
 
-/// Contains the reference that identifies a destination bigquery dataset.
 class DestinationDatasetReference {
   /// A unique ID for this dataset, without the project name.
   ///
@@ -2189,6 +2208,120 @@ class GetIamPolicyRequest {
 /// Encapsulates settings provided to GetIamPolicy.
 typedef GetPolicyOptions = $GetPolicyOptions00;
 
+/// Commercial info contains the information about the commercial data products
+/// associated with the listing.
+class GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo {
+  /// Details of the Marketplace Data Product associated with the Listing.
+  ///
+  /// Output only.
+  GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo?
+      cloudMarketplace;
+
+  GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo({
+    this.cloudMarketplace,
+  });
+
+  GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo.fromJson(
+      core.Map json_)
+      : this(
+          cloudMarketplace: json_.containsKey('cloudMarketplace')
+              ? GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo
+                  .fromJson(json_['cloudMarketplace']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudMarketplace != null) 'cloudMarketplace': cloudMarketplace!,
+      };
+}
+
+/// Specifies the details of the Marketplace Data Product associated with the
+/// Listing.
+class GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo {
+  /// Commercial state of the Marketplace Data Product.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "COMMERCIAL_STATE_UNSPECIFIED" : Commercialization is incomplete and
+  /// cannot be used.
+  /// - "ONBOARDING" : Commercialization has been initialized.
+  /// - "ACTIVE" : Commercialization is complete and available for use.
+  core.String? commercialState;
+
+  /// Resource name of the commercial service associated with the Marketplace
+  /// Data Product.
+  ///
+  /// e.g. example.com
+  ///
+  /// Output only.
+  core.String? service;
+
+  GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo({
+    this.commercialState,
+    this.service,
+  });
+
+  GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo.fromJson(
+      core.Map json_)
+      : this(
+          commercialState: json_['commercialState'] as core.String?,
+          service: json_['service'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commercialState != null) 'commercialState': commercialState!,
+        if (service != null) 'service': service!,
+      };
+}
+
+/// Commercial info metadata for this subscription.
+class GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo {
+  /// This is set when the subscription is commercialised via Cloud Marketplace.
+  ///
+  /// Output only.
+  GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo?
+      cloudMarketplace;
+
+  GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo({
+    this.cloudMarketplace,
+  });
+
+  GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo.fromJson(
+      core.Map json_)
+      : this(
+          cloudMarketplace: json_.containsKey('cloudMarketplace')
+              ? GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo
+                  .fromJson(json_['cloudMarketplace']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudMarketplace != null) 'cloudMarketplace': cloudMarketplace!,
+      };
+}
+
+/// Cloud Marketplace commercial metadata for this subscription.
+class GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo {
+  /// Resource name of the Marketplace Order.
+  core.String? order;
+
+  GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo({
+    this.order,
+  });
+
+  GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo.fromJson(
+      core.Map json_)
+      : this(
+          order: json_['order'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (order != null) 'order': order!,
+      };
+}
+
 /// A subscription resource.
 ///
 /// If none of `push_config`, `bigquery_config`, or `cloud_storage_config` is
@@ -2258,7 +2391,7 @@ class GooglePubsubV1Subscription {
   /// If true, Pub/Sub provides the following guarantees for the delivery of a
   /// message with a given value of `message_id` on this subscription: * The
   /// message sent to a subscriber is guaranteed not to be resent before the
-  /// message's acknowledgement deadline expires.
+  /// message's acknowledgment deadline expires.
   ///
   /// * An acknowledged message will not be resent to a subscriber. Note that
   /// subscribers may still receive multiple copies of a message when
@@ -2317,6 +2450,14 @@ class GooglePubsubV1Subscription {
   /// Optional.
   core.String? messageRetentionDuration;
 
+  /// Transforms to be applied to messages before they are delivered to
+  /// subscribers.
+  ///
+  /// Transforms are applied in the order specified.
+  ///
+  /// Optional.
+  core.List<MessageTransform>? messageTransforms;
+
   /// Name of the subscription.
   ///
   /// Format is `projects/{project}/subscriptions/{sub}`.
@@ -2347,8 +2488,8 @@ class GooglePubsubV1Subscription {
   ///
   /// If not set, the default retry policy is applied. This generally implies
   /// that messages will be retried as soon as possible for healthy subscribers.
-  /// RetryPolicy will be triggered on NACKs or acknowledgement deadline
-  /// exceeded events for a given message.
+  /// RetryPolicy will be triggered on NACKs or acknowledgment deadline exceeded
+  /// events for a given message.
   ///
   /// Optional.
   RetryPolicy? retryPolicy;
@@ -2390,6 +2531,7 @@ class GooglePubsubV1Subscription {
     this.filter,
     this.labels,
     this.messageRetentionDuration,
+    this.messageTransforms,
     this.name,
     this.pushConfig,
     this.retainAckedMessages,
@@ -2437,6 +2579,10 @@ class GooglePubsubV1Subscription {
           ),
           messageRetentionDuration:
               json_['messageRetentionDuration'] as core.String?,
+          messageTransforms: (json_['messageTransforms'] as core.List?)
+              ?.map((value) => MessageTransform.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           name: json_['name'] as core.String?,
           pushConfig: json_.containsKey('pushConfig')
               ? PushConfig.fromJson(
@@ -2471,6 +2617,7 @@ class GooglePubsubV1Subscription {
         if (labels != null) 'labels': labels!,
         if (messageRetentionDuration != null)
           'messageRetentionDuration': messageRetentionDuration!,
+        if (messageTransforms != null) 'messageTransforms': messageTransforms!,
         if (name != null) 'name': name!,
         if (pushConfig != null) 'pushConfig': pushConfig!,
         if (retainAckedMessages != null)
@@ -2481,6 +2628,10 @@ class GooglePubsubV1Subscription {
           'topicMessageRetentionDuration': topicMessageRetentionDuration!,
       };
 }
+
+/// User-defined JavaScript function that can transform or filter a Pub/Sub
+/// message.
+typedef JavaScriptUDF = $JavaScriptUDF;
 
 /// Reference to a linked resource tracked by this Subscription.
 class LinkedResource {
@@ -2673,8 +2824,6 @@ class ListSubscriptionsResponse {
 /// information that will help subscribers find and subscribe the data.
 class Listing {
   /// Shared dataset i.e. BigQuery dataset source.
-  ///
-  /// Required.
   BigQueryDatasetSource? bigqueryDataset;
 
   /// Categories of the listing.
@@ -2683,6 +2832,12 @@ class Listing {
   ///
   /// Optional.
   core.List<core.String>? categories;
+
+  /// Commercial info contains the information about the commercial data
+  /// products associated with the listing.
+  ///
+  /// Output only.
+  GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo? commercialInfo;
 
   /// Details of the data provider who owns the source data.
   ///
@@ -2741,6 +2896,13 @@ class Listing {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// By default, false.
+  ///
+  /// If true, the Listing has an email sharing mandate enabled.
+  ///
+  /// Optional.
+  core.bool? logLinkedDatasetQueryUserEmail;
+
   /// The resource name of the listing.
   ///
   /// e.g. `projects/myproject/locations/US/dataExchanges/123/listings/456`
@@ -2762,8 +2924,6 @@ class Listing {
   Publisher? publisher;
 
   /// Pub/Sub topic source.
-  ///
-  /// Required.
   PubSubTopicSource? pubsubTopic;
 
   /// Email or URL of the request access of the listing.
@@ -2801,12 +2961,14 @@ class Listing {
   Listing({
     this.bigqueryDataset,
     this.categories,
+    this.commercialInfo,
     this.dataProvider,
     this.description,
     this.discoveryType,
     this.displayName,
     this.documentation,
     this.icon,
+    this.logLinkedDatasetQueryUserEmail,
     this.name,
     this.primaryContact,
     this.publisher,
@@ -2826,6 +2988,11 @@ class Listing {
           categories: (json_['categories'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          commercialInfo: json_.containsKey('commercialInfo')
+              ? GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo.fromJson(
+                  json_['commercialInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           dataProvider: json_.containsKey('dataProvider')
               ? DataProvider.fromJson(
                   json_['dataProvider'] as core.Map<core.String, core.dynamic>)
@@ -2835,6 +3002,8 @@ class Listing {
           displayName: json_['displayName'] as core.String?,
           documentation: json_['documentation'] as core.String?,
           icon: json_['icon'] as core.String?,
+          logLinkedDatasetQueryUserEmail:
+              json_['logLinkedDatasetQueryUserEmail'] as core.bool?,
           name: json_['name'] as core.String?,
           primaryContact: json_['primaryContact'] as core.String?,
           publisher: json_.containsKey('publisher')
@@ -2857,12 +3026,15 @@ class Listing {
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigqueryDataset != null) 'bigqueryDataset': bigqueryDataset!,
         if (categories != null) 'categories': categories!,
+        if (commercialInfo != null) 'commercialInfo': commercialInfo!,
         if (dataProvider != null) 'dataProvider': dataProvider!,
         if (description != null) 'description': description!,
         if (discoveryType != null) 'discoveryType': discoveryType!,
         if (displayName != null) 'displayName': displayName!,
         if (documentation != null) 'documentation': documentation!,
         if (icon != null) 'icon': icon!,
+        if (logLinkedDatasetQueryUserEmail != null)
+          'logLinkedDatasetQueryUserEmail': logLinkedDatasetQueryUserEmail!,
         if (name != null) 'name': name!,
         if (primaryContact != null) 'primaryContact': primaryContact!,
         if (publisher != null) 'publisher': publisher!,
@@ -2872,6 +3044,44 @@ class Listing {
         if (restrictedExportConfig != null)
           'restrictedExportConfig': restrictedExportConfig!,
         if (state != null) 'state': state!,
+      };
+}
+
+/// All supported message transforms types.
+class MessageTransform {
+  /// If set to true, the transform is enabled.
+  ///
+  /// If false, the transform is disabled and will not be applied to messages.
+  /// Defaults to `true`.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  /// JavaScript User Defined Function.
+  ///
+  /// If multiple JavaScriptUDF's are specified on a resource, each must have a
+  /// unique `function_name`.
+  ///
+  /// Optional.
+  JavaScriptUDF? javascriptUdf;
+
+  MessageTransform({
+    this.enabled,
+    this.javascriptUdf,
+  });
+
+  MessageTransform.fromJson(core.Map json_)
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+          javascriptUdf: json_.containsKey('javascriptUdf')
+              ? JavaScriptUDF.fromJson(
+                  json_['javascriptUdf'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (javascriptUdf != null) 'javascriptUdf': javascriptUdf!,
       };
 }
 
@@ -3328,14 +3538,36 @@ class RestrictedExportPolicy {
 ///
 /// Retry delay will be exponential based on provided minimum and maximum
 /// backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. RetryPolicy
-/// will be triggered on NACKs or acknowledgement deadline exceeded events for a
+/// will be triggered on NACKs or acknowledgment deadline exceeded events for a
 /// given message. Retry Policy is implemented on a best effort basis. At times,
 /// the delay between consecutive deliveries may not match the configuration.
 /// That is, delay can be more or less than configured backoff.
 typedef RetryPolicy = $RetryPolicy;
 
 /// Message for revoking a subscription.
-typedef RevokeSubscriptionRequest = $Empty;
+class RevokeSubscriptionRequest {
+  /// If the subscription is commercial then this field must be set to true,
+  /// otherwise a failure is thrown.
+  ///
+  /// This acts as a safety guard to avoid revoking commercial subscriptions
+  /// accidentally.
+  ///
+  /// Optional.
+  core.bool? revokeCommercial;
+
+  RevokeSubscriptionRequest({
+    this.revokeCommercial,
+  });
+
+  RevokeSubscriptionRequest.fromJson(core.Map json_)
+      : this(
+          revokeCommercial: json_['revokeCommercial'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (revokeCommercial != null) 'revokeCommercial': revokeCommercial!,
+      };
+}
 
 /// Message for response when you revoke a subscription.
 ///
@@ -3344,6 +3576,13 @@ typedef RevokeSubscriptionResponse = $Empty;
 
 /// Resource in this dataset that is selectively shared.
 class SelectedResource {
+  /// Format: For routine:
+  /// `projects/{projectId}/datasets/{datasetId}/routines/{routineId}`
+  /// Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+  ///
+  /// Optional.
+  core.String? routine;
+
   /// Format: For table:
   /// `projects/{projectId}/datasets/{datasetId}/tables/{tableId}`
   /// Example:"projects/test_project/datasets/test_dataset/tables/test_table"
@@ -3352,15 +3591,18 @@ class SelectedResource {
   core.String? table;
 
   SelectedResource({
+    this.routine,
     this.table,
   });
 
   SelectedResource.fromJson(core.Map json_)
       : this(
+          routine: json_['routine'] as core.String?,
           table: json_['table'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (routine != null) 'routine': routine!,
         if (table != null) 'table': table!,
       };
 }
@@ -3505,8 +3747,6 @@ class SubscribeListingRequest {
   /// Input only.
   ///
   /// Destination Pub/Sub subscription to create for the subscriber.
-  ///
-  /// Required.
   DestinationPubSubSubscription? destinationPubsubSubscription;
 
   SubscribeListingRequest({
@@ -3564,6 +3804,12 @@ class SubscribeListingResponse {
 /// It contains references to associated listings, data exchanges, and linked
 /// datasets.
 class Subscription {
+  /// This is set if this is a commercial subscription i.e. if this subscription
+  /// was created from subscribing to a commercial listing.
+  ///
+  /// Output only.
+  GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo? commercialInfo;
+
   /// Timestamp when the subscription was created.
   ///
   /// Output only.
@@ -3604,6 +3850,14 @@ class Subscription {
   ///
   /// Output only.
   core.String? listing;
+
+  /// By default, false.
+  ///
+  /// If true, the Subscriber agreed to the email sharing mandate that is
+  /// enabled for DataExchange/Listing.
+  ///
+  /// Output only.
+  core.bool? logLinkedDatasetQueryUserEmail;
 
   /// The resource name of the subscription.
   ///
@@ -3650,12 +3904,14 @@ class Subscription {
   core.String? subscriberContact;
 
   Subscription({
+    this.commercialInfo,
     this.creationTime,
     this.dataExchange,
     this.lastModifyTime,
     this.linkedDatasetMap,
     this.linkedResources,
     this.listing,
+    this.logLinkedDatasetQueryUserEmail,
     this.name,
     this.organizationDisplayName,
     this.organizationId,
@@ -3666,6 +3922,11 @@ class Subscription {
 
   Subscription.fromJson(core.Map json_)
       : this(
+          commercialInfo: json_.containsKey('commercialInfo')
+              ? GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo
+                  .fromJson(json_['commercialInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           creationTime: json_['creationTime'] as core.String?,
           dataExchange: json_['dataExchange'] as core.String?,
           lastModifyTime: json_['lastModifyTime'] as core.String?,
@@ -3683,6 +3944,8 @@ class Subscription {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           listing: json_['listing'] as core.String?,
+          logLinkedDatasetQueryUserEmail:
+              json_['logLinkedDatasetQueryUserEmail'] as core.bool?,
           name: json_['name'] as core.String?,
           organizationDisplayName:
               json_['organizationDisplayName'] as core.String?,
@@ -3693,12 +3956,15 @@ class Subscription {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (commercialInfo != null) 'commercialInfo': commercialInfo!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (dataExchange != null) 'dataExchange': dataExchange!,
         if (lastModifyTime != null) 'lastModifyTime': lastModifyTime!,
         if (linkedDatasetMap != null) 'linkedDatasetMap': linkedDatasetMap!,
         if (linkedResources != null) 'linkedResources': linkedResources!,
         if (listing != null) 'listing': listing!,
+        if (logLinkedDatasetQueryUserEmail != null)
+          'logLinkedDatasetQueryUserEmail': logLinkedDatasetQueryUserEmail!,
         if (name != null) 'name': name!,
         if (organizationDisplayName != null)
           'organizationDisplayName': organizationDisplayName!,

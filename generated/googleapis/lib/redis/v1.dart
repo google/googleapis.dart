@@ -539,7 +539,7 @@ class ProjectsLocationsClustersResource {
   /// Must be between 1-63 characters. * Must end with a number or a letter. *
   /// Must be unique within the customer project / location
   ///
-  /// [requestId] - Idempotent request UUID.
+  /// [requestId] - Optional. Idempotent request UUID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -588,7 +588,7 @@ class ProjectsLocationsClustersResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
-  /// [requestId] - Idempotent request UUID.
+  /// [requestId] - Optional. Idempotent request UUID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -771,11 +771,12 @@ class ProjectsLocationsClustersResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
-  /// [requestId] - Idempotent request UUID.
+  /// [requestId] - Optional. Idempotent request UUID.
   ///
   /// [updateMask] - Required. Mask of fields to update. At least one path must
   /// be supplied in this field. The elements of the repeated paths field may
-  /// only include these fields from Cluster: * `size_gb` * `replica_count`
+  /// only include these fields from Cluster: * `size_gb` * `replica_count` *
+  /// `cluster_endpoints`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1680,6 +1681,11 @@ class Backup {
   /// Output only.
   core.String? createTime;
 
+  /// Encryption information of the backup.
+  ///
+  /// Output only.
+  EncryptionInfo? encryptionInfo;
+
   /// redis-7.2, valkey-7.5
   ///
   /// Output only.
@@ -1746,6 +1752,7 @@ class Backup {
     this.cluster,
     this.clusterUid,
     this.createTime,
+    this.encryptionInfo,
     this.engineVersion,
     this.expireTime,
     this.name,
@@ -1767,6 +1774,10 @@ class Backup {
           cluster: json_['cluster'] as core.String?,
           clusterUid: json_['clusterUid'] as core.String?,
           createTime: json_['createTime'] as core.String?,
+          encryptionInfo: json_.containsKey('encryptionInfo')
+              ? EncryptionInfo.fromJson(json_['encryptionInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           engineVersion: json_['engineVersion'] as core.String?,
           expireTime: json_['expireTime'] as core.String?,
           name: json_['name'] as core.String?,
@@ -1784,6 +1795,7 @@ class Backup {
         if (cluster != null) 'cluster': cluster!,
         if (clusterUid != null) 'clusterUid': clusterUid!,
         if (createTime != null) 'createTime': createTime!,
+        if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
         if (engineVersion != null) 'engineVersion': engineVersion!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
@@ -1845,6 +1857,16 @@ class BackupCollection {
   /// Output only.
   core.String? clusterUid;
 
+  /// The time when the backup collection was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The KMS key used to encrypt the backups under this backup collection.
+  ///
+  /// Output only.
+  core.String? kmsKey;
+
   /// Identifier.
   ///
   /// Full resource path of the backup collection.
@@ -1858,6 +1880,8 @@ class BackupCollection {
   BackupCollection({
     this.cluster,
     this.clusterUid,
+    this.createTime,
+    this.kmsKey,
     this.name,
     this.uid,
   });
@@ -1866,6 +1890,8 @@ class BackupCollection {
       : this(
           cluster: json_['cluster'] as core.String?,
           clusterUid: json_['clusterUid'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          kmsKey: json_['kmsKey'] as core.String?,
           name: json_['name'] as core.String?,
           uid: json_['uid'] as core.String?,
         );
@@ -1873,6 +1899,8 @@ class BackupCollection {
   core.Map<core.String, core.dynamic> toJson() => {
         if (cluster != null) 'cluster': cluster!,
         if (clusterUid != null) 'clusterUid': clusterUid!,
+        if (createTime != null) 'createTime': createTime!,
+        if (kmsKey != null) 'kmsKey': kmsKey!,
         if (name != null) 'name': name!,
         if (uid != null) 'uid': uid!,
       };
@@ -1950,6 +1978,15 @@ class CertificateAuthority {
 
 /// A cluster instance.
 class Cluster {
+  /// If true, cluster endpoints that are created and registered by customers
+  /// can be deleted asynchronously.
+  ///
+  /// That is, such a cluster endpoint can be de-registered before the
+  /// forwarding rules in the cluster endpoint are deleted.
+  ///
+  /// Optional.
+  core.bool? asyncClusterEndpointsDeletionEnabled;
+
   /// The authorization mode of the Redis cluster.
   ///
   /// If not provided, auth feature is disabled for the cluster.
@@ -1974,7 +2011,7 @@ class Cluster {
   /// Optional. Output only.
   core.String? backupCollection;
 
-  /// A list of cluster enpoints.
+  /// A list of cluster endpoints.
   ///
   /// Optional.
   core.List<ClusterEndpoint>? clusterEndpoints;
@@ -2002,6 +2039,11 @@ class Cluster {
   /// Output only.
   core.List<DiscoveryEndpoint>? discoveryEndpoints;
 
+  /// Encryption information of the data at rest of the cluster.
+  ///
+  /// Output only.
+  EncryptionInfo? encryptionInfo;
+
   /// Backups stored in Cloud Storage buckets.
   ///
   /// The Cloud Storage buckets need to be the same region as the clusters. Read
@@ -2009,6 +2051,11 @@ class Cluster {
   ///
   /// Optional.
   GcsBackupSource? gcsSource;
+
+  /// The KMS key used to encrypt the at-rest data of the cluster.
+  ///
+  /// Optional.
+  core.String? kmsKey;
 
   /// ClusterMaintenancePolicy determines when to allow or deny updates.
   ///
@@ -2046,6 +2093,14 @@ class Cluster {
   /// - "REDIS_HIGHMEM_XLARGE" : Redis highmem xlarge node_type.
   /// - "REDIS_STANDARD_SMALL" : Redis standard small node_type.
   core.String? nodeType;
+
+  /// Input only.
+  ///
+  /// Ondemand maintenance for the cluster. This field can be used to trigger
+  /// ondemand critical update on the cluster.
+  ///
+  /// Optional.
+  core.bool? ondemandMaintenance;
 
   /// Persistence config (RDB, AOF) for the cluster.
   ///
@@ -2140,6 +2195,7 @@ class Cluster {
   ZoneDistributionConfig? zoneDistributionConfig;
 
   Cluster({
+    this.asyncClusterEndpointsDeletionEnabled,
     this.authorizationMode,
     this.automatedBackupConfig,
     this.backupCollection,
@@ -2148,12 +2204,15 @@ class Cluster {
     this.crossClusterReplicationConfig,
     this.deletionProtectionEnabled,
     this.discoveryEndpoints,
+    this.encryptionInfo,
     this.gcsSource,
+    this.kmsKey,
     this.maintenancePolicy,
     this.maintenanceSchedule,
     this.managedBackupSource,
     this.name,
     this.nodeType,
+    this.ondemandMaintenance,
     this.persistenceConfig,
     this.preciseSizeGb,
     this.pscConfigs,
@@ -2172,6 +2231,8 @@ class Cluster {
 
   Cluster.fromJson(core.Map json_)
       : this(
+          asyncClusterEndpointsDeletionEnabled:
+              json_['asyncClusterEndpointsDeletionEnabled'] as core.bool?,
           authorizationMode: json_['authorizationMode'] as core.String?,
           automatedBackupConfig: json_.containsKey('automatedBackupConfig')
               ? AutomatedBackupConfig.fromJson(json_['automatedBackupConfig']
@@ -2195,10 +2256,15 @@ class Cluster {
               ?.map((value) => DiscoveryEndpoint.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          encryptionInfo: json_.containsKey('encryptionInfo')
+              ? EncryptionInfo.fromJson(json_['encryptionInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           gcsSource: json_.containsKey('gcsSource')
               ? GcsBackupSource.fromJson(
                   json_['gcsSource'] as core.Map<core.String, core.dynamic>)
               : null,
+          kmsKey: json_['kmsKey'] as core.String?,
           maintenancePolicy: json_.containsKey('maintenancePolicy')
               ? ClusterMaintenancePolicy.fromJson(json_['maintenancePolicy']
                   as core.Map<core.String, core.dynamic>)
@@ -2213,6 +2279,7 @@ class Cluster {
               : null,
           name: json_['name'] as core.String?,
           nodeType: json_['nodeType'] as core.String?,
+          ondemandMaintenance: json_['ondemandMaintenance'] as core.bool?,
           persistenceConfig: json_.containsKey('persistenceConfig')
               ? ClusterPersistenceConfig.fromJson(json_['persistenceConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -2255,6 +2322,9 @@ class Cluster {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (asyncClusterEndpointsDeletionEnabled != null)
+          'asyncClusterEndpointsDeletionEnabled':
+              asyncClusterEndpointsDeletionEnabled!,
         if (authorizationMode != null) 'authorizationMode': authorizationMode!,
         if (automatedBackupConfig != null)
           'automatedBackupConfig': automatedBackupConfig!,
@@ -2267,7 +2337,9 @@ class Cluster {
           'deletionProtectionEnabled': deletionProtectionEnabled!,
         if (discoveryEndpoints != null)
           'discoveryEndpoints': discoveryEndpoints!,
+        if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
         if (gcsSource != null) 'gcsSource': gcsSource!,
+        if (kmsKey != null) 'kmsKey': kmsKey!,
         if (maintenancePolicy != null) 'maintenancePolicy': maintenancePolicy!,
         if (maintenanceSchedule != null)
           'maintenanceSchedule': maintenanceSchedule!,
@@ -2275,6 +2347,8 @@ class Cluster {
           'managedBackupSource': managedBackupSource!,
         if (name != null) 'name': name!,
         if (nodeType != null) 'nodeType': nodeType!,
+        if (ondemandMaintenance != null)
+          'ondemandMaintenance': ondemandMaintenance!,
         if (persistenceConfig != null) 'persistenceConfig': persistenceConfig!,
         if (preciseSizeGb != null) 'preciseSizeGb': preciseSizeGb!,
         if (pscConfigs != null) 'pscConfigs': pscConfigs!,
@@ -2305,6 +2379,8 @@ class ClusterEndpoint {
   ///
   /// They are created in the same VPC network, one for each service attachment
   /// in the cluster.
+  ///
+  /// Required.
   core.List<ConnectionDetail>? connections;
 
   ClusterEndpoint({
@@ -2371,7 +2447,7 @@ class ClusterMaintenancePolicy {
       };
 }
 
-/// Upcoming maitenance schedule.
+/// Upcoming maintenance schedule.
 class ClusterMaintenanceSchedule {
   /// The end time of any upcoming scheduled maintenance for this instance.
   ///
@@ -2656,6 +2732,75 @@ class DiscoveryEndpoint {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// EncryptionInfo describes the encryption information of a cluster or a
+/// backup.
+class EncryptionInfo {
+  /// Type of encryption.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Encryption type not specified. Defaults to
+  /// GOOGLE_DEFAULT_ENCRYPTION.
+  /// - "GOOGLE_DEFAULT_ENCRYPTION" : The data is encrypted at rest with a key
+  /// that is fully managed by Google. No key version will be populated. This is
+  /// the default state.
+  /// - "CUSTOMER_MANAGED_ENCRYPTION" : The data is encrypted at rest with a key
+  /// that is managed by the customer. KMS key versions will be populated.
+  core.String? encryptionType;
+
+  /// The state of the primary version of the KMS key perceived by the system.
+  ///
+  /// This field is not populated in backups.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "KMS_KEY_STATE_UNSPECIFIED" : The default value. This value is unused.
+  /// - "ENABLED" : The KMS key is enabled and correctly configured.
+  /// - "PERMISSION_DENIED" : Permission denied on the KMS key.
+  /// - "DISABLED" : The KMS key is disabled.
+  /// - "DESTROYED" : The KMS key is destroyed.
+  /// - "DESTROY_SCHEDULED" : The KMS key is scheduled to be destroyed.
+  /// - "EKM_KEY_UNREACHABLE_DETECTED" : The EKM key is unreachable.
+  /// - "BILLING_DISABLED" : Billing is disabled for the project.
+  /// - "UNKNOWN_FAILURE" : All other unknown failures.
+  core.String? kmsKeyPrimaryState;
+
+  /// KMS key versions that are being used to protect the data at-rest.
+  ///
+  /// Output only.
+  core.List<core.String>? kmsKeyVersions;
+
+  /// The most recent time when the encryption info was updated.
+  ///
+  /// Output only.
+  core.String? lastUpdateTime;
+
+  EncryptionInfo({
+    this.encryptionType,
+    this.kmsKeyPrimaryState,
+    this.kmsKeyVersions,
+    this.lastUpdateTime,
+  });
+
+  EncryptionInfo.fromJson(core.Map json_)
+      : this(
+          encryptionType: json_['encryptionType'] as core.String?,
+          kmsKeyPrimaryState: json_['kmsKeyPrimaryState'] as core.String?,
+          kmsKeyVersions: (json_['kmsKeyVersions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          lastUpdateTime: json_['lastUpdateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptionType != null) 'encryptionType': encryptionType!,
+        if (kmsKeyPrimaryState != null)
+          'kmsKeyPrimaryState': kmsKeyPrimaryState!,
+        if (kmsKeyVersions != null) 'kmsKeyVersions': kmsKeyVersions!,
+        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
+      };
+}
+
 /// Request for \[ExportBackup\].
 class ExportBackupRequest {
   /// Google Cloud Storage bucket, like "my-bucket".
@@ -2764,7 +2909,7 @@ class FixedFrequencySchedule {
 ///
 /// The Cloud Storage buckets need to be the same region as the clusters.
 class GcsBackupSource {
-  /// URIs of the GCS objects to import.
+  /// URIs of the Cloud Storage objects to import.
   ///
   /// Example: gs://bucket1/object1, gs://bucket2/folder2/object2
   ///
@@ -3073,11 +3218,12 @@ class Instance {
 
   /// The version of Redis software.
   ///
-  /// If not provided, latest supported version will be used. Currently, the
+  /// If not provided, the default version will be used. Currently, the
   /// supported values are: * `REDIS_3_2` for Redis 3.2 compatibility *
-  /// `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis
-  /// 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility * `REDIS_7_0`
-  /// for Redis 7.0 compatibility
+  /// `REDIS_4_0` for Redis 4.0 compatibility * `REDIS_5_0` for Redis 5.0
+  /// compatibility * `REDIS_6_X` for Redis 6.x compatibility * `REDIS_7_0` for
+  /// Redis 7.0 compatibility (default) * `REDIS_7_2` for Redis 7.2
+  /// compatibility
   ///
   /// Optional.
   core.String? redisVersion;
@@ -4217,6 +4363,11 @@ class PscConnection {
   /// Required.
   core.String? network;
 
+  /// The port number of the exposed discovery endpoint.
+  ///
+  /// Output only.
+  core.int? port;
+
   /// Project ID of the consumer project where the forwarding rule is created
   /// in.
   ///
@@ -4255,6 +4406,7 @@ class PscConnection {
     this.connectionType,
     this.forwardingRule,
     this.network,
+    this.port,
     this.projectId,
     this.pscConnectionId,
     this.pscConnectionStatus,
@@ -4267,6 +4419,7 @@ class PscConnection {
           connectionType: json_['connectionType'] as core.String?,
           forwardingRule: json_['forwardingRule'] as core.String?,
           network: json_['network'] as core.String?,
+          port: json_['port'] as core.int?,
           projectId: json_['projectId'] as core.String?,
           pscConnectionId: json_['pscConnectionId'] as core.String?,
           pscConnectionStatus: json_['pscConnectionStatus'] as core.String?,
@@ -4278,6 +4431,7 @@ class PscConnection {
         if (connectionType != null) 'connectionType': connectionType!,
         if (forwardingRule != null) 'forwardingRule': forwardingRule!,
         if (network != null) 'network': network!,
+        if (port != null) 'port': port!,
         if (projectId != null) 'projectId': projectId!,
         if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
         if (pscConnectionStatus != null)
@@ -4560,6 +4714,15 @@ class TlsCertificate {
 
 /// Represents information about an updating cluster.
 class UpdateInfo {
+  /// Target node type for redis cluster.
+  /// Possible string values are:
+  /// - "NODE_TYPE_UNSPECIFIED" : Node type unspecified
+  /// - "REDIS_SHARED_CORE_NANO" : Redis shared core nano node_type.
+  /// - "REDIS_HIGHMEM_MEDIUM" : Redis highmem medium node_type.
+  /// - "REDIS_HIGHMEM_XLARGE" : Redis highmem xlarge node_type.
+  /// - "REDIS_STANDARD_SMALL" : Redis standard small node_type.
+  core.String? targetNodeType;
+
   /// Target number of replica nodes per shard.
   core.int? targetReplicaCount;
 
@@ -4567,17 +4730,20 @@ class UpdateInfo {
   core.int? targetShardCount;
 
   UpdateInfo({
+    this.targetNodeType,
     this.targetReplicaCount,
     this.targetShardCount,
   });
 
   UpdateInfo.fromJson(core.Map json_)
       : this(
+          targetNodeType: json_['targetNodeType'] as core.String?,
           targetReplicaCount: json_['targetReplicaCount'] as core.int?,
           targetShardCount: json_['targetShardCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (targetNodeType != null) 'targetNodeType': targetNodeType!,
         if (targetReplicaCount != null)
           'targetReplicaCount': targetReplicaCount!,
         if (targetShardCount != null) 'targetShardCount': targetShardCount!,

@@ -520,6 +520,8 @@ api.CloudSqlSettings buildCloudSqlSettings() {
     o.cmekKeyName = 'foo';
     o.collation = 'foo';
     o.dataCacheConfig = buildDataCacheConfig();
+    o.dataDiskProvisionedIops = 'foo';
+    o.dataDiskProvisionedThroughput = 'foo';
     o.dataDiskSizeGb = 'foo';
     o.dataDiskType = 'foo';
     o.databaseFlags = buildUnnamed4();
@@ -561,6 +563,14 @@ void checkCloudSqlSettings(api.CloudSqlSettings o) {
       unittest.equals('foo'),
     );
     checkDataCacheConfig(o.dataCacheConfig!);
+    unittest.expect(
+      o.dataDiskProvisionedIops!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataDiskProvisionedThroughput!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.dataDiskSizeGb!,
       unittest.equals('foo'),
@@ -686,6 +696,7 @@ api.ColumnEntity buildColumnEntity() {
     o.charset = 'foo';
     o.collation = 'foo';
     o.comment = 'foo';
+    o.computed = true;
     o.customFeatures = buildUnnamed6();
     o.dataType = 'foo';
     o.defaultValue = 'foo';
@@ -724,6 +735,7 @@ void checkColumnEntity(api.ColumnEntity o) {
       o.comment!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.computed!, unittest.isTrue);
     checkUnnamed6(o.customFeatures!);
     unittest.expect(
       o.dataType!,
@@ -891,6 +903,8 @@ api.ConnectionProfile buildConnectionProfile() {
     o.postgresql = buildPostgreSqlConnectionProfile();
     o.provider = 'foo';
     o.role = 'foo';
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.sqlserver = buildSqlServerConnectionProfile();
     o.state = 'foo';
     o.updateTime = 'foo';
@@ -929,6 +943,8 @@ void checkConnectionProfile(api.ConnectionProfile o) {
       o.role!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     checkSqlServerConnectionProfile(o.sqlserver!);
     unittest.expect(
       o.state!,
@@ -1693,7 +1709,9 @@ api.EntityDdl buildEntityDdl() {
   buildCounterEntityDdl++;
   if (buildCounterEntityDdl < 3) {
     o.ddl = 'foo';
+    o.ddlKind = 'foo';
     o.ddlType = 'foo';
+    o.editedDdlKind = 'foo';
     o.entity = 'foo';
     o.entityType = 'foo';
     o.issueId = buildUnnamed21();
@@ -1710,7 +1728,15 @@ void checkEntityDdl(api.EntityDdl o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.ddlKind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.ddlType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.editedDdlKind!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -3239,6 +3265,8 @@ api.MigrationJob buildMigrationJob() {
     o.performanceConfig = buildPerformanceConfig();
     o.phase = 'foo';
     o.reverseSshConnectivity = buildReverseSshConnectivity();
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.source = 'foo';
     o.sourceDatabase = buildDatabaseType();
     o.sqlserverHomogeneousMigrationJobConfig =
@@ -3309,6 +3337,8 @@ void checkMigrationJob(api.MigrationJob o) {
       unittest.equals('foo'),
     );
     checkReverseSshConnectivity(o.reverseSshConnectivity!);
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.source!,
       unittest.equals('foo'),
@@ -4259,6 +4289,8 @@ api.PrivateConnection buildPrivateConnection() {
     o.error = buildStatus();
     o.labels = buildUnnamed60();
     o.name = 'foo';
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.state = 'foo';
     o.updateTime = 'foo';
     o.vpcPeeringConfig = buildVpcPeeringConfig();
@@ -4284,6 +4316,8 @@ void checkPrivateConnection(api.PrivateConnection o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),

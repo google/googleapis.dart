@@ -627,6 +627,23 @@ void checkUnnamed8(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed9() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed9(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterScanConfig = 0;
 api.ScanConfig buildScanConfig() {
   final o = api.ScanConfig();
@@ -637,6 +654,7 @@ api.ScanConfig buildScanConfig() {
     o.displayName = 'foo';
     o.exportToSecurityCommandCenter = 'foo';
     o.ignoreHttpStatusErrors = true;
+    o.latestRun = buildScanRun();
     o.managedScan = true;
     o.maxQps = 42;
     o.name = 'foo';
@@ -644,6 +662,7 @@ api.ScanConfig buildScanConfig() {
     o.schedule = buildSchedule();
     o.startingUrls = buildUnnamed8();
     o.staticIpScan = true;
+    o.targetPlatforms = buildUnnamed9();
     o.userAgent = 'foo';
   }
   buildCounterScanConfig--;
@@ -664,6 +683,7 @@ void checkScanConfig(api.ScanConfig o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.ignoreHttpStatusErrors!, unittest.isTrue);
+    checkScanRun(o.latestRun!);
     unittest.expect(o.managedScan!, unittest.isTrue);
     unittest.expect(
       o.maxQps!,
@@ -680,6 +700,7 @@ void checkScanConfig(api.ScanConfig o) {
     checkSchedule(o.schedule!);
     checkUnnamed8(o.startingUrls!);
     unittest.expect(o.staticIpScan!, unittest.isTrue);
+    checkUnnamed9(o.targetPlatforms!);
     unittest.expect(
       o.userAgent!,
       unittest.equals('foo'),
@@ -715,12 +736,12 @@ void checkScanConfigError(api.ScanConfigError o) {
   buildCounterScanConfigError--;
 }
 
-core.List<api.ScanRunWarningTrace> buildUnnamed9() => [
+core.List<api.ScanRunWarningTrace> buildUnnamed10() => [
       buildScanRunWarningTrace(),
       buildScanRunWarningTrace(),
     ];
 
-void checkUnnamed9(core.List<api.ScanRunWarningTrace> o) {
+void checkUnnamed10(core.List<api.ScanRunWarningTrace> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkScanRunWarningTrace(o[0]);
   checkScanRunWarningTrace(o[1]);
@@ -741,7 +762,7 @@ api.ScanRun buildScanRun() {
     o.startTime = 'foo';
     o.urlsCrawledCount = 'foo';
     o.urlsTestedCount = 'foo';
-    o.warningTraces = buildUnnamed9();
+    o.warningTraces = buildUnnamed10();
   }
   buildCounterScanRun--;
   return o;
@@ -784,7 +805,7 @@ void checkScanRun(api.ScanRun o) {
       o.urlsTestedCount!,
       unittest.equals('foo'),
     );
-    checkUnnamed9(o.warningTraces!);
+    checkUnnamed10(o.warningTraces!);
   }
   buildCounterScanRun--;
 }
@@ -924,17 +945,6 @@ void checkViolatingResource(api.ViolatingResource o) {
   buildCounterViolatingResource--;
 }
 
-core.List<api.Header> buildUnnamed10() => [
-      buildHeader(),
-      buildHeader(),
-    ];
-
-void checkUnnamed10(core.List<api.Header> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkHeader(o[0]);
-  checkHeader(o[1]);
-}
-
 core.List<api.Header> buildUnnamed11() => [
       buildHeader(),
       buildHeader(),
@@ -946,13 +956,24 @@ void checkUnnamed11(core.List<api.Header> o) {
   checkHeader(o[1]);
 }
 
+core.List<api.Header> buildUnnamed12() => [
+      buildHeader(),
+      buildHeader(),
+    ];
+
+void checkUnnamed12(core.List<api.Header> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkHeader(o[0]);
+  checkHeader(o[1]);
+}
+
 core.int buildCounterVulnerableHeaders = 0;
 api.VulnerableHeaders buildVulnerableHeaders() {
   final o = api.VulnerableHeaders();
   buildCounterVulnerableHeaders++;
   if (buildCounterVulnerableHeaders < 3) {
-    o.headers = buildUnnamed10();
-    o.missingHeaders = buildUnnamed11();
+    o.headers = buildUnnamed11();
+    o.missingHeaders = buildUnnamed12();
   }
   buildCounterVulnerableHeaders--;
   return o;
@@ -961,46 +982,10 @@ api.VulnerableHeaders buildVulnerableHeaders() {
 void checkVulnerableHeaders(api.VulnerableHeaders o) {
   buildCounterVulnerableHeaders++;
   if (buildCounterVulnerableHeaders < 3) {
-    checkUnnamed10(o.headers!);
-    checkUnnamed11(o.missingHeaders!);
+    checkUnnamed11(o.headers!);
+    checkUnnamed12(o.missingHeaders!);
   }
   buildCounterVulnerableHeaders--;
-}
-
-core.List<core.String> buildUnnamed12() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed12(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterVulnerableParameters = 0;
-api.VulnerableParameters buildVulnerableParameters() {
-  final o = api.VulnerableParameters();
-  buildCounterVulnerableParameters++;
-  if (buildCounterVulnerableParameters < 3) {
-    o.parameterNames = buildUnnamed12();
-  }
-  buildCounterVulnerableParameters--;
-  return o;
-}
-
-void checkVulnerableParameters(api.VulnerableParameters o) {
-  buildCounterVulnerableParameters++;
-  if (buildCounterVulnerableParameters < 3) {
-    checkUnnamed12(o.parameterNames!);
-  }
-  buildCounterVulnerableParameters--;
 }
 
 core.List<core.String> buildUnnamed13() => [
@@ -1020,6 +1005,42 @@ void checkUnnamed13(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterVulnerableParameters = 0;
+api.VulnerableParameters buildVulnerableParameters() {
+  final o = api.VulnerableParameters();
+  buildCounterVulnerableParameters++;
+  if (buildCounterVulnerableParameters < 3) {
+    o.parameterNames = buildUnnamed13();
+  }
+  buildCounterVulnerableParameters--;
+  return o;
+}
+
+void checkVulnerableParameters(api.VulnerableParameters o) {
+  buildCounterVulnerableParameters++;
+  if (buildCounterVulnerableParameters < 3) {
+    checkUnnamed13(o.parameterNames!);
+  }
+  buildCounterVulnerableParameters--;
+}
+
+core.List<core.String> buildUnnamed14() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed14(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterXss = 0;
 api.Xss buildXss() {
   final o = api.Xss();
@@ -1027,7 +1048,7 @@ api.Xss buildXss() {
   if (buildCounterXss < 3) {
     o.attackVector = 'foo';
     o.errorMessage = 'foo';
-    o.stackTraces = buildUnnamed13();
+    o.stackTraces = buildUnnamed14();
     o.storedXssSeedingUrl = 'foo';
   }
   buildCounterXss--;
@@ -1045,7 +1066,7 @@ void checkXss(api.Xss o) {
       o.errorMessage!,
       unittest.equals('foo'),
     );
-    checkUnnamed13(o.stackTraces!);
+    checkUnnamed14(o.stackTraces!);
     unittest.expect(
       o.storedXssSeedingUrl!,
       unittest.equals('foo'),

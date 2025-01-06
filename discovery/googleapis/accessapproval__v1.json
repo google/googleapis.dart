@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240820",
+    "revision": "20250206",
     "rootUrl": "https://accessapproval.googleapis.com/",
     "servicePath": "",
     "title": "Access Approval API",
@@ -1296,7 +1296,9 @@
                         "HMAC_SHA384",
                         "HMAC_SHA512",
                         "HMAC_SHA224",
-                        "EXTERNAL_SYMMETRIC_ENCRYPTION"
+                        "EXTERNAL_SYMMETRIC_ENCRYPTION",
+                        "PQ_SIGN_ML_DSA_65",
+                        "PQ_SIGN_SLH_DSA_SHA2_128S"
                     ],
                     "enumDescriptions": [
                         "Not specified.",
@@ -1334,7 +1336,9 @@
                         "HMAC-SHA384 signing with a 384 bit key.",
                         "HMAC-SHA512 signing with a 512 bit key.",
                         "HMAC-SHA224 signing with a 224 bit key.",
-                        "Algorithm representing symmetric encryption by an external key manager."
+                        "Algorithm representing symmetric encryption by an external key manager.",
+                        "The post-quantum Module-Lattice-Based Digital Signature Algorithm, at security level 3. Randomized version.",
+                        "The post-quantum stateless hash-based digital signature algorithm, at security level 1. Randomized version."
                     ],
                     "type": "string"
                 },

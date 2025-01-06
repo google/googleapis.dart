@@ -49,13 +49,64 @@ class CalendarApi {
   /// using Google Calendar
   static const calendarScope = 'https://www.googleapis.com/auth/calendar';
 
+  /// See and change the sharing permissions of Google calendars you own
+  static const calendarAclsScope =
+      'https://www.googleapis.com/auth/calendar.acls';
+
+  /// See the sharing permissions of Google calendars you own
+  static const calendarAclsReadonlyScope =
+      'https://www.googleapis.com/auth/calendar.acls.readonly';
+
+  /// Make secondary Google calendars, and see, create, change, and delete
+  /// events on them
+  static const calendarAppCreatedScope =
+      'https://www.googleapis.com/auth/calendar.app.created';
+
+  /// See, add, and remove Google calendars you’re subscribed to
+  static const calendarCalendarlistScope =
+      'https://www.googleapis.com/auth/calendar.calendarlist';
+
+  /// See the list of Google calendars you’re subscribed to
+  static const calendarCalendarlistReadonlyScope =
+      'https://www.googleapis.com/auth/calendar.calendarlist.readonly';
+
+  /// See and change the properties of Google calendars you have access to, and
+  /// create secondary calendars
+  static const calendarCalendarsScope =
+      'https://www.googleapis.com/auth/calendar.calendars';
+
+  /// See the title, description, default time zone, and other properties of
+  /// Google calendars you have access to
+  static const calendarCalendarsReadonlyScope =
+      'https://www.googleapis.com/auth/calendar.calendars.readonly';
+
   /// View and edit events on all your calendars
   static const calendarEventsScope =
       'https://www.googleapis.com/auth/calendar.events';
 
+  /// See the availability on Google calendars you have access to
+  static const calendarEventsFreebusyScope =
+      'https://www.googleapis.com/auth/calendar.events.freebusy';
+
+  /// See, create, change, and delete events on Google calendars you own
+  static const calendarEventsOwnedScope =
+      'https://www.googleapis.com/auth/calendar.events.owned';
+
+  /// See the events on Google calendars you own
+  static const calendarEventsOwnedReadonlyScope =
+      'https://www.googleapis.com/auth/calendar.events.owned.readonly';
+
+  /// See the events on public calendars
+  static const calendarEventsPublicReadonlyScope =
+      'https://www.googleapis.com/auth/calendar.events.public.readonly';
+
   /// View events on all your calendars
   static const calendarEventsReadonlyScope =
       'https://www.googleapis.com/auth/calendar.events.readonly';
+
+  /// View your availability in your calendars
+  static const calendarFreebusyScope =
+      'https://www.googleapis.com/auth/calendar.freebusy';
 
   /// See and download any calendar you can access using your Google Calendar
   static const calendarReadonlyScope =
@@ -2575,10 +2626,10 @@ class AclRule {
   /// appear to users with reader access, but event details will be hidden.
   /// - "writer" - Provides read and write access to the calendar. Private
   /// events will appear to users with writer access, and event details will be
-  /// visible.
+  /// visible. Provides read access to the calendar's ACLs.
   /// - "owner" - Provides ownership of the calendar. This role has all of the
-  /// permissions of the writer role with the additional ability to see and
-  /// manipulate ACLs.
+  /// permissions of the writer role with the additional ability to manipulate
+  /// ACLs.
   core.String? role;
 
   /// The extent to which calendar access is granted by this ACL rule.

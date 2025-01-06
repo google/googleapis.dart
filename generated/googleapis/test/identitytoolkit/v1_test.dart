@@ -904,6 +904,7 @@ api.GoogleCloudIdentitytoolkitV1GetOobCodeRequest
     o.iOSAppStoreId = 'foo';
     o.iOSBundleId = 'foo';
     o.idToken = 'foo';
+    o.linkDomain = 'foo';
     o.newEmail = 'foo';
     o.recaptchaVersion = 'foo';
     o.requestType = 'foo';
@@ -964,6 +965,10 @@ void checkGoogleCloudIdentitytoolkitV1GetOobCodeRequest(
     );
     unittest.expect(
       o.idToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.linkDomain!,
       unittest.equals('foo'),
     );
     unittest.expect(

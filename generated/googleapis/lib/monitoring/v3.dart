@@ -2017,6 +2017,17 @@ class ProjectsMetricDescriptorsResource {
   /// execute the request. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [activeOnly] - Optional. If true, only metrics and monitored resource
+  /// types that have recent data (within roughly 25 hours) will be included in
+  /// the response. - If a metric descriptor enumerates monitored resource
+  /// types, only the monitored resource types for which the metric type has
+  /// recent data will be included in the returned metric descriptor, and if
+  /// none of them have recent data, the metric descriptor will not be returned.
+  /// - If a metric descriptor does not enumerate the compatible monitored
+  /// resource types, it will be returned only if the metric type has recent
+  /// data for some monitored resource type. The returned descriptor will not
+  /// enumerate any monitored resource types.
+  ///
   /// [filter] - Optional. If this field is empty, all custom and system-defined
   /// metric descriptors are returned. Otherwise, the filter
   /// (https://cloud.google.com/monitoring/api/v3/filters) specifies which
@@ -2047,12 +2058,14 @@ class ProjectsMetricDescriptorsResource {
   /// this method will complete with the same error.
   async.Future<ListMetricDescriptorsResponse> list(
     core.String name, {
+    core.bool? activeOnly,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (activeOnly != null) 'activeOnly': ['${activeOnly}'],
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2815,9 +2828,9 @@ class ProjectsSnoozesResource {
   ///
   /// [filter] - Optional. Optional filter to restrict results to the given
   /// criteria. The following fields are supported. interval.start_time
-  /// interval.end_timeFor example: ``` interval.start_time >
-  /// "2022-03-11T00:00:00-08:00" AND interval.end_time <
-  /// "2022-03-12T00:00:00-08:00" ```
+  /// interval.end_timeFor example: interval.start_time \>
+  /// "2022-03-11T00:00:00-08:00" AND interval.end_time \<
+  /// "2022-03-12T00:00:00-08:00"
   ///
   /// [pageSize] - Optional. The maximum number of results to return for a
   /// single query. The server may further constrain the maximum number of
@@ -5885,26 +5898,46 @@ class CreateTimeSeriesSummary {
 /// The Snooze will suppress alerts that come from one of the AlertPolicys whose
 /// names are supplied.
 class Criteria {
+  /// The filter string to match on Alert fields when silencing the alerts.
+  ///
+  /// It follows the standard https://google.aip.dev/160 syntax. A filter string
+  /// used to apply the snooze to specific incidents that have matching filter
+  /// values. Filters can be defined for snoozes that apply to one alerting
+  /// policy. Filters must be a string formatted as one or more resource labels
+  /// with specific label values. If multiple resource labels are used, then
+  /// they must be connected with an AND operator. For example, the following
+  /// filter applies the snooze to incidents that have an instance ID of
+  /// 1234567890 and a zone of us-central1-a:
+  /// resource.labels.instance_id="1234567890" AND
+  /// resource.labels.zone="us-central1-a"
+  ///
+  /// Optional.
+  core.String? filter;
+
   /// The specific AlertPolicy names for the alert that should be snoozed.
   ///
   /// The format is:
   /// projects/\[PROJECT_ID_OR_NUMBER\]/alertPolicies/\[POLICY_ID\] There is a
   /// limit of 16 policies per snooze. This limit is checked during snooze
-  /// creation.
+  /// creation. Exactly 1 alert policy is required if filter is specified at the
+  /// same time.
   core.List<core.String>? policies;
 
   Criteria({
+    this.filter,
     this.policies,
   });
 
   Criteria.fromJson(core.Map json_)
       : this(
+          filter: json_['filter'] as core.String?,
           policies: (json_['policies'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (filter != null) 'filter': filter!,
         if (policies != null) 'policies': policies!,
       };
 }
@@ -9925,7 +9958,7 @@ class SqlCondition {
   /// not try to filter the input by time. A filter will automatically be
   /// applied to filter the input so that the query receives all rows received
   /// since the last time the query was run.For example, the following query
-  /// extracts all log entries containing an HTTP request:SELECT timestamp,
+  /// extracts all log entries containing an HTTP request: SELECT timestamp,
   /// log_name, severity, http_request, resource, labels FROM
   /// my-project.global._Default._AllLogs WHERE http_request IS NOT NULL
   ///
@@ -10525,6 +10558,9 @@ class UptimeCheckConfig {
   )
   core.bool? isInternal;
 
+  /// To specify whether to log the results of failed probes to Cloud Logging.
+  core.bool? logCheckFailures;
+
   /// The monitored resource (https://cloud.google.com/monitoring/api/resources)
   /// associated with the configuration.
   ///
@@ -10587,6 +10623,7 @@ class UptimeCheckConfig {
     this.httpCheck,
     this.internalCheckers,
     this.isInternal,
+    this.logCheckFailures,
     this.monitoredResource,
     this.name,
     this.period,
@@ -10615,6 +10652,7 @@ class UptimeCheckConfig {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           isInternal: json_['isInternal'] as core.bool?,
+          logCheckFailures: json_['logCheckFailures'] as core.bool?,
           monitoredResource: json_.containsKey('monitoredResource')
               ? MonitoredResource.fromJson(json_['monitoredResource']
                   as core.Map<core.String, core.dynamic>)
@@ -10654,6 +10692,7 @@ class UptimeCheckConfig {
         if (httpCheck != null) 'httpCheck': httpCheck!,
         if (internalCheckers != null) 'internalCheckers': internalCheckers!,
         if (isInternal != null) 'isInternal': isInternal!,
+        if (logCheckFailures != null) 'logCheckFailures': logCheckFailures!,
         if (monitoredResource != null) 'monitoredResource': monitoredResource!,
         if (name != null) 'name': name!,
         if (period != null) 'period': period!,

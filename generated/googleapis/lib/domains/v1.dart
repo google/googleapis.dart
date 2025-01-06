@@ -2352,8 +2352,8 @@ class GeoPolicyItem {
 
   /// DNSSEC generated signatures for all the `rrdata` within this item.
   ///
-  /// If health checked targets are provided for DNSSEC enabled zones, there's a
-  /// restriction of 1 IP address per item.
+  /// When using health-checked targets for DNSSEC-enabled zones, you can only
+  /// use at most one health-checked IP address per item.
   core.List<core.String>? signatureRrdata;
 
   GeoPolicyItem({
@@ -2505,7 +2505,8 @@ class GoogleDomainsDns {
 /// HealthCheckTargets describes endpoints to health-check when responding to
 /// Routing Policy queries.
 ///
-/// Only the healthy endpoints will be included in the response.
+/// Only the healthy endpoints will be included in the response. Set either
+/// `internal_load_balancer` or `external_endpoints`. Do not set both.
 class HealthCheckTargets {
   /// The Internet IP addresses to be health checked.
   ///
@@ -3137,9 +3138,11 @@ class RRSetRoutingPolicy {
   )
   GeoPolicy? geoPolicy;
 
-  /// The selfLink attribute of the HealthCheck resource to use for this
+  /// The fully qualified URL of the HealthCheck to use for this
   /// RRSetRoutingPolicy.
   ///
+  /// Format this URL like
+  /// `https://www.googleapis.com/compute/v1/projects/{project}/global/healthChecks/{healthCheck}`.
   /// https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks
   core.String? healthCheck;
   PrimaryBackupPolicy? primaryBackup;
@@ -4105,8 +4108,8 @@ class WrrPolicyItem {
 
   /// DNSSEC generated signatures for all the `rrdata` within this item.
   ///
-  /// Note that if health checked targets are provided for DNSSEC enabled zones,
-  /// there's a restriction of 1 IP address per item.
+  /// When using health-checked targets for DNSSEC-enabled zones, you can only
+  /// use at most one health-checked IP address per item.
   core.List<core.String>? signatureRrdata;
 
   /// The weight corresponding to this `WrrPolicyItem` object.

@@ -797,6 +797,7 @@ api.EgressSource buildEgressSource() {
   buildCounterEgressSource++;
   if (buildCounterEgressSource < 3) {
     o.accessLevel = 'foo';
+    o.resource = 'foo';
   }
   buildCounterEgressSource--;
   return o;
@@ -807,6 +808,10 @@ void checkEgressSource(api.EgressSource o) {
   if (buildCounterEgressSource < 3) {
     unittest.expect(
       o.accessLevel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resource!,
       unittest.equals('foo'),
     );
   }

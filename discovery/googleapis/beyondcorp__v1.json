@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241204",
+    "revision": "20250219",
     "rootUrl": "https://beyondcorp.googleapis.com/",
     "servicePath": "",
     "title": "BeyondCorp API",
@@ -1469,6 +1469,7 @@
                                     ]
                                 },
                                 "shouldThrottle": {
+                                    "deprecated": true,
                                     "description": "Calls the Bouncer method ShouldThrottle to check if a request should be throttled.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/appGateways/{appGatewaysId}:shouldThrottle",
                                     "httpMethod": "GET",
@@ -1783,7 +1784,7 @@
                                                             "type": "string"
                                                         },
                                                         "updateMask": {
-                                                            "description": "Required. Mutable fields include: display_name.",
+                                                            "description": "Optional. Mutable fields include: display_name.",
                                                             "format": "google-fieldmask",
                                                             "location": "query",
                                                             "type": "string"
@@ -2156,7 +2157,7 @@
                                             "type": "string"
                                         },
                                         "updateMask": {
-                                            "description": "Required. Mutable fields include: display_name, hubs.",
+                                            "description": "Optional. Mutable fields include: display_name, hubs.",
                                             "format": "google-fieldmask",
                                             "location": "query",
                                             "type": "string"
@@ -4250,6 +4251,7 @@
             "type": "object"
         },
         "ShouldThrottleResponse": {
+            "deprecated": true,
             "description": "Response message for calling ShouldThrottle",
             "id": "ShouldThrottleResponse",
             "properties": {

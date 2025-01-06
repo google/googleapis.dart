@@ -967,6 +967,7 @@ api.Criteria buildCriteria() {
   final o = api.Criteria();
   buildCounterCriteria++;
   if (buildCounterCriteria < 3) {
+    o.filter = 'foo';
     o.policies = buildUnnamed17();
   }
   buildCounterCriteria--;
@@ -976,6 +977,10 @@ api.Criteria buildCriteria() {
 void checkCriteria(api.Criteria o) {
   buildCounterCriteria++;
   if (buildCounterCriteria < 3) {
+    unittest.expect(
+      o.filter!,
+      unittest.equals('foo'),
+    );
     checkUnnamed17(o.policies!);
   }
   buildCounterCriteria--;
@@ -4530,6 +4535,7 @@ api.UptimeCheckConfig buildUptimeCheckConfig() {
     o.httpCheck = buildHttpCheck();
     o.internalCheckers = buildUnnamed72();
     o.isInternal = true;
+    o.logCheckFailures = true;
     o.monitoredResource = buildMonitoredResource();
     o.name = 'foo';
     o.period = 'foo';
@@ -4559,6 +4565,7 @@ void checkUptimeCheckConfig(api.UptimeCheckConfig o) {
     checkHttpCheck(o.httpCheck!);
     checkUnnamed72(o.internalCheckers!);
     unittest.expect(o.isInternal!, unittest.isTrue);
+    unittest.expect(o.logCheckFailures!, unittest.isTrue);
     checkMonitoredResource(o.monitoredResource!);
     unittest.expect(
       o.name!,
@@ -7249,6 +7256,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.MonitoringApi(mock).projects.metricDescriptors;
       final arg_name = 'foo';
+      final arg_activeOnly = true;
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -7286,6 +7294,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['activeOnly']!.first,
+          unittest.equals('$arg_activeOnly'),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -7309,6 +7321,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          activeOnly: arg_activeOnly,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,

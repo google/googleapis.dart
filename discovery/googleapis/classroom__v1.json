@@ -2,6 +2,12 @@
     "auth": {
         "oauth2": {
             "scopes": {
+                "https://www.googleapis.com/auth/classroom.addons.student": {
+                    "description": "See and update its own attachments to posts in Google Classroom"
+                },
+                "https://www.googleapis.com/auth/classroom.addons.teacher": {
+                    "description": "See, create, and update its own attachments to posts in classes you teach in Google Classroom"
+                },
                 "https://www.googleapis.com/auth/classroom.announcements": {
                     "description": "View and manage announcements in Google Classroom"
                 },
@@ -87,7 +93,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241209",
+    "revision": "20250303",
     "rootUrl": "https://classroom.googleapis.com/",
     "servicePath": "",
     "title": "Google Classroom API",
@@ -593,7 +599,11 @@
                             "path": "v1/courses/{courseId}/announcements/{itemId}/addOnContext",
                             "response": {
                                 "$ref": "AddOnContext"
-                            }
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/classroom.addons.student",
+                                "https://www.googleapis.com/auth/classroom.addons.teacher"
+                            ]
                         },
                         "list": {
                             "description": "Returns a list of announcements that the requester is permitted to view. Course students may only view `PUBLISHED` announcements. Course teachers and domain administrators may view all announcements. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist.",
@@ -772,7 +782,10 @@
                                     },
                                     "response": {
                                         "$ref": "AddOnAttachment"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 },
                                 "delete": {
                                     "description": "Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.",
@@ -813,7 +826,10 @@
                                     "path": "v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}",
                                     "response": {
                                         "$ref": "Empty"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 },
                                 "get": {
                                     "description": "Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.",
@@ -854,7 +870,11 @@
                                     "path": "v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}",
                                     "response": {
                                         "$ref": "AddOnAttachment"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.student",
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 },
                                 "list": {
                                     "description": "Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.",
@@ -899,7 +919,11 @@
                                     "path": "v1/courses/{courseId}/announcements/{itemId}/addOnAttachments",
                                     "response": {
                                         "$ref": "ListAddOnAttachmentsResponse"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.student",
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 },
                                 "patch": {
                                     "description": "Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.",
@@ -948,7 +972,10 @@
                                     },
                                     "response": {
                                         "$ref": "AddOnAttachment"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 }
                             }
                         }
@@ -1090,7 +1117,11 @@
                             "path": "v1/courses/{courseId}/courseWork/{itemId}/addOnContext",
                             "response": {
                                 "$ref": "AddOnContext"
-                            }
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/classroom.addons.student",
+                                "https://www.googleapis.com/auth/classroom.addons.teacher"
+                            ]
                         },
                         "list": {
                             "description": "Returns a list of course work that the requester is permitted to view. Course students may only view `PUBLISHED` course work. Course teachers and domain administrators may view all course work. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist.",
@@ -1316,7 +1347,10 @@
                                     },
                                     "response": {
                                         "$ref": "AddOnAttachment"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 },
                                 "delete": {
                                     "description": "Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.",
@@ -1357,7 +1391,10 @@
                                     "path": "v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}",
                                     "response": {
                                         "$ref": "Empty"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 },
                                 "get": {
                                     "description": "Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.",
@@ -1398,7 +1435,11 @@
                                     "path": "v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}",
                                     "response": {
                                         "$ref": "AddOnAttachment"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.student",
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 },
                                 "list": {
                                     "description": "Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.",
@@ -1443,7 +1484,11 @@
                                     "path": "v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments",
                                     "response": {
                                         "$ref": "ListAddOnAttachmentsResponse"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.student",
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 },
                                 "patch": {
                                     "description": "Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.",
@@ -1492,7 +1537,10 @@
                                     },
                                     "response": {
                                         "$ref": "AddOnAttachment"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 }
                             },
                             "resources": {
@@ -1546,6 +1594,8 @@
                                                 "$ref": "AddOnAttachmentStudentSubmission"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/classroom.addons.student",
+                                                "https://www.googleapis.com/auth/classroom.addons.teacher",
                                                 "https://www.googleapis.com/auth/classroom.student-submissions.students.readonly"
                                             ]
                                         },
@@ -1604,7 +1654,10 @@
                                             },
                                             "response": {
                                                 "$ref": "AddOnAttachmentStudentSubmission"
-                                            }
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                            ]
                                         }
                                     }
                                 }
@@ -2304,7 +2357,11 @@
                             "path": "v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnContext",
                             "response": {
                                 "$ref": "AddOnContext"
-                            }
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/classroom.addons.student",
+                                "https://www.googleapis.com/auth/classroom.addons.teacher"
+                            ]
                         },
                         "list": {
                             "description": "Returns a list of course work material that the requester is permitted to view. Course students may only view `PUBLISHED` course work material. Course teachers and domain administrators may view all course work material. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist.",
@@ -2459,7 +2516,10 @@
                                     },
                                     "response": {
                                         "$ref": "AddOnAttachment"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 },
                                 "delete": {
                                     "description": "Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.",
@@ -2500,7 +2560,10 @@
                                     "path": "v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}",
                                     "response": {
                                         "$ref": "Empty"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 },
                                 "get": {
                                     "description": "Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.",
@@ -2541,7 +2604,11 @@
                                     "path": "v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}",
                                     "response": {
                                         "$ref": "AddOnAttachment"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.student",
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 },
                                 "list": {
                                     "description": "Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.",
@@ -2586,7 +2653,11 @@
                                     "path": "v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments",
                                     "response": {
                                         "$ref": "ListAddOnAttachmentsResponse"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.student",
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 },
                                 "patch": {
                                     "description": "Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.",
@@ -2635,7 +2706,10 @@
                                     },
                                     "response": {
                                         "$ref": "AddOnAttachment"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 }
                             }
                         }
@@ -2684,7 +2758,11 @@
                             "path": "v1/courses/{courseId}/posts/{postId}/addOnContext",
                             "response": {
                                 "$ref": "AddOnContext"
-                            }
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/classroom.addons.student",
+                                "https://www.googleapis.com/auth/classroom.addons.teacher"
+                            ]
                         }
                     },
                     "resources": {
@@ -2729,7 +2807,10 @@
                                     },
                                     "response": {
                                         "$ref": "AddOnAttachment"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 },
                                 "delete": {
                                     "description": "Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.",
@@ -2769,7 +2850,10 @@
                                     "path": "v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}",
                                     "response": {
                                         "$ref": "Empty"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 },
                                 "get": {
                                     "description": "Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.",
@@ -2809,7 +2893,11 @@
                                     "path": "v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}",
                                     "response": {
                                         "$ref": "AddOnAttachment"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.student",
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 },
                                 "list": {
                                     "description": "Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.",
@@ -2853,7 +2941,11 @@
                                     "path": "v1/courses/{courseId}/posts/{postId}/addOnAttachments",
                                     "response": {
                                         "$ref": "ListAddOnAttachmentsResponse"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.student",
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 },
                                 "patch": {
                                     "description": "Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.",
@@ -2902,7 +2994,10 @@
                                     },
                                     "response": {
                                         "$ref": "AddOnAttachment"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                    ]
                                 }
                             },
                             "resources": {
@@ -2955,6 +3050,8 @@
                                                 "$ref": "AddOnAttachmentStudentSubmission"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/classroom.addons.student",
+                                                "https://www.googleapis.com/auth/classroom.addons.teacher",
                                                 "https://www.googleapis.com/auth/classroom.student-submissions.students.readonly"
                                             ]
                                         },
@@ -3012,7 +3109,10 @@
                                             },
                                             "response": {
                                                 "$ref": "AddOnAttachmentStudentSubmission"
-                                            }
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/classroom.addons.teacher"
+                                            ]
                                         }
                                     }
                                 }
@@ -3300,7 +3400,7 @@
                 "topics": {
                     "methods": {
                         "create": {
-                            "description": "Creates a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create a topic in the requested course, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist.",
+                            "description": "Creates a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create a topic in the requested course, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `ALREADY_EXISTS` if there exists a topic in the course with the same name. * `FAILED_PRECONDITION` for the following request error: * CourseTopicLimitReached * `NOT_FOUND` if the requested course does not exist.",
                             "flatPath": "v1/courses/{courseId}/topics",
                             "httpMethod": "POST",
                             "id": "classroom.courses.topics.create",
@@ -3426,7 +3526,7 @@
                             ]
                         },
                         "patch": {
-                            "description": "Updates one or more fields of a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding topic or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or topic does not exist",
+                            "description": "Updates one or more fields of a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding topic or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if there exists a topic in the course with the same name. * `NOT_FOUND` if the requested course or topic does not exist",
                             "flatPath": "v1/courses/{courseId}/topics/{id}",
                             "httpMethod": "PATCH",
                             "id": "classroom.courses.topics.patch",

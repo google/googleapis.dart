@@ -124,6 +124,7 @@ packages:
     - discovery:v1 # https://developers.google.com/discovery/
     - displayvideo:v2
     - displayvideo:v3
+    - displayvideo:v4
     - dlp:v2 # https://cloud.google.com/dlp/
     - dns:v1 # https://cloud.google.com/dns/api/v1/
     - docs:v1
@@ -234,7 +235,6 @@ packages:
     - recommender:v1
     - redis:v1 # https://cloud.google.com/memorystore/docs/redis/
     - reseller:v1 # https://developers.google.com/admin-sdk/reseller/
-    - resourcesettings:v1
     - retail:v2
     - run:v1
     - run:v2

@@ -563,6 +563,7 @@ api.Form buildForm() {
     o.info = buildInfo();
     o.items = buildUnnamed8();
     o.linkedSheetId = 'foo';
+    o.publishSettings = buildPublishSettings();
     o.responderUri = 'foo';
     o.revisionId = 'foo';
     o.settings = buildFormSettings();
@@ -584,6 +585,7 @@ void checkForm(api.Form o) {
       o.linkedSheetId!,
       unittest.equals('foo'),
     );
+    checkPublishSettings(o.publishSettings!);
     unittest.expect(
       o.responderUri!,
       unittest.equals('foo'),
@@ -662,6 +664,7 @@ api.FormSettings buildFormSettings() {
   final o = api.FormSettings();
   buildCounterFormSettings++;
   if (buildCounterFormSettings < 3) {
+    o.emailCollectionType = 'foo';
     o.quizSettings = buildQuizSettings();
   }
   buildCounterFormSettings--;
@@ -671,6 +674,10 @@ api.FormSettings buildFormSettings() {
 void checkFormSettings(api.FormSettings o) {
   buildCounterFormSettings++;
   if (buildCounterFormSettings < 3) {
+    unittest.expect(
+      o.emailCollectionType!,
+      unittest.equals('foo'),
+    );
     checkQuizSettings(o.quizSettings!);
   }
   buildCounterFormSettings--;
@@ -1068,6 +1075,46 @@ void checkPageBreakItem(api.PageBreakItem o) {
   buildCounterPageBreakItem--;
 }
 
+core.int buildCounterPublishSettings = 0;
+api.PublishSettings buildPublishSettings() {
+  final o = api.PublishSettings();
+  buildCounterPublishSettings++;
+  if (buildCounterPublishSettings < 3) {
+    o.publishState = buildPublishState();
+  }
+  buildCounterPublishSettings--;
+  return o;
+}
+
+void checkPublishSettings(api.PublishSettings o) {
+  buildCounterPublishSettings++;
+  if (buildCounterPublishSettings < 3) {
+    checkPublishState(o.publishState!);
+  }
+  buildCounterPublishSettings--;
+}
+
+core.int buildCounterPublishState = 0;
+api.PublishState buildPublishState() {
+  final o = api.PublishState();
+  buildCounterPublishState++;
+  if (buildCounterPublishState < 3) {
+    o.isAcceptingResponses = true;
+    o.isPublished = true;
+  }
+  buildCounterPublishState--;
+  return o;
+}
+
+void checkPublishState(api.PublishState o) {
+  buildCounterPublishState++;
+  if (buildCounterPublishState < 3) {
+    unittest.expect(o.isAcceptingResponses!, unittest.isTrue);
+    unittest.expect(o.isPublished!, unittest.isTrue);
+  }
+  buildCounterPublishState--;
+}
+
 core.int buildCounterQuestion = 0;
 api.Question buildQuestion() {
   final o = api.Question();
@@ -1331,6 +1378,54 @@ void checkScaleQuestion(api.ScaleQuestion o) {
     );
   }
   buildCounterScaleQuestion--;
+}
+
+core.int buildCounterSetPublishSettingsRequest = 0;
+api.SetPublishSettingsRequest buildSetPublishSettingsRequest() {
+  final o = api.SetPublishSettingsRequest();
+  buildCounterSetPublishSettingsRequest++;
+  if (buildCounterSetPublishSettingsRequest < 3) {
+    o.publishSettings = buildPublishSettings();
+    o.updateMask = 'foo';
+  }
+  buildCounterSetPublishSettingsRequest--;
+  return o;
+}
+
+void checkSetPublishSettingsRequest(api.SetPublishSettingsRequest o) {
+  buildCounterSetPublishSettingsRequest++;
+  if (buildCounterSetPublishSettingsRequest < 3) {
+    checkPublishSettings(o.publishSettings!);
+    unittest.expect(
+      o.updateMask!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSetPublishSettingsRequest--;
+}
+
+core.int buildCounterSetPublishSettingsResponse = 0;
+api.SetPublishSettingsResponse buildSetPublishSettingsResponse() {
+  final o = api.SetPublishSettingsResponse();
+  buildCounterSetPublishSettingsResponse++;
+  if (buildCounterSetPublishSettingsResponse < 3) {
+    o.formId = 'foo';
+    o.publishSettings = buildPublishSettings();
+  }
+  buildCounterSetPublishSettingsResponse--;
+  return o;
+}
+
+void checkSetPublishSettingsResponse(api.SetPublishSettingsResponse o) {
+  buildCounterSetPublishSettingsResponse++;
+  if (buildCounterSetPublishSettingsResponse < 3) {
+    unittest.expect(
+      o.formId!,
+      unittest.equals('foo'),
+    );
+    checkPublishSettings(o.publishSettings!);
+  }
+  buildCounterSetPublishSettingsResponse--;
 }
 
 core.int buildCounterTextAnswer = 0;
@@ -2060,6 +2155,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PublishSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPublishSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PublishSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPublishSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-PublishState', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPublishState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PublishState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPublishState(od);
+    });
+  });
+
   unittest.group('obj-schema-Question', () {
     unittest.test('to-json--from-json', () async {
       final o = buildQuestion();
@@ -2157,6 +2272,26 @@ void main() {
       final od = api.ScaleQuestion.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkScaleQuestion(od);
+    });
+  });
+
+  unittest.group('obj-schema-SetPublishSettingsRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSetPublishSettingsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SetPublishSettingsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSetPublishSettingsRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-SetPublishSettingsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSetPublishSettingsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SetPublishSettingsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSetPublishSettingsResponse(od);
     });
   });
 
@@ -2386,6 +2521,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.FormsApi(mock).forms;
       final arg_request = buildForm();
+      final arg_unpublished = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
@@ -2423,6 +2559,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['unpublished']!.first,
+          unittest.equals('$arg_unpublished'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -2433,7 +2573,8 @@ void main() {
         final resp = convert.json.encode(buildForm());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.create(arg_request, $fields: arg_$fields);
+      final response = await res.create(arg_request,
+          unpublished: arg_unpublished, $fields: arg_$fields);
       checkForm(response as api.Form);
     });
 
@@ -2492,6 +2633,78 @@ void main() {
       }), true);
       final response = await res.get(arg_formId, $fields: arg_$fields);
       checkForm(response as api.Form);
+    });
+
+    unittest.test('method--setPublishSettings', () async {
+      final mock = HttpServerMock();
+      final res = api.FormsApi(mock).forms;
+      final arg_request = buildSetPublishSettingsRequest();
+      final arg_formId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SetPublishSettingsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetPublishSettingsRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals('v1/forms/'),
+        );
+        pathOffset += 9;
+        index = path.indexOf(':setPublishSettings', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_formId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 19),
+          unittest.equals(':setPublishSettings'),
+        );
+        pathOffset += 19;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildSetPublishSettingsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.setPublishSettings(arg_request, arg_formId,
+          $fields: arg_$fields);
+      checkSetPublishSettingsResponse(
+          response as api.SetPublishSettingsResponse);
     });
   });
 

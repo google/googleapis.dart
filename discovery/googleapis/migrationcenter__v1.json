@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241205",
+    "revision": "20250227",
     "rootUrl": "https://migrationcenter.googleapis.com/",
     "servicePath": "",
     "title": "Migration Center API",
@@ -382,12 +382,18 @@
                                             "enum": [
                                                 "ASSET_VIEW_UNSPECIFIED",
                                                 "ASSET_VIEW_BASIC",
-                                                "ASSET_VIEW_FULL"
+                                                "ASSET_VIEW_FULL",
+                                                "ASSET_VIEW_STANDARD",
+                                                "ASSET_VIEW_UI",
+                                                "ASSET_VIEW_LABELS"
                                             ],
                                             "enumDescriptions": [
                                                 "The asset view is not specified. The API displays the basic view by default.",
                                                 "The asset view includes only basic metadata of the asset.",
-                                                "The asset view includes all the metadata of an asset and performance data."
+                                                "The asset view includes all the metadata of an asset and performance data.",
+                                                "The asset view includes the standard metadata of an asset.",
+                                                "The asset view includes fields needed by UI.",
+                                                "The asset view includes asset name and labels."
                                             ],
                                             "location": "query",
                                             "type": "string"
@@ -443,12 +449,18 @@
                                             "enum": [
                                                 "ASSET_VIEW_UNSPECIFIED",
                                                 "ASSET_VIEW_BASIC",
-                                                "ASSET_VIEW_FULL"
+                                                "ASSET_VIEW_FULL",
+                                                "ASSET_VIEW_STANDARD",
+                                                "ASSET_VIEW_UI",
+                                                "ASSET_VIEW_LABELS"
                                             ],
                                             "enumDescriptions": [
                                                 "The asset view is not specified. The API displays the basic view by default.",
                                                 "The asset view includes only basic metadata of the asset.",
-                                                "The asset view includes all the metadata of an asset and performance data."
+                                                "The asset view includes all the metadata of an asset and performance data.",
+                                                "The asset view includes the standard metadata of an asset.",
+                                                "The asset view includes fields needed by UI.",
+                                                "The asset view includes asset name and labels."
                                             ],
                                             "location": "query",
                                             "type": "string"
@@ -1702,6 +1714,81 @@
                                 }
                             }
                         },
+                        "relations": {
+                            "methods": {
+                                "get": {
+                                    "description": "Gets the details of an relation.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/relations/{relationsId}",
+                                    "httpMethod": "GET",
+                                    "id": "migrationcenter.projects.locations.relations.get",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Name of the resource.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/relations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "response": {
+                                        "$ref": "Relation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "Lists all the relations in a given project and location.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/relations",
+                                    "httpMethod": "GET",
+                                    "id": "migrationcenter.projects.locations.relations.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "filter": {
+                                            "description": "Optional. Filtering results.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "orderBy": {
+                                            "description": "Optional. Field to sort by. See https://google.aip.dev/132#ordering for more details.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "Optional. A token identifying a page of results the server should return.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. Parent value for `ListRelationsRequest`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/relations",
+                                    "response": {
+                                        "$ref": "ListRelationsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        },
                         "reportConfigs": {
                             "methods": {
                                 "create": {
@@ -2729,6 +2816,12 @@
             },
             "type": "object"
         },
+        "AwsRds": {
+            "description": "Specific details for an AWS RDS database deployment.",
+            "id": "AwsRds",
+            "properties": {},
+            "type": "object"
+        },
         "AzureVmPlatformDetails": {
             "description": "Azure VM specific details.",
             "id": "AzureVmPlatformDetails",
@@ -3099,6 +3192,10 @@
                     "$ref": "DatabaseDeploymentDetailsAggregatedStats",
                     "description": "Output only. Aggregated stats for the database deployment.",
                     "readOnly": true
+                },
+                "awsRds": {
+                    "$ref": "AwsRds",
+                    "description": "Optional. Details of an AWS RDS instance."
                 },
                 "edition": {
                     "description": "Optional. The database deployment edition.",
@@ -3585,7 +3682,7 @@
                     "type": "string"
                 },
                 "mountPoint": {
-                    "description": "Mount pount (Linux/Windows) or drive letter (Windows).",
+                    "description": "Mount point (Linux/Windows) or drive letter (Windows).",
                     "type": "string"
                 },
                 "subPartitions": {
@@ -3598,6 +3695,29 @@
                 },
                 "uuid": {
                     "description": "Partition UUID.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DiskPartitionDetails": {
+            "description": "Disk partition details.",
+            "id": "DiskPartitionDetails",
+            "properties": {
+                "freeSpaceBytes": {
+                    "description": "Output only. Total free space of all partitions.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "partitions": {
+                    "$ref": "DiskPartitionList",
+                    "description": "Optional. List of partitions."
+                },
+                "totalCapacityBytes": {
+                    "description": "Output only. Total capacity of all partitions.",
+                    "format": "int64",
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -3622,17 +3742,17 @@
             "id": "DiskUsageSample",
             "properties": {
                 "averageIops": {
-                    "description": "Optional. Average IOPS sampled over a short window. Must be non-negative. Must be equal to the sum of read and write if one of them is positive. if both read and write are zero they are ignored.",
+                    "description": "Optional. Average IOPS sampled over a short window. Must be non-negative. If read or write are set, the sum of read and write will override the value of the average_iops.",
                     "format": "float",
                     "type": "number"
                 },
                 "averageReadIops": {
-                    "description": "Optional. Average read IOPS sampled over a short window. Must be non-negative.",
+                    "description": "Optional. Average read IOPS sampled over a short window. Must be non-negative. If both read and write are zero they are ignored.",
                     "format": "float",
                     "type": "number"
                 },
                 "averageWriteIops": {
-                    "description": "Optional. Average write IOPS sampled over a short window. Must be non-negative.",
+                    "description": "Optional. Average write IOPS sampled over a short window. Must be non-negative. If both read and write are zero they are ignored.",
                     "format": "float",
                     "type": "number"
                 }
@@ -4624,6 +4744,24 @@
             },
             "type": "object"
         },
+        "ListRelationsResponse": {
+            "description": "Response message for listing relations.",
+            "id": "ListRelationsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "A token identifying a page of results the server should return.",
+                    "type": "string"
+                },
+                "relations": {
+                    "description": "A list of relations.",
+                    "items": {
+                        "$ref": "Relation"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "ListReportConfigsResponse": {
             "description": "Response message for listing report configs.",
             "id": "ListReportConfigsResponse",
@@ -4816,6 +4954,10 @@
                     "description": "Machine creation time.",
                     "format": "google-datetime",
                     "type": "string"
+                },
+                "diskPartitions": {
+                    "$ref": "DiskPartitionDetails",
+                    "description": "Optional. Disk partitions details. Note: Partitions are not necessarily mounted on local disks and therefore might not have a one-to-one correspondence with local disks."
                 },
                 "disks": {
                     "$ref": "MachineDiskDetails",
@@ -5190,7 +5332,7 @@
                     ],
                     "enumDescriptions": [
                         "Unknown (default value).",
-                        "Staticly assigned IP.",
+                        "Statically assigned IP.",
                         "Dynamically assigned IP (DHCP)."
                     ],
                     "type": "string"
@@ -5702,6 +5844,48 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Relation": {
+            "description": "Message representing a relation between 2 resource.",
+            "id": "Relation",
+            "properties": {
+                "createTime": {
+                    "description": "Output only. The timestamp when the relation was created.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "dstAsset": {
+                    "description": "Output only. The destination asset name in the relation.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Output only. Identifier. The identifier of the relation.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "srcAsset": {
+                    "description": "Output only. The source asset name in the relation.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Optional. The type of the relation.",
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "LOGICAL_DATABASE",
+                        "DATABASE_DEPLOYMENT_HOSTING_SERVER"
+                    ],
+                    "enumDescriptions": [
+                        "Default value.",
+                        "DBDeployment -> Database",
+                        "A relation between a machine/VM and the database deployment it hosts."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"

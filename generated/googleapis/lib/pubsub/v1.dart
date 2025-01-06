@@ -2433,6 +2433,174 @@ class AwsKinesis {
       };
 }
 
+/// Ingestion settings for Amazon MSK.
+class AwsMsk {
+  /// AWS role ARN to be used for Federated Identity authentication with Amazon
+  /// MSK.
+  ///
+  /// Check the Pub/Sub docs for how to set up this role and the required
+  /// permissions that need to be attached to it.
+  ///
+  /// Required.
+  core.String? awsRoleArn;
+
+  /// The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+  ///
+  /// Required.
+  core.String? clusterArn;
+
+  /// The GCP service account to be used for Federated Identity authentication
+  /// with Amazon MSK (via a `AssumeRoleWithWebIdentity` call for the provided
+  /// role).
+  ///
+  /// The `aws_role_arn` must be set up with `accounts.google.com:sub` equals to
+  /// this service account number.
+  ///
+  /// Required.
+  core.String? gcpServiceAccount;
+
+  /// An output-only field that indicates the state of the Amazon MSK ingestion
+  /// source.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACTIVE" : Ingestion is active.
+  /// - "MSK_PERMISSION_DENIED" : Permission denied encountered while consuming
+  /// data from Amazon MSK.
+  /// - "PUBLISH_PERMISSION_DENIED" : Permission denied encountered while
+  /// publishing to the topic.
+  /// - "CLUSTER_NOT_FOUND" : The provided MSK cluster wasn't found.
+  /// - "TOPIC_NOT_FOUND" : The provided topic wasn't found.
+  core.String? state;
+
+  /// The name of the topic in the Amazon MSK cluster that Pub/Sub will import
+  /// from.
+  ///
+  /// Required.
+  core.String? topic;
+
+  AwsMsk({
+    this.awsRoleArn,
+    this.clusterArn,
+    this.gcpServiceAccount,
+    this.state,
+    this.topic,
+  });
+
+  AwsMsk.fromJson(core.Map json_)
+      : this(
+          awsRoleArn: json_['awsRoleArn'] as core.String?,
+          clusterArn: json_['clusterArn'] as core.String?,
+          gcpServiceAccount: json_['gcpServiceAccount'] as core.String?,
+          state: json_['state'] as core.String?,
+          topic: json_['topic'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (awsRoleArn != null) 'awsRoleArn': awsRoleArn!,
+        if (clusterArn != null) 'clusterArn': clusterArn!,
+        if (gcpServiceAccount != null) 'gcpServiceAccount': gcpServiceAccount!,
+        if (state != null) 'state': state!,
+        if (topic != null) 'topic': topic!,
+      };
+}
+
+/// Ingestion settings for Azure Event Hubs.
+class AzureEventHubs {
+  /// The client id of the Azure application that is being used to authenticate
+  /// Pub/Sub.
+  ///
+  /// Optional.
+  core.String? clientId;
+
+  /// The name of the Event Hub.
+  ///
+  /// Optional.
+  core.String? eventHub;
+
+  /// The GCP service account to be used for Federated Identity authentication.
+  ///
+  /// Optional.
+  core.String? gcpServiceAccount;
+
+  /// The name of the Event Hubs namespace.
+  ///
+  /// Optional.
+  core.String? namespace;
+
+  /// Name of the resource group within the azure subscription.
+  ///
+  /// Optional.
+  core.String? resourceGroup;
+
+  /// An output-only field that indicates the state of the Event Hubs ingestion
+  /// source.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACTIVE" : Ingestion is active.
+  /// - "EVENT_HUBS_PERMISSION_DENIED" : Permission denied encountered while
+  /// consuming data from Event Hubs. This can happen when `client_id`, or
+  /// `tenant_id` are invalid. Or the right permissions haven't been granted.
+  /// - "PUBLISH_PERMISSION_DENIED" : Permission denied encountered while
+  /// publishing to the topic.
+  /// - "NAMESPACE_NOT_FOUND" : The provided Event Hubs namespace couldn't be
+  /// found.
+  /// - "EVENT_HUB_NOT_FOUND" : The provided Event Hub couldn't be found.
+  /// - "SUBSCRIPTION_NOT_FOUND" : The provided Event Hubs subscription couldn't
+  /// be found.
+  /// - "RESOURCE_GROUP_NOT_FOUND" : The provided Event Hubs resource group
+  /// couldn't be found.
+  core.String? state;
+
+  /// The Azure subscription id.
+  ///
+  /// Optional.
+  core.String? subscriptionId;
+
+  /// The tenant id of the Azure application that is being used to authenticate
+  /// Pub/Sub.
+  ///
+  /// Optional.
+  core.String? tenantId;
+
+  AzureEventHubs({
+    this.clientId,
+    this.eventHub,
+    this.gcpServiceAccount,
+    this.namespace,
+    this.resourceGroup,
+    this.state,
+    this.subscriptionId,
+    this.tenantId,
+  });
+
+  AzureEventHubs.fromJson(core.Map json_)
+      : this(
+          clientId: json_['clientId'] as core.String?,
+          eventHub: json_['eventHub'] as core.String?,
+          gcpServiceAccount: json_['gcpServiceAccount'] as core.String?,
+          namespace: json_['namespace'] as core.String?,
+          resourceGroup: json_['resourceGroup'] as core.String?,
+          state: json_['state'] as core.String?,
+          subscriptionId: json_['subscriptionId'] as core.String?,
+          tenantId: json_['tenantId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (eventHub != null) 'eventHub': eventHub!,
+        if (gcpServiceAccount != null) 'gcpServiceAccount': gcpServiceAccount!,
+        if (namespace != null) 'namespace': namespace!,
+        if (resourceGroup != null) 'resourceGroup': resourceGroup!,
+        if (state != null) 'state': state!,
+        if (subscriptionId != null) 'subscriptionId': subscriptionId!,
+        if (tenantId != null) 'tenantId': tenantId!,
+      };
+}
+
 /// Configuration for a BigQuery subscription.
 typedef BigQueryConfig = $BigQueryConfig;
 
@@ -2701,7 +2869,7 @@ class CloudStorageConfig {
   /// created.
   ///
   /// Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the
-  /// subscription's acknowledgement deadline.
+  /// subscription's acknowledgment deadline.
   ///
   /// Optional.
   core.String? maxDuration;
@@ -2825,6 +2993,87 @@ class CommitSchemaRequest {
       };
 }
 
+/// Ingestion settings for Confluent Cloud.
+class ConfluentCloud {
+  /// The address of the bootstrap server.
+  ///
+  /// The format is url:port.
+  ///
+  /// Required.
+  core.String? bootstrapServer;
+
+  /// The id of the cluster.
+  ///
+  /// Required.
+  core.String? clusterId;
+
+  /// The GCP service account to be used for Federated Identity authentication
+  /// with `identity_pool_id`.
+  ///
+  /// Required.
+  core.String? gcpServiceAccount;
+
+  /// The id of the identity pool to be used for Federated Identity
+  /// authentication with Confluent Cloud.
+  ///
+  /// See
+  /// https://docs.confluent.io/cloud/current/security/authenticate/workload-identities/identity-providers/oauth/identity-pools.html#add-oauth-identity-pools.
+  ///
+  /// Required.
+  core.String? identityPoolId;
+
+  /// An output-only field that indicates the state of the Confluent Cloud
+  /// ingestion source.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACTIVE" : Ingestion is active.
+  /// - "CONFLUENT_CLOUD_PERMISSION_DENIED" : Permission denied encountered
+  /// while consuming data from Confluent Cloud.
+  /// - "PUBLISH_PERMISSION_DENIED" : Permission denied encountered while
+  /// publishing to the topic.
+  /// - "UNREACHABLE_BOOTSTRAP_SERVER" : The provided bootstrap server address
+  /// is unreachable.
+  /// - "CLUSTER_NOT_FOUND" : The provided cluster wasn't found.
+  /// - "TOPIC_NOT_FOUND" : The provided topic wasn't found.
+  core.String? state;
+
+  /// The name of the topic in the Confluent Cloud cluster that Pub/Sub will
+  /// import from.
+  ///
+  /// Required.
+  core.String? topic;
+
+  ConfluentCloud({
+    this.bootstrapServer,
+    this.clusterId,
+    this.gcpServiceAccount,
+    this.identityPoolId,
+    this.state,
+    this.topic,
+  });
+
+  ConfluentCloud.fromJson(core.Map json_)
+      : this(
+          bootstrapServer: json_['bootstrapServer'] as core.String?,
+          clusterId: json_['clusterId'] as core.String?,
+          gcpServiceAccount: json_['gcpServiceAccount'] as core.String?,
+          identityPoolId: json_['identityPoolId'] as core.String?,
+          state: json_['state'] as core.String?,
+          topic: json_['topic'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bootstrapServer != null) 'bootstrapServer': bootstrapServer!,
+        if (clusterId != null) 'clusterId': clusterId!,
+        if (gcpServiceAccount != null) 'gcpServiceAccount': gcpServiceAccount!,
+        if (identityPoolId != null) 'identityPoolId': identityPoolId!,
+        if (state != null) 'state': state!,
+        if (topic != null) 'topic': topic!,
+      };
+}
+
 /// Request for the `CreateSnapshot` method.
 class CreateSnapshotRequest {
   /// See
@@ -2920,10 +3169,25 @@ class IngestionDataSourceSettings {
   /// Optional.
   AwsKinesis? awsKinesis;
 
+  /// Amazon MSK.
+  ///
+  /// Optional.
+  AwsMsk? awsMsk;
+
+  /// Azure Event Hubs.
+  ///
+  /// Optional.
+  AzureEventHubs? azureEventHubs;
+
   /// Cloud Storage.
   ///
   /// Optional.
   CloudStorage? cloudStorage;
+
+  /// Confluent Cloud.
+  ///
+  /// Optional.
+  ConfluentCloud? confluentCloud;
 
   /// Platform Logs settings.
   ///
@@ -2934,7 +3198,10 @@ class IngestionDataSourceSettings {
 
   IngestionDataSourceSettings({
     this.awsKinesis,
+    this.awsMsk,
+    this.azureEventHubs,
     this.cloudStorage,
+    this.confluentCloud,
     this.platformLogsSettings,
   });
 
@@ -2944,9 +3211,21 @@ class IngestionDataSourceSettings {
               ? AwsKinesis.fromJson(
                   json_['awsKinesis'] as core.Map<core.String, core.dynamic>)
               : null,
+          awsMsk: json_.containsKey('awsMsk')
+              ? AwsMsk.fromJson(
+                  json_['awsMsk'] as core.Map<core.String, core.dynamic>)
+              : null,
+          azureEventHubs: json_.containsKey('azureEventHubs')
+              ? AzureEventHubs.fromJson(json_['azureEventHubs']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           cloudStorage: json_.containsKey('cloudStorage')
               ? CloudStorage.fromJson(
                   json_['cloudStorage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          confluentCloud: json_.containsKey('confluentCloud')
+              ? ConfluentCloud.fromJson(json_['confluentCloud']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           platformLogsSettings: json_.containsKey('platformLogsSettings')
               ? PlatformLogsSettings.fromJson(json_['platformLogsSettings']
@@ -2956,11 +3235,18 @@ class IngestionDataSourceSettings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (awsKinesis != null) 'awsKinesis': awsKinesis!,
+        if (awsMsk != null) 'awsMsk': awsMsk!,
+        if (azureEventHubs != null) 'azureEventHubs': azureEventHubs!,
         if (cloudStorage != null) 'cloudStorage': cloudStorage!,
+        if (confluentCloud != null) 'confluentCloud': confluentCloud!,
         if (platformLogsSettings != null)
           'platformLogsSettings': platformLogsSettings!,
       };
 }
+
+/// User-defined JavaScript function that can transform or filter a Pub/Sub
+/// message.
+typedef JavaScriptUDF = $JavaScriptUDF;
 
 /// Response for the `ListSchemaRevisions` method.
 class ListSchemaRevisionsResponse {
@@ -3228,6 +3514,44 @@ class MessageStoragePolicy {
         if (allowedPersistenceRegions != null)
           'allowedPersistenceRegions': allowedPersistenceRegions!,
         if (enforceInTransit != null) 'enforceInTransit': enforceInTransit!,
+      };
+}
+
+/// All supported message transforms types.
+class MessageTransform {
+  /// If set to true, the transform is enabled.
+  ///
+  /// If false, the transform is disabled and will not be applied to messages.
+  /// Defaults to `true`.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  /// JavaScript User Defined Function.
+  ///
+  /// If multiple JavaScriptUDF's are specified on a resource, each must have a
+  /// unique `function_name`.
+  ///
+  /// Optional.
+  JavaScriptUDF? javascriptUdf;
+
+  MessageTransform({
+    this.enabled,
+    this.javascriptUdf,
+  });
+
+  MessageTransform.fromJson(core.Map json_)
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+          javascriptUdf: json_.containsKey('javascriptUdf')
+              ? JavaScriptUDF.fromJson(
+                  json_['javascriptUdf'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (javascriptUdf != null) 'javascriptUdf': javascriptUdf!,
       };
 }
 
@@ -3732,7 +4056,7 @@ class ReceivedMessage {
 ///
 /// Retry delay will be exponential based on provided minimum and maximum
 /// backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. RetryPolicy
-/// will be triggered on NACKs or acknowledgement deadline exceeded events for a
+/// will be triggered on NACKs or acknowledgment deadline exceeded events for a
 /// given message. Retry Policy is implemented on a best effort basis. At times,
 /// the delay between consecutive deliveries may not match the configuration.
 /// That is, delay can be more or less than configured backoff.
@@ -4089,7 +4413,7 @@ class Subscription {
   /// If true, Pub/Sub provides the following guarantees for the delivery of a
   /// message with a given value of `message_id` on this subscription: * The
   /// message sent to a subscriber is guaranteed not to be resent before the
-  /// message's acknowledgement deadline expires.
+  /// message's acknowledgment deadline expires.
   ///
   /// * An acknowledged message will not be resent to a subscriber. Note that
   /// subscribers may still receive multiple copies of a message when
@@ -4148,6 +4472,14 @@ class Subscription {
   /// Optional.
   core.String? messageRetentionDuration;
 
+  /// Transforms to be applied to messages before they are delivered to
+  /// subscribers.
+  ///
+  /// Transforms are applied in the order specified.
+  ///
+  /// Optional.
+  core.List<MessageTransform>? messageTransforms;
+
   /// The name of the subscription.
   ///
   /// It must have the format
@@ -4183,8 +4515,8 @@ class Subscription {
   ///
   /// If not set, the default retry policy is applied. This generally implies
   /// that messages will be retried as soon as possible for healthy subscribers.
-  /// RetryPolicy will be triggered on NACKs or acknowledgement deadline
-  /// exceeded events for a given message.
+  /// RetryPolicy will be triggered on NACKs or acknowledgment deadline exceeded
+  /// events for a given message.
   ///
   /// Optional.
   RetryPolicy? retryPolicy;
@@ -4234,6 +4566,7 @@ class Subscription {
     this.filter,
     this.labels,
     this.messageRetentionDuration,
+    this.messageTransforms,
     this.name,
     this.pushConfig,
     this.retainAckedMessages,
@@ -4282,6 +4615,10 @@ class Subscription {
           ),
           messageRetentionDuration:
               json_['messageRetentionDuration'] as core.String?,
+          messageTransforms: (json_['messageTransforms'] as core.List?)
+              ?.map((value) => MessageTransform.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           name: json_['name'] as core.String?,
           pushConfig: json_.containsKey('pushConfig')
               ? PushConfig.fromJson(
@@ -4317,6 +4654,7 @@ class Subscription {
         if (labels != null) 'labels': labels!,
         if (messageRetentionDuration != null)
           'messageRetentionDuration': messageRetentionDuration!,
+        if (messageTransforms != null) 'messageTransforms': messageTransforms!,
         if (name != null) 'name': name!,
         if (pushConfig != null) 'pushConfig': pushConfig!,
         if (retainAckedMessages != null)
@@ -4409,6 +4747,13 @@ class Topic {
   /// Optional.
   MessageStoragePolicy? messageStoragePolicy;
 
+  /// Transforms to be applied to messages published to the topic.
+  ///
+  /// Transforms are applied in the order specified.
+  ///
+  /// Optional.
+  core.List<MessageTransform>? messageTransforms;
+
   /// The name of the topic.
   ///
   /// It must have the format `"projects/{project}/topics/{topic}"`. `{topic}`
@@ -4450,6 +4795,7 @@ class Topic {
     this.labels,
     this.messageRetentionDuration,
     this.messageStoragePolicy,
+    this.messageTransforms,
     this.name,
     this.satisfiesPzs,
     this.schemaSettings,
@@ -4478,6 +4824,10 @@ class Topic {
               ? MessageStoragePolicy.fromJson(json_['messageStoragePolicy']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          messageTransforms: (json_['messageTransforms'] as core.List?)
+              ?.map((value) => MessageTransform.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           name: json_['name'] as core.String?,
           satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           schemaSettings: json_.containsKey('schemaSettings')
@@ -4496,6 +4846,7 @@ class Topic {
           'messageRetentionDuration': messageRetentionDuration!,
         if (messageStoragePolicy != null)
           'messageStoragePolicy': messageStoragePolicy!,
+        if (messageTransforms != null) 'messageTransforms': messageTransforms!,
         if (name != null) 'name': name!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (schemaSettings != null) 'schemaSettings': schemaSettings!,

@@ -483,8 +483,8 @@ class ProjectsInstanceConfigsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// Request parameters:
   ///
@@ -676,8 +676,8 @@ class ProjectsInstanceConfigsSsdCachesOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// Request parameters:
   ///
@@ -1996,8 +1996,8 @@ class ProjectsInstancesBackupsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// Request parameters:
   ///
@@ -2270,6 +2270,49 @@ class ProjectsInstancesDatabasesResource {
 
   ProjectsInstancesDatabasesResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Adds split points to specified tables, indexes of a database.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [database] - Required. The database on whose tables/indexes split points
+  /// are to be added. Values are of the form `projects//instances//databases/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddSplitPointsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddSplitPointsResponse> addSplitPoints(
+    AddSplitPointsRequest request,
+    core.String database, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$database') + ':addSplitPoints';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AddSplitPointsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// `ChangeQuorum` is strictly restricted to databases that use dual-region
   /// instance configurations.
@@ -3434,8 +3477,8 @@ class ProjectsInstancesDatabasesOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// Request parameters:
   ///
@@ -3607,6 +3650,98 @@ class ProjectsInstancesDatabasesSessionsResource {
 
   ProjectsInstancesDatabasesSessionsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Handles a single message from the client and returns the result as a
+  /// stream.
+  ///
+  /// The server will interpret the message frame and respond with message
+  /// frames to the client.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The database session in which the adapter request is
+  /// processed.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+/sessions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AdaptMessageResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AdaptMessageResponse> adaptMessage(
+    AdaptMessageRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':adaptMessage';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AdaptMessageResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a new session to be used for requests made by the adapter.
+  ///
+  /// A session identifies a specific incarnation of a database resource and is
+  /// meant to be reused across many `AdaptMessage` calls.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The database in which the new session is created.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AdapterSession].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AdapterSession> adapter(
+    AdapterSession request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/sessions:adapter';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AdapterSession.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Creates multiple new sessions.
   ///
@@ -3961,7 +4096,9 @@ class ProjectsInstancesDatabasesSessionsResource {
   /// might return `ABORTED`. If this occurs, the application should restart the
   /// transaction from the beginning. See Transaction for more details. Larger
   /// result sets can be fetched in streaming fashion by calling
-  /// ExecuteStreamingSql instead.
+  /// ExecuteStreamingSql instead. The query string can be SQL or \[Graph Query
+  /// Language
+  /// (GQL)\](https://cloud.google.com/spanner/docs/reference/standard-sql/graph-intro).
   ///
   /// [request] - The metadata request object.
   ///
@@ -4007,7 +4144,9 @@ class ProjectsInstancesDatabasesSessionsResource {
   ///
   /// Unlike ExecuteSql, there is no limit on the size of the returned result
   /// set. However, no individual row in the result set can exceed 100 MiB, and
-  /// no column value can exceed 10 MiB.
+  /// no column value can exceed 10 MiB. The query string can be SQL or \[Graph
+  /// Query Language
+  /// (GQL)\](https://cloud.google.com/spanner/docs/reference/standard-sql/graph-intro).
   ///
   /// [request] - The metadata request object.
   ///
@@ -4805,8 +4944,8 @@ class ProjectsInstancesInstancePartitionsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// Request parameters:
   ///
@@ -4987,8 +5126,8 @@ class ProjectsInstancesOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// Request parameters:
   ///
@@ -5224,6 +5363,159 @@ class ScansResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
+
+/// Message sent by the client to the adapter.
+class AdaptMessageRequest {
+  /// Opaque request state passed by the client to the server.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? attachments;
+
+  /// Uninterpreted bytes from the underlying wire protocol.
+  ///
+  /// Optional.
+  core.String? payload;
+  core.List<core.int> get payloadAsBytes => convert.base64.decode(payload!);
+
+  set payloadAsBytes(core.List<core.int> bytes_) {
+    payload =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Identifier for the underlying wire protocol.
+  ///
+  /// Required.
+  core.String? protocol;
+
+  AdaptMessageRequest({
+    this.attachments,
+    this.payload,
+    this.protocol,
+  });
+
+  AdaptMessageRequest.fromJson(core.Map json_)
+      : this(
+          attachments:
+              (json_['attachments'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          payload: json_['payload'] as core.String?,
+          protocol: json_['protocol'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attachments != null) 'attachments': attachments!,
+        if (payload != null) 'payload': payload!,
+        if (protocol != null) 'protocol': protocol!,
+      };
+}
+
+/// Message sent by the adapter to the client.
+class AdaptMessageResponse {
+  /// Uninterpreted bytes from the underlying wire protocol.
+  ///
+  /// Optional.
+  core.String? payload;
+  core.List<core.int> get payloadAsBytes => convert.base64.decode(payload!);
+
+  set payloadAsBytes(core.List<core.int> bytes_) {
+    payload =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Opaque state updates to be applied by the client.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? stateUpdates;
+
+  AdaptMessageResponse({
+    this.payload,
+    this.stateUpdates,
+  });
+
+  AdaptMessageResponse.fromJson(core.Map json_)
+      : this(
+          payload: json_['payload'] as core.String?,
+          stateUpdates:
+              (json_['stateUpdates'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (payload != null) 'payload': payload!,
+        if (stateUpdates != null) 'stateUpdates': stateUpdates!,
+      };
+}
+
+/// A session in the Cloud Spanner Adapter API.
+class AdapterSession {
+  /// Identifier.
+  ///
+  /// The name of the session. This is always system-assigned.
+  core.String? name;
+
+  AdapterSession({
+    this.name,
+  });
+
+  AdapterSession.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
+/// The request for AddSplitPoints.
+class AddSplitPointsRequest {
+  /// A user-supplied tag associated with the split points.
+  ///
+  /// For example, "initial_data_load", "special_event_1". Defaults to
+  /// "CloudAddSplitPointsAPI" if not specified. The length of the tag must not
+  /// exceed 50 characters,else will be trimmed. Only valid UTF8 characters are
+  /// allowed.
+  ///
+  /// Optional.
+  core.String? initiator;
+
+  /// The split points to add.
+  ///
+  /// Required.
+  core.List<SplitPoints>? splitPoints;
+
+  AddSplitPointsRequest({
+    this.initiator,
+    this.splitPoints,
+  });
+
+  AddSplitPointsRequest.fromJson(core.Map json_)
+      : this(
+          initiator: json_['initiator'] as core.String?,
+          splitPoints: (json_['splitPoints'] as core.List?)
+              ?.map((value) => SplitPoints.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (initiator != null) 'initiator': initiator!,
+        if (splitPoints != null) 'splitPoints': splitPoints!,
+      };
+}
+
+/// The response for AddSplitPoints.
+typedef AddSplitPointsResponse = $Empty;
 
 /// AsymmetricAutoscalingOption specifies the scaling of replicas identified by
 /// the given selection.
@@ -5557,6 +5849,14 @@ class Backup {
   /// Output only.
   core.String? incrementalBackupChainId;
 
+  /// The instance partition(s) storing the backup.
+  ///
+  /// This is the same as the list of the instance partition(s) that the
+  /// database had footprint in at the backup's `version_time`.
+  ///
+  /// Output only.
+  core.List<BackupInstancePartition>? instancePartitions;
+
   /// The max allowed expiration time of the backup, with microseconds
   /// granularity.
   ///
@@ -5649,6 +5949,7 @@ class Backup {
     this.expireTime,
     this.freeableSizeBytes,
     this.incrementalBackupChainId,
+    this.instancePartitions,
     this.maxExpireTime,
     this.name,
     this.oldestVersionTime,
@@ -5680,6 +5981,10 @@ class Backup {
           freeableSizeBytes: json_['freeableSizeBytes'] as core.String?,
           incrementalBackupChainId:
               json_['incrementalBackupChainId'] as core.String?,
+          instancePartitions: (json_['instancePartitions'] as core.List?)
+              ?.map((value) => BackupInstancePartition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           maxExpireTime: json_['maxExpireTime'] as core.String?,
           name: json_['name'] as core.String?,
           oldestVersionTime: json_['oldestVersionTime'] as core.String?,
@@ -5708,6 +6013,8 @@ class Backup {
         if (freeableSizeBytes != null) 'freeableSizeBytes': freeableSizeBytes!,
         if (incrementalBackupChainId != null)
           'incrementalBackupChainId': incrementalBackupChainId!,
+        if (instancePartitions != null)
+          'instancePartitions': instancePartitions!,
         if (maxExpireTime != null) 'maxExpireTime': maxExpireTime!,
         if (name != null) 'name': name!,
         if (oldestVersionTime != null) 'oldestVersionTime': oldestVersionTime!,
@@ -5762,12 +6069,33 @@ class BackupInfo {
       };
 }
 
+/// Instance partition information for the backup.
+class BackupInstancePartition {
+  /// A unique identifier for the instance partition.
+  ///
+  /// Values are of the form `projects//instances//instancePartitions/`
+  core.String? instancePartition;
+
+  BackupInstancePartition({
+    this.instancePartition,
+  });
+
+  BackupInstancePartition.fromJson(core.Map json_)
+      : this(
+          instancePartition: json_['instancePartition'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instancePartition != null) 'instancePartition': instancePartition!,
+      };
+}
+
 /// BackupSchedule expresses the automated backup creation specification for a
 /// Spanner database.
 class BackupSchedule {
-  /// The encryption configuration that will be used to encrypt the backup.
+  /// The encryption configuration that is used to encrypt the backup.
   ///
-  /// If this field is not specified, the backup will use the same encryption
+  /// If this field is not specified, the backup uses the same encryption
   /// configuration as the database.
   ///
   /// Optional.
@@ -6940,13 +7268,13 @@ class CreateSessionRequest {
 }
 
 /// CrontabSpec can be used to specify the version time and frequency at which
-/// the backup should be created.
+/// the backup is created.
 class CrontabSpec {
-  /// Schedule backups will contain an externally consistent copy of the
-  /// database at the version time specified in `schedule_spec.cron_spec`.
+  /// Scheduled backups contain an externally consistent copy of the database at
+  /// the version time specified in `schedule_spec.cron_spec`.
   ///
-  /// However, Spanner may not initiate the creation of the scheduled backups at
-  /// that version time. Spanner will initiate the creation of scheduled backups
+  /// However, Spanner might not initiate the creation of the scheduled backups
+  /// at that version time. Spanner initiates the creation of scheduled backups
   /// within the time window bounded by the version_time specified in
   /// `schedule_spec.cron_spec` and version_time + `creation_window`.
   ///
@@ -6956,22 +7284,24 @@ class CrontabSpec {
   /// Textual representation of the crontab.
   ///
   /// User can customize the backup frequency and the backup version time using
-  /// the cron expression. The version time must be in UTC timzeone. The backup
+  /// the cron expression. The version time must be in UTC timezone. The backup
   /// will contain an externally consistent copy of the database at the version
-  /// time. Allowed frequencies are 12 hour, 1 day, 1 week and 1 month. Examples
-  /// of valid cron specifications: * `0 2/12 * * * ` : every 12 hours at (2,
-  /// 14) hours past midnight in UTC. * `0 2,14 * * * ` : every 12 hours at
-  /// (2,14) hours past midnight in UTC. * `0 2 * * * ` : once a day at 2 past
-  /// midnight in UTC. * `0 2 * * 0 ` : once a week every Sunday at 2 past
-  /// midnight in UTC. * `0 2 8 * * ` : once a month on 8th day at 2 past
-  /// midnight in UTC.
+  /// time. Full backups must be scheduled a minimum of 12 hours apart and
+  /// incremental backups must be scheduled a minimum of 4 hours apart. Examples
+  /// of valid cron specifications: * `0 2/12 * * *` : every 12 hours at (2, 14)
+  /// hours past midnight in UTC. * `0 2,14 * * *` : every 12 hours at (2, 14)
+  /// hours past midnight in UTC. * `0 * / 4 * * *` : (incremental backups only)
+  /// every 4 hours at (0, 4, 8, 12, 16, 20) hours past midnight in UTC. * `0 2
+  /// * * *` : once a day at 2 past midnight in UTC. * `0 2 * * 0` : once a week
+  /// every Sunday at 2 past midnight in UTC. * `0 2 8 * *` : once a month on
+  /// 8th day at 2 past midnight in UTC.
   ///
   /// Required.
   core.String? text;
 
   /// The time zone of the times in `CrontabSpec.text`.
   ///
-  /// Currently only UTC is supported.
+  /// Currently, only UTC is supported.
   ///
   /// Output only.
   core.String? timeZone;
@@ -7522,6 +7852,19 @@ class ExcludeReplicas {
 
 /// The request for ExecuteBatchDml.
 class ExecuteBatchDmlRequest {
+  /// If set to true, this request marks the end of the transaction.
+  ///
+  /// The transaction should be committed or aborted after these statements
+  /// execute, and attempts to execute any other requests against this
+  /// transaction (including reads and queries) will be rejected. Setting this
+  /// option may cause some error reporting to be deferred until commit time
+  /// (e.g. validation of unique constraints). Given this, successful execution
+  /// of statements should not be assumed until a subsequent Commit call
+  /// completes successfully.
+  ///
+  /// Optional.
+  core.bool? lastStatements;
+
   /// Common options for this request.
   RequestOptions? requestOptions;
 
@@ -7557,6 +7900,7 @@ class ExecuteBatchDmlRequest {
   TransactionSelector? transaction;
 
   ExecuteBatchDmlRequest({
+    this.lastStatements,
     this.requestOptions,
     this.seqno,
     this.statements,
@@ -7565,6 +7909,7 @@ class ExecuteBatchDmlRequest {
 
   ExecuteBatchDmlRequest.fromJson(core.Map json_)
       : this(
+          lastStatements: json_['lastStatements'] as core.bool?,
           requestOptions: json_.containsKey('requestOptions')
               ? RequestOptions.fromJson(json_['requestOptions']
                   as core.Map<core.String, core.dynamic>)
@@ -7581,6 +7926,7 @@ class ExecuteBatchDmlRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (lastStatements != null) 'lastStatements': lastStatements!,
         if (requestOptions != null) 'requestOptions': requestOptions!,
         if (seqno != null) 'seqno': seqno!,
         if (statements != null) 'statements': statements!,
@@ -7669,6 +8015,19 @@ class ExecuteSqlRequest {
 
   /// Directed read options for this request.
   DirectedReadOptions? directedReadOptions;
+
+  /// If set to true, this statement marks the end of the transaction.
+  ///
+  /// The transaction should be committed or aborted after this statement
+  /// executes, and attempts to execute any other requests against this
+  /// transaction (including reads and queries) will be rejected. For DML
+  /// statements, setting this option may cause some error reporting to be
+  /// deferred until commit time (e.g. validation of unique constraints). Given
+  /// this, successful execution of a DML statement should not be assumed until
+  /// a subsequent Commit call completes successfully.
+  ///
+  /// Optional.
+  core.bool? lastStatement;
 
   /// It is not always possible for Cloud Spanner to infer the right SQL type
   /// from a JSON value.
@@ -7779,6 +8138,7 @@ class ExecuteSqlRequest {
   ExecuteSqlRequest({
     this.dataBoostEnabled,
     this.directedReadOptions,
+    this.lastStatement,
     this.paramTypes,
     this.params,
     this.partitionToken,
@@ -7798,6 +8158,7 @@ class ExecuteSqlRequest {
               ? DirectedReadOptions.fromJson(json_['directedReadOptions']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          lastStatement: json_['lastStatement'] as core.bool?,
           paramTypes:
               (json_['paramTypes'] as core.Map<core.String, core.dynamic>?)
                   ?.map(
@@ -7832,6 +8193,7 @@ class ExecuteSqlRequest {
         if (dataBoostEnabled != null) 'dataBoostEnabled': dataBoostEnabled!,
         if (directedReadOptions != null)
           'directedReadOptions': directedReadOptions!,
+        if (lastStatement != null) 'lastStatement': lastStatement!,
         if (paramTypes != null) 'paramTypes': paramTypes!,
         if (params != null) 'params': params!,
         if (partitionToken != null) 'partitionToken': partitionToken!,
@@ -8186,25 +8548,27 @@ class Instance {
   /// Output only.
   core.String? createTime;
 
-  /// Controls the default backup behavior for new databases within the
+  /// Controls the default backup schedule behavior for new databases within the
   /// instance.
   ///
-  /// Note that `AUTOMATIC` is not permitted for free instances, as backups and
-  /// backup schedules are not allowed for free instances. In the `GetInstance`
-  /// or `ListInstances` response, if the value of default_backup_schedule_type
-  /// is unset or NONE, no default backup schedule will be created for new
-  /// databases within the instance.
+  /// By default, a backup schedule is created automatically when a new database
+  /// is created in a new instance. Note that the `AUTOMATIC` value isn't
+  /// permitted for free instances, as backups and backup schedules aren't
+  /// supported for free instances. In the `GetInstance` or `ListInstances`
+  /// response, if the value of `default_backup_schedule_type` isn't set, or set
+  /// to `NONE`, Spanner doesn't create a default backup schedule for new
+  /// databases in the instance.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "DEFAULT_BACKUP_SCHEDULE_TYPE_UNSPECIFIED" : Not specified.
-  /// - "NONE" : No default backup schedule will be created automatically on
-  /// creation of a database within the instance.
-  /// - "AUTOMATIC" : A default backup schedule will be created automatically on
-  /// creation of a database within the instance. Once created, the default
-  /// backup schedule can be edited or deleted just like any other backup
-  /// schedule. Currently, the default backup schedule creates a full backup
-  /// every 24 hours and retains the backup for a period of 7 days.
+  /// - "NONE" : A default backup schedule isn't created automatically when a
+  /// new database is created in the instance.
+  /// - "AUTOMATIC" : A default backup schedule is created automatically when a
+  /// new database is created in the instance. The default backup schedule
+  /// creates a full backup every 24 hours. These full backups are retained for
+  /// 7 days. You can edit or delete the default backup schedule once it's
+  /// created.
   core.String? defaultBackupScheduleType;
 
   /// The descriptive name for this instance as it appears in UIs.
@@ -8280,7 +8644,10 @@ class Instance {
   /// the target number of nodes allocated to the instance. If autoscaling is
   /// enabled, `node_count` is treated as an `OUTPUT_ONLY` field and reflects
   /// the current number of nodes allocated to the instance. This might be zero
-  /// in API responses for instances that are not yet in the `READY` state. For
+  /// in API responses for instances that are not yet in the `READY` state. If
+  /// the instance has varying node count across replicas (achieved by setting
+  /// `asymmetric_autoscaling_options` in the autoscaling configuration), the
+  /// `node_count` set here is the maximum node count across all replicas. For
   /// more information, see
   /// [Compute capacity, nodes, and processing units](https://cloud.google.com/spanner/docs/compute-capacity).
   core.int? nodeCount;
@@ -8293,7 +8660,11 @@ class Instance {
   /// If autoscaling is enabled, `processing_units` is treated as an
   /// `OUTPUT_ONLY` field and reflects the current number of processing units
   /// allocated to the instance. This might be zero in API responses for
-  /// instances that are not yet in the `READY` state. For more information, see
+  /// instances that are not yet in the `READY` state. If the instance has
+  /// varying processing units per replica (achieved by setting
+  /// `asymmetric_autoscaling_options` in the autoscaling configuration), the
+  /// `processing_units` set here is the maximum processing units across all
+  /// replicas. For more information, see
   /// [Compute capacity, nodes and processing units](https://cloud.google.com/spanner/docs/compute-capacity).
   core.int? processingUnits;
 
@@ -8790,6 +9161,32 @@ class InstanceReplicaSelection {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (location != null) 'location': location!,
+      };
+}
+
+/// A split key.
+class Key {
+  /// The column values making up the split key.
+  ///
+  /// Required.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Object?>? keyParts;
+
+  Key({
+    this.keyParts,
+  });
+
+  Key.fromJson(core.Map json_)
+      : this(
+          keyParts: json_.containsKey('keyParts')
+              ? json_['keyParts'] as core.List
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyParts != null) 'keyParts': keyParts!,
       };
 }
 
@@ -10725,7 +11122,7 @@ class QueryPlan {
   /// PlanNode's `id` corresponds to its index in `plan_nodes`.
   core.List<PlanNode>? planNodes;
 
-  /// The advices/recommendations for a query.
+  /// The advise/recommendations for a query.
   ///
   /// Currently this field will be serving index recommendations for a query.
   ///
@@ -11855,7 +12252,7 @@ class Session {
   ///
   /// Use a multiplexed session for multiple, concurrent read-only operations.
   /// Don't use them for read-write transactions, partitioned reads, or
-  /// partitioned queries. Use CreateSession to create multiplexed sessions.
+  /// partitioned queries. Use `sessions.create` to create multiplexed sessions.
   /// Don't use BatchCreateSessions to create a multiplexed session. You can't
   /// delete or list multiplexed sessions.
   ///
@@ -11994,6 +12391,56 @@ class SingleRegionQuorum {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (servingLocation != null) 'servingLocation': servingLocation!,
+      };
+}
+
+/// The split points of a table/index.
+class SplitPoints {
+  /// The expiration timestamp of the split points.
+  ///
+  /// A timestamp in the past means immediate expiration. The maximum value can
+  /// be 30 days in the future. Defaults to 10 days in the future if not
+  /// specified.
+  ///
+  /// Optional.
+  core.String? expireTime;
+
+  /// The index to split.
+  ///
+  /// If specified, the `table` field must refer to the index's base table.
+  core.String? index;
+
+  /// The list of split keys, i.e., the split boundaries.
+  ///
+  /// Required.
+  core.List<Key>? keys;
+
+  /// The table to split.
+  core.String? table;
+
+  SplitPoints({
+    this.expireTime,
+    this.index,
+    this.keys,
+    this.table,
+  });
+
+  SplitPoints.fromJson(core.Map json_)
+      : this(
+          expireTime: json_['expireTime'] as core.String?,
+          index: json_['index'] as core.String?,
+          keys: (json_['keys'] as core.List?)
+              ?.map((value) =>
+                  Key.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          table: json_['table'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (index != null) 'index': index!,
+        if (keys != null) 'keys': keys!,
+        if (table != null) 'table': table!,
       };
 }
 
@@ -12580,6 +13027,10 @@ class Type {
   /// of this type should be treated as PostgreSQL JSONB values. Currently this
   /// annotation is always needed for JSON when a client interacts with
   /// PostgreSQL-enabled Spanner databases.
+  /// - "PG_OID" : PostgreSQL compatible OID type. This annotation can be used
+  /// by a client interacting with PostgreSQL-enabled Spanner database to
+  /// specify that a value should be treated using the semantics of the OID
+  /// type.
   core.String? typeAnnotation;
 
   Type({

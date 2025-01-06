@@ -1778,7 +1778,7 @@ class GoogleCloudRecaptchaenterpriseV1Event {
   /// - "ENABLED" : Enable Fraud Prevention for this assessment, if Fraud
   /// Prevention is enabled in the Google Cloud console.
   /// - "DISABLED" : Disable Fraud Prevention for this assessment, regardless of
-  /// Google Cloud console settings.
+  /// the Google Cloud console settings.
   core.String? fraudPrevention;
 
   /// Deprecated: use `user_info.account_id` instead.
@@ -1806,8 +1806,19 @@ class GoogleCloudRecaptchaenterpriseV1Event {
 
   /// JA3 fingerprint for SSL clients.
   ///
+  /// To learn how to compute this fingerprint, please refer to
+  /// https://github.com/salesforce/ja3.
+  ///
   /// Optional.
   core.String? ja3;
+
+  /// JA4 fingerprint for SSL clients.
+  ///
+  /// To learn how to compute this fingerprint, please refer to
+  /// https://github.com/FoxIO-LLC/ja4.
+  ///
+  /// Optional.
+  core.String? ja4;
 
   /// The URI resource the user requested that triggered an assessment.
   ///
@@ -1872,6 +1883,7 @@ class GoogleCloudRecaptchaenterpriseV1Event {
     this.hashedAccountId,
     this.headers,
     this.ja3,
+    this.ja4,
     this.requestedUri,
     this.siteKey,
     this.token,
@@ -1894,6 +1906,7 @@ class GoogleCloudRecaptchaenterpriseV1Event {
               ?.map((value) => value as core.String)
               .toList(),
           ja3: json_['ja3'] as core.String?,
+          ja4: json_['ja4'] as core.String?,
           requestedUri: json_['requestedUri'] as core.String?,
           siteKey: json_['siteKey'] as core.String?,
           token: json_['token'] as core.String?,
@@ -1920,6 +1933,7 @@ class GoogleCloudRecaptchaenterpriseV1Event {
         if (hashedAccountId != null) 'hashedAccountId': hashedAccountId!,
         if (headers != null) 'headers': headers!,
         if (ja3 != null) 'ja3': ja3!,
+        if (ja4 != null) 'ja4': ja4!,
         if (requestedUri != null) 'requestedUri': requestedUri!,
         if (siteKey != null) 'siteKey': siteKey!,
         if (token != null) 'token': token!,
@@ -2847,7 +2861,8 @@ class GoogleCloudRecaptchaenterpriseV1Metrics {
   /// All Key types should have score-based data.
   core.List<GoogleCloudRecaptchaenterpriseV1ScoreMetrics>? scoreMetrics;
 
-  /// Inclusive start time aligned to a day (UTC).
+  /// Inclusive start time aligned to a day in the America/Los_Angeles (Pacific)
+  /// timezone.
   core.String? startTime;
 
   GoogleCloudRecaptchaenterpriseV1Metrics({

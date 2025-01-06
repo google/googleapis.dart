@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240508",
+    "revision": "20250121",
     "rootUrl": "https://webfonts.googleapis.com/",
     "servicePath": "",
     "title": "Web Fonts Developer API",
@@ -122,6 +122,11 @@
                             ],
                             "location": "query",
                             "repeated": true,
+                            "type": "string"
+                        },
+                        "category": {
+                            "description": "Filters by Webfont.category, if category is found in Webfont.categories. If not set, returns all families.",
+                            "location": "query",
                             "type": "string"
                         },
                         "family": {

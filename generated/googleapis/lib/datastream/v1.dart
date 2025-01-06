@@ -1764,6 +1764,9 @@ class BackfillAllStrategy {
   /// PostgreSQL data source objects to avoid backfilling.
   PostgresqlRdbms? postgresqlExcludedObjects;
 
+  /// Salesforce data source objects to avoid backfilling
+  SalesforceOrg? salesforceExcludedObjects;
+
   /// SQLServer data source objects to avoid backfilling
   SqlServerRdbms? sqlServerExcludedObjects;
 
@@ -1771,6 +1774,7 @@ class BackfillAllStrategy {
     this.mysqlExcludedObjects,
     this.oracleExcludedObjects,
     this.postgresqlExcludedObjects,
+    this.salesforceExcludedObjects,
     this.sqlServerExcludedObjects,
   });
 
@@ -1789,6 +1793,11 @@ class BackfillAllStrategy {
                   ? PostgresqlRdbms.fromJson(json_['postgresqlExcludedObjects']
                       as core.Map<core.String, core.dynamic>)
                   : null,
+          salesforceExcludedObjects:
+              json_.containsKey('salesforceExcludedObjects')
+                  ? SalesforceOrg.fromJson(json_['salesforceExcludedObjects']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
           sqlServerExcludedObjects:
               json_.containsKey('sqlServerExcludedObjects')
                   ? SqlServerRdbms.fromJson(json_['sqlServerExcludedObjects']
@@ -1803,6 +1812,8 @@ class BackfillAllStrategy {
           'oracleExcludedObjects': oracleExcludedObjects!,
         if (postgresqlExcludedObjects != null)
           'postgresqlExcludedObjects': postgresqlExcludedObjects!,
+        if (salesforceExcludedObjects != null)
+          'salesforceExcludedObjects': salesforceExcludedObjects!,
         if (sqlServerExcludedObjects != null)
           'sqlServerExcludedObjects': sqlServerExcludedObjects!,
       };
@@ -1889,6 +1900,11 @@ class BigQueryDestinationConfig {
   /// Append only mode
   AppendOnly? appendOnly;
 
+  /// Big Lake Managed Tables (BLMT) configuration.
+  ///
+  /// Optional.
+  BlmtConfig? blmtConfig;
+
   /// The guaranteed data freshness (in seconds) when querying tables created by
   /// the stream.
   ///
@@ -1908,6 +1924,7 @@ class BigQueryDestinationConfig {
 
   BigQueryDestinationConfig({
     this.appendOnly,
+    this.blmtConfig,
     this.dataFreshness,
     this.merge,
     this.singleTargetDataset,
@@ -1919,6 +1936,10 @@ class BigQueryDestinationConfig {
           appendOnly: json_.containsKey('appendOnly')
               ? AppendOnly.fromJson(
                   json_['appendOnly'] as core.Map<core.String, core.dynamic>)
+              : null,
+          blmtConfig: json_.containsKey('blmtConfig')
+              ? BlmtConfig.fromJson(
+                  json_['blmtConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           dataFreshness: json_['dataFreshness'] as core.String?,
           merge: json_.containsKey('merge')
@@ -1938,6 +1959,7 @@ class BigQueryDestinationConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appendOnly != null) 'appendOnly': appendOnly!,
+        if (blmtConfig != null) 'blmtConfig': blmtConfig!,
         if (dataFreshness != null) 'dataFreshness': dataFreshness!,
         if (merge != null) 'merge': merge!,
         if (singleTargetDataset != null)
@@ -1985,6 +2007,65 @@ class BinaryLogParser {
 
 /// Use Binary log position based replication.
 typedef BinaryLogPosition = $Empty;
+
+/// The configuration for BLMT.
+class BlmtConfig {
+  /// The Cloud Storage bucket name.
+  ///
+  /// Required.
+  core.String? bucket;
+
+  /// The bigquery connection.
+  ///
+  /// Format: `{project}.{location}.{name}`
+  ///
+  /// Required.
+  core.String? connectionName;
+
+  /// The file format.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "FILE_FORMAT_UNSPECIFIED" : Default value.
+  /// - "PARQUET" : Parquet file format.
+  core.String? fileFormat;
+
+  /// The root path inside the Cloud Storage bucket.
+  core.String? rootPath;
+
+  /// The table format.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TABLE_FORMAT_UNSPECIFIED" : Default value.
+  /// - "ICEBERG" : Iceberg table format.
+  core.String? tableFormat;
+
+  BlmtConfig({
+    this.bucket,
+    this.connectionName,
+    this.fileFormat,
+    this.rootPath,
+    this.tableFormat,
+  });
+
+  BlmtConfig.fromJson(core.Map json_)
+      : this(
+          bucket: json_['bucket'] as core.String?,
+          connectionName: json_['connectionName'] as core.String?,
+          fileFormat: json_['fileFormat'] as core.String?,
+          rootPath: json_['rootPath'] as core.String?,
+          tableFormat: json_['tableFormat'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+        if (connectionName != null) 'connectionName': connectionName!,
+        if (fileFormat != null) 'fileFormat': fileFormat!,
+        if (rootPath != null) 'rootPath': rootPath!,
+        if (tableFormat != null) 'tableFormat': tableFormat!,
+      };
+}
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
@@ -2085,6 +2166,19 @@ class ConnectionProfile {
   /// Private connectivity.
   PrivateConnectivity? privateConnectivity;
 
+  /// Salesforce Connection Profile configuration.
+  SalesforceProfile? salesforceProfile;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// SQLServer Connection Profile configuration.
   SqlServerProfile? sqlServerProfile;
 
@@ -2108,6 +2202,9 @@ class ConnectionProfile {
     this.oracleProfile,
     this.postgresqlProfile,
     this.privateConnectivity,
+    this.salesforceProfile,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.sqlServerProfile,
     this.staticServiceIpConnectivity,
     this.updateTime,
@@ -2154,6 +2251,12 @@ class ConnectionProfile {
               ? PrivateConnectivity.fromJson(json_['privateConnectivity']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          salesforceProfile: json_.containsKey('salesforceProfile')
+              ? SalesforceProfile.fromJson(json_['salesforceProfile']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           sqlServerProfile: json_.containsKey('sqlServerProfile')
               ? SqlServerProfile.fromJson(json_['sqlServerProfile']
                   as core.Map<core.String, core.dynamic>)
@@ -2181,6 +2284,9 @@ class ConnectionProfile {
         if (postgresqlProfile != null) 'postgresqlProfile': postgresqlProfile!,
         if (privateConnectivity != null)
           'privateConnectivity': privateConnectivity!,
+        if (salesforceProfile != null) 'salesforceProfile': salesforceProfile!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (sqlServerProfile != null) 'sqlServerProfile': sqlServerProfile!,
         if (staticServiceIpConnectivity != null)
           'staticServiceIpConnectivity': staticServiceIpConnectivity!,
@@ -2997,6 +3103,27 @@ class MysqlDatabase {
       };
 }
 
+/// MySQL GTID position
+class MysqlGtidPosition {
+  /// The gtid set to start replication from.
+  ///
+  /// Required.
+  core.String? gtidSet;
+
+  MysqlGtidPosition({
+    this.gtidSet,
+  });
+
+  MysqlGtidPosition.fromJson(core.Map json_)
+      : this(
+          gtidSet: json_['gtidSet'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gtidSet != null) 'gtidSet': gtidSet!,
+      };
+}
+
 /// MySQL log position
 class MysqlLogPosition {
   /// The binary log file name.
@@ -3058,8 +3185,6 @@ class MysqlObjectIdentifier {
 }
 
 /// MySQL database profile.
-///
-/// Next ID: 7.
 class MysqlProfile {
   /// Hostname for the MySQL connection.
   ///
@@ -3224,6 +3349,8 @@ class MysqlSslConfig {
   /// PEM-encoded certificate that will be used by the replica to authenticate
   /// against the source database server. If this field is used then the
   /// 'client_key' and the 'ca_certificate' fields are mandatory.
+  ///
+  /// Optional.
   core.String? clientCertificate;
 
   /// Indicates whether the client_certificate field is set.
@@ -3235,7 +3362,10 @@ class MysqlSslConfig {
   ///
   /// PEM-encoded private key associated with the Client Certificate. If this
   /// field is used then the 'client_certificate' and the 'ca_certificate'
-  /// fields are mandatory.
+  /// fields are mandatory. Mutually exclusive with the
+  /// `secret_manager_stored_client_key` field.
+  ///
+  /// Optional.
   core.String? clientKey;
 
   /// Indicates whether the client_key field is set.
@@ -3307,6 +3437,50 @@ class MysqlTable {
 /// CDC strategy to resume replication from the next available position in the
 /// source.
 typedef NextAvailableStartPosition = $Empty;
+
+/// OAuth2 Client Credentials.
+class Oauth2ClientCredentials {
+  /// Client ID for Salesforce OAuth2 Client Credentials.
+  ///
+  /// Required.
+  core.String? clientId;
+
+  /// Client secret for Salesforce OAuth2 Client Credentials.
+  ///
+  /// Mutually exclusive with the `secret_manager_stored_client_secret` field.
+  ///
+  /// Optional.
+  core.String? clientSecret;
+
+  /// A reference to a Secret Manager resource name storing the Salesforce
+  /// OAuth2 client_secret.
+  ///
+  /// Mutually exclusive with the `client_secret` field.
+  ///
+  /// Optional.
+  core.String? secretManagerStoredClientSecret;
+
+  Oauth2ClientCredentials({
+    this.clientId,
+    this.clientSecret,
+    this.secretManagerStoredClientSecret,
+  });
+
+  Oauth2ClientCredentials.fromJson(core.Map json_)
+      : this(
+          clientId: json_['clientId'] as core.String?,
+          clientSecret: json_['clientSecret'] as core.String?,
+          secretManagerStoredClientSecret:
+              json_['secretManagerStoredClientSecret'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (clientSecret != null) 'clientSecret': clientSecret!,
+        if (secretManagerStoredClientSecret != null)
+          'secretManagerStoredClientSecret': secretManagerStoredClientSecret!,
+      };
+}
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -3385,8 +3559,6 @@ class Operation {
 }
 
 /// Configuration for Oracle Automatic Storage Management (ASM) connection.
-///
-/// .
 class OracleAsmConfig {
   /// ASM service name for the Oracle ASM connection.
   ///
@@ -3540,8 +3712,6 @@ class OracleColumn {
 typedef OracleObjectIdentifier = $ObjectIdentifier;
 
 /// Oracle database profile.
-///
-/// Next ID: 10.
 class OracleProfile {
   /// Connection string attributes
   core.Map<core.String, core.String>? connectionAttributes;
@@ -3951,6 +4121,16 @@ class PostgresqlProfile {
   /// Port for the PostgreSQL connection, default value is 5432.
   core.int? port;
 
+  /// SSL configuration for the PostgreSQL connection.
+  ///
+  /// In case PostgresqlSslConfig is not set, the connection will use the
+  /// default SSL mode, which is `prefer` (i.e. this mode will only use
+  /// encryption if enabled from database side, otherwise will use unencrypted
+  /// communication)
+  ///
+  /// Optional.
+  PostgresqlSslConfig? sslConfig;
+
   /// Username for the PostgreSQL connection.
   ///
   /// Required.
@@ -3961,6 +4141,7 @@ class PostgresqlProfile {
     this.hostname,
     this.password,
     this.port,
+    this.sslConfig,
     this.username,
   });
 
@@ -3970,6 +4151,10 @@ class PostgresqlProfile {
           hostname: json_['hostname'] as core.String?,
           password: json_['password'] as core.String?,
           port: json_['port'] as core.int?,
+          sslConfig: json_.containsKey('sslConfig')
+              ? PostgresqlSslConfig.fromJson(
+                  json_['sslConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           username: json_['username'] as core.String?,
         );
 
@@ -3978,6 +4163,7 @@ class PostgresqlProfile {
         if (hostname != null) 'hostname': hostname!,
         if (password != null) 'password': password!,
         if (port != null) 'port': port!,
+        if (sslConfig != null) 'sslConfig': sslConfig!,
         if (username != null) 'username': username!,
       };
 }
@@ -4092,6 +4278,44 @@ class PostgresqlSourceConfig {
       };
 }
 
+/// PostgreSQL SSL configuration information.
+class PostgresqlSslConfig {
+  /// If this field is set, the communication will be encrypted with TLS
+  /// encryption and both the server identity and the client identity will be
+  /// authenticated.
+  ServerAndClientVerification? serverAndClientVerification;
+
+  /// If this field is set, the communication will be encrypted with TLS
+  /// encryption and the server identity will be authenticated.
+  ServerVerification? serverVerification;
+
+  PostgresqlSslConfig({
+    this.serverAndClientVerification,
+    this.serverVerification,
+  });
+
+  PostgresqlSslConfig.fromJson(core.Map json_)
+      : this(
+          serverAndClientVerification:
+              json_.containsKey('serverAndClientVerification')
+                  ? ServerAndClientVerification.fromJson(
+                      json_['serverAndClientVerification']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          serverVerification: json_.containsKey('serverVerification')
+              ? ServerVerification.fromJson(json_['serverVerification']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (serverAndClientVerification != null)
+          'serverAndClientVerification': serverAndClientVerification!,
+        if (serverVerification != null)
+          'serverVerification': serverVerification!,
+      };
+}
+
 /// PostgreSQL table.
 class PostgresqlTable {
   /// PostgreSQL columns in the schema.
@@ -4151,6 +4375,16 @@ class PrivateConnection {
   /// Output only.
   core.String? name;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The state of the Private Connection.
   ///
   /// Output only.
@@ -4180,6 +4414,8 @@ class PrivateConnection {
     this.error,
     this.labels,
     this.name,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.state,
     this.updateTime,
     this.vpcPeeringConfig,
@@ -4201,6 +4437,8 @@ class PrivateConnection {
             ),
           ),
           name: json_['name'] as core.String?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           state: json_['state'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
           vpcPeeringConfig: json_.containsKey('vpcPeeringConfig')
@@ -4215,6 +4453,8 @@ class PrivateConnection {
         if (error != null) 'error': error!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (vpcPeeringConfig != null) 'vpcPeeringConfig': vpcPeeringConfig!,
@@ -4354,6 +4594,274 @@ class RunStreamRequest {
       };
 }
 
+/// Salesforce field.
+class SalesforceField {
+  /// The data type.
+  core.String? dataType;
+
+  /// Field name.
+  core.String? name;
+
+  /// Indicates whether the field can accept nil values.
+  core.bool? nillable;
+
+  SalesforceField({
+    this.dataType,
+    this.name,
+    this.nillable,
+  });
+
+  SalesforceField.fromJson(core.Map json_)
+      : this(
+          dataType: json_['dataType'] as core.String?,
+          name: json_['name'] as core.String?,
+          nillable: json_['nillable'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataType != null) 'dataType': dataType!,
+        if (name != null) 'name': name!,
+        if (nillable != null) 'nillable': nillable!,
+      };
+}
+
+/// Salesforce object.
+class SalesforceObject {
+  /// Salesforce fields.
+  ///
+  /// When unspecified as part of include objects, includes everything, when
+  /// unspecified as part of exclude objects, excludes nothing.
+  core.List<SalesforceField>? fields;
+
+  /// Object name.
+  core.String? objectName;
+
+  SalesforceObject({
+    this.fields,
+    this.objectName,
+  });
+
+  SalesforceObject.fromJson(core.Map json_)
+      : this(
+          fields: (json_['fields'] as core.List?)
+              ?.map((value) => SalesforceField.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          objectName: json_['objectName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (objectName != null) 'objectName': objectName!,
+      };
+}
+
+/// Salesforce data source object identifier.
+class SalesforceObjectIdentifier {
+  /// The object name.
+  ///
+  /// Required.
+  core.String? objectName;
+
+  SalesforceObjectIdentifier({
+    this.objectName,
+  });
+
+  SalesforceObjectIdentifier.fromJson(core.Map json_)
+      : this(
+          objectName: json_['objectName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (objectName != null) 'objectName': objectName!,
+      };
+}
+
+/// Salesforce organization structure.
+class SalesforceOrg {
+  /// Salesforce objects in the database server.
+  core.List<SalesforceObject>? objects;
+
+  SalesforceOrg({
+    this.objects,
+  });
+
+  SalesforceOrg.fromJson(core.Map json_)
+      : this(
+          objects: (json_['objects'] as core.List?)
+              ?.map((value) => SalesforceObject.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (objects != null) 'objects': objects!,
+      };
+}
+
+/// Salesforce profile
+class SalesforceProfile {
+  /// Domain endpoint for the Salesforce connection.
+  ///
+  /// Required.
+  core.String? domain;
+
+  /// Connected app authentication.
+  Oauth2ClientCredentials? oauth2ClientCredentials;
+
+  /// User-password authentication.
+  UserCredentials? userCredentials;
+
+  SalesforceProfile({
+    this.domain,
+    this.oauth2ClientCredentials,
+    this.userCredentials,
+  });
+
+  SalesforceProfile.fromJson(core.Map json_)
+      : this(
+          domain: json_['domain'] as core.String?,
+          oauth2ClientCredentials: json_.containsKey('oauth2ClientCredentials')
+              ? Oauth2ClientCredentials.fromJson(
+                  json_['oauth2ClientCredentials']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          userCredentials: json_.containsKey('userCredentials')
+              ? UserCredentials.fromJson(json_['userCredentials']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (domain != null) 'domain': domain!,
+        if (oauth2ClientCredentials != null)
+          'oauth2ClientCredentials': oauth2ClientCredentials!,
+        if (userCredentials != null) 'userCredentials': userCredentials!,
+      };
+}
+
+/// Salesforce source configuration
+class SalesforceSourceConfig {
+  /// Salesforce objects to exclude from the stream.
+  SalesforceOrg? excludeObjects;
+
+  /// Salesforce objects to retrieve from the source.
+  SalesforceOrg? includeObjects;
+
+  /// Salesforce objects polling interval.
+  ///
+  /// The interval at which new changes will be polled for each object. The
+  /// duration must be between 5 minutes and 24 hours.
+  ///
+  /// Required.
+  core.String? pollingInterval;
+
+  SalesforceSourceConfig({
+    this.excludeObjects,
+    this.includeObjects,
+    this.pollingInterval,
+  });
+
+  SalesforceSourceConfig.fromJson(core.Map json_)
+      : this(
+          excludeObjects: json_.containsKey('excludeObjects')
+              ? SalesforceOrg.fromJson(json_['excludeObjects']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          includeObjects: json_.containsKey('includeObjects')
+              ? SalesforceOrg.fromJson(json_['includeObjects']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          pollingInterval: json_['pollingInterval'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (excludeObjects != null) 'excludeObjects': excludeObjects!,
+        if (includeObjects != null) 'includeObjects': includeObjects!,
+        if (pollingInterval != null) 'pollingInterval': pollingInterval!,
+      };
+}
+
+/// Message represents the option where Datastream will enforce the encryption
+/// and authenticate the server identity as well as the client identity.
+///
+/// ca_certificate, client_certificate and client_key must be set if user
+/// selects this option.
+class ServerAndClientVerification {
+  /// Input only.
+  ///
+  /// PEM-encoded server root CA certificate.
+  ///
+  /// Required.
+  core.String? caCertificate;
+
+  /// Input only.
+  ///
+  /// PEM-encoded certificate used by the source database to authenticate the
+  /// client identity (i.e., the Datastream's identity). This certificate is
+  /// signed by either a root certificate trusted by the server or one or more
+  /// intermediate certificates (which is stored with the leaf certificate) to
+  /// link the this certificate to the trusted root certificate.
+  ///
+  /// Required.
+  core.String? clientCertificate;
+
+  /// Input only.
+  ///
+  /// PEM-encoded private key associated with the client certificate. This value
+  /// will be used during the SSL/TLS handshake, allowing the PostgreSQL server
+  /// to authenticate the client's identity, i.e. identity of the Datastream.
+  /// Mutually exclusive with the `secret_manager_stored_client_key` field.
+  ///
+  /// Optional.
+  core.String? clientKey;
+
+  ServerAndClientVerification({
+    this.caCertificate,
+    this.clientCertificate,
+    this.clientKey,
+  });
+
+  ServerAndClientVerification.fromJson(core.Map json_)
+      : this(
+          caCertificate: json_['caCertificate'] as core.String?,
+          clientCertificate: json_['clientCertificate'] as core.String?,
+          clientKey: json_['clientKey'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (caCertificate != null) 'caCertificate': caCertificate!,
+        if (clientCertificate != null) 'clientCertificate': clientCertificate!,
+        if (clientKey != null) 'clientKey': clientKey!,
+      };
+}
+
+/// Message represents the option where Datastream will enforce the encryption
+/// and authenticate the server identity.
+///
+/// ca_certificate must be set if user selects this option.
+class ServerVerification {
+  /// Input only.
+  ///
+  /// PEM-encoded server root CA certificate.
+  ///
+  /// Required.
+  core.String? caCertificate;
+
+  ServerVerification({
+    this.caCertificate,
+  });
+
+  ServerVerification.fromJson(core.Map json_)
+      : this(
+          caCertificate: json_['caCertificate'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (caCertificate != null) 'caCertificate': caCertificate!,
+      };
+}
+
 /// A single target dataset to which all data will be streamed.
 class SingleTargetDataset {
   /// The dataset ID of the target dataset.
@@ -4387,7 +4895,10 @@ class SourceConfig {
   /// PostgreSQL data source configuration.
   PostgresqlSourceConfig? postgresqlSourceConfig;
 
-  /// Source connection profile resoource.
+  /// Salesforce data source configuration.
+  SalesforceSourceConfig? salesforceSourceConfig;
+
+  /// Source connection profile resource.
   ///
   /// Format:
   /// `projects/{project}/locations/{location}/connectionProfiles/{name}`
@@ -4402,6 +4913,7 @@ class SourceConfig {
     this.mysqlSourceConfig,
     this.oracleSourceConfig,
     this.postgresqlSourceConfig,
+    this.salesforceSourceConfig,
     this.sourceConnectionProfile,
     this.sqlServerSourceConfig,
   });
@@ -4420,6 +4932,10 @@ class SourceConfig {
               ? PostgresqlSourceConfig.fromJson(json_['postgresqlSourceConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          salesforceSourceConfig: json_.containsKey('salesforceSourceConfig')
+              ? SalesforceSourceConfig.fromJson(json_['salesforceSourceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           sourceConnectionProfile:
               json_['sourceConnectionProfile'] as core.String?,
           sqlServerSourceConfig: json_.containsKey('sqlServerSourceConfig')
@@ -4434,6 +4950,8 @@ class SourceConfig {
           'oracleSourceConfig': oracleSourceConfig!,
         if (postgresqlSourceConfig != null)
           'postgresqlSourceConfig': postgresqlSourceConfig!,
+        if (salesforceSourceConfig != null)
+          'salesforceSourceConfig': salesforceSourceConfig!,
         if (sourceConnectionProfile != null)
           'sourceConnectionProfile': sourceConnectionProfile!,
         if (sqlServerSourceConfig != null)
@@ -4475,6 +4993,9 @@ class SourceObjectIdentifier {
   /// PostgreSQL data source object identifier.
   PostgresqlObjectIdentifier? postgresqlIdentifier;
 
+  /// Salesforce data source object identifier.
+  SalesforceObjectIdentifier? salesforceIdentifier;
+
   /// SQLServer data source object identifier.
   SqlServerObjectIdentifier? sqlServerIdentifier;
 
@@ -4482,6 +5003,7 @@ class SourceObjectIdentifier {
     this.mysqlIdentifier,
     this.oracleIdentifier,
     this.postgresqlIdentifier,
+    this.salesforceIdentifier,
     this.sqlServerIdentifier,
   });
 
@@ -4500,6 +5022,11 @@ class SourceObjectIdentifier {
                   json_['postgresqlIdentifier']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          salesforceIdentifier: json_.containsKey('salesforceIdentifier')
+              ? SalesforceObjectIdentifier.fromJson(
+                  json_['salesforceIdentifier']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           sqlServerIdentifier: json_.containsKey('sqlServerIdentifier')
               ? SqlServerObjectIdentifier.fromJson(json_['sqlServerIdentifier']
                   as core.Map<core.String, core.dynamic>)
@@ -4511,6 +5038,8 @@ class SourceObjectIdentifier {
         if (oracleIdentifier != null) 'oracleIdentifier': oracleIdentifier!,
         if (postgresqlIdentifier != null)
           'postgresqlIdentifier': postgresqlIdentifier!,
+        if (salesforceIdentifier != null)
+          'salesforceIdentifier': salesforceIdentifier!,
         if (sqlServerIdentifier != null)
           'sqlServerIdentifier': sqlServerIdentifier!,
       };
@@ -4518,6 +5047,9 @@ class SourceObjectIdentifier {
 
 /// CDC strategy to start replicating from a specific position in the source.
 class SpecificStartPosition {
+  /// MySQL GTID set to start replicating from.
+  MysqlGtidPosition? mysqlGtidPosition;
+
   /// MySQL specific log position to start replicating from.
   MysqlLogPosition? mysqlLogPosition;
 
@@ -4528,6 +5060,7 @@ class SpecificStartPosition {
   SqlServerLsnPosition? sqlServerLsnPosition;
 
   SpecificStartPosition({
+    this.mysqlGtidPosition,
     this.mysqlLogPosition,
     this.oracleScnPosition,
     this.sqlServerLsnPosition,
@@ -4535,6 +5068,10 @@ class SpecificStartPosition {
 
   SpecificStartPosition.fromJson(core.Map json_)
       : this(
+          mysqlGtidPosition: json_.containsKey('mysqlGtidPosition')
+              ? MysqlGtidPosition.fromJson(json_['mysqlGtidPosition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           mysqlLogPosition: json_.containsKey('mysqlLogPosition')
               ? MysqlLogPosition.fromJson(json_['mysqlLogPosition']
                   as core.Map<core.String, core.dynamic>)
@@ -4550,6 +5087,7 @@ class SpecificStartPosition {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (mysqlGtidPosition != null) 'mysqlGtidPosition': mysqlGtidPosition!,
         if (mysqlLogPosition != null) 'mysqlLogPosition': mysqlLogPosition!,
         if (oracleScnPosition != null) 'oracleScnPosition': oracleScnPosition!,
         if (sqlServerLsnPosition != null)
@@ -4646,8 +5184,6 @@ class SqlServerLsnPosition {
 typedef SqlServerObjectIdentifier = $ObjectIdentifier;
 
 /// SQLServer database profile.
-///
-/// Next ID: 8.
 class SqlServerProfile {
   /// Database for the SQLServer connection.
   ///
@@ -4973,6 +5509,16 @@ class Stream {
   /// Output only.
   core.String? name;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// Source connection profile configuration.
   ///
   /// Required.
@@ -5011,6 +5557,8 @@ class Stream {
     this.labels,
     this.lastRecoveryTime,
     this.name,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.sourceConfig,
     this.state,
     this.updateTime,
@@ -5047,6 +5595,8 @@ class Stream {
           ),
           lastRecoveryTime: json_['lastRecoveryTime'] as core.String?,
           name: json_['name'] as core.String?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           sourceConfig: json_.containsKey('sourceConfig')
               ? SourceConfig.fromJson(
                   json_['sourceConfig'] as core.Map<core.String, core.dynamic>)
@@ -5067,6 +5617,8 @@ class Stream {
         if (labels != null) 'labels': labels!,
         if (lastRecoveryTime != null) 'lastRecoveryTime': lastRecoveryTime!,
         if (name != null) 'name': name!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (sourceConfig != null) 'sourceConfig': sourceConfig!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -5149,6 +5701,73 @@ class StreamObject {
         if (name != null) 'name': name!,
         if (sourceObject != null) 'sourceObject': sourceObject!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Username-password credentials.
+class UserCredentials {
+  /// Password for the Salesforce connection.
+  ///
+  /// Mutually exclusive with the `secret_manager_stored_password` field.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// A reference to a Secret Manager resource name storing the Salesforce
+  /// connection's password.
+  ///
+  /// Mutually exclusive with the `password` field.
+  ///
+  /// Optional.
+  core.String? secretManagerStoredPassword;
+
+  /// A reference to a Secret Manager resource name storing the Salesforce
+  /// connection's security token.
+  ///
+  /// Mutually exclusive with the `security_token` field.
+  ///
+  /// Optional.
+  core.String? secretManagerStoredSecurityToken;
+
+  /// Security token for the Salesforce connection.
+  ///
+  /// Mutually exclusive with the `secret_manager_stored_security_token` field.
+  ///
+  /// Optional.
+  core.String? securityToken;
+
+  /// Username for the Salesforce connection.
+  ///
+  /// Required.
+  core.String? username;
+
+  UserCredentials({
+    this.password,
+    this.secretManagerStoredPassword,
+    this.secretManagerStoredSecurityToken,
+    this.securityToken,
+    this.username,
+  });
+
+  UserCredentials.fromJson(core.Map json_)
+      : this(
+          password: json_['password'] as core.String?,
+          secretManagerStoredPassword:
+              json_['secretManagerStoredPassword'] as core.String?,
+          secretManagerStoredSecurityToken:
+              json_['secretManagerStoredSecurityToken'] as core.String?,
+          securityToken: json_['securityToken'] as core.String?,
+          username: json_['username'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (password != null) 'password': password!,
+        if (secretManagerStoredPassword != null)
+          'secretManagerStoredPassword': secretManagerStoredPassword!,
+        if (secretManagerStoredSecurityToken != null)
+          'secretManagerStoredSecurityToken': secretManagerStoredSecurityToken!,
+        if (securityToken != null) 'securityToken': securityToken!,
+        if (username != null) 'username': username!,
       };
 }
 

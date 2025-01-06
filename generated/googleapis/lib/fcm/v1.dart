@@ -15,7 +15,7 @@
 /// Firebase Cloud Messaging API - v1
 ///
 /// FCM send API that provides a cross-platform messaging solution to reliably
-/// deliver messages at no cost.
+/// deliver messages.
 ///
 /// For more information, see <https://firebase.google.com/docs/cloud-messaging>
 ///
@@ -39,7 +39,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// FCM send API that provides a cross-platform messaging solution to reliably
-/// deliver messages at no cost.
+/// deliver messages.
 class FirebaseCloudMessagingApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -124,6 +124,12 @@ class ProjectsMessagesResource {
 /// Android specific options for messages sent through
 /// [FCM connection server](https://goo.gl/4GLdUl).
 class AndroidConfig {
+  /// If set to true, messages will be allowed to be delivered to the app while
+  /// the device is in bandwidth constrained mode.
+  ///
+  /// Optional.
+  core.bool? bandwidthConstrainedOk;
+
   /// An identifier of a group of messages that can be collapsed, so that only
   /// the last message gets sent when delivery can be resumed.
   ///
@@ -188,6 +194,7 @@ class AndroidConfig {
   core.String? ttl;
 
   AndroidConfig({
+    this.bandwidthConstrainedOk,
     this.collapseKey,
     this.data,
     this.directBootOk,
@@ -200,6 +207,7 @@ class AndroidConfig {
 
   AndroidConfig.fromJson(core.Map json_)
       : this(
+          bandwidthConstrainedOk: json_['bandwidthConstrainedOk'] as core.bool?,
           collapseKey: json_['collapseKey'] as core.String?,
           data: (json_['data'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -222,6 +230,8 @@ class AndroidConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bandwidthConstrainedOk != null)
+          'bandwidthConstrainedOk': bandwidthConstrainedOk!,
         if (collapseKey != null) 'collapseKey': collapseKey!,
         if (data != null) 'data': data!,
         if (directBootOk != null) 'directBootOk': directBootOk!,

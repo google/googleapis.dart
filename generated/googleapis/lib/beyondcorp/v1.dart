@@ -2351,6 +2351,9 @@ class ProjectsLocationsAppGatewaysResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<ShouldThrottleResponse> shouldThrottle(
     core.String name, {
     core.int? port,
@@ -2863,7 +2866,7 @@ class ProjectsLocationsGlobalSecurityGatewaysApplicationsResource {
   /// request ID must be a valid UUID with the exception that zero UUID is not
   /// supported (00000000-0000-0000-0000-000000000000).
   ///
-  /// [updateMask] - Required. Mutable fields include: display_name.
+  /// [updateMask] - Optional. Mutable fields include: display_name.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3446,7 +3449,7 @@ class ProjectsLocationsSecurityGatewaysResource {
   /// request ID must be a valid UUID with the exception that zero UUID is not
   /// supported (00000000-0000-0000-0000-000000000000).
   ///
-  /// [updateMask] - Required. Mutable fields include: display_name, hubs.
+  /// [updateMask] - Optional. Mutable fields include: display_name, hubs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

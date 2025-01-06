@@ -2656,12 +2656,21 @@ class GoogleCloudIdentitytoolkitAdminV2Config {
   /// should be configured.
   GoogleCloudIdentitytoolkitAdminV2ClientConfig? client;
 
+  /// Default Firebase hosting site name
+  ///
+  /// Output only.
+  core.String? defaultHostingSite;
+
   /// Configuration for settings related to email privacy and public visibility.
   GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig? emailPrivacyConfig;
 
   /// Configuration for this project's multi-factor authentication, including
   /// whether it is active and what factors can be used for the second factor
   GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig? mfa;
+
+  /// Configuration for settings related to univeral links (iOS) and app links
+  /// (Android).
+  GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig? mobileLinksConfig;
 
   /// Configuration related to monitoring project activity.
   GoogleCloudIdentitytoolkitAdminV2MonitoringConfig? monitoring;
@@ -2708,8 +2717,10 @@ class GoogleCloudIdentitytoolkitAdminV2Config {
     this.autodeleteAnonymousUsers,
     this.blockingFunctions,
     this.client,
+    this.defaultHostingSite,
     this.emailPrivacyConfig,
     this.mfa,
+    this.mobileLinksConfig,
     this.monitoring,
     this.multiTenant,
     this.name,
@@ -2738,6 +2749,7 @@ class GoogleCloudIdentitytoolkitAdminV2Config {
               ? GoogleCloudIdentitytoolkitAdminV2ClientConfig.fromJson(
                   json_['client'] as core.Map<core.String, core.dynamic>)
               : null,
+          defaultHostingSite: json_['defaultHostingSite'] as core.String?,
           emailPrivacyConfig: json_.containsKey('emailPrivacyConfig')
               ? GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig.fromJson(
                   json_['emailPrivacyConfig']
@@ -2746,6 +2758,11 @@ class GoogleCloudIdentitytoolkitAdminV2Config {
           mfa: json_.containsKey('mfa')
               ? GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig.fromJson(
                   json_['mfa'] as core.Map<core.String, core.dynamic>)
+              : null,
+          mobileLinksConfig: json_.containsKey('mobileLinksConfig')
+              ? GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig.fromJson(
+                  json_['mobileLinksConfig']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           monitoring: json_.containsKey('monitoring')
               ? GoogleCloudIdentitytoolkitAdminV2MonitoringConfig.fromJson(
@@ -2792,9 +2809,12 @@ class GoogleCloudIdentitytoolkitAdminV2Config {
           'autodeleteAnonymousUsers': autodeleteAnonymousUsers!,
         if (blockingFunctions != null) 'blockingFunctions': blockingFunctions!,
         if (client != null) 'client': client!,
+        if (defaultHostingSite != null)
+          'defaultHostingSite': defaultHostingSite!,
         if (emailPrivacyConfig != null)
           'emailPrivacyConfig': emailPrivacyConfig!,
         if (mfa != null) 'mfa': mfa!,
+        if (mobileLinksConfig != null) 'mobileLinksConfig': mobileLinksConfig!,
         if (monitoring != null) 'monitoring': monitoring!,
         if (multiTenant != null) 'multiTenant': multiTenant!,
         if (name != null) 'name': name!,
@@ -3500,6 +3520,32 @@ class GoogleCloudIdentitytoolkitAdminV2ListTenantsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (tenants != null) 'tenants': tenants!,
+      };
+}
+
+/// Configuration mobile links.
+class GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig {
+  /// Open code in app domain to use for app links and universal links.
+  /// Possible string values are:
+  /// - "DOMAIN_UNSPECIFIED" : Default value. The default domain is the Firebase
+  /// Dynamic Link domain before the FDL deprecation and the hosting domain
+  /// after the FDL deprecation.
+  /// - "FIREBASE_DYNAMIC_LINK_DOMAIN" : Use Firebase Dynamic Link domain as app
+  /// link domain. Default value.
+  /// - "HOSTING_DOMAIN" : Use hosting domain as app link domain.
+  core.String? domain;
+
+  GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig({
+    this.domain,
+  });
+
+  GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig.fromJson(core.Map json_)
+      : this(
+          domain: json_['domain'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (domain != null) 'domain': domain!,
       };
 }
 
@@ -4647,6 +4693,17 @@ class GoogleCloudIdentitytoolkitAdminV2Tenant {
   /// The tenant-level configuration of MFA options.
   GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig? mfaConfig;
 
+  /// Never launched.
+  ///
+  /// Configuration for settings related to univeral links (iOS) and app links
+  /// (Android).
+  ///
+  /// Optional. Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig? mobileLinksConfig;
+
   /// Configuration related to monitoring project activity.
   GoogleCloudIdentitytoolkitAdminV2MonitoringConfig? monitoring;
 
@@ -4685,6 +4742,7 @@ class GoogleCloudIdentitytoolkitAdminV2Tenant {
     this.hashConfig,
     this.inheritance,
     this.mfaConfig,
+    this.mobileLinksConfig,
     this.monitoring,
     this.name,
     this.passwordPolicyConfig,
@@ -4723,6 +4781,11 @@ class GoogleCloudIdentitytoolkitAdminV2Tenant {
           mfaConfig: json_.containsKey('mfaConfig')
               ? GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig.fromJson(
                   json_['mfaConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          mobileLinksConfig: json_.containsKey('mobileLinksConfig')
+              ? GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig.fromJson(
+                  json_['mobileLinksConfig']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           monitoring: json_.containsKey('monitoring')
               ? GoogleCloudIdentitytoolkitAdminV2MonitoringConfig.fromJson(
@@ -4771,6 +4834,7 @@ class GoogleCloudIdentitytoolkitAdminV2Tenant {
         if (hashConfig != null) 'hashConfig': hashConfig!,
         if (inheritance != null) 'inheritance': inheritance!,
         if (mfaConfig != null) 'mfaConfig': mfaConfig!,
+        if (mobileLinksConfig != null) 'mobileLinksConfig': mobileLinksConfig!,
         if (monitoring != null) 'monitoring': monitoring!,
         if (name != null) 'name': name!,
         if (passwordPolicyConfig != null)
