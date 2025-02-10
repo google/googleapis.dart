@@ -6,8 +6,8 @@ import 'package:google_identity_services_web/oauth2.dart';
 
 import '../access_credentials.dart';
 import '../access_token.dart';
-import '../authentication_exception.dart';
 import '../utils.dart';
+import 'authentication_exception.dart';
 
 @JS('google.accounts.id')
 external _GoogleAccountsId get _googleAccountsId;
