@@ -13,5 +13,5 @@ ClientId clientId() {
 final _textArea = document.querySelector('textarea') as HTMLTextAreaElement;
 
 void logToTextArea(Object value) {
-  _textArea.text = '$value\n\n\n${_textArea.textContent!}';
+  _textArea.textContent = '$value\n\n\n${_textArea.textContent!}';
 }
