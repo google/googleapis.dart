@@ -1,21 +1,29 @@
-## 14.0.0-wip
+## 14.0.0
 
 - Require Dart 3.6 or later.
+- Note *many* APIs were removed in this release due to changes in Google API
+  security practices.
 
 ### APIs
 
 - `acmedns` - removed.
 - `adsensehost` - removed.
 - `adsenseplatform` - new!
+- `areainsights` - new!
 - `cloudcommerceprocurement` - removed.
 - `css` - new!
+- `displayvideo` - added `v4`!
 - `domainsrdap` - removed.
 - `firebaseremoteconfig` - removed.
 - `gkehub` - added `v2`.
 - `meet` - new!
+- `metastore` - added `v2`!
 - `netapp` - new!
 - `oracledatabase` - new!
+- `parallelstore` - new!
 - `photoslibrary` - removed.
+- `resourcesettings` - removed.
+- `securityposture` - new!
 - `sourcerepo` - removed.
 - `speech` - removed `v2`.
 
