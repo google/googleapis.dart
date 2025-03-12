@@ -1691,8 +1691,10 @@ api.FileCapabilities buildFileCapabilities() {
     o.canCopy = true;
     o.canDelete = true;
     o.canDeleteChildren = true;
+    o.canDisableInheritedPermissions = true;
     o.canDownload = true;
     o.canEdit = true;
+    o.canEnableInheritedPermissions = true;
     o.canListChildren = true;
     o.canModifyContent = true;
     o.canModifyContentRestriction = true;
@@ -1740,8 +1742,10 @@ void checkFileCapabilities(api.FileCapabilities o) {
     unittest.expect(o.canCopy!, unittest.isTrue);
     unittest.expect(o.canDelete!, unittest.isTrue);
     unittest.expect(o.canDeleteChildren!, unittest.isTrue);
+    unittest.expect(o.canDisableInheritedPermissions!, unittest.isTrue);
     unittest.expect(o.canDownload!, unittest.isTrue);
     unittest.expect(o.canEdit!, unittest.isTrue);
+    unittest.expect(o.canEnableInheritedPermissions!, unittest.isTrue);
     unittest.expect(o.canListChildren!, unittest.isTrue);
     unittest.expect(o.canModifyContent!, unittest.isTrue);
     unittest.expect(o.canModifyContentRestriction!, unittest.isTrue);
@@ -2289,6 +2293,7 @@ api.File buildFile() {
     o.id = 'foo';
     o.imageMediaMetadata = buildFileImageMediaMetadata();
     o.indexableText = buildFileIndexableText();
+    o.inheritedPermissionsDisabled = true;
     o.isAppAuthorized = true;
     o.kind = 'foo';
     o.labelInfo = buildFileLabelInfo();
@@ -2417,6 +2422,7 @@ void checkFile(api.File o) {
     );
     checkFileImageMediaMetadata(o.imageMediaMetadata!);
     checkFileIndexableText(o.indexableText!);
+    unittest.expect(o.inheritedPermissionsDisabled!, unittest.isTrue);
     unittest.expect(o.isAppAuthorized!, unittest.isTrue);
     unittest.expect(
       o.kind!,
@@ -3325,6 +3331,7 @@ api.Permission buildPermission() {
     o.etag = 'foo';
     o.expirationDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.id = 'foo';
+    o.inheritedPermissionsDisabled = true;
     o.kind = 'foo';
     o.name = 'foo';
     o.pendingOwner = true;
@@ -3371,6 +3378,7 @@ void checkPermission(api.Permission o) {
       o.id!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.inheritedPermissionsDisabled!, unittest.isTrue);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -8940,6 +8948,7 @@ void main() {
       final res = api.DriveApi(mock).permissions;
       final arg_fileId = 'foo';
       final arg_permissionId = 'foo';
+      final arg_enforceExpansiveAccess = true;
       final arg_supportsAllDrives = true;
       final arg_supportsTeamDrives = true;
       final arg_useDomainAdminAccess = true;
@@ -9001,6 +9010,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['enforceExpansiveAccess']!.first,
+          unittest.equals('$arg_enforceExpansiveAccess'),
+        );
+        unittest.expect(
           queryMap['supportsAllDrives']!.first,
           unittest.equals('$arg_supportsAllDrives'),
         );
@@ -9024,6 +9037,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_fileId, arg_permissionId,
+          enforceExpansiveAccess: arg_enforceExpansiveAccess,
           supportsAllDrives: arg_supportsAllDrives,
           supportsTeamDrives: arg_supportsTeamDrives,
           useDomainAdminAccess: arg_useDomainAdminAccess,
@@ -9419,6 +9433,7 @@ void main() {
       final arg_request = buildPermission();
       final arg_fileId = 'foo';
       final arg_permissionId = 'foo';
+      final arg_enforceExpansiveAccess = true;
       final arg_removeExpiration = true;
       final arg_supportsAllDrives = true;
       final arg_supportsTeamDrives = true;
@@ -9485,6 +9500,10 @@ void main() {
             );
           }
         }
+        unittest.expect(
+          queryMap['enforceExpansiveAccess']!.first,
+          unittest.equals('$arg_enforceExpansiveAccess'),
+        );
         unittest.expect(
           queryMap['removeExpiration']!.first,
           unittest.equals('$arg_removeExpiration'),
@@ -9518,6 +9537,7 @@ void main() {
       }), true);
       final response = await res.patch(
           arg_request, arg_fileId, arg_permissionId,
+          enforceExpansiveAccess: arg_enforceExpansiveAccess,
           removeExpiration: arg_removeExpiration,
           supportsAllDrives: arg_supportsAllDrives,
           supportsTeamDrives: arg_supportsTeamDrives,
@@ -9533,6 +9553,7 @@ void main() {
       final arg_request = buildPermission();
       final arg_fileId = 'foo';
       final arg_permissionId = 'foo';
+      final arg_enforceExpansiveAccess = true;
       final arg_removeExpiration = true;
       final arg_supportsAllDrives = true;
       final arg_supportsTeamDrives = true;
@@ -9600,6 +9621,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['enforceExpansiveAccess']!.first,
+          unittest.equals('$arg_enforceExpansiveAccess'),
+        );
+        unittest.expect(
           queryMap['removeExpiration']!.first,
           unittest.equals('$arg_removeExpiration'),
         );
@@ -9632,6 +9657,7 @@ void main() {
       }), true);
       final response = await res.update(
           arg_request, arg_fileId, arg_permissionId,
+          enforceExpansiveAccess: arg_enforceExpansiveAccess,
           removeExpiration: arg_removeExpiration,
           supportsAllDrives: arg_supportsAllDrives,
           supportsTeamDrives: arg_supportsTeamDrives,

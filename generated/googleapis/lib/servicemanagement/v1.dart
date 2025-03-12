@@ -1282,6 +1282,42 @@ class Api {
       };
 }
 
+/// Aspect represents Generic aspect.
+///
+/// It is used to configure an aspect without making direct changes to
+/// service.proto
+class Aspect {
+  /// The type of this aspect configuration.
+  core.String? kind;
+
+  /// Content of the configuration.
+  ///
+  /// The underlying schema should be defined by Aspect owners as protobuf
+  /// message under `apiserving/configaspects/proto`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? spec;
+
+  Aspect({
+    this.kind,
+    this.spec,
+  });
+
+  Aspect.fromJson(core.Map json_)
+      : this(
+          kind: json_['kind'] as core.String?,
+          spec: json_.containsKey('spec')
+              ? json_['spec'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (spec != null) 'spec': spec!,
+      };
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -1587,6 +1623,13 @@ class BackendRule {
   /// to the backend.
   core.String? jwtAudience;
 
+  /// The load balancing policy used for connection to the application backend.
+  ///
+  /// Defined as an arbitrary string to accomondate custom load balancing
+  /// policies supported by the underlying channel, but suggest most users use
+  /// one of the standard policies, such as the default, "RoundRobin".
+  core.String? loadBalancingPolicy;
+
   /// Deprecated, do not use.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
@@ -1652,6 +1695,7 @@ class BackendRule {
     this.deadline,
     this.disableAuth,
     this.jwtAudience,
+    this.loadBalancingPolicy,
     this.minDeadline,
     this.operationDeadline,
     this.overridesByRequestProtocol,
@@ -1666,6 +1710,7 @@ class BackendRule {
           deadline: (json_['deadline'] as core.num?)?.toDouble(),
           disableAuth: json_['disableAuth'] as core.bool?,
           jwtAudience: json_['jwtAudience'] as core.String?,
+          loadBalancingPolicy: json_['loadBalancingPolicy'] as core.String?,
           minDeadline: (json_['minDeadline'] as core.num?)?.toDouble(),
           operationDeadline:
               (json_['operationDeadline'] as core.num?)?.toDouble(),
@@ -1688,6 +1733,8 @@ class BackendRule {
         if (deadline != null) 'deadline': deadline!,
         if (disableAuth != null) 'disableAuth': disableAuth!,
         if (jwtAudience != null) 'jwtAudience': jwtAudience!,
+        if (loadBalancingPolicy != null)
+          'loadBalancingPolicy': loadBalancingPolicy!,
         if (minDeadline != null) 'minDeadline': minDeadline!,
         if (operationDeadline != null) 'operationDeadline': operationDeadline!,
         if (overridesByRequestProtocol != null)
@@ -2599,8 +2646,7 @@ class Documentation {
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<DocumentationRule>? rules;
 
-  /// Specifies section and content to override boilerplate content provided by
-  /// go/api-docgen.
+  /// Specifies section and content to override the boilerplate content.
   ///
   /// Currently overrides following sections: 1. rest.service.client_libraries
   core.List<Page>? sectionOverrides;
@@ -2890,9 +2936,18 @@ class ExperimentalFeatures {
   /// packages.
   core.bool? restAsyncIoEnabled;
 
+  /// Disables generation of an unversioned Python package for this client
+  /// library.
+  ///
+  /// This means that the module names will need to be versioned in import
+  /// statements. For example `import google.cloud.library_v2` instead of
+  /// `import google.cloud.library`.
+  core.bool? unversionedPackageDisabled;
+
   ExperimentalFeatures({
     this.protobufPythonicTypesEnabled,
     this.restAsyncIoEnabled,
+    this.unversionedPackageDisabled,
   });
 
   ExperimentalFeatures.fromJson(core.Map json_)
@@ -2900,6 +2955,8 @@ class ExperimentalFeatures {
           protobufPythonicTypesEnabled:
               json_['protobufPythonicTypesEnabled'] as core.bool?,
           restAsyncIoEnabled: json_['restAsyncIoEnabled'] as core.bool?,
+          unversionedPackageDisabled:
+              json_['unversionedPackageDisabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2907,6 +2964,8 @@ class ExperimentalFeatures {
           'protobufPythonicTypesEnabled': protobufPythonicTypesEnabled!,
         if (restAsyncIoEnabled != null)
           'restAsyncIoEnabled': restAsyncIoEnabled!,
+        if (unversionedPackageDisabled != null)
+          'unversionedPackageDisabled': unversionedPackageDisabled!,
       };
 }
 
@@ -4760,9 +4819,9 @@ typedef Option = $Option;
 class Page {
   /// The Markdown content of the page.
   ///
-  /// You can use (== include {path} ==) to include content from a Markdown
-  /// file. The content can be used to produce the documentation page such as
-  /// HTML format page.
+  /// You can use ```(== include {path} ==)``` to include content from a
+  /// Markdown file. The content can be used to produce the documentation page
+  /// such as HTML format page.
   core.String? content;
 
   /// The name of the page.
@@ -5281,22 +5340,36 @@ class RubySettings {
 /// This message is used to configure the generation of a subset of the RPCs in
 /// a service for client libraries.
 class SelectiveGapicGeneration {
+  /// Setting this to true indicates to the client generators that methods that
+  /// would be excluded from the generation should instead be generated in a way
+  /// that indicates these methods should not be consumed by end users.
+  ///
+  /// How this is expressed is up to individual language implementations to
+  /// decide. Some examples may be: added annotations, obfuscated identifiers,
+  /// or other language idiomatic patterns.
+  core.bool? generateOmittedAsInternal;
+
   /// An allowlist of the fully qualified names of RPCs that should be included
   /// on public client surfaces.
   core.List<core.String>? methods;
 
   SelectiveGapicGeneration({
+    this.generateOmittedAsInternal,
     this.methods,
   });
 
   SelectiveGapicGeneration.fromJson(core.Map json_)
       : this(
+          generateOmittedAsInternal:
+              json_['generateOmittedAsInternal'] as core.bool?,
           methods: (json_['methods'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (generateOmittedAsInternal != null)
+          'generateOmittedAsInternal': generateOmittedAsInternal!,
         if (methods != null) 'methods': methods!,
       };
 }
@@ -5325,6 +5398,14 @@ class Service {
   /// IDL during the normalization process. It is an error to specify an API
   /// interface here which cannot be resolved against the associated IDL files.
   core.List<Api>? apis;
+
+  /// Configuration aspects.
+  ///
+  /// This is a repeated field to allow multiple aspects to be configured. The
+  /// kind field in each ConfigAspect specifies the type of aspect. The spec
+  /// field contains the configuration for that aspect. The schema for the spec
+  /// field is defined by the backend service owners.
+  core.List<Aspect>? aspects;
 
   /// Auth configuration.
   Authentication? authentication;
@@ -5448,6 +5529,7 @@ class Service {
 
   Service({
     this.apis,
+    this.aspects,
     this.authentication,
     this.backend,
     this.billing,
@@ -5482,6 +5564,10 @@ class Service {
           apis: (json_['apis'] as core.List?)
               ?.map((value) =>
                   Api.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          aspects: (json_['aspects'] as core.List?)
+              ?.map((value) =>
+                  Aspect.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           authentication: json_.containsKey('authentication')
               ? Authentication.fromJson(json_['authentication']
@@ -5580,6 +5666,7 @@ class Service {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apis != null) 'apis': apis!,
+        if (aspects != null) 'aspects': aspects!,
         if (authentication != null) 'authentication': authentication!,
         if (backend != null) 'backend': backend!,
         if (billing != null) 'billing': billing!,
@@ -6003,16 +6090,4 @@ class Usage {
 }
 
 /// Usage configuration rules for the service.
-///
-/// NOTE: Under development. Use this rule to configure unregistered calls for
-/// the service. Unregistered calls are calls that do not contain consumer
-/// project identity. (Example: calls that do not contain an API key). By
-/// default, API methods do not allow unregistered calls, and each method call
-/// must be identified by a consumer project identity. Use this rule to
-/// allow/disallow unregistered calls. Example of an API that wants to allow
-/// unregistered calls for entire service. usage: rules: - selector: "*"
-/// allow_unregistered_calls: true Example of a method that wants to allow
-/// unregistered calls. usage: rules: - selector:
-/// "google.example.library.v1.LibraryService.CreateBook"
-/// allow_unregistered_calls: true
 typedef UsageRule = $UsageRule;

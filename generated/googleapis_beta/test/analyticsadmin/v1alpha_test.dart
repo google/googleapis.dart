@@ -2027,6 +2027,7 @@ api.GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource
     o.googleAdsLink = buildGoogleAnalyticsAdminV1alphaGoogleAdsLink();
     o.googleSignalsSettings =
         buildGoogleAnalyticsAdminV1alphaGoogleSignalsSettings();
+    o.keyEvent = buildGoogleAnalyticsAdminV1alphaKeyEvent();
     o.measurementProtocolSecret =
         buildGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret();
     o.property = buildGoogleAnalyticsAdminV1alphaProperty();
@@ -2070,6 +2071,7 @@ void checkGoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource(
     checkGoogleAnalyticsAdminV1alphaGoogleAdsLink(o.googleAdsLink!);
     checkGoogleAnalyticsAdminV1alphaGoogleSignalsSettings(
         o.googleSignalsSettings!);
+    checkGoogleAnalyticsAdminV1alphaKeyEvent(o.keyEvent!);
     checkGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret(
         o.measurementProtocolSecret!);
     checkGoogleAnalyticsAdminV1alphaProperty(o.property!);
@@ -2844,6 +2846,7 @@ api.GoogleAnalyticsAdminV1alphaDataRetentionSettings
     o.eventDataRetention = 'foo';
     o.name = 'foo';
     o.resetUserDataOnNewActivity = true;
+    o.userDataRetention = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaDataRetentionSettings--;
   return o;
@@ -2862,6 +2865,10 @@ void checkGoogleAnalyticsAdminV1alphaDataRetentionSettings(
       unittest.equals('foo'),
     );
     unittest.expect(o.resetUserDataOnNewActivity!, unittest.isTrue);
+    unittest.expect(
+      o.userDataRetention!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleAnalyticsAdminV1alphaDataRetentionSettings--;
 }

@@ -400,6 +400,35 @@ void checkMoveAssignmentRequest(api.MoveAssignmentRequest o) {
   buildCounterMoveAssignmentRequest--;
 }
 
+core.int buildCounterReplicationStatus = 0;
+api.ReplicationStatus buildReplicationStatus() {
+  final o = api.ReplicationStatus();
+  buildCounterReplicationStatus++;
+  if (buildCounterReplicationStatus < 3) {
+    o.error = buildStatus();
+    o.lastErrorTime = 'foo';
+    o.lastReplicationTime = 'foo';
+  }
+  buildCounterReplicationStatus--;
+  return o;
+}
+
+void checkReplicationStatus(api.ReplicationStatus o) {
+  buildCounterReplicationStatus++;
+  if (buildCounterReplicationStatus < 3) {
+    checkStatus(o.error!);
+    unittest.expect(
+      o.lastErrorTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lastReplicationTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterReplicationStatus--;
+}
+
 core.Map<core.String, core.String> buildUnnamed5() => {
       'x': 'foo',
       'y': 'foo',
@@ -428,10 +457,13 @@ api.Reservation buildReservation() {
     o.edition = 'foo';
     o.ignoreIdleSlots = true;
     o.labels = buildUnnamed5();
+    o.maxSlots = 'foo';
     o.multiRegionAuxiliary = true;
     o.name = 'foo';
     o.originalPrimaryLocation = 'foo';
     o.primaryLocation = 'foo';
+    o.replicationStatus = buildReplicationStatus();
+    o.scalingMode = 'foo';
     o.secondaryLocation = 'foo';
     o.slotCapacity = 'foo';
     o.updateTime = 'foo';
@@ -458,6 +490,10 @@ void checkReservation(api.Reservation o) {
     );
     unittest.expect(o.ignoreIdleSlots!, unittest.isTrue);
     checkUnnamed5(o.labels!);
+    unittest.expect(
+      o.maxSlots!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.multiRegionAuxiliary!, unittest.isTrue);
     unittest.expect(
       o.name!,
@@ -469,6 +505,11 @@ void checkReservation(api.Reservation o) {
     );
     unittest.expect(
       o.primaryLocation!,
+      unittest.equals('foo'),
+    );
+    checkReplicationStatus(o.replicationStatus!);
+    unittest.expect(
+      o.scalingMode!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -826,6 +867,16 @@ void main() {
       final od = api.MoveAssignmentRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkMoveAssignmentRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ReplicationStatus', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReplicationStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReplicationStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkReplicationStatus(od);
     });
   });
 

@@ -906,8 +906,7 @@ class Workflow {
   /// field and is not tied to a specific revision.
   core.String? description;
 
-  /// Describes the level of the execution history feature to apply to this
-  /// workflow.
+  /// Describes the execution history level to apply to this workflow.
   ///
   /// Optional.
   /// Possible string values are:

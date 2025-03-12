@@ -1435,6 +1435,7 @@ api.Policy buildPolicy() {
   if (buildCounterPolicy < 3) {
     o.alternativeNameServerConfig = buildPolicyAlternativeNameServerConfig();
     o.description = 'foo';
+    o.dns64Config = buildPolicyDns64Config();
     o.enableInboundForwarding = true;
     o.enableLogging = true;
     o.id = 'foo';
@@ -1454,6 +1455,7 @@ void checkPolicy(api.Policy o) {
       o.description!,
       unittest.equals('foo'),
     );
+    checkPolicyDns64Config(o.dns64Config!);
     unittest.expect(o.enableInboundForwarding!, unittest.isTrue);
     unittest.expect(o.enableLogging!, unittest.isTrue);
     unittest.expect(
@@ -1548,6 +1550,54 @@ void checkPolicyAlternativeNameServerConfigTargetNameServer(
     );
   }
   buildCounterPolicyAlternativeNameServerConfigTargetNameServer--;
+}
+
+core.int buildCounterPolicyDns64Config = 0;
+api.PolicyDns64Config buildPolicyDns64Config() {
+  final o = api.PolicyDns64Config();
+  buildCounterPolicyDns64Config++;
+  if (buildCounterPolicyDns64Config < 3) {
+    o.kind = 'foo';
+    o.scope = buildPolicyDns64ConfigScope();
+  }
+  buildCounterPolicyDns64Config--;
+  return o;
+}
+
+void checkPolicyDns64Config(api.PolicyDns64Config o) {
+  buildCounterPolicyDns64Config++;
+  if (buildCounterPolicyDns64Config < 3) {
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkPolicyDns64ConfigScope(o.scope!);
+  }
+  buildCounterPolicyDns64Config--;
+}
+
+core.int buildCounterPolicyDns64ConfigScope = 0;
+api.PolicyDns64ConfigScope buildPolicyDns64ConfigScope() {
+  final o = api.PolicyDns64ConfigScope();
+  buildCounterPolicyDns64ConfigScope++;
+  if (buildCounterPolicyDns64ConfigScope < 3) {
+    o.allQueries = true;
+    o.kind = 'foo';
+  }
+  buildCounterPolicyDns64ConfigScope--;
+  return o;
+}
+
+void checkPolicyDns64ConfigScope(api.PolicyDns64ConfigScope o) {
+  buildCounterPolicyDns64ConfigScope++;
+  if (buildCounterPolicyDns64ConfigScope < 3) {
+    unittest.expect(o.allQueries!, unittest.isTrue);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPolicyDns64ConfigScope--;
 }
 
 core.int buildCounterPolicyNetwork = 0;
@@ -3038,6 +3088,26 @@ void main() {
       final od = api.PolicyAlternativeNameServerConfigTargetNameServer.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkPolicyAlternativeNameServerConfigTargetNameServer(od);
+    });
+  });
+
+  unittest.group('obj-schema-PolicyDns64Config', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPolicyDns64Config();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PolicyDns64Config.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPolicyDns64Config(od);
+    });
+  });
+
+  unittest.group('obj-schema-PolicyDns64ConfigScope', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPolicyDns64ConfigScope();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PolicyDns64ConfigScope.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPolicyDns64ConfigScope(od);
     });
   });
 

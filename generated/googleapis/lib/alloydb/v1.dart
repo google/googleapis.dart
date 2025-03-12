@@ -804,6 +804,49 @@ class ProjectsLocationsClustersResource {
     return Cluster.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Imports data to the cluster.
+  ///
+  /// Imperative only.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the cluster.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> import(
+    ImportClusterRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':import';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists Clusters in a given project and location.
   ///
   /// Request parameters:
@@ -1019,6 +1062,49 @@ class ProjectsLocationsClustersResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/clusters:restore';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Restores an AlloyDB cluster from a CloudSQL resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The location of the new cluster. For the required
+  /// format, see the comment on Cluster.name field.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> restoreFromCloudSQL(
+    RestoreFromCloudSQLRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/clusters:restoreFromCloudSQL';
 
     final response_ = await _requester.request(
       url_,
@@ -2200,6 +2286,14 @@ class ProjectsLocationsSupportedDatabaseFlagsResource {
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   ///
+  /// [scope] - Optional. The scope for which supported flags are requested. If
+  /// not specified, default is DATABASE.
+  /// Possible string values are:
+  /// - "SCOPE_UNSPECIFIED" : The scope of the flag is not specified. Default is
+  /// DATABASE.
+  /// - "DATABASE" : The flag is a database flag.
+  /// - "CONNECTION_POOL" : The flag is a connection pool flag.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2214,11 +2308,13 @@ class ProjectsLocationsSupportedDatabaseFlagsResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.String? scope,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (scope != null) 'scope': [scope],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2274,8 +2370,8 @@ class AutomatedBackupPolicy {
   /// The encryption config can be specified to encrypt the backups with a
   /// customer-managed encryption key (CMEK).
   ///
-  /// When this field is not specified, the backup will then use default
-  /// encryption scheme to protect the user data.
+  /// When this field is not specified, the backup will use the cluster's
+  /// encryption config.
   ///
   /// Optional.
   EncryptionConfig? encryptionConfig;
@@ -2693,6 +2789,43 @@ class ClientConnectionConfig {
       };
 }
 
+/// The source CloudSQL backup resource.
+class CloudSQLBackupRunSource {
+  /// The CloudSQL backup run ID.
+  ///
+  /// Required.
+  core.String? backupRunId;
+
+  /// The CloudSQL instance ID.
+  ///
+  /// Required.
+  core.String? instanceId;
+
+  /// The project ID of the source CloudSQL instance.
+  ///
+  /// This should be the same as the AlloyDB cluster's project.
+  core.String? project;
+
+  CloudSQLBackupRunSource({
+    this.backupRunId,
+    this.instanceId,
+    this.project,
+  });
+
+  CloudSQLBackupRunSource.fromJson(core.Map json_)
+      : this(
+          backupRunId: json_['backupRunId'] as core.String?,
+          instanceId: json_['instanceId'] as core.String?,
+          project: json_['project'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupRunId != null) 'backupRunId': backupRunId!,
+        if (instanceId != null) 'instanceId': instanceId!,
+        if (project != null) 'project': project!,
+      };
+}
+
 /// A cluster is a collection of regional AlloyDB resources.
 ///
 /// It can include a primary instance and one or more read pool instances. All
@@ -2716,6 +2849,11 @@ class Cluster {
   ///
   /// Output only.
   BackupSource? backupSource;
+
+  /// Cluster created from CloudSQL snapshot.
+  ///
+  /// Output only.
+  CloudSQLBackupRunSource? cloudsqlBackupRunSource;
 
   /// The type of the cluster.
   ///
@@ -2938,6 +3076,7 @@ class Cluster {
     this.annotations,
     this.automatedBackupPolicy,
     this.backupSource,
+    this.cloudsqlBackupRunSource,
     this.clusterType,
     this.continuousBackupConfig,
     this.continuousBackupInfo,
@@ -2987,6 +3126,11 @@ class Cluster {
           backupSource: json_.containsKey('backupSource')
               ? BackupSource.fromJson(
                   json_['backupSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          cloudsqlBackupRunSource: json_.containsKey('cloudsqlBackupRunSource')
+              ? CloudSQLBackupRunSource.fromJson(
+                  json_['cloudsqlBackupRunSource']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           clusterType: json_['clusterType'] as core.String?,
           continuousBackupConfig: json_.containsKey('continuousBackupConfig')
@@ -3079,6 +3223,8 @@ class Cluster {
         if (automatedBackupPolicy != null)
           'automatedBackupPolicy': automatedBackupPolicy!,
         if (backupSource != null) 'backupSource': backupSource!,
+        if (cloudsqlBackupRunSource != null)
+          'cloudsqlBackupRunSource': cloudsqlBackupRunSource!,
         if (clusterType != null) 'clusterType': clusterType!,
         if (continuousBackupConfig != null)
           'continuousBackupConfig': continuousBackupConfig!,
@@ -3179,8 +3325,8 @@ class ContinuousBackupConfig {
   /// The encryption config can be specified to encrypt the backups with a
   /// customer-managed encryption key (CMEK).
   ///
-  /// When this field is not specified, the backup will then use default
-  /// encryption scheme to protect the user data.
+  /// When this field is not specified, the backup will use the cluster's
+  /// encryption config.
   EncryptionConfig? encryptionConfig;
 
   /// The number of days that are eligible to restore from using PITR.
@@ -3362,6 +3508,75 @@ class CsvExportOptions {
       };
 }
 
+/// Options for importing data in CSV format.
+class CsvImportOptions {
+  /// The columns to which CSV data is imported.
+  ///
+  /// If not specified, all columns of the database table are loaded with CSV
+  /// data.
+  ///
+  /// Optional.
+  core.List<core.String>? columns;
+
+  /// Specifies the character that should appear before a data character that
+  /// needs to be escaped.
+  ///
+  /// The default is same as quote character. The value of this argument has to
+  /// be a character in Hex ASCII Code.
+  ///
+  /// Optional.
+  core.String? escapeCharacter;
+
+  /// Specifies the character that separates columns within each row (line) of
+  /// the file.
+  ///
+  /// The default is comma. The value of this argument has to be a character in
+  /// Hex ASCII Code.
+  ///
+  /// Optional.
+  core.String? fieldDelimiter;
+
+  /// Specifies the quoting character to be used when a data value is quoted.
+  ///
+  /// The default is double-quote. The value of this argument has to be a
+  /// character in Hex ASCII Code.
+  ///
+  /// Optional.
+  core.String? quoteCharacter;
+
+  /// The database table to import CSV file into.
+  ///
+  /// Required.
+  core.String? table;
+
+  CsvImportOptions({
+    this.columns,
+    this.escapeCharacter,
+    this.fieldDelimiter,
+    this.quoteCharacter,
+    this.table,
+  });
+
+  CsvImportOptions.fromJson(core.Map json_)
+      : this(
+          columns: (json_['columns'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          escapeCharacter: json_['escapeCharacter'] as core.String?,
+          fieldDelimiter: json_['fieldDelimiter'] as core.String?,
+          quoteCharacter: json_['quoteCharacter'] as core.String?,
+          table: json_['table'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (columns != null) 'columns': columns!,
+        if (escapeCharacter != null) 'escapeCharacter': escapeCharacter!,
+        if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter!,
+        if (quoteCharacter != null) 'quoteCharacter': quoteCharacter!,
+        if (table != null) 'table': table!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -3539,6 +3754,71 @@ typedef GoogleCloudLocationLocation = $Location00;
 /// google.type.Date and `google.protobuf.Timestamp`.
 typedef GoogleTypeTimeOfDay = $TimeOfDay;
 
+/// Import cluster request.
+class ImportClusterRequest {
+  /// Options for importing data in CSV format.
+  CsvImportOptions? csvImportOptions;
+
+  /// Name of the database to which the import will be done.
+  ///
+  /// For import from SQL file, this is required only if the file does not
+  /// specify a database. Note - Value provided should be the same as expected
+  /// from `SELECT current_database();` and NOT as a resource reference.
+  ///
+  /// Optional.
+  core.String? database;
+
+  /// The path to the file in Google Cloud Storage where the source file for
+  /// import will be stored.
+  ///
+  /// The URI is in the form `gs://bucketName/fileName`.
+  ///
+  /// Required.
+  core.String? gcsUri;
+
+  /// Options for importing data in SQL format.
+  SqlImportOptions? sqlImportOptions;
+
+  /// Database user to be used for importing the data.
+  ///
+  /// Note - Value provided should be the same as expected from `SELECT
+  /// current_user;` and NOT as a resource reference.
+  ///
+  /// Optional.
+  core.String? user;
+
+  ImportClusterRequest({
+    this.csvImportOptions,
+    this.database,
+    this.gcsUri,
+    this.sqlImportOptions,
+    this.user,
+  });
+
+  ImportClusterRequest.fromJson(core.Map json_)
+      : this(
+          csvImportOptions: json_.containsKey('csvImportOptions')
+              ? CsvImportOptions.fromJson(json_['csvImportOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          database: json_['database'] as core.String?,
+          gcsUri: json_['gcsUri'] as core.String?,
+          sqlImportOptions: json_.containsKey('sqlImportOptions')
+              ? SqlImportOptions.fromJson(json_['sqlImportOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          user: json_['user'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (csvImportOptions != null) 'csvImportOptions': csvImportOptions!,
+        if (database != null) 'database': database!,
+        if (gcsUri != null) 'gcsUri': gcsUri!,
+        if (sqlImportOptions != null) 'sqlImportOptions': sqlImportOptions!,
+        if (user != null) 'user': user!,
+      };
+}
+
 /// Message for triggering fault injection on an instance
 class InjectFaultRequest {
   /// The type of fault to be injected in an instance.
@@ -3714,6 +3994,9 @@ class Instance {
   /// Output only.
   core.List<Node>? nodes;
 
+  /// Configuration for observability.
+  ObservabilityInstanceConfig? observabilityConfig;
+
   /// All outbound public IP addresses configured for the instance.
   ///
   /// Output only.
@@ -3812,6 +4095,7 @@ class Instance {
     this.name,
     this.networkConfig,
     this.nodes,
+    this.observabilityConfig,
     this.outboundPublicIpAddresses,
     this.pscInstanceConfig,
     this.publicIpAddress,
@@ -3875,6 +4159,11 @@ class Instance {
               ?.map((value) =>
                   Node.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
+          observabilityConfig: json_.containsKey('observabilityConfig')
+              ? ObservabilityInstanceConfig.fromJson(
+                  json_['observabilityConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           outboundPublicIpAddresses:
               (json_['outboundPublicIpAddresses'] as core.List?)
                   ?.map((value) => value as core.String)
@@ -3922,6 +4211,8 @@ class Instance {
         if (name != null) 'name': name!,
         if (networkConfig != null) 'networkConfig': networkConfig!,
         if (nodes != null) 'nodes': nodes!,
+        if (observabilityConfig != null)
+          'observabilityConfig': observabilityConfig!,
         if (outboundPublicIpAddresses != null)
           'outboundPublicIpAddresses': outboundPublicIpAddresses!,
         if (pscInstanceConfig != null) 'pscInstanceConfig': pscInstanceConfig!,
@@ -4388,13 +4679,17 @@ class NetworkConfig {
 
 /// Details of a single node in the instance.
 ///
-/// Nodes in an AlloyDB instance are ephemereal, they can change during update,
+/// Nodes in an AlloyDB instance are ephemeral, they can change during update,
 /// failover, autohealing and resize operations.
 class Node {
   /// The identifier of the VM e.g. "test-read-0601-407e52be-ms3l".
+  ///
+  /// Output only.
   core.String? id;
 
   /// The private IP address of the VM e.g. "10.57.0.34".
+  ///
+  /// Output only.
   core.String? ip;
 
   /// Determined by state of the compute VM and postgres-service health.
@@ -4402,9 +4697,13 @@ class Node {
   /// Compute VM state can have values listed in
   /// https://cloud.google.com/compute/docs/instances/instance-life-cycle and
   /// postgres-service health can have values: HEALTHY and UNHEALTHY.
+  ///
+  /// Output only.
   core.String? state;
 
   /// The Compute Engine zone of the VM e.g. "us-central1-b".
+  ///
+  /// Output only.
   core.String? zoneId;
 
   Node({
@@ -4427,6 +4726,95 @@ class Node {
         if (ip != null) 'ip': ip!,
         if (state != null) 'state': state!,
         if (zoneId != null) 'zoneId': zoneId!,
+      };
+}
+
+/// Observability Instance specific configuration.
+class ObservabilityInstanceConfig {
+  /// Observability feature status for an instance.
+  ///
+  /// This flag is turned "off" by default.
+  core.bool? enabled;
+
+  /// Query string length.
+  ///
+  /// The default value is 10k.
+  core.int? maxQueryStringLength;
+
+  /// Preserve comments in query string for an instance.
+  ///
+  /// This flag is turned "off" by default.
+  core.bool? preserveComments;
+
+  /// Number of query execution plans captured by Insights per minute for all
+  /// queries combined.
+  ///
+  /// The default value is 200. Any integer between 0 to 200 is considered
+  /// valid.
+  core.int? queryPlansPerMinute;
+
+  /// Record application tags for an instance.
+  ///
+  /// This flag is turned "off" by default.
+  core.bool? recordApplicationTags;
+
+  /// Track actively running queries on the instance.
+  ///
+  /// If not set, this flag is "off" by default.
+  core.bool? trackActiveQueries;
+
+  /// Track wait event types during query execution for an instance.
+  ///
+  /// This flag is turned "on" by default but tracking is enabled only after
+  /// observability enabled flag is also turned on. This is read-only flag and
+  /// only modifiable by internal API.
+  ///
+  /// Output only.
+  core.bool? trackWaitEventTypes;
+
+  /// Track wait events during query execution for an instance.
+  ///
+  /// This flag is turned "on" by default but tracking is enabled only after
+  /// observability enabled flag is also turned on.
+  core.bool? trackWaitEvents;
+
+  ObservabilityInstanceConfig({
+    this.enabled,
+    this.maxQueryStringLength,
+    this.preserveComments,
+    this.queryPlansPerMinute,
+    this.recordApplicationTags,
+    this.trackActiveQueries,
+    this.trackWaitEventTypes,
+    this.trackWaitEvents,
+  });
+
+  ObservabilityInstanceConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+          maxQueryStringLength: json_['maxQueryStringLength'] as core.int?,
+          preserveComments: json_['preserveComments'] as core.bool?,
+          queryPlansPerMinute: json_['queryPlansPerMinute'] as core.int?,
+          recordApplicationTags: json_['recordApplicationTags'] as core.bool?,
+          trackActiveQueries: json_['trackActiveQueries'] as core.bool?,
+          trackWaitEventTypes: json_['trackWaitEventTypes'] as core.bool?,
+          trackWaitEvents: json_['trackWaitEvents'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (maxQueryStringLength != null)
+          'maxQueryStringLength': maxQueryStringLength!,
+        if (preserveComments != null) 'preserveComments': preserveComments!,
+        if (queryPlansPerMinute != null)
+          'queryPlansPerMinute': queryPlansPerMinute!,
+        if (recordApplicationTags != null)
+          'recordApplicationTags': recordApplicationTags!,
+        if (trackActiveQueries != null)
+          'trackActiveQueries': trackActiveQueries!,
+        if (trackWaitEventTypes != null)
+          'trackWaitEventTypes': trackWaitEventTypes!,
+        if (trackWaitEvents != null) 'trackWaitEvents': trackWaitEvents!,
       };
 }
 
@@ -4586,6 +4974,64 @@ class PromoteClusterRequest {
       };
 }
 
+/// Configuration for setting up PSC service automation.
+///
+/// Consumer projects in the configs will be allowlisted automatically for the
+/// instance.
+class PscAutoConnectionConfig {
+  /// The consumer network for the PSC service automation, example:
+  /// "projects/vpc-host-project/global/networks/default".
+  ///
+  /// The consumer network might be hosted a different project than the consumer
+  /// project.
+  core.String? consumerNetwork;
+
+  /// The status of the service connection policy.
+  ///
+  /// Output only.
+  core.String? consumerNetworkStatus;
+
+  /// The consumer project to which the PSC service automation endpoint will be
+  /// created.
+  core.String? consumerProject;
+
+  /// The IP address of the PSC service automation endpoint.
+  ///
+  /// Output only.
+  core.String? ipAddress;
+
+  /// The status of the PSC service automation connection.
+  ///
+  /// Output only.
+  core.String? status;
+
+  PscAutoConnectionConfig({
+    this.consumerNetwork,
+    this.consumerNetworkStatus,
+    this.consumerProject,
+    this.ipAddress,
+    this.status,
+  });
+
+  PscAutoConnectionConfig.fromJson(core.Map json_)
+      : this(
+          consumerNetwork: json_['consumerNetwork'] as core.String?,
+          consumerNetworkStatus: json_['consumerNetworkStatus'] as core.String?,
+          consumerProject: json_['consumerProject'] as core.String?,
+          ipAddress: json_['ipAddress'] as core.String?,
+          status: json_['status'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
+        if (consumerNetworkStatus != null)
+          'consumerNetworkStatus': consumerNetworkStatus!,
+        if (consumerProject != null) 'consumerProject': consumerProject!,
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (status != null) 'status': status!,
+      };
+}
+
 /// PscConfig contains PSC related configuration at a cluster level.
 class PscConfig {
   /// Create an instance that allows connections from Private Service Connect
@@ -4594,17 +5040,28 @@ class PscConfig {
   /// Optional.
   core.bool? pscEnabled;
 
+  /// The project number that needs to be allowlisted on the network attachment
+  /// to enable outbound connectivity.
+  ///
+  /// Output only.
+  core.String? serviceOwnedProjectNumber;
+
   PscConfig({
     this.pscEnabled,
+    this.serviceOwnedProjectNumber,
   });
 
   PscConfig.fromJson(core.Map json_)
       : this(
           pscEnabled: json_['pscEnabled'] as core.bool?,
+          serviceOwnedProjectNumber:
+              json_['serviceOwnedProjectNumber'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pscEnabled != null) 'pscEnabled': pscEnabled!,
+        if (serviceOwnedProjectNumber != null)
+          'serviceOwnedProjectNumber': serviceOwnedProjectNumber!,
       };
 }
 
@@ -4616,12 +5073,26 @@ class PscInstanceConfig {
   /// Optional.
   core.List<core.String>? allowedConsumerProjects;
 
+  /// Configurations for setting up PSC service automation.
+  ///
+  /// Optional.
+  core.List<PscAutoConnectionConfig>? pscAutoConnections;
+
   /// The DNS name of the instance for PSC connectivity.
   ///
   /// Name convention: ...alloydb-psc.goog
   ///
   /// Output only.
   core.String? pscDnsName;
+
+  /// Configurations for setting up PSC interfaces attached to the instance
+  /// which are used for outbound connectivity.
+  ///
+  /// Only primary instances can have PSC interface attached. Currently we only
+  /// support 0 or 1 PSC interface.
+  ///
+  /// Optional.
+  core.List<PscInterfaceConfig>? pscInterfaceConfigs;
 
   /// The service attachment created when Private Service Connect (PSC) is
   /// enabled for the instance.
@@ -4634,7 +5105,9 @@ class PscInstanceConfig {
 
   PscInstanceConfig({
     this.allowedConsumerProjects,
+    this.pscAutoConnections,
     this.pscDnsName,
+    this.pscInterfaceConfigs,
     this.serviceAttachmentLink,
   });
 
@@ -4644,16 +5117,55 @@ class PscInstanceConfig {
               (json_['allowedConsumerProjects'] as core.List?)
                   ?.map((value) => value as core.String)
                   .toList(),
+          pscAutoConnections: (json_['pscAutoConnections'] as core.List?)
+              ?.map((value) => PscAutoConnectionConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           pscDnsName: json_['pscDnsName'] as core.String?,
+          pscInterfaceConfigs: (json_['pscInterfaceConfigs'] as core.List?)
+              ?.map((value) => PscInterfaceConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           serviceAttachmentLink: json_['serviceAttachmentLink'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedConsumerProjects != null)
           'allowedConsumerProjects': allowedConsumerProjects!,
+        if (pscAutoConnections != null)
+          'pscAutoConnections': pscAutoConnections!,
         if (pscDnsName != null) 'pscDnsName': pscDnsName!,
+        if (pscInterfaceConfigs != null)
+          'pscInterfaceConfigs': pscInterfaceConfigs!,
         if (serviceAttachmentLink != null)
           'serviceAttachmentLink': serviceAttachmentLink!,
+      };
+}
+
+/// Configuration for setting up a PSC interface to enable outbound
+/// connectivity.
+class PscInterfaceConfig {
+  /// The network attachment resource created in the consumer network to which
+  /// the PSC interface will be linked.
+  ///
+  /// This is of the format:
+  /// "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+  /// The network attachment must be in the same region as the instance.
+  core.String? networkAttachmentResource;
+
+  PscInterfaceConfig({
+    this.networkAttachmentResource,
+  });
+
+  PscInterfaceConfig.fromJson(core.Map json_)
+      : this(
+          networkAttachmentResource:
+              json_['networkAttachmentResource'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (networkAttachmentResource != null)
+          'networkAttachmentResource': networkAttachmentResource!,
       };
 }
 
@@ -4924,6 +5436,49 @@ class RestoreClusterRequest {
       };
 }
 
+/// Message for registering Restoring from CloudSQL resource.
+class RestoreFromCloudSQLRequest {
+  /// Cluster created from CloudSQL backup run.
+  CloudSQLBackupRunSource? cloudsqlBackupRunSource;
+
+  /// The resource being created
+  ///
+  /// Required.
+  Cluster? cluster;
+
+  /// ID of the requesting object.
+  ///
+  /// Required.
+  core.String? clusterId;
+
+  RestoreFromCloudSQLRequest({
+    this.cloudsqlBackupRunSource,
+    this.cluster,
+    this.clusterId,
+  });
+
+  RestoreFromCloudSQLRequest.fromJson(core.Map json_)
+      : this(
+          cloudsqlBackupRunSource: json_.containsKey('cloudsqlBackupRunSource')
+              ? CloudSQLBackupRunSource.fromJson(
+                  json_['cloudsqlBackupRunSource']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          cluster: json_.containsKey('cluster')
+              ? Cluster.fromJson(
+                  json_['cluster'] as core.Map<core.String, core.dynamic>)
+              : null,
+          clusterId: json_['clusterId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudsqlBackupRunSource != null)
+          'cloudsqlBackupRunSource': cloudsqlBackupRunSource!,
+        if (cluster != null) 'cluster': cluster!,
+        if (clusterId != null) 'clusterId': clusterId!,
+      };
+}
+
 /// Configuration information for the secondary cluster.
 ///
 /// This should be set if and only if the cluster is of type SECONDARY.
@@ -4999,6 +5554,9 @@ class SqlExportOptions {
         if (tables != null) 'tables': tables!,
       };
 }
+
+/// Options for importing data in SQL format.
+typedef SqlImportOptions = $Empty;
 
 /// SSL configuration.
 class SslConfig {
@@ -5110,6 +5668,12 @@ class SupportedDatabaseFlag {
   /// has no semantic meaning.
   core.String? name;
 
+  /// The recommended value for an INTEGER flag.
+  core.String? recommendedIntegerValue;
+
+  /// The recommended value for a STRING flag.
+  core.String? recommendedStringValue;
+
   /// Whether setting or updating this flag on an Instance requires a database
   /// restart.
   ///
@@ -5117,6 +5681,14 @@ class SupportedDatabaseFlag {
   /// automatically restart the database (making sure to satisfy any
   /// availability SLO's).
   core.bool? requiresDbRestart;
+
+  /// The scope of the flag.
+  /// Possible string values are:
+  /// - "SCOPE_UNSPECIFIED" : The scope of the flag is not specified. Default is
+  /// DATABASE.
+  /// - "DATABASE" : The flag is a database flag.
+  /// - "CONNECTION_POOL" : The flag is a connection pool flag.
+  core.String? scope;
 
   /// Restriction on STRING type value.
   StringRestrictions? stringRestrictions;
@@ -5138,7 +5710,10 @@ class SupportedDatabaseFlag {
     this.flagName,
     this.integerRestrictions,
     this.name,
+    this.recommendedIntegerValue,
+    this.recommendedStringValue,
     this.requiresDbRestart,
+    this.scope,
     this.stringRestrictions,
     this.supportedDbVersions,
     this.valueType,
@@ -5153,7 +5728,12 @@ class SupportedDatabaseFlag {
                   as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
+          recommendedIntegerValue:
+              json_['recommendedIntegerValue'] as core.String?,
+          recommendedStringValue:
+              json_['recommendedStringValue'] as core.String?,
           requiresDbRestart: json_['requiresDbRestart'] as core.bool?,
+          scope: json_['scope'] as core.String?,
           stringRestrictions: json_.containsKey('stringRestrictions')
               ? StringRestrictions.fromJson(json_['stringRestrictions']
                   as core.Map<core.String, core.dynamic>)
@@ -5171,7 +5751,12 @@ class SupportedDatabaseFlag {
         if (integerRestrictions != null)
           'integerRestrictions': integerRestrictions!,
         if (name != null) 'name': name!,
+        if (recommendedIntegerValue != null)
+          'recommendedIntegerValue': recommendedIntegerValue!,
+        if (recommendedStringValue != null)
+          'recommendedStringValue': recommendedStringValue!,
         if (requiresDbRestart != null) 'requiresDbRestart': requiresDbRestart!,
+        if (scope != null) 'scope': scope!,
         if (stringRestrictions != null)
           'stringRestrictions': stringRestrictions!,
         if (supportedDbVersions != null)

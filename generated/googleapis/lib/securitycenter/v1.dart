@@ -9944,6 +9944,30 @@ class AdaptiveProtection {
       };
 }
 
+/// Allowed IP rule.
+class Allowed {
+  /// Optional list of allowed IP rules.
+  ///
+  /// Optional.
+  core.List<IpRule>? ipRules;
+
+  Allowed({
+    this.ipRules,
+  });
+
+  Allowed.fromJson(core.Map json_)
+      : this(
+          ipRules: (json_['ipRules'] as core.List?)
+              ?.map((value) =>
+                  IpRule.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ipRules != null) 'ipRules': ipRules!,
+      };
+}
+
 /// Represents an application associated with a finding.
 class Application {
   /// The base URI that identifies the network location of the application in
@@ -10131,28 +10155,50 @@ class Attack {
   core.String? classification;
 
   /// Total BPS (bytes per second) volume of attack.
+  ///
+  /// Deprecated - refer to volume_bps_long instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? volumeBps;
 
+  /// Total BPS (bytes per second) volume of attack.
+  core.String? volumeBpsLong;
+
   /// Total PPS (packets per second) volume of attack.
+  ///
+  /// Deprecated - refer to volume_pps_long instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? volumePps;
+
+  /// Total PPS (packets per second) volume of attack.
+  core.String? volumePpsLong;
 
   Attack({
     this.classification,
     this.volumeBps,
+    this.volumeBpsLong,
     this.volumePps,
+    this.volumePpsLong,
   });
 
   Attack.fromJson(core.Map json_)
       : this(
           classification: json_['classification'] as core.String?,
           volumeBps: json_['volumeBps'] as core.int?,
+          volumeBpsLong: json_['volumeBpsLong'] as core.String?,
           volumePps: json_['volumePps'] as core.int?,
+          volumePpsLong: json_['volumePpsLong'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (classification != null) 'classification': classification!,
         if (volumeBps != null) 'volumeBps': volumeBps!,
+        if (volumeBpsLong != null) 'volumeBpsLong': volumeBpsLong!,
         if (volumePps != null) 'volumePps': volumePps!,
+        if (volumePpsLong != null) 'volumePpsLong': volumePpsLong!,
       };
 }
 
@@ -11959,7 +12005,7 @@ class DataRetentionDeletionEvent {
   /// Maximum duration of retention allowed from the DRD control.
   ///
   /// This comes from the DRD control where users set a max TTL for their data.
-  /// For example, suppose that a user set the max TTL for a Cloud Storage
+  /// For example, suppose that a user sets the max TTL for a Cloud Storage
   /// bucket to 90 days. However, an object in that bucket is 100 days old. In
   /// this case, a DataRetentionDeletionEvent will be generated for that Cloud
   /// Storage bucket, and the max_retention_allowed is 90 days.
@@ -12063,6 +12109,30 @@ class Database {
       };
 }
 
+/// Denied IP rule.
+class Denied {
+  /// Optional list of denied IP rules.
+  ///
+  /// Optional.
+  core.List<IpRule>? ipRules;
+
+  Denied({
+    this.ipRules,
+  });
+
+  Denied.fromJson(core.Map json_)
+      : this(
+          ipRules: (json_['ipRules'] as core.List?)
+              ?.map((value) =>
+                  IpRule.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ipRules != null) 'ipRules': ipRules!,
+      };
+}
+
 /// Memory hash detection contributing to the binary family match.
 class Detection {
   /// The name of the binary associated with the memory hash signature
@@ -12094,7 +12164,7 @@ class Detection {
 /// Contains information about the disk associated with the finding.
 class Disk {
   /// The name of the disk, for example,
-  /// "https://www.googleapis.com/compute/v1/projects/project-id/zones/zone-id/disks/disk-id".
+  /// "https://www.googleapis.com/compute/v1/projects/{project-id}/zones/{zone-id}/disks/{disk-id}".
   core.String? name;
 
   Disk({
@@ -12746,6 +12816,12 @@ class Finding {
   /// [Indicator of compromise](https://en.wikipedia.org/wiki/Indicator_of_compromise).
   Indicator? indicator;
 
+  /// IP rules associated with the finding.
+  IpRules? ipRules;
+
+  /// Job associated with the finding.
+  Job? job;
+
   /// Signature of the kernel rootkit.
   KernelRootkit? kernelRootkit;
 
@@ -12805,6 +12881,9 @@ class Finding {
   /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
   /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
   core.String? name;
+
+  /// Represents the VPC networks that the resource is attached to.
+  core.List<Network>? networks;
 
   /// Steps to address the finding.
   core.String? nextSteps;
@@ -12959,6 +13038,8 @@ class Finding {
     this.groupMemberships,
     this.iamBindings,
     this.indicator,
+    this.ipRules,
+    this.job,
     this.kernelRootkit,
     this.kubernetes,
     this.loadBalancers,
@@ -12970,6 +13051,7 @@ class Finding {
     this.muteInitiator,
     this.muteUpdateTime,
     this.name,
+    this.networks,
     this.nextSteps,
     this.notebook,
     this.orgPolicies,
@@ -13093,6 +13175,14 @@ class Finding {
               ? Indicator.fromJson(
                   json_['indicator'] as core.Map<core.String, core.dynamic>)
               : null,
+          ipRules: json_.containsKey('ipRules')
+              ? IpRules.fromJson(
+                  json_['ipRules'] as core.Map<core.String, core.dynamic>)
+              : null,
+          job: json_.containsKey('job')
+              ? Job.fromJson(
+                  json_['job'] as core.Map<core.String, core.dynamic>)
+              : null,
           kernelRootkit: json_.containsKey('kernelRootkit')
               ? KernelRootkit.fromJson(
                   json_['kernelRootkit'] as core.Map<core.String, core.dynamic>)
@@ -13122,6 +13212,10 @@ class Finding {
           muteInitiator: json_['muteInitiator'] as core.String?,
           muteUpdateTime: json_['muteUpdateTime'] as core.String?,
           name: json_['name'] as core.String?,
+          networks: (json_['networks'] as core.List?)
+              ?.map((value) => Network.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextSteps: json_['nextSteps'] as core.String?,
           notebook: json_.containsKey('notebook')
               ? Notebook.fromJson(
@@ -13195,6 +13289,8 @@ class Finding {
         if (groupMemberships != null) 'groupMemberships': groupMemberships!,
         if (iamBindings != null) 'iamBindings': iamBindings!,
         if (indicator != null) 'indicator': indicator!,
+        if (ipRules != null) 'ipRules': ipRules!,
+        if (job != null) 'job': job!,
         if (kernelRootkit != null) 'kernelRootkit': kernelRootkit!,
         if (kubernetes != null) 'kubernetes': kubernetes!,
         if (loadBalancers != null) 'loadBalancers': loadBalancers!,
@@ -13206,6 +13302,7 @@ class Finding {
         if (muteInitiator != null) 'muteInitiator': muteInitiator!,
         if (muteUpdateTime != null) 'muteUpdateTime': muteUpdateTime!,
         if (name != null) 'name': name!,
+        if (networks != null) 'networks': networks!,
         if (nextSteps != null) 'nextSteps': nextSteps!,
         if (notebook != null) 'notebook': notebook!,
         if (orgPolicies != null) 'orgPolicies': orgPolicies!,
@@ -14719,6 +14816,171 @@ class Indicator {
       };
 }
 
+/// IP rule information.
+class IpRule {
+  /// An optional list of ports to which this rule applies.
+  ///
+  /// This field is only applicable for the UDP or (S)TCP protocols. Each entry
+  /// must be either an integer or a range including a min and max port number.
+  ///
+  /// Optional.
+  core.List<PortRange>? portRanges;
+
+  /// The IP protocol this rule applies to.
+  ///
+  /// This value can either be one of the following well known protocol strings
+  /// (TCP, UDP, ICMP, ESP, AH, IPIP, SCTP) or a string representation of the
+  /// integer value.
+  core.String? protocol;
+
+  IpRule({
+    this.portRanges,
+    this.protocol,
+  });
+
+  IpRule.fromJson(core.Map json_)
+      : this(
+          portRanges: (json_['portRanges'] as core.List?)
+              ?.map((value) => PortRange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          protocol: json_['protocol'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (portRanges != null) 'portRanges': portRanges!,
+        if (protocol != null) 'protocol': protocol!,
+      };
+}
+
+/// IP rules associated with the finding.
+class IpRules {
+  /// Tuple with allowed rules.
+  Allowed? allowed;
+
+  /// Tuple with denied rules.
+  Denied? denied;
+
+  /// If destination IP ranges are specified, the firewall rule applies only to
+  /// traffic that has a destination IP address in these ranges.
+  ///
+  /// These ranges must be expressed in CIDR format. Only supports IPv4.
+  core.List<core.String>? destinationIpRanges;
+
+  /// The direction that the rule is applicable to, one of ingress or egress.
+  /// Possible string values are:
+  /// - "DIRECTION_UNSPECIFIED" : Unspecified direction value.
+  /// - "INGRESS" : Ingress direction value.
+  /// - "EGRESS" : Egress direction value.
+  core.String? direction;
+
+  /// Name of the network protocol service, such as FTP, that is exposed by the
+  /// open port.
+  ///
+  /// Follows the naming convention available at:
+  /// https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml.
+  core.List<core.String>? exposedServices;
+
+  /// If source IP ranges are specified, the firewall rule applies only to
+  /// traffic that has a source IP address in these ranges.
+  ///
+  /// These ranges must be expressed in CIDR format. Only supports IPv4.
+  core.List<core.String>? sourceIpRanges;
+
+  IpRules({
+    this.allowed,
+    this.denied,
+    this.destinationIpRanges,
+    this.direction,
+    this.exposedServices,
+    this.sourceIpRanges,
+  });
+
+  IpRules.fromJson(core.Map json_)
+      : this(
+          allowed: json_.containsKey('allowed')
+              ? Allowed.fromJson(
+                  json_['allowed'] as core.Map<core.String, core.dynamic>)
+              : null,
+          denied: json_.containsKey('denied')
+              ? Denied.fromJson(
+                  json_['denied'] as core.Map<core.String, core.dynamic>)
+              : null,
+          destinationIpRanges: (json_['destinationIpRanges'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          direction: json_['direction'] as core.String?,
+          exposedServices: (json_['exposedServices'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          sourceIpRanges: (json_['sourceIpRanges'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowed != null) 'allowed': allowed!,
+        if (denied != null) 'denied': denied!,
+        if (destinationIpRanges != null)
+          'destinationIpRanges': destinationIpRanges!,
+        if (direction != null) 'direction': direction!,
+        if (exposedServices != null) 'exposedServices': exposedServices!,
+        if (sourceIpRanges != null) 'sourceIpRanges': sourceIpRanges!,
+      };
+}
+
+/// Describes a job
+class Job {
+  /// If the job did not complete successfully, this field describes why.
+  ///
+  /// Optional.
+  core.int? errorCode;
+
+  /// Gives the location where the job ran, such as `US` or `europe-west1`
+  ///
+  /// Optional.
+  core.String? location;
+
+  /// The fully-qualified name for a job.
+  ///
+  /// e.g. `projects//jobs/`
+  core.String? name;
+
+  /// State of the job, such as `RUNNING` or `PENDING`.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "JOB_STATE_UNSPECIFIED" : Unspecified represents an unknown state and
+  /// should not be used.
+  /// - "PENDING" : Job is scheduled and pending for run
+  /// - "RUNNING" : Job in progress
+  /// - "SUCCEEDED" : Job has completed with success
+  /// - "FAILED" : Job has completed but with failure
+  core.String? state;
+
+  Job({
+    this.errorCode,
+    this.location,
+    this.name,
+    this.state,
+  });
+
+  Job.fromJson(core.Map json_)
+      : this(
+          errorCode: json_['errorCode'] as core.int?,
+          location: json_['location'] as core.String?,
+          name: json_['name'] as core.String?,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (location != null) 'location': location!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// Kernel mode rootkit signatures.
 class KernelRootkit {
   /// Rootkit name, when available.
@@ -15741,6 +16003,26 @@ class MuteInfo {
       };
 }
 
+/// Contains information about a VPC network associated with the finding.
+class Network {
+  /// The name of the VPC network resource, for example,
+  /// `//compute.googleapis.com/projects/my-project/global/networks/my-network`.
+  core.String? name;
+
+  Network({
+    this.name,
+  });
+
+  Network.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Kubernetes nodes associated with the finding.
 class Node {
   /// [Full resource name](https://google.aip.dev/122#full-resource-names) of
@@ -16351,6 +16633,35 @@ class PolicyDriftDetails {
         if (detectedValue != null) 'detectedValue': detectedValue!,
         if (expectedValue != null) 'expectedValue': expectedValue!,
         if (field != null) 'field': field!,
+      };
+}
+
+/// A port range which is inclusive of the min and max values.
+///
+/// Values are between 0 and 2^16-1. The max can be equal / must be not smaller
+/// than the min value. If min and max are equal this indicates that it is a
+/// single port.
+class PortRange {
+  /// Maximum port value.
+  core.String? max;
+
+  /// Minimum port value.
+  core.String? min;
+
+  PortRange({
+    this.max,
+    this.min,
+  });
+
+  PortRange.fromJson(core.Map json_)
+      : this(
+          max: json_['max'] as core.String?,
+          min: json_['min'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (max != null) 'max': max!,
+        if (min != null) 'min': min!,
       };
 }
 

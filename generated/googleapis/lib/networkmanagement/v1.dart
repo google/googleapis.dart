@@ -1163,6 +1163,9 @@ class AbortInfo {
   /// issue in the Google-managed project.
   /// - "UNSUPPORTED_GOOGLE_MANAGED_PROJECT_CONFIG" : Aborted due to an
   /// unsupported configuration of the Google-managed project.
+  /// - "NO_SERVERLESS_IP_RANGES" : Aborted because the source endpoint is a
+  /// Cloud Run revision with direct VPC access enabled, but there are no
+  /// reserved serverless IP ranges.
   core.String? cause;
 
   /// IP address that caused the abort.
@@ -1866,6 +1869,51 @@ class DeliverInfo {
       };
 }
 
+/// For display only.
+///
+/// Metadata associated with a serverless direct VPC egress connection.
+class DirectVpcEgressConnectionInfo {
+  /// URI of direct access network.
+  core.String? networkUri;
+
+  /// Region in which the Direct VPC egress is deployed.
+  core.String? region;
+
+  /// Selected starting IP address, from the selected IP range.
+  core.String? selectedIpAddress;
+
+  /// Selected IP range.
+  core.String? selectedIpRange;
+
+  /// URI of direct access subnetwork.
+  core.String? subnetworkUri;
+
+  DirectVpcEgressConnectionInfo({
+    this.networkUri,
+    this.region,
+    this.selectedIpAddress,
+    this.selectedIpRange,
+    this.subnetworkUri,
+  });
+
+  DirectVpcEgressConnectionInfo.fromJson(core.Map json_)
+      : this(
+          networkUri: json_['networkUri'] as core.String?,
+          region: json_['region'] as core.String?,
+          selectedIpAddress: json_['selectedIpAddress'] as core.String?,
+          selectedIpRange: json_['selectedIpRange'] as core.String?,
+          subnetworkUri: json_['subnetworkUri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (networkUri != null) 'networkUri': networkUri!,
+        if (region != null) 'region': region!,
+        if (selectedIpAddress != null) 'selectedIpAddress': selectedIpAddress!,
+        if (selectedIpRange != null) 'selectedIpRange': selectedIpRange!,
+        if (subnetworkUri != null) 'subnetworkUri': subnetworkUri!,
+      };
+}
+
 /// Details of the final state "drop" and associated resource.
 class DropInfo {
   /// Cause that the packet is dropped.
@@ -2477,6 +2525,8 @@ class FirewallInfo {
   /// - "TRACKING_STATE" : Tracking state for response traffic created when
   /// request traffic goes through allow firewall rule. For details, see
   /// [firewall rules specifications](https://cloud.google.com/firewall/docs/firewalls#specifications)
+  /// - "ANALYSIS_SKIPPED" : Firewall analysis was skipped due to executing
+  /// Connectivity Test in the BypassFirewallChecks mode
   core.String? firewallRuleType;
 
   /// The URI of the VPC network that the firewall rule is associated with.
@@ -3920,7 +3970,7 @@ class RedisClusterInfo {
   /// For example, "us-central1".
   core.String? location;
 
-  /// URI of a Redis Cluster network in format
+  /// URI of the network containing the Redis Cluster endpoints in format
   /// "projects/{project_id}/global/networks/{network_id}".
   core.String? networkUri;
 
@@ -4283,6 +4333,27 @@ class RouteInfo {
 
 /// For display only.
 ///
+/// Metadata associated with a serverless public connection.
+class ServerlessExternalConnectionInfo {
+  /// Selected starting IP address, from the Google dynamic address pool.
+  core.String? selectedIpAddress;
+
+  ServerlessExternalConnectionInfo({
+    this.selectedIpAddress,
+  });
+
+  ServerlessExternalConnectionInfo.fromJson(core.Map json_)
+      : this(
+          selectedIpAddress: json_['selectedIpAddress'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (selectedIpAddress != null) 'selectedIpAddress': selectedIpAddress!,
+      };
+}
+
+/// For display only.
+///
 /// Metadata associated with the serverless network endpoint group backend.
 class ServerlessNegInfo {
   /// URI of the serverless network endpoint group.
@@ -4376,6 +4447,9 @@ class Step {
   /// Usually this is a summary of the state.
   core.String? description;
 
+  /// Display information of a serverless direct VPC egress connection.
+  DirectVpcEgressConnectionInfo? directVpcEgressConnection;
+
   /// Display information of the final state "drop" and reason.
   DropInfo? drop;
 
@@ -4436,6 +4510,9 @@ class Step {
 
   /// Display information of a Compute Engine route.
   RouteInfo? route;
+
+  /// Display information of a serverless public (external) connection.
+  ServerlessExternalConnectionInfo? serverlessExternalConnection;
 
   /// Display information of a Serverless network endpoint group backend.
   ///
@@ -4508,6 +4585,12 @@ class Step {
   /// tunnel.
   /// - "ARRIVE_AT_VPC_CONNECTOR" : Forwarding state: arriving at a VPC
   /// connector.
+  /// - "DIRECT_VPC_EGRESS_CONNECTION" : Forwarding state: for packets
+  /// originating from a serverless endpoint forwarded through Direct VPC
+  /// egress.
+  /// - "SERVERLESS_EXTERNAL_CONNECTION" : Forwarding state: for packets
+  /// originating from a serverless endpoint forwarded through public (external)
+  /// connectivity.
   /// - "NAT" : Transition state: packet header translated.
   /// - "PROXY_CONNECTION" : Transition state: original connection is terminated
   /// and a new proxied connection is initiated.
@@ -4543,6 +4626,7 @@ class Step {
     this.cloudSqlInstance,
     this.deliver,
     this.description,
+    this.directVpcEgressConnection,
     this.drop,
     this.endpoint,
     this.firewall,
@@ -4560,6 +4644,7 @@ class Step {
     this.redisCluster,
     this.redisInstance,
     this.route,
+    this.serverlessExternalConnection,
     this.serverlessNeg,
     this.state,
     this.storageBucket,
@@ -4596,6 +4681,12 @@ class Step {
                   json_['deliver'] as core.Map<core.String, core.dynamic>)
               : null,
           description: json_['description'] as core.String?,
+          directVpcEgressConnection:
+              json_.containsKey('directVpcEgressConnection')
+                  ? DirectVpcEgressConnectionInfo.fromJson(
+                      json_['directVpcEgressConnection']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           drop: json_.containsKey('drop')
               ? DropInfo.fromJson(
                   json_['drop'] as core.Map<core.String, core.dynamic>)
@@ -4662,6 +4753,12 @@ class Step {
               ? RouteInfo.fromJson(
                   json_['route'] as core.Map<core.String, core.dynamic>)
               : null,
+          serverlessExternalConnection:
+              json_.containsKey('serverlessExternalConnection')
+                  ? ServerlessExternalConnectionInfo.fromJson(
+                      json_['serverlessExternalConnection']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           serverlessNeg: json_.containsKey('serverlessNeg')
               ? ServerlessNegInfo.fromJson(
                   json_['serverlessNeg'] as core.Map<core.String, core.dynamic>)
@@ -4694,6 +4791,8 @@ class Step {
         if (cloudSqlInstance != null) 'cloudSqlInstance': cloudSqlInstance!,
         if (deliver != null) 'deliver': deliver!,
         if (description != null) 'description': description!,
+        if (directVpcEgressConnection != null)
+          'directVpcEgressConnection': directVpcEgressConnection!,
         if (drop != null) 'drop': drop!,
         if (endpoint != null) 'endpoint': endpoint!,
         if (firewall != null) 'firewall': firewall!,
@@ -4712,6 +4811,8 @@ class Step {
         if (redisCluster != null) 'redisCluster': redisCluster!,
         if (redisInstance != null) 'redisInstance': redisInstance!,
         if (route != null) 'route': route!,
+        if (serverlessExternalConnection != null)
+          'serverlessExternalConnection': serverlessExternalConnection!,
         if (serverlessNeg != null) 'serverlessNeg': serverlessNeg!,
         if (state != null) 'state': state!,
         if (storageBucket != null) 'storageBucket': storageBucket!,

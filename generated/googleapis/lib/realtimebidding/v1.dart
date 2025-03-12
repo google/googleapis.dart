@@ -16,7 +16,7 @@
 ///
 /// Allows external bidders to manage their RTB integration with Google. This
 /// includes managing bidder endpoints, QPS quotas, configuring what ad
-/// inventory to receive via pretargeting, submitting creatives for
+/// inventory to receive with pretargeting, submitting creatives for
 /// verification, and accessing creative metadata such as approval status.
 ///
 /// For more information, see
@@ -50,7 +50,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Allows external bidders to manage their RTB integration with Google.
 ///
 /// This includes managing bidder endpoints, QPS quotas, configuring what ad
-/// inventory to receive via pretargeting, submitting creatives for
+/// inventory to receive with pretargeting, submitting creatives for
 /// verification, and accessing creative metadata such as approval status.
 class RealTimeBiddingApi {
   /// See, create, edit, and delete your Authorized Buyers and Open Bidding
@@ -2341,7 +2341,7 @@ class Bidder {
   /// When true, bid requests from these nonguaranteed deals will always be
   /// sent. When false, bid requests will be subject to regular pretargeting
   /// configurations. Programmatic Guaranteed deals will always be sent to the
-  /// bidder, regardless of the value for this flag. Auction packages are not
+  /// bidder, regardless of the value for this option. Auction packages are not
   /// impacted by this value and are subject to the regular pretargeting
   /// configurations.
   ///
@@ -2583,6 +2583,9 @@ class Creative {
   /// creative.
   ///
   /// Can be used to filter the response of the creatives.list method.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? declaredRestrictedCategories;
 
   /// IDs for the declared ad technology vendors that may be used by this
@@ -2811,11 +2814,13 @@ class CreativeServingDecision {
   /// filtered before the auction.
   core.List<core.String>? detectedAttributes;
 
-  /// IDs of the detected categories, if any.
+  /// IDs of the detected categories.
   ///
   /// The taxonomy in which the categories are expressed is specified by the
-  /// detected_categories_taxonomy field. Can be used to filter the response of
-  /// the creatives.list method.
+  /// detected_categories_taxonomy field. Use this in conjunction with
+  /// BidRequest.bcat to avoid bidding on impressions where a given ad category
+  /// is blocked, or to troubleshoot filtered bids. Can be used to filter the
+  /// response of the creatives.list method.
   ///
   /// Output only.
   core.List<core.String>? detectedCategories;
@@ -2826,6 +2831,9 @@ class CreativeServingDecision {
   /// Possible string values are:
   /// - "AD_CATEGORY_TAXONOMY_UNSPECIFIED" : Default value that should never be
   /// used.
+  /// - "GOOGLE_AD_CATEGORY_TAXONOMY" : Google ad categories taxonomy, including
+  /// product categories and sensitive categories. Find the category lists at
+  /// https://developers.google.com/authorized-buyers/rtb/data#reference-data
   /// - "IAB_CONTENT_1_0" : IAB Content Taxonomy 1.0. See
   /// https://github.com/InteractiveAdvertisingBureau/Taxonomies/blob/main/Content%20Taxonomies/Content%20Taxonomy%201.0.tsv
   /// for more details.

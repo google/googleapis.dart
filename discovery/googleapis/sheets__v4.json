@@ -37,7 +37,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241203",
+    "revision": "20250211",
     "rootUrl": "https://sheets.googleapis.com/",
     "servicePath": "",
     "title": "Google Sheets API",
@@ -3943,7 +3943,7 @@
             "type": "object"
         },
         "DeleteDimensionRequest": {
-            "description": "Deletes the dimensions from the sheet.",
+            "description": " Deletes the dimensions from the sheet.",
             "id": "DeleteDimensionRequest",
             "properties": {
                 "range": {
@@ -4972,7 +4972,7 @@
             "properties": {
                 "range": {
                     "$ref": "GridRange",
-                    "description": "The range to insert new cells into."
+                    "description": "The range to insert new cells into. The range is constrained to the current sheet boundaries."
                 },
                 "shiftDimension": {
                     "description": "The dimension which will be shifted when inserting cells. If ROWS, existing cells will be shifted down. If COLUMNS, existing cells will be shifted right.",

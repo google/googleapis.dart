@@ -53,20 +53,22 @@ class WorkspaceEventsApi {
   static const chatMembershipsReadonlyScope =
       'https://www.googleapis.com/auth/chat.memberships.readonly';
 
-  /// See, compose, send, update, and delete messages and their associated
-  /// attachments, and add, see, and delete reactions to messages.
+  /// See, compose, send, update, and delete messages as well as their message
+  /// content; add, see, and delete reactions to messages.
   static const chatMessagesScope =
       'https://www.googleapis.com/auth/chat.messages';
 
-  /// See, add, and delete reactions to messages in Google Chat
+  /// See, add, and delete reactions as well as their reaction content to
+  /// messages in Google Chat
   static const chatMessagesReactionsScope =
       'https://www.googleapis.com/auth/chat.messages.reactions';
 
-  /// View reactions to messages in Google Chat
+  /// View reactions as well as their reaction content to messages in Google
+  /// Chat
   static const chatMessagesReactionsReadonlyScope =
       'https://www.googleapis.com/auth/chat.messages.reactions.readonly';
 
-  /// See messages and their associated reactions and attachments in Google Chat
+  /// See messages as well as their reactions and message content in Google Chat
   static const chatMessagesReadonlyScope =
       'https://www.googleapis.com/auth/chat.messages.readonly';
 
@@ -519,12 +521,12 @@ class ListSubscriptionsResponse {
 
 /// The endpoint where the subscription delivers events.
 class NotificationEndpoint {
-  /// The Cloud Pub/Sub topic that receives events for the subscription.
+  /// The Pub/Sub topic that receives events for the subscription.
   ///
   /// Format: `projects/{project}/topics/{topic}` You must create the topic in
   /// the same Google Cloud project where you create this subscription. When the
-  /// topic receives events, the events are encoded as Cloud Pub/Sub messages.
-  /// For details, see the
+  /// topic receives events, the events are encoded as Pub/Sub messages. For
+  /// details, see the
   /// [Google Cloud Pub/Sub Protocol Binding for CloudEvents](https://github.com/googleapis/google-cloudevents/blob/main/docs/spec/pubsub.md).
   ///
   /// Immutable.

@@ -32,6 +32,7 @@
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsStoragePoolsResource]
 ///     - [ProjectsLocationsVolumesResource]
+///       - [ProjectsLocationsVolumesQuotaRulesResource]
 ///       - [ProjectsLocationsVolumesReplicationsResource]
 ///       - [ProjectsLocationsVolumesSnapshotsResource]
 library;
@@ -1960,6 +1961,8 @@ class ProjectsLocationsStoragePoolsResource {
 class ProjectsLocationsVolumesResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsVolumesQuotaRulesResource get quotaRules =>
+      ProjectsLocationsVolumesQuotaRulesResource(_requester);
   ProjectsLocationsVolumesReplicationsResource get replications =>
       ProjectsLocationsVolumesReplicationsResource(_requester);
   ProjectsLocationsVolumesSnapshotsResource get snapshots =>
@@ -2235,6 +2238,239 @@ class ProjectsLocationsVolumesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsVolumesQuotaRulesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsVolumesQuotaRulesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new quota rule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for CreateQuotaRuleRequest
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+$`.
+  ///
+  /// [quotaRuleId] - Required. ID of the quota rule to create. Must be unique
+  /// within the parent resource. Must contain only letters, numbers, underscore
+  /// and hyphen, with the first character a letter or underscore, the last a
+  /// letter or underscore or a number, and a 63 character maximum.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    QuotaRule request,
+    core.String parent, {
+    core.String? quotaRuleId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (quotaRuleId != null) 'quotaRuleId': [quotaRuleId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/quotaRules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a quota rule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the quota rule.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+/quotaRules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns details of the specified quota rule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the quota rule
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+/quotaRules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [QuotaRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<QuotaRule> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return QuotaRule.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns list of all quota rules in a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListQuotaRulesRequest
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, the server will pick an appropriate
+  /// default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListQuotaRulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListQuotaRulesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/quotaRules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListQuotaRulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a quota rule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the quota rule. Format:
+  /// `projects/{project_number}/locations/{location_id}/volumes/volumes/{volume_id}/quotaRules/{quota_rule_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+/quotaRules/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the Quota Rule resource by the update. The fields specified
+  /// in the update_mask are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. If the user does not
+  /// provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    QuotaRule request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
       body: body_,
       queryParams: queryParams_,
     );
@@ -3711,6 +3947,24 @@ class HybridPeeringDetails {
   /// Optional.
   core.String? passphrase;
 
+  /// Name of the user's local source cluster to be peered with the destination
+  /// cluster.
+  ///
+  /// Optional.
+  core.String? peerClusterName;
+
+  /// Name of the user's local source vserver svm to be peered with the
+  /// destination vserver svm.
+  ///
+  /// Optional.
+  core.String? peerSvmName;
+
+  /// Name of the user's local source volume to be peered with the destination
+  /// volume.
+  ///
+  /// Optional.
+  core.String? peerVolumeName;
+
   /// IP address of the subnet.
   ///
   /// Optional.
@@ -3720,6 +3974,9 @@ class HybridPeeringDetails {
     this.command,
     this.commandExpiryTime,
     this.passphrase,
+    this.peerClusterName,
+    this.peerSvmName,
+    this.peerVolumeName,
     this.subnetIp,
   });
 
@@ -3728,6 +3985,9 @@ class HybridPeeringDetails {
           command: json_['command'] as core.String?,
           commandExpiryTime: json_['commandExpiryTime'] as core.String?,
           passphrase: json_['passphrase'] as core.String?,
+          peerClusterName: json_['peerClusterName'] as core.String?,
+          peerSvmName: json_['peerSvmName'] as core.String?,
+          peerVolumeName: json_['peerVolumeName'] as core.String?,
           subnetIp: json_['subnetIp'] as core.String?,
         );
 
@@ -3735,6 +3995,9 @@ class HybridPeeringDetails {
         if (command != null) 'command': command!,
         if (commandExpiryTime != null) 'commandExpiryTime': commandExpiryTime!,
         if (passphrase != null) 'passphrase': passphrase!,
+        if (peerClusterName != null) 'peerClusterName': peerClusterName!,
+        if (peerSvmName != null) 'peerSvmName': peerSvmName!,
+        if (peerVolumeName != null) 'peerVolumeName': peerVolumeName!,
         if (subnetIp != null) 'subnetIp': subnetIp!,
       };
 }
@@ -4177,6 +4440,42 @@ class ListOperationsResponse {
       };
 }
 
+/// ListQuotaRulesResponse is the response to a ListQuotaRulesRequest.
+class ListQuotaRulesResponse {
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// List of quota rules
+  core.List<QuotaRule>? quotaRules;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListQuotaRulesResponse({
+    this.nextPageToken,
+    this.quotaRules,
+    this.unreachable,
+  });
+
+  ListQuotaRulesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          quotaRules: (json_['quotaRules'] as core.List?)
+              ?.map((value) => QuotaRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (quotaRules != null) 'quotaRules': quotaRules!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// ListReplicationsResponse is the result of ListReplicationsRequest.
 class ListReplicationsResponse {
   /// The token you can use to retrieve the next page of results.
@@ -4379,6 +4678,11 @@ class MountOption {
   /// Instructions for mounting
   core.String? instructions;
 
+  /// IP Address.
+  ///
+  /// Output only.
+  core.String? ipAddress;
+
   /// Protocol to mount with.
   /// Possible string values are:
   /// - "PROTOCOLS_UNSPECIFIED" : Unspecified protocol
@@ -4391,6 +4695,7 @@ class MountOption {
     this.export,
     this.exportFull,
     this.instructions,
+    this.ipAddress,
     this.protocol,
   });
 
@@ -4399,6 +4704,7 @@ class MountOption {
           export: json_['export'] as core.String?,
           exportFull: json_['exportFull'] as core.String?,
           instructions: json_['instructions'] as core.String?,
+          ipAddress: json_['ipAddress'] as core.String?,
           protocol: json_['protocol'] as core.String?,
         );
 
@@ -4406,6 +4712,7 @@ class MountOption {
         if (export != null) 'export': export!,
         if (exportFull != null) 'exportFull': exportFull!,
         if (instructions != null) 'instructions': instructions!,
+        if (ipAddress != null) 'ipAddress': ipAddress!,
         if (protocol != null) 'protocol': protocol!,
       };
 }
@@ -4483,6 +4790,115 @@ class Operation {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
+      };
+}
+
+/// QuotaRule specifies the maximum disk space a user or group can use within a
+/// volume.
+///
+/// They can be used for creating default and individual quota rules.
+class QuotaRule {
+  /// Create time of the quota rule
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the quota rule
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The maximum allowed disk space in MiB.
+  ///
+  /// Required.
+  core.int? diskLimitMib;
+
+  /// Labels of the quota rule
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The resource name of the quota rule. Format:
+  /// `projects/{project_number}/locations/{location_id}/volumes/volumes/{volume_id}/quotaRules/{quota_rule_id}`.
+  core.String? name;
+
+  /// State of the quota rule
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state for quota rule
+  /// - "CREATING" : Quota rule is creating
+  /// - "UPDATING" : Quota rule is updating
+  /// - "DELETING" : Quota rule is deleting
+  /// - "READY" : Quota rule is ready
+  /// - "ERROR" : Quota rule is in error state.
+  core.String? state;
+
+  /// State details of the quota rule
+  ///
+  /// Output only.
+  core.String? stateDetails;
+
+  /// The quota rule applies to the specified user or group, identified by a
+  /// Unix UID/GID, Windows SID, or null for default.
+  ///
+  /// Optional.
+  core.String? target;
+
+  /// The type of quota rule.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified type for quota rule
+  /// - "INDIVIDUAL_USER_QUOTA" : Individual user quota rule
+  /// - "INDIVIDUAL_GROUP_QUOTA" : Individual group quota rule
+  /// - "DEFAULT_USER_QUOTA" : Default user quota rule
+  /// - "DEFAULT_GROUP_QUOTA" : Default group quota rule
+  core.String? type;
+
+  QuotaRule({
+    this.createTime,
+    this.description,
+    this.diskLimitMib,
+    this.labels,
+    this.name,
+    this.state,
+    this.stateDetails,
+    this.target,
+    this.type,
+  });
+
+  QuotaRule.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          diskLimitMib: json_['diskLimitMib'] as core.int?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          name: json_['name'] as core.String?,
+          state: json_['state'] as core.String?,
+          stateDetails: json_['stateDetails'] as core.String?,
+          target: json_['target'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (diskLimitMib != null) 'diskLimitMib': diskLimitMib!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (stateDetails != null) 'stateDetails': stateDetails!,
+        if (target != null) 'target': target!,
+        if (type != null) 'type': type!,
       };
 }
 

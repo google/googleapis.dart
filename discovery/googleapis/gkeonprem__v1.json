@@ -25,10 +25,10 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241204",
+    "revision": "20250224",
     "rootUrl": "https://gkeonprem.googleapis.com/",
     "servicePath": "",
-    "title": "GDC Virtual API",
+    "title": "GKE On-Prem API",
     "version": "v1",
     "version_module": true,
     "parameters": {

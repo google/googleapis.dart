@@ -2467,7 +2467,8 @@ class IosRoboTest {
   ///
   /// See
   /// https://firebase.google.com/docs/test-lab/android/robo-scripts-reference
-  /// for more information about Roboscripts.
+  /// for more information about Roboscripts. The maximum allowed file size of
+  /// the roboscript is 10MiB.
   FileReference? roboScript;
 
   IosRoboTest({
@@ -2769,17 +2770,26 @@ class LabInfo {
   /// If empty, the device is hosted in a Google owned lab.
   core.String? name;
 
+  /// The Unicode country/region code (CLDR) of the lab where the device is
+  /// hosted.
+  ///
+  /// E.g. "US" for United States, "CH" for Switzerland.
+  core.String? regionCode;
+
   LabInfo({
     this.name,
+    this.regionCode,
   });
 
   LabInfo.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
+          regionCode: json_['regionCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
+        if (regionCode != null) 'regionCode': regionCode!,
       };
 }
 

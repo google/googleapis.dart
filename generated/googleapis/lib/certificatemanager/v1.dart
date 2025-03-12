@@ -1971,6 +1971,8 @@ class Certificate {
   /// certificate with cross-region internal Application Load Balancer. The
   /// certificates are served from all Google Cloud regions. See
   /// https://cloud.google.com/compute/docs/regions-zones.
+  /// - "CLIENT_AUTH" : Associated with certificates used as client certificates
+  /// in Backend mTLS.
   core.String? scope;
 
   /// If set, defines data of a self-managed certificate.
@@ -1980,6 +1982,11 @@ class Certificate {
   ///
   /// Output only.
   core.String? updateTime;
+
+  /// The list of resources that use this Certificate.
+  ///
+  /// Output only.
+  core.List<UsedBy>? usedBy;
 
   Certificate({
     this.createTime,
@@ -1993,6 +2000,7 @@ class Certificate {
     this.scope,
     this.selfManaged,
     this.updateTime,
+    this.usedBy,
   });
 
   Certificate.fromJson(core.Map json_)
@@ -2022,6 +2030,10 @@ class Certificate {
                   json_['selfManaged'] as core.Map<core.String, core.dynamic>)
               : null,
           updateTime: json_['updateTime'] as core.String?,
+          usedBy: (json_['usedBy'] as core.List?)
+              ?.map((value) =>
+                  UsedBy.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2036,6 +2048,7 @@ class Certificate {
         if (scope != null) 'scope': scope!,
         if (selfManaged != null) 'selfManaged': selfManaged!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (usedBy != null) 'usedBy': usedBy!,
       };
 }
 
@@ -3347,5 +3360,30 @@ class TrustStore {
   core.Map<core.String, core.dynamic> toJson() => {
         if (intermediateCas != null) 'intermediateCas': intermediateCas!,
         if (trustAnchors != null) 'trustAnchors': trustAnchors!,
+      };
+}
+
+/// Defines a resource that uses the certificate.
+class UsedBy {
+  /// Full name of the resource https://google.aip.dev/122#full-resource-names,
+  /// e.g. `//certificatemanager.googleapis.com/projects / * /locations / *
+  /// /certificateMaps / * /certificateMapEntries / * ` or
+  /// `//compute.googleapis.com/projects / * /locations / * /targetHttpsProxies
+  /// / * `.
+  ///
+  /// Output only.
+  core.String? name;
+
+  UsedBy({
+    this.name,
+  });
+
+  UsedBy.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
       };
 }

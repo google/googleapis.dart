@@ -3320,6 +3320,7 @@ class ProjectsLocationsProvidersConnectorsVersionsResource {
   /// - "AUTH_SCHEMA_VIEW_UNSPECIFIED" : Default value.
   /// - "BASIC" : Basic view of the AuthSchema.
   /// - "JSON_SCHEMA" : JSON schema view of the AuthSchema.
+  /// - "EUA_SCHEMA" : EUA Schema view of the AuthSchema.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4592,6 +4593,11 @@ class Connection {
   /// Output only.
   core.String? tlsServiceDirectory;
 
+  /// Traffic shaping configuration for the connection.
+  ///
+  /// Optional.
+  core.List<TrafficShapingConfig>? trafficShapingConfigs;
+
   /// Updated time.
   ///
   /// Output only.
@@ -4629,6 +4635,7 @@ class Connection {
     this.subscriptionType,
     this.suspended,
     this.tlsServiceDirectory,
+    this.trafficShapingConfigs,
     this.updateTime,
   });
 
@@ -4711,6 +4718,10 @@ class Connection {
           subscriptionType: json_['subscriptionType'] as core.String?,
           suspended: json_['suspended'] as core.bool?,
           tlsServiceDirectory: json_['tlsServiceDirectory'] as core.String?,
+          trafficShapingConfigs: (json_['trafficShapingConfigs'] as core.List?)
+              ?.map((value) => TrafficShapingConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           updateTime: json_['updateTime'] as core.String?,
         );
 
@@ -4756,6 +4767,8 @@ class Connection {
         if (suspended != null) 'suspended': suspended!,
         if (tlsServiceDirectory != null)
           'tlsServiceDirectory': tlsServiceDirectory!,
+        if (trafficShapingConfigs != null)
+          'trafficShapingConfigs': trafficShapingConfigs!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -5445,7 +5458,7 @@ class ConnectorVersion {
       };
 }
 
-/// This cofiguration provides infra configs like rate limit threshold which
+/// This configuration provides infra configs like rate limit threshold which
 /// need to be configurable for every connector version
 class ConnectorVersionInfraConfig {
   /// The window used for ratelimiting runtime requests to connections.
@@ -6249,6 +6262,9 @@ class EndpointAttachment {
       };
 }
 
+/// Data enrichment configuration.
+typedef EnrichmentConfig = $EnrichmentConfig;
+
 /// EnumOption definition
 class EnumOption {
   /// Display name of the option.
@@ -6393,8 +6409,8 @@ class EventSubscriptionDestination {
   /// OPTION 1: Hit an endpoint when we receive an event.
   EndPoint? endpoint;
 
-  /// OPTION 2: Write the event to Cloud Storage bucket.
-  GSUtil? gsutil;
+  /// OPTION 3: Write the event to Pub/Sub topic.
+  PubSub? pubsub;
 
   /// Service account needed for runtime plane to trigger IP workflow.
   core.String? serviceAccount;
@@ -6409,7 +6425,7 @@ class EventSubscriptionDestination {
 
   EventSubscriptionDestination({
     this.endpoint,
-    this.gsutil,
+    this.pubsub,
     this.serviceAccount,
     this.type,
   });
@@ -6420,9 +6436,9 @@ class EventSubscriptionDestination {
               ? EndPoint.fromJson(
                   json_['endpoint'] as core.Map<core.String, core.dynamic>)
               : null,
-          gsutil: json_.containsKey('gsutil')
-              ? GSUtil.fromJson(
-                  json_['gsutil'] as core.Map<core.String, core.dynamic>)
+          pubsub: json_.containsKey('pubsub')
+              ? PubSub.fromJson(
+                  json_['pubsub'] as core.Map<core.String, core.dynamic>)
               : null,
           serviceAccount: json_['serviceAccount'] as core.String?,
           type: json_['type'] as core.String?,
@@ -6430,7 +6446,7 @@ class EventSubscriptionDestination {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endpoint != null) 'endpoint': endpoint!,
-        if (gsutil != null) 'gsutil': gsutil!,
+        if (pubsub != null) 'pubsub': pubsub!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (type != null) 'type': type!,
       };
@@ -6582,6 +6598,11 @@ class EventingConfig {
   /// Optional.
   DeadLetterConfig? deadLetterConfig;
 
+  /// Data enrichment configuration.
+  ///
+  /// Optional.
+  EnrichmentConfig? enrichmentConfig;
+
   /// Enrichment Enabled.
   ///
   /// Optional.
@@ -6618,6 +6639,7 @@ class EventingConfig {
     this.additionalVariables,
     this.authConfig,
     this.deadLetterConfig,
+    this.enrichmentConfig,
     this.enrichmentEnabled,
     this.eventsListenerIngressEndpoint,
     this.listenerAuthConfig,
@@ -6638,6 +6660,10 @@ class EventingConfig {
               : null,
           deadLetterConfig: json_.containsKey('deadLetterConfig')
               ? DeadLetterConfig.fromJson(json_['deadLetterConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          enrichmentConfig: json_.containsKey('enrichmentConfig')
+              ? EnrichmentConfig.fromJson(json_['enrichmentConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
           enrichmentEnabled: json_['enrichmentEnabled'] as core.bool?,
@@ -6666,6 +6692,7 @@ class EventingConfig {
           'additionalVariables': additionalVariables!,
         if (authConfig != null) 'authConfig': authConfig!,
         if (deadLetterConfig != null) 'deadLetterConfig': deadLetterConfig!,
+        if (enrichmentConfig != null) 'enrichmentConfig': enrichmentConfig!,
         if (enrichmentEnabled != null) 'enrichmentEnabled': enrichmentEnabled!,
         if (eventsListenerIngressEndpoint != null)
           'eventsListenerIngressEndpoint': eventsListenerIngressEndpoint!,
@@ -7262,27 +7289,6 @@ class FieldComparison {
       };
 }
 
-/// GSUtil message includes details of the Destination Cloud Storage bucket.
-class GSUtil {
-  /// The URI of the Cloud Storage bucket.
-  ///
-  /// Required.
-  core.String? gsutilUri;
-
-  GSUtil({
-    this.gsutilUri,
-  });
-
-  GSUtil.fromJson(core.Map json_)
-      : this(
-          gsutilUri: json_['gsutilUri'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (gsutilUri != null) 'gsutilUri': gsutilUri!,
-      };
-}
-
 /// Autoscaling config for connector deployment system metrics.
 typedef HPAConfig = $HPAConfig;
 
@@ -7483,6 +7489,13 @@ class JsonAuthSchema {
 
 /// JsonSchema representation of schema metadata
 class JsonSchema {
+  /// Additional details apart from standard json schema fields, this gives
+  /// flexibility to store metadata about the schema
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? additionalDetails;
+
   /// The default value of the field or object described by this schema.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -7574,6 +7587,7 @@ class JsonSchema {
   core.List<core.String>? type;
 
   JsonSchema({
+    this.additionalDetails,
     this.default_,
     this.description,
     this.enum_,
@@ -7587,6 +7601,10 @@ class JsonSchema {
 
   JsonSchema.fromJson(core.Map json_)
       : this(
+          additionalDetails: json_.containsKey('additionalDetails')
+              ? json_['additionalDetails']
+                  as core.Map<core.String, core.dynamic>
+              : null,
           default_: json_['default'],
           description: json_['description'] as core.String?,
           enum_: json_.containsKey('enum') ? json_['enum'] as core.List : null,
@@ -7613,6 +7631,7 @@ class JsonSchema {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalDetails != null) 'additionalDetails': additionalDetails!,
         if (default_ != null) 'default': default_!,
         if (description != null) 'description': description!,
         if (enum_ != null) 'enum': enum_!,
@@ -8736,10 +8755,22 @@ class PartnerMetadata {
   /// Required.
   core.String? demoUri;
 
+  /// Has dynamic open api spec uri.
+  ///
+  /// Output only.
+  core.bool? hasDynamicSpecUri;
+
   /// Integration example templates for the custom connector.
   ///
   /// Required.
   core.String? integrationTemplates;
+
+  /// Local spec path.
+  ///
+  /// Required if has_dynamic_spec_uri is true.
+  ///
+  /// Output only.
+  core.String? localSpecPath;
 
   /// Marketplace product name.
   ///
@@ -8796,7 +8827,9 @@ class PartnerMetadata {
     this.additionalComments,
     this.confirmPartnerRequirements,
     this.demoUri,
+    this.hasDynamicSpecUri,
     this.integrationTemplates,
+    this.localSpecPath,
     this.marketplaceProduct,
     this.marketplaceProductId,
     this.marketplaceProductProjectId,
@@ -8816,7 +8849,9 @@ class PartnerMetadata {
           confirmPartnerRequirements:
               json_['confirmPartnerRequirements'] as core.bool?,
           demoUri: json_['demoUri'] as core.String?,
+          hasDynamicSpecUri: json_['hasDynamicSpecUri'] as core.bool?,
           integrationTemplates: json_['integrationTemplates'] as core.String?,
+          localSpecPath: json_['localSpecPath'] as core.String?,
           marketplaceProduct: json_['marketplaceProduct'] as core.String?,
           marketplaceProductId: json_['marketplaceProductId'] as core.String?,
           marketplaceProductProjectId:
@@ -8838,8 +8873,10 @@ class PartnerMetadata {
         if (confirmPartnerRequirements != null)
           'confirmPartnerRequirements': confirmPartnerRequirements!,
         if (demoUri != null) 'demoUri': demoUri!,
+        if (hasDynamicSpecUri != null) 'hasDynamicSpecUri': hasDynamicSpecUri!,
         if (integrationTemplates != null)
           'integrationTemplates': integrationTemplates!,
+        if (localSpecPath != null) 'localSpecPath': localSpecPath!,
         if (marketplaceProduct != null)
           'marketplaceProduct': marketplaceProduct!,
         if (marketplaceProductId != null)
@@ -9084,6 +9121,61 @@ class Provider {
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (webAssetsLocation != null) 'webAssetsLocation': webAssetsLocation!,
+      };
+}
+
+/// Pub/Sub message includes details of the Destination Pub/Sub topic.
+class PubSub {
+  /// Pub/Sub message attributes to be added to the Pub/Sub message.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? attributes;
+
+  /// Configuration for configuring the trigger
+  ///
+  /// Optional.
+  core.List<ConfigVariable>? configVariables;
+
+  /// The project id which has the Pub/Sub topic.
+  ///
+  /// Required.
+  core.String? projectId;
+
+  /// The topic id of the Pub/Sub topic.
+  ///
+  /// Required.
+  core.String? topicId;
+
+  PubSub({
+    this.attributes,
+    this.configVariables,
+    this.projectId,
+    this.topicId,
+  });
+
+  PubSub.fromJson(core.Map json_)
+      : this(
+          attributes:
+              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          configVariables: (json_['configVariables'] as core.List?)
+              ?.map((value) => ConfigVariable.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          projectId: json_['projectId'] as core.String?,
+          topicId: json_['topicId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributes != null) 'attributes': attributes!,
+        if (configVariables != null) 'configVariables': configVariables!,
+        if (projectId != null) 'projectId': projectId!,
+        if (topicId != null) 'topicId': topicId!,
       };
 }
 
@@ -9396,7 +9488,7 @@ class RoleGrant {
   /// Optional.
   core.String? helperTextTemplate;
 
-  /// Prinicipal/Identity for whom the role need to assigned.
+  /// Principal/Identity for whom the role need to assigned.
   ///
   /// Optional.
   /// Possible string values are:
@@ -9916,7 +10008,7 @@ class Settings {
 class Source {
   /// Field identifier.
   ///
-  /// For example config vaiable name.
+  /// For example config variable name.
   core.String? fieldId;
 
   /// Type of the source.
@@ -10257,6 +10349,55 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// * TrafficShapingConfig defines the configuration for shaping API traffic by
+/// specifying a quota limit and the duration over which this limit is enforced.
+///
+/// This configuration helps to control and manage the rate at which API calls
+/// are made on the client side, preventing service overload on the backend. For
+/// example: - if the quota limit is 100 calls per 10 seconds, then the message
+/// would be: { quota_limit: 100 duration: { seconds: 10 } } - if the quota
+/// limit is 100 calls per 5 minutes, then the message would be: { quota_limit:
+/// 100 duration: { seconds: 300 } } - if the quota limit is 10000 calls per
+/// day, then the message would be: { quota_limit: 10000 duration: { seconds:
+/// 86400 } and so on.
+class TrafficShapingConfig {
+  /// * The duration over which the API call quota limits are calculated.
+  ///
+  /// This duration is used to define the time window for evaluating if the
+  /// number of API calls made by a user is within the allowed quota limits. For
+  /// example: - To define a quota sampled over 16 seconds, set `seconds` to 16
+  /// - To define a quota sampled over 5 minutes, set `seconds` to 300 (5 * 60)
+  /// - To define a quota sampled over 1 day, set `seconds` to 86400 (24 * 60 *
+  /// 60) and so on. It is important to note that this duration is not the time
+  /// the quota is valid for, but rather the time window over which the quota is
+  /// evaluated. For example, if the quota is 100 calls per 10 seconds, then
+  /// this duration field would be set to 10 seconds.
+  ///
+  /// Required.
+  core.String? duration;
+
+  /// Maximum number of api calls allowed.
+  ///
+  /// Required.
+  core.String? quotaLimit;
+
+  TrafficShapingConfig({
+    this.duration,
+    this.quotaLimit,
+  });
+
+  TrafficShapingConfig.fromJson(core.Map json_)
+      : this(
+          duration: json_['duration'] as core.String?,
+          quotaLimit: json_['quotaLimit'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (quotaLimit != null) 'quotaLimit': quotaLimit!,
+      };
+}
 
 /// Parameters to support Username and Password Authentication.
 class UserPassword {

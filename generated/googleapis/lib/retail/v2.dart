@@ -12,9 +12,9 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Vertex AI Search for Retail API - v2
+/// Vertex AI Search for commerce API - v2
 ///
-/// Vertex AI Search for Retail API is made up of Retail Search, Browse and
+/// Vertex AI Search for commerce API is made up of Retail Search, Browse and
 /// Recommendations. These discovery AI solutions help you implement
 /// personalized search, browse and recommendations, based on machine learning
 /// models, across your websites and mobile applications.
@@ -56,7 +56,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Vertex AI Search for Retail API is made up of Retail Search, Browse and
+/// Vertex AI Search for commerce API is made up of Retail Search, Browse and
 /// Recommendations.
 ///
 /// These discovery AI solutions help you implement personalized search, browse
@@ -167,7 +167,11 @@ class ProjectsLocationsCatalogsResource {
   /// [entity] - The entity for customers who run multiple entities, domains,
   /// sites, or regions, for example, `Google US`, `Google Ads`, `Waymo`,
   /// `google.com`, `youtube.com`, etc. If this is set, it must be an exact
-  /// match with UserEvent.entity to get per-entity autocomplete results.
+  /// match with UserEvent.entity to get per-entity autocomplete results. Also,
+  /// this entity should be limited to 256 characters, if too long, it will be
+  /// truncated to 256 characters in both generation and serving time, and may
+  /// lead to mis-match. To ensure it works, please set the entity with string
+  /// within 256 characters.
   ///
   /// [languageCodes] - Note that this field applies for `user-data` dataset
   /// only. For requests with `cloud-retail` dataset, setting this field has no
@@ -4549,7 +4553,10 @@ class GoogleCloudRetailV2ColorInfo {
   /// encoded string with a length limit of 128 characters. Otherwise, an
   /// INVALID_ARGUMENT error is returned. Google Merchant Center property
   /// [color](https://support.google.com/merchants/answer/6324487). Schema.org
-  /// property [Product.color](https://schema.org/color).
+  /// property [Product.color](https://schema.org/color). The colorFamilies
+  /// field as a system attribute is not a required field but strongly
+  /// recommended to be specified. Google Search models treat this field as more
+  /// important than a custom product attribute when specified.
   core.List<core.String>? colorFamilies;
 
   /// The color display names, which may be different from standard color family
@@ -4667,9 +4674,8 @@ class GoogleCloudRetailV2CompleteQueryResponse {
 }
 
 /// Resource that represents attribute results.
-///
-/// The list of suggestions for the attribute.
 class GoogleCloudRetailV2CompleteQueryResponseAttributeResult {
+  /// The list of suggestions for the attribute.
   core.List<core.String>? suggestions;
 
   GoogleCloudRetailV2CompleteQueryResponseAttributeResult({
@@ -8237,6 +8243,9 @@ class GoogleCloudRetailV2Rule {
   /// Group of terms will not be treated as synonyms with the specific term.
   GoogleCloudRetailV2RuleOnewaySynonymsAction? onewaySynonymsAction;
 
+  /// Pins one or more specified products to a specific position in the results.
+  GoogleCloudRetailV2RulePinAction? pinAction;
+
   /// Redirects a shopper to a specific page.
   GoogleCloudRetailV2RuleRedirectAction? redirectAction;
 
@@ -8257,6 +8266,7 @@ class GoogleCloudRetailV2Rule {
     this.forceReturnFacetAction,
     this.ignoreAction,
     this.onewaySynonymsAction,
+    this.pinAction,
     this.redirectAction,
     this.removeFacetAction,
     this.replacementAction,
@@ -8296,6 +8306,10 @@ class GoogleCloudRetailV2Rule {
                   json_['onewaySynonymsAction']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          pinAction: json_.containsKey('pinAction')
+              ? GoogleCloudRetailV2RulePinAction.fromJson(
+                  json_['pinAction'] as core.Map<core.String, core.dynamic>)
+              : null,
           redirectAction: json_.containsKey('redirectAction')
               ? GoogleCloudRetailV2RuleRedirectAction.fromJson(
                   json_['redirectAction']
@@ -8329,6 +8343,7 @@ class GoogleCloudRetailV2Rule {
         if (ignoreAction != null) 'ignoreAction': ignoreAction!,
         if (onewaySynonymsAction != null)
           'onewaySynonymsAction': onewaySynonymsAction!,
+        if (pinAction != null) 'pinAction': pinAction!,
         if (redirectAction != null) 'redirectAction': redirectAction!,
         if (removeFacetAction != null) 'removeFacetAction': removeFacetAction!,
         if (replacementAction != null) 'replacementAction': replacementAction!,
@@ -8607,6 +8622,54 @@ class GoogleCloudRetailV2RuleOnewaySynonymsAction {
       };
 }
 
+/// Pins one or more specified products to a specific position in the results.
+///
+/// * Rule Condition: Must specify non-empty Condition.query_terms (for search
+/// only) or Condition.page_categories (for browse only), but can't specify
+/// both. * Action Input: mapping of `[pin_position, product_id]` pairs (pin
+/// position uses 1-based indexing). * Action Result: Will pin products with
+/// matching ids to the position specified in the final result order. Example:
+/// Suppose the query is `shoes`, the Condition.query_terms is `shoes` and the
+/// pin_map has `{1, "pid1"}`, then product with `pid1` will be pinned to the
+/// top position in the final results. If multiple PinActions are matched to a
+/// single request the actions will be processed from most to least recently
+/// updated. Pins to positions larger than the max allowed page size of 120 are
+/// not allowed.
+class GoogleCloudRetailV2RulePinAction {
+  /// A map of positions to product_ids.
+  ///
+  /// Partial matches per action are allowed, if a certain position in the map
+  /// is already filled that `[position, product_id]` pair will be ignored but
+  /// the rest may still be applied. This case will only occur if multiple pin
+  /// actions are matched to a single request, as the map guarantees that pin
+  /// positions are unique within the same action. Duplicate product_ids are not
+  /// permitted within a single pin map. The max size of this map is 120,
+  /// equivalent to the max
+  /// [request page size](https://cloud.google.com/retail/docs/reference/rest/v2/projects.locations.catalogs.placements/search#request-body).
+  ///
+  /// Required.
+  core.Map<core.String, core.String>? pinMap;
+
+  GoogleCloudRetailV2RulePinAction({
+    this.pinMap,
+  });
+
+  GoogleCloudRetailV2RulePinAction.fromJson(core.Map json_)
+      : this(
+          pinMap:
+              (json_['pinMap'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pinMap != null) 'pinMap': pinMap!,
+      };
+}
+
 /// Redirects a shopper to a specific page.
 ///
 /// * Rule Condition: Must specify Condition.query_terms. * Action Input:
@@ -8815,6 +8878,17 @@ class GoogleCloudRetailV2SearchRequest {
   /// in the Resource Manager documentation.
   core.Map<core.String, core.String>? labels;
 
+  /// The BCP-47 language code, such as "en-US" or "sr-Latn"
+  /// [list](https://www.unicode.org/cldr/charts/46/summary/root.html).
+  ///
+  /// For more information, see
+  /// [Standardized codes](https://google.aip.dev/143). This field helps to
+  /// better interpret the query. If a value isn't specified, the query language
+  /// code is automatically detected, which may not be accurate.
+  ///
+  /// Optional.
+  core.String? languageCode;
+
   /// A 0-indexed integer that specifies the current offset (that is, starting
   /// result location, amongst the Products deemed by the API as relevant) in
   /// search results.
@@ -8878,6 +8952,17 @@ class GoogleCloudRetailV2SearchRequest {
   /// For more information, see
   /// [Query expansion](https://cloud.google.com/retail/docs/result-size#query_expansion).
   GoogleCloudRetailV2SearchRequestQueryExpansionSpec? queryExpansionSpec;
+
+  /// The Unicode country/region code (CLDR) of a location, such as "US" and
+  /// "419"
+  /// [list](https://www.unicode.org/cldr/charts/46/supplemental/territory_information.html).
+  ///
+  /// For more information, see
+  /// [Standardized codes](https://google.aip.dev/143). If set, then results
+  /// will be boosted based on the region_code provided.
+  ///
+  /// Optional.
+  core.String? regionCode;
 
   /// The search mode of the search request.
   ///
@@ -8964,6 +9049,7 @@ class GoogleCloudRetailV2SearchRequest {
     this.facetSpecs,
     this.filter,
     this.labels,
+    this.languageCode,
     this.offset,
     this.orderBy,
     this.pageCategories,
@@ -8972,6 +9058,7 @@ class GoogleCloudRetailV2SearchRequest {
     this.personalizationSpec,
     this.query,
     this.queryExpansionSpec,
+    this.regionCode,
     this.searchMode,
     this.spellCorrectionSpec,
     this.tileNavigationSpec,
@@ -9013,6 +9100,7 @@ class GoogleCloudRetailV2SearchRequest {
               value as core.String,
             ),
           ),
+          languageCode: json_['languageCode'] as core.String?,
           offset: json_['offset'] as core.int?,
           orderBy: json_['orderBy'] as core.String?,
           pageCategories: (json_['pageCategories'] as core.List?)
@@ -9031,6 +9119,7 @@ class GoogleCloudRetailV2SearchRequest {
                   json_['queryExpansionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          regionCode: json_['regionCode'] as core.String?,
           searchMode: json_['searchMode'] as core.String?,
           spellCorrectionSpec: json_.containsKey('spellCorrectionSpec')
               ? GoogleCloudRetailV2SearchRequestSpellCorrectionSpec.fromJson(
@@ -9063,6 +9152,7 @@ class GoogleCloudRetailV2SearchRequest {
         if (facetSpecs != null) 'facetSpecs': facetSpecs!,
         if (filter != null) 'filter': filter!,
         if (labels != null) 'labels': labels!,
+        if (languageCode != null) 'languageCode': languageCode!,
         if (offset != null) 'offset': offset!,
         if (orderBy != null) 'orderBy': orderBy!,
         if (pageCategories != null) 'pageCategories': pageCategories!,
@@ -9073,6 +9163,7 @@ class GoogleCloudRetailV2SearchRequest {
         if (query != null) 'query': query!,
         if (queryExpansionSpec != null)
           'queryExpansionSpec': queryExpansionSpec!,
+        if (regionCode != null) 'regionCode': regionCode!,
         if (searchMode != null) 'searchMode': searchMode!,
         if (spellCorrectionSpec != null)
           'spellCorrectionSpec': spellCorrectionSpec!,
@@ -9652,10 +9743,14 @@ class GoogleCloudRetailV2SearchRequestSpellCorrectionSpec {
 
 /// This field specifies tile navigation related parameters.
 class GoogleCloudRetailV2SearchRequestTileNavigationSpec {
-  /// This field specifies the tiles which are already clicked in client side.
+  /// This optional field specifies the tiles which are already clicked in
+  /// client side.
   ///
-  /// NOTE: This field is not being used for filtering search products. Client
-  /// side should also put all the applied tiles in SearchRequest.filter.
+  /// While the feature works without this field set, particularly for an
+  /// initial query, it is highly recommended to set this field because it can
+  /// improve the quality of the search response and removes possible duplicate
+  /// tiles. NOTE: This field is not being used for filtering search products.
+  /// Client side should also put all the applied tiles in SearchRequest.filter.
   core.List<GoogleCloudRetailV2Tile>? appliedTiles;
 
   /// This field specifies whether the customer would like to request tile
@@ -10811,10 +10906,9 @@ class GoogleCloudRetailV2UserEvent {
   /// `remove-from-cart`: Products being removed from cart. *
   /// `category-page-view`: Special pages such as sale or promotion pages
   /// viewed. * `detail-page-view`: Products detail page viewed. *
-  /// `home-page-view`: Homepage viewed. * `promotion-offered`: Promotion is
-  /// offered to a user. * `promotion-not-offered`: Promotion is not offered to
-  /// a user. * `purchase-complete`: User finishing a purchase. * `search`:
-  /// Product search. * `shopping-cart-page-view`: User viewing a shopping cart.
+  /// `home-page-view`: Homepage viewed. * `purchase-complete`: User finishing a
+  /// purchase. * `search`: Product search. * `shopping-cart-page-view`: User
+  /// viewing a shopping cart.
   ///
   /// Required.
   core.String? eventType;

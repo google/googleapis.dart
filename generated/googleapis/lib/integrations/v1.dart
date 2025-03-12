@@ -1636,6 +1636,10 @@ class ProjectsLocationsIntegrationsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+$`.
   ///
+  /// [GCPCloudEventsMode] - Optional. LINT: LEGACY_NAMES The query parameter
+  /// value for __GCP_CloudEventsMode, set by the Eventarc service when
+  /// configuring triggers.
+  ///
   /// [triggerId] - Required. Id of the integration trigger config. The
   /// trigger_id is in the format:
   /// `integration_connector_trigger/projects/{gcp_project_id}/location/{location}/connections/{connection_name}/subscriptions/{subscription_name}`.
@@ -1652,10 +1656,13 @@ class ProjectsLocationsIntegrationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudIntegrationsV1alphaExecuteEventResponse> executeEvent(
     core.String name, {
+    core.String? GCPCloudEventsMode,
     core.String? triggerId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (GCPCloudEventsMode != null)
+        'GCPCloudEventsMode': [GCPCloudEventsMode],
       if (triggerId != null) 'triggerId': [triggerId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -3000,6 +3007,50 @@ class ProjectsLocationsIntegrationsVersionsTestCasesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Executes all test cases in an integration version.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose test cases are executed.
+  /// Format:
+  /// projects/{project}/locations/{location}/integrations/{integration}/versions/{integration_version}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse> execute(
+    GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/testCases:execute';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Executes functional test
   ///
   /// [request] - The metadata request object.
@@ -3144,87 +3195,6 @@ class ProjectsLocationsIntegrationsVersionsTestCasesResource {
     );
     return GoogleCloudIntegrationsV1alphaListTestCasesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists the results of all functional test executions.
-  ///
-  /// The response includes the same information as the
-  /// [execution log](https://cloud.google.com/application-integration/docs/viewing-logs)
-  /// in the Integration UI.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The parent resource name of the test case execution.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+/versions/\[^/\]+/testCases/\[^/\]+$`.
-  ///
-  /// [filter] - Optional. Standard filter field, we support filtering on
-  /// following fields: test_case_id: the ID of the test case. CreateTimestamp:
-  /// the execution created time. event_execution_state: the state of the
-  /// executions. execution_id: the id of the execution. trigger_id: the id of
-  /// the trigger. parameter_type: the type of the parameters involved in the
-  /// execution. All fields support for EQUALS, in additional: CreateTimestamp
-  /// support for LESS_THAN, GREATER_THAN ParameterType support for HAS For
-  /// example: "parameter_type" HAS \"string\" Also supports operators like AND,
-  /// OR, NOT For example, trigger_id=\"id1\" AND test_case_id=\"testCaseId\"
-  ///
-  /// [orderBy] - Optional. The results would be returned in order you specified
-  /// here. Currently supporting "last_modified_time" and "create_time".
-  ///
-  /// [pageSize] - Optional. The size of entries in the response.
-  ///
-  /// [pageToken] - Optional. The token returned in the previous response.
-  ///
-  /// [readMask] - Optional. View mask for the response data. If set, only the
-  /// field specified will be returned as part of the result. If not set, all
-  /// fields in event execution info will be filled and returned.
-  ///
-  /// [truncateParams] - Optional. If true, the service will truncate the params
-  /// to only keep the first 1000 characters of string params and empty the
-  /// executions in order to make response smaller. Only works for UI and when
-  /// the params fields are not filtered out.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a
-  /// [GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse>
-      listExecutions(
-    core.String parent, {
-    core.String? filter,
-    core.String? orderBy,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? readMask,
-    core.bool? truncateParams,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (readMask != null) 'readMask': [readMask],
-      if (truncateParams != null) 'truncateParams': ['${truncateParams}'],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':executions';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a test case
@@ -7292,7 +7262,7 @@ class EnterpriseCrmEventbusProtoCustomSuspensionRequest {
       };
 }
 
-typedef EnterpriseCrmEventbusProtoDoubleArray = $Shared06;
+typedef EnterpriseCrmEventbusProtoDoubleArray = $Shared07;
 typedef EnterpriseCrmEventbusProtoDoubleParameterArray
     = $EventbusProtoDoubleParameterArray;
 
@@ -7849,7 +7819,7 @@ class EnterpriseCrmEventbusProtoFailurePolicy {
       };
 }
 
-typedef EnterpriseCrmEventbusProtoIntArray = $Shared07;
+typedef EnterpriseCrmEventbusProtoIntArray = $Shared08;
 typedef EnterpriseCrmEventbusProtoIntParameterArray
     = $EventbusProtoIntParameterArray;
 
@@ -9333,7 +9303,7 @@ class EnterpriseCrmEventbusProtoTeardownTaskConfig {
       };
 }
 
-typedef EnterpriseCrmEventbusProtoToken = $Shared05;
+typedef EnterpriseCrmEventbusProtoToken = $Shared06;
 
 class EnterpriseCrmEventbusProtoTriggerCriteria {
   /// Standard filter expression, when true the workflow will be executed.
@@ -11146,6 +11116,7 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
   /// - "CLOUD_SCHEDULER"
   /// - "INTEGRATION_CONNECTOR_TRIGGER"
   /// - "PRIVATE_TRIGGER"
+  /// - "EVENTARC_TRIGGER"
   core.String? triggerType;
 
   EnterpriseCrmFrontendsEventbusProtoTriggerConfig({
@@ -12404,6 +12375,9 @@ class GoogleCloudConnectorsV1DestinationConfig {
 /// Encryption Key value.
 typedef GoogleCloudConnectorsV1EncryptionKey = $EncryptionKey;
 
+/// Data enrichment configuration.
+typedef GoogleCloudConnectorsV1EnrichmentConfig = $EnrichmentConfig;
+
 /// Eventing Configuration of a connection
 class GoogleCloudConnectorsV1EventingConfig {
   /// Additional eventing related field values
@@ -12420,6 +12394,11 @@ class GoogleCloudConnectorsV1EventingConfig {
   ///
   /// Optional.
   GoogleCloudConnectorsV1EventingConfigDeadLetterConfig? deadLetterConfig;
+
+  /// Data enrichment configuration.
+  ///
+  /// Optional.
+  GoogleCloudConnectorsV1EnrichmentConfig? enrichmentConfig;
 
   /// Enrichment Enabled.
   ///
@@ -12457,6 +12436,7 @@ class GoogleCloudConnectorsV1EventingConfig {
     this.additionalVariables,
     this.authConfig,
     this.deadLetterConfig,
+    this.enrichmentConfig,
     this.enrichmentEnabled,
     this.eventsListenerIngressEndpoint,
     this.listenerAuthConfig,
@@ -12478,6 +12458,11 @@ class GoogleCloudConnectorsV1EventingConfig {
           deadLetterConfig: json_.containsKey('deadLetterConfig')
               ? GoogleCloudConnectorsV1EventingConfigDeadLetterConfig.fromJson(
                   json_['deadLetterConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          enrichmentConfig: json_.containsKey('enrichmentConfig')
+              ? GoogleCloudConnectorsV1EnrichmentConfig.fromJson(
+                  json_['enrichmentConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
           enrichmentEnabled: json_['enrichmentEnabled'] as core.bool?,
@@ -12508,6 +12493,7 @@ class GoogleCloudConnectorsV1EventingConfig {
           'additionalVariables': additionalVariables!,
         if (authConfig != null) 'authConfig': authConfig!,
         if (deadLetterConfig != null) 'deadLetterConfig': deadLetterConfig!,
+        if (enrichmentConfig != null) 'enrichmentConfig': enrichmentConfig!,
         if (enrichmentEnabled != null) 'enrichmentEnabled': enrichmentEnabled!,
         if (eventsListenerIngressEndpoint != null)
           'eventsListenerIngressEndpoint': eventsListenerIngressEndpoint!,
@@ -14500,12 +14486,18 @@ class GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse {
   core.List<EnterpriseCrmFrontendsEventbusProtoParameterEntry>?
       parameterEntries;
 
+  /// OUTPUT parameters from integration execution.
+  ///
+  /// Optional.
+  core.Map<core.String, GoogleCloudIntegrationsV1alphaValueType>? parameters;
+
   GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse({
     this.eventParameters,
     this.executionFailed,
     this.executionId,
     this.outputParameters,
     this.parameterEntries,
+    this.parameters,
   });
 
   GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse.fromJson(
@@ -14526,6 +14518,15 @@ class GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse {
                   EnterpriseCrmFrontendsEventbusProtoParameterEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
               .toList(),
+          parameters:
+              (json_['parameters'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudIntegrationsV1alphaValueType.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14534,6 +14535,7 @@ class GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse {
         if (executionId != null) 'executionId': executionId!,
         if (outputParameters != null) 'outputParameters': outputParameters!,
         if (parameterEntries != null) 'parameterEntries': parameterEntries!,
+        if (parameters != null) 'parameters': parameters!,
       };
 }
 
@@ -14622,9 +14624,44 @@ class GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse {
       };
 }
 
+/// Request for ExecuteTestCases.
+typedef GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest = $Empty;
+
+/// Response for ExecuteTestCases.
+class GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse {
+  /// Results of each execution of test cases in an integration version.
+  core.List<GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse>?
+      executeTestCaseResponses;
+
+  GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse({
+    this.executeTestCaseResponses,
+  });
+
+  GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse.fromJson(
+      core.Map json_)
+      : this(
+          executeTestCaseResponses: (json_['executeTestCaseResponses']
+                  as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executeTestCaseResponses != null)
+          'executeTestCaseResponses': executeTestCaseResponses!,
+      };
+}
+
 /// The Execution resource contains detailed information of an individual
 /// integration execution.
 class GoogleCloudIntegrationsV1alphaExecution {
+  /// Cloud KMS resource name for the CMEK encryption key.
+  ///
+  /// Optional.
+  core.String? cloudKmsKey;
+
   /// Cloud Logging details for the integration version
   GoogleCloudIntegrationsV1alphaCloudLoggingDetails? cloudLoggingDetails;
 
@@ -14711,6 +14748,7 @@ class GoogleCloudIntegrationsV1alphaExecution {
   core.String? updateTime;
 
   GoogleCloudIntegrationsV1alphaExecution({
+    this.cloudKmsKey,
     this.cloudLoggingDetails,
     this.createTime,
     this.directSubExecutions,
@@ -14731,6 +14769,7 @@ class GoogleCloudIntegrationsV1alphaExecution {
 
   GoogleCloudIntegrationsV1alphaExecution.fromJson(core.Map json_)
       : this(
+          cloudKmsKey: json_['cloudKmsKey'] as core.String?,
           cloudLoggingDetails: json_.containsKey('cloudLoggingDetails')
               ? GoogleCloudIntegrationsV1alphaCloudLoggingDetails.fromJson(
                   json_['cloudLoggingDetails']
@@ -14793,6 +14832,7 @@ class GoogleCloudIntegrationsV1alphaExecution {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudKmsKey != null) 'cloudKmsKey': cloudKmsKey!,
         if (cloudLoggingDetails != null)
           'cloudLoggingDetails': cloudLoggingDetails!,
         if (createTime != null) 'createTime': createTime!,
@@ -15321,15 +15361,11 @@ class GoogleCloudIntegrationsV1alphaGetClientResponse {
 
 /// Request to Import template
 class GoogleCloudIntegrationsV1alphaImportTemplateRequest {
-  /// Name of the integration where template needs to be imported.
+  /// Resource Name of the integration where template needs to be
+  /// imported/inserted.
   ///
   /// Required.
   core.String? integration;
-
-  /// The region of the Integration to be created.
-  ///
-  /// Required.
-  core.String? integrationRegion;
 
   /// Sub Integration which would be created via templates.
   ///
@@ -15340,14 +15376,12 @@ class GoogleCloudIntegrationsV1alphaImportTemplateRequest {
 
   GoogleCloudIntegrationsV1alphaImportTemplateRequest({
     this.integration,
-    this.integrationRegion,
     this.subIntegrations,
   });
 
   GoogleCloudIntegrationsV1alphaImportTemplateRequest.fromJson(core.Map json_)
       : this(
           integration: json_['integration'] as core.String?,
-          integrationRegion: json_['integrationRegion'] as core.String?,
           subIntegrations:
               (json_['subIntegrations'] as core.Map<core.String, core.dynamic>?)
                   ?.map(
@@ -15361,7 +15395,6 @@ class GoogleCloudIntegrationsV1alphaImportTemplateRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (integration != null) 'integration': integration!,
-        if (integrationRegion != null) 'integrationRegion': integrationRegion!,
         if (subIntegrations != null) 'subIntegrations': subIntegrations!,
       };
 }
@@ -15841,6 +15874,11 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameter {
 
 /// The integration version definition.
 class GoogleCloudIntegrationsV1alphaIntegrationVersion {
+  /// Cloud KMS resource name for the CMEK encryption key.
+  ///
+  /// Optional.
+  core.String? cloudKmsKey;
+
   /// Cloud Logging details for the integration version
   ///
   /// Optional.
@@ -16069,6 +16107,7 @@ class GoogleCloudIntegrationsV1alphaIntegrationVersion {
   core.String? userLabel;
 
   GoogleCloudIntegrationsV1alphaIntegrationVersion({
+    this.cloudKmsKey,
     this.cloudLoggingDetails,
     this.createTime,
     this.createdFromTemplate,
@@ -16099,6 +16138,7 @@ class GoogleCloudIntegrationsV1alphaIntegrationVersion {
 
   GoogleCloudIntegrationsV1alphaIntegrationVersion.fromJson(core.Map json_)
       : this(
+          cloudKmsKey: json_['cloudKmsKey'] as core.String?,
           cloudLoggingDetails: json_.containsKey('cloudLoggingDetails')
               ? GoogleCloudIntegrationsV1alphaCloudLoggingDetails.fromJson(
                   json_['cloudLoggingDetails']
@@ -16171,6 +16211,7 @@ class GoogleCloudIntegrationsV1alphaIntegrationVersion {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudKmsKey != null) 'cloudKmsKey': cloudKmsKey!,
         if (cloudLoggingDetails != null)
           'cloudLoggingDetails': cloudLoggingDetails!,
         if (createTime != null) 'createTime': createTime!,
@@ -16755,35 +16796,6 @@ class GoogleCloudIntegrationsV1alphaListTemplatesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (templates != null) 'templates': templates!,
-      };
-}
-
-/// The response for listing the functional test execution data.
-class GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse {
-  /// The detailed information of requested executions
-  core.List<GoogleCloudIntegrationsV1alphaExecution>? executions;
-
-  /// The token used to retrieve the next page results.
-  core.String? nextPageToken;
-
-  GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse({
-    this.executions,
-    this.nextPageToken,
-  });
-
-  GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse.fromJson(
-      core.Map json_)
-      : this(
-          executions: (json_['executions'] as core.List?)
-              ?.map((value) => GoogleCloudIntegrationsV1alphaExecution.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (executions != null) 'executions': executions!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -17539,22 +17551,73 @@ class GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest {
 
 /// Request for replaying an execution.
 class GoogleCloudIntegrationsV1alphaReplayExecutionRequest {
+  /// The modified input parameters for replay.
+  ///
+  /// - Provide values for all the fields in the 'update_mask'. Any field not
+  /// present in the 'update_mask' will be ignored and its value will be taken
+  /// from the original execution. - If the 'update_mask' is not specified, all
+  /// the parameters from original execution will be ignored and only the
+  /// `modified_parameters` will be used.
+  ///
+  /// Optional.
+  core.Map<core.String, GoogleCloudIntegrationsV1alphaValueType>?
+      modifiedParameters;
+
+  /// The mode of the replay.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "REPLAY_MODE_UNSPECIFIED" : Default value.
+  /// - "REPLAY_MODE_FROM_BEGINNING" : Replay the original execution.
+  /// - "REPLAY_MODE_POINT_OF_FAILURE" : Replay the execution with the modified
+  /// parameters.
+  core.String? replayMode;
+
   /// The user provided reason for replaying the execution.
   ///
   /// Required.
   core.String? replayReason;
 
+  /// The list of parameters to be updated.
+  ///
+  /// - If the `update_mask` is not specified, all the parameters from original
+  /// execution will be ignored and only the `modified_parameters` will be used.
+  /// - It is an error to include a parameter in `update_mask` but not in
+  /// `modified_parameters`. - Updating nested fields in a JSON parameter is not
+  /// supported, please provide the complete JSON in the `modified_parameters`.
+  ///
+  /// Optional.
+  core.String? updateMask;
+
   GoogleCloudIntegrationsV1alphaReplayExecutionRequest({
+    this.modifiedParameters,
+    this.replayMode,
     this.replayReason,
+    this.updateMask,
   });
 
   GoogleCloudIntegrationsV1alphaReplayExecutionRequest.fromJson(core.Map json_)
       : this(
+          modifiedParameters: (json_['modifiedParameters']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudIntegrationsV1alphaValueType.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          replayMode: json_['replayMode'] as core.String?,
           replayReason: json_['replayReason'] as core.String?,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (modifiedParameters != null)
+          'modifiedParameters': modifiedParameters!,
+        if (replayMode != null) 'replayMode': replayMode!,
         if (replayReason != null) 'replayReason': replayReason!,
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -19504,6 +19567,7 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
   /// - "INTEGRATION_CONNECTOR_TRIGGER" : Trigger by Connector Event
   /// - "PRIVATE_TRIGGER" : Trigger for private workflow
   /// - "CLOUD_PUBSUB" : Trigger by cloud pub/sub for internal ip
+  /// - "EVENTARC_TRIGGER" : Trigger by Eventarc
   core.String? triggerType;
 
   GoogleCloudIntegrationsV1alphaTriggerConfig({

@@ -1743,6 +1743,54 @@ class MoveAssignmentRequest {
       };
 }
 
+/// Disaster Recovery(DR) replication status of the reservation.
+class ReplicationStatus {
+  /// The last error encountered while trying to replicate changes from the
+  /// primary to the secondary.
+  ///
+  /// This field is only available if the replication has not succeeded since.
+  ///
+  /// Output only.
+  Status? error;
+
+  /// The time at which the last error was encountered while trying to replicate
+  /// changes from the primary to the secondary.
+  ///
+  /// This field is only available if the replication has not succeeded since.
+  ///
+  /// Output only.
+  core.String? lastErrorTime;
+
+  /// A timestamp corresponding to the last change on the primary that was
+  /// successfully replicated to the secondary.
+  ///
+  /// Output only.
+  core.String? lastReplicationTime;
+
+  ReplicationStatus({
+    this.error,
+    this.lastErrorTime,
+    this.lastReplicationTime,
+  });
+
+  ReplicationStatus.fromJson(core.Map json_)
+      : this(
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          lastErrorTime: json_['lastErrorTime'] as core.String?,
+          lastReplicationTime: json_['lastReplicationTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!,
+        if (lastErrorTime != null) 'lastErrorTime': lastErrorTime!,
+        if (lastReplicationTime != null)
+          'lastReplicationTime': lastReplicationTime!,
+      };
+}
+
 /// A reservation is a mechanism used to guarantee slots to users.
 class Reservation {
   /// The configuration parameters for the auto scaling feature.
@@ -1787,6 +1835,46 @@ class Reservation {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// The overall max slots for the reservation, covering slot_capacity
+  /// (baseline), idle slots (if ignore_idle_slots is false) and scaled slots.
+  ///
+  /// If present, the reservation won't use more than the specified number of
+  /// slots, even if there is demand and supply (from idle slots). NOTE: capping
+  /// a reservation's idle slot usage is best effort and its usage may exceed
+  /// the max_slots value. However, in terms of autoscale.current_slots (which
+  /// accounts for the additional added slots), it will never exceed the
+  /// max_slots - baseline. This field must be set together with the
+  /// scaling_mode enum value, otherwise the request will be rejected with error
+  /// code `google.rpc.Code.INVALID_ARGUMENT`. If the max_slots and scaling_mode
+  /// are set, the autoscale or autoscale.max_slots field must be unset.
+  /// Otherwise the request will be rejected with error code
+  /// `google.rpc.Code.INVALID_ARGUMENT`. However, the autoscale field may still
+  /// be in the output. The autopscale.max_slots will always show as 0 and the
+  /// autoscaler.current_slots will represent the current slots from autoscaler
+  /// excluding idle slots. For example, if the max_slots is 1000 and
+  /// scaling_mode is AUTOSCALE_ONLY, then in the output, the
+  /// autoscaler.max_slots will be 0 and the autoscaler.current_slots may be any
+  /// value between 0 and 1000. If the max_slots is 1000, scaling_mode is
+  /// ALL_SLOTS, the baseline is 100 and idle slots usage is 200, then in the
+  /// output, the autoscaler.max_slots will be 0 and the
+  /// autoscaler.current_slots will not be higher than 700. If the max_slots is
+  /// 1000, scaling_mode is IDLE_SLOTS_ONLY, then in the output, the autoscaler
+  /// field will be null. If the max_slots and scaling_mode are set, then the
+  /// ignore_idle_slots field must be aligned with the scaling_mode enum
+  /// value.(See details in ScalingMode comments). Otherwise the request will be
+  /// rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. Please note,
+  /// the max_slots is for user to manage the part of slots greater than the
+  /// baseline. Therefore, we don't allow users to set max_slots smaller or
+  /// equal to the baseline as it will not be meaningful. If the field is
+  /// present and slot_capacity\>=max_slots, requests will be rejected with
+  /// error code `google.rpc.Code.INVALID_ARGUMENT`. Please note that if
+  /// max_slots is set to 0, we will treat it as unset. Customers can set
+  /// max_slots to 0 and set scaling_mode to SCALING_MODE_UNSPECIFIED to disable
+  /// the max_slots feature.
+  ///
+  /// Optional.
+  core.String? maxSlots;
+
   /// Applicable only for reservations located within one of the BigQuery
   /// multi-regions (US or EU).
   ///
@@ -1821,6 +1909,65 @@ class Reservation {
   /// Output only.
   core.String? primaryLocation;
 
+  /// The Disaster Recovery(DR) replication status of the reservation.
+  ///
+  /// This is only available for the primary replicas of DR/failover
+  /// reservations and provides information about the both the staleness of the
+  /// secondary and the last error encountered while trying to replicate changes
+  /// from the primary to the secondary. If this field is blank, it means that
+  /// the reservation is either not a DR reservation or the reservation is a DR
+  /// secondary or that any replication operations on the reservation have
+  /// succeeded.
+  ///
+  /// Output only.
+  ReplicationStatus? replicationStatus;
+
+  /// The scaling mode for the reservation.
+  ///
+  /// If the field is present but max_slots is not present, requests will be
+  /// rejected with error code `google.rpc.Code.INVALID_ARGUMENT`.
+  /// Possible string values are:
+  /// - "SCALING_MODE_UNSPECIFIED" : Default value of ScalingMode.
+  /// - "AUTOSCALE_ONLY" : The reservation will scale up only using slots from
+  /// autoscaling. It will not use any idle slots even if there may be some
+  /// available. The upper limit that autoscaling can scale up to will be
+  /// max_slots - baseline. For example, if max_slots is 1000, baseline is 200
+  /// and customer sets ScalingMode to AUTOSCALE_ONLY, then autoscalerg will
+  /// scale up to 800 slots and no idle slots will be used. Please note, in this
+  /// mode, the ignore_idle_slots field must be set to true. Otherwise the
+  /// request will be rejected with error code
+  /// `google.rpc.Code.INVALID_ARGUMENT`.
+  /// - "IDLE_SLOTS_ONLY" : The reservation will scale up using only idle slots
+  /// contributed by other reservations or from unassigned commitments. If no
+  /// idle slots are available it will not scale up further. If the idle slots
+  /// which it is using are reclaimed by the contributing reservation(s) it may
+  /// be forced to scale down. The max idle slots the reservation can be
+  /// max_slots - baseline capacity. For example, if max_slots is 1000, baseline
+  /// is 200 and customer sets ScalingMode to IDLE_SLOTS_ONLY, 1. if there are
+  /// 1000 idle slots available in other reservations, the reservation will
+  /// scale up to 1000 slots with 200 baseline and 800 idle slots. 2. if there
+  /// are 500 idle slots available in other reservations, the reservation will
+  /// scale up to 700 slots with 200 baseline and 300 idle slots. Please note,
+  /// in this mode, the reservation might not be able to scale up to max_slots.
+  /// Please note, in this mode, the ignore_idle_slots field must be set to
+  /// false. Otherwise the request will be rejected with error code
+  /// `google.rpc.Code.INVALID_ARGUMENT`.
+  /// - "ALL_SLOTS" : The reservation will scale up using all slots available to
+  /// it. It will use idle slots contributed by other reservations or from
+  /// unassigned commitments first. If no idle slots are available it will scale
+  /// up using autoscaling. For example, if max_slots is 1000, baseline is 200
+  /// and customer sets ScalingMode to ALL_SLOTS, 1. if there are 800 idle slots
+  /// available in other reservations, the reservation will scale up to 1000
+  /// slots with 200 baseline and 800 idle slots. 2. if there are 500 idle slots
+  /// available in other reservations, the reservation will scale up to 1000
+  /// slots with 200 baseline, 500 idle slots and 300 autoscaling slots. 3. if
+  /// there are no idle slots available in other reservations, it will scale up
+  /// to 1000 slots with 200 baseline and 800 autoscaling slots. Please note, in
+  /// this mode, the ignore_idle_slots field must be set to false. Otherwise the
+  /// request will be rejected with error code
+  /// `google.rpc.Code.INVALID_ARGUMENT`.
+  core.String? scalingMode;
+
   /// The current location of the reservation's secondary replica.
   ///
   /// This field is only set for reservations using the managed disaster
@@ -1836,19 +1983,14 @@ class Reservation {
   /// A slot is a unit of computational power in BigQuery, and serves as the
   /// unit of parallelism. Queries using this reservation might use more slots
   /// during runtime if ignore_idle_slots is set to false, or autoscaling is
-  /// enabled. If edition is EDITION_UNSPECIFIED and total slot_capacity of the
-  /// reservation and its siblings exceeds the total slot_count of all capacity
-  /// commitments, the request will fail with
-  /// `google.rpc.Code.RESOURCE_EXHAUSTED`. If edition is any value but
-  /// EDITION_UNSPECIFIED, then the above requirement is not needed. The total
-  /// slot_capacity of the reservation and its siblings may exceed the total
-  /// slot_count of capacity commitments. In that case, the exceeding slots will
-  /// be charged with the autoscale SKU. You can increase the number of baseline
-  /// slots in a reservation every few minutes. If you want to decrease your
-  /// baseline slots, you are limited to once an hour if you have recently
-  /// changed your baseline slot capacity and your baseline slots exceed your
-  /// committed slots. Otherwise, you can decrease your baseline slots every few
-  /// minutes.
+  /// enabled. The total slot_capacity of the reservation and its siblings may
+  /// exceed the total slot_count of capacity commitments. In that case, the
+  /// exceeding slots will be charged with the autoscale SKU. You can increase
+  /// the number of baseline slots in a reservation every few minutes. If you
+  /// want to decrease your baseline slots, you are limited to once an hour if
+  /// you have recently changed your baseline slot capacity and your baseline
+  /// slots exceed your committed slots. Otherwise, you can decrease your
+  /// baseline slots every few minutes.
   core.String? slotCapacity;
 
   /// Last update time of the reservation.
@@ -1863,10 +2005,13 @@ class Reservation {
     this.edition,
     this.ignoreIdleSlots,
     this.labels,
+    this.maxSlots,
     this.multiRegionAuxiliary,
     this.name,
     this.originalPrimaryLocation,
     this.primaryLocation,
+    this.replicationStatus,
+    this.scalingMode,
     this.secondaryLocation,
     this.slotCapacity,
     this.updateTime,
@@ -1889,11 +2034,17 @@ class Reservation {
               value as core.String,
             ),
           ),
+          maxSlots: json_['maxSlots'] as core.String?,
           multiRegionAuxiliary: json_['multiRegionAuxiliary'] as core.bool?,
           name: json_['name'] as core.String?,
           originalPrimaryLocation:
               json_['originalPrimaryLocation'] as core.String?,
           primaryLocation: json_['primaryLocation'] as core.String?,
+          replicationStatus: json_.containsKey('replicationStatus')
+              ? ReplicationStatus.fromJson(json_['replicationStatus']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          scalingMode: json_['scalingMode'] as core.String?,
           secondaryLocation: json_['secondaryLocation'] as core.String?,
           slotCapacity: json_['slotCapacity'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -1906,12 +2057,15 @@ class Reservation {
         if (edition != null) 'edition': edition!,
         if (ignoreIdleSlots != null) 'ignoreIdleSlots': ignoreIdleSlots!,
         if (labels != null) 'labels': labels!,
+        if (maxSlots != null) 'maxSlots': maxSlots!,
         if (multiRegionAuxiliary != null)
           'multiRegionAuxiliary': multiRegionAuxiliary!,
         if (name != null) 'name': name!,
         if (originalPrimaryLocation != null)
           'originalPrimaryLocation': originalPrimaryLocation!,
         if (primaryLocation != null) 'primaryLocation': primaryLocation!,
+        if (replicationStatus != null) 'replicationStatus': replicationStatus!,
+        if (scalingMode != null) 'scalingMode': scalingMode!,
         if (secondaryLocation != null) 'secondaryLocation': secondaryLocation!,
         if (slotCapacity != null) 'slotCapacity': slotCapacity!,
         if (updateTime != null) 'updateTime': updateTime!,

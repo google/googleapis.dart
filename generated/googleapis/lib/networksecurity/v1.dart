@@ -34,6 +34,10 @@
 ///     - [ProjectsLocationsFirewallEndpointAssociationsResource]
 ///     - [ProjectsLocationsGatewaySecurityPoliciesResource]
 ///       - [ProjectsLocationsGatewaySecurityPoliciesRulesResource]
+///     - [ProjectsLocationsMirroringDeploymentGroupsResource]
+///     - [ProjectsLocationsMirroringDeploymentsResource]
+///     - [ProjectsLocationsMirroringEndpointGroupAssociationsResource]
+///     - [ProjectsLocationsMirroringEndpointGroupsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsServerTlsPoliciesResource]
 ///     - [ProjectsLocationsTlsInspectionPoliciesResource]
@@ -357,6 +361,9 @@ class OrganizationsLocationsAddressGroupsResource {
   /// Indicates that this is a continuation of a prior `ListAddressGroups` call,
   /// and that the system should return the next page of data.
   ///
+  /// [returnPartialSuccess] - Optional. If true, allow partial responses for
+  /// multi-regional Aggregated List requests.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -371,11 +378,14 @@ class OrganizationsLocationsAddressGroupsResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1511,6 +1521,18 @@ class ProjectsLocationsResource {
   ProjectsLocationsGatewaySecurityPoliciesResource
       get gatewaySecurityPolicies =>
           ProjectsLocationsGatewaySecurityPoliciesResource(_requester);
+  ProjectsLocationsMirroringDeploymentGroupsResource
+      get mirroringDeploymentGroups =>
+          ProjectsLocationsMirroringDeploymentGroupsResource(_requester);
+  ProjectsLocationsMirroringDeploymentsResource get mirroringDeployments =>
+      ProjectsLocationsMirroringDeploymentsResource(_requester);
+  ProjectsLocationsMirroringEndpointGroupAssociationsResource
+      get mirroringEndpointGroupAssociations =>
+          ProjectsLocationsMirroringEndpointGroupAssociationsResource(
+              _requester);
+  ProjectsLocationsMirroringEndpointGroupsResource
+      get mirroringEndpointGroups =>
+          ProjectsLocationsMirroringEndpointGroupsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsServerTlsPoliciesResource get serverTlsPolicies =>
@@ -1926,6 +1948,9 @@ class ProjectsLocationsAddressGroupsResource {
   /// Indicates that this is a continuation of a prior `ListAddressGroups` call,
   /// and that the system should return the next page of data.
   ///
+  /// [returnPartialSuccess] - Optional. If true, allow partial responses for
+  /// multi-regional Aggregated List requests.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1940,11 +1965,14 @@ class ProjectsLocationsAddressGroupsResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4189,6 +4217,1100 @@ class ProjectsLocationsGatewaySecurityPoliciesRulesResource {
   }
 }
 
+class ProjectsLocationsMirroringDeploymentGroupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsMirroringDeploymentGroupsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a deployment group in a given project and location.
+  ///
+  /// See https://google.aip.dev/133.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this deployment group will
+  /// be created. Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [mirroringDeploymentGroupId] - Required. The ID to use for the new
+  /// deployment group, which will become the final component of the deployment
+  /// group's resource name.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    MirroringDeploymentGroup request,
+    core.String parent, {
+    core.String? mirroringDeploymentGroupId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (mirroringDeploymentGroupId != null)
+        'mirroringDeploymentGroupId': [mirroringDeploymentGroupId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/mirroringDeploymentGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a deployment group.
+  ///
+  /// See https://google.aip.dev/135.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The deployment group to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/mirroringDeploymentGroups/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a specific deployment group.
+  ///
+  /// See https://google.aip.dev/131.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the deployment group to retrieve. Format:
+  /// projects/{project}/locations/{location}/mirroringDeploymentGroups/{mirroring_deployment_group}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/mirroringDeploymentGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MirroringDeploymentGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MirroringDeploymentGroup> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return MirroringDeploymentGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists deployment groups in a given project and location.
+  ///
+  /// See https://google.aip.dev/132.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of deployment
+  /// groups. Example: `projects/123456789/locations/global`. See
+  /// https://google.aip.dev/132 for more details.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression. See
+  /// https://google.aip.dev/160#filtering for more details.
+  ///
+  /// [orderBy] - Optional. Sort expression. See
+  /// https://google.aip.dev/132#ordering for more details.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  /// See https://google.aip.dev/158 for more details.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListMirroringDeploymentGroups` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListMirroringDeploymentGroups` must match the call that provided the page
+  /// token. See https://google.aip.dev/158 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMirroringDeploymentGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMirroringDeploymentGroupsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/mirroringDeploymentGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMirroringDeploymentGroupsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a deployment group.
+  ///
+  /// See https://google.aip.dev/134.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Identifier. The resource name of this deployment
+  /// group, for example:
+  /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See
+  /// https://google.aip.dev/122 for more details.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/mirroringDeploymentGroups/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [updateMask] - Optional. The list of fields to update. Fields are
+  /// specified relative to the deployment group (e.g. `description`; *not*
+  /// `mirroring_deployment_group.description`). See https://google.aip.dev/161
+  /// for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    MirroringDeploymentGroup request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsMirroringDeploymentsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsMirroringDeploymentsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a deployment in a given project and location.
+  ///
+  /// See https://google.aip.dev/133.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this deployment will be
+  /// created. Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [mirroringDeploymentId] - Required. The ID to use for the new deployment,
+  /// which will become the final component of the deployment's resource name.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    MirroringDeployment request,
+    core.String parent, {
+    core.String? mirroringDeploymentId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (mirroringDeploymentId != null)
+        'mirroringDeploymentId': [mirroringDeploymentId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/mirroringDeployments';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a deployment.
+  ///
+  /// See https://google.aip.dev/135.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/mirroringDeployments/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a specific deployment.
+  ///
+  /// See https://google.aip.dev/131.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the deployment to retrieve. Format:
+  /// projects/{project}/locations/{location}/mirroringDeployments/{mirroring_deployment}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/mirroringDeployments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MirroringDeployment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MirroringDeployment> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return MirroringDeployment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists deployments in a given project and location.
+  ///
+  /// See https://google.aip.dev/132.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of
+  /// deployments. Example: `projects/123456789/locations/us-central1-a`. See
+  /// https://google.aip.dev/132 for more details.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression. See
+  /// https://google.aip.dev/160#filtering for more details.
+  ///
+  /// [orderBy] - Optional. Sort expression. See
+  /// https://google.aip.dev/132#ordering for more details.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  /// See https://google.aip.dev/158 for more details.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListMirroringDeployments` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListMirroringDeployments` must match the call that provided the page
+  /// token. See https://google.aip.dev/158 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMirroringDeploymentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMirroringDeploymentsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/mirroringDeployments';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMirroringDeploymentsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a deployment.
+  ///
+  /// See https://google.aip.dev/134.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Identifier. The resource name of this deployment, for
+  /// example:
+  /// `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`.
+  /// See https://google.aip.dev/122 for more details.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/mirroringDeployments/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [updateMask] - Optional. The list of fields to update. Fields are
+  /// specified relative to the deployment (e.g. `description`; *not*
+  /// `mirroring_deployment.description`). See https://google.aip.dev/161 for
+  /// more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    MirroringDeployment request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsMirroringEndpointGroupAssociationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsMirroringEndpointGroupAssociationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an association in a given project and location.
+  ///
+  /// See https://google.aip.dev/133.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this association will be
+  /// created. Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [mirroringEndpointGroupAssociationId] - Optional. The ID to use for the
+  /// new association, which will become the final component of the endpoint
+  /// group's resource name. If not provided, the server will generate a unique
+  /// ID.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    MirroringEndpointGroupAssociation request,
+    core.String parent, {
+    core.String? mirroringEndpointGroupAssociationId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (mirroringEndpointGroupAssociationId != null)
+        'mirroringEndpointGroupAssociationId': [
+          mirroringEndpointGroupAssociationId
+        ],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/mirroringEndpointGroupAssociations';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an association.
+  ///
+  /// See https://google.aip.dev/135.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The association to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/mirroringEndpointGroupAssociations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a specific association.
+  ///
+  /// See https://google.aip.dev/131.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the association to retrieve. Format:
+  /// projects/{project}/locations/{location}/mirroringEndpointGroupAssociations/{mirroring_endpoint_group_association}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/mirroringEndpointGroupAssociations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MirroringEndpointGroupAssociation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MirroringEndpointGroupAssociation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return MirroringEndpointGroupAssociation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists associations in a given project and location.
+  ///
+  /// See https://google.aip.dev/132.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of
+  /// associations. Example: `projects/123456789/locations/global`. See
+  /// https://google.aip.dev/132 for more details.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression. See
+  /// https://google.aip.dev/160#filtering for more details.
+  ///
+  /// [orderBy] - Optional. Sort expression. See
+  /// https://google.aip.dev/132#ordering for more details.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  /// See https://google.aip.dev/158 for more details.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListMirroringEndpointGroups` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListMirroringEndpointGroups` must match the call that provided the page
+  /// token. See https://google.aip.dev/158 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMirroringEndpointGroupAssociationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMirroringEndpointGroupAssociationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/mirroringEndpointGroupAssociations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMirroringEndpointGroupAssociationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an association.
+  ///
+  /// See https://google.aip.dev/134.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Identifier. The resource name of this endpoint group
+  /// association, for example:
+  /// `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association`.
+  /// See https://google.aip.dev/122 for more details.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/mirroringEndpointGroupAssociations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [updateMask] - Optional. The list of fields to update. Fields are
+  /// specified relative to the association (e.g. `description`; *not*
+  /// `mirroring_endpoint_group_association.description`). See
+  /// https://google.aip.dev/161 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    MirroringEndpointGroupAssociation request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsMirroringEndpointGroupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsMirroringEndpointGroupsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an endpoint group in a given project and location.
+  ///
+  /// See https://google.aip.dev/133.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this endpoint group will be
+  /// created. Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [mirroringEndpointGroupId] - Required. The ID to use for the endpoint
+  /// group, which will become the final component of the endpoint group's
+  /// resource name.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    MirroringEndpointGroup request,
+    core.String parent, {
+    core.String? mirroringEndpointGroupId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (mirroringEndpointGroupId != null)
+        'mirroringEndpointGroupId': [mirroringEndpointGroupId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/mirroringEndpointGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an endpoint group.
+  ///
+  /// See https://google.aip.dev/135.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The endpoint group to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/mirroringEndpointGroups/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a specific endpoint group.
+  ///
+  /// See https://google.aip.dev/131.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the endpoint group to retrieve. Format:
+  /// projects/{project}/locations/{location}/mirroringEndpointGroups/{mirroring_endpoint_group}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/mirroringEndpointGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MirroringEndpointGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MirroringEndpointGroup> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return MirroringEndpointGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists endpoint groups in a given project and location.
+  ///
+  /// See https://google.aip.dev/132.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of endpoint
+  /// groups. Example: `projects/123456789/locations/global`. See
+  /// https://google.aip.dev/132 for more details.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression. See
+  /// https://google.aip.dev/160#filtering for more details.
+  ///
+  /// [orderBy] - Optional. Sort expression. See
+  /// https://google.aip.dev/132#ordering for more details.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  /// See https://google.aip.dev/158 for more details.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListMirroringEndpointGroups` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListMirroringEndpointGroups` must match the call that provided the page
+  /// token. See https://google.aip.dev/158 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMirroringEndpointGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMirroringEndpointGroupsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/mirroringEndpointGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMirroringEndpointGroupsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an endpoint group.
+  ///
+  /// See https://google.aip.dev/134.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Identifier. The resource name of this endpoint group,
+  /// for example:
+  /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See
+  /// https://google.aip.dev/122 for more details.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/mirroringEndpointGroups/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [updateMask] - Optional. The list of fields to update. Fields are
+  /// specified relative to the endpoint group (e.g. `description`; *not*
+  /// `mirroring_endpoint_group.description`). See https://google.aip.dev/161
+  /// for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    MirroringEndpointGroup request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -5387,6 +6509,55 @@ class AddressGroup {
       };
 }
 
+/// Defines what action to take for antivirus threats per protocol.
+class AntivirusOverride {
+  /// Threat action override.
+  ///
+  /// For some threat types, only a subset of actions applies.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "THREAT_ACTION_UNSPECIFIED" : Threat action not specified.
+  /// - "DEFAULT_ACTION" : The default action (as specified by the vendor) is
+  /// taken.
+  /// - "ALLOW" : The packet matching this rule will be allowed to transmit.
+  /// - "ALERT" : The packet matching this rule will be allowed to transmit, but
+  /// a threat_log entry will be sent to the consumer project.
+  /// - "DENY" : The packet matching this rule will be dropped, and a threat_log
+  /// entry will be sent to the consumer project.
+  core.String? action;
+
+  /// Protocol to match.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "PROTOCOL_UNSPECIFIED" : Protocol not specified.
+  /// - "SMTP" : SMTP prtocol
+  /// - "SMB" : SMB protocol
+  /// - "POP3" : POP3 protocol
+  /// - "IMAP" : IMAP protocol
+  /// - "HTTP2" : HTTP2 protocol
+  /// - "HTTP" : HTTP protocol
+  /// - "FTP" : FTP protocol
+  core.String? protocol;
+
+  AntivirusOverride({
+    this.action,
+    this.protocol,
+  });
+
+  AntivirusOverride.fromJson(core.Map json_)
+      : this(
+          action: json_['action'] as core.String?,
+          protocol: json_['protocol'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (protocol != null) 'protocol': protocol!,
+      };
+}
+
 /// AuthorizationPolicy is a resource that specifies how a server should
 /// authorize incoming connections.
 ///
@@ -5713,11 +6884,14 @@ class AuthzPolicyAuthzRuleFromRequestSource {
   /// A list of identities derived from the client's certificate.
   ///
   /// This field will not match on a request unless mutual TLS is enabled for
-  /// the Forwarding rule or Gateway. Each identity is a string whose value is
-  /// matched against the URI SAN, or DNS SAN or the subject field in the
-  /// client's certificate. The match can be exact, prefix, suffix or a
-  /// substring match. One of exact, prefix, suffix or contains must be
-  /// specified. Limited to 5 principals.
+  /// the forwarding rule or Gateway. For Application Load Balancers, each
+  /// identity is a string whose value is matched against the URI SAN, or DNS
+  /// SAN, or SPIFFE ID, or the subject field in the client's certificate. For
+  /// Cloud Service Mesh, each identity is a string whose value is matched
+  /// against the URI SAN, or DNS SAN, or the subject field in the client's
+  /// certificate. The match can be exact, prefix, suffix, or a substring match.
+  /// One of exact, prefix, suffix, or contains must be specified. Limited to 5
+  /// principals.
   ///
   /// Optional.
   core.List<AuthzPolicyAuthzRuleStringMatch>? principals;
@@ -6367,11 +7541,14 @@ class CloneAddressGroupItemsRequest {
       };
 }
 
-/// CustomInterceptProfile defines the Packet Intercept Endpoint Group used to
-/// intercept traffic to a third-party firewall in a Firewall rule.
+/// CustomInterceptProfile defines in-band integration behavior (intercept).
+///
+/// It is used by firewall rules with an APPLY_SECURITY_PROFILE_GROUP action.
 class CustomInterceptProfile {
-  /// The InterceptEndpointGroup to which traffic associated with the SP should
-  /// be mirrored.
+  /// The target InterceptEndpointGroup.
+  ///
+  /// When a firewall rule with this security profile attached matches a packet,
+  /// the packet will be intercepted to the location-local target in this group.
   ///
   /// Required.
   core.String? interceptEndpointGroup;
@@ -6392,11 +7569,15 @@ class CustomInterceptProfile {
       };
 }
 
-/// CustomMirroringProfile defines an action for mirroring traffic to a
-/// collector's EndpointGroup
+/// CustomMirroringProfile defines out-of-band integration behavior (mirroring).
+///
+/// It is used by mirroring rules with a MIRROR action.
 class CustomMirroringProfile {
-  /// The MirroringEndpointGroup to which traffic associated with the SP should
-  /// be mirrored.
+  /// The target MirroringEndpointGroup.
+  ///
+  /// When a mirroring rule with this security profile attached matches a
+  /// packet, a replica will be mirrored to the location-local target in this
+  /// group.
   ///
   /// Required.
   core.String? mirroringEndpointGroup;
@@ -6570,6 +7751,16 @@ class FirewallEndpoint {
   /// Output only.
   core.bool? reconciling;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// Current state of the endpoint.
   ///
   /// Output only.
@@ -6595,6 +7786,8 @@ class FirewallEndpoint {
     this.labels,
     this.name,
     this.reconciling,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.state,
     this.updateTime,
   });
@@ -6620,6 +7813,8 @@ class FirewallEndpoint {
           ),
           name: json_['name'] as core.String?,
           reconciling: json_['reconciling'] as core.bool?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           state: json_['state'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -6634,6 +7829,8 @@ class FirewallEndpoint {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (reconciling != null) 'reconciling': reconciling!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -7454,9 +8651,13 @@ class ListAddressGroupsResponse {
   /// `next_page_token` as `page_token`.
   core.String? nextPageToken;
 
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
   ListAddressGroupsResponse({
     this.addressGroups,
     this.nextPageToken,
+    this.unreachable,
   });
 
   ListAddressGroupsResponse.fromJson(core.Map json_)
@@ -7466,11 +8667,15 @@ class ListAddressGroupsResponse {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addressGroups != null) 'addressGroups': addressGroups!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -7761,6 +8966,147 @@ class ListLocationsResponse {
       };
 }
 
+/// Response message for ListMirroringDeploymentGroups.
+class ListMirroringDeploymentGroupsResponse {
+  /// The deployment groups from the specified parent.
+  core.List<MirroringDeploymentGroup>? mirroringDeploymentGroups;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages. See
+  /// https://google.aip.dev/158 for more details.
+  core.String? nextPageToken;
+
+  ListMirroringDeploymentGroupsResponse({
+    this.mirroringDeploymentGroups,
+    this.nextPageToken,
+  });
+
+  ListMirroringDeploymentGroupsResponse.fromJson(core.Map json_)
+      : this(
+          mirroringDeploymentGroups:
+              (json_['mirroringDeploymentGroups'] as core.List?)
+                  ?.map((value) => MirroringDeploymentGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mirroringDeploymentGroups != null)
+          'mirroringDeploymentGroups': mirroringDeploymentGroups!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for ListMirroringDeployments.
+class ListMirroringDeploymentsResponse {
+  /// The deployments from the specified parent.
+  core.List<MirroringDeployment>? mirroringDeployments;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages. See
+  /// https://google.aip.dev/158 for more details.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListMirroringDeploymentsResponse({
+    this.mirroringDeployments,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListMirroringDeploymentsResponse.fromJson(core.Map json_)
+      : this(
+          mirroringDeployments: (json_['mirroringDeployments'] as core.List?)
+              ?.map((value) => MirroringDeployment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mirroringDeployments != null)
+          'mirroringDeployments': mirroringDeployments!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for ListMirroringEndpointGroupAssociations.
+class ListMirroringEndpointGroupAssociationsResponse {
+  /// The associations from the specified parent.
+  core.List<MirroringEndpointGroupAssociation>?
+      mirroringEndpointGroupAssociations;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages. See
+  /// https://google.aip.dev/158 for more details.
+  core.String? nextPageToken;
+
+  ListMirroringEndpointGroupAssociationsResponse({
+    this.mirroringEndpointGroupAssociations,
+    this.nextPageToken,
+  });
+
+  ListMirroringEndpointGroupAssociationsResponse.fromJson(core.Map json_)
+      : this(
+          mirroringEndpointGroupAssociations:
+              (json_['mirroringEndpointGroupAssociations'] as core.List?)
+                  ?.map((value) => MirroringEndpointGroupAssociation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mirroringEndpointGroupAssociations != null)
+          'mirroringEndpointGroupAssociations':
+              mirroringEndpointGroupAssociations!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for ListMirroringEndpointGroups.
+class ListMirroringEndpointGroupsResponse {
+  /// The endpoint groups from the specified parent.
+  core.List<MirroringEndpointGroup>? mirroringEndpointGroups;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages. See
+  /// https://google.aip.dev/158 for more details.
+  core.String? nextPageToken;
+
+  ListMirroringEndpointGroupsResponse({
+    this.mirroringEndpointGroups,
+    this.nextPageToken,
+  });
+
+  ListMirroringEndpointGroupsResponse.fromJson(core.Map json_)
+      : this(
+          mirroringEndpointGroups:
+              (json_['mirroringEndpointGroups'] as core.List?)
+                  ?.map((value) => MirroringEndpointGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mirroringEndpointGroups != null)
+          'mirroringEndpointGroups': mirroringEndpointGroups!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
@@ -8032,6 +9378,719 @@ class MTLSPolicy {
           'clientValidationMode': clientValidationMode!,
         if (clientValidationTrustConfig != null)
           'clientValidationTrustConfig': clientValidationTrustConfig!,
+      };
+}
+
+/// A deployment represents a zonal mirroring backend ready to accept
+/// GENEVE-encapsulated replica traffic, e.g. a zonal instance group fronted by
+/// an internal passthrough load balancer.
+///
+/// Deployments are always part of a global deployment group which represents a
+/// global mirroring service.
+class MirroringDeployment {
+  /// The timestamp when the resource was created.
+  ///
+  /// See https://google.aip.dev/148#timestamps.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// User-provided description of the deployment.
+  ///
+  /// Used as additional context for the deployment.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The regional forwarding rule that fronts the mirroring collectors, for
+  /// example: `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+  ///
+  /// See https://google.aip.dev/124.
+  ///
+  /// Required. Immutable.
+  core.String? forwardingRule;
+
+  /// Labels are key/value pairs that help to organize and filter resources.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The deployment group that this deployment is a part of, for example:
+  /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+  ///
+  /// See https://google.aip.dev/124.
+  ///
+  /// Required. Immutable.
+  core.String? mirroringDeploymentGroup;
+
+  /// Identifier.
+  ///
+  /// The resource name of this deployment, for example:
+  /// `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`.
+  /// See https://google.aip.dev/122 for more details.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The current state of the resource does not match the user's intended
+  /// state, and the system is working to reconcile them.
+  ///
+  /// This part of the normal operation (e.g. linking a new association to the
+  /// parent group). See https://google.aip.dev/128.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// The current state of the deployment.
+  ///
+  /// See https://google.aip.dev/216.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State not set (this is not a valid state).
+  /// - "ACTIVE" : The deployment is ready and in sync with the parent group.
+  /// - "CREATING" : The deployment is being created.
+  /// - "DELETING" : The deployment is being deleted.
+  /// - "OUT_OF_SYNC" : The deployment is out of sync with the parent group. In
+  /// most cases, this is a result of a transient issue within the system (e.g.
+  /// a delayed data-path config) and the system is expected to recover
+  /// automatically. See the parent deployment group's state for more details.
+  /// - "DELETE_FAILED" : An attempt to delete the deployment has failed. This
+  /// is a terminal state and the deployment is not expected to recover. The
+  /// only permitted operation is to retry deleting the deployment.
+  core.String? state;
+
+  /// The timestamp when the resource was most recently updated.
+  ///
+  /// See https://google.aip.dev/148#timestamps.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  MirroringDeployment({
+    this.createTime,
+    this.description,
+    this.forwardingRule,
+    this.labels,
+    this.mirroringDeploymentGroup,
+    this.name,
+    this.reconciling,
+    this.state,
+    this.updateTime,
+  });
+
+  MirroringDeployment.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          forwardingRule: json_['forwardingRule'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          mirroringDeploymentGroup:
+              json_['mirroringDeploymentGroup'] as core.String?,
+          name: json_['name'] as core.String?,
+          reconciling: json_['reconciling'] as core.bool?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (forwardingRule != null) 'forwardingRule': forwardingRule!,
+        if (labels != null) 'labels': labels!,
+        if (mirroringDeploymentGroup != null)
+          'mirroringDeploymentGroup': mirroringDeploymentGroup!,
+        if (name != null) 'name': name!,
+        if (reconciling != null) 'reconciling': reconciling!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// A deployment group aggregates many zonal mirroring backends (deployments)
+/// into a single global mirroring service.
+///
+/// Consumers can connect this service using an endpoint group.
+class MirroringDeploymentGroup {
+  /// The list of endpoint groups that are connected to this resource.
+  ///
+  /// Output only.
+  core.List<MirroringDeploymentGroupConnectedEndpointGroup>?
+      connectedEndpointGroups;
+
+  /// The timestamp when the resource was created.
+  ///
+  /// See https://google.aip.dev/148#timestamps.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// User-provided description of the deployment group.
+  ///
+  /// Used as additional context for the deployment group.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Labels are key/value pairs that help to organize and filter resources.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The resource name of this deployment group, for example:
+  /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See
+  /// https://google.aip.dev/122 for more details.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The list of Mirroring Deployments that belong to this group.
+  ///
+  /// Output only.
+  core.List<MirroringDeploymentGroupDeployment>? nestedDeployments;
+
+  /// The network that will be used for all child deployments, for example:
+  /// `projects/{project}/global/networks/{network}`.
+  ///
+  /// See https://google.aip.dev/124.
+  ///
+  /// Required. Immutable.
+  core.String? network;
+
+  /// The current state of the resource does not match the user's intended
+  /// state, and the system is working to reconcile them.
+  ///
+  /// This is part of the normal operation (e.g. adding a new deployment to the
+  /// group) See https://google.aip.dev/128.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// The current state of the deployment group.
+  ///
+  /// See https://google.aip.dev/216.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State not set (this is not a valid state).
+  /// - "ACTIVE" : The deployment group is ready.
+  /// - "CREATING" : The deployment group is being created.
+  /// - "DELETING" : The deployment group is being deleted.
+  core.String? state;
+
+  /// The timestamp when the resource was most recently updated.
+  ///
+  /// See https://google.aip.dev/148#timestamps.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  MirroringDeploymentGroup({
+    this.connectedEndpointGroups,
+    this.createTime,
+    this.description,
+    this.labels,
+    this.name,
+    this.nestedDeployments,
+    this.network,
+    this.reconciling,
+    this.state,
+    this.updateTime,
+  });
+
+  MirroringDeploymentGroup.fromJson(core.Map json_)
+      : this(
+          connectedEndpointGroups:
+              (json_['connectedEndpointGroups'] as core.List?)
+                  ?.map((value) =>
+                      MirroringDeploymentGroupConnectedEndpointGroup.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          name: json_['name'] as core.String?,
+          nestedDeployments: (json_['nestedDeployments'] as core.List?)
+              ?.map((value) => MirroringDeploymentGroupDeployment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          network: json_['network'] as core.String?,
+          reconciling: json_['reconciling'] as core.bool?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectedEndpointGroups != null)
+          'connectedEndpointGroups': connectedEndpointGroups!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (nestedDeployments != null) 'nestedDeployments': nestedDeployments!,
+        if (network != null) 'network': network!,
+        if (reconciling != null) 'reconciling': reconciling!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// An endpoint group connected to this deployment group.
+class MirroringDeploymentGroupConnectedEndpointGroup {
+  /// The connected endpoint group's resource name, for example:
+  /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+  ///
+  /// See https://google.aip.dev/124.
+  ///
+  /// Output only.
+  core.String? name;
+
+  MirroringDeploymentGroupConnectedEndpointGroup({
+    this.name,
+  });
+
+  MirroringDeploymentGroupConnectedEndpointGroup.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
+/// A deployment belonging to this deployment group.
+class MirroringDeploymentGroupDeployment {
+  /// The name of the Mirroring Deployment, in the format:
+  /// `projects/{project}/locations/{location}/mirroringDeployments/{mirroring_deployment}`.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Most recent known state of the deployment.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State not set (this is not a valid state).
+  /// - "ACTIVE" : The deployment is ready and in sync with the parent group.
+  /// - "CREATING" : The deployment is being created.
+  /// - "DELETING" : The deployment is being deleted.
+  /// - "OUT_OF_SYNC" : The deployment is out of sync with the parent group. In
+  /// most cases, this is a result of a transient issue within the system (e.g.
+  /// a delayed data-path config) and the system is expected to recover
+  /// automatically. See the parent deployment group's state for more details.
+  /// - "DELETE_FAILED" : An attempt to delete the deployment has failed. This
+  /// is a terminal state and the deployment is not expected to recover. The
+  /// only permitted operation is to retry deleting the deployment.
+  core.String? state;
+
+  MirroringDeploymentGroupDeployment({
+    this.name,
+    this.state,
+  });
+
+  MirroringDeploymentGroupDeployment.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// An endpoint group is a consumer frontend for a deployment group (backend).
+///
+/// In order to configure mirroring for a network, consumers must create: - An
+/// association between their network and the endpoint group. - A security
+/// profile that points to the endpoint group. - A mirroring rule that
+/// references the security profile (group).
+class MirroringEndpointGroup {
+  /// List of associations to this endpoint group.
+  ///
+  /// Output only.
+  core.List<MirroringEndpointGroupAssociationDetails>? associations;
+
+  /// The timestamp when the resource was created.
+  ///
+  /// See https://google.aip.dev/148#timestamps.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// User-provided description of the endpoint group.
+  ///
+  /// Used as additional context for the endpoint group.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Labels are key/value pairs that help to organize and filter resources.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The deployment group that this DIRECT endpoint group is connected to, for
+  /// example:
+  /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+  ///
+  /// See https://google.aip.dev/124.
+  ///
+  /// Immutable.
+  core.String? mirroringDeploymentGroup;
+
+  /// Identifier.
+  ///
+  /// The resource name of this endpoint group, for example:
+  /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See
+  /// https://google.aip.dev/122 for more details.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The current state of the resource does not match the user's intended
+  /// state, and the system is working to reconcile them.
+  ///
+  /// This is part of the normal operation (e.g. adding a new association to the
+  /// group). See https://google.aip.dev/128.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// The current state of the endpoint group.
+  ///
+  /// See https://google.aip.dev/216.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State not set (this is not a valid state).
+  /// - "ACTIVE" : The endpoint group is ready and in sync with the target
+  /// deployment group.
+  /// - "CLOSED" : The deployment group backing this endpoint group has been
+  /// force-deleted. This endpoint group cannot be used and mirroring is
+  /// effectively disabled.
+  /// - "CREATING" : The endpoint group is being created.
+  /// - "DELETING" : The endpoint group is being deleted.
+  /// - "OUT_OF_SYNC" : The endpoint group is out of sync with the backing
+  /// deployment group. In most cases, this is a result of a transient issue
+  /// within the system (e.g. an inaccessible location) and the system is
+  /// expected to recover automatically. See the associations field for details
+  /// per network and location.
+  /// - "DELETE_FAILED" : An attempt to delete the endpoint group has failed.
+  /// This is a terminal state and the endpoint group is not expected to
+  /// recover. The only permitted operation is to retry deleting the endpoint
+  /// group.
+  core.String? state;
+
+  /// The timestamp when the resource was most recently updated.
+  ///
+  /// See https://google.aip.dev/148#timestamps.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  MirroringEndpointGroup({
+    this.associations,
+    this.createTime,
+    this.description,
+    this.labels,
+    this.mirroringDeploymentGroup,
+    this.name,
+    this.reconciling,
+    this.state,
+    this.updateTime,
+  });
+
+  MirroringEndpointGroup.fromJson(core.Map json_)
+      : this(
+          associations: (json_['associations'] as core.List?)
+              ?.map((value) =>
+                  MirroringEndpointGroupAssociationDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          mirroringDeploymentGroup:
+              json_['mirroringDeploymentGroup'] as core.String?,
+          name: json_['name'] as core.String?,
+          reconciling: json_['reconciling'] as core.bool?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (associations != null) 'associations': associations!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (labels != null) 'labels': labels!,
+        if (mirroringDeploymentGroup != null)
+          'mirroringDeploymentGroup': mirroringDeploymentGroup!,
+        if (name != null) 'name': name!,
+        if (reconciling != null) 'reconciling': reconciling!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// An endpoint group association represents a link between a network and an
+/// endpoint group in the organization.
+///
+/// Creating an association creates the networking infrastructure linking the
+/// network to the endpoint group, but does not enable mirroring by itself. To
+/// enable mirroring, the user must also create a network firewall policy
+/// containing mirroring rules and associate it with the network.
+class MirroringEndpointGroupAssociation {
+  /// The timestamp when the resource was created.
+  ///
+  /// See https://google.aip.dev/148#timestamps.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Labels are key/value pairs that help to organize and filter resources.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The list of locations where the association is present.
+  ///
+  /// This information is retrieved from the linked endpoint group, and not
+  /// configured as part of the association itself.
+  ///
+  /// Output only.
+  core.List<MirroringEndpointGroupAssociationLocationDetails>? locationsDetails;
+
+  /// The endpoint group that this association is connected to, for example:
+  /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+  ///
+  /// See https://google.aip.dev/124.
+  ///
+  /// Immutable.
+  core.String? mirroringEndpointGroup;
+
+  /// Identifier.
+  ///
+  /// The resource name of this endpoint group association, for example:
+  /// `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association`.
+  /// See https://google.aip.dev/122 for more details.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The VPC network that is associated.
+  ///
+  /// for example: `projects/123456789/global/networks/my-network`. See
+  /// https://google.aip.dev/124.
+  ///
+  /// Immutable.
+  core.String? network;
+
+  /// The current state of the resource does not match the user's intended
+  /// state, and the system is working to reconcile them.
+  ///
+  /// This part of the normal operation (e.g. adding a new location to the
+  /// target deployment group). See https://google.aip.dev/128.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// Current state of the endpoint group association.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not set.
+  /// - "ACTIVE" : The association is ready and in sync with the linked endpoint
+  /// group.
+  /// - "CREATING" : The association is being created.
+  /// - "DELETING" : The association is being deleted.
+  /// - "CLOSED" : The association is disabled due to a breaking change in
+  /// another resource.
+  /// - "OUT_OF_SYNC" : The association is out of sync with the linked endpoint
+  /// group. In most cases, this is a result of a transient issue within the
+  /// system (e.g. an inaccessible location) and the system is expected to
+  /// recover automatically. Check the `locations_details` field for more
+  /// details.
+  /// - "DELETE_FAILED" : An attempt to delete the association has failed. This
+  /// is a terminal state and the association is not expected to be usable as
+  /// some of its resources have been deleted. The only permitted operation is
+  /// to retry deleting the association.
+  core.String? state;
+
+  /// The timestamp when the resource was most recently updated.
+  ///
+  /// See https://google.aip.dev/148#timestamps.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  MirroringEndpointGroupAssociation({
+    this.createTime,
+    this.labels,
+    this.locationsDetails,
+    this.mirroringEndpointGroup,
+    this.name,
+    this.network,
+    this.reconciling,
+    this.state,
+    this.updateTime,
+  });
+
+  MirroringEndpointGroupAssociation.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          locationsDetails: (json_['locationsDetails'] as core.List?)
+              ?.map((value) =>
+                  MirroringEndpointGroupAssociationLocationDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          mirroringEndpointGroup:
+              json_['mirroringEndpointGroup'] as core.String?,
+          name: json_['name'] as core.String?,
+          network: json_['network'] as core.String?,
+          reconciling: json_['reconciling'] as core.bool?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (labels != null) 'labels': labels!,
+        if (locationsDetails != null) 'locationsDetails': locationsDetails!,
+        if (mirroringEndpointGroup != null)
+          'mirroringEndpointGroup': mirroringEndpointGroup!,
+        if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
+        if (reconciling != null) 'reconciling': reconciling!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// The endpoint group's view of a connected association.
+class MirroringEndpointGroupAssociationDetails {
+  /// The connected association's resource name, for example:
+  /// `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-ega`.
+  ///
+  /// See https://google.aip.dev/124.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The associated network, for example:
+  /// projects/123456789/global/networks/my-network.
+  ///
+  /// See https://google.aip.dev/124.
+  ///
+  /// Output only.
+  core.String? network;
+
+  /// Most recent known state of the association.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not set.
+  /// - "ACTIVE" : The association is ready and in sync with the linked endpoint
+  /// group.
+  /// - "CREATING" : The association is being created.
+  /// - "DELETING" : The association is being deleted.
+  /// - "CLOSED" : The association is disabled due to a breaking change in
+  /// another resource.
+  /// - "OUT_OF_SYNC" : The association is out of sync with the linked endpoint
+  /// group. In most cases, this is a result of a transient issue within the
+  /// system (e.g. an inaccessible location) and the system is expected to
+  /// recover automatically. Check the `locations_details` field for more
+  /// details.
+  /// - "DELETE_FAILED" : An attempt to delete the association has failed. This
+  /// is a terminal state and the association is not expected to be usable as
+  /// some of its resources have been deleted. The only permitted operation is
+  /// to retry deleting the association.
+  core.String? state;
+
+  MirroringEndpointGroupAssociationDetails({
+    this.name,
+    this.network,
+    this.state,
+  });
+
+  MirroringEndpointGroupAssociationDetails.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+          network: json_['network'] as core.String?,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Contains details about the state of an association in a specific cloud
+/// location.
+class MirroringEndpointGroupAssociationLocationDetails {
+  /// The cloud location, e.g. "us-central1-a" or "asia-south1".
+  ///
+  /// Output only.
+  core.String? location;
+
+  /// The current state of the association in this location.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not set.
+  /// - "ACTIVE" : The association is ready and in sync with the linked endpoint
+  /// group.
+  /// - "OUT_OF_SYNC" : The association is out of sync with the linked endpoint
+  /// group. In most cases, this is a result of a transient issue within the
+  /// system (e.g. an inaccessible location) and the system is expected to
+  /// recover automatically.
+  core.String? state;
+
+  MirroringEndpointGroupAssociationLocationDetails({
+    this.location,
+    this.state,
+  });
+
+  MirroringEndpointGroupAssociationLocationDetails.fromJson(core.Map json_)
+      : this(
+          location: json_['location'] as core.String?,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (location != null) 'location': location!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -8335,6 +10394,13 @@ class SecurityProfileGroup {
   /// Optional.
   core.String? customMirroringProfile;
 
+  /// Identifier used by the data-path.
+  ///
+  /// Unique within {container, location}.
+  ///
+  /// Output only.
+  core.String? dataPathId;
+
   /// An optional description of the profile group.
   ///
   /// Max length 2048 characters.
@@ -8377,6 +10443,7 @@ class SecurityProfileGroup {
     this.createTime,
     this.customInterceptProfile,
     this.customMirroringProfile,
+    this.dataPathId,
     this.description,
     this.etag,
     this.labels,
@@ -8392,6 +10459,7 @@ class SecurityProfileGroup {
               json_['customInterceptProfile'] as core.String?,
           customMirroringProfile:
               json_['customMirroringProfile'] as core.String?,
+          dataPathId: json_['dataPathId'] as core.String?,
           description: json_['description'] as core.String?,
           etag: json_['etag'] as core.String?,
           labels:
@@ -8413,6 +10481,7 @@ class SecurityProfileGroup {
           'customInterceptProfile': customInterceptProfile!,
         if (customMirroringProfile != null)
           'customMirroringProfile': customMirroringProfile!,
+        if (dataPathId != null) 'dataPathId': dataPathId!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
         if (labels != null) 'labels': labels!,
@@ -8715,6 +10784,11 @@ class ThreatOverride {
 /// ThreatPreventionProfile defines an action for specific threat signatures or
 /// severity levels.
 class ThreatPreventionProfile {
+  /// Configuration for overriding antivirus actions per protocol.
+  ///
+  /// Optional.
+  core.List<AntivirusOverride>? antivirusOverrides;
+
   /// Configuration for overriding threats actions by severity match.
   ///
   /// Optional.
@@ -8730,12 +10804,17 @@ class ThreatPreventionProfile {
   core.List<ThreatOverride>? threatOverrides;
 
   ThreatPreventionProfile({
+    this.antivirusOverrides,
     this.severityOverrides,
     this.threatOverrides,
   });
 
   ThreatPreventionProfile.fromJson(core.Map json_)
       : this(
+          antivirusOverrides: (json_['antivirusOverrides'] as core.List?)
+              ?.map((value) => AntivirusOverride.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           severityOverrides: (json_['severityOverrides'] as core.List?)
               ?.map((value) => SeverityOverride.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -8747,6 +10826,8 @@ class ThreatPreventionProfile {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (antivirusOverrides != null)
+          'antivirusOverrides': antivirusOverrides!,
         if (severityOverrides != null) 'severityOverrides': severityOverrides!,
         if (threatOverrides != null) 'threatOverrides': threatOverrides!,
       };

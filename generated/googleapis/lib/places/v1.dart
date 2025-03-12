@@ -1602,6 +1602,8 @@ class GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation {
   /// - "EV_CONNECTOR_TYPE_UNSPECIFIED_GB_T" : GB/T type corresponds to the GB/T
   /// standard in China. This type covers all GB_T types.
   /// - "EV_CONNECTOR_TYPE_UNSPECIFIED_WALL_OUTLET" : Unspecified wall outlet.
+  /// - "EV_CONNECTOR_TYPE_NACS" : The North American Charging System (NACS),
+  /// standardized as SAE J3400.
   core.String? type;
 
   GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation({
@@ -1670,6 +1672,7 @@ class GoogleMapsPlacesV1FuelOptionsFuelPrice {
   /// Possible string values are:
   /// - "FUEL_TYPE_UNSPECIFIED" : Unspecified fuel type.
   /// - "DIESEL" : Diesel fuel.
+  /// - "DIESEL_PLUS" : Diesel plus fuel.
   /// - "REGULAR_UNLEADED" : Regular unleaded.
   /// - "MIDGRADE" : Midgrade.
   /// - "PREMIUM" : Premium.
@@ -1681,9 +1684,10 @@ class GoogleMapsPlacesV1FuelOptionsFuelPrice {
   /// - "SP98" : SP 98.
   /// - "SP99" : SP 99.
   /// - "SP100" : SP 100.
-  /// - "LPG" : LPG.
+  /// - "LPG" : Liquefied Petroleum Gas.
   /// - "E80" : E 80.
   /// - "E85" : E 85.
+  /// - "E100" : E 100.
   /// - "METHANE" : Methane.
   /// - "BIO_DIESEL" : Bio-diesel.
   /// - "TRUCK_DIESEL" : Truck diesel.
@@ -2025,8 +2029,8 @@ class GoogleMapsPlacesV1Place {
   ///
   /// Note that if a place is always open (24 hours), the `close` field will not
   /// be set. Clients can rely on always open (24 hours) being represented as an
-  /// `open` period containing day with value `0`, hour with value `0`, and
-  /// minute with value `0`.
+  /// `open` period containing `day` with value `0`, `hour` with value `0`, and
+  /// `minute` with value `0`.
   GoogleMapsPlacesV1PlaceOpeningHours? regularOpeningHours;
 
   /// Contains an array of entries for information about regular secondary hours
@@ -2088,6 +2092,11 @@ class GoogleMapsPlacesV1Place {
 
   /// Specifies if the business supports takeout.
   core.bool? takeout;
+
+  /// IANA Time Zone Database time zone.
+  ///
+  /// For example "America/New_York".
+  GoogleTypeTimeZone? timeZone;
 
   /// A set of type tags for this result.
   ///
@@ -2182,6 +2191,7 @@ class GoogleMapsPlacesV1Place {
     this.shortFormattedAddress,
     this.subDestinations,
     this.takeout,
+    this.timeZone,
     this.types,
     this.userRatingCount,
     this.utcOffsetMinutes,
@@ -2342,6 +2352,10 @@ class GoogleMapsPlacesV1Place {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           takeout: json_['takeout'] as core.bool?,
+          timeZone: json_.containsKey('timeZone')
+              ? GoogleTypeTimeZone.fromJson(
+                  json_['timeZone'] as core.Map<core.String, core.dynamic>)
+              : null,
           types: (json_['types'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -2431,6 +2445,7 @@ class GoogleMapsPlacesV1Place {
           'shortFormattedAddress': shortFormattedAddress!,
         if (subDestinations != null) 'subDestinations': subDestinations!,
         if (takeout != null) 'takeout': takeout!,
+        if (timeZone != null) 'timeZone': timeZone!,
         if (types != null) 'types': types!,
         if (userRatingCount != null) 'userRatingCount': userRatingCount!,
         if (utcOffsetMinutes != null) 'utcOffsetMinutes': utcOffsetMinutes!,
@@ -3055,9 +3070,15 @@ class GoogleMapsPlacesV1PlacePaymentOptions {
 /// and compound code, replacing the prefix with a reference location.
 typedef GoogleMapsPlacesV1PlacePlusCode = $PlusCode;
 
-/// Place resource name and id of sub destinations that relate to the place.
+/// Sub destinations are specific places associated with a main place.
 ///
-/// For example, different terminals are different destinations of an airport.
+/// These provide more specific destinations for users who are searching for a
+/// large or complex place, like an airport, national park, university, or
+/// stadium. For example, sub destinations at an airport might include
+/// associated terminals and parking lots. Sub destinations return the place id
+/// and place resource name, which can be used in subsequent Place Details (New)
+/// requests to fetch richer details, including the sub destination's
+/// displayName and location.
 class GoogleMapsPlacesV1PlaceSubDestination {
   /// The place id of the sub destination.
   core.String? id;
@@ -4207,3 +4228,7 @@ typedef GoogleTypeLocalizedText = $GoogleTypeLocalizedText;
 
 /// Represents an amount of money with its currency type.
 typedef GoogleTypeMoney = $Money;
+
+/// Represents a time zone from the
+/// [IANA Time Zone Database](https://www.iana.org/time-zones).
+typedef GoogleTypeTimeZone = $TimeZone;

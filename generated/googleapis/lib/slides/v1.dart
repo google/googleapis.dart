@@ -440,13 +440,15 @@ class AutoText {
 }
 
 /// The autofit properties of a Shape.
+///
+/// This property is only set for shapes that allow text.
 class Autofit {
   /// The autofit type of the shape.
   ///
   /// If the autofit type is AUTOFIT_TYPE_UNSPECIFIED, the autofit type is
   /// inherited from a parent placeholder if it exists. The field is
   /// automatically set to NONE if a request is made that might affect text
-  /// fitting within its bounding text box. In this case the font_scale is
+  /// fitting within its bounding text box. In this case, the font_scale is
   /// applied to the font_size and the line_spacing_reduction is applied to the
   /// line_spacing. Both properties are also reset to default values.
   /// Possible string values are:
@@ -460,15 +462,15 @@ class Autofit {
   ///
   /// For shapes with autofit_type NONE or SHAPE_AUTOFIT, this value is the
   /// default value of 1. For TEXT_AUTOFIT, this value multiplied by the
-  /// font_size gives the font size that is rendered in the editor. This
-  /// property is read-only.
+  /// font_size gives the font size that's rendered in the editor. This property
+  /// is read-only.
   core.double? fontScale;
 
   /// The line spacing reduction applied to the shape.
   ///
   /// For shapes with autofit_type NONE or SHAPE_AUTOFIT, this value is the
   /// default value of 0. For TEXT_AUTOFIT, this value subtracted from the
-  /// line_spacing gives the line spacing that is rendered in the editor. This
+  /// line_spacing gives the line spacing that's rendered in the editor. This
   /// property is read-only.
   core.double? lineSpacingReduction;
 
@@ -945,10 +947,10 @@ class CreateShapeRequest {
 
   /// The shape type.
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : The shape type that is not predefined.
+  /// - "TYPE_UNSPECIFIED" : Default value. This value is unused.
   /// - "TEXT_BOX" : Text box shape.
   /// - "RECTANGLE" : Rectangle shape. Corresponds to ECMA-376 ST_ShapeType
-  /// 'rect'.
+  /// 'rect'
   /// - "ROUND_RECTANGLE" : Round corner rectangle shape. Corresponds to
   /// ECMA-376 ST_ShapeType 'roundRect'
   /// - "ELLIPSE" : Ellipse shape. Corresponds to ECMA-376 ST_ShapeType
@@ -2527,11 +2529,11 @@ class LineConnection {
   ///
   /// In most cases, it corresponds to the predefined connection site index from
   /// the ECMA-376 standard. More information on those connection sites can be
-  /// found in the description of the "cnx" attribute in section 20.1.9.9 and
-  /// Annex H. "Predefined DrawingML Shape and Text Geometries" of "Office Open
-  /// XML File Formats-Fundamentals and Markup Language Reference", part 1 of
-  /// \[ECMA-376 5th
-  /// edition\](http://www.ecma-international.org/publications/standards/Ecma-376.htm).
+  /// found in both the description of the "cxn" attribute in section 20.1.9.9
+  /// and "Annex H. Example Predefined DrawingML Shape and Text Geometries" of
+  /// "Office Open XML File Formats - Fundamentals and Markup Language
+  /// Reference", part 1 of \[ECMA-376 5th
+  /// edition\](https://ecma-international.org/publications-and-standards/standards/ecma-376/).
   /// The position of each connection site can also be viewed from Slides
   /// editor.
   core.int? connectionSiteIndex;
@@ -3890,7 +3892,7 @@ class Recolor {
   /// - "LIGHT3" : A recolor effect that lightens the image using the page's
   /// third available color from its color scheme.
   /// - "LIGHT4" : A recolor effect that lightens the image using the page's
-  /// forth available color from its color scheme.
+  /// fourth available color from its color scheme.
   /// - "LIGHT5" : A recolor effect that lightens the image using the page's
   /// fifth available color from its color scheme.
   /// - "LIGHT6" : A recolor effect that lightens the image using the page's
@@ -5016,8 +5018,11 @@ class Shadow {
       };
 }
 
-/// A PageElement kind representing a generic shape that does not have a more
+/// A PageElement kind representing a generic shape that doesn't have a more
 /// specific classification.
+///
+/// For more information, see
+/// [Size and position page elements](https://developers.google.com/slides/api/guides/transform).
 class Shape {
   /// Placeholders are page elements that inherit from corresponding
   /// placeholders on layouts and masters.
@@ -5032,10 +5037,10 @@ class Shape {
 
   /// The type of the shape.
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : The shape type that is not predefined.
+  /// - "TYPE_UNSPECIFIED" : Default value. This value is unused.
   /// - "TEXT_BOX" : Text box shape.
   /// - "RECTANGLE" : Rectangle shape. Corresponds to ECMA-376 ST_ShapeType
-  /// 'rect'.
+  /// 'rect'
   /// - "ROUND_RECTANGLE" : Round corner rectangle shape. Corresponds to
   /// ECMA-376 ST_ShapeType 'roundRect'
   /// - "ELLIPSE" : Ellipse shape. Corresponds to ECMA-376 ST_ShapeType

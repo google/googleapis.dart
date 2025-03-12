@@ -724,6 +724,11 @@ class ExportDataRequest {
   /// Cloud Storage destination.
   DestinationGcsBucket? destinationGcsBucket;
 
+  /// The metadata options for the export data.
+  ///
+  /// Optional.
+  TransferMetadataOptions? metadataOptions;
+
   /// An optional request ID to identify requests.
   ///
   /// Specify a unique request ID so that if you must retry your request, the
@@ -757,6 +762,7 @@ class ExportDataRequest {
 
   ExportDataRequest({
     this.destinationGcsBucket,
+    this.metadataOptions,
     this.requestId,
     this.serviceAccount,
     this.sourceParallelstore,
@@ -766,6 +772,10 @@ class ExportDataRequest {
       : this(
           destinationGcsBucket: json_.containsKey('destinationGcsBucket')
               ? DestinationGcsBucket.fromJson(json_['destinationGcsBucket']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          metadataOptions: json_.containsKey('metadataOptions')
+              ? TransferMetadataOptions.fromJson(json_['metadataOptions']
                   as core.Map<core.String, core.dynamic>)
               : null,
           requestId: json_['requestId'] as core.String?,
@@ -779,6 +789,7 @@ class ExportDataRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinationGcsBucket != null)
           'destinationGcsBucket': destinationGcsBucket!,
+        if (metadataOptions != null) 'metadataOptions': metadataOptions!,
         if (requestId != null) 'requestId': requestId!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (sourceParallelstore != null)
@@ -798,6 +809,11 @@ typedef GoogleProtobufEmpty = $Empty;
 class ImportDataRequest {
   /// Parallelstore destination.
   DestinationParallelstore? destinationParallelstore;
+
+  /// The transfer metadata options for the import data.
+  ///
+  /// Optional.
+  TransferMetadataOptions? metadataOptions;
 
   /// An optional request ID to identify requests.
   ///
@@ -832,6 +848,7 @@ class ImportDataRequest {
 
   ImportDataRequest({
     this.destinationParallelstore,
+    this.metadataOptions,
     this.requestId,
     this.serviceAccount,
     this.sourceGcsBucket,
@@ -845,6 +862,10 @@ class ImportDataRequest {
                       json_['destinationParallelstore']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          metadataOptions: json_.containsKey('metadataOptions')
+              ? TransferMetadataOptions.fromJson(json_['metadataOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           requestId: json_['requestId'] as core.String?,
           serviceAccount: json_['serviceAccount'] as core.String?,
           sourceGcsBucket: json_.containsKey('sourceGcsBucket')
@@ -856,6 +877,7 @@ class ImportDataRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinationParallelstore != null)
           'destinationParallelstore': destinationParallelstore!,
+        if (metadataOptions != null) 'metadataOptions': metadataOptions!,
         if (requestId != null) 'requestId': requestId!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (sourceGcsBucket != null) 'sourceGcsBucket': sourceGcsBucket!,
@@ -882,10 +904,28 @@ class Instance {
   /// Output only.
   core.String? createTime;
 
-  /// The version of DAOS software running in the instance.
+  /// Deprecated 'daos_version' field.
+  ///
+  /// Output only. The version of DAOS software running in the instance.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? daosVersion;
+
+  /// The deployment type of the instance.
+  ///
+  /// Allowed values are: * `SCRATCH`: the instance is a scratch instance. *
+  /// `PERSISTENT`: the instance is a persistent instance.
+  ///
+  /// Optional. Immutable.
+  /// Possible string values are:
+  /// - "DEPLOYMENT_TYPE_UNSPECIFIED" : Default Deployment Type It is equivalent
+  /// to SCRATCH
+  /// - "SCRATCH" : Scratch
+  /// - "PERSISTENT" : Persistent
+  core.String? deploymentType;
 
   /// The description of the instance.
   ///
@@ -903,7 +943,7 @@ class Instance {
   /// `DIRECTORY_STRIPE_LEVEL_MAX`: recommended for directories with a large
   /// number of files.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   /// Possible string values are:
   /// - "DIRECTORY_STRIPE_LEVEL_UNSPECIFIED" : If not set, DirectoryStripeLevel
   /// will default to DIRECTORY_STRIPE_LEVEL_MAX
@@ -927,7 +967,7 @@ class Instance {
   /// for workloads involving a mix of small and large files. *
   /// `FILE_STRIPE_LEVEL_MAX`: higher throughput performance for larger files.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   /// Possible string values are:
   /// - "FILE_STRIPE_LEVEL_UNSPECIFIED" : If not set, FileStripeLevel will
   /// default to FILE_STRIPE_LEVEL_BALANCED
@@ -978,6 +1018,8 @@ class Instance {
   /// - "DELETING" : The instance is being deleted.
   /// - "FAILED" : The instance is not usable.
   /// - "UPGRADING" : The instance is being upgraded.
+  /// - "REPAIRING" : The instance is being repaired. This should only be used
+  /// by instances using the `PERSISTENT` deployment type.
   core.String? state;
 
   /// The time when the instance was updated.
@@ -990,6 +1032,7 @@ class Instance {
     this.capacityGib,
     this.createTime,
     this.daosVersion,
+    this.deploymentType,
     this.description,
     this.directoryStripeLevel,
     this.effectiveReservedIpRange,
@@ -1010,6 +1053,7 @@ class Instance {
           capacityGib: json_['capacityGib'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           daosVersion: json_['daosVersion'] as core.String?,
+          deploymentType: json_['deploymentType'] as core.String?,
           description: json_['description'] as core.String?,
           directoryStripeLevel: json_['directoryStripeLevel'] as core.String?,
           effectiveReservedIpRange:
@@ -1034,6 +1078,7 @@ class Instance {
         if (capacityGib != null) 'capacityGib': capacityGib!,
         if (createTime != null) 'createTime': createTime!,
         if (daosVersion != null) 'daosVersion': daosVersion!,
+        if (deploymentType != null) 'deploymentType': deploymentType!,
         if (description != null) 'description': description!,
         if (directoryStripeLevel != null)
           'directoryStripeLevel': directoryStripeLevel!,
@@ -1234,3 +1279,54 @@ typedef SourceParallelstore = $Parallelstore;
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
+
+/// Transfer metadata options for the instance.
+class TransferMetadataOptions {
+  /// The GID preservation behavior.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GID_UNSPECIFIED" : default is GID_NUMBER_PRESERVE.
+  /// - "GID_SKIP" : Do not preserve GID during a transfer job.
+  /// - "GID_NUMBER_PRESERVE" : Preserve GID that is in number format during a
+  /// transfer job.
+  core.String? gid;
+
+  /// The mode preservation behavior.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : default is MODE_PRESERVE.
+  /// - "MODE_SKIP" : Do not preserve mode during a transfer job.
+  /// - "MODE_PRESERVE" : Preserve mode during a transfer job.
+  core.String? mode;
+
+  /// The UID preservation behavior.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "UID_UNSPECIFIED" : default is UID_NUMBER_PRESERVE.
+  /// - "UID_SKIP" : Do not preserve UID during a transfer job.
+  /// - "UID_NUMBER_PRESERVE" : Preserve UID that is in number format during a
+  /// transfer job.
+  core.String? uid;
+
+  TransferMetadataOptions({
+    this.gid,
+    this.mode,
+    this.uid,
+  });
+
+  TransferMetadataOptions.fromJson(core.Map json_)
+      : this(
+          gid: json_['gid'] as core.String?,
+          mode: json_['mode'] as core.String?,
+          uid: json_['uid'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gid != null) 'gid': gid!,
+        if (mode != null) 'mode': mode!,
+        if (uid != null) 'uid': uid!,
+      };
+}

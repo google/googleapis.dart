@@ -1739,7 +1739,7 @@ class AddMatterPermissionsRequest {
 }
 
 /// The options for Calendar exports.
-typedef CalendarExportOptions = $ExportOptions00;
+typedef CalendarExportOptions = $ExportOptions01;
 
 /// Additional options for Calendar search
 class CalendarOptions {
@@ -2025,6 +2025,51 @@ class CountArtifactsRequest {
       };
 }
 
+/// Specify Drive documents by document ID.
+class DriveDocumentIds {
+  /// A list of Drive document IDs.
+  ///
+  /// Required.
+  core.List<core.String>? ids;
+
+  DriveDocumentIds({
+    this.ids,
+  });
+
+  DriveDocumentIds.fromJson(core.Map json_)
+      : this(
+          ids: (json_['ids'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ids != null) 'ids': ids!,
+      };
+}
+
+/// The Drive documents to search.
+class DriveDocumentInfo {
+  /// Specify Drive documents by document ID.
+  DriveDocumentIds? documentIds;
+
+  DriveDocumentInfo({
+    this.documentIds,
+  });
+
+  DriveDocumentInfo.fromJson(core.Map json_)
+      : this(
+          documentIds: json_.containsKey('documentIds')
+              ? DriveDocumentIds.fromJson(
+                  json_['documentIds'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (documentIds != null) 'documentIds': documentIds!,
+      };
+}
+
 /// Options for Drive exports.
 class DriveExportOptions {
   /// To include access level information for users with
@@ -2046,7 +2091,7 @@ class DriveExportOptions {
       };
 }
 
-/// Additional options for Drive search
+/// Additional options for Drive search.
 class DriveOptions {
   /// Set whether the results include only content encrypted with \[Google
   /// Workspace Client-side encryption\](https://support.google.com/a?p=cse_ov)
@@ -2066,6 +2111,9 @@ class DriveOptions {
   core.String? clientSideEncryptedOption;
 
   /// Set to **true** to include shared drives.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? includeSharedDrives;
 
   /// Set to true to include Team Drive.
@@ -2248,6 +2296,9 @@ class ExportOptions {
   /// Options for Drive exports.
   DriveExportOptions? driveOptions;
 
+  /// Option available for Gemini export.
+  GeminiExportOptions? geminiOptions;
+
   /// Options for Groups exports.
   GroupsExportOptions? groupsOptions;
 
@@ -2272,6 +2323,7 @@ class ExportOptions {
   ExportOptions({
     this.calendarOptions,
     this.driveOptions,
+    this.geminiOptions,
     this.groupsOptions,
     this.hangoutsChatOptions,
     this.mailOptions,
@@ -2288,6 +2340,10 @@ class ExportOptions {
           driveOptions: json_.containsKey('driveOptions')
               ? DriveExportOptions.fromJson(
                   json_['driveOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          geminiOptions: json_.containsKey('geminiOptions')
+              ? GeminiExportOptions.fromJson(
+                  json_['geminiOptions'] as core.Map<core.String, core.dynamic>)
               : null,
           groupsOptions: json_.containsKey('groupsOptions')
               ? GroupsExportOptions.fromJson(
@@ -2311,6 +2367,7 @@ class ExportOptions {
   core.Map<core.String, core.dynamic> toJson() => {
         if (calendarOptions != null) 'calendarOptions': calendarOptions!,
         if (driveOptions != null) 'driveOptions': driveOptions!,
+        if (geminiOptions != null) 'geminiOptions': geminiOptions!,
         if (groupsOptions != null) 'groupsOptions': groupsOptions!,
         if (hangoutsChatOptions != null)
           'hangoutsChatOptions': hangoutsChatOptions!,
@@ -2353,11 +2410,17 @@ class ExportStats {
       };
 }
 
+/// The options for Gemini exports.
+typedef GeminiExportOptions = $ExportOptions00;
+
+/// Additional options for Gemini search
+typedef GeminiOptions = $Empty;
+
 /// Options for Groups exports.
-typedef GroupsExportOptions = $ExportOptions01;
+typedef GroupsExportOptions = $ExportOptions00;
 
 /// Options for Chat exports.
-typedef HangoutsChatExportOptions = $ExportOptions01;
+typedef HangoutsChatExportOptions = $ExportOptions00;
 
 /// The Chat spaces to search
 class HangoutsChatInfo {
@@ -2600,6 +2663,7 @@ class Hold {
   /// and classic Hangouts.
   /// - "VOICE" : Google Voice.
   /// - "CALENDAR" : Calendar.
+  /// - "GEMINI" : Gemini.
   core.String? corpus;
 
   /// The unique immutable ID of the hold.
@@ -2841,6 +2905,7 @@ class MailExportOptions {
   /// - "PST" : Export as PST. Only available for Gmail, Groups, Hangouts, Voice
   /// and Calendar.
   /// - "ICS" : Export as ICS. Only available for Calendar.
+  /// - "XML" : Export as XML. Only available for Gemini.
   core.String? exportFormat;
 
   /// To enable exporting linked Drive files, set to **true**.
@@ -3144,6 +3209,7 @@ class Query {
   /// and classic Hangouts.
   /// - "VOICE" : Google Voice.
   /// - "CALENDAR" : Calendar.
+  /// - "GEMINI" : Gemini.
   core.String? corpus;
 
   /// The data source to search.
@@ -3155,6 +3221,9 @@ class Query {
   /// Groups only)
   core.String? dataScope;
 
+  /// Required when **SearchMethod** is **DRIVE_DOCUMENT**.
+  DriveDocumentInfo? driveDocumentInfo;
+
   /// Set Drive search-specific options.
   DriveOptions? driveOptions;
 
@@ -3162,6 +3231,9 @@ class Query {
   ///
   /// Specify in GMT. The value is rounded to 12 AM on the specified date.
   core.String? endTime;
+
+  /// Set Gemini search-specific options.
+  GeminiOptions? geminiOptions;
 
   /// Required when **SearchMethod** is **ROOM**.
   ///
@@ -3200,6 +3272,8 @@ class Query {
   /// [SitesUrlInfo](https://developers.google.com/vault/reference/rest/v1/Query#sitesurlinfo).
   /// - "SHARED_DRIVE" : Search the files in the shared drives specified in
   /// [SharedDriveInfo](https://developers.google.com/vault/reference/rest/v1/Query#shareddriveinfo).
+  /// - "DRIVE_DOCUMENT" : Retrieve the documents specified in
+  /// DriveDocumentInfo.
   core.String? method;
 
   /// Required when **SearchMethod** is **ORG_UNIT**.
@@ -3225,6 +3299,8 @@ class Query {
   /// [SitesUrlInfo](https://developers.google.com/vault/reference/rest/v1/Query#sitesurlinfo).
   /// - "SHARED_DRIVE" : Search the files in the shared drives specified in
   /// [SharedDriveInfo](https://developers.google.com/vault/reference/rest/v1/Query#shareddriveinfo).
+  /// - "DRIVE_DOCUMENT" : Retrieve the documents specified in
+  /// DriveDocumentInfo.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -3269,8 +3345,10 @@ class Query {
     this.calendarOptions,
     this.corpus,
     this.dataScope,
+    this.driveDocumentInfo,
     this.driveOptions,
     this.endTime,
+    this.geminiOptions,
     this.hangoutsChatInfo,
     this.hangoutsChatOptions,
     this.mailOptions,
@@ -3298,11 +3376,19 @@ class Query {
               : null,
           corpus: json_['corpus'] as core.String?,
           dataScope: json_['dataScope'] as core.String?,
+          driveDocumentInfo: json_.containsKey('driveDocumentInfo')
+              ? DriveDocumentInfo.fromJson(json_['driveDocumentInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           driveOptions: json_.containsKey('driveOptions')
               ? DriveOptions.fromJson(
                   json_['driveOptions'] as core.Map<core.String, core.dynamic>)
               : null,
           endTime: json_['endTime'] as core.String?,
+          geminiOptions: json_.containsKey('geminiOptions')
+              ? GeminiOptions.fromJson(
+                  json_['geminiOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
           hangoutsChatInfo: json_.containsKey('hangoutsChatInfo')
               ? HangoutsChatInfo.fromJson(json_['hangoutsChatInfo']
                   as core.Map<core.String, core.dynamic>)
@@ -3347,8 +3433,10 @@ class Query {
         if (calendarOptions != null) 'calendarOptions': calendarOptions!,
         if (corpus != null) 'corpus': corpus!,
         if (dataScope != null) 'dataScope': dataScope!,
+        if (driveDocumentInfo != null) 'driveDocumentInfo': driveDocumentInfo!,
         if (driveOptions != null) 'driveOptions': driveOptions!,
         if (endTime != null) 'endTime': endTime!,
+        if (geminiOptions != null) 'geminiOptions': geminiOptions!,
         if (hangoutsChatInfo != null) 'hangoutsChatInfo': hangoutsChatInfo!,
         if (hangoutsChatOptions != null)
           'hangoutsChatOptions': hangoutsChatOptions!,
@@ -3620,7 +3708,7 @@ class UserInfo {
 }
 
 /// The options for Voice exports.
-typedef VoiceExportOptions = $ExportOptions00;
+typedef VoiceExportOptions = $ExportOptions01;
 
 /// Additional options for Voice search
 class VoiceOptions {

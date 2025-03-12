@@ -6955,7 +6955,7 @@ class GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings {
   /// Timeout before detecting no speech.
   core.String? noSpeechTimeout;
 
-  /// Use timeout based endpointing, interpreting endpointer sensitivy as
+  /// Use timeout based endpointing, interpreting endpointer sensitivity as
   /// seconds of timeout value.
   core.bool? useTimeoutBasedEndpointing;
 
@@ -7088,6 +7088,16 @@ class GoogleCloudDialogflowCxV3Agent {
   GoogleCloudDialogflowCxV3AgentPersonalizationSettings?
       personalizationSettings;
 
+  /// A read only boolean field reflecting Zone Isolation status of the agent.
+  ///
+  /// Optional. Output only.
+  core.bool? satisfiesPzi;
+
+  /// A read only boolean field reflecting Zone Separation status of the agent.
+  ///
+  /// Optional. Output only.
+  core.bool? satisfiesPzs;
+
   /// Name of the SecuritySettings reference for the agent.
   ///
   /// Format: `projects//locations//securitySettings/`.
@@ -7136,6 +7146,8 @@ class GoogleCloudDialogflowCxV3Agent {
     this.locked,
     this.name,
     this.personalizationSettings,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.securitySettings,
     this.speechToTextSettings,
     this.startFlow,
@@ -7188,6 +7200,8 @@ class GoogleCloudDialogflowCxV3Agent {
                   json_['personalizationSettings']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           securitySettings: json_['securitySettings'] as core.String?,
           speechToTextSettings: json_.containsKey('speechToTextSettings')
               ? GoogleCloudDialogflowCxV3SpeechToTextSettings.fromJson(
@@ -7232,6 +7246,8 @@ class GoogleCloudDialogflowCxV3Agent {
         if (name != null) 'name': name!,
         if (personalizationSettings != null)
           'personalizationSettings': personalizationSettings!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (securitySettings != null) 'securitySettings': securitySettings!,
         if (speechToTextSettings != null)
           'speechToTextSettings': speechToTextSettings!,
@@ -7711,7 +7727,7 @@ class GoogleCloudDialogflowCxV3BatchRunTestCasesRequest {
 class GoogleCloudDialogflowCxV3BoostSpec {
   /// Condition boost specifications.
   ///
-  /// If a document matches multiple conditions in the specifictions, boost
+  /// If a document matches multiple conditions in the specifications, boost
   /// scores from these specifications are all applied and combined in a
   /// non-linear way. Maximum number of specifications is 20.
   ///
@@ -8369,20 +8385,37 @@ class GoogleCloudDialogflowCxV3DataStoreConnection {
   /// FAQ).
   core.String? dataStoreType;
 
+  /// The document processing mode for the data store connection.
+  ///
+  /// Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set
+  /// it is considered as DOCUMENTS, as this is the legacy mode.
+  /// Possible string values are:
+  /// - "DOCUMENT_PROCESSING_MODE_UNSPECIFIED" : Not specified. This should be
+  /// set for STRUCTURED type data stores. Due to legacy reasons this is
+  /// considered as DOCUMENTS for STRUCTURED and PUBLIC_WEB data stores.
+  /// - "DOCUMENTS" : Documents are processed as documents.
+  /// - "CHUNKS" : Documents are converted to chunks.
+  core.String? documentProcessingMode;
+
   GoogleCloudDialogflowCxV3DataStoreConnection({
     this.dataStore,
     this.dataStoreType,
+    this.documentProcessingMode,
   });
 
   GoogleCloudDialogflowCxV3DataStoreConnection.fromJson(core.Map json_)
       : this(
           dataStore: json_['dataStore'] as core.String?,
           dataStoreType: json_['dataStoreType'] as core.String?,
+          documentProcessingMode:
+              json_['documentProcessingMode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataStore != null) 'dataStore': dataStore!,
         if (dataStoreType != null) 'dataStoreType': dataStoreType!,
+        if (documentProcessingMode != null)
+          'documentProcessingMode': documentProcessingMode!,
       };
 }
 
@@ -10248,7 +10281,7 @@ class GoogleCloudDialogflowCxV3Flow {
   /// cases such as the user saying "help" or "can I talk to a human?", which
   /// can be handled in a common way regardless of the current page. Transition
   /// routes defined in the page have higher priority than those defined in the
-  /// flow. TransitionRoutes are evalauted in the following order: *
+  /// flow. TransitionRoutes are evaluated in the following order: *
   /// TransitionRoutes with intent specified. * TransitionRoutes with only
   /// condition specified. TransitionRoutes with intent specified are inherited
   /// by pages in the flow.
@@ -13194,7 +13227,7 @@ class GoogleCloudDialogflowCxV3Page {
   /// A list of transitions for the transition rules of this page.
   ///
   /// They route the conversation to another page in the same flow, or another
-  /// flow. When we are in a certain page, the TransitionRoutes are evalauted in
+  /// flow. When we are in a certain page, the TransitionRoutes are evaluated in
   /// the following order: * TransitionRoutes defined in the page with intent
   /// specified. * TransitionRoutes defined in the transition route groups with
   /// intent specified. * TransitionRoutes defined in flow with intent
@@ -13460,6 +13493,9 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   /// filled with data that can help evaluations.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? populateDataStoreConnectionSignals;
 
   /// Search configuration for UCS search queries.
@@ -13611,9 +13647,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
 
   /// Data store connection feature output signals.
   ///
-  /// Filled only when data stores are involved in serving the query and
-  /// DetectIntentRequest.populate_data_store_connection_signals is set to true
-  /// in the request.
+  /// Filled only when data stores are involved in serving the query.
   ///
   /// Optional.
   GoogleCloudDialogflowCxV3DataStoreConnectionSignals?
@@ -14610,10 +14644,19 @@ class GoogleCloudDialogflowCxV3SafetySettingsPhrase {
 class GoogleCloudDialogflowCxV3SearchConfig {
   /// Boosting configuration for the datastores.
   ///
+  /// Maps from datastore name to their boost configuration. Do not specify more
+  /// than one BoostSpecs for each datastore name. If multiple BoostSpecs are
+  /// provided for the same datastore name, the behavior is undefined.
+  ///
   /// Optional.
   core.List<GoogleCloudDialogflowCxV3BoostSpecs>? boostSpecs;
 
   /// Filter configuration for the datastores.
+  ///
+  /// Maps from datastore name to the filter expression for that datastore. Do
+  /// not specify more than one FilterSpecs for each datastore name. If multiple
+  /// FilterSpecs are provided for the same datastore name, the behavior is
+  /// undefined.
   ///
   /// Optional.
   core.List<GoogleCloudDialogflowCxV3FilterSpecs>? filterSpecs;
@@ -14898,7 +14941,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
 /// Sentiment analysis inspects user input and identifies the prevailing
 /// subjective opinion, especially to determine a user's attitude as positive,
 /// negative, or neutral.
-typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared12;
+typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared13;
 
 /// Session entity types are referred to as **User** entity types and are
 /// entities that are built for an individual user such as favorites,
@@ -16328,7 +16371,7 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig {
 
   /// The client secret provided by the 3rd party platform.
   ///
-  /// Required.
+  /// Optional.
   core.String? clientSecret;
 
   /// The OAuth scopes to grant.

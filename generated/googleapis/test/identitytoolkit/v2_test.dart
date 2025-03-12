@@ -342,9 +342,12 @@ api.GoogleCloudIdentitytoolkitAdminV2Config
     o.blockingFunctions =
         buildGoogleCloudIdentitytoolkitAdminV2BlockingFunctionsConfig();
     o.client = buildGoogleCloudIdentitytoolkitAdminV2ClientConfig();
+    o.defaultHostingSite = 'foo';
     o.emailPrivacyConfig =
         buildGoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig();
     o.mfa = buildGoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig();
+    o.mobileLinksConfig =
+        buildGoogleCloudIdentitytoolkitAdminV2MobileLinksConfig();
     o.monitoring = buildGoogleCloudIdentitytoolkitAdminV2MonitoringConfig();
     o.multiTenant = buildGoogleCloudIdentitytoolkitAdminV2MultiTenantConfig();
     o.name = 'foo';
@@ -370,9 +373,15 @@ void checkGoogleCloudIdentitytoolkitAdminV2Config(
     checkGoogleCloudIdentitytoolkitAdminV2BlockingFunctionsConfig(
         o.blockingFunctions!);
     checkGoogleCloudIdentitytoolkitAdminV2ClientConfig(o.client!);
+    unittest.expect(
+      o.defaultHostingSite!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig(
         o.emailPrivacyConfig!);
     checkGoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig(o.mfa!);
+    checkGoogleCloudIdentitytoolkitAdminV2MobileLinksConfig(
+        o.mobileLinksConfig!);
     checkGoogleCloudIdentitytoolkitAdminV2MonitoringConfig(o.monitoring!);
     checkGoogleCloudIdentitytoolkitAdminV2MultiTenantConfig(o.multiTenant!);
     unittest.expect(
@@ -1093,6 +1102,30 @@ void checkGoogleCloudIdentitytoolkitAdminV2ListTenantsResponse(
     checkUnnamed10(o.tenants!);
   }
   buildCounterGoogleCloudIdentitytoolkitAdminV2ListTenantsResponse--;
+}
+
+core.int buildCounterGoogleCloudIdentitytoolkitAdminV2MobileLinksConfig = 0;
+api.GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig
+    buildGoogleCloudIdentitytoolkitAdminV2MobileLinksConfig() {
+  final o = api.GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig();
+  buildCounterGoogleCloudIdentitytoolkitAdminV2MobileLinksConfig++;
+  if (buildCounterGoogleCloudIdentitytoolkitAdminV2MobileLinksConfig < 3) {
+    o.domain = 'foo';
+  }
+  buildCounterGoogleCloudIdentitytoolkitAdminV2MobileLinksConfig--;
+  return o;
+}
+
+void checkGoogleCloudIdentitytoolkitAdminV2MobileLinksConfig(
+    api.GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig o) {
+  buildCounterGoogleCloudIdentitytoolkitAdminV2MobileLinksConfig++;
+  if (buildCounterGoogleCloudIdentitytoolkitAdminV2MobileLinksConfig < 3) {
+    unittest.expect(
+      o.domain!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudIdentitytoolkitAdminV2MobileLinksConfig--;
 }
 
 core.int buildCounterGoogleCloudIdentitytoolkitAdminV2MonitoringConfig = 0;
@@ -2024,6 +2057,8 @@ api.GoogleCloudIdentitytoolkitAdminV2Tenant
     o.hashConfig = buildGoogleCloudIdentitytoolkitAdminV2HashConfig();
     o.inheritance = buildGoogleCloudIdentitytoolkitAdminV2Inheritance();
     o.mfaConfig = buildGoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig();
+    o.mobileLinksConfig =
+        buildGoogleCloudIdentitytoolkitAdminV2MobileLinksConfig();
     o.monitoring = buildGoogleCloudIdentitytoolkitAdminV2MonitoringConfig();
     o.name = 'foo';
     o.passwordPolicyConfig =
@@ -2055,6 +2090,8 @@ void checkGoogleCloudIdentitytoolkitAdminV2Tenant(
     checkGoogleCloudIdentitytoolkitAdminV2HashConfig(o.hashConfig!);
     checkGoogleCloudIdentitytoolkitAdminV2Inheritance(o.inheritance!);
     checkGoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig(o.mfaConfig!);
+    checkGoogleCloudIdentitytoolkitAdminV2MobileLinksConfig(
+        o.mobileLinksConfig!);
     checkGoogleCloudIdentitytoolkitAdminV2MonitoringConfig(o.monitoring!);
     unittest.expect(
       o.name!,
@@ -3767,6 +3804,18 @@ void main() {
           api.GoogleCloudIdentitytoolkitAdminV2ListTenantsResponse.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudIdentitytoolkitAdminV2ListTenantsResponse(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudIdentitytoolkitAdminV2MobileLinksConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudIdentitytoolkitAdminV2MobileLinksConfig(od);
     });
   });
 

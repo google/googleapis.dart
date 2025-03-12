@@ -2198,6 +2198,7 @@ void main() {
       final res =
           api.ConnectorsApi(mock).projects.locations.connections.entityTypes;
       final arg_name = 'foo';
+      final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -2232,6 +2233,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['view']!.first,
+          unittest.equals(arg_view),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -2242,7 +2247,8 @@ void main() {
         final resp = convert.json.encode(buildEntityType());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.get(arg_name, $fields: arg_$fields);
+      final response =
+          await res.get(arg_name, view: arg_view, $fields: arg_$fields);
       checkEntityType(response as api.EntityType);
     });
 

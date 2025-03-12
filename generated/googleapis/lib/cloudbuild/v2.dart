@@ -426,6 +426,10 @@ class ProjectsLocationsConnectionsResource {
   ///
   /// [pageToken] - Page start.
   ///
+  /// [returnPartialSuccess] - Optional. If set to true, the response will
+  /// return partial results when some regions are unreachable. If set to false,
+  /// the response will fail if any region is unreachable.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -440,11 +444,14 @@ class ProjectsLocationsConnectionsResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -529,8 +536,8 @@ class ProjectsLocationsConnectionsResource {
   /// received. Format: `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [webhookKey] - Arbitrary additional key to find the maching repository for
-  /// a webhook event if needed.
+  /// [webhookKey] - Arbitrary additional key to find the matching repository
+  /// for a webhook event if needed.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1013,6 +1020,10 @@ class ProjectsLocationsConnectionsRepositoriesResource {
   ///
   /// [pageToken] - Page start.
   ///
+  /// [returnPartialSuccess] - Optional. If set to true, the response will
+  /// return partial results when some regions are unreachable. If set to false,
+  /// the response will fail if any region is unreachable.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1028,12 +1039,15 @@ class ProjectsLocationsConnectionsRepositoriesResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2033,9 +2047,13 @@ class ListConnectionsResponse {
   /// A token identifying a page of results the server should return.
   core.String? nextPageToken;
 
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
   ListConnectionsResponse({
     this.connections,
     this.nextPageToken,
+    this.unreachable,
   });
 
   ListConnectionsResponse.fromJson(core.Map json_)
@@ -2045,11 +2063,15 @@ class ListConnectionsResponse {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (connections != null) 'connections': connections!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -2089,9 +2111,13 @@ class ListRepositoriesResponse {
   /// The list of Repositories.
   core.List<Repository>? repositories;
 
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
   ListRepositoriesResponse({
     this.nextPageToken,
     this.repositories,
+    this.unreachable,
   });
 
   ListRepositoriesResponse.fromJson(core.Map json_)
@@ -2101,11 +2127,15 @@ class ListRepositoriesResponse {
               ?.map((value) => Repository.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (repositories != null) 'repositories': repositories!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 

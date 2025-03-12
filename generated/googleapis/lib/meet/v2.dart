@@ -53,6 +53,10 @@ class MeetApi {
   static const meetingsSpaceReadonlyScope =
       'https://www.googleapis.com/auth/meetings.space.readonly';
 
+  /// Edit, and see settings for all of your Google Meet calls.
+  static const meetingsSpaceSettingsScope =
+      'https://www.googleapis.com/auth/meetings.space.settings';
+
   final commons.ApiRequester _requester;
 
   ConferenceRecordsResource get conferenceRecords =>

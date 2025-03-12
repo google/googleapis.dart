@@ -1128,6 +1128,7 @@ api.GoogleAnalyticsAdminV1betaDataRetentionSettings
     o.eventDataRetention = 'foo';
     o.name = 'foo';
     o.resetUserDataOnNewActivity = true;
+    o.userDataRetention = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1betaDataRetentionSettings--;
   return o;
@@ -1146,6 +1147,10 @@ void checkGoogleAnalyticsAdminV1betaDataRetentionSettings(
       unittest.equals('foo'),
     );
     unittest.expect(o.resetUserDataOnNewActivity!, unittest.isTrue);
+    unittest.expect(
+      o.userDataRetention!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleAnalyticsAdminV1betaDataRetentionSettings--;
 }

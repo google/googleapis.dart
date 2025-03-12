@@ -410,7 +410,7 @@ class VoicesResource {
 class AdvancedVoiceOptions {
   /// Only for Journey voices.
   ///
-  /// If false, the synthesis will be context aware and have higher latency.
+  /// If false, the synthesis is context aware and has a higher latency.
   core.bool? lowLatencyJourneySynthesis;
 
   AdvancedVoiceOptions({
@@ -441,16 +441,16 @@ class AudioConfig {
   /// PCM). Audio content returned as LINEAR16 also contains a WAV header.
   /// - "MP3" : MP3 audio at 32kbps.
   /// - "OGG_OPUS" : Opus encoded audio wrapped in an ogg container. The result
-  /// will be a file which can be played natively on Android, and in browsers
-  /// (at least Chrome and Firefox). The quality of the encoding is considerably
+  /// is a file which can be played natively on Android, and in browsers (at
+  /// least Chrome and Firefox). The quality of the encoding is considerably
   /// higher than MP3 while using approximately the same bitrate.
   /// - "MULAW" : 8-bit samples that compand 14-bit audio samples using G.711
   /// PCMU/mu-law. Audio content returned as MULAW also contains a WAV header.
   /// - "ALAW" : 8-bit samples that compand 14-bit audio samples using G.711
   /// PCMU/A-law. Audio content returned as ALAW also contains a WAV header.
   /// - "PCM" : Uncompressed 16-bit signed little-endian samples (Linear PCM).
-  /// Note that as opposed to LINEAR16, audio will not be wrapped in a WAV (or
-  /// any other) header.
+  /// Note that as opposed to LINEAR16, audio won't be wrapped in a WAV (or any
+  /// other) header.
   core.String? audioEncoding;
 
   /// Input only.
@@ -548,16 +548,16 @@ class CustomPronunciationParams {
   /// The phonetic encoding of the phrase.
   /// Possible string values are:
   /// - "PHONETIC_ENCODING_UNSPECIFIED" : Not specified.
-  /// - "PHONETIC_ENCODING_IPA" : IPA. (e.g. apple -\> ˈæpəl )
+  /// - "PHONETIC_ENCODING_IPA" : IPA, such as apple -\> ˈæpəl.
   /// https://en.wikipedia.org/wiki/International_Phonetic_Alphabet
-  /// - "PHONETIC_ENCODING_X_SAMPA" : X-SAMPA (e.g. apple -\> "{p@l" )
+  /// - "PHONETIC_ENCODING_X_SAMPA" : X-SAMPA, such as apple -\> "{p@l".
   /// https://en.wikipedia.org/wiki/X-SAMPA
   core.String? phoneticEncoding;
 
-  /// The phrase to which the customization will be applied.
+  /// The phrase to which the customization is applied.
   ///
-  /// The phrase can be multiple words (in the case of proper nouns etc), but
-  /// should not span to a whole sentence.
+  /// The phrase can be multiple words, such as proper nouns, but shouldn't span
+  /// the length of the sentence.
   core.String? phrase;
 
   /// The pronunciation of the phrase.
@@ -587,7 +587,7 @@ class CustomPronunciationParams {
 
 /// A collection of pronunciation customizations.
 class CustomPronunciations {
-  /// The pronunciation customizations to be applied.
+  /// The pronunciation customizations are applied.
   core.List<CustomPronunciationParams>? pronunciations;
 
   CustomPronunciations({
@@ -820,15 +820,15 @@ typedef Status = $Status00;
 /// Either `text` or `ssml` must be supplied. Supplying both or neither returns
 /// google.rpc.Code.INVALID_ARGUMENT. The input size is limited to 5000 bytes.
 class SynthesisInput {
-  /// The pronunciation customizations to be applied to the input.
+  /// The pronunciation customizations are applied to the input.
   ///
-  /// If this is set, the input will be synthesized using the given
-  /// pronunciation customizations. The initial support will be for EFIGS
-  /// (English, French, Italian, German, Spanish) languages, as provided in
-  /// VoiceSelectionParams. Journey and Instant Clone voices are not supported
-  /// yet. In order to customize the pronunciation of a phrase, there must be an
+  /// If this is set, the input is synthesized using the given pronunciation
+  /// customizations. The initial support is for English, French, Italian,
+  /// German, and Spanish (EFIGS) languages, as provided in
+  /// VoiceSelectionParams. Journey and Instant Clone voices aren't supported.
+  /// In order to customize the pronunciation of a phrase, there must be an
   /// exact match of the phrase in the input types. If using SSML, the phrase
-  /// must not be inside a phoneme tag (entirely or partially).
+  /// must not be inside a phoneme tag.
   ///
   /// Optional.
   CustomPronunciations? customPronunciations;
@@ -1024,7 +1024,7 @@ class SynthesizeSpeechResponse {
       };
 }
 
-/// A Multi-speaker turn.
+/// A multi-speaker turn.
 class Turn {
   /// The speaker of the turn, for example, 'O' or 'Q'.
   ///
@@ -1179,8 +1179,8 @@ class VoiceSelectionParams {
 
   /// The configuration for a voice clone.
   ///
-  /// If \[VoiceCloneParams.voice_clone_key\] is set, the service will choose
-  /// the voice clone matching the specified configuration.
+  /// If \[VoiceCloneParams.voice_clone_key\] is set, the service chooses the
+  /// voice clone matching the specified configuration.
   ///
   /// Optional.
   VoiceCloneParams? voiceClone;

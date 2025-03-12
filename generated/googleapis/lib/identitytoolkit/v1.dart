@@ -2934,12 +2934,6 @@ class GoogleCloudIdentitytoolkitV1GetAccountInfoRequest {
   /// [RFC 822](https://tools.ietf.org/html/rfc822) addr-spec production. Should
   /// only be specified by authenticated requests from a developer.
   core.List<core.String>? email;
-
-  /// The federated user identifier of one or more accounts to fetch.
-  ///
-  /// Should only be specified by authenticated requests bearing a Google OAuth
-  /// 2.0 credential with proper
-  /// [permissions](https://cloud.google.com/identity-platform/docs/access-control).
   core.List<GoogleCloudIdentitytoolkitV1FederatedUserIdentifier>?
       federatedUserId;
 
@@ -3158,6 +3152,15 @@ class GoogleCloudIdentitytoolkitV1GetOobCodeRequest {
   /// unless return_oob_link is set to true.
   core.String? idToken;
 
+  /// In order to ensure that the url used can be easily opened in iOS or
+  /// Android, we create a Hosting link '/__/auth/links'.
+  ///
+  /// This optional field contains the domain to use when constructing a Hosting
+  /// link. If not set, '.firebaseapp.com' domain will be used.
+  ///
+  /// Optional.
+  core.String? linkDomain;
+
   /// The email address the account is being updated to.
   ///
   /// Required only for VERIFY_AND_CHANGE_EMAIL requests.
@@ -3232,6 +3235,7 @@ class GoogleCloudIdentitytoolkitV1GetOobCodeRequest {
     this.iOSAppStoreId,
     this.iOSBundleId,
     this.idToken,
+    this.linkDomain,
     this.newEmail,
     this.recaptchaVersion,
     this.requestType,
@@ -3256,6 +3260,7 @@ class GoogleCloudIdentitytoolkitV1GetOobCodeRequest {
           iOSAppStoreId: json_['iOSAppStoreId'] as core.String?,
           iOSBundleId: json_['iOSBundleId'] as core.String?,
           idToken: json_['idToken'] as core.String?,
+          linkDomain: json_['linkDomain'] as core.String?,
           newEmail: json_['newEmail'] as core.String?,
           recaptchaVersion: json_['recaptchaVersion'] as core.String?,
           requestType: json_['requestType'] as core.String?,
@@ -3282,6 +3287,7 @@ class GoogleCloudIdentitytoolkitV1GetOobCodeRequest {
         if (iOSAppStoreId != null) 'iOSAppStoreId': iOSAppStoreId!,
         if (iOSBundleId != null) 'iOSBundleId': iOSBundleId!,
         if (idToken != null) 'idToken': idToken!,
+        if (linkDomain != null) 'linkDomain': linkDomain!,
         if (newEmail != null) 'newEmail': newEmail!,
         if (recaptchaVersion != null) 'recaptchaVersion': recaptchaVersion!,
         if (requestType != null) 'requestType': requestType!,
@@ -3563,7 +3569,7 @@ class GoogleCloudIdentitytoolkitV1IdpConfig {
   /// IdP
   core.int? experimentPercent;
 
-  /// Name of the identity provider.
+  ///
   /// Possible string values are:
   /// - "PROVIDER_UNSPECIFIED"
   /// - "MSLIVE" : Microsoft Live as identity provider.
@@ -3940,9 +3946,6 @@ class GoogleCloudIdentitytoolkitV1ProviderUserInfo {
 
 /// Request message for QueryUserInfo.
 class GoogleCloudIdentitytoolkitV1QueryUserInfoRequest {
-  /// Query conditions used to filter results.
-  ///
-  /// If more than one is passed, only the first SqlExpression is evaluated.
   core.List<GoogleCloudIdentitytoolkitV1SqlExpression>? expression;
 
   /// The maximum number of accounts to return with an upper limit of __500__.
@@ -3955,10 +3958,7 @@ class GoogleCloudIdentitytoolkitV1QueryUserInfoRequest {
   /// Only valid when `return_user_info` is set to `true`.
   core.String? offset;
 
-  /// The order for sorting query result.
   ///
-  /// Defaults to __ascending__ order. Only valid when `return_user_info` is set
-  /// to `true`.
   /// Possible string values are:
   /// - "ORDER_UNSPECIFIED" : Order is not specified.
   /// - "ASC" : Sort on ascending order.
@@ -3971,11 +3971,7 @@ class GoogleCloudIdentitytoolkitV1QueryUserInfoRequest {
   /// returned. Defaults to `true`.
   core.bool? returnUserInfo;
 
-  /// The field to use for sorting user accounts.
   ///
-  /// Defaults to `USER_ID`. Note: when `phone_number` is specified in
-  /// `expression`, the result ignores the sorting. Only valid when
-  /// `return_user_info` is set to `true`.
   /// Possible string values are:
   /// - "SORT_BY_FIELD_UNSPECIFIED" : Sort field is not specified.
   /// - "USER_ID" : Sort result by userId.
@@ -4374,8 +4370,6 @@ class GoogleCloudIdentitytoolkitV1SetAccountInfoRequest {
     'Not supported. Member documentation may have more information.',
   )
   core.String? delegatedProjectNumber;
-
-  /// The account's attributes to be deleted.
   core.List<core.String>? deleteAttribute;
 
   /// The Identity Providers to unlink from the user's account.
@@ -6344,7 +6338,7 @@ class GoogleCloudIdentitytoolkitV1UploadAccountRequest {
   /// speeds and memory technologies advance.
   core.int? parallelization;
 
-  /// Password and salt order when verify password.
+  ///
   /// Possible string values are:
   /// - "UNSPECIFIED_ORDER" : The order is not specified.
   /// - "SALT_AND_PASSWORD" : The order is salt first, and then password.

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241217",
+    "revision": "20250227",
     "rootUrl": "https://androidpublisher.googleapis.com/",
     "servicePath": "",
     "title": "Google Play Android Developer API",
@@ -5707,6 +5707,10 @@
                     },
                     "description": "Map from region code to converted region price.",
                     "type": "object"
+                },
+                "regionVersion": {
+                    "$ref": "RegionsVersion",
+                    "description": "The region version at which the prices were generated."
                 }
             },
             "type": "object"
@@ -7584,7 +7588,7 @@
             "type": "object"
         },
         "OfferTag": {
-            "description": "Represents a custom tag specified for base plans and subscription offers.",
+            "description": "Represents a custom tag specified for a product offer.",
             "id": "OfferTag",
             "properties": {
                 "tag": {

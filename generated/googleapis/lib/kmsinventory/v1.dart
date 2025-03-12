@@ -785,6 +785,10 @@ class GoogleCloudKmsV1CryptoKeyVersion {
   /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
+  /// - "PQ_SIGN_ML_DSA_65" : The post-quantum Module-Lattice-Based Digital
+  /// Signature Algorithm, at security level 3. Randomized version.
+  /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
+  /// digital signature algorithm, at security level 1. Randomized version.
   core.String? algorithm;
 
   /// Statement that was generated and signed by the HSM at key creation time.
@@ -896,7 +900,7 @@ class GoogleCloudKmsV1CryptoKeyVersion {
   /// - "ENABLED" : This version may be used for cryptographic operations.
   /// - "DISABLED" : This version may not be used, but the key material is still
   /// available, and the version can be placed back into the ENABLED state.
-  /// - "DESTROYED" : This version is destroyed, and the key material is no
+  /// - "DESTROYED" : This key material of this version is destroyed and no
   /// longer stored. This version may only become ENABLED again if this version
   /// is reimport_eligible and the original key material is reimported with a
   /// call to KeyManagementService.ImportCryptoKeyVersion.

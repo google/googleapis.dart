@@ -590,13 +590,7 @@ class ProjectsLocationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Looks up a single Entry by name using the permission on the source
-  /// system.Caution: The BigQuery metadata that is stored in Dataplex Catalog
-  /// is changing.
-  ///
-  /// For more information, see Changes to BigQuery metadata stored in Dataplex
-  /// Catalog
-  /// (https://cloud.google.com/dataplex/docs/biqquery-metadata-changes).
+  /// Looks up an entry by name using the permission on the source system.
   ///
   /// Request parameters:
   ///
@@ -671,8 +665,8 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [orderBy] - Optional. Specifies the ordering of results. Supported values
-  /// are: * relevance (default) * last_modified_timestamp *
-  /// last_modified_timestamp asc
+  /// are: relevance (default) last_modified_timestamp last_modified_timestamp
+  /// asc
   ///
   /// [pageSize] - Optional. Number of results in the search page. If \<=0, then
   /// defaults to 10. Max limit for page_size is 1000. Throws an invalid
@@ -1179,6 +1173,9 @@ class ProjectsLocationsDataAttributeBindingsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudDataplexV1DataAttributeBinding request,
     core.String parent, {
@@ -1234,6 +1231,9 @@ class ProjectsLocationsDataAttributeBindingsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
     core.String? etag,
@@ -1274,6 +1274,9 @@ class ProjectsLocationsDataAttributeBindingsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDataplexV1DataAttributeBinding> get(
     core.String name, {
     core.String? $fields,
@@ -1387,6 +1390,9 @@ class ProjectsLocationsDataAttributeBindingsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDataplexV1ListDataAttributeBindingsResponse> list(
     core.String parent, {
     core.String? filter,
@@ -1442,6 +1448,9 @@ class ProjectsLocationsDataAttributeBindingsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleLongrunningOperation> patch(
     GoogleCloudDataplexV1DataAttributeBinding request,
     core.String name, {
@@ -2281,9 +2290,7 @@ class ProjectsLocationsDataTaxonomiesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of the data taxonomy location, of
-  /// the form: projects/{project_number}/locations/{location_id} where
-  /// location_id refers to a GCP region.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [dataTaxonomyId] - Required. DataTaxonomy identifier. * Must contain only
@@ -2304,6 +2311,9 @@ class ProjectsLocationsDataTaxonomiesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudDataplexV1DataTaxonomy request,
     core.String parent, {
@@ -2355,6 +2365,9 @@ class ProjectsLocationsDataTaxonomiesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
     core.String? etag,
@@ -2380,8 +2393,7 @@ class ProjectsLocationsDataTaxonomiesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the DataTaxonomy:
-  /// projects/{project_number}/locations/{location_id}/dataTaxonomies/{data_taxonomy_id}
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataTaxonomies/\[^/\]+$`.
   ///
@@ -2395,6 +2407,9 @@ class ProjectsLocationsDataTaxonomiesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDataplexV1DataTaxonomy> get(
     core.String name, {
     core.String? $fields,
@@ -2505,6 +2520,9 @@ class ProjectsLocationsDataTaxonomiesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDataplexV1ListDataTaxonomiesResponse> list(
     core.String parent, {
     core.String? filter,
@@ -2559,6 +2577,9 @@ class ProjectsLocationsDataTaxonomiesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleLongrunningOperation> patch(
     GoogleCloudDataplexV1DataTaxonomy request,
     core.String name, {
@@ -2720,6 +2741,9 @@ class ProjectsLocationsDataTaxonomiesAttributesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudDataplexV1DataAttribute request,
     core.String parent, {
@@ -2769,6 +2793,9 @@ class ProjectsLocationsDataTaxonomiesAttributesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
     core.String? etag,
@@ -2809,6 +2836,9 @@ class ProjectsLocationsDataTaxonomiesAttributesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDataplexV1DataAttribute> get(
     core.String name, {
     core.String? $fields,
@@ -2919,6 +2949,9 @@ class ProjectsLocationsDataTaxonomiesAttributesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDataplexV1ListDataAttributesResponse> list(
     core.String parent, {
     core.String? filter,
@@ -2973,6 +3006,9 @@ class ProjectsLocationsDataTaxonomiesAttributesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleLongrunningOperation> patch(
     GoogleCloudDataplexV1DataAttribute request,
     core.String name, {
@@ -3616,12 +3652,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets an Entry.Caution: The BigQuery metadata that is stored in Dataplex
-  /// Catalog is changing.
-  ///
-  /// For more information, see Changes to BigQuery metadata stored in Dataplex
-  /// Catalog
-  /// (https://cloud.google.com/dataplex/docs/biqquery-metadata-changes).
+  /// Gets an Entry.
   ///
   /// Request parameters:
   ///
@@ -11290,6 +11321,28 @@ class GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig {
   /// Optional.
   core.String? connection;
 
+  /// The location of the BigQuery dataset to publish BigLake external or
+  /// non-BigLake external tables to.
+  ///
+  /// 1. If the Cloud Storage bucket is located in a multi-region bucket, then
+  /// BigQuery dataset can be in the same multi-region bucket or any single
+  /// region that is included in the same multi-region bucket. The datascan can
+  /// be created in any single region that is included in the same multi-region
+  /// bucket 2. If the Cloud Storage bucket is located in a dual-region bucket,
+  /// then BigQuery dataset can be located in regions that are included in the
+  /// dual-region bucket, or in a multi-region that includes the dual-region.
+  /// The datascan can be created in any single region that is included in the
+  /// same dual-region bucket. 3. If the Cloud Storage bucket is located in a
+  /// single region, then BigQuery dataset can be in the same single region or
+  /// any multi-region bucket that includes the same single region. The datascan
+  /// will be created in the same single region as the bucket. 4. If the
+  /// BigQuery dataset is in single region, it must be in the same single region
+  /// as the datascan.For supported values, refer to
+  /// https://cloud.google.com/bigquery/docs/locations#supported_locations.
+  ///
+  /// Optional.
+  core.String? location;
+
   /// Determines whether to publish discovered tables as BigLake external tables
   /// or non-BigLake external tables.
   ///
@@ -11306,6 +11359,7 @@ class GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig {
 
   GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig({
     this.connection,
+    this.location,
     this.tableType,
   });
 
@@ -11313,11 +11367,13 @@ class GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig {
       core.Map json_)
       : this(
           connection: json_['connection'] as core.String?,
+          location: json_['location'] as core.String?,
           tableType: json_['tableType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (connection != null) 'connection': connection!,
+        if (location != null) 'location': location!,
         if (tableType != null) 'tableType': tableType!,
       };
 }
@@ -11948,7 +12004,9 @@ class GoogleCloudDataplexV1DataProfileSpec {
   /// A filter applied to all rows in a single DataScan job.
   ///
   /// The filter needs to be a valid SQL expression for a WHERE clause in
-  /// BigQuery standard SQL syntax. Example: col1 \>= 0 AND col2 \< 10
+  /// GoogleSQL syntax
+  /// (https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#where_clause).Example:
+  /// col1 \>= 0 AND col2 \< 10
   ///
   /// Optional.
   core.String? rowFilter;
@@ -12587,7 +12645,7 @@ class GoogleCloudDataplexV1DataQualityRuleResult {
   /// for row-level type rules.Evaluated count can be configured to either
   /// include all rows (default) - with null rows automatically failing rule
   /// evaluation, or exclude null rows from the evaluated_count, by setting
-  /// ignore_nulls = true.
+  /// ignore_nulls = true.This field is not set for rule SqlAssertion.
   core.String? evaluatedCount;
 
   /// The query to find rows that did not pass this rule.This field is only
@@ -12604,8 +12662,7 @@ class GoogleCloudDataplexV1DataQualityRuleResult {
   /// Whether the rule passed or failed.
   core.bool? passed;
 
-  /// The number of rows which passed a rule evaluation.This field is only valid
-  /// for row-level type rules.
+  /// This field is not set for rule SqlAssertion.
   core.String? passedCount;
 
   /// The rule specified in the DataQualitySpec, as is.
@@ -12650,8 +12707,10 @@ class GoogleCloudDataplexV1DataQualityRuleResult {
 }
 
 /// Evaluates whether each row passes the specified condition.The SQL expression
-/// needs to use BigQuery standard SQL syntax and should produce a boolean value
-/// per row as the result.Example: col1 \>= 0 AND col2 \< 10
+/// needs to use GoogleSQL syntax
+/// (https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax)
+/// and should produce a boolean value per row as the result.Example: col1 \>= 0
+/// AND col2 \< 10
 typedef GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation
     = $ConditionExpectation;
 
@@ -12682,11 +12741,13 @@ class GoogleCloudDataplexV1DataQualityRuleSetExpectation {
 /// state.
 ///
 /// If any rows are are returned, this rule fails.The SQL statement must use
-/// BigQuery standard SQL syntax, and must not contain any semicolons.You can
-/// use the data reference parameter ${data()} to reference the source table
-/// with all of its precondition filters applied. Examples of precondition
-/// filters include row filters, incremental data filters, and sampling. For
-/// more information, see Data reference parameter
+/// GoogleSQL syntax
+/// (https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax),
+/// and must not contain any semicolons.You can use the data reference parameter
+/// ${data()} to reference the source table with all of its precondition filters
+/// applied. Examples of precondition filters include row filters, incremental
+/// data filters, and sampling. For more information, see Data reference
+/// parameter
 /// (https://cloud.google.com/dataplex/docs/auto-data-quality-overview#data-reference-parameter).Example:
 /// SELECT * FROM ${data()} WHERE price \< 0
 class GoogleCloudDataplexV1DataQualityRuleSqlAssertion {
@@ -12780,8 +12841,9 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
 }
 
 /// Evaluates whether the provided expression is true.The SQL expression needs
-/// to use BigQuery standard SQL syntax and should produce a scalar boolean
-/// result.Example: MIN(col1) \>= 0
+/// to use GoogleSQL syntax
+/// (https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax)
+/// and should produce a scalar boolean result.Example: MIN(col1) \>= 0
 typedef GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation
     = $ConditionExpectation;
 
@@ -12798,7 +12860,9 @@ class GoogleCloudDataplexV1DataQualitySpec {
   /// A filter applied to all rows in a single DataScan job.
   ///
   /// The filter needs to be a valid SQL expression for a WHERE clause in
-  /// BigQuery standard SQL syntax. Example: col1 \>= 0 AND col2 \< 10
+  /// GoogleSQL syntax
+  /// (https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#where_clause).Example:
+  /// col1 \>= 0 AND col2 \< 10
   ///
   /// Optional.
   core.String? rowFilter;
@@ -13041,12 +13105,18 @@ class GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger {
 }
 
 /// Represents a user-visible job which provides the insights for the related
-/// data source.For example: Data Quality: generates queries based on the rules
+/// data source.For example: Data quality: generates queries based on the rules
 /// and runs against the data to get data quality check results.
 ///
-/// Data Profile: analyzes the data in table(s) and generates insights about the
+/// For more information, see Auto data quality overview
+/// (https://cloud.google.com/dataplex/docs/auto-data-quality-overview). Data
+/// profile: analyzes the data in tables and generates insights about the
 /// structure, content and relationships (such as null percent, cardinality,
-/// min/max/mean, etc).
+/// min/max/mean, etc). For more information, see About data profiling
+/// (https://cloud.google.com/dataplex/docs/data-profiling-overview). Data
+/// discovery: scans data in Cloud Storage buckets to extract and then catalog
+/// metadata. For more information, see Discover and catalog Cloud Storage data
+/// (https://cloud.google.com/bigquery/docs/automatic-discovery).
 class GoogleCloudDataplexV1DataScan {
   /// The time when the scan was created.
   ///
@@ -13974,7 +14044,8 @@ class GoogleCloudDataplexV1Entry {
   /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}.
   core.String? name;
 
-  /// The resource name of the parent entry.
+  /// The resource name of the parent entry, in the format
+  /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}.
   ///
   /// Optional. Immutable.
   core.String? parentEntry;
@@ -16078,13 +16149,16 @@ class GoogleCloudDataplexV1MetadataJobImportJobResult {
       };
 }
 
-/// Job specification for a metadata import job
+/// Job specification for a metadata import job.You can run the following kinds
+/// of metadata import jobs: Full sync of entries with incremental import of
+/// their aspects.
+///
+/// Supported for custom entries. Incremental import of aspects only. Supported
+/// for aspects that belong to custom entries and system entries. For custom
+/// entries, you can modify both optional aspects and required aspects. For
+/// system entries, you can modify optional aspects.
 class GoogleCloudDataplexV1MetadataJobImportJobSpec {
   /// The sync mode for aspects.
-  ///
-  /// Only INCREMENTAL mode is supported for aspects. An aspect is modified only
-  /// if the metadata import file includes a reference to the aspect in the
-  /// update_mask field and the aspect_keys field.
   ///
   /// Required.
   /// Possible string values are:
@@ -16092,28 +16166,34 @@ class GoogleCloudDataplexV1MetadataJobImportJobSpec {
   /// - "FULL" : All resources in the job's scope are modified. If a resource
   /// exists in Dataplex but isn't included in the metadata import file, the
   /// resource is deleted when you run the metadata job. Use this mode to
-  /// perform a full sync of the set of entries in the job scope.
-  /// - "INCREMENTAL" : Only the entries and aspects that are explicitly
-  /// included in the metadata import file are modified. Use this mode to modify
-  /// a subset of resources while leaving unreferenced resources unchanged.
+  /// perform a full sync of the set of entries in the job scope.This sync mode
+  /// is supported for entries.
+  /// - "INCREMENTAL" : Only the resources that are explicitly included in the
+  /// metadata import file are modified. Use this mode to modify a subset of
+  /// resources while leaving unreferenced resources unchanged.This sync mode is
+  /// supported for aspects.
+  /// - "NONE" : If entry sync mode is NONE, then aspects are modified according
+  /// to the aspect sync mode. Other metadata that belongs to entries in the
+  /// job's scope isn't modified.This sync mode is supported for entries.
   core.String? aspectSyncMode;
 
   /// The sync mode for entries.
   ///
-  /// Only FULL mode is supported for entries. All entries in the job's scope
-  /// are modified. If an entry exists in Dataplex but isn't included in the
-  /// metadata import file, the entry is deleted when you run the metadata job.
-  ///
   /// Required.
   /// Possible string values are:
   /// - "SYNC_MODE_UNSPECIFIED" : Sync mode unspecified.
   /// - "FULL" : All resources in the job's scope are modified. If a resource
   /// exists in Dataplex but isn't included in the metadata import file, the
   /// resource is deleted when you run the metadata job. Use this mode to
-  /// perform a full sync of the set of entries in the job scope.
-  /// - "INCREMENTAL" : Only the entries and aspects that are explicitly
-  /// included in the metadata import file are modified. Use this mode to modify
-  /// a subset of resources while leaving unreferenced resources unchanged.
+  /// perform a full sync of the set of entries in the job scope.This sync mode
+  /// is supported for entries.
+  /// - "INCREMENTAL" : Only the resources that are explicitly included in the
+  /// metadata import file are modified. Use this mode to modify a subset of
+  /// resources while leaving unreferenced resources unchanged.This sync mode is
+  /// supported for aspects.
+  /// - "NONE" : If entry sync mode is NONE, then aspects are modified according
+  /// to the aspect sync mode. Other metadata that belongs to entries in the
+  /// job's scope isn't modified.This sync mode is supported for entries.
   core.String? entrySyncMode;
 
   /// The level of logs to write to Cloud Logging for this job.Debug-level logs
@@ -16206,11 +16286,12 @@ class GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope {
   /// relative resource names in the format
   /// projects/{project_number_or_id}/locations/{location_id}/aspectTypes/{aspect_type_id}.
   ///
-  /// The job modifies only the aspects that belong to these aspect types.If the
-  /// metadata import file attempts to modify an aspect whose type isn't
-  /// included in this list, the import job is halted before modifying any
-  /// entries or aspects.The location of an aspect type must either match the
-  /// location of the job, or the aspect type must be global.
+  /// The job modifies only the aspects that belong to these aspect types.This
+  /// field is required when creating an aspect-only import job.If the metadata
+  /// import file attempts to modify an aspect whose type isn't included in this
+  /// list, the import job is halted before modifying any entries or aspects.The
+  /// location of an aspect type must either match the location of the job, or
+  /// the aspect type must be global.
   ///
   /// Optional.
   core.List<core.String>? aspectTypes;
@@ -16219,9 +16300,9 @@ class GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope {
   /// relative resource name in the format
   /// projects/{project_number_or_id}/locations/{location_id}/entryGroups/{entry_group_id}.
   ///
-  /// Only entries that belong to the specified entry group are affected by the
-  /// job.Must contain exactly one element. The entry group and the job must be
-  /// in the same location.
+  /// Only entries and aspects that belong to the specified entry group are
+  /// affected by the job.Must contain exactly one element. The entry group and
+  /// the job must be in the same location.
   ///
   /// Required.
   core.List<core.String>? entryGroups;
@@ -16230,11 +16311,11 @@ class GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope {
   /// relative resource names in the format
   /// projects/{project_number_or_id}/locations/{location_id}/entryTypes/{entry_type_id}.
   ///
-  /// The job modifies only the entries that belong to these entry types.If the
-  /// metadata import file attempts to modify an entry whose type isn't included
-  /// in this list, the import job is halted before modifying any entries or
-  /// aspects.The location of an entry type must either match the location of
-  /// the job, or the entry type must be global.
+  /// The job modifies only the entries and aspects that belong to these entry
+  /// types.If the metadata import file attempts to modify an entry whose type
+  /// isn't included in this list, the import job is halted before modifying any
+  /// entries or aspects.The location of an entry type must either match the
+  /// location of the job, or the entry type must be global.
   ///
   /// Required.
   core.List<core.String>? entryTypes;

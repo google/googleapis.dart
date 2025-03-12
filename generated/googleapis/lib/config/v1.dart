@@ -1675,13 +1675,13 @@ class ProjectsLocationsTerraformVersionsResource {
   ///
   /// [orderBy] - Optional. Field to use to sort the list.
   ///
-  /// [pageSize] - Optional. When requesting a page of resources, 'page_size'
-  /// specifies number of resources to return. If unspecified, at most 500 will
-  /// be returned. The maximum value is 1000.
+  /// [pageSize] - Optional. When requesting a page of terraform versions,
+  /// 'page_size' specifies number of terraform versions to return. If
+  /// unspecified, at most 500 will be returned. The maximum value is 1000.
   ///
   /// [pageToken] - Optional. Token returned by previous call to
   /// 'ListTerraformVersions' which specifies the position in the list from
-  /// where to continue listing the resources.
+  /// where to continue listing the terraform versions.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2905,7 +2905,7 @@ class Policy {
 /// A preview represents a set of actions Infra Manager would perform to move
 /// the resources towards the desired state as specified in the configuration.
 class Preview {
-  /// Arbitrary key-value metadata storage e.g. to help client tools identifiy
+  /// Arbitrary key-value metadata storage e.g. to help client tools identify
   /// preview during automation.
   ///
   /// See https://google.aip.dev/148#annotations for details on format and size

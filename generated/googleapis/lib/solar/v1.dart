@@ -64,7 +64,7 @@ class BuildingInsightsResource {
 
   BuildingInsightsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Locates the closest building to a query point.
+  /// Locates the building whose centroid is closest to a query point.
   ///
   /// Returns an error with code `NOT_FOUND` if there are no buildings within
   /// approximately 50m of the query point.

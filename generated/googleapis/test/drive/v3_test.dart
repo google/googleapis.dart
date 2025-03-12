@@ -1006,6 +1006,27 @@ void checkContentRestriction(api.ContentRestriction o) {
   buildCounterContentRestriction--;
 }
 
+core.int buildCounterDownloadRestriction = 0;
+api.DownloadRestriction buildDownloadRestriction() {
+  final o = api.DownloadRestriction();
+  buildCounterDownloadRestriction++;
+  if (buildCounterDownloadRestriction < 3) {
+    o.restrictedForReaders = true;
+    o.restrictedForWriters = true;
+  }
+  buildCounterDownloadRestriction--;
+  return o;
+}
+
+void checkDownloadRestriction(api.DownloadRestriction o) {
+  buildCounterDownloadRestriction++;
+  if (buildCounterDownloadRestriction < 3) {
+    unittest.expect(o.restrictedForReaders!, unittest.isTrue);
+    unittest.expect(o.restrictedForWriters!, unittest.isTrue);
+  }
+  buildCounterDownloadRestriction--;
+}
+
 core.int buildCounterDriveBackgroundImageFile = 0;
 api.DriveBackgroundImageFile buildDriveBackgroundImageFile() {
   final o = api.DriveBackgroundImageFile();
@@ -1111,6 +1132,7 @@ api.DriveRestrictions buildDriveRestrictions() {
     o.adminManagedRestrictions = true;
     o.copyRequiresWriterPermission = true;
     o.domainUsersOnly = true;
+    o.downloadRestriction = buildDownloadRestriction();
     o.driveMembersOnly = true;
     o.sharingFoldersRequiresOrganizerPermission = true;
   }
@@ -1124,6 +1146,7 @@ void checkDriveRestrictions(api.DriveRestrictions o) {
     unittest.expect(o.adminManagedRestrictions!, unittest.isTrue);
     unittest.expect(o.copyRequiresWriterPermission!, unittest.isTrue);
     unittest.expect(o.domainUsersOnly!, unittest.isTrue);
+    checkDownloadRestriction(o.downloadRestriction!);
     unittest.expect(o.driveMembersOnly!, unittest.isTrue);
     unittest.expect(
         o.sharingFoldersRequiresOrganizerPermission!, unittest.isTrue);
@@ -1269,8 +1292,10 @@ api.FileCapabilities buildFileCapabilities() {
     o.canCopy = true;
     o.canDelete = true;
     o.canDeleteChildren = true;
+    o.canDisableInheritedPermissions = true;
     o.canDownload = true;
     o.canEdit = true;
+    o.canEnableInheritedPermissions = true;
     o.canListChildren = true;
     o.canModifyContent = true;
     o.canModifyContentRestriction = true;
@@ -1318,8 +1343,10 @@ void checkFileCapabilities(api.FileCapabilities o) {
     unittest.expect(o.canCopy!, unittest.isTrue);
     unittest.expect(o.canDelete!, unittest.isTrue);
     unittest.expect(o.canDeleteChildren!, unittest.isTrue);
+    unittest.expect(o.canDisableInheritedPermissions!, unittest.isTrue);
     unittest.expect(o.canDownload!, unittest.isTrue);
     unittest.expect(o.canEdit!, unittest.isTrue);
+    unittest.expect(o.canEnableInheritedPermissions!, unittest.isTrue);
     unittest.expect(o.canListChildren!, unittest.isTrue);
     unittest.expect(o.canModifyContent!, unittest.isTrue);
     unittest.expect(o.canModifyContentRestriction!, unittest.isTrue);
@@ -1808,6 +1835,7 @@ api.File buildFile() {
     o.iconLink = 'foo';
     o.id = 'foo';
     o.imageMediaMetadata = buildFileImageMediaMetadata();
+    o.inheritedPermissionsDisabled = true;
     o.isAppAuthorized = true;
     o.kind = 'foo';
     o.labelInfo = buildFileLabelInfo();
@@ -1905,6 +1933,7 @@ void checkFile(api.File o) {
       unittest.equals('foo'),
     );
     checkFileImageMediaMetadata(o.imageMediaMetadata!);
+    unittest.expect(o.inheritedPermissionsDisabled!, unittest.isTrue);
     unittest.expect(o.isAppAuthorized!, unittest.isTrue);
     unittest.expect(
       o.kind!,
@@ -2839,6 +2868,7 @@ api.Permission buildPermission() {
     o.emailAddress = 'foo';
     o.expirationTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.id = 'foo';
+    o.inheritedPermissionsDisabled = true;
     o.kind = 'foo';
     o.pendingOwner = true;
     o.permissionDetails = buildUnnamed52();
@@ -2877,6 +2907,7 @@ void checkPermission(api.Permission o) {
       o.id!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.inheritedPermissionsDisabled!, unittest.isTrue);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -3433,6 +3464,7 @@ api.TeamDriveRestrictions buildTeamDriveRestrictions() {
     o.adminManagedRestrictions = true;
     o.copyRequiresWriterPermission = true;
     o.domainUsersOnly = true;
+    o.downloadRestriction = buildDownloadRestriction();
     o.sharingFoldersRequiresOrganizerPermission = true;
     o.teamMembersOnly = true;
   }
@@ -3446,6 +3478,7 @@ void checkTeamDriveRestrictions(api.TeamDriveRestrictions o) {
     unittest.expect(o.adminManagedRestrictions!, unittest.isTrue);
     unittest.expect(o.copyRequiresWriterPermission!, unittest.isTrue);
     unittest.expect(o.domainUsersOnly!, unittest.isTrue);
+    checkDownloadRestriction(o.downloadRestriction!);
     unittest.expect(
         o.sharingFoldersRequiresOrganizerPermission!, unittest.isTrue);
     unittest.expect(o.teamMembersOnly!, unittest.isTrue);
@@ -3757,6 +3790,16 @@ void main() {
       final od = api.ContentRestriction.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkContentRestriction(od);
+    });
+  });
+
+  unittest.group('obj-schema-DownloadRestriction', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDownloadRestriction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DownloadRestriction.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDownloadRestriction(od);
     });
   });
 
@@ -7256,10 +7299,10 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationResource', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res = api.DriveApi(mock).operation;
+      final res = api.DriveApi(mock).operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7278,10 +7321,10 @@ void main() {
         );
         pathOffset += 9;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('operation/'),
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('operations/'),
         );
-        pathOffset += 10;
+        pathOffset += 11;
         index = path.indexOf(':cancel', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -7328,7 +7371,7 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res = api.DriveApi(mock).operation;
+      final res = api.DriveApi(mock).operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7347,10 +7390,10 @@ void main() {
         );
         pathOffset += 9;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('operation/'),
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('operations/'),
         );
-        pathOffset += 10;
+        pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
         unittest.expect(
@@ -7386,9 +7429,7 @@ void main() {
       }), true);
       await res.delete(arg_name, $fields: arg_$fields);
     });
-  });
 
-  unittest.group('resource-OperationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.DriveApi(mock).operations;
@@ -7662,6 +7703,7 @@ void main() {
       final res = api.DriveApi(mock).permissions;
       final arg_fileId = 'foo';
       final arg_permissionId = 'foo';
+      final arg_enforceExpansiveAccess = true;
       final arg_supportsAllDrives = true;
       final arg_supportsTeamDrives = true;
       final arg_useDomainAdminAccess = true;
@@ -7723,6 +7765,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['enforceExpansiveAccess']!.first,
+          unittest.equals('$arg_enforceExpansiveAccess'),
+        );
+        unittest.expect(
           queryMap['supportsAllDrives']!.first,
           unittest.equals('$arg_supportsAllDrives'),
         );
@@ -7746,6 +7792,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_fileId, arg_permissionId,
+          enforceExpansiveAccess: arg_enforceExpansiveAccess,
           supportsAllDrives: arg_supportsAllDrives,
           supportsTeamDrives: arg_supportsTeamDrives,
           useDomainAdminAccess: arg_useDomainAdminAccess,
@@ -7961,6 +8008,7 @@ void main() {
       final arg_request = buildPermission();
       final arg_fileId = 'foo';
       final arg_permissionId = 'foo';
+      final arg_enforceExpansiveAccess = true;
       final arg_removeExpiration = true;
       final arg_supportsAllDrives = true;
       final arg_supportsTeamDrives = true;
@@ -8028,6 +8076,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['enforceExpansiveAccess']!.first,
+          unittest.equals('$arg_enforceExpansiveAccess'),
+        );
+        unittest.expect(
           queryMap['removeExpiration']!.first,
           unittest.equals('$arg_removeExpiration'),
         );
@@ -8060,6 +8112,7 @@ void main() {
       }), true);
       final response = await res.update(
           arg_request, arg_fileId, arg_permissionId,
+          enforceExpansiveAccess: arg_enforceExpansiveAccess,
           removeExpiration: arg_removeExpiration,
           supportsAllDrives: arg_supportsAllDrives,
           supportsTeamDrives: arg_supportsTeamDrives,

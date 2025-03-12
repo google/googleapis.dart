@@ -2543,6 +2543,18 @@ class Application {
   /// - "SYSTEM_DISABLED" : Application has been disabled by the system.
   core.String? servingStatus;
 
+  /// The SSL policy that will be applied to the application.
+  ///
+  /// If set to Modern it will restrict traffic with TLS \< 1.2 and allow only
+  /// Modern Ciphers suite
+  /// Possible string values are:
+  /// - "SSL_POLICY_UNSPECIFIED" : Required by linter. Will work same as DEFAULT
+  /// - "DEFAULT" : DEFAULT is to allow all TLS versions and cipher suites
+  /// supported by App Engine
+  /// - "MODERN" : MODERN is to allow only TLS 1.2 and TLS 1.3 along with Modern
+  /// cipher suites only
+  core.String? sslPolicy;
+
   Application({
     this.authDomain,
     this.codeBucket,
@@ -2560,6 +2572,7 @@ class Application {
     this.name,
     this.serviceAccount,
     this.servingStatus,
+    this.sslPolicy,
   });
 
   Application.fromJson(core.Map json_)
@@ -2594,6 +2607,7 @@ class Application {
           name: json_['name'] as core.String?,
           serviceAccount: json_['serviceAccount'] as core.String?,
           servingStatus: json_['servingStatus'] as core.String?,
+          sslPolicy: json_['sslPolicy'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2615,6 +2629,7 @@ class Application {
         if (name != null) 'name': name!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (servingStatus != null) 'servingStatus': servingStatus!,
+        if (sslPolicy != null) 'sslPolicy': sslPolicy!,
       };
 }
 
@@ -4984,7 +4999,7 @@ class SslSettings {
   /// The mapped SSL certificate will be automatically renewed.
   /// - "MANUAL" : SSL support for this domain is configured manually by the
   /// user. Either the domain has no SSL support or a user-obtained SSL
-  /// certificate has been explictly mapped to this domain.
+  /// certificate has been explicitly mapped to this domain.
   core.String? sslManagementType;
 
   SslSettings({
@@ -5013,7 +5028,7 @@ class SslSettings {
 class StandardSchedulerSettings {
   /// Maximum number of instances to run for this version.
   ///
-  /// Set to zero to disable max_instances configuration.
+  /// Set to 2147483647 to disable max_instances configuration.
   core.int? maxInstances;
 
   /// Minimum number of instances to run for this version.

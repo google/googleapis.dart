@@ -1249,7 +1249,7 @@ class ServicesProjectsGlobalNetworksDnsZonesResource {
   ///
   /// [name] - Required. The network that the consumer is using to connect with
   /// services. Must be in the form of
-  /// services/{service}/projects/{project}/global/networks/{network}/zones/{zoneName}
+  /// services/{service}/projects/{project}/global/networks/{network}/dnsZones/{zoneName}
   /// Where {service} is the peering service that is managing connectivity for
   /// the service producer's organization. For Google services that support this
   /// {project} is the project number, as in '12345' {network} is the network
@@ -3244,6 +3244,9 @@ class ValidateConsumerConfigResponse {
   /// compute api enabled.
   /// - "USE_PERMISSION_NOT_FOUND" : The consumer project does not have the
   /// permission from the host project.
+  /// - "SN_SERVICE_AGENT_PERMISSION_DENIED_ON_CONSUMER_PROJECT" : The SN
+  /// service agent {service-@service-networking.iam.gserviceaccount.com} does
+  /// not have the SN service agent role on the consumer project.
   core.String? validationError;
 
   ValidateConsumerConfigResponse({

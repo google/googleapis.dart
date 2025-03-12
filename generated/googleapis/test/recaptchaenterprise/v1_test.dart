@@ -510,6 +510,7 @@ api.GoogleCloudRecaptchaenterpriseV1Event
     o.hashedAccountId = 'foo';
     o.headers = buildUnnamed4();
     o.ja3 = 'foo';
+    o.ja4 = 'foo';
     o.requestedUri = 'foo';
     o.siteKey = 'foo';
     o.token = 'foo';
@@ -544,6 +545,10 @@ void checkGoogleCloudRecaptchaenterpriseV1Event(
     checkUnnamed4(o.headers!);
     unittest.expect(
       o.ja3!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ja4!,
       unittest.equals('foo'),
     );
     unittest.expect(

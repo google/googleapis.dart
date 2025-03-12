@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240708",
+    "revision": "20250122",
     "rootUrl": "https://searchconsole.googleapis.com/",
     "servicePath": "",
     "title": "Google Search Console API",
@@ -1335,6 +1335,7 @@
                 },
                 "mobileUsabilityResult": {
                     "$ref": "MobileUsabilityInspectionResult",
+                    "deprecated": true,
                     "description": "Result of the Mobile usability analysis."
                 },
                 "richResultsResult": {

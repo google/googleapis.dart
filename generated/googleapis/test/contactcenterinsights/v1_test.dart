@@ -466,6 +466,7 @@ api.GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig
   if (buildCounterGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig <
       3) {
     o.conversationProfile = 'foo';
+    o.generator = 'foo';
     o.summarizationModel = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig--;
@@ -480,6 +481,10 @@ void checkGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig
       3) {
     unittest.expect(
       o.conversationProfile!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.generator!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2361,6 +2366,7 @@ api.GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest
       3) {
     o.bigQueryDestination =
         buildGoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination();
+    o.exportSchemaVersion = 'foo';
     o.filter = 'foo';
     o.kmsKey = 'foo';
     o.parent = 'foo';
@@ -2377,6 +2383,10 @@ void checkGoogleCloudContactcenterinsightsV1ExportInsightsDataRequest(
       3) {
     checkGoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination(
         o.bigQueryDestination!);
+    unittest.expect(
+      o.exportSchemaVersion!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.filter!,
       unittest.equals('foo'),

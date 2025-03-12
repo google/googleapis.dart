@@ -1246,6 +1246,7 @@ api.GalleryReference buildGalleryReference() {
   final o = api.GalleryReference();
   buildCounterGalleryReference++;
   if (buildCounterGalleryReference < 3) {
+    o.galleryTemplateId = 'foo';
     o.host = 'foo';
     o.isModified = true;
     o.owner = 'foo';
@@ -1261,6 +1262,10 @@ api.GalleryReference buildGalleryReference() {
 void checkGalleryReference(api.GalleryReference o) {
   buildCounterGalleryReference++;
   if (buildCounterGalleryReference < 3) {
+    unittest.expect(
+      o.galleryTemplateId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.host!,
       unittest.equals('foo'),
@@ -1295,6 +1300,7 @@ api.GetContainerSnippetResponse buildGetContainerSnippetResponse() {
   final o = api.GetContainerSnippetResponse();
   buildCounterGetContainerSnippetResponse++;
   if (buildCounterGetContainerSnippetResponse < 3) {
+    o.containerConfig = 'foo';
     o.snippet = 'foo';
   }
   buildCounterGetContainerSnippetResponse--;
@@ -1304,6 +1310,10 @@ api.GetContainerSnippetResponse buildGetContainerSnippetResponse() {
 void checkGetContainerSnippetResponse(api.GetContainerSnippetResponse o) {
   buildCounterGetContainerSnippetResponse++;
   if (buildCounterGetContainerSnippetResponse < 3) {
+    unittest.expect(
+      o.containerConfig!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.snippet!,
       unittest.equals('foo'),

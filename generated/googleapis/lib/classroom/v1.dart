@@ -59,6 +59,15 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Manages classes, rosters, and invitations in Google Classroom.
 class ClassroomApi {
+  /// See and update its own attachments to posts in Google Classroom
+  static const classroomAddonsStudentScope =
+      'https://www.googleapis.com/auth/classroom.addons.student';
+
+  /// See, create, and update its own attachments to posts in classes you teach
+  /// in Google Classroom
+  static const classroomAddonsTeacherScope =
+      'https://www.googleapis.com/auth/classroom.addons.teacher';
+
   /// View and manage announcements in Google Classroom
   static const classroomAnnouncementsScope =
       'https://www.googleapis.com/auth/classroom.announcements';
@@ -4920,8 +4929,11 @@ class CoursesTopicsResource {
   /// This method returns the following error codes: * `PERMISSION_DENIED` if
   /// the requesting user is not permitted to access the requested course,
   /// create a topic in the requested course, or for access errors. *
-  /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
-  /// requested course does not exist.
+  /// `INVALID_ARGUMENT` if the request is malformed. * `ALREADY_EXISTS` if
+  /// there exists a topic in the course with the same name. *
+  /// `FAILED_PRECONDITION` for the following request error: *
+  /// CourseTopicLimitReached * `NOT_FOUND` if the requested course does not
+  /// exist.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5114,7 +5126,8 @@ class CoursesTopicsResource {
   /// This method returns the following error codes: * `PERMISSION_DENIED` if
   /// the requesting developer project did not create the corresponding topic or
   /// for access errors. * `INVALID_ARGUMENT` if the request is malformed. *
-  /// `NOT_FOUND` if the requested course or topic does not exist
+  /// `FAILED_PRECONDITION` if there exists a topic in the course with the same
+  /// name. * `NOT_FOUND` if the requested course or topic does not exist
   ///
   /// [request] - The metadata request object.
   ///

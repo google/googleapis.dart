@@ -2048,6 +2048,10 @@ class SignatureInfo {
   /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
+  /// - "PQ_SIGN_ML_DSA_65" : The post-quantum Module-Lattice-Based Digital
+  /// Signature Algorithm, at security level 3. Randomized version.
+  /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
+  /// digital signature algorithm, at security level 1. Randomized version.
   core.String? googleKeyAlgorithm;
 
   /// The public key for the Google default signing, encoded in PEM format.

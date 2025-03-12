@@ -167,6 +167,7 @@ api.Application buildApplication() {
     o.name = 'foo';
     o.serviceAccount = 'foo';
     o.servingStatus = 'foo';
+    o.sslPolicy = 'foo';
   }
   buildCounterApplication--;
   return o;
@@ -225,6 +226,10 @@ void checkApplication(api.Application o) {
     );
     unittest.expect(
       o.servingStatus!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sslPolicy!,
       unittest.equals('foo'),
     );
   }

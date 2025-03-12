@@ -3190,14 +3190,12 @@ class PolicyIssue {
 /// obscure your content. A single policy issue can have multiple policy topics
 /// for a single entity.
 class PolicyTopic {
-  /// Indicates if this is a policy violation or not.
+  /// Policy topics no longer have a "must-fix" classification.
   ///
-  /// When the value is true, issues that are instances of this topic must be
-  /// addressed to remain in compliance with the partner's agreements with
-  /// Google. A false value indicates that it's not mandatory to fix the issues
-  /// but advertising demand might be restricted.
-  ///
-  /// Required.
+  /// Required. Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? mustFix;
 
   /// The policy topic.
@@ -3207,20 +3205,43 @@ class PolicyTopic {
   /// Required.
   core.String? topic;
 
+  /// The type of policy topic.
+  ///
+  /// For example, "POLICY" represents all the policy topics that are related to
+  /// the Google Publisher Policy (GPP). See
+  /// https://support.google.com/adsense/answer/15689616.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "POLICY_TOPIC_TYPE_UNSPECIFIED" : The type is unspecified.
+  /// - "POLICY" : Topics that are primarily related to the Google Publisher
+  /// Policy (GPP) https://support.google.com/publisherpolicies/answer/10502938
+  /// or the Google Publisher Restrictions (GPR) policies
+  /// https://support.google.com/publisherpolicies/answer/10437795.
+  /// - "ADVERTISER_PREFERENCE" : Topics that are related to advertiser
+  /// preferences. Certain advertisers may choose not to bid on content that are
+  /// labeled with certain policies.
+  /// - "REGULATORY" : Any topics that are a result of a country or regional
+  /// regulatory requirement body.
+  core.String? type;
+
   PolicyTopic({
     this.mustFix,
     this.topic,
+    this.type,
   });
 
   PolicyTopic.fromJson(core.Map json_)
       : this(
           mustFix: json_['mustFix'] as core.bool?,
           topic: json_['topic'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mustFix != null) 'mustFix': mustFix!,
         if (topic != null) 'topic': topic!,
+        if (type != null) 'type': type!,
       };
 }
 

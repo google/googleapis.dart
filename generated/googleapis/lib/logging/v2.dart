@@ -1242,7 +1242,7 @@ class BillingAccountsLocationsBucketsViewsResource {
   ///
   /// [viewId] - Required. A client-assigned identifier such as "my-view".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, and hyphens.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4080,7 +4080,7 @@ class FoldersLocationsBucketsViewsResource {
   ///
   /// [viewId] - Required. A client-assigned identifier such as "my-view".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, and hyphens.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6501,7 +6501,7 @@ class LocationsBucketsViewsResource {
   ///
   /// [viewId] - Required. A client-assigned identifier such as "my-view".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, and hyphens.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8416,7 +8416,7 @@ class OrganizationsLocationsBucketsViewsResource {
   ///
   /// [viewId] - Required. A client-assigned identifier such as "my-view".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, and hyphens.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11200,7 +11200,7 @@ class ProjectsLocationsBucketsViewsResource {
   ///
   /// [viewId] - Required. A client-assigned identifier such as "my-view".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, and hyphens.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13644,61 +13644,6 @@ class V2Resource {
   }
 }
 
-/// Specifies the audit configuration for a service.
-///
-/// The configuration determines which permission types are logged, and what
-/// identities, if any, are exempted from logging. An AuditConfig must have one
-/// or more AuditLogConfigs.If there are AuditConfigs for both allServices and a
-/// specific service, the union of the two AuditConfigs is used for that
-/// service: the log_types specified in each AuditConfig are enabled, and the
-/// exempted_members in each AuditLogConfig are exempted.Example Policy with
-/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
-/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
-/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
-/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
-class AuditConfig {
-  /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig>? auditLogConfigs;
-
-  /// Specifies a service that will be enabled for audit logging.
-  ///
-  /// For example, storage.googleapis.com, cloudsql.googleapis.com. allServices
-  /// is a special value that covers all services.
-  core.String? service;
-
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
-
-  AuditConfig.fromJson(core.Map json_)
-      : this(
-          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          service: json_['service'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-        if (service != null) 'service': service!,
-      };
-}
-
-/// Provides the configuration for logging a type of permissions.
-///
-/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
-/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
-/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
-/// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
-
 /// Describes a BigQuery dataset that was created by a link.
 class BigQueryDataset {
   /// The full resource name of the BigQuery dataset.
@@ -14024,6 +13969,8 @@ class CmekSettings {
 /// The parameters to CopyLogEntries.
 class CopyLogEntriesRequest {
   /// Destination to which to copy log entries.
+  ///
+  /// For example: "storage.googleapis.com/GCS_BUCKET"
   ///
   /// Required.
   core.String? destination;
@@ -16939,9 +16886,6 @@ class OpsAnalyticsQuery {
 /// version: 3 For a description of IAM and its features, see the IAM
 /// documentation (https://cloud.google.com/iam/docs/).
 class Policy {
-  /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig>? auditConfigs;
-
   /// Associates a list of members, or principals, with a role.
   ///
   /// Optionally, may specify a condition that determines how and when the
@@ -16993,7 +16937,6 @@ class Policy {
   core.int? version;
 
   Policy({
-    this.auditConfigs,
     this.bindings,
     this.etag,
     this.version,
@@ -17001,10 +16944,6 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
           bindings: (json_['bindings'] as core.List?)
               ?.map((value) => Binding.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -17014,7 +16953,6 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
         if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241204",
+    "revision": "20250211",
     "rootUrl": "https://certificatemanager.googleapis.com/",
     "servicePath": "",
     "title": "Certificate Manager API",
@@ -1440,12 +1440,14 @@
                     "enum": [
                         "DEFAULT",
                         "EDGE_CACHE",
-                        "ALL_REGIONS"
+                        "ALL_REGIONS",
+                        "CLIENT_AUTH"
                     ],
                     "enumDescriptions": [
                         "Use the DEFAULT scope if you plan to use the certificate with global external Application Load Balancer, global external proxy Network Load Balancer, or any of the regional Google Cloud services.",
                         "Use the EDGE_CACHE scope if you plan to use the certificate with Media CDN. The certificates are served from Edge Points of Presence. See https://cloud.google.com/vpc/docs/edge-locations.",
-                        "Use the ALL_REGIONS scope if you plan to use the certificate with cross-region internal Application Load Balancer. The certificates are served from all Google Cloud regions. See https://cloud.google.com/compute/docs/regions-zones."
+                        "Use the ALL_REGIONS scope if you plan to use the certificate with cross-region internal Application Load Balancer. The certificates are served from all Google Cloud regions. See https://cloud.google.com/compute/docs/regions-zones.",
+                        "Associated with certificates used as client certificates in Backend mTLS."
                     ],
                     "type": "string"
                 },
@@ -1458,6 +1460,14 @@
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
+                },
+                "usedBy": {
+                    "description": "Output only. The list of resources that use this Certificate.",
+                    "items": {
+                        "$ref": "UsedBy"
+                    },
+                    "readOnly": true,
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -2298,6 +2308,18 @@
                         "$ref": "TrustAnchor"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "UsedBy": {
+            "description": "Defines a resource that uses the certificate.",
+            "id": "UsedBy",
+            "properties": {
+                "name": {
+                    "description": "Output only. Full name of the resource https://google.aip.dev/122#full-resource-names, e.g. `//certificatemanager.googleapis.com/projects/*/locations/*/certificateMaps/*/certificateMapEntries/*` or `//compute.googleapis.com/projects/*/locations/*/targetHttpsProxies/*`.",
+                    "readOnly": true,
+                    "type": "string"
                 }
             },
             "type": "object"

@@ -2215,6 +2215,27 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+/cryptoKeyVersions/\[^/\]+$`.
   ///
+  /// [publicKeyFormat] - Optional. The PublicKey format specified by the user.
+  /// This field is required for PQC algorithms. If specified, the public key
+  /// will be exported through the public_key field in the requested format.
+  /// Otherwise, the pem field will be populated for non-PQC algorithms, and an
+  /// error will be returned for PQC algorithms.
+  /// Possible string values are:
+  /// - "PUBLIC_KEY_FORMAT_UNSPECIFIED" : If the public_key_format field is not
+  /// specified: - For PQC algorithms, an error will be returned. - For non-PQC
+  /// algorithms, the default format is PEM, and the field pem will be
+  /// populated. Otherwise, the public key will be exported through the
+  /// public_key field in the requested format.
+  /// - "PEM" : The returned public key will be encoded in PEM format. See the
+  /// [RFC7468](https://tools.ietf.org/html/rfc7468) sections for
+  /// [General Considerations](https://tools.ietf.org/html/rfc7468#section-2)
+  /// and
+  /// [Textual Encoding of Subject Public Key Info](https://tools.ietf.org/html/rfc7468#section-13)
+  /// for more information.
+  /// - "NIST_PQC" : This is supported only for PQC algorithms. The key material
+  /// is returned in the format defined by NIST PQC standards (FIPS 203, FIPS
+  /// 204, and FIPS 205).
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2227,9 +2248,11 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   /// this method will complete with the same error.
   async.Future<PublicKey> getPublicKey(
     core.String name, {
+    core.String? publicKeyFormat,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (publicKeyFormat != null) 'publicKeyFormat': [publicKeyFormat],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3630,6 +3653,47 @@ class Certificate {
 /// https://tools.ietf.org/html/rfc5246#section-7.4.2.
 typedef CertificateChains = $CertificateChains;
 
+/// Data with integrity verification field.
+class ChecksummedData {
+  /// Integrity verification field.
+  ///
+  /// A CRC32C checksum of the returned ChecksummedData.data. An integrity check
+  /// of ChecksummedData.data can be performed by computing the CRC32C checksum
+  /// of ChecksummedData.data and comparing your results to this field. Discard
+  /// the response in case of non-matching checksum values, and perform a
+  /// limited number of retries. A persistent mismatch may indicate an issue in
+  /// your computation of the CRC32C checksum. Note: This field is defined as
+  /// int64 for reasons of compatibility across different languages. However, it
+  /// is a non-negative integer, which will never exceed `2^32-1`, and can be
+  /// safely downconverted to uint32 in languages that support this type.
+  core.String? crc32cChecksum;
+
+  /// Raw Data.
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> bytes_) {
+    data =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  ChecksummedData({
+    this.crc32cChecksum,
+    this.data,
+  });
+
+  ChecksummedData.fromJson(core.Map json_)
+      : this(
+          crc32cChecksum: json_['crc32cChecksum'] as core.String?,
+          data: json_['data'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (crc32cChecksum != null) 'crc32cChecksum': crc32cChecksum!,
+        if (data != null) 'data': data!,
+      };
+}
+
 /// A CryptoKey represents a logical key that can be used for cryptographic
 /// operations.
 ///
@@ -3886,6 +3950,10 @@ class CryptoKeyVersion {
   /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
+  /// - "PQ_SIGN_ML_DSA_65" : The post-quantum Module-Lattice-Based Digital
+  /// Signature Algorithm, at security level 3. Randomized version.
+  /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
+  /// digital signature algorithm, at security level 1. Randomized version.
   core.String? algorithm;
 
   /// Statement that was generated and signed by the HSM at key creation time.
@@ -3996,7 +4064,7 @@ class CryptoKeyVersion {
   /// - "ENABLED" : This version may be used for cryptographic operations.
   /// - "DISABLED" : This version may not be used, but the key material is still
   /// available, and the version can be placed back into the ENABLED state.
-  /// - "DESTROYED" : This version is destroyed, and the key material is no
+  /// - "DESTROYED" : This key material of this version is destroyed and no
   /// longer stored. This version may only become ENABLED again if this version
   /// is reimport_eligible and the original key material is reimported with a
   /// call to KeyManagementService.ImportCryptoKeyVersion.
@@ -4808,6 +4876,10 @@ class ImportCryptoKeyVersionRequest {
   /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
+  /// - "PQ_SIGN_ML_DSA_65" : The post-quantum Module-Lattice-Based Digital
+  /// Signature Algorithm, at security level 3. Randomized version.
+  /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
+  /// digital signature algorithm, at security level 1. Randomized version.
   core.String? algorithm;
 
   /// The optional name of an existing CryptoKeyVersion to target for an import
@@ -6022,6 +6094,10 @@ class PublicKey {
   /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
+  /// - "PQ_SIGN_ML_DSA_65" : The post-quantum Module-Lattice-Based Digital
+  /// Signature Algorithm, at security level 3. Randomized version.
+  /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
+  /// digital signature algorithm, at security level 1. Randomized version.
   core.String? algorithm;
 
   /// The name of the CryptoKeyVersion public key.
@@ -6047,7 +6123,7 @@ class PublicKey {
   /// number of retries. A persistent mismatch may indicate an issue in your
   /// computation of the CRC32C checksum. Note: This field is defined as int64
   /// for reasons of compatibility across different languages. However, it is a
-  /// non-negative integer, which will never exceed 2^32-1, and can be safely
+  /// non-negative integer, which will never exceed `2^32-1`, and can be safely
   /// downconverted to uint32 in languages that support this type. NOTE: This
   /// field is in Beta.
   core.String? pemCrc32c;
@@ -6062,12 +6138,37 @@ class PublicKey {
   /// backend.
   core.String? protectionLevel;
 
+  /// This field contains the public key (with integrity verification),
+  /// formatted according to the public_key_format field.
+  ChecksummedData? publicKey;
+
+  /// The PublicKey format specified by the customer through the
+  /// public_key_format field.
+  /// Possible string values are:
+  /// - "PUBLIC_KEY_FORMAT_UNSPECIFIED" : If the public_key_format field is not
+  /// specified: - For PQC algorithms, an error will be returned. - For non-PQC
+  /// algorithms, the default format is PEM, and the field pem will be
+  /// populated. Otherwise, the public key will be exported through the
+  /// public_key field in the requested format.
+  /// - "PEM" : The returned public key will be encoded in PEM format. See the
+  /// [RFC7468](https://tools.ietf.org/html/rfc7468) sections for
+  /// [General Considerations](https://tools.ietf.org/html/rfc7468#section-2)
+  /// and
+  /// [Textual Encoding of Subject Public Key Info](https://tools.ietf.org/html/rfc7468#section-13)
+  /// for more information.
+  /// - "NIST_PQC" : This is supported only for PQC algorithms. The key material
+  /// is returned in the format defined by NIST PQC standards (FIPS 203, FIPS
+  /// 204, and FIPS 205).
+  core.String? publicKeyFormat;
+
   PublicKey({
     this.algorithm,
     this.name,
     this.pem,
     this.pemCrc32c,
     this.protectionLevel,
+    this.publicKey,
+    this.publicKeyFormat,
   });
 
   PublicKey.fromJson(core.Map json_)
@@ -6077,6 +6178,11 @@ class PublicKey {
           pem: json_['pem'] as core.String?,
           pemCrc32c: json_['pemCrc32c'] as core.String?,
           protectionLevel: json_['protectionLevel'] as core.String?,
+          publicKey: json_.containsKey('publicKey')
+              ? ChecksummedData.fromJson(
+                  json_['publicKey'] as core.Map<core.String, core.dynamic>)
+              : null,
+          publicKeyFormat: json_['publicKeyFormat'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6085,6 +6191,8 @@ class PublicKey {
         if (pem != null) 'pem': pem!,
         if (pemCrc32c != null) 'pemCrc32c': pemCrc32c!,
         if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+        if (publicKey != null) 'publicKey': publicKey!,
+        if (publicKeyFormat != null) 'publicKeyFormat': publicKeyFormat!,
       };
 }
 

@@ -320,6 +320,47 @@ class ProjectsLocationsFunctionsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Detaches 2nd Gen function to Cloud Run function.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the function for which should be detached.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> detachFunction(
+    DetachFunctionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':detachFunction';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns a signed URL for downloading deployed function source code.
   ///
   /// The URL is only valid for a limited period and should be used within 30
@@ -543,8 +584,8 @@ class ProjectsLocationsFunctionsResource {
   /// following the syntax outlined in https://google.aip.dev/160.
   ///
   /// [orderBy] - The sorting order of the resources returned. Value should be a
-  /// comma separated list of fields. The default sorting oder is ascending. See
-  /// https://google.aip.dev/132#ordering.
+  /// comma separated list of fields. The default sorting order is ascending.
+  /// See https://google.aip.dev/132#ordering.
   ///
   /// [pageSize] - Maximum number of functions to return per call. The largest
   /// allowed page_size is 1,000, if the page_size is omitted or specified as
@@ -1208,9 +1249,13 @@ class BuildConfig {
   /// Docker Registry to use for this deployment.
   ///
   /// This configuration is only applicable to 1st Gen functions, 2nd Gen
-  /// functions can only use Artifact Registry. If unspecified, it defaults to
-  /// `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field
-  /// should either be left unspecified or set to `ARTIFACT_REGISTRY`.
+  /// functions can only use Artifact Registry. Deprecated: Container Registry
+  /// option will no longer be available after March 2025:
+  /// https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr
+  /// Please use Artifact Registry instead, which is the default choice. If
+  /// unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository`
+  /// field is specified, this field should either be left unspecified or set to
+  /// `ARTIFACT_REGISTRY`.
   /// Possible string values are:
   /// - "DOCKER_REGISTRY_UNSPECIFIED" : Unspecified.
   /// - "CONTAINER_REGISTRY" : Docker images will be stored in multi-regional
@@ -1220,6 +1265,9 @@ class BuildConfig {
   /// named `gcf-artifacts` in every region in which a function is deployed. But
   /// the repository to use can also be specified by the user using the
   /// `docker_repository` field.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? dockerRegistry;
 
   /// Repository in Artifact Registry to which the function docker image will be
@@ -1373,6 +1421,9 @@ typedef CommitFunctionUpgradeRequest = $Empty;
 /// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
 /// google.protobuf.Timestamp
 typedef Date = $Date;
+
+/// Request for the `DetachFunction` method.
+typedef DetachFunctionRequest = $Empty;
 
 /// Filters events based on exact matches on the CloudEvents attributes.
 class EventFilter {
@@ -1603,6 +1654,11 @@ class Function_ {
   /// Reserved for future use.
   ///
   /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
   core.bool? satisfiesPzs;
 
   /// Describes the Service being deployed.
@@ -1622,6 +1678,9 @@ class Function_ {
   /// - "UNKNOWN" : Function deployment failed and the function serving state is
   /// undefined. The function should be updated or deleted to move it out of
   /// this state.
+  /// - "DETACHING" : Function is being detached.
+  /// - "DETACH_FAILED" : Function detach failed and the function is still
+  /// serving.
   core.String? state;
 
   /// State Messages for this Cloud Function.
@@ -1653,6 +1712,7 @@ class Function_ {
     this.kmsKeyName,
     this.labels,
     this.name,
+    this.satisfiesPzi,
     this.satisfiesPzs,
     this.serviceConfig,
     this.state,
@@ -1684,6 +1744,7 @@ class Function_ {
             ),
           ),
           name: json_['name'] as core.String?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
           satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           serviceConfig: json_.containsKey('serviceConfig')
               ? ServiceConfig.fromJson(
@@ -1711,6 +1772,7 @@ class Function_ {
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (serviceConfig != null) 'serviceConfig': serviceConfig!,
         if (state != null) 'state': state!,
@@ -2882,9 +2944,9 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// Information related to: * A function's eligibility for 1st Gen to 2nd Gen
-/// migration and 2nd Gen to CRf detach.
+/// migration.
 ///
-/// * Current state of migration for function undergoing migration/detach.
+/// * Current state of migration for function undergoing migration.
 class UpgradeInfo {
   /// Describes the Build step of the function that builds a container to
   /// prepare for 2nd gen upgrade.
@@ -2922,8 +2984,6 @@ class UpgradeInfo {
   /// RollbackFunctionUpgradeTraffic API was un-successful.
   /// - "COMMIT_FUNCTION_UPGRADE_ERROR" : CommitFunctionUpgrade API was
   /// un-successful.
-  /// - "DETACH_IN_PROGRESS" : Function is requested to be detached from 2nd Gen
-  /// to CRf.
   core.String? upgradeState;
 
   UpgradeInfo({

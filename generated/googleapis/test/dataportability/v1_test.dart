@@ -26,19 +26,51 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.int buildCounterEmpty = 0;
-api.Empty buildEmpty() {
-  final o = api.Empty();
-  buildCounterEmpty++;
-  if (buildCounterEmpty < 3) {}
-  buildCounterEmpty--;
+core.int buildCounterCancelPortabilityArchiveRequest = 0;
+api.CancelPortabilityArchiveRequest buildCancelPortabilityArchiveRequest() {
+  final o = api.CancelPortabilityArchiveRequest();
+  buildCounterCancelPortabilityArchiveRequest++;
+  if (buildCounterCancelPortabilityArchiveRequest < 3) {}
+  buildCounterCancelPortabilityArchiveRequest--;
   return o;
 }
 
-void checkEmpty(api.Empty o) {
-  buildCounterEmpty++;
-  if (buildCounterEmpty < 3) {}
-  buildCounterEmpty--;
+void checkCancelPortabilityArchiveRequest(
+    api.CancelPortabilityArchiveRequest o) {
+  buildCounterCancelPortabilityArchiveRequest++;
+  if (buildCounterCancelPortabilityArchiveRequest < 3) {}
+  buildCounterCancelPortabilityArchiveRequest--;
+}
+
+core.int buildCounterCancelPortabilityArchiveResponse = 0;
+api.CancelPortabilityArchiveResponse buildCancelPortabilityArchiveResponse() {
+  final o = api.CancelPortabilityArchiveResponse();
+  buildCounterCancelPortabilityArchiveResponse++;
+  if (buildCounterCancelPortabilityArchiveResponse < 3) {}
+  buildCounterCancelPortabilityArchiveResponse--;
+  return o;
+}
+
+void checkCancelPortabilityArchiveResponse(
+    api.CancelPortabilityArchiveResponse o) {
+  buildCounterCancelPortabilityArchiveResponse++;
+  if (buildCounterCancelPortabilityArchiveResponse < 3) {}
+  buildCounterCancelPortabilityArchiveResponse--;
+}
+
+core.int buildCounterCheckAccessTypeRequest = 0;
+api.CheckAccessTypeRequest buildCheckAccessTypeRequest() {
+  final o = api.CheckAccessTypeRequest();
+  buildCounterCheckAccessTypeRequest++;
+  if (buildCounterCheckAccessTypeRequest < 3) {}
+  buildCounterCheckAccessTypeRequest--;
+  return o;
+}
+
+void checkCheckAccessTypeRequest(api.CheckAccessTypeRequest o) {
+  buildCounterCheckAccessTypeRequest++;
+  if (buildCounterCheckAccessTypeRequest < 3) {}
+  buildCounterCheckAccessTypeRequest--;
 }
 
 core.List<core.String> buildUnnamed0() => [
@@ -58,50 +90,6 @@ void checkUnnamed0(core.List<core.String> o) {
   );
 }
 
-core.int buildCounterInitiatePortabilityArchiveRequest = 0;
-api.InitiatePortabilityArchiveRequest buildInitiatePortabilityArchiveRequest() {
-  final o = api.InitiatePortabilityArchiveRequest();
-  buildCounterInitiatePortabilityArchiveRequest++;
-  if (buildCounterInitiatePortabilityArchiveRequest < 3) {
-    o.resources = buildUnnamed0();
-  }
-  buildCounterInitiatePortabilityArchiveRequest--;
-  return o;
-}
-
-void checkInitiatePortabilityArchiveRequest(
-    api.InitiatePortabilityArchiveRequest o) {
-  buildCounterInitiatePortabilityArchiveRequest++;
-  if (buildCounterInitiatePortabilityArchiveRequest < 3) {
-    checkUnnamed0(o.resources!);
-  }
-  buildCounterInitiatePortabilityArchiveRequest--;
-}
-
-core.int buildCounterInitiatePortabilityArchiveResponse = 0;
-api.InitiatePortabilityArchiveResponse
-    buildInitiatePortabilityArchiveResponse() {
-  final o = api.InitiatePortabilityArchiveResponse();
-  buildCounterInitiatePortabilityArchiveResponse++;
-  if (buildCounterInitiatePortabilityArchiveResponse < 3) {
-    o.archiveJobId = 'foo';
-  }
-  buildCounterInitiatePortabilityArchiveResponse--;
-  return o;
-}
-
-void checkInitiatePortabilityArchiveResponse(
-    api.InitiatePortabilityArchiveResponse o) {
-  buildCounterInitiatePortabilityArchiveResponse++;
-  if (buildCounterInitiatePortabilityArchiveResponse < 3) {
-    unittest.expect(
-      o.archiveJobId!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterInitiatePortabilityArchiveResponse--;
-}
-
 core.List<core.String> buildUnnamed1() => [
       'foo',
       'foo',
@@ -119,14 +107,145 @@ void checkUnnamed1(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterCheckAccessTypeResponse = 0;
+api.CheckAccessTypeResponse buildCheckAccessTypeResponse() {
+  final o = api.CheckAccessTypeResponse();
+  buildCounterCheckAccessTypeResponse++;
+  if (buildCounterCheckAccessTypeResponse < 3) {
+    o.oneTimeResources = buildUnnamed0();
+    o.timeBasedResources = buildUnnamed1();
+  }
+  buildCounterCheckAccessTypeResponse--;
+  return o;
+}
+
+void checkCheckAccessTypeResponse(api.CheckAccessTypeResponse o) {
+  buildCounterCheckAccessTypeResponse++;
+  if (buildCounterCheckAccessTypeResponse < 3) {
+    checkUnnamed0(o.oneTimeResources!);
+    checkUnnamed1(o.timeBasedResources!);
+  }
+  buildCounterCheckAccessTypeResponse--;
+}
+
+core.int buildCounterEmpty = 0;
+api.Empty buildEmpty() {
+  final o = api.Empty();
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+  return o;
+}
+
+void checkEmpty(api.Empty o) {
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+}
+
+core.List<core.String> buildUnnamed2() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed2(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterInitiatePortabilityArchiveRequest = 0;
+api.InitiatePortabilityArchiveRequest buildInitiatePortabilityArchiveRequest() {
+  final o = api.InitiatePortabilityArchiveRequest();
+  buildCounterInitiatePortabilityArchiveRequest++;
+  if (buildCounterInitiatePortabilityArchiveRequest < 3) {
+    o.endTime = 'foo';
+    o.resources = buildUnnamed2();
+    o.startTime = 'foo';
+  }
+  buildCounterInitiatePortabilityArchiveRequest--;
+  return o;
+}
+
+void checkInitiatePortabilityArchiveRequest(
+    api.InitiatePortabilityArchiveRequest o) {
+  buildCounterInitiatePortabilityArchiveRequest++;
+  if (buildCounterInitiatePortabilityArchiveRequest < 3) {
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed2(o.resources!);
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterInitiatePortabilityArchiveRequest--;
+}
+
+core.int buildCounterInitiatePortabilityArchiveResponse = 0;
+api.InitiatePortabilityArchiveResponse
+    buildInitiatePortabilityArchiveResponse() {
+  final o = api.InitiatePortabilityArchiveResponse();
+  buildCounterInitiatePortabilityArchiveResponse++;
+  if (buildCounterInitiatePortabilityArchiveResponse < 3) {
+    o.accessType = 'foo';
+    o.archiveJobId = 'foo';
+  }
+  buildCounterInitiatePortabilityArchiveResponse--;
+  return o;
+}
+
+void checkInitiatePortabilityArchiveResponse(
+    api.InitiatePortabilityArchiveResponse o) {
+  buildCounterInitiatePortabilityArchiveResponse++;
+  if (buildCounterInitiatePortabilityArchiveResponse < 3) {
+    unittest.expect(
+      o.accessType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.archiveJobId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterInitiatePortabilityArchiveResponse--;
+}
+
+core.List<core.String> buildUnnamed3() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed3(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterPortabilityArchiveState = 0;
 api.PortabilityArchiveState buildPortabilityArchiveState() {
   final o = api.PortabilityArchiveState();
   buildCounterPortabilityArchiveState++;
   if (buildCounterPortabilityArchiveState < 3) {
+    o.exportTime = 'foo';
     o.name = 'foo';
+    o.startTime = 'foo';
     o.state = 'foo';
-    o.urls = buildUnnamed1();
+    o.urls = buildUnnamed3();
   }
   buildCounterPortabilityArchiveState--;
   return o;
@@ -136,14 +255,22 @@ void checkPortabilityArchiveState(api.PortabilityArchiveState o) {
   buildCounterPortabilityArchiveState++;
   if (buildCounterPortabilityArchiveState < 3) {
     unittest.expect(
+      o.exportTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTime!,
       unittest.equals('foo'),
     );
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
     );
-    checkUnnamed1(o.urls!);
+    checkUnnamed3(o.urls!);
   }
   buildCounterPortabilityArchiveState--;
 }
@@ -202,6 +329,46 @@ void checkRetryPortabilityArchiveResponse(
 }
 
 void main() {
+  unittest.group('obj-schema-CancelPortabilityArchiveRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCancelPortabilityArchiveRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CancelPortabilityArchiveRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCancelPortabilityArchiveRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-CancelPortabilityArchiveResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCancelPortabilityArchiveResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CancelPortabilityArchiveResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCancelPortabilityArchiveResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-CheckAccessTypeRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCheckAccessTypeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CheckAccessTypeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCheckAccessTypeRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-CheckAccessTypeResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCheckAccessTypeResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CheckAccessTypeResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCheckAccessTypeResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEmpty();
@@ -272,7 +439,124 @@ void main() {
     });
   });
 
+  unittest.group('resource-AccessTypeResource', () {
+    unittest.test('method--check', () async {
+      final mock = HttpServerMock();
+      final res = api.DataPortabilityApi(mock).accessType;
+      final arg_request = buildCheckAccessTypeRequest();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.CheckAccessTypeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCheckAccessTypeRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 19),
+          unittest.equals('v1/accessType:check'),
+        );
+        pathOffset += 19;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCheckAccessTypeResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.check(arg_request, $fields: arg_$fields);
+      checkCheckAccessTypeResponse(response as api.CheckAccessTypeResponse);
+    });
+  });
+
   unittest.group('resource-ArchiveJobsResource', () {
+    unittest.test('method--cancel', () async {
+      final mock = HttpServerMock();
+      final res = api.DataPortabilityApi(mock).archiveJobs;
+      final arg_request = buildCancelPortabilityArchiveRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.CancelPortabilityArchiveRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCancelPortabilityArchiveRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildCancelPortabilityArchiveResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkCancelPortabilityArchiveResponse(
+          response as api.CancelPortabilityArchiveResponse);
+    });
+
     unittest.test('method--getPortabilityArchiveState', () async {
       final mock = HttpServerMock();
       final res = api.DataPortabilityApi(mock).archiveJobs;

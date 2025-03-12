@@ -1534,17 +1534,18 @@ class IOPSPerTB {
 
 /// A Filestore instance.
 class Instance {
-  /// Indicates whether this instance's performance is configurable.
-  ///
-  /// If enabled, adjust it using the 'performance_config' field.
-  ///
-  /// Output only.
-  core.bool? configurablePerformanceEnabled;
-
   /// The time when the instance was created.
   ///
   /// Output only.
   core.String? createTime;
+
+  /// Indicates whether this instance supports configuring its performance.
+  ///
+  /// If true, the user can configure the instance's performance by using the
+  /// 'performance_config' field.
+  ///
+  /// Output only.
+  core.bool? customPerformanceSupported;
 
   /// Indicates whether the instance is protected against deletion.
   ///
@@ -1692,8 +1693,8 @@ class Instance {
   core.String? tier;
 
   Instance({
-    this.configurablePerformanceEnabled,
     this.createTime,
+    this.customPerformanceSupported,
     this.deletionProtectionEnabled,
     this.deletionProtectionReason,
     this.description,
@@ -1718,9 +1719,9 @@ class Instance {
 
   Instance.fromJson(core.Map json_)
       : this(
-          configurablePerformanceEnabled:
-              json_['configurablePerformanceEnabled'] as core.bool?,
           createTime: json_['createTime'] as core.String?,
+          customPerformanceSupported:
+              json_['customPerformanceSupported'] as core.bool?,
           deletionProtectionEnabled:
               json_['deletionProtectionEnabled'] as core.bool?,
           deletionProtectionReason:
@@ -1774,9 +1775,9 @@ class Instance {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configurablePerformanceEnabled != null)
-          'configurablePerformanceEnabled': configurablePerformanceEnabled!,
         if (createTime != null) 'createTime': createTime!,
+        if (customPerformanceSupported != null)
+          'customPerformanceSupported': customPerformanceSupported!,
         if (deletionProtectionEnabled != null)
           'deletionProtectionEnabled': deletionProtectionEnabled!,
         if (deletionProtectionReason != null)
@@ -2246,14 +2247,14 @@ class PerformanceConfig {
 
   /// Provision IOPS dynamically based on the capacity of the instance.
   ///
-  /// Provisioned read IOPS will be calculated by multiplying the capacity of
-  /// the instance in TiB by the `iops_per_tb` value. For example, for a 2 TiB
-  /// instance with an `iops_per_tb` value of 17000 the provisioned read IOPS
-  /// will be 34000. If the calculated value is outside the supported range for
-  /// the instance's capacity during instance creation, instance creation will
-  /// fail with an `InvalidArgument` error. Similarly, if an instance capacity
-  /// update would result in a value outside the supported range, the update
-  /// will fail with an `InvalidArgument` error.
+  /// Provisioned IOPS will be calculated by multiplying the capacity of the
+  /// instance in TiB by the `iops_per_tb` value. For example, for a 2 TiB
+  /// instance with an `iops_per_tb` value of 17000 the provisioned IOPS will be
+  /// 34000. If the calculated value is outside the supported range for the
+  /// instance's capacity during instance creation, instance creation will fail
+  /// with an `InvalidArgument` error. Similarly, if an instance capacity update
+  /// would result in a value outside the supported range, the update will fail
+  /// with an `InvalidArgument` error.
   IOPSPerTB? iopsPerTb;
 
   PerformanceConfig({
@@ -2282,6 +2283,11 @@ class PerformanceConfig {
 /// The enforced performance limits, calculated from the instance's performance
 /// configuration.
 class PerformanceLimits {
+  /// The max IOPS.
+  ///
+  /// Output only.
+  core.String? maxIops;
+
   /// The max read IOPS.
   ///
   /// Output only.
@@ -2303,6 +2309,7 @@ class PerformanceLimits {
   core.String? maxWriteThroughputBps;
 
   PerformanceLimits({
+    this.maxIops,
     this.maxReadIops,
     this.maxReadThroughputBps,
     this.maxWriteIops,
@@ -2311,6 +2318,7 @@ class PerformanceLimits {
 
   PerformanceLimits.fromJson(core.Map json_)
       : this(
+          maxIops: json_['maxIops'] as core.String?,
           maxReadIops: json_['maxReadIops'] as core.String?,
           maxReadThroughputBps: json_['maxReadThroughputBps'] as core.String?,
           maxWriteIops: json_['maxWriteIops'] as core.String?,
@@ -2318,6 +2326,7 @@ class PerformanceLimits {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (maxIops != null) 'maxIops': maxIops!,
         if (maxReadIops != null) 'maxReadIops': maxReadIops!,
         if (maxReadThroughputBps != null)
           'maxReadThroughputBps': maxReadThroughputBps!,
@@ -2328,7 +2337,29 @@ class PerformanceLimits {
 }
 
 /// PromoteReplicaRequest promotes a Filestore standby instance (replica).
-typedef PromoteReplicaRequest = $Empty;
+class PromoteReplicaRequest {
+  /// The resource name of the peer instance to promote, in the format
+  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+  ///
+  /// The peer instance is required if the operation is called on an active
+  /// instance.
+  ///
+  /// Optional.
+  core.String? peerInstance;
+
+  PromoteReplicaRequest({
+    this.peerInstance,
+  });
+
+  PromoteReplicaRequest.fromJson(core.Map json_)
+      : this(
+          peerInstance: json_['peerInstance'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (peerInstance != null) 'peerInstance': peerInstance!,
+      };
+}
 
 /// Replica configuration for the instance.
 class ReplicaConfig {

@@ -300,7 +300,7 @@ class DatasetsResource {
   /// [all] - Whether to list all datasets, including hidden ones
   ///
   /// [filter] - An expression for filtering the results of the request by
-  /// label. The syntax is `labels.[:]`. Multiple filters can be ANDed together
+  /// label. The syntax is `labels.[:]`. Multiple filters can be AND-ed together
   /// by connecting with a space. Example: `labels.department:receiving
   /// labels.active`. See
   /// [Filtering datasets using labels](https://cloud.google.com/bigquery/docs/filtering-labels#filtering_datasets_using_labels)
@@ -561,12 +561,11 @@ class JobsResource {
   /// [jobId] - Required. Job ID of the job to cancel
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [location] - The geographic location of the job. You must specify the
-  /// location to run the job for the following scenarios: * If the location to
-  /// run a job is not in the `us` or the `eu` multi-regional location * If the
-  /// job's location is in a single region (for example, `us-central1`) For more
-  /// information, see
-  /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+  /// [location] - The geographic location of the job. You must
+  /// [specify the location](https://cloud.google.com/bigquery/docs/locations#specify_locations)
+  /// to run the job for the following scenarios: * If the location to run a job
+  /// is not in the `us` or the `eu` multi-regional location * If the job's
+  /// location is in a single region (for example, `us-central1`)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -620,8 +619,9 @@ class JobsResource {
   /// jobs is not allowed.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [location] - The geographic location of the job. Required. See details at:
-  /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+  /// [location] - The geographic location of the job. Required. For more
+  /// information, see how to
+  /// [specify locations](https://cloud.google.com/bigquery/docs/locations#specify_locations).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -674,8 +674,8 @@ class JobsResource {
   /// location to run the job for the following scenarios: * If the location to
   /// run a job is not in the `us` or the `eu` multi-regional location * If the
   /// job's location is in a single region (for example, `us-central1`) For more
-  /// information, see
-  /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+  /// information, see how to
+  /// [specify locations](https://cloud.google.com/bigquery/docs/locations#specify_locations).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -728,8 +728,8 @@ class JobsResource {
   /// location to run the job for the following scenarios: * If the location to
   /// run a job is not in the `us` or the `eu` multi-regional location * If the
   /// job's location is in a single region (for example, `us-central1`) For more
-  /// information, see
-  /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+  /// information, see how to
+  /// [specify locations](https://cloud.google.com/bigquery/docs/locations#specify_locations).
   ///
   /// [maxResults] - Maximum number of results to read.
   ///
@@ -1677,6 +1677,179 @@ class RowAccessPoliciesResource {
 
   RowAccessPoliciesResource(commons.ApiRequester client) : _requester = client;
 
+  /// Deletes provided row access policies.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. Project ID of the table to delete the row access
+  /// policies.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [datasetId] - Required. Dataset ID of the table to delete the row access
+  /// policies.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [tableId] - Required. Table ID of the table to delete the row access
+  /// policies.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> batchDelete(
+    BatchDeleteRowAccessPoliciesRequest request,
+    core.String projectId,
+    core.String datasetId,
+    core.String tableId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'projects/' +
+        core.Uri.encodeFull('$projectId') +
+        '/datasets/' +
+        core.Uri.encodeFull('$datasetId') +
+        '/tables/' +
+        core.Uri.encodeFull('$tableId') +
+        '/rowAccessPolicies:batchDelete';
+
+    await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
+  /// Deletes a row access policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. Project ID of the table to delete the row access
+  /// policy.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [datasetId] - Required. Dataset ID of the table to delete the row access
+  /// policy.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [tableId] - Required. Table ID of the table to delete the row access
+  /// policy.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [policyId] - Required. Policy ID of the row access policy.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [force] - If set to true, it deletes the row access policy even if it's
+  /// the last row access policy on the table and the deletion will widen the
+  /// access rather narrowing it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String projectId,
+    core.String datasetId,
+    core.String tableId,
+    core.String policyId, {
+    core.bool? force,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'projects/' +
+        core.Uri.encodeFull('$projectId') +
+        '/datasets/' +
+        core.Uri.encodeFull('$datasetId') +
+        '/tables/' +
+        core.Uri.encodeFull('$tableId') +
+        '/rowAccessPolicies/' +
+        core.Uri.encodeFull('$policyId');
+
+    await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
+  /// Gets the specified row access policy by policy ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. Project ID of the table to get the row access
+  /// policy.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [datasetId] - Required. Dataset ID of the table to get the row access
+  /// policy.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [tableId] - Required. Table ID of the table to get the row access policy.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [policyId] - Required. Policy ID of the row access policy.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RowAccessPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RowAccessPolicy> get(
+    core.String projectId,
+    core.String datasetId,
+    core.String tableId,
+    core.String policyId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'projects/' +
+        core.Uri.encodeFull('$projectId') +
+        '/datasets/' +
+        core.Uri.encodeFull('$datasetId') +
+        '/tables/' +
+        core.Uri.encodeFull('$tableId') +
+        '/rowAccessPolicies/' +
+        core.Uri.encodeFull('$policyId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RowAccessPolicy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -1722,6 +1895,63 @@ class RowAccessPoliciesResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a row access policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. Project ID of the table to get the row access
+  /// policy.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [datasetId] - Required. Dataset ID of the table to get the row access
+  /// policy.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [tableId] - Required. Table ID of the table to get the row access policy.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RowAccessPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RowAccessPolicy> insert(
+    RowAccessPolicy request,
+    core.String projectId,
+    core.String datasetId,
+    core.String tableId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'projects/' +
+        core.Uri.encodeFull('$projectId') +
+        '/datasets/' +
+        core.Uri.encodeFull('$datasetId') +
+        '/tables/' +
+        core.Uri.encodeFull('$tableId') +
+        '/rowAccessPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RowAccessPolicy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all row access policies on the specified table.
@@ -1831,6 +2061,68 @@ class RowAccessPoliciesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a row access policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. Project ID of the table to get the row access
+  /// policy.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [datasetId] - Required. Dataset ID of the table to get the row access
+  /// policy.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [tableId] - Required. Table ID of the table to get the row access policy.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [policyId] - Required. Policy ID of the row access policy.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RowAccessPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RowAccessPolicy> update(
+    RowAccessPolicy request,
+    core.String projectId,
+    core.String datasetId,
+    core.String tableId,
+    core.String policyId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'projects/' +
+        core.Uri.encodeFull('$projectId') +
+        '/datasets/' +
+        core.Uri.encodeFull('$datasetId') +
+        '/tables/' +
+        core.Uri.encodeFull('$tableId') +
+        '/rowAccessPolicies/' +
+        core.Uri.encodeFull('$policyId');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RowAccessPolicy.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2525,7 +2817,7 @@ class AggregateClassificationMetrics {
   /// Threshold at which the metrics are computed.
   ///
   /// For binary classification models this is the positive class threshold. For
-  /// multi-class classfication models this is the confidence threshold.
+  /// multi-class classification models this is the confidence threshold.
   core.double? threshold;
 
   AggregateClassificationMetrics({
@@ -3169,6 +3461,37 @@ class AvroOptions {
   core.Map<core.String, core.dynamic> toJson() => {
         if (useAvroLogicalTypes != null)
           'useAvroLogicalTypes': useAvroLogicalTypes!,
+      };
+}
+
+/// Request message for the BatchDeleteRowAccessPoliciesRequest method.
+class BatchDeleteRowAccessPoliciesRequest {
+  /// If set to true, it deletes the row access policy even if it's the last row
+  /// access policy on the table and the deletion will widen the access rather
+  /// narrowing it.
+  core.bool? force;
+
+  /// Policy IDs of the row access policies.
+  ///
+  /// Required.
+  core.List<core.String>? policyIds;
+
+  BatchDeleteRowAccessPoliciesRequest({
+    this.force,
+    this.policyIds,
+  });
+
+  BatchDeleteRowAccessPoliciesRequest.fromJson(core.Map json_)
+      : this(
+          force: json_['force'] as core.bool?,
+          policyIds: (json_['policyIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (force != null) 'force': force!,
+        if (policyIds != null) 'policyIds': policyIds!,
       };
 }
 
@@ -4124,9 +4447,8 @@ class Clustering {
   ///
   /// Only top-level, non-repeated, simple-type fields are supported. The
   /// ordering of the clustering fields should be prioritized from most to least
-  /// important for filtering purposes. Additional information on limitations
-  /// can be found here:
-  /// https://cloud.google.com/bigquery/docs/creating-clustered-tables#limitations
+  /// important for filtering purposes. For additional information, see
+  /// [Introduction to clustered tables](https://cloud.google.com/bigquery/docs/clustered-tables#limitations).
   core.List<core.String>? fields;
 
   Clustering({
@@ -6144,7 +6466,7 @@ typedef Expr = $Expr;
 /// Options defining open source compatible datasets living in the BigQuery
 /// catalog.
 ///
-/// Contains metadata of open source database, schema or namespace represented
+/// Contains metadata of open source database, schema, or namespace represented
 /// by the current dataset.
 class ExternalCatalogDatasetOptions {
   /// The storage location URI for all tables in the dataset.
@@ -6158,7 +6480,7 @@ class ExternalCatalogDatasetOptions {
   /// A map of key value pairs defining the parameters and properties of the
   /// open source schema.
   ///
-  /// Maximum size of 2Mib.
+  /// Maximum size of 2MiB.
   ///
   /// Optional.
   core.Map<core.String, core.String>? parameters;
@@ -6191,23 +6513,23 @@ class ExternalCatalogDatasetOptions {
 
 /// Metadata about open source compatible table.
 ///
-/// The fields contained in these options correspond to hive metastore's table
-/// level properties.
+/// The fields contained in these options correspond to Hive metastore's
+/// table-level properties.
 class ExternalCatalogTableOptions {
-  /// The connection specifying the credentials to be used to read external
-  /// storage, such as Azure Blob, Cloud Storage, or S3.
+  /// A connection ID that specifies the credentials to be used to read external
+  /// storage, such as Azure Blob, Cloud Storage, or Amazon S3.
   ///
-  /// The connection is needed to read the open source table from BigQuery
-  /// Engine. The connection_id can have the form `..` or
+  /// This connection is needed to read the open source table from BigQuery. The
+  /// connection_id format must be either `..` or
   /// `projects//locations//connections/`.
   ///
   /// Optional.
   core.String? connectionId;
 
-  /// A map of key value pairs defining the parameters and properties of the
+  /// A map of the key-value pairs defining the parameters and properties of the
   /// open source table.
   ///
-  /// Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+  /// Corresponds with Hive metastore table parameters. Maximum size of 4MiB.
   ///
   /// Optional.
   core.Map<core.String, core.String>? parameters;
@@ -6289,6 +6611,20 @@ class ExternalDataConfiguration {
   /// Optional.
   CsvOptions? csvOptions;
 
+  /// Format used to parse DATE values.
+  ///
+  /// Supports C-style and SQL-style values.
+  ///
+  /// Optional.
+  core.String? dateFormat;
+
+  /// Format used to parse DATETIME values.
+  ///
+  /// Supports C-style and SQL-style values.
+  ///
+  /// Optional.
+  core.String? datetimeFormat;
+
   /// Defines the list of possible SQL data types to which the source decimal
   /// values are converted.
   ///
@@ -6303,7 +6639,7 @@ class ExternalDataConfiguration {
   /// "BIGNUMERIC"\]. If (precision,scale) is: * (38,9) -\> NUMERIC; * (39,9)
   /// -\> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -\>
   /// BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -\>
-  /// BIGNUMERIC; * (77,38) -\> BIGNUMERIC (error if value exeeds supported
+  /// BIGNUMERIC; * (77,38) -\> BIGNUMERIC (error if value exceeds supported
   /// range). This field cannot contain duplicate types. The order of the types
   /// in this field is ignored. For example, \["BIGNUMERIC", "NUMERIC"\] is the
   /// same as \["NUMERIC", "BIGNUMERIC"\] and NUMERIC always takes precedence
@@ -6366,7 +6702,7 @@ class ExternalDataConfiguration {
   /// Optional.
   /// Possible string values are:
   /// - "JSON_EXTENSION_UNSPECIFIED" : The default if provided value is not one
-  /// included in the enum, or the value is not specified. The source formate is
+  /// included in the enum, or the value is not specified. The source format is
   /// parsed without any modification.
   /// - "GEOJSON" : Use GeoJSON variant of JSON. See
   /// https://tools.ietf.org/html/rfc7946.
@@ -6463,6 +6799,28 @@ class ExternalDataConfiguration {
   /// Required.
   core.List<core.String>? sourceUris;
 
+  /// Format used to parse TIME values.
+  ///
+  /// Supports C-style and SQL-style values.
+  ///
+  /// Optional.
+  core.String? timeFormat;
+
+  /// Time zone used when parsing timestamp values that do not have specific
+  /// time zone information (e.g. 2024-04-20 12:34:56).
+  ///
+  /// The expected format is a IANA timezone string (e.g. America/Los_Angeles).
+  ///
+  /// Optional.
+  core.String? timeZone;
+
+  /// Format used to parse TIMESTAMP values.
+  ///
+  /// Supports C-style and SQL-style values.
+  ///
+  /// Optional.
+  core.String? timestampFormat;
+
   ExternalDataConfiguration({
     this.autodetect,
     this.avroOptions,
@@ -6470,6 +6828,8 @@ class ExternalDataConfiguration {
     this.compression,
     this.connectionId,
     this.csvOptions,
+    this.dateFormat,
+    this.datetimeFormat,
     this.decimalTargetTypes,
     this.fileSetSpecType,
     this.googleSheetsOptions,
@@ -6485,6 +6845,9 @@ class ExternalDataConfiguration {
     this.schema,
     this.sourceFormat,
     this.sourceUris,
+    this.timeFormat,
+    this.timeZone,
+    this.timestampFormat,
   });
 
   ExternalDataConfiguration.fromJson(core.Map json_)
@@ -6504,6 +6867,8 @@ class ExternalDataConfiguration {
               ? CsvOptions.fromJson(
                   json_['csvOptions'] as core.Map<core.String, core.dynamic>)
               : null,
+          dateFormat: json_['dateFormat'] as core.String?,
+          datetimeFormat: json_['datetimeFormat'] as core.String?,
           decimalTargetTypes: (json_['decimalTargetTypes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -6540,6 +6905,9 @@ class ExternalDataConfiguration {
           sourceUris: (json_['sourceUris'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          timeFormat: json_['timeFormat'] as core.String?,
+          timeZone: json_['timeZone'] as core.String?,
+          timestampFormat: json_['timestampFormat'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6549,6 +6917,8 @@ class ExternalDataConfiguration {
         if (compression != null) 'compression': compression!,
         if (connectionId != null) 'connectionId': connectionId!,
         if (csvOptions != null) 'csvOptions': csvOptions!,
+        if (dateFormat != null) 'dateFormat': dateFormat!,
+        if (datetimeFormat != null) 'datetimeFormat': datetimeFormat!,
         if (decimalTargetTypes != null)
           'decimalTargetTypes': decimalTargetTypes!,
         if (fileSetSpecType != null) 'fileSetSpecType': fileSetSpecType!,
@@ -6569,6 +6939,9 @@ class ExternalDataConfiguration {
         if (schema != null) 'schema': schema!,
         if (sourceFormat != null) 'sourceFormat': sourceFormat!,
         if (sourceUris != null) 'sourceUris': sourceUris!,
+        if (timeFormat != null) 'timeFormat': timeFormat!,
+        if (timeZone != null) 'timeZone': timeZone!,
+        if (timestampFormat != null) 'timestampFormat': timestampFormat!,
       };
 }
 
@@ -8232,6 +8605,16 @@ class JobConfigurationLoad {
   /// Optional.
   core.bool? createSession;
 
+  /// Date format used for parsing DATE values.
+  ///
+  /// Optional.
+  core.String? dateFormat;
+
+  /// Date format used for parsing DATETIME values.
+  ///
+  /// Optional.
+  core.String? datetimeFormat;
+
   /// Defines the list of possible SQL data types to which the source decimal
   /// values are converted.
   ///
@@ -8246,7 +8629,7 @@ class JobConfigurationLoad {
   /// "BIGNUMERIC"\]. If (precision,scale) is: * (38,9) -\> NUMERIC; * (39,9)
   /// -\> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -\>
   /// BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -\>
-  /// BIGNUMERIC; * (77,38) -\> BIGNUMERIC (error if value exeeds supported
+  /// BIGNUMERIC; * (77,38) -\> BIGNUMERIC (error if value exceeds supported
   /// range). This field cannot contain duplicate types. The order of the types
   /// in this field is ignored. For example, \["BIGNUMERIC", "NUMERIC"\] is the
   /// same as \["NUMERIC", "BIGNUMERIC"\] and NUMERIC always takes precedence
@@ -8349,7 +8732,7 @@ class JobConfigurationLoad {
   /// Optional.
   /// Possible string values are:
   /// - "JSON_EXTENSION_UNSPECIFIED" : The default if provided value is not one
-  /// included in the enum, or the value is not specified. The source formate is
+  /// included in the enum, or the value is not specified. The source format is
   /// parsed without any modification.
   /// - "GEOJSON" : Use GeoJSON variant of JSON. See
   /// https://tools.ietf.org/html/rfc7946.
@@ -8501,10 +8884,26 @@ class JobConfigurationLoad {
   /// Required.
   core.List<core.String>? sourceUris;
 
+  /// Date format used for parsing TIME values.
+  ///
+  /// Optional.
+  core.String? timeFormat;
+
   /// Time-based partitioning specification for the destination table.
   ///
   /// Only one of timePartitioning and rangePartitioning should be specified.
   TimePartitioning? timePartitioning;
+
+  /// \[Experimental\] Default time zone that will apply when parsing timestamp
+  /// values that have no specific time zone.
+  ///
+  /// Optional.
+  core.String? timeZone;
+
+  /// Date format used for parsing TIMESTAMP values.
+  ///
+  /// Optional.
+  core.String? timestampFormat;
 
   /// If sourceFormat is set to "AVRO", indicates whether to interpret logical
   /// types as the corresponding BigQuery data type (for example, TIMESTAMP),
@@ -8538,6 +8937,8 @@ class JobConfigurationLoad {
     this.copyFilesOnly,
     this.createDisposition,
     this.createSession,
+    this.dateFormat,
+    this.datetimeFormat,
     this.decimalTargetTypes,
     this.destinationEncryptionConfiguration,
     this.destinationTable,
@@ -8563,7 +8964,10 @@ class JobConfigurationLoad {
     this.skipLeadingRows,
     this.sourceFormat,
     this.sourceUris,
+    this.timeFormat,
     this.timePartitioning,
+    this.timeZone,
+    this.timestampFormat,
     this.useAvroLogicalTypes,
     this.writeDisposition,
   });
@@ -8586,6 +8990,8 @@ class JobConfigurationLoad {
           copyFilesOnly: json_['copyFilesOnly'] as core.bool?,
           createDisposition: json_['createDisposition'] as core.String?,
           createSession: json_['createSession'] as core.bool?,
+          dateFormat: json_['dateFormat'] as core.String?,
+          datetimeFormat: json_['datetimeFormat'] as core.String?,
           decimalTargetTypes: (json_['decimalTargetTypes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -8647,10 +9053,13 @@ class JobConfigurationLoad {
           sourceUris: (json_['sourceUris'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          timeFormat: json_['timeFormat'] as core.String?,
           timePartitioning: json_.containsKey('timePartitioning')
               ? TimePartitioning.fromJson(json_['timePartitioning']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          timeZone: json_['timeZone'] as core.String?,
+          timestampFormat: json_['timestampFormat'] as core.String?,
           useAvroLogicalTypes: json_['useAvroLogicalTypes'] as core.bool?,
           writeDisposition: json_['writeDisposition'] as core.String?,
         );
@@ -8668,6 +9077,8 @@ class JobConfigurationLoad {
         if (copyFilesOnly != null) 'copyFilesOnly': copyFilesOnly!,
         if (createDisposition != null) 'createDisposition': createDisposition!,
         if (createSession != null) 'createSession': createSession!,
+        if (dateFormat != null) 'dateFormat': dateFormat!,
+        if (datetimeFormat != null) 'datetimeFormat': datetimeFormat!,
         if (decimalTargetTypes != null)
           'decimalTargetTypes': decimalTargetTypes!,
         if (destinationEncryptionConfiguration != null)
@@ -8703,7 +9114,10 @@ class JobConfigurationLoad {
         if (skipLeadingRows != null) 'skipLeadingRows': skipLeadingRows!,
         if (sourceFormat != null) 'sourceFormat': sourceFormat!,
         if (sourceUris != null) 'sourceUris': sourceUris!,
+        if (timeFormat != null) 'timeFormat': timeFormat!,
         if (timePartitioning != null) 'timePartitioning': timePartitioning!,
+        if (timeZone != null) 'timeZone': timeZone!,
+        if (timestampFormat != null) 'timestampFormat': timestampFormat!,
         if (useAvroLogicalTypes != null)
           'useAvroLogicalTypes': useAvroLogicalTypes!,
         if (writeDisposition != null) 'writeDisposition': writeDisposition!,
@@ -8923,6 +9337,15 @@ class JobConfigurationQuery {
   /// Optional.
   core.String? writeDisposition;
 
+  /// This is only supported for a SELECT query using a temporary table.
+  ///
+  /// If set, the query is allowed to write results incrementally to the
+  /// temporary result table. This may incur a performance penalty. This option
+  /// cannot be used with Legacy SQL. This feature is not yet available.
+  ///
+  /// Optional.
+  core.bool? writeIncrementalResults;
+
   JobConfigurationQuery({
     this.allowLargeResults,
     this.clustering,
@@ -8951,6 +9374,7 @@ class JobConfigurationQuery {
     this.useQueryCache,
     this.userDefinedFunctionResources,
     this.writeDisposition,
+    this.writeIncrementalResults,
   });
 
   JobConfigurationQuery.fromJson(core.Map json_)
@@ -9028,6 +9452,8 @@ class JobConfigurationQuery {
                       value as core.Map<core.String, core.dynamic>))
                   .toList(),
           writeDisposition: json_['writeDisposition'] as core.String?,
+          writeIncrementalResults:
+              json_['writeIncrementalResults'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9065,6 +9491,8 @@ class JobConfigurationQuery {
         if (userDefinedFunctionResources != null)
           'userDefinedFunctionResources': userDefinedFunctionResources!,
         if (writeDisposition != null) 'writeDisposition': writeDisposition!,
+        if (writeIncrementalResults != null)
+          'writeIncrementalResults': writeIncrementalResults!,
       };
 }
 
@@ -9946,7 +10374,7 @@ class JobStatistics2 {
   /// statement. * `INSERT`:
   /// \[`INSERT`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax#insert_statement)
   /// statement. * `UPDATE`:
-  /// \[`UPDATE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#update_statement)
+  /// \[`UPDATE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax#update_statement)
   /// statement. * `DELETE`:
   /// \[`DELETE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
   /// statement. * `MERGE`:
@@ -9955,7 +10383,7 @@ class JobStatistics2 {
   /// TABLE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_table_statement)
   /// statement, without `AS SELECT`. * `CREATE_TABLE_AS_SELECT`: \[`CREATE
   /// TABLE AS
-  /// SELECT`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#query_statement)
+  /// SELECT`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_table_statement)
   /// statement. * `CREATE_VIEW`: \[`CREATE
   /// VIEW`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_view_statement)
   /// statement. * `CREATE_MODEL`: \[`CREATE
@@ -10007,7 +10435,7 @@ class JobStatistics2 {
   /// statement. * `ALTER_MATERIALIZED_VIEW`: \[`ALTER MATERIALIZED
   /// VIEW`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_materialized_view_set_options_statement)
   /// statement. * `ALTER_SCHEMA`: \[`ALTER
-  /// SCHEMA`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#aalter_schema_set_options_statement)
+  /// SCHEMA`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_schema_set_options_statement)
   /// statement. * `SCRIPT`:
   /// \[`SCRIPT`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language).
   /// * `TRUNCATE_TABLE`: \[`TRUNCATE
@@ -10877,7 +11305,7 @@ class MaterializedView {
   /// truncated.
   /// - "BASE_TABLE_DATA_CHANGE" : View is invalidated because of a data change
   /// in one or more base tables. It could be any recent change if the
-  /// \[`max_staleness`\](https://cloud.google.com/bigquery/docs/materialized-views-create#max_staleness)
+  /// \[`maxStaleness`\](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#Table.FIELDS.max_staleness)
   /// option is not set for the view, or otherwise any change outside of the
   /// staleness window.
   /// - "BASE_TABLE_PARTITION_EXPIRATION_CHANGE" : View is invalidated because a
@@ -10930,6 +11358,10 @@ class MaterializedView {
 class MaterializedViewDefinition {
   /// This option declares the intention to construct a materialized view that
   /// isn't refreshed incrementally.
+  ///
+  /// Non-incremental materialized views support an expanded range of SQL
+  /// queries. The `allow_non_incremental_definition` option can't be changed
+  /// after the materialized view is created.
   ///
   /// Optional.
   core.bool? allowNonIncrementalDefinition;
@@ -11070,7 +11502,7 @@ class MaterializedViewStatus {
       };
 }
 
-/// Statistics for metadata caching in BigLake tables.
+/// Statistics for metadata caching in queried tables.
 class MetadataCacheStatistics {
   /// Set for the Metadata caching eligible tables referenced in the query.
   core.List<TableMetadataCacheUsage>? tableMetadataCacheUsage;
@@ -12416,6 +12848,11 @@ class QueryRequest {
   /// Optional.
   DatasetReference? defaultDataset;
 
+  /// Custom encryption configuration (e.g., Cloud KMS keys)
+  ///
+  /// Optional.
+  EncryptionConfiguration? destinationEncryptionConfiguration;
+
   /// If set to true, BigQuery doesn't run the job.
   ///
   /// Instead, if the query is valid, BigQuery returns statistics about the job
@@ -12448,6 +12885,18 @@ class QueryRequest {
   /// JOB_CREATION_REQUIRED mode should be used, which is the default.
   core.String? jobCreationMode;
 
+  /// Job timeout in milliseconds.
+  ///
+  /// If this time limit is exceeded, BigQuery will attempt to stop a longer
+  /// job, but may not always succeed in canceling it before the job completes.
+  /// For example, a job that takes more than 60 seconds to complete has a
+  /// better chance of being stopped than a job that takes 10 seconds to
+  /// complete. This timeout applies to the query even if a job does not need to
+  /// be created.
+  ///
+  /// Optional.
+  core.String? jobTimeoutMs;
+
   /// The resource type of the request.
   core.String? kind;
 
@@ -12464,8 +12913,8 @@ class QueryRequest {
 
   /// The geographic location where the job should run.
   ///
-  /// See details at
-  /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+  /// For more information, see how to
+  /// [specify locations](https://cloud.google.com/bigquery/docs/locations#specify_locations).
   core.String? location;
 
   /// The maximum number of rows of data to return per page of results.
@@ -12566,14 +13015,25 @@ class QueryRequest {
   /// Optional.
   core.bool? useQueryCache;
 
+  /// This is only supported for SELECT query.
+  ///
+  /// If set, the query is allowed to write results incrementally to the
+  /// temporary result table. This may incur a performance penalty. This option
+  /// cannot be used with Legacy SQL. This feature is not yet available.
+  ///
+  /// Optional.
+  core.bool? writeIncrementalResults;
+
   QueryRequest({
     this.connectionProperties,
     this.continuous,
     this.createSession,
     this.defaultDataset,
+    this.destinationEncryptionConfiguration,
     this.dryRun,
     this.formatOptions,
     this.jobCreationMode,
+    this.jobTimeoutMs,
     this.kind,
     this.labels,
     this.location,
@@ -12587,6 +13047,7 @@ class QueryRequest {
     this.timeoutMs,
     this.useLegacySql,
     this.useQueryCache,
+    this.writeIncrementalResults,
   });
 
   QueryRequest.fromJson(core.Map json_)
@@ -12601,12 +13062,19 @@ class QueryRequest {
               ? DatasetReference.fromJson(json_['defaultDataset']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          destinationEncryptionConfiguration:
+              json_.containsKey('destinationEncryptionConfiguration')
+                  ? EncryptionConfiguration.fromJson(
+                      json_['destinationEncryptionConfiguration']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           dryRun: json_['dryRun'] as core.bool?,
           formatOptions: json_.containsKey('formatOptions')
               ? DataFormatOptions.fromJson(
                   json_['formatOptions'] as core.Map<core.String, core.dynamic>)
               : null,
           jobCreationMode: json_['jobCreationMode'] as core.String?,
+          jobTimeoutMs: json_['jobTimeoutMs'] as core.String?,
           kind: json_['kind'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -12629,6 +13097,8 @@ class QueryRequest {
           timeoutMs: json_['timeoutMs'] as core.int?,
           useLegacySql: json_['useLegacySql'] as core.bool?,
           useQueryCache: json_['useQueryCache'] as core.bool?,
+          writeIncrementalResults:
+              json_['writeIncrementalResults'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12637,9 +13107,13 @@ class QueryRequest {
         if (continuous != null) 'continuous': continuous!,
         if (createSession != null) 'createSession': createSession!,
         if (defaultDataset != null) 'defaultDataset': defaultDataset!,
+        if (destinationEncryptionConfiguration != null)
+          'destinationEncryptionConfiguration':
+              destinationEncryptionConfiguration!,
         if (dryRun != null) 'dryRun': dryRun!,
         if (formatOptions != null) 'formatOptions': formatOptions!,
         if (jobCreationMode != null) 'jobCreationMode': jobCreationMode!,
+        if (jobTimeoutMs != null) 'jobTimeoutMs': jobTimeoutMs!,
         if (kind != null) 'kind': kind!,
         if (labels != null) 'labels': labels!,
         if (location != null) 'location': location!,
@@ -12654,6 +13128,8 @@ class QueryRequest {
         if (timeoutMs != null) 'timeoutMs': timeoutMs!,
         if (useLegacySql != null) 'useLegacySql': useLegacySql!,
         if (useQueryCache != null) 'useQueryCache': useQueryCache!,
+        if (writeIncrementalResults != null)
+          'writeIncrementalResults': writeIncrementalResults!,
       };
 }
 
@@ -12661,11 +13137,25 @@ class QueryResponse {
   /// Whether the query result was fetched from the query cache.
   core.bool? cacheHit;
 
+  /// Creation time of this query, in milliseconds since the epoch.
+  ///
+  /// This field will be present on all queries.
+  ///
+  /// Output only.
+  core.String? creationTime;
+
   /// Detailed statistics for DML statements INSERT, UPDATE, DELETE, MERGE or
   /// TRUNCATE.
   ///
   /// Output only.
   DmlStatistics? dmlStats;
+
+  /// End time of this query, in milliseconds since the epoch.
+  ///
+  /// This field will be present whenever a query job is in the DONE state.
+  ///
+  /// Output only.
+  core.String? endTime;
 
   /// The first errors or warnings encountered during the running of the job.
   ///
@@ -12705,6 +13195,14 @@ class QueryResponse {
   /// The resource type.
   core.String? kind;
 
+  /// The geographic location of the query.
+  ///
+  /// For more information about BigQuery locations, see:
+  /// https://cloud.google.com/bigquery/docs/locations
+  ///
+  /// Output only.
+  core.String? location;
+
   /// The number of rows affected by a DML statement.
   ///
   /// Present only for DML statements INSERT, UPDATE or DELETE.
@@ -12743,6 +13241,23 @@ class QueryResponse {
   /// Output only.
   SessionInfo? sessionInfo;
 
+  /// Start time of this query, in milliseconds since the epoch.
+  ///
+  /// This field will be present when the query job transitions from the PENDING
+  /// state to either RUNNING or DONE.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// If the project is configured to use on-demand pricing, then this field
+  /// contains the total bytes billed for the job.
+  ///
+  /// If the project is configured to use flat-rate pricing, then you are not
+  /// billed for bytes and this field is informational only.
+  ///
+  /// Output only.
+  core.String? totalBytesBilled;
+
   /// The total number of bytes processed for this query.
   ///
   /// If this query was a dry run, this is the number of bytes that would be
@@ -12753,31 +13268,44 @@ class QueryResponse {
   /// more than the number of rows in this single page of results.
   core.String? totalRows;
 
+  /// Number of slot ms the user is actually billed for.
+  ///
+  /// Output only.
+  core.String? totalSlotMs;
+
   QueryResponse({
     this.cacheHit,
+    this.creationTime,
     this.dmlStats,
+    this.endTime,
     this.errors,
     this.jobComplete,
     this.jobCreationReason,
     this.jobReference,
     this.kind,
+    this.location,
     this.numDmlAffectedRows,
     this.pageToken,
     this.queryId,
     this.rows,
     this.schema,
     this.sessionInfo,
+    this.startTime,
+    this.totalBytesBilled,
     this.totalBytesProcessed,
     this.totalRows,
+    this.totalSlotMs,
   });
 
   QueryResponse.fromJson(core.Map json_)
       : this(
           cacheHit: json_['cacheHit'] as core.bool?,
+          creationTime: json_['creationTime'] as core.String?,
           dmlStats: json_.containsKey('dmlStats')
               ? DmlStatistics.fromJson(
                   json_['dmlStats'] as core.Map<core.String, core.dynamic>)
               : null,
+          endTime: json_['endTime'] as core.String?,
           errors: (json_['errors'] as core.List?)
               ?.map((value) => ErrorProto.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -12792,6 +13320,7 @@ class QueryResponse {
                   json_['jobReference'] as core.Map<core.String, core.dynamic>)
               : null,
           kind: json_['kind'] as core.String?,
+          location: json_['location'] as core.String?,
           numDmlAffectedRows: json_['numDmlAffectedRows'] as core.String?,
           pageToken: json_['pageToken'] as core.String?,
           queryId: json_['queryId'] as core.String?,
@@ -12807,18 +13336,24 @@ class QueryResponse {
               ? SessionInfo.fromJson(
                   json_['sessionInfo'] as core.Map<core.String, core.dynamic>)
               : null,
+          startTime: json_['startTime'] as core.String?,
+          totalBytesBilled: json_['totalBytesBilled'] as core.String?,
           totalBytesProcessed: json_['totalBytesProcessed'] as core.String?,
           totalRows: json_['totalRows'] as core.String?,
+          totalSlotMs: json_['totalSlotMs'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cacheHit != null) 'cacheHit': cacheHit!,
+        if (creationTime != null) 'creationTime': creationTime!,
         if (dmlStats != null) 'dmlStats': dmlStats!,
+        if (endTime != null) 'endTime': endTime!,
         if (errors != null) 'errors': errors!,
         if (jobComplete != null) 'jobComplete': jobComplete!,
         if (jobCreationReason != null) 'jobCreationReason': jobCreationReason!,
         if (jobReference != null) 'jobReference': jobReference!,
         if (kind != null) 'kind': kind!,
+        if (location != null) 'location': location!,
         if (numDmlAffectedRows != null)
           'numDmlAffectedRows': numDmlAffectedRows!,
         if (pageToken != null) 'pageToken': pageToken!,
@@ -12826,9 +13361,12 @@ class QueryResponse {
         if (rows != null) 'rows': rows!,
         if (schema != null) 'schema': schema!,
         if (sessionInfo != null) 'sessionInfo': sessionInfo!,
+        if (startTime != null) 'startTime': startTime!,
+        if (totalBytesBilled != null) 'totalBytesBilled': totalBytesBilled!,
         if (totalBytesProcessed != null)
           'totalBytesProcessed': totalBytesProcessed!,
         if (totalRows != null) 'totalRows': totalRows!,
+        if (totalSlotMs != null) 'totalSlotMs': totalSlotMs!,
       };
 }
 
@@ -13618,6 +14156,30 @@ class RowAccessPolicy {
   /// Required.
   core.String? filterPredicate;
 
+  /// Input only.
+  ///
+  /// The optional list of iam_member users or groups that specifies the initial
+  /// members that the row-level access policy should be created with. grantees
+  /// types: - "user:alice@example.com": An email address that represents a
+  /// specific Google account. -
+  /// "serviceAccount:my-other-app@appspot.gserviceaccount.com": An email
+  /// address that represents a service account. - "group:admins@example.com":
+  /// An email address that represents a Google group. -
+  /// "domain:example.com":The Google Workspace domain (primary) that represents
+  /// all the users of that domain. - "allAuthenticatedUsers": A special
+  /// identifier that represents all service accounts and all users on the
+  /// internet who have authenticated with a Google Account. This identifier
+  /// includes accounts that aren't connected to a Google Workspace or Cloud
+  /// Identity domain, such as personal Gmail accounts. Users who aren't
+  /// authenticated, such as anonymous visitors, aren't included. - "allUsers":A
+  /// special identifier that represents anyone who is on the internet,
+  /// including authenticated and unauthenticated users. Because BigQuery
+  /// requires authentication before a user can access the service, allUsers
+  /// includes only authenticated users.
+  ///
+  /// Optional.
+  core.List<core.String>? grantees;
+
   /// The time when this row access policy was last modified, in milliseconds
   /// since the epoch.
   ///
@@ -13633,6 +14195,7 @@ class RowAccessPolicy {
     this.creationTime,
     this.etag,
     this.filterPredicate,
+    this.grantees,
     this.lastModifiedTime,
     this.rowAccessPolicyReference,
   });
@@ -13642,6 +14205,9 @@ class RowAccessPolicy {
           creationTime: json_['creationTime'] as core.String?,
           etag: json_['etag'] as core.String?,
           filterPredicate: json_['filterPredicate'] as core.String?,
+          grantees: (json_['grantees'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           lastModifiedTime: json_['lastModifiedTime'] as core.String?,
           rowAccessPolicyReference:
               json_.containsKey('rowAccessPolicyReference')
@@ -13655,6 +14221,7 @@ class RowAccessPolicy {
         if (creationTime != null) 'creationTime': creationTime!,
         if (etag != null) 'etag': etag!,
         if (filterPredicate != null) 'filterPredicate': filterPredicate!,
+        if (grantees != null) 'grantees': grantees!,
         if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
         if (rowAccessPolicyReference != null)
           'rowAccessPolicyReference': rowAccessPolicyReference!,
@@ -14667,6 +15234,97 @@ class StorageDescriptor {
         if (locationUri != null) 'locationUri': locationUri!,
         if (outputFormat != null) 'outputFormat': outputFormat!,
         if (serdeInfo != null) 'serdeInfo': serdeInfo!,
+      };
+}
+
+/// If the stored column was not used, explain why.
+class StoredColumnsUnusedReason {
+  /// Specifies the high-level reason for the unused scenario, each reason must
+  /// have a code associated.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : Default value.
+  /// - "STORED_COLUMNS_COVER_INSUFFICIENT" : If stored columns do not fully
+  /// cover the columns.
+  /// - "BASE_TABLE_HAS_RLS" : If the base table has RLS (Row Level Security).
+  /// - "BASE_TABLE_HAS_CLS" : If the base table has CLS (Column Level
+  /// Security).
+  /// - "UNSUPPORTED_PREFILTER" : If the provided prefilter is not supported.
+  /// - "INTERNAL_ERROR" : If an internal error is preventing stored columns
+  /// from being used.
+  /// - "OTHER_REASON" : Indicates that the reason stored columns cannot be used
+  /// in the query is not covered by any of the other StoredColumnsUnusedReason
+  /// options.
+  core.String? code;
+
+  /// Specifies the detailed description for the scenario.
+  core.String? message;
+
+  /// Specifies which columns were not covered by the stored columns for the
+  /// specified code up to 20 columns.
+  ///
+  /// This is populated when the code is STORED_COLUMNS_COVER_INSUFFICIENT and
+  /// BASE_TABLE_HAS_CLS.
+  core.List<core.String>? uncoveredColumns;
+
+  StoredColumnsUnusedReason({
+    this.code,
+    this.message,
+    this.uncoveredColumns,
+  });
+
+  StoredColumnsUnusedReason.fromJson(core.Map json_)
+      : this(
+          code: json_['code'] as core.String?,
+          message: json_['message'] as core.String?,
+          uncoveredColumns: (json_['uncoveredColumns'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (message != null) 'message': message!,
+        if (uncoveredColumns != null) 'uncoveredColumns': uncoveredColumns!,
+      };
+}
+
+/// Indicates the stored columns usage in the query.
+class StoredColumnsUsage {
+  /// Specifies the base table.
+  TableReference? baseTable;
+
+  /// Specifies whether the query was accelerated with stored columns.
+  core.bool? isQueryAccelerated;
+
+  /// If stored columns were not used, explain why.
+  core.List<StoredColumnsUnusedReason>? storedColumnsUnusedReasons;
+
+  StoredColumnsUsage({
+    this.baseTable,
+    this.isQueryAccelerated,
+    this.storedColumnsUnusedReasons,
+  });
+
+  StoredColumnsUsage.fromJson(core.Map json_)
+      : this(
+          baseTable: json_.containsKey('baseTable')
+              ? TableReference.fromJson(
+                  json_['baseTable'] as core.Map<core.String, core.dynamic>)
+              : null,
+          isQueryAccelerated: json_['isQueryAccelerated'] as core.bool?,
+          storedColumnsUnusedReasons:
+              (json_['storedColumnsUnusedReasons'] as core.List?)
+                  ?.map((value) => StoredColumnsUnusedReason.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseTable != null) 'baseTable': baseTable!,
+        if (isQueryAccelerated != null)
+          'isQueryAccelerated': isQueryAccelerated!,
+        if (storedColumnsUnusedReasons != null)
+          'storedColumnsUnusedReasons': storedColumnsUnusedReasons!,
       };
 }
 
@@ -16082,7 +16740,7 @@ class TableFieldSchema {
 
 /// Information about a logical view.
 class TableListTablesView {
-  /// Specifices the privacy policy for the view.
+  /// Specifies the privacy policy for the view.
   PrivacyPolicy? privacyPolicy;
 
   /// True if view is defined in legacy SQL dialect, false if in GoogleSQL.
@@ -16690,7 +17348,7 @@ class TrainingOptions {
   /// smallest to largest) in the corresponding column are used as training
   /// data, and the rest are eval data. It respects the order in Orderable data
   /// types:
-  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#data-type-properties
+  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#data_type_properties
   core.String? dataSplitColumn;
 
   /// The fraction of evaluation data over the whole input data.
@@ -16749,6 +17407,16 @@ class TrainingOptions {
 
   /// Whether the model should include intercept during model training.
   core.bool? fitIntercept;
+
+  /// The forecast limit lower bound that was used during ARIMA model training
+  /// with limits.
+  ///
+  /// To see more details of the algorithm: https://otexts.com/fpp2/limits.html
+  core.double? forecastLimitLowerBound;
+
+  /// The forecast limit upper bound that was used during ARIMA model training
+  /// with limits.
+  core.double? forecastLimitUpperBound;
 
   /// Hidden units for dnn models.
   core.List<core.String>? hiddenUnits;
@@ -16826,7 +17494,7 @@ class TrainingOptions {
   /// - "UA" : Ukraine
   /// - "US" : United States
   /// - "VE" : Venezuela
-  /// - "VN" : Viet Nam
+  /// - "VN" : Vietnam
   /// - "ZA" : South Africa
   core.String? holidayRegion;
 
@@ -17131,6 +17799,8 @@ class TrainingOptions {
     this.enableGlobalExplain,
     this.feedbackType,
     this.fitIntercept,
+    this.forecastLimitLowerBound,
+    this.forecastLimitUpperBound,
     this.hiddenUnits,
     this.holidayRegion,
     this.holidayRegions,
@@ -17231,6 +17901,10 @@ class TrainingOptions {
           enableGlobalExplain: json_['enableGlobalExplain'] as core.bool?,
           feedbackType: json_['feedbackType'] as core.String?,
           fitIntercept: json_['fitIntercept'] as core.bool?,
+          forecastLimitLowerBound:
+              (json_['forecastLimitLowerBound'] as core.num?)?.toDouble(),
+          forecastLimitUpperBound:
+              (json_['forecastLimitUpperBound'] as core.num?)?.toDouble(),
           hiddenUnits: (json_['hiddenUnits'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -17370,6 +18044,10 @@ class TrainingOptions {
           'enableGlobalExplain': enableGlobalExplain!,
         if (feedbackType != null) 'feedbackType': feedbackType!,
         if (fitIntercept != null) 'fitIntercept': fitIntercept!,
+        if (forecastLimitLowerBound != null)
+          'forecastLimitLowerBound': forecastLimitLowerBound!,
+        if (forecastLimitUpperBound != null)
+          'forecastLimitUpperBound': forecastLimitUpperBound!,
         if (hiddenUnits != null) 'hiddenUnits': hiddenUnits!,
         if (holidayRegion != null) 'holidayRegion': holidayRegion!,
         if (holidayRegions != null) 'holidayRegions': holidayRegions!,
@@ -17729,9 +18407,14 @@ class VectorSearchStatistics {
   /// - "FULLY_USED" : The entire vector search query used vector indexes.
   core.String? indexUsageMode;
 
+  /// Specifies the usage of stored columns in the query when stored columns are
+  /// used in the query.
+  core.List<StoredColumnsUsage>? storedColumnsUsages;
+
   VectorSearchStatistics({
     this.indexUnusedReasons,
     this.indexUsageMode,
+    this.storedColumnsUsages,
   });
 
   VectorSearchStatistics.fromJson(core.Map json_)
@@ -17741,12 +18424,18 @@ class VectorSearchStatistics {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           indexUsageMode: json_['indexUsageMode'] as core.String?,
+          storedColumnsUsages: (json_['storedColumnsUsages'] as core.List?)
+              ?.map((value) => StoredColumnsUsage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (indexUnusedReasons != null)
           'indexUnusedReasons': indexUnusedReasons!,
         if (indexUsageMode != null) 'indexUsageMode': indexUsageMode!,
+        if (storedColumnsUsages != null)
+          'storedColumnsUsages': storedColumnsUsages!,
       };
 }
 
@@ -17757,7 +18446,7 @@ class ViewDefinition {
   /// Optional.
   core.List<ForeignViewDefinition>? foreignDefinitions;
 
-  /// Specifices the privacy policy for the view.
+  /// Specifies the privacy policy for the view.
   ///
   /// Optional.
   PrivacyPolicy? privacyPolicy;

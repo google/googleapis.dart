@@ -4244,7 +4244,8 @@ class ProjectsImageResource {
   /// to learn more. When no InfoTypes or CustomInfoTypes are specified in this
   /// request, the system will automatically choose what detectors to run. By
   /// default this may be all types, but may change over time as detectors are
-  /// updated.
+  /// updated. Only the first frame of each multiframe image is redacted.
+  /// Metadata and other frames are omitted in the response.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6620,7 +6621,8 @@ class ProjectsLocationsImageResource {
   /// to learn more. When no InfoTypes or CustomInfoTypes are specified in this
   /// request, the system will automatically choose what detectors to run. By
   /// default this may be all types, but may change over time as detectors are
-  /// updated.
+  /// updated. Only the first frame of each multiframe image is redacted.
+  /// Metadata and other frames are omitted in the response.
   ///
   /// [request] - The metadata request object.
   ///
@@ -10929,7 +10931,7 @@ class GooglePrivacyDlpV2CryptoKey {
 /// https://cloud.google.com/sensitive-data-protection/docs/pseudonymization to
 /// learn more. Note: We recommend using CryptoDeterministicConfig for all use
 /// cases which do not require preserving the input alphabet space and size,
-/// plus warrant referential integrity.
+/// plus warrant referential integrity. FPE incurs significant latency costs.
 class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
   /// Common alphabets.
   /// Possible string values are:
@@ -12966,6 +12968,15 @@ class GooglePrivacyDlpV2DiscoveryConfig {
   GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation?
       otherCloudStartingLocation;
 
+  /// Processing location configuration.
+  ///
+  /// Vertex AI dataset scanning will set
+  /// processing_location.image_fallback_type to MultiRegionProcessing by
+  /// default.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2ProcessingLocation? processingLocation;
+
   /// A status for this configuration.
   ///
   /// Required.
@@ -12993,6 +13004,7 @@ class GooglePrivacyDlpV2DiscoveryConfig {
     this.name,
     this.orgConfig,
     this.otherCloudStartingLocation,
+    this.processingLocation,
     this.status,
     this.targets,
     this.updateTime,
@@ -13025,6 +13037,11 @@ class GooglePrivacyDlpV2DiscoveryConfig {
                   json_['otherCloudStartingLocation']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          processingLocation: json_.containsKey('processingLocation')
+              ? GooglePrivacyDlpV2ProcessingLocation.fromJson(
+                  json_['processingLocation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           status: json_['status'] as core.String?,
           targets: (json_['targets'] as core.List?)
               ?.map((value) => GooglePrivacyDlpV2DiscoveryTarget.fromJson(
@@ -13044,6 +13061,8 @@ class GooglePrivacyDlpV2DiscoveryConfig {
         if (orgConfig != null) 'orgConfig': orgConfig!,
         if (otherCloudStartingLocation != null)
           'otherCloudStartingLocation': otherCloudStartingLocation!,
+        if (processingLocation != null)
+          'processingLocation': processingLocation!,
         if (status != null) 'status': status!,
         if (targets != null) 'targets': targets!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -13478,12 +13497,25 @@ class GooglePrivacyDlpV2DiscoveryTarget {
   /// Only one target of this type is allowed.
   GooglePrivacyDlpV2SecretsDiscoveryTarget? secretsTarget;
 
+  /// Vertex AI dataset target for Discovery.
+  ///
+  /// The first target to match a dataset will be the one applied. Note that
+  /// discovery for Vertex AI can incur Cloud Storage Class B operation charges
+  /// for storage.objects.get operations and retrieval fees. For more
+  /// information, see
+  /// [Cloud Storage pricing](https://cloud.google.com/storage/pricing#price-tables).
+  /// Note that discovery for Vertex AI dataset will not be able to scan images
+  /// unless DiscoveryConfig.processing_location.image_fallback_location has
+  /// multi_region_processing or global_processing configured.
+  GooglePrivacyDlpV2VertexDatasetDiscoveryTarget? vertexDatasetTarget;
+
   GooglePrivacyDlpV2DiscoveryTarget({
     this.bigQueryTarget,
     this.cloudSqlTarget,
     this.cloudStorageTarget,
     this.otherCloudTarget,
     this.secretsTarget,
+    this.vertexDatasetTarget,
   });
 
   GooglePrivacyDlpV2DiscoveryTarget.fromJson(core.Map json_)
@@ -13512,6 +13544,11 @@ class GooglePrivacyDlpV2DiscoveryTarget {
               ? GooglePrivacyDlpV2SecretsDiscoveryTarget.fromJson(
                   json_['secretsTarget'] as core.Map<core.String, core.dynamic>)
               : null,
+          vertexDatasetTarget: json_.containsKey('vertexDatasetTarget')
+              ? GooglePrivacyDlpV2VertexDatasetDiscoveryTarget.fromJson(
+                  json_['vertexDatasetTarget']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13521,6 +13558,144 @@ class GooglePrivacyDlpV2DiscoveryTarget {
           'cloudStorageTarget': cloudStorageTarget!,
         if (otherCloudTarget != null) 'otherCloudTarget': otherCloudTarget!,
         if (secretsTarget != null) 'secretsTarget': secretsTarget!,
+        if (vertexDatasetTarget != null)
+          'vertexDatasetTarget': vertexDatasetTarget!,
+      };
+}
+
+/// Requirements that must be true before a dataset is profiled for the first
+/// time.
+class GooglePrivacyDlpV2DiscoveryVertexDatasetConditions {
+  /// Vertex AI dataset must have been created after this date.
+  ///
+  /// Used to avoid backfilling.
+  core.String? createdAfter;
+
+  /// Minimum age a Vertex AI dataset must have.
+  ///
+  /// If set, the value must be 1 hour or greater.
+  core.String? minAge;
+
+  GooglePrivacyDlpV2DiscoveryVertexDatasetConditions({
+    this.createdAfter,
+    this.minAge,
+  });
+
+  GooglePrivacyDlpV2DiscoveryVertexDatasetConditions.fromJson(core.Map json_)
+      : this(
+          createdAfter: json_['createdAfter'] as core.String?,
+          minAge: json_['minAge'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createdAfter != null) 'createdAfter': createdAfter!,
+        if (minAge != null) 'minAge': minAge!,
+      };
+}
+
+/// Determines what datasets will have profiles generated within an organization
+/// or project.
+///
+/// Includes the ability to filter by regular expression patterns on project ID
+/// or dataset regex.
+class GooglePrivacyDlpV2DiscoveryVertexDatasetFilter {
+  /// A specific set of Vertex AI datasets for this filter to apply to.
+  GooglePrivacyDlpV2VertexDatasetCollection? collection;
+
+  /// Catch-all.
+  ///
+  /// This should always be the last target in the list because anything above
+  /// it will apply first. Should only appear once in a configuration. If none
+  /// is specified, a default one will be added automatically.
+  GooglePrivacyDlpV2AllOtherResources? others;
+
+  /// The dataset resource to scan.
+  ///
+  /// Targets including this can only include one target (the target with this
+  /// dataset resource reference).
+  GooglePrivacyDlpV2VertexDatasetResourceReference?
+      vertexDatasetResourceReference;
+
+  GooglePrivacyDlpV2DiscoveryVertexDatasetFilter({
+    this.collection,
+    this.others,
+    this.vertexDatasetResourceReference,
+  });
+
+  GooglePrivacyDlpV2DiscoveryVertexDatasetFilter.fromJson(core.Map json_)
+      : this(
+          collection: json_.containsKey('collection')
+              ? GooglePrivacyDlpV2VertexDatasetCollection.fromJson(
+                  json_['collection'] as core.Map<core.String, core.dynamic>)
+              : null,
+          others: json_.containsKey('others')
+              ? GooglePrivacyDlpV2AllOtherResources.fromJson(
+                  json_['others'] as core.Map<core.String, core.dynamic>)
+              : null,
+          vertexDatasetResourceReference:
+              json_.containsKey('vertexDatasetResourceReference')
+                  ? GooglePrivacyDlpV2VertexDatasetResourceReference.fromJson(
+                      json_['vertexDatasetResourceReference']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (collection != null) 'collection': collection!,
+        if (others != null) 'others': others!,
+        if (vertexDatasetResourceReference != null)
+          'vertexDatasetResourceReference': vertexDatasetResourceReference!,
+      };
+}
+
+/// How often existing datasets should have their profiles refreshed.
+///
+/// New datasets are scanned as quickly as possible depending on system
+/// capacity.
+class GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence {
+  /// Governs when to update data profiles when the inspection rules defined by
+  /// the `InspectTemplate` change.
+  ///
+  /// If not set, changing the template will not cause a data profile to be
+  /// updated.
+  GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence?
+      inspectTemplateModifiedCadence;
+
+  /// If you set this field, profiles are refreshed at this frequency regardless
+  /// of whether the underlying datasets have changed.
+  ///
+  /// Defaults to never.
+  /// Possible string values are:
+  /// - "UPDATE_FREQUENCY_UNSPECIFIED" : Unspecified.
+  /// - "UPDATE_FREQUENCY_NEVER" : After the data profile is created, it will
+  /// never be updated.
+  /// - "UPDATE_FREQUENCY_DAILY" : The data profile can be updated up to once
+  /// every 24 hours.
+  /// - "UPDATE_FREQUENCY_MONTHLY" : The data profile can be updated up to once
+  /// every 30 days. Default.
+  core.String? refreshFrequency;
+
+  GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence({
+    this.inspectTemplateModifiedCadence,
+    this.refreshFrequency,
+  });
+
+  GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence.fromJson(
+      core.Map json_)
+      : this(
+          inspectTemplateModifiedCadence:
+              json_.containsKey('inspectTemplateModifiedCadence')
+                  ? GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence
+                      .fromJson(json_['inspectTemplateModifiedCadence']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          refreshFrequency: json_['refreshFrequency'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inspectTemplateModifiedCadence != null)
+          'inspectTemplateModifiedCadence': inspectTemplateModifiedCadence!,
+        if (refreshFrequency != null) 'refreshFrequency': refreshFrequency!,
       };
 }
 
@@ -13877,20 +14052,44 @@ class GooglePrivacyDlpV2ExclusionRule {
 /// If set, the detailed data profiles will be persisted to the location of your
 /// choice whenever updated.
 class GooglePrivacyDlpV2Export {
-  /// Store all table and column profiles in an existing table or a new table in
+  /// Store all profiles to BigQuery.
+  ///
+  /// * The system will create a new dataset and table for you if none are are
+  /// provided. The dataset will be named `sensitive_data_protection_discovery`
+  /// and table will be named `discovery_profiles`. This table will be placed in
+  /// the same project as the container project running the scan. After the
+  /// first profile is generated and the dataset and table are created, the
+  /// discovery scan configuration will be updated with the dataset and table
+  /// names. * See
+  /// [Analyze data profiles stored in BigQuery](https://cloud.google.com/sensitive-data-protection/docs/analyze-data-profiles).
+  /// * See
+  /// [Sample queries for your BigQuery table](https://cloud.google.com/sensitive-data-protection/docs/analyze-data-profiles#sample_sql_queries).
+  /// * Data is inserted using
+  /// [streaming insert](https://cloud.google.com/blog/products/bigquery/life-of-a-bigquery-streaming-insert)
+  /// and so data may be in the buffer for a period of time after the profile
+  /// has finished. * The Pub/Sub notification is sent before the streaming
+  /// buffer is guaranteed to be written, so data may not be instantly visible
+  /// to queries by the time your topic receives the Pub/Sub notification. * The
+  /// best practice is to use the same table for an entire organization so that
+  /// you can take advantage of the
+  /// [provided Looker reports](https://cloud.google.com/sensitive-data-protection/docs/analyze-data-profiles#use_a_premade_report).
+  /// If you use VPC Service Controls to define security perimeters, then you
+  /// must use a separate table for each boundary.
+  GooglePrivacyDlpV2BigQueryTable? profileTable;
+
+  /// Store sample data profile findings in an existing table or a new table in
   /// an existing dataset.
   ///
-  /// Each re-generation will result in new rows in BigQuery. Data is inserted
+  /// Each regeneration will result in new rows in BigQuery. Data is inserted
   /// using
   /// [streaming insert](https://cloud.google.com/blog/products/bigquery/life-of-a-bigquery-streaming-insert)
   /// and so data may be in the buffer for a period of time after the profile
-  /// has finished. The Pub/Sub notification is sent before the streaming buffer
-  /// is guaranteed to be written, so data may not be instantly visible to
-  /// queries by the time your topic receives the Pub/Sub notification.
-  GooglePrivacyDlpV2BigQueryTable? profileTable;
+  /// has finished.
+  GooglePrivacyDlpV2BigQueryTable? sampleFindingsTable;
 
   GooglePrivacyDlpV2Export({
     this.profileTable,
+    this.sampleFindingsTable,
   });
 
   GooglePrivacyDlpV2Export.fromJson(core.Map json_)
@@ -13899,10 +14098,17 @@ class GooglePrivacyDlpV2Export {
               ? GooglePrivacyDlpV2BigQueryTable.fromJson(
                   json_['profileTable'] as core.Map<core.String, core.dynamic>)
               : null,
+          sampleFindingsTable: json_.containsKey('sampleFindingsTable')
+              ? GooglePrivacyDlpV2BigQueryTable.fromJson(
+                  json_['sampleFindingsTable']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (profileTable != null) 'profileTable': profileTable!,
+        if (sampleFindingsTable != null)
+          'sampleFindingsTable': sampleFindingsTable!,
       };
 }
 
@@ -14291,7 +14497,9 @@ class GooglePrivacyDlpV2FileStoreDataProfile {
 
   /// The file store path.
   ///
-  /// * Cloud Storage: `gs://{bucket}` * Amazon S3: `s3://{bucket}`
+  /// * Cloud Storage: `gs://{bucket}` * Amazon S3: `s3://{bucket}` * Vertex AI
+  /// dataset:
+  /// `projects/{project_number}/locations/{location}/datasets/{dataset_id}`
   core.String? fileStorePath;
 
   /// The resource name of the resource profiled.
@@ -14329,6 +14537,9 @@ class GooglePrivacyDlpV2FileStoreDataProfile {
   /// For Amazon S3 buckets, this is the AWS Account Id.
   core.String? projectId;
 
+  /// Resources related to this profile.
+  core.List<GooglePrivacyDlpV2RelatedResource>? relatedResources;
+
   /// Attributes of the resource being profiled.
   ///
   /// Currently used attributes: * customer_managed_encryption: boolean - true:
@@ -14348,6 +14559,9 @@ class GooglePrivacyDlpV2FileStoreDataProfile {
   /// disabled, some objects inside it may be public, but none are known yet.
   /// - "RESOURCE_VISIBILITY_RESTRICTED" : Visible only to specific users.
   core.String? resourceVisibility;
+
+  /// The BigQuery table to which the sample findings are written.
+  GooglePrivacyDlpV2BigQueryTable? sampleFindingsTable;
 
   /// The sensitivity score of this resource.
   GooglePrivacyDlpV2SensitivityScore? sensitivityScore;
@@ -14381,9 +14595,11 @@ class GooglePrivacyDlpV2FileStoreDataProfile {
     this.profileStatus,
     this.projectDataProfile,
     this.projectId,
+    this.relatedResources,
     this.resourceAttributes,
     this.resourceLabels,
     this.resourceVisibility,
+    this.sampleFindingsTable,
     this.sensitivityScore,
     this.state,
   });
@@ -14432,6 +14648,10 @@ class GooglePrivacyDlpV2FileStoreDataProfile {
               : null,
           projectDataProfile: json_['projectDataProfile'] as core.String?,
           projectId: json_['projectId'] as core.String?,
+          relatedResources: (json_['relatedResources'] as core.List?)
+              ?.map((value) => GooglePrivacyDlpV2RelatedResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           resourceAttributes: (json_['resourceAttributes']
                   as core.Map<core.String, core.dynamic>?)
               ?.map(
@@ -14450,6 +14670,11 @@ class GooglePrivacyDlpV2FileStoreDataProfile {
             ),
           ),
           resourceVisibility: json_['resourceVisibility'] as core.String?,
+          sampleFindingsTable: json_.containsKey('sampleFindingsTable')
+              ? GooglePrivacyDlpV2BigQueryTable.fromJson(
+                  json_['sampleFindingsTable']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           sensitivityScore: json_.containsKey('sensitivityScore')
               ? GooglePrivacyDlpV2SensitivityScore.fromJson(
                   json_['sensitivityScore']
@@ -14482,11 +14707,14 @@ class GooglePrivacyDlpV2FileStoreDataProfile {
         if (projectDataProfile != null)
           'projectDataProfile': projectDataProfile!,
         if (projectId != null) 'projectId': projectId!,
+        if (relatedResources != null) 'relatedResources': relatedResources!,
         if (resourceAttributes != null)
           'resourceAttributes': resourceAttributes!,
         if (resourceLabels != null) 'resourceLabels': resourceLabels!,
         if (resourceVisibility != null)
           'resourceVisibility': resourceVisibility!,
+        if (sampleFindingsTable != null)
+          'sampleFindingsTable': sampleFindingsTable!,
         if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
         if (state != null) 'state': state!,
       };
@@ -14828,6 +15056,9 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfig {
       };
 }
 
+/// Processing will happen in the global region.
+typedef GooglePrivacyDlpV2GlobalProcessing = $Empty;
+
 /// The rule that adjusts the likelihood of findings within a certain proximity
 /// of hotwords.
 class GooglePrivacyDlpV2HotwordRule {
@@ -15144,6 +15375,42 @@ class GooglePrivacyDlpV2HybridOptions {
       };
 }
 
+/// Configure image processing to fall back to the configured processing option
+/// below if unavailable in the request location.
+class GooglePrivacyDlpV2ImageFallbackLocation {
+  /// Processing will happen in the global region.
+  GooglePrivacyDlpV2GlobalProcessing? globalProcessing;
+
+  /// Processing will happen in a multi-region that contains the current region
+  /// if available.
+  GooglePrivacyDlpV2MultiRegionProcessing? multiRegionProcessing;
+
+  GooglePrivacyDlpV2ImageFallbackLocation({
+    this.globalProcessing,
+    this.multiRegionProcessing,
+  });
+
+  GooglePrivacyDlpV2ImageFallbackLocation.fromJson(core.Map json_)
+      : this(
+          globalProcessing: json_.containsKey('globalProcessing')
+              ? GooglePrivacyDlpV2GlobalProcessing.fromJson(
+                  json_['globalProcessing']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          multiRegionProcessing: json_.containsKey('multiRegionProcessing')
+              ? GooglePrivacyDlpV2MultiRegionProcessing.fromJson(
+                  json_['multiRegionProcessing']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (globalProcessing != null) 'globalProcessing': globalProcessing!,
+        if (multiRegionProcessing != null)
+          'multiRegionProcessing': multiRegionProcessing!,
+      };
+}
+
 /// Location of the finding within an image.
 class GooglePrivacyDlpV2ImageLocation {
   /// Bounding boxes locating the pixels within the image containing the
@@ -15366,6 +15633,7 @@ class GooglePrivacyDlpV2InfoTypeCategory {
   /// - "CHINA" : The infoType is typically used in China.
   /// - "COLOMBIA" : The infoType is typically used in Colombia.
   /// - "CROATIA" : The infoType is typically used in Croatia.
+  /// - "CZECHIA" : The infoType is typically used in Czechia.
   /// - "DENMARK" : The infoType is typically used in Denmark.
   /// - "FRANCE" : The infoType is typically used in France.
   /// - "FINLAND" : The infoType is typically used in Finland.
@@ -15422,6 +15690,7 @@ class GooglePrivacyDlpV2InfoTypeCategory {
   /// - "CONTEXTUAL_INFORMATION" : Information that is not sensitive on its own,
   /// but provides details about the circumstances surrounding an entity or an
   /// event.
+  /// - "CUSTOM" : Category for `CustomInfoType` types.
   core.String? typeCategory;
 
   GooglePrivacyDlpV2InfoTypeCategory({
@@ -15457,7 +15726,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
   /// Human readable form of the infoType name.
   core.String? displayName;
 
-  /// A sample true positive for this infoType.
+  /// A sample that is a true positive for this infoType.
   core.String? example;
 
   /// Internal name of the infoType.
@@ -17459,6 +17728,10 @@ class GooglePrivacyDlpV2MetadataLocation {
       };
 }
 
+/// Processing will happen in a multi-region that contains the current region if
+/// available.
+typedef GooglePrivacyDlpV2MultiRegionProcessing = $Empty;
+
 /// Compute numerical stats over an individual column, including min, max, and
 /// quantiles.
 class GooglePrivacyDlpV2NumericalStatsConfig {
@@ -17972,7 +18245,10 @@ class GooglePrivacyDlpV2PrimitiveTransformation {
   /// Crypto
   GooglePrivacyDlpV2CryptoHashConfig? cryptoHashConfig;
 
-  /// Ffx-Fpe
+  /// Ffx-Fpe.
+  ///
+  /// Strongly discouraged, consider using CryptoDeterministicConfig instead.
+  /// Fpe is computationally expensive incurring latency costs.
   GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig? cryptoReplaceFfxFpeConfig;
 
   /// Date Shift
@@ -18175,6 +18451,33 @@ class GooglePrivacyDlpV2PrivacyMetric {
         if (lDiversityConfig != null) 'lDiversityConfig': lDiversityConfig!,
         if (numericalStatsConfig != null)
           'numericalStatsConfig': numericalStatsConfig!,
+      };
+}
+
+/// Configure processing location for discovery and inspection.
+///
+/// For example, image OCR is only provided in limited regions but configuring
+/// ProcessingLocation will redirect OCR to a location where OCR is provided.
+class GooglePrivacyDlpV2ProcessingLocation {
+  /// Image processing will fall back using this configuration.
+  GooglePrivacyDlpV2ImageFallbackLocation? imageFallbackLocation;
+
+  GooglePrivacyDlpV2ProcessingLocation({
+    this.imageFallbackLocation,
+  });
+
+  GooglePrivacyDlpV2ProcessingLocation.fromJson(core.Map json_)
+      : this(
+          imageFallbackLocation: json_.containsKey('imageFallbackLocation')
+              ? GooglePrivacyDlpV2ImageFallbackLocation.fromJson(
+                  json_['imageFallbackLocation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (imageFallbackLocation != null)
+          'imageFallbackLocation': imageFallbackLocation!,
       };
 }
 
@@ -19108,6 +19411,28 @@ class GooglePrivacyDlpV2ReidentifyContentResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (item != null) 'item': item!,
         if (overview != null) 'overview': overview!,
+      };
+}
+
+/// A related resource.
+///
+/// Examples: * The source BigQuery table for a Vertex AI dataset. * The source
+/// Cloud Storage bucket for a Vertex AI dataset.
+class GooglePrivacyDlpV2RelatedResource {
+  /// The full resource name of the related resource.
+  core.String? fullResource;
+
+  GooglePrivacyDlpV2RelatedResource({
+    this.fullResource,
+  });
+
+  GooglePrivacyDlpV2RelatedResource.fromJson(core.Map json_)
+      : this(
+          fullResource: json_['fullResource'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fullResource != null) 'fullResource': fullResource!,
       };
 }
 
@@ -20144,6 +20469,9 @@ class GooglePrivacyDlpV2TableDataProfile {
   /// The resource name of the project data profile for this table.
   core.String? projectDataProfile;
 
+  /// Resources related to this profile.
+  core.List<GooglePrivacyDlpV2RelatedResource>? relatedResources;
+
   /// The labels applied to the resource at the time the profile was generated.
   core.Map<core.String, core.String>? resourceLabels;
 
@@ -20161,6 +20489,9 @@ class GooglePrivacyDlpV2TableDataProfile {
   ///
   /// This will not be populated for BigLake tables.
   core.String? rowCount;
+
+  /// The BigQuery table to which the sample findings are written.
+  GooglePrivacyDlpV2BigQueryTable? sampleFindingsTable;
 
   /// The number of columns profiled in the table.
   core.String? scannedColumnCount;
@@ -20203,9 +20534,11 @@ class GooglePrivacyDlpV2TableDataProfile {
     this.profileLastGenerated,
     this.profileStatus,
     this.projectDataProfile,
+    this.relatedResources,
     this.resourceLabels,
     this.resourceVisibility,
     this.rowCount,
+    this.sampleFindingsTable,
     this.scannedColumnCount,
     this.sensitivityScore,
     this.state,
@@ -20253,6 +20586,10 @@ class GooglePrivacyDlpV2TableDataProfile {
                   json_['profileStatus'] as core.Map<core.String, core.dynamic>)
               : null,
           projectDataProfile: json_['projectDataProfile'] as core.String?,
+          relatedResources: (json_['relatedResources'] as core.List?)
+              ?.map((value) => GooglePrivacyDlpV2RelatedResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           resourceLabels:
               (json_['resourceLabels'] as core.Map<core.String, core.dynamic>?)
                   ?.map(
@@ -20263,6 +20600,11 @@ class GooglePrivacyDlpV2TableDataProfile {
           ),
           resourceVisibility: json_['resourceVisibility'] as core.String?,
           rowCount: json_['rowCount'] as core.String?,
+          sampleFindingsTable: json_.containsKey('sampleFindingsTable')
+              ? GooglePrivacyDlpV2BigQueryTable.fromJson(
+                  json_['sampleFindingsTable']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           scannedColumnCount: json_['scannedColumnCount'] as core.String?,
           sensitivityScore: json_.containsKey('sensitivityScore')
               ? GooglePrivacyDlpV2SensitivityScore.fromJson(
@@ -20296,10 +20638,13 @@ class GooglePrivacyDlpV2TableDataProfile {
         if (profileStatus != null) 'profileStatus': profileStatus!,
         if (projectDataProfile != null)
           'projectDataProfile': projectDataProfile!,
+        if (relatedResources != null) 'relatedResources': relatedResources!,
         if (resourceLabels != null) 'resourceLabels': resourceLabels!,
         if (resourceVisibility != null)
           'resourceVisibility': resourceVisibility!,
         if (rowCount != null) 'rowCount': rowCount!,
+        if (sampleFindingsTable != null)
+          'sampleFindingsTable': sampleFindingsTable!,
         if (scannedColumnCount != null)
           'scannedColumnCount': scannedColumnCount!,
         if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
@@ -21334,6 +21679,164 @@ class GooglePrivacyDlpV2VersionDescription {
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Match dataset resources using regex filters.
+class GooglePrivacyDlpV2VertexDatasetCollection {
+  /// The regex used to filter dataset resources.
+  GooglePrivacyDlpV2VertexDatasetRegexes? vertexDatasetRegexes;
+
+  GooglePrivacyDlpV2VertexDatasetCollection({
+    this.vertexDatasetRegexes,
+  });
+
+  GooglePrivacyDlpV2VertexDatasetCollection.fromJson(core.Map json_)
+      : this(
+          vertexDatasetRegexes: json_.containsKey('vertexDatasetRegexes')
+              ? GooglePrivacyDlpV2VertexDatasetRegexes.fromJson(
+                  json_['vertexDatasetRegexes']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (vertexDatasetRegexes != null)
+          'vertexDatasetRegexes': vertexDatasetRegexes!,
+      };
+}
+
+/// Target used to match against for discovery with Vertex AI datasets.
+class GooglePrivacyDlpV2VertexDatasetDiscoveryTarget {
+  /// In addition to matching the filter, these conditions must be true before a
+  /// profile is generated.
+  GooglePrivacyDlpV2DiscoveryVertexDatasetConditions? conditions;
+
+  /// Disable profiling for datasets that match this filter.
+  GooglePrivacyDlpV2Disabled? disabled;
+
+  /// The datasets the discovery cadence applies to.
+  ///
+  /// The first target with a matching filter will be the one to apply to a
+  /// dataset.
+  ///
+  /// Required.
+  GooglePrivacyDlpV2DiscoveryVertexDatasetFilter? filter;
+
+  /// How often and when to update profiles.
+  ///
+  /// New datasets that match both the filter and conditions are scanned as
+  /// quickly as possible depending on system capacity.
+  GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence? generationCadence;
+
+  GooglePrivacyDlpV2VertexDatasetDiscoveryTarget({
+    this.conditions,
+    this.disabled,
+    this.filter,
+    this.generationCadence,
+  });
+
+  GooglePrivacyDlpV2VertexDatasetDiscoveryTarget.fromJson(core.Map json_)
+      : this(
+          conditions: json_.containsKey('conditions')
+              ? GooglePrivacyDlpV2DiscoveryVertexDatasetConditions.fromJson(
+                  json_['conditions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          disabled: json_.containsKey('disabled')
+              ? GooglePrivacyDlpV2Disabled.fromJson(
+                  json_['disabled'] as core.Map<core.String, core.dynamic>)
+              : null,
+          filter: json_.containsKey('filter')
+              ? GooglePrivacyDlpV2DiscoveryVertexDatasetFilter.fromJson(
+                  json_['filter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          generationCadence: json_.containsKey('generationCadence')
+              ? GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence
+                  .fromJson(json_['generationCadence']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conditions != null) 'conditions': conditions!,
+        if (disabled != null) 'disabled': disabled!,
+        if (filter != null) 'filter': filter!,
+        if (generationCadence != null) 'generationCadence': generationCadence!,
+      };
+}
+
+/// A pattern to match against one or more dataset resources.
+class GooglePrivacyDlpV2VertexDatasetRegex {
+  /// For organizations, if unset, will match all projects.
+  ///
+  /// Has no effect for configurations created within a project.
+  core.String? projectIdRegex;
+
+  GooglePrivacyDlpV2VertexDatasetRegex({
+    this.projectIdRegex,
+  });
+
+  GooglePrivacyDlpV2VertexDatasetRegex.fromJson(core.Map json_)
+      : this(
+          projectIdRegex: json_['projectIdRegex'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (projectIdRegex != null) 'projectIdRegex': projectIdRegex!,
+      };
+}
+
+/// A collection of regular expressions to determine what datasets to match
+/// against.
+class GooglePrivacyDlpV2VertexDatasetRegexes {
+  /// The group of regular expression patterns to match against one or more
+  /// datasets.
+  ///
+  /// Maximum of 100 entries. The sum of the lengths of all regular expressions
+  /// can't exceed 10 KiB.
+  ///
+  /// Required.
+  core.List<GooglePrivacyDlpV2VertexDatasetRegex>? patterns;
+
+  GooglePrivacyDlpV2VertexDatasetRegexes({
+    this.patterns,
+  });
+
+  GooglePrivacyDlpV2VertexDatasetRegexes.fromJson(core.Map json_)
+      : this(
+          patterns: (json_['patterns'] as core.List?)
+              ?.map((value) => GooglePrivacyDlpV2VertexDatasetRegex.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (patterns != null) 'patterns': patterns!,
+      };
+}
+
+/// Identifies a single Vertex AI dataset.
+class GooglePrivacyDlpV2VertexDatasetResourceReference {
+  /// The name of the dataset resource.
+  ///
+  /// If set within a project-level configuration, the specified resource must
+  /// be within the project.
+  ///
+  /// Required.
+  core.String? datasetResourceName;
+
+  GooglePrivacyDlpV2VertexDatasetResourceReference({
+    this.datasetResourceName,
+  });
+
+  GooglePrivacyDlpV2VertexDatasetResourceReference.fromJson(core.Map json_)
+      : this(
+          datasetResourceName: json_['datasetResourceName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (datasetResourceName != null)
+          'datasetResourceName': datasetResourceName!,
       };
 }
 

@@ -1712,9 +1712,9 @@ class GoogleCloudSecuritypostureV1PolicyRule {
   /// Valid only for boolean constraints.
   core.bool? enforce;
 
-  /// Required for GMCs if parameters defined in constraints.
+  /// Required for managed constraints if parameters are defined.
   ///
-  /// Pass parameter values when policy enforcement is enabled. Ensure that
+  /// Passes parameter values when policy enforcement is enabled. Ensure that
   /// parameter value types match those defined in the constraint definition.
   /// For example: { "allowedLocations" : \["us-east1", "us-west1"\], "allowAll"
   /// : true }
@@ -1725,8 +1725,10 @@ class GoogleCloudSecuritypostureV1PolicyRule {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? parameters;
 
-  /// The resource types policy can support, only used for Google managed
-  /// constraint and method type is GOVERN_TAGS.
+  /// The resource types policies can support, only used for managed
+  /// constraints.
+  ///
+  /// Method type is `GOVERN_TAGS`.
   ///
   /// Optional.
   ResourceTypes? resourceTypes;
@@ -2967,15 +2969,15 @@ class ResourceSelector {
       };
 }
 
-/// Set multiple resource types for one policy, eg: resourceTypes: included: -
-/// compute.googleapis.com/Instance - compute.googleapis.com/Disk Constraint
-/// definition contains an empty resource type in order to support multiple
-/// resource types in the policy.
+/// Set multiple resource types for one policy, for example: resourceTypes:
+/// included: - compute.googleapis.com/Instance - compute.googleapis.com/Disk
+/// Constraint definition contains an empty resource type in order to support
+/// multiple resource types in the policy.
 ///
-/// Only support Google managed constriaint and method type is GOVERN_TAGS Refer
+/// Only supports managed constraints. Method type is `GOVERN_TAGS`. Refer
 /// go/multi-resource-support-force-tags-gmc to get more details.
 class ResourceTypes {
-  /// The resource type we currently support.
+  /// The resource types we currently support.
   ///
   /// cloud/orgpolicy/customconstraintconfig/prod/resource_types.prototext
   ///

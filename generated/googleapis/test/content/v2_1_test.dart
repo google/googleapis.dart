@@ -547,6 +547,7 @@ api.AccountIssue buildAccountIssue() {
     o.actions = buildUnnamed5();
     o.impact = buildAccountIssueImpact();
     o.prerenderedContent = 'foo';
+    o.prerenderedOutOfCourtDisputeSettlement = 'foo';
     o.title = 'foo';
   }
   buildCounterAccountIssue--;
@@ -560,6 +561,10 @@ void checkAccountIssue(api.AccountIssue o) {
     checkAccountIssueImpact(o.impact!);
     unittest.expect(
       o.prerenderedContent!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.prerenderedOutOfCourtDisputeSettlement!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -9344,6 +9349,7 @@ api.ProductIssue buildProductIssue() {
     o.actions = buildUnnamed137();
     o.impact = buildProductIssueImpact();
     o.prerenderedContent = 'foo';
+    o.prerenderedOutOfCourtDisputeSettlement = 'foo';
     o.title = 'foo';
   }
   buildCounterProductIssue--;
@@ -9357,6 +9363,10 @@ void checkProductIssue(api.ProductIssue o) {
     checkProductIssueImpact(o.impact!);
     unittest.expect(
       o.prerenderedContent!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.prerenderedOutOfCourtDisputeSettlement!,
       unittest.equals('foo'),
     );
     unittest.expect(

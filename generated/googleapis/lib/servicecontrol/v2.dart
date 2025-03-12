@@ -389,13 +389,6 @@ class Auth {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? claims;
 
-  /// Identifies the client credential id used for authentication.
-  ///
-  /// credential_id is in the format of AUTH_METHOD:IDENTIFIER, e.g.
-  /// "serviceaccount:XXXXX, apikey:XXXXX" where the format of the IDENTIFIER
-  /// can vary for different AUTH_METHODs.
-  core.String? credentialId;
-
   /// The authorized presenter of the credential.
   ///
   /// Reflects the optional Authorized Presenter (`azp`) claim within a JWT or
@@ -415,7 +408,6 @@ class Auth {
     this.accessLevels,
     this.audiences,
     this.claims,
-    this.credentialId,
     this.presenter,
     this.principal,
   });
@@ -431,7 +423,6 @@ class Auth {
           claims: json_.containsKey('claims')
               ? json_['claims'] as core.Map<core.String, core.dynamic>
               : null,
-          credentialId: json_['credentialId'] as core.String?,
           presenter: json_['presenter'] as core.String?,
           principal: json_['principal'] as core.String?,
         );
@@ -440,7 +431,6 @@ class Auth {
         if (accessLevels != null) 'accessLevels': accessLevels!,
         if (audiences != null) 'audiences': audiences!,
         if (claims != null) 'claims': claims!,
-        if (credentialId != null) 'credentialId': credentialId!,
         if (presenter != null) 'presenter': presenter!,
         if (principal != null) 'principal': principal!,
       };
@@ -698,6 +688,13 @@ class Request {
   /// The HTTP request method, such as `GET`, `POST`.
   core.String? method;
 
+  /// The values from Origin header from the HTTP request, such as
+  /// "https://console.cloud.google.com".
+  ///
+  /// Modern browsers can only have one origin. Special browsers and/or HTTP
+  /// clients may require multiple origins.
+  core.String? origin;
+
   /// The HTTP URL path, excluding the query parameters.
   core.String? path;
 
@@ -739,6 +736,7 @@ class Request {
     this.host,
     this.id,
     this.method,
+    this.origin,
     this.path,
     this.protocol,
     this.query,
@@ -764,6 +762,7 @@ class Request {
           host: json_['host'] as core.String?,
           id: json_['id'] as core.String?,
           method: json_['method'] as core.String?,
+          origin: json_['origin'] as core.String?,
           path: json_['path'] as core.String?,
           protocol: json_['protocol'] as core.String?,
           query: json_['query'] as core.String?,
@@ -779,6 +778,7 @@ class Request {
         if (host != null) 'host': host!,
         if (id != null) 'id': id!,
         if (method != null) 'method': method!,
+        if (origin != null) 'origin': origin!,
         if (path != null) 'path': path!,
         if (protocol != null) 'protocol': protocol!,
         if (query != null) 'query': query!,

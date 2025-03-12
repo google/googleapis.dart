@@ -1632,7 +1632,7 @@ class AutonomousDatabase {
 
   /// The subnet CIDR range for the Autonmous Database.
   ///
-  /// Required.
+  /// Optional.
   core.String? cidr;
 
   /// The date and time that the Autonomous Database was created.
@@ -1675,7 +1675,7 @@ class AutonomousDatabase {
   /// The name of the VPC network used by the Autonomous Database in the
   /// following format: projects/{project}/global/networks/{network}
   ///
-  /// Required.
+  /// Optional.
   core.String? network;
 
   /// The properties of the Autonomous Database.
@@ -4543,6 +4543,8 @@ class Entitlement {
   /// - "ACCOUNT_NOT_ACTIVE" : Account is linked but not active.
   /// - "ACTIVE" : Entitlement and Account are active.
   /// - "ACCOUNT_SUSPENDED" : Account is suspended.
+  /// - "NOT_APPROVED_IN_PRIVATE_MARKETPLACE" : Entitlement is not approved in
+  /// private marketplace.
   core.String? state;
 
   Entitlement({

@@ -991,6 +991,97 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// ProcessBitbucketCloudWebhook is called by the external Bitbucket Cloud
+  /// instances for notifying events.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The GitRepositoryLink where the webhook will be
+  /// received. Format: `projects / * /locations / * /connections / *
+  /// /gitRepositoryLinks / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/gitRepositoryLinks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> processBitbucketCloudWebhook(
+    ProcessBitbucketCloudWebhookRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':processBitbucketCloudWebhook';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// ProcessBitbucketDataCenterWebhook is called by the external Bitbucket Data
+  /// Center instances for notifying events.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The GitRepositoryLink where the webhook will be
+  /// received. Format: `projects / * /locations / * /connections / *
+  /// /gitRepositoryLinks / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/gitRepositoryLinks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> processBitbucketDataCenterWebhook(
+    ProcessBitbucketDataCenterWebhookRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$name') +
+        ':processBitbucketDataCenterWebhook';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// ProcessGitLabEnterpriseWebhook is called by the external GitLab Enterprise
   /// instances for notifying events.
   ///
@@ -1267,6 +1358,171 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+/// Configuration for connections to an instance of Bitbucket Cloud.
+class BitbucketCloudConfig {
+  /// An access token with the minimum `repository`, `pullrequest` and `webhook`
+  /// scope access.
+  ///
+  /// It can either be a workspace, project or repository access token. This is
+  /// needed to create webhooks. It's recommended to use a system account to
+  /// generate these credentials.
+  ///
+  /// Required.
+  UserCredential? authorizerCredential;
+
+  /// An access token with the minimum `repository` access.
+  ///
+  /// It can either be a workspace, project or repository access token. It's
+  /// recommended to use a system account to generate the credentials.
+  ///
+  /// Required.
+  UserCredential? readAuthorizerCredential;
+
+  /// SecretManager resource containing the webhook secret used to verify
+  /// webhook events, formatted as `projects / * /secrets / * /versions / * `.
+  ///
+  /// This is used to validate and create webhooks.
+  ///
+  /// Required. Immutable.
+  core.String? webhookSecretSecretVersion;
+
+  /// The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
+  ///
+  /// Required.
+  core.String? workspace;
+
+  BitbucketCloudConfig({
+    this.authorizerCredential,
+    this.readAuthorizerCredential,
+    this.webhookSecretSecretVersion,
+    this.workspace,
+  });
+
+  BitbucketCloudConfig.fromJson(core.Map json_)
+      : this(
+          authorizerCredential: json_.containsKey('authorizerCredential')
+              ? UserCredential.fromJson(json_['authorizerCredential']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          readAuthorizerCredential:
+              json_.containsKey('readAuthorizerCredential')
+                  ? UserCredential.fromJson(json_['readAuthorizerCredential']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          webhookSecretSecretVersion:
+              json_['webhookSecretSecretVersion'] as core.String?,
+          workspace: json_['workspace'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authorizerCredential != null)
+          'authorizerCredential': authorizerCredential!,
+        if (readAuthorizerCredential != null)
+          'readAuthorizerCredential': readAuthorizerCredential!,
+        if (webhookSecretSecretVersion != null)
+          'webhookSecretSecretVersion': webhookSecretSecretVersion!,
+        if (workspace != null) 'workspace': workspace!,
+      };
+}
+
+/// Configuration for connections to an instance of Bitbucket Data Center.
+class BitbucketDataCenterConfig {
+  /// An http access token with the minimum `Repository admin` scope access.
+  ///
+  /// This is needed to create webhooks. It's recommended to use a system
+  /// account to generate these credentials.
+  ///
+  /// Required.
+  UserCredential? authorizerCredential;
+
+  /// The URI of the Bitbucket Data Center host this connection is for.
+  ///
+  /// Required.
+  core.String? hostUri;
+
+  /// An http access token with the minimum `Repository read` access.
+  ///
+  /// It's recommended to use a system account to generate the credentials.
+  ///
+  /// Required.
+  UserCredential? readAuthorizerCredential;
+
+  /// Version of the Bitbucket Data Center server running on the `host_uri`.
+  ///
+  /// Output only.
+  core.String? serverVersion;
+
+  /// Configuration for using Service Directory to privately connect to a
+  /// Bitbucket Data Center instance.
+  ///
+  /// This should only be set if the Bitbucket Data Center is hosted on-premises
+  /// and not reachable by public internet. If this field is left empty, calls
+  /// to the Bitbucket Data Center will be made over the public internet.
+  ///
+  /// Optional.
+  ServiceDirectoryConfig? serviceDirectoryConfig;
+
+  /// SSL certificate authority to trust when making requests to Bitbucket Data
+  /// Center.
+  ///
+  /// Optional.
+  core.String? sslCaCertificate;
+
+  /// SecretManager resource containing the webhook secret used to verify
+  /// webhook events, formatted as `projects / * /secrets / * /versions / * `.
+  ///
+  /// This is used to validate webhooks.
+  ///
+  /// Required. Immutable.
+  core.String? webhookSecretSecretVersion;
+
+  BitbucketDataCenterConfig({
+    this.authorizerCredential,
+    this.hostUri,
+    this.readAuthorizerCredential,
+    this.serverVersion,
+    this.serviceDirectoryConfig,
+    this.sslCaCertificate,
+    this.webhookSecretSecretVersion,
+  });
+
+  BitbucketDataCenterConfig.fromJson(core.Map json_)
+      : this(
+          authorizerCredential: json_.containsKey('authorizerCredential')
+              ? UserCredential.fromJson(json_['authorizerCredential']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          hostUri: json_['hostUri'] as core.String?,
+          readAuthorizerCredential:
+              json_.containsKey('readAuthorizerCredential')
+                  ? UserCredential.fromJson(json_['readAuthorizerCredential']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          serverVersion: json_['serverVersion'] as core.String?,
+          serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
+              ? ServiceDirectoryConfig.fromJson(json_['serviceDirectoryConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sslCaCertificate: json_['sslCaCertificate'] as core.String?,
+          webhookSecretSecretVersion:
+              json_['webhookSecretSecretVersion'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authorizerCredential != null)
+          'authorizerCredential': authorizerCredential!,
+        if (hostUri != null) 'hostUri': hostUri!,
+        if (readAuthorizerCredential != null)
+          'readAuthorizerCredential': readAuthorizerCredential!,
+        if (serverVersion != null) 'serverVersion': serverVersion!,
+        if (serviceDirectoryConfig != null)
+          'serviceDirectoryConfig': serviceDirectoryConfig!,
+        if (sslCaCertificate != null) 'sslCaCertificate': sslCaCertificate!,
+        if (webhookSecretSecretVersion != null)
+          'webhookSecretSecretVersion': webhookSecretSecretVersion!,
+      };
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -1276,6 +1532,12 @@ class Connection {
   ///
   /// Optional.
   core.Map<core.String, core.String>? annotations;
+
+  /// Configuration for connections to an instance of Bitbucket Clouds.
+  BitbucketCloudConfig? bitbucketCloudConfig;
+
+  /// Configuration for connections to an instance of Bitbucket Data Center.
+  BitbucketDataCenterConfig? bitbucketDataCenterConfig;
 
   /// Create timestamp
   ///
@@ -1308,6 +1570,14 @@ class Connection {
   ///
   /// Optional.
   core.String? etag;
+
+  /// Configuration for the git proxy feature.
+  ///
+  /// Enabling the git proxy allows clients to perform git operations on the
+  /// repositories linked in the connection.
+  ///
+  /// Optional.
+  GitProxyConfig? gitProxyConfig;
 
   /// Configuration for connections to github.com.
   GitHubConfig? githubConfig;
@@ -1355,11 +1625,14 @@ class Connection {
 
   Connection({
     this.annotations,
+    this.bitbucketCloudConfig,
+    this.bitbucketDataCenterConfig,
     this.createTime,
     this.cryptoKeyConfig,
     this.deleteTime,
     this.disabled,
     this.etag,
+    this.gitProxyConfig,
     this.githubConfig,
     this.githubEnterpriseConfig,
     this.gitlabConfig,
@@ -1382,6 +1655,16 @@ class Connection {
               value as core.String,
             ),
           ),
+          bitbucketCloudConfig: json_.containsKey('bitbucketCloudConfig')
+              ? BitbucketCloudConfig.fromJson(json_['bitbucketCloudConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          bitbucketDataCenterConfig:
+              json_.containsKey('bitbucketDataCenterConfig')
+                  ? BitbucketDataCenterConfig.fromJson(
+                      json_['bitbucketDataCenterConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           createTime: json_['createTime'] as core.String?,
           cryptoKeyConfig: json_.containsKey('cryptoKeyConfig')
               ? CryptoKeyConfig.fromJson(json_['cryptoKeyConfig']
@@ -1390,6 +1673,10 @@ class Connection {
           deleteTime: json_['deleteTime'] as core.String?,
           disabled: json_['disabled'] as core.bool?,
           etag: json_['etag'] as core.String?,
+          gitProxyConfig: json_.containsKey('gitProxyConfig')
+              ? GitProxyConfig.fromJson(json_['gitProxyConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           githubConfig: json_.containsKey('githubConfig')
               ? GitHubConfig.fromJson(
                   json_['githubConfig'] as core.Map<core.String, core.dynamic>)
@@ -1425,11 +1712,16 @@ class Connection {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotations != null) 'annotations': annotations!,
+        if (bitbucketCloudConfig != null)
+          'bitbucketCloudConfig': bitbucketCloudConfig!,
+        if (bitbucketDataCenterConfig != null)
+          'bitbucketDataCenterConfig': bitbucketDataCenterConfig!,
         if (createTime != null) 'createTime': createTime!,
         if (cryptoKeyConfig != null) 'cryptoKeyConfig': cryptoKeyConfig!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (disabled != null) 'disabled': disabled!,
         if (etag != null) 'etag': etag!,
+        if (gitProxyConfig != null) 'gitProxyConfig': gitProxyConfig!,
         if (githubConfig != null) 'githubConfig': githubConfig!,
         if (githubEnterpriseConfig != null)
           'githubEnterpriseConfig': githubEnterpriseConfig!,
@@ -1876,6 +2168,28 @@ class GitLabEnterpriseConfig {
       };
 }
 
+/// The git proxy configuration.
+class GitProxyConfig {
+  /// Setting this to true allows the git proxy to be used for performing git
+  /// operations on the repositories linked in the connection.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  GitProxyConfig({
+    this.enabled,
+  });
+
+  GitProxyConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
 /// Message describing the GitRepositoryLink object
 class GitRepositoryLink {
   /// Allows clients to store small amounts of arbitrary data.
@@ -1904,6 +2218,14 @@ class GitRepositoryLink {
   ///
   /// Optional.
   core.String? etag;
+
+  /// URI to access the linked repository through the Git Proxy.
+  ///
+  /// This field is only populated if the git proxy is enabled for the
+  /// connection.
+  ///
+  /// Output only.
+  core.String? gitProxyUri;
 
   /// Labels as key value pairs
   ///
@@ -1943,6 +2265,7 @@ class GitRepositoryLink {
     this.createTime,
     this.deleteTime,
     this.etag,
+    this.gitProxyUri,
     this.labels,
     this.name,
     this.reconciling,
@@ -1965,6 +2288,7 @@ class GitRepositoryLink {
           createTime: json_['createTime'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
           etag: json_['etag'] as core.String?,
+          gitProxyUri: json_['gitProxyUri'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -1985,6 +2309,7 @@ class GitRepositoryLink {
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (etag != null) 'etag': etag!,
+        if (gitProxyUri != null) 'gitProxyUri': gitProxyUri!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (reconciling != null) 'reconciling': reconciling!,
@@ -2311,6 +2636,55 @@ class Operation {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
+      };
+}
+
+/// RPC request object accepted by the ProcessBitbucketCloudWebhook RPC method.
+class ProcessBitbucketCloudWebhookRequest {
+  /// HTTP request body.
+  ///
+  /// Required.
+  HttpBody? body;
+
+  ProcessBitbucketCloudWebhookRequest({
+    this.body,
+  });
+
+  ProcessBitbucketCloudWebhookRequest.fromJson(core.Map json_)
+      : this(
+          body: json_.containsKey('body')
+              ? HttpBody.fromJson(
+                  json_['body'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (body != null) 'body': body!,
+      };
+}
+
+/// RPC request object accepted by the ProcessBitbucketDataCenterWebhook RPC
+/// method.
+class ProcessBitbucketDataCenterWebhookRequest {
+  /// HTTP request body.
+  ///
+  /// Required.
+  HttpBody? body;
+
+  ProcessBitbucketDataCenterWebhookRequest({
+    this.body,
+  });
+
+  ProcessBitbucketDataCenterWebhookRequest.fromJson(core.Map json_)
+      : this(
+          body: json_.containsKey('body')
+              ? HttpBody.fromJson(
+                  json_['body'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (body != null) 'body': body!,
       };
 }
 

@@ -41,6 +41,7 @@
 /// - [ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource]
 ///       - [ProjectsLocationsDatasetsFhirStoresResource]
 ///         - [ProjectsLocationsDatasetsFhirStoresFhirResource]
+///         - [ProjectsLocationsDatasetsFhirStoresOperationsResource]
 ///       - [ProjectsLocationsDatasetsHl7V2StoresResource]
 ///         - [ProjectsLocationsDatasetsHl7V2StoresMessagesResource]
 ///       - [ProjectsLocationsDatasetsOperationsResource]
@@ -4530,6 +4531,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// Value must have pattern
   /// `^studies/\[^/\]+/series/\[^/\]+/instances/\[^/\]+/rendered$`.
   ///
+  /// [viewport] - Optional. The viewport setting to use as specified in
+  /// https://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_8.3.5.html#sect_8.3.5.1.3
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -4543,9 +4547,11 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   async.Future<HttpBody> retrieveRendered(
     core.String parent,
     core.String dicomWebPath, {
+    core.String? viewport,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (viewport != null) 'viewport': [viewport],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4653,6 +4659,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   /// Value must have pattern
   /// `^studies/\[^/\]+/series/\[^/\]+/instances/\[^/\]+/frames/\[^/\]+/rendered$`.
   ///
+  /// [viewport] - Optional. The viewport setting to use as specified in
+  /// https://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_8.3.5.html#sect_8.3.5.1.3
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -4666,9 +4675,11 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   async.Future<HttpBody> retrieveRendered(
     core.String parent,
     core.String dicomWebPath, {
+    core.String? viewport,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (viewport != null) 'viewport': [viewport],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4691,6 +4702,8 @@ class ProjectsLocationsDatasetsFhirStoresResource {
 
   ProjectsLocationsDatasetsFhirStoresFhirResource get fhir =>
       ProjectsLocationsDatasetsFhirStoresFhirResource(_requester);
+  ProjectsLocationsDatasetsFhirStoresOperationsResource get operations =>
+      ProjectsLocationsDatasetsFhirStoresOperationsResource(_requester);
 
   ProjectsLocationsDatasetsFhirStoresResource(commons.ApiRequester client)
       : _requester = client;
@@ -4807,6 +4820,106 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Bulk exports a Group resource and resources in the member field, including
+  /// related resources for each Patient member.
+  ///
+  /// The export for each Patient is identical to a GetPatientEverything
+  /// request. Implements the FHIR implementation guide \[$export group of
+  /// patients\](https://build.fhir.org/ig/HL7/bulk-data/export.html#endpoint---group-of-patients).
+  /// The following headers must be set in the request: * `Accept`: specifies
+  /// the format of the `OperationOutcome` response. Only
+  /// `application/fhir+json` is supported. * `Prefer`: specifies whether the
+  /// response is immediate or asynchronous. Must be to `respond-async` because
+  /// only asynchronous responses are supported. Specify the destination for the
+  /// server to write result files by setting the Cloud Storage location
+  /// bulk_export_gcs_destination on the FHIR store. URI of an existing Cloud
+  /// Storage directory where the server writes result files, in the format
+  /// gs://{bucket-id}/{path/to/destination/dir}. If there is no trailing slash,
+  /// the service appends one when composing the object path. The user is
+  /// responsible for creating the Cloud Storage bucket referenced. Supports the
+  /// following query parameters: * `_type`: string of comma-delimited FHIR
+  /// resource types. If provided, only resources of the specified type(s) are
+  /// exported. * `_since`: if provided, only resources updated after the
+  /// specified time are exported. * `_outputFormat`: optional, specify ndjson
+  /// to export data in NDJSON format. Exported file names use the format:
+  /// {export_id}_{resource_type}.ndjson. * `organizeOutputBy`: resource type to
+  /// organize the output by. Required and must be set to `Patient`. When
+  /// specified, output files are organized by instances of the specified
+  /// resource type, including the resource, referenced resources, and resources
+  /// that contain references to that resource. On success, the
+  /// `Content-Location` header of response is set to a URL that you can use to
+  /// query the status of the export. The URL is in the format
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/operations/{export_id}`.
+  /// See get-fhir-operation-status for more information. Errors generated by
+  /// the FHIR store contain a JSON-encoded `OperationOutcome` resource
+  /// describing the reason for the error.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the Group resource that is exported, in format
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Group/{group_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/Group/\[^/\]+$`.
+  ///
+  /// [P_since] - Optional. If provided, only resources updated after this time
+  /// are exported. The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For
+  /// example, `2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The
+  /// time must be specified to the second and include a time zone.
+  ///
+  /// [P_type] - Optional. String of comma-delimited FHIR resource types. If
+  /// provided, only resources of the specified resource type(s) are exported.
+  ///
+  /// [organizeOutputBy] - Optional. Required. The FHIR resource type used to
+  /// organize exported resources. Only supports "Patient". When organized by
+  /// Patient resource, output files are grouped as follows: * Patient file(s)
+  /// containing the Patient resources. Each Patient is sequentially followed by
+  /// all resources the Patient references, and all resources that reference the
+  /// Patient (equivalent to a GetPatientEverything request). * Individual files
+  /// grouped by resource type for resources in the Group's member field and the
+  /// Group resource itself. Resources may be duplicated across multiple
+  /// Patients. For example, if two Patient resources reference the same
+  /// Organization resource, it will appear twice, once after each Patient. The
+  /// Group resource from the request does not appear in the Patient files.
+  ///
+  /// [outputFormat] - Optional. Output format of the export. This field is
+  /// optional and only `application/fhir+ndjson` is supported.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> bulkExportGroup(
+    core.String name, {
+    core.String? P_since,
+    core.String? P_type,
+    core.String? organizeOutputBy,
+    core.String? outputFormat,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (P_since != null) '_since': [P_since],
+      if (P_type != null) '_type': [P_type],
+      if (organizeOutputBy != null) 'organizeOutputBy': [organizeOutputBy],
+      if (outputFormat != null) 'outputFormat': [outputFormat],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + r'/$export';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new FHIR store within the parent dataset.
@@ -6061,7 +6174,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// match the resource type in the provided content.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [profile] - Required. The canonical URL of a profile that this resource
+  /// [profile] - Optional. The canonical URL of a profile that this resource
   /// should be validated against. For example, to validate a Patient resource
   /// against the US Core Patient profile this parameter would be
   /// `http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient`. A
@@ -6100,6 +6213,88 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       url_,
       'POST',
       body: body_,
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Bulk exports all resources from the FHIR store to the specified
+  /// destination.
+  ///
+  /// Implements the FHIR implementation guide \[system level
+  /// $export\](https://build.fhir.org/ig/HL7/bulk-data/export.html#endpoint---system-level-export.
+  /// The following headers must be set in the request: * `Accept`: specifies
+  /// the format of the `OperationOutcome` response. Only
+  /// `application/fhir+json` is supported. * `Prefer`: specifies whether the
+  /// response is immediate or asynchronous. Must be to `respond-async` because
+  /// only asynchronous responses are supported. Specify the destination for the
+  /// server to write result files by setting the Cloud Storage location
+  /// bulk_export_gcs_destination on the FHIR store. URI of an existing Cloud
+  /// Storage directory where the server writes result files, in the format
+  /// gs://{bucket-id}/{path/to/destination/dir}. If there is no trailing slash,
+  /// the service appends one when composing the object path. The user is
+  /// responsible for creating the Cloud Storage bucket referenced. Supports the
+  /// following query parameters: * `_type`: string of comma-delimited FHIR
+  /// resource types. If provided, only the resources of the specified type(s)
+  /// are exported. * `_since`: if provided, only the resources that are updated
+  /// after the specified time are exported. * `_outputFormat`: optional,
+  /// specify ndjson to export data in NDJSON format. Exported file names use
+  /// the format: {export_id}_{resource_type}.ndjson. On success, the
+  /// `Content-Location` header of the response is set to a URL that the user
+  /// can use to query the status of the export. The URL is in the format:
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/operations/{export_id}`.
+  /// See get-fhir-operation-status for more information. Errors generated by
+  /// the FHIR store contain a JSON-encoded `OperationOutcome` resource
+  /// describing the reason for the error.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the FHIR store to export resources from, in
+  /// the format
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
+  ///
+  /// [P_since] - Optional. If provided, only resources updated after this time
+  /// are exported. The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For
+  /// example, `2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The
+  /// time must be specified to the second and include a time zone.
+  ///
+  /// [P_type] - Optional. String of comma-delimited FHIR resource types. If
+  /// provided, only resources of the specified resource type(s) are exported.
+  ///
+  /// [outputFormat] - Optional. Output format of the export. This field is
+  /// optional and only `application/fhir+ndjson` is supported.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> bulkExport(
+    core.String name, {
+    core.String? P_since,
+    core.String? P_type,
+    core.String? outputFormat,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (P_since != null) '_since': [P_since],
+      if (P_type != null) '_type': [P_type],
+      if (outputFormat != null) 'outputFormat': [outputFormat],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + r'/fhir/$export';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
       queryParams: queryParams_,
     );
     return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -6946,7 +7141,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
-  /// [resourceType] - Required. The FHIR resource type to search, such as
+  /// [resourceType] - Optional. The FHIR resource type to search, such as
   /// Patient or Observation. For a complete list, see the FHIR Resource Index
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
@@ -7083,6 +7278,105 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> vread(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDatasetsFhirStoresOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDatasetsFhirStoresOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes operations as defined in the FHIR specification.
+  ///
+  /// Implements the FHIR implementation guide
+  /// [bulk data delete request](https://build.fhir.org/ig/HL7/bulk-data/export.html#bulk-data-delete-request).
+  /// Returns success if the operation was successfully cancelled. If the
+  /// operation is complete, or has already been cancelled, returns an error
+  /// response.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the operation to be deleted, in the format
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/operations/{operation_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> deleteFhirOperation(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the status of operations as defined in the FHIR specification.
+  ///
+  /// Implements the FHIR implementation guide
+  /// [bulk data status request](https://build.fhir.org/ig/HL7/bulk-data/export.html#bulk-data-status-request).
+  /// Operations can have one of these states: * in-progress: response status
+  /// code is `202` and `X-Progress` header is set to `in progress`. * complete:
+  /// response status code is `200` and the body is a JSON-encoded operation
+  /// response as defined by the spec. For a bulk export, this response is
+  /// defined in
+  /// https://build.fhir.org/ig/HL7/bulk-data/export.html#response---complete-status.
+  /// * error: response status code is `5XX`, and the body is a JSON-encoded
+  /// `OperationOutcome` resource describing the reason for the error.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the operation to query, in the format
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/operations/{operation_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> getFhirOperationStatus(
     core.String name, {
     core.String? $fields,
   }) async {
@@ -8994,6 +9288,32 @@ class BlobStorageSettings {
       };
 }
 
+/// The configuration for exporting to Cloud Storage using the bulk export API.
+class BulkExportGcsDestination {
+  /// URI for a Cloud Storage directory where the server writes result files, in
+  /// the format `gs://{bucket-id}/{path/to/destination/dir}`.
+  ///
+  /// If there is no trailing slash, the service appends one when composing the
+  /// object path. The user is responsible for creating the Cloud Storage bucket
+  /// referenced in `uri_prefix`.
+  ///
+  /// Optional.
+  core.String? uriPrefix;
+
+  BulkExportGcsDestination({
+    this.uriPrefix,
+  });
+
+  BulkExportGcsDestination.fromJson(core.Map json_)
+      : this(
+          uriPrefix: json_['uriPrefix'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uriPrefix != null) 'uriPrefix': uriPrefix!,
+      };
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -9274,12 +9594,12 @@ class ConsentAccessorScope {
   /// An abstract identifier that describes the environment or conditions under
   /// which the accessor is acting.
   ///
-  /// Can be "*" if it applies to all environments.
+  /// If it's not specified, it applies to all environments.
   core.String? environment;
 
   /// The intent of data use.
   ///
-  /// Can be "*" if it applies to all purposes.
+  /// If it's not specified, it applies to all purposes.
   core.String? purpose;
 
   ConsentAccessorScope({
@@ -9749,6 +10069,16 @@ class Dataset {
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
   core.String? name;
 
+  /// For future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// For future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The default timezone used by this dataset.
   ///
   /// Must be a either a valid IANA time zone name such as "America/New_York" or
@@ -9761,6 +10091,8 @@ class Dataset {
   Dataset({
     this.encryptionSpec,
     this.name,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.timeZone,
   });
 
@@ -9771,12 +10103,16 @@ class Dataset {
                   as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           timeZone: json_['timeZone'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (encryptionSpec != null) 'encryptionSpec': encryptionSpec!,
         if (name != null) 'name': name!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (timeZone != null) 'timeZone': timeZone!,
       };
 }
@@ -11273,6 +11609,17 @@ class FhirNotificationConfig {
 
 /// Represents a FHIR store.
 class FhirStore {
+  /// FHIR bulk export exports resources to the specified Cloud Storage
+  /// destination.
+  ///
+  /// A Cloud Storage destination is a URI for a Cloud Storage directory where
+  /// result files will be written. Only used in the spec-defined bulk $export
+  /// methods. The Cloud Healthcare Service Agent requires the
+  /// `roles/storage.objectAdmin` Cloud IAM role on the destination.
+  ///
+  /// Optional.
+  BulkExportGcsDestination? bulkExportGcsDestination;
+
   /// Enable parsing of references within complex FHIR data types such as
   /// Extensions.
   ///
@@ -11431,6 +11778,7 @@ class FhirStore {
   core.String? version;
 
   FhirStore({
+    this.bulkExportGcsDestination,
     this.complexDataTypeReferenceParsing,
     this.consentConfig,
     this.defaultSearchHandlingStrict,
@@ -11448,6 +11796,12 @@ class FhirStore {
 
   FhirStore.fromJson(core.Map json_)
       : this(
+          bulkExportGcsDestination:
+              json_.containsKey('bulkExportGcsDestination')
+                  ? BulkExportGcsDestination.fromJson(
+                      json_['bulkExportGcsDestination']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           complexDataTypeReferenceParsing:
               json_['complexDataTypeReferenceParsing'] as core.String?,
           consentConfig: json_.containsKey('consentConfig')
@@ -11489,6 +11843,8 @@ class FhirStore {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bulkExportGcsDestination != null)
+          'bulkExportGcsDestination': bulkExportGcsDestination!,
         if (complexDataTypeReferenceParsing != null)
           'complexDataTypeReferenceParsing': complexDataTypeReferenceParsing!,
         if (consentConfig != null) 'consentConfig': consentConfig!,
@@ -14493,7 +14849,7 @@ class SearchResourcesRequest {
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
   /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
   ///
-  /// Required.
+  /// Optional.
   core.String? resourceType;
 
   SearchResourcesRequest({

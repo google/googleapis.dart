@@ -8128,9 +8128,13 @@ class ConvertRegionPricesResponse {
   /// Map from region code to converted region price.
   core.Map<core.String, ConvertedRegionPrice>? convertedRegionPrices;
 
+  /// The region version at which the prices were generated.
+  RegionsVersion? regionVersion;
+
   ConvertRegionPricesResponse({
     this.convertedOtherRegionsPrice,
     this.convertedRegionPrices,
+    this.regionVersion,
   });
 
   ConvertRegionPricesResponse.fromJson(core.Map json_)
@@ -8150,6 +8154,10 @@ class ConvertRegionPricesResponse {
                   value as core.Map<core.String, core.dynamic>),
             ),
           ),
+          regionVersion: json_.containsKey('regionVersion')
+              ? RegionsVersion.fromJson(
+                  json_['regionVersion'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8157,6 +8165,7 @@ class ConvertRegionPricesResponse {
           'convertedOtherRegionsPrice': convertedOtherRegionsPrice!,
         if (convertedRegionPrices != null)
           'convertedRegionPrices': convertedRegionPrices!,
+        if (regionVersion != null) 'regionVersion': regionVersion!,
       };
 }
 
@@ -11290,7 +11299,7 @@ class OfferDetails {
       };
 }
 
-/// Represents a custom tag specified for base plans and subscription offers.
+/// Represents a custom tag specified for a product offer.
 class OfferTag {
   /// Must conform with RFC-1034.
   ///

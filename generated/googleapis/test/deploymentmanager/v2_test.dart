@@ -523,7 +523,7 @@ api.ErrorInfo buildErrorInfo() {
   buildCounterErrorInfo++;
   if (buildCounterErrorInfo < 3) {
     o.domain = 'foo';
-    o.metadata = buildUnnamed7();
+    o.metadatas = buildUnnamed7();
     o.reason = 'foo';
   }
   buildCounterErrorInfo--;
@@ -537,7 +537,7 @@ void checkErrorInfo(api.ErrorInfo o) {
       o.domain!,
       unittest.equals('foo'),
     );
-    checkUnnamed7(o.metadata!);
+    checkUnnamed7(o.metadatas!);
     unittest.expect(
       o.reason!,
       unittest.equals('foo'),

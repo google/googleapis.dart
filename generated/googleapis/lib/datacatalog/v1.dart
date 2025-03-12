@@ -74,6 +74,9 @@ class DataCatalogApi {
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class CatalogResource {
   final commons.ApiRequester _requester;
 
@@ -106,6 +109,9 @@ class CatalogResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1SearchCatalogResponse> search(
     GoogleCloudDatacatalogV1SearchCatalogRequest request, {
     core.String? $fields,
@@ -128,6 +134,9 @@ class CatalogResource {
   }
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class EntriesResource {
   final commons.ApiRequester _requester;
 
@@ -184,6 +193,9 @@ class EntriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1Entry> lookup({
     core.String? fullyQualifiedName,
     core.String? linkedResource,
@@ -223,6 +235,9 @@ class OrganizationsResource {
   OrganizationsResource(commons.ApiRequester client) : _requester = client;
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class OrganizationsLocationsResource {
   final commons.ApiRequester _requester;
 
@@ -248,6 +263,9 @@ class OrganizationsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1OrganizationConfig> retrieveConfig(
     core.String name, {
     core.String? $fields,
@@ -289,6 +307,9 @@ class OrganizationsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1MigrationConfig> retrieveEffectiveConfig(
     core.String name, {
     core.String? $fields,
@@ -330,6 +351,9 @@ class OrganizationsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1MigrationConfig> setConfig(
     GoogleCloudDatacatalogV1SetConfigRequest request,
     core.String name, {
@@ -398,6 +422,9 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1MigrationConfig> retrieveEffectiveConfig(
     core.String name, {
     core.String? $fields,
@@ -439,6 +466,9 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1MigrationConfig> setConfig(
     GoogleCloudDatacatalogV1SetConfigRequest request,
     core.String name, {
@@ -515,6 +545,9 @@ class ProjectsLocationsEntryGroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1EntryGroup> create(
     GoogleCloudDatacatalogV1EntryGroup request,
     core.String parent, {
@@ -563,6 +596,9 @@ class ProjectsLocationsEntryGroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Empty> delete(
     core.String name, {
     core.bool? force,
@@ -604,6 +640,9 @@ class ProjectsLocationsEntryGroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1EntryGroup> get(
     core.String name, {
     core.String? readMask,
@@ -657,6 +696,9 @@ class ProjectsLocationsEntryGroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
@@ -703,6 +745,9 @@ class ProjectsLocationsEntryGroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1ListEntryGroupsResponse> list(
     core.String parent, {
     core.int? pageSize,
@@ -757,6 +802,9 @@ class ProjectsLocationsEntryGroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1EntryGroup> patch(
     GoogleCloudDatacatalogV1EntryGroup request,
     core.String name, {
@@ -813,6 +861,9 @@ class ProjectsLocationsEntryGroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
@@ -864,6 +915,9 @@ class ProjectsLocationsEntryGroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
@@ -931,6 +985,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1Entry> create(
     GoogleCloudDatacatalogV1Entry request,
     core.String parent, {
@@ -978,6 +1035,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Empty> delete(
     core.String name, {
     core.String? $fields,
@@ -1014,6 +1074,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1Entry> get(
     core.String name, {
     core.String? $fields,
@@ -1065,6 +1128,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
@@ -1115,6 +1181,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> import(
     GoogleCloudDatacatalogV1ImportEntriesRequest request,
     core.String parent, {
@@ -1169,6 +1238,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1ListEntriesResponse> list(
     core.String parent, {
     core.int? pageSize,
@@ -1218,6 +1290,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1Contacts> modifyEntryContacts(
     GoogleCloudDatacatalogV1ModifyEntryContactsRequest request,
     core.String name, {
@@ -1264,6 +1339,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1EntryOverview> modifyEntryOverview(
     GoogleCloudDatacatalogV1ModifyEntryOverviewRequest request,
     core.String name, {
@@ -1323,6 +1401,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1Entry> patch(
     GoogleCloudDatacatalogV1Entry request,
     core.String name, {
@@ -1369,6 +1450,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1StarEntryResponse> star(
     GoogleCloudDatacatalogV1StarEntryRequest request,
     core.String name, {
@@ -1421,6 +1505,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
@@ -1466,6 +1553,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1UnstarEntryResponse> unstar(
     GoogleCloudDatacatalogV1UnstarEntryRequest request,
     core.String name, {
@@ -1489,6 +1579,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class ProjectsLocationsEntryGroupsEntriesTagsResource {
   final commons.ApiRequester _requester;
 
@@ -1527,6 +1620,9 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1Tag> create(
     GoogleCloudDatacatalogV1Tag request,
     core.String parent, {
@@ -1567,6 +1663,9 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Empty> delete(
     core.String name, {
     core.String? $fields,
@@ -1613,6 +1712,9 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1ListTagsResponse> list(
     core.String parent, {
     core.int? pageSize,
@@ -1664,6 +1766,9 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1Tag> patch(
     GoogleCloudDatacatalogV1Tag request,
     core.String name, {
@@ -1714,6 +1819,9 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> reconcile(
     GoogleCloudDatacatalogV1ReconcileTagsRequest request,
     core.String parent, {
@@ -1736,6 +1844,9 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   }
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class ProjectsLocationsEntryGroupsTagsResource {
   final commons.ApiRequester _requester;
 
@@ -1774,6 +1885,9 @@ class ProjectsLocationsEntryGroupsTagsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1Tag> create(
     GoogleCloudDatacatalogV1Tag request,
     core.String parent, {
@@ -1814,6 +1928,9 @@ class ProjectsLocationsEntryGroupsTagsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Empty> delete(
     core.String name, {
     core.String? $fields,
@@ -1860,6 +1977,9 @@ class ProjectsLocationsEntryGroupsTagsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1ListTagsResponse> list(
     core.String parent, {
     core.int? pageSize,
@@ -1911,6 +2031,9 @@ class ProjectsLocationsEntryGroupsTagsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1Tag> patch(
     GoogleCloudDatacatalogV1Tag request,
     core.String name, {
@@ -2155,6 +2278,9 @@ class ProjectsLocationsTagTemplatesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1TagTemplate> create(
     GoogleCloudDatacatalogV1TagTemplate request,
     core.String parent, {
@@ -2204,6 +2330,9 @@ class ProjectsLocationsTagTemplatesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Empty> delete(
     core.String name, {
     core.bool? force,
@@ -2242,6 +2371,9 @@ class ProjectsLocationsTagTemplatesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1TagTemplate> get(
     core.String name, {
     core.String? $fields,
@@ -2293,6 +2425,9 @@ class ProjectsLocationsTagTemplatesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
@@ -2350,6 +2485,9 @@ class ProjectsLocationsTagTemplatesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1TagTemplate> patch(
     GoogleCloudDatacatalogV1TagTemplate request,
     core.String name, {
@@ -2406,6 +2544,9 @@ class ProjectsLocationsTagTemplatesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
@@ -2457,6 +2598,9 @@ class ProjectsLocationsTagTemplatesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
@@ -2522,6 +2666,9 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1TagTemplateField> create(
     GoogleCloudDatacatalogV1TagTemplateField request,
     core.String parent, {
@@ -2573,6 +2720,9 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Empty> delete(
     core.String name, {
     core.bool? force,
@@ -2628,6 +2778,9 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1TagTemplateField> patch(
     GoogleCloudDatacatalogV1TagTemplateField request,
     core.String name, {
@@ -2676,6 +2829,9 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1TagTemplateField> rename(
     GoogleCloudDatacatalogV1RenameTagTemplateFieldRequest request,
     core.String name, {
@@ -2699,6 +2855,9 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   }
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class ProjectsLocationsTagTemplatesFieldsEnumValuesResource {
   final commons.ApiRequester _requester;
 
@@ -2728,6 +2887,9 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudDatacatalogV1TagTemplateField> rename(
     GoogleCloudDatacatalogV1RenameTagTemplateFieldEnumValueRequest request,
     core.String name, {
@@ -4469,7 +4631,7 @@ class GoogleCloudDatacatalogV1DataSourceConnectionSpec {
 ///
 /// Valid only for entries with the `TABLE` type.
 class GoogleCloudDatacatalogV1DatabaseTableSpec {
-  /// Spec what aplies to tables that are actually views.
+  /// Spec what applies to tables that are actually views.
   ///
   /// Not set for "real" tables.
   GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec? databaseViewSpec;
@@ -5285,13 +5447,13 @@ class GoogleCloudDatacatalogV1ExportTaxonomiesResponse {
 /// Detail description of the source information of a Vertex Feature Online
 /// Store.
 class GoogleCloudDatacatalogV1FeatureOnlineStoreSpec {
-  /// Type of underelaying storage for the FeatureOnlineStore.
+  /// Type of underlying storage for the FeatureOnlineStore.
   ///
   /// Output only.
   /// Possible string values are:
   /// - "STORAGE_TYPE_UNSPECIFIED" : Should not be used.
   /// - "BIGTABLE" : Underlsying storgae is Bigtable.
-  /// - "OPTIMIZED" : Underlaying is optimized online server (Lightning).
+  /// - "OPTIMIZED" : Underlying is optimized online server (Lightning).
   core.String? storageType;
 
   GoogleCloudDatacatalogV1FeatureOnlineStoreSpec({
@@ -5847,7 +6009,7 @@ class GoogleCloudDatacatalogV1LookerSystemSpec {
 /// organization or project.
 ///
 /// It is the response message for SetConfig and RetrieveEffectiveConfig.
-typedef GoogleCloudDatacatalogV1MigrationConfig = $Shared11;
+typedef GoogleCloudDatacatalogV1MigrationConfig = $Shared12;
 
 /// Specification that applies to a model.
 ///
@@ -6924,7 +7086,7 @@ class GoogleCloudDatacatalogV1ServiceSpec {
 }
 
 /// Request message for SetConfig.
-typedef GoogleCloudDatacatalogV1SetConfigRequest = $Shared11;
+typedef GoogleCloudDatacatalogV1SetConfigRequest = $Shared12;
 
 /// Specification that applies to entries that are part `SQL_DATABASE` system
 /// (user_specified_type)

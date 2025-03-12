@@ -201,6 +201,52 @@ class EnterprisesResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Generates an enterprise upgrade URL to upgrade an existing managed Google
+  /// Play Accounts enterprise to a managed Google domain.Note: This feature is
+  /// not generally available.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the enterprise to be upgraded in the form
+  /// enterprises/{enterpriseId}.
+  /// Value must have pattern `^enterprises/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenerateEnterpriseUpgradeUrlResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenerateEnterpriseUpgradeUrlResponse>
+      generateEnterpriseUpgradeUrl(
+    GenerateEnterpriseUpgradeUrlRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':generateEnterpriseUpgradeUrl';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GenerateEnterpriseUpgradeUrlResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets an enterprise.
   ///
   /// Request parameters:
@@ -1598,7 +1644,17 @@ class SignupUrlsResource {
   ///
   /// [adminEmail] - Optional. Email address used to prefill the admin field of
   /// the enterprise signup form. This value is a hint only and can be altered
-  /// by the user.
+  /// by the user. If allowedDomains is non-empty then this must belong to one
+  /// of the allowedDomains.
+  ///
+  /// [allowedDomains] - Optional. A list of domains that are permitted for the
+  /// admin email. The IT admin cannot enter an email address with a domain name
+  /// that is not in this list. Subdomains of domains in this list are not
+  /// allowed but can be allowed by adding a second entry which has *. prefixed
+  /// to the domain name (e.g. *.example.com). If the field is not present or is
+  /// an empty list then the IT admin is free to use any valid domain name.
+  /// Personal email domains are always allowed, but will result in the creation
+  /// of a managed Google Play Accounts enterprise.
   ///
   /// [callbackUrl] - The callback URL that the admin will be redirected to
   /// after successfully creating an enterprise. Before redirecting there the
@@ -1622,12 +1678,14 @@ class SignupUrlsResource {
   /// this method will complete with the same error.
   async.Future<SignupUrl> create({
     core.String? adminEmail,
+    core.List<core.String>? allowedDomains,
     core.String? callbackUrl,
     core.String? projectId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (adminEmail != null) 'adminEmail': [adminEmail],
+      if (allowedDomains != null) 'allowedDomains': allowedDomains,
       if (callbackUrl != null) 'callbackUrl': [callbackUrl],
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
@@ -4477,6 +4535,19 @@ class Enterprise {
   /// This field has a maximum length of 100 characters.
   core.String? enterpriseDisplayName;
 
+  /// The type of the enterprise.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ENTERPRISE_TYPE_UNSPECIFIED" : This value is not used.
+  /// - "MANAGED_GOOGLE_DOMAIN" : The enterprise belongs to a managed Google
+  /// domain
+  /// (https://developers.google.com/android/work/terminology#managed_google_domain).
+  /// - "MANAGED_GOOGLE_PLAY_ACCOUNTS_ENTERPRISE" : The enterprise is a managed
+  /// Google Play Accounts enterprise
+  /// (https://developers.google.com/android/work/terminology#managed_google_play_accounts_enterprise).
+  core.String? enterpriseType;
+
   /// Settings for Google-provided user authentication.
   GoogleAuthenticationSettings? googleAuthenticationSettings;
 
@@ -4485,6 +4556,26 @@ class Enterprise {
   /// Supported types are: image/bmp, image/gif, image/x-ico, image/jpeg,
   /// image/png, image/webp, image/vnd.wap.wbmp, image/x-adobe-dng.
   ExternalData? logo;
+
+  /// The type of managed Google domain.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "MANAGED_GOOGLE_DOMAIN_TYPE_UNSPECIFIED" : The managed Google domain
+  /// type is not specified.
+  /// - "TYPE_TEAM" : The managed Google domain is an email-verified team.
+  /// - "TYPE_DOMAIN" : The managed Google domain is domain-verified.
+  core.String? managedGoogleDomainType;
+
+  /// The type of a managed Google Play Accounts enterprise.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "MANAGED_GOOGLE_PLAY_ACCOUNTS_ENTERPRISE_TYPE_UNSPECIFIED" : The managed
+  /// Google Play Accounts enterprise type is not specified.
+  /// - "CUSTOMER_MANAGED" : The enterprise is customer-managed
+  /// - "EMM_MANAGED" : The enterprise is EMM-managed (deprecated).
+  core.String? managedGooglePlayAccountsEnterpriseType;
 
   /// The name of the enterprise which is generated by the server during
   /// creation, in the form enterprises/{enterpriseId}.
@@ -4517,8 +4608,11 @@ class Enterprise {
     this.contactInfo,
     this.enabledNotificationTypes,
     this.enterpriseDisplayName,
+    this.enterpriseType,
     this.googleAuthenticationSettings,
     this.logo,
+    this.managedGoogleDomainType,
+    this.managedGooglePlayAccountsEnterpriseType,
     this.name,
     this.primaryColor,
     this.pubsubTopic,
@@ -4538,6 +4632,7 @@ class Enterprise {
                   ?.map((value) => value as core.String)
                   .toList(),
           enterpriseDisplayName: json_['enterpriseDisplayName'] as core.String?,
+          enterpriseType: json_['enterpriseType'] as core.String?,
           googleAuthenticationSettings:
               json_.containsKey('googleAuthenticationSettings')
                   ? GoogleAuthenticationSettings.fromJson(
@@ -4548,6 +4643,10 @@ class Enterprise {
               ? ExternalData.fromJson(
                   json_['logo'] as core.Map<core.String, core.dynamic>)
               : null,
+          managedGoogleDomainType:
+              json_['managedGoogleDomainType'] as core.String?,
+          managedGooglePlayAccountsEnterpriseType:
+              json_['managedGooglePlayAccountsEnterpriseType'] as core.String?,
           name: json_['name'] as core.String?,
           primaryColor: json_['primaryColor'] as core.int?,
           pubsubTopic: json_['pubsubTopic'] as core.String?,
@@ -4569,9 +4668,15 @@ class Enterprise {
           'enabledNotificationTypes': enabledNotificationTypes!,
         if (enterpriseDisplayName != null)
           'enterpriseDisplayName': enterpriseDisplayName!,
+        if (enterpriseType != null) 'enterpriseType': enterpriseType!,
         if (googleAuthenticationSettings != null)
           'googleAuthenticationSettings': googleAuthenticationSettings!,
         if (logo != null) 'logo': logo!,
+        if (managedGoogleDomainType != null)
+          'managedGoogleDomainType': managedGoogleDomainType!,
+        if (managedGooglePlayAccountsEnterpriseType != null)
+          'managedGooglePlayAccountsEnterpriseType':
+              managedGooglePlayAccountsEnterpriseType!,
         if (name != null) 'name': name!,
         if (primaryColor != null) 'primaryColor': primaryColor!,
         if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
@@ -4686,13 +4791,14 @@ class FreezePeriod {
   ///
   /// Must be no later than 90 days from the start date. If the end date is
   /// earlier than the start date, the freeze period is considered wrapping
-  /// year-end. Note: year must not be set. For example, {"month": 1,"date":
-  /// 30}.
+  /// year-end. Note: day and month must be set. year should not be set as it is
+  /// not used. For example, {"month": 1,"date": 30}.
   Date? endDate;
 
   /// The start date (inclusive) of the freeze period.
   ///
-  /// Note: year must not be set. For example, {"month": 1,"date": 30}.
+  /// Note: day and month must be set. year should not be set as it is not used.
+  /// For example, {"month": 1,"date": 30}.
   Date? startDate;
 
   FreezePeriod({
@@ -4717,6 +4823,57 @@ class FreezePeriod {
         if (startDate != null) 'startDate': startDate!,
       };
 }
+
+/// Request message for generating a URL to upgrade an existing managed Google
+/// Play Accounts enterprise to a managed Google domain.Note: This feature is
+/// not generally available.
+class GenerateEnterpriseUpgradeUrlRequest {
+  /// Email address used to prefill the admin field of the enterprise signup
+  /// form as part of the upgrade process.
+  ///
+  /// This value is a hint only and can be altered by the user. Personal email
+  /// addresses are not allowed. If allowedDomains is non-empty then this must
+  /// belong to one of the allowedDomains.
+  ///
+  /// Optional.
+  core.String? adminEmail;
+
+  /// A list of domains that are permitted for the admin email.
+  ///
+  /// The IT admin cannot enter an email address with a domain name that is not
+  /// in this list. Subdomains of domains in this list are not allowed but can
+  /// be allowed by adding a second entry which has *. prefixed to the domain
+  /// name (e.g. *.example.com). If the field is not present or is an empty list
+  /// then the IT admin is free to use any valid domain name. Personal email
+  /// domains are not allowed.
+  ///
+  /// Optional.
+  core.List<core.String>? allowedDomains;
+
+  GenerateEnterpriseUpgradeUrlRequest({
+    this.adminEmail,
+    this.allowedDomains,
+  });
+
+  GenerateEnterpriseUpgradeUrlRequest.fromJson(core.Map json_)
+      : this(
+          adminEmail: json_['adminEmail'] as core.String?,
+          allowedDomains: (json_['allowedDomains'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adminEmail != null) 'adminEmail': adminEmail!,
+        if (allowedDomains != null) 'allowedDomains': allowedDomains!,
+      };
+}
+
+/// Response message for generating a URL to upgrade an existing managed Google
+/// Play Accounts enterprise to a managed Google domain.Note: This feature is
+/// not generally available.
+typedef GenerateEnterpriseUpgradeUrlResponse
+    = $GenerateEnterpriseUpgradeUrlResponse;
 
 /// Contains settings for Google-provided user authentication.
 class GoogleAuthenticationSettings {
@@ -6778,7 +6935,8 @@ class Policy {
 
   /// Whether adjusting the master volume is disabled.
   ///
-  /// Also mutes the device.
+  /// Also mutes the device. The setting has effect only on fully managed
+  /// devices.
   core.bool? adjustVolumeDisabled;
 
   /// Advanced security settings.
@@ -7307,6 +7465,8 @@ class Policy {
   core.bool? screenCaptureDisabled;
 
   /// Whether changing the user icon is disabled.
+  ///
+  /// The setting has effect only on fully managed devices.
   core.bool? setUserIconDisabled;
 
   /// Whether changing the wallpaper is disabled.

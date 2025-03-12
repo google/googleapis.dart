@@ -63,6 +63,9 @@ class WebfontsResource {
   /// [capability] - Controls the font urls in `Webfont.files`, by default,
   /// static ttf fonts are sent.
   ///
+  /// [category] - Filters by Webfont.category, if category is found in
+  /// Webfont.categories. If not set, returns all families.
+  ///
   /// [family] - Filters by Webfont.family, using literal match. If not set,
   /// returns all families
   ///
@@ -90,6 +93,7 @@ class WebfontsResource {
   /// this method will complete with the same error.
   async.Future<WebfontList> list({
     core.List<core.String>? capability,
+    core.String? category,
     core.List<core.String>? family,
     core.String? sort,
     core.String? subset,
@@ -97,6 +101,7 @@ class WebfontsResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (capability != null) 'capability': capability,
+      if (category != null) 'category': [category],
       if (family != null) 'family': family,
       if (sort != null) 'sort': [sort],
       if (subset != null) 'subset': [subset],

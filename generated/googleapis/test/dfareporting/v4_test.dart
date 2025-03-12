@@ -11449,6 +11449,7 @@ api.TagSetting buildTagSetting() {
     o.additionalKeyValues = 'foo';
     o.includeClickThroughUrls = true;
     o.includeClickTracking = true;
+    o.includeUnescapedlpurlMacro = true;
     o.keywordOption = 'foo';
   }
   buildCounterTagSetting--;
@@ -11464,6 +11465,7 @@ void checkTagSetting(api.TagSetting o) {
     );
     unittest.expect(o.includeClickThroughUrls!, unittest.isTrue);
     unittest.expect(o.includeClickTracking!, unittest.isTrue);
+    unittest.expect(o.includeUnescapedlpurlMacro!, unittest.isTrue);
     unittest.expect(
       o.keywordOption!,
       unittest.equals('foo'),

@@ -290,7 +290,7 @@ class ProjectsDatasetsResource {
 
   ProjectsDatasetsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates dataset.
+  ///  Creates dataset.
   ///
   /// If success return a Dataset resource.
   ///
@@ -972,7 +972,7 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Get a FeedbackThread object.
+  ///  Get a FeedbackThread object.
   ///
   /// Request parameters:
   ///
@@ -1465,7 +1465,7 @@ class ProjectsDatasetsImageResource {
   ProjectsDatasetsImageResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts a labeling task for image.
+  ///  Starts a labeling task for image.
   ///
   /// The type of image labeling task is configured by feature in the request.
   ///
@@ -1618,7 +1618,7 @@ class ProjectsEvaluationJobsResource {
   ProjectsEvaluationJobsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates an evaluation job.
+  ///  Creates an evaluation job.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3408,7 +3408,7 @@ class GoogleCloudDatalabelingV1beta1CreateDatasetRequest {
       };
 }
 
-/// Request message for CreateEvaluationJob.
+///  Request message for CreateEvaluationJob.
 class GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest {
   /// The evaluation job to create.
   ///
@@ -5250,7 +5250,7 @@ class GoogleCloudDatalabelingV1beta1Instruction {
       };
 }
 
-/// Request message for starting an image labeling task.
+///  Request message for starting an image labeling task.
 class GoogleCloudDatalabelingV1beta1LabelImageRequest {
   /// Basic human annotation config.
   ///
@@ -5452,7 +5452,7 @@ class GoogleCloudDatalabelingV1beta1LabelTextRequest {
       };
 }
 
-/// Request message for LabelVideo.
+///  Request message for LabelVideo.
 class GoogleCloudDatalabelingV1beta1LabelVideoRequest {
   /// Basic human annotation config.
   ///

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241114",
+    "revision": "20250213",
     "rootUrl": "https://vmmigration.googleapis.com/",
     "servicePath": "",
     "title": "VM Migration API",
@@ -2312,7 +2312,7 @@
             "type": "object"
         },
         "AvailableUpdates": {
-            "description": "Holds informatiom about the available versions for upgrade.",
+            "description": "Holds information about the available versions for upgrade.",
             "id": "AvailableUpdates",
             "properties": {
                 "inPlaceUpdate": {
@@ -3516,7 +3516,7 @@
             "type": "object"
         },
         "CutoverJob": {
-            "description": "CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and clonning the VM using the replicated snapshot.",
+            "description": "CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and cloning the VM using the replicated snapshot.",
             "id": "CutoverJob",
             "properties": {
                 "computeEngineDisksTargetDetails": {
@@ -5809,12 +5809,14 @@
                         "enum": [
                             "OS_CAPABILITY_UNSPECIFIED",
                             "OS_CAPABILITY_NVME_STORAGE_ACCESS",
-                            "OS_CAPABILITY_GVNIC_NETWORK_INTERFACE"
+                            "OS_CAPABILITY_GVNIC_NETWORK_INTERFACE",
+                            "OS_CAPABILITY_IDPF_NETWORK_INTERFACE"
                         ],
                         "enumDescriptions": [
                             "This is for API compatibility only and is not in use.",
                             "NVMe driver installed and the VM can use NVMe PD or local SSD.",
-                            "gVNIC virtual NIC driver supported."
+                            "gVNIC virtual NIC driver supported.",
+                            "IDPF virtual NIC driver supported."
                         ],
                         "type": "string"
                     },

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241217",
+    "revision": "20250219",
     "rootUrl": "https://css.googleapis.com/",
     "servicePath": "",
     "title": "CSS API",
@@ -230,7 +230,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. The name of the CSS product input resource to delete. Format: accounts/{account}/cssProductInputs/{css_product_input}",
+                                    "description": "Required. The name of the CSS product input resource to delete. Format: accounts/{account}/cssProductInputs/{css_product_input}, where the last section `css_product_input` consists of 3 parts: contentLanguage~feedLabel~offerId. Example: accounts/123/cssProductInputs/de~DE~rawProvidedId123",
                                     "location": "path",
                                     "pattern": "^accounts/[^/]+/cssProductInputs/[^/]+$",
                                     "required": true,
@@ -262,7 +262,7 @@
                             "parameters": {
                                 "feedId": {
                                     "deprecated": true,
-                                    "description": "Optional. The primary or supplemental feed id. If CSS Product already exists and feed id provided is different, then the CSS Product will be moved to a new feed. Note: For now, CSSs do not need to provide feed ids as we create feeds on the fly. We do not have supplemental feed support for CSS Products yet.",
+                                    "description": "Optional. DEPRECATED. Feed id is not required for CSS Products. The primary or supplemental feed id. If CSS Product already exists and feed id provided is different, then the CSS Product will be moved to a new feed. Note: For now, CSSs do not need to provide feed ids as we create feeds on the fly. We do not have supplemental feed support for CSS Products yet.",
                                     "format": "int64",
                                     "location": "query",
                                     "type": "string"
@@ -296,7 +296,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "The name of the CSS Product input. Format: `accounts/{account}/cssProductInputs/{css_product_input}`",
+                                    "description": "The name of the CSS Product input. Format: `accounts/{account}/cssProductInputs/{css_product_input}`, where the last section `css_product_input` consists of 3 parts: contentLanguage~feedLabel~offerId. Example: accounts/123/cssProductInputs/de~DE~rawProvidedId123",
                                     "location": "path",
                                     "pattern": "^accounts/[^/]+/cssProductInputs/[^/]+$",
                                     "required": true,
@@ -578,7 +578,7 @@
                     "type": "string"
                 },
                 "parent": {
-                    "description": "The CSS/MC account's parent resource. CSS group for CSS domains; CSS domain for MC accounts. Returned only if the user has access to the parent account.",
+                    "description": "The CSS/MC account's parent resource. CSS group for CSS domains; CSS domain for MC accounts. Returned only if the user has access to the parent account. Note: For MC sub-accounts, this is also the CSS domain that is the parent resource of the MCA account, since we are effectively flattening the hierarchy.\"",
                     "type": "string"
                 }
             },
@@ -957,12 +957,12 @@
                 },
                 "freshnessTime": {
                     "deprecated": true,
-                    "description": "Represents the existing version (freshness) of the CSS Product, which can be used to preserve the right order when multiple updates are done at the same time. This field must not be set to the future time. If set, the update is prevented if a newer version of the item already exists in our system (that is the last update time of the existing CSS products is later than the freshness time set in the update). If the update happens, the last update time is then set to this freshness time. If not set, the update will not be prevented and the last update time will default to when this request was received by the CSS API. If the operation is prevented, the aborted exception will be thrown.",
+                    "description": "DEPRECATED. Use expiration_date instead. Represents the existing version (freshness) of the CSS Product, which can be used to preserve the right order when multiple updates are done at the same time. This field must not be set to the future time. If set, the update is prevented if a newer version of the item already exists in our system (that is the last update time of the existing CSS products is later than the freshness time set in the update). If the update happens, the last update time is then set to this freshness time. If not set, the update will not be prevented and the last update time will default to when this request was received by the CSS API. If the operation is prevented, the aborted exception will be thrown.",
                     "format": "google-datetime",
                     "type": "string"
                 },
                 "name": {
-                    "description": "The name of the CSS Product input. Format: `accounts/{account}/cssProductInputs/{css_product_input}`",
+                    "description": "The name of the CSS Product input. Format: `accounts/{account}/cssProductInputs/{css_product_input}`, where the last section `css_product_input` consists of 3 parts: contentLanguage~feedLabel~offerId. Example: accounts/123/cssProductInputs/de~DE~rawProvidedId123",
                     "type": "string"
                 },
                 "rawProvidedId": {

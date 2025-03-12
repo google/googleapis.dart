@@ -816,14 +816,10 @@ class ConfigManagementBinauthzVersion {
 
 /// Configuration for Config Sync
 class ConfigManagementConfigSync {
-  /// Set to true to allow the vertical scaling.
+  /// Configuration for deployment overrides.
   ///
-  /// Defaults to false which disallows vertical scaling. This field is
-  /// deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.bool? allowVerticalScale;
+  /// Optional.
+  core.List<ConfigManagementDeploymentOverride>? deploymentOverrides;
 
   /// Enables the installation of ConfigSync.
   ///
@@ -832,9 +828,13 @@ class ConfigManagementConfigSync {
   /// ConfigSync fields will be ignored, ConfigSync resources will be deleted.
   /// If omitted, ConfigSync resources will be managed depends on the presence
   /// of the git or oci field.
+  ///
+  /// Optional.
   core.bool? enabled;
 
   /// Git repo configuration for the cluster.
+  ///
+  /// Optional.
   ConfigManagementGitConfig? git;
 
   /// The Email of the Google Cloud Service Account (GSA) used for exporting
@@ -848,31 +848,41 @@ class ConfigManagementConfigSync {
   /// enabled, Google Cloud Service Account is no longer needed for exporting
   /// Config Sync metrics:
   /// https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
+  ///
+  /// Optional.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.String? metricsGcpServiceAccountEmail;
 
   /// OCI repo configuration for the cluster.
+  ///
+  /// Optional.
   ConfigManagementOciConfig? oci;
 
   /// Set to true to enable the Config Sync admission webhook to prevent drifts.
   ///
   /// If set to `false`, disables the Config Sync admission webhook and does not
   /// prevent drifts.
+  ///
+  /// Optional.
   core.bool? preventDrift;
 
   /// Specifies whether the Config Sync Repo is in "hierarchical" or
   /// "unstructured" mode.
+  ///
+  /// Optional.
   core.String? sourceFormat;
 
   /// Set to true to stop syncing configs for a single cluster.
   ///
   /// Default to false.
+  ///
+  /// Optional.
   core.bool? stopSyncing;
 
   ConfigManagementConfigSync({
-    this.allowVerticalScale,
+    this.deploymentOverrides,
     this.enabled,
     this.git,
     this.metricsGcpServiceAccountEmail,
@@ -884,7 +894,10 @@ class ConfigManagementConfigSync {
 
   ConfigManagementConfigSync.fromJson(core.Map json_)
       : this(
-          allowVerticalScale: json_['allowVerticalScale'] as core.bool?,
+          deploymentOverrides: (json_['deploymentOverrides'] as core.List?)
+              ?.map((value) => ConfigManagementDeploymentOverride.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           enabled: json_['enabled'] as core.bool?,
           git: json_.containsKey('git')
               ? ConfigManagementGitConfig.fromJson(
@@ -902,8 +915,8 @@ class ConfigManagementConfigSync {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowVerticalScale != null)
-          'allowVerticalScale': allowVerticalScale!,
+        if (deploymentOverrides != null)
+          'deploymentOverrides': deploymentOverrides!,
         if (enabled != null) 'enabled': enabled!,
         if (git != null) 'git': git!,
         if (metricsGcpServiceAccountEmail != null)
@@ -1053,6 +1066,8 @@ typedef ConfigManagementConfigSyncError = $Error;
 /// State information for ConfigSync.
 class ConfigManagementConfigSyncState {
   /// Whether syncing resources to the cluster is stopped at the cluster level.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STOP_SYNCING_STATE_UNSPECIFIED" : State cannot be determined
   /// - "NOT_STOPPED" : Syncing resources to the cluster is not stopped at the
@@ -1071,12 +1086,18 @@ class ConfigManagementConfigSyncState {
   /// Information about the deployment of ConfigSync, including the version.
   ///
   /// of the various Pods deployed
+  ///
+  /// Output only.
   ConfigManagementConfigSyncDeploymentState? deploymentState;
 
   /// Errors pertaining to the installation of Config Sync.
+  ///
+  /// Output only.
   core.List<ConfigManagementConfigSyncError>? errors;
 
   /// The state of the Reposync CRD
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "CRD_STATE_UNSPECIFIED" : CRD's state cannot be determined
   /// - "NOT_INSTALLED" : CRD is not installed
@@ -1087,6 +1108,8 @@ class ConfigManagementConfigSyncState {
   core.String? reposyncCrd;
 
   /// The state of the RootSync CRD
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "CRD_STATE_UNSPECIFIED" : CRD's state cannot be determined
   /// - "NOT_INSTALLED" : CRD is not installed
@@ -1097,6 +1120,8 @@ class ConfigManagementConfigSyncState {
   core.String? rootsyncCrd;
 
   /// The state of CS This field summarizes the other fields in this message.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : CS's state cannot be determined.
   /// - "CONFIG_SYNC_NOT_INSTALLED" : CS is not installed.
@@ -1107,9 +1132,13 @@ class ConfigManagementConfigSyncState {
   core.String? state;
 
   /// The state of ConfigSync's process to sync configs to a cluster.
+  ///
+  /// Output only.
   ConfigManagementSyncState? syncState;
 
   /// The version of ConfigSync deployed.
+  ///
+  /// Output only.
   ConfigManagementConfigSyncVersion? version;
 
   ConfigManagementConfigSyncState({
@@ -1231,6 +1260,50 @@ class ConfigManagementConfigSyncVersion {
           'resourceGroupControllerManager': resourceGroupControllerManager!,
         if (rootReconciler != null) 'rootReconciler': rootReconciler!,
         if (syncer != null) 'syncer': syncer!,
+      };
+}
+
+/// Configuration for a container override.
+typedef ConfigManagementContainerOverride = $ConfigManagementContainerOverride;
+
+/// Configuration for a deployment override.
+class ConfigManagementDeploymentOverride {
+  /// The containers of the deployment resource to be overridden.
+  ///
+  /// Optional.
+  core.List<ConfigManagementContainerOverride>? containers;
+
+  /// The name of the deployment resource to be overridden.
+  ///
+  /// Required.
+  core.String? deploymentName;
+
+  /// The namespace of the deployment resource to be overridden..
+  ///
+  /// Required.
+  core.String? deploymentNamespace;
+
+  ConfigManagementDeploymentOverride({
+    this.containers,
+    this.deploymentName,
+    this.deploymentNamespace,
+  });
+
+  ConfigManagementDeploymentOverride.fromJson(core.Map json_)
+      : this(
+          containers: (json_['containers'] as core.List?)
+              ?.map((value) => ConfigManagementContainerOverride.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          deploymentName: json_['deploymentName'] as core.String?,
+          deploymentNamespace: json_['deploymentNamespace'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (containers != null) 'containers': containers!,
+        if (deploymentName != null) 'deploymentName': deploymentName!,
+        if (deploymentNamespace != null)
+          'deploymentNamespace': deploymentNamespace!,
       };
 }
 
@@ -1651,6 +1724,8 @@ class ConfigManagementSpec {
   /// Binauthz conifguration for the cluster.
   ///
   /// Deprecated: This field will be ignored and should not be set.
+  ///
+  /// Optional.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -1664,9 +1739,13 @@ class ConfigManagementSpec {
   /// Sync cluster-name-selector annotation or ClusterSelector. Set this field
   /// if a name different from the cluster's fleet membership name is used by
   /// Config Sync cluster-name-selector annotation or ClusterSelector.
+  ///
+  /// Optional.
   core.String? cluster;
 
   /// Config Sync configuration for the cluster.
+  ///
+  /// Optional.
   ConfigManagementConfigSync? configSync;
 
   /// Hierarchy Controller configuration for the cluster.
@@ -1674,9 +1753,16 @@ class ConfigManagementSpec {
   /// Deprecated: Configuring Hierarchy Controller through the configmanagement
   /// feature is no longer recommended. Use
   /// https://github.com/kubernetes-sigs/hierarchical-namespaces instead.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   ConfigManagementHierarchyControllerConfig? hierarchyController;
 
   /// Enables automatic Feature management.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "MANAGEMENT_UNSPECIFIED" : Unspecified
   /// - "MANAGEMENT_AUTOMATIC" : Google will manage the Feature for the cluster.
@@ -1689,9 +1775,16 @@ class ConfigManagementSpec {
   /// Deprecated: Configuring Policy Controller through the configmanagement
   /// feature is no longer recommended. Use the policycontroller feature
   /// instead.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   ConfigManagementPolicyController? policyController;
 
   /// Version of ACM installed.
+  ///
+  /// Optional.
   core.String? version;
 
   ConfigManagementSpec({
@@ -1744,30 +1837,44 @@ class ConfigManagementSpec {
 /// **Anthos Config Management**: State for a single cluster.
 class ConfigManagementState {
   /// Binauthz status.
+  ///
+  /// Output only.
   ConfigManagementBinauthzState? binauthzState;
 
   /// This field is set to the `cluster_name` field of the Membership Spec if it
   /// is not empty.
   ///
   /// Otherwise, it is set to the cluster's fleet membership name.
+  ///
+  /// Output only.
   core.String? clusterName;
 
   /// Current sync status.
+  ///
+  /// Output only.
   ConfigManagementConfigSyncState? configSyncState;
 
   /// Hierarchy Controller status.
+  ///
+  /// Output only.
   ConfigManagementHierarchyControllerState? hierarchyControllerState;
 
   /// Membership configuration in the cluster.
   ///
   /// This represents the actual state in the cluster, while the MembershipSpec
   /// in the FeatureSpec represents the intended state.
+  ///
+  /// Output only.
   ConfigManagementSpec? membershipSpec;
 
   /// Current install status of ACM's Operator.
+  ///
+  /// Output only.
   ConfigManagementOperatorState? operatorState;
 
   /// PolicyController status.
+  ///
+  /// Output only.
   ConfigManagementPolicyControllerState? policyControllerState;
 
   ConfigManagementState({

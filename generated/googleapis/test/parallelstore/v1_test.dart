@@ -91,6 +91,7 @@ api.ExportDataRequest buildExportDataRequest() {
   buildCounterExportDataRequest++;
   if (buildCounterExportDataRequest < 3) {
     o.destinationGcsBucket = buildDestinationGcsBucket();
+    o.metadataOptions = buildTransferMetadataOptions();
     o.requestId = 'foo';
     o.serviceAccount = 'foo';
     o.sourceParallelstore = buildSourceParallelstore();
@@ -103,6 +104,7 @@ void checkExportDataRequest(api.ExportDataRequest o) {
   buildCounterExportDataRequest++;
   if (buildCounterExportDataRequest < 3) {
     checkDestinationGcsBucket(o.destinationGcsBucket!);
+    checkTransferMetadataOptions(o.metadataOptions!);
     unittest.expect(
       o.requestId!,
       unittest.equals('foo'),
@@ -137,6 +139,7 @@ api.ImportDataRequest buildImportDataRequest() {
   buildCounterImportDataRequest++;
   if (buildCounterImportDataRequest < 3) {
     o.destinationParallelstore = buildDestinationParallelstore();
+    o.metadataOptions = buildTransferMetadataOptions();
     o.requestId = 'foo';
     o.serviceAccount = 'foo';
     o.sourceGcsBucket = buildSourceGcsBucket();
@@ -149,6 +152,7 @@ void checkImportDataRequest(api.ImportDataRequest o) {
   buildCounterImportDataRequest++;
   if (buildCounterImportDataRequest < 3) {
     checkDestinationParallelstore(o.destinationParallelstore!);
+    checkTransferMetadataOptions(o.metadataOptions!);
     unittest.expect(
       o.requestId!,
       unittest.equals('foo'),
@@ -205,6 +209,7 @@ api.Instance buildInstance() {
     o.capacityGib = 'foo';
     o.createTime = 'foo';
     o.daosVersion = 'foo';
+    o.deploymentType = 'foo';
     o.description = 'foo';
     o.directoryStripeLevel = 'foo';
     o.effectiveReservedIpRange = 'foo';
@@ -234,6 +239,10 @@ void checkInstance(api.Instance o) {
     );
     unittest.expect(
       o.daosVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.deploymentType!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -748,6 +757,38 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
+core.int buildCounterTransferMetadataOptions = 0;
+api.TransferMetadataOptions buildTransferMetadataOptions() {
+  final o = api.TransferMetadataOptions();
+  buildCounterTransferMetadataOptions++;
+  if (buildCounterTransferMetadataOptions < 3) {
+    o.gid = 'foo';
+    o.mode = 'foo';
+    o.uid = 'foo';
+  }
+  buildCounterTransferMetadataOptions--;
+  return o;
+}
+
+void checkTransferMetadataOptions(api.TransferMetadataOptions o) {
+  buildCounterTransferMetadataOptions++;
+  if (buildCounterTransferMetadataOptions < 3) {
+    unittest.expect(
+      o.gid!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.mode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uid!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTransferMetadataOptions--;
+}
+
 void main() {
   unittest.group('obj-schema-CancelOperationRequest', () {
     unittest.test('to-json--from-json', () async {
@@ -896,6 +937,16 @@ void main() {
       final od =
           api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-TransferMetadataOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTransferMetadataOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TransferMetadataOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTransferMetadataOptions(od);
     });
   });
 

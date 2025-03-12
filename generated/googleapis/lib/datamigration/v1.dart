@@ -1016,11 +1016,13 @@ class ProjectsLocationsConversionWorkspacesResource {
   /// - "DATABASE_ENTITY_VIEW_FULL" : Return full entity details including
   /// mappings, ddl and issues.
   /// - "DATABASE_ENTITY_VIEW_ROOT_SUMMARY" : Top-most (Database, Schema) nodes
-  /// which are returned contains summary details for their decendents such as
+  /// which are returned contains summary details for their descendants such as
   /// the number of entities per type and issues rollups. When this view is
   /// used, only a single page of result is returned and the page_size property
   /// of the request is ignored. The returned page will only include the
   /// top-most node types.
+  /// - "DATABASE_ENTITY_VIEW_FULL_COMPACT" : Returns full entity details except
+  /// for ddls and schema custom features.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4181,16 +4183,32 @@ class CloudSqlSettings {
   /// Optional.
   DataCacheConfig? dataCacheConfig;
 
+  /// Provisioned number of I/O operations per second for the data disk.
+  ///
+  /// This field is only used for hyperdisk-balanced disk types.
+  ///
+  /// Optional.
+  core.String? dataDiskProvisionedIops;
+
+  /// Provisioned throughput measured in MiB per second for the data disk.
+  ///
+  /// This field is only used for hyperdisk-balanced disk types.
+  ///
+  /// Optional.
+  core.String? dataDiskProvisionedThroughput;
+
   /// The storage capacity available to the database, in GB.
   ///
   /// The minimum (and default) size is 10GB.
   core.String? dataDiskSizeGb;
 
-  /// The type of storage: `PD_SSD` (default) or `PD_HDD`.
+  /// The type of storage: `PD_SSD` (default) or `PD_HDD` or
+  /// `HYPERDISK_BALANCED`.
   /// Possible string values are:
   /// - "SQL_DATA_DISK_TYPE_UNSPECIFIED" : Unspecified.
   /// - "PD_SSD" : SSD disk.
   /// - "PD_HDD" : HDD disk.
+  /// - "HYPERDISK_BALANCED" : A Hyperdisk Balanced data disk.
   core.String? dataDiskType;
 
   /// The database flags passed to the Cloud SQL instance at startup.
@@ -4317,6 +4335,8 @@ class CloudSqlSettings {
     this.cmekKeyName,
     this.collation,
     this.dataCacheConfig,
+    this.dataDiskProvisionedIops,
+    this.dataDiskProvisionedThroughput,
     this.dataDiskSizeGb,
     this.dataDiskType,
     this.databaseFlags,
@@ -4345,6 +4365,10 @@ class CloudSqlSettings {
               ? DataCacheConfig.fromJson(json_['dataCacheConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          dataDiskProvisionedIops:
+              json_['dataDiskProvisionedIops'] as core.String?,
+          dataDiskProvisionedThroughput:
+              json_['dataDiskProvisionedThroughput'] as core.String?,
           dataDiskSizeGb: json_['dataDiskSizeGb'] as core.String?,
           dataDiskType: json_['dataDiskType'] as core.String?,
           databaseFlags:
@@ -4388,6 +4412,10 @@ class CloudSqlSettings {
         if (cmekKeyName != null) 'cmekKeyName': cmekKeyName!,
         if (collation != null) 'collation': collation!,
         if (dataCacheConfig != null) 'dataCacheConfig': dataCacheConfig!,
+        if (dataDiskProvisionedIops != null)
+          'dataDiskProvisionedIops': dataDiskProvisionedIops!,
+        if (dataDiskProvisionedThroughput != null)
+          'dataDiskProvisionedThroughput': dataDiskProvisionedThroughput!,
         if (dataDiskSizeGb != null) 'dataDiskSizeGb': dataDiskSizeGb!,
         if (dataDiskType != null) 'dataDiskType': dataDiskType!,
         if (databaseFlags != null) 'databaseFlags': databaseFlags!,
@@ -4428,6 +4456,9 @@ class ColumnEntity {
 
   /// Comment associated with the column.
   core.String? comment;
+
+  /// Is the column a computed column.
+  core.bool? computed;
 
   /// Custom engine specific features.
   ///
@@ -4477,6 +4508,7 @@ class ColumnEntity {
     this.charset,
     this.collation,
     this.comment,
+    this.computed,
     this.customFeatures,
     this.dataType,
     this.defaultValue,
@@ -4499,6 +4531,7 @@ class ColumnEntity {
           charset: json_['charset'] as core.String?,
           collation: json_['collation'] as core.String?,
           comment: json_['comment'] as core.String?,
+          computed: json_['computed'] as core.bool?,
           customFeatures: json_.containsKey('customFeatures')
               ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
               : null,
@@ -4525,6 +4558,7 @@ class ColumnEntity {
         if (charset != null) 'charset': charset!,
         if (collation != null) 'collation': collation!,
         if (comment != null) 'comment': comment!,
+        if (computed != null) 'computed': computed!,
         if (customFeatures != null) 'customFeatures': customFeatures!,
         if (dataType != null) 'dataType': dataType!,
         if (defaultValue != null) 'defaultValue': defaultValue!,
@@ -4683,6 +4717,7 @@ class ConnectionProfile {
   /// - "RDS" : Amazon RDS is the source instance provider.
   /// - "AURORA" : Amazon Aurora is the source instance provider.
   /// - "ALLOYDB" : AlloyDB for PostgreSQL is the source instance provider.
+  /// - "AZURE_DATABASE" : Microsoft Azure Database for MySQL/PostgreSQL.
   core.String? provider;
 
   /// The connection profile role.
@@ -4693,6 +4728,16 @@ class ConnectionProfile {
   /// - "SOURCE" : The role is source.
   /// - "DESTINATION" : The role is destination.
   core.String? role;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
 
   /// Connection profile for a SQL Server data source.
   SqlServerConnectionProfile? sqlserver;
@@ -4730,6 +4775,8 @@ class ConnectionProfile {
     this.postgresql,
     this.provider,
     this.role,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.sqlserver,
     this.state,
     this.updateTime,
@@ -4773,6 +4820,8 @@ class ConnectionProfile {
               : null,
           provider: json_['provider'] as core.String?,
           role: json_['role'] as core.String?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           sqlserver: json_.containsKey('sqlserver')
               ? SqlServerConnectionProfile.fromJson(
                   json_['sqlserver'] as core.Map<core.String, core.dynamic>)
@@ -4794,6 +4843,8 @@ class ConnectionProfile {
         if (postgresql != null) 'postgresql': postgresql!,
         if (provider != null) 'provider': provider!,
         if (role != null) 'role': role!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (sqlserver != null) 'sqlserver': sqlserver!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -5393,6 +5444,7 @@ class DatabaseType {
   /// - "RDS" : Amazon RDS is the source instance provider.
   /// - "AURORA" : Amazon Aurora is the source instance provider.
   /// - "ALLOYDB" : AlloyDB for PostgreSQL is the source instance provider.
+  /// - "AZURE_DATABASE" : Microsoft Azure Database for MySQL/PostgreSQL.
   core.String? provider;
 
   DatabaseType({
@@ -5571,8 +5623,30 @@ class EntityDdl {
   /// The actual ddl code.
   core.String? ddl;
 
+  /// The DDL Kind selected for apply, or UNSPECIFIED if the entity wasn't
+  /// converted yet.
+  /// Possible string values are:
+  /// - "DDL_KIND_UNSPECIFIED" : The kind of the DDL is unknown.
+  /// - "SOURCE" : DDL of the source entity
+  /// - "DETERMINISTIC" : Deterministic converted DDL
+  /// - "AI" : Gemini AI converted DDL
+  /// - "USER_EDIT" : User edited DDL
+  core.String? ddlKind;
+
   /// Type of DDL (Create, Alter).
   core.String? ddlType;
+
+  /// If ddl_kind is USER_EDIT, this holds the DDL kind of the original content
+  /// - DETERMINISTIC or AI.
+  ///
+  /// Otherwise, this is DDL_KIND_UNSPECIFIED.
+  /// Possible string values are:
+  /// - "DDL_KIND_UNSPECIFIED" : The kind of the DDL is unknown.
+  /// - "SOURCE" : DDL of the source entity
+  /// - "DETERMINISTIC" : Deterministic converted DDL
+  /// - "AI" : Gemini AI converted DDL
+  /// - "USER_EDIT" : User edited DDL
+  core.String? editedDdlKind;
 
   /// The name of the database entity the ddl refers to.
   core.String? entity;
@@ -5602,7 +5676,9 @@ class EntityDdl {
 
   EntityDdl({
     this.ddl,
+    this.ddlKind,
     this.ddlType,
+    this.editedDdlKind,
     this.entity,
     this.entityType,
     this.issueId,
@@ -5611,7 +5687,9 @@ class EntityDdl {
   EntityDdl.fromJson(core.Map json_)
       : this(
           ddl: json_['ddl'] as core.String?,
+          ddlKind: json_['ddlKind'] as core.String?,
           ddlType: json_['ddlType'] as core.String?,
+          editedDdlKind: json_['editedDdlKind'] as core.String?,
           entity: json_['entity'] as core.String?,
           entityType: json_['entityType'] as core.String?,
           issueId: (json_['issueId'] as core.List?)
@@ -5621,7 +5699,9 @@ class EntityDdl {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ddl != null) 'ddl': ddl!,
+        if (ddlKind != null) 'ddlKind': ddlKind!,
         if (ddlType != null) 'ddlType': ddlType!,
+        if (editedDdlKind != null) 'editedDdlKind': editedDdlKind!,
         if (entity != null) 'entity': entity!,
         if (entityType != null) 'entityType': entityType!,
         if (issueId != null) 'issueId': issueId!,
@@ -7116,6 +7196,16 @@ class MigrationJob {
   /// connectivity.
   ReverseSshConnectivity? reverseSshConnectivity;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The resource name (URI) of the source connection profile.
   ///
   /// Required.
@@ -7195,6 +7285,8 @@ class MigrationJob {
     this.performanceConfig,
     this.phase,
     this.reverseSshConnectivity,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.source,
     this.sourceDatabase,
     this.sqlserverHomogeneousMigrationJobConfig,
@@ -7257,6 +7349,8 @@ class MigrationJob {
               ? ReverseSshConnectivity.fromJson(json_['reverseSshConnectivity']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           source: json_['source'] as core.String?,
           sourceDatabase: json_.containsKey('sourceDatabase')
               ? DatabaseType.fromJson(json_['sourceDatabase']
@@ -7306,6 +7400,8 @@ class MigrationJob {
         if (phase != null) 'phase': phase!,
         if (reverseSshConnectivity != null)
           'reverseSshConnectivity': reverseSshConnectivity!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (source != null) 'source': source!,
         if (sourceDatabase != null) 'sourceDatabase': sourceDatabase!,
         if (sqlserverHomogeneousMigrationJobConfig != null)
@@ -8569,6 +8665,16 @@ class PrivateConnection {
   /// The name of the resource.
   core.String? name;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The state of the private connection.
   ///
   /// Output only.
@@ -8599,6 +8705,8 @@ class PrivateConnection {
     this.error,
     this.labels,
     this.name,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.state,
     this.updateTime,
     this.vpcPeeringConfig,
@@ -8620,6 +8728,8 @@ class PrivateConnection {
             ),
           ),
           name: json_['name'] as core.String?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           state: json_['state'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
           vpcPeeringConfig: json_.containsKey('vpcPeeringConfig')
@@ -8634,6 +8744,8 @@ class PrivateConnection {
         if (error != null) 'error': error!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (vpcPeeringConfig != null) 'vpcPeeringConfig': vpcPeeringConfig!,
@@ -9423,6 +9535,8 @@ class SourceNumericFilter {
 /// Config for a single migration job object.
 class SourceObjectConfig {
   /// The object identifier.
+  ///
+  /// Optional.
   SourceObjectIdentifier? objectIdentifier;
 
   SourceObjectConfig({
@@ -9448,6 +9562,8 @@ class SourceObjectIdentifier {
   ///
   /// This will be required only if the object uses a database name as part of
   /// its unique identifier.
+  ///
+  /// Optional.
   core.String? database;
 
   /// The type of the migration job object.
@@ -9479,6 +9595,8 @@ class SourceObjectIdentifier {
 /// List of configurations for the source objects to be migrated.
 class SourceObjectsConfig {
   /// The list of the objects to be migrated.
+  ///
+  /// Optional.
   core.List<SourceObjectConfig>? objectConfigs;
 
   /// The objects selection type of the migration job.

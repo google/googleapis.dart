@@ -1842,11 +1842,11 @@ class Binding {
 /// A boost configuration is a set of resources that a workstation can use to
 /// increase its performance.
 ///
-/// If a boost configuration is specified, when starting a workstation, users
-/// can choose to use a VM provisioned under the boost config by passing the
-/// boost config id in the start request. If no boost config id is provided in
-/// the start request, the system will choose a VM from the pool provisioned
-/// under the default config.
+/// If you specify a boost configuration, upon startup, workstation users can
+/// choose to use a VM provisioned under the boost config by passing the boost
+/// config ID in the start request. If the workstation user does not provide a
+/// boost config ID in the start request, the system will choose a VM from the
+/// pool provisioned under the default config.
 class BoostConfig {
   /// A list of the type and count of accelerator cards attached to the boost
   /// instance.
@@ -1885,7 +1885,7 @@ class BoostConfig {
   /// Optional.
   core.bool? enableNestedVirtualization;
 
-  /// The id to be used for the boost configuration.
+  /// The ID to be used for the boost configuration.
   ///
   /// Required.
   core.String? id;
@@ -2401,6 +2401,43 @@ class GceInstance {
       };
 }
 
+/// The Compute Engine instance host.
+class GceInstanceHost {
+  /// The ID of the Compute Engine instance.
+  ///
+  /// Optional. Output only.
+  core.String? id;
+
+  /// The name of the Compute Engine instance.
+  ///
+  /// Optional. Output only.
+  core.String? name;
+
+  /// The zone of the Compute Engine instance.
+  ///
+  /// Optional. Output only.
+  core.String? zone;
+
+  GceInstanceHost({
+    this.id,
+    this.name,
+    this.zone,
+  });
+
+  GceInstanceHost.fromJson(core.Map json_)
+      : this(
+          id: json_['id'] as core.String?,
+          name: json_['name'] as core.String?,
+          zone: json_['zone'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (zone != null) 'zone': zone!,
+      };
+}
+
 /// An EphemeralDirectory is backed by a Compute Engine persistent disk.
 class GcePersistentDisk {
   /// Type of the disk to use.
@@ -2422,6 +2459,9 @@ class GcePersistentDisk {
   ///
   /// Must be empty if source_snapshot is set. Updating source_image will update
   /// content in the ephemeral directory after the workstation is restarted.
+  /// Only file systems supported by Container-Optimized OS (COS) are explicitly
+  /// supported. For a list of supported file systems, please refer to the
+  /// [COS documentation](https://cloud.google.com/container-optimized-os/docs/concepts/supported-filesystems).
   /// This field is mutable.
   ///
   /// Optional.
@@ -2431,7 +2471,11 @@ class GcePersistentDisk {
   ///
   /// Must be empty if source_image is set. Must be empty if read_only is false.
   /// Updating source_snapshot will update content in the ephemeral directory
-  /// after the workstation is restarted. This field is mutable.
+  /// after the workstation is restarted. Only file systems supported by
+  /// Container-Optimized OS (COS) are explicitly supported. For a list of
+  /// supported file systems, please refer to the
+  /// [COS documentation](https://cloud.google.com/container-optimized-os/docs/concepts/supported-filesystems).
+  /// This field is mutable.
   ///
   /// Optional.
   core.String? sourceSnapshot;
@@ -3012,6 +3056,9 @@ class Operation {
 }
 
 /// A directory to persist across workstation sessions.
+///
+/// Updates to this field will not update existing workstations and will only
+/// take effect on new workstations.
 class PersistentDirectory {
   /// A PersistentDirectory backed by a Compute Engine persistent disk.
   GceRegionalPersistentDisk? gcePd;
@@ -3220,7 +3267,7 @@ class PrivateClusterConfig {
 
   /// Service attachment URI for the workstation cluster.
   ///
-  /// The service attachemnt is created when private endpoint is enabled. To
+  /// The service attachment is created when private endpoint is enabled. To
   /// access workstations in the workstation cluster, configure access to the
   /// managed service using
   /// [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services).
@@ -3284,6 +3331,28 @@ class ReadinessCheck {
       };
 }
 
+/// Runtime host for the workstation.
+class RuntimeHost {
+  /// Specifies a Compute Engine instance as the host.
+  GceInstanceHost? gceInstanceHost;
+
+  RuntimeHost({
+    this.gceInstanceHost,
+  });
+
+  RuntimeHost.fromJson(core.Map json_)
+      : this(
+          gceInstanceHost: json_.containsKey('gceInstanceHost')
+              ? GceInstanceHost.fromJson(json_['gceInstanceHost']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gceInstanceHost != null) 'gceInstanceHost': gceInstanceHost!,
+      };
+}
+
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
@@ -3320,7 +3389,44 @@ class SetIamPolicyRequest {
 }
 
 /// Request message for StartWorkstation.
-typedef StartWorkstationRequest = $WorkstationRequest;
+class StartWorkstationRequest {
+  /// If set, the workstation starts using the boost configuration with the
+  /// specified ID.
+  ///
+  /// Optional.
+  core.String? boostConfig;
+
+  /// If set, the request will be rejected if the latest version of the
+  /// workstation on the server does not have this ETag.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// If set, validate the request and preview the review, but do not actually
+  /// apply it.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  StartWorkstationRequest({
+    this.boostConfig,
+    this.etag,
+    this.validateOnly,
+  });
+
+  StartWorkstationRequest.fromJson(core.Map json_)
+      : this(
+          boostConfig: json_['boostConfig'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          validateOnly: json_['validateOnly'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boostConfig != null) 'boostConfig': boostConfig!,
+        if (etag != null) 'etag': etag!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -3332,7 +3438,35 @@ typedef StartWorkstationRequest = $WorkstationRequest;
 typedef Status = $Status00;
 
 /// Request message for StopWorkstation.
-typedef StopWorkstationRequest = $WorkstationRequest;
+class StopWorkstationRequest {
+  /// If set, the request will be rejected if the latest version of the
+  /// workstation on the server does not have this ETag.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// If set, validate the request and preview the review, but do not actually
+  /// apply it.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  StopWorkstationRequest({
+    this.etag,
+    this.validateOnly,
+  });
+
+  StopWorkstationRequest.fromJson(core.Map json_)
+      : this(
+          etag: json_['etag'] as core.String?,
+          validateOnly: json_['validateOnly'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
@@ -3413,6 +3547,17 @@ class Workstation {
   /// Output only.
   core.bool? reconciling;
 
+  /// Runtime host for the workstation when in STATE_RUNNING.
+  ///
+  /// Optional. Output only.
+  RuntimeHost? runtimeHost;
+
+  /// The source workstation from which this workstation's persistent
+  /// directories were cloned on creation.
+  ///
+  /// Optional.
+  core.String? sourceWorkstation;
+
   /// Time when this workstation was most recently successfully started,
   /// regardless of the workstation's initial state.
   ///
@@ -3455,6 +3600,8 @@ class Workstation {
     this.labels,
     this.name,
     this.reconciling,
+    this.runtimeHost,
+    this.sourceWorkstation,
     this.startTime,
     this.state,
     this.uid,
@@ -3492,6 +3639,11 @@ class Workstation {
           ),
           name: json_['name'] as core.String?,
           reconciling: json_['reconciling'] as core.bool?,
+          runtimeHost: json_.containsKey('runtimeHost')
+              ? RuntimeHost.fromJson(
+                  json_['runtimeHost'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sourceWorkstation: json_['sourceWorkstation'] as core.String?,
           startTime: json_['startTime'] as core.String?,
           state: json_['state'] as core.String?,
           uid: json_['uid'] as core.String?,
@@ -3510,6 +3662,8 @@ class Workstation {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (reconciling != null) 'reconciling': reconciling!,
+        if (runtimeHost != null) 'runtimeHost': runtimeHost!,
+        if (sourceWorkstation != null) 'sourceWorkstation': sourceWorkstation!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
         if (uid != null) 'uid': uid!,

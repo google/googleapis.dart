@@ -12,7 +12,7 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// GDC Virtual API - v1
+/// GKE On-Prem API - v1
 ///
 /// For more information, see
 /// <https://cloud.google.com/anthos/clusters/docs/on-prem/>

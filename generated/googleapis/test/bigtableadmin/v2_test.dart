@@ -1343,7 +1343,9 @@ api.GoogleBigtableAdminV2TypeBytesEncodingRaw
     buildGoogleBigtableAdminV2TypeBytesEncodingRaw() {
   final o = api.GoogleBigtableAdminV2TypeBytesEncodingRaw();
   buildCounterGoogleBigtableAdminV2TypeBytesEncodingRaw++;
-  if (buildCounterGoogleBigtableAdminV2TypeBytesEncodingRaw < 3) {}
+  if (buildCounterGoogleBigtableAdminV2TypeBytesEncodingRaw < 3) {
+    o.escapeNulls = true;
+  }
   buildCounterGoogleBigtableAdminV2TypeBytesEncodingRaw--;
   return o;
 }
@@ -1351,7 +1353,9 @@ api.GoogleBigtableAdminV2TypeBytesEncodingRaw
 void checkGoogleBigtableAdminV2TypeBytesEncodingRaw(
     api.GoogleBigtableAdminV2TypeBytesEncodingRaw o) {
   buildCounterGoogleBigtableAdminV2TypeBytesEncodingRaw++;
-  if (buildCounterGoogleBigtableAdminV2TypeBytesEncodingRaw < 3) {}
+  if (buildCounterGoogleBigtableAdminV2TypeBytesEncodingRaw < 3) {
+    unittest.expect(o.escapeNulls!, unittest.isTrue);
+  }
   buildCounterGoogleBigtableAdminV2TypeBytesEncodingRaw--;
 }
 
@@ -1429,6 +1433,8 @@ api.GoogleBigtableAdminV2TypeInt64Encoding
   if (buildCounterGoogleBigtableAdminV2TypeInt64Encoding < 3) {
     o.bigEndianBytes =
         buildGoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes();
+    o.orderedCodeBytes =
+        buildGoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes();
   }
   buildCounterGoogleBigtableAdminV2TypeInt64Encoding--;
   return o;
@@ -1440,6 +1446,8 @@ void checkGoogleBigtableAdminV2TypeInt64Encoding(
   if (buildCounterGoogleBigtableAdminV2TypeInt64Encoding < 3) {
     checkGoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes(
         o.bigEndianBytes!);
+    checkGoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes(
+        o.orderedCodeBytes!);
   }
   buildCounterGoogleBigtableAdminV2TypeInt64Encoding--;
 }
@@ -1463,6 +1471,23 @@ void checkGoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes(
     checkGoogleBigtableAdminV2TypeBytes(o.bytesType!);
   }
   buildCounterGoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes--;
+}
+
+core.int buildCounterGoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes = 0;
+api.GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes
+    buildGoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes() {
+  final o = api.GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes();
+  buildCounterGoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes++;
+  if (buildCounterGoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes < 3) {}
+  buildCounterGoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes--;
+  return o;
+}
+
+void checkGoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes(
+    api.GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes o) {
+  buildCounterGoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes++;
+  if (buildCounterGoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes < 3) {}
+  buildCounterGoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes--;
 }
 
 core.int buildCounterGoogleBigtableAdminV2TypeMap = 0;
@@ -1534,7 +1559,9 @@ api.GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes
     buildGoogleBigtableAdminV2TypeStringEncodingUtf8Bytes() {
   final o = api.GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes();
   buildCounterGoogleBigtableAdminV2TypeStringEncodingUtf8Bytes++;
-  if (buildCounterGoogleBigtableAdminV2TypeStringEncodingUtf8Bytes < 3) {}
+  if (buildCounterGoogleBigtableAdminV2TypeStringEncodingUtf8Bytes < 3) {
+    o.nullEscapeChar = 'foo';
+  }
   buildCounterGoogleBigtableAdminV2TypeStringEncodingUtf8Bytes--;
   return o;
 }
@@ -1542,7 +1569,12 @@ api.GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes
 void checkGoogleBigtableAdminV2TypeStringEncodingUtf8Bytes(
     api.GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes o) {
   buildCounterGoogleBigtableAdminV2TypeStringEncodingUtf8Bytes++;
-  if (buildCounterGoogleBigtableAdminV2TypeStringEncodingUtf8Bytes < 3) {}
+  if (buildCounterGoogleBigtableAdminV2TypeStringEncodingUtf8Bytes < 3) {
+    unittest.expect(
+      o.nullEscapeChar!,
+      unittest.equals('foo'),
+    );
+  }
   buildCounterGoogleBigtableAdminV2TypeStringEncodingUtf8Bytes--;
 }
 
@@ -1579,6 +1611,7 @@ api.GoogleBigtableAdminV2TypeStruct buildGoogleBigtableAdminV2TypeStruct() {
   final o = api.GoogleBigtableAdminV2TypeStruct();
   buildCounterGoogleBigtableAdminV2TypeStruct++;
   if (buildCounterGoogleBigtableAdminV2TypeStruct < 3) {
+    o.encoding = buildGoogleBigtableAdminV2TypeStructEncoding();
     o.fields = buildUnnamed10();
   }
   buildCounterGoogleBigtableAdminV2TypeStruct--;
@@ -1589,9 +1622,100 @@ void checkGoogleBigtableAdminV2TypeStruct(
     api.GoogleBigtableAdminV2TypeStruct o) {
   buildCounterGoogleBigtableAdminV2TypeStruct++;
   if (buildCounterGoogleBigtableAdminV2TypeStruct < 3) {
+    checkGoogleBigtableAdminV2TypeStructEncoding(o.encoding!);
     checkUnnamed10(o.fields!);
   }
   buildCounterGoogleBigtableAdminV2TypeStruct--;
+}
+
+core.int buildCounterGoogleBigtableAdminV2TypeStructEncoding = 0;
+api.GoogleBigtableAdminV2TypeStructEncoding
+    buildGoogleBigtableAdminV2TypeStructEncoding() {
+  final o = api.GoogleBigtableAdminV2TypeStructEncoding();
+  buildCounterGoogleBigtableAdminV2TypeStructEncoding++;
+  if (buildCounterGoogleBigtableAdminV2TypeStructEncoding < 3) {
+    o.delimitedBytes =
+        buildGoogleBigtableAdminV2TypeStructEncodingDelimitedBytes();
+    o.orderedCodeBytes =
+        buildGoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes();
+    o.singleton = buildGoogleBigtableAdminV2TypeStructEncodingSingleton();
+  }
+  buildCounterGoogleBigtableAdminV2TypeStructEncoding--;
+  return o;
+}
+
+void checkGoogleBigtableAdminV2TypeStructEncoding(
+    api.GoogleBigtableAdminV2TypeStructEncoding o) {
+  buildCounterGoogleBigtableAdminV2TypeStructEncoding++;
+  if (buildCounterGoogleBigtableAdminV2TypeStructEncoding < 3) {
+    checkGoogleBigtableAdminV2TypeStructEncodingDelimitedBytes(
+        o.delimitedBytes!);
+    checkGoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes(
+        o.orderedCodeBytes!);
+    checkGoogleBigtableAdminV2TypeStructEncodingSingleton(o.singleton!);
+  }
+  buildCounterGoogleBigtableAdminV2TypeStructEncoding--;
+}
+
+core.int buildCounterGoogleBigtableAdminV2TypeStructEncodingDelimitedBytes = 0;
+api.GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes
+    buildGoogleBigtableAdminV2TypeStructEncodingDelimitedBytes() {
+  final o = api.GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes();
+  buildCounterGoogleBigtableAdminV2TypeStructEncodingDelimitedBytes++;
+  if (buildCounterGoogleBigtableAdminV2TypeStructEncodingDelimitedBytes < 3) {
+    o.delimiter = 'foo';
+  }
+  buildCounterGoogleBigtableAdminV2TypeStructEncodingDelimitedBytes--;
+  return o;
+}
+
+void checkGoogleBigtableAdminV2TypeStructEncodingDelimitedBytes(
+    api.GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes o) {
+  buildCounterGoogleBigtableAdminV2TypeStructEncodingDelimitedBytes++;
+  if (buildCounterGoogleBigtableAdminV2TypeStructEncodingDelimitedBytes < 3) {
+    unittest.expect(
+      o.delimiter!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleBigtableAdminV2TypeStructEncodingDelimitedBytes--;
+}
+
+core.int buildCounterGoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes =
+    0;
+api.GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes
+    buildGoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes() {
+  final o = api.GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes();
+  buildCounterGoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes++;
+  if (buildCounterGoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes <
+      3) {}
+  buildCounterGoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes--;
+  return o;
+}
+
+void checkGoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes(
+    api.GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes o) {
+  buildCounterGoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes++;
+  if (buildCounterGoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes <
+      3) {}
+  buildCounterGoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes--;
+}
+
+core.int buildCounterGoogleBigtableAdminV2TypeStructEncodingSingleton = 0;
+api.GoogleBigtableAdminV2TypeStructEncodingSingleton
+    buildGoogleBigtableAdminV2TypeStructEncodingSingleton() {
+  final o = api.GoogleBigtableAdminV2TypeStructEncodingSingleton();
+  buildCounterGoogleBigtableAdminV2TypeStructEncodingSingleton++;
+  if (buildCounterGoogleBigtableAdminV2TypeStructEncodingSingleton < 3) {}
+  buildCounterGoogleBigtableAdminV2TypeStructEncodingSingleton--;
+  return o;
+}
+
+void checkGoogleBigtableAdminV2TypeStructEncodingSingleton(
+    api.GoogleBigtableAdminV2TypeStructEncodingSingleton o) {
+  buildCounterGoogleBigtableAdminV2TypeStructEncodingSingleton++;
+  if (buildCounterGoogleBigtableAdminV2TypeStructEncodingSingleton < 3) {}
+  buildCounterGoogleBigtableAdminV2TypeStructEncodingSingleton--;
 }
 
 core.int buildCounterGoogleBigtableAdminV2TypeStructField = 0;
@@ -1625,7 +1749,9 @@ api.GoogleBigtableAdminV2TypeTimestamp
     buildGoogleBigtableAdminV2TypeTimestamp() {
   final o = api.GoogleBigtableAdminV2TypeTimestamp();
   buildCounterGoogleBigtableAdminV2TypeTimestamp++;
-  if (buildCounterGoogleBigtableAdminV2TypeTimestamp < 3) {}
+  if (buildCounterGoogleBigtableAdminV2TypeTimestamp < 3) {
+    o.encoding = buildGoogleBigtableAdminV2TypeTimestampEncoding();
+  }
   buildCounterGoogleBigtableAdminV2TypeTimestamp--;
   return o;
 }
@@ -1633,8 +1759,31 @@ api.GoogleBigtableAdminV2TypeTimestamp
 void checkGoogleBigtableAdminV2TypeTimestamp(
     api.GoogleBigtableAdminV2TypeTimestamp o) {
   buildCounterGoogleBigtableAdminV2TypeTimestamp++;
-  if (buildCounterGoogleBigtableAdminV2TypeTimestamp < 3) {}
+  if (buildCounterGoogleBigtableAdminV2TypeTimestamp < 3) {
+    checkGoogleBigtableAdminV2TypeTimestampEncoding(o.encoding!);
+  }
   buildCounterGoogleBigtableAdminV2TypeTimestamp--;
+}
+
+core.int buildCounterGoogleBigtableAdminV2TypeTimestampEncoding = 0;
+api.GoogleBigtableAdminV2TypeTimestampEncoding
+    buildGoogleBigtableAdminV2TypeTimestampEncoding() {
+  final o = api.GoogleBigtableAdminV2TypeTimestampEncoding();
+  buildCounterGoogleBigtableAdminV2TypeTimestampEncoding++;
+  if (buildCounterGoogleBigtableAdminV2TypeTimestampEncoding < 3) {
+    o.unixMicrosInt64 = buildGoogleBigtableAdminV2TypeInt64Encoding();
+  }
+  buildCounterGoogleBigtableAdminV2TypeTimestampEncoding--;
+  return o;
+}
+
+void checkGoogleBigtableAdminV2TypeTimestampEncoding(
+    api.GoogleBigtableAdminV2TypeTimestampEncoding o) {
+  buildCounterGoogleBigtableAdminV2TypeTimestampEncoding++;
+  if (buildCounterGoogleBigtableAdminV2TypeTimestampEncoding < 3) {
+    checkGoogleBigtableAdminV2TypeInt64Encoding(o.unixMicrosInt64!);
+  }
+  buildCounterGoogleBigtableAdminV2TypeTimestampEncoding--;
 }
 
 core.int buildCounterHotTablet = 0;
@@ -3575,6 +3724,18 @@ void main() {
     });
   });
 
+  unittest.group(
+      'obj-schema-GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleBigtableAdminV2TypeMap', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleBigtableAdminV2TypeMap();
@@ -3637,6 +3798,51 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleBigtableAdminV2TypeStructEncoding', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleBigtableAdminV2TypeStructEncoding();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleBigtableAdminV2TypeStructEncoding.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleBigtableAdminV2TypeStructEncoding(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleBigtableAdminV2TypeStructEncodingDelimitedBytes();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleBigtableAdminV2TypeStructEncodingDelimitedBytes(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleBigtableAdminV2TypeStructEncodingSingleton',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleBigtableAdminV2TypeStructEncodingSingleton();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleBigtableAdminV2TypeStructEncodingSingleton.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleBigtableAdminV2TypeStructEncodingSingleton(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleBigtableAdminV2TypeStructField', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleBigtableAdminV2TypeStructField();
@@ -3654,6 +3860,16 @@ void main() {
       final od = api.GoogleBigtableAdminV2TypeTimestamp.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleBigtableAdminV2TypeTimestamp(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleBigtableAdminV2TypeTimestampEncoding', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleBigtableAdminV2TypeTimestampEncoding();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleBigtableAdminV2TypeTimestampEncoding.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleBigtableAdminV2TypeTimestampEncoding(od);
     });
   });
 
@@ -5935,6 +6151,363 @@ void main() {
           startTime: arg_startTime,
           $fields: arg_$fields);
       checkListHotTabletsResponse(response as api.ListHotTabletsResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsInstancesLogicalViewsResource', () {
+    unittest.test('method--getIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res = api.BigtableAdminApi(mock).projects.instances.logicalViews;
+      final arg_request = buildGetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetIamPolicyRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPolicy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--setIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res = api.BigtableAdminApi(mock).projects.instances.logicalViews;
+      final arg_request = buildSetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPolicy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--testIamPermissions', () async {
+      final mock = HttpServerMock();
+      final res = api.BigtableAdminApi(mock).projects.instances.logicalViews;
+      final arg_request = buildTestIamPermissionsRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildTestIamPermissionsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsInstancesMaterializedViewsResource', () {
+    unittest.test('method--getIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigtableAdminApi(mock).projects.instances.materializedViews;
+      final arg_request = buildGetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetIamPolicyRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPolicy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--setIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigtableAdminApi(mock).projects.instances.materializedViews;
+      final arg_request = buildSetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPolicy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--testIamPermissions', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigtableAdminApi(mock).projects.instances.materializedViews;
+      final arg_request = buildTestIamPermissionsRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildTestIamPermissionsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 

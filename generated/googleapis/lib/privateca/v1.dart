@@ -3174,6 +3174,14 @@ class CertificateAuthority {
   /// Output only.
   core.String? updateTime;
 
+  /// User-defined URLs for CA certificate and CRLs.
+  ///
+  /// The service does not publish content to these URLs. It is up to the user
+  /// to mirror content to these URLs.
+  ///
+  /// Optional.
+  UserDefinedAccessUrls? userDefinedAccessUrls;
+
   CertificateAuthority({
     this.accessUrls,
     this.caCertificateDescriptions,
@@ -3194,6 +3202,7 @@ class CertificateAuthority {
     this.tier,
     this.type,
     this.updateTime,
+    this.userDefinedAccessUrls,
   });
 
   CertificateAuthority.fromJson(core.Map json_)
@@ -3241,6 +3250,10 @@ class CertificateAuthority {
           tier: json_['tier'] as core.String?,
           type: json_['type'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
+          userDefinedAccessUrls: json_.containsKey('userDefinedAccessUrls')
+              ? UserDefinedAccessUrls.fromJson(json_['userDefinedAccessUrls']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3264,6 +3277,8 @@ class CertificateAuthority {
         if (tier != null) 'tier': tier!,
         if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (userDefinedAccessUrls != null)
+          'userDefinedAccessUrls': userDefinedAccessUrls!,
       };
 }
 
@@ -4100,6 +4115,18 @@ class IssuancePolicy {
   /// Optional.
   core.List<AllowedKeyType>? allowedKeyTypes;
 
+  /// The duration to backdate all certificates issued from this CaPool.
+  ///
+  /// If not set, the certificates will be issued with a not_before_time of the
+  /// issuance time (i.e. the current time). If set, the certificates will be
+  /// issued with a not_before_time of the issuance time minus the
+  /// backdate_duration. The not_after_time will be adjusted to preserve the
+  /// requested lifetime. The backdate_duration must be less than or equal to 48
+  /// hours.
+  ///
+  /// Optional.
+  core.String? backdateDuration;
+
   /// A set of X.509 values that will be applied to all certificates issued
   /// through this CaPool.
   ///
@@ -4147,6 +4174,7 @@ class IssuancePolicy {
   IssuancePolicy({
     this.allowedIssuanceModes,
     this.allowedKeyTypes,
+    this.backdateDuration,
     this.baselineValues,
     this.identityConstraints,
     this.maximumLifetime,
@@ -4163,6 +4191,7 @@ class IssuancePolicy {
               ?.map((value) => AllowedKeyType.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          backdateDuration: json_['backdateDuration'] as core.String?,
           baselineValues: json_.containsKey('baselineValues')
               ? X509Parameters.fromJson(json_['baselineValues']
                   as core.Map<core.String, core.dynamic>)
@@ -4184,6 +4213,7 @@ class IssuancePolicy {
         if (allowedIssuanceModes != null)
           'allowedIssuanceModes': allowedIssuanceModes!,
         if (allowedKeyTypes != null) 'allowedKeyTypes': allowedKeyTypes!,
+        if (backdateDuration != null) 'backdateDuration': backdateDuration!,
         if (baselineValues != null) 'baselineValues': baselineValues!,
         if (identityConstraints != null)
           'identityConstraints': identityConstraints!,
@@ -5621,6 +5651,50 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 /// Request message for
 /// CertificateAuthorityService.UndeleteCertificateAuthority.
 typedef UndeleteCertificateAuthorityRequest = $Request03;
+
+/// User-defined URLs for accessing content published by this
+/// CertificateAuthority.
+class UserDefinedAccessUrls {
+  /// A list of URLs where the issuer CA certificate may be downloaded, which
+  /// appears in the "Authority Information Access" extension in the
+  /// certificate.
+  ///
+  /// If specified, the default Cloud Storage URLs will be omitted.
+  ///
+  /// Optional.
+  core.List<core.String>? aiaIssuingCertificateUrls;
+
+  /// A list of URLs where to obtain CRL information, i.e. the
+  /// DistributionPoint.fullName described by
+  /// https://tools.ietf.org/html/rfc5280#section-4.2.1.13.
+  ///
+  /// If specified, the default Cloud Storage URLs will be omitted.
+  ///
+  /// Optional.
+  core.List<core.String>? crlAccessUrls;
+
+  UserDefinedAccessUrls({
+    this.aiaIssuingCertificateUrls,
+    this.crlAccessUrls,
+  });
+
+  UserDefinedAccessUrls.fromJson(core.Map json_)
+      : this(
+          aiaIssuingCertificateUrls:
+              (json_['aiaIssuingCertificateUrls'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+          crlAccessUrls: (json_['crlAccessUrls'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aiaIssuingCertificateUrls != null)
+          'aiaIssuingCertificateUrls': aiaIssuingCertificateUrls!,
+        if (crlAccessUrls != null) 'crlAccessUrls': crlAccessUrls!,
+      };
+}
 
 /// An X509Extension specifies an X.509 extension, which may be used in
 /// different parts of X.509 objects like certificates, CSRs, and CRLs.

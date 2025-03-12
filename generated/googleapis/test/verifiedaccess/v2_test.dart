@@ -26,6 +26,28 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAntivirus = 0;
+api.Antivirus buildAntivirus() {
+  final o = api.Antivirus();
+  buildCounterAntivirus++;
+  if (buildCounterAntivirus < 3) {
+    o.state = 'foo';
+  }
+  buildCounterAntivirus--;
+  return o;
+}
+
+void checkAntivirus(api.Antivirus o) {
+  buildCounterAntivirus++;
+  if (buildCounterAntivirus < 3) {
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAntivirus--;
+}
+
 core.int buildCounterChallenge = 0;
 api.Challenge buildChallenge() {
   final o = api.Challenge();
@@ -183,6 +205,7 @@ api.DeviceSignals buildDeviceSignals() {
   buildCounterDeviceSignals++;
   if (buildCounterDeviceSignals < 3) {
     o.allowScreenLock = true;
+    o.antivirus = buildAntivirus();
     o.browserVersion = 'foo';
     o.builtInDnsClientEnabled = true;
     o.chromeRemoteDesktopAppBlocked = true;
@@ -223,6 +246,7 @@ void checkDeviceSignals(api.DeviceSignals o) {
   buildCounterDeviceSignals++;
   if (buildCounterDeviceSignals < 3) {
     unittest.expect(o.allowScreenLock!, unittest.isTrue);
+    checkAntivirus(o.antivirus!);
     unittest.expect(
       o.browserVersion!,
       unittest.equals('foo'),
@@ -374,6 +398,7 @@ api.VerifyChallengeResponseResult buildVerifyChallengeResponseResult() {
     o.keyTrustLevel = 'foo';
     o.profileCustomerId = 'foo';
     o.profileKeyTrustLevel = 'foo';
+    o.profilePermanentId = 'foo';
     o.signedPublicKeyAndChallenge = 'foo';
     o.virtualDeviceId = 'foo';
     o.virtualProfileId = 'foo';
@@ -419,6 +444,10 @@ void checkVerifyChallengeResponseResult(api.VerifyChallengeResponseResult o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.profilePermanentId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.signedPublicKeyAndChallenge!,
       unittest.equals('foo'),
     );
@@ -435,6 +464,16 @@ void checkVerifyChallengeResponseResult(api.VerifyChallengeResponseResult o) {
 }
 
 void main() {
+  unittest.group('obj-schema-Antivirus', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAntivirus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Antivirus.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkAntivirus(od);
+    });
+  });
+
   unittest.group('obj-schema-Challenge', () {
     unittest.test('to-json--from-json', () async {
       final o = buildChallenge();

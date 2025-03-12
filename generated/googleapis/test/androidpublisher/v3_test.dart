@@ -1501,6 +1501,7 @@ api.ConvertRegionPricesResponse buildConvertRegionPricesResponse() {
   if (buildCounterConvertRegionPricesResponse < 3) {
     o.convertedOtherRegionsPrice = buildConvertedOtherRegionsPrice();
     o.convertedRegionPrices = buildUnnamed23();
+    o.regionVersion = buildRegionsVersion();
   }
   buildCounterConvertRegionPricesResponse--;
   return o;
@@ -1511,6 +1512,7 @@ void checkConvertRegionPricesResponse(api.ConvertRegionPricesResponse o) {
   if (buildCounterConvertRegionPricesResponse < 3) {
     checkConvertedOtherRegionsPrice(o.convertedOtherRegionsPrice!);
     checkUnnamed23(o.convertedRegionPrices!);
+    checkRegionsVersion(o.regionVersion!);
   }
   buildCounterConvertRegionPricesResponse--;
 }

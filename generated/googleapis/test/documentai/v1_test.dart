@@ -3828,6 +3828,8 @@ api.GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig
   if (buildCounterGoogleCloudDocumentaiV1ProcessOptionsLayoutConfig < 3) {
     o.chunkingConfig =
         buildGoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig();
+    o.returnBoundingBoxes = true;
+    o.returnImages = true;
   }
   buildCounterGoogleCloudDocumentaiV1ProcessOptionsLayoutConfig--;
   return o;
@@ -3839,6 +3841,8 @@ void checkGoogleCloudDocumentaiV1ProcessOptionsLayoutConfig(
   if (buildCounterGoogleCloudDocumentaiV1ProcessOptionsLayoutConfig < 3) {
     checkGoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig(
         o.chunkingConfig!);
+    unittest.expect(o.returnBoundingBoxes!, unittest.isTrue);
+    unittest.expect(o.returnImages!, unittest.isTrue);
   }
   buildCounterGoogleCloudDocumentaiV1ProcessOptionsLayoutConfig--;
 }

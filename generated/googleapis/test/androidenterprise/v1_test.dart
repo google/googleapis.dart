@@ -727,25 +727,6 @@ void checkConfigurationVariables(api.ConfigurationVariables o) {
   buildCounterConfigurationVariables--;
 }
 
-core.int buildCounterCreateEnrollmentTokenResponse = 0;
-api.CreateEnrollmentTokenResponse buildCreateEnrollmentTokenResponse() {
-  final o = api.CreateEnrollmentTokenResponse();
-  buildCounterCreateEnrollmentTokenResponse++;
-  if (buildCounterCreateEnrollmentTokenResponse < 3) {
-    o.enrollmentToken = buildEnrollmentToken();
-  }
-  buildCounterCreateEnrollmentTokenResponse--;
-  return o;
-}
-
-void checkCreateEnrollmentTokenResponse(api.CreateEnrollmentTokenResponse o) {
-  buildCounterCreateEnrollmentTokenResponse++;
-  if (buildCounterCreateEnrollmentTokenResponse < 3) {
-    checkEnrollmentToken(o.enrollmentToken!);
-  }
-  buildCounterCreateEnrollmentTokenResponse--;
-}
-
 core.int buildCounterDevice = 0;
 api.Device buildDevice() {
   final o = api.Device();
@@ -977,8 +958,10 @@ api.Enterprise buildEnterprise() {
   buildCounterEnterprise++;
   if (buildCounterEnterprise < 3) {
     o.administrator = buildUnnamed12();
+    o.enterpriseType = 'foo';
     o.googleAuthenticationSettings = buildGoogleAuthenticationSettings();
     o.id = 'foo';
+    o.managedGoogleDomainType = 'foo';
     o.name = 'foo';
     o.primaryDomain = 'foo';
   }
@@ -990,9 +973,17 @@ void checkEnterprise(api.Enterprise o) {
   buildCounterEnterprise++;
   if (buildCounterEnterprise < 3) {
     checkUnnamed12(o.administrator!);
+    unittest.expect(
+      o.enterpriseType!,
+      unittest.equals('foo'),
+    );
     checkGoogleAuthenticationSettings(o.googleAuthenticationSettings!);
     unittest.expect(
       o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.managedGoogleDomainType!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1051,6 +1042,28 @@ void checkEnterpriseAuthenticationAppLinkConfig(
     );
   }
   buildCounterEnterpriseAuthenticationAppLinkConfig--;
+}
+
+core.int buildCounterEnterpriseUpgradeEvent = 0;
+api.EnterpriseUpgradeEvent buildEnterpriseUpgradeEvent() {
+  final o = api.EnterpriseUpgradeEvent();
+  buildCounterEnterpriseUpgradeEvent++;
+  if (buildCounterEnterpriseUpgradeEvent < 3) {
+    o.upgradeState = 'foo';
+  }
+  buildCounterEnterpriseUpgradeEvent--;
+  return o;
+}
+
+void checkEnterpriseUpgradeEvent(api.EnterpriseUpgradeEvent o) {
+  buildCounterEnterpriseUpgradeEvent++;
+  if (buildCounterEnterpriseUpgradeEvent < 3) {
+    unittest.expect(
+      o.upgradeState!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEnterpriseUpgradeEvent--;
 }
 
 core.List<api.Enterprise> buildUnnamed13() => [
@@ -1167,6 +1180,30 @@ void checkEntitlementsListResponse(api.EntitlementsListResponse o) {
     checkUnnamed14(o.entitlement!);
   }
   buildCounterEntitlementsListResponse--;
+}
+
+core.int buildCounterGenerateEnterpriseUpgradeUrlResponse = 0;
+api.GenerateEnterpriseUpgradeUrlResponse
+    buildGenerateEnterpriseUpgradeUrlResponse() {
+  final o = api.GenerateEnterpriseUpgradeUrlResponse();
+  buildCounterGenerateEnterpriseUpgradeUrlResponse++;
+  if (buildCounterGenerateEnterpriseUpgradeUrlResponse < 3) {
+    o.url = 'foo';
+  }
+  buildCounterGenerateEnterpriseUpgradeUrlResponse--;
+  return o;
+}
+
+void checkGenerateEnterpriseUpgradeUrlResponse(
+    api.GenerateEnterpriseUpgradeUrlResponse o) {
+  buildCounterGenerateEnterpriseUpgradeUrlResponse++;
+  if (buildCounterGenerateEnterpriseUpgradeUrlResponse < 3) {
+    unittest.expect(
+      o.url!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGenerateEnterpriseUpgradeUrlResponse--;
 }
 
 core.int buildCounterGoogleAuthenticationSettings = 0;
@@ -1878,6 +1915,7 @@ api.Notification buildNotification() {
     o.appUpdateEvent = buildAppUpdateEvent();
     o.deviceReportUpdateEvent = buildDeviceReportUpdateEvent();
     o.enterpriseId = 'foo';
+    o.enterpriseUpgradeEvent = buildEnterpriseUpgradeEvent();
     o.installFailureEvent = buildInstallFailureEvent();
     o.newDeviceEvent = buildNewDeviceEvent();
     o.newPermissionsEvent = buildNewPermissionsEvent();
@@ -1900,6 +1938,7 @@ void checkNotification(api.Notification o) {
       o.enterpriseId!,
       unittest.equals('foo'),
     );
+    checkEnterpriseUpgradeEvent(o.enterpriseUpgradeEvent!);
     checkInstallFailureEvent(o.installFailureEvent!);
     checkNewDeviceEvent(o.newDeviceEvent!);
     checkNewPermissionsEvent(o.newPermissionsEvent!);
@@ -3298,6 +3337,40 @@ void checkWebAppsListResponse(api.WebAppsListResponse o) {
   buildCounterWebAppsListResponse--;
 }
 
+core.List<core.String> buildUnnamed55() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed55(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed56() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed56(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
   unittest.group('obj-schema-Administrator', () {
     unittest.test('to-json--from-json', () async {
@@ -3511,16 +3584,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-CreateEnrollmentTokenResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildCreateEnrollmentTokenResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.CreateEnrollmentTokenResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkCreateEnrollmentTokenResponse(od);
-    });
-  });
-
   unittest.group('obj-schema-Device', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDevice();
@@ -3611,6 +3674,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-EnterpriseUpgradeEvent', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEnterpriseUpgradeEvent();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EnterpriseUpgradeEvent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEnterpriseUpgradeEvent(od);
+    });
+  });
+
   unittest.group('obj-schema-EnterprisesListResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEnterprisesListResponse();
@@ -3648,6 +3721,16 @@ void main() {
       final od = api.EntitlementsListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkEntitlementsListResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-GenerateEnterpriseUpgradeUrlResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGenerateEnterpriseUpgradeUrlResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GenerateEnterpriseUpgradeUrlResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGenerateEnterpriseUpgradeUrlResponse(od);
     });
   });
 
@@ -4745,6 +4828,79 @@ void main() {
     });
   });
 
+  unittest.group('resource-EnrollmentTokensResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.AndroidEnterpriseApi(mock).enrollmentTokens;
+      final arg_request = buildEnrollmentToken();
+      final arg_enterpriseId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.EnrollmentToken.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEnrollmentToken(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 33),
+          unittest.equals('androidenterprise/v1/enterprises/'),
+        );
+        pathOffset += 33;
+        index = path.indexOf('/enrollmentTokens', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_enterpriseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals('/enrollmentTokens'),
+        );
+        pathOffset += 17;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEnrollmentToken());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_enterpriseId, $fields: arg_$fields);
+      checkEnrollmentToken(response as api.EnrollmentToken);
+    });
+  });
+
   unittest.group('resource-EnterprisesResource', () {
     unittest.test('method--acknowledgeNotificationSet', () async {
       final mock = HttpServerMock();
@@ -4863,92 +5019,6 @@ void main() {
           enterpriseToken: arg_enterpriseToken,
           $fields: arg_$fields);
       checkEnterprise(response as api.Enterprise);
-    });
-
-    unittest.test('method--createEnrollmentToken', () async {
-      final mock = HttpServerMock();
-      final res = api.AndroidEnterpriseApi(mock).enterprises;
-      final arg_enterpriseId = 'foo';
-      final arg_enrollmentToken_duration = 'foo';
-      final arg_enrollmentToken_enrollmentTokenType = 'foo';
-      final arg_enrollmentToken_token = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 33),
-          unittest.equals('androidenterprise/v1/enterprises/'),
-        );
-        pathOffset += 33;
-        index = path.indexOf('/createEnrollmentToken', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_enterpriseId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 22),
-          unittest.equals('/createEnrollmentToken'),
-        );
-        pathOffset += 22;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['enrollmentToken.duration']!.first,
-          unittest.equals(arg_enrollmentToken_duration),
-        );
-        unittest.expect(
-          queryMap['enrollmentToken.enrollmentTokenType']!.first,
-          unittest.equals(arg_enrollmentToken_enrollmentTokenType),
-        );
-        unittest.expect(
-          queryMap['enrollmentToken.token']!.first,
-          unittest.equals(arg_enrollmentToken_token),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildCreateEnrollmentTokenResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.createEnrollmentToken(arg_enterpriseId,
-          enrollmentToken_duration: arg_enrollmentToken_duration,
-          enrollmentToken_enrollmentTokenType:
-              arg_enrollmentToken_enrollmentTokenType,
-          enrollmentToken_token: arg_enrollmentToken_token,
-          $fields: arg_$fields);
-      checkCreateEnrollmentTokenResponse(
-          response as api.CreateEnrollmentTokenResponse);
     });
 
     unittest.test('method--createWebToken', () async {
@@ -5083,10 +5153,91 @@ void main() {
       checkEnterprise(response as api.Enterprise);
     });
 
+    unittest.test('method--generateEnterpriseUpgradeUrl', () async {
+      final mock = HttpServerMock();
+      final res = api.AndroidEnterpriseApi(mock).enterprises;
+      final arg_enterpriseId = 'foo';
+      final arg_adminEmail = 'foo';
+      final arg_allowedDomains = buildUnnamed55();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 33),
+          unittest.equals('androidenterprise/v1/enterprises/'),
+        );
+        pathOffset += 33;
+        index = path.indexOf('/generateEnterpriseUpgradeUrl', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_enterpriseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 29),
+          unittest.equals('/generateEnterpriseUpgradeUrl'),
+        );
+        pathOffset += 29;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['adminEmail']!.first,
+          unittest.equals(arg_adminEmail),
+        );
+        unittest.expect(
+          queryMap['allowedDomains']!,
+          unittest.equals(arg_allowedDomains),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGenerateEnterpriseUpgradeUrlResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.generateEnterpriseUpgradeUrl(arg_enterpriseId,
+          adminEmail: arg_adminEmail,
+          allowedDomains: arg_allowedDomains,
+          $fields: arg_$fields);
+      checkGenerateEnterpriseUpgradeUrlResponse(
+          response as api.GenerateEnterpriseUpgradeUrlResponse);
+    });
+
     unittest.test('method--generateSignupUrl', () async {
       final mock = HttpServerMock();
       final res = api.AndroidEnterpriseApi(mock).enterprises;
       final arg_adminEmail = 'foo';
+      final arg_allowedDomains = buildUnnamed56();
       final arg_callbackUrl = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5125,6 +5276,10 @@ void main() {
           unittest.equals(arg_adminEmail),
         );
         unittest.expect(
+          queryMap['allowedDomains']!,
+          unittest.equals(arg_allowedDomains),
+        );
+        unittest.expect(
           queryMap['callbackUrl']!.first,
           unittest.equals(arg_callbackUrl),
         );
@@ -5141,6 +5296,7 @@ void main() {
       }), true);
       final response = await res.generateSignupUrl(
           adminEmail: arg_adminEmail,
+          allowedDomains: arg_allowedDomains,
           callbackUrl: arg_callbackUrl,
           $fields: arg_$fields);
       checkSignupInfo(response as api.SignupInfo);

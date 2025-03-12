@@ -105,7 +105,10 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Download feedback labels in bulk.
+  /// Download feedback labels in bulk from an external source.
+  ///
+  /// Currently supports exporting Quality AI example conversations with
+  /// transcripts and question bodies.
   ///
   /// [request] - The metadata request object.
   ///
@@ -147,7 +150,9 @@ class ProjectsLocationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Upload feedback labels in bulk.
+  /// Upload feedback labels from an external source in bulk.
+  ///
+  /// Currently supports labeling Quality AI example conversations.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4050,6 +4055,8 @@ class GoogleCloudContactcenterinsightsV1AnalysisRule {
   /// Filter for the conversations that should apply this analysis rule.
   ///
   /// An empty filter means this analysis rule applies to all conversations.
+  /// Refer to https://cloud.google.com/contact-center/insights/docs/filtering
+  /// for details.
   core.String? conversationFilter;
 
   /// The time at which this analysis rule was created.
@@ -4329,6 +4336,11 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig {
   /// projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
   core.String? conversationProfile;
 
+  /// The resource name of the existing created generator.
+  ///
+  /// Format: projects//locations//generators/
+  core.String? generator;
+
   /// Default summarization model to be used.
   /// Possible string values are:
   /// - "SUMMARIZATION_MODEL_UNSPECIFIED" : Unspecified summarization model.
@@ -4338,6 +4350,7 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig {
 
   GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig({
     this.conversationProfile,
+    this.generator,
     this.summarizationModel,
   });
 
@@ -4345,12 +4358,14 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig {
       core.Map json_)
       : this(
           conversationProfile: json_['conversationProfile'] as core.String?,
+          generator: json_['generator'] as core.String?,
           summarizationModel: json_['summarizationModel'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conversationProfile != null)
           'conversationProfile': conversationProfile!,
+        if (generator != null) 'generator': generator!,
         if (summarizationModel != null)
           'summarizationModel': summarizationModel!,
       };
@@ -5194,7 +5209,7 @@ class GoogleCloudContactcenterinsightsV1Conversation {
   /// Input only.
   ///
   /// JSON metadata encoded as a string. This field is primarily used by
-  /// Insights integrations with various telphony systems and must be in one of
+  /// Insights integrations with various telephony systems and must be in one of
   /// Insight's supported formats.
   core.String? metadataJson;
 
@@ -6054,6 +6069,7 @@ class GoogleCloudContactcenterinsightsV1Dimension {
   /// Possible string values are:
   /// - "DIMENSION_KEY_UNSPECIFIED" : The key of the dimension is unspecified.
   /// - "ISSUE" : The dimension is keyed by issues.
+  /// - "ISSUE_NAME" : The dimension is keyed by issue names.
   /// - "AGENT" : The dimension is keyed by agents.
   /// - "AGENT_TEAM" : The dimension is keyed by agent teams.
   /// - "QA_QUESTION_ID" : The dimension is keyed by QaQuestionIds. Note that:
@@ -6490,6 +6506,23 @@ class GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
   GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination?
       bigQueryDestination;
 
+  /// Version of the export schema.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EXPORT_SCHEMA_VERSION_UNSPECIFIED" : Unspecified. Defaults to
+  /// EXPORT_V3.
+  /// - "EXPORT_V1" : Export schema version 1.
+  /// - "EXPORT_V2" : Export schema version 2.
+  /// - "EXPORT_V3" : Export schema version 3.
+  /// - "EXPORT_V4" : Export schema version 4.
+  /// - "EXPORT_V5" : Export schema version 5.
+  /// - "EXPORT_V6" : Export schema version 6.
+  /// - "EXPORT_V7" : Export schema version 7.
+  /// - "EXPORT_VERSION_LATEST_AVAILABLE" : Export schema version latest
+  /// available.
+  core.String? exportSchemaVersion;
+
   /// A filter to reduce results to a specific subset.
   ///
   /// Useful for exporting conversations with specific properties.
@@ -6518,6 +6551,7 @@ class GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
 
   GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest({
     this.bigQueryDestination,
+    this.exportSchemaVersion,
     this.filter,
     this.kmsKey,
     this.parent,
@@ -6532,6 +6566,7 @@ class GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
                   .fromJson(json_['bigQueryDestination']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          exportSchemaVersion: json_['exportSchemaVersion'] as core.String?,
           filter: json_['filter'] as core.String?,
           kmsKey: json_['kmsKey'] as core.String?,
           parent: json_['parent'] as core.String?,
@@ -6541,6 +6576,8 @@ class GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigQueryDestination != null)
           'bigQueryDestination': bigQueryDestination!,
+        if (exportSchemaVersion != null)
+          'exportSchemaVersion': exportSchemaVersion!,
         if (filter != null) 'filter': filter!,
         if (kmsKey != null) 'kmsKey': kmsKey!,
         if (parent != null) 'parent': parent!,
@@ -6628,7 +6665,7 @@ class GoogleCloudContactcenterinsightsV1ExportIssueModelRequest {
 
 /// Google Cloud Storage Object URI to save the issue model to.
 typedef GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination
-    = $Shared09;
+    = $Shared10;
 
 /// Agent Assist frequently-asked-question answer data.
 class GoogleCloudContactcenterinsightsV1FaqAnswerData {
@@ -6695,16 +6732,24 @@ class GoogleCloudContactcenterinsightsV1FaqAnswerData {
 }
 
 /// Represents a conversation, resource, and label provided by the user.
+///
+/// Can take the form of a string label or a QaAnswer label. QaAnswer labels are
+/// used for Quality AI example conversations. String labels are used for Topic
+/// Modeling.
 class GoogleCloudContactcenterinsightsV1FeedbackLabel {
   /// Create time of the label.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// String label.
+  /// String label used for Topic Modeling.
   core.String? label;
 
   /// Resource name of the resource to be labeled.
+  ///
+  /// Supported resources: -
+  /// qaScorecards/{scorecard}/revisions/{revision}/qaQuestions/{question} -
+  /// issueModels/{issue_model}
   core.String? labeledResource;
 
   /// Resource name of the FeedbackLabel.
@@ -6715,7 +6760,7 @@ class GoogleCloudContactcenterinsightsV1FeedbackLabel {
   /// Immutable.
   core.String? name;
 
-  /// QaAnswer label.
+  /// QaAnswer label used for Quality AI example conversations.
   GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue? qaAnswerLabel;
 
   /// Update time of the label.
@@ -6832,7 +6877,7 @@ class GoogleCloudContactcenterinsightsV1ImportIssueModelRequest {
 
 /// Google Cloud Storage Object URI to get the issue model file from.
 typedef GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource
-    = $Shared09;
+    = $Shared10;
 
 /// The request to ingest conversations.
 class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
@@ -7229,7 +7274,7 @@ class GoogleCloudContactcenterinsightsV1Issue {
 class GoogleCloudContactcenterinsightsV1IssueAssignment {
   /// Display name of the assigned issue.
   ///
-  /// This field is set at time of analyis and immutable since then.
+  /// This field is set at time of analysis and immutable since then.
   ///
   /// Immutable.
   core.String? displayName;
@@ -7395,6 +7440,9 @@ class GoogleCloudContactcenterinsightsV1IssueModel {
 class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
   /// A filter to reduce the conversations used for training the model to a
   /// specific subset.
+  ///
+  /// Refer to https://cloud.google.com/contact-center/insights/docs/filtering
+  /// for details.
   core.String? filter;
 
   /// Medium of conversations used in training data.
@@ -9208,7 +9256,7 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput {
 
 /// The data for a sentiment annotation.
 class GoogleCloudContactcenterinsightsV1SentimentData {
-  /// A non-negative number from 0 to infinity which represents the abolute
+  /// A non-negative number from 0 to infinity which represents the absolute
   /// magnitude of sentiment regardless of score.
   core.double? magnitude;
 
@@ -9702,7 +9750,10 @@ class GoogleCloudContactcenterinsightsV1View {
   /// Output only.
   core.String? updateTime;
 
-  /// String with specific view properties, must be non-empty.
+  /// A filter to reduce conversation results to a specific subset.
+  ///
+  /// Refer to https://cloud.google.com/contact-center/insights/docs/filtering
+  /// for details.
   core.String? value;
 
   GoogleCloudContactcenterinsightsV1View({

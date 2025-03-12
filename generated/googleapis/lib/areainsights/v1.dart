@@ -113,9 +113,10 @@ class Circle {
   /// The latitude and longitude of the center of the circle.
   LatLng? latLng;
 
-  /// The Place resource name of the center of the circle.
+  /// **Format:** Must be in the format `places/PLACE_ID`, where `PLACE_ID` is
+  /// the unique identifier of a place.
   ///
-  /// Only point places are supported.
+  /// For example: `places/ChIJgUbEo8cfqokR5lP9_Wh_DaM`.
   core.String? place;
 
   /// The radius of the circle in meters
@@ -253,7 +254,8 @@ class Filter {
 
   /// Restricts results to places whose price level is included on this list.
   ///
-  /// If price_level is not set, all price levels are included in the results.
+  /// If `price_levels` is not set, all price levels are included in the
+  /// results.
   ///
   /// Optional.
   core.List<core.String>? priceLevels;

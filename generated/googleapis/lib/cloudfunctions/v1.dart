@@ -1037,7 +1037,11 @@ class CloudFunction {
 
   /// Docker Registry to use for this deployment.
   ///
-  /// If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository`
+  /// Deprecated: Container Registry option will no longer be available after
+  /// March 2025:
+  /// https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr
+  /// Please use Artifact Registry instead, which is the default choice. If
+  /// unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository`
   /// field is specified, this field should either be left unspecified or set to
   /// `ARTIFACT_REGISTRY`.
   /// Possible string values are:
@@ -1049,6 +1053,9 @@ class CloudFunction {
   /// named `gcf-artifacts` in every region in which a function is deployed. But
   /// the repository to use can also be specified by the user using the
   /// `docker_repository` field.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? dockerRegistry;
 
   /// User-managed repository created in Artifact Registry to which the
@@ -1964,7 +1971,7 @@ class SecretEnvVar {
   /// Name of the environment variable.
   core.String? key;
 
-  /// Project identifier (preferrably project number but can also be the project
+  /// Project identifier (preferably project number but can also be the project
   /// ID) of the project that contains the secret.
   ///
   /// If not set, it will be populated with the function's project assuming that

@@ -135,6 +135,35 @@ class ChallengeResource {
   }
 }
 
+/// Antivirus information on a device.
+class Antivirus {
+  /// The state of the antivirus on the device.
+  ///
+  /// Introduced in Chrome M136.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified.
+  /// - "MISSING" : No antivirus was detected on the device.
+  /// - "DISABLED" : At least one antivirus was installed on the device but none
+  /// was enabled.
+  /// - "ENABLED" : At least one antivirus was enabled on the device.
+  core.String? state;
+
+  Antivirus({
+    this.state,
+  });
+
+  Antivirus.fromJson(core.Map json_)
+      : this(
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (state != null) 'state': state!,
+      };
+}
+
 /// Result message for VerifiedAccess.GenerateChallenge.
 class Challenge {
   /// Generated challenge, the bytes representation of SignedData.
@@ -163,9 +192,13 @@ class Challenge {
 /// Properties of the CrowdStrike agent installed on a device.
 class CrowdStrikeAgent {
   /// The Agent ID of the Crowdstrike agent.
+  ///
+  /// Output only.
   core.String? agentId;
 
   /// The Customer ID to which the agent belongs to.
+  ///
+  /// Output only.
   core.String? customerId;
 
   CrowdStrikeAgent({
@@ -193,11 +226,22 @@ class DeviceSignals {
   ///
   /// See https://chromeenterprise.google/policies/?policy=AllowScreenLock for
   /// more details. Available on ChromeOS only.
+  ///
+  /// Output only.
   core.bool? allowScreenLock;
+
+  /// Information about Antivirus software on the device.
+  ///
+  /// Available on Windows only.
+  ///
+  /// Output only.
+  Antivirus? antivirus;
 
   /// Current version of the Chrome browser which generated this set of signals.
   ///
   /// Example value: "107.0.5286.0".
+  ///
+  /// Output only.
   core.String? browserVersion;
 
   /// Whether Chrome's built-in DNS client is used.
@@ -205,15 +249,21 @@ class DeviceSignals {
   /// The OS DNS client is otherwise used. This value may be controlled by an
   /// enterprise policy:
   /// https://chromeenterprise.google/policies/#BuiltInDnsClientEnabled.
+  ///
+  /// Output only.
   core.bool? builtInDnsClientEnabled;
 
   /// Whether access to the Chrome Remote Desktop application is blocked via a
   /// policy.
+  ///
+  /// Output only.
   core.bool? chromeRemoteDesktopAppBlocked;
 
   /// Crowdstrike agent properties installed on the device, if any.
   ///
   /// Available on Windows and MacOS only.
+  ///
+  /// Output only.
   CrowdStrikeAgent? crowdStrikeAgent;
 
   /// Affiliation IDs of the organizations that are affiliated with the
@@ -223,20 +273,30 @@ class DeviceSignals {
   /// the organizations managing the device and user are affiliated. To learn
   /// more about user affiliation, visit
   /// https://support.google.com/chrome/a/answer/12801245?ref_topic=9027936.
+  ///
+  /// Output only.
   core.List<core.String>? deviceAffiliationIds;
 
   /// Enrollment domain of the customer which is currently managing the device.
+  ///
+  /// Output only.
   core.String? deviceEnrollmentDomain;
 
   /// The name of the device's manufacturer.
+  ///
+  /// Output only.
   core.String? deviceManufacturer;
 
   /// The name of the device's model.
+  ///
+  /// Output only.
   core.String? deviceModel;
 
   /// The encryption state of the disk.
   ///
   /// On ChromeOS, the main disk is always ENCRYPTED.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "DISK_ENCRYPTION_UNSPECIFIED" : Unspecified.
   /// - "DISK_ENCRYPTION_UNKNOWN" : Chrome could not evaluate the encryption
@@ -246,6 +306,8 @@ class DeviceSignals {
   core.String? diskEncryption;
 
   /// The display name of the device, as defined by the user.
+  ///
+  /// Output only.
   core.String? displayName;
 
   /// Hostname of the device.
@@ -254,17 +316,25 @@ class DeviceSignals {
   /// International Mobile Equipment Identity (IMEI) of the device.
   ///
   /// Available on ChromeOS only.
+  ///
+  /// Output only.
   core.List<core.String>? imei;
 
   /// MAC addresses of the device.
+  ///
+  /// Output only.
   core.List<core.String>? macAddresses;
 
   /// Mobile Equipment Identifier (MEID) of the device.
   ///
   /// Available on ChromeOS only.
+  ///
+  /// Output only.
   core.List<core.String>? meid;
 
   /// The type of the Operating System currently running on the device.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "OPERATING_SYSTEM_UNSPECIFIED" : UNSPECIFIED.
   /// - "CHROME_OS" : ChromeOS.
@@ -279,6 +349,8 @@ class DeviceSignals {
   /// On ChromeOS, the value will always be ENABLED on regular devices and
   /// UNKNOWN on devices in developer mode. Support for MacOS 15 (Sequoia) and
   /// later has been introduced in Chrome M131.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "OS_FIREWALL_UNSPECIFIED" : Unspecified.
   /// - "OS_FIREWALL_UNKNOWN" : Chrome could not evaluate the OS firewall state.
@@ -290,6 +362,8 @@ class DeviceSignals {
   ///
   /// On Windows and linux, the value will also include the security patch
   /// information.
+  ///
+  /// Output only.
   core.String? osVersion;
 
   /// Whether the Password Protection Warning feature is enabled or not.
@@ -300,6 +374,8 @@ class DeviceSignals {
   /// https://chromeenterprise.google/policies/#PasswordProtectionWarningTrigger.
   /// Note that the policy unset does not have the same effects as having the
   /// policy explicitly set to `PASSWORD_PROTECTION_OFF`.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "PASSWORD_PROTECTION_WARNING_TRIGGER_UNSPECIFIED" : Unspecified.
   /// - "POLICY_UNSET" : The policy is not set.
@@ -314,9 +390,13 @@ class DeviceSignals {
   /// Affiliation IDs of the organizations that are affiliated with the
   /// organization that is currently managing the Chrome Profile’s user or
   /// ChromeOS user.
+  ///
+  /// Output only.
   core.List<core.String>? profileAffiliationIds;
 
   /// Enrollment domain of the customer which is currently managing the profile.
+  ///
+  /// Output only.
   core.String? profileEnrollmentDomain;
 
   /// Whether Enterprise-grade (i.e. custom) unsafe URL scanning is enabled or
@@ -324,6 +404,8 @@ class DeviceSignals {
   ///
   /// This setting may be controlled by an enterprise policy:
   /// https://chromeenterprise.google/policies/#EnterpriseRealTimeUrlCheckMode
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "REALTIME_URL_CHECK_MODE_UNSPECIFIED" : Unspecified.
   /// - "REALTIME_URL_CHECK_MODE_DISABLED" : Disabled. Consumer Safe Browsing
@@ -336,6 +418,8 @@ class DeviceSignals {
   ///
   /// That setting may be controlled by an enterprise policy:
   /// https://chromeenterprise.google/policies/#SafeBrowsingProtectionLevel.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "SAFE_BROWSING_PROTECTION_LEVEL_UNSPECIFIED" : Unspecified.
   /// - "INACTIVE" : Safe Browsing is disabled.
@@ -347,6 +431,8 @@ class DeviceSignals {
   ///
   /// On ChromeOS, this value will always be ENABLED as there is not way to
   /// disable requiring a password or pin when unlocking the device.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "SCREEN_LOCK_SECURED_UNSPECIFIED" : Unspecified.
   /// - "SCREEN_LOCK_SECURED_UNKNOWN" : Chrome could not evaluate the state of
@@ -359,6 +445,8 @@ class DeviceSignals {
   /// Whether the device's startup software has its Secure Boot feature enabled.
   ///
   /// Available on Windows only.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "SECURE_BOOT_MODE_UNSPECIFIED" : Unspecified.
   /// - "SECURE_BOOT_MODE_UNKNOWN" : Chrome was unable to determine the Secure
@@ -373,12 +461,16 @@ class DeviceSignals {
   ///
   /// On Windows, this represents the BIOS's serial number. Not available on
   /// most Linux distributions.
+  ///
+  /// Output only.
   core.String? serialNumber;
 
   /// Whether the Site Isolation (a.k.a Site Per Process) setting is enabled.
   ///
   /// That setting may be controlled by an enterprise policy:
   /// https://chromeenterprise.google/policies/#SitePerProcess
+  ///
+  /// Output only.
   core.bool? siteIsolationEnabled;
 
   /// List of the addesses of all OS level DNS servers configured in the
@@ -390,9 +482,13 @@ class DeviceSignals {
   /// This setting may be controlled by an enterprise policy:
   /// https://chromeenterprise.google/policies/?policy=ThirdPartyBlockingEnabled.
   /// Available on Windows only.
+  ///
+  /// Output only.
   core.bool? thirdPartyBlockingEnabled;
 
   /// The trigger which generated this set of signals.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "TRIGGER_UNSPECIFIED" : Unspecified.
   /// - "TRIGGER_BROWSER_NAVIGATION" : When navigating to an URL inside a
@@ -404,15 +500,20 @@ class DeviceSignals {
   /// Windows domain that the current machine has joined.
   ///
   /// Available on Windows only.
+  ///
+  /// Output only.
   core.String? windowsMachineDomain;
 
   /// Windows domain for the current OS user.
   ///
   /// Available on Windows only.
+  ///
+  /// Output only.
   core.String? windowsUserDomain;
 
   DeviceSignals({
     this.allowScreenLock,
+    this.antivirus,
     this.browserVersion,
     this.builtInDnsClientEnabled,
     this.chromeRemoteDesktopAppBlocked,
@@ -449,6 +550,10 @@ class DeviceSignals {
   DeviceSignals.fromJson(core.Map json_)
       : this(
           allowScreenLock: json_['allowScreenLock'] as core.bool?,
+          antivirus: json_.containsKey('antivirus')
+              ? Antivirus.fromJson(
+                  json_['antivirus'] as core.Map<core.String, core.dynamic>)
+              : null,
           browserVersion: json_['browserVersion'] as core.String?,
           builtInDnsClientEnabled:
               json_['builtInDnsClientEnabled'] as core.bool?,
@@ -506,6 +611,7 @@ class DeviceSignals {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowScreenLock != null) 'allowScreenLock': allowScreenLock!,
+        if (antivirus != null) 'antivirus': antivirus!,
         if (browserVersion != null) 'browserVersion': browserVersion!,
         if (builtInDnsClientEnabled != null)
           'builtInDnsClientEnabled': builtInDnsClientEnabled!,
@@ -606,31 +712,43 @@ class VerifyChallengeResponseRequest {
 /// Result message for VerifiedAccess.VerifyChallengeResponse.
 class VerifyChallengeResponseResult {
   /// Attested device ID (ADID).
+  ///
+  /// Output only.
   core.String? attestedDeviceId;
 
   /// Unique customer id that this device belongs to, as defined by the Google
   /// Admin SDK at
   /// https://developers.google.com/admin-sdk/directory/v1/guides/manage-customers
+  ///
+  /// Output only.
   core.String? customerId;
 
   /// Device enrollment id for ChromeOS devices.
+  ///
+  /// Output only.
   core.String? deviceEnrollmentId;
 
   /// Device permanent id is returned in this field (for the machine response
   /// only).
+  ///
+  /// Output only.
   core.String? devicePermanentId;
 
   /// Device signal in json string representation.
   ///
   /// Prefer using `device_signals` instead.
   ///
-  /// Deprecated.
+  /// Output only. Deprecated.
   core.String? deviceSignal;
 
   /// Device signals.
+  ///
+  /// Output only.
   DeviceSignals? deviceSignals;
 
   /// Device attested key trust level.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "KEY_TRUST_LEVEL_UNSPECIFIED" : UNSPECIFIED.
   /// - "CHROME_OS_VERIFIED_MODE" : ChromeOS device in verified mode.
@@ -645,9 +763,13 @@ class VerifyChallengeResponseResult {
   /// Unique customer id that this profile belongs to, as defined by the Google
   /// Admin SDK at
   /// https://developers.google.com/admin-sdk/directory/v1/guides/manage-customers
+  ///
+  /// Output only.
   core.String? profileCustomerId;
 
   /// Profile attested key trust level.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "KEY_TRUST_LEVEL_UNSPECIFIED" : UNSPECIFIED.
   /// - "CHROME_OS_VERIFIED_MODE" : ChromeOS device in verified mode.
@@ -659,20 +781,31 @@ class VerifyChallengeResponseResult {
   /// - "CHROME_BROWSER_NO_KEY" : Chrome Browser without an attestation key.
   core.String? profileKeyTrustLevel;
 
+  /// The unique server-side ID of a profile on the device.
+  ///
+  /// Output only.
+  core.String? profilePermanentId;
+
   /// Certificate Signing Request (in the SPKAC format, base64 encoded) is
   /// returned in this field.
   ///
   /// This field will be set only if device has included CSR in its challenge
   /// response. (the option to include CSR is now available for both user and
   /// machine responses)
+  ///
+  /// Output only.
   core.String? signedPublicKeyAndChallenge;
 
   /// Virtual device id of the device.
   ///
   /// The definition of virtual device id is platform-specific.
+  ///
+  /// Output only.
   core.String? virtualDeviceId;
 
-  /// The ID of a profile on the device.
+  /// The client-provided ID of a profile on the device.
+  ///
+  /// Output only.
   core.String? virtualProfileId;
 
   VerifyChallengeResponseResult({
@@ -685,6 +818,7 @@ class VerifyChallengeResponseResult {
     this.keyTrustLevel,
     this.profileCustomerId,
     this.profileKeyTrustLevel,
+    this.profilePermanentId,
     this.signedPublicKeyAndChallenge,
     this.virtualDeviceId,
     this.virtualProfileId,
@@ -704,6 +838,7 @@ class VerifyChallengeResponseResult {
           keyTrustLevel: json_['keyTrustLevel'] as core.String?,
           profileCustomerId: json_['profileCustomerId'] as core.String?,
           profileKeyTrustLevel: json_['profileKeyTrustLevel'] as core.String?,
+          profilePermanentId: json_['profilePermanentId'] as core.String?,
           signedPublicKeyAndChallenge:
               json_['signedPublicKeyAndChallenge'] as core.String?,
           virtualDeviceId: json_['virtualDeviceId'] as core.String?,
@@ -722,6 +857,8 @@ class VerifyChallengeResponseResult {
         if (profileCustomerId != null) 'profileCustomerId': profileCustomerId!,
         if (profileKeyTrustLevel != null)
           'profileKeyTrustLevel': profileKeyTrustLevel!,
+        if (profilePermanentId != null)
+          'profilePermanentId': profilePermanentId!,
         if (signedPublicKeyAndChallenge != null)
           'signedPublicKeyAndChallenge': signedPublicKeyAndChallenge!,
         if (virtualDeviceId != null) 'virtualDeviceId': virtualDeviceId!,

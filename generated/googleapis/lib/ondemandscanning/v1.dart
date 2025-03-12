@@ -541,6 +541,9 @@ class AttestationOccurrence {
       };
 }
 
+/// BaseImage describes a base image of a container image.
+typedef BaseImage = $BaseImage;
+
 class BinarySourceInfo {
   /// The binary package.
   ///
@@ -1138,7 +1141,31 @@ class FileHashes {
 }
 
 /// Indicates the location at which a package was found.
-typedef FileLocation = $FileLocation;
+class FileLocation {
+  /// For jars that are contained inside .war files, this filepath can indicate
+  /// the path to war file combined with the path to jar file.
+  core.String? filePath;
+  LayerDetails? layerDetails;
+
+  FileLocation({
+    this.filePath,
+    this.layerDetails,
+  });
+
+  FileLocation.fromJson(core.Map json_)
+      : this(
+          filePath: json_['filePath'] as core.String?,
+          layerDetails: json_.containsKey('layerDetails')
+              ? LayerDetails.fromJson(
+                  json_['layerDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (filePath != null) 'filePath': filePath!,
+        if (layerDetails != null) 'layerDetails': layerDetails!,
+      };
+}
 
 /// A set of properties that uniquely identify a given Docker image.
 typedef Fingerprint = $Fingerprint;
@@ -1190,8 +1217,81 @@ class GerritSourceContext {
 /// repository (e.g., GitHub).
 typedef GitSourceContext = $GitSourceContext;
 
+/// BaseImage describes a base image of a container image.
+typedef GrafeasV1BaseImage = $BaseImage;
+
 /// Indicates the location at which a package was found.
-typedef GrafeasV1FileLocation = $FileLocation;
+class GrafeasV1FileLocation {
+  /// For jars that are contained inside .war files, this filepath can indicate
+  /// the path to war file combined with the path to jar file.
+  core.String? filePath;
+
+  /// Each package found in a file should have its own layer metadata (that is,
+  /// information from the origin layer of the package).
+  GrafeasV1LayerDetails? layerDetails;
+
+  GrafeasV1FileLocation({
+    this.filePath,
+    this.layerDetails,
+  });
+
+  GrafeasV1FileLocation.fromJson(core.Map json_)
+      : this(
+          filePath: json_['filePath'] as core.String?,
+          layerDetails: json_.containsKey('layerDetails')
+              ? GrafeasV1LayerDetails.fromJson(
+                  json_['layerDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (filePath != null) 'filePath': filePath!,
+        if (layerDetails != null) 'layerDetails': layerDetails!,
+      };
+}
+
+/// Details about the layer a package was found in.
+class GrafeasV1LayerDetails {
+  /// The base images the layer is found within.
+  core.List<GrafeasV1BaseImage>? baseImages;
+
+  /// The layer build command that was used to build the layer.
+  ///
+  /// This may not be found in all layers depending on how the container image
+  /// is built.
+  core.String? command;
+
+  /// The diff ID (typically a sha256 hash) of the layer in the container image.
+  core.String? diffId;
+
+  /// The index of the layer in the container image.
+  core.int? index;
+
+  GrafeasV1LayerDetails({
+    this.baseImages,
+    this.command,
+    this.diffId,
+    this.index,
+  });
+
+  GrafeasV1LayerDetails.fromJson(core.Map json_)
+      : this(
+          baseImages: (json_['baseImages'] as core.List?)
+              ?.map((value) => GrafeasV1BaseImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          command: json_['command'] as core.String?,
+          diffId: json_['diffId'] as core.String?,
+          index: json_['index'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseImages != null) 'baseImages': baseImages!,
+        if (command != null) 'command': command!,
+        if (diffId != null) 'diffId': diffId!,
+        if (index != null) 'index': index!,
+      };
+}
 
 /// Identifies the entity that executed the recipe, which is trusted to have
 /// correctly performed the operation and populated this provenance.
@@ -1530,6 +1630,52 @@ class LanguagePackageDependency {
 
 /// Layer holds metadata specific to a layer of a Docker image.
 typedef Layer = $Layer;
+
+/// Details about the layer a package was found in.
+///
+/// This should be the same as the LayerDetails message in
+/// google3/third_party/scalibr/binary/proto/scan_result.proto.
+class LayerDetails {
+  /// The base images the layer is found within.
+  core.List<BaseImage>? baseImages;
+
+  /// The layer build command that was used to build the layer.
+  ///
+  /// This may not be found in all layers depending on how the container image
+  /// is built.
+  core.String? command;
+
+  /// The diff ID (sha256 hash) of the layer in the container image.
+  core.String? diffId;
+
+  /// The index of the layer in the container image.
+  core.int? index;
+
+  LayerDetails({
+    this.baseImages,
+    this.command,
+    this.diffId,
+    this.index,
+  });
+
+  LayerDetails.fromJson(core.Map json_)
+      : this(
+          baseImages: (json_['baseImages'] as core.List?)
+              ?.map((value) => BaseImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          command: json_['command'] as core.String?,
+          diffId: json_['diffId'] as core.String?,
+          index: json_['index'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseImages != null) 'baseImages': baseImages!,
+        if (command != null) 'command': command!,
+        if (diffId != null) 'diffId': diffId!,
+        if (index != null) 'index': index!,
+      };
+}
 
 /// License information.
 typedef License = $License;
@@ -2030,6 +2176,7 @@ class PackageData {
   ///
   /// This field will be unset for non Maven packages.
   core.String? hashDigest;
+  LayerDetails? layerDetails;
 
   /// The list of licenses found that are related to a given package.
   ///
@@ -2088,6 +2235,7 @@ class PackageData {
     this.dependencyChain,
     this.fileLocation,
     this.hashDigest,
+    this.layerDetails,
     this.licenses,
     this.maintainer,
     this.os,
@@ -2121,6 +2269,10 @@ class PackageData {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           hashDigest: json_['hashDigest'] as core.String?,
+          layerDetails: json_.containsKey('layerDetails')
+              ? LayerDetails.fromJson(
+                  json_['layerDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
           licenses: (json_['licenses'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -2151,6 +2303,7 @@ class PackageData {
         if (dependencyChain != null) 'dependencyChain': dependencyChain!,
         if (fileLocation != null) 'fileLocation': fileLocation!,
         if (hashDigest != null) 'hashDigest': hashDigest!,
+        if (layerDetails != null) 'layerDetails': layerDetails!,
         if (licenses != null) 'licenses': licenses!,
         if (maintainer != null) 'maintainer': maintainer!,
         if (os != null) 'os': os!,

@@ -39,6 +39,9 @@
 /// - [SmarttapResource]
 /// - [TransitclassResource]
 /// - [TransitobjectResource]
+/// - [WalletobjectsResource]
+///   - [WalletobjectsV1Resource]
+///     - [WalletobjectsV1PrivateContentResource]
 library;
 
 import 'dart:async' as async;
@@ -92,6 +95,7 @@ class WalletobjectsApi {
   SmarttapResource get smarttap => SmarttapResource(_requester);
   TransitclassResource get transitclass => TransitclassResource(_requester);
   TransitobjectResource get transitobject => TransitobjectResource(_requester);
+  WalletobjectsResource get walletobjects => WalletobjectsResource(_requester);
 
   WalletobjectsApi(http.Client client,
       {core.String rootUrl = 'https://walletobjects.googleapis.com/',
@@ -4469,6 +4473,70 @@ class TransitobjectResource {
       queryParams: queryParams_,
     );
     return TransitObject.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class WalletobjectsResource {
+  final commons.ApiRequester _requester;
+
+  WalletobjectsV1Resource get v1 => WalletobjectsV1Resource(_requester);
+
+  WalletobjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class WalletobjectsV1Resource {
+  final commons.ApiRequester _requester;
+
+  WalletobjectsV1PrivateContentResource get privateContent =>
+      WalletobjectsV1PrivateContentResource(_requester);
+
+  WalletobjectsV1Resource(commons.ApiRequester client) : _requester = client;
+}
+
+class WalletobjectsV1PrivateContentResource {
+  final commons.ApiRequester _requester;
+
+  WalletobjectsV1PrivateContentResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Provide Google with information about awaiting private pass update.
+  ///
+  /// This will allow Google to provide the update notification to the device
+  /// that currently holds this pass.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SetPassUpdateNoticeResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SetPassUpdateNoticeResponse> setPassUpdateNotice(
+    SetPassUpdateNoticeRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'walletobjects/v1/privateContent/setPassUpdateNotice';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SetPassUpdateNoticeResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -10683,7 +10751,7 @@ class GroupingInfo {
 
 /// Wrapping type for Google hosted images.
 ///
-/// Next ID: 7
+/// Next ID: 8
 class Image {
   /// Description of the image used for accessibility.
   LocalizedString? contentDescription;
@@ -14997,6 +15065,62 @@ class SecurityAnimation {
         if (animationType != null) 'animationType': animationType!,
       };
 }
+
+/// Request to send a private pass update notice information to Google, so that
+/// devices can then fetch the notice prompting the user to update a pass.
+class SetPassUpdateNoticeRequest {
+  /// A fully qualified identifier of the pass that the issuer wants to notify
+  /// the pass holder(s) about.
+  ///
+  /// Formatted as .
+  ///
+  /// Required.
+  core.String? externalPassId;
+
+  /// The issuer endpoint URI the pass holder needs to follow in order to
+  /// receive an updated pass JWT.
+  ///
+  /// It can not contain any sensitive information. The endpoint needs to
+  /// authenticate the user before giving the user the updated JWT. Example
+  /// update URI https://someissuer.com/update/passId=someExternalPassId
+  ///
+  /// Required.
+  core.String? updateUri;
+
+  /// The JWT signature of the updated pass that the issuer wants to notify
+  /// Google about.
+  ///
+  /// Only devices that report a different JWT signature than this JWT signature
+  /// will receive the update notification.
+  ///
+  /// Required.
+  core.String? updatedPassJwtSignature;
+
+  SetPassUpdateNoticeRequest({
+    this.externalPassId,
+    this.updateUri,
+    this.updatedPassJwtSignature,
+  });
+
+  SetPassUpdateNoticeRequest.fromJson(core.Map json_)
+      : this(
+          externalPassId: json_['externalPassId'] as core.String?,
+          updateUri: json_['updateUri'] as core.String?,
+          updatedPassJwtSignature:
+              json_['updatedPassJwtSignature'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (externalPassId != null) 'externalPassId': externalPassId!,
+        if (updateUri != null) 'updateUri': updateUri!,
+        if (updatedPassJwtSignature != null)
+          'updatedPassJwtSignature': updatedPassJwtSignature!,
+      };
+}
+
+/// A response to a request to notify Google of an awaiting update to a private
+/// pass.
+typedef SetPassUpdateNoticeResponse = $Empty;
 
 class SignUpInfo {
   /// ID of the class the user can sign up for.

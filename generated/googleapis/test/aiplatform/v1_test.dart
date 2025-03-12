@@ -909,6 +909,37 @@ void checkGoogleCloudAiplatformV1AutomaticResources(
   buildCounterGoogleCloudAiplatformV1AutomaticResources--;
 }
 
+core.int buildCounterGoogleCloudAiplatformV1AutoraterConfig = 0;
+api.GoogleCloudAiplatformV1AutoraterConfig
+    buildGoogleCloudAiplatformV1AutoraterConfig() {
+  final o = api.GoogleCloudAiplatformV1AutoraterConfig();
+  buildCounterGoogleCloudAiplatformV1AutoraterConfig++;
+  if (buildCounterGoogleCloudAiplatformV1AutoraterConfig < 3) {
+    o.autoraterModel = 'foo';
+    o.flipEnabled = true;
+    o.samplingCount = 42;
+  }
+  buildCounterGoogleCloudAiplatformV1AutoraterConfig--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1AutoraterConfig(
+    api.GoogleCloudAiplatformV1AutoraterConfig o) {
+  buildCounterGoogleCloudAiplatformV1AutoraterConfig++;
+  if (buildCounterGoogleCloudAiplatformV1AutoraterConfig < 3) {
+    unittest.expect(
+      o.autoraterModel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.flipEnabled!, unittest.isTrue);
+    unittest.expect(
+      o.samplingCount!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterGoogleCloudAiplatformV1AutoraterConfig--;
+}
+
 core.int buildCounterGoogleCloudAiplatformV1AutoscalingMetricSpec = 0;
 api.GoogleCloudAiplatformV1AutoscalingMetricSpec
     buildGoogleCloudAiplatformV1AutoscalingMetricSpec() {
@@ -2043,6 +2074,7 @@ api.GoogleCloudAiplatformV1Blob buildGoogleCloudAiplatformV1Blob() {
   buildCounterGoogleCloudAiplatformV1Blob++;
   if (buildCounterGoogleCloudAiplatformV1Blob < 3) {
     o.data = 'foo';
+    o.displayName = 'foo';
     o.mimeType = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1Blob--;
@@ -2054,6 +2086,10 @@ void checkGoogleCloudAiplatformV1Blob(api.GoogleCloudAiplatformV1Blob o) {
   if (buildCounterGoogleCloudAiplatformV1Blob < 3) {
     unittest.expect(
       o.data!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2643,6 +2679,35 @@ void checkGoogleCloudAiplatformV1ClientConnectionConfig(
     );
   }
   buildCounterGoogleCloudAiplatformV1ClientConnectionConfig--;
+}
+
+core.int buildCounterGoogleCloudAiplatformV1CodeExecutionResult = 0;
+api.GoogleCloudAiplatformV1CodeExecutionResult
+    buildGoogleCloudAiplatformV1CodeExecutionResult() {
+  final o = api.GoogleCloudAiplatformV1CodeExecutionResult();
+  buildCounterGoogleCloudAiplatformV1CodeExecutionResult++;
+  if (buildCounterGoogleCloudAiplatformV1CodeExecutionResult < 3) {
+    o.outcome = 'foo';
+    o.output = 'foo';
+  }
+  buildCounterGoogleCloudAiplatformV1CodeExecutionResult--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1CodeExecutionResult(
+    api.GoogleCloudAiplatformV1CodeExecutionResult o) {
+  buildCounterGoogleCloudAiplatformV1CodeExecutionResult++;
+  if (buildCounterGoogleCloudAiplatformV1CodeExecutionResult < 3) {
+    unittest.expect(
+      o.outcome!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.output!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudAiplatformV1CodeExecutionResult--;
 }
 
 core.int buildCounterGoogleCloudAiplatformV1CoherenceInput = 0;
@@ -3590,12 +3655,25 @@ void checkGoogleCloudAiplatformV1CountTokensRequest(
   buildCounterGoogleCloudAiplatformV1CountTokensRequest--;
 }
 
+core.List<api.GoogleCloudAiplatformV1ModalityTokenCount> buildUnnamed53() => [
+      buildGoogleCloudAiplatformV1ModalityTokenCount(),
+      buildGoogleCloudAiplatformV1ModalityTokenCount(),
+    ];
+
+void checkUnnamed53(
+    core.List<api.GoogleCloudAiplatformV1ModalityTokenCount> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudAiplatformV1ModalityTokenCount(o[0]);
+  checkGoogleCloudAiplatformV1ModalityTokenCount(o[1]);
+}
+
 core.int buildCounterGoogleCloudAiplatformV1CountTokensResponse = 0;
 api.GoogleCloudAiplatformV1CountTokensResponse
     buildGoogleCloudAiplatformV1CountTokensResponse() {
   final o = api.GoogleCloudAiplatformV1CountTokensResponse();
   buildCounterGoogleCloudAiplatformV1CountTokensResponse++;
   if (buildCounterGoogleCloudAiplatformV1CountTokensResponse < 3) {
+    o.promptTokensDetails = buildUnnamed53();
     o.totalBillableCharacters = 42;
     o.totalTokens = 42;
   }
@@ -3607,6 +3685,7 @@ void checkGoogleCloudAiplatformV1CountTokensResponse(
     api.GoogleCloudAiplatformV1CountTokensResponse o) {
   buildCounterGoogleCloudAiplatformV1CountTokensResponse++;
   if (buildCounterGoogleCloudAiplatformV1CountTokensResponse < 3) {
+    checkUnnamed53(o.promptTokensDetails!);
     unittest.expect(
       o.totalBillableCharacters!,
       unittest.equals(42),
@@ -3853,12 +3932,12 @@ void checkGoogleCloudAiplatformV1CsvSource(
   buildCounterGoogleCloudAiplatformV1CsvSource--;
 }
 
-core.Map<core.String, core.String> buildUnnamed53() => {
+core.Map<core.String, core.String> buildUnnamed54() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed53(core.Map<core.String, core.String> o) {
+void checkUnnamed54(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -3870,12 +3949,12 @@ void checkUnnamed53(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed54() => {
+core.Map<core.String, core.String> buildUnnamed55() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed54(core.Map<core.String, core.String> o) {
+void checkUnnamed55(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -3898,14 +3977,14 @@ api.GoogleCloudAiplatformV1CustomJob buildGoogleCloudAiplatformV1CustomJob() {
     o.endTime = 'foo';
     o.error = buildGoogleRpcStatus();
     o.jobSpec = buildGoogleCloudAiplatformV1CustomJobSpec();
-    o.labels = buildUnnamed53();
+    o.labels = buildUnnamed54();
     o.name = 'foo';
     o.satisfiesPzi = true;
     o.satisfiesPzs = true;
     o.startTime = 'foo';
     o.state = 'foo';
     o.updateTime = 'foo';
-    o.webAccessUris = buildUnnamed54();
+    o.webAccessUris = buildUnnamed55();
   }
   buildCounterGoogleCloudAiplatformV1CustomJob--;
   return o;
@@ -3930,7 +4009,7 @@ void checkGoogleCloudAiplatformV1CustomJob(
     );
     checkGoogleRpcStatus(o.error!);
     checkGoogleCloudAiplatformV1CustomJobSpec(o.jobSpec!);
-    checkUnnamed53(o.labels!);
+    checkUnnamed54(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -3949,26 +4028,9 @@ void checkGoogleCloudAiplatformV1CustomJob(
       o.updateTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed54(o.webAccessUris!);
+    checkUnnamed55(o.webAccessUris!);
   }
   buildCounterGoogleCloudAiplatformV1CustomJob--;
-}
-
-core.List<core.String> buildUnnamed55() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed55(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.List<core.String> buildUnnamed56() => [
@@ -3988,12 +4050,29 @@ void checkUnnamed56(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudAiplatformV1WorkerPoolSpec> buildUnnamed57() => [
+core.List<core.String> buildUnnamed57() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed57(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.GoogleCloudAiplatformV1WorkerPoolSpec> buildUnnamed58() => [
       buildGoogleCloudAiplatformV1WorkerPoolSpec(),
       buildGoogleCloudAiplatformV1WorkerPoolSpec(),
     ];
 
-void checkUnnamed57(core.List<api.GoogleCloudAiplatformV1WorkerPoolSpec> o) {
+void checkUnnamed58(core.List<api.GoogleCloudAiplatformV1WorkerPoolSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1WorkerPoolSpec(o[0]);
   checkGoogleCloudAiplatformV1WorkerPoolSpec(o[1]);
@@ -4010,15 +4089,15 @@ api.GoogleCloudAiplatformV1CustomJobSpec
     o.enableWebAccess = true;
     o.experiment = 'foo';
     o.experimentRun = 'foo';
-    o.models = buildUnnamed55();
+    o.models = buildUnnamed56();
     o.network = 'foo';
     o.persistentResourceId = 'foo';
     o.protectedArtifactLocationId = 'foo';
-    o.reservedIpRanges = buildUnnamed56();
+    o.reservedIpRanges = buildUnnamed57();
     o.scheduling = buildGoogleCloudAiplatformV1Scheduling();
     o.serviceAccount = 'foo';
     o.tensorboard = 'foo';
-    o.workerPoolSpecs = buildUnnamed57();
+    o.workerPoolSpecs = buildUnnamed58();
   }
   buildCounterGoogleCloudAiplatformV1CustomJobSpec--;
   return o;
@@ -4039,7 +4118,7 @@ void checkGoogleCloudAiplatformV1CustomJobSpec(
       o.experimentRun!,
       unittest.equals('foo'),
     );
-    checkUnnamed55(o.models!);
+    checkUnnamed56(o.models!);
     unittest.expect(
       o.network!,
       unittest.equals('foo'),
@@ -4052,7 +4131,7 @@ void checkGoogleCloudAiplatformV1CustomJobSpec(
       o.protectedArtifactLocationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed56(o.reservedIpRanges!);
+    checkUnnamed57(o.reservedIpRanges!);
     checkGoogleCloudAiplatformV1Scheduling(o.scheduling!);
     unittest.expect(
       o.serviceAccount!,
@@ -4062,17 +4141,17 @@ void checkGoogleCloudAiplatformV1CustomJobSpec(
       o.tensorboard!,
       unittest.equals('foo'),
     );
-    checkUnnamed57(o.workerPoolSpecs!);
+    checkUnnamed58(o.workerPoolSpecs!);
   }
   buildCounterGoogleCloudAiplatformV1CustomJobSpec--;
 }
 
-core.Map<core.String, core.String> buildUnnamed58() => {
+core.Map<core.String, core.String> buildUnnamed59() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed58(core.Map<core.String, core.String> o) {
+void checkUnnamed59(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4091,7 +4170,7 @@ api.GoogleCloudAiplatformV1DataItem buildGoogleCloudAiplatformV1DataItem() {
   if (buildCounterGoogleCloudAiplatformV1DataItem < 3) {
     o.createTime = 'foo';
     o.etag = 'foo';
-    o.labels = buildUnnamed58();
+    o.labels = buildUnnamed59();
     o.name = 'foo';
     o.payload = {
       'list': [1, 2, 3],
@@ -4118,7 +4197,7 @@ void checkGoogleCloudAiplatformV1DataItem(
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed58(o.labels!);
+    checkUnnamed59(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -4147,12 +4226,12 @@ void checkGoogleCloudAiplatformV1DataItem(
   buildCounterGoogleCloudAiplatformV1DataItem--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Annotation> buildUnnamed59() => [
+core.List<api.GoogleCloudAiplatformV1Annotation> buildUnnamed60() => [
       buildGoogleCloudAiplatformV1Annotation(),
       buildGoogleCloudAiplatformV1Annotation(),
     ];
 
-void checkUnnamed59(core.List<api.GoogleCloudAiplatformV1Annotation> o) {
+void checkUnnamed60(core.List<api.GoogleCloudAiplatformV1Annotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Annotation(o[0]);
   checkGoogleCloudAiplatformV1Annotation(o[1]);
@@ -4164,7 +4243,7 @@ api.GoogleCloudAiplatformV1DataItemView
   final o = api.GoogleCloudAiplatformV1DataItemView();
   buildCounterGoogleCloudAiplatformV1DataItemView++;
   if (buildCounterGoogleCloudAiplatformV1DataItemView < 3) {
-    o.annotations = buildUnnamed59();
+    o.annotations = buildUnnamed60();
     o.dataItem = buildGoogleCloudAiplatformV1DataItem();
     o.hasTruncatedAnnotations = true;
   }
@@ -4176,19 +4255,19 @@ void checkGoogleCloudAiplatformV1DataItemView(
     api.GoogleCloudAiplatformV1DataItemView o) {
   buildCounterGoogleCloudAiplatformV1DataItemView++;
   if (buildCounterGoogleCloudAiplatformV1DataItemView < 3) {
-    checkUnnamed59(o.annotations!);
+    checkUnnamed60(o.annotations!);
     checkGoogleCloudAiplatformV1DataItem(o.dataItem!);
     unittest.expect(o.hasTruncatedAnnotations!, unittest.isTrue);
   }
   buildCounterGoogleCloudAiplatformV1DataItemView--;
 }
 
-core.Map<core.String, core.String> buildUnnamed60() => {
+core.Map<core.String, core.String> buildUnnamed61() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed60(core.Map<core.String, core.String> o) {
+void checkUnnamed61(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4200,12 +4279,12 @@ void checkUnnamed60(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed61() => [
+core.List<core.String> buildUnnamed62() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed61(core.List<core.String> o) {
+void checkUnnamed62(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4217,12 +4296,12 @@ void checkUnnamed61(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed62() => {
+core.Map<core.String, core.String> buildUnnamed63() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed62(core.Map<core.String, core.String> o) {
+void checkUnnamed63(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4234,12 +4313,12 @@ void checkUnnamed62(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed63() => [
+core.List<core.String> buildUnnamed64() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed63(core.List<core.String> o) {
+void checkUnnamed64(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4258,10 +4337,10 @@ api.GoogleCloudAiplatformV1DataLabelingJob
   buildCounterGoogleCloudAiplatformV1DataLabelingJob++;
   if (buildCounterGoogleCloudAiplatformV1DataLabelingJob < 3) {
     o.activeLearningConfig = buildGoogleCloudAiplatformV1ActiveLearningConfig();
-    o.annotationLabels = buildUnnamed60();
+    o.annotationLabels = buildUnnamed61();
     o.createTime = 'foo';
     o.currentSpend = buildGoogleTypeMoney();
-    o.datasets = buildUnnamed61();
+    o.datasets = buildUnnamed62();
     o.displayName = 'foo';
     o.encryptionSpec = buildGoogleCloudAiplatformV1EncryptionSpec();
     o.error = buildGoogleRpcStatus();
@@ -4274,9 +4353,9 @@ api.GoogleCloudAiplatformV1DataLabelingJob
     o.instructionUri = 'foo';
     o.labelerCount = 42;
     o.labelingProgress = 42;
-    o.labels = buildUnnamed62();
+    o.labels = buildUnnamed63();
     o.name = 'foo';
-    o.specialistPools = buildUnnamed63();
+    o.specialistPools = buildUnnamed64();
     o.state = 'foo';
     o.updateTime = 'foo';
   }
@@ -4289,13 +4368,13 @@ void checkGoogleCloudAiplatformV1DataLabelingJob(
   buildCounterGoogleCloudAiplatformV1DataLabelingJob++;
   if (buildCounterGoogleCloudAiplatformV1DataLabelingJob < 3) {
     checkGoogleCloudAiplatformV1ActiveLearningConfig(o.activeLearningConfig!);
-    checkUnnamed60(o.annotationLabels!);
+    checkUnnamed61(o.annotationLabels!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
     );
     checkGoogleTypeMoney(o.currentSpend!);
-    checkUnnamed61(o.datasets!);
+    checkUnnamed62(o.datasets!);
     unittest.expect(
       o.displayName!,
       unittest.equals('foo'),
@@ -4332,12 +4411,12 @@ void checkGoogleCloudAiplatformV1DataLabelingJob(
       o.labelingProgress!,
       unittest.equals(42),
     );
-    checkUnnamed62(o.labels!);
+    checkUnnamed63(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed63(o.specialistPools!);
+    checkUnnamed64(o.specialistPools!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -4350,12 +4429,12 @@ void checkGoogleCloudAiplatformV1DataLabelingJob(
   buildCounterGoogleCloudAiplatformV1DataLabelingJob--;
 }
 
-core.Map<core.String, core.String> buildUnnamed64() => {
+core.Map<core.String, core.String> buildUnnamed65() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed64(core.Map<core.String, core.String> o) {
+void checkUnnamed65(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4367,12 +4446,12 @@ void checkUnnamed64(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudAiplatformV1SavedQuery> buildUnnamed65() => [
+core.List<api.GoogleCloudAiplatformV1SavedQuery> buildUnnamed66() => [
       buildGoogleCloudAiplatformV1SavedQuery(),
       buildGoogleCloudAiplatformV1SavedQuery(),
     ];
 
-void checkUnnamed65(core.List<api.GoogleCloudAiplatformV1SavedQuery> o) {
+void checkUnnamed66(core.List<api.GoogleCloudAiplatformV1SavedQuery> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1SavedQuery(o[0]);
   checkGoogleCloudAiplatformV1SavedQuery(o[1]);
@@ -4389,7 +4468,7 @@ api.GoogleCloudAiplatformV1Dataset buildGoogleCloudAiplatformV1Dataset() {
     o.displayName = 'foo';
     o.encryptionSpec = buildGoogleCloudAiplatformV1EncryptionSpec();
     o.etag = 'foo';
-    o.labels = buildUnnamed64();
+    o.labels = buildUnnamed65();
     o.metadata = {
       'list': [1, 2, 3],
       'bool': true,
@@ -4401,7 +4480,7 @@ api.GoogleCloudAiplatformV1Dataset buildGoogleCloudAiplatformV1Dataset() {
     o.name = 'foo';
     o.satisfiesPzi = true;
     o.satisfiesPzs = true;
-    o.savedQueries = buildUnnamed65();
+    o.savedQueries = buildUnnamed66();
     o.updateTime = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1Dataset--;
@@ -4432,7 +4511,7 @@ void checkGoogleCloudAiplatformV1Dataset(api.GoogleCloudAiplatformV1Dataset o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed64(o.labels!);
+    checkUnnamed65(o.labels!);
     var casted16 = (o.metadata!) as core.Map;
     unittest.expect(casted16, unittest.hasLength(3));
     unittest.expect(
@@ -4465,7 +4544,7 @@ void checkGoogleCloudAiplatformV1Dataset(api.GoogleCloudAiplatformV1Dataset o) {
     );
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
-    checkUnnamed65(o.savedQueries!);
+    checkUnnamed66(o.savedQueries!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -4551,13 +4630,13 @@ void checkGoogleCloudAiplatformV1DatasetVersion(
   buildCounterGoogleCloudAiplatformV1DatasetVersion--;
 }
 
-core.List<api.GoogleCloudAiplatformV1AutoscalingMetricSpec> buildUnnamed66() =>
+core.List<api.GoogleCloudAiplatformV1AutoscalingMetricSpec> buildUnnamed67() =>
     [
       buildGoogleCloudAiplatformV1AutoscalingMetricSpec(),
       buildGoogleCloudAiplatformV1AutoscalingMetricSpec(),
     ];
 
-void checkUnnamed66(
+void checkUnnamed67(
     core.List<api.GoogleCloudAiplatformV1AutoscalingMetricSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1AutoscalingMetricSpec(o[0]);
@@ -4570,7 +4649,7 @@ api.GoogleCloudAiplatformV1DedicatedResources
   final o = api.GoogleCloudAiplatformV1DedicatedResources();
   buildCounterGoogleCloudAiplatformV1DedicatedResources++;
   if (buildCounterGoogleCloudAiplatformV1DedicatedResources < 3) {
-    o.autoscalingMetricSpecs = buildUnnamed66();
+    o.autoscalingMetricSpecs = buildUnnamed67();
     o.machineSpec = buildGoogleCloudAiplatformV1MachineSpec();
     o.maxReplicaCount = 42;
     o.minReplicaCount = 42;
@@ -4585,7 +4664,7 @@ void checkGoogleCloudAiplatformV1DedicatedResources(
     api.GoogleCloudAiplatformV1DedicatedResources o) {
   buildCounterGoogleCloudAiplatformV1DedicatedResources++;
   if (buildCounterGoogleCloudAiplatformV1DedicatedResources < 3) {
-    checkUnnamed66(o.autoscalingMetricSpecs!);
+    checkUnnamed67(o.autoscalingMetricSpecs!);
     checkGoogleCloudAiplatformV1MachineSpec(o.machineSpec!);
     unittest.expect(
       o.maxReplicaCount!,
@@ -4708,12 +4787,12 @@ void checkGoogleCloudAiplatformV1DeployIndexRequest(
   buildCounterGoogleCloudAiplatformV1DeployIndexRequest--;
 }
 
-core.Map<core.String, core.int> buildUnnamed67() => {
+core.Map<core.String, core.int> buildUnnamed68() => {
       'x': 42,
       'y': 42,
     };
 
-void checkUnnamed67(core.Map<core.String, core.int> o) {
+void checkUnnamed68(core.Map<core.String, core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4732,7 +4811,7 @@ api.GoogleCloudAiplatformV1DeployModelRequest
   buildCounterGoogleCloudAiplatformV1DeployModelRequest++;
   if (buildCounterGoogleCloudAiplatformV1DeployModelRequest < 3) {
     o.deployedModel = buildGoogleCloudAiplatformV1DeployedModel();
-    o.trafficSplit = buildUnnamed67();
+    o.trafficSplit = buildUnnamed68();
   }
   buildCounterGoogleCloudAiplatformV1DeployModelRequest--;
   return o;
@@ -4743,29 +4822,29 @@ void checkGoogleCloudAiplatformV1DeployModelRequest(
   buildCounterGoogleCloudAiplatformV1DeployModelRequest++;
   if (buildCounterGoogleCloudAiplatformV1DeployModelRequest < 3) {
     checkGoogleCloudAiplatformV1DeployedModel(o.deployedModel!);
-    checkUnnamed67(o.trafficSplit!);
+    checkUnnamed68(o.trafficSplit!);
   }
   buildCounterGoogleCloudAiplatformV1DeployModelRequest--;
 }
 
-core.List<api.GoogleCloudAiplatformV1PSCAutomationConfig> buildUnnamed68() => [
+core.List<api.GoogleCloudAiplatformV1PSCAutomationConfig> buildUnnamed69() => [
       buildGoogleCloudAiplatformV1PSCAutomationConfig(),
       buildGoogleCloudAiplatformV1PSCAutomationConfig(),
     ];
 
-void checkUnnamed68(
+void checkUnnamed69(
     core.List<api.GoogleCloudAiplatformV1PSCAutomationConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1PSCAutomationConfig(o[0]);
   checkGoogleCloudAiplatformV1PSCAutomationConfig(o[1]);
 }
 
-core.List<core.String> buildUnnamed69() => [
+core.List<core.String> buildUnnamed70() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed69(core.List<core.String> o) {
+void checkUnnamed70(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4795,8 +4874,8 @@ api.GoogleCloudAiplatformV1DeployedIndex
     o.index = 'foo';
     o.indexSyncTime = 'foo';
     o.privateEndpoints = buildGoogleCloudAiplatformV1IndexPrivateEndpoints();
-    o.pscAutomationConfigs = buildUnnamed68();
-    o.reservedIpRanges = buildUnnamed69();
+    o.pscAutomationConfigs = buildUnnamed69();
+    o.reservedIpRanges = buildUnnamed70();
   }
   buildCounterGoogleCloudAiplatformV1DeployedIndex--;
   return o;
@@ -4836,8 +4915,8 @@ void checkGoogleCloudAiplatformV1DeployedIndex(
       unittest.equals('foo'),
     );
     checkGoogleCloudAiplatformV1IndexPrivateEndpoints(o.privateEndpoints!);
-    checkUnnamed68(o.pscAutomationConfigs!);
-    checkUnnamed69(o.reservedIpRanges!);
+    checkUnnamed69(o.pscAutomationConfigs!);
+    checkUnnamed70(o.reservedIpRanges!);
   }
   buildCounterGoogleCloudAiplatformV1DeployedIndex--;
 }
@@ -4865,12 +4944,12 @@ void checkGoogleCloudAiplatformV1DeployedIndexAuthConfig(
   buildCounterGoogleCloudAiplatformV1DeployedIndexAuthConfig--;
 }
 
-core.List<core.String> buildUnnamed70() => [
+core.List<core.String> buildUnnamed71() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed70(core.List<core.String> o) {
+void checkUnnamed71(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4882,12 +4961,12 @@ void checkUnnamed70(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed71() => [
+core.List<core.String> buildUnnamed72() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed71(core.List<core.String> o) {
+void checkUnnamed72(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4907,8 +4986,8 @@ api.GoogleCloudAiplatformV1DeployedIndexAuthConfigAuthProvider
   buildCounterGoogleCloudAiplatformV1DeployedIndexAuthConfigAuthProvider++;
   if (buildCounterGoogleCloudAiplatformV1DeployedIndexAuthConfigAuthProvider <
       3) {
-    o.allowedIssuers = buildUnnamed70();
-    o.audiences = buildUnnamed71();
+    o.allowedIssuers = buildUnnamed71();
+    o.audiences = buildUnnamed72();
   }
   buildCounterGoogleCloudAiplatformV1DeployedIndexAuthConfigAuthProvider--;
   return o;
@@ -4919,8 +4998,8 @@ void checkGoogleCloudAiplatformV1DeployedIndexAuthConfigAuthProvider(
   buildCounterGoogleCloudAiplatformV1DeployedIndexAuthConfigAuthProvider++;
   if (buildCounterGoogleCloudAiplatformV1DeployedIndexAuthConfigAuthProvider <
       3) {
-    checkUnnamed70(o.allowedIssuers!);
-    checkUnnamed71(o.audiences!);
+    checkUnnamed71(o.allowedIssuers!);
+    checkUnnamed72(o.audiences!);
   }
   buildCounterGoogleCloudAiplatformV1DeployedIndexAuthConfigAuthProvider--;
 }
@@ -4959,12 +5038,12 @@ void checkGoogleCloudAiplatformV1DeployedIndexRef(
   buildCounterGoogleCloudAiplatformV1DeployedIndexRef--;
 }
 
-core.Map<core.String, core.String> buildUnnamed72() => {
+core.Map<core.String, core.String> buildUnnamed73() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed72(core.Map<core.String, core.String> o) {
+void checkUnnamed73(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4998,8 +5077,10 @@ api.GoogleCloudAiplatformV1DeployedModel
     o.privateEndpoints = buildGoogleCloudAiplatformV1PrivateEndpoints();
     o.serviceAccount = 'foo';
     o.sharedResources = 'foo';
+    o.speculativeDecodingSpec =
+        buildGoogleCloudAiplatformV1SpeculativeDecodingSpec();
     o.status = buildGoogleCloudAiplatformV1DeployedModelStatus();
-    o.systemLabels = buildUnnamed72();
+    o.systemLabels = buildUnnamed73();
   }
   buildCounterGoogleCloudAiplatformV1DeployedModel--;
   return o;
@@ -5046,8 +5127,10 @@ void checkGoogleCloudAiplatformV1DeployedModel(
       o.sharedResources!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudAiplatformV1SpeculativeDecodingSpec(
+        o.speculativeDecodingSpec!);
     checkGoogleCloudAiplatformV1DeployedModelStatus(o.status!);
-    checkUnnamed72(o.systemLabels!);
+    checkUnnamed73(o.systemLabels!);
   }
   buildCounterGoogleCloudAiplatformV1DeployedModel--;
 }
@@ -5188,40 +5271,6 @@ void checkGoogleCloudAiplatformV1DestinationFeatureSetting(
   buildCounterGoogleCloudAiplatformV1DestinationFeatureSetting--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Tensor> buildUnnamed73() => [
-      buildGoogleCloudAiplatformV1Tensor(),
-      buildGoogleCloudAiplatformV1Tensor(),
-    ];
-
-void checkUnnamed73(core.List<api.GoogleCloudAiplatformV1Tensor> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudAiplatformV1Tensor(o[0]);
-  checkGoogleCloudAiplatformV1Tensor(o[1]);
-}
-
-core.int buildCounterGoogleCloudAiplatformV1DirectPredictRequest = 0;
-api.GoogleCloudAiplatformV1DirectPredictRequest
-    buildGoogleCloudAiplatformV1DirectPredictRequest() {
-  final o = api.GoogleCloudAiplatformV1DirectPredictRequest();
-  buildCounterGoogleCloudAiplatformV1DirectPredictRequest++;
-  if (buildCounterGoogleCloudAiplatformV1DirectPredictRequest < 3) {
-    o.inputs = buildUnnamed73();
-    o.parameters = buildGoogleCloudAiplatformV1Tensor();
-  }
-  buildCounterGoogleCloudAiplatformV1DirectPredictRequest--;
-  return o;
-}
-
-void checkGoogleCloudAiplatformV1DirectPredictRequest(
-    api.GoogleCloudAiplatformV1DirectPredictRequest o) {
-  buildCounterGoogleCloudAiplatformV1DirectPredictRequest++;
-  if (buildCounterGoogleCloudAiplatformV1DirectPredictRequest < 3) {
-    checkUnnamed73(o.inputs!);
-    checkGoogleCloudAiplatformV1Tensor(o.parameters!);
-  }
-  buildCounterGoogleCloudAiplatformV1DirectPredictRequest--;
-}
-
 core.List<api.GoogleCloudAiplatformV1Tensor> buildUnnamed74() => [
       buildGoogleCloudAiplatformV1Tensor(),
       buildGoogleCloudAiplatformV1Tensor(),
@@ -5233,13 +5282,47 @@ void checkUnnamed74(core.List<api.GoogleCloudAiplatformV1Tensor> o) {
   checkGoogleCloudAiplatformV1Tensor(o[1]);
 }
 
+core.int buildCounterGoogleCloudAiplatformV1DirectPredictRequest = 0;
+api.GoogleCloudAiplatformV1DirectPredictRequest
+    buildGoogleCloudAiplatformV1DirectPredictRequest() {
+  final o = api.GoogleCloudAiplatformV1DirectPredictRequest();
+  buildCounterGoogleCloudAiplatformV1DirectPredictRequest++;
+  if (buildCounterGoogleCloudAiplatformV1DirectPredictRequest < 3) {
+    o.inputs = buildUnnamed74();
+    o.parameters = buildGoogleCloudAiplatformV1Tensor();
+  }
+  buildCounterGoogleCloudAiplatformV1DirectPredictRequest--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1DirectPredictRequest(
+    api.GoogleCloudAiplatformV1DirectPredictRequest o) {
+  buildCounterGoogleCloudAiplatformV1DirectPredictRequest++;
+  if (buildCounterGoogleCloudAiplatformV1DirectPredictRequest < 3) {
+    checkUnnamed74(o.inputs!);
+    checkGoogleCloudAiplatformV1Tensor(o.parameters!);
+  }
+  buildCounterGoogleCloudAiplatformV1DirectPredictRequest--;
+}
+
+core.List<api.GoogleCloudAiplatformV1Tensor> buildUnnamed75() => [
+      buildGoogleCloudAiplatformV1Tensor(),
+      buildGoogleCloudAiplatformV1Tensor(),
+    ];
+
+void checkUnnamed75(core.List<api.GoogleCloudAiplatformV1Tensor> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudAiplatformV1Tensor(o[0]);
+  checkGoogleCloudAiplatformV1Tensor(o[1]);
+}
+
 core.int buildCounterGoogleCloudAiplatformV1DirectPredictResponse = 0;
 api.GoogleCloudAiplatformV1DirectPredictResponse
     buildGoogleCloudAiplatformV1DirectPredictResponse() {
   final o = api.GoogleCloudAiplatformV1DirectPredictResponse();
   buildCounterGoogleCloudAiplatformV1DirectPredictResponse++;
   if (buildCounterGoogleCloudAiplatformV1DirectPredictResponse < 3) {
-    o.outputs = buildUnnamed74();
+    o.outputs = buildUnnamed75();
     o.parameters = buildGoogleCloudAiplatformV1Tensor();
   }
   buildCounterGoogleCloudAiplatformV1DirectPredictResponse--;
@@ -5250,7 +5333,7 @@ void checkGoogleCloudAiplatformV1DirectPredictResponse(
     api.GoogleCloudAiplatformV1DirectPredictResponse o) {
   buildCounterGoogleCloudAiplatformV1DirectPredictResponse++;
   if (buildCounterGoogleCloudAiplatformV1DirectPredictResponse < 3) {
-    checkUnnamed74(o.outputs!);
+    checkUnnamed75(o.outputs!);
     checkGoogleCloudAiplatformV1Tensor(o.parameters!);
   }
   buildCounterGoogleCloudAiplatformV1DirectPredictResponse--;
@@ -5354,12 +5437,12 @@ void checkGoogleCloudAiplatformV1DiskSpec(
   buildCounterGoogleCloudAiplatformV1DiskSpec--;
 }
 
-core.List<core.double> buildUnnamed75() => [
+core.List<core.double> buildUnnamed76() => [
       42.0,
       42.0,
     ];
 
-void checkUnnamed75(core.List<core.double> o) {
+void checkUnnamed76(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5377,7 +5460,7 @@ api.GoogleCloudAiplatformV1DoubleArray
   final o = api.GoogleCloudAiplatformV1DoubleArray();
   buildCounterGoogleCloudAiplatformV1DoubleArray++;
   if (buildCounterGoogleCloudAiplatformV1DoubleArray < 3) {
-    o.values = buildUnnamed75();
+    o.values = buildUnnamed76();
   }
   buildCounterGoogleCloudAiplatformV1DoubleArray--;
   return o;
@@ -5387,7 +5470,7 @@ void checkGoogleCloudAiplatformV1DoubleArray(
     api.GoogleCloudAiplatformV1DoubleArray o) {
   buildCounterGoogleCloudAiplatformV1DoubleArray++;
   if (buildCounterGoogleCloudAiplatformV1DoubleArray < 3) {
-    checkUnnamed75(o.values!);
+    checkUnnamed76(o.values!);
   }
   buildCounterGoogleCloudAiplatformV1DoubleArray--;
 }
@@ -5445,23 +5528,23 @@ void checkGoogleCloudAiplatformV1EncryptionSpec(
   buildCounterGoogleCloudAiplatformV1EncryptionSpec--;
 }
 
-core.List<api.GoogleCloudAiplatformV1DeployedModel> buildUnnamed76() => [
+core.List<api.GoogleCloudAiplatformV1DeployedModel> buildUnnamed77() => [
       buildGoogleCloudAiplatformV1DeployedModel(),
       buildGoogleCloudAiplatformV1DeployedModel(),
     ];
 
-void checkUnnamed76(core.List<api.GoogleCloudAiplatformV1DeployedModel> o) {
+void checkUnnamed77(core.List<api.GoogleCloudAiplatformV1DeployedModel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1DeployedModel(o[0]);
   checkGoogleCloudAiplatformV1DeployedModel(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed77() => {
+core.Map<core.String, core.String> buildUnnamed78() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed77(core.Map<core.String, core.String> o) {
+void checkUnnamed78(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -5473,12 +5556,12 @@ void checkUnnamed77(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.int> buildUnnamed78() => {
+core.Map<core.String, core.int> buildUnnamed79() => {
       'x': 42,
       'y': 42,
     };
 
-void checkUnnamed78(core.Map<core.String, core.int> o) {
+void checkUnnamed79(core.Map<core.String, core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -5500,13 +5583,15 @@ api.GoogleCloudAiplatformV1Endpoint buildGoogleCloudAiplatformV1Endpoint() {
     o.createTime = 'foo';
     o.dedicatedEndpointDns = 'foo';
     o.dedicatedEndpointEnabled = true;
-    o.deployedModels = buildUnnamed76();
+    o.deployedModels = buildUnnamed77();
     o.description = 'foo';
     o.displayName = 'foo';
     o.enablePrivateServiceConnect = true;
     o.encryptionSpec = buildGoogleCloudAiplatformV1EncryptionSpec();
     o.etag = 'foo';
-    o.labels = buildUnnamed77();
+    o.genAiAdvancedFeaturesConfig =
+        buildGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig();
+    o.labels = buildUnnamed78();
     o.modelDeploymentMonitoringJob = 'foo';
     o.name = 'foo';
     o.network = 'foo';
@@ -5516,7 +5601,7 @@ api.GoogleCloudAiplatformV1Endpoint buildGoogleCloudAiplatformV1Endpoint() {
         buildGoogleCloudAiplatformV1PrivateServiceConnectConfig();
     o.satisfiesPzi = true;
     o.satisfiesPzs = true;
-    o.trafficSplit = buildUnnamed78();
+    o.trafficSplit = buildUnnamed79();
     o.updateTime = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1Endpoint--;
@@ -5538,7 +5623,7 @@ void checkGoogleCloudAiplatformV1Endpoint(
       unittest.equals('foo'),
     );
     unittest.expect(o.dedicatedEndpointEnabled!, unittest.isTrue);
-    checkUnnamed76(o.deployedModels!);
+    checkUnnamed77(o.deployedModels!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -5553,7 +5638,9 @@ void checkGoogleCloudAiplatformV1Endpoint(
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed77(o.labels!);
+    checkGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig(
+        o.genAiAdvancedFeaturesConfig!);
+    checkUnnamed78(o.labels!);
     unittest.expect(
       o.modelDeploymentMonitoringJob!,
       unittest.equals('foo'),
@@ -5572,13 +5659,30 @@ void checkGoogleCloudAiplatformV1Endpoint(
         o.privateServiceConnectConfig!);
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
-    checkUnnamed78(o.trafficSplit!);
+    checkUnnamed79(o.trafficSplit!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
     );
   }
   buildCounterGoogleCloudAiplatformV1Endpoint--;
+}
+
+core.int buildCounterGoogleCloudAiplatformV1EnterpriseWebSearch = 0;
+api.GoogleCloudAiplatformV1EnterpriseWebSearch
+    buildGoogleCloudAiplatformV1EnterpriseWebSearch() {
+  final o = api.GoogleCloudAiplatformV1EnterpriseWebSearch();
+  buildCounterGoogleCloudAiplatformV1EnterpriseWebSearch++;
+  if (buildCounterGoogleCloudAiplatformV1EnterpriseWebSearch < 3) {}
+  buildCounterGoogleCloudAiplatformV1EnterpriseWebSearch--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1EnterpriseWebSearch(
+    api.GoogleCloudAiplatformV1EnterpriseWebSearch o) {
+  buildCounterGoogleCloudAiplatformV1EnterpriseWebSearch++;
+  if (buildCounterGoogleCloudAiplatformV1EnterpriseWebSearch < 3) {}
+  buildCounterGoogleCloudAiplatformV1EnterpriseWebSearch--;
 }
 
 core.int buildCounterGoogleCloudAiplatformV1EntityIdSelector = 0;
@@ -5607,12 +5711,12 @@ void checkGoogleCloudAiplatformV1EntityIdSelector(
   buildCounterGoogleCloudAiplatformV1EntityIdSelector--;
 }
 
-core.Map<core.String, core.String> buildUnnamed79() => {
+core.Map<core.String, core.String> buildUnnamed80() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed79(core.Map<core.String, core.String> o) {
+void checkUnnamed80(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -5632,7 +5736,7 @@ api.GoogleCloudAiplatformV1EntityType buildGoogleCloudAiplatformV1EntityType() {
     o.createTime = 'foo';
     o.description = 'foo';
     o.etag = 'foo';
-    o.labels = buildUnnamed79();
+    o.labels = buildUnnamed80();
     o.monitoringConfig =
         buildGoogleCloudAiplatformV1FeaturestoreMonitoringConfig();
     o.name = 'foo';
@@ -5661,7 +5765,7 @@ void checkGoogleCloudAiplatformV1EntityType(
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed79(o.labels!);
+    checkUnnamed80(o.labels!);
     checkGoogleCloudAiplatformV1FeaturestoreMonitoringConfig(
         o.monitoringConfig!);
     unittest.expect(
@@ -5710,12 +5814,12 @@ void checkGoogleCloudAiplatformV1EnvVar(api.GoogleCloudAiplatformV1EnvVar o) {
 }
 
 core.List<api.GoogleCloudAiplatformV1ErrorAnalysisAnnotationAttributedItem>
-    buildUnnamed80() => [
+    buildUnnamed81() => [
           buildGoogleCloudAiplatformV1ErrorAnalysisAnnotationAttributedItem(),
           buildGoogleCloudAiplatformV1ErrorAnalysisAnnotationAttributedItem(),
         ];
 
-void checkUnnamed80(
+void checkUnnamed81(
     core.List<api.GoogleCloudAiplatformV1ErrorAnalysisAnnotationAttributedItem>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5729,7 +5833,7 @@ api.GoogleCloudAiplatformV1ErrorAnalysisAnnotation
   final o = api.GoogleCloudAiplatformV1ErrorAnalysisAnnotation();
   buildCounterGoogleCloudAiplatformV1ErrorAnalysisAnnotation++;
   if (buildCounterGoogleCloudAiplatformV1ErrorAnalysisAnnotation < 3) {
-    o.attributedItems = buildUnnamed80();
+    o.attributedItems = buildUnnamed81();
     o.outlierScore = 42.0;
     o.outlierThreshold = 42.0;
     o.queryType = 'foo';
@@ -5742,7 +5846,7 @@ void checkGoogleCloudAiplatformV1ErrorAnalysisAnnotation(
     api.GoogleCloudAiplatformV1ErrorAnalysisAnnotation o) {
   buildCounterGoogleCloudAiplatformV1ErrorAnalysisAnnotation++;
   if (buildCounterGoogleCloudAiplatformV1ErrorAnalysisAnnotation < 3) {
-    checkUnnamed80(o.attributedItems!);
+    checkUnnamed81(o.attributedItems!);
     unittest.expect(
       o.outlierScore!,
       unittest.equals(42.0),
@@ -5792,12 +5896,51 @@ void checkGoogleCloudAiplatformV1ErrorAnalysisAnnotationAttributedItem(
   buildCounterGoogleCloudAiplatformV1ErrorAnalysisAnnotationAttributedItem--;
 }
 
+core.List<api.GoogleCloudAiplatformV1Metric> buildUnnamed82() => [
+      buildGoogleCloudAiplatformV1Metric(),
+      buildGoogleCloudAiplatformV1Metric(),
+    ];
+
+void checkUnnamed82(core.List<api.GoogleCloudAiplatformV1Metric> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudAiplatformV1Metric(o[0]);
+  checkGoogleCloudAiplatformV1Metric(o[1]);
+}
+
+core.int buildCounterGoogleCloudAiplatformV1EvaluateDatasetRequest = 0;
+api.GoogleCloudAiplatformV1EvaluateDatasetRequest
+    buildGoogleCloudAiplatformV1EvaluateDatasetRequest() {
+  final o = api.GoogleCloudAiplatformV1EvaluateDatasetRequest();
+  buildCounterGoogleCloudAiplatformV1EvaluateDatasetRequest++;
+  if (buildCounterGoogleCloudAiplatformV1EvaluateDatasetRequest < 3) {
+    o.autoraterConfig = buildGoogleCloudAiplatformV1AutoraterConfig();
+    o.dataset = buildGoogleCloudAiplatformV1EvaluationDataset();
+    o.metrics = buildUnnamed82();
+    o.outputConfig = buildGoogleCloudAiplatformV1OutputConfig();
+  }
+  buildCounterGoogleCloudAiplatformV1EvaluateDatasetRequest--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1EvaluateDatasetRequest(
+    api.GoogleCloudAiplatformV1EvaluateDatasetRequest o) {
+  buildCounterGoogleCloudAiplatformV1EvaluateDatasetRequest++;
+  if (buildCounterGoogleCloudAiplatformV1EvaluateDatasetRequest < 3) {
+    checkGoogleCloudAiplatformV1AutoraterConfig(o.autoraterConfig!);
+    checkGoogleCloudAiplatformV1EvaluationDataset(o.dataset!);
+    checkUnnamed82(o.metrics!);
+    checkGoogleCloudAiplatformV1OutputConfig(o.outputConfig!);
+  }
+  buildCounterGoogleCloudAiplatformV1EvaluateDatasetRequest--;
+}
+
 core.int buildCounterGoogleCloudAiplatformV1EvaluateInstancesRequest = 0;
 api.GoogleCloudAiplatformV1EvaluateInstancesRequest
     buildGoogleCloudAiplatformV1EvaluateInstancesRequest() {
   final o = api.GoogleCloudAiplatformV1EvaluateInstancesRequest();
   buildCounterGoogleCloudAiplatformV1EvaluateInstancesRequest++;
   if (buildCounterGoogleCloudAiplatformV1EvaluateInstancesRequest < 3) {
+    o.autoraterConfig = buildGoogleCloudAiplatformV1AutoraterConfig();
     o.bleuInput = buildGoogleCloudAiplatformV1BleuInput();
     o.coherenceInput = buildGoogleCloudAiplatformV1CoherenceInput();
     o.cometInput = buildGoogleCloudAiplatformV1CometInput();
@@ -5855,6 +5998,7 @@ void checkGoogleCloudAiplatformV1EvaluateInstancesRequest(
     api.GoogleCloudAiplatformV1EvaluateInstancesRequest o) {
   buildCounterGoogleCloudAiplatformV1EvaluateInstancesRequest++;
   if (buildCounterGoogleCloudAiplatformV1EvaluateInstancesRequest < 3) {
+    checkGoogleCloudAiplatformV1AutoraterConfig(o.autoraterConfig!);
     checkGoogleCloudAiplatformV1BleuInput(o.bleuInput!);
     checkGoogleCloudAiplatformV1CoherenceInput(o.coherenceInput!);
     checkGoogleCloudAiplatformV1CometInput(o.cometInput!);
@@ -6023,12 +6167,12 @@ void checkGoogleCloudAiplatformV1EvaluateInstancesResponse(
 }
 
 core.List<api.GoogleCloudAiplatformV1ErrorAnalysisAnnotation>
-    buildUnnamed81() => [
+    buildUnnamed83() => [
           buildGoogleCloudAiplatformV1ErrorAnalysisAnnotation(),
           buildGoogleCloudAiplatformV1ErrorAnalysisAnnotation(),
         ];
 
-void checkUnnamed81(
+void checkUnnamed83(
     core.List<api.GoogleCloudAiplatformV1ErrorAnalysisAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ErrorAnalysisAnnotation(o[0]);
@@ -6036,19 +6180,19 @@ void checkUnnamed81(
 }
 
 core.List<api.GoogleCloudAiplatformV1EvaluatedAnnotationExplanation>
-    buildUnnamed82() => [
+    buildUnnamed84() => [
           buildGoogleCloudAiplatformV1EvaluatedAnnotationExplanation(),
           buildGoogleCloudAiplatformV1EvaluatedAnnotationExplanation(),
         ];
 
-void checkUnnamed82(
+void checkUnnamed84(
     core.List<api.GoogleCloudAiplatformV1EvaluatedAnnotationExplanation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1EvaluatedAnnotationExplanation(o[0]);
   checkGoogleCloudAiplatformV1EvaluatedAnnotationExplanation(o[1]);
 }
 
-core.List<core.Object?> buildUnnamed83() => [
+core.List<core.Object?> buildUnnamed85() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -6061,7 +6205,7 @@ core.List<core.Object?> buildUnnamed83() => [
       },
     ];
 
-void checkUnnamed83(core.List<core.Object?> o) {
+void checkUnnamed85(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted18 = (o[0]) as core.Map;
   unittest.expect(casted18, unittest.hasLength(3));
@@ -6093,7 +6237,7 @@ void checkUnnamed83(core.List<core.Object?> o) {
   );
 }
 
-core.List<core.Object?> buildUnnamed84() => [
+core.List<core.Object?> buildUnnamed86() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -6106,7 +6250,7 @@ core.List<core.Object?> buildUnnamed84() => [
       },
     ];
 
-void checkUnnamed84(core.List<core.Object?> o) {
+void checkUnnamed86(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted20 = (o[0]) as core.Map;
   unittest.expect(casted20, unittest.hasLength(3));
@@ -6149,11 +6293,11 @@ api.GoogleCloudAiplatformV1EvaluatedAnnotation
       'bool': true,
       'string': 'foo'
     };
-    o.errorAnalysisAnnotations = buildUnnamed81();
+    o.errorAnalysisAnnotations = buildUnnamed83();
     o.evaluatedDataItemViewId = 'foo';
-    o.explanations = buildUnnamed82();
-    o.groundTruths = buildUnnamed83();
-    o.predictions = buildUnnamed84();
+    o.explanations = buildUnnamed84();
+    o.groundTruths = buildUnnamed85();
+    o.predictions = buildUnnamed86();
     o.type = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1EvaluatedAnnotation--;
@@ -6178,14 +6322,14 @@ void checkGoogleCloudAiplatformV1EvaluatedAnnotation(
       casted22['string'],
       unittest.equals('foo'),
     );
-    checkUnnamed81(o.errorAnalysisAnnotations!);
+    checkUnnamed83(o.errorAnalysisAnnotations!);
     unittest.expect(
       o.evaluatedDataItemViewId!,
       unittest.equals('foo'),
     );
-    checkUnnamed82(o.explanations!);
-    checkUnnamed83(o.groundTruths!);
-    checkUnnamed84(o.predictions!);
+    checkUnnamed84(o.explanations!);
+    checkUnnamed85(o.groundTruths!);
+    checkUnnamed86(o.predictions!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -6220,12 +6364,35 @@ void checkGoogleCloudAiplatformV1EvaluatedAnnotationExplanation(
   buildCounterGoogleCloudAiplatformV1EvaluatedAnnotationExplanation--;
 }
 
-core.Map<core.String, core.String> buildUnnamed85() => {
+core.int buildCounterGoogleCloudAiplatformV1EvaluationDataset = 0;
+api.GoogleCloudAiplatformV1EvaluationDataset
+    buildGoogleCloudAiplatformV1EvaluationDataset() {
+  final o = api.GoogleCloudAiplatformV1EvaluationDataset();
+  buildCounterGoogleCloudAiplatformV1EvaluationDataset++;
+  if (buildCounterGoogleCloudAiplatformV1EvaluationDataset < 3) {
+    o.bigquerySource = buildGoogleCloudAiplatformV1BigQuerySource();
+    o.gcsSource = buildGoogleCloudAiplatformV1GcsSource();
+  }
+  buildCounterGoogleCloudAiplatformV1EvaluationDataset--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1EvaluationDataset(
+    api.GoogleCloudAiplatformV1EvaluationDataset o) {
+  buildCounterGoogleCloudAiplatformV1EvaluationDataset++;
+  if (buildCounterGoogleCloudAiplatformV1EvaluationDataset < 3) {
+    checkGoogleCloudAiplatformV1BigQuerySource(o.bigquerySource!);
+    checkGoogleCloudAiplatformV1GcsSource(o.gcsSource!);
+  }
+  buildCounterGoogleCloudAiplatformV1EvaluationDataset--;
+}
+
+core.Map<core.String, core.String> buildUnnamed87() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed85(core.Map<core.String, core.String> o) {
+void checkUnnamed87(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -6245,7 +6412,7 @@ api.GoogleCloudAiplatformV1Event buildGoogleCloudAiplatformV1Event() {
     o.artifact = 'foo';
     o.eventTime = 'foo';
     o.execution = 'foo';
-    o.labels = buildUnnamed85();
+    o.labels = buildUnnamed87();
     o.type = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1Event--;
@@ -6267,7 +6434,7 @@ void checkGoogleCloudAiplatformV1Event(api.GoogleCloudAiplatformV1Event o) {
       o.execution!,
       unittest.equals('foo'),
     );
-    checkUnnamed85(o.labels!);
+    checkUnnamed87(o.labels!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -6276,12 +6443,12 @@ void checkGoogleCloudAiplatformV1Event(api.GoogleCloudAiplatformV1Event o) {
   buildCounterGoogleCloudAiplatformV1Event--;
 }
 
-core.List<api.GoogleCloudAiplatformV1ExactMatchInstance> buildUnnamed86() => [
+core.List<api.GoogleCloudAiplatformV1ExactMatchInstance> buildUnnamed88() => [
       buildGoogleCloudAiplatformV1ExactMatchInstance(),
       buildGoogleCloudAiplatformV1ExactMatchInstance(),
     ];
 
-void checkUnnamed86(
+void checkUnnamed88(
     core.List<api.GoogleCloudAiplatformV1ExactMatchInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ExactMatchInstance(o[0]);
@@ -6294,7 +6461,7 @@ api.GoogleCloudAiplatformV1ExactMatchInput
   final o = api.GoogleCloudAiplatformV1ExactMatchInput();
   buildCounterGoogleCloudAiplatformV1ExactMatchInput++;
   if (buildCounterGoogleCloudAiplatformV1ExactMatchInput < 3) {
-    o.instances = buildUnnamed86();
+    o.instances = buildUnnamed88();
     o.metricSpec = buildGoogleCloudAiplatformV1ExactMatchSpec();
   }
   buildCounterGoogleCloudAiplatformV1ExactMatchInput--;
@@ -6305,7 +6472,7 @@ void checkGoogleCloudAiplatformV1ExactMatchInput(
     api.GoogleCloudAiplatformV1ExactMatchInput o) {
   buildCounterGoogleCloudAiplatformV1ExactMatchInput++;
   if (buildCounterGoogleCloudAiplatformV1ExactMatchInput < 3) {
-    checkUnnamed86(o.instances!);
+    checkUnnamed88(o.instances!);
     checkGoogleCloudAiplatformV1ExactMatchSpec(o.metricSpec!);
   }
   buildCounterGoogleCloudAiplatformV1ExactMatchInput--;
@@ -6364,13 +6531,13 @@ void checkGoogleCloudAiplatformV1ExactMatchMetricValue(
   buildCounterGoogleCloudAiplatformV1ExactMatchMetricValue--;
 }
 
-core.List<api.GoogleCloudAiplatformV1ExactMatchMetricValue> buildUnnamed87() =>
+core.List<api.GoogleCloudAiplatformV1ExactMatchMetricValue> buildUnnamed89() =>
     [
       buildGoogleCloudAiplatformV1ExactMatchMetricValue(),
       buildGoogleCloudAiplatformV1ExactMatchMetricValue(),
     ];
 
-void checkUnnamed87(
+void checkUnnamed89(
     core.List<api.GoogleCloudAiplatformV1ExactMatchMetricValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ExactMatchMetricValue(o[0]);
@@ -6383,7 +6550,7 @@ api.GoogleCloudAiplatformV1ExactMatchResults
   final o = api.GoogleCloudAiplatformV1ExactMatchResults();
   buildCounterGoogleCloudAiplatformV1ExactMatchResults++;
   if (buildCounterGoogleCloudAiplatformV1ExactMatchResults < 3) {
-    o.exactMatchMetricValues = buildUnnamed87();
+    o.exactMatchMetricValues = buildUnnamed89();
   }
   buildCounterGoogleCloudAiplatformV1ExactMatchResults--;
   return o;
@@ -6393,7 +6560,7 @@ void checkGoogleCloudAiplatformV1ExactMatchResults(
     api.GoogleCloudAiplatformV1ExactMatchResults o) {
   buildCounterGoogleCloudAiplatformV1ExactMatchResults++;
   if (buildCounterGoogleCloudAiplatformV1ExactMatchResults < 3) {
-    checkUnnamed87(o.exactMatchMetricValues!);
+    checkUnnamed89(o.exactMatchMetricValues!);
   }
   buildCounterGoogleCloudAiplatformV1ExactMatchResults--;
 }
@@ -6488,12 +6655,12 @@ void checkGoogleCloudAiplatformV1ExamplesExampleGcsSource(
 }
 
 core.List<api.GoogleCloudAiplatformV1ExamplesRestrictionsNamespace>
-    buildUnnamed88() => [
+    buildUnnamed90() => [
           buildGoogleCloudAiplatformV1ExamplesRestrictionsNamespace(),
           buildGoogleCloudAiplatformV1ExamplesRestrictionsNamespace(),
         ];
 
-void checkUnnamed88(
+void checkUnnamed90(
     core.List<api.GoogleCloudAiplatformV1ExamplesRestrictionsNamespace> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ExamplesRestrictionsNamespace(o[0]);
@@ -6509,7 +6676,7 @@ api.GoogleCloudAiplatformV1ExamplesOverride
     o.crowdingCount = 42;
     o.dataFormat = 'foo';
     o.neighborCount = 42;
-    o.restrictions = buildUnnamed88();
+    o.restrictions = buildUnnamed90();
     o.returnEmbeddings = true;
   }
   buildCounterGoogleCloudAiplatformV1ExamplesOverride--;
@@ -6532,18 +6699,18 @@ void checkGoogleCloudAiplatformV1ExamplesOverride(
       o.neighborCount!,
       unittest.equals(42),
     );
-    checkUnnamed88(o.restrictions!);
+    checkUnnamed90(o.restrictions!);
     unittest.expect(o.returnEmbeddings!, unittest.isTrue);
   }
   buildCounterGoogleCloudAiplatformV1ExamplesOverride--;
 }
 
-core.List<core.String> buildUnnamed89() => [
+core.List<core.String> buildUnnamed91() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed89(core.List<core.String> o) {
+void checkUnnamed91(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6555,12 +6722,12 @@ void checkUnnamed89(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed90() => [
+core.List<core.String> buildUnnamed92() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed90(core.List<core.String> o) {
+void checkUnnamed92(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6578,8 +6745,8 @@ api.GoogleCloudAiplatformV1ExamplesRestrictionsNamespace
   final o = api.GoogleCloudAiplatformV1ExamplesRestrictionsNamespace();
   buildCounterGoogleCloudAiplatformV1ExamplesRestrictionsNamespace++;
   if (buildCounterGoogleCloudAiplatformV1ExamplesRestrictionsNamespace < 3) {
-    o.allow = buildUnnamed89();
-    o.deny = buildUnnamed90();
+    o.allow = buildUnnamed91();
+    o.deny = buildUnnamed92();
     o.namespaceName = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ExamplesRestrictionsNamespace--;
@@ -6590,8 +6757,8 @@ void checkGoogleCloudAiplatformV1ExamplesRestrictionsNamespace(
     api.GoogleCloudAiplatformV1ExamplesRestrictionsNamespace o) {
   buildCounterGoogleCloudAiplatformV1ExamplesRestrictionsNamespace++;
   if (buildCounterGoogleCloudAiplatformV1ExamplesRestrictionsNamespace < 3) {
-    checkUnnamed89(o.allow!);
-    checkUnnamed90(o.deny!);
+    checkUnnamed91(o.allow!);
+    checkUnnamed92(o.deny!);
     unittest.expect(
       o.namespaceName!,
       unittest.equals('foo'),
@@ -6600,12 +6767,41 @@ void checkGoogleCloudAiplatformV1ExamplesRestrictionsNamespace(
   buildCounterGoogleCloudAiplatformV1ExamplesRestrictionsNamespace--;
 }
 
-core.Map<core.String, core.String> buildUnnamed91() => {
+core.int buildCounterGoogleCloudAiplatformV1ExecutableCode = 0;
+api.GoogleCloudAiplatformV1ExecutableCode
+    buildGoogleCloudAiplatformV1ExecutableCode() {
+  final o = api.GoogleCloudAiplatformV1ExecutableCode();
+  buildCounterGoogleCloudAiplatformV1ExecutableCode++;
+  if (buildCounterGoogleCloudAiplatformV1ExecutableCode < 3) {
+    o.code = 'foo';
+    o.language = 'foo';
+  }
+  buildCounterGoogleCloudAiplatformV1ExecutableCode--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1ExecutableCode(
+    api.GoogleCloudAiplatformV1ExecutableCode o) {
+  buildCounterGoogleCloudAiplatformV1ExecutableCode++;
+  if (buildCounterGoogleCloudAiplatformV1ExecutableCode < 3) {
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.language!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudAiplatformV1ExecutableCode--;
+}
+
+core.Map<core.String, core.String> buildUnnamed93() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed91(core.Map<core.String, core.String> o) {
+void checkUnnamed93(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -6617,7 +6813,7 @@ void checkUnnamed91(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed92() => {
+core.Map<core.String, core.Object?> buildUnnamed94() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -6630,7 +6826,7 @@ core.Map<core.String, core.Object?> buildUnnamed92() => {
       },
     };
 
-void checkUnnamed92(core.Map<core.String, core.Object?> o) {
+void checkUnnamed94(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted24 = (o['x']!) as core.Map;
   unittest.expect(casted24, unittest.hasLength(3));
@@ -6671,8 +6867,8 @@ api.GoogleCloudAiplatformV1Execution buildGoogleCloudAiplatformV1Execution() {
     o.description = 'foo';
     o.displayName = 'foo';
     o.etag = 'foo';
-    o.labels = buildUnnamed91();
-    o.metadata = buildUnnamed92();
+    o.labels = buildUnnamed93();
+    o.metadata = buildUnnamed94();
     o.name = 'foo';
     o.schemaTitle = 'foo';
     o.schemaVersion = 'foo';
@@ -6703,8 +6899,8 @@ void checkGoogleCloudAiplatformV1Execution(
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed91(o.labels!);
-    checkUnnamed92(o.metadata!);
+    checkUnnamed93(o.labels!);
+    checkUnnamed94(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -6729,7 +6925,7 @@ void checkGoogleCloudAiplatformV1Execution(
   buildCounterGoogleCloudAiplatformV1Execution--;
 }
 
-core.List<core.Object?> buildUnnamed93() => [
+core.List<core.Object?> buildUnnamed95() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -6742,7 +6938,7 @@ core.List<core.Object?> buildUnnamed93() => [
       },
     ];
 
-void checkUnnamed93(core.List<core.Object?> o) {
+void checkUnnamed95(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted26 = (o[0]) as core.Map;
   unittest.expect(casted26, unittest.hasLength(3));
@@ -6783,7 +6979,7 @@ api.GoogleCloudAiplatformV1ExplainRequest
     o.deployedModelId = 'foo';
     o.explanationSpecOverride =
         buildGoogleCloudAiplatformV1ExplanationSpecOverride();
-    o.instances = buildUnnamed93();
+    o.instances = buildUnnamed95();
     o.parameters = {
       'list': [1, 2, 3],
       'bool': true,
@@ -6804,7 +7000,7 @@ void checkGoogleCloudAiplatformV1ExplainRequest(
     );
     checkGoogleCloudAiplatformV1ExplanationSpecOverride(
         o.explanationSpecOverride!);
-    checkUnnamed93(o.instances!);
+    checkUnnamed95(o.instances!);
     var casted28 = (o.parameters!) as core.Map;
     unittest.expect(casted28, unittest.hasLength(3));
     unittest.expect(
@@ -6823,18 +7019,18 @@ void checkGoogleCloudAiplatformV1ExplainRequest(
   buildCounterGoogleCloudAiplatformV1ExplainRequest--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Explanation> buildUnnamed94() => [
+core.List<api.GoogleCloudAiplatformV1Explanation> buildUnnamed96() => [
       buildGoogleCloudAiplatformV1Explanation(),
       buildGoogleCloudAiplatformV1Explanation(),
     ];
 
-void checkUnnamed94(core.List<api.GoogleCloudAiplatformV1Explanation> o) {
+void checkUnnamed96(core.List<api.GoogleCloudAiplatformV1Explanation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Explanation(o[0]);
   checkGoogleCloudAiplatformV1Explanation(o[1]);
 }
 
-core.List<core.Object?> buildUnnamed95() => [
+core.List<core.Object?> buildUnnamed97() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -6847,7 +7043,7 @@ core.List<core.Object?> buildUnnamed95() => [
       },
     ];
 
-void checkUnnamed95(core.List<core.Object?> o) {
+void checkUnnamed97(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted29 = (o[0]) as core.Map;
   unittest.expect(casted29, unittest.hasLength(3));
@@ -6886,8 +7082,8 @@ api.GoogleCloudAiplatformV1ExplainResponse
   buildCounterGoogleCloudAiplatformV1ExplainResponse++;
   if (buildCounterGoogleCloudAiplatformV1ExplainResponse < 3) {
     o.deployedModelId = 'foo';
-    o.explanations = buildUnnamed94();
-    o.predictions = buildUnnamed95();
+    o.explanations = buildUnnamed96();
+    o.predictions = buildUnnamed97();
   }
   buildCounterGoogleCloudAiplatformV1ExplainResponse--;
   return o;
@@ -6901,29 +7097,29 @@ void checkGoogleCloudAiplatformV1ExplainResponse(
       o.deployedModelId!,
       unittest.equals('foo'),
     );
-    checkUnnamed94(o.explanations!);
-    checkUnnamed95(o.predictions!);
+    checkUnnamed96(o.explanations!);
+    checkUnnamed97(o.predictions!);
   }
   buildCounterGoogleCloudAiplatformV1ExplainResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Attribution> buildUnnamed96() => [
+core.List<api.GoogleCloudAiplatformV1Attribution> buildUnnamed98() => [
       buildGoogleCloudAiplatformV1Attribution(),
       buildGoogleCloudAiplatformV1Attribution(),
     ];
 
-void checkUnnamed96(core.List<api.GoogleCloudAiplatformV1Attribution> o) {
+void checkUnnamed98(core.List<api.GoogleCloudAiplatformV1Attribution> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Attribution(o[0]);
   checkGoogleCloudAiplatformV1Attribution(o[1]);
 }
 
-core.List<api.GoogleCloudAiplatformV1Neighbor> buildUnnamed97() => [
+core.List<api.GoogleCloudAiplatformV1Neighbor> buildUnnamed99() => [
       buildGoogleCloudAiplatformV1Neighbor(),
       buildGoogleCloudAiplatformV1Neighbor(),
     ];
 
-void checkUnnamed97(core.List<api.GoogleCloudAiplatformV1Neighbor> o) {
+void checkUnnamed99(core.List<api.GoogleCloudAiplatformV1Neighbor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Neighbor(o[0]);
   checkGoogleCloudAiplatformV1Neighbor(o[1]);
@@ -6935,8 +7131,8 @@ api.GoogleCloudAiplatformV1Explanation
   final o = api.GoogleCloudAiplatformV1Explanation();
   buildCounterGoogleCloudAiplatformV1Explanation++;
   if (buildCounterGoogleCloudAiplatformV1Explanation < 3) {
-    o.attributions = buildUnnamed96();
-    o.neighbors = buildUnnamed97();
+    o.attributions = buildUnnamed98();
+    o.neighbors = buildUnnamed99();
   }
   buildCounterGoogleCloudAiplatformV1Explanation--;
   return o;
@@ -6946,20 +7142,20 @@ void checkGoogleCloudAiplatformV1Explanation(
     api.GoogleCloudAiplatformV1Explanation o) {
   buildCounterGoogleCloudAiplatformV1Explanation++;
   if (buildCounterGoogleCloudAiplatformV1Explanation < 3) {
-    checkUnnamed96(o.attributions!);
-    checkUnnamed97(o.neighbors!);
+    checkUnnamed98(o.attributions!);
+    checkUnnamed99(o.neighbors!);
   }
   buildCounterGoogleCloudAiplatformV1Explanation--;
 }
 
 core.Map<core.String,
         api.GoogleCloudAiplatformV1ExplanationMetadataInputMetadata>
-    buildUnnamed98() => {
+    buildUnnamed100() => {
           'x': buildGoogleCloudAiplatformV1ExplanationMetadataInputMetadata(),
           'y': buildGoogleCloudAiplatformV1ExplanationMetadataInputMetadata(),
         };
 
-void checkUnnamed98(
+void checkUnnamed100(
     core.Map<core.String,
             api.GoogleCloudAiplatformV1ExplanationMetadataInputMetadata>
         o) {
@@ -6970,12 +7166,12 @@ void checkUnnamed98(
 
 core.Map<core.String,
         api.GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata>
-    buildUnnamed99() => {
+    buildUnnamed101() => {
           'x': buildGoogleCloudAiplatformV1ExplanationMetadataOutputMetadata(),
           'y': buildGoogleCloudAiplatformV1ExplanationMetadataOutputMetadata(),
         };
 
-void checkUnnamed99(
+void checkUnnamed101(
     core.Map<core.String,
             api.GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata>
         o) {
@@ -6991,9 +7187,9 @@ api.GoogleCloudAiplatformV1ExplanationMetadata
   buildCounterGoogleCloudAiplatformV1ExplanationMetadata++;
   if (buildCounterGoogleCloudAiplatformV1ExplanationMetadata < 3) {
     o.featureAttributionsSchemaUri = 'foo';
-    o.inputs = buildUnnamed98();
+    o.inputs = buildUnnamed100();
     o.latentSpaceSource = 'foo';
-    o.outputs = buildUnnamed99();
+    o.outputs = buildUnnamed101();
   }
   buildCounterGoogleCloudAiplatformV1ExplanationMetadata--;
   return o;
@@ -7007,17 +7203,17 @@ void checkGoogleCloudAiplatformV1ExplanationMetadata(
       o.featureAttributionsSchemaUri!,
       unittest.equals('foo'),
     );
-    checkUnnamed98(o.inputs!);
+    checkUnnamed100(o.inputs!);
     unittest.expect(
       o.latentSpaceSource!,
       unittest.equals('foo'),
     );
-    checkUnnamed99(o.outputs!);
+    checkUnnamed101(o.outputs!);
   }
   buildCounterGoogleCloudAiplatformV1ExplanationMetadata--;
 }
 
-core.List<core.Object?> buildUnnamed100() => [
+core.List<core.Object?> buildUnnamed102() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -7030,7 +7226,7 @@ core.List<core.Object?> buildUnnamed100() => [
       },
     ];
 
-void checkUnnamed100(core.List<core.Object?> o) {
+void checkUnnamed102(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted31 = (o[0]) as core.Map;
   unittest.expect(casted31, unittest.hasLength(3));
@@ -7062,12 +7258,12 @@ void checkUnnamed100(core.List<core.Object?> o) {
   );
 }
 
-core.List<core.String> buildUnnamed101() => [
+core.List<core.String> buildUnnamed103() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed101(core.List<core.String> o) {
+void checkUnnamed103(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -7079,7 +7275,7 @@ void checkUnnamed101(core.List<core.String> o) {
   );
 }
 
-core.List<core.Object?> buildUnnamed102() => [
+core.List<core.Object?> buildUnnamed104() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -7092,7 +7288,7 @@ core.List<core.Object?> buildUnnamed102() => [
       },
     ];
 
-void checkUnnamed102(core.List<core.Object?> o) {
+void checkUnnamed104(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted33 = (o[0]) as core.Map;
   unittest.expect(casted33, unittest.hasLength(3));
@@ -7132,15 +7328,15 @@ api.GoogleCloudAiplatformV1ExplanationMetadataInputMetadata
   buildCounterGoogleCloudAiplatformV1ExplanationMetadataInputMetadata++;
   if (buildCounterGoogleCloudAiplatformV1ExplanationMetadataInputMetadata < 3) {
     o.denseShapeTensorName = 'foo';
-    o.encodedBaselines = buildUnnamed100();
+    o.encodedBaselines = buildUnnamed102();
     o.encodedTensorName = 'foo';
     o.encoding = 'foo';
     o.featureValueDomain =
         buildGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain();
     o.groupName = 'foo';
-    o.indexFeatureMapping = buildUnnamed101();
+    o.indexFeatureMapping = buildUnnamed103();
     o.indicesTensorName = 'foo';
-    o.inputBaselines = buildUnnamed102();
+    o.inputBaselines = buildUnnamed104();
     o.inputTensorName = 'foo';
     o.modality = 'foo';
     o.visualization =
@@ -7158,7 +7354,7 @@ void checkGoogleCloudAiplatformV1ExplanationMetadataInputMetadata(
       o.denseShapeTensorName!,
       unittest.equals('foo'),
     );
-    checkUnnamed100(o.encodedBaselines!);
+    checkUnnamed102(o.encodedBaselines!);
     unittest.expect(
       o.encodedTensorName!,
       unittest.equals('foo'),
@@ -7173,12 +7369,12 @@ void checkGoogleCloudAiplatformV1ExplanationMetadataInputMetadata(
       o.groupName!,
       unittest.equals('foo'),
     );
-    checkUnnamed101(o.indexFeatureMapping!);
+    checkUnnamed103(o.indexFeatureMapping!);
     unittest.expect(
       o.indicesTensorName!,
       unittest.equals('foo'),
     );
-    checkUnnamed102(o.inputBaselines!);
+    checkUnnamed104(o.inputBaselines!);
     unittest.expect(
       o.inputTensorName!,
       unittest.equals('foo'),
@@ -7348,14 +7544,14 @@ core.Map<
         core.String,
         api
         .GoogleCloudAiplatformV1ExplanationMetadataOverrideInputMetadataOverride>
-    buildUnnamed103() => {
+    buildUnnamed105() => {
           'x':
               buildGoogleCloudAiplatformV1ExplanationMetadataOverrideInputMetadataOverride(),
           'y':
               buildGoogleCloudAiplatformV1ExplanationMetadataOverrideInputMetadataOverride(),
         };
 
-void checkUnnamed103(
+void checkUnnamed105(
     core.Map<
             core.String,
             api
@@ -7374,7 +7570,7 @@ api.GoogleCloudAiplatformV1ExplanationMetadataOverride
   final o = api.GoogleCloudAiplatformV1ExplanationMetadataOverride();
   buildCounterGoogleCloudAiplatformV1ExplanationMetadataOverride++;
   if (buildCounterGoogleCloudAiplatformV1ExplanationMetadataOverride < 3) {
-    o.inputs = buildUnnamed103();
+    o.inputs = buildUnnamed105();
   }
   buildCounterGoogleCloudAiplatformV1ExplanationMetadataOverride--;
   return o;
@@ -7384,12 +7580,12 @@ void checkGoogleCloudAiplatformV1ExplanationMetadataOverride(
     api.GoogleCloudAiplatformV1ExplanationMetadataOverride o) {
   buildCounterGoogleCloudAiplatformV1ExplanationMetadataOverride++;
   if (buildCounterGoogleCloudAiplatformV1ExplanationMetadataOverride < 3) {
-    checkUnnamed103(o.inputs!);
+    checkUnnamed105(o.inputs!);
   }
   buildCounterGoogleCloudAiplatformV1ExplanationMetadataOverride--;
 }
 
-core.List<core.Object?> buildUnnamed104() => [
+core.List<core.Object?> buildUnnamed106() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -7402,7 +7598,7 @@ core.List<core.Object?> buildUnnamed104() => [
       },
     ];
 
-void checkUnnamed104(core.List<core.Object?> o) {
+void checkUnnamed106(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted36 = (o[0]) as core.Map;
   unittest.expect(casted36, unittest.hasLength(3));
@@ -7444,7 +7640,7 @@ api.GoogleCloudAiplatformV1ExplanationMetadataOverrideInputMetadataOverride
   buildCounterGoogleCloudAiplatformV1ExplanationMetadataOverrideInputMetadataOverride++;
   if (buildCounterGoogleCloudAiplatformV1ExplanationMetadataOverrideInputMetadataOverride <
       3) {
-    o.inputBaselines = buildUnnamed104();
+    o.inputBaselines = buildUnnamed106();
   }
   buildCounterGoogleCloudAiplatformV1ExplanationMetadataOverrideInputMetadataOverride--;
   return o;
@@ -7456,12 +7652,12 @@ void checkGoogleCloudAiplatformV1ExplanationMetadataOverrideInputMetadataOverrid
   buildCounterGoogleCloudAiplatformV1ExplanationMetadataOverrideInputMetadataOverride++;
   if (buildCounterGoogleCloudAiplatformV1ExplanationMetadataOverrideInputMetadataOverride <
       3) {
-    checkUnnamed104(o.inputBaselines!);
+    checkUnnamed106(o.inputBaselines!);
   }
   buildCounterGoogleCloudAiplatformV1ExplanationMetadataOverrideInputMetadataOverride--;
 }
 
-core.List<core.Object?> buildUnnamed105() => [
+core.List<core.Object?> buildUnnamed107() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -7474,7 +7670,7 @@ core.List<core.Object?> buildUnnamed105() => [
       },
     ];
 
-void checkUnnamed105(core.List<core.Object?> o) {
+void checkUnnamed107(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted38 = (o[0]) as core.Map;
   unittest.expect(casted38, unittest.hasLength(3));
@@ -7515,7 +7711,7 @@ api.GoogleCloudAiplatformV1ExplanationParameters
     o.examples = buildGoogleCloudAiplatformV1Examples();
     o.integratedGradientsAttribution =
         buildGoogleCloudAiplatformV1IntegratedGradientsAttribution();
-    o.outputIndices = buildUnnamed105();
+    o.outputIndices = buildUnnamed107();
     o.sampledShapleyAttribution =
         buildGoogleCloudAiplatformV1SampledShapleyAttribution();
     o.topK = 42;
@@ -7532,7 +7728,7 @@ void checkGoogleCloudAiplatformV1ExplanationParameters(
     checkGoogleCloudAiplatformV1Examples(o.examples!);
     checkGoogleCloudAiplatformV1IntegratedGradientsAttribution(
         o.integratedGradientsAttribution!);
-    checkUnnamed105(o.outputIndices!);
+    checkUnnamed107(o.outputIndices!);
     checkGoogleCloudAiplatformV1SampledShapleyAttribution(
         o.sampledShapleyAttribution!);
     unittest.expect(
@@ -7659,12 +7855,12 @@ void checkGoogleCloudAiplatformV1ExportDataRequest(
 }
 
 core.List<api.GoogleCloudAiplatformV1DestinationFeatureSetting>
-    buildUnnamed106() => [
+    buildUnnamed108() => [
           buildGoogleCloudAiplatformV1DestinationFeatureSetting(),
           buildGoogleCloudAiplatformV1DestinationFeatureSetting(),
         ];
 
-void checkUnnamed106(
+void checkUnnamed108(
     core.List<api.GoogleCloudAiplatformV1DestinationFeatureSetting> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1DestinationFeatureSetting(o[0]);
@@ -7681,7 +7877,7 @@ api.GoogleCloudAiplatformV1ExportFeatureValuesRequest
     o.featureSelector = buildGoogleCloudAiplatformV1FeatureSelector();
     o.fullExport =
         buildGoogleCloudAiplatformV1ExportFeatureValuesRequestFullExport();
-    o.settings = buildUnnamed106();
+    o.settings = buildUnnamed108();
     o.snapshotExport =
         buildGoogleCloudAiplatformV1ExportFeatureValuesRequestSnapshotExport();
   }
@@ -7697,7 +7893,7 @@ void checkGoogleCloudAiplatformV1ExportFeatureValuesRequest(
     checkGoogleCloudAiplatformV1FeatureSelector(o.featureSelector!);
     checkGoogleCloudAiplatformV1ExportFeatureValuesRequestFullExport(
         o.fullExport!);
-    checkUnnamed106(o.settings!);
+    checkUnnamed108(o.settings!);
     checkGoogleCloudAiplatformV1ExportFeatureValuesRequestSnapshotExport(
         o.snapshotExport!);
   }
@@ -7933,12 +8129,12 @@ void checkGoogleCloudAiplatformV1ExportTensorboardTimeSeriesDataRequest(
   buildCounterGoogleCloudAiplatformV1ExportTensorboardTimeSeriesDataRequest--;
 }
 
-core.List<api.GoogleCloudAiplatformV1TimeSeriesDataPoint> buildUnnamed107() => [
+core.List<api.GoogleCloudAiplatformV1TimeSeriesDataPoint> buildUnnamed109() => [
       buildGoogleCloudAiplatformV1TimeSeriesDataPoint(),
       buildGoogleCloudAiplatformV1TimeSeriesDataPoint(),
     ];
 
-void checkUnnamed107(
+void checkUnnamed109(
     core.List<api.GoogleCloudAiplatformV1TimeSeriesDataPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TimeSeriesDataPoint(o[0]);
@@ -7956,7 +8152,7 @@ api.GoogleCloudAiplatformV1ExportTensorboardTimeSeriesDataResponse
   if (buildCounterGoogleCloudAiplatformV1ExportTensorboardTimeSeriesDataResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.timeSeriesDataPoints = buildUnnamed107();
+    o.timeSeriesDataPoints = buildUnnamed109();
   }
   buildCounterGoogleCloudAiplatformV1ExportTensorboardTimeSeriesDataResponse--;
   return o;
@@ -7971,7 +8167,7 @@ void checkGoogleCloudAiplatformV1ExportTensorboardTimeSeriesDataResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed107(o.timeSeriesDataPoints!);
+    checkUnnamed109(o.timeSeriesDataPoints!);
   }
   buildCounterGoogleCloudAiplatformV1ExportTensorboardTimeSeriesDataResponse--;
 }
@@ -8044,12 +8240,12 @@ void checkGoogleCloudAiplatformV1FasterDeploymentConfig(
   buildCounterGoogleCloudAiplatformV1FasterDeploymentConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed108() => {
+core.Map<core.String, core.String> buildUnnamed110() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed108(core.Map<core.String, core.String> o) {
+void checkUnnamed110(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -8062,12 +8258,12 @@ void checkUnnamed108(core.Map<core.String, core.String> o) {
 }
 
 core.List<api.GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly>
-    buildUnnamed109() => [
+    buildUnnamed111() => [
           buildGoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly(),
           buildGoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly(),
         ];
 
-void checkUnnamed109(
+void checkUnnamed111(
     core.List<api.GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly(o[0]);
@@ -8083,8 +8279,8 @@ api.GoogleCloudAiplatformV1Feature buildGoogleCloudAiplatformV1Feature() {
     o.description = 'foo';
     o.disableMonitoring = true;
     o.etag = 'foo';
-    o.labels = buildUnnamed108();
-    o.monitoringStatsAnomalies = buildUnnamed109();
+    o.labels = buildUnnamed110();
+    o.monitoringStatsAnomalies = buildUnnamed111();
     o.name = 'foo';
     o.pointOfContact = 'foo';
     o.updateTime = 'foo';
@@ -8111,8 +8307,8 @@ void checkGoogleCloudAiplatformV1Feature(api.GoogleCloudAiplatformV1Feature o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed108(o.labels!);
-    checkUnnamed109(o.monitoringStatsAnomalies!);
+    checkUnnamed110(o.labels!);
+    checkUnnamed111(o.monitoringStatsAnomalies!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -8137,12 +8333,12 @@ void checkGoogleCloudAiplatformV1Feature(api.GoogleCloudAiplatformV1Feature o) {
   buildCounterGoogleCloudAiplatformV1Feature--;
 }
 
-core.Map<core.String, core.String> buildUnnamed110() => {
+core.Map<core.String, core.String> buildUnnamed112() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed110(core.Map<core.String, core.String> o) {
+void checkUnnamed112(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -8164,7 +8360,7 @@ api.GoogleCloudAiplatformV1FeatureGroup
     o.createTime = 'foo';
     o.description = 'foo';
     o.etag = 'foo';
-    o.labels = buildUnnamed110();
+    o.labels = buildUnnamed112();
     o.name = 'foo';
     o.updateTime = 'foo';
   }
@@ -8189,7 +8385,7 @@ void checkGoogleCloudAiplatformV1FeatureGroup(
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed110(o.labels!);
+    checkUnnamed112(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -8202,12 +8398,12 @@ void checkGoogleCloudAiplatformV1FeatureGroup(
   buildCounterGoogleCloudAiplatformV1FeatureGroup--;
 }
 
-core.List<core.String> buildUnnamed111() => [
+core.List<core.String> buildUnnamed113() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed111(core.List<core.String> o) {
+void checkUnnamed113(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -8227,7 +8423,7 @@ api.GoogleCloudAiplatformV1FeatureGroupBigQuery
   if (buildCounterGoogleCloudAiplatformV1FeatureGroupBigQuery < 3) {
     o.bigQuerySource = buildGoogleCloudAiplatformV1BigQuerySource();
     o.dense = true;
-    o.entityIdColumns = buildUnnamed111();
+    o.entityIdColumns = buildUnnamed113();
     o.staticDataSource = true;
     o.timeSeries = buildGoogleCloudAiplatformV1FeatureGroupBigQueryTimeSeries();
   }
@@ -8241,7 +8437,7 @@ void checkGoogleCloudAiplatformV1FeatureGroupBigQuery(
   if (buildCounterGoogleCloudAiplatformV1FeatureGroupBigQuery < 3) {
     checkGoogleCloudAiplatformV1BigQuerySource(o.bigQuerySource!);
     unittest.expect(o.dense!, unittest.isTrue);
-    checkUnnamed111(o.entityIdColumns!);
+    checkUnnamed113(o.entityIdColumns!);
     unittest.expect(o.staticDataSource!, unittest.isTrue);
     checkGoogleCloudAiplatformV1FeatureGroupBigQueryTimeSeries(o.timeSeries!);
   }
@@ -8299,12 +8495,12 @@ void checkGoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly(
 }
 
 core.List<api.GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature>
-    buildUnnamed112() => [
+    buildUnnamed114() => [
           buildGoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature(),
           buildGoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature(),
         ];
 
-void checkUnnamed112(
+void checkUnnamed114(
     core.List<api.GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -8318,7 +8514,7 @@ api.GoogleCloudAiplatformV1FeatureNoiseSigma
   final o = api.GoogleCloudAiplatformV1FeatureNoiseSigma();
   buildCounterGoogleCloudAiplatformV1FeatureNoiseSigma++;
   if (buildCounterGoogleCloudAiplatformV1FeatureNoiseSigma < 3) {
-    o.noiseSigma = buildUnnamed112();
+    o.noiseSigma = buildUnnamed114();
   }
   buildCounterGoogleCloudAiplatformV1FeatureNoiseSigma--;
   return o;
@@ -8328,7 +8524,7 @@ void checkGoogleCloudAiplatformV1FeatureNoiseSigma(
     api.GoogleCloudAiplatformV1FeatureNoiseSigma o) {
   buildCounterGoogleCloudAiplatformV1FeatureNoiseSigma++;
   if (buildCounterGoogleCloudAiplatformV1FeatureNoiseSigma < 3) {
-    checkUnnamed112(o.noiseSigma!);
+    checkUnnamed114(o.noiseSigma!);
   }
   buildCounterGoogleCloudAiplatformV1FeatureNoiseSigma--;
 }
@@ -8366,12 +8562,12 @@ void checkGoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature(
   buildCounterGoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature--;
 }
 
-core.Map<core.String, core.String> buildUnnamed113() => {
+core.Map<core.String, core.String> buildUnnamed115() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed113(core.Map<core.String, core.String> o) {
+void checkUnnamed115(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -8395,7 +8591,7 @@ api.GoogleCloudAiplatformV1FeatureOnlineStore
         buildGoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpoint();
     o.encryptionSpec = buildGoogleCloudAiplatformV1EncryptionSpec();
     o.etag = 'foo';
-    o.labels = buildUnnamed113();
+    o.labels = buildUnnamed115();
     o.name = 'foo';
     o.optimized = buildGoogleCloudAiplatformV1FeatureOnlineStoreOptimized();
     o.satisfiesPzi = true;
@@ -8423,7 +8619,7 @@ void checkGoogleCloudAiplatformV1FeatureOnlineStore(
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed113(o.labels!);
+    checkUnnamed115(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -8712,12 +8908,12 @@ void checkGoogleCloudAiplatformV1FeatureValueDestination(
   buildCounterGoogleCloudAiplatformV1FeatureValueDestination--;
 }
 
-core.List<api.GoogleCloudAiplatformV1FeatureValue> buildUnnamed114() => [
+core.List<api.GoogleCloudAiplatformV1FeatureValue> buildUnnamed116() => [
       buildGoogleCloudAiplatformV1FeatureValue(),
       buildGoogleCloudAiplatformV1FeatureValue(),
     ];
 
-void checkUnnamed114(core.List<api.GoogleCloudAiplatformV1FeatureValue> o) {
+void checkUnnamed116(core.List<api.GoogleCloudAiplatformV1FeatureValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1FeatureValue(o[0]);
   checkGoogleCloudAiplatformV1FeatureValue(o[1]);
@@ -8729,7 +8925,7 @@ api.GoogleCloudAiplatformV1FeatureValueList
   final o = api.GoogleCloudAiplatformV1FeatureValueList();
   buildCounterGoogleCloudAiplatformV1FeatureValueList++;
   if (buildCounterGoogleCloudAiplatformV1FeatureValueList < 3) {
-    o.values = buildUnnamed114();
+    o.values = buildUnnamed116();
   }
   buildCounterGoogleCloudAiplatformV1FeatureValueList--;
   return o;
@@ -8739,7 +8935,7 @@ void checkGoogleCloudAiplatformV1FeatureValueList(
     api.GoogleCloudAiplatformV1FeatureValueList o) {
   buildCounterGoogleCloudAiplatformV1FeatureValueList++;
   if (buildCounterGoogleCloudAiplatformV1FeatureValueList < 3) {
-    checkUnnamed114(o.values!);
+    checkUnnamed116(o.values!);
   }
   buildCounterGoogleCloudAiplatformV1FeatureValueList--;
 }
@@ -8768,12 +8964,12 @@ void checkGoogleCloudAiplatformV1FeatureValueMetadata(
   buildCounterGoogleCloudAiplatformV1FeatureValueMetadata--;
 }
 
-core.Map<core.String, core.String> buildUnnamed115() => {
+core.Map<core.String, core.String> buildUnnamed117() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed115(core.Map<core.String, core.String> o) {
+void checkUnnamed117(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -8797,12 +8993,14 @@ api.GoogleCloudAiplatformV1FeatureView
     o.featureRegistrySource =
         buildGoogleCloudAiplatformV1FeatureViewFeatureRegistrySource();
     o.indexConfig = buildGoogleCloudAiplatformV1FeatureViewIndexConfig();
-    o.labels = buildUnnamed115();
+    o.labels = buildUnnamed117();
     o.name = 'foo';
     o.optimizedConfig =
         buildGoogleCloudAiplatformV1FeatureViewOptimizedConfig();
     o.satisfiesPzi = true;
     o.satisfiesPzs = true;
+    o.serviceAccountEmail = 'foo';
+    o.serviceAgentType = 'foo';
     o.syncConfig = buildGoogleCloudAiplatformV1FeatureViewSyncConfig();
     o.updateTime = 'foo';
     o.vertexRagSource =
@@ -8828,7 +9026,7 @@ void checkGoogleCloudAiplatformV1FeatureView(
     checkGoogleCloudAiplatformV1FeatureViewFeatureRegistrySource(
         o.featureRegistrySource!);
     checkGoogleCloudAiplatformV1FeatureViewIndexConfig(o.indexConfig!);
-    checkUnnamed115(o.labels!);
+    checkUnnamed117(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -8836,6 +9034,14 @@ void checkGoogleCloudAiplatformV1FeatureView(
     checkGoogleCloudAiplatformV1FeatureViewOptimizedConfig(o.optimizedConfig!);
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
+    unittest.expect(
+      o.serviceAccountEmail!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serviceAgentType!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudAiplatformV1FeatureViewSyncConfig(o.syncConfig!);
     unittest.expect(
       o.updateTime!,
@@ -8846,12 +9052,12 @@ void checkGoogleCloudAiplatformV1FeatureView(
   buildCounterGoogleCloudAiplatformV1FeatureView--;
 }
 
-core.List<core.String> buildUnnamed116() => [
+core.List<core.String> buildUnnamed118() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed116(core.List<core.String> o) {
+void checkUnnamed118(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -8869,7 +9075,7 @@ api.GoogleCloudAiplatformV1FeatureViewBigQuerySource
   final o = api.GoogleCloudAiplatformV1FeatureViewBigQuerySource();
   buildCounterGoogleCloudAiplatformV1FeatureViewBigQuerySource++;
   if (buildCounterGoogleCloudAiplatformV1FeatureViewBigQuerySource < 3) {
-    o.entityIdColumns = buildUnnamed116();
+    o.entityIdColumns = buildUnnamed118();
     o.uri = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1FeatureViewBigQuerySource--;
@@ -8880,7 +9086,7 @@ void checkGoogleCloudAiplatformV1FeatureViewBigQuerySource(
     api.GoogleCloudAiplatformV1FeatureViewBigQuerySource o) {
   buildCounterGoogleCloudAiplatformV1FeatureViewBigQuerySource++;
   if (buildCounterGoogleCloudAiplatformV1FeatureViewBigQuerySource < 3) {
-    checkUnnamed116(o.entityIdColumns!);
+    checkUnnamed118(o.entityIdColumns!);
     unittest.expect(
       o.uri!,
       unittest.equals('foo'),
@@ -8916,12 +9122,12 @@ void checkGoogleCloudAiplatformV1FeatureViewDataKey(
   buildCounterGoogleCloudAiplatformV1FeatureViewDataKey--;
 }
 
-core.List<core.String> buildUnnamed117() => [
+core.List<core.String> buildUnnamed119() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed117(core.List<core.String> o) {
+void checkUnnamed119(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -8939,7 +9145,7 @@ api.GoogleCloudAiplatformV1FeatureViewDataKeyCompositeKey
   final o = api.GoogleCloudAiplatformV1FeatureViewDataKeyCompositeKey();
   buildCounterGoogleCloudAiplatformV1FeatureViewDataKeyCompositeKey++;
   if (buildCounterGoogleCloudAiplatformV1FeatureViewDataKeyCompositeKey < 3) {
-    o.parts = buildUnnamed117();
+    o.parts = buildUnnamed119();
   }
   buildCounterGoogleCloudAiplatformV1FeatureViewDataKeyCompositeKey--;
   return o;
@@ -8949,19 +9155,19 @@ void checkGoogleCloudAiplatformV1FeatureViewDataKeyCompositeKey(
     api.GoogleCloudAiplatformV1FeatureViewDataKeyCompositeKey o) {
   buildCounterGoogleCloudAiplatformV1FeatureViewDataKeyCompositeKey++;
   if (buildCounterGoogleCloudAiplatformV1FeatureViewDataKeyCompositeKey < 3) {
-    checkUnnamed117(o.parts!);
+    checkUnnamed119(o.parts!);
   }
   buildCounterGoogleCloudAiplatformV1FeatureViewDataKeyCompositeKey--;
 }
 
 core.List<
         api.GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup>
-    buildUnnamed118() => [
+    buildUnnamed120() => [
           buildGoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup(),
           buildGoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup(),
         ];
 
-void checkUnnamed118(
+void checkUnnamed120(
     core.List<
             api
             .GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup>
@@ -8980,7 +9186,7 @@ api.GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource
   final o = api.GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource();
   buildCounterGoogleCloudAiplatformV1FeatureViewFeatureRegistrySource++;
   if (buildCounterGoogleCloudAiplatformV1FeatureViewFeatureRegistrySource < 3) {
-    o.featureGroups = buildUnnamed118();
+    o.featureGroups = buildUnnamed120();
     o.projectNumber = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1FeatureViewFeatureRegistrySource--;
@@ -8991,7 +9197,7 @@ void checkGoogleCloudAiplatformV1FeatureViewFeatureRegistrySource(
     api.GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource o) {
   buildCounterGoogleCloudAiplatformV1FeatureViewFeatureRegistrySource++;
   if (buildCounterGoogleCloudAiplatformV1FeatureViewFeatureRegistrySource < 3) {
-    checkUnnamed118(o.featureGroups!);
+    checkUnnamed120(o.featureGroups!);
     unittest.expect(
       o.projectNumber!,
       unittest.equals('foo'),
@@ -9000,12 +9206,12 @@ void checkGoogleCloudAiplatformV1FeatureViewFeatureRegistrySource(
   buildCounterGoogleCloudAiplatformV1FeatureViewFeatureRegistrySource--;
 }
 
-core.List<core.String> buildUnnamed119() => [
+core.List<core.String> buildUnnamed121() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed119(core.List<core.String> o) {
+void checkUnnamed121(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -9028,7 +9234,7 @@ api.GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup
   if (buildCounterGoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup <
       3) {
     o.featureGroupId = 'foo';
-    o.featureIds = buildUnnamed119();
+    o.featureIds = buildUnnamed121();
   }
   buildCounterGoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup--;
   return o;
@@ -9043,17 +9249,17 @@ void checkGoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup(
       o.featureGroupId!,
       unittest.equals('foo'),
     );
-    checkUnnamed119(o.featureIds!);
+    checkUnnamed121(o.featureIds!);
   }
   buildCounterGoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup--;
 }
 
-core.List<core.String> buildUnnamed120() => [
+core.List<core.String> buildUnnamed122() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed120(core.List<core.String> o) {
+void checkUnnamed122(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -9077,7 +9283,7 @@ api.GoogleCloudAiplatformV1FeatureViewIndexConfig
     o.distanceMeasureType = 'foo';
     o.embeddingColumn = 'foo';
     o.embeddingDimension = 42;
-    o.filterColumns = buildUnnamed120();
+    o.filterColumns = buildUnnamed122();
     o.treeAhConfig =
         buildGoogleCloudAiplatformV1FeatureViewIndexConfigTreeAHConfig();
   }
@@ -9107,7 +9313,7 @@ void checkGoogleCloudAiplatformV1FeatureViewIndexConfig(
       o.embeddingDimension!,
       unittest.equals(42),
     );
-    checkUnnamed120(o.filterColumns!);
+    checkUnnamed122(o.filterColumns!);
     checkGoogleCloudAiplatformV1FeatureViewIndexConfigTreeAHConfig(
         o.treeAhConfig!);
   }
@@ -9311,12 +9517,12 @@ void checkGoogleCloudAiplatformV1FeatureViewVertexRagSource(
   buildCounterGoogleCloudAiplatformV1FeatureViewVertexRagSource--;
 }
 
-core.Map<core.String, core.String> buildUnnamed121() => {
+core.Map<core.String, core.String> buildUnnamed123() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed121(core.Map<core.String, core.String> o) {
+void checkUnnamed123(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -9337,7 +9543,7 @@ api.GoogleCloudAiplatformV1Featurestore
     o.createTime = 'foo';
     o.encryptionSpec = buildGoogleCloudAiplatformV1EncryptionSpec();
     o.etag = 'foo';
-    o.labels = buildUnnamed121();
+    o.labels = buildUnnamed123();
     o.name = 'foo';
     o.onlineServingConfig =
         buildGoogleCloudAiplatformV1FeaturestoreOnlineServingConfig();
@@ -9364,7 +9570,7 @@ void checkGoogleCloudAiplatformV1Featurestore(
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed121(o.labels!);
+    checkUnnamed123(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -9616,7 +9822,7 @@ void checkGoogleCloudAiplatformV1FetchFeatureValuesRequest(
   buildCounterGoogleCloudAiplatformV1FetchFeatureValuesRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed122() => {
+core.Map<core.String, core.Object?> buildUnnamed124() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -9629,7 +9835,7 @@ core.Map<core.String, core.Object?> buildUnnamed122() => {
       },
     };
 
-void checkUnnamed122(core.Map<core.String, core.Object?> o) {
+void checkUnnamed124(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted40 = (o['x']!) as core.Map;
   unittest.expect(casted40, unittest.hasLength(3));
@@ -9670,7 +9876,7 @@ api.GoogleCloudAiplatformV1FetchFeatureValuesResponse
     o.dataKey = buildGoogleCloudAiplatformV1FeatureViewDataKey();
     o.keyValues =
         buildGoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairList();
-    o.protoStruct = buildUnnamed122();
+    o.protoStruct = buildUnnamed124();
   }
   buildCounterGoogleCloudAiplatformV1FetchFeatureValuesResponse--;
   return o;
@@ -9683,7 +9889,7 @@ void checkGoogleCloudAiplatformV1FetchFeatureValuesResponse(
     checkGoogleCloudAiplatformV1FeatureViewDataKey(o.dataKey!);
     checkGoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairList(
         o.keyValues!);
-    checkUnnamed122(o.protoStruct!);
+    checkUnnamed124(o.protoStruct!);
   }
   buildCounterGoogleCloudAiplatformV1FetchFeatureValuesResponse--;
 }
@@ -9691,12 +9897,12 @@ void checkGoogleCloudAiplatformV1FetchFeatureValuesResponse(
 core.List<
         api
         .GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair>
-    buildUnnamed123() => [
+    buildUnnamed125() => [
           buildGoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair(),
           buildGoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair(),
         ];
 
-void checkUnnamed123(
+void checkUnnamed125(
     core.List<
             api
             .GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair>
@@ -9718,7 +9924,7 @@ api.GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairList
   buildCounterGoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairList++;
   if (buildCounterGoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairList <
       3) {
-    o.features = buildUnnamed123();
+    o.features = buildUnnamed125();
   }
   buildCounterGoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairList--;
   return o;
@@ -9730,7 +9936,7 @@ void checkGoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairL
   buildCounterGoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairList++;
   if (buildCounterGoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairList <
       3) {
-    checkUnnamed123(o.features!);
+    checkUnnamed125(o.features!);
   }
   buildCounterGoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairList--;
 }
@@ -9796,6 +10002,7 @@ api.GoogleCloudAiplatformV1FileData buildGoogleCloudAiplatformV1FileData() {
   final o = api.GoogleCloudAiplatformV1FileData();
   buildCounterGoogleCloudAiplatformV1FileData++;
   if (buildCounterGoogleCloudAiplatformV1FileData < 3) {
+    o.displayName = 'foo';
     o.fileUri = 'foo';
     o.mimeType = 'foo';
   }
@@ -9807,6 +10014,10 @@ void checkGoogleCloudAiplatformV1FileData(
     api.GoogleCloudAiplatformV1FileData o) {
   buildCounterGoogleCloudAiplatformV1FileData++;
   if (buildCounterGoogleCloudAiplatformV1FileData < 3) {
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.fileUri!,
       unittest.equals('foo'),
@@ -9882,12 +10093,12 @@ void checkGoogleCloudAiplatformV1FilterSplit(
 }
 
 core.List<api.GoogleCloudAiplatformV1FindNeighborsRequestQuery>
-    buildUnnamed124() => [
+    buildUnnamed126() => [
           buildGoogleCloudAiplatformV1FindNeighborsRequestQuery(),
           buildGoogleCloudAiplatformV1FindNeighborsRequestQuery(),
         ];
 
-void checkUnnamed124(
+void checkUnnamed126(
     core.List<api.GoogleCloudAiplatformV1FindNeighborsRequestQuery> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1FindNeighborsRequestQuery(o[0]);
@@ -9901,7 +10112,7 @@ api.GoogleCloudAiplatformV1FindNeighborsRequest
   buildCounterGoogleCloudAiplatformV1FindNeighborsRequest++;
   if (buildCounterGoogleCloudAiplatformV1FindNeighborsRequest < 3) {
     o.deployedIndexId = 'foo';
-    o.queries = buildUnnamed124();
+    o.queries = buildUnnamed126();
     o.returnFullDatapoint = true;
   }
   buildCounterGoogleCloudAiplatformV1FindNeighborsRequest--;
@@ -9916,7 +10127,7 @@ void checkGoogleCloudAiplatformV1FindNeighborsRequest(
       o.deployedIndexId!,
       unittest.equals('foo'),
     );
-    checkUnnamed124(o.queries!);
+    checkUnnamed126(o.queries!);
     unittest.expect(o.returnFullDatapoint!, unittest.isTrue);
   }
   buildCounterGoogleCloudAiplatformV1FindNeighborsRequest--;
@@ -9990,12 +10201,12 @@ void checkGoogleCloudAiplatformV1FindNeighborsRequestQueryRRF(
 }
 
 core.List<api.GoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors>
-    buildUnnamed125() => [
+    buildUnnamed127() => [
           buildGoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors(),
           buildGoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors(),
         ];
 
-void checkUnnamed125(
+void checkUnnamed127(
     core.List<api.GoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -10009,7 +10220,7 @@ api.GoogleCloudAiplatformV1FindNeighborsResponse
   final o = api.GoogleCloudAiplatformV1FindNeighborsResponse();
   buildCounterGoogleCloudAiplatformV1FindNeighborsResponse++;
   if (buildCounterGoogleCloudAiplatformV1FindNeighborsResponse < 3) {
-    o.nearestNeighbors = buildUnnamed125();
+    o.nearestNeighbors = buildUnnamed127();
   }
   buildCounterGoogleCloudAiplatformV1FindNeighborsResponse--;
   return o;
@@ -10019,18 +10230,18 @@ void checkGoogleCloudAiplatformV1FindNeighborsResponse(
     api.GoogleCloudAiplatformV1FindNeighborsResponse o) {
   buildCounterGoogleCloudAiplatformV1FindNeighborsResponse++;
   if (buildCounterGoogleCloudAiplatformV1FindNeighborsResponse < 3) {
-    checkUnnamed125(o.nearestNeighbors!);
+    checkUnnamed127(o.nearestNeighbors!);
   }
   buildCounterGoogleCloudAiplatformV1FindNeighborsResponse--;
 }
 
 core.List<api.GoogleCloudAiplatformV1FindNeighborsResponseNeighbor>
-    buildUnnamed126() => [
+    buildUnnamed128() => [
           buildGoogleCloudAiplatformV1FindNeighborsResponseNeighbor(),
           buildGoogleCloudAiplatformV1FindNeighborsResponseNeighbor(),
         ];
 
-void checkUnnamed126(
+void checkUnnamed128(
     core.List<api.GoogleCloudAiplatformV1FindNeighborsResponseNeighbor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1FindNeighborsResponseNeighbor(o[0]);
@@ -10047,7 +10258,7 @@ api.GoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors
   if (buildCounterGoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors <
       3) {
     o.id = 'foo';
-    o.neighbors = buildUnnamed126();
+    o.neighbors = buildUnnamed128();
   }
   buildCounterGoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors--;
   return o;
@@ -10062,7 +10273,7 @@ void checkGoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors(
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed126(o.neighbors!);
+    checkUnnamed128(o.neighbors!);
   }
   buildCounterGoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors--;
 }
@@ -10347,7 +10558,7 @@ void checkGoogleCloudAiplatformV1FulfillmentSpec(
   buildCounterGoogleCloudAiplatformV1FulfillmentSpec--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed127() => {
+core.Map<core.String, core.Object?> buildUnnamed129() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -10360,7 +10571,7 @@ core.Map<core.String, core.Object?> buildUnnamed127() => {
       },
     };
 
-void checkUnnamed127(core.Map<core.String, core.Object?> o) {
+void checkUnnamed129(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted42 = (o['x']!) as core.Map;
   unittest.expect(casted42, unittest.hasLength(3));
@@ -10398,7 +10609,7 @@ api.GoogleCloudAiplatformV1FunctionCall
   final o = api.GoogleCloudAiplatformV1FunctionCall();
   buildCounterGoogleCloudAiplatformV1FunctionCall++;
   if (buildCounterGoogleCloudAiplatformV1FunctionCall < 3) {
-    o.args = buildUnnamed127();
+    o.args = buildUnnamed129();
     o.name = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1FunctionCall--;
@@ -10409,7 +10620,7 @@ void checkGoogleCloudAiplatformV1FunctionCall(
     api.GoogleCloudAiplatformV1FunctionCall o) {
   buildCounterGoogleCloudAiplatformV1FunctionCall++;
   if (buildCounterGoogleCloudAiplatformV1FunctionCall < 3) {
-    checkUnnamed127(o.args!);
+    checkUnnamed129(o.args!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -10418,12 +10629,12 @@ void checkGoogleCloudAiplatformV1FunctionCall(
   buildCounterGoogleCloudAiplatformV1FunctionCall--;
 }
 
-core.List<core.String> buildUnnamed128() => [
+core.List<core.String> buildUnnamed130() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed128(core.List<core.String> o) {
+void checkUnnamed130(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10441,7 +10652,7 @@ api.GoogleCloudAiplatformV1FunctionCallingConfig
   final o = api.GoogleCloudAiplatformV1FunctionCallingConfig();
   buildCounterGoogleCloudAiplatformV1FunctionCallingConfig++;
   if (buildCounterGoogleCloudAiplatformV1FunctionCallingConfig < 3) {
-    o.allowedFunctionNames = buildUnnamed128();
+    o.allowedFunctionNames = buildUnnamed130();
     o.mode = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1FunctionCallingConfig--;
@@ -10452,7 +10663,7 @@ void checkGoogleCloudAiplatformV1FunctionCallingConfig(
     api.GoogleCloudAiplatformV1FunctionCallingConfig o) {
   buildCounterGoogleCloudAiplatformV1FunctionCallingConfig++;
   if (buildCounterGoogleCloudAiplatformV1FunctionCallingConfig < 3) {
-    checkUnnamed128(o.allowedFunctionNames!);
+    checkUnnamed130(o.allowedFunctionNames!);
     unittest.expect(
       o.mode!,
       unittest.equals('foo'),
@@ -10494,7 +10705,7 @@ void checkGoogleCloudAiplatformV1FunctionDeclaration(
   buildCounterGoogleCloudAiplatformV1FunctionDeclaration--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed129() => {
+core.Map<core.String, core.Object?> buildUnnamed131() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -10507,7 +10718,7 @@ core.Map<core.String, core.Object?> buildUnnamed129() => {
       },
     };
 
-void checkUnnamed129(core.Map<core.String, core.Object?> o) {
+void checkUnnamed131(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted44 = (o['x']!) as core.Map;
   unittest.expect(casted44, unittest.hasLength(3));
@@ -10546,7 +10757,7 @@ api.GoogleCloudAiplatformV1FunctionResponse
   buildCounterGoogleCloudAiplatformV1FunctionResponse++;
   if (buildCounterGoogleCloudAiplatformV1FunctionResponse < 3) {
     o.name = 'foo';
-    o.response = buildUnnamed129();
+    o.response = buildUnnamed131();
   }
   buildCounterGoogleCloudAiplatformV1FunctionResponse--;
   return o;
@@ -10560,7 +10771,7 @@ void checkGoogleCloudAiplatformV1FunctionResponse(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed129(o.response!);
+    checkUnnamed131(o.response!);
   }
   buildCounterGoogleCloudAiplatformV1FunctionResponse--;
 }
@@ -10589,12 +10800,12 @@ void checkGoogleCloudAiplatformV1GcsDestination(
   buildCounterGoogleCloudAiplatformV1GcsDestination--;
 }
 
-core.List<core.String> buildUnnamed130() => [
+core.List<core.String> buildUnnamed132() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed130(core.List<core.String> o) {
+void checkUnnamed132(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10611,7 +10822,7 @@ api.GoogleCloudAiplatformV1GcsSource buildGoogleCloudAiplatformV1GcsSource() {
   final o = api.GoogleCloudAiplatformV1GcsSource();
   buildCounterGoogleCloudAiplatformV1GcsSource++;
   if (buildCounterGoogleCloudAiplatformV1GcsSource < 3) {
-    o.uris = buildUnnamed130();
+    o.uris = buildUnnamed132();
   }
   buildCounterGoogleCloudAiplatformV1GcsSource--;
   return o;
@@ -10621,28 +10832,75 @@ void checkGoogleCloudAiplatformV1GcsSource(
     api.GoogleCloudAiplatformV1GcsSource o) {
   buildCounterGoogleCloudAiplatformV1GcsSource++;
   if (buildCounterGoogleCloudAiplatformV1GcsSource < 3) {
-    checkUnnamed130(o.uris!);
+    checkUnnamed132(o.uris!);
   }
   buildCounterGoogleCloudAiplatformV1GcsSource--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Content> buildUnnamed131() => [
+core.int buildCounterGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig = 0;
+api.GoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig
+    buildGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig() {
+  final o = api.GoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig();
+  buildCounterGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig++;
+  if (buildCounterGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig < 3) {
+    o.ragConfig =
+        buildGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig();
+  }
+  buildCounterGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig(
+    api.GoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig o) {
+  buildCounterGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig++;
+  if (buildCounterGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig < 3) {
+    checkGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig(
+        o.ragConfig!);
+  }
+  buildCounterGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig--;
+}
+
+core.int
+    buildCounterGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig = 0;
+api.GoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig
+    buildGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig() {
+  final o = api.GoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig();
+  buildCounterGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig++;
+  if (buildCounterGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig <
+      3) {
+    o.enableRag = true;
+  }
+  buildCounterGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig(
+    api.GoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig o) {
+  buildCounterGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig++;
+  if (buildCounterGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig <
+      3) {
+    unittest.expect(o.enableRag!, unittest.isTrue);
+  }
+  buildCounterGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig--;
+}
+
+core.List<api.GoogleCloudAiplatformV1Content> buildUnnamed133() => [
       buildGoogleCloudAiplatformV1Content(),
       buildGoogleCloudAiplatformV1Content(),
     ];
 
-void checkUnnamed131(core.List<api.GoogleCloudAiplatformV1Content> o) {
+void checkUnnamed133(core.List<api.GoogleCloudAiplatformV1Content> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Content(o[0]);
   checkGoogleCloudAiplatformV1Content(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed132() => {
+core.Map<core.String, core.String> buildUnnamed134() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed132(core.Map<core.String, core.String> o) {
+void checkUnnamed134(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -10654,23 +10912,23 @@ void checkUnnamed132(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudAiplatformV1SafetySetting> buildUnnamed133() => [
+core.List<api.GoogleCloudAiplatformV1SafetySetting> buildUnnamed135() => [
       buildGoogleCloudAiplatformV1SafetySetting(),
       buildGoogleCloudAiplatformV1SafetySetting(),
     ];
 
-void checkUnnamed133(core.List<api.GoogleCloudAiplatformV1SafetySetting> o) {
+void checkUnnamed135(core.List<api.GoogleCloudAiplatformV1SafetySetting> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1SafetySetting(o[0]);
   checkGoogleCloudAiplatformV1SafetySetting(o[1]);
 }
 
-core.List<api.GoogleCloudAiplatformV1Tool> buildUnnamed134() => [
+core.List<api.GoogleCloudAiplatformV1Tool> buildUnnamed136() => [
       buildGoogleCloudAiplatformV1Tool(),
       buildGoogleCloudAiplatformV1Tool(),
     ];
 
-void checkUnnamed134(core.List<api.GoogleCloudAiplatformV1Tool> o) {
+void checkUnnamed136(core.List<api.GoogleCloudAiplatformV1Tool> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Tool(o[0]);
   checkGoogleCloudAiplatformV1Tool(o[1]);
@@ -10683,13 +10941,13 @@ api.GoogleCloudAiplatformV1GenerateContentRequest
   buildCounterGoogleCloudAiplatformV1GenerateContentRequest++;
   if (buildCounterGoogleCloudAiplatformV1GenerateContentRequest < 3) {
     o.cachedContent = 'foo';
-    o.contents = buildUnnamed131();
+    o.contents = buildUnnamed133();
     o.generationConfig = buildGoogleCloudAiplatformV1GenerationConfig();
-    o.labels = buildUnnamed132();
-    o.safetySettings = buildUnnamed133();
+    o.labels = buildUnnamed134();
+    o.safetySettings = buildUnnamed135();
     o.systemInstruction = buildGoogleCloudAiplatformV1Content();
     o.toolConfig = buildGoogleCloudAiplatformV1ToolConfig();
-    o.tools = buildUnnamed134();
+    o.tools = buildUnnamed136();
   }
   buildCounterGoogleCloudAiplatformV1GenerateContentRequest--;
   return o;
@@ -10703,23 +10961,23 @@ void checkGoogleCloudAiplatformV1GenerateContentRequest(
       o.cachedContent!,
       unittest.equals('foo'),
     );
-    checkUnnamed131(o.contents!);
+    checkUnnamed133(o.contents!);
     checkGoogleCloudAiplatformV1GenerationConfig(o.generationConfig!);
-    checkUnnamed132(o.labels!);
-    checkUnnamed133(o.safetySettings!);
+    checkUnnamed134(o.labels!);
+    checkUnnamed135(o.safetySettings!);
     checkGoogleCloudAiplatformV1Content(o.systemInstruction!);
     checkGoogleCloudAiplatformV1ToolConfig(o.toolConfig!);
-    checkUnnamed134(o.tools!);
+    checkUnnamed136(o.tools!);
   }
   buildCounterGoogleCloudAiplatformV1GenerateContentRequest--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Candidate> buildUnnamed135() => [
+core.List<api.GoogleCloudAiplatformV1Candidate> buildUnnamed137() => [
       buildGoogleCloudAiplatformV1Candidate(),
       buildGoogleCloudAiplatformV1Candidate(),
     ];
 
-void checkUnnamed135(core.List<api.GoogleCloudAiplatformV1Candidate> o) {
+void checkUnnamed137(core.List<api.GoogleCloudAiplatformV1Candidate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Candidate(o[0]);
   checkGoogleCloudAiplatformV1Candidate(o[1]);
@@ -10731,10 +10989,12 @@ api.GoogleCloudAiplatformV1GenerateContentResponse
   final o = api.GoogleCloudAiplatformV1GenerateContentResponse();
   buildCounterGoogleCloudAiplatformV1GenerateContentResponse++;
   if (buildCounterGoogleCloudAiplatformV1GenerateContentResponse < 3) {
-    o.candidates = buildUnnamed135();
+    o.candidates = buildUnnamed137();
+    o.createTime = 'foo';
     o.modelVersion = 'foo';
     o.promptFeedback =
         buildGoogleCloudAiplatformV1GenerateContentResponsePromptFeedback();
+    o.responseId = 'foo';
     o.usageMetadata =
         buildGoogleCloudAiplatformV1GenerateContentResponseUsageMetadata();
   }
@@ -10746,25 +11006,33 @@ void checkGoogleCloudAiplatformV1GenerateContentResponse(
     api.GoogleCloudAiplatformV1GenerateContentResponse o) {
   buildCounterGoogleCloudAiplatformV1GenerateContentResponse++;
   if (buildCounterGoogleCloudAiplatformV1GenerateContentResponse < 3) {
-    checkUnnamed135(o.candidates!);
+    checkUnnamed137(o.candidates!);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.modelVersion!,
       unittest.equals('foo'),
     );
     checkGoogleCloudAiplatformV1GenerateContentResponsePromptFeedback(
         o.promptFeedback!);
+    unittest.expect(
+      o.responseId!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudAiplatformV1GenerateContentResponseUsageMetadata(
         o.usageMetadata!);
   }
   buildCounterGoogleCloudAiplatformV1GenerateContentResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1SafetyRating> buildUnnamed136() => [
+core.List<api.GoogleCloudAiplatformV1SafetyRating> buildUnnamed138() => [
       buildGoogleCloudAiplatformV1SafetyRating(),
       buildGoogleCloudAiplatformV1SafetyRating(),
     ];
 
-void checkUnnamed136(core.List<api.GoogleCloudAiplatformV1SafetyRating> o) {
+void checkUnnamed138(core.List<api.GoogleCloudAiplatformV1SafetyRating> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1SafetyRating(o[0]);
   checkGoogleCloudAiplatformV1SafetyRating(o[1]);
@@ -10781,7 +11049,7 @@ api.GoogleCloudAiplatformV1GenerateContentResponsePromptFeedback
       3) {
     o.blockReason = 'foo';
     o.blockReasonMessage = 'foo';
-    o.safetyRatings = buildUnnamed136();
+    o.safetyRatings = buildUnnamed138();
   }
   buildCounterGoogleCloudAiplatformV1GenerateContentResponsePromptFeedback--;
   return o;
@@ -10800,9 +11068,57 @@ void checkGoogleCloudAiplatformV1GenerateContentResponsePromptFeedback(
       o.blockReasonMessage!,
       unittest.equals('foo'),
     );
-    checkUnnamed136(o.safetyRatings!);
+    checkUnnamed138(o.safetyRatings!);
   }
   buildCounterGoogleCloudAiplatformV1GenerateContentResponsePromptFeedback--;
+}
+
+core.List<api.GoogleCloudAiplatformV1ModalityTokenCount> buildUnnamed139() => [
+      buildGoogleCloudAiplatformV1ModalityTokenCount(),
+      buildGoogleCloudAiplatformV1ModalityTokenCount(),
+    ];
+
+void checkUnnamed139(
+    core.List<api.GoogleCloudAiplatformV1ModalityTokenCount> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudAiplatformV1ModalityTokenCount(o[0]);
+  checkGoogleCloudAiplatformV1ModalityTokenCount(o[1]);
+}
+
+core.List<api.GoogleCloudAiplatformV1ModalityTokenCount> buildUnnamed140() => [
+      buildGoogleCloudAiplatformV1ModalityTokenCount(),
+      buildGoogleCloudAiplatformV1ModalityTokenCount(),
+    ];
+
+void checkUnnamed140(
+    core.List<api.GoogleCloudAiplatformV1ModalityTokenCount> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudAiplatformV1ModalityTokenCount(o[0]);
+  checkGoogleCloudAiplatformV1ModalityTokenCount(o[1]);
+}
+
+core.List<api.GoogleCloudAiplatformV1ModalityTokenCount> buildUnnamed141() => [
+      buildGoogleCloudAiplatformV1ModalityTokenCount(),
+      buildGoogleCloudAiplatformV1ModalityTokenCount(),
+    ];
+
+void checkUnnamed141(
+    core.List<api.GoogleCloudAiplatformV1ModalityTokenCount> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudAiplatformV1ModalityTokenCount(o[0]);
+  checkGoogleCloudAiplatformV1ModalityTokenCount(o[1]);
+}
+
+core.List<api.GoogleCloudAiplatformV1ModalityTokenCount> buildUnnamed142() => [
+      buildGoogleCloudAiplatformV1ModalityTokenCount(),
+      buildGoogleCloudAiplatformV1ModalityTokenCount(),
+    ];
+
+void checkUnnamed142(
+    core.List<api.GoogleCloudAiplatformV1ModalityTokenCount> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudAiplatformV1ModalityTokenCount(o[0]);
+  checkGoogleCloudAiplatformV1ModalityTokenCount(o[1]);
 }
 
 core.int
@@ -10813,9 +11129,14 @@ api.GoogleCloudAiplatformV1GenerateContentResponseUsageMetadata
   buildCounterGoogleCloudAiplatformV1GenerateContentResponseUsageMetadata++;
   if (buildCounterGoogleCloudAiplatformV1GenerateContentResponseUsageMetadata <
       3) {
+    o.cacheTokensDetails = buildUnnamed139();
     o.cachedContentTokenCount = 42;
     o.candidatesTokenCount = 42;
+    o.candidatesTokensDetails = buildUnnamed140();
     o.promptTokenCount = 42;
+    o.promptTokensDetails = buildUnnamed141();
+    o.toolUsePromptTokenCount = 42;
+    o.toolUsePromptTokensDetails = buildUnnamed142();
     o.totalTokenCount = 42;
   }
   buildCounterGoogleCloudAiplatformV1GenerateContentResponseUsageMetadata--;
@@ -10827,6 +11148,7 @@ void checkGoogleCloudAiplatformV1GenerateContentResponseUsageMetadata(
   buildCounterGoogleCloudAiplatformV1GenerateContentResponseUsageMetadata++;
   if (buildCounterGoogleCloudAiplatformV1GenerateContentResponseUsageMetadata <
       3) {
+    checkUnnamed139(o.cacheTokensDetails!);
     unittest.expect(
       o.cachedContentTokenCount!,
       unittest.equals(42),
@@ -10835,10 +11157,17 @@ void checkGoogleCloudAiplatformV1GenerateContentResponseUsageMetadata(
       o.candidatesTokenCount!,
       unittest.equals(42),
     );
+    checkUnnamed140(o.candidatesTokensDetails!);
     unittest.expect(
       o.promptTokenCount!,
       unittest.equals(42),
     );
+    checkUnnamed141(o.promptTokensDetails!);
+    unittest.expect(
+      o.toolUsePromptTokenCount!,
+      unittest.equals(42),
+    );
+    checkUnnamed142(o.toolUsePromptTokensDetails!);
     unittest.expect(
       o.totalTokenCount!,
       unittest.equals(42),
@@ -10847,12 +11176,12 @@ void checkGoogleCloudAiplatformV1GenerateContentResponseUsageMetadata(
   buildCounterGoogleCloudAiplatformV1GenerateContentResponseUsageMetadata--;
 }
 
-core.List<core.String> buildUnnamed137() => [
+core.List<core.String> buildUnnamed143() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed137(core.List<core.String> o) {
+void checkUnnamed143(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10864,12 +11193,12 @@ void checkUnnamed137(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed138() => [
+core.List<core.String> buildUnnamed144() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed138(core.List<core.String> o) {
+void checkUnnamed144(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10896,13 +11225,13 @@ api.GoogleCloudAiplatformV1GenerationConfig
     o.presencePenalty = 42.0;
     o.responseLogprobs = true;
     o.responseMimeType = 'foo';
-    o.responseModalities = buildUnnamed137();
+    o.responseModalities = buildUnnamed143();
     o.responseSchema = buildGoogleCloudAiplatformV1Schema();
     o.routingConfig =
         buildGoogleCloudAiplatformV1GenerationConfigRoutingConfig();
     o.seed = 42;
     o.speechConfig = buildGoogleCloudAiplatformV1SpeechConfig();
-    o.stopSequences = buildUnnamed138();
+    o.stopSequences = buildUnnamed144();
     o.temperature = 42.0;
     o.topK = 42.0;
     o.topP = 42.0;
@@ -10945,7 +11274,7 @@ void checkGoogleCloudAiplatformV1GenerationConfig(
       o.responseMimeType!,
       unittest.equals('foo'),
     );
-    checkUnnamed137(o.responseModalities!);
+    checkUnnamed143(o.responseModalities!);
     checkGoogleCloudAiplatformV1Schema(o.responseSchema!);
     checkGoogleCloudAiplatformV1GenerationConfigRoutingConfig(o.routingConfig!);
     unittest.expect(
@@ -10953,7 +11282,7 @@ void checkGoogleCloudAiplatformV1GenerationConfig(
       unittest.equals(42),
     );
     checkGoogleCloudAiplatformV1SpeechConfig(o.speechConfig!);
-    checkUnnamed138(o.stopSequences!);
+    checkUnnamed144(o.stopSequences!);
     unittest.expect(
       o.temperature!,
       unittest.equals(42.0),
@@ -11081,12 +11410,12 @@ void checkGoogleCloudAiplatformV1GenieSource(
 }
 
 core.List<api.GoogleCloudAiplatformV1GoogleDriveSourceResourceId>
-    buildUnnamed139() => [
+    buildUnnamed145() => [
           buildGoogleCloudAiplatformV1GoogleDriveSourceResourceId(),
           buildGoogleCloudAiplatformV1GoogleDriveSourceResourceId(),
         ];
 
-void checkUnnamed139(
+void checkUnnamed145(
     core.List<api.GoogleCloudAiplatformV1GoogleDriveSourceResourceId> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1GoogleDriveSourceResourceId(o[0]);
@@ -11099,7 +11428,7 @@ api.GoogleCloudAiplatformV1GoogleDriveSource
   final o = api.GoogleCloudAiplatformV1GoogleDriveSource();
   buildCounterGoogleCloudAiplatformV1GoogleDriveSource++;
   if (buildCounterGoogleCloudAiplatformV1GoogleDriveSource < 3) {
-    o.resourceIds = buildUnnamed139();
+    o.resourceIds = buildUnnamed145();
   }
   buildCounterGoogleCloudAiplatformV1GoogleDriveSource--;
   return o;
@@ -11109,7 +11438,7 @@ void checkGoogleCloudAiplatformV1GoogleDriveSource(
     api.GoogleCloudAiplatformV1GoogleDriveSource o) {
   buildCounterGoogleCloudAiplatformV1GoogleDriveSource++;
   if (buildCounterGoogleCloudAiplatformV1GoogleDriveSource < 3) {
-    checkUnnamed139(o.resourceIds!);
+    checkUnnamed145(o.resourceIds!);
   }
   buildCounterGoogleCloudAiplatformV1GoogleDriveSource--;
 }
@@ -11364,34 +11693,34 @@ void checkGoogleCloudAiplatformV1GroundingChunkWeb(
   buildCounterGoogleCloudAiplatformV1GroundingChunkWeb--;
 }
 
-core.List<api.GoogleCloudAiplatformV1GroundingChunk> buildUnnamed140() => [
+core.List<api.GoogleCloudAiplatformV1GroundingChunk> buildUnnamed146() => [
       buildGoogleCloudAiplatformV1GroundingChunk(),
       buildGoogleCloudAiplatformV1GroundingChunk(),
     ];
 
-void checkUnnamed140(core.List<api.GoogleCloudAiplatformV1GroundingChunk> o) {
+void checkUnnamed146(core.List<api.GoogleCloudAiplatformV1GroundingChunk> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1GroundingChunk(o[0]);
   checkGoogleCloudAiplatformV1GroundingChunk(o[1]);
 }
 
-core.List<api.GoogleCloudAiplatformV1GroundingSupport> buildUnnamed141() => [
+core.List<api.GoogleCloudAiplatformV1GroundingSupport> buildUnnamed147() => [
       buildGoogleCloudAiplatformV1GroundingSupport(),
       buildGoogleCloudAiplatformV1GroundingSupport(),
     ];
 
-void checkUnnamed141(core.List<api.GoogleCloudAiplatformV1GroundingSupport> o) {
+void checkUnnamed147(core.List<api.GoogleCloudAiplatformV1GroundingSupport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1GroundingSupport(o[0]);
   checkGoogleCloudAiplatformV1GroundingSupport(o[1]);
 }
 
-core.List<core.String> buildUnnamed142() => [
+core.List<core.String> buildUnnamed148() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed142(core.List<core.String> o) {
+void checkUnnamed148(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -11409,11 +11738,11 @@ api.GoogleCloudAiplatformV1GroundingMetadata
   final o = api.GoogleCloudAiplatformV1GroundingMetadata();
   buildCounterGoogleCloudAiplatformV1GroundingMetadata++;
   if (buildCounterGoogleCloudAiplatformV1GroundingMetadata < 3) {
-    o.groundingChunks = buildUnnamed140();
-    o.groundingSupports = buildUnnamed141();
+    o.groundingChunks = buildUnnamed146();
+    o.groundingSupports = buildUnnamed147();
     o.retrievalMetadata = buildGoogleCloudAiplatformV1RetrievalMetadata();
     o.searchEntryPoint = buildGoogleCloudAiplatformV1SearchEntryPoint();
-    o.webSearchQueries = buildUnnamed142();
+    o.webSearchQueries = buildUnnamed148();
   }
   buildCounterGoogleCloudAiplatformV1GroundingMetadata--;
   return o;
@@ -11423,21 +11752,21 @@ void checkGoogleCloudAiplatformV1GroundingMetadata(
     api.GoogleCloudAiplatformV1GroundingMetadata o) {
   buildCounterGoogleCloudAiplatformV1GroundingMetadata++;
   if (buildCounterGoogleCloudAiplatformV1GroundingMetadata < 3) {
-    checkUnnamed140(o.groundingChunks!);
-    checkUnnamed141(o.groundingSupports!);
+    checkUnnamed146(o.groundingChunks!);
+    checkUnnamed147(o.groundingSupports!);
     checkGoogleCloudAiplatformV1RetrievalMetadata(o.retrievalMetadata!);
     checkGoogleCloudAiplatformV1SearchEntryPoint(o.searchEntryPoint!);
-    checkUnnamed142(o.webSearchQueries!);
+    checkUnnamed148(o.webSearchQueries!);
   }
   buildCounterGoogleCloudAiplatformV1GroundingMetadata--;
 }
 
-core.List<core.double> buildUnnamed143() => [
+core.List<core.double> buildUnnamed149() => [
       42.0,
       42.0,
     ];
 
-void checkUnnamed143(core.List<core.double> o) {
+void checkUnnamed149(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -11449,12 +11778,12 @@ void checkUnnamed143(core.List<core.double> o) {
   );
 }
 
-core.List<core.int> buildUnnamed144() => [
+core.List<core.int> buildUnnamed150() => [
       42,
       42,
     ];
 
-void checkUnnamed144(core.List<core.int> o) {
+void checkUnnamed150(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -11472,8 +11801,8 @@ api.GoogleCloudAiplatformV1GroundingSupport
   final o = api.GoogleCloudAiplatformV1GroundingSupport();
   buildCounterGoogleCloudAiplatformV1GroundingSupport++;
   if (buildCounterGoogleCloudAiplatformV1GroundingSupport < 3) {
-    o.confidenceScores = buildUnnamed143();
-    o.groundingChunkIndices = buildUnnamed144();
+    o.confidenceScores = buildUnnamed149();
+    o.groundingChunkIndices = buildUnnamed150();
     o.segment = buildGoogleCloudAiplatformV1Segment();
   }
   buildCounterGoogleCloudAiplatformV1GroundingSupport--;
@@ -11484,19 +11813,19 @@ void checkGoogleCloudAiplatformV1GroundingSupport(
     api.GoogleCloudAiplatformV1GroundingSupport o) {
   buildCounterGoogleCloudAiplatformV1GroundingSupport++;
   if (buildCounterGoogleCloudAiplatformV1GroundingSupport < 3) {
-    checkUnnamed143(o.confidenceScores!);
-    checkUnnamed144(o.groundingChunkIndices!);
+    checkUnnamed149(o.confidenceScores!);
+    checkUnnamed150(o.groundingChunkIndices!);
     checkGoogleCloudAiplatformV1Segment(o.segment!);
   }
   buildCounterGoogleCloudAiplatformV1GroundingSupport--;
 }
 
-core.Map<core.String, core.String> buildUnnamed145() => {
+core.Map<core.String, core.String> buildUnnamed151() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed145(core.Map<core.String, core.String> o) {
+void checkUnnamed151(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -11508,12 +11837,12 @@ void checkUnnamed145(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudAiplatformV1Trial> buildUnnamed146() => [
+core.List<api.GoogleCloudAiplatformV1Trial> buildUnnamed152() => [
       buildGoogleCloudAiplatformV1Trial(),
       buildGoogleCloudAiplatformV1Trial(),
     ];
 
-void checkUnnamed146(core.List<api.GoogleCloudAiplatformV1Trial> o) {
+void checkUnnamed152(core.List<api.GoogleCloudAiplatformV1Trial> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Trial(o[0]);
   checkGoogleCloudAiplatformV1Trial(o[1]);
@@ -11530,7 +11859,7 @@ api.GoogleCloudAiplatformV1HyperparameterTuningJob
     o.encryptionSpec = buildGoogleCloudAiplatformV1EncryptionSpec();
     o.endTime = 'foo';
     o.error = buildGoogleRpcStatus();
-    o.labels = buildUnnamed145();
+    o.labels = buildUnnamed151();
     o.maxFailedTrialCount = 42;
     o.maxTrialCount = 42;
     o.name = 'foo';
@@ -11541,7 +11870,7 @@ api.GoogleCloudAiplatformV1HyperparameterTuningJob
     o.state = 'foo';
     o.studySpec = buildGoogleCloudAiplatformV1StudySpec();
     o.trialJobSpec = buildGoogleCloudAiplatformV1CustomJobSpec();
-    o.trials = buildUnnamed146();
+    o.trials = buildUnnamed152();
     o.updateTime = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1HyperparameterTuningJob--;
@@ -11566,7 +11895,7 @@ void checkGoogleCloudAiplatformV1HyperparameterTuningJob(
       unittest.equals('foo'),
     );
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed145(o.labels!);
+    checkUnnamed151(o.labels!);
     unittest.expect(
       o.maxFailedTrialCount!,
       unittest.equals(42),
@@ -11595,7 +11924,7 @@ void checkGoogleCloudAiplatformV1HyperparameterTuningJob(
     );
     checkGoogleCloudAiplatformV1StudySpec(o.studySpec!);
     checkGoogleCloudAiplatformV1CustomJobSpec(o.trialJobSpec!);
-    checkUnnamed146(o.trials!);
+    checkUnnamed152(o.trials!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -11604,12 +11933,12 @@ void checkGoogleCloudAiplatformV1HyperparameterTuningJob(
   buildCounterGoogleCloudAiplatformV1HyperparameterTuningJob--;
 }
 
-core.List<core.String> buildUnnamed147() => [
+core.List<core.String> buildUnnamed153() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed147(core.List<core.String> o) {
+void checkUnnamed153(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -11626,7 +11955,7 @@ api.GoogleCloudAiplatformV1IdMatcher buildGoogleCloudAiplatformV1IdMatcher() {
   final o = api.GoogleCloudAiplatformV1IdMatcher();
   buildCounterGoogleCloudAiplatformV1IdMatcher++;
   if (buildCounterGoogleCloudAiplatformV1IdMatcher < 3) {
-    o.ids = buildUnnamed147();
+    o.ids = buildUnnamed153();
   }
   buildCounterGoogleCloudAiplatformV1IdMatcher--;
   return o;
@@ -11636,17 +11965,17 @@ void checkGoogleCloudAiplatformV1IdMatcher(
     api.GoogleCloudAiplatformV1IdMatcher o) {
   buildCounterGoogleCloudAiplatformV1IdMatcher++;
   if (buildCounterGoogleCloudAiplatformV1IdMatcher < 3) {
-    checkUnnamed147(o.ids!);
+    checkUnnamed153(o.ids!);
   }
   buildCounterGoogleCloudAiplatformV1IdMatcher--;
 }
 
-core.Map<core.String, core.String> buildUnnamed148() => {
+core.Map<core.String, core.String> buildUnnamed154() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed148(core.Map<core.String, core.String> o) {
+void checkUnnamed154(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -11658,12 +11987,12 @@ void checkUnnamed148(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed149() => {
+core.Map<core.String, core.String> buildUnnamed155() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed149(core.Map<core.String, core.String> o) {
+void checkUnnamed155(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -11681,8 +12010,8 @@ api.GoogleCloudAiplatformV1ImportDataConfig
   final o = api.GoogleCloudAiplatformV1ImportDataConfig();
   buildCounterGoogleCloudAiplatformV1ImportDataConfig++;
   if (buildCounterGoogleCloudAiplatformV1ImportDataConfig < 3) {
-    o.annotationLabels = buildUnnamed148();
-    o.dataItemLabels = buildUnnamed149();
+    o.annotationLabels = buildUnnamed154();
+    o.dataItemLabels = buildUnnamed155();
     o.gcsSource = buildGoogleCloudAiplatformV1GcsSource();
     o.importSchemaUri = 'foo';
   }
@@ -11694,8 +12023,8 @@ void checkGoogleCloudAiplatformV1ImportDataConfig(
     api.GoogleCloudAiplatformV1ImportDataConfig o) {
   buildCounterGoogleCloudAiplatformV1ImportDataConfig++;
   if (buildCounterGoogleCloudAiplatformV1ImportDataConfig < 3) {
-    checkUnnamed148(o.annotationLabels!);
-    checkUnnamed149(o.dataItemLabels!);
+    checkUnnamed154(o.annotationLabels!);
+    checkUnnamed155(o.dataItemLabels!);
     checkGoogleCloudAiplatformV1GcsSource(o.gcsSource!);
     unittest.expect(
       o.importSchemaUri!,
@@ -11705,12 +12034,12 @@ void checkGoogleCloudAiplatformV1ImportDataConfig(
   buildCounterGoogleCloudAiplatformV1ImportDataConfig--;
 }
 
-core.List<api.GoogleCloudAiplatformV1ImportDataConfig> buildUnnamed150() => [
+core.List<api.GoogleCloudAiplatformV1ImportDataConfig> buildUnnamed156() => [
       buildGoogleCloudAiplatformV1ImportDataConfig(),
       buildGoogleCloudAiplatformV1ImportDataConfig(),
     ];
 
-void checkUnnamed150(core.List<api.GoogleCloudAiplatformV1ImportDataConfig> o) {
+void checkUnnamed156(core.List<api.GoogleCloudAiplatformV1ImportDataConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ImportDataConfig(o[0]);
   checkGoogleCloudAiplatformV1ImportDataConfig(o[1]);
@@ -11722,7 +12051,7 @@ api.GoogleCloudAiplatformV1ImportDataRequest
   final o = api.GoogleCloudAiplatformV1ImportDataRequest();
   buildCounterGoogleCloudAiplatformV1ImportDataRequest++;
   if (buildCounterGoogleCloudAiplatformV1ImportDataRequest < 3) {
-    o.importConfigs = buildUnnamed150();
+    o.importConfigs = buildUnnamed156();
   }
   buildCounterGoogleCloudAiplatformV1ImportDataRequest--;
   return o;
@@ -11732,18 +12061,18 @@ void checkGoogleCloudAiplatformV1ImportDataRequest(
     api.GoogleCloudAiplatformV1ImportDataRequest o) {
   buildCounterGoogleCloudAiplatformV1ImportDataRequest++;
   if (buildCounterGoogleCloudAiplatformV1ImportDataRequest < 3) {
-    checkUnnamed150(o.importConfigs!);
+    checkUnnamed156(o.importConfigs!);
   }
   buildCounterGoogleCloudAiplatformV1ImportDataRequest--;
 }
 
 core.List<api.GoogleCloudAiplatformV1ImportFeatureValuesRequestFeatureSpec>
-    buildUnnamed151() => [
+    buildUnnamed157() => [
           buildGoogleCloudAiplatformV1ImportFeatureValuesRequestFeatureSpec(),
           buildGoogleCloudAiplatformV1ImportFeatureValuesRequestFeatureSpec(),
         ];
 
-void checkUnnamed151(
+void checkUnnamed157(
     core.List<api.GoogleCloudAiplatformV1ImportFeatureValuesRequestFeatureSpec>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -11763,7 +12092,7 @@ api.GoogleCloudAiplatformV1ImportFeatureValuesRequest
     o.disableIngestionAnalysis = true;
     o.disableOnlineServing = true;
     o.entityIdField = 'foo';
-    o.featureSpecs = buildUnnamed151();
+    o.featureSpecs = buildUnnamed157();
     o.featureTime = 'foo';
     o.featureTimeField = 'foo';
     o.workerCount = 42;
@@ -11785,7 +12114,7 @@ void checkGoogleCloudAiplatformV1ImportFeatureValuesRequest(
       o.entityIdField!,
       unittest.equals('foo'),
     );
-    checkUnnamed151(o.featureSpecs!);
+    checkUnnamed157(o.featureSpecs!);
     unittest.expect(
       o.featureTime!,
       unittest.equals('foo'),
@@ -11921,23 +12250,23 @@ void checkGoogleCloudAiplatformV1ImportRagFilesRequest(
   buildCounterGoogleCloudAiplatformV1ImportRagFilesRequest--;
 }
 
-core.List<api.GoogleCloudAiplatformV1DeployedIndexRef> buildUnnamed152() => [
+core.List<api.GoogleCloudAiplatformV1DeployedIndexRef> buildUnnamed158() => [
       buildGoogleCloudAiplatformV1DeployedIndexRef(),
       buildGoogleCloudAiplatformV1DeployedIndexRef(),
     ];
 
-void checkUnnamed152(core.List<api.GoogleCloudAiplatformV1DeployedIndexRef> o) {
+void checkUnnamed158(core.List<api.GoogleCloudAiplatformV1DeployedIndexRef> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1DeployedIndexRef(o[0]);
   checkGoogleCloudAiplatformV1DeployedIndexRef(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed153() => {
+core.Map<core.String, core.String> buildUnnamed159() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed153(core.Map<core.String, core.String> o) {
+void checkUnnamed159(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -11955,14 +12284,14 @@ api.GoogleCloudAiplatformV1Index buildGoogleCloudAiplatformV1Index() {
   buildCounterGoogleCloudAiplatformV1Index++;
   if (buildCounterGoogleCloudAiplatformV1Index < 3) {
     o.createTime = 'foo';
-    o.deployedIndexes = buildUnnamed152();
+    o.deployedIndexes = buildUnnamed158();
     o.description = 'foo';
     o.displayName = 'foo';
     o.encryptionSpec = buildGoogleCloudAiplatformV1EncryptionSpec();
     o.etag = 'foo';
     o.indexStats = buildGoogleCloudAiplatformV1IndexStats();
     o.indexUpdateMethod = 'foo';
-    o.labels = buildUnnamed153();
+    o.labels = buildUnnamed159();
     o.metadata = {
       'list': [1, 2, 3],
       'bool': true,
@@ -11985,7 +12314,7 @@ void checkGoogleCloudAiplatformV1Index(api.GoogleCloudAiplatformV1Index o) {
       o.createTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed152(o.deployedIndexes!);
+    checkUnnamed158(o.deployedIndexes!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -12004,7 +12333,7 @@ void checkGoogleCloudAiplatformV1Index(api.GoogleCloudAiplatformV1Index o) {
       o.indexUpdateMethod!,
       unittest.equals('foo'),
     );
-    checkUnnamed153(o.labels!);
+    checkUnnamed159(o.labels!);
     var casted46 = (o.metadata!) as core.Map;
     unittest.expect(casted46, unittest.hasLength(3));
     unittest.expect(
@@ -12037,12 +12366,12 @@ void checkGoogleCloudAiplatformV1Index(api.GoogleCloudAiplatformV1Index o) {
   buildCounterGoogleCloudAiplatformV1Index--;
 }
 
-core.List<core.double> buildUnnamed154() => [
+core.List<core.double> buildUnnamed160() => [
       42.0,
       42.0,
     ];
 
-void checkUnnamed154(core.List<core.double> o) {
+void checkUnnamed160(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -12055,12 +12384,12 @@ void checkUnnamed154(core.List<core.double> o) {
 }
 
 core.List<api.GoogleCloudAiplatformV1IndexDatapointNumericRestriction>
-    buildUnnamed155() => [
+    buildUnnamed161() => [
           buildGoogleCloudAiplatformV1IndexDatapointNumericRestriction(),
           buildGoogleCloudAiplatformV1IndexDatapointNumericRestriction(),
         ];
 
-void checkUnnamed155(
+void checkUnnamed161(
     core.List<api.GoogleCloudAiplatformV1IndexDatapointNumericRestriction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1IndexDatapointNumericRestriction(o[0]);
@@ -12068,12 +12397,12 @@ void checkUnnamed155(
 }
 
 core.List<api.GoogleCloudAiplatformV1IndexDatapointRestriction>
-    buildUnnamed156() => [
+    buildUnnamed162() => [
           buildGoogleCloudAiplatformV1IndexDatapointRestriction(),
           buildGoogleCloudAiplatformV1IndexDatapointRestriction(),
         ];
 
-void checkUnnamed156(
+void checkUnnamed162(
     core.List<api.GoogleCloudAiplatformV1IndexDatapointRestriction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1IndexDatapointRestriction(o[0]);
@@ -12088,9 +12417,9 @@ api.GoogleCloudAiplatformV1IndexDatapoint
   if (buildCounterGoogleCloudAiplatformV1IndexDatapoint < 3) {
     o.crowdingTag = buildGoogleCloudAiplatformV1IndexDatapointCrowdingTag();
     o.datapointId = 'foo';
-    o.featureVector = buildUnnamed154();
-    o.numericRestricts = buildUnnamed155();
-    o.restricts = buildUnnamed156();
+    o.featureVector = buildUnnamed160();
+    o.numericRestricts = buildUnnamed161();
+    o.restricts = buildUnnamed162();
     o.sparseEmbedding =
         buildGoogleCloudAiplatformV1IndexDatapointSparseEmbedding();
   }
@@ -12107,9 +12436,9 @@ void checkGoogleCloudAiplatformV1IndexDatapoint(
       o.datapointId!,
       unittest.equals('foo'),
     );
-    checkUnnamed154(o.featureVector!);
-    checkUnnamed155(o.numericRestricts!);
-    checkUnnamed156(o.restricts!);
+    checkUnnamed160(o.featureVector!);
+    checkUnnamed161(o.numericRestricts!);
+    checkUnnamed162(o.restricts!);
     checkGoogleCloudAiplatformV1IndexDatapointSparseEmbedding(
         o.sparseEmbedding!);
   }
@@ -12185,12 +12514,12 @@ void checkGoogleCloudAiplatformV1IndexDatapointNumericRestriction(
   buildCounterGoogleCloudAiplatformV1IndexDatapointNumericRestriction--;
 }
 
-core.List<core.String> buildUnnamed157() => [
+core.List<core.String> buildUnnamed163() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed157(core.List<core.String> o) {
+void checkUnnamed163(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -12202,12 +12531,12 @@ void checkUnnamed157(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed158() => [
+core.List<core.String> buildUnnamed164() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed158(core.List<core.String> o) {
+void checkUnnamed164(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -12225,8 +12554,8 @@ api.GoogleCloudAiplatformV1IndexDatapointRestriction
   final o = api.GoogleCloudAiplatformV1IndexDatapointRestriction();
   buildCounterGoogleCloudAiplatformV1IndexDatapointRestriction++;
   if (buildCounterGoogleCloudAiplatformV1IndexDatapointRestriction < 3) {
-    o.allowList = buildUnnamed157();
-    o.denyList = buildUnnamed158();
+    o.allowList = buildUnnamed163();
+    o.denyList = buildUnnamed164();
     o.namespace = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1IndexDatapointRestriction--;
@@ -12237,8 +12566,8 @@ void checkGoogleCloudAiplatformV1IndexDatapointRestriction(
     api.GoogleCloudAiplatformV1IndexDatapointRestriction o) {
   buildCounterGoogleCloudAiplatformV1IndexDatapointRestriction++;
   if (buildCounterGoogleCloudAiplatformV1IndexDatapointRestriction < 3) {
-    checkUnnamed157(o.allowList!);
-    checkUnnamed158(o.denyList!);
+    checkUnnamed163(o.allowList!);
+    checkUnnamed164(o.denyList!);
     unittest.expect(
       o.namespace!,
       unittest.equals('foo'),
@@ -12247,12 +12576,12 @@ void checkGoogleCloudAiplatformV1IndexDatapointRestriction(
   buildCounterGoogleCloudAiplatformV1IndexDatapointRestriction--;
 }
 
-core.List<core.String> buildUnnamed159() => [
+core.List<core.String> buildUnnamed165() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed159(core.List<core.String> o) {
+void checkUnnamed165(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -12264,12 +12593,12 @@ void checkUnnamed159(core.List<core.String> o) {
   );
 }
 
-core.List<core.double> buildUnnamed160() => [
+core.List<core.double> buildUnnamed166() => [
       42.0,
       42.0,
     ];
 
-void checkUnnamed160(core.List<core.double> o) {
+void checkUnnamed166(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -12287,8 +12616,8 @@ api.GoogleCloudAiplatformV1IndexDatapointSparseEmbedding
   final o = api.GoogleCloudAiplatformV1IndexDatapointSparseEmbedding();
   buildCounterGoogleCloudAiplatformV1IndexDatapointSparseEmbedding++;
   if (buildCounterGoogleCloudAiplatformV1IndexDatapointSparseEmbedding < 3) {
-    o.dimensions = buildUnnamed159();
-    o.values = buildUnnamed160();
+    o.dimensions = buildUnnamed165();
+    o.values = buildUnnamed166();
   }
   buildCounterGoogleCloudAiplatformV1IndexDatapointSparseEmbedding--;
   return o;
@@ -12298,29 +12627,29 @@ void checkGoogleCloudAiplatformV1IndexDatapointSparseEmbedding(
     api.GoogleCloudAiplatformV1IndexDatapointSparseEmbedding o) {
   buildCounterGoogleCloudAiplatformV1IndexDatapointSparseEmbedding++;
   if (buildCounterGoogleCloudAiplatformV1IndexDatapointSparseEmbedding < 3) {
-    checkUnnamed159(o.dimensions!);
-    checkUnnamed160(o.values!);
+    checkUnnamed165(o.dimensions!);
+    checkUnnamed166(o.values!);
   }
   buildCounterGoogleCloudAiplatformV1IndexDatapointSparseEmbedding--;
 }
 
-core.List<api.GoogleCloudAiplatformV1DeployedIndex> buildUnnamed161() => [
+core.List<api.GoogleCloudAiplatformV1DeployedIndex> buildUnnamed167() => [
       buildGoogleCloudAiplatformV1DeployedIndex(),
       buildGoogleCloudAiplatformV1DeployedIndex(),
     ];
 
-void checkUnnamed161(core.List<api.GoogleCloudAiplatformV1DeployedIndex> o) {
+void checkUnnamed167(core.List<api.GoogleCloudAiplatformV1DeployedIndex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1DeployedIndex(o[0]);
   checkGoogleCloudAiplatformV1DeployedIndex(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed162() => {
+core.Map<core.String, core.String> buildUnnamed168() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed162(core.Map<core.String, core.String> o) {
+void checkUnnamed168(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -12339,13 +12668,13 @@ api.GoogleCloudAiplatformV1IndexEndpoint
   buildCounterGoogleCloudAiplatformV1IndexEndpoint++;
   if (buildCounterGoogleCloudAiplatformV1IndexEndpoint < 3) {
     o.createTime = 'foo';
-    o.deployedIndexes = buildUnnamed161();
+    o.deployedIndexes = buildUnnamed167();
     o.description = 'foo';
     o.displayName = 'foo';
     o.enablePrivateServiceConnect = true;
     o.encryptionSpec = buildGoogleCloudAiplatformV1EncryptionSpec();
     o.etag = 'foo';
-    o.labels = buildUnnamed162();
+    o.labels = buildUnnamed168();
     o.name = 'foo';
     o.network = 'foo';
     o.privateServiceConnectConfig =
@@ -12368,7 +12697,7 @@ void checkGoogleCloudAiplatformV1IndexEndpoint(
       o.createTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed161(o.deployedIndexes!);
+    checkUnnamed167(o.deployedIndexes!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -12383,7 +12712,7 @@ void checkGoogleCloudAiplatformV1IndexEndpoint(
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed162(o.labels!);
+    checkUnnamed168(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -12409,13 +12738,13 @@ void checkGoogleCloudAiplatformV1IndexEndpoint(
   buildCounterGoogleCloudAiplatformV1IndexEndpoint--;
 }
 
-core.List<api.GoogleCloudAiplatformV1PscAutomatedEndpoints> buildUnnamed163() =>
+core.List<api.GoogleCloudAiplatformV1PscAutomatedEndpoints> buildUnnamed169() =>
     [
       buildGoogleCloudAiplatformV1PscAutomatedEndpoints(),
       buildGoogleCloudAiplatformV1PscAutomatedEndpoints(),
     ];
 
-void checkUnnamed163(
+void checkUnnamed169(
     core.List<api.GoogleCloudAiplatformV1PscAutomatedEndpoints> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1PscAutomatedEndpoints(o[0]);
@@ -12429,7 +12758,7 @@ api.GoogleCloudAiplatformV1IndexPrivateEndpoints
   buildCounterGoogleCloudAiplatformV1IndexPrivateEndpoints++;
   if (buildCounterGoogleCloudAiplatformV1IndexPrivateEndpoints < 3) {
     o.matchGrpcAddress = 'foo';
-    o.pscAutomatedEndpoints = buildUnnamed163();
+    o.pscAutomatedEndpoints = buildUnnamed169();
     o.serviceAttachment = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1IndexPrivateEndpoints--;
@@ -12444,7 +12773,7 @@ void checkGoogleCloudAiplatformV1IndexPrivateEndpoints(
       o.matchGrpcAddress!,
       unittest.equals('foo'),
     );
-    checkUnnamed163(o.pscAutomatedEndpoints!);
+    checkUnnamed169(o.pscAutomatedEndpoints!);
     unittest.expect(
       o.serviceAttachment!,
       unittest.equals('foo'),
@@ -12541,12 +12870,12 @@ void checkGoogleCloudAiplatformV1InputDataConfig(
   buildCounterGoogleCloudAiplatformV1InputDataConfig--;
 }
 
-core.List<core.String> buildUnnamed164() => [
+core.List<core.String> buildUnnamed170() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed164(core.List<core.String> o) {
+void checkUnnamed170(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -12563,7 +12892,7 @@ api.GoogleCloudAiplatformV1Int64Array buildGoogleCloudAiplatformV1Int64Array() {
   final o = api.GoogleCloudAiplatformV1Int64Array();
   buildCounterGoogleCloudAiplatformV1Int64Array++;
   if (buildCounterGoogleCloudAiplatformV1Int64Array < 3) {
-    o.values = buildUnnamed164();
+    o.values = buildUnnamed170();
   }
   buildCounterGoogleCloudAiplatformV1Int64Array--;
   return o;
@@ -12573,7 +12902,7 @@ void checkGoogleCloudAiplatformV1Int64Array(
     api.GoogleCloudAiplatformV1Int64Array o) {
   buildCounterGoogleCloudAiplatformV1Int64Array++;
   if (buildCounterGoogleCloudAiplatformV1Int64Array < 3) {
-    checkUnnamed164(o.values!);
+    checkUnnamed170(o.values!);
   }
   buildCounterGoogleCloudAiplatformV1Int64Array--;
 }
@@ -12606,13 +12935,13 @@ void checkGoogleCloudAiplatformV1IntegratedGradientsAttribution(
   buildCounterGoogleCloudAiplatformV1IntegratedGradientsAttribution--;
 }
 
-core.List<api.GoogleCloudAiplatformV1JiraSourceJiraQueries> buildUnnamed165() =>
+core.List<api.GoogleCloudAiplatformV1JiraSourceJiraQueries> buildUnnamed171() =>
     [
       buildGoogleCloudAiplatformV1JiraSourceJiraQueries(),
       buildGoogleCloudAiplatformV1JiraSourceJiraQueries(),
     ];
 
-void checkUnnamed165(
+void checkUnnamed171(
     core.List<api.GoogleCloudAiplatformV1JiraSourceJiraQueries> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1JiraSourceJiraQueries(o[0]);
@@ -12624,7 +12953,7 @@ api.GoogleCloudAiplatformV1JiraSource buildGoogleCloudAiplatformV1JiraSource() {
   final o = api.GoogleCloudAiplatformV1JiraSource();
   buildCounterGoogleCloudAiplatformV1JiraSource++;
   if (buildCounterGoogleCloudAiplatformV1JiraSource < 3) {
-    o.jiraQueries = buildUnnamed165();
+    o.jiraQueries = buildUnnamed171();
   }
   buildCounterGoogleCloudAiplatformV1JiraSource--;
   return o;
@@ -12634,17 +12963,17 @@ void checkGoogleCloudAiplatformV1JiraSource(
     api.GoogleCloudAiplatformV1JiraSource o) {
   buildCounterGoogleCloudAiplatformV1JiraSource++;
   if (buildCounterGoogleCloudAiplatformV1JiraSource < 3) {
-    checkUnnamed165(o.jiraQueries!);
+    checkUnnamed171(o.jiraQueries!);
   }
   buildCounterGoogleCloudAiplatformV1JiraSource--;
 }
 
-core.List<core.String> buildUnnamed166() => [
+core.List<core.String> buildUnnamed172() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed166(core.List<core.String> o) {
+void checkUnnamed172(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -12656,12 +12985,12 @@ void checkUnnamed166(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed167() => [
+core.List<core.String> buildUnnamed173() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed167(core.List<core.String> o) {
+void checkUnnamed173(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -12680,9 +13009,9 @@ api.GoogleCloudAiplatformV1JiraSourceJiraQueries
   buildCounterGoogleCloudAiplatformV1JiraSourceJiraQueries++;
   if (buildCounterGoogleCloudAiplatformV1JiraSourceJiraQueries < 3) {
     o.apiKeyConfig = buildGoogleCloudAiplatformV1ApiAuthApiKeyConfig();
-    o.customQueries = buildUnnamed166();
+    o.customQueries = buildUnnamed172();
     o.email = 'foo';
-    o.projects = buildUnnamed167();
+    o.projects = buildUnnamed173();
     o.serverUri = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1JiraSourceJiraQueries--;
@@ -12694,12 +13023,12 @@ void checkGoogleCloudAiplatformV1JiraSourceJiraQueries(
   buildCounterGoogleCloudAiplatformV1JiraSourceJiraQueries++;
   if (buildCounterGoogleCloudAiplatformV1JiraSourceJiraQueries < 3) {
     checkGoogleCloudAiplatformV1ApiAuthApiKeyConfig(o.apiKeyConfig!);
-    checkUnnamed166(o.customQueries!);
+    checkUnnamed172(o.customQueries!);
     unittest.expect(
       o.email!,
       unittest.equals('foo'),
     );
-    checkUnnamed167(o.projects!);
+    checkUnnamed173(o.projects!);
     unittest.expect(
       o.serverUri!,
       unittest.equals('foo'),
@@ -12732,34 +13061,34 @@ void checkGoogleCloudAiplatformV1LargeModelReference(
   buildCounterGoogleCloudAiplatformV1LargeModelReference--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Artifact> buildUnnamed168() => [
+core.List<api.GoogleCloudAiplatformV1Artifact> buildUnnamed174() => [
       buildGoogleCloudAiplatformV1Artifact(),
       buildGoogleCloudAiplatformV1Artifact(),
     ];
 
-void checkUnnamed168(core.List<api.GoogleCloudAiplatformV1Artifact> o) {
+void checkUnnamed174(core.List<api.GoogleCloudAiplatformV1Artifact> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Artifact(o[0]);
   checkGoogleCloudAiplatformV1Artifact(o[1]);
 }
 
-core.List<api.GoogleCloudAiplatformV1Event> buildUnnamed169() => [
+core.List<api.GoogleCloudAiplatformV1Event> buildUnnamed175() => [
       buildGoogleCloudAiplatformV1Event(),
       buildGoogleCloudAiplatformV1Event(),
     ];
 
-void checkUnnamed169(core.List<api.GoogleCloudAiplatformV1Event> o) {
+void checkUnnamed175(core.List<api.GoogleCloudAiplatformV1Event> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Event(o[0]);
   checkGoogleCloudAiplatformV1Event(o[1]);
 }
 
-core.List<api.GoogleCloudAiplatformV1Execution> buildUnnamed170() => [
+core.List<api.GoogleCloudAiplatformV1Execution> buildUnnamed176() => [
       buildGoogleCloudAiplatformV1Execution(),
       buildGoogleCloudAiplatformV1Execution(),
     ];
 
-void checkUnnamed170(core.List<api.GoogleCloudAiplatformV1Execution> o) {
+void checkUnnamed176(core.List<api.GoogleCloudAiplatformV1Execution> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Execution(o[0]);
   checkGoogleCloudAiplatformV1Execution(o[1]);
@@ -12771,9 +13100,9 @@ api.GoogleCloudAiplatformV1LineageSubgraph
   final o = api.GoogleCloudAiplatformV1LineageSubgraph();
   buildCounterGoogleCloudAiplatformV1LineageSubgraph++;
   if (buildCounterGoogleCloudAiplatformV1LineageSubgraph < 3) {
-    o.artifacts = buildUnnamed168();
-    o.events = buildUnnamed169();
-    o.executions = buildUnnamed170();
+    o.artifacts = buildUnnamed174();
+    o.events = buildUnnamed175();
+    o.executions = buildUnnamed176();
   }
   buildCounterGoogleCloudAiplatformV1LineageSubgraph--;
   return o;
@@ -12783,19 +13112,19 @@ void checkGoogleCloudAiplatformV1LineageSubgraph(
     api.GoogleCloudAiplatformV1LineageSubgraph o) {
   buildCounterGoogleCloudAiplatformV1LineageSubgraph++;
   if (buildCounterGoogleCloudAiplatformV1LineageSubgraph < 3) {
-    checkUnnamed168(o.artifacts!);
-    checkUnnamed169(o.events!);
-    checkUnnamed170(o.executions!);
+    checkUnnamed174(o.artifacts!);
+    checkUnnamed175(o.events!);
+    checkUnnamed176(o.executions!);
   }
   buildCounterGoogleCloudAiplatformV1LineageSubgraph--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Annotation> buildUnnamed171() => [
+core.List<api.GoogleCloudAiplatformV1Annotation> buildUnnamed177() => [
       buildGoogleCloudAiplatformV1Annotation(),
       buildGoogleCloudAiplatformV1Annotation(),
     ];
 
-void checkUnnamed171(core.List<api.GoogleCloudAiplatformV1Annotation> o) {
+void checkUnnamed177(core.List<api.GoogleCloudAiplatformV1Annotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Annotation(o[0]);
   checkGoogleCloudAiplatformV1Annotation(o[1]);
@@ -12807,7 +13136,7 @@ api.GoogleCloudAiplatformV1ListAnnotationsResponse
   final o = api.GoogleCloudAiplatformV1ListAnnotationsResponse();
   buildCounterGoogleCloudAiplatformV1ListAnnotationsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListAnnotationsResponse < 3) {
-    o.annotations = buildUnnamed171();
+    o.annotations = buildUnnamed177();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListAnnotationsResponse--;
@@ -12818,7 +13147,7 @@ void checkGoogleCloudAiplatformV1ListAnnotationsResponse(
     api.GoogleCloudAiplatformV1ListAnnotationsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListAnnotationsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListAnnotationsResponse < 3) {
-    checkUnnamed171(o.annotations!);
+    checkUnnamed177(o.annotations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -12827,12 +13156,12 @@ void checkGoogleCloudAiplatformV1ListAnnotationsResponse(
   buildCounterGoogleCloudAiplatformV1ListAnnotationsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Artifact> buildUnnamed172() => [
+core.List<api.GoogleCloudAiplatformV1Artifact> buildUnnamed178() => [
       buildGoogleCloudAiplatformV1Artifact(),
       buildGoogleCloudAiplatformV1Artifact(),
     ];
 
-void checkUnnamed172(core.List<api.GoogleCloudAiplatformV1Artifact> o) {
+void checkUnnamed178(core.List<api.GoogleCloudAiplatformV1Artifact> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Artifact(o[0]);
   checkGoogleCloudAiplatformV1Artifact(o[1]);
@@ -12844,7 +13173,7 @@ api.GoogleCloudAiplatformV1ListArtifactsResponse
   final o = api.GoogleCloudAiplatformV1ListArtifactsResponse();
   buildCounterGoogleCloudAiplatformV1ListArtifactsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListArtifactsResponse < 3) {
-    o.artifacts = buildUnnamed172();
+    o.artifacts = buildUnnamed178();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListArtifactsResponse--;
@@ -12855,7 +13184,7 @@ void checkGoogleCloudAiplatformV1ListArtifactsResponse(
     api.GoogleCloudAiplatformV1ListArtifactsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListArtifactsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListArtifactsResponse < 3) {
-    checkUnnamed172(o.artifacts!);
+    checkUnnamed178(o.artifacts!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -12864,12 +13193,12 @@ void checkGoogleCloudAiplatformV1ListArtifactsResponse(
   buildCounterGoogleCloudAiplatformV1ListArtifactsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1BatchPredictionJob> buildUnnamed173() => [
+core.List<api.GoogleCloudAiplatformV1BatchPredictionJob> buildUnnamed179() => [
       buildGoogleCloudAiplatformV1BatchPredictionJob(),
       buildGoogleCloudAiplatformV1BatchPredictionJob(),
     ];
 
-void checkUnnamed173(
+void checkUnnamed179(
     core.List<api.GoogleCloudAiplatformV1BatchPredictionJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1BatchPredictionJob(o[0]);
@@ -12882,7 +13211,7 @@ api.GoogleCloudAiplatformV1ListBatchPredictionJobsResponse
   final o = api.GoogleCloudAiplatformV1ListBatchPredictionJobsResponse();
   buildCounterGoogleCloudAiplatformV1ListBatchPredictionJobsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListBatchPredictionJobsResponse < 3) {
-    o.batchPredictionJobs = buildUnnamed173();
+    o.batchPredictionJobs = buildUnnamed179();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListBatchPredictionJobsResponse--;
@@ -12893,7 +13222,7 @@ void checkGoogleCloudAiplatformV1ListBatchPredictionJobsResponse(
     api.GoogleCloudAiplatformV1ListBatchPredictionJobsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListBatchPredictionJobsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListBatchPredictionJobsResponse < 3) {
-    checkUnnamed173(o.batchPredictionJobs!);
+    checkUnnamed179(o.batchPredictionJobs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -12902,12 +13231,12 @@ void checkGoogleCloudAiplatformV1ListBatchPredictionJobsResponse(
   buildCounterGoogleCloudAiplatformV1ListBatchPredictionJobsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1CachedContent> buildUnnamed174() => [
+core.List<api.GoogleCloudAiplatformV1CachedContent> buildUnnamed180() => [
       buildGoogleCloudAiplatformV1CachedContent(),
       buildGoogleCloudAiplatformV1CachedContent(),
     ];
 
-void checkUnnamed174(core.List<api.GoogleCloudAiplatformV1CachedContent> o) {
+void checkUnnamed180(core.List<api.GoogleCloudAiplatformV1CachedContent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1CachedContent(o[0]);
   checkGoogleCloudAiplatformV1CachedContent(o[1]);
@@ -12919,7 +13248,7 @@ api.GoogleCloudAiplatformV1ListCachedContentsResponse
   final o = api.GoogleCloudAiplatformV1ListCachedContentsResponse();
   buildCounterGoogleCloudAiplatformV1ListCachedContentsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListCachedContentsResponse < 3) {
-    o.cachedContents = buildUnnamed174();
+    o.cachedContents = buildUnnamed180();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListCachedContentsResponse--;
@@ -12930,7 +13259,7 @@ void checkGoogleCloudAiplatformV1ListCachedContentsResponse(
     api.GoogleCloudAiplatformV1ListCachedContentsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListCachedContentsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListCachedContentsResponse < 3) {
-    checkUnnamed174(o.cachedContents!);
+    checkUnnamed180(o.cachedContents!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -12939,12 +13268,12 @@ void checkGoogleCloudAiplatformV1ListCachedContentsResponse(
   buildCounterGoogleCloudAiplatformV1ListCachedContentsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Context> buildUnnamed175() => [
+core.List<api.GoogleCloudAiplatformV1Context> buildUnnamed181() => [
       buildGoogleCloudAiplatformV1Context(),
       buildGoogleCloudAiplatformV1Context(),
     ];
 
-void checkUnnamed175(core.List<api.GoogleCloudAiplatformV1Context> o) {
+void checkUnnamed181(core.List<api.GoogleCloudAiplatformV1Context> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Context(o[0]);
   checkGoogleCloudAiplatformV1Context(o[1]);
@@ -12956,7 +13285,7 @@ api.GoogleCloudAiplatformV1ListContextsResponse
   final o = api.GoogleCloudAiplatformV1ListContextsResponse();
   buildCounterGoogleCloudAiplatformV1ListContextsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListContextsResponse < 3) {
-    o.contexts = buildUnnamed175();
+    o.contexts = buildUnnamed181();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListContextsResponse--;
@@ -12967,7 +13296,7 @@ void checkGoogleCloudAiplatformV1ListContextsResponse(
     api.GoogleCloudAiplatformV1ListContextsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListContextsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListContextsResponse < 3) {
-    checkUnnamed175(o.contexts!);
+    checkUnnamed181(o.contexts!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -12976,12 +13305,12 @@ void checkGoogleCloudAiplatformV1ListContextsResponse(
   buildCounterGoogleCloudAiplatformV1ListContextsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1CustomJob> buildUnnamed176() => [
+core.List<api.GoogleCloudAiplatformV1CustomJob> buildUnnamed182() => [
       buildGoogleCloudAiplatformV1CustomJob(),
       buildGoogleCloudAiplatformV1CustomJob(),
     ];
 
-void checkUnnamed176(core.List<api.GoogleCloudAiplatformV1CustomJob> o) {
+void checkUnnamed182(core.List<api.GoogleCloudAiplatformV1CustomJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1CustomJob(o[0]);
   checkGoogleCloudAiplatformV1CustomJob(o[1]);
@@ -12993,7 +13322,7 @@ api.GoogleCloudAiplatformV1ListCustomJobsResponse
   final o = api.GoogleCloudAiplatformV1ListCustomJobsResponse();
   buildCounterGoogleCloudAiplatformV1ListCustomJobsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListCustomJobsResponse < 3) {
-    o.customJobs = buildUnnamed176();
+    o.customJobs = buildUnnamed182();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListCustomJobsResponse--;
@@ -13004,7 +13333,7 @@ void checkGoogleCloudAiplatformV1ListCustomJobsResponse(
     api.GoogleCloudAiplatformV1ListCustomJobsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListCustomJobsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListCustomJobsResponse < 3) {
-    checkUnnamed176(o.customJobs!);
+    checkUnnamed182(o.customJobs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13013,12 +13342,12 @@ void checkGoogleCloudAiplatformV1ListCustomJobsResponse(
   buildCounterGoogleCloudAiplatformV1ListCustomJobsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1DataItem> buildUnnamed177() => [
+core.List<api.GoogleCloudAiplatformV1DataItem> buildUnnamed183() => [
       buildGoogleCloudAiplatformV1DataItem(),
       buildGoogleCloudAiplatformV1DataItem(),
     ];
 
-void checkUnnamed177(core.List<api.GoogleCloudAiplatformV1DataItem> o) {
+void checkUnnamed183(core.List<api.GoogleCloudAiplatformV1DataItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1DataItem(o[0]);
   checkGoogleCloudAiplatformV1DataItem(o[1]);
@@ -13030,7 +13359,7 @@ api.GoogleCloudAiplatformV1ListDataItemsResponse
   final o = api.GoogleCloudAiplatformV1ListDataItemsResponse();
   buildCounterGoogleCloudAiplatformV1ListDataItemsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListDataItemsResponse < 3) {
-    o.dataItems = buildUnnamed177();
+    o.dataItems = buildUnnamed183();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListDataItemsResponse--;
@@ -13041,7 +13370,7 @@ void checkGoogleCloudAiplatformV1ListDataItemsResponse(
     api.GoogleCloudAiplatformV1ListDataItemsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListDataItemsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListDataItemsResponse < 3) {
-    checkUnnamed177(o.dataItems!);
+    checkUnnamed183(o.dataItems!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13050,12 +13379,12 @@ void checkGoogleCloudAiplatformV1ListDataItemsResponse(
   buildCounterGoogleCloudAiplatformV1ListDataItemsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1DataLabelingJob> buildUnnamed178() => [
+core.List<api.GoogleCloudAiplatformV1DataLabelingJob> buildUnnamed184() => [
       buildGoogleCloudAiplatformV1DataLabelingJob(),
       buildGoogleCloudAiplatformV1DataLabelingJob(),
     ];
 
-void checkUnnamed178(core.List<api.GoogleCloudAiplatformV1DataLabelingJob> o) {
+void checkUnnamed184(core.List<api.GoogleCloudAiplatformV1DataLabelingJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1DataLabelingJob(o[0]);
   checkGoogleCloudAiplatformV1DataLabelingJob(o[1]);
@@ -13067,7 +13396,7 @@ api.GoogleCloudAiplatformV1ListDataLabelingJobsResponse
   final o = api.GoogleCloudAiplatformV1ListDataLabelingJobsResponse();
   buildCounterGoogleCloudAiplatformV1ListDataLabelingJobsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListDataLabelingJobsResponse < 3) {
-    o.dataLabelingJobs = buildUnnamed178();
+    o.dataLabelingJobs = buildUnnamed184();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListDataLabelingJobsResponse--;
@@ -13078,7 +13407,7 @@ void checkGoogleCloudAiplatformV1ListDataLabelingJobsResponse(
     api.GoogleCloudAiplatformV1ListDataLabelingJobsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListDataLabelingJobsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListDataLabelingJobsResponse < 3) {
-    checkUnnamed178(o.dataLabelingJobs!);
+    checkUnnamed184(o.dataLabelingJobs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13087,12 +13416,12 @@ void checkGoogleCloudAiplatformV1ListDataLabelingJobsResponse(
   buildCounterGoogleCloudAiplatformV1ListDataLabelingJobsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1DatasetVersion> buildUnnamed179() => [
+core.List<api.GoogleCloudAiplatformV1DatasetVersion> buildUnnamed185() => [
       buildGoogleCloudAiplatformV1DatasetVersion(),
       buildGoogleCloudAiplatformV1DatasetVersion(),
     ];
 
-void checkUnnamed179(core.List<api.GoogleCloudAiplatformV1DatasetVersion> o) {
+void checkUnnamed185(core.List<api.GoogleCloudAiplatformV1DatasetVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1DatasetVersion(o[0]);
   checkGoogleCloudAiplatformV1DatasetVersion(o[1]);
@@ -13104,7 +13433,7 @@ api.GoogleCloudAiplatformV1ListDatasetVersionsResponse
   final o = api.GoogleCloudAiplatformV1ListDatasetVersionsResponse();
   buildCounterGoogleCloudAiplatformV1ListDatasetVersionsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListDatasetVersionsResponse < 3) {
-    o.datasetVersions = buildUnnamed179();
+    o.datasetVersions = buildUnnamed185();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListDatasetVersionsResponse--;
@@ -13115,7 +13444,7 @@ void checkGoogleCloudAiplatformV1ListDatasetVersionsResponse(
     api.GoogleCloudAiplatformV1ListDatasetVersionsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListDatasetVersionsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListDatasetVersionsResponse < 3) {
-    checkUnnamed179(o.datasetVersions!);
+    checkUnnamed185(o.datasetVersions!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13124,12 +13453,12 @@ void checkGoogleCloudAiplatformV1ListDatasetVersionsResponse(
   buildCounterGoogleCloudAiplatformV1ListDatasetVersionsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Dataset> buildUnnamed180() => [
+core.List<api.GoogleCloudAiplatformV1Dataset> buildUnnamed186() => [
       buildGoogleCloudAiplatformV1Dataset(),
       buildGoogleCloudAiplatformV1Dataset(),
     ];
 
-void checkUnnamed180(core.List<api.GoogleCloudAiplatformV1Dataset> o) {
+void checkUnnamed186(core.List<api.GoogleCloudAiplatformV1Dataset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Dataset(o[0]);
   checkGoogleCloudAiplatformV1Dataset(o[1]);
@@ -13141,7 +13470,7 @@ api.GoogleCloudAiplatformV1ListDatasetsResponse
   final o = api.GoogleCloudAiplatformV1ListDatasetsResponse();
   buildCounterGoogleCloudAiplatformV1ListDatasetsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListDatasetsResponse < 3) {
-    o.datasets = buildUnnamed180();
+    o.datasets = buildUnnamed186();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListDatasetsResponse--;
@@ -13152,7 +13481,7 @@ void checkGoogleCloudAiplatformV1ListDatasetsResponse(
     api.GoogleCloudAiplatformV1ListDatasetsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListDatasetsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListDatasetsResponse < 3) {
-    checkUnnamed180(o.datasets!);
+    checkUnnamed186(o.datasets!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13162,12 +13491,12 @@ void checkGoogleCloudAiplatformV1ListDatasetsResponse(
 }
 
 core.List<api.GoogleCloudAiplatformV1DeploymentResourcePool>
-    buildUnnamed181() => [
+    buildUnnamed187() => [
           buildGoogleCloudAiplatformV1DeploymentResourcePool(),
           buildGoogleCloudAiplatformV1DeploymentResourcePool(),
         ];
 
-void checkUnnamed181(
+void checkUnnamed187(
     core.List<api.GoogleCloudAiplatformV1DeploymentResourcePool> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1DeploymentResourcePool(o[0]);
@@ -13182,7 +13511,7 @@ api.GoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse
   buildCounterGoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse <
       3) {
-    o.deploymentResourcePools = buildUnnamed181();
+    o.deploymentResourcePools = buildUnnamed187();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse--;
@@ -13194,7 +13523,7 @@ void checkGoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse(
   buildCounterGoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse <
       3) {
-    checkUnnamed181(o.deploymentResourcePools!);
+    checkUnnamed187(o.deploymentResourcePools!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13203,12 +13532,12 @@ void checkGoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse(
   buildCounterGoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Endpoint> buildUnnamed182() => [
+core.List<api.GoogleCloudAiplatformV1Endpoint> buildUnnamed188() => [
       buildGoogleCloudAiplatformV1Endpoint(),
       buildGoogleCloudAiplatformV1Endpoint(),
     ];
 
-void checkUnnamed182(core.List<api.GoogleCloudAiplatformV1Endpoint> o) {
+void checkUnnamed188(core.List<api.GoogleCloudAiplatformV1Endpoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Endpoint(o[0]);
   checkGoogleCloudAiplatformV1Endpoint(o[1]);
@@ -13220,7 +13549,7 @@ api.GoogleCloudAiplatformV1ListEndpointsResponse
   final o = api.GoogleCloudAiplatformV1ListEndpointsResponse();
   buildCounterGoogleCloudAiplatformV1ListEndpointsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListEndpointsResponse < 3) {
-    o.endpoints = buildUnnamed182();
+    o.endpoints = buildUnnamed188();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListEndpointsResponse--;
@@ -13231,7 +13560,7 @@ void checkGoogleCloudAiplatformV1ListEndpointsResponse(
     api.GoogleCloudAiplatformV1ListEndpointsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListEndpointsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListEndpointsResponse < 3) {
-    checkUnnamed182(o.endpoints!);
+    checkUnnamed188(o.endpoints!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13240,12 +13569,12 @@ void checkGoogleCloudAiplatformV1ListEndpointsResponse(
   buildCounterGoogleCloudAiplatformV1ListEndpointsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1EntityType> buildUnnamed183() => [
+core.List<api.GoogleCloudAiplatformV1EntityType> buildUnnamed189() => [
       buildGoogleCloudAiplatformV1EntityType(),
       buildGoogleCloudAiplatformV1EntityType(),
     ];
 
-void checkUnnamed183(core.List<api.GoogleCloudAiplatformV1EntityType> o) {
+void checkUnnamed189(core.List<api.GoogleCloudAiplatformV1EntityType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1EntityType(o[0]);
   checkGoogleCloudAiplatformV1EntityType(o[1]);
@@ -13257,7 +13586,7 @@ api.GoogleCloudAiplatformV1ListEntityTypesResponse
   final o = api.GoogleCloudAiplatformV1ListEntityTypesResponse();
   buildCounterGoogleCloudAiplatformV1ListEntityTypesResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListEntityTypesResponse < 3) {
-    o.entityTypes = buildUnnamed183();
+    o.entityTypes = buildUnnamed189();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListEntityTypesResponse--;
@@ -13268,7 +13597,7 @@ void checkGoogleCloudAiplatformV1ListEntityTypesResponse(
     api.GoogleCloudAiplatformV1ListEntityTypesResponse o) {
   buildCounterGoogleCloudAiplatformV1ListEntityTypesResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListEntityTypesResponse < 3) {
-    checkUnnamed183(o.entityTypes!);
+    checkUnnamed189(o.entityTypes!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13277,12 +13606,12 @@ void checkGoogleCloudAiplatformV1ListEntityTypesResponse(
   buildCounterGoogleCloudAiplatformV1ListEntityTypesResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Execution> buildUnnamed184() => [
+core.List<api.GoogleCloudAiplatformV1Execution> buildUnnamed190() => [
       buildGoogleCloudAiplatformV1Execution(),
       buildGoogleCloudAiplatformV1Execution(),
     ];
 
-void checkUnnamed184(core.List<api.GoogleCloudAiplatformV1Execution> o) {
+void checkUnnamed190(core.List<api.GoogleCloudAiplatformV1Execution> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Execution(o[0]);
   checkGoogleCloudAiplatformV1Execution(o[1]);
@@ -13294,7 +13623,7 @@ api.GoogleCloudAiplatformV1ListExecutionsResponse
   final o = api.GoogleCloudAiplatformV1ListExecutionsResponse();
   buildCounterGoogleCloudAiplatformV1ListExecutionsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListExecutionsResponse < 3) {
-    o.executions = buildUnnamed184();
+    o.executions = buildUnnamed190();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListExecutionsResponse--;
@@ -13305,7 +13634,7 @@ void checkGoogleCloudAiplatformV1ListExecutionsResponse(
     api.GoogleCloudAiplatformV1ListExecutionsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListExecutionsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListExecutionsResponse < 3) {
-    checkUnnamed184(o.executions!);
+    checkUnnamed190(o.executions!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13314,12 +13643,12 @@ void checkGoogleCloudAiplatformV1ListExecutionsResponse(
   buildCounterGoogleCloudAiplatformV1ListExecutionsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1FeatureGroup> buildUnnamed185() => [
+core.List<api.GoogleCloudAiplatformV1FeatureGroup> buildUnnamed191() => [
       buildGoogleCloudAiplatformV1FeatureGroup(),
       buildGoogleCloudAiplatformV1FeatureGroup(),
     ];
 
-void checkUnnamed185(core.List<api.GoogleCloudAiplatformV1FeatureGroup> o) {
+void checkUnnamed191(core.List<api.GoogleCloudAiplatformV1FeatureGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1FeatureGroup(o[0]);
   checkGoogleCloudAiplatformV1FeatureGroup(o[1]);
@@ -13331,7 +13660,7 @@ api.GoogleCloudAiplatformV1ListFeatureGroupsResponse
   final o = api.GoogleCloudAiplatformV1ListFeatureGroupsResponse();
   buildCounterGoogleCloudAiplatformV1ListFeatureGroupsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListFeatureGroupsResponse < 3) {
-    o.featureGroups = buildUnnamed185();
+    o.featureGroups = buildUnnamed191();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListFeatureGroupsResponse--;
@@ -13342,7 +13671,7 @@ void checkGoogleCloudAiplatformV1ListFeatureGroupsResponse(
     api.GoogleCloudAiplatformV1ListFeatureGroupsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListFeatureGroupsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListFeatureGroupsResponse < 3) {
-    checkUnnamed185(o.featureGroups!);
+    checkUnnamed191(o.featureGroups!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13351,12 +13680,12 @@ void checkGoogleCloudAiplatformV1ListFeatureGroupsResponse(
   buildCounterGoogleCloudAiplatformV1ListFeatureGroupsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1FeatureOnlineStore> buildUnnamed186() => [
+core.List<api.GoogleCloudAiplatformV1FeatureOnlineStore> buildUnnamed192() => [
       buildGoogleCloudAiplatformV1FeatureOnlineStore(),
       buildGoogleCloudAiplatformV1FeatureOnlineStore(),
     ];
 
-void checkUnnamed186(
+void checkUnnamed192(
     core.List<api.GoogleCloudAiplatformV1FeatureOnlineStore> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1FeatureOnlineStore(o[0]);
@@ -13369,7 +13698,7 @@ api.GoogleCloudAiplatformV1ListFeatureOnlineStoresResponse
   final o = api.GoogleCloudAiplatformV1ListFeatureOnlineStoresResponse();
   buildCounterGoogleCloudAiplatformV1ListFeatureOnlineStoresResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListFeatureOnlineStoresResponse < 3) {
-    o.featureOnlineStores = buildUnnamed186();
+    o.featureOnlineStores = buildUnnamed192();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListFeatureOnlineStoresResponse--;
@@ -13380,7 +13709,7 @@ void checkGoogleCloudAiplatformV1ListFeatureOnlineStoresResponse(
     api.GoogleCloudAiplatformV1ListFeatureOnlineStoresResponse o) {
   buildCounterGoogleCloudAiplatformV1ListFeatureOnlineStoresResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListFeatureOnlineStoresResponse < 3) {
-    checkUnnamed186(o.featureOnlineStores!);
+    checkUnnamed192(o.featureOnlineStores!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13389,12 +13718,12 @@ void checkGoogleCloudAiplatformV1ListFeatureOnlineStoresResponse(
   buildCounterGoogleCloudAiplatformV1ListFeatureOnlineStoresResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1FeatureViewSync> buildUnnamed187() => [
+core.List<api.GoogleCloudAiplatformV1FeatureViewSync> buildUnnamed193() => [
       buildGoogleCloudAiplatformV1FeatureViewSync(),
       buildGoogleCloudAiplatformV1FeatureViewSync(),
     ];
 
-void checkUnnamed187(core.List<api.GoogleCloudAiplatformV1FeatureViewSync> o) {
+void checkUnnamed193(core.List<api.GoogleCloudAiplatformV1FeatureViewSync> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1FeatureViewSync(o[0]);
   checkGoogleCloudAiplatformV1FeatureViewSync(o[1]);
@@ -13406,7 +13735,7 @@ api.GoogleCloudAiplatformV1ListFeatureViewSyncsResponse
   final o = api.GoogleCloudAiplatformV1ListFeatureViewSyncsResponse();
   buildCounterGoogleCloudAiplatformV1ListFeatureViewSyncsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListFeatureViewSyncsResponse < 3) {
-    o.featureViewSyncs = buildUnnamed187();
+    o.featureViewSyncs = buildUnnamed193();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListFeatureViewSyncsResponse--;
@@ -13417,7 +13746,7 @@ void checkGoogleCloudAiplatformV1ListFeatureViewSyncsResponse(
     api.GoogleCloudAiplatformV1ListFeatureViewSyncsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListFeatureViewSyncsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListFeatureViewSyncsResponse < 3) {
-    checkUnnamed187(o.featureViewSyncs!);
+    checkUnnamed193(o.featureViewSyncs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13426,12 +13755,12 @@ void checkGoogleCloudAiplatformV1ListFeatureViewSyncsResponse(
   buildCounterGoogleCloudAiplatformV1ListFeatureViewSyncsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1FeatureView> buildUnnamed188() => [
+core.List<api.GoogleCloudAiplatformV1FeatureView> buildUnnamed194() => [
       buildGoogleCloudAiplatformV1FeatureView(),
       buildGoogleCloudAiplatformV1FeatureView(),
     ];
 
-void checkUnnamed188(core.List<api.GoogleCloudAiplatformV1FeatureView> o) {
+void checkUnnamed194(core.List<api.GoogleCloudAiplatformV1FeatureView> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1FeatureView(o[0]);
   checkGoogleCloudAiplatformV1FeatureView(o[1]);
@@ -13443,7 +13772,7 @@ api.GoogleCloudAiplatformV1ListFeatureViewsResponse
   final o = api.GoogleCloudAiplatformV1ListFeatureViewsResponse();
   buildCounterGoogleCloudAiplatformV1ListFeatureViewsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListFeatureViewsResponse < 3) {
-    o.featureViews = buildUnnamed188();
+    o.featureViews = buildUnnamed194();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListFeatureViewsResponse--;
@@ -13454,7 +13783,7 @@ void checkGoogleCloudAiplatformV1ListFeatureViewsResponse(
     api.GoogleCloudAiplatformV1ListFeatureViewsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListFeatureViewsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListFeatureViewsResponse < 3) {
-    checkUnnamed188(o.featureViews!);
+    checkUnnamed194(o.featureViews!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13463,12 +13792,12 @@ void checkGoogleCloudAiplatformV1ListFeatureViewsResponse(
   buildCounterGoogleCloudAiplatformV1ListFeatureViewsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Feature> buildUnnamed189() => [
+core.List<api.GoogleCloudAiplatformV1Feature> buildUnnamed195() => [
       buildGoogleCloudAiplatformV1Feature(),
       buildGoogleCloudAiplatformV1Feature(),
     ];
 
-void checkUnnamed189(core.List<api.GoogleCloudAiplatformV1Feature> o) {
+void checkUnnamed195(core.List<api.GoogleCloudAiplatformV1Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Feature(o[0]);
   checkGoogleCloudAiplatformV1Feature(o[1]);
@@ -13480,7 +13809,7 @@ api.GoogleCloudAiplatformV1ListFeaturesResponse
   final o = api.GoogleCloudAiplatformV1ListFeaturesResponse();
   buildCounterGoogleCloudAiplatformV1ListFeaturesResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListFeaturesResponse < 3) {
-    o.features = buildUnnamed189();
+    o.features = buildUnnamed195();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListFeaturesResponse--;
@@ -13491,7 +13820,7 @@ void checkGoogleCloudAiplatformV1ListFeaturesResponse(
     api.GoogleCloudAiplatformV1ListFeaturesResponse o) {
   buildCounterGoogleCloudAiplatformV1ListFeaturesResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListFeaturesResponse < 3) {
-    checkUnnamed189(o.features!);
+    checkUnnamed195(o.features!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13500,12 +13829,12 @@ void checkGoogleCloudAiplatformV1ListFeaturesResponse(
   buildCounterGoogleCloudAiplatformV1ListFeaturesResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Featurestore> buildUnnamed190() => [
+core.List<api.GoogleCloudAiplatformV1Featurestore> buildUnnamed196() => [
       buildGoogleCloudAiplatformV1Featurestore(),
       buildGoogleCloudAiplatformV1Featurestore(),
     ];
 
-void checkUnnamed190(core.List<api.GoogleCloudAiplatformV1Featurestore> o) {
+void checkUnnamed196(core.List<api.GoogleCloudAiplatformV1Featurestore> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Featurestore(o[0]);
   checkGoogleCloudAiplatformV1Featurestore(o[1]);
@@ -13517,7 +13846,7 @@ api.GoogleCloudAiplatformV1ListFeaturestoresResponse
   final o = api.GoogleCloudAiplatformV1ListFeaturestoresResponse();
   buildCounterGoogleCloudAiplatformV1ListFeaturestoresResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListFeaturestoresResponse < 3) {
-    o.featurestores = buildUnnamed190();
+    o.featurestores = buildUnnamed196();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListFeaturestoresResponse--;
@@ -13528,7 +13857,7 @@ void checkGoogleCloudAiplatformV1ListFeaturestoresResponse(
     api.GoogleCloudAiplatformV1ListFeaturestoresResponse o) {
   buildCounterGoogleCloudAiplatformV1ListFeaturestoresResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListFeaturestoresResponse < 3) {
-    checkUnnamed190(o.featurestores!);
+    checkUnnamed196(o.featurestores!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13538,12 +13867,12 @@ void checkGoogleCloudAiplatformV1ListFeaturestoresResponse(
 }
 
 core.List<api.GoogleCloudAiplatformV1HyperparameterTuningJob>
-    buildUnnamed191() => [
+    buildUnnamed197() => [
           buildGoogleCloudAiplatformV1HyperparameterTuningJob(),
           buildGoogleCloudAiplatformV1HyperparameterTuningJob(),
         ];
 
-void checkUnnamed191(
+void checkUnnamed197(
     core.List<api.GoogleCloudAiplatformV1HyperparameterTuningJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1HyperparameterTuningJob(o[0]);
@@ -13558,7 +13887,7 @@ api.GoogleCloudAiplatformV1ListHyperparameterTuningJobsResponse
   buildCounterGoogleCloudAiplatformV1ListHyperparameterTuningJobsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListHyperparameterTuningJobsResponse <
       3) {
-    o.hyperparameterTuningJobs = buildUnnamed191();
+    o.hyperparameterTuningJobs = buildUnnamed197();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListHyperparameterTuningJobsResponse--;
@@ -13570,7 +13899,7 @@ void checkGoogleCloudAiplatformV1ListHyperparameterTuningJobsResponse(
   buildCounterGoogleCloudAiplatformV1ListHyperparameterTuningJobsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListHyperparameterTuningJobsResponse <
       3) {
-    checkUnnamed191(o.hyperparameterTuningJobs!);
+    checkUnnamed197(o.hyperparameterTuningJobs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13579,12 +13908,12 @@ void checkGoogleCloudAiplatformV1ListHyperparameterTuningJobsResponse(
   buildCounterGoogleCloudAiplatformV1ListHyperparameterTuningJobsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1IndexEndpoint> buildUnnamed192() => [
+core.List<api.GoogleCloudAiplatformV1IndexEndpoint> buildUnnamed198() => [
       buildGoogleCloudAiplatformV1IndexEndpoint(),
       buildGoogleCloudAiplatformV1IndexEndpoint(),
     ];
 
-void checkUnnamed192(core.List<api.GoogleCloudAiplatformV1IndexEndpoint> o) {
+void checkUnnamed198(core.List<api.GoogleCloudAiplatformV1IndexEndpoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1IndexEndpoint(o[0]);
   checkGoogleCloudAiplatformV1IndexEndpoint(o[1]);
@@ -13596,7 +13925,7 @@ api.GoogleCloudAiplatformV1ListIndexEndpointsResponse
   final o = api.GoogleCloudAiplatformV1ListIndexEndpointsResponse();
   buildCounterGoogleCloudAiplatformV1ListIndexEndpointsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListIndexEndpointsResponse < 3) {
-    o.indexEndpoints = buildUnnamed192();
+    o.indexEndpoints = buildUnnamed198();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListIndexEndpointsResponse--;
@@ -13607,7 +13936,7 @@ void checkGoogleCloudAiplatformV1ListIndexEndpointsResponse(
     api.GoogleCloudAiplatformV1ListIndexEndpointsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListIndexEndpointsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListIndexEndpointsResponse < 3) {
-    checkUnnamed192(o.indexEndpoints!);
+    checkUnnamed198(o.indexEndpoints!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13616,12 +13945,12 @@ void checkGoogleCloudAiplatformV1ListIndexEndpointsResponse(
   buildCounterGoogleCloudAiplatformV1ListIndexEndpointsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Index> buildUnnamed193() => [
+core.List<api.GoogleCloudAiplatformV1Index> buildUnnamed199() => [
       buildGoogleCloudAiplatformV1Index(),
       buildGoogleCloudAiplatformV1Index(),
     ];
 
-void checkUnnamed193(core.List<api.GoogleCloudAiplatformV1Index> o) {
+void checkUnnamed199(core.List<api.GoogleCloudAiplatformV1Index> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Index(o[0]);
   checkGoogleCloudAiplatformV1Index(o[1]);
@@ -13633,7 +13962,7 @@ api.GoogleCloudAiplatformV1ListIndexesResponse
   final o = api.GoogleCloudAiplatformV1ListIndexesResponse();
   buildCounterGoogleCloudAiplatformV1ListIndexesResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListIndexesResponse < 3) {
-    o.indexes = buildUnnamed193();
+    o.indexes = buildUnnamed199();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListIndexesResponse--;
@@ -13644,7 +13973,7 @@ void checkGoogleCloudAiplatformV1ListIndexesResponse(
     api.GoogleCloudAiplatformV1ListIndexesResponse o) {
   buildCounterGoogleCloudAiplatformV1ListIndexesResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListIndexesResponse < 3) {
-    checkUnnamed193(o.indexes!);
+    checkUnnamed199(o.indexes!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13653,12 +13982,12 @@ void checkGoogleCloudAiplatformV1ListIndexesResponse(
   buildCounterGoogleCloudAiplatformV1ListIndexesResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1MetadataSchema> buildUnnamed194() => [
+core.List<api.GoogleCloudAiplatformV1MetadataSchema> buildUnnamed200() => [
       buildGoogleCloudAiplatformV1MetadataSchema(),
       buildGoogleCloudAiplatformV1MetadataSchema(),
     ];
 
-void checkUnnamed194(core.List<api.GoogleCloudAiplatformV1MetadataSchema> o) {
+void checkUnnamed200(core.List<api.GoogleCloudAiplatformV1MetadataSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1MetadataSchema(o[0]);
   checkGoogleCloudAiplatformV1MetadataSchema(o[1]);
@@ -13670,7 +13999,7 @@ api.GoogleCloudAiplatformV1ListMetadataSchemasResponse
   final o = api.GoogleCloudAiplatformV1ListMetadataSchemasResponse();
   buildCounterGoogleCloudAiplatformV1ListMetadataSchemasResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListMetadataSchemasResponse < 3) {
-    o.metadataSchemas = buildUnnamed194();
+    o.metadataSchemas = buildUnnamed200();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListMetadataSchemasResponse--;
@@ -13681,7 +14010,7 @@ void checkGoogleCloudAiplatformV1ListMetadataSchemasResponse(
     api.GoogleCloudAiplatformV1ListMetadataSchemasResponse o) {
   buildCounterGoogleCloudAiplatformV1ListMetadataSchemasResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListMetadataSchemasResponse < 3) {
-    checkUnnamed194(o.metadataSchemas!);
+    checkUnnamed200(o.metadataSchemas!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13690,12 +14019,12 @@ void checkGoogleCloudAiplatformV1ListMetadataSchemasResponse(
   buildCounterGoogleCloudAiplatformV1ListMetadataSchemasResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1MetadataStore> buildUnnamed195() => [
+core.List<api.GoogleCloudAiplatformV1MetadataStore> buildUnnamed201() => [
       buildGoogleCloudAiplatformV1MetadataStore(),
       buildGoogleCloudAiplatformV1MetadataStore(),
     ];
 
-void checkUnnamed195(core.List<api.GoogleCloudAiplatformV1MetadataStore> o) {
+void checkUnnamed201(core.List<api.GoogleCloudAiplatformV1MetadataStore> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1MetadataStore(o[0]);
   checkGoogleCloudAiplatformV1MetadataStore(o[1]);
@@ -13707,7 +14036,7 @@ api.GoogleCloudAiplatformV1ListMetadataStoresResponse
   final o = api.GoogleCloudAiplatformV1ListMetadataStoresResponse();
   buildCounterGoogleCloudAiplatformV1ListMetadataStoresResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListMetadataStoresResponse < 3) {
-    o.metadataStores = buildUnnamed195();
+    o.metadataStores = buildUnnamed201();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListMetadataStoresResponse--;
@@ -13718,7 +14047,7 @@ void checkGoogleCloudAiplatformV1ListMetadataStoresResponse(
     api.GoogleCloudAiplatformV1ListMetadataStoresResponse o) {
   buildCounterGoogleCloudAiplatformV1ListMetadataStoresResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListMetadataStoresResponse < 3) {
-    checkUnnamed195(o.metadataStores!);
+    checkUnnamed201(o.metadataStores!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13728,12 +14057,12 @@ void checkGoogleCloudAiplatformV1ListMetadataStoresResponse(
 }
 
 core.List<api.GoogleCloudAiplatformV1ModelDeploymentMonitoringJob>
-    buildUnnamed196() => [
+    buildUnnamed202() => [
           buildGoogleCloudAiplatformV1ModelDeploymentMonitoringJob(),
           buildGoogleCloudAiplatformV1ModelDeploymentMonitoringJob(),
         ];
 
-void checkUnnamed196(
+void checkUnnamed202(
     core.List<api.GoogleCloudAiplatformV1ModelDeploymentMonitoringJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ModelDeploymentMonitoringJob(o[0]);
@@ -13750,7 +14079,7 @@ api.GoogleCloudAiplatformV1ListModelDeploymentMonitoringJobsResponse
   buildCounterGoogleCloudAiplatformV1ListModelDeploymentMonitoringJobsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListModelDeploymentMonitoringJobsResponse <
       3) {
-    o.modelDeploymentMonitoringJobs = buildUnnamed196();
+    o.modelDeploymentMonitoringJobs = buildUnnamed202();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListModelDeploymentMonitoringJobsResponse--;
@@ -13762,7 +14091,7 @@ void checkGoogleCloudAiplatformV1ListModelDeploymentMonitoringJobsResponse(
   buildCounterGoogleCloudAiplatformV1ListModelDeploymentMonitoringJobsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListModelDeploymentMonitoringJobsResponse <
       3) {
-    checkUnnamed196(o.modelDeploymentMonitoringJobs!);
+    checkUnnamed202(o.modelDeploymentMonitoringJobs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13771,13 +14100,13 @@ void checkGoogleCloudAiplatformV1ListModelDeploymentMonitoringJobsResponse(
   buildCounterGoogleCloudAiplatformV1ListModelDeploymentMonitoringJobsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1ModelEvaluationSlice> buildUnnamed197() =>
+core.List<api.GoogleCloudAiplatformV1ModelEvaluationSlice> buildUnnamed203() =>
     [
       buildGoogleCloudAiplatformV1ModelEvaluationSlice(),
       buildGoogleCloudAiplatformV1ModelEvaluationSlice(),
     ];
 
-void checkUnnamed197(
+void checkUnnamed203(
     core.List<api.GoogleCloudAiplatformV1ModelEvaluationSlice> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ModelEvaluationSlice(o[0]);
@@ -13792,7 +14121,7 @@ api.GoogleCloudAiplatformV1ListModelEvaluationSlicesResponse
   buildCounterGoogleCloudAiplatformV1ListModelEvaluationSlicesResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListModelEvaluationSlicesResponse <
       3) {
-    o.modelEvaluationSlices = buildUnnamed197();
+    o.modelEvaluationSlices = buildUnnamed203();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListModelEvaluationSlicesResponse--;
@@ -13804,7 +14133,7 @@ void checkGoogleCloudAiplatformV1ListModelEvaluationSlicesResponse(
   buildCounterGoogleCloudAiplatformV1ListModelEvaluationSlicesResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListModelEvaluationSlicesResponse <
       3) {
-    checkUnnamed197(o.modelEvaluationSlices!);
+    checkUnnamed203(o.modelEvaluationSlices!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13813,12 +14142,12 @@ void checkGoogleCloudAiplatformV1ListModelEvaluationSlicesResponse(
   buildCounterGoogleCloudAiplatformV1ListModelEvaluationSlicesResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1ModelEvaluation> buildUnnamed198() => [
+core.List<api.GoogleCloudAiplatformV1ModelEvaluation> buildUnnamed204() => [
       buildGoogleCloudAiplatformV1ModelEvaluation(),
       buildGoogleCloudAiplatformV1ModelEvaluation(),
     ];
 
-void checkUnnamed198(core.List<api.GoogleCloudAiplatformV1ModelEvaluation> o) {
+void checkUnnamed204(core.List<api.GoogleCloudAiplatformV1ModelEvaluation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ModelEvaluation(o[0]);
   checkGoogleCloudAiplatformV1ModelEvaluation(o[1]);
@@ -13830,7 +14159,7 @@ api.GoogleCloudAiplatformV1ListModelEvaluationsResponse
   final o = api.GoogleCloudAiplatformV1ListModelEvaluationsResponse();
   buildCounterGoogleCloudAiplatformV1ListModelEvaluationsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListModelEvaluationsResponse < 3) {
-    o.modelEvaluations = buildUnnamed198();
+    o.modelEvaluations = buildUnnamed204();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListModelEvaluationsResponse--;
@@ -13841,7 +14170,7 @@ void checkGoogleCloudAiplatformV1ListModelEvaluationsResponse(
     api.GoogleCloudAiplatformV1ListModelEvaluationsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListModelEvaluationsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListModelEvaluationsResponse < 3) {
-    checkUnnamed198(o.modelEvaluations!);
+    checkUnnamed204(o.modelEvaluations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13850,12 +14179,54 @@ void checkGoogleCloudAiplatformV1ListModelEvaluationsResponse(
   buildCounterGoogleCloudAiplatformV1ListModelEvaluationsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Model> buildUnnamed199() => [
+core.List<api.GoogleCloudAiplatformV1ModelVersionCheckpoint>
+    buildUnnamed205() => [
+          buildGoogleCloudAiplatformV1ModelVersionCheckpoint(),
+          buildGoogleCloudAiplatformV1ModelVersionCheckpoint(),
+        ];
+
+void checkUnnamed205(
+    core.List<api.GoogleCloudAiplatformV1ModelVersionCheckpoint> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudAiplatformV1ModelVersionCheckpoint(o[0]);
+  checkGoogleCloudAiplatformV1ModelVersionCheckpoint(o[1]);
+}
+
+core.int
+    buildCounterGoogleCloudAiplatformV1ListModelVersionCheckpointsResponse = 0;
+api.GoogleCloudAiplatformV1ListModelVersionCheckpointsResponse
+    buildGoogleCloudAiplatformV1ListModelVersionCheckpointsResponse() {
+  final o = api.GoogleCloudAiplatformV1ListModelVersionCheckpointsResponse();
+  buildCounterGoogleCloudAiplatformV1ListModelVersionCheckpointsResponse++;
+  if (buildCounterGoogleCloudAiplatformV1ListModelVersionCheckpointsResponse <
+      3) {
+    o.checkpoints = buildUnnamed205();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterGoogleCloudAiplatformV1ListModelVersionCheckpointsResponse--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1ListModelVersionCheckpointsResponse(
+    api.GoogleCloudAiplatformV1ListModelVersionCheckpointsResponse o) {
+  buildCounterGoogleCloudAiplatformV1ListModelVersionCheckpointsResponse++;
+  if (buildCounterGoogleCloudAiplatformV1ListModelVersionCheckpointsResponse <
+      3) {
+    checkUnnamed205(o.checkpoints!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudAiplatformV1ListModelVersionCheckpointsResponse--;
+}
+
+core.List<api.GoogleCloudAiplatformV1Model> buildUnnamed206() => [
       buildGoogleCloudAiplatformV1Model(),
       buildGoogleCloudAiplatformV1Model(),
     ];
 
-void checkUnnamed199(core.List<api.GoogleCloudAiplatformV1Model> o) {
+void checkUnnamed206(core.List<api.GoogleCloudAiplatformV1Model> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Model(o[0]);
   checkGoogleCloudAiplatformV1Model(o[1]);
@@ -13867,7 +14238,7 @@ api.GoogleCloudAiplatformV1ListModelVersionsResponse
   final o = api.GoogleCloudAiplatformV1ListModelVersionsResponse();
   buildCounterGoogleCloudAiplatformV1ListModelVersionsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListModelVersionsResponse < 3) {
-    o.models = buildUnnamed199();
+    o.models = buildUnnamed206();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListModelVersionsResponse--;
@@ -13878,7 +14249,7 @@ void checkGoogleCloudAiplatformV1ListModelVersionsResponse(
     api.GoogleCloudAiplatformV1ListModelVersionsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListModelVersionsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListModelVersionsResponse < 3) {
-    checkUnnamed199(o.models!);
+    checkUnnamed206(o.models!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13887,12 +14258,12 @@ void checkGoogleCloudAiplatformV1ListModelVersionsResponse(
   buildCounterGoogleCloudAiplatformV1ListModelVersionsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Model> buildUnnamed200() => [
+core.List<api.GoogleCloudAiplatformV1Model> buildUnnamed207() => [
       buildGoogleCloudAiplatformV1Model(),
       buildGoogleCloudAiplatformV1Model(),
     ];
 
-void checkUnnamed200(core.List<api.GoogleCloudAiplatformV1Model> o) {
+void checkUnnamed207(core.List<api.GoogleCloudAiplatformV1Model> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Model(o[0]);
   checkGoogleCloudAiplatformV1Model(o[1]);
@@ -13904,7 +14275,7 @@ api.GoogleCloudAiplatformV1ListModelsResponse
   final o = api.GoogleCloudAiplatformV1ListModelsResponse();
   buildCounterGoogleCloudAiplatformV1ListModelsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListModelsResponse < 3) {
-    o.models = buildUnnamed200();
+    o.models = buildUnnamed207();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListModelsResponse--;
@@ -13915,7 +14286,7 @@ void checkGoogleCloudAiplatformV1ListModelsResponse(
     api.GoogleCloudAiplatformV1ListModelsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListModelsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListModelsResponse < 3) {
-    checkUnnamed200(o.models!);
+    checkUnnamed207(o.models!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13924,12 +14295,12 @@ void checkGoogleCloudAiplatformV1ListModelsResponse(
   buildCounterGoogleCloudAiplatformV1ListModelsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1NasJob> buildUnnamed201() => [
+core.List<api.GoogleCloudAiplatformV1NasJob> buildUnnamed208() => [
       buildGoogleCloudAiplatformV1NasJob(),
       buildGoogleCloudAiplatformV1NasJob(),
     ];
 
-void checkUnnamed201(core.List<api.GoogleCloudAiplatformV1NasJob> o) {
+void checkUnnamed208(core.List<api.GoogleCloudAiplatformV1NasJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1NasJob(o[0]);
   checkGoogleCloudAiplatformV1NasJob(o[1]);
@@ -13941,7 +14312,7 @@ api.GoogleCloudAiplatformV1ListNasJobsResponse
   final o = api.GoogleCloudAiplatformV1ListNasJobsResponse();
   buildCounterGoogleCloudAiplatformV1ListNasJobsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListNasJobsResponse < 3) {
-    o.nasJobs = buildUnnamed201();
+    o.nasJobs = buildUnnamed208();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListNasJobsResponse--;
@@ -13952,7 +14323,7 @@ void checkGoogleCloudAiplatformV1ListNasJobsResponse(
     api.GoogleCloudAiplatformV1ListNasJobsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListNasJobsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListNasJobsResponse < 3) {
-    checkUnnamed201(o.nasJobs!);
+    checkUnnamed208(o.nasJobs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13961,12 +14332,12 @@ void checkGoogleCloudAiplatformV1ListNasJobsResponse(
   buildCounterGoogleCloudAiplatformV1ListNasJobsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1NasTrialDetail> buildUnnamed202() => [
+core.List<api.GoogleCloudAiplatformV1NasTrialDetail> buildUnnamed209() => [
       buildGoogleCloudAiplatformV1NasTrialDetail(),
       buildGoogleCloudAiplatformV1NasTrialDetail(),
     ];
 
-void checkUnnamed202(core.List<api.GoogleCloudAiplatformV1NasTrialDetail> o) {
+void checkUnnamed209(core.List<api.GoogleCloudAiplatformV1NasTrialDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1NasTrialDetail(o[0]);
   checkGoogleCloudAiplatformV1NasTrialDetail(o[1]);
@@ -13978,7 +14349,7 @@ api.GoogleCloudAiplatformV1ListNasTrialDetailsResponse
   final o = api.GoogleCloudAiplatformV1ListNasTrialDetailsResponse();
   buildCounterGoogleCloudAiplatformV1ListNasTrialDetailsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListNasTrialDetailsResponse < 3) {
-    o.nasTrialDetails = buildUnnamed202();
+    o.nasTrialDetails = buildUnnamed209();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ListNasTrialDetailsResponse--;
@@ -13989,7 +14360,7 @@ void checkGoogleCloudAiplatformV1ListNasTrialDetailsResponse(
     api.GoogleCloudAiplatformV1ListNasTrialDetailsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListNasTrialDetailsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListNasTrialDetailsResponse < 3) {
-    checkUnnamed202(o.nasTrialDetails!);
+    checkUnnamed209(o.nasTrialDetails!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -13998,13 +14369,13 @@ void checkGoogleCloudAiplatformV1ListNasTrialDetailsResponse(
   buildCounterGoogleCloudAiplatformV1ListNasTrialDetailsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1NotebookExecutionJob> buildUnnamed203() =>
+core.List<api.GoogleCloudAiplatformV1NotebookExecutionJob> buildUnnamed210() =>
     [
       buildGoogleCloudAiplatformV1NotebookExecutionJob(),
       buildGoogleCloudAiplatformV1NotebookExecutionJob(),
     ];
 
-void checkUnnamed203(
+void checkUnnamed210(
     core.List<api.GoogleCloudAiplatformV1NotebookExecutionJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1NotebookExecutionJob(o[0]);
@@ -14020,7 +14391,7 @@ api.GoogleCloudAiplatformV1ListNotebookExecutionJobsResponse
   if (buildCounterGoogleCloudAiplatformV1ListNotebookExecutionJobsResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.notebookExecutionJobs = buildUnnamed203();
+    o.notebookExecutionJobs = buildUnnamed210();
   }
   buildCounterGoogleCloudAiplatformV1ListNotebookExecutionJobsResponse--;
   return o;
@@ -14035,18 +14406,18 @@ void checkGoogleCloudAiplatformV1ListNotebookExecutionJobsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed203(o.notebookExecutionJobs!);
+    checkUnnamed210(o.notebookExecutionJobs!);
   }
   buildCounterGoogleCloudAiplatformV1ListNotebookExecutionJobsResponse--;
 }
 
 core.List<api.GoogleCloudAiplatformV1NotebookRuntimeTemplate>
-    buildUnnamed204() => [
+    buildUnnamed211() => [
           buildGoogleCloudAiplatformV1NotebookRuntimeTemplate(),
           buildGoogleCloudAiplatformV1NotebookRuntimeTemplate(),
         ];
 
-void checkUnnamed204(
+void checkUnnamed211(
     core.List<api.GoogleCloudAiplatformV1NotebookRuntimeTemplate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1NotebookRuntimeTemplate(o[0]);
@@ -14062,7 +14433,7 @@ api.GoogleCloudAiplatformV1ListNotebookRuntimeTemplatesResponse
   if (buildCounterGoogleCloudAiplatformV1ListNotebookRuntimeTemplatesResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.notebookRuntimeTemplates = buildUnnamed204();
+    o.notebookRuntimeTemplates = buildUnnamed211();
   }
   buildCounterGoogleCloudAiplatformV1ListNotebookRuntimeTemplatesResponse--;
   return o;
@@ -14077,17 +14448,17 @@ void checkGoogleCloudAiplatformV1ListNotebookRuntimeTemplatesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed204(o.notebookRuntimeTemplates!);
+    checkUnnamed211(o.notebookRuntimeTemplates!);
   }
   buildCounterGoogleCloudAiplatformV1ListNotebookRuntimeTemplatesResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1NotebookRuntime> buildUnnamed205() => [
+core.List<api.GoogleCloudAiplatformV1NotebookRuntime> buildUnnamed212() => [
       buildGoogleCloudAiplatformV1NotebookRuntime(),
       buildGoogleCloudAiplatformV1NotebookRuntime(),
     ];
 
-void checkUnnamed205(core.List<api.GoogleCloudAiplatformV1NotebookRuntime> o) {
+void checkUnnamed212(core.List<api.GoogleCloudAiplatformV1NotebookRuntime> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1NotebookRuntime(o[0]);
   checkGoogleCloudAiplatformV1NotebookRuntime(o[1]);
@@ -14100,7 +14471,7 @@ api.GoogleCloudAiplatformV1ListNotebookRuntimesResponse
   buildCounterGoogleCloudAiplatformV1ListNotebookRuntimesResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListNotebookRuntimesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.notebookRuntimes = buildUnnamed205();
+    o.notebookRuntimes = buildUnnamed212();
   }
   buildCounterGoogleCloudAiplatformV1ListNotebookRuntimesResponse--;
   return o;
@@ -14114,7 +14485,7 @@ void checkGoogleCloudAiplatformV1ListNotebookRuntimesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed205(o.notebookRuntimes!);
+    checkUnnamed212(o.notebookRuntimes!);
   }
   buildCounterGoogleCloudAiplatformV1ListNotebookRuntimesResponse--;
 }
@@ -14136,12 +14507,12 @@ void checkGoogleCloudAiplatformV1ListOptimalTrialsRequest(
   buildCounterGoogleCloudAiplatformV1ListOptimalTrialsRequest--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Trial> buildUnnamed206() => [
+core.List<api.GoogleCloudAiplatformV1Trial> buildUnnamed213() => [
       buildGoogleCloudAiplatformV1Trial(),
       buildGoogleCloudAiplatformV1Trial(),
     ];
 
-void checkUnnamed206(core.List<api.GoogleCloudAiplatformV1Trial> o) {
+void checkUnnamed213(core.List<api.GoogleCloudAiplatformV1Trial> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Trial(o[0]);
   checkGoogleCloudAiplatformV1Trial(o[1]);
@@ -14153,7 +14524,7 @@ api.GoogleCloudAiplatformV1ListOptimalTrialsResponse
   final o = api.GoogleCloudAiplatformV1ListOptimalTrialsResponse();
   buildCounterGoogleCloudAiplatformV1ListOptimalTrialsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListOptimalTrialsResponse < 3) {
-    o.optimalTrials = buildUnnamed206();
+    o.optimalTrials = buildUnnamed213();
   }
   buildCounterGoogleCloudAiplatformV1ListOptimalTrialsResponse--;
   return o;
@@ -14163,17 +14534,17 @@ void checkGoogleCloudAiplatformV1ListOptimalTrialsResponse(
     api.GoogleCloudAiplatformV1ListOptimalTrialsResponse o) {
   buildCounterGoogleCloudAiplatformV1ListOptimalTrialsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListOptimalTrialsResponse < 3) {
-    checkUnnamed206(o.optimalTrials!);
+    checkUnnamed213(o.optimalTrials!);
   }
   buildCounterGoogleCloudAiplatformV1ListOptimalTrialsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1PersistentResource> buildUnnamed207() => [
+core.List<api.GoogleCloudAiplatformV1PersistentResource> buildUnnamed214() => [
       buildGoogleCloudAiplatformV1PersistentResource(),
       buildGoogleCloudAiplatformV1PersistentResource(),
     ];
 
-void checkUnnamed207(
+void checkUnnamed214(
     core.List<api.GoogleCloudAiplatformV1PersistentResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1PersistentResource(o[0]);
@@ -14187,7 +14558,7 @@ api.GoogleCloudAiplatformV1ListPersistentResourcesResponse
   buildCounterGoogleCloudAiplatformV1ListPersistentResourcesResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListPersistentResourcesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.persistentResources = buildUnnamed207();
+    o.persistentResources = buildUnnamed214();
   }
   buildCounterGoogleCloudAiplatformV1ListPersistentResourcesResponse--;
   return o;
@@ -14201,17 +14572,17 @@ void checkGoogleCloudAiplatformV1ListPersistentResourcesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed207(o.persistentResources!);
+    checkUnnamed214(o.persistentResources!);
   }
   buildCounterGoogleCloudAiplatformV1ListPersistentResourcesResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1PipelineJob> buildUnnamed208() => [
+core.List<api.GoogleCloudAiplatformV1PipelineJob> buildUnnamed215() => [
       buildGoogleCloudAiplatformV1PipelineJob(),
       buildGoogleCloudAiplatformV1PipelineJob(),
     ];
 
-void checkUnnamed208(core.List<api.GoogleCloudAiplatformV1PipelineJob> o) {
+void checkUnnamed215(core.List<api.GoogleCloudAiplatformV1PipelineJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1PipelineJob(o[0]);
   checkGoogleCloudAiplatformV1PipelineJob(o[1]);
@@ -14224,7 +14595,7 @@ api.GoogleCloudAiplatformV1ListPipelineJobsResponse
   buildCounterGoogleCloudAiplatformV1ListPipelineJobsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListPipelineJobsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.pipelineJobs = buildUnnamed208();
+    o.pipelineJobs = buildUnnamed215();
   }
   buildCounterGoogleCloudAiplatformV1ListPipelineJobsResponse--;
   return o;
@@ -14238,17 +14609,17 @@ void checkGoogleCloudAiplatformV1ListPipelineJobsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed208(o.pipelineJobs!);
+    checkUnnamed215(o.pipelineJobs!);
   }
   buildCounterGoogleCloudAiplatformV1ListPipelineJobsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1RagCorpus> buildUnnamed209() => [
+core.List<api.GoogleCloudAiplatformV1RagCorpus> buildUnnamed216() => [
       buildGoogleCloudAiplatformV1RagCorpus(),
       buildGoogleCloudAiplatformV1RagCorpus(),
     ];
 
-void checkUnnamed209(core.List<api.GoogleCloudAiplatformV1RagCorpus> o) {
+void checkUnnamed216(core.List<api.GoogleCloudAiplatformV1RagCorpus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1RagCorpus(o[0]);
   checkGoogleCloudAiplatformV1RagCorpus(o[1]);
@@ -14261,7 +14632,7 @@ api.GoogleCloudAiplatformV1ListRagCorporaResponse
   buildCounterGoogleCloudAiplatformV1ListRagCorporaResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListRagCorporaResponse < 3) {
     o.nextPageToken = 'foo';
-    o.ragCorpora = buildUnnamed209();
+    o.ragCorpora = buildUnnamed216();
   }
   buildCounterGoogleCloudAiplatformV1ListRagCorporaResponse--;
   return o;
@@ -14275,17 +14646,17 @@ void checkGoogleCloudAiplatformV1ListRagCorporaResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed209(o.ragCorpora!);
+    checkUnnamed216(o.ragCorpora!);
   }
   buildCounterGoogleCloudAiplatformV1ListRagCorporaResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1RagFile> buildUnnamed210() => [
+core.List<api.GoogleCloudAiplatformV1RagFile> buildUnnamed217() => [
       buildGoogleCloudAiplatformV1RagFile(),
       buildGoogleCloudAiplatformV1RagFile(),
     ];
 
-void checkUnnamed210(core.List<api.GoogleCloudAiplatformV1RagFile> o) {
+void checkUnnamed217(core.List<api.GoogleCloudAiplatformV1RagFile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1RagFile(o[0]);
   checkGoogleCloudAiplatformV1RagFile(o[1]);
@@ -14298,7 +14669,7 @@ api.GoogleCloudAiplatformV1ListRagFilesResponse
   buildCounterGoogleCloudAiplatformV1ListRagFilesResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListRagFilesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.ragFiles = buildUnnamed210();
+    o.ragFiles = buildUnnamed217();
   }
   buildCounterGoogleCloudAiplatformV1ListRagFilesResponse--;
   return o;
@@ -14312,17 +14683,17 @@ void checkGoogleCloudAiplatformV1ListRagFilesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed210(o.ragFiles!);
+    checkUnnamed217(o.ragFiles!);
   }
   buildCounterGoogleCloudAiplatformV1ListRagFilesResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1ReasoningEngine> buildUnnamed211() => [
+core.List<api.GoogleCloudAiplatformV1ReasoningEngine> buildUnnamed218() => [
       buildGoogleCloudAiplatformV1ReasoningEngine(),
       buildGoogleCloudAiplatformV1ReasoningEngine(),
     ];
 
-void checkUnnamed211(core.List<api.GoogleCloudAiplatformV1ReasoningEngine> o) {
+void checkUnnamed218(core.List<api.GoogleCloudAiplatformV1ReasoningEngine> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ReasoningEngine(o[0]);
   checkGoogleCloudAiplatformV1ReasoningEngine(o[1]);
@@ -14335,7 +14706,7 @@ api.GoogleCloudAiplatformV1ListReasoningEnginesResponse
   buildCounterGoogleCloudAiplatformV1ListReasoningEnginesResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListReasoningEnginesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.reasoningEngines = buildUnnamed211();
+    o.reasoningEngines = buildUnnamed218();
   }
   buildCounterGoogleCloudAiplatformV1ListReasoningEnginesResponse--;
   return o;
@@ -14349,17 +14720,17 @@ void checkGoogleCloudAiplatformV1ListReasoningEnginesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed211(o.reasoningEngines!);
+    checkUnnamed218(o.reasoningEngines!);
   }
   buildCounterGoogleCloudAiplatformV1ListReasoningEnginesResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1SavedQuery> buildUnnamed212() => [
+core.List<api.GoogleCloudAiplatformV1SavedQuery> buildUnnamed219() => [
       buildGoogleCloudAiplatformV1SavedQuery(),
       buildGoogleCloudAiplatformV1SavedQuery(),
     ];
 
-void checkUnnamed212(core.List<api.GoogleCloudAiplatformV1SavedQuery> o) {
+void checkUnnamed219(core.List<api.GoogleCloudAiplatformV1SavedQuery> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1SavedQuery(o[0]);
   checkGoogleCloudAiplatformV1SavedQuery(o[1]);
@@ -14372,7 +14743,7 @@ api.GoogleCloudAiplatformV1ListSavedQueriesResponse
   buildCounterGoogleCloudAiplatformV1ListSavedQueriesResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListSavedQueriesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.savedQueries = buildUnnamed212();
+    o.savedQueries = buildUnnamed219();
   }
   buildCounterGoogleCloudAiplatformV1ListSavedQueriesResponse--;
   return o;
@@ -14386,17 +14757,17 @@ void checkGoogleCloudAiplatformV1ListSavedQueriesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed212(o.savedQueries!);
+    checkUnnamed219(o.savedQueries!);
   }
   buildCounterGoogleCloudAiplatformV1ListSavedQueriesResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Schedule> buildUnnamed213() => [
+core.List<api.GoogleCloudAiplatformV1Schedule> buildUnnamed220() => [
       buildGoogleCloudAiplatformV1Schedule(),
       buildGoogleCloudAiplatformV1Schedule(),
     ];
 
-void checkUnnamed213(core.List<api.GoogleCloudAiplatformV1Schedule> o) {
+void checkUnnamed220(core.List<api.GoogleCloudAiplatformV1Schedule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Schedule(o[0]);
   checkGoogleCloudAiplatformV1Schedule(o[1]);
@@ -14409,7 +14780,7 @@ api.GoogleCloudAiplatformV1ListSchedulesResponse
   buildCounterGoogleCloudAiplatformV1ListSchedulesResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListSchedulesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.schedules = buildUnnamed213();
+    o.schedules = buildUnnamed220();
   }
   buildCounterGoogleCloudAiplatformV1ListSchedulesResponse--;
   return o;
@@ -14423,17 +14794,17 @@ void checkGoogleCloudAiplatformV1ListSchedulesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed213(o.schedules!);
+    checkUnnamed220(o.schedules!);
   }
   buildCounterGoogleCloudAiplatformV1ListSchedulesResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1SpecialistPool> buildUnnamed214() => [
+core.List<api.GoogleCloudAiplatformV1SpecialistPool> buildUnnamed221() => [
       buildGoogleCloudAiplatformV1SpecialistPool(),
       buildGoogleCloudAiplatformV1SpecialistPool(),
     ];
 
-void checkUnnamed214(core.List<api.GoogleCloudAiplatformV1SpecialistPool> o) {
+void checkUnnamed221(core.List<api.GoogleCloudAiplatformV1SpecialistPool> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1SpecialistPool(o[0]);
   checkGoogleCloudAiplatformV1SpecialistPool(o[1]);
@@ -14446,7 +14817,7 @@ api.GoogleCloudAiplatformV1ListSpecialistPoolsResponse
   buildCounterGoogleCloudAiplatformV1ListSpecialistPoolsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListSpecialistPoolsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.specialistPools = buildUnnamed214();
+    o.specialistPools = buildUnnamed221();
   }
   buildCounterGoogleCloudAiplatformV1ListSpecialistPoolsResponse--;
   return o;
@@ -14460,17 +14831,17 @@ void checkGoogleCloudAiplatformV1ListSpecialistPoolsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed214(o.specialistPools!);
+    checkUnnamed221(o.specialistPools!);
   }
   buildCounterGoogleCloudAiplatformV1ListSpecialistPoolsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Study> buildUnnamed215() => [
+core.List<api.GoogleCloudAiplatformV1Study> buildUnnamed222() => [
       buildGoogleCloudAiplatformV1Study(),
       buildGoogleCloudAiplatformV1Study(),
     ];
 
-void checkUnnamed215(core.List<api.GoogleCloudAiplatformV1Study> o) {
+void checkUnnamed222(core.List<api.GoogleCloudAiplatformV1Study> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Study(o[0]);
   checkGoogleCloudAiplatformV1Study(o[1]);
@@ -14483,7 +14854,7 @@ api.GoogleCloudAiplatformV1ListStudiesResponse
   buildCounterGoogleCloudAiplatformV1ListStudiesResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListStudiesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.studies = buildUnnamed215();
+    o.studies = buildUnnamed222();
   }
   buildCounterGoogleCloudAiplatformV1ListStudiesResponse--;
   return o;
@@ -14497,18 +14868,18 @@ void checkGoogleCloudAiplatformV1ListStudiesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed215(o.studies!);
+    checkUnnamed222(o.studies!);
   }
   buildCounterGoogleCloudAiplatformV1ListStudiesResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1TensorboardExperiment> buildUnnamed216() =>
+core.List<api.GoogleCloudAiplatformV1TensorboardExperiment> buildUnnamed223() =>
     [
       buildGoogleCloudAiplatformV1TensorboardExperiment(),
       buildGoogleCloudAiplatformV1TensorboardExperiment(),
     ];
 
-void checkUnnamed216(
+void checkUnnamed223(
     core.List<api.GoogleCloudAiplatformV1TensorboardExperiment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TensorboardExperiment(o[0]);
@@ -14524,7 +14895,7 @@ api.GoogleCloudAiplatformV1ListTensorboardExperimentsResponse
   if (buildCounterGoogleCloudAiplatformV1ListTensorboardExperimentsResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.tensorboardExperiments = buildUnnamed216();
+    o.tensorboardExperiments = buildUnnamed223();
   }
   buildCounterGoogleCloudAiplatformV1ListTensorboardExperimentsResponse--;
   return o;
@@ -14539,17 +14910,17 @@ void checkGoogleCloudAiplatformV1ListTensorboardExperimentsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed216(o.tensorboardExperiments!);
+    checkUnnamed223(o.tensorboardExperiments!);
   }
   buildCounterGoogleCloudAiplatformV1ListTensorboardExperimentsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1TensorboardRun> buildUnnamed217() => [
+core.List<api.GoogleCloudAiplatformV1TensorboardRun> buildUnnamed224() => [
       buildGoogleCloudAiplatformV1TensorboardRun(),
       buildGoogleCloudAiplatformV1TensorboardRun(),
     ];
 
-void checkUnnamed217(core.List<api.GoogleCloudAiplatformV1TensorboardRun> o) {
+void checkUnnamed224(core.List<api.GoogleCloudAiplatformV1TensorboardRun> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TensorboardRun(o[0]);
   checkGoogleCloudAiplatformV1TensorboardRun(o[1]);
@@ -14562,7 +14933,7 @@ api.GoogleCloudAiplatformV1ListTensorboardRunsResponse
   buildCounterGoogleCloudAiplatformV1ListTensorboardRunsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListTensorboardRunsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.tensorboardRuns = buildUnnamed217();
+    o.tensorboardRuns = buildUnnamed224();
   }
   buildCounterGoogleCloudAiplatformV1ListTensorboardRunsResponse--;
   return o;
@@ -14576,18 +14947,18 @@ void checkGoogleCloudAiplatformV1ListTensorboardRunsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed217(o.tensorboardRuns!);
+    checkUnnamed224(o.tensorboardRuns!);
   }
   buildCounterGoogleCloudAiplatformV1ListTensorboardRunsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1TensorboardTimeSeries> buildUnnamed218() =>
+core.List<api.GoogleCloudAiplatformV1TensorboardTimeSeries> buildUnnamed225() =>
     [
       buildGoogleCloudAiplatformV1TensorboardTimeSeries(),
       buildGoogleCloudAiplatformV1TensorboardTimeSeries(),
     ];
 
-void checkUnnamed218(
+void checkUnnamed225(
     core.List<api.GoogleCloudAiplatformV1TensorboardTimeSeries> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TensorboardTimeSeries(o[0]);
@@ -14603,7 +14974,7 @@ api.GoogleCloudAiplatformV1ListTensorboardTimeSeriesResponse
   if (buildCounterGoogleCloudAiplatformV1ListTensorboardTimeSeriesResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.tensorboardTimeSeries = buildUnnamed218();
+    o.tensorboardTimeSeries = buildUnnamed225();
   }
   buildCounterGoogleCloudAiplatformV1ListTensorboardTimeSeriesResponse--;
   return o;
@@ -14618,17 +14989,17 @@ void checkGoogleCloudAiplatformV1ListTensorboardTimeSeriesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed218(o.tensorboardTimeSeries!);
+    checkUnnamed225(o.tensorboardTimeSeries!);
   }
   buildCounterGoogleCloudAiplatformV1ListTensorboardTimeSeriesResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Tensorboard> buildUnnamed219() => [
+core.List<api.GoogleCloudAiplatformV1Tensorboard> buildUnnamed226() => [
       buildGoogleCloudAiplatformV1Tensorboard(),
       buildGoogleCloudAiplatformV1Tensorboard(),
     ];
 
-void checkUnnamed219(core.List<api.GoogleCloudAiplatformV1Tensorboard> o) {
+void checkUnnamed226(core.List<api.GoogleCloudAiplatformV1Tensorboard> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Tensorboard(o[0]);
   checkGoogleCloudAiplatformV1Tensorboard(o[1]);
@@ -14641,7 +15012,7 @@ api.GoogleCloudAiplatformV1ListTensorboardsResponse
   buildCounterGoogleCloudAiplatformV1ListTensorboardsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListTensorboardsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.tensorboards = buildUnnamed219();
+    o.tensorboards = buildUnnamed226();
   }
   buildCounterGoogleCloudAiplatformV1ListTensorboardsResponse--;
   return o;
@@ -14655,17 +15026,17 @@ void checkGoogleCloudAiplatformV1ListTensorboardsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed219(o.tensorboards!);
+    checkUnnamed226(o.tensorboards!);
   }
   buildCounterGoogleCloudAiplatformV1ListTensorboardsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1TrainingPipeline> buildUnnamed220() => [
+core.List<api.GoogleCloudAiplatformV1TrainingPipeline> buildUnnamed227() => [
       buildGoogleCloudAiplatformV1TrainingPipeline(),
       buildGoogleCloudAiplatformV1TrainingPipeline(),
     ];
 
-void checkUnnamed220(core.List<api.GoogleCloudAiplatformV1TrainingPipeline> o) {
+void checkUnnamed227(core.List<api.GoogleCloudAiplatformV1TrainingPipeline> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TrainingPipeline(o[0]);
   checkGoogleCloudAiplatformV1TrainingPipeline(o[1]);
@@ -14678,7 +15049,7 @@ api.GoogleCloudAiplatformV1ListTrainingPipelinesResponse
   buildCounterGoogleCloudAiplatformV1ListTrainingPipelinesResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListTrainingPipelinesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.trainingPipelines = buildUnnamed220();
+    o.trainingPipelines = buildUnnamed227();
   }
   buildCounterGoogleCloudAiplatformV1ListTrainingPipelinesResponse--;
   return o;
@@ -14692,17 +15063,17 @@ void checkGoogleCloudAiplatformV1ListTrainingPipelinesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed220(o.trainingPipelines!);
+    checkUnnamed227(o.trainingPipelines!);
   }
   buildCounterGoogleCloudAiplatformV1ListTrainingPipelinesResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Trial> buildUnnamed221() => [
+core.List<api.GoogleCloudAiplatformV1Trial> buildUnnamed228() => [
       buildGoogleCloudAiplatformV1Trial(),
       buildGoogleCloudAiplatformV1Trial(),
     ];
 
-void checkUnnamed221(core.List<api.GoogleCloudAiplatformV1Trial> o) {
+void checkUnnamed228(core.List<api.GoogleCloudAiplatformV1Trial> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Trial(o[0]);
   checkGoogleCloudAiplatformV1Trial(o[1]);
@@ -14715,7 +15086,7 @@ api.GoogleCloudAiplatformV1ListTrialsResponse
   buildCounterGoogleCloudAiplatformV1ListTrialsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListTrialsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.trials = buildUnnamed221();
+    o.trials = buildUnnamed228();
   }
   buildCounterGoogleCloudAiplatformV1ListTrialsResponse--;
   return o;
@@ -14729,17 +15100,17 @@ void checkGoogleCloudAiplatformV1ListTrialsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed221(o.trials!);
+    checkUnnamed228(o.trials!);
   }
   buildCounterGoogleCloudAiplatformV1ListTrialsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1TuningJob> buildUnnamed222() => [
+core.List<api.GoogleCloudAiplatformV1TuningJob> buildUnnamed229() => [
       buildGoogleCloudAiplatformV1TuningJob(),
       buildGoogleCloudAiplatformV1TuningJob(),
     ];
 
-void checkUnnamed222(core.List<api.GoogleCloudAiplatformV1TuningJob> o) {
+void checkUnnamed229(core.List<api.GoogleCloudAiplatformV1TuningJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TuningJob(o[0]);
   checkGoogleCloudAiplatformV1TuningJob(o[1]);
@@ -14752,7 +15123,7 @@ api.GoogleCloudAiplatformV1ListTuningJobsResponse
   buildCounterGoogleCloudAiplatformV1ListTuningJobsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ListTuningJobsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.tuningJobs = buildUnnamed222();
+    o.tuningJobs = buildUnnamed229();
   }
   buildCounterGoogleCloudAiplatformV1ListTuningJobsResponse--;
   return o;
@@ -14766,18 +15137,18 @@ void checkGoogleCloudAiplatformV1ListTuningJobsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed222(o.tuningJobs!);
+    checkUnnamed229(o.tuningJobs!);
   }
   buildCounterGoogleCloudAiplatformV1ListTuningJobsResponse--;
 }
 
 core.List<api.GoogleCloudAiplatformV1LogprobsResultCandidate>
-    buildUnnamed223() => [
+    buildUnnamed230() => [
           buildGoogleCloudAiplatformV1LogprobsResultCandidate(),
           buildGoogleCloudAiplatformV1LogprobsResultCandidate(),
         ];
 
-void checkUnnamed223(
+void checkUnnamed230(
     core.List<api.GoogleCloudAiplatformV1LogprobsResultCandidate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1LogprobsResultCandidate(o[0]);
@@ -14785,12 +15156,12 @@ void checkUnnamed223(
 }
 
 core.List<api.GoogleCloudAiplatformV1LogprobsResultTopCandidates>
-    buildUnnamed224() => [
+    buildUnnamed231() => [
           buildGoogleCloudAiplatformV1LogprobsResultTopCandidates(),
           buildGoogleCloudAiplatformV1LogprobsResultTopCandidates(),
         ];
 
-void checkUnnamed224(
+void checkUnnamed231(
     core.List<api.GoogleCloudAiplatformV1LogprobsResultTopCandidates> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1LogprobsResultTopCandidates(o[0]);
@@ -14803,8 +15174,8 @@ api.GoogleCloudAiplatformV1LogprobsResult
   final o = api.GoogleCloudAiplatformV1LogprobsResult();
   buildCounterGoogleCloudAiplatformV1LogprobsResult++;
   if (buildCounterGoogleCloudAiplatformV1LogprobsResult < 3) {
-    o.chosenCandidates = buildUnnamed223();
-    o.topCandidates = buildUnnamed224();
+    o.chosenCandidates = buildUnnamed230();
+    o.topCandidates = buildUnnamed231();
   }
   buildCounterGoogleCloudAiplatformV1LogprobsResult--;
   return o;
@@ -14814,8 +15185,8 @@ void checkGoogleCloudAiplatformV1LogprobsResult(
     api.GoogleCloudAiplatformV1LogprobsResult o) {
   buildCounterGoogleCloudAiplatformV1LogprobsResult++;
   if (buildCounterGoogleCloudAiplatformV1LogprobsResult < 3) {
-    checkUnnamed223(o.chosenCandidates!);
-    checkUnnamed224(o.topCandidates!);
+    checkUnnamed230(o.chosenCandidates!);
+    checkUnnamed231(o.topCandidates!);
   }
   buildCounterGoogleCloudAiplatformV1LogprobsResult--;
 }
@@ -14855,12 +15226,12 @@ void checkGoogleCloudAiplatformV1LogprobsResultCandidate(
 }
 
 core.List<api.GoogleCloudAiplatformV1LogprobsResultCandidate>
-    buildUnnamed225() => [
+    buildUnnamed232() => [
           buildGoogleCloudAiplatformV1LogprobsResultCandidate(),
           buildGoogleCloudAiplatformV1LogprobsResultCandidate(),
         ];
 
-void checkUnnamed225(
+void checkUnnamed232(
     core.List<api.GoogleCloudAiplatformV1LogprobsResultCandidate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1LogprobsResultCandidate(o[0]);
@@ -14873,7 +15244,7 @@ api.GoogleCloudAiplatformV1LogprobsResultTopCandidates
   final o = api.GoogleCloudAiplatformV1LogprobsResultTopCandidates();
   buildCounterGoogleCloudAiplatformV1LogprobsResultTopCandidates++;
   if (buildCounterGoogleCloudAiplatformV1LogprobsResultTopCandidates < 3) {
-    o.candidates = buildUnnamed225();
+    o.candidates = buildUnnamed232();
   }
   buildCounterGoogleCloudAiplatformV1LogprobsResultTopCandidates--;
   return o;
@@ -14883,7 +15254,7 @@ void checkGoogleCloudAiplatformV1LogprobsResultTopCandidates(
     api.GoogleCloudAiplatformV1LogprobsResultTopCandidates o) {
   buildCounterGoogleCloudAiplatformV1LogprobsResultTopCandidates++;
   if (buildCounterGoogleCloudAiplatformV1LogprobsResultTopCandidates < 3) {
-    checkUnnamed225(o.candidates!);
+    checkUnnamed232(o.candidates!);
   }
   buildCounterGoogleCloudAiplatformV1LogprobsResultTopCandidates--;
 }
@@ -14977,12 +15348,12 @@ void checkGoogleCloudAiplatformV1ManualBatchTuningParameters(
   buildCounterGoogleCloudAiplatformV1ManualBatchTuningParameters--;
 }
 
-core.List<api.GoogleCloudAiplatformV1MeasurementMetric> buildUnnamed226() => [
+core.List<api.GoogleCloudAiplatformV1MeasurementMetric> buildUnnamed233() => [
       buildGoogleCloudAiplatformV1MeasurementMetric(),
       buildGoogleCloudAiplatformV1MeasurementMetric(),
     ];
 
-void checkUnnamed226(
+void checkUnnamed233(
     core.List<api.GoogleCloudAiplatformV1MeasurementMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1MeasurementMetric(o[0]);
@@ -14996,7 +15367,7 @@ api.GoogleCloudAiplatformV1Measurement
   buildCounterGoogleCloudAiplatformV1Measurement++;
   if (buildCounterGoogleCloudAiplatformV1Measurement < 3) {
     o.elapsedDuration = 'foo';
-    o.metrics = buildUnnamed226();
+    o.metrics = buildUnnamed233();
     o.stepCount = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1Measurement--;
@@ -15011,7 +15382,7 @@ void checkGoogleCloudAiplatformV1Measurement(
       o.elapsedDuration!,
       unittest.equals('foo'),
     );
-    checkUnnamed226(o.metrics!);
+    checkUnnamed233(o.metrics!);
     unittest.expect(
       o.stepCount!,
       unittest.equals('foo'),
@@ -15049,12 +15420,12 @@ void checkGoogleCloudAiplatformV1MeasurementMetric(
   buildCounterGoogleCloudAiplatformV1MeasurementMetric--;
 }
 
-core.List<core.String> buildUnnamed227() => [
+core.List<core.String> buildUnnamed234() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed227(core.List<core.String> o) {
+void checkUnnamed234(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -15072,7 +15443,7 @@ api.GoogleCloudAiplatformV1MergeVersionAliasesRequest
   final o = api.GoogleCloudAiplatformV1MergeVersionAliasesRequest();
   buildCounterGoogleCloudAiplatformV1MergeVersionAliasesRequest++;
   if (buildCounterGoogleCloudAiplatformV1MergeVersionAliasesRequest < 3) {
-    o.versionAliases = buildUnnamed227();
+    o.versionAliases = buildUnnamed234();
   }
   buildCounterGoogleCloudAiplatformV1MergeVersionAliasesRequest--;
   return o;
@@ -15082,7 +15453,7 @@ void checkGoogleCloudAiplatformV1MergeVersionAliasesRequest(
     api.GoogleCloudAiplatformV1MergeVersionAliasesRequest o) {
   buildCounterGoogleCloudAiplatformV1MergeVersionAliasesRequest++;
   if (buildCounterGoogleCloudAiplatformV1MergeVersionAliasesRequest < 3) {
-    checkUnnamed227(o.versionAliases!);
+    checkUnnamed234(o.versionAliases!);
   }
   buildCounterGoogleCloudAiplatformV1MergeVersionAliasesRequest--;
 }
@@ -15225,6 +15596,52 @@ void checkGoogleCloudAiplatformV1MetadataStoreMetadataStoreState(
     );
   }
   buildCounterGoogleCloudAiplatformV1MetadataStoreMetadataStoreState--;
+}
+
+core.List<core.String> buildUnnamed235() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed235(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGoogleCloudAiplatformV1Metric = 0;
+api.GoogleCloudAiplatformV1Metric buildGoogleCloudAiplatformV1Metric() {
+  final o = api.GoogleCloudAiplatformV1Metric();
+  buildCounterGoogleCloudAiplatformV1Metric++;
+  if (buildCounterGoogleCloudAiplatformV1Metric < 3) {
+    o.aggregationMetrics = buildUnnamed235();
+    o.bleuSpec = buildGoogleCloudAiplatformV1BleuSpec();
+    o.exactMatchSpec = buildGoogleCloudAiplatformV1ExactMatchSpec();
+    o.pairwiseMetricSpec = buildGoogleCloudAiplatformV1PairwiseMetricSpec();
+    o.pointwiseMetricSpec = buildGoogleCloudAiplatformV1PointwiseMetricSpec();
+    o.rougeSpec = buildGoogleCloudAiplatformV1RougeSpec();
+  }
+  buildCounterGoogleCloudAiplatformV1Metric--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1Metric(api.GoogleCloudAiplatformV1Metric o) {
+  buildCounterGoogleCloudAiplatformV1Metric++;
+  if (buildCounterGoogleCloudAiplatformV1Metric < 3) {
+    checkUnnamed235(o.aggregationMetrics!);
+    checkGoogleCloudAiplatformV1BleuSpec(o.bleuSpec!);
+    checkGoogleCloudAiplatformV1ExactMatchSpec(o.exactMatchSpec!);
+    checkGoogleCloudAiplatformV1PairwiseMetricSpec(o.pairwiseMetricSpec!);
+    checkGoogleCloudAiplatformV1PointwiseMetricSpec(o.pointwiseMetricSpec!);
+    checkGoogleCloudAiplatformV1RougeSpec(o.rougeSpec!);
+  }
+  buildCounterGoogleCloudAiplatformV1Metric--;
 }
 
 core.int buildCounterGoogleCloudAiplatformV1MetricxInput = 0;
@@ -15446,12 +15863,12 @@ void checkGoogleCloudAiplatformV1MigratableResourceAutomlModel(
 core.List<
         api
         .GoogleCloudAiplatformV1MigratableResourceDataLabelingDatasetDataLabelingAnnotatedDataset>
-    buildUnnamed228() => [
+    buildUnnamed236() => [
           buildGoogleCloudAiplatformV1MigratableResourceDataLabelingDatasetDataLabelingAnnotatedDataset(),
           buildGoogleCloudAiplatformV1MigratableResourceDataLabelingDatasetDataLabelingAnnotatedDataset(),
         ];
 
-void checkUnnamed228(
+void checkUnnamed236(
     core.List<
             api
             .GoogleCloudAiplatformV1MigratableResourceDataLabelingDatasetDataLabelingAnnotatedDataset>
@@ -15472,7 +15889,7 @@ api.GoogleCloudAiplatformV1MigratableResourceDataLabelingDataset
   buildCounterGoogleCloudAiplatformV1MigratableResourceDataLabelingDataset++;
   if (buildCounterGoogleCloudAiplatformV1MigratableResourceDataLabelingDataset <
       3) {
-    o.dataLabelingAnnotatedDatasets = buildUnnamed228();
+    o.dataLabelingAnnotatedDatasets = buildUnnamed236();
     o.dataset = 'foo';
     o.datasetDisplayName = 'foo';
   }
@@ -15485,7 +15902,7 @@ void checkGoogleCloudAiplatformV1MigratableResourceDataLabelingDataset(
   buildCounterGoogleCloudAiplatformV1MigratableResourceDataLabelingDataset++;
   if (buildCounterGoogleCloudAiplatformV1MigratableResourceDataLabelingDataset <
       3) {
-    checkUnnamed228(o.dataLabelingAnnotatedDatasets!);
+    checkUnnamed236(o.dataLabelingAnnotatedDatasets!);
     unittest.expect(
       o.dataset!,
       unittest.equals('foo'),
@@ -15674,12 +16091,12 @@ void checkGoogleCloudAiplatformV1MigrateResourceRequestMigrateAutomlModelConfig(
 core.List<
         api
         .GoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetConfigMigrateDataLabelingAnnotatedDatasetConfig>
-    buildUnnamed229() => [
+    buildUnnamed237() => [
           buildGoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetConfigMigrateDataLabelingAnnotatedDatasetConfig(),
           buildGoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetConfigMigrateDataLabelingAnnotatedDatasetConfig(),
         ];
 
-void checkUnnamed229(
+void checkUnnamed237(
     core.List<
             api
             .GoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetConfigMigrateDataLabelingAnnotatedDatasetConfig>
@@ -15703,7 +16120,7 @@ api.GoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetConfi
       3) {
     o.dataset = 'foo';
     o.datasetDisplayName = 'foo';
-    o.migrateDataLabelingAnnotatedDatasetConfigs = buildUnnamed229();
+    o.migrateDataLabelingAnnotatedDatasetConfigs = buildUnnamed237();
   }
   buildCounterGoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetConfig--;
   return o;
@@ -15723,7 +16140,7 @@ void checkGoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatase
       o.datasetDisplayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed229(o.migrateDataLabelingAnnotatedDatasetConfigs!);
+    checkUnnamed237(o.migrateDataLabelingAnnotatedDatasetConfigs!);
   }
   buildCounterGoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetConfig--;
 }
@@ -15798,23 +16215,52 @@ void checkGoogleCloudAiplatformV1MigrateResourceRequestMigrateMlEngineModelVersi
   buildCounterGoogleCloudAiplatformV1MigrateResourceRequestMigrateMlEngineModelVersionConfig--;
 }
 
-core.List<api.GoogleCloudAiplatformV1DeployedModelRef> buildUnnamed230() => [
+core.int buildCounterGoogleCloudAiplatformV1ModalityTokenCount = 0;
+api.GoogleCloudAiplatformV1ModalityTokenCount
+    buildGoogleCloudAiplatformV1ModalityTokenCount() {
+  final o = api.GoogleCloudAiplatformV1ModalityTokenCount();
+  buildCounterGoogleCloudAiplatformV1ModalityTokenCount++;
+  if (buildCounterGoogleCloudAiplatformV1ModalityTokenCount < 3) {
+    o.modality = 'foo';
+    o.tokenCount = 42;
+  }
+  buildCounterGoogleCloudAiplatformV1ModalityTokenCount--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1ModalityTokenCount(
+    api.GoogleCloudAiplatformV1ModalityTokenCount o) {
+  buildCounterGoogleCloudAiplatformV1ModalityTokenCount++;
+  if (buildCounterGoogleCloudAiplatformV1ModalityTokenCount < 3) {
+    unittest.expect(
+      o.modality!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tokenCount!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterGoogleCloudAiplatformV1ModalityTokenCount--;
+}
+
+core.List<api.GoogleCloudAiplatformV1DeployedModelRef> buildUnnamed238() => [
       buildGoogleCloudAiplatformV1DeployedModelRef(),
       buildGoogleCloudAiplatformV1DeployedModelRef(),
     ];
 
-void checkUnnamed230(core.List<api.GoogleCloudAiplatformV1DeployedModelRef> o) {
+void checkUnnamed238(core.List<api.GoogleCloudAiplatformV1DeployedModelRef> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1DeployedModelRef(o[0]);
   checkGoogleCloudAiplatformV1DeployedModelRef(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed231() => {
+core.Map<core.String, core.String> buildUnnamed239() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed231(core.Map<core.String, core.String> o) {
+void checkUnnamed239(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -15826,12 +16272,12 @@ void checkUnnamed231(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed232() => [
+core.List<core.String> buildUnnamed240() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed232(core.List<core.String> o) {
+void checkUnnamed240(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -15843,24 +16289,24 @@ void checkUnnamed232(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudAiplatformV1ModelExportFormat> buildUnnamed233() => [
+core.List<api.GoogleCloudAiplatformV1ModelExportFormat> buildUnnamed241() => [
       buildGoogleCloudAiplatformV1ModelExportFormat(),
       buildGoogleCloudAiplatformV1ModelExportFormat(),
     ];
 
-void checkUnnamed233(
+void checkUnnamed241(
     core.List<api.GoogleCloudAiplatformV1ModelExportFormat> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ModelExportFormat(o[0]);
   checkGoogleCloudAiplatformV1ModelExportFormat(o[1]);
 }
 
-core.List<core.String> buildUnnamed234() => [
+core.List<core.String> buildUnnamed242() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed234(core.List<core.String> o) {
+void checkUnnamed242(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -15872,12 +16318,12 @@ void checkUnnamed234(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed235() => [
+core.List<core.String> buildUnnamed243() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed235(core.List<core.String> o) {
+void checkUnnamed243(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -15889,12 +16335,12 @@ void checkUnnamed235(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed236() => [
+core.List<core.String> buildUnnamed244() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed236(core.List<core.String> o) {
+void checkUnnamed244(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -15916,13 +16362,14 @@ api.GoogleCloudAiplatformV1Model buildGoogleCloudAiplatformV1Model() {
     o.containerSpec = buildGoogleCloudAiplatformV1ModelContainerSpec();
     o.createTime = 'foo';
     o.dataStats = buildGoogleCloudAiplatformV1ModelDataStats();
-    o.deployedModels = buildUnnamed230();
+    o.defaultCheckpointId = 'foo';
+    o.deployedModels = buildUnnamed238();
     o.description = 'foo';
     o.displayName = 'foo';
     o.encryptionSpec = buildGoogleCloudAiplatformV1EncryptionSpec();
     o.etag = 'foo';
     o.explanationSpec = buildGoogleCloudAiplatformV1ExplanationSpec();
-    o.labels = buildUnnamed231();
+    o.labels = buildUnnamed239();
     o.metadata = {
       'list': [1, 2, 3],
       'bool': true,
@@ -15937,13 +16384,13 @@ api.GoogleCloudAiplatformV1Model buildGoogleCloudAiplatformV1Model() {
     o.predictSchemata = buildGoogleCloudAiplatformV1PredictSchemata();
     o.satisfiesPzi = true;
     o.satisfiesPzs = true;
-    o.supportedDeploymentResourcesTypes = buildUnnamed232();
-    o.supportedExportFormats = buildUnnamed233();
-    o.supportedInputStorageFormats = buildUnnamed234();
-    o.supportedOutputStorageFormats = buildUnnamed235();
+    o.supportedDeploymentResourcesTypes = buildUnnamed240();
+    o.supportedExportFormats = buildUnnamed241();
+    o.supportedInputStorageFormats = buildUnnamed242();
+    o.supportedOutputStorageFormats = buildUnnamed243();
     o.trainingPipeline = 'foo';
     o.updateTime = 'foo';
-    o.versionAliases = buildUnnamed236();
+    o.versionAliases = buildUnnamed244();
     o.versionCreateTime = 'foo';
     o.versionDescription = 'foo';
     o.versionId = 'foo';
@@ -15967,7 +16414,11 @@ void checkGoogleCloudAiplatformV1Model(api.GoogleCloudAiplatformV1Model o) {
       unittest.equals('foo'),
     );
     checkGoogleCloudAiplatformV1ModelDataStats(o.dataStats!);
-    checkUnnamed230(o.deployedModels!);
+    unittest.expect(
+      o.defaultCheckpointId!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed238(o.deployedModels!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -15982,7 +16433,7 @@ void checkGoogleCloudAiplatformV1Model(api.GoogleCloudAiplatformV1Model o) {
       unittest.equals('foo'),
     );
     checkGoogleCloudAiplatformV1ExplanationSpec(o.explanationSpec!);
-    checkUnnamed231(o.labels!);
+    checkUnnamed239(o.labels!);
     var casted47 = (o.metadata!) as core.Map;
     unittest.expect(casted47, unittest.hasLength(3));
     unittest.expect(
@@ -16018,10 +16469,10 @@ void checkGoogleCloudAiplatformV1Model(api.GoogleCloudAiplatformV1Model o) {
     checkGoogleCloudAiplatformV1PredictSchemata(o.predictSchemata!);
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
-    checkUnnamed232(o.supportedDeploymentResourcesTypes!);
-    checkUnnamed233(o.supportedExportFormats!);
-    checkUnnamed234(o.supportedInputStorageFormats!);
-    checkUnnamed235(o.supportedOutputStorageFormats!);
+    checkUnnamed240(o.supportedDeploymentResourcesTypes!);
+    checkUnnamed241(o.supportedExportFormats!);
+    checkUnnamed242(o.supportedInputStorageFormats!);
+    checkUnnamed243(o.supportedOutputStorageFormats!);
     unittest.expect(
       o.trainingPipeline!,
       unittest.equals('foo'),
@@ -16030,7 +16481,7 @@ void checkGoogleCloudAiplatformV1Model(api.GoogleCloudAiplatformV1Model o) {
       o.updateTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed236(o.versionAliases!);
+    checkUnnamed244(o.versionAliases!);
     unittest.expect(
       o.versionCreateTime!,
       unittest.equals('foo'),
@@ -16074,12 +16525,12 @@ void checkGoogleCloudAiplatformV1ModelBaseModelSource(
   buildCounterGoogleCloudAiplatformV1ModelBaseModelSource--;
 }
 
-core.List<core.String> buildUnnamed237() => [
+core.List<core.String> buildUnnamed245() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed237(core.List<core.String> o) {
+void checkUnnamed245(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -16091,12 +16542,12 @@ void checkUnnamed237(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed238() => [
+core.List<core.String> buildUnnamed246() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed238(core.List<core.String> o) {
+void checkUnnamed246(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -16108,34 +16559,34 @@ void checkUnnamed238(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudAiplatformV1EnvVar> buildUnnamed239() => [
+core.List<api.GoogleCloudAiplatformV1EnvVar> buildUnnamed247() => [
       buildGoogleCloudAiplatformV1EnvVar(),
       buildGoogleCloudAiplatformV1EnvVar(),
     ];
 
-void checkUnnamed239(core.List<api.GoogleCloudAiplatformV1EnvVar> o) {
+void checkUnnamed247(core.List<api.GoogleCloudAiplatformV1EnvVar> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1EnvVar(o[0]);
   checkGoogleCloudAiplatformV1EnvVar(o[1]);
 }
 
-core.List<api.GoogleCloudAiplatformV1Port> buildUnnamed240() => [
+core.List<api.GoogleCloudAiplatformV1Port> buildUnnamed248() => [
       buildGoogleCloudAiplatformV1Port(),
       buildGoogleCloudAiplatformV1Port(),
     ];
 
-void checkUnnamed240(core.List<api.GoogleCloudAiplatformV1Port> o) {
+void checkUnnamed248(core.List<api.GoogleCloudAiplatformV1Port> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Port(o[0]);
   checkGoogleCloudAiplatformV1Port(o[1]);
 }
 
-core.List<api.GoogleCloudAiplatformV1Port> buildUnnamed241() => [
+core.List<api.GoogleCloudAiplatformV1Port> buildUnnamed249() => [
       buildGoogleCloudAiplatformV1Port(),
       buildGoogleCloudAiplatformV1Port(),
     ];
 
-void checkUnnamed241(core.List<api.GoogleCloudAiplatformV1Port> o) {
+void checkUnnamed249(core.List<api.GoogleCloudAiplatformV1Port> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Port(o[0]);
   checkGoogleCloudAiplatformV1Port(o[1]);
@@ -16147,16 +16598,16 @@ api.GoogleCloudAiplatformV1ModelContainerSpec
   final o = api.GoogleCloudAiplatformV1ModelContainerSpec();
   buildCounterGoogleCloudAiplatformV1ModelContainerSpec++;
   if (buildCounterGoogleCloudAiplatformV1ModelContainerSpec < 3) {
-    o.args = buildUnnamed237();
-    o.command = buildUnnamed238();
+    o.args = buildUnnamed245();
+    o.command = buildUnnamed246();
     o.deploymentTimeout = 'foo';
-    o.env = buildUnnamed239();
-    o.grpcPorts = buildUnnamed240();
+    o.env = buildUnnamed247();
+    o.grpcPorts = buildUnnamed248();
     o.healthProbe = buildGoogleCloudAiplatformV1Probe();
     o.healthRoute = 'foo';
     o.imageUri = 'foo';
     o.livenessProbe = buildGoogleCloudAiplatformV1Probe();
-    o.ports = buildUnnamed241();
+    o.ports = buildUnnamed249();
     o.predictRoute = 'foo';
     o.sharedMemorySizeMb = 'foo';
     o.startupProbe = buildGoogleCloudAiplatformV1Probe();
@@ -16169,14 +16620,14 @@ void checkGoogleCloudAiplatformV1ModelContainerSpec(
     api.GoogleCloudAiplatformV1ModelContainerSpec o) {
   buildCounterGoogleCloudAiplatformV1ModelContainerSpec++;
   if (buildCounterGoogleCloudAiplatformV1ModelContainerSpec < 3) {
-    checkUnnamed237(o.args!);
-    checkUnnamed238(o.command!);
+    checkUnnamed245(o.args!);
+    checkUnnamed246(o.command!);
     unittest.expect(
       o.deploymentTimeout!,
       unittest.equals('foo'),
     );
-    checkUnnamed239(o.env!);
-    checkUnnamed240(o.grpcPorts!);
+    checkUnnamed247(o.env!);
+    checkUnnamed248(o.grpcPorts!);
     checkGoogleCloudAiplatformV1Probe(o.healthProbe!);
     unittest.expect(
       o.healthRoute!,
@@ -16187,7 +16638,7 @@ void checkGoogleCloudAiplatformV1ModelContainerSpec(
       unittest.equals('foo'),
     );
     checkGoogleCloudAiplatformV1Probe(o.livenessProbe!);
-    checkUnnamed241(o.ports!);
+    checkUnnamed249(o.ports!);
     unittest.expect(
       o.predictRoute!,
       unittest.equals('foo'),
@@ -16294,12 +16745,12 @@ void checkGoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTable(
 }
 
 core.List<api.GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTable>
-    buildUnnamed242() => [
+    buildUnnamed250() => [
           buildGoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTable(),
           buildGoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTable(),
         ];
 
-void checkUnnamed242(
+void checkUnnamed250(
     core.List<api.GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTable>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -16307,12 +16758,12 @@ void checkUnnamed242(
   checkGoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTable(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed243() => {
+core.Map<core.String, core.String> buildUnnamed251() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed243(core.Map<core.String, core.String> o) {
+void checkUnnamed251(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -16325,12 +16776,12 @@ void checkUnnamed243(core.Map<core.String, core.String> o) {
 }
 
 core.List<api.GoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfig>
-    buildUnnamed244() => [
+    buildUnnamed252() => [
           buildGoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfig(),
           buildGoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfig(),
         ];
 
-void checkUnnamed244(
+void checkUnnamed252(
     core.List<
             api.GoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfig>
         o) {
@@ -16346,19 +16797,19 @@ api.GoogleCloudAiplatformV1ModelDeploymentMonitoringJob
   buildCounterGoogleCloudAiplatformV1ModelDeploymentMonitoringJob++;
   if (buildCounterGoogleCloudAiplatformV1ModelDeploymentMonitoringJob < 3) {
     o.analysisInstanceSchemaUri = 'foo';
-    o.bigqueryTables = buildUnnamed242();
+    o.bigqueryTables = buildUnnamed250();
     o.createTime = 'foo';
     o.displayName = 'foo';
     o.enableMonitoringPipelineLogs = true;
     o.encryptionSpec = buildGoogleCloudAiplatformV1EncryptionSpec();
     o.endpoint = 'foo';
     o.error = buildGoogleRpcStatus();
-    o.labels = buildUnnamed243();
+    o.labels = buildUnnamed251();
     o.latestMonitoringPipelineMetadata =
         buildGoogleCloudAiplatformV1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadata();
     o.logTtl = 'foo';
     o.loggingSamplingStrategy = buildGoogleCloudAiplatformV1SamplingStrategy();
-    o.modelDeploymentMonitoringObjectiveConfigs = buildUnnamed244();
+    o.modelDeploymentMonitoringObjectiveConfigs = buildUnnamed252();
     o.modelDeploymentMonitoringScheduleConfig =
         buildGoogleCloudAiplatformV1ModelDeploymentMonitoringScheduleConfig();
     o.modelMonitoringAlertConfig =
@@ -16391,7 +16842,7 @@ void checkGoogleCloudAiplatformV1ModelDeploymentMonitoringJob(
       o.analysisInstanceSchemaUri!,
       unittest.equals('foo'),
     );
-    checkUnnamed242(o.bigqueryTables!);
+    checkUnnamed250(o.bigqueryTables!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -16407,7 +16858,7 @@ void checkGoogleCloudAiplatformV1ModelDeploymentMonitoringJob(
       unittest.equals('foo'),
     );
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed243(o.labels!);
+    checkUnnamed251(o.labels!);
     checkGoogleCloudAiplatformV1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadata(
         o.latestMonitoringPipelineMetadata!);
     unittest.expect(
@@ -16415,7 +16866,7 @@ void checkGoogleCloudAiplatformV1ModelDeploymentMonitoringJob(
       unittest.equals('foo'),
     );
     checkGoogleCloudAiplatformV1SamplingStrategy(o.loggingSamplingStrategy!);
-    checkUnnamed244(o.modelDeploymentMonitoringObjectiveConfigs!);
+    checkUnnamed252(o.modelDeploymentMonitoringObjectiveConfigs!);
     checkGoogleCloudAiplatformV1ModelDeploymentMonitoringScheduleConfig(
         o.modelDeploymentMonitoringScheduleConfig!);
     checkGoogleCloudAiplatformV1ModelMonitoringAlertConfig(
@@ -16567,12 +17018,12 @@ void checkGoogleCloudAiplatformV1ModelDeploymentMonitoringScheduleConfig(
 core.List<
         api
         .GoogleCloudAiplatformV1ModelEvaluationModelEvaluationExplanationSpec>
-    buildUnnamed245() => [
+    buildUnnamed253() => [
           buildGoogleCloudAiplatformV1ModelEvaluationModelEvaluationExplanationSpec(),
           buildGoogleCloudAiplatformV1ModelEvaluationModelEvaluationExplanationSpec(),
         ];
 
-void checkUnnamed245(
+void checkUnnamed253(
     core.List<
             api
             .GoogleCloudAiplatformV1ModelEvaluationModelEvaluationExplanationSpec>
@@ -16584,12 +17035,12 @@ void checkUnnamed245(
       o[1]);
 }
 
-core.List<core.String> buildUnnamed246() => [
+core.List<core.String> buildUnnamed254() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed246(core.List<core.String> o) {
+void checkUnnamed254(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -16611,7 +17062,7 @@ api.GoogleCloudAiplatformV1ModelEvaluation
     o.createTime = 'foo';
     o.dataItemSchemaUri = 'foo';
     o.displayName = 'foo';
-    o.explanationSpecs = buildUnnamed245();
+    o.explanationSpecs = buildUnnamed253();
     o.metadata = {
       'list': [1, 2, 3],
       'bool': true,
@@ -16625,7 +17076,7 @@ api.GoogleCloudAiplatformV1ModelEvaluation
     o.metricsSchemaUri = 'foo';
     o.modelExplanation = buildGoogleCloudAiplatformV1ModelExplanation();
     o.name = 'foo';
-    o.sliceDimensions = buildUnnamed246();
+    o.sliceDimensions = buildUnnamed254();
   }
   buildCounterGoogleCloudAiplatformV1ModelEvaluation--;
   return o;
@@ -16651,7 +17102,7 @@ void checkGoogleCloudAiplatformV1ModelEvaluation(
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed245(o.explanationSpecs!);
+    checkUnnamed253(o.explanationSpecs!);
     var casted49 = (o.metadata!) as core.Map;
     unittest.expect(casted49, unittest.hasLength(3));
     unittest.expect(
@@ -16689,7 +17140,7 @@ void checkGoogleCloudAiplatformV1ModelEvaluation(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed246(o.sliceDimensions!);
+    checkUnnamed254(o.sliceDimensions!);
   }
   buildCounterGoogleCloudAiplatformV1ModelEvaluation--;
 }
@@ -16820,14 +17271,14 @@ core.Map<
         core.String,
         api
         .GoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpecSliceConfig>
-    buildUnnamed247() => {
+    buildUnnamed255() => {
           'x':
               buildGoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpecSliceConfig(),
           'y':
               buildGoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpecSliceConfig(),
         };
 
-void checkUnnamed247(
+void checkUnnamed255(
     core.Map<
             core.String,
             api
@@ -16848,7 +17299,7 @@ api.GoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpec
   buildCounterGoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpec++;
   if (buildCounterGoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpec <
       3) {
-    o.configs = buildUnnamed247();
+    o.configs = buildUnnamed255();
   }
   buildCounterGoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpec--;
   return o;
@@ -16859,7 +17310,7 @@ void checkGoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpec(
   buildCounterGoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpec++;
   if (buildCounterGoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpec <
       3) {
-    checkUnnamed247(o.configs!);
+    checkUnnamed255(o.configs!);
   }
   buildCounterGoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpec--;
 }
@@ -16967,12 +17418,12 @@ void checkGoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpecValue(
   buildCounterGoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpecValue--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Attribution> buildUnnamed248() => [
+core.List<api.GoogleCloudAiplatformV1Attribution> buildUnnamed256() => [
       buildGoogleCloudAiplatformV1Attribution(),
       buildGoogleCloudAiplatformV1Attribution(),
     ];
 
-void checkUnnamed248(core.List<api.GoogleCloudAiplatformV1Attribution> o) {
+void checkUnnamed256(core.List<api.GoogleCloudAiplatformV1Attribution> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Attribution(o[0]);
   checkGoogleCloudAiplatformV1Attribution(o[1]);
@@ -16984,7 +17435,7 @@ api.GoogleCloudAiplatformV1ModelExplanation
   final o = api.GoogleCloudAiplatformV1ModelExplanation();
   buildCounterGoogleCloudAiplatformV1ModelExplanation++;
   if (buildCounterGoogleCloudAiplatformV1ModelExplanation < 3) {
-    o.meanAttributions = buildUnnamed248();
+    o.meanAttributions = buildUnnamed256();
   }
   buildCounterGoogleCloudAiplatformV1ModelExplanation--;
   return o;
@@ -16994,17 +17445,17 @@ void checkGoogleCloudAiplatformV1ModelExplanation(
     api.GoogleCloudAiplatformV1ModelExplanation o) {
   buildCounterGoogleCloudAiplatformV1ModelExplanation++;
   if (buildCounterGoogleCloudAiplatformV1ModelExplanation < 3) {
-    checkUnnamed248(o.meanAttributions!);
+    checkUnnamed256(o.meanAttributions!);
   }
   buildCounterGoogleCloudAiplatformV1ModelExplanation--;
 }
 
-core.List<core.String> buildUnnamed249() => [
+core.List<core.String> buildUnnamed257() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed249(core.List<core.String> o) {
+void checkUnnamed257(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -17022,7 +17473,7 @@ api.GoogleCloudAiplatformV1ModelExportFormat
   final o = api.GoogleCloudAiplatformV1ModelExportFormat();
   buildCounterGoogleCloudAiplatformV1ModelExportFormat++;
   if (buildCounterGoogleCloudAiplatformV1ModelExportFormat < 3) {
-    o.exportableContents = buildUnnamed249();
+    o.exportableContents = buildUnnamed257();
     o.id = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ModelExportFormat--;
@@ -17033,7 +17484,7 @@ void checkGoogleCloudAiplatformV1ModelExportFormat(
     api.GoogleCloudAiplatformV1ModelExportFormat o) {
   buildCounterGoogleCloudAiplatformV1ModelExportFormat++;
   if (buildCounterGoogleCloudAiplatformV1ModelExportFormat < 3) {
-    checkUnnamed249(o.exportableContents!);
+    checkUnnamed257(o.exportableContents!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -17049,6 +17500,8 @@ api.GoogleCloudAiplatformV1ModelGardenSource
   buildCounterGoogleCloudAiplatformV1ModelGardenSource++;
   if (buildCounterGoogleCloudAiplatformV1ModelGardenSource < 3) {
     o.publicModelName = 'foo';
+    o.skipHfModelCache = true;
+    o.versionId = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ModelGardenSource--;
   return o;
@@ -17062,16 +17515,21 @@ void checkGoogleCloudAiplatformV1ModelGardenSource(
       o.publicModelName!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.skipHfModelCache!, unittest.isTrue);
+    unittest.expect(
+      o.versionId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudAiplatformV1ModelGardenSource--;
 }
 
-core.List<core.String> buildUnnamed250() => [
+core.List<core.String> buildUnnamed258() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed250(core.List<core.String> o) {
+void checkUnnamed258(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -17092,7 +17550,7 @@ api.GoogleCloudAiplatformV1ModelMonitoringAlertConfig
     o.emailAlertConfig =
         buildGoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig();
     o.enableLogging = true;
-    o.notificationChannels = buildUnnamed250();
+    o.notificationChannels = buildUnnamed258();
   }
   buildCounterGoogleCloudAiplatformV1ModelMonitoringAlertConfig--;
   return o;
@@ -17105,17 +17563,17 @@ void checkGoogleCloudAiplatformV1ModelMonitoringAlertConfig(
     checkGoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig(
         o.emailAlertConfig!);
     unittest.expect(o.enableLogging!, unittest.isTrue);
-    checkUnnamed250(o.notificationChannels!);
+    checkUnnamed258(o.notificationChannels!);
   }
   buildCounterGoogleCloudAiplatformV1ModelMonitoringAlertConfig--;
 }
 
-core.List<core.String> buildUnnamed251() => [
+core.List<core.String> buildUnnamed259() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed251(core.List<core.String> o) {
+void checkUnnamed259(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -17137,7 +17595,7 @@ api.GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig
   buildCounterGoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig++;
   if (buildCounterGoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig <
       3) {
-    o.userEmails = buildUnnamed251();
+    o.userEmails = buildUnnamed259();
   }
   buildCounterGoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig--;
   return o;
@@ -17148,7 +17606,7 @@ void checkGoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig(
   buildCounterGoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig++;
   if (buildCounterGoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig <
       3) {
-    checkUnnamed251(o.userEmails!);
+    checkUnnamed259(o.userEmails!);
   }
   buildCounterGoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig--;
 }
@@ -17254,12 +17712,12 @@ void checkGoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfig
 }
 
 core.Map<core.String, api.GoogleCloudAiplatformV1ThresholdConfig>
-    buildUnnamed252() => {
+    buildUnnamed260() => {
           'x': buildGoogleCloudAiplatformV1ThresholdConfig(),
           'y': buildGoogleCloudAiplatformV1ThresholdConfig(),
         };
 
-void checkUnnamed252(
+void checkUnnamed260(
     core.Map<core.String, api.GoogleCloudAiplatformV1ThresholdConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ThresholdConfig(o['x']!);
@@ -17267,12 +17725,12 @@ void checkUnnamed252(
 }
 
 core.Map<core.String, api.GoogleCloudAiplatformV1ThresholdConfig>
-    buildUnnamed253() => {
+    buildUnnamed261() => {
           'x': buildGoogleCloudAiplatformV1ThresholdConfig(),
           'y': buildGoogleCloudAiplatformV1ThresholdConfig(),
         };
 
-void checkUnnamed253(
+void checkUnnamed261(
     core.Map<core.String, api.GoogleCloudAiplatformV1ThresholdConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ThresholdConfig(o['x']!);
@@ -17289,9 +17747,9 @@ api.GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectio
   buildCounterGoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig++;
   if (buildCounterGoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig <
       3) {
-    o.attributionScoreDriftThresholds = buildUnnamed252();
+    o.attributionScoreDriftThresholds = buildUnnamed260();
     o.defaultDriftThreshold = buildGoogleCloudAiplatformV1ThresholdConfig();
-    o.driftThresholds = buildUnnamed253();
+    o.driftThresholds = buildUnnamed261();
   }
   buildCounterGoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig--;
   return o;
@@ -17303,9 +17761,9 @@ void checkGoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDe
   buildCounterGoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig++;
   if (buildCounterGoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig <
       3) {
-    checkUnnamed252(o.attributionScoreDriftThresholds!);
+    checkUnnamed260(o.attributionScoreDriftThresholds!);
     checkGoogleCloudAiplatformV1ThresholdConfig(o.defaultDriftThreshold!);
-    checkUnnamed253(o.driftThresholds!);
+    checkUnnamed261(o.driftThresholds!);
   }
   buildCounterGoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig--;
 }
@@ -17357,12 +17815,12 @@ void checkGoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingDataset(
 }
 
 core.Map<core.String, api.GoogleCloudAiplatformV1ThresholdConfig>
-    buildUnnamed254() => {
+    buildUnnamed262() => {
           'x': buildGoogleCloudAiplatformV1ThresholdConfig(),
           'y': buildGoogleCloudAiplatformV1ThresholdConfig(),
         };
 
-void checkUnnamed254(
+void checkUnnamed262(
     core.Map<core.String, api.GoogleCloudAiplatformV1ThresholdConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ThresholdConfig(o['x']!);
@@ -17370,12 +17828,12 @@ void checkUnnamed254(
 }
 
 core.Map<core.String, api.GoogleCloudAiplatformV1ThresholdConfig>
-    buildUnnamed255() => {
+    buildUnnamed263() => {
           'x': buildGoogleCloudAiplatformV1ThresholdConfig(),
           'y': buildGoogleCloudAiplatformV1ThresholdConfig(),
         };
 
-void checkUnnamed255(
+void checkUnnamed263(
     core.Map<core.String, api.GoogleCloudAiplatformV1ThresholdConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ThresholdConfig(o['x']!);
@@ -17392,9 +17850,9 @@ api.GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewD
   buildCounterGoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig++;
   if (buildCounterGoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig <
       3) {
-    o.attributionScoreSkewThresholds = buildUnnamed254();
+    o.attributionScoreSkewThresholds = buildUnnamed262();
     o.defaultSkewThreshold = buildGoogleCloudAiplatformV1ThresholdConfig();
-    o.skewThresholds = buildUnnamed255();
+    o.skewThresholds = buildUnnamed263();
   }
   buildCounterGoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig--;
   return o;
@@ -17406,9 +17864,9 @@ void checkGoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictio
   buildCounterGoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig++;
   if (buildCounterGoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig <
       3) {
-    checkUnnamed254(o.attributionScoreSkewThresholds!);
+    checkUnnamed262(o.attributionScoreSkewThresholds!);
     checkGoogleCloudAiplatformV1ThresholdConfig(o.defaultSkewThreshold!);
-    checkUnnamed255(o.skewThresholds!);
+    checkUnnamed263(o.skewThresholds!);
   }
   buildCounterGoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig--;
 }
@@ -17416,12 +17874,12 @@ void checkGoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictio
 core.List<
         api
         .GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies>
-    buildUnnamed256() => [
+    buildUnnamed264() => [
           buildGoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies(),
           buildGoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies(),
         ];
 
-void checkUnnamed256(
+void checkUnnamed264(
     core.List<
             api
             .GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies>
@@ -17441,7 +17899,7 @@ api.GoogleCloudAiplatformV1ModelMonitoringStatsAnomalies
   if (buildCounterGoogleCloudAiplatformV1ModelMonitoringStatsAnomalies < 3) {
     o.anomalyCount = 42;
     o.deployedModelId = 'foo';
-    o.featureStats = buildUnnamed256();
+    o.featureStats = buildUnnamed264();
     o.objective = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ModelMonitoringStatsAnomalies--;
@@ -17460,7 +17918,7 @@ void checkGoogleCloudAiplatformV1ModelMonitoringStatsAnomalies(
       o.deployedModelId!,
       unittest.equals('foo'),
     );
-    checkUnnamed256(o.featureStats!);
+    checkUnnamed264(o.featureStats!);
     unittest.expect(
       o.objective!,
       unittest.equals('foo'),
@@ -17469,12 +17927,12 @@ void checkGoogleCloudAiplatformV1ModelMonitoringStatsAnomalies(
   buildCounterGoogleCloudAiplatformV1ModelMonitoringStatsAnomalies--;
 }
 
-core.List<api.GoogleCloudAiplatformV1FeatureStatsAnomaly> buildUnnamed257() => [
+core.List<api.GoogleCloudAiplatformV1FeatureStatsAnomaly> buildUnnamed265() => [
       buildGoogleCloudAiplatformV1FeatureStatsAnomaly(),
       buildGoogleCloudAiplatformV1FeatureStatsAnomaly(),
     ];
 
-void checkUnnamed257(
+void checkUnnamed265(
     core.List<api.GoogleCloudAiplatformV1FeatureStatsAnomaly> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1FeatureStatsAnomaly(o[0]);
@@ -17492,7 +17950,7 @@ api.GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnom
   if (buildCounterGoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies <
       3) {
     o.featureDisplayName = 'foo';
-    o.predictionStats = buildUnnamed257();
+    o.predictionStats = buildUnnamed265();
     o.threshold = buildGoogleCloudAiplatformV1ThresholdConfig();
     o.trainingStats = buildGoogleCloudAiplatformV1FeatureStatsAnomaly();
   }
@@ -17510,7 +17968,7 @@ void checkGoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHistoricSta
       o.featureDisplayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed257(o.predictionStats!);
+    checkUnnamed265(o.predictionStats!);
     checkGoogleCloudAiplatformV1ThresholdConfig(o.threshold!);
     checkGoogleCloudAiplatformV1FeatureStatsAnomaly(o.trainingStats!);
   }
@@ -17567,6 +18025,45 @@ void checkGoogleCloudAiplatformV1ModelSourceInfo(
   buildCounterGoogleCloudAiplatformV1ModelSourceInfo--;
 }
 
+core.int buildCounterGoogleCloudAiplatformV1ModelVersionCheckpoint = 0;
+api.GoogleCloudAiplatformV1ModelVersionCheckpoint
+    buildGoogleCloudAiplatformV1ModelVersionCheckpoint() {
+  final o = api.GoogleCloudAiplatformV1ModelVersionCheckpoint();
+  buildCounterGoogleCloudAiplatformV1ModelVersionCheckpoint++;
+  if (buildCounterGoogleCloudAiplatformV1ModelVersionCheckpoint < 3) {
+    o.checkpointId = 'foo';
+    o.epoch = 'foo';
+    o.name = 'foo';
+    o.step = 'foo';
+  }
+  buildCounterGoogleCloudAiplatformV1ModelVersionCheckpoint--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1ModelVersionCheckpoint(
+    api.GoogleCloudAiplatformV1ModelVersionCheckpoint o) {
+  buildCounterGoogleCloudAiplatformV1ModelVersionCheckpoint++;
+  if (buildCounterGoogleCloudAiplatformV1ModelVersionCheckpoint < 3) {
+    unittest.expect(
+      o.checkpointId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.epoch!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.step!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudAiplatformV1ModelVersionCheckpoint--;
+}
+
 core.int buildCounterGoogleCloudAiplatformV1MutateDeployedModelRequest = 0;
 api.GoogleCloudAiplatformV1MutateDeployedModelRequest
     buildGoogleCloudAiplatformV1MutateDeployedModelRequest() {
@@ -17593,12 +18090,12 @@ void checkGoogleCloudAiplatformV1MutateDeployedModelRequest(
   buildCounterGoogleCloudAiplatformV1MutateDeployedModelRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed258() => {
+core.Map<core.String, core.String> buildUnnamed266() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed258(core.Map<core.String, core.String> o) {
+void checkUnnamed266(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -17621,7 +18118,7 @@ api.GoogleCloudAiplatformV1NasJob buildGoogleCloudAiplatformV1NasJob() {
     o.encryptionSpec = buildGoogleCloudAiplatformV1EncryptionSpec();
     o.endTime = 'foo';
     o.error = buildGoogleRpcStatus();
-    o.labels = buildUnnamed258();
+    o.labels = buildUnnamed266();
     o.name = 'foo';
     o.nasJobOutput = buildGoogleCloudAiplatformV1NasJobOutput();
     o.nasJobSpec = buildGoogleCloudAiplatformV1NasJobSpec();
@@ -17653,7 +18150,7 @@ void checkGoogleCloudAiplatformV1NasJob(api.GoogleCloudAiplatformV1NasJob o) {
       unittest.equals('foo'),
     );
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed258(o.labels!);
+    checkUnnamed266(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -17701,23 +18198,23 @@ void checkGoogleCloudAiplatformV1NasJobOutput(
   buildCounterGoogleCloudAiplatformV1NasJobOutput--;
 }
 
-core.List<api.GoogleCloudAiplatformV1NasTrial> buildUnnamed259() => [
+core.List<api.GoogleCloudAiplatformV1NasTrial> buildUnnamed267() => [
       buildGoogleCloudAiplatformV1NasTrial(),
       buildGoogleCloudAiplatformV1NasTrial(),
     ];
 
-void checkUnnamed259(core.List<api.GoogleCloudAiplatformV1NasTrial> o) {
+void checkUnnamed267(core.List<api.GoogleCloudAiplatformV1NasTrial> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1NasTrial(o[0]);
   checkGoogleCloudAiplatformV1NasTrial(o[1]);
 }
 
-core.List<api.GoogleCloudAiplatformV1NasTrial> buildUnnamed260() => [
+core.List<api.GoogleCloudAiplatformV1NasTrial> buildUnnamed268() => [
       buildGoogleCloudAiplatformV1NasTrial(),
       buildGoogleCloudAiplatformV1NasTrial(),
     ];
 
-void checkUnnamed260(core.List<api.GoogleCloudAiplatformV1NasTrial> o) {
+void checkUnnamed268(core.List<api.GoogleCloudAiplatformV1NasTrial> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1NasTrial(o[0]);
   checkGoogleCloudAiplatformV1NasTrial(o[1]);
@@ -17729,8 +18226,8 @@ api.GoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutput
   final o = api.GoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutput();
   buildCounterGoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutput++;
   if (buildCounterGoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutput < 3) {
-    o.searchTrials = buildUnnamed259();
-    o.trainTrials = buildUnnamed260();
+    o.searchTrials = buildUnnamed267();
+    o.trainTrials = buildUnnamed268();
   }
   buildCounterGoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutput--;
   return o;
@@ -17740,8 +18237,8 @@ void checkGoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutput(
     api.GoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutput o) {
   buildCounterGoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutput++;
   if (buildCounterGoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutput < 3) {
-    checkUnnamed259(o.searchTrials!);
-    checkUnnamed260(o.trainTrials!);
+    checkUnnamed267(o.searchTrials!);
+    checkUnnamed268(o.trainTrials!);
   }
   buildCounterGoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutput--;
 }
@@ -18004,12 +18501,12 @@ void checkGoogleCloudAiplatformV1NasTrialDetail(
 }
 
 core.List<api.GoogleCloudAiplatformV1NearestNeighborQueryNumericFilter>
-    buildUnnamed261() => [
+    buildUnnamed269() => [
           buildGoogleCloudAiplatformV1NearestNeighborQueryNumericFilter(),
           buildGoogleCloudAiplatformV1NearestNeighborQueryNumericFilter(),
         ];
 
-void checkUnnamed261(
+void checkUnnamed269(
     core.List<api.GoogleCloudAiplatformV1NearestNeighborQueryNumericFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1NearestNeighborQueryNumericFilter(o[0]);
@@ -18017,12 +18514,12 @@ void checkUnnamed261(
 }
 
 core.List<api.GoogleCloudAiplatformV1NearestNeighborQueryStringFilter>
-    buildUnnamed262() => [
+    buildUnnamed270() => [
           buildGoogleCloudAiplatformV1NearestNeighborQueryStringFilter(),
           buildGoogleCloudAiplatformV1NearestNeighborQueryStringFilter(),
         ];
 
-void checkUnnamed262(
+void checkUnnamed270(
     core.List<api.GoogleCloudAiplatformV1NearestNeighborQueryStringFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1NearestNeighborQueryStringFilter(o[0]);
@@ -18038,10 +18535,10 @@ api.GoogleCloudAiplatformV1NearestNeighborQuery
     o.embedding = buildGoogleCloudAiplatformV1NearestNeighborQueryEmbedding();
     o.entityId = 'foo';
     o.neighborCount = 42;
-    o.numericFilters = buildUnnamed261();
+    o.numericFilters = buildUnnamed269();
     o.parameters = buildGoogleCloudAiplatformV1NearestNeighborQueryParameters();
     o.perCrowdingAttributeNeighborCount = 42;
-    o.stringFilters = buildUnnamed262();
+    o.stringFilters = buildUnnamed270();
   }
   buildCounterGoogleCloudAiplatformV1NearestNeighborQuery--;
   return o;
@@ -18060,23 +18557,23 @@ void checkGoogleCloudAiplatformV1NearestNeighborQuery(
       o.neighborCount!,
       unittest.equals(42),
     );
-    checkUnnamed261(o.numericFilters!);
+    checkUnnamed269(o.numericFilters!);
     checkGoogleCloudAiplatformV1NearestNeighborQueryParameters(o.parameters!);
     unittest.expect(
       o.perCrowdingAttributeNeighborCount!,
       unittest.equals(42),
     );
-    checkUnnamed262(o.stringFilters!);
+    checkUnnamed270(o.stringFilters!);
   }
   buildCounterGoogleCloudAiplatformV1NearestNeighborQuery--;
 }
 
-core.List<core.double> buildUnnamed263() => [
+core.List<core.double> buildUnnamed271() => [
       42.0,
       42.0,
     ];
 
-void checkUnnamed263(core.List<core.double> o) {
+void checkUnnamed271(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -18094,7 +18591,7 @@ api.GoogleCloudAiplatformV1NearestNeighborQueryEmbedding
   final o = api.GoogleCloudAiplatformV1NearestNeighborQueryEmbedding();
   buildCounterGoogleCloudAiplatformV1NearestNeighborQueryEmbedding++;
   if (buildCounterGoogleCloudAiplatformV1NearestNeighborQueryEmbedding < 3) {
-    o.value = buildUnnamed263();
+    o.value = buildUnnamed271();
   }
   buildCounterGoogleCloudAiplatformV1NearestNeighborQueryEmbedding--;
   return o;
@@ -18104,7 +18601,7 @@ void checkGoogleCloudAiplatformV1NearestNeighborQueryEmbedding(
     api.GoogleCloudAiplatformV1NearestNeighborQueryEmbedding o) {
   buildCounterGoogleCloudAiplatformV1NearestNeighborQueryEmbedding++;
   if (buildCounterGoogleCloudAiplatformV1NearestNeighborQueryEmbedding < 3) {
-    checkUnnamed263(o.value!);
+    checkUnnamed271(o.value!);
   }
   buildCounterGoogleCloudAiplatformV1NearestNeighborQueryEmbedding--;
 }
@@ -18185,12 +18682,12 @@ void checkGoogleCloudAiplatformV1NearestNeighborQueryParameters(
   buildCounterGoogleCloudAiplatformV1NearestNeighborQueryParameters--;
 }
 
-core.List<core.String> buildUnnamed264() => [
+core.List<core.String> buildUnnamed272() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed264(core.List<core.String> o) {
+void checkUnnamed272(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -18202,12 +18699,12 @@ void checkUnnamed264(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed265() => [
+core.List<core.String> buildUnnamed273() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed265(core.List<core.String> o) {
+void checkUnnamed273(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -18226,8 +18723,8 @@ api.GoogleCloudAiplatformV1NearestNeighborQueryStringFilter
   final o = api.GoogleCloudAiplatformV1NearestNeighborQueryStringFilter();
   buildCounterGoogleCloudAiplatformV1NearestNeighborQueryStringFilter++;
   if (buildCounterGoogleCloudAiplatformV1NearestNeighborQueryStringFilter < 3) {
-    o.allowTokens = buildUnnamed264();
-    o.denyTokens = buildUnnamed265();
+    o.allowTokens = buildUnnamed272();
+    o.denyTokens = buildUnnamed273();
     o.name = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1NearestNeighborQueryStringFilter--;
@@ -18238,8 +18735,8 @@ void checkGoogleCloudAiplatformV1NearestNeighborQueryStringFilter(
     api.GoogleCloudAiplatformV1NearestNeighborQueryStringFilter o) {
   buildCounterGoogleCloudAiplatformV1NearestNeighborQueryStringFilter++;
   if (buildCounterGoogleCloudAiplatformV1NearestNeighborQueryStringFilter < 3) {
-    checkUnnamed264(o.allowTokens!);
-    checkUnnamed265(o.denyTokens!);
+    checkUnnamed272(o.allowTokens!);
+    checkUnnamed273(o.denyTokens!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -18249,12 +18746,12 @@ void checkGoogleCloudAiplatformV1NearestNeighborQueryStringFilter(
 }
 
 core.List<api.GoogleCloudAiplatformV1NearestNeighborsNeighbor>
-    buildUnnamed266() => [
+    buildUnnamed274() => [
           buildGoogleCloudAiplatformV1NearestNeighborsNeighbor(),
           buildGoogleCloudAiplatformV1NearestNeighborsNeighbor(),
         ];
 
-void checkUnnamed266(
+void checkUnnamed274(
     core.List<api.GoogleCloudAiplatformV1NearestNeighborsNeighbor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1NearestNeighborsNeighbor(o[0]);
@@ -18267,7 +18764,7 @@ api.GoogleCloudAiplatformV1NearestNeighbors
   final o = api.GoogleCloudAiplatformV1NearestNeighbors();
   buildCounterGoogleCloudAiplatformV1NearestNeighbors++;
   if (buildCounterGoogleCloudAiplatformV1NearestNeighbors < 3) {
-    o.neighbors = buildUnnamed266();
+    o.neighbors = buildUnnamed274();
   }
   buildCounterGoogleCloudAiplatformV1NearestNeighbors--;
   return o;
@@ -18277,7 +18774,7 @@ void checkGoogleCloudAiplatformV1NearestNeighbors(
     api.GoogleCloudAiplatformV1NearestNeighbors o) {
   buildCounterGoogleCloudAiplatformV1NearestNeighbors++;
   if (buildCounterGoogleCloudAiplatformV1NearestNeighbors < 3) {
-    checkUnnamed266(o.neighbors!);
+    checkUnnamed274(o.neighbors!);
   }
   buildCounterGoogleCloudAiplatformV1NearestNeighbors--;
 }
@@ -18429,12 +18926,12 @@ void checkGoogleCloudAiplatformV1NotebookEucConfig(
   buildCounterGoogleCloudAiplatformV1NotebookEucConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed267() => {
+core.Map<core.String, core.String> buildUnnamed275() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed267(core.Map<core.String, core.String> o) {
+void checkUnnamed275(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -18468,7 +18965,7 @@ api.GoogleCloudAiplatformV1NotebookExecutionJob
     o.gcsOutputUri = 'foo';
     o.jobState = 'foo';
     o.kernelName = 'foo';
-    o.labels = buildUnnamed267();
+    o.labels = buildUnnamed275();
     o.name = 'foo';
     o.notebookRuntimeTemplateResourceName = 'foo';
     o.scheduleResourceName = 'foo';
@@ -18523,7 +19020,7 @@ void checkGoogleCloudAiplatformV1NotebookExecutionJob(
       o.kernelName!,
       unittest.equals('foo'),
     );
-    checkUnnamed267(o.labels!);
+    checkUnnamed275(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -18723,12 +19220,12 @@ void checkGoogleCloudAiplatformV1NotebookIdleShutdownConfig(
   buildCounterGoogleCloudAiplatformV1NotebookIdleShutdownConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed268() => {
+core.Map<core.String, core.String> buildUnnamed276() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed268(core.Map<core.String, core.String> o) {
+void checkUnnamed276(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -18740,12 +19237,12 @@ void checkUnnamed268(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed269() => [
+core.List<core.String> buildUnnamed277() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed269(core.List<core.String> o) {
+void checkUnnamed277(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -18774,11 +19271,11 @@ api.GoogleCloudAiplatformV1NotebookRuntime
     o.idleShutdownConfig =
         buildGoogleCloudAiplatformV1NotebookIdleShutdownConfig();
     o.isUpgradable = true;
-    o.labels = buildUnnamed268();
+    o.labels = buildUnnamed276();
     o.machineSpec = buildGoogleCloudAiplatformV1MachineSpec();
     o.name = 'foo';
     o.networkSpec = buildGoogleCloudAiplatformV1NetworkSpec();
-    o.networkTags = buildUnnamed269();
+    o.networkTags = buildUnnamed277();
     o.notebookRuntimeTemplateRef =
         buildGoogleCloudAiplatformV1NotebookRuntimeTemplateRef();
     o.notebookRuntimeType = 'foo';
@@ -18789,6 +19286,7 @@ api.GoogleCloudAiplatformV1NotebookRuntime
     o.satisfiesPzs = true;
     o.serviceAccount = 'foo';
     o.shieldedVmConfig = buildGoogleCloudAiplatformV1ShieldedVmConfig();
+    o.softwareConfig = buildGoogleCloudAiplatformV1NotebookSoftwareConfig();
     o.updateTime = 'foo';
     o.version = 'foo';
   }
@@ -18826,14 +19324,14 @@ void checkGoogleCloudAiplatformV1NotebookRuntime(
     checkGoogleCloudAiplatformV1NotebookIdleShutdownConfig(
         o.idleShutdownConfig!);
     unittest.expect(o.isUpgradable!, unittest.isTrue);
-    checkUnnamed268(o.labels!);
+    checkUnnamed276(o.labels!);
     checkGoogleCloudAiplatformV1MachineSpec(o.machineSpec!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
     checkGoogleCloudAiplatformV1NetworkSpec(o.networkSpec!);
-    checkUnnamed269(o.networkTags!);
+    checkUnnamed277(o.networkTags!);
     checkGoogleCloudAiplatformV1NotebookRuntimeTemplateRef(
         o.notebookRuntimeTemplateRef!);
     unittest.expect(
@@ -18859,6 +19357,7 @@ void checkGoogleCloudAiplatformV1NotebookRuntime(
       unittest.equals('foo'),
     );
     checkGoogleCloudAiplatformV1ShieldedVmConfig(o.shieldedVmConfig!);
+    checkGoogleCloudAiplatformV1NotebookSoftwareConfig(o.softwareConfig!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -18871,12 +19370,12 @@ void checkGoogleCloudAiplatformV1NotebookRuntime(
   buildCounterGoogleCloudAiplatformV1NotebookRuntime--;
 }
 
-core.Map<core.String, core.String> buildUnnamed270() => {
+core.Map<core.String, core.String> buildUnnamed278() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed270(core.Map<core.String, core.String> o) {
+void checkUnnamed278(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -18888,12 +19387,12 @@ void checkUnnamed270(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed271() => [
+core.List<core.String> buildUnnamed279() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed271(core.List<core.String> o) {
+void checkUnnamed279(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -18921,14 +19420,15 @@ api.GoogleCloudAiplatformV1NotebookRuntimeTemplate
     o.idleShutdownConfig =
         buildGoogleCloudAiplatformV1NotebookIdleShutdownConfig();
     o.isDefault = true;
-    o.labels = buildUnnamed270();
+    o.labels = buildUnnamed278();
     o.machineSpec = buildGoogleCloudAiplatformV1MachineSpec();
     o.name = 'foo';
     o.networkSpec = buildGoogleCloudAiplatformV1NetworkSpec();
-    o.networkTags = buildUnnamed271();
+    o.networkTags = buildUnnamed279();
     o.notebookRuntimeType = 'foo';
     o.serviceAccount = 'foo';
     o.shieldedVmConfig = buildGoogleCloudAiplatformV1ShieldedVmConfig();
+    o.softwareConfig = buildGoogleCloudAiplatformV1NotebookSoftwareConfig();
     o.updateTime = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1NotebookRuntimeTemplate--;
@@ -18961,14 +19461,14 @@ void checkGoogleCloudAiplatformV1NotebookRuntimeTemplate(
     checkGoogleCloudAiplatformV1NotebookIdleShutdownConfig(
         o.idleShutdownConfig!);
     unittest.expect(o.isDefault!, unittest.isTrue);
-    checkUnnamed270(o.labels!);
+    checkUnnamed278(o.labels!);
     checkGoogleCloudAiplatformV1MachineSpec(o.machineSpec!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
     checkGoogleCloudAiplatformV1NetworkSpec(o.networkSpec!);
-    checkUnnamed271(o.networkTags!);
+    checkUnnamed279(o.networkTags!);
     unittest.expect(
       o.notebookRuntimeType!,
       unittest.equals('foo'),
@@ -18978,6 +19478,7 @@ void checkGoogleCloudAiplatformV1NotebookRuntimeTemplate(
       unittest.equals('foo'),
     );
     checkGoogleCloudAiplatformV1ShieldedVmConfig(o.shieldedVmConfig!);
+    checkGoogleCloudAiplatformV1NotebookSoftwareConfig(o.softwareConfig!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -19008,6 +19509,63 @@ void checkGoogleCloudAiplatformV1NotebookRuntimeTemplateRef(
     );
   }
   buildCounterGoogleCloudAiplatformV1NotebookRuntimeTemplateRef--;
+}
+
+core.List<api.GoogleCloudAiplatformV1EnvVar> buildUnnamed280() => [
+      buildGoogleCloudAiplatformV1EnvVar(),
+      buildGoogleCloudAiplatformV1EnvVar(),
+    ];
+
+void checkUnnamed280(core.List<api.GoogleCloudAiplatformV1EnvVar> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudAiplatformV1EnvVar(o[0]);
+  checkGoogleCloudAiplatformV1EnvVar(o[1]);
+}
+
+core.int buildCounterGoogleCloudAiplatformV1NotebookSoftwareConfig = 0;
+api.GoogleCloudAiplatformV1NotebookSoftwareConfig
+    buildGoogleCloudAiplatformV1NotebookSoftwareConfig() {
+  final o = api.GoogleCloudAiplatformV1NotebookSoftwareConfig();
+  buildCounterGoogleCloudAiplatformV1NotebookSoftwareConfig++;
+  if (buildCounterGoogleCloudAiplatformV1NotebookSoftwareConfig < 3) {
+    o.env = buildUnnamed280();
+    o.postStartupScriptConfig =
+        buildGoogleCloudAiplatformV1PostStartupScriptConfig();
+  }
+  buildCounterGoogleCloudAiplatformV1NotebookSoftwareConfig--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1NotebookSoftwareConfig(
+    api.GoogleCloudAiplatformV1NotebookSoftwareConfig o) {
+  buildCounterGoogleCloudAiplatformV1NotebookSoftwareConfig++;
+  if (buildCounterGoogleCloudAiplatformV1NotebookSoftwareConfig < 3) {
+    checkUnnamed280(o.env!);
+    checkGoogleCloudAiplatformV1PostStartupScriptConfig(
+        o.postStartupScriptConfig!);
+  }
+  buildCounterGoogleCloudAiplatformV1NotebookSoftwareConfig--;
+}
+
+core.int buildCounterGoogleCloudAiplatformV1OutputConfig = 0;
+api.GoogleCloudAiplatformV1OutputConfig
+    buildGoogleCloudAiplatformV1OutputConfig() {
+  final o = api.GoogleCloudAiplatformV1OutputConfig();
+  buildCounterGoogleCloudAiplatformV1OutputConfig++;
+  if (buildCounterGoogleCloudAiplatformV1OutputConfig < 3) {
+    o.gcsDestination = buildGoogleCloudAiplatformV1GcsDestination();
+  }
+  buildCounterGoogleCloudAiplatformV1OutputConfig--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1OutputConfig(
+    api.GoogleCloudAiplatformV1OutputConfig o) {
+  buildCounterGoogleCloudAiplatformV1OutputConfig++;
+  if (buildCounterGoogleCloudAiplatformV1OutputConfig < 3) {
+    checkGoogleCloudAiplatformV1GcsDestination(o.gcsDestination!);
+  }
+  buildCounterGoogleCloudAiplatformV1OutputConfig--;
 }
 
 core.int buildCounterGoogleCloudAiplatformV1PSCAutomationConfig = 0;
@@ -19121,7 +19679,10 @@ api.GoogleCloudAiplatformV1PairwiseMetricSpec
   final o = api.GoogleCloudAiplatformV1PairwiseMetricSpec();
   buildCounterGoogleCloudAiplatformV1PairwiseMetricSpec++;
   if (buildCounterGoogleCloudAiplatformV1PairwiseMetricSpec < 3) {
+    o.baselineResponseFieldName = 'foo';
+    o.candidateResponseFieldName = 'foo';
     o.metricPromptTemplate = 'foo';
+    o.systemInstruction = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1PairwiseMetricSpec--;
   return o;
@@ -19132,7 +19693,19 @@ void checkGoogleCloudAiplatformV1PairwiseMetricSpec(
   buildCounterGoogleCloudAiplatformV1PairwiseMetricSpec++;
   if (buildCounterGoogleCloudAiplatformV1PairwiseMetricSpec < 3) {
     unittest.expect(
+      o.baselineResponseFieldName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.candidateResponseFieldName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.metricPromptTemplate!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.systemInstruction!,
       unittest.equals('foo'),
     );
   }
@@ -19431,6 +20004,8 @@ api.GoogleCloudAiplatformV1Part buildGoogleCloudAiplatformV1Part() {
   final o = api.GoogleCloudAiplatformV1Part();
   buildCounterGoogleCloudAiplatformV1Part++;
   if (buildCounterGoogleCloudAiplatformV1Part < 3) {
+    o.codeExecutionResult = buildGoogleCloudAiplatformV1CodeExecutionResult();
+    o.executableCode = buildGoogleCloudAiplatformV1ExecutableCode();
     o.fileData = buildGoogleCloudAiplatformV1FileData();
     o.functionCall = buildGoogleCloudAiplatformV1FunctionCall();
     o.functionResponse = buildGoogleCloudAiplatformV1FunctionResponse();
@@ -19445,6 +20020,8 @@ api.GoogleCloudAiplatformV1Part buildGoogleCloudAiplatformV1Part() {
 void checkGoogleCloudAiplatformV1Part(api.GoogleCloudAiplatformV1Part o) {
   buildCounterGoogleCloudAiplatformV1Part++;
   if (buildCounterGoogleCloudAiplatformV1Part < 3) {
+    checkGoogleCloudAiplatformV1CodeExecutionResult(o.codeExecutionResult!);
+    checkGoogleCloudAiplatformV1ExecutableCode(o.executableCode!);
     checkGoogleCloudAiplatformV1FileData(o.fileData!);
     checkGoogleCloudAiplatformV1FunctionCall(o.functionCall!);
     checkGoogleCloudAiplatformV1FunctionResponse(o.functionResponse!);
@@ -19526,12 +20103,12 @@ void checkGoogleCloudAiplatformV1PersistentDiskSpec(
   buildCounterGoogleCloudAiplatformV1PersistentDiskSpec--;
 }
 
-core.Map<core.String, core.String> buildUnnamed272() => {
+core.Map<core.String, core.String> buildUnnamed281() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed272(core.Map<core.String, core.String> o) {
+void checkUnnamed281(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -19543,12 +20120,12 @@ void checkUnnamed272(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed273() => [
+core.List<core.String> buildUnnamed282() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed273(core.List<core.String> o) {
+void checkUnnamed282(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -19560,12 +20137,12 @@ void checkUnnamed273(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudAiplatformV1ResourcePool> buildUnnamed274() => [
+core.List<api.GoogleCloudAiplatformV1ResourcePool> buildUnnamed283() => [
       buildGoogleCloudAiplatformV1ResourcePool(),
       buildGoogleCloudAiplatformV1ResourcePool(),
     ];
 
-void checkUnnamed274(core.List<api.GoogleCloudAiplatformV1ResourcePool> o) {
+void checkUnnamed283(core.List<api.GoogleCloudAiplatformV1ResourcePool> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ResourcePool(o[0]);
   checkGoogleCloudAiplatformV1ResourcePool(o[1]);
@@ -19581,11 +20158,11 @@ api.GoogleCloudAiplatformV1PersistentResource
     o.displayName = 'foo';
     o.encryptionSpec = buildGoogleCloudAiplatformV1EncryptionSpec();
     o.error = buildGoogleRpcStatus();
-    o.labels = buildUnnamed272();
+    o.labels = buildUnnamed281();
     o.name = 'foo';
     o.network = 'foo';
-    o.reservedIpRanges = buildUnnamed273();
-    o.resourcePools = buildUnnamed274();
+    o.reservedIpRanges = buildUnnamed282();
+    o.resourcePools = buildUnnamed283();
     o.resourceRuntime = buildGoogleCloudAiplatformV1ResourceRuntime();
     o.resourceRuntimeSpec = buildGoogleCloudAiplatformV1ResourceRuntimeSpec();
     o.satisfiesPzi = true;
@@ -19612,7 +20189,7 @@ void checkGoogleCloudAiplatformV1PersistentResource(
     );
     checkGoogleCloudAiplatformV1EncryptionSpec(o.encryptionSpec!);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed272(o.labels!);
+    checkUnnamed281(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -19621,8 +20198,8 @@ void checkGoogleCloudAiplatformV1PersistentResource(
       o.network!,
       unittest.equals('foo'),
     );
-    checkUnnamed273(o.reservedIpRanges!);
-    checkUnnamed274(o.resourcePools!);
+    checkUnnamed282(o.reservedIpRanges!);
+    checkUnnamed283(o.resourcePools!);
     checkGoogleCloudAiplatformV1ResourceRuntime(o.resourceRuntime!);
     checkGoogleCloudAiplatformV1ResourceRuntimeSpec(o.resourceRuntimeSpec!);
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
@@ -19643,12 +20220,12 @@ void checkGoogleCloudAiplatformV1PersistentResource(
   buildCounterGoogleCloudAiplatformV1PersistentResource--;
 }
 
-core.Map<core.String, core.String> buildUnnamed275() => {
+core.Map<core.String, core.String> buildUnnamed284() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed275(core.Map<core.String, core.String> o) {
+void checkUnnamed284(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -19660,7 +20237,7 @@ void checkUnnamed275(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed276() => {
+core.Map<core.String, core.Object?> buildUnnamed285() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -19673,7 +20250,7 @@ core.Map<core.String, core.Object?> buildUnnamed276() => {
       },
     };
 
-void checkUnnamed276(core.Map<core.String, core.Object?> o) {
+void checkUnnamed285(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted52 = (o['x']!) as core.Map;
   unittest.expect(casted52, unittest.hasLength(3));
@@ -19705,12 +20282,12 @@ void checkUnnamed276(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.String> buildUnnamed277() => [
+core.List<core.String> buildUnnamed286() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed277(core.List<core.String> o) {
+void checkUnnamed286(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -19734,12 +20311,12 @@ api.GoogleCloudAiplatformV1PipelineJob
     o.endTime = 'foo';
     o.error = buildGoogleRpcStatus();
     o.jobDetail = buildGoogleCloudAiplatformV1PipelineJobDetail();
-    o.labels = buildUnnamed275();
+    o.labels = buildUnnamed284();
     o.name = 'foo';
     o.network = 'foo';
-    o.pipelineSpec = buildUnnamed276();
+    o.pipelineSpec = buildUnnamed285();
     o.preflightValidations = true;
-    o.reservedIpRanges = buildUnnamed277();
+    o.reservedIpRanges = buildUnnamed286();
     o.runtimeConfig = buildGoogleCloudAiplatformV1PipelineJobRuntimeConfig();
     o.scheduleName = 'foo';
     o.serviceAccount = 'foo';
@@ -19772,7 +20349,7 @@ void checkGoogleCloudAiplatformV1PipelineJob(
     );
     checkGoogleRpcStatus(o.error!);
     checkGoogleCloudAiplatformV1PipelineJobDetail(o.jobDetail!);
-    checkUnnamed275(o.labels!);
+    checkUnnamed284(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -19781,9 +20358,9 @@ void checkGoogleCloudAiplatformV1PipelineJob(
       o.network!,
       unittest.equals('foo'),
     );
-    checkUnnamed276(o.pipelineSpec!);
+    checkUnnamed285(o.pipelineSpec!);
     unittest.expect(o.preflightValidations!, unittest.isTrue);
-    checkUnnamed277(o.reservedIpRanges!);
+    checkUnnamed286(o.reservedIpRanges!);
     checkGoogleCloudAiplatformV1PipelineJobRuntimeConfig(o.runtimeConfig!);
     unittest.expect(
       o.scheduleName!,
@@ -19814,12 +20391,12 @@ void checkGoogleCloudAiplatformV1PipelineJob(
   buildCounterGoogleCloudAiplatformV1PipelineJob--;
 }
 
-core.List<api.GoogleCloudAiplatformV1PipelineTaskDetail> buildUnnamed278() => [
+core.List<api.GoogleCloudAiplatformV1PipelineTaskDetail> buildUnnamed287() => [
       buildGoogleCloudAiplatformV1PipelineTaskDetail(),
       buildGoogleCloudAiplatformV1PipelineTaskDetail(),
     ];
 
-void checkUnnamed278(
+void checkUnnamed287(
     core.List<api.GoogleCloudAiplatformV1PipelineTaskDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1PipelineTaskDetail(o[0]);
@@ -19834,7 +20411,7 @@ api.GoogleCloudAiplatformV1PipelineJobDetail
   if (buildCounterGoogleCloudAiplatformV1PipelineJobDetail < 3) {
     o.pipelineContext = buildGoogleCloudAiplatformV1Context();
     o.pipelineRunContext = buildGoogleCloudAiplatformV1Context();
-    o.taskDetails = buildUnnamed278();
+    o.taskDetails = buildUnnamed287();
   }
   buildCounterGoogleCloudAiplatformV1PipelineJobDetail--;
   return o;
@@ -19846,21 +20423,21 @@ void checkGoogleCloudAiplatformV1PipelineJobDetail(
   if (buildCounterGoogleCloudAiplatformV1PipelineJobDetail < 3) {
     checkGoogleCloudAiplatformV1Context(o.pipelineContext!);
     checkGoogleCloudAiplatformV1Context(o.pipelineRunContext!);
-    checkUnnamed278(o.taskDetails!);
+    checkUnnamed287(o.taskDetails!);
   }
   buildCounterGoogleCloudAiplatformV1PipelineJobDetail--;
 }
 
 core.Map<core.String,
         api.GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact>
-    buildUnnamed279() => {
+    buildUnnamed288() => {
           'x':
               buildGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact(),
           'y':
               buildGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact(),
         };
 
-void checkUnnamed279(
+void checkUnnamed288(
     core.Map<core.String,
             api.GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact>
         o) {
@@ -19869,7 +20446,7 @@ void checkUnnamed279(
   checkGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact(o['y']!);
 }
 
-core.Map<core.String, core.Object?> buildUnnamed280() => {
+core.Map<core.String, core.Object?> buildUnnamed289() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -19882,7 +20459,7 @@ core.Map<core.String, core.Object?> buildUnnamed280() => {
       },
     };
 
-void checkUnnamed280(core.Map<core.String, core.Object?> o) {
+void checkUnnamed289(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted54 = (o['x']!) as core.Map;
   unittest.expect(casted54, unittest.hasLength(3));
@@ -19914,12 +20491,12 @@ void checkUnnamed280(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, api.GoogleCloudAiplatformV1Value> buildUnnamed281() => {
+core.Map<core.String, api.GoogleCloudAiplatformV1Value> buildUnnamed290() => {
       'x': buildGoogleCloudAiplatformV1Value(),
       'y': buildGoogleCloudAiplatformV1Value(),
     };
 
-void checkUnnamed281(
+void checkUnnamed290(
     core.Map<core.String, api.GoogleCloudAiplatformV1Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Value(o['x']!);
@@ -19934,9 +20511,9 @@ api.GoogleCloudAiplatformV1PipelineJobRuntimeConfig
   if (buildCounterGoogleCloudAiplatformV1PipelineJobRuntimeConfig < 3) {
     o.failurePolicy = 'foo';
     o.gcsOutputDirectory = 'foo';
-    o.inputArtifacts = buildUnnamed279();
-    o.parameterValues = buildUnnamed280();
-    o.parameters = buildUnnamed281();
+    o.inputArtifacts = buildUnnamed288();
+    o.parameterValues = buildUnnamed289();
+    o.parameters = buildUnnamed290();
   }
   buildCounterGoogleCloudAiplatformV1PipelineJobRuntimeConfig--;
   return o;
@@ -19954,9 +20531,9 @@ void checkGoogleCloudAiplatformV1PipelineJobRuntimeConfig(
       o.gcsOutputDirectory!,
       unittest.equals('foo'),
     );
-    checkUnnamed279(o.inputArtifacts!);
-    checkUnnamed280(o.parameterValues!);
-    checkUnnamed281(o.parameters!);
+    checkUnnamed288(o.inputArtifacts!);
+    checkUnnamed289(o.parameterValues!);
+    checkUnnamed290(o.parameters!);
   }
   buildCounterGoogleCloudAiplatformV1PipelineJobRuntimeConfig--;
 }
@@ -19990,12 +20567,12 @@ void checkGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact(
 }
 
 core.Map<core.String, api.GoogleCloudAiplatformV1PipelineTaskDetailArtifactList>
-    buildUnnamed282() => {
+    buildUnnamed291() => {
           'x': buildGoogleCloudAiplatformV1PipelineTaskDetailArtifactList(),
           'y': buildGoogleCloudAiplatformV1PipelineTaskDetailArtifactList(),
         };
 
-void checkUnnamed282(
+void checkUnnamed291(
     core.Map<core.String,
             api.GoogleCloudAiplatformV1PipelineTaskDetailArtifactList>
         o) {
@@ -20005,12 +20582,12 @@ void checkUnnamed282(
 }
 
 core.Map<core.String, api.GoogleCloudAiplatformV1PipelineTaskDetailArtifactList>
-    buildUnnamed283() => {
+    buildUnnamed292() => {
           'x': buildGoogleCloudAiplatformV1PipelineTaskDetailArtifactList(),
           'y': buildGoogleCloudAiplatformV1PipelineTaskDetailArtifactList(),
         };
 
-void checkUnnamed283(
+void checkUnnamed292(
     core.Map<core.String,
             api.GoogleCloudAiplatformV1PipelineTaskDetailArtifactList>
         o) {
@@ -20020,12 +20597,12 @@ void checkUnnamed283(
 }
 
 core.List<api.GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatus>
-    buildUnnamed284() => [
+    buildUnnamed293() => [
           buildGoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatus(),
           buildGoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatus(),
         ];
 
-void checkUnnamed284(
+void checkUnnamed293(
     core.List<api.GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatus>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -20044,10 +20621,10 @@ api.GoogleCloudAiplatformV1PipelineTaskDetail
     o.error = buildGoogleRpcStatus();
     o.execution = buildGoogleCloudAiplatformV1Execution();
     o.executorDetail = buildGoogleCloudAiplatformV1PipelineTaskExecutorDetail();
-    o.inputs = buildUnnamed282();
-    o.outputs = buildUnnamed283();
+    o.inputs = buildUnnamed291();
+    o.outputs = buildUnnamed292();
     o.parentTaskId = 'foo';
-    o.pipelineTaskStatus = buildUnnamed284();
+    o.pipelineTaskStatus = buildUnnamed293();
     o.startTime = 'foo';
     o.state = 'foo';
     o.taskId = 'foo';
@@ -20072,13 +20649,13 @@ void checkGoogleCloudAiplatformV1PipelineTaskDetail(
     checkGoogleRpcStatus(o.error!);
     checkGoogleCloudAiplatformV1Execution(o.execution!);
     checkGoogleCloudAiplatformV1PipelineTaskExecutorDetail(o.executorDetail!);
-    checkUnnamed282(o.inputs!);
-    checkUnnamed283(o.outputs!);
+    checkUnnamed291(o.inputs!);
+    checkUnnamed292(o.outputs!);
     unittest.expect(
       o.parentTaskId!,
       unittest.equals('foo'),
     );
-    checkUnnamed284(o.pipelineTaskStatus!);
+    checkUnnamed293(o.pipelineTaskStatus!);
     unittest.expect(
       o.startTime!,
       unittest.equals('foo'),
@@ -20099,12 +20676,12 @@ void checkGoogleCloudAiplatformV1PipelineTaskDetail(
   buildCounterGoogleCloudAiplatformV1PipelineTaskDetail--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Artifact> buildUnnamed285() => [
+core.List<api.GoogleCloudAiplatformV1Artifact> buildUnnamed294() => [
       buildGoogleCloudAiplatformV1Artifact(),
       buildGoogleCloudAiplatformV1Artifact(),
     ];
 
-void checkUnnamed285(core.List<api.GoogleCloudAiplatformV1Artifact> o) {
+void checkUnnamed294(core.List<api.GoogleCloudAiplatformV1Artifact> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Artifact(o[0]);
   checkGoogleCloudAiplatformV1Artifact(o[1]);
@@ -20116,7 +20693,7 @@ api.GoogleCloudAiplatformV1PipelineTaskDetailArtifactList
   final o = api.GoogleCloudAiplatformV1PipelineTaskDetailArtifactList();
   buildCounterGoogleCloudAiplatformV1PipelineTaskDetailArtifactList++;
   if (buildCounterGoogleCloudAiplatformV1PipelineTaskDetailArtifactList < 3) {
-    o.artifacts = buildUnnamed285();
+    o.artifacts = buildUnnamed294();
   }
   buildCounterGoogleCloudAiplatformV1PipelineTaskDetailArtifactList--;
   return o;
@@ -20126,7 +20703,7 @@ void checkGoogleCloudAiplatformV1PipelineTaskDetailArtifactList(
     api.GoogleCloudAiplatformV1PipelineTaskDetailArtifactList o) {
   buildCounterGoogleCloudAiplatformV1PipelineTaskDetailArtifactList++;
   if (buildCounterGoogleCloudAiplatformV1PipelineTaskDetailArtifactList < 3) {
-    checkUnnamed285(o.artifacts!);
+    checkUnnamed294(o.artifacts!);
   }
   buildCounterGoogleCloudAiplatformV1PipelineTaskDetailArtifactList--;
 }
@@ -20192,12 +20769,12 @@ void checkGoogleCloudAiplatformV1PipelineTaskExecutorDetail(
   buildCounterGoogleCloudAiplatformV1PipelineTaskExecutorDetail--;
 }
 
-core.List<core.String> buildUnnamed286() => [
+core.List<core.String> buildUnnamed295() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed286(core.List<core.String> o) {
+void checkUnnamed295(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -20209,12 +20786,12 @@ void checkUnnamed286(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed287() => [
+core.List<core.String> buildUnnamed296() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed287(core.List<core.String> o) {
+void checkUnnamed296(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -20236,8 +20813,8 @@ api.GoogleCloudAiplatformV1PipelineTaskExecutorDetailContainerDetail
   buildCounterGoogleCloudAiplatformV1PipelineTaskExecutorDetailContainerDetail++;
   if (buildCounterGoogleCloudAiplatformV1PipelineTaskExecutorDetailContainerDetail <
       3) {
-    o.failedMainJobs = buildUnnamed286();
-    o.failedPreCachingCheckJobs = buildUnnamed287();
+    o.failedMainJobs = buildUnnamed295();
+    o.failedPreCachingCheckJobs = buildUnnamed296();
     o.mainJob = 'foo';
     o.preCachingCheckJob = 'foo';
   }
@@ -20250,8 +20827,8 @@ void checkGoogleCloudAiplatformV1PipelineTaskExecutorDetailContainerDetail(
   buildCounterGoogleCloudAiplatformV1PipelineTaskExecutorDetailContainerDetail++;
   if (buildCounterGoogleCloudAiplatformV1PipelineTaskExecutorDetailContainerDetail <
       3) {
-    checkUnnamed286(o.failedMainJobs!);
-    checkUnnamed287(o.failedPreCachingCheckJobs!);
+    checkUnnamed295(o.failedMainJobs!);
+    checkUnnamed296(o.failedPreCachingCheckJobs!);
     unittest.expect(
       o.mainJob!,
       unittest.equals('foo'),
@@ -20264,12 +20841,12 @@ void checkGoogleCloudAiplatformV1PipelineTaskExecutorDetailContainerDetail(
   buildCounterGoogleCloudAiplatformV1PipelineTaskExecutorDetailContainerDetail--;
 }
 
-core.List<core.String> buildUnnamed288() => [
+core.List<core.String> buildUnnamed297() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed288(core.List<core.String> o) {
+void checkUnnamed297(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -20291,7 +20868,7 @@ api.GoogleCloudAiplatformV1PipelineTaskExecutorDetailCustomJobDetail
   buildCounterGoogleCloudAiplatformV1PipelineTaskExecutorDetailCustomJobDetail++;
   if (buildCounterGoogleCloudAiplatformV1PipelineTaskExecutorDetailCustomJobDetail <
       3) {
-    o.failedJobs = buildUnnamed288();
+    o.failedJobs = buildUnnamed297();
     o.job = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1PipelineTaskExecutorDetailCustomJobDetail--;
@@ -20303,7 +20880,7 @@ void checkGoogleCloudAiplatformV1PipelineTaskExecutorDetailCustomJobDetail(
   buildCounterGoogleCloudAiplatformV1PipelineTaskExecutorDetailCustomJobDetail++;
   if (buildCounterGoogleCloudAiplatformV1PipelineTaskExecutorDetailCustomJobDetail <
       3) {
-    checkUnnamed288(o.failedJobs!);
+    checkUnnamed297(o.failedJobs!);
     unittest.expect(
       o.job!,
       unittest.equals('foo'),
@@ -20419,6 +20996,7 @@ api.GoogleCloudAiplatformV1PointwiseMetricSpec
   buildCounterGoogleCloudAiplatformV1PointwiseMetricSpec++;
   if (buildCounterGoogleCloudAiplatformV1PointwiseMetricSpec < 3) {
     o.metricPromptTemplate = 'foo';
+    o.systemInstruction = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1PointwiseMetricSpec--;
   return o;
@@ -20430,6 +21008,10 @@ void checkGoogleCloudAiplatformV1PointwiseMetricSpec(
   if (buildCounterGoogleCloudAiplatformV1PointwiseMetricSpec < 3) {
     unittest.expect(
       o.metricPromptTemplate!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.systemInstruction!,
       unittest.equals('foo'),
     );
   }
@@ -20456,6 +21038,40 @@ void checkGoogleCloudAiplatformV1Port(api.GoogleCloudAiplatformV1Port o) {
     );
   }
   buildCounterGoogleCloudAiplatformV1Port--;
+}
+
+core.int buildCounterGoogleCloudAiplatformV1PostStartupScriptConfig = 0;
+api.GoogleCloudAiplatformV1PostStartupScriptConfig
+    buildGoogleCloudAiplatformV1PostStartupScriptConfig() {
+  final o = api.GoogleCloudAiplatformV1PostStartupScriptConfig();
+  buildCounterGoogleCloudAiplatformV1PostStartupScriptConfig++;
+  if (buildCounterGoogleCloudAiplatformV1PostStartupScriptConfig < 3) {
+    o.postStartupScript = 'foo';
+    o.postStartupScriptBehavior = 'foo';
+    o.postStartupScriptUrl = 'foo';
+  }
+  buildCounterGoogleCloudAiplatformV1PostStartupScriptConfig--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1PostStartupScriptConfig(
+    api.GoogleCloudAiplatformV1PostStartupScriptConfig o) {
+  buildCounterGoogleCloudAiplatformV1PostStartupScriptConfig++;
+  if (buildCounterGoogleCloudAiplatformV1PostStartupScriptConfig < 3) {
+    unittest.expect(
+      o.postStartupScript!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.postStartupScriptBehavior!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.postStartupScriptUrl!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudAiplatformV1PostStartupScriptConfig--;
 }
 
 core.int buildCounterGoogleCloudAiplatformV1PrebuiltVoiceConfig = 0;
@@ -20506,7 +21122,7 @@ void checkGoogleCloudAiplatformV1PredefinedSplit(
   buildCounterGoogleCloudAiplatformV1PredefinedSplit--;
 }
 
-core.List<core.Object?> buildUnnamed289() => [
+core.List<core.Object?> buildUnnamed298() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -20519,7 +21135,7 @@ core.List<core.Object?> buildUnnamed289() => [
       },
     ];
 
-void checkUnnamed289(core.List<core.Object?> o) {
+void checkUnnamed298(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted56 = (o[0]) as core.Map;
   unittest.expect(casted56, unittest.hasLength(3));
@@ -20557,7 +21173,7 @@ api.GoogleCloudAiplatformV1PredictLongRunningRequest
   final o = api.GoogleCloudAiplatformV1PredictLongRunningRequest();
   buildCounterGoogleCloudAiplatformV1PredictLongRunningRequest++;
   if (buildCounterGoogleCloudAiplatformV1PredictLongRunningRequest < 3) {
-    o.instances = buildUnnamed289();
+    o.instances = buildUnnamed298();
     o.parameters = {
       'list': [1, 2, 3],
       'bool': true,
@@ -20572,7 +21188,7 @@ void checkGoogleCloudAiplatformV1PredictLongRunningRequest(
     api.GoogleCloudAiplatformV1PredictLongRunningRequest o) {
   buildCounterGoogleCloudAiplatformV1PredictLongRunningRequest++;
   if (buildCounterGoogleCloudAiplatformV1PredictLongRunningRequest < 3) {
-    checkUnnamed289(o.instances!);
+    checkUnnamed298(o.instances!);
     var casted58 = (o.parameters!) as core.Map;
     unittest.expect(casted58, unittest.hasLength(3));
     unittest.expect(
@@ -20591,7 +21207,7 @@ void checkGoogleCloudAiplatformV1PredictLongRunningRequest(
   buildCounterGoogleCloudAiplatformV1PredictLongRunningRequest--;
 }
 
-core.List<core.Object?> buildUnnamed290() => [
+core.List<core.Object?> buildUnnamed299() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -20604,7 +21220,7 @@ core.List<core.Object?> buildUnnamed290() => [
       },
     ];
 
-void checkUnnamed290(core.List<core.Object?> o) {
+void checkUnnamed299(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted59 = (o[0]) as core.Map;
   unittest.expect(casted59, unittest.hasLength(3));
@@ -20642,7 +21258,7 @@ api.GoogleCloudAiplatformV1PredictRequest
   final o = api.GoogleCloudAiplatformV1PredictRequest();
   buildCounterGoogleCloudAiplatformV1PredictRequest++;
   if (buildCounterGoogleCloudAiplatformV1PredictRequest < 3) {
-    o.instances = buildUnnamed290();
+    o.instances = buildUnnamed299();
     o.parameters = {
       'list': [1, 2, 3],
       'bool': true,
@@ -20657,7 +21273,7 @@ void checkGoogleCloudAiplatformV1PredictRequest(
     api.GoogleCloudAiplatformV1PredictRequest o) {
   buildCounterGoogleCloudAiplatformV1PredictRequest++;
   if (buildCounterGoogleCloudAiplatformV1PredictRequest < 3) {
-    checkUnnamed290(o.instances!);
+    checkUnnamed299(o.instances!);
     var casted61 = (o.parameters!) as core.Map;
     unittest.expect(casted61, unittest.hasLength(3));
     unittest.expect(
@@ -20707,7 +21323,7 @@ void checkGoogleCloudAiplatformV1PredictRequestResponseLoggingConfig(
   buildCounterGoogleCloudAiplatformV1PredictRequestResponseLoggingConfig--;
 }
 
-core.List<core.Object?> buildUnnamed291() => [
+core.List<core.Object?> buildUnnamed300() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -20720,7 +21336,7 @@ core.List<core.Object?> buildUnnamed291() => [
       },
     ];
 
-void checkUnnamed291(core.List<core.Object?> o) {
+void checkUnnamed300(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted62 = (o[0]) as core.Map;
   unittest.expect(casted62, unittest.hasLength(3));
@@ -20767,7 +21383,7 @@ api.GoogleCloudAiplatformV1PredictResponse
     o.model = 'foo';
     o.modelDisplayName = 'foo';
     o.modelVersionId = 'foo';
-    o.predictions = buildUnnamed291();
+    o.predictions = buildUnnamed300();
   }
   buildCounterGoogleCloudAiplatformV1PredictResponse--;
   return o;
@@ -20807,7 +21423,7 @@ void checkGoogleCloudAiplatformV1PredictResponse(
       o.modelVersionId!,
       unittest.equals('foo'),
     );
-    checkUnnamed291(o.predictions!);
+    checkUnnamed300(o.predictions!);
   }
   buildCounterGoogleCloudAiplatformV1PredictResponse--;
 }
@@ -20912,12 +21528,12 @@ void checkGoogleCloudAiplatformV1PrivateEndpoints(
   buildCounterGoogleCloudAiplatformV1PrivateEndpoints--;
 }
 
-core.List<core.String> buildUnnamed292() => [
+core.List<core.String> buildUnnamed301() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed292(core.List<core.String> o) {
+void checkUnnamed301(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -20936,7 +21552,7 @@ api.GoogleCloudAiplatformV1PrivateServiceConnectConfig
   buildCounterGoogleCloudAiplatformV1PrivateServiceConnectConfig++;
   if (buildCounterGoogleCloudAiplatformV1PrivateServiceConnectConfig < 3) {
     o.enablePrivateServiceConnect = true;
-    o.projectAllowlist = buildUnnamed292();
+    o.projectAllowlist = buildUnnamed301();
     o.serviceAttachment = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1PrivateServiceConnectConfig--;
@@ -20948,7 +21564,7 @@ void checkGoogleCloudAiplatformV1PrivateServiceConnectConfig(
   buildCounterGoogleCloudAiplatformV1PrivateServiceConnectConfig++;
   if (buildCounterGoogleCloudAiplatformV1PrivateServiceConnectConfig < 3) {
     unittest.expect(o.enablePrivateServiceConnect!, unittest.isTrue);
-    checkUnnamed292(o.projectAllowlist!);
+    checkUnnamed301(o.projectAllowlist!);
     unittest.expect(
       o.serviceAttachment!,
       unittest.equals('foo'),
@@ -20963,9 +21579,12 @@ api.GoogleCloudAiplatformV1Probe buildGoogleCloudAiplatformV1Probe() {
   buildCounterGoogleCloudAiplatformV1Probe++;
   if (buildCounterGoogleCloudAiplatformV1Probe < 3) {
     o.exec = buildGoogleCloudAiplatformV1ProbeExecAction();
+    o.failureThreshold = 42;
     o.grpc = buildGoogleCloudAiplatformV1ProbeGrpcAction();
     o.httpGet = buildGoogleCloudAiplatformV1ProbeHttpGetAction();
+    o.initialDelaySeconds = 42;
     o.periodSeconds = 42;
+    o.successThreshold = 42;
     o.tcpSocket = buildGoogleCloudAiplatformV1ProbeTcpSocketAction();
     o.timeoutSeconds = 42;
   }
@@ -20977,10 +21596,22 @@ void checkGoogleCloudAiplatformV1Probe(api.GoogleCloudAiplatformV1Probe o) {
   buildCounterGoogleCloudAiplatformV1Probe++;
   if (buildCounterGoogleCloudAiplatformV1Probe < 3) {
     checkGoogleCloudAiplatformV1ProbeExecAction(o.exec!);
+    unittest.expect(
+      o.failureThreshold!,
+      unittest.equals(42),
+    );
     checkGoogleCloudAiplatformV1ProbeGrpcAction(o.grpc!);
     checkGoogleCloudAiplatformV1ProbeHttpGetAction(o.httpGet!);
     unittest.expect(
+      o.initialDelaySeconds!,
+      unittest.equals(42),
+    );
+    unittest.expect(
       o.periodSeconds!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.successThreshold!,
       unittest.equals(42),
     );
     checkGoogleCloudAiplatformV1ProbeTcpSocketAction(o.tcpSocket!);
@@ -20992,12 +21623,12 @@ void checkGoogleCloudAiplatformV1Probe(api.GoogleCloudAiplatformV1Probe o) {
   buildCounterGoogleCloudAiplatformV1Probe--;
 }
 
-core.List<core.String> buildUnnamed293() => [
+core.List<core.String> buildUnnamed302() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed293(core.List<core.String> o) {
+void checkUnnamed302(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -21015,7 +21646,7 @@ api.GoogleCloudAiplatformV1ProbeExecAction
   final o = api.GoogleCloudAiplatformV1ProbeExecAction();
   buildCounterGoogleCloudAiplatformV1ProbeExecAction++;
   if (buildCounterGoogleCloudAiplatformV1ProbeExecAction < 3) {
-    o.command = buildUnnamed293();
+    o.command = buildUnnamed302();
   }
   buildCounterGoogleCloudAiplatformV1ProbeExecAction--;
   return o;
@@ -21025,7 +21656,7 @@ void checkGoogleCloudAiplatformV1ProbeExecAction(
     api.GoogleCloudAiplatformV1ProbeExecAction o) {
   buildCounterGoogleCloudAiplatformV1ProbeExecAction++;
   if (buildCounterGoogleCloudAiplatformV1ProbeExecAction < 3) {
-    checkUnnamed293(o.command!);
+    checkUnnamed302(o.command!);
   }
   buildCounterGoogleCloudAiplatformV1ProbeExecAction--;
 }
@@ -21059,12 +21690,12 @@ void checkGoogleCloudAiplatformV1ProbeGrpcAction(
   buildCounterGoogleCloudAiplatformV1ProbeGrpcAction--;
 }
 
-core.List<api.GoogleCloudAiplatformV1ProbeHttpHeader> buildUnnamed294() => [
+core.List<api.GoogleCloudAiplatformV1ProbeHttpHeader> buildUnnamed303() => [
       buildGoogleCloudAiplatformV1ProbeHttpHeader(),
       buildGoogleCloudAiplatformV1ProbeHttpHeader(),
     ];
 
-void checkUnnamed294(core.List<api.GoogleCloudAiplatformV1ProbeHttpHeader> o) {
+void checkUnnamed303(core.List<api.GoogleCloudAiplatformV1ProbeHttpHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ProbeHttpHeader(o[0]);
   checkGoogleCloudAiplatformV1ProbeHttpHeader(o[1]);
@@ -21077,7 +21708,7 @@ api.GoogleCloudAiplatformV1ProbeHttpGetAction
   buildCounterGoogleCloudAiplatformV1ProbeHttpGetAction++;
   if (buildCounterGoogleCloudAiplatformV1ProbeHttpGetAction < 3) {
     o.host = 'foo';
-    o.httpHeaders = buildUnnamed294();
+    o.httpHeaders = buildUnnamed303();
     o.path = 'foo';
     o.port = 42;
     o.scheme = 'foo';
@@ -21094,7 +21725,7 @@ void checkGoogleCloudAiplatformV1ProbeHttpGetAction(
       o.host!,
       unittest.equals('foo'),
     );
-    checkUnnamed294(o.httpHeaders!);
+    checkUnnamed303(o.httpHeaders!);
     unittest.expect(
       o.path!,
       unittest.equals('foo'),
@@ -21203,12 +21834,12 @@ void checkGoogleCloudAiplatformV1PscAutomatedEndpoints(
   buildCounterGoogleCloudAiplatformV1PscAutomatedEndpoints--;
 }
 
-core.List<core.String> buildUnnamed295() => [
+core.List<core.String> buildUnnamed304() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed295(core.List<core.String> o) {
+void checkUnnamed304(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -21226,7 +21857,7 @@ api.GoogleCloudAiplatformV1PublisherModel
   final o = api.GoogleCloudAiplatformV1PublisherModel();
   buildCounterGoogleCloudAiplatformV1PublisherModel++;
   if (buildCounterGoogleCloudAiplatformV1PublisherModel < 3) {
-    o.frameworks = buildUnnamed295();
+    o.frameworks = buildUnnamed304();
     o.launchStage = 'foo';
     o.name = 'foo';
     o.openSourceCategory = 'foo';
@@ -21245,7 +21876,7 @@ void checkGoogleCloudAiplatformV1PublisherModel(
     api.GoogleCloudAiplatformV1PublisherModel o) {
   buildCounterGoogleCloudAiplatformV1PublisherModel++;
   if (buildCounterGoogleCloudAiplatformV1PublisherModel < 3) {
-    checkUnnamed295(o.frameworks!);
+    checkUnnamed304(o.frameworks!);
     unittest.expect(
       o.launchStage!,
       unittest.equals('foo'),
@@ -21411,12 +22042,12 @@ void checkGoogleCloudAiplatformV1PublisherModelCallToActionDeploy(
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionDeploy--;
 }
 
-core.Map<core.String, core.String> buildUnnamed296() => {
+core.Map<core.String, core.String> buildUnnamed305() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed296(core.Map<core.String, core.String> o) {
+void checkUnnamed305(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -21438,7 +22069,7 @@ api.GoogleCloudAiplatformV1PublisherModelCallToActionDeployDeployMetadata
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionDeployDeployMetadata++;
   if (buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionDeployDeployMetadata <
       3) {
-    o.labels = buildUnnamed296();
+    o.labels = buildUnnamed305();
     o.sampleRequest = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionDeployDeployMetadata--;
@@ -21451,7 +22082,7 @@ void checkGoogleCloudAiplatformV1PublisherModelCallToActionDeployDeployMetadata(
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionDeployDeployMetadata++;
   if (buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionDeployDeployMetadata <
       3) {
-    checkUnnamed296(o.labels!);
+    checkUnnamed305(o.labels!);
     unittest.expect(
       o.sampleRequest!,
       unittest.equals('foo'),
@@ -21460,12 +22091,12 @@ void checkGoogleCloudAiplatformV1PublisherModelCallToActionDeployDeployMetadata(
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionDeployDeployMetadata--;
 }
 
-core.List<core.String> buildUnnamed297() => [
+core.List<core.String> buildUnnamed306() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed297(core.List<core.String> o) {
+void checkUnnamed306(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -21485,7 +22116,7 @@ api.GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionDeployGke++;
   if (buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionDeployGke <
       3) {
-    o.gkeYamlConfigs = buildUnnamed297();
+    o.gkeYamlConfigs = buildUnnamed306();
   }
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionDeployGke--;
   return o;
@@ -21496,18 +22127,18 @@ void checkGoogleCloudAiplatformV1PublisherModelCallToActionDeployGke(
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionDeployGke++;
   if (buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionDeployGke <
       3) {
-    checkUnnamed297(o.gkeYamlConfigs!);
+    checkUnnamed306(o.gkeYamlConfigs!);
   }
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionDeployGke--;
 }
 
 core.List<api.GoogleCloudAiplatformV1PublisherModelCallToActionDeploy>
-    buildUnnamed298() => [
+    buildUnnamed307() => [
           buildGoogleCloudAiplatformV1PublisherModelCallToActionDeploy(),
           buildGoogleCloudAiplatformV1PublisherModelCallToActionDeploy(),
         ];
 
-void checkUnnamed298(
+void checkUnnamed307(
     core.List<api.GoogleCloudAiplatformV1PublisherModelCallToActionDeploy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1PublisherModelCallToActionDeploy(o[0]);
@@ -21523,7 +22154,7 @@ api.GoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex++;
   if (buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex <
       3) {
-    o.multiDeployVertex = buildUnnamed298();
+    o.multiDeployVertex = buildUnnamed307();
   }
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex--;
   return o;
@@ -21534,7 +22165,7 @@ void checkGoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex(
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex++;
   if (buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex <
       3) {
-    checkUnnamed298(o.multiDeployVertex!);
+    checkUnnamed307(o.multiDeployVertex!);
   }
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex--;
 }
@@ -21542,12 +22173,12 @@ void checkGoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex(
 core.List<
         api
         .GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences>
-    buildUnnamed299() => [
+    buildUnnamed308() => [
           buildGoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences(),
           buildGoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences(),
         ];
 
-void checkUnnamed299(
+void checkUnnamed308(
     core.List<
             api
             .GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences>
@@ -21569,7 +22200,7 @@ api.GoogleCloudAiplatformV1PublisherModelCallToActionOpenFineTuningPipelines
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionOpenFineTuningPipelines++;
   if (buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionOpenFineTuningPipelines <
       3) {
-    o.fineTuningPipelines = buildUnnamed299();
+    o.fineTuningPipelines = buildUnnamed308();
   }
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionOpenFineTuningPipelines--;
   return o;
@@ -21581,7 +22212,7 @@ void checkGoogleCloudAiplatformV1PublisherModelCallToActionOpenFineTuningPipelin
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionOpenFineTuningPipelines++;
   if (buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionOpenFineTuningPipelines <
       3) {
-    checkUnnamed299(o.fineTuningPipelines!);
+    checkUnnamed308(o.fineTuningPipelines!);
   }
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionOpenFineTuningPipelines--;
 }
@@ -21589,12 +22220,12 @@ void checkGoogleCloudAiplatformV1PublisherModelCallToActionOpenFineTuningPipelin
 core.List<
         api
         .GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences>
-    buildUnnamed300() => [
+    buildUnnamed309() => [
           buildGoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences(),
           buildGoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences(),
         ];
 
-void checkUnnamed300(
+void checkUnnamed309(
     core.List<
             api
             .GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences>
@@ -21616,7 +22247,7 @@ api.GoogleCloudAiplatformV1PublisherModelCallToActionOpenNotebooks
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionOpenNotebooks++;
   if (buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionOpenNotebooks <
       3) {
-    o.notebooks = buildUnnamed300();
+    o.notebooks = buildUnnamed309();
   }
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionOpenNotebooks--;
   return o;
@@ -21627,19 +22258,19 @@ void checkGoogleCloudAiplatformV1PublisherModelCallToActionOpenNotebooks(
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionOpenNotebooks++;
   if (buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionOpenNotebooks <
       3) {
-    checkUnnamed300(o.notebooks!);
+    checkUnnamed309(o.notebooks!);
   }
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionOpenNotebooks--;
 }
 
 core.Map<core.String,
         api.GoogleCloudAiplatformV1PublisherModelResourceReference>
-    buildUnnamed301() => {
+    buildUnnamed310() => {
           'x': buildGoogleCloudAiplatformV1PublisherModelResourceReference(),
           'y': buildGoogleCloudAiplatformV1PublisherModelResourceReference(),
         };
 
-void checkUnnamed301(
+void checkUnnamed310(
     core.Map<core.String,
             api.GoogleCloudAiplatformV1PublisherModelResourceReference>
         o) {
@@ -21658,7 +22289,7 @@ api.GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences++;
   if (buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences <
       3) {
-    o.references = buildUnnamed301();
+    o.references = buildUnnamed310();
     o.resourceDescription = 'foo';
     o.resourceTitle = 'foo';
     o.resourceUseCase = 'foo';
@@ -21674,7 +22305,7 @@ void checkGoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceRefer
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences++;
   if (buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences <
       3) {
-    checkUnnamed301(o.references!);
+    checkUnnamed310(o.references!);
     unittest.expect(
       o.resourceDescription!,
       unittest.equals('foo'),
@@ -21696,12 +22327,12 @@ void checkGoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceRefer
 }
 
 core.List<api.GoogleCloudAiplatformV1PublisherModelDocumentation>
-    buildUnnamed302() => [
+    buildUnnamed311() => [
           buildGoogleCloudAiplatformV1PublisherModelDocumentation(),
           buildGoogleCloudAiplatformV1PublisherModelDocumentation(),
         ];
 
-void checkUnnamed302(
+void checkUnnamed311(
     core.List<api.GoogleCloudAiplatformV1PublisherModelDocumentation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1PublisherModelDocumentation(o[0]);
@@ -21717,7 +22348,7 @@ api.GoogleCloudAiplatformV1PublisherModelCallToActionViewRestApi
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionViewRestApi++;
   if (buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionViewRestApi <
       3) {
-    o.documentations = buildUnnamed302();
+    o.documentations = buildUnnamed311();
     o.title = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionViewRestApi--;
@@ -21729,7 +22360,7 @@ void checkGoogleCloudAiplatformV1PublisherModelCallToActionViewRestApi(
   buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionViewRestApi++;
   if (buildCounterGoogleCloudAiplatformV1PublisherModelCallToActionViewRestApi <
       3) {
-    checkUnnamed302(o.documentations!);
+    checkUnnamed311(o.documentations!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),
@@ -21884,12 +22515,12 @@ void checkGoogleCloudAiplatformV1PurgeExecutionsRequest(
   buildCounterGoogleCloudAiplatformV1PurgeExecutionsRequest--;
 }
 
-core.List<core.String> buildUnnamed303() => [
+core.List<core.String> buildUnnamed312() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed303(core.List<core.String> o) {
+void checkUnnamed312(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -21901,23 +22532,23 @@ void checkUnnamed303(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudAiplatformV1EnvVar> buildUnnamed304() => [
+core.List<api.GoogleCloudAiplatformV1EnvVar> buildUnnamed313() => [
       buildGoogleCloudAiplatformV1EnvVar(),
       buildGoogleCloudAiplatformV1EnvVar(),
     ];
 
-void checkUnnamed304(core.List<api.GoogleCloudAiplatformV1EnvVar> o) {
+void checkUnnamed313(core.List<api.GoogleCloudAiplatformV1EnvVar> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1EnvVar(o[0]);
   checkGoogleCloudAiplatformV1EnvVar(o[1]);
 }
 
-core.List<core.String> buildUnnamed305() => [
+core.List<core.String> buildUnnamed314() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed305(core.List<core.String> o) {
+void checkUnnamed314(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -21935,10 +22566,10 @@ api.GoogleCloudAiplatformV1PythonPackageSpec
   final o = api.GoogleCloudAiplatformV1PythonPackageSpec();
   buildCounterGoogleCloudAiplatformV1PythonPackageSpec++;
   if (buildCounterGoogleCloudAiplatformV1PythonPackageSpec < 3) {
-    o.args = buildUnnamed303();
-    o.env = buildUnnamed304();
+    o.args = buildUnnamed312();
+    o.env = buildUnnamed313();
     o.executorImageUri = 'foo';
-    o.packageUris = buildUnnamed305();
+    o.packageUris = buildUnnamed314();
     o.pythonModule = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1PythonPackageSpec--;
@@ -21949,13 +22580,13 @@ void checkGoogleCloudAiplatformV1PythonPackageSpec(
     api.GoogleCloudAiplatformV1PythonPackageSpec o) {
   buildCounterGoogleCloudAiplatformV1PythonPackageSpec++;
   if (buildCounterGoogleCloudAiplatformV1PythonPackageSpec < 3) {
-    checkUnnamed303(o.args!);
-    checkUnnamed304(o.env!);
+    checkUnnamed312(o.args!);
+    checkUnnamed313(o.env!);
     unittest.expect(
       o.executorImageUri!,
       unittest.equals('foo'),
     );
-    checkUnnamed305(o.packageUris!);
+    checkUnnamed314(o.packageUris!);
     unittest.expect(
       o.pythonModule!,
       unittest.equals('foo'),
@@ -21964,23 +22595,23 @@ void checkGoogleCloudAiplatformV1PythonPackageSpec(
   buildCounterGoogleCloudAiplatformV1PythonPackageSpec--;
 }
 
-core.List<api.GoogleCloudAiplatformV1DeployedModelRef> buildUnnamed306() => [
+core.List<api.GoogleCloudAiplatformV1DeployedModelRef> buildUnnamed315() => [
       buildGoogleCloudAiplatformV1DeployedModelRef(),
       buildGoogleCloudAiplatformV1DeployedModelRef(),
     ];
 
-void checkUnnamed306(core.List<api.GoogleCloudAiplatformV1DeployedModelRef> o) {
+void checkUnnamed315(core.List<api.GoogleCloudAiplatformV1DeployedModelRef> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1DeployedModelRef(o[0]);
   checkGoogleCloudAiplatformV1DeployedModelRef(o[1]);
 }
 
-core.List<api.GoogleCloudAiplatformV1DeployedModel> buildUnnamed307() => [
+core.List<api.GoogleCloudAiplatformV1DeployedModel> buildUnnamed316() => [
       buildGoogleCloudAiplatformV1DeployedModel(),
       buildGoogleCloudAiplatformV1DeployedModel(),
     ];
 
-void checkUnnamed307(core.List<api.GoogleCloudAiplatformV1DeployedModel> o) {
+void checkUnnamed316(core.List<api.GoogleCloudAiplatformV1DeployedModel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1DeployedModel(o[0]);
   checkGoogleCloudAiplatformV1DeployedModel(o[1]);
@@ -21992,8 +22623,8 @@ api.GoogleCloudAiplatformV1QueryDeployedModelsResponse
   final o = api.GoogleCloudAiplatformV1QueryDeployedModelsResponse();
   buildCounterGoogleCloudAiplatformV1QueryDeployedModelsResponse++;
   if (buildCounterGoogleCloudAiplatformV1QueryDeployedModelsResponse < 3) {
-    o.deployedModelRefs = buildUnnamed306();
-    o.deployedModels = buildUnnamed307();
+    o.deployedModelRefs = buildUnnamed315();
+    o.deployedModels = buildUnnamed316();
     o.nextPageToken = 'foo';
     o.totalDeployedModelCount = 42;
     o.totalEndpointCount = 42;
@@ -22006,8 +22637,8 @@ void checkGoogleCloudAiplatformV1QueryDeployedModelsResponse(
     api.GoogleCloudAiplatformV1QueryDeployedModelsResponse o) {
   buildCounterGoogleCloudAiplatformV1QueryDeployedModelsResponse++;
   if (buildCounterGoogleCloudAiplatformV1QueryDeployedModelsResponse < 3) {
-    checkUnnamed306(o.deployedModelRefs!);
-    checkUnnamed307(o.deployedModels!);
+    checkUnnamed315(o.deployedModelRefs!);
+    checkUnnamed316(o.deployedModels!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -22024,7 +22655,7 @@ void checkGoogleCloudAiplatformV1QueryDeployedModelsResponse(
   buildCounterGoogleCloudAiplatformV1QueryDeployedModelsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed308() => {
+core.Map<core.String, core.Object?> buildUnnamed317() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -22037,7 +22668,7 @@ core.Map<core.String, core.Object?> buildUnnamed308() => {
       },
     };
 
-void checkUnnamed308(core.Map<core.String, core.Object?> o) {
+void checkUnnamed317(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted65 = (o['x']!) as core.Map;
   unittest.expect(casted65, unittest.hasLength(3));
@@ -22076,7 +22707,7 @@ api.GoogleCloudAiplatformV1QueryReasoningEngineRequest
   buildCounterGoogleCloudAiplatformV1QueryReasoningEngineRequest++;
   if (buildCounterGoogleCloudAiplatformV1QueryReasoningEngineRequest < 3) {
     o.classMethod = 'foo';
-    o.input = buildUnnamed308();
+    o.input = buildUnnamed317();
   }
   buildCounterGoogleCloudAiplatformV1QueryReasoningEngineRequest--;
   return o;
@@ -22090,7 +22721,7 @@ void checkGoogleCloudAiplatformV1QueryReasoningEngineRequest(
       o.classMethod!,
       unittest.equals('foo'),
     );
-    checkUnnamed308(o.input!);
+    checkUnnamed317(o.input!);
   }
   buildCounterGoogleCloudAiplatformV1QueryReasoningEngineRequest--;
 }
@@ -22653,12 +23284,12 @@ void checkGoogleCloudAiplatformV1QuestionAnsweringRelevanceSpec(
   buildCounterGoogleCloudAiplatformV1QuestionAnsweringRelevanceSpec--;
 }
 
-core.List<api.GoogleCloudAiplatformV1RagContextsContext> buildUnnamed309() => [
+core.List<api.GoogleCloudAiplatformV1RagContextsContext> buildUnnamed318() => [
       buildGoogleCloudAiplatformV1RagContextsContext(),
       buildGoogleCloudAiplatformV1RagContextsContext(),
     ];
 
-void checkUnnamed309(
+void checkUnnamed318(
     core.List<api.GoogleCloudAiplatformV1RagContextsContext> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1RagContextsContext(o[0]);
@@ -22671,7 +23302,7 @@ api.GoogleCloudAiplatformV1RagContexts
   final o = api.GoogleCloudAiplatformV1RagContexts();
   buildCounterGoogleCloudAiplatformV1RagContexts++;
   if (buildCounterGoogleCloudAiplatformV1RagContexts < 3) {
-    o.contexts = buildUnnamed309();
+    o.contexts = buildUnnamed318();
   }
   buildCounterGoogleCloudAiplatformV1RagContexts--;
   return o;
@@ -22681,7 +23312,7 @@ void checkGoogleCloudAiplatformV1RagContexts(
     api.GoogleCloudAiplatformV1RagContexts o) {
   buildCounterGoogleCloudAiplatformV1RagContexts++;
   if (buildCounterGoogleCloudAiplatformV1RagContexts < 3) {
-    checkUnnamed309(o.contexts!);
+    checkUnnamed318(o.contexts!);
   }
   buildCounterGoogleCloudAiplatformV1RagContexts--;
 }
@@ -23225,12 +23856,12 @@ void checkGoogleCloudAiplatformV1RayMetricSpec(
   buildCounterGoogleCloudAiplatformV1RayMetricSpec--;
 }
 
-core.Map<core.String, core.String> buildUnnamed310() => {
+core.Map<core.String, core.String> buildUnnamed319() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed310(core.Map<core.String, core.String> o) {
+void checkUnnamed319(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -23251,7 +23882,7 @@ api.GoogleCloudAiplatformV1RaySpec buildGoogleCloudAiplatformV1RaySpec() {
     o.imageUri = 'foo';
     o.rayLogsSpec = buildGoogleCloudAiplatformV1RayLogsSpec();
     o.rayMetricSpec = buildGoogleCloudAiplatformV1RayMetricSpec();
-    o.resourcePoolImages = buildUnnamed310();
+    o.resourcePoolImages = buildUnnamed319();
   }
   buildCounterGoogleCloudAiplatformV1RaySpec--;
   return o;
@@ -23270,7 +23901,7 @@ void checkGoogleCloudAiplatformV1RaySpec(api.GoogleCloudAiplatformV1RaySpec o) {
     );
     checkGoogleCloudAiplatformV1RayLogsSpec(o.rayLogsSpec!);
     checkGoogleCloudAiplatformV1RayMetricSpec(o.rayMetricSpec!);
-    checkUnnamed310(o.resourcePoolImages!);
+    checkUnnamed319(o.resourcePoolImages!);
   }
   buildCounterGoogleCloudAiplatformV1RaySpec--;
 }
@@ -23327,12 +23958,12 @@ void checkGoogleCloudAiplatformV1ReadFeatureValuesResponse(
 }
 
 core.List<api.GoogleCloudAiplatformV1ReadFeatureValuesResponseEntityViewData>
-    buildUnnamed311() => [
+    buildUnnamed320() => [
           buildGoogleCloudAiplatformV1ReadFeatureValuesResponseEntityViewData(),
           buildGoogleCloudAiplatformV1ReadFeatureValuesResponseEntityViewData(),
         ];
 
-void checkUnnamed311(
+void checkUnnamed320(
     core.List<
             api.GoogleCloudAiplatformV1ReadFeatureValuesResponseEntityViewData>
         o) {
@@ -23349,7 +23980,7 @@ api.GoogleCloudAiplatformV1ReadFeatureValuesResponseEntityView
   buildCounterGoogleCloudAiplatformV1ReadFeatureValuesResponseEntityView++;
   if (buildCounterGoogleCloudAiplatformV1ReadFeatureValuesResponseEntityView <
       3) {
-    o.data = buildUnnamed311();
+    o.data = buildUnnamed320();
     o.entityId = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1ReadFeatureValuesResponseEntityView--;
@@ -23361,7 +23992,7 @@ void checkGoogleCloudAiplatformV1ReadFeatureValuesResponseEntityView(
   buildCounterGoogleCloudAiplatformV1ReadFeatureValuesResponseEntityView++;
   if (buildCounterGoogleCloudAiplatformV1ReadFeatureValuesResponseEntityView <
       3) {
-    checkUnnamed311(o.data!);
+    checkUnnamed320(o.data!);
     unittest.expect(
       o.entityId!,
       unittest.equals('foo'),
@@ -23428,12 +24059,12 @@ void checkGoogleCloudAiplatformV1ReadFeatureValuesResponseFeatureDescriptor(
 }
 
 core.List<api.GoogleCloudAiplatformV1ReadFeatureValuesResponseFeatureDescriptor>
-    buildUnnamed312() => [
+    buildUnnamed321() => [
           buildGoogleCloudAiplatformV1ReadFeatureValuesResponseFeatureDescriptor(),
           buildGoogleCloudAiplatformV1ReadFeatureValuesResponseFeatureDescriptor(),
         ];
 
-void checkUnnamed312(
+void checkUnnamed321(
     core.List<
             api
             .GoogleCloudAiplatformV1ReadFeatureValuesResponseFeatureDescriptor>
@@ -23450,7 +24081,7 @@ api.GoogleCloudAiplatformV1ReadFeatureValuesResponseHeader
   buildCounterGoogleCloudAiplatformV1ReadFeatureValuesResponseHeader++;
   if (buildCounterGoogleCloudAiplatformV1ReadFeatureValuesResponseHeader < 3) {
     o.entityType = 'foo';
-    o.featureDescriptors = buildUnnamed312();
+    o.featureDescriptors = buildUnnamed321();
   }
   buildCounterGoogleCloudAiplatformV1ReadFeatureValuesResponseHeader--;
   return o;
@@ -23464,17 +24095,17 @@ void checkGoogleCloudAiplatformV1ReadFeatureValuesResponseHeader(
       o.entityType!,
       unittest.equals('foo'),
     );
-    checkUnnamed312(o.featureDescriptors!);
+    checkUnnamed321(o.featureDescriptors!);
   }
   buildCounterGoogleCloudAiplatformV1ReadFeatureValuesResponseHeader--;
 }
 
-core.List<core.String> buildUnnamed313() => [
+core.List<core.String> buildUnnamed322() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed313(core.List<core.String> o) {
+void checkUnnamed322(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -23493,7 +24124,7 @@ api.GoogleCloudAiplatformV1ReadIndexDatapointsRequest
   buildCounterGoogleCloudAiplatformV1ReadIndexDatapointsRequest++;
   if (buildCounterGoogleCloudAiplatformV1ReadIndexDatapointsRequest < 3) {
     o.deployedIndexId = 'foo';
-    o.ids = buildUnnamed313();
+    o.ids = buildUnnamed322();
   }
   buildCounterGoogleCloudAiplatformV1ReadIndexDatapointsRequest--;
   return o;
@@ -23507,17 +24138,17 @@ void checkGoogleCloudAiplatformV1ReadIndexDatapointsRequest(
       o.deployedIndexId!,
       unittest.equals('foo'),
     );
-    checkUnnamed313(o.ids!);
+    checkUnnamed322(o.ids!);
   }
   buildCounterGoogleCloudAiplatformV1ReadIndexDatapointsRequest--;
 }
 
-core.List<api.GoogleCloudAiplatformV1IndexDatapoint> buildUnnamed314() => [
+core.List<api.GoogleCloudAiplatformV1IndexDatapoint> buildUnnamed323() => [
       buildGoogleCloudAiplatformV1IndexDatapoint(),
       buildGoogleCloudAiplatformV1IndexDatapoint(),
     ];
 
-void checkUnnamed314(core.List<api.GoogleCloudAiplatformV1IndexDatapoint> o) {
+void checkUnnamed323(core.List<api.GoogleCloudAiplatformV1IndexDatapoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1IndexDatapoint(o[0]);
   checkGoogleCloudAiplatformV1IndexDatapoint(o[1]);
@@ -23529,7 +24160,7 @@ api.GoogleCloudAiplatformV1ReadIndexDatapointsResponse
   final o = api.GoogleCloudAiplatformV1ReadIndexDatapointsResponse();
   buildCounterGoogleCloudAiplatformV1ReadIndexDatapointsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ReadIndexDatapointsResponse < 3) {
-    o.datapoints = buildUnnamed314();
+    o.datapoints = buildUnnamed323();
   }
   buildCounterGoogleCloudAiplatformV1ReadIndexDatapointsResponse--;
   return o;
@@ -23539,17 +24170,17 @@ void checkGoogleCloudAiplatformV1ReadIndexDatapointsResponse(
     api.GoogleCloudAiplatformV1ReadIndexDatapointsResponse o) {
   buildCounterGoogleCloudAiplatformV1ReadIndexDatapointsResponse++;
   if (buildCounterGoogleCloudAiplatformV1ReadIndexDatapointsResponse < 3) {
-    checkUnnamed314(o.datapoints!);
+    checkUnnamed323(o.datapoints!);
   }
   buildCounterGoogleCloudAiplatformV1ReadIndexDatapointsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1TensorboardBlob> buildUnnamed315() => [
+core.List<api.GoogleCloudAiplatformV1TensorboardBlob> buildUnnamed324() => [
       buildGoogleCloudAiplatformV1TensorboardBlob(),
       buildGoogleCloudAiplatformV1TensorboardBlob(),
     ];
 
-void checkUnnamed315(core.List<api.GoogleCloudAiplatformV1TensorboardBlob> o) {
+void checkUnnamed324(core.List<api.GoogleCloudAiplatformV1TensorboardBlob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TensorboardBlob(o[0]);
   checkGoogleCloudAiplatformV1TensorboardBlob(o[1]);
@@ -23561,7 +24192,7 @@ api.GoogleCloudAiplatformV1ReadTensorboardBlobDataResponse
   final o = api.GoogleCloudAiplatformV1ReadTensorboardBlobDataResponse();
   buildCounterGoogleCloudAiplatformV1ReadTensorboardBlobDataResponse++;
   if (buildCounterGoogleCloudAiplatformV1ReadTensorboardBlobDataResponse < 3) {
-    o.blobs = buildUnnamed315();
+    o.blobs = buildUnnamed324();
   }
   buildCounterGoogleCloudAiplatformV1ReadTensorboardBlobDataResponse--;
   return o;
@@ -23571,7 +24202,7 @@ void checkGoogleCloudAiplatformV1ReadTensorboardBlobDataResponse(
     api.GoogleCloudAiplatformV1ReadTensorboardBlobDataResponse o) {
   buildCounterGoogleCloudAiplatformV1ReadTensorboardBlobDataResponse++;
   if (buildCounterGoogleCloudAiplatformV1ReadTensorboardBlobDataResponse < 3) {
-    checkUnnamed315(o.blobs!);
+    checkUnnamed324(o.blobs!);
   }
   buildCounterGoogleCloudAiplatformV1ReadTensorboardBlobDataResponse--;
 }
@@ -23629,14 +24260,14 @@ core.Map<
         core.String,
         api
         .GoogleCloudAiplatformV1ReadTensorboardUsageResponsePerMonthUsageData>
-    buildUnnamed316() => {
+    buildUnnamed325() => {
           'x':
               buildGoogleCloudAiplatformV1ReadTensorboardUsageResponsePerMonthUsageData(),
           'y':
               buildGoogleCloudAiplatformV1ReadTensorboardUsageResponsePerMonthUsageData(),
         };
 
-void checkUnnamed316(
+void checkUnnamed325(
     core.Map<
             core.String,
             api
@@ -23655,7 +24286,7 @@ api.GoogleCloudAiplatformV1ReadTensorboardUsageResponse
   final o = api.GoogleCloudAiplatformV1ReadTensorboardUsageResponse();
   buildCounterGoogleCloudAiplatformV1ReadTensorboardUsageResponse++;
   if (buildCounterGoogleCloudAiplatformV1ReadTensorboardUsageResponse < 3) {
-    o.monthlyUsageData = buildUnnamed316();
+    o.monthlyUsageData = buildUnnamed325();
   }
   buildCounterGoogleCloudAiplatformV1ReadTensorboardUsageResponse--;
   return o;
@@ -23665,19 +24296,19 @@ void checkGoogleCloudAiplatformV1ReadTensorboardUsageResponse(
     api.GoogleCloudAiplatformV1ReadTensorboardUsageResponse o) {
   buildCounterGoogleCloudAiplatformV1ReadTensorboardUsageResponse++;
   if (buildCounterGoogleCloudAiplatformV1ReadTensorboardUsageResponse < 3) {
-    checkUnnamed316(o.monthlyUsageData!);
+    checkUnnamed325(o.monthlyUsageData!);
   }
   buildCounterGoogleCloudAiplatformV1ReadTensorboardUsageResponse--;
 }
 
 core.List<
         api.GoogleCloudAiplatformV1ReadTensorboardUsageResponsePerUserUsageData>
-    buildUnnamed317() => [
+    buildUnnamed326() => [
           buildGoogleCloudAiplatformV1ReadTensorboardUsageResponsePerUserUsageData(),
           buildGoogleCloudAiplatformV1ReadTensorboardUsageResponsePerUserUsageData(),
         ];
 
-void checkUnnamed317(
+void checkUnnamed326(
     core.List<
             api
             .GoogleCloudAiplatformV1ReadTensorboardUsageResponsePerUserUsageData>
@@ -23699,7 +24330,7 @@ api.GoogleCloudAiplatformV1ReadTensorboardUsageResponsePerMonthUsageData
   buildCounterGoogleCloudAiplatformV1ReadTensorboardUsageResponsePerMonthUsageData++;
   if (buildCounterGoogleCloudAiplatformV1ReadTensorboardUsageResponsePerMonthUsageData <
       3) {
-    o.userUsageData = buildUnnamed317();
+    o.userUsageData = buildUnnamed326();
   }
   buildCounterGoogleCloudAiplatformV1ReadTensorboardUsageResponsePerMonthUsageData--;
   return o;
@@ -23711,7 +24342,7 @@ void checkGoogleCloudAiplatformV1ReadTensorboardUsageResponsePerMonthUsageData(
   buildCounterGoogleCloudAiplatformV1ReadTensorboardUsageResponsePerMonthUsageData++;
   if (buildCounterGoogleCloudAiplatformV1ReadTensorboardUsageResponsePerMonthUsageData <
       3) {
-    checkUnnamed317(o.userUsageData!);
+    checkUnnamed326(o.userUsageData!);
   }
   buildCounterGoogleCloudAiplatformV1ReadTensorboardUsageResponsePerMonthUsageData--;
 }
@@ -23801,7 +24432,7 @@ void checkGoogleCloudAiplatformV1ReasoningEngine(
   buildCounterGoogleCloudAiplatformV1ReasoningEngine--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed318() => {
+core.Map<core.String, core.Object?> buildUnnamed327() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -23814,7 +24445,7 @@ core.Map<core.String, core.Object?> buildUnnamed318() => {
       },
     };
 
-void checkUnnamed318(core.Map<core.String, core.Object?> o) {
+void checkUnnamed327(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted68 = (o['x']!) as core.Map;
   unittest.expect(casted68, unittest.hasLength(3));
@@ -23846,15 +24477,15 @@ void checkUnnamed318(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed319() => [
-      buildUnnamed318(),
-      buildUnnamed318(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed328() => [
+      buildUnnamed327(),
+      buildUnnamed327(),
     ];
 
-void checkUnnamed319(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed328(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed318(o[0]);
-  checkUnnamed318(o[1]);
+  checkUnnamed327(o[0]);
+  checkUnnamed327(o[1]);
 }
 
 core.int buildCounterGoogleCloudAiplatformV1ReasoningEngineSpec = 0;
@@ -23863,7 +24494,9 @@ api.GoogleCloudAiplatformV1ReasoningEngineSpec
   final o = api.GoogleCloudAiplatformV1ReasoningEngineSpec();
   buildCounterGoogleCloudAiplatformV1ReasoningEngineSpec++;
   if (buildCounterGoogleCloudAiplatformV1ReasoningEngineSpec < 3) {
-    o.classMethods = buildUnnamed319();
+    o.classMethods = buildUnnamed328();
+    o.deploymentSpec =
+        buildGoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec();
     o.packageSpec =
         buildGoogleCloudAiplatformV1ReasoningEngineSpecPackageSpec();
   }
@@ -23875,10 +24508,60 @@ void checkGoogleCloudAiplatformV1ReasoningEngineSpec(
     api.GoogleCloudAiplatformV1ReasoningEngineSpec o) {
   buildCounterGoogleCloudAiplatformV1ReasoningEngineSpec++;
   if (buildCounterGoogleCloudAiplatformV1ReasoningEngineSpec < 3) {
-    checkUnnamed319(o.classMethods!);
+    checkUnnamed328(o.classMethods!);
+    checkGoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec(
+        o.deploymentSpec!);
     checkGoogleCloudAiplatformV1ReasoningEngineSpecPackageSpec(o.packageSpec!);
   }
   buildCounterGoogleCloudAiplatformV1ReasoningEngineSpec--;
+}
+
+core.List<api.GoogleCloudAiplatformV1EnvVar> buildUnnamed329() => [
+      buildGoogleCloudAiplatformV1EnvVar(),
+      buildGoogleCloudAiplatformV1EnvVar(),
+    ];
+
+void checkUnnamed329(core.List<api.GoogleCloudAiplatformV1EnvVar> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudAiplatformV1EnvVar(o[0]);
+  checkGoogleCloudAiplatformV1EnvVar(o[1]);
+}
+
+core.List<api.GoogleCloudAiplatformV1SecretEnvVar> buildUnnamed330() => [
+      buildGoogleCloudAiplatformV1SecretEnvVar(),
+      buildGoogleCloudAiplatformV1SecretEnvVar(),
+    ];
+
+void checkUnnamed330(core.List<api.GoogleCloudAiplatformV1SecretEnvVar> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudAiplatformV1SecretEnvVar(o[0]);
+  checkGoogleCloudAiplatformV1SecretEnvVar(o[1]);
+}
+
+core.int buildCounterGoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec =
+    0;
+api.GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec
+    buildGoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec() {
+  final o = api.GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec();
+  buildCounterGoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec++;
+  if (buildCounterGoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec <
+      3) {
+    o.env = buildUnnamed329();
+    o.secretEnv = buildUnnamed330();
+  }
+  buildCounterGoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec(
+    api.GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec o) {
+  buildCounterGoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec++;
+  if (buildCounterGoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec <
+      3) {
+    checkUnnamed329(o.env!);
+    checkUnnamed330(o.secretEnv!);
+  }
+  buildCounterGoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec--;
 }
 
 core.int buildCounterGoogleCloudAiplatformV1ReasoningEngineSpecPackageSpec = 0;
@@ -23964,12 +24647,12 @@ void checkGoogleCloudAiplatformV1RebootPersistentResourceRequest(
   buildCounterGoogleCloudAiplatformV1RebootPersistentResourceRequest--;
 }
 
-core.List<core.String> buildUnnamed320() => [
+core.List<core.String> buildUnnamed331() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed320(core.List<core.String> o) {
+void checkUnnamed331(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -23987,7 +24670,7 @@ api.GoogleCloudAiplatformV1RemoveContextChildrenRequest
   final o = api.GoogleCloudAiplatformV1RemoveContextChildrenRequest();
   buildCounterGoogleCloudAiplatformV1RemoveContextChildrenRequest++;
   if (buildCounterGoogleCloudAiplatformV1RemoveContextChildrenRequest < 3) {
-    o.childContexts = buildUnnamed320();
+    o.childContexts = buildUnnamed331();
   }
   buildCounterGoogleCloudAiplatformV1RemoveContextChildrenRequest--;
   return o;
@@ -23997,7 +24680,7 @@ void checkGoogleCloudAiplatformV1RemoveContextChildrenRequest(
     api.GoogleCloudAiplatformV1RemoveContextChildrenRequest o) {
   buildCounterGoogleCloudAiplatformV1RemoveContextChildrenRequest++;
   if (buildCounterGoogleCloudAiplatformV1RemoveContextChildrenRequest < 3) {
-    checkUnnamed320(o.childContexts!);
+    checkUnnamed331(o.childContexts!);
   }
   buildCounterGoogleCloudAiplatformV1RemoveContextChildrenRequest--;
 }
@@ -24019,12 +24702,12 @@ void checkGoogleCloudAiplatformV1RemoveContextChildrenResponse(
   buildCounterGoogleCloudAiplatformV1RemoveContextChildrenResponse--;
 }
 
-core.List<core.String> buildUnnamed321() => [
+core.List<core.String> buildUnnamed332() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed321(core.List<core.String> o) {
+void checkUnnamed332(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -24042,7 +24725,7 @@ api.GoogleCloudAiplatformV1RemoveDatapointsRequest
   final o = api.GoogleCloudAiplatformV1RemoveDatapointsRequest();
   buildCounterGoogleCloudAiplatformV1RemoveDatapointsRequest++;
   if (buildCounterGoogleCloudAiplatformV1RemoveDatapointsRequest < 3) {
-    o.datapointIds = buildUnnamed321();
+    o.datapointIds = buildUnnamed332();
   }
   buildCounterGoogleCloudAiplatformV1RemoveDatapointsRequest--;
   return o;
@@ -24052,7 +24735,7 @@ void checkGoogleCloudAiplatformV1RemoveDatapointsRequest(
     api.GoogleCloudAiplatformV1RemoveDatapointsRequest o) {
   buildCounterGoogleCloudAiplatformV1RemoveDatapointsRequest++;
   if (buildCounterGoogleCloudAiplatformV1RemoveDatapointsRequest < 3) {
-    checkUnnamed321(o.datapointIds!);
+    checkUnnamed332(o.datapointIds!);
   }
   buildCounterGoogleCloudAiplatformV1RemoveDatapointsRequest--;
 }
@@ -24074,12 +24757,12 @@ void checkGoogleCloudAiplatformV1RemoveDatapointsResponse(
   buildCounterGoogleCloudAiplatformV1RemoveDatapointsResponse--;
 }
 
-core.List<core.String> buildUnnamed322() => [
+core.List<core.String> buildUnnamed333() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed322(core.List<core.String> o) {
+void checkUnnamed333(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -24099,7 +24782,7 @@ api.GoogleCloudAiplatformV1ReservationAffinity
   if (buildCounterGoogleCloudAiplatformV1ReservationAffinity < 3) {
     o.key = 'foo';
     o.reservationAffinityType = 'foo';
-    o.values = buildUnnamed322();
+    o.values = buildUnnamed333();
   }
   buildCounterGoogleCloudAiplatformV1ReservationAffinity--;
   return o;
@@ -24117,7 +24800,7 @@ void checkGoogleCloudAiplatformV1ReservationAffinity(
       o.reservationAffinityType!,
       unittest.equals('foo'),
     );
-    checkUnnamed322(o.values!);
+    checkUnnamed333(o.values!);
   }
   buildCounterGoogleCloudAiplatformV1ReservationAffinity--;
 }
@@ -24192,12 +24875,12 @@ void checkGoogleCloudAiplatformV1ResourcePoolAutoscalingSpec(
   buildCounterGoogleCloudAiplatformV1ResourcePoolAutoscalingSpec--;
 }
 
-core.Map<core.String, core.String> buildUnnamed323() => {
+core.Map<core.String, core.String> buildUnnamed334() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed323(core.Map<core.String, core.String> o) {
+void checkUnnamed334(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -24215,7 +24898,7 @@ api.GoogleCloudAiplatformV1ResourceRuntime
   final o = api.GoogleCloudAiplatformV1ResourceRuntime();
   buildCounterGoogleCloudAiplatformV1ResourceRuntime++;
   if (buildCounterGoogleCloudAiplatformV1ResourceRuntime < 3) {
-    o.accessUris = buildUnnamed323();
+    o.accessUris = buildUnnamed334();
   }
   buildCounterGoogleCloudAiplatformV1ResourceRuntime--;
   return o;
@@ -24225,7 +24908,7 @@ void checkGoogleCloudAiplatformV1ResourceRuntime(
     api.GoogleCloudAiplatformV1ResourceRuntime o) {
   buildCounterGoogleCloudAiplatformV1ResourceRuntime++;
   if (buildCounterGoogleCloudAiplatformV1ResourceRuntime < 3) {
-    checkUnnamed323(o.accessUris!);
+    checkUnnamed334(o.accessUris!);
   }
   buildCounterGoogleCloudAiplatformV1ResourceRuntime--;
 }
@@ -24344,6 +25027,32 @@ void checkGoogleCloudAiplatformV1Retrieval(
   buildCounterGoogleCloudAiplatformV1Retrieval--;
 }
 
+core.int buildCounterGoogleCloudAiplatformV1RetrievalConfig = 0;
+api.GoogleCloudAiplatformV1RetrievalConfig
+    buildGoogleCloudAiplatformV1RetrievalConfig() {
+  final o = api.GoogleCloudAiplatformV1RetrievalConfig();
+  buildCounterGoogleCloudAiplatformV1RetrievalConfig++;
+  if (buildCounterGoogleCloudAiplatformV1RetrievalConfig < 3) {
+    o.languageCode = 'foo';
+    o.latLng = buildGoogleTypeLatLng();
+  }
+  buildCounterGoogleCloudAiplatformV1RetrievalConfig--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1RetrievalConfig(
+    api.GoogleCloudAiplatformV1RetrievalConfig o) {
+  buildCounterGoogleCloudAiplatformV1RetrievalConfig++;
+  if (buildCounterGoogleCloudAiplatformV1RetrievalConfig < 3) {
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    checkGoogleTypeLatLng(o.latLng!);
+  }
+  buildCounterGoogleCloudAiplatformV1RetrievalConfig--;
+}
+
 core.int buildCounterGoogleCloudAiplatformV1RetrievalMetadata = 0;
 api.GoogleCloudAiplatformV1RetrievalMetadata
     buildGoogleCloudAiplatformV1RetrievalMetadata() {
@@ -24396,12 +25105,12 @@ void checkGoogleCloudAiplatformV1RetrieveContextsRequest(
 core.List<
         api
         .GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource>
-    buildUnnamed324() => [
+    buildUnnamed335() => [
           buildGoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource(),
           buildGoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource(),
         ];
 
-void checkUnnamed324(
+void checkUnnamed335(
     core.List<
             api
             .GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource>
@@ -24422,7 +25131,7 @@ api.GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStore
   buildCounterGoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStore++;
   if (buildCounterGoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStore <
       3) {
-    o.ragResources = buildUnnamed324();
+    o.ragResources = buildUnnamed335();
     o.vectorDistanceThreshold = 42.0;
   }
   buildCounterGoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStore--;
@@ -24434,7 +25143,7 @@ void checkGoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStore(
   buildCounterGoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStore++;
   if (buildCounterGoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStore <
       3) {
-    checkUnnamed324(o.ragResources!);
+    checkUnnamed335(o.ragResources!);
     unittest.expect(
       o.vectorDistanceThreshold!,
       unittest.equals(42.0),
@@ -24443,12 +25152,12 @@ void checkGoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStore(
   buildCounterGoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStore--;
 }
 
-core.List<core.String> buildUnnamed325() => [
+core.List<core.String> buildUnnamed336() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed325(core.List<core.String> o) {
+void checkUnnamed336(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -24471,7 +25180,7 @@ api.GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource
   if (buildCounterGoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource <
       3) {
     o.ragCorpus = 'foo';
-    o.ragFileIds = buildUnnamed325();
+    o.ragFileIds = buildUnnamed336();
   }
   buildCounterGoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource--;
   return o;
@@ -24487,7 +25196,7 @@ void checkGoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResourc
       o.ragCorpus!,
       unittest.equals('foo'),
     );
-    checkUnnamed325(o.ragFileIds!);
+    checkUnnamed336(o.ragFileIds!);
   }
   buildCounterGoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource--;
 }
@@ -24513,12 +25222,12 @@ void checkGoogleCloudAiplatformV1RetrieveContextsResponse(
   buildCounterGoogleCloudAiplatformV1RetrieveContextsResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1RougeInstance> buildUnnamed326() => [
+core.List<api.GoogleCloudAiplatformV1RougeInstance> buildUnnamed337() => [
       buildGoogleCloudAiplatformV1RougeInstance(),
       buildGoogleCloudAiplatformV1RougeInstance(),
     ];
 
-void checkUnnamed326(core.List<api.GoogleCloudAiplatformV1RougeInstance> o) {
+void checkUnnamed337(core.List<api.GoogleCloudAiplatformV1RougeInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1RougeInstance(o[0]);
   checkGoogleCloudAiplatformV1RougeInstance(o[1]);
@@ -24529,7 +25238,7 @@ api.GoogleCloudAiplatformV1RougeInput buildGoogleCloudAiplatformV1RougeInput() {
   final o = api.GoogleCloudAiplatformV1RougeInput();
   buildCounterGoogleCloudAiplatformV1RougeInput++;
   if (buildCounterGoogleCloudAiplatformV1RougeInput < 3) {
-    o.instances = buildUnnamed326();
+    o.instances = buildUnnamed337();
     o.metricSpec = buildGoogleCloudAiplatformV1RougeSpec();
   }
   buildCounterGoogleCloudAiplatformV1RougeInput--;
@@ -24540,7 +25249,7 @@ void checkGoogleCloudAiplatformV1RougeInput(
     api.GoogleCloudAiplatformV1RougeInput o) {
   buildCounterGoogleCloudAiplatformV1RougeInput++;
   if (buildCounterGoogleCloudAiplatformV1RougeInput < 3) {
-    checkUnnamed326(o.instances!);
+    checkUnnamed337(o.instances!);
     checkGoogleCloudAiplatformV1RougeSpec(o.metricSpec!);
   }
   buildCounterGoogleCloudAiplatformV1RougeInput--;
@@ -24599,12 +25308,12 @@ void checkGoogleCloudAiplatformV1RougeMetricValue(
   buildCounterGoogleCloudAiplatformV1RougeMetricValue--;
 }
 
-core.List<api.GoogleCloudAiplatformV1RougeMetricValue> buildUnnamed327() => [
+core.List<api.GoogleCloudAiplatformV1RougeMetricValue> buildUnnamed338() => [
       buildGoogleCloudAiplatformV1RougeMetricValue(),
       buildGoogleCloudAiplatformV1RougeMetricValue(),
     ];
 
-void checkUnnamed327(core.List<api.GoogleCloudAiplatformV1RougeMetricValue> o) {
+void checkUnnamed338(core.List<api.GoogleCloudAiplatformV1RougeMetricValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1RougeMetricValue(o[0]);
   checkGoogleCloudAiplatformV1RougeMetricValue(o[1]);
@@ -24616,7 +25325,7 @@ api.GoogleCloudAiplatformV1RougeResults
   final o = api.GoogleCloudAiplatformV1RougeResults();
   buildCounterGoogleCloudAiplatformV1RougeResults++;
   if (buildCounterGoogleCloudAiplatformV1RougeResults < 3) {
-    o.rougeMetricValues = buildUnnamed327();
+    o.rougeMetricValues = buildUnnamed338();
   }
   buildCounterGoogleCloudAiplatformV1RougeResults--;
   return o;
@@ -24626,7 +25335,7 @@ void checkGoogleCloudAiplatformV1RougeResults(
     api.GoogleCloudAiplatformV1RougeResults o) {
   buildCounterGoogleCloudAiplatformV1RougeResults++;
   if (buildCounterGoogleCloudAiplatformV1RougeResults < 3) {
-    checkUnnamed327(o.rougeMetricValues!);
+    checkUnnamed338(o.rougeMetricValues!);
   }
   buildCounterGoogleCloudAiplatformV1RougeResults--;
 }
@@ -25221,23 +25930,23 @@ void checkGoogleCloudAiplatformV1Scheduling(
   buildCounterGoogleCloudAiplatformV1Scheduling--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Schema> buildUnnamed328() => [
+core.List<api.GoogleCloudAiplatformV1Schema> buildUnnamed339() => [
       buildGoogleCloudAiplatformV1Schema(),
       buildGoogleCloudAiplatformV1Schema(),
     ];
 
-void checkUnnamed328(core.List<api.GoogleCloudAiplatformV1Schema> o) {
+void checkUnnamed339(core.List<api.GoogleCloudAiplatformV1Schema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Schema(o[0]);
   checkGoogleCloudAiplatformV1Schema(o[1]);
 }
 
-core.List<core.String> buildUnnamed329() => [
+core.List<core.String> buildUnnamed340() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed329(core.List<core.String> o) {
+void checkUnnamed340(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -25249,24 +25958,24 @@ void checkUnnamed329(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, api.GoogleCloudAiplatformV1Schema> buildUnnamed330() => {
+core.Map<core.String, api.GoogleCloudAiplatformV1Schema> buildUnnamed341() => {
       'x': buildGoogleCloudAiplatformV1Schema(),
       'y': buildGoogleCloudAiplatformV1Schema(),
     };
 
-void checkUnnamed330(
+void checkUnnamed341(
     core.Map<core.String, api.GoogleCloudAiplatformV1Schema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Schema(o['x']!);
   checkGoogleCloudAiplatformV1Schema(o['y']!);
 }
 
-core.List<core.String> buildUnnamed331() => [
+core.List<core.String> buildUnnamed342() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed331(core.List<core.String> o) {
+void checkUnnamed342(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -25278,12 +25987,12 @@ void checkUnnamed331(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed332() => [
+core.List<core.String> buildUnnamed343() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed332(core.List<core.String> o) {
+void checkUnnamed343(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -25300,14 +26009,14 @@ api.GoogleCloudAiplatformV1Schema buildGoogleCloudAiplatformV1Schema() {
   final o = api.GoogleCloudAiplatformV1Schema();
   buildCounterGoogleCloudAiplatformV1Schema++;
   if (buildCounterGoogleCloudAiplatformV1Schema < 3) {
-    o.anyOf = buildUnnamed328();
+    o.anyOf = buildUnnamed339();
     o.default_ = {
       'list': [1, 2, 3],
       'bool': true,
       'string': 'foo'
     };
     o.description = 'foo';
-    o.enum_ = buildUnnamed329();
+    o.enum_ = buildUnnamed340();
     o.example = {
       'list': [1, 2, 3],
       'bool': true,
@@ -25325,9 +26034,9 @@ api.GoogleCloudAiplatformV1Schema buildGoogleCloudAiplatformV1Schema() {
     o.minimum = 42.0;
     o.nullable = true;
     o.pattern = 'foo';
-    o.properties = buildUnnamed330();
-    o.propertyOrdering = buildUnnamed331();
-    o.required = buildUnnamed332();
+    o.properties = buildUnnamed341();
+    o.propertyOrdering = buildUnnamed342();
+    o.required = buildUnnamed343();
     o.title = 'foo';
     o.type = 'foo';
   }
@@ -25338,7 +26047,7 @@ api.GoogleCloudAiplatformV1Schema buildGoogleCloudAiplatformV1Schema() {
 void checkGoogleCloudAiplatformV1Schema(api.GoogleCloudAiplatformV1Schema o) {
   buildCounterGoogleCloudAiplatformV1Schema++;
   if (buildCounterGoogleCloudAiplatformV1Schema < 3) {
-    checkUnnamed328(o.anyOf!);
+    checkUnnamed339(o.anyOf!);
     var casted71 = (o.default_!) as core.Map;
     unittest.expect(casted71, unittest.hasLength(3));
     unittest.expect(
@@ -25357,7 +26066,7 @@ void checkGoogleCloudAiplatformV1Schema(api.GoogleCloudAiplatformV1Schema o) {
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed329(o.enum_!);
+    checkUnnamed340(o.enum_!);
     var casted72 = (o.example!) as core.Map;
     unittest.expect(casted72, unittest.hasLength(3));
     unittest.expect(
@@ -25414,9 +26123,9 @@ void checkGoogleCloudAiplatformV1Schema(api.GoogleCloudAiplatformV1Schema o) {
       o.pattern!,
       unittest.equals('foo'),
     );
-    checkUnnamed330(o.properties!);
-    checkUnnamed331(o.propertyOrdering!);
-    checkUnnamed332(o.required!);
+    checkUnnamed341(o.properties!);
+    checkUnnamed342(o.propertyOrdering!);
+    checkUnnamed343(o.required!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),
@@ -25429,12 +26138,12 @@ void checkGoogleCloudAiplatformV1Schema(api.GoogleCloudAiplatformV1Schema o) {
   buildCounterGoogleCloudAiplatformV1Schema--;
 }
 
-core.List<api.GoogleCloudAiplatformV1DataItemView> buildUnnamed333() => [
+core.List<api.GoogleCloudAiplatformV1DataItemView> buildUnnamed344() => [
       buildGoogleCloudAiplatformV1DataItemView(),
       buildGoogleCloudAiplatformV1DataItemView(),
     ];
 
-void checkUnnamed333(core.List<api.GoogleCloudAiplatformV1DataItemView> o) {
+void checkUnnamed344(core.List<api.GoogleCloudAiplatformV1DataItemView> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1DataItemView(o[0]);
   checkGoogleCloudAiplatformV1DataItemView(o[1]);
@@ -25446,7 +26155,7 @@ api.GoogleCloudAiplatformV1SearchDataItemsResponse
   final o = api.GoogleCloudAiplatformV1SearchDataItemsResponse();
   buildCounterGoogleCloudAiplatformV1SearchDataItemsResponse++;
   if (buildCounterGoogleCloudAiplatformV1SearchDataItemsResponse < 3) {
-    o.dataItemViews = buildUnnamed333();
+    o.dataItemViews = buildUnnamed344();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1SearchDataItemsResponse--;
@@ -25457,7 +26166,7 @@ void checkGoogleCloudAiplatformV1SearchDataItemsResponse(
     api.GoogleCloudAiplatformV1SearchDataItemsResponse o) {
   buildCounterGoogleCloudAiplatformV1SearchDataItemsResponse++;
   if (buildCounterGoogleCloudAiplatformV1SearchDataItemsResponse < 3) {
-    checkUnnamed333(o.dataItemViews!);
+    checkUnnamed344(o.dataItemViews!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -25495,12 +26204,12 @@ void checkGoogleCloudAiplatformV1SearchEntryPoint(
   buildCounterGoogleCloudAiplatformV1SearchEntryPoint--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Feature> buildUnnamed334() => [
+core.List<api.GoogleCloudAiplatformV1Feature> buildUnnamed345() => [
       buildGoogleCloudAiplatformV1Feature(),
       buildGoogleCloudAiplatformV1Feature(),
     ];
 
-void checkUnnamed334(core.List<api.GoogleCloudAiplatformV1Feature> o) {
+void checkUnnamed345(core.List<api.GoogleCloudAiplatformV1Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Feature(o[0]);
   checkGoogleCloudAiplatformV1Feature(o[1]);
@@ -25512,7 +26221,7 @@ api.GoogleCloudAiplatformV1SearchFeaturesResponse
   final o = api.GoogleCloudAiplatformV1SearchFeaturesResponse();
   buildCounterGoogleCloudAiplatformV1SearchFeaturesResponse++;
   if (buildCounterGoogleCloudAiplatformV1SearchFeaturesResponse < 3) {
-    o.features = buildUnnamed334();
+    o.features = buildUnnamed345();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1SearchFeaturesResponse--;
@@ -25523,7 +26232,7 @@ void checkGoogleCloudAiplatformV1SearchFeaturesResponse(
     api.GoogleCloudAiplatformV1SearchFeaturesResponse o) {
   buildCounterGoogleCloudAiplatformV1SearchFeaturesResponse++;
   if (buildCounterGoogleCloudAiplatformV1SearchFeaturesResponse < 3) {
-    checkUnnamed334(o.features!);
+    checkUnnamed345(o.features!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -25567,12 +26276,12 @@ void checkGoogleCloudAiplatformV1SearchMigratableResourcesRequest(
   buildCounterGoogleCloudAiplatformV1SearchMigratableResourcesRequest--;
 }
 
-core.List<api.GoogleCloudAiplatformV1MigratableResource> buildUnnamed335() => [
+core.List<api.GoogleCloudAiplatformV1MigratableResource> buildUnnamed346() => [
       buildGoogleCloudAiplatformV1MigratableResource(),
       buildGoogleCloudAiplatformV1MigratableResource(),
     ];
 
-void checkUnnamed335(
+void checkUnnamed346(
     core.List<api.GoogleCloudAiplatformV1MigratableResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1MigratableResource(o[0]);
@@ -25587,7 +26296,7 @@ api.GoogleCloudAiplatformV1SearchMigratableResourcesResponse
   buildCounterGoogleCloudAiplatformV1SearchMigratableResourcesResponse++;
   if (buildCounterGoogleCloudAiplatformV1SearchMigratableResourcesResponse <
       3) {
-    o.migratableResources = buildUnnamed335();
+    o.migratableResources = buildUnnamed346();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1SearchMigratableResourcesResponse--;
@@ -25599,7 +26308,7 @@ void checkGoogleCloudAiplatformV1SearchMigratableResourcesResponse(
   buildCounterGoogleCloudAiplatformV1SearchMigratableResourcesResponse++;
   if (buildCounterGoogleCloudAiplatformV1SearchMigratableResourcesResponse <
       3) {
-    checkUnnamed335(o.migratableResources!);
+    checkUnnamed346(o.migratableResources!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -25611,12 +26320,12 @@ void checkGoogleCloudAiplatformV1SearchMigratableResourcesResponse(
 core.List<
         api
         .GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRequestStatsAnomaliesObjective>
-    buildUnnamed336() => [
+    buildUnnamed347() => [
           buildGoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRequestStatsAnomaliesObjective(),
           buildGoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRequestStatsAnomaliesObjective(),
         ];
 
-void checkUnnamed336(
+void checkUnnamed347(
     core.List<
             api
             .GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRequestStatsAnomaliesObjective>
@@ -25641,7 +26350,7 @@ api.GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRequest
     o.deployedModelId = 'foo';
     o.endTime = 'foo';
     o.featureDisplayName = 'foo';
-    o.objectives = buildUnnamed336();
+    o.objectives = buildUnnamed347();
     o.pageSize = 42;
     o.pageToken = 'foo';
     o.startTime = 'foo';
@@ -25668,7 +26377,7 @@ void checkGoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRe
       o.featureDisplayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed336(o.objectives!);
+    checkUnnamed347(o.objectives!);
     unittest.expect(
       o.pageSize!,
       unittest.equals(42),
@@ -25721,12 +26430,12 @@ void checkGoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRe
 }
 
 core.List<api.GoogleCloudAiplatformV1ModelMonitoringStatsAnomalies>
-    buildUnnamed337() => [
+    buildUnnamed348() => [
           buildGoogleCloudAiplatformV1ModelMonitoringStatsAnomalies(),
           buildGoogleCloudAiplatformV1ModelMonitoringStatsAnomalies(),
         ];
 
-void checkUnnamed337(
+void checkUnnamed348(
     core.List<api.GoogleCloudAiplatformV1ModelMonitoringStatsAnomalies> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ModelMonitoringStatsAnomalies(o[0]);
@@ -25743,7 +26452,7 @@ api.GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesResponse
   buildCounterGoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesResponse++;
   if (buildCounterGoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesResponse <
       3) {
-    o.monitoringStats = buildUnnamed337();
+    o.monitoringStats = buildUnnamed348();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesResponse--;
@@ -25756,7 +26465,7 @@ void checkGoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRe
   buildCounterGoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesResponse++;
   if (buildCounterGoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesResponse <
       3) {
-    checkUnnamed337(o.monitoringStats!);
+    checkUnnamed348(o.monitoringStats!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -25807,6 +26516,60 @@ void checkGoogleCloudAiplatformV1SearchNearestEntitiesResponse(
     checkGoogleCloudAiplatformV1NearestNeighbors(o.nearestNeighbors!);
   }
   buildCounterGoogleCloudAiplatformV1SearchNearestEntitiesResponse--;
+}
+
+core.int buildCounterGoogleCloudAiplatformV1SecretEnvVar = 0;
+api.GoogleCloudAiplatformV1SecretEnvVar
+    buildGoogleCloudAiplatformV1SecretEnvVar() {
+  final o = api.GoogleCloudAiplatformV1SecretEnvVar();
+  buildCounterGoogleCloudAiplatformV1SecretEnvVar++;
+  if (buildCounterGoogleCloudAiplatformV1SecretEnvVar < 3) {
+    o.name = 'foo';
+    o.secretRef = buildGoogleCloudAiplatformV1SecretRef();
+  }
+  buildCounterGoogleCloudAiplatformV1SecretEnvVar--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1SecretEnvVar(
+    api.GoogleCloudAiplatformV1SecretEnvVar o) {
+  buildCounterGoogleCloudAiplatformV1SecretEnvVar++;
+  if (buildCounterGoogleCloudAiplatformV1SecretEnvVar < 3) {
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkGoogleCloudAiplatformV1SecretRef(o.secretRef!);
+  }
+  buildCounterGoogleCloudAiplatformV1SecretEnvVar--;
+}
+
+core.int buildCounterGoogleCloudAiplatformV1SecretRef = 0;
+api.GoogleCloudAiplatformV1SecretRef buildGoogleCloudAiplatformV1SecretRef() {
+  final o = api.GoogleCloudAiplatformV1SecretRef();
+  buildCounterGoogleCloudAiplatformV1SecretRef++;
+  if (buildCounterGoogleCloudAiplatformV1SecretRef < 3) {
+    o.secret = 'foo';
+    o.version = 'foo';
+  }
+  buildCounterGoogleCloudAiplatformV1SecretRef--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1SecretRef(
+    api.GoogleCloudAiplatformV1SecretRef o) {
+  buildCounterGoogleCloudAiplatformV1SecretRef++;
+  if (buildCounterGoogleCloudAiplatformV1SecretRef < 3) {
+    unittest.expect(
+      o.secret!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudAiplatformV1SecretRef--;
 }
 
 core.int buildCounterGoogleCloudAiplatformV1Segment = 0;
@@ -25873,12 +26636,12 @@ void checkGoogleCloudAiplatformV1ServiceAccountSpec(
 }
 
 core.List<api.GoogleCloudAiplatformV1SharePointSourcesSharePointSource>
-    buildUnnamed338() => [
+    buildUnnamed349() => [
           buildGoogleCloudAiplatformV1SharePointSourcesSharePointSource(),
           buildGoogleCloudAiplatformV1SharePointSourcesSharePointSource(),
         ];
 
-void checkUnnamed338(
+void checkUnnamed349(
     core.List<api.GoogleCloudAiplatformV1SharePointSourcesSharePointSource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1SharePointSourcesSharePointSource(o[0]);
@@ -25891,7 +26654,7 @@ api.GoogleCloudAiplatformV1SharePointSources
   final o = api.GoogleCloudAiplatformV1SharePointSources();
   buildCounterGoogleCloudAiplatformV1SharePointSources++;
   if (buildCounterGoogleCloudAiplatformV1SharePointSources < 3) {
-    o.sharePointSources = buildUnnamed338();
+    o.sharePointSources = buildUnnamed349();
   }
   buildCounterGoogleCloudAiplatformV1SharePointSources--;
   return o;
@@ -25901,7 +26664,7 @@ void checkGoogleCloudAiplatformV1SharePointSources(
     api.GoogleCloudAiplatformV1SharePointSources o) {
   buildCounterGoogleCloudAiplatformV1SharePointSources++;
   if (buildCounterGoogleCloudAiplatformV1SharePointSources < 3) {
-    checkUnnamed338(o.sharePointSources!);
+    checkUnnamed349(o.sharePointSources!);
   }
   buildCounterGoogleCloudAiplatformV1SharePointSources--;
 }
@@ -25992,12 +26755,12 @@ void checkGoogleCloudAiplatformV1ShieldedVmConfig(
 }
 
 core.List<api.GoogleCloudAiplatformV1SlackSourceSlackChannels>
-    buildUnnamed339() => [
+    buildUnnamed350() => [
           buildGoogleCloudAiplatformV1SlackSourceSlackChannels(),
           buildGoogleCloudAiplatformV1SlackSourceSlackChannels(),
         ];
 
-void checkUnnamed339(
+void checkUnnamed350(
     core.List<api.GoogleCloudAiplatformV1SlackSourceSlackChannels> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1SlackSourceSlackChannels(o[0]);
@@ -26010,7 +26773,7 @@ api.GoogleCloudAiplatformV1SlackSource
   final o = api.GoogleCloudAiplatformV1SlackSource();
   buildCounterGoogleCloudAiplatformV1SlackSource++;
   if (buildCounterGoogleCloudAiplatformV1SlackSource < 3) {
-    o.channels = buildUnnamed339();
+    o.channels = buildUnnamed350();
   }
   buildCounterGoogleCloudAiplatformV1SlackSource--;
   return o;
@@ -26020,18 +26783,18 @@ void checkGoogleCloudAiplatformV1SlackSource(
     api.GoogleCloudAiplatformV1SlackSource o) {
   buildCounterGoogleCloudAiplatformV1SlackSource++;
   if (buildCounterGoogleCloudAiplatformV1SlackSource < 3) {
-    checkUnnamed339(o.channels!);
+    checkUnnamed350(o.channels!);
   }
   buildCounterGoogleCloudAiplatformV1SlackSource--;
 }
 
 core.List<api.GoogleCloudAiplatformV1SlackSourceSlackChannelsSlackChannel>
-    buildUnnamed340() => [
+    buildUnnamed351() => [
           buildGoogleCloudAiplatformV1SlackSourceSlackChannelsSlackChannel(),
           buildGoogleCloudAiplatformV1SlackSourceSlackChannelsSlackChannel(),
         ];
 
-void checkUnnamed340(
+void checkUnnamed351(
     core.List<api.GoogleCloudAiplatformV1SlackSourceSlackChannelsSlackChannel>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -26046,7 +26809,7 @@ api.GoogleCloudAiplatformV1SlackSourceSlackChannels
   buildCounterGoogleCloudAiplatformV1SlackSourceSlackChannels++;
   if (buildCounterGoogleCloudAiplatformV1SlackSourceSlackChannels < 3) {
     o.apiKeyConfig = buildGoogleCloudAiplatformV1ApiAuthApiKeyConfig();
-    o.channels = buildUnnamed340();
+    o.channels = buildUnnamed351();
   }
   buildCounterGoogleCloudAiplatformV1SlackSourceSlackChannels--;
   return o;
@@ -26057,7 +26820,7 @@ void checkGoogleCloudAiplatformV1SlackSourceSlackChannels(
   buildCounterGoogleCloudAiplatformV1SlackSourceSlackChannels++;
   if (buildCounterGoogleCloudAiplatformV1SlackSourceSlackChannels < 3) {
     checkGoogleCloudAiplatformV1ApiAuthApiKeyConfig(o.apiKeyConfig!);
-    checkUnnamed340(o.channels!);
+    checkUnnamed351(o.channels!);
   }
   buildCounterGoogleCloudAiplatformV1SlackSourceSlackChannels--;
 }
@@ -26130,12 +26893,12 @@ void checkGoogleCloudAiplatformV1SmoothGradConfig(
   buildCounterGoogleCloudAiplatformV1SmoothGradConfig--;
 }
 
-core.List<core.String> buildUnnamed341() => [
+core.List<core.String> buildUnnamed352() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed341(core.List<core.String> o) {
+void checkUnnamed352(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -26147,12 +26910,12 @@ void checkUnnamed341(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed342() => [
+core.List<core.String> buildUnnamed353() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed342(core.List<core.String> o) {
+void checkUnnamed353(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -26164,12 +26927,12 @@ void checkUnnamed342(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed343() => [
+core.List<core.String> buildUnnamed354() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed343(core.List<core.String> o) {
+void checkUnnamed354(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -26189,10 +26952,10 @@ api.GoogleCloudAiplatformV1SpecialistPool
   if (buildCounterGoogleCloudAiplatformV1SpecialistPool < 3) {
     o.displayName = 'foo';
     o.name = 'foo';
-    o.pendingDataLabelingJobs = buildUnnamed341();
-    o.specialistManagerEmails = buildUnnamed342();
+    o.pendingDataLabelingJobs = buildUnnamed352();
+    o.specialistManagerEmails = buildUnnamed353();
     o.specialistManagersCount = 42;
-    o.specialistWorkerEmails = buildUnnamed343();
+    o.specialistWorkerEmails = buildUnnamed354();
   }
   buildCounterGoogleCloudAiplatformV1SpecialistPool--;
   return o;
@@ -26210,15 +26973,105 @@ void checkGoogleCloudAiplatformV1SpecialistPool(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed341(o.pendingDataLabelingJobs!);
-    checkUnnamed342(o.specialistManagerEmails!);
+    checkUnnamed352(o.pendingDataLabelingJobs!);
+    checkUnnamed353(o.specialistManagerEmails!);
     unittest.expect(
       o.specialistManagersCount!,
       unittest.equals(42),
     );
-    checkUnnamed343(o.specialistWorkerEmails!);
+    checkUnnamed354(o.specialistWorkerEmails!);
   }
   buildCounterGoogleCloudAiplatformV1SpecialistPool--;
+}
+
+core.int buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpec = 0;
+api.GoogleCloudAiplatformV1SpeculativeDecodingSpec
+    buildGoogleCloudAiplatformV1SpeculativeDecodingSpec() {
+  final o = api.GoogleCloudAiplatformV1SpeculativeDecodingSpec();
+  buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpec++;
+  if (buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpec < 3) {
+    o.draftModelSpeculation =
+        buildGoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation();
+    o.ngramSpeculation =
+        buildGoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation();
+    o.speculativeTokenCount = 42;
+  }
+  buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpec--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1SpeculativeDecodingSpec(
+    api.GoogleCloudAiplatformV1SpeculativeDecodingSpec o) {
+  buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpec++;
+  if (buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpec < 3) {
+    checkGoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation(
+        o.draftModelSpeculation!);
+    checkGoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation(
+        o.ngramSpeculation!);
+    unittest.expect(
+      o.speculativeTokenCount!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpec--;
+}
+
+core.int
+    buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation =
+    0;
+api.GoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation
+    buildGoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation() {
+  final o =
+      api.GoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation();
+  buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation++;
+  if (buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation <
+      3) {
+    o.draftModel = 'foo';
+  }
+  buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation(
+    api.GoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation o) {
+  buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation++;
+  if (buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation <
+      3) {
+    unittest.expect(
+      o.draftModel!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation--;
+}
+
+core.int
+    buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation =
+    0;
+api.GoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation
+    buildGoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation() {
+  final o =
+      api.GoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation();
+  buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation++;
+  if (buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation <
+      3) {
+    o.ngramSize = 42;
+  }
+  buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation(
+    api.GoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation o) {
+  buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation++;
+  if (buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation <
+      3) {
+    unittest.expect(
+      o.ngramSize!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterGoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation--;
 }
 
 core.int buildCounterGoogleCloudAiplatformV1SpeechConfig = 0;
@@ -26332,7 +27185,7 @@ void checkGoogleCloudAiplatformV1StratifiedSplit(
   buildCounterGoogleCloudAiplatformV1StratifiedSplit--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed344() => {
+core.Map<core.String, core.Object?> buildUnnamed355() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -26345,7 +27198,7 @@ core.Map<core.String, core.Object?> buildUnnamed344() => {
       },
     };
 
-void checkUnnamed344(core.Map<core.String, core.Object?> o) {
+void checkUnnamed355(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted73 = (o['x']!) as core.Map;
   unittest.expect(casted73, unittest.hasLength(3));
@@ -26386,7 +27239,7 @@ api.GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest
   if (buildCounterGoogleCloudAiplatformV1StreamQueryReasoningEngineRequest <
       3) {
     o.classMethod = 'foo';
-    o.input = buildUnnamed344();
+    o.input = buildUnnamed355();
   }
   buildCounterGoogleCloudAiplatformV1StreamQueryReasoningEngineRequest--;
   return o;
@@ -26401,7 +27254,7 @@ void checkGoogleCloudAiplatformV1StreamQueryReasoningEngineRequest(
       o.classMethod!,
       unittest.equals('foo'),
     );
-    checkUnnamed344(o.input!);
+    checkUnnamed355(o.input!);
   }
   buildCounterGoogleCloudAiplatformV1StreamQueryReasoningEngineRequest--;
 }
@@ -26427,12 +27280,12 @@ void checkGoogleCloudAiplatformV1StreamRawPredictRequest(
   buildCounterGoogleCloudAiplatformV1StreamRawPredictRequest--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Tensor> buildUnnamed345() => [
+core.List<api.GoogleCloudAiplatformV1Tensor> buildUnnamed356() => [
       buildGoogleCloudAiplatformV1Tensor(),
       buildGoogleCloudAiplatformV1Tensor(),
     ];
 
-void checkUnnamed345(core.List<api.GoogleCloudAiplatformV1Tensor> o) {
+void checkUnnamed356(core.List<api.GoogleCloudAiplatformV1Tensor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Tensor(o[0]);
   checkGoogleCloudAiplatformV1Tensor(o[1]);
@@ -26444,7 +27297,7 @@ api.GoogleCloudAiplatformV1StreamingPredictRequest
   final o = api.GoogleCloudAiplatformV1StreamingPredictRequest();
   buildCounterGoogleCloudAiplatformV1StreamingPredictRequest++;
   if (buildCounterGoogleCloudAiplatformV1StreamingPredictRequest < 3) {
-    o.inputs = buildUnnamed345();
+    o.inputs = buildUnnamed356();
     o.parameters = buildGoogleCloudAiplatformV1Tensor();
   }
   buildCounterGoogleCloudAiplatformV1StreamingPredictRequest--;
@@ -26455,18 +27308,18 @@ void checkGoogleCloudAiplatformV1StreamingPredictRequest(
     api.GoogleCloudAiplatformV1StreamingPredictRequest o) {
   buildCounterGoogleCloudAiplatformV1StreamingPredictRequest++;
   if (buildCounterGoogleCloudAiplatformV1StreamingPredictRequest < 3) {
-    checkUnnamed345(o.inputs!);
+    checkUnnamed356(o.inputs!);
     checkGoogleCloudAiplatformV1Tensor(o.parameters!);
   }
   buildCounterGoogleCloudAiplatformV1StreamingPredictRequest--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Tensor> buildUnnamed346() => [
+core.List<api.GoogleCloudAiplatformV1Tensor> buildUnnamed357() => [
       buildGoogleCloudAiplatformV1Tensor(),
       buildGoogleCloudAiplatformV1Tensor(),
     ];
 
-void checkUnnamed346(core.List<api.GoogleCloudAiplatformV1Tensor> o) {
+void checkUnnamed357(core.List<api.GoogleCloudAiplatformV1Tensor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Tensor(o[0]);
   checkGoogleCloudAiplatformV1Tensor(o[1]);
@@ -26478,7 +27331,7 @@ api.GoogleCloudAiplatformV1StreamingPredictResponse
   final o = api.GoogleCloudAiplatformV1StreamingPredictResponse();
   buildCounterGoogleCloudAiplatformV1StreamingPredictResponse++;
   if (buildCounterGoogleCloudAiplatformV1StreamingPredictResponse < 3) {
-    o.outputs = buildUnnamed346();
+    o.outputs = buildUnnamed357();
     o.parameters = buildGoogleCloudAiplatformV1Tensor();
   }
   buildCounterGoogleCloudAiplatformV1StreamingPredictResponse--;
@@ -26489,18 +27342,18 @@ void checkGoogleCloudAiplatformV1StreamingPredictResponse(
     api.GoogleCloudAiplatformV1StreamingPredictResponse o) {
   buildCounterGoogleCloudAiplatformV1StreamingPredictResponse++;
   if (buildCounterGoogleCloudAiplatformV1StreamingPredictResponse < 3) {
-    checkUnnamed346(o.outputs!);
+    checkUnnamed357(o.outputs!);
     checkGoogleCloudAiplatformV1Tensor(o.parameters!);
   }
   buildCounterGoogleCloudAiplatformV1StreamingPredictResponse--;
 }
 
-core.List<core.String> buildUnnamed347() => [
+core.List<core.String> buildUnnamed358() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed347(core.List<core.String> o) {
+void checkUnnamed358(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -26520,7 +27373,7 @@ api.GoogleCloudAiplatformV1StreamingReadFeatureValuesRequest
   buildCounterGoogleCloudAiplatformV1StreamingReadFeatureValuesRequest++;
   if (buildCounterGoogleCloudAiplatformV1StreamingReadFeatureValuesRequest <
       3) {
-    o.entityIds = buildUnnamed347();
+    o.entityIds = buildUnnamed358();
     o.featureSelector = buildGoogleCloudAiplatformV1FeatureSelector();
   }
   buildCounterGoogleCloudAiplatformV1StreamingReadFeatureValuesRequest--;
@@ -26532,18 +27385,18 @@ void checkGoogleCloudAiplatformV1StreamingReadFeatureValuesRequest(
   buildCounterGoogleCloudAiplatformV1StreamingReadFeatureValuesRequest++;
   if (buildCounterGoogleCloudAiplatformV1StreamingReadFeatureValuesRequest <
       3) {
-    checkUnnamed347(o.entityIds!);
+    checkUnnamed358(o.entityIds!);
     checkGoogleCloudAiplatformV1FeatureSelector(o.featureSelector!);
   }
   buildCounterGoogleCloudAiplatformV1StreamingReadFeatureValuesRequest--;
 }
 
-core.List<core.String> buildUnnamed348() => [
+core.List<core.String> buildUnnamed359() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed348(core.List<core.String> o) {
+void checkUnnamed359(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -26561,7 +27414,7 @@ api.GoogleCloudAiplatformV1StringArray
   final o = api.GoogleCloudAiplatformV1StringArray();
   buildCounterGoogleCloudAiplatformV1StringArray++;
   if (buildCounterGoogleCloudAiplatformV1StringArray < 3) {
-    o.values = buildUnnamed348();
+    o.values = buildUnnamed359();
   }
   buildCounterGoogleCloudAiplatformV1StringArray--;
   return o;
@@ -26571,7 +27424,7 @@ void checkGoogleCloudAiplatformV1StringArray(
     api.GoogleCloudAiplatformV1StringArray o) {
   buildCounterGoogleCloudAiplatformV1StringArray++;
   if (buildCounterGoogleCloudAiplatformV1StringArray < 3) {
-    checkUnnamed348(o.values!);
+    checkUnnamed359(o.values!);
   }
   buildCounterGoogleCloudAiplatformV1StringArray--;
 }
@@ -26602,12 +27455,12 @@ void checkGoogleCloudAiplatformV1StructFieldValue(
   buildCounterGoogleCloudAiplatformV1StructFieldValue--;
 }
 
-core.List<api.GoogleCloudAiplatformV1StructFieldValue> buildUnnamed349() => [
+core.List<api.GoogleCloudAiplatformV1StructFieldValue> buildUnnamed360() => [
       buildGoogleCloudAiplatformV1StructFieldValue(),
       buildGoogleCloudAiplatformV1StructFieldValue(),
     ];
 
-void checkUnnamed349(core.List<api.GoogleCloudAiplatformV1StructFieldValue> o) {
+void checkUnnamed360(core.List<api.GoogleCloudAiplatformV1StructFieldValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1StructFieldValue(o[0]);
   checkGoogleCloudAiplatformV1StructFieldValue(o[1]);
@@ -26619,7 +27472,7 @@ api.GoogleCloudAiplatformV1StructValue
   final o = api.GoogleCloudAiplatformV1StructValue();
   buildCounterGoogleCloudAiplatformV1StructValue++;
   if (buildCounterGoogleCloudAiplatformV1StructValue < 3) {
-    o.values = buildUnnamed349();
+    o.values = buildUnnamed360();
   }
   buildCounterGoogleCloudAiplatformV1StructValue--;
   return o;
@@ -26629,7 +27482,7 @@ void checkGoogleCloudAiplatformV1StructValue(
     api.GoogleCloudAiplatformV1StructValue o) {
   buildCounterGoogleCloudAiplatformV1StructValue++;
   if (buildCounterGoogleCloudAiplatformV1StructValue < 3) {
-    checkUnnamed349(o.values!);
+    checkUnnamed360(o.values!);
   }
   buildCounterGoogleCloudAiplatformV1StructValue--;
 }
@@ -26678,12 +27531,12 @@ void checkGoogleCloudAiplatformV1Study(api.GoogleCloudAiplatformV1Study o) {
   buildCounterGoogleCloudAiplatformV1Study--;
 }
 
-core.List<api.GoogleCloudAiplatformV1StudySpecMetricSpec> buildUnnamed350() => [
+core.List<api.GoogleCloudAiplatformV1StudySpecMetricSpec> buildUnnamed361() => [
       buildGoogleCloudAiplatformV1StudySpecMetricSpec(),
       buildGoogleCloudAiplatformV1StudySpecMetricSpec(),
     ];
 
-void checkUnnamed350(
+void checkUnnamed361(
     core.List<api.GoogleCloudAiplatformV1StudySpecMetricSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1StudySpecMetricSpec(o[0]);
@@ -26691,12 +27544,12 @@ void checkUnnamed350(
 }
 
 core.List<api.GoogleCloudAiplatformV1StudySpecParameterSpec>
-    buildUnnamed351() => [
+    buildUnnamed362() => [
           buildGoogleCloudAiplatformV1StudySpecParameterSpec(),
           buildGoogleCloudAiplatformV1StudySpecParameterSpec(),
         ];
 
-void checkUnnamed351(
+void checkUnnamed362(
     core.List<api.GoogleCloudAiplatformV1StudySpecParameterSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1StudySpecParameterSpec(o[0]);
@@ -26716,9 +27569,9 @@ api.GoogleCloudAiplatformV1StudySpec buildGoogleCloudAiplatformV1StudySpec() {
     o.measurementSelectionType = 'foo';
     o.medianAutomatedStoppingSpec =
         buildGoogleCloudAiplatformV1StudySpecMedianAutomatedStoppingSpec();
-    o.metrics = buildUnnamed350();
+    o.metrics = buildUnnamed361();
     o.observationNoise = 'foo';
-    o.parameters = buildUnnamed351();
+    o.parameters = buildUnnamed362();
     o.studyStoppingConfig =
         buildGoogleCloudAiplatformV1StudySpecStudyStoppingConfig();
   }
@@ -26744,12 +27597,12 @@ void checkGoogleCloudAiplatformV1StudySpec(
     );
     checkGoogleCloudAiplatformV1StudySpecMedianAutomatedStoppingSpec(
         o.medianAutomatedStoppingSpec!);
-    checkUnnamed350(o.metrics!);
+    checkUnnamed361(o.metrics!);
     unittest.expect(
       o.observationNoise!,
       unittest.equals('foo'),
     );
-    checkUnnamed351(o.parameters!);
+    checkUnnamed362(o.parameters!);
     checkGoogleCloudAiplatformV1StudySpecStudyStoppingConfig(
         o.studyStoppingConfig!);
   }
@@ -26921,12 +27774,12 @@ void checkGoogleCloudAiplatformV1StudySpecMetricSpecSafetyMetricConfig(
 core.List<
         api
         .GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpec>
-    buildUnnamed352() => [
+    buildUnnamed363() => [
           buildGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpec(),
           buildGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpec(),
         ];
 
-void checkUnnamed352(
+void checkUnnamed363(
     core.List<
             api
             .GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpec>
@@ -26946,7 +27799,7 @@ api.GoogleCloudAiplatformV1StudySpecParameterSpec
   if (buildCounterGoogleCloudAiplatformV1StudySpecParameterSpec < 3) {
     o.categoricalValueSpec =
         buildGoogleCloudAiplatformV1StudySpecParameterSpecCategoricalValueSpec();
-    o.conditionalParameterSpecs = buildUnnamed352();
+    o.conditionalParameterSpecs = buildUnnamed363();
     o.discreteValueSpec =
         buildGoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpec();
     o.doubleValueSpec =
@@ -26966,7 +27819,7 @@ void checkGoogleCloudAiplatformV1StudySpecParameterSpec(
   if (buildCounterGoogleCloudAiplatformV1StudySpecParameterSpec < 3) {
     checkGoogleCloudAiplatformV1StudySpecParameterSpecCategoricalValueSpec(
         o.categoricalValueSpec!);
-    checkUnnamed352(o.conditionalParameterSpecs!);
+    checkUnnamed363(o.conditionalParameterSpecs!);
     checkGoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpec(
         o.discreteValueSpec!);
     checkGoogleCloudAiplatformV1StudySpecParameterSpecDoubleValueSpec(
@@ -26985,12 +27838,12 @@ void checkGoogleCloudAiplatformV1StudySpecParameterSpec(
   buildCounterGoogleCloudAiplatformV1StudySpecParameterSpec--;
 }
 
-core.List<core.String> buildUnnamed353() => [
+core.List<core.String> buildUnnamed364() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed353(core.List<core.String> o) {
+void checkUnnamed364(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -27013,7 +27866,7 @@ api.GoogleCloudAiplatformV1StudySpecParameterSpecCategoricalValueSpec
   if (buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecCategoricalValueSpec <
       3) {
     o.defaultValue = 'foo';
-    o.values = buildUnnamed353();
+    o.values = buildUnnamed364();
   }
   buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecCategoricalValueSpec--;
   return o;
@@ -27028,7 +27881,7 @@ void checkGoogleCloudAiplatformV1StudySpecParameterSpecCategoricalValueSpec(
       o.defaultValue!,
       unittest.equals('foo'),
     );
-    checkUnnamed353(o.values!);
+    checkUnnamed364(o.values!);
   }
   buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecCategoricalValueSpec--;
 }
@@ -27072,12 +27925,12 @@ void checkGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpec(
   buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpec--;
 }
 
-core.List<core.String> buildUnnamed354() => [
+core.List<core.String> buildUnnamed365() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed354(core.List<core.String> o) {
+void checkUnnamed365(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -27099,7 +27952,7 @@ api.GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategor
   buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition++;
   if (buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition <
       3) {
-    o.values = buildUnnamed354();
+    o.values = buildUnnamed365();
   }
   buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition--;
   return o;
@@ -27111,17 +27964,17 @@ void checkGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecC
   buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition++;
   if (buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition <
       3) {
-    checkUnnamed354(o.values!);
+    checkUnnamed365(o.values!);
   }
   buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition--;
 }
 
-core.List<core.double> buildUnnamed355() => [
+core.List<core.double> buildUnnamed366() => [
       42.0,
       42.0,
     ];
 
-void checkUnnamed355(core.List<core.double> o) {
+void checkUnnamed366(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -27143,7 +27996,7 @@ api.GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecDiscret
   buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition++;
   if (buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition <
       3) {
-    o.values = buildUnnamed355();
+    o.values = buildUnnamed366();
   }
   buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition--;
   return o;
@@ -27155,17 +28008,17 @@ void checkGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecD
   buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition++;
   if (buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition <
       3) {
-    checkUnnamed355(o.values!);
+    checkUnnamed366(o.values!);
   }
   buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition--;
 }
 
-core.List<core.String> buildUnnamed356() => [
+core.List<core.String> buildUnnamed367() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed356(core.List<core.String> o) {
+void checkUnnamed367(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -27187,7 +28040,7 @@ api.GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecIntValu
   buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecIntValueCondition++;
   if (buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecIntValueCondition <
       3) {
-    o.values = buildUnnamed356();
+    o.values = buildUnnamed367();
   }
   buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecIntValueCondition--;
   return o;
@@ -27199,17 +28052,17 @@ void checkGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecI
   buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecIntValueCondition++;
   if (buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecIntValueCondition <
       3) {
-    checkUnnamed356(o.values!);
+    checkUnnamed367(o.values!);
   }
   buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecIntValueCondition--;
 }
 
-core.List<core.double> buildUnnamed357() => [
+core.List<core.double> buildUnnamed368() => [
       42.0,
       42.0,
     ];
 
-void checkUnnamed357(core.List<core.double> o) {
+void checkUnnamed368(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -27232,7 +28085,7 @@ api.GoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpec
   if (buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpec <
       3) {
     o.defaultValue = 42.0;
-    o.values = buildUnnamed357();
+    o.values = buildUnnamed368();
   }
   buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpec--;
   return o;
@@ -27247,7 +28100,7 @@ void checkGoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpec(
       o.defaultValue!,
       unittest.equals(42.0),
     );
-    checkUnnamed357(o.values!);
+    checkUnnamed368(o.values!);
   }
   buildCounterGoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpec--;
 }
@@ -27406,12 +28259,12 @@ void checkGoogleCloudAiplatformV1StudyTimeConstraint(
   buildCounterGoogleCloudAiplatformV1StudyTimeConstraint--;
 }
 
-core.List<api.GoogleCloudAiplatformV1TrialContext> buildUnnamed358() => [
+core.List<api.GoogleCloudAiplatformV1TrialContext> buildUnnamed369() => [
       buildGoogleCloudAiplatformV1TrialContext(),
       buildGoogleCloudAiplatformV1TrialContext(),
     ];
 
-void checkUnnamed358(core.List<api.GoogleCloudAiplatformV1TrialContext> o) {
+void checkUnnamed369(core.List<api.GoogleCloudAiplatformV1TrialContext> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TrialContext(o[0]);
   checkGoogleCloudAiplatformV1TrialContext(o[1]);
@@ -27424,7 +28277,7 @@ api.GoogleCloudAiplatformV1SuggestTrialsRequest
   buildCounterGoogleCloudAiplatformV1SuggestTrialsRequest++;
   if (buildCounterGoogleCloudAiplatformV1SuggestTrialsRequest < 3) {
     o.clientId = 'foo';
-    o.contexts = buildUnnamed358();
+    o.contexts = buildUnnamed369();
     o.suggestionCount = 42;
   }
   buildCounterGoogleCloudAiplatformV1SuggestTrialsRequest--;
@@ -27439,7 +28292,7 @@ void checkGoogleCloudAiplatformV1SuggestTrialsRequest(
       o.clientId!,
       unittest.equals('foo'),
     );
-    checkUnnamed358(o.contexts!);
+    checkUnnamed369(o.contexts!);
     unittest.expect(
       o.suggestionCount!,
       unittest.equals(42),
@@ -27849,12 +28702,12 @@ void checkGoogleCloudAiplatformV1SupervisedHyperParameters(
   buildCounterGoogleCloudAiplatformV1SupervisedHyperParameters--;
 }
 
-core.List<core.String> buildUnnamed359() => [
+core.List<core.String> buildUnnamed370() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed359(core.List<core.String> o) {
+void checkUnnamed370(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -27866,12 +28719,29 @@ void checkUnnamed359(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudAiplatformV1Content> buildUnnamed360() => [
+core.List<core.String> buildUnnamed371() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed371(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.GoogleCloudAiplatformV1Content> buildUnnamed372() => [
       buildGoogleCloudAiplatformV1Content(),
       buildGoogleCloudAiplatformV1Content(),
     ];
 
-void checkUnnamed360(core.List<api.GoogleCloudAiplatformV1Content> o) {
+void checkUnnamed372(core.List<api.GoogleCloudAiplatformV1Content> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Content(o[0]);
   checkGoogleCloudAiplatformV1Content(o[1]);
@@ -27883,14 +28753,15 @@ api.GoogleCloudAiplatformV1SupervisedTuningDataStats
   final o = api.GoogleCloudAiplatformV1SupervisedTuningDataStats();
   buildCounterGoogleCloudAiplatformV1SupervisedTuningDataStats++;
   if (buildCounterGoogleCloudAiplatformV1SupervisedTuningDataStats < 3) {
+    o.droppedExampleReasons = buildUnnamed370();
     o.totalBillableCharacterCount = 'foo';
     o.totalBillableTokenCount = 'foo';
     o.totalTruncatedExampleCount = 'foo';
     o.totalTuningCharacterCount = 'foo';
-    o.truncatedExampleIndices = buildUnnamed359();
+    o.truncatedExampleIndices = buildUnnamed371();
     o.tuningDatasetExampleCount = 'foo';
     o.tuningStepCount = 'foo';
-    o.userDatasetExamples = buildUnnamed360();
+    o.userDatasetExamples = buildUnnamed372();
     o.userInputTokenDistribution =
         buildGoogleCloudAiplatformV1SupervisedTuningDatasetDistribution();
     o.userMessagePerExampleDistribution =
@@ -27906,6 +28777,7 @@ void checkGoogleCloudAiplatformV1SupervisedTuningDataStats(
     api.GoogleCloudAiplatformV1SupervisedTuningDataStats o) {
   buildCounterGoogleCloudAiplatformV1SupervisedTuningDataStats++;
   if (buildCounterGoogleCloudAiplatformV1SupervisedTuningDataStats < 3) {
+    checkUnnamed370(o.droppedExampleReasons!);
     unittest.expect(
       o.totalBillableCharacterCount!,
       unittest.equals('foo'),
@@ -27922,7 +28794,7 @@ void checkGoogleCloudAiplatformV1SupervisedTuningDataStats(
       o.totalTuningCharacterCount!,
       unittest.equals('foo'),
     );
-    checkUnnamed359(o.truncatedExampleIndices!);
+    checkUnnamed371(o.truncatedExampleIndices!);
     unittest.expect(
       o.tuningDatasetExampleCount!,
       unittest.equals('foo'),
@@ -27931,7 +28803,7 @@ void checkGoogleCloudAiplatformV1SupervisedTuningDataStats(
       o.tuningStepCount!,
       unittest.equals('foo'),
     );
-    checkUnnamed360(o.userDatasetExamples!);
+    checkUnnamed372(o.userDatasetExamples!);
     checkGoogleCloudAiplatformV1SupervisedTuningDatasetDistribution(
         o.userInputTokenDistribution!);
     checkGoogleCloudAiplatformV1SupervisedTuningDatasetDistribution(
@@ -27945,12 +28817,12 @@ void checkGoogleCloudAiplatformV1SupervisedTuningDataStats(
 core.List<
         api
         .GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket>
-    buildUnnamed361() => [
+    buildUnnamed373() => [
           buildGoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket(),
           buildGoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket(),
         ];
 
-void checkUnnamed361(
+void checkUnnamed373(
     core.List<
             api
             .GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket>
@@ -27971,7 +28843,7 @@ api.GoogleCloudAiplatformV1SupervisedTuningDatasetDistribution
   if (buildCounterGoogleCloudAiplatformV1SupervisedTuningDatasetDistribution <
       3) {
     o.billableSum = 'foo';
-    o.buckets = buildUnnamed361();
+    o.buckets = buildUnnamed373();
     o.max = 42.0;
     o.mean = 42.0;
     o.median = 42.0;
@@ -27993,7 +28865,7 @@ void checkGoogleCloudAiplatformV1SupervisedTuningDatasetDistribution(
       o.billableSum!,
       unittest.equals('foo'),
     );
-    checkUnnamed361(o.buckets!);
+    checkUnnamed373(o.buckets!);
     unittest.expect(
       o.max!,
       unittest.equals(42.0),
@@ -28159,23 +29031,23 @@ void checkGoogleCloudAiplatformV1TFRecordDestination(
   buildCounterGoogleCloudAiplatformV1TFRecordDestination--;
 }
 
-core.List<core.bool> buildUnnamed362() => [
+core.List<core.bool> buildUnnamed374() => [
       true,
       true,
     ];
 
-void checkUnnamed362(core.List<core.bool> o) {
+void checkUnnamed374(core.List<core.bool> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.isTrue);
   unittest.expect(o[1], unittest.isTrue);
 }
 
-core.List<core.String> buildUnnamed363() => [
+core.List<core.String> buildUnnamed375() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed363(core.List<core.String> o) {
+void checkUnnamed375(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -28187,12 +29059,12 @@ void checkUnnamed363(core.List<core.String> o) {
   );
 }
 
-core.List<core.double> buildUnnamed364() => [
+core.List<core.double> buildUnnamed376() => [
       42.0,
       42.0,
     ];
 
-void checkUnnamed364(core.List<core.double> o) {
+void checkUnnamed376(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -28204,12 +29076,12 @@ void checkUnnamed364(core.List<core.double> o) {
   );
 }
 
-core.List<core.double> buildUnnamed365() => [
+core.List<core.double> buildUnnamed377() => [
       42.0,
       42.0,
     ];
 
-void checkUnnamed365(core.List<core.double> o) {
+void checkUnnamed377(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -28221,12 +29093,12 @@ void checkUnnamed365(core.List<core.double> o) {
   );
 }
 
-core.List<core.String> buildUnnamed366() => [
+core.List<core.String> buildUnnamed378() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed366(core.List<core.String> o) {
+void checkUnnamed378(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -28238,12 +29110,12 @@ void checkUnnamed366(core.List<core.String> o) {
   );
 }
 
-core.List<core.int> buildUnnamed367() => [
+core.List<core.int> buildUnnamed379() => [
       42,
       42,
     ];
 
-void checkUnnamed367(core.List<core.int> o) {
+void checkUnnamed379(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -28255,23 +29127,23 @@ void checkUnnamed367(core.List<core.int> o) {
   );
 }
 
-core.List<api.GoogleCloudAiplatformV1Tensor> buildUnnamed368() => [
+core.List<api.GoogleCloudAiplatformV1Tensor> buildUnnamed380() => [
       buildGoogleCloudAiplatformV1Tensor(),
       buildGoogleCloudAiplatformV1Tensor(),
     ];
 
-void checkUnnamed368(core.List<api.GoogleCloudAiplatformV1Tensor> o) {
+void checkUnnamed380(core.List<api.GoogleCloudAiplatformV1Tensor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Tensor(o[0]);
   checkGoogleCloudAiplatformV1Tensor(o[1]);
 }
 
-core.List<core.String> buildUnnamed369() => [
+core.List<core.String> buildUnnamed381() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed369(core.List<core.String> o) {
+void checkUnnamed381(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -28283,12 +29155,12 @@ void checkUnnamed369(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed370() => [
+core.List<core.String> buildUnnamed382() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed370(core.List<core.String> o) {
+void checkUnnamed382(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -28300,24 +29172,24 @@ void checkUnnamed370(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, api.GoogleCloudAiplatformV1Tensor> buildUnnamed371() => {
+core.Map<core.String, api.GoogleCloudAiplatformV1Tensor> buildUnnamed383() => {
       'x': buildGoogleCloudAiplatformV1Tensor(),
       'y': buildGoogleCloudAiplatformV1Tensor(),
     };
 
-void checkUnnamed371(
+void checkUnnamed383(
     core.Map<core.String, api.GoogleCloudAiplatformV1Tensor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Tensor(o['x']!);
   checkGoogleCloudAiplatformV1Tensor(o['y']!);
 }
 
-core.List<core.String> buildUnnamed372() => [
+core.List<core.String> buildUnnamed384() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed372(core.List<core.String> o) {
+void checkUnnamed384(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -28329,12 +29201,12 @@ void checkUnnamed372(core.List<core.String> o) {
   );
 }
 
-core.List<core.int> buildUnnamed373() => [
+core.List<core.int> buildUnnamed385() => [
       42,
       42,
     ];
 
-void checkUnnamed373(core.List<core.int> o) {
+void checkUnnamed385(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -28351,20 +29223,20 @@ api.GoogleCloudAiplatformV1Tensor buildGoogleCloudAiplatformV1Tensor() {
   final o = api.GoogleCloudAiplatformV1Tensor();
   buildCounterGoogleCloudAiplatformV1Tensor++;
   if (buildCounterGoogleCloudAiplatformV1Tensor < 3) {
-    o.boolVal = buildUnnamed362();
-    o.bytesVal = buildUnnamed363();
-    o.doubleVal = buildUnnamed364();
+    o.boolVal = buildUnnamed374();
+    o.bytesVal = buildUnnamed375();
+    o.doubleVal = buildUnnamed376();
     o.dtype = 'foo';
-    o.floatVal = buildUnnamed365();
-    o.int64Val = buildUnnamed366();
-    o.intVal = buildUnnamed367();
-    o.listVal = buildUnnamed368();
-    o.shape = buildUnnamed369();
-    o.stringVal = buildUnnamed370();
-    o.structVal = buildUnnamed371();
+    o.floatVal = buildUnnamed377();
+    o.int64Val = buildUnnamed378();
+    o.intVal = buildUnnamed379();
+    o.listVal = buildUnnamed380();
+    o.shape = buildUnnamed381();
+    o.stringVal = buildUnnamed382();
+    o.structVal = buildUnnamed383();
     o.tensorVal = 'foo';
-    o.uint64Val = buildUnnamed372();
-    o.uintVal = buildUnnamed373();
+    o.uint64Val = buildUnnamed384();
+    o.uintVal = buildUnnamed385();
   }
   buildCounterGoogleCloudAiplatformV1Tensor--;
   return o;
@@ -28373,36 +29245,36 @@ api.GoogleCloudAiplatformV1Tensor buildGoogleCloudAiplatformV1Tensor() {
 void checkGoogleCloudAiplatformV1Tensor(api.GoogleCloudAiplatformV1Tensor o) {
   buildCounterGoogleCloudAiplatformV1Tensor++;
   if (buildCounterGoogleCloudAiplatformV1Tensor < 3) {
-    checkUnnamed362(o.boolVal!);
-    checkUnnamed363(o.bytesVal!);
-    checkUnnamed364(o.doubleVal!);
+    checkUnnamed374(o.boolVal!);
+    checkUnnamed375(o.bytesVal!);
+    checkUnnamed376(o.doubleVal!);
     unittest.expect(
       o.dtype!,
       unittest.equals('foo'),
     );
-    checkUnnamed365(o.floatVal!);
-    checkUnnamed366(o.int64Val!);
-    checkUnnamed367(o.intVal!);
-    checkUnnamed368(o.listVal!);
-    checkUnnamed369(o.shape!);
-    checkUnnamed370(o.stringVal!);
-    checkUnnamed371(o.structVal!);
+    checkUnnamed377(o.floatVal!);
+    checkUnnamed378(o.int64Val!);
+    checkUnnamed379(o.intVal!);
+    checkUnnamed380(o.listVal!);
+    checkUnnamed381(o.shape!);
+    checkUnnamed382(o.stringVal!);
+    checkUnnamed383(o.structVal!);
     unittest.expect(
       o.tensorVal!,
       unittest.equals('foo'),
     );
-    checkUnnamed372(o.uint64Val!);
-    checkUnnamed373(o.uintVal!);
+    checkUnnamed384(o.uint64Val!);
+    checkUnnamed385(o.uintVal!);
   }
   buildCounterGoogleCloudAiplatformV1Tensor--;
 }
 
-core.Map<core.String, core.String> buildUnnamed374() => {
+core.Map<core.String, core.String> buildUnnamed386() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed374(core.Map<core.String, core.String> o) {
+void checkUnnamed386(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -28427,7 +29299,7 @@ api.GoogleCloudAiplatformV1Tensorboard
     o.encryptionSpec = buildGoogleCloudAiplatformV1EncryptionSpec();
     o.etag = 'foo';
     o.isDefault = true;
-    o.labels = buildUnnamed374();
+    o.labels = buildUnnamed386();
     o.name = 'foo';
     o.runCount = 42;
     o.satisfiesPzi = true;
@@ -28464,7 +29336,7 @@ void checkGoogleCloudAiplatformV1Tensorboard(
       unittest.equals('foo'),
     );
     unittest.expect(o.isDefault!, unittest.isTrue);
-    checkUnnamed374(o.labels!);
+    checkUnnamed386(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -28512,12 +29384,12 @@ void checkGoogleCloudAiplatformV1TensorboardBlob(
   buildCounterGoogleCloudAiplatformV1TensorboardBlob--;
 }
 
-core.List<api.GoogleCloudAiplatformV1TensorboardBlob> buildUnnamed375() => [
+core.List<api.GoogleCloudAiplatformV1TensorboardBlob> buildUnnamed387() => [
       buildGoogleCloudAiplatformV1TensorboardBlob(),
       buildGoogleCloudAiplatformV1TensorboardBlob(),
     ];
 
-void checkUnnamed375(core.List<api.GoogleCloudAiplatformV1TensorboardBlob> o) {
+void checkUnnamed387(core.List<api.GoogleCloudAiplatformV1TensorboardBlob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TensorboardBlob(o[0]);
   checkGoogleCloudAiplatformV1TensorboardBlob(o[1]);
@@ -28529,7 +29401,7 @@ api.GoogleCloudAiplatformV1TensorboardBlobSequence
   final o = api.GoogleCloudAiplatformV1TensorboardBlobSequence();
   buildCounterGoogleCloudAiplatformV1TensorboardBlobSequence++;
   if (buildCounterGoogleCloudAiplatformV1TensorboardBlobSequence < 3) {
-    o.values = buildUnnamed375();
+    o.values = buildUnnamed387();
   }
   buildCounterGoogleCloudAiplatformV1TensorboardBlobSequence--;
   return o;
@@ -28539,17 +29411,17 @@ void checkGoogleCloudAiplatformV1TensorboardBlobSequence(
     api.GoogleCloudAiplatformV1TensorboardBlobSequence o) {
   buildCounterGoogleCloudAiplatformV1TensorboardBlobSequence++;
   if (buildCounterGoogleCloudAiplatformV1TensorboardBlobSequence < 3) {
-    checkUnnamed375(o.values!);
+    checkUnnamed387(o.values!);
   }
   buildCounterGoogleCloudAiplatformV1TensorboardBlobSequence--;
 }
 
-core.Map<core.String, core.String> buildUnnamed376() => {
+core.Map<core.String, core.String> buildUnnamed388() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed376(core.Map<core.String, core.String> o) {
+void checkUnnamed388(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -28571,7 +29443,7 @@ api.GoogleCloudAiplatformV1TensorboardExperiment
     o.description = 'foo';
     o.displayName = 'foo';
     o.etag = 'foo';
-    o.labels = buildUnnamed376();
+    o.labels = buildUnnamed388();
     o.name = 'foo';
     o.source = 'foo';
     o.updateTime = 'foo';
@@ -28600,7 +29472,7 @@ void checkGoogleCloudAiplatformV1TensorboardExperiment(
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed376(o.labels!);
+    checkUnnamed388(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -28617,12 +29489,12 @@ void checkGoogleCloudAiplatformV1TensorboardExperiment(
   buildCounterGoogleCloudAiplatformV1TensorboardExperiment--;
 }
 
-core.Map<core.String, core.String> buildUnnamed377() => {
+core.Map<core.String, core.String> buildUnnamed389() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed377(core.Map<core.String, core.String> o) {
+void checkUnnamed389(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -28644,7 +29516,7 @@ api.GoogleCloudAiplatformV1TensorboardRun
     o.description = 'foo';
     o.displayName = 'foo';
     o.etag = 'foo';
-    o.labels = buildUnnamed377();
+    o.labels = buildUnnamed389();
     o.name = 'foo';
     o.updateTime = 'foo';
   }
@@ -28672,7 +29544,7 @@ void checkGoogleCloudAiplatformV1TensorboardRun(
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed377(o.labels!);
+    checkUnnamed389(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -28838,12 +29710,12 @@ void checkGoogleCloudAiplatformV1ThresholdConfig(
   buildCounterGoogleCloudAiplatformV1ThresholdConfig--;
 }
 
-core.List<api.GoogleCloudAiplatformV1TimeSeriesDataPoint> buildUnnamed378() => [
+core.List<api.GoogleCloudAiplatformV1TimeSeriesDataPoint> buildUnnamed390() => [
       buildGoogleCloudAiplatformV1TimeSeriesDataPoint(),
       buildGoogleCloudAiplatformV1TimeSeriesDataPoint(),
     ];
 
-void checkUnnamed378(
+void checkUnnamed390(
     core.List<api.GoogleCloudAiplatformV1TimeSeriesDataPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TimeSeriesDataPoint(o[0]);
@@ -28858,7 +29730,7 @@ api.GoogleCloudAiplatformV1TimeSeriesData
   if (buildCounterGoogleCloudAiplatformV1TimeSeriesData < 3) {
     o.tensorboardTimeSeriesId = 'foo';
     o.valueType = 'foo';
-    o.values = buildUnnamed378();
+    o.values = buildUnnamed390();
   }
   buildCounterGoogleCloudAiplatformV1TimeSeriesData--;
   return o;
@@ -28876,7 +29748,7 @@ void checkGoogleCloudAiplatformV1TimeSeriesData(
       o.valueType!,
       unittest.equals('foo'),
     );
-    checkUnnamed378(o.values!);
+    checkUnnamed390(o.values!);
   }
   buildCounterGoogleCloudAiplatformV1TimeSeriesData--;
 }
@@ -28955,12 +29827,12 @@ void checkGoogleCloudAiplatformV1TimestampSplit(
   buildCounterGoogleCloudAiplatformV1TimestampSplit--;
 }
 
-core.List<core.String> buildUnnamed379() => [
+core.List<core.String> buildUnnamed391() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed379(core.List<core.String> o) {
+void checkUnnamed391(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -28972,12 +29844,12 @@ void checkUnnamed379(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed380() => [
+core.List<core.String> buildUnnamed392() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed380(core.List<core.String> o) {
+void checkUnnamed392(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -28995,8 +29867,8 @@ api.GoogleCloudAiplatformV1TokensInfo buildGoogleCloudAiplatformV1TokensInfo() {
   buildCounterGoogleCloudAiplatformV1TokensInfo++;
   if (buildCounterGoogleCloudAiplatformV1TokensInfo < 3) {
     o.role = 'foo';
-    o.tokenIds = buildUnnamed379();
-    o.tokens = buildUnnamed380();
+    o.tokenIds = buildUnnamed391();
+    o.tokens = buildUnnamed392();
   }
   buildCounterGoogleCloudAiplatformV1TokensInfo--;
   return o;
@@ -29010,18 +29882,18 @@ void checkGoogleCloudAiplatformV1TokensInfo(
       o.role!,
       unittest.equals('foo'),
     );
-    checkUnnamed379(o.tokenIds!);
-    checkUnnamed380(o.tokens!);
+    checkUnnamed391(o.tokenIds!);
+    checkUnnamed392(o.tokens!);
   }
   buildCounterGoogleCloudAiplatformV1TokensInfo--;
 }
 
-core.List<api.GoogleCloudAiplatformV1FunctionDeclaration> buildUnnamed381() => [
+core.List<api.GoogleCloudAiplatformV1FunctionDeclaration> buildUnnamed393() => [
       buildGoogleCloudAiplatformV1FunctionDeclaration(),
       buildGoogleCloudAiplatformV1FunctionDeclaration(),
     ];
 
-void checkUnnamed381(
+void checkUnnamed393(
     core.List<api.GoogleCloudAiplatformV1FunctionDeclaration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1FunctionDeclaration(o[0]);
@@ -29033,7 +29905,9 @@ api.GoogleCloudAiplatformV1Tool buildGoogleCloudAiplatformV1Tool() {
   final o = api.GoogleCloudAiplatformV1Tool();
   buildCounterGoogleCloudAiplatformV1Tool++;
   if (buildCounterGoogleCloudAiplatformV1Tool < 3) {
-    o.functionDeclarations = buildUnnamed381();
+    o.codeExecution = buildGoogleCloudAiplatformV1ToolCodeExecution();
+    o.enterpriseWebSearch = buildGoogleCloudAiplatformV1EnterpriseWebSearch();
+    o.functionDeclarations = buildUnnamed393();
     o.googleSearch = buildGoogleCloudAiplatformV1ToolGoogleSearch();
     o.googleSearchRetrieval =
         buildGoogleCloudAiplatformV1GoogleSearchRetrieval();
@@ -29046,7 +29920,9 @@ api.GoogleCloudAiplatformV1Tool buildGoogleCloudAiplatformV1Tool() {
 void checkGoogleCloudAiplatformV1Tool(api.GoogleCloudAiplatformV1Tool o) {
   buildCounterGoogleCloudAiplatformV1Tool++;
   if (buildCounterGoogleCloudAiplatformV1Tool < 3) {
-    checkUnnamed381(o.functionDeclarations!);
+    checkGoogleCloudAiplatformV1ToolCodeExecution(o.codeExecution!);
+    checkGoogleCloudAiplatformV1EnterpriseWebSearch(o.enterpriseWebSearch!);
+    checkUnnamed393(o.functionDeclarations!);
     checkGoogleCloudAiplatformV1ToolGoogleSearch(o.googleSearch!);
     checkGoogleCloudAiplatformV1GoogleSearchRetrieval(o.googleSearchRetrieval!);
     checkGoogleCloudAiplatformV1Retrieval(o.retrieval!);
@@ -29082,13 +29958,13 @@ void checkGoogleCloudAiplatformV1ToolCall(
   buildCounterGoogleCloudAiplatformV1ToolCall--;
 }
 
-core.List<api.GoogleCloudAiplatformV1ToolCallValidInstance> buildUnnamed382() =>
+core.List<api.GoogleCloudAiplatformV1ToolCallValidInstance> buildUnnamed394() =>
     [
       buildGoogleCloudAiplatformV1ToolCallValidInstance(),
       buildGoogleCloudAiplatformV1ToolCallValidInstance(),
     ];
 
-void checkUnnamed382(
+void checkUnnamed394(
     core.List<api.GoogleCloudAiplatformV1ToolCallValidInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ToolCallValidInstance(o[0]);
@@ -29101,7 +29977,7 @@ api.GoogleCloudAiplatformV1ToolCallValidInput
   final o = api.GoogleCloudAiplatformV1ToolCallValidInput();
   buildCounterGoogleCloudAiplatformV1ToolCallValidInput++;
   if (buildCounterGoogleCloudAiplatformV1ToolCallValidInput < 3) {
-    o.instances = buildUnnamed382();
+    o.instances = buildUnnamed394();
     o.metricSpec = buildGoogleCloudAiplatformV1ToolCallValidSpec();
   }
   buildCounterGoogleCloudAiplatformV1ToolCallValidInput--;
@@ -29112,7 +29988,7 @@ void checkGoogleCloudAiplatformV1ToolCallValidInput(
     api.GoogleCloudAiplatformV1ToolCallValidInput o) {
   buildCounterGoogleCloudAiplatformV1ToolCallValidInput++;
   if (buildCounterGoogleCloudAiplatformV1ToolCallValidInput < 3) {
-    checkUnnamed382(o.instances!);
+    checkUnnamed394(o.instances!);
     checkGoogleCloudAiplatformV1ToolCallValidSpec(o.metricSpec!);
   }
   buildCounterGoogleCloudAiplatformV1ToolCallValidInput--;
@@ -29172,12 +30048,12 @@ void checkGoogleCloudAiplatformV1ToolCallValidMetricValue(
 }
 
 core.List<api.GoogleCloudAiplatformV1ToolCallValidMetricValue>
-    buildUnnamed383() => [
+    buildUnnamed395() => [
           buildGoogleCloudAiplatformV1ToolCallValidMetricValue(),
           buildGoogleCloudAiplatformV1ToolCallValidMetricValue(),
         ];
 
-void checkUnnamed383(
+void checkUnnamed395(
     core.List<api.GoogleCloudAiplatformV1ToolCallValidMetricValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ToolCallValidMetricValue(o[0]);
@@ -29190,7 +30066,7 @@ api.GoogleCloudAiplatformV1ToolCallValidResults
   final o = api.GoogleCloudAiplatformV1ToolCallValidResults();
   buildCounterGoogleCloudAiplatformV1ToolCallValidResults++;
   if (buildCounterGoogleCloudAiplatformV1ToolCallValidResults < 3) {
-    o.toolCallValidMetricValues = buildUnnamed383();
+    o.toolCallValidMetricValues = buildUnnamed395();
   }
   buildCounterGoogleCloudAiplatformV1ToolCallValidResults--;
   return o;
@@ -29200,7 +30076,7 @@ void checkGoogleCloudAiplatformV1ToolCallValidResults(
     api.GoogleCloudAiplatformV1ToolCallValidResults o) {
   buildCounterGoogleCloudAiplatformV1ToolCallValidResults++;
   if (buildCounterGoogleCloudAiplatformV1ToolCallValidResults < 3) {
-    checkUnnamed383(o.toolCallValidMetricValues!);
+    checkUnnamed395(o.toolCallValidMetricValues!);
   }
   buildCounterGoogleCloudAiplatformV1ToolCallValidResults--;
 }
@@ -29222,6 +30098,23 @@ void checkGoogleCloudAiplatformV1ToolCallValidSpec(
   buildCounterGoogleCloudAiplatformV1ToolCallValidSpec--;
 }
 
+core.int buildCounterGoogleCloudAiplatformV1ToolCodeExecution = 0;
+api.GoogleCloudAiplatformV1ToolCodeExecution
+    buildGoogleCloudAiplatformV1ToolCodeExecution() {
+  final o = api.GoogleCloudAiplatformV1ToolCodeExecution();
+  buildCounterGoogleCloudAiplatformV1ToolCodeExecution++;
+  if (buildCounterGoogleCloudAiplatformV1ToolCodeExecution < 3) {}
+  buildCounterGoogleCloudAiplatformV1ToolCodeExecution--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1ToolCodeExecution(
+    api.GoogleCloudAiplatformV1ToolCodeExecution o) {
+  buildCounterGoogleCloudAiplatformV1ToolCodeExecution++;
+  if (buildCounterGoogleCloudAiplatformV1ToolCodeExecution < 3) {}
+  buildCounterGoogleCloudAiplatformV1ToolCodeExecution--;
+}
+
 core.int buildCounterGoogleCloudAiplatformV1ToolConfig = 0;
 api.GoogleCloudAiplatformV1ToolConfig buildGoogleCloudAiplatformV1ToolConfig() {
   final o = api.GoogleCloudAiplatformV1ToolConfig();
@@ -29229,6 +30122,7 @@ api.GoogleCloudAiplatformV1ToolConfig buildGoogleCloudAiplatformV1ToolConfig() {
   if (buildCounterGoogleCloudAiplatformV1ToolConfig < 3) {
     o.functionCallingConfig =
         buildGoogleCloudAiplatformV1FunctionCallingConfig();
+    o.retrievalConfig = buildGoogleCloudAiplatformV1RetrievalConfig();
   }
   buildCounterGoogleCloudAiplatformV1ToolConfig--;
   return o;
@@ -29239,6 +30133,7 @@ void checkGoogleCloudAiplatformV1ToolConfig(
   buildCounterGoogleCloudAiplatformV1ToolConfig++;
   if (buildCounterGoogleCloudAiplatformV1ToolConfig < 3) {
     checkGoogleCloudAiplatformV1FunctionCallingConfig(o.functionCallingConfig!);
+    checkGoogleCloudAiplatformV1RetrievalConfig(o.retrievalConfig!);
   }
   buildCounterGoogleCloudAiplatformV1ToolConfig--;
 }
@@ -29260,13 +30155,13 @@ void checkGoogleCloudAiplatformV1ToolGoogleSearch(
   buildCounterGoogleCloudAiplatformV1ToolGoogleSearch--;
 }
 
-core.List<api.GoogleCloudAiplatformV1ToolNameMatchInstance> buildUnnamed384() =>
+core.List<api.GoogleCloudAiplatformV1ToolNameMatchInstance> buildUnnamed396() =>
     [
       buildGoogleCloudAiplatformV1ToolNameMatchInstance(),
       buildGoogleCloudAiplatformV1ToolNameMatchInstance(),
     ];
 
-void checkUnnamed384(
+void checkUnnamed396(
     core.List<api.GoogleCloudAiplatformV1ToolNameMatchInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ToolNameMatchInstance(o[0]);
@@ -29279,7 +30174,7 @@ api.GoogleCloudAiplatformV1ToolNameMatchInput
   final o = api.GoogleCloudAiplatformV1ToolNameMatchInput();
   buildCounterGoogleCloudAiplatformV1ToolNameMatchInput++;
   if (buildCounterGoogleCloudAiplatformV1ToolNameMatchInput < 3) {
-    o.instances = buildUnnamed384();
+    o.instances = buildUnnamed396();
     o.metricSpec = buildGoogleCloudAiplatformV1ToolNameMatchSpec();
   }
   buildCounterGoogleCloudAiplatformV1ToolNameMatchInput--;
@@ -29290,7 +30185,7 @@ void checkGoogleCloudAiplatformV1ToolNameMatchInput(
     api.GoogleCloudAiplatformV1ToolNameMatchInput o) {
   buildCounterGoogleCloudAiplatformV1ToolNameMatchInput++;
   if (buildCounterGoogleCloudAiplatformV1ToolNameMatchInput < 3) {
-    checkUnnamed384(o.instances!);
+    checkUnnamed396(o.instances!);
     checkGoogleCloudAiplatformV1ToolNameMatchSpec(o.metricSpec!);
   }
   buildCounterGoogleCloudAiplatformV1ToolNameMatchInput--;
@@ -29350,12 +30245,12 @@ void checkGoogleCloudAiplatformV1ToolNameMatchMetricValue(
 }
 
 core.List<api.GoogleCloudAiplatformV1ToolNameMatchMetricValue>
-    buildUnnamed385() => [
+    buildUnnamed397() => [
           buildGoogleCloudAiplatformV1ToolNameMatchMetricValue(),
           buildGoogleCloudAiplatformV1ToolNameMatchMetricValue(),
         ];
 
-void checkUnnamed385(
+void checkUnnamed397(
     core.List<api.GoogleCloudAiplatformV1ToolNameMatchMetricValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ToolNameMatchMetricValue(o[0]);
@@ -29368,7 +30263,7 @@ api.GoogleCloudAiplatformV1ToolNameMatchResults
   final o = api.GoogleCloudAiplatformV1ToolNameMatchResults();
   buildCounterGoogleCloudAiplatformV1ToolNameMatchResults++;
   if (buildCounterGoogleCloudAiplatformV1ToolNameMatchResults < 3) {
-    o.toolNameMatchMetricValues = buildUnnamed385();
+    o.toolNameMatchMetricValues = buildUnnamed397();
   }
   buildCounterGoogleCloudAiplatformV1ToolNameMatchResults--;
   return o;
@@ -29378,7 +30273,7 @@ void checkGoogleCloudAiplatformV1ToolNameMatchResults(
     api.GoogleCloudAiplatformV1ToolNameMatchResults o) {
   buildCounterGoogleCloudAiplatformV1ToolNameMatchResults++;
   if (buildCounterGoogleCloudAiplatformV1ToolNameMatchResults < 3) {
-    checkUnnamed385(o.toolNameMatchMetricValues!);
+    checkUnnamed397(o.toolNameMatchMetricValues!);
   }
   buildCounterGoogleCloudAiplatformV1ToolNameMatchResults--;
 }
@@ -29401,12 +30296,12 @@ void checkGoogleCloudAiplatformV1ToolNameMatchSpec(
 }
 
 core.List<api.GoogleCloudAiplatformV1ToolParameterKVMatchInstance>
-    buildUnnamed386() => [
+    buildUnnamed398() => [
           buildGoogleCloudAiplatformV1ToolParameterKVMatchInstance(),
           buildGoogleCloudAiplatformV1ToolParameterKVMatchInstance(),
         ];
 
-void checkUnnamed386(
+void checkUnnamed398(
     core.List<api.GoogleCloudAiplatformV1ToolParameterKVMatchInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ToolParameterKVMatchInstance(o[0]);
@@ -29419,7 +30314,7 @@ api.GoogleCloudAiplatformV1ToolParameterKVMatchInput
   final o = api.GoogleCloudAiplatformV1ToolParameterKVMatchInput();
   buildCounterGoogleCloudAiplatformV1ToolParameterKVMatchInput++;
   if (buildCounterGoogleCloudAiplatformV1ToolParameterKVMatchInput < 3) {
-    o.instances = buildUnnamed386();
+    o.instances = buildUnnamed398();
     o.metricSpec = buildGoogleCloudAiplatformV1ToolParameterKVMatchSpec();
   }
   buildCounterGoogleCloudAiplatformV1ToolParameterKVMatchInput--;
@@ -29430,7 +30325,7 @@ void checkGoogleCloudAiplatformV1ToolParameterKVMatchInput(
     api.GoogleCloudAiplatformV1ToolParameterKVMatchInput o) {
   buildCounterGoogleCloudAiplatformV1ToolParameterKVMatchInput++;
   if (buildCounterGoogleCloudAiplatformV1ToolParameterKVMatchInput < 3) {
-    checkUnnamed386(o.instances!);
+    checkUnnamed398(o.instances!);
     checkGoogleCloudAiplatformV1ToolParameterKVMatchSpec(o.metricSpec!);
   }
   buildCounterGoogleCloudAiplatformV1ToolParameterKVMatchInput--;
@@ -29490,12 +30385,12 @@ void checkGoogleCloudAiplatformV1ToolParameterKVMatchMetricValue(
 }
 
 core.List<api.GoogleCloudAiplatformV1ToolParameterKVMatchMetricValue>
-    buildUnnamed387() => [
+    buildUnnamed399() => [
           buildGoogleCloudAiplatformV1ToolParameterKVMatchMetricValue(),
           buildGoogleCloudAiplatformV1ToolParameterKVMatchMetricValue(),
         ];
 
-void checkUnnamed387(
+void checkUnnamed399(
     core.List<api.GoogleCloudAiplatformV1ToolParameterKVMatchMetricValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ToolParameterKVMatchMetricValue(o[0]);
@@ -29508,7 +30403,7 @@ api.GoogleCloudAiplatformV1ToolParameterKVMatchResults
   final o = api.GoogleCloudAiplatformV1ToolParameterKVMatchResults();
   buildCounterGoogleCloudAiplatformV1ToolParameterKVMatchResults++;
   if (buildCounterGoogleCloudAiplatformV1ToolParameterKVMatchResults < 3) {
-    o.toolParameterKvMatchMetricValues = buildUnnamed387();
+    o.toolParameterKvMatchMetricValues = buildUnnamed399();
   }
   buildCounterGoogleCloudAiplatformV1ToolParameterKVMatchResults--;
   return o;
@@ -29518,7 +30413,7 @@ void checkGoogleCloudAiplatformV1ToolParameterKVMatchResults(
     api.GoogleCloudAiplatformV1ToolParameterKVMatchResults o) {
   buildCounterGoogleCloudAiplatformV1ToolParameterKVMatchResults++;
   if (buildCounterGoogleCloudAiplatformV1ToolParameterKVMatchResults < 3) {
-    checkUnnamed387(o.toolParameterKvMatchMetricValues!);
+    checkUnnamed399(o.toolParameterKvMatchMetricValues!);
   }
   buildCounterGoogleCloudAiplatformV1ToolParameterKVMatchResults--;
 }
@@ -29545,12 +30440,12 @@ void checkGoogleCloudAiplatformV1ToolParameterKVMatchSpec(
 }
 
 core.List<api.GoogleCloudAiplatformV1ToolParameterKeyMatchInstance>
-    buildUnnamed388() => [
+    buildUnnamed400() => [
           buildGoogleCloudAiplatformV1ToolParameterKeyMatchInstance(),
           buildGoogleCloudAiplatformV1ToolParameterKeyMatchInstance(),
         ];
 
-void checkUnnamed388(
+void checkUnnamed400(
     core.List<api.GoogleCloudAiplatformV1ToolParameterKeyMatchInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ToolParameterKeyMatchInstance(o[0]);
@@ -29563,7 +30458,7 @@ api.GoogleCloudAiplatformV1ToolParameterKeyMatchInput
   final o = api.GoogleCloudAiplatformV1ToolParameterKeyMatchInput();
   buildCounterGoogleCloudAiplatformV1ToolParameterKeyMatchInput++;
   if (buildCounterGoogleCloudAiplatformV1ToolParameterKeyMatchInput < 3) {
-    o.instances = buildUnnamed388();
+    o.instances = buildUnnamed400();
     o.metricSpec = buildGoogleCloudAiplatformV1ToolParameterKeyMatchSpec();
   }
   buildCounterGoogleCloudAiplatformV1ToolParameterKeyMatchInput--;
@@ -29574,7 +30469,7 @@ void checkGoogleCloudAiplatformV1ToolParameterKeyMatchInput(
     api.GoogleCloudAiplatformV1ToolParameterKeyMatchInput o) {
   buildCounterGoogleCloudAiplatformV1ToolParameterKeyMatchInput++;
   if (buildCounterGoogleCloudAiplatformV1ToolParameterKeyMatchInput < 3) {
-    checkUnnamed388(o.instances!);
+    checkUnnamed400(o.instances!);
     checkGoogleCloudAiplatformV1ToolParameterKeyMatchSpec(o.metricSpec!);
   }
   buildCounterGoogleCloudAiplatformV1ToolParameterKeyMatchInput--;
@@ -29635,12 +30530,12 @@ void checkGoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue(
 }
 
 core.List<api.GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue>
-    buildUnnamed389() => [
+    buildUnnamed401() => [
           buildGoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue(),
           buildGoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue(),
         ];
 
-void checkUnnamed389(
+void checkUnnamed401(
     core.List<api.GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue(o[0]);
@@ -29653,7 +30548,7 @@ api.GoogleCloudAiplatformV1ToolParameterKeyMatchResults
   final o = api.GoogleCloudAiplatformV1ToolParameterKeyMatchResults();
   buildCounterGoogleCloudAiplatformV1ToolParameterKeyMatchResults++;
   if (buildCounterGoogleCloudAiplatformV1ToolParameterKeyMatchResults < 3) {
-    o.toolParameterKeyMatchMetricValues = buildUnnamed389();
+    o.toolParameterKeyMatchMetricValues = buildUnnamed401();
   }
   buildCounterGoogleCloudAiplatformV1ToolParameterKeyMatchResults--;
   return o;
@@ -29663,7 +30558,7 @@ void checkGoogleCloudAiplatformV1ToolParameterKeyMatchResults(
     api.GoogleCloudAiplatformV1ToolParameterKeyMatchResults o) {
   buildCounterGoogleCloudAiplatformV1ToolParameterKeyMatchResults++;
   if (buildCounterGoogleCloudAiplatformV1ToolParameterKeyMatchResults < 3) {
-    checkUnnamed389(o.toolParameterKeyMatchMetricValues!);
+    checkUnnamed401(o.toolParameterKeyMatchMetricValues!);
   }
   buildCounterGoogleCloudAiplatformV1ToolParameterKeyMatchResults--;
 }
@@ -29709,12 +30604,12 @@ void checkGoogleCloudAiplatformV1TrainingConfig(
   buildCounterGoogleCloudAiplatformV1TrainingConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed390() => {
+core.Map<core.String, core.String> buildUnnamed402() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed390(core.Map<core.String, core.String> o) {
+void checkUnnamed402(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -29738,7 +30633,7 @@ api.GoogleCloudAiplatformV1TrainingPipeline
     o.endTime = 'foo';
     o.error = buildGoogleRpcStatus();
     o.inputDataConfig = buildGoogleCloudAiplatformV1InputDataConfig();
-    o.labels = buildUnnamed390();
+    o.labels = buildUnnamed402();
     o.modelId = 'foo';
     o.modelToUpload = buildGoogleCloudAiplatformV1Model();
     o.name = 'foo';
@@ -29781,7 +30676,7 @@ void checkGoogleCloudAiplatformV1TrainingPipeline(
     );
     checkGoogleRpcStatus(o.error!);
     checkGoogleCloudAiplatformV1InputDataConfig(o.inputDataConfig!);
-    checkUnnamed390(o.labels!);
+    checkUnnamed402(o.labels!);
     unittest.expect(
       o.modelId!,
       unittest.equals('foo'),
@@ -29843,12 +30738,12 @@ void checkGoogleCloudAiplatformV1TrainingPipeline(
   buildCounterGoogleCloudAiplatformV1TrainingPipeline--;
 }
 
-core.List<api.GoogleCloudAiplatformV1ToolCall> buildUnnamed391() => [
+core.List<api.GoogleCloudAiplatformV1ToolCall> buildUnnamed403() => [
       buildGoogleCloudAiplatformV1ToolCall(),
       buildGoogleCloudAiplatformV1ToolCall(),
     ];
 
-void checkUnnamed391(core.List<api.GoogleCloudAiplatformV1ToolCall> o) {
+void checkUnnamed403(core.List<api.GoogleCloudAiplatformV1ToolCall> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1ToolCall(o[0]);
   checkGoogleCloudAiplatformV1ToolCall(o[1]);
@@ -29859,7 +30754,7 @@ api.GoogleCloudAiplatformV1Trajectory buildGoogleCloudAiplatformV1Trajectory() {
   final o = api.GoogleCloudAiplatformV1Trajectory();
   buildCounterGoogleCloudAiplatformV1Trajectory++;
   if (buildCounterGoogleCloudAiplatformV1Trajectory < 3) {
-    o.toolCalls = buildUnnamed391();
+    o.toolCalls = buildUnnamed403();
   }
   buildCounterGoogleCloudAiplatformV1Trajectory--;
   return o;
@@ -29869,18 +30764,18 @@ void checkGoogleCloudAiplatformV1Trajectory(
     api.GoogleCloudAiplatformV1Trajectory o) {
   buildCounterGoogleCloudAiplatformV1Trajectory++;
   if (buildCounterGoogleCloudAiplatformV1Trajectory < 3) {
-    checkUnnamed391(o.toolCalls!);
+    checkUnnamed403(o.toolCalls!);
   }
   buildCounterGoogleCloudAiplatformV1Trajectory--;
 }
 
 core.List<api.GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstance>
-    buildUnnamed392() => [
+    buildUnnamed404() => [
           buildGoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstance(),
           buildGoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstance(),
         ];
 
-void checkUnnamed392(
+void checkUnnamed404(
     core.List<api.GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstance(o[0]);
@@ -29893,7 +30788,7 @@ api.GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput
   final o = api.GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput();
   buildCounterGoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput < 3) {
-    o.instances = buildUnnamed392();
+    o.instances = buildUnnamed404();
     o.metricSpec = buildGoogleCloudAiplatformV1TrajectoryAnyOrderMatchSpec();
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput--;
@@ -29904,7 +30799,7 @@ void checkGoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput(
     api.GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput o) {
   buildCounterGoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput < 3) {
-    checkUnnamed392(o.instances!);
+    checkUnnamed404(o.instances!);
     checkGoogleCloudAiplatformV1TrajectoryAnyOrderMatchSpec(o.metricSpec!);
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput--;
@@ -29961,12 +30856,12 @@ void checkGoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue(
 }
 
 core.List<api.GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue>
-    buildUnnamed393() => [
+    buildUnnamed405() => [
           buildGoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue(),
           buildGoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue(),
         ];
 
-void checkUnnamed393(
+void checkUnnamed405(
     core.List<api.GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -29980,7 +30875,7 @@ api.GoogleCloudAiplatformV1TrajectoryAnyOrderMatchResults
   final o = api.GoogleCloudAiplatformV1TrajectoryAnyOrderMatchResults();
   buildCounterGoogleCloudAiplatformV1TrajectoryAnyOrderMatchResults++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryAnyOrderMatchResults < 3) {
-    o.trajectoryAnyOrderMatchMetricValues = buildUnnamed393();
+    o.trajectoryAnyOrderMatchMetricValues = buildUnnamed405();
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryAnyOrderMatchResults--;
   return o;
@@ -29990,7 +30885,7 @@ void checkGoogleCloudAiplatformV1TrajectoryAnyOrderMatchResults(
     api.GoogleCloudAiplatformV1TrajectoryAnyOrderMatchResults o) {
   buildCounterGoogleCloudAiplatformV1TrajectoryAnyOrderMatchResults++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryAnyOrderMatchResults < 3) {
-    checkUnnamed393(o.trajectoryAnyOrderMatchMetricValues!);
+    checkUnnamed405(o.trajectoryAnyOrderMatchMetricValues!);
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryAnyOrderMatchResults--;
 }
@@ -30013,12 +30908,12 @@ void checkGoogleCloudAiplatformV1TrajectoryAnyOrderMatchSpec(
 }
 
 core.List<api.GoogleCloudAiplatformV1TrajectoryExactMatchInstance>
-    buildUnnamed394() => [
+    buildUnnamed406() => [
           buildGoogleCloudAiplatformV1TrajectoryExactMatchInstance(),
           buildGoogleCloudAiplatformV1TrajectoryExactMatchInstance(),
         ];
 
-void checkUnnamed394(
+void checkUnnamed406(
     core.List<api.GoogleCloudAiplatformV1TrajectoryExactMatchInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TrajectoryExactMatchInstance(o[0]);
@@ -30031,7 +30926,7 @@ api.GoogleCloudAiplatformV1TrajectoryExactMatchInput
   final o = api.GoogleCloudAiplatformV1TrajectoryExactMatchInput();
   buildCounterGoogleCloudAiplatformV1TrajectoryExactMatchInput++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryExactMatchInput < 3) {
-    o.instances = buildUnnamed394();
+    o.instances = buildUnnamed406();
     o.metricSpec = buildGoogleCloudAiplatformV1TrajectoryExactMatchSpec();
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryExactMatchInput--;
@@ -30042,7 +30937,7 @@ void checkGoogleCloudAiplatformV1TrajectoryExactMatchInput(
     api.GoogleCloudAiplatformV1TrajectoryExactMatchInput o) {
   buildCounterGoogleCloudAiplatformV1TrajectoryExactMatchInput++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryExactMatchInput < 3) {
-    checkUnnamed394(o.instances!);
+    checkUnnamed406(o.instances!);
     checkGoogleCloudAiplatformV1TrajectoryExactMatchSpec(o.metricSpec!);
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryExactMatchInput--;
@@ -30096,12 +30991,12 @@ void checkGoogleCloudAiplatformV1TrajectoryExactMatchMetricValue(
 }
 
 core.List<api.GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue>
-    buildUnnamed395() => [
+    buildUnnamed407() => [
           buildGoogleCloudAiplatformV1TrajectoryExactMatchMetricValue(),
           buildGoogleCloudAiplatformV1TrajectoryExactMatchMetricValue(),
         ];
 
-void checkUnnamed395(
+void checkUnnamed407(
     core.List<api.GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TrajectoryExactMatchMetricValue(o[0]);
@@ -30114,7 +31009,7 @@ api.GoogleCloudAiplatformV1TrajectoryExactMatchResults
   final o = api.GoogleCloudAiplatformV1TrajectoryExactMatchResults();
   buildCounterGoogleCloudAiplatformV1TrajectoryExactMatchResults++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryExactMatchResults < 3) {
-    o.trajectoryExactMatchMetricValues = buildUnnamed395();
+    o.trajectoryExactMatchMetricValues = buildUnnamed407();
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryExactMatchResults--;
   return o;
@@ -30124,7 +31019,7 @@ void checkGoogleCloudAiplatformV1TrajectoryExactMatchResults(
     api.GoogleCloudAiplatformV1TrajectoryExactMatchResults o) {
   buildCounterGoogleCloudAiplatformV1TrajectoryExactMatchResults++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryExactMatchResults < 3) {
-    checkUnnamed395(o.trajectoryExactMatchMetricValues!);
+    checkUnnamed407(o.trajectoryExactMatchMetricValues!);
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryExactMatchResults--;
 }
@@ -30147,12 +31042,12 @@ void checkGoogleCloudAiplatformV1TrajectoryExactMatchSpec(
 }
 
 core.List<api.GoogleCloudAiplatformV1TrajectoryInOrderMatchInstance>
-    buildUnnamed396() => [
+    buildUnnamed408() => [
           buildGoogleCloudAiplatformV1TrajectoryInOrderMatchInstance(),
           buildGoogleCloudAiplatformV1TrajectoryInOrderMatchInstance(),
         ];
 
-void checkUnnamed396(
+void checkUnnamed408(
     core.List<api.GoogleCloudAiplatformV1TrajectoryInOrderMatchInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TrajectoryInOrderMatchInstance(o[0]);
@@ -30165,7 +31060,7 @@ api.GoogleCloudAiplatformV1TrajectoryInOrderMatchInput
   final o = api.GoogleCloudAiplatformV1TrajectoryInOrderMatchInput();
   buildCounterGoogleCloudAiplatformV1TrajectoryInOrderMatchInput++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryInOrderMatchInput < 3) {
-    o.instances = buildUnnamed396();
+    o.instances = buildUnnamed408();
     o.metricSpec = buildGoogleCloudAiplatformV1TrajectoryInOrderMatchSpec();
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryInOrderMatchInput--;
@@ -30176,7 +31071,7 @@ void checkGoogleCloudAiplatformV1TrajectoryInOrderMatchInput(
     api.GoogleCloudAiplatformV1TrajectoryInOrderMatchInput o) {
   buildCounterGoogleCloudAiplatformV1TrajectoryInOrderMatchInput++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryInOrderMatchInput < 3) {
-    checkUnnamed396(o.instances!);
+    checkUnnamed408(o.instances!);
     checkGoogleCloudAiplatformV1TrajectoryInOrderMatchSpec(o.metricSpec!);
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryInOrderMatchInput--;
@@ -30233,12 +31128,12 @@ void checkGoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue(
 }
 
 core.List<api.GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue>
-    buildUnnamed397() => [
+    buildUnnamed409() => [
           buildGoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue(),
           buildGoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue(),
         ];
 
-void checkUnnamed397(
+void checkUnnamed409(
     core.List<api.GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue(o[0]);
@@ -30251,7 +31146,7 @@ api.GoogleCloudAiplatformV1TrajectoryInOrderMatchResults
   final o = api.GoogleCloudAiplatformV1TrajectoryInOrderMatchResults();
   buildCounterGoogleCloudAiplatformV1TrajectoryInOrderMatchResults++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryInOrderMatchResults < 3) {
-    o.trajectoryInOrderMatchMetricValues = buildUnnamed397();
+    o.trajectoryInOrderMatchMetricValues = buildUnnamed409();
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryInOrderMatchResults--;
   return o;
@@ -30261,7 +31156,7 @@ void checkGoogleCloudAiplatformV1TrajectoryInOrderMatchResults(
     api.GoogleCloudAiplatformV1TrajectoryInOrderMatchResults o) {
   buildCounterGoogleCloudAiplatformV1TrajectoryInOrderMatchResults++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryInOrderMatchResults < 3) {
-    checkUnnamed397(o.trajectoryInOrderMatchMetricValues!);
+    checkUnnamed409(o.trajectoryInOrderMatchMetricValues!);
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryInOrderMatchResults--;
 }
@@ -30284,12 +31179,12 @@ void checkGoogleCloudAiplatformV1TrajectoryInOrderMatchSpec(
 }
 
 core.List<api.GoogleCloudAiplatformV1TrajectoryPrecisionInstance>
-    buildUnnamed398() => [
+    buildUnnamed410() => [
           buildGoogleCloudAiplatformV1TrajectoryPrecisionInstance(),
           buildGoogleCloudAiplatformV1TrajectoryPrecisionInstance(),
         ];
 
-void checkUnnamed398(
+void checkUnnamed410(
     core.List<api.GoogleCloudAiplatformV1TrajectoryPrecisionInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TrajectoryPrecisionInstance(o[0]);
@@ -30302,7 +31197,7 @@ api.GoogleCloudAiplatformV1TrajectoryPrecisionInput
   final o = api.GoogleCloudAiplatformV1TrajectoryPrecisionInput();
   buildCounterGoogleCloudAiplatformV1TrajectoryPrecisionInput++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryPrecisionInput < 3) {
-    o.instances = buildUnnamed398();
+    o.instances = buildUnnamed410();
     o.metricSpec = buildGoogleCloudAiplatformV1TrajectoryPrecisionSpec();
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryPrecisionInput--;
@@ -30313,7 +31208,7 @@ void checkGoogleCloudAiplatformV1TrajectoryPrecisionInput(
     api.GoogleCloudAiplatformV1TrajectoryPrecisionInput o) {
   buildCounterGoogleCloudAiplatformV1TrajectoryPrecisionInput++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryPrecisionInput < 3) {
-    checkUnnamed398(o.instances!);
+    checkUnnamed410(o.instances!);
     checkGoogleCloudAiplatformV1TrajectoryPrecisionSpec(o.metricSpec!);
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryPrecisionInput--;
@@ -30367,12 +31262,12 @@ void checkGoogleCloudAiplatformV1TrajectoryPrecisionMetricValue(
 }
 
 core.List<api.GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue>
-    buildUnnamed399() => [
+    buildUnnamed411() => [
           buildGoogleCloudAiplatformV1TrajectoryPrecisionMetricValue(),
           buildGoogleCloudAiplatformV1TrajectoryPrecisionMetricValue(),
         ];
 
-void checkUnnamed399(
+void checkUnnamed411(
     core.List<api.GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TrajectoryPrecisionMetricValue(o[0]);
@@ -30385,7 +31280,7 @@ api.GoogleCloudAiplatformV1TrajectoryPrecisionResults
   final o = api.GoogleCloudAiplatformV1TrajectoryPrecisionResults();
   buildCounterGoogleCloudAiplatformV1TrajectoryPrecisionResults++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryPrecisionResults < 3) {
-    o.trajectoryPrecisionMetricValues = buildUnnamed399();
+    o.trajectoryPrecisionMetricValues = buildUnnamed411();
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryPrecisionResults--;
   return o;
@@ -30395,7 +31290,7 @@ void checkGoogleCloudAiplatformV1TrajectoryPrecisionResults(
     api.GoogleCloudAiplatformV1TrajectoryPrecisionResults o) {
   buildCounterGoogleCloudAiplatformV1TrajectoryPrecisionResults++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryPrecisionResults < 3) {
-    checkUnnamed399(o.trajectoryPrecisionMetricValues!);
+    checkUnnamed411(o.trajectoryPrecisionMetricValues!);
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryPrecisionResults--;
 }
@@ -30418,12 +31313,12 @@ void checkGoogleCloudAiplatformV1TrajectoryPrecisionSpec(
 }
 
 core.List<api.GoogleCloudAiplatformV1TrajectoryRecallInstance>
-    buildUnnamed400() => [
+    buildUnnamed412() => [
           buildGoogleCloudAiplatformV1TrajectoryRecallInstance(),
           buildGoogleCloudAiplatformV1TrajectoryRecallInstance(),
         ];
 
-void checkUnnamed400(
+void checkUnnamed412(
     core.List<api.GoogleCloudAiplatformV1TrajectoryRecallInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TrajectoryRecallInstance(o[0]);
@@ -30436,7 +31331,7 @@ api.GoogleCloudAiplatformV1TrajectoryRecallInput
   final o = api.GoogleCloudAiplatformV1TrajectoryRecallInput();
   buildCounterGoogleCloudAiplatformV1TrajectoryRecallInput++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryRecallInput < 3) {
-    o.instances = buildUnnamed400();
+    o.instances = buildUnnamed412();
     o.metricSpec = buildGoogleCloudAiplatformV1TrajectoryRecallSpec();
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryRecallInput--;
@@ -30447,7 +31342,7 @@ void checkGoogleCloudAiplatformV1TrajectoryRecallInput(
     api.GoogleCloudAiplatformV1TrajectoryRecallInput o) {
   buildCounterGoogleCloudAiplatformV1TrajectoryRecallInput++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryRecallInput < 3) {
-    checkUnnamed400(o.instances!);
+    checkUnnamed412(o.instances!);
     checkGoogleCloudAiplatformV1TrajectoryRecallSpec(o.metricSpec!);
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryRecallInput--;
@@ -30501,12 +31396,12 @@ void checkGoogleCloudAiplatformV1TrajectoryRecallMetricValue(
 }
 
 core.List<api.GoogleCloudAiplatformV1TrajectoryRecallMetricValue>
-    buildUnnamed401() => [
+    buildUnnamed413() => [
           buildGoogleCloudAiplatformV1TrajectoryRecallMetricValue(),
           buildGoogleCloudAiplatformV1TrajectoryRecallMetricValue(),
         ];
 
-void checkUnnamed401(
+void checkUnnamed413(
     core.List<api.GoogleCloudAiplatformV1TrajectoryRecallMetricValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TrajectoryRecallMetricValue(o[0]);
@@ -30519,7 +31414,7 @@ api.GoogleCloudAiplatformV1TrajectoryRecallResults
   final o = api.GoogleCloudAiplatformV1TrajectoryRecallResults();
   buildCounterGoogleCloudAiplatformV1TrajectoryRecallResults++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryRecallResults < 3) {
-    o.trajectoryRecallMetricValues = buildUnnamed401();
+    o.trajectoryRecallMetricValues = buildUnnamed413();
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryRecallResults--;
   return o;
@@ -30529,7 +31424,7 @@ void checkGoogleCloudAiplatformV1TrajectoryRecallResults(
     api.GoogleCloudAiplatformV1TrajectoryRecallResults o) {
   buildCounterGoogleCloudAiplatformV1TrajectoryRecallResults++;
   if (buildCounterGoogleCloudAiplatformV1TrajectoryRecallResults < 3) {
-    checkUnnamed401(o.trajectoryRecallMetricValues!);
+    checkUnnamed413(o.trajectoryRecallMetricValues!);
   }
   buildCounterGoogleCloudAiplatformV1TrajectoryRecallResults--;
 }
@@ -30552,12 +31447,12 @@ void checkGoogleCloudAiplatformV1TrajectoryRecallSpec(
 }
 
 core.List<api.GoogleCloudAiplatformV1TrajectorySingleToolUseInstance>
-    buildUnnamed402() => [
+    buildUnnamed414() => [
           buildGoogleCloudAiplatformV1TrajectorySingleToolUseInstance(),
           buildGoogleCloudAiplatformV1TrajectorySingleToolUseInstance(),
         ];
 
-void checkUnnamed402(
+void checkUnnamed414(
     core.List<api.GoogleCloudAiplatformV1TrajectorySingleToolUseInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TrajectorySingleToolUseInstance(o[0]);
@@ -30570,7 +31465,7 @@ api.GoogleCloudAiplatformV1TrajectorySingleToolUseInput
   final o = api.GoogleCloudAiplatformV1TrajectorySingleToolUseInput();
   buildCounterGoogleCloudAiplatformV1TrajectorySingleToolUseInput++;
   if (buildCounterGoogleCloudAiplatformV1TrajectorySingleToolUseInput < 3) {
-    o.instances = buildUnnamed402();
+    o.instances = buildUnnamed414();
     o.metricSpec = buildGoogleCloudAiplatformV1TrajectorySingleToolUseSpec();
   }
   buildCounterGoogleCloudAiplatformV1TrajectorySingleToolUseInput--;
@@ -30581,7 +31476,7 @@ void checkGoogleCloudAiplatformV1TrajectorySingleToolUseInput(
     api.GoogleCloudAiplatformV1TrajectorySingleToolUseInput o) {
   buildCounterGoogleCloudAiplatformV1TrajectorySingleToolUseInput++;
   if (buildCounterGoogleCloudAiplatformV1TrajectorySingleToolUseInput < 3) {
-    checkUnnamed402(o.instances!);
+    checkUnnamed414(o.instances!);
     checkGoogleCloudAiplatformV1TrajectorySingleToolUseSpec(o.metricSpec!);
   }
   buildCounterGoogleCloudAiplatformV1TrajectorySingleToolUseInput--;
@@ -30636,12 +31531,12 @@ void checkGoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue(
 }
 
 core.List<api.GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue>
-    buildUnnamed403() => [
+    buildUnnamed415() => [
           buildGoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue(),
           buildGoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue(),
         ];
 
-void checkUnnamed403(
+void checkUnnamed415(
     core.List<api.GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -30655,7 +31550,7 @@ api.GoogleCloudAiplatformV1TrajectorySingleToolUseResults
   final o = api.GoogleCloudAiplatformV1TrajectorySingleToolUseResults();
   buildCounterGoogleCloudAiplatformV1TrajectorySingleToolUseResults++;
   if (buildCounterGoogleCloudAiplatformV1TrajectorySingleToolUseResults < 3) {
-    o.trajectorySingleToolUseMetricValues = buildUnnamed403();
+    o.trajectorySingleToolUseMetricValues = buildUnnamed415();
   }
   buildCounterGoogleCloudAiplatformV1TrajectorySingleToolUseResults--;
   return o;
@@ -30665,7 +31560,7 @@ void checkGoogleCloudAiplatformV1TrajectorySingleToolUseResults(
     api.GoogleCloudAiplatformV1TrajectorySingleToolUseResults o) {
   buildCounterGoogleCloudAiplatformV1TrajectorySingleToolUseResults++;
   if (buildCounterGoogleCloudAiplatformV1TrajectorySingleToolUseResults < 3) {
-    checkUnnamed403(o.trajectorySingleToolUseMetricValues!);
+    checkUnnamed415(o.trajectorySingleToolUseMetricValues!);
   }
   buildCounterGoogleCloudAiplatformV1TrajectorySingleToolUseResults--;
 }
@@ -30694,34 +31589,34 @@ void checkGoogleCloudAiplatformV1TrajectorySingleToolUseSpec(
   buildCounterGoogleCloudAiplatformV1TrajectorySingleToolUseSpec--;
 }
 
-core.List<api.GoogleCloudAiplatformV1Measurement> buildUnnamed404() => [
+core.List<api.GoogleCloudAiplatformV1Measurement> buildUnnamed416() => [
       buildGoogleCloudAiplatformV1Measurement(),
       buildGoogleCloudAiplatformV1Measurement(),
     ];
 
-void checkUnnamed404(core.List<api.GoogleCloudAiplatformV1Measurement> o) {
+void checkUnnamed416(core.List<api.GoogleCloudAiplatformV1Measurement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1Measurement(o[0]);
   checkGoogleCloudAiplatformV1Measurement(o[1]);
 }
 
-core.List<api.GoogleCloudAiplatformV1TrialParameter> buildUnnamed405() => [
+core.List<api.GoogleCloudAiplatformV1TrialParameter> buildUnnamed417() => [
       buildGoogleCloudAiplatformV1TrialParameter(),
       buildGoogleCloudAiplatformV1TrialParameter(),
     ];
 
-void checkUnnamed405(core.List<api.GoogleCloudAiplatformV1TrialParameter> o) {
+void checkUnnamed417(core.List<api.GoogleCloudAiplatformV1TrialParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TrialParameter(o[0]);
   checkGoogleCloudAiplatformV1TrialParameter(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed406() => {
+core.Map<core.String, core.String> buildUnnamed418() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed406(core.Map<core.String, core.String> o) {
+void checkUnnamed418(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -30744,12 +31639,12 @@ api.GoogleCloudAiplatformV1Trial buildGoogleCloudAiplatformV1Trial() {
     o.finalMeasurement = buildGoogleCloudAiplatformV1Measurement();
     o.id = 'foo';
     o.infeasibleReason = 'foo';
-    o.measurements = buildUnnamed404();
+    o.measurements = buildUnnamed416();
     o.name = 'foo';
-    o.parameters = buildUnnamed405();
+    o.parameters = buildUnnamed417();
     o.startTime = 'foo';
     o.state = 'foo';
-    o.webAccessUris = buildUnnamed406();
+    o.webAccessUris = buildUnnamed418();
   }
   buildCounterGoogleCloudAiplatformV1Trial--;
   return o;
@@ -30779,12 +31674,12 @@ void checkGoogleCloudAiplatformV1Trial(api.GoogleCloudAiplatformV1Trial o) {
       o.infeasibleReason!,
       unittest.equals('foo'),
     );
-    checkUnnamed404(o.measurements!);
+    checkUnnamed416(o.measurements!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed405(o.parameters!);
+    checkUnnamed417(o.parameters!);
     unittest.expect(
       o.startTime!,
       unittest.equals('foo'),
@@ -30793,17 +31688,17 @@ void checkGoogleCloudAiplatformV1Trial(api.GoogleCloudAiplatformV1Trial o) {
       o.state!,
       unittest.equals('foo'),
     );
-    checkUnnamed406(o.webAccessUris!);
+    checkUnnamed418(o.webAccessUris!);
   }
   buildCounterGoogleCloudAiplatformV1Trial--;
 }
 
-core.List<api.GoogleCloudAiplatformV1TrialParameter> buildUnnamed407() => [
+core.List<api.GoogleCloudAiplatformV1TrialParameter> buildUnnamed419() => [
       buildGoogleCloudAiplatformV1TrialParameter(),
       buildGoogleCloudAiplatformV1TrialParameter(),
     ];
 
-void checkUnnamed407(core.List<api.GoogleCloudAiplatformV1TrialParameter> o) {
+void checkUnnamed419(core.List<api.GoogleCloudAiplatformV1TrialParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TrialParameter(o[0]);
   checkGoogleCloudAiplatformV1TrialParameter(o[1]);
@@ -30816,7 +31711,7 @@ api.GoogleCloudAiplatformV1TrialContext
   buildCounterGoogleCloudAiplatformV1TrialContext++;
   if (buildCounterGoogleCloudAiplatformV1TrialContext < 3) {
     o.description = 'foo';
-    o.parameters = buildUnnamed407();
+    o.parameters = buildUnnamed419();
   }
   buildCounterGoogleCloudAiplatformV1TrialContext--;
   return o;
@@ -30830,7 +31725,7 @@ void checkGoogleCloudAiplatformV1TrialContext(
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed407(o.parameters!);
+    checkUnnamed419(o.parameters!);
   }
   buildCounterGoogleCloudAiplatformV1TrialContext--;
 }
@@ -30963,12 +31858,12 @@ void checkGoogleCloudAiplatformV1TuningDataStats(
   buildCounterGoogleCloudAiplatformV1TuningDataStats--;
 }
 
-core.Map<core.String, core.String> buildUnnamed408() => {
+core.Map<core.String, core.String> buildUnnamed420() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed408(core.Map<core.String, core.String> o) {
+void checkUnnamed420(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -30992,7 +31887,7 @@ api.GoogleCloudAiplatformV1TuningJob buildGoogleCloudAiplatformV1TuningJob() {
     o.endTime = 'foo';
     o.error = buildGoogleRpcStatus();
     o.experiment = 'foo';
-    o.labels = buildUnnamed408();
+    o.labels = buildUnnamed420();
     o.name = 'foo';
     o.serviceAccount = 'foo';
     o.startTime = 'foo';
@@ -31033,7 +31928,7 @@ void checkGoogleCloudAiplatformV1TuningJob(
       o.experiment!,
       unittest.equals('foo'),
     );
-    checkUnnamed408(o.labels!);
+    checkUnnamed420(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -31089,12 +31984,12 @@ void checkGoogleCloudAiplatformV1UndeployIndexRequest(
   buildCounterGoogleCloudAiplatformV1UndeployIndexRequest--;
 }
 
-core.Map<core.String, core.int> buildUnnamed409() => {
+core.Map<core.String, core.int> buildUnnamed421() => {
       'x': 42,
       'y': 42,
     };
 
-void checkUnnamed409(core.Map<core.String, core.int> o) {
+void checkUnnamed421(core.Map<core.String, core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -31113,7 +32008,7 @@ api.GoogleCloudAiplatformV1UndeployModelRequest
   buildCounterGoogleCloudAiplatformV1UndeployModelRequest++;
   if (buildCounterGoogleCloudAiplatformV1UndeployModelRequest < 3) {
     o.deployedModelId = 'foo';
-    o.trafficSplit = buildUnnamed409();
+    o.trafficSplit = buildUnnamed421();
   }
   buildCounterGoogleCloudAiplatformV1UndeployModelRequest--;
   return o;
@@ -31127,7 +32022,7 @@ void checkGoogleCloudAiplatformV1UndeployModelRequest(
       o.deployedModelId!,
       unittest.equals('foo'),
     );
-    checkUnnamed409(o.trafficSplit!);
+    checkUnnamed421(o.trafficSplit!);
   }
   buildCounterGoogleCloudAiplatformV1UndeployModelRequest--;
 }
@@ -31325,12 +32220,12 @@ void checkGoogleCloudAiplatformV1UploadRagFileResponse(
   buildCounterGoogleCloudAiplatformV1UploadRagFileResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1IndexDatapoint> buildUnnamed410() => [
+core.List<api.GoogleCloudAiplatformV1IndexDatapoint> buildUnnamed422() => [
       buildGoogleCloudAiplatformV1IndexDatapoint(),
       buildGoogleCloudAiplatformV1IndexDatapoint(),
     ];
 
-void checkUnnamed410(core.List<api.GoogleCloudAiplatformV1IndexDatapoint> o) {
+void checkUnnamed422(core.List<api.GoogleCloudAiplatformV1IndexDatapoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1IndexDatapoint(o[0]);
   checkGoogleCloudAiplatformV1IndexDatapoint(o[1]);
@@ -31342,7 +32237,7 @@ api.GoogleCloudAiplatformV1UpsertDatapointsRequest
   final o = api.GoogleCloudAiplatformV1UpsertDatapointsRequest();
   buildCounterGoogleCloudAiplatformV1UpsertDatapointsRequest++;
   if (buildCounterGoogleCloudAiplatformV1UpsertDatapointsRequest < 3) {
-    o.datapoints = buildUnnamed410();
+    o.datapoints = buildUnnamed422();
     o.updateMask = 'foo';
   }
   buildCounterGoogleCloudAiplatformV1UpsertDatapointsRequest--;
@@ -31353,7 +32248,7 @@ void checkGoogleCloudAiplatformV1UpsertDatapointsRequest(
     api.GoogleCloudAiplatformV1UpsertDatapointsRequest o) {
   buildCounterGoogleCloudAiplatformV1UpsertDatapointsRequest++;
   if (buildCounterGoogleCloudAiplatformV1UpsertDatapointsRequest < 3) {
-    checkUnnamed410(o.datapoints!);
+    checkUnnamed422(o.datapoints!);
     unittest.expect(
       o.updateMask!,
       unittest.equals('foo'),
@@ -31470,12 +32365,12 @@ void checkGoogleCloudAiplatformV1VertexAISearch(
 }
 
 core.List<api.GoogleCloudAiplatformV1VertexRagStoreRagResource>
-    buildUnnamed411() => [
+    buildUnnamed423() => [
           buildGoogleCloudAiplatformV1VertexRagStoreRagResource(),
           buildGoogleCloudAiplatformV1VertexRagStoreRagResource(),
         ];
 
-void checkUnnamed411(
+void checkUnnamed423(
     core.List<api.GoogleCloudAiplatformV1VertexRagStoreRagResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1VertexRagStoreRagResource(o[0]);
@@ -31488,7 +32383,7 @@ api.GoogleCloudAiplatformV1VertexRagStore
   final o = api.GoogleCloudAiplatformV1VertexRagStore();
   buildCounterGoogleCloudAiplatformV1VertexRagStore++;
   if (buildCounterGoogleCloudAiplatformV1VertexRagStore < 3) {
-    o.ragResources = buildUnnamed411();
+    o.ragResources = buildUnnamed423();
     o.ragRetrievalConfig = buildGoogleCloudAiplatformV1RagRetrievalConfig();
     o.similarityTopK = 42;
     o.vectorDistanceThreshold = 42.0;
@@ -31501,7 +32396,7 @@ void checkGoogleCloudAiplatformV1VertexRagStore(
     api.GoogleCloudAiplatformV1VertexRagStore o) {
   buildCounterGoogleCloudAiplatformV1VertexRagStore++;
   if (buildCounterGoogleCloudAiplatformV1VertexRagStore < 3) {
-    checkUnnamed411(o.ragResources!);
+    checkUnnamed423(o.ragResources!);
     checkGoogleCloudAiplatformV1RagRetrievalConfig(o.ragRetrievalConfig!);
     unittest.expect(
       o.similarityTopK!,
@@ -31515,12 +32410,12 @@ void checkGoogleCloudAiplatformV1VertexRagStore(
   buildCounterGoogleCloudAiplatformV1VertexRagStore--;
 }
 
-core.List<core.String> buildUnnamed412() => [
+core.List<core.String> buildUnnamed424() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed412(core.List<core.String> o) {
+void checkUnnamed424(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -31539,7 +32434,7 @@ api.GoogleCloudAiplatformV1VertexRagStoreRagResource
   buildCounterGoogleCloudAiplatformV1VertexRagStoreRagResource++;
   if (buildCounterGoogleCloudAiplatformV1VertexRagStoreRagResource < 3) {
     o.ragCorpus = 'foo';
-    o.ragFileIds = buildUnnamed412();
+    o.ragFileIds = buildUnnamed424();
   }
   buildCounterGoogleCloudAiplatformV1VertexRagStoreRagResource--;
   return o;
@@ -31553,7 +32448,7 @@ void checkGoogleCloudAiplatformV1VertexRagStoreRagResource(
       o.ragCorpus!,
       unittest.equals('foo'),
     );
-    checkUnnamed412(o.ragFileIds!);
+    checkUnnamed424(o.ragFileIds!);
   }
   buildCounterGoogleCloudAiplatformV1VertexRagStoreRagResource--;
 }
@@ -31608,12 +32503,12 @@ void checkGoogleCloudAiplatformV1VoiceConfig(
   buildCounterGoogleCloudAiplatformV1VoiceConfig--;
 }
 
-core.List<api.GoogleCloudAiplatformV1NfsMount> buildUnnamed413() => [
+core.List<api.GoogleCloudAiplatformV1NfsMount> buildUnnamed425() => [
       buildGoogleCloudAiplatformV1NfsMount(),
       buildGoogleCloudAiplatformV1NfsMount(),
     ];
 
-void checkUnnamed413(core.List<api.GoogleCloudAiplatformV1NfsMount> o) {
+void checkUnnamed425(core.List<api.GoogleCloudAiplatformV1NfsMount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1NfsMount(o[0]);
   checkGoogleCloudAiplatformV1NfsMount(o[1]);
@@ -31628,7 +32523,7 @@ api.GoogleCloudAiplatformV1WorkerPoolSpec
     o.containerSpec = buildGoogleCloudAiplatformV1ContainerSpec();
     o.diskSpec = buildGoogleCloudAiplatformV1DiskSpec();
     o.machineSpec = buildGoogleCloudAiplatformV1MachineSpec();
-    o.nfsMounts = buildUnnamed413();
+    o.nfsMounts = buildUnnamed425();
     o.pythonPackageSpec = buildGoogleCloudAiplatformV1PythonPackageSpec();
     o.replicaCount = 'foo';
   }
@@ -31643,7 +32538,7 @@ void checkGoogleCloudAiplatformV1WorkerPoolSpec(
     checkGoogleCloudAiplatformV1ContainerSpec(o.containerSpec!);
     checkGoogleCloudAiplatformV1DiskSpec(o.diskSpec!);
     checkGoogleCloudAiplatformV1MachineSpec(o.machineSpec!);
-    checkUnnamed413(o.nfsMounts!);
+    checkUnnamed425(o.nfsMounts!);
     checkGoogleCloudAiplatformV1PythonPackageSpec(o.pythonPackageSpec!);
     unittest.expect(
       o.replicaCount!,
@@ -31654,12 +32549,12 @@ void checkGoogleCloudAiplatformV1WorkerPoolSpec(
 }
 
 core.Map<core.String, api.GoogleCloudAiplatformV1FeatureValue>
-    buildUnnamed414() => {
+    buildUnnamed426() => {
           'x': buildGoogleCloudAiplatformV1FeatureValue(),
           'y': buildGoogleCloudAiplatformV1FeatureValue(),
         };
 
-void checkUnnamed414(
+void checkUnnamed426(
     core.Map<core.String, api.GoogleCloudAiplatformV1FeatureValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1FeatureValue(o['x']!);
@@ -31673,7 +32568,7 @@ api.GoogleCloudAiplatformV1WriteFeatureValuesPayload
   buildCounterGoogleCloudAiplatformV1WriteFeatureValuesPayload++;
   if (buildCounterGoogleCloudAiplatformV1WriteFeatureValuesPayload < 3) {
     o.entityId = 'foo';
-    o.featureValues = buildUnnamed414();
+    o.featureValues = buildUnnamed426();
   }
   buildCounterGoogleCloudAiplatformV1WriteFeatureValuesPayload--;
   return o;
@@ -31687,18 +32582,18 @@ void checkGoogleCloudAiplatformV1WriteFeatureValuesPayload(
       o.entityId!,
       unittest.equals('foo'),
     );
-    checkUnnamed414(o.featureValues!);
+    checkUnnamed426(o.featureValues!);
   }
   buildCounterGoogleCloudAiplatformV1WriteFeatureValuesPayload--;
 }
 
 core.List<api.GoogleCloudAiplatformV1WriteFeatureValuesPayload>
-    buildUnnamed415() => [
+    buildUnnamed427() => [
           buildGoogleCloudAiplatformV1WriteFeatureValuesPayload(),
           buildGoogleCloudAiplatformV1WriteFeatureValuesPayload(),
         ];
 
-void checkUnnamed415(
+void checkUnnamed427(
     core.List<api.GoogleCloudAiplatformV1WriteFeatureValuesPayload> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1WriteFeatureValuesPayload(o[0]);
@@ -31711,7 +32606,7 @@ api.GoogleCloudAiplatformV1WriteFeatureValuesRequest
   final o = api.GoogleCloudAiplatformV1WriteFeatureValuesRequest();
   buildCounterGoogleCloudAiplatformV1WriteFeatureValuesRequest++;
   if (buildCounterGoogleCloudAiplatformV1WriteFeatureValuesRequest < 3) {
-    o.payloads = buildUnnamed415();
+    o.payloads = buildUnnamed427();
   }
   buildCounterGoogleCloudAiplatformV1WriteFeatureValuesRequest--;
   return o;
@@ -31721,7 +32616,7 @@ void checkGoogleCloudAiplatformV1WriteFeatureValuesRequest(
     api.GoogleCloudAiplatformV1WriteFeatureValuesRequest o) {
   buildCounterGoogleCloudAiplatformV1WriteFeatureValuesRequest++;
   if (buildCounterGoogleCloudAiplatformV1WriteFeatureValuesRequest < 3) {
-    checkUnnamed415(o.payloads!);
+    checkUnnamed427(o.payloads!);
   }
   buildCounterGoogleCloudAiplatformV1WriteFeatureValuesRequest--;
 }
@@ -31744,12 +32639,12 @@ void checkGoogleCloudAiplatformV1WriteFeatureValuesResponse(
 }
 
 core.List<api.GoogleCloudAiplatformV1WriteTensorboardRunDataRequest>
-    buildUnnamed416() => [
+    buildUnnamed428() => [
           buildGoogleCloudAiplatformV1WriteTensorboardRunDataRequest(),
           buildGoogleCloudAiplatformV1WriteTensorboardRunDataRequest(),
         ];
 
-void checkUnnamed416(
+void checkUnnamed428(
     core.List<api.GoogleCloudAiplatformV1WriteTensorboardRunDataRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1WriteTensorboardRunDataRequest(o[0]);
@@ -31765,7 +32660,7 @@ api.GoogleCloudAiplatformV1WriteTensorboardExperimentDataRequest
   buildCounterGoogleCloudAiplatformV1WriteTensorboardExperimentDataRequest++;
   if (buildCounterGoogleCloudAiplatformV1WriteTensorboardExperimentDataRequest <
       3) {
-    o.writeRunDataRequests = buildUnnamed416();
+    o.writeRunDataRequests = buildUnnamed428();
   }
   buildCounterGoogleCloudAiplatformV1WriteTensorboardExperimentDataRequest--;
   return o;
@@ -31776,7 +32671,7 @@ void checkGoogleCloudAiplatformV1WriteTensorboardExperimentDataRequest(
   buildCounterGoogleCloudAiplatformV1WriteTensorboardExperimentDataRequest++;
   if (buildCounterGoogleCloudAiplatformV1WriteTensorboardExperimentDataRequest <
       3) {
-    checkUnnamed416(o.writeRunDataRequests!);
+    checkUnnamed428(o.writeRunDataRequests!);
   }
   buildCounterGoogleCloudAiplatformV1WriteTensorboardExperimentDataRequest--;
 }
@@ -31802,12 +32697,12 @@ void checkGoogleCloudAiplatformV1WriteTensorboardExperimentDataResponse(
   buildCounterGoogleCloudAiplatformV1WriteTensorboardExperimentDataResponse--;
 }
 
-core.List<api.GoogleCloudAiplatformV1TimeSeriesData> buildUnnamed417() => [
+core.List<api.GoogleCloudAiplatformV1TimeSeriesData> buildUnnamed429() => [
       buildGoogleCloudAiplatformV1TimeSeriesData(),
       buildGoogleCloudAiplatformV1TimeSeriesData(),
     ];
 
-void checkUnnamed417(core.List<api.GoogleCloudAiplatformV1TimeSeriesData> o) {
+void checkUnnamed429(core.List<api.GoogleCloudAiplatformV1TimeSeriesData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAiplatformV1TimeSeriesData(o[0]);
   checkGoogleCloudAiplatformV1TimeSeriesData(o[1]);
@@ -31820,7 +32715,7 @@ api.GoogleCloudAiplatformV1WriteTensorboardRunDataRequest
   buildCounterGoogleCloudAiplatformV1WriteTensorboardRunDataRequest++;
   if (buildCounterGoogleCloudAiplatformV1WriteTensorboardRunDataRequest < 3) {
     o.tensorboardRun = 'foo';
-    o.timeSeriesData = buildUnnamed417();
+    o.timeSeriesData = buildUnnamed429();
   }
   buildCounterGoogleCloudAiplatformV1WriteTensorboardRunDataRequest--;
   return o;
@@ -31834,7 +32729,7 @@ void checkGoogleCloudAiplatformV1WriteTensorboardRunDataRequest(
       o.tensorboardRun!,
       unittest.equals('foo'),
     );
-    checkUnnamed417(o.timeSeriesData!);
+    checkUnnamed429(o.timeSeriesData!);
   }
   buildCounterGoogleCloudAiplatformV1WriteTensorboardRunDataRequest--;
 }
@@ -31884,12 +32779,12 @@ void checkGoogleCloudAiplatformV1XraiAttribution(
   buildCounterGoogleCloudAiplatformV1XraiAttribution--;
 }
 
-core.List<api.GoogleCloudLocationLocation> buildUnnamed418() => [
+core.List<api.GoogleCloudLocationLocation> buildUnnamed430() => [
       buildGoogleCloudLocationLocation(),
       buildGoogleCloudLocationLocation(),
     ];
 
-void checkUnnamed418(core.List<api.GoogleCloudLocationLocation> o) {
+void checkUnnamed430(core.List<api.GoogleCloudLocationLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudLocationLocation(o[0]);
   checkGoogleCloudLocationLocation(o[1]);
@@ -31901,7 +32796,7 @@ api.GoogleCloudLocationListLocationsResponse
   final o = api.GoogleCloudLocationListLocationsResponse();
   buildCounterGoogleCloudLocationListLocationsResponse++;
   if (buildCounterGoogleCloudLocationListLocationsResponse < 3) {
-    o.locations = buildUnnamed418();
+    o.locations = buildUnnamed430();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudLocationListLocationsResponse--;
@@ -31912,7 +32807,7 @@ void checkGoogleCloudLocationListLocationsResponse(
     api.GoogleCloudLocationListLocationsResponse o) {
   buildCounterGoogleCloudLocationListLocationsResponse++;
   if (buildCounterGoogleCloudLocationListLocationsResponse < 3) {
-    checkUnnamed418(o.locations!);
+    checkUnnamed430(o.locations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -31921,12 +32816,12 @@ void checkGoogleCloudLocationListLocationsResponse(
   buildCounterGoogleCloudLocationListLocationsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed419() => {
+core.Map<core.String, core.String> buildUnnamed431() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed419(core.Map<core.String, core.String> o) {
+void checkUnnamed431(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -31938,7 +32833,7 @@ void checkUnnamed419(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed420() => {
+core.Map<core.String, core.Object?> buildUnnamed432() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -31951,7 +32846,7 @@ core.Map<core.String, core.Object?> buildUnnamed420() => {
       },
     };
 
-void checkUnnamed420(core.Map<core.String, core.Object?> o) {
+void checkUnnamed432(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted78 = (o['x']!) as core.Map;
   unittest.expect(casted78, unittest.hasLength(3));
@@ -31989,9 +32884,9 @@ api.GoogleCloudLocationLocation buildGoogleCloudLocationLocation() {
   buildCounterGoogleCloudLocationLocation++;
   if (buildCounterGoogleCloudLocationLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed419();
+    o.labels = buildUnnamed431();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed420();
+    o.metadata = buildUnnamed432();
     o.name = 'foo';
   }
   buildCounterGoogleCloudLocationLocation--;
@@ -32005,12 +32900,12 @@ void checkGoogleCloudLocationLocation(api.GoogleCloudLocationLocation o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed419(o.labels!);
+    checkUnnamed431(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed420(o.metadata!);
+    checkUnnamed432(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -32019,12 +32914,12 @@ void checkGoogleCloudLocationLocation(api.GoogleCloudLocationLocation o) {
   buildCounterGoogleCloudLocationLocation--;
 }
 
-core.List<core.String> buildUnnamed421() => [
+core.List<core.String> buildUnnamed433() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed421(core.List<core.String> o) {
+void checkUnnamed433(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -32042,7 +32937,7 @@ api.GoogleIamV1Binding buildGoogleIamV1Binding() {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     o.condition = buildGoogleTypeExpr();
-    o.members = buildUnnamed421();
+    o.members = buildUnnamed433();
     o.role = 'foo';
   }
   buildCounterGoogleIamV1Binding--;
@@ -32053,7 +32948,7 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     checkGoogleTypeExpr(o.condition!);
-    checkUnnamed421(o.members!);
+    checkUnnamed433(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -32062,12 +32957,12 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding--;
 }
 
-core.List<api.GoogleIamV1Binding> buildUnnamed422() => [
+core.List<api.GoogleIamV1Binding> buildUnnamed434() => [
       buildGoogleIamV1Binding(),
       buildGoogleIamV1Binding(),
     ];
 
-void checkUnnamed422(core.List<api.GoogleIamV1Binding> o) {
+void checkUnnamed434(core.List<api.GoogleIamV1Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1Binding(o[0]);
   checkGoogleIamV1Binding(o[1]);
@@ -32078,7 +32973,7 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
   final o = api.GoogleIamV1Policy();
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    o.bindings = buildUnnamed422();
+    o.bindings = buildUnnamed434();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -32089,7 +32984,7 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
 void checkGoogleIamV1Policy(api.GoogleIamV1Policy o) {
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    checkUnnamed422(o.bindings!);
+    checkUnnamed434(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -32121,12 +33016,12 @@ void checkGoogleIamV1SetIamPolicyRequest(api.GoogleIamV1SetIamPolicyRequest o) {
   buildCounterGoogleIamV1SetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed423() => [
+core.List<core.String> buildUnnamed435() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed423(core.List<core.String> o) {
+void checkUnnamed435(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -32144,7 +33039,7 @@ api.GoogleIamV1TestIamPermissionsResponse
   final o = api.GoogleIamV1TestIamPermissionsResponse();
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed423();
+    o.permissions = buildUnnamed435();
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
   return o;
@@ -32154,17 +33049,17 @@ void checkGoogleIamV1TestIamPermissionsResponse(
     api.GoogleIamV1TestIamPermissionsResponse o) {
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    checkUnnamed423(o.permissions!);
+    checkUnnamed435(o.permissions!);
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed424() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed436() => [
       buildGoogleLongrunningOperation(),
       buildGoogleLongrunningOperation(),
     ];
 
-void checkUnnamed424(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed436(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -32177,7 +33072,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed424();
+    o.operations = buildUnnamed436();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -32191,12 +33086,12 @@ void checkGoogleLongrunningListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed424(o.operations!);
+    checkUnnamed436(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed425() => {
+core.Map<core.String, core.Object?> buildUnnamed437() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -32209,7 +33104,7 @@ core.Map<core.String, core.Object?> buildUnnamed425() => {
       },
     };
 
-void checkUnnamed425(core.Map<core.String, core.Object?> o) {
+void checkUnnamed437(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted80 = (o['x']!) as core.Map;
   unittest.expect(casted80, unittest.hasLength(3));
@@ -32241,7 +33136,7 @@ void checkUnnamed425(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed426() => {
+core.Map<core.String, core.Object?> buildUnnamed438() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -32254,7 +33149,7 @@ core.Map<core.String, core.Object?> buildUnnamed426() => {
       },
     };
 
-void checkUnnamed426(core.Map<core.String, core.Object?> o) {
+void checkUnnamed438(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted82 = (o['x']!) as core.Map;
   unittest.expect(casted82, unittest.hasLength(3));
@@ -32293,9 +33188,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed425();
+    o.metadata = buildUnnamed437();
     o.name = 'foo';
-    o.response = buildUnnamed426();
+    o.response = buildUnnamed438();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -32306,12 +33201,12 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed425(o.metadata!);
+    checkUnnamed437(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed426(o.response!);
+    checkUnnamed438(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -32331,7 +33226,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed427() => {
+core.Map<core.String, core.Object?> buildUnnamed439() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -32344,7 +33239,7 @@ core.Map<core.String, core.Object?> buildUnnamed427() => {
       },
     };
 
-void checkUnnamed427(core.Map<core.String, core.Object?> o) {
+void checkUnnamed439(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted84 = (o['x']!) as core.Map;
   unittest.expect(casted84, unittest.hasLength(3));
@@ -32376,15 +33271,15 @@ void checkUnnamed427(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed428() => [
-      buildUnnamed427(),
-      buildUnnamed427(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed440() => [
+      buildUnnamed439(),
+      buildUnnamed439(),
     ];
 
-void checkUnnamed428(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed440(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed427(o[0]);
-  checkUnnamed427(o[1]);
+  checkUnnamed439(o[0]);
+  checkUnnamed439(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -32393,7 +33288,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed428();
+    o.details = buildUnnamed440();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -32407,7 +33302,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed428(o.details!);
+    checkUnnamed440(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -32512,6 +33407,33 @@ void checkGoogleTypeInterval(api.GoogleTypeInterval o) {
   buildCounterGoogleTypeInterval--;
 }
 
+core.int buildCounterGoogleTypeLatLng = 0;
+api.GoogleTypeLatLng buildGoogleTypeLatLng() {
+  final o = api.GoogleTypeLatLng();
+  buildCounterGoogleTypeLatLng++;
+  if (buildCounterGoogleTypeLatLng < 3) {
+    o.latitude = 42.0;
+    o.longitude = 42.0;
+  }
+  buildCounterGoogleTypeLatLng--;
+  return o;
+}
+
+void checkGoogleTypeLatLng(api.GoogleTypeLatLng o) {
+  buildCounterGoogleTypeLatLng++;
+  if (buildCounterGoogleTypeLatLng < 3) {
+    unittest.expect(
+      o.latitude!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.longitude!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterGoogleTypeLatLng--;
+}
+
 core.int buildCounterGoogleTypeMoney = 0;
 api.GoogleTypeMoney buildGoogleTypeMoney() {
   final o = api.GoogleTypeMoney();
@@ -32544,12 +33466,12 @@ void checkGoogleTypeMoney(api.GoogleTypeMoney o) {
   buildCounterGoogleTypeMoney--;
 }
 
-core.List<core.String> buildUnnamed429() => [
+core.List<core.String> buildUnnamed441() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed429(core.List<core.String> o) {
+void checkUnnamed441(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -32561,12 +33483,12 @@ void checkUnnamed429(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed430() => [
+core.List<core.String> buildUnnamed442() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed430(core.List<core.String> o) {
+void checkUnnamed442(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -32578,12 +33500,12 @@ void checkUnnamed430(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed431() => [
+core.List<core.String> buildUnnamed443() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed431(core.List<core.String> o) {
+void checkUnnamed443(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -32595,12 +33517,12 @@ void checkUnnamed431(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed432() => [
+core.List<core.String> buildUnnamed444() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed432(core.List<core.String> o) {
+void checkUnnamed444(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -32612,12 +33534,12 @@ void checkUnnamed432(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed433() => [
+core.List<core.String> buildUnnamed445() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed433(core.List<core.String> o) {
+void checkUnnamed445(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -32629,12 +33551,12 @@ void checkUnnamed433(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed434() => [
+core.List<core.String> buildUnnamed446() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed434(core.List<core.String> o) {
+void checkUnnamed446(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -32646,12 +33568,12 @@ void checkUnnamed434(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed435() => [
+core.List<core.String> buildUnnamed447() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed435(core.List<core.String> o) {
+void checkUnnamed447(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -32663,12 +33585,12 @@ void checkUnnamed435(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed436() => [
+core.List<core.String> buildUnnamed448() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed436(core.List<core.String> o) {
+void checkUnnamed448(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -32680,12 +33602,12 @@ void checkUnnamed436(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed437() => [
+core.List<core.String> buildUnnamed449() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed437(core.List<core.String> o) {
+void checkUnnamed449(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -32911,6 +33833,16 @@ void main() {
       final od = api.GoogleCloudAiplatformV1AutomaticResources.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAiplatformV1AutomaticResources(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudAiplatformV1AutoraterConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1AutoraterConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1AutoraterConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1AutoraterConfig(od);
     });
   });
 
@@ -33473,6 +34405,16 @@ void main() {
       final od = api.GoogleCloudAiplatformV1ClientConnectionConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAiplatformV1ClientConnectionConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudAiplatformV1CodeExecutionResult', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1CodeExecutionResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1CodeExecutionResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1CodeExecutionResult(od);
     });
   });
 
@@ -34144,6 +35086,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudAiplatformV1EnterpriseWebSearch', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1EnterpriseWebSearch();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1EnterpriseWebSearch.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1EnterpriseWebSearch(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudAiplatformV1EntityIdSelector', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudAiplatformV1EntityIdSelector();
@@ -34199,6 +35151,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudAiplatformV1EvaluateDatasetRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1EvaluateDatasetRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1EvaluateDatasetRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1EvaluateDatasetRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudAiplatformV1EvaluateInstancesRequest',
       () {
     unittest.test('to-json--from-json', () async {
@@ -34240,6 +35203,16 @@ void main() {
           api.GoogleCloudAiplatformV1EvaluatedAnnotationExplanation.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAiplatformV1EvaluatedAnnotationExplanation(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudAiplatformV1EvaluationDataset', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1EvaluationDataset();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1EvaluationDataset.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1EvaluationDataset(od);
     });
   });
 
@@ -34343,6 +35316,16 @@ void main() {
           api.GoogleCloudAiplatformV1ExamplesRestrictionsNamespace.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAiplatformV1ExamplesRestrictionsNamespace(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudAiplatformV1ExecutableCode', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1ExecutableCode();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1ExecutableCode.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1ExecutableCode(od);
     });
   });
 
@@ -35426,6 +36409,31 @@ void main() {
     });
   });
 
+  unittest.group(
+      'obj-schema-GoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudAiplatformV1GenerateContentRequest',
       () {
     unittest.test('to-json--from-json', () async {
@@ -36244,6 +37252,19 @@ void main() {
     });
   });
 
+  unittest.group(
+      'obj-schema-GoogleCloudAiplatformV1ListModelVersionCheckpointsResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudAiplatformV1ListModelVersionCheckpointsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1ListModelVersionCheckpointsResponse
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1ListModelVersionCheckpointsResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudAiplatformV1ListModelVersionsResponse',
       () {
     unittest.test('to-json--from-json', () async {
@@ -36668,6 +37689,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudAiplatformV1Metric', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1Metric();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1Metric.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1Metric(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudAiplatformV1MetricxInput', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudAiplatformV1MetricxInput();
@@ -36868,6 +37899,16 @@ void main() {
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAiplatformV1MigrateResourceRequestMigrateMlEngineModelVersionConfig(
           od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudAiplatformV1ModalityTokenCount', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1ModalityTokenCount();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1ModalityTokenCount.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1ModalityTokenCount(od);
     });
   });
 
@@ -37273,6 +38314,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudAiplatformV1ModelVersionCheckpoint',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1ModelVersionCheckpoint();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1ModelVersionCheckpoint.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1ModelVersionCheckpoint(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudAiplatformV1MutateDeployedModelRequest',
       () {
     unittest.test('to-json--from-json', () async {
@@ -37644,6 +38696,27 @@ void main() {
       final od = api.GoogleCloudAiplatformV1NotebookRuntimeTemplateRef.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAiplatformV1NotebookRuntimeTemplateRef(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudAiplatformV1NotebookSoftwareConfig',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1NotebookSoftwareConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1NotebookSoftwareConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1NotebookSoftwareConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudAiplatformV1OutputConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1OutputConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1OutputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1OutputConfig(od);
     });
   });
 
@@ -38036,6 +39109,17 @@ void main() {
       final od = api.GoogleCloudAiplatformV1Port.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAiplatformV1Port(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudAiplatformV1PostStartupScriptConfig',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1PostStartupScriptConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1PostStartupScriptConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1PostStartupScriptConfig(od);
     });
   });
 
@@ -39067,6 +40151,19 @@ void main() {
   });
 
   unittest.group(
+      'obj-schema-GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec(od);
+    });
+  });
+
+  unittest.group(
       'obj-schema-GoogleCloudAiplatformV1ReasoningEngineSpecPackageSpec', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudAiplatformV1ReasoningEngineSpecPackageSpec();
@@ -39240,6 +40337,16 @@ void main() {
       final od = api.GoogleCloudAiplatformV1Retrieval.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAiplatformV1Retrieval(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudAiplatformV1RetrievalConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1RetrievalConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1RetrievalConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1RetrievalConfig(od);
     });
   });
 
@@ -39644,6 +40751,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudAiplatformV1SecretEnvVar', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1SecretEnvVar();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1SecretEnvVar.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1SecretEnvVar(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudAiplatformV1SecretRef', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1SecretRef();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1SecretRef.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1SecretRef(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudAiplatformV1Segment', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudAiplatformV1Segment();
@@ -39748,6 +40875,46 @@ void main() {
       final od = api.GoogleCloudAiplatformV1SpecialistPool.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAiplatformV1SpecialistPool(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudAiplatformV1SpeculativeDecodingSpec',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1SpeculativeDecodingSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1SpeculativeDecodingSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1SpeculativeDecodingSpec(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation(
+          od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation(od);
     });
   });
 
@@ -40580,6 +41747,16 @@ void main() {
       final od = api.GoogleCloudAiplatformV1ToolCallValidSpec.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAiplatformV1ToolCallValidSpec(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudAiplatformV1ToolCodeExecution', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1ToolCodeExecution();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1ToolCodeExecution.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAiplatformV1ToolCodeExecution(od);
     });
   });
 
@@ -41656,6 +42833,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleTypeLatLng', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleTypeLatLng();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleTypeLatLng.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleTypeLatLng(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleTypeMoney', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleTypeMoney();
@@ -42553,6 +43740,66 @@ void main() {
           response as api.GoogleCloudAiplatformV1GenerateContentResponse);
     });
 
+    unittest.test('method--predict', () async {
+      final mock = HttpServerMock();
+      final res = api.AiplatformApi(mock).endpoints;
+      final arg_request = buildGoogleCloudAiplatformV1PredictRequest();
+      final arg_endpoint = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleCloudAiplatformV1PredictRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudAiplatformV1PredictRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGoogleCloudAiplatformV1PredictResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.predict(arg_request, arg_endpoint, $fields: arg_$fields);
+      checkGoogleCloudAiplatformV1PredictResponse(
+          response as api.GoogleCloudAiplatformV1PredictResponse);
+    });
+
     unittest.test('method--streamGenerateContent', () async {
       final mock = HttpServerMock();
       final res = api.AiplatformApi(mock).endpoints;
@@ -42915,6 +44162,65 @@ void main() {
           $fields: arg_$fields);
       checkGoogleCloudAiplatformV1CorroborateContentResponse(
           response as api.GoogleCloudAiplatformV1CorroborateContentResponse);
+    });
+
+    unittest.test('method--evaluateDataset', () async {
+      final mock = HttpServerMock();
+      final res = api.AiplatformApi(mock).projects.locations;
+      final arg_request = buildGoogleCloudAiplatformV1EvaluateDatasetRequest();
+      final arg_location = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleCloudAiplatformV1EvaluateDatasetRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudAiplatformV1EvaluateDatasetRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.evaluateDataset(arg_request, arg_location,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
     unittest.test('method--evaluateInstances', () async {
@@ -45450,7 +46756,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AiplatformApi(mock).projects.locations.datasets;
       final arg_dataset = 'foo';
-      final arg_annotationFilters = buildUnnamed429();
+      final arg_annotationFilters = buildUnnamed441();
       final arg_annotationsFilter = 'foo';
       final arg_annotationsLimit = 42;
       final arg_dataItemFilter = 'foo';
@@ -51977,7 +53283,7 @@ void main() {
       final res =
           api.AiplatformApi(mock).projects.locations.featureOnlineStores;
       final arg_resource = 'foo';
-      final arg_permissions = buildUnnamed430();
+      final arg_permissions = buildUnnamed442();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -52708,7 +54014,7 @@ void main() {
           .featureOnlineStores
           .featureViews;
       final arg_resource = 'foo';
-      final arg_permissions = buildUnnamed431();
+      final arg_permissions = buildUnnamed443();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -54012,7 +55318,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AiplatformApi(mock).projects.locations.featurestores;
       final arg_resource = 'foo';
-      final arg_permissions = buildUnnamed432();
+      final arg_permissions = buildUnnamed444();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -54842,7 +56148,7 @@ void main() {
       final res =
           api.AiplatformApi(mock).projects.locations.featurestores.entityTypes;
       final arg_resource = 'foo';
-      final arg_permissions = buildUnnamed433();
+      final arg_permissions = buildUnnamed445();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -63609,6 +64915,73 @@ void main() {
           response as api.GoogleCloudAiplatformV1ListModelsResponse);
     });
 
+    unittest.test('method--listCheckpoints', () async {
+      final mock = HttpServerMock();
+      final res = api.AiplatformApi(mock).projects.locations.models;
+      final arg_name = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildGoogleCloudAiplatformV1ListModelVersionCheckpointsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.listCheckpoints(arg_name,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudAiplatformV1ListModelVersionCheckpointsResponse(response
+          as api.GoogleCloudAiplatformV1ListModelVersionCheckpointsResponse);
+    });
+
     unittest.test('method--listVersions', () async {
       final mock = HttpServerMock();
       final res = api.AiplatformApi(mock).projects.locations.models;
@@ -63881,7 +65254,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AiplatformApi(mock).projects.locations.models;
       final arg_resource = 'foo';
-      final arg_permissions = buildUnnamed434();
+      final arg_permissions = buildUnnamed446();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -66530,7 +67903,7 @@ void main() {
       final res =
           api.AiplatformApi(mock).projects.locations.notebookRuntimeTemplates;
       final arg_resource = 'foo';
-      final arg_permissions = buildUnnamed435();
+      final arg_permissions = buildUnnamed447();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -74666,7 +76039,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AiplatformApi(mock).projects.locations.tensorboards;
       final arg_tensorboard = 'foo';
-      final arg_timeSeries = buildUnnamed436();
+      final arg_timeSeries = buildUnnamed448();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -77242,7 +78615,7 @@ void main() {
           .runs
           .timeSeries;
       final arg_timeSeries = 'foo';
-      final arg_blobIds = buildUnnamed437();
+      final arg_blobIds = buildUnnamed449();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -79344,6 +80717,66 @@ void main() {
           $fields: arg_$fields);
       checkGoogleCloudAiplatformV1PublisherModel(
           response as api.GoogleCloudAiplatformV1PublisherModel);
+    });
+
+    unittest.test('method--predict', () async {
+      final mock = HttpServerMock();
+      final res = api.AiplatformApi(mock).publishers.models;
+      final arg_request = buildGoogleCloudAiplatformV1PredictRequest();
+      final arg_endpoint = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleCloudAiplatformV1PredictRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudAiplatformV1PredictRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGoogleCloudAiplatformV1PredictResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.predict(arg_request, arg_endpoint, $fields: arg_$fields);
+      checkGoogleCloudAiplatformV1PredictResponse(
+          response as api.GoogleCloudAiplatformV1PredictResponse);
     });
 
     unittest.test('method--streamGenerateContent', () async {

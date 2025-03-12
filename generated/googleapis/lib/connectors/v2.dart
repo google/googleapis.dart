@@ -474,6 +474,14 @@ class ProjectsLocationsConnectionsEntityTypesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
+  /// [view] - Specifies view for entity type schema.
+  /// Possible string values are:
+  /// - "ENTITY_TYPE_SCHEMA_VIEW_UNSPECIFIED" : VIEW_UNSPECIFIED. The unset
+  /// value. Defaults to BASIC View.
+  /// - "ENTITY_TYPE_SCHEMA_VIEW_BASIC" : Return basic entity type schema.
+  /// - "ENTITY_TYPE_SCHEMA_VIEW_ENRICHED" : Return enriched entity types
+  /// schema.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -486,9 +494,11 @@ class ProjectsLocationsConnectionsEntityTypesResource {
   /// this method will complete with the same error.
   async.Future<EntityType> get(
     core.String name, {
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 

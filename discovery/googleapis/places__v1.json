@@ -43,7 +43,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241117",
+    "revision": "20250309",
     "rootUrl": "https://places.googleapis.com/",
     "servicePath": "",
     "title": "Places API (New)",
@@ -857,7 +857,8 @@
                         "EV_CONNECTOR_TYPE_CCS_COMBO_2",
                         "EV_CONNECTOR_TYPE_TESLA",
                         "EV_CONNECTOR_TYPE_UNSPECIFIED_GB_T",
-                        "EV_CONNECTOR_TYPE_UNSPECIFIED_WALL_OUTLET"
+                        "EV_CONNECTOR_TYPE_UNSPECIFIED_WALL_OUTLET",
+                        "EV_CONNECTOR_TYPE_NACS"
                     ],
                     "enumDescriptions": [
                         "Unspecified connector.",
@@ -869,7 +870,8 @@
                         "Combined Charging System (AC and DC). Based on Type-2 Mennekes connector",
                         "The generic TESLA connector. This is NACS in the North America but can be non-NACS in other parts of the world (e.g. CCS Combo 2 (CCS2) or GB/T). This value is less representative of an actual connector type, and more represents the ability to charge a Tesla brand vehicle at a Tesla owned charging station.",
                         "GB/T type corresponds to the GB/T standard in China. This type covers all GB_T types.",
-                        "Unspecified wall outlet."
+                        "Unspecified wall outlet.",
+                        "The North American Charging System (NACS), standardized as SAE J3400."
                     ],
                     "type": "string"
                 }
@@ -903,6 +905,7 @@
                     "enum": [
                         "FUEL_TYPE_UNSPECIFIED",
                         "DIESEL",
+                        "DIESEL_PLUS",
                         "REGULAR_UNLEADED",
                         "MIDGRADE",
                         "PREMIUM",
@@ -917,6 +920,7 @@
                         "LPG",
                         "E80",
                         "E85",
+                        "E100",
                         "METHANE",
                         "BIO_DIESEL",
                         "TRUCK_DIESEL"
@@ -924,6 +928,7 @@
                     "enumDescriptions": [
                         "Unspecified fuel type.",
                         "Diesel fuel.",
+                        "Diesel plus fuel.",
                         "Regular unleaded.",
                         "Midgrade.",
                         "Premium.",
@@ -935,9 +940,10 @@
                         "SP 98.",
                         "SP 99.",
                         "SP 100.",
-                        "LPG.",
+                        "Liquefied Petroleum Gas.",
                         "E 80.",
                         "E 85.",
+                        "E 100.",
                         "Methane.",
                         "Bio-diesel.",
                         "Truck diesel."
@@ -1233,7 +1239,7 @@
                 },
                 "regularOpeningHours": {
                     "$ref": "GoogleMapsPlacesV1PlaceOpeningHours",
-                    "description": "The regular hours of operation. Note that if a place is always open (24 hours), the `close` field will not be set. Clients can rely on always open (24 hours) being represented as an `open` period containing day with value `0`, hour with value `0`, and minute with value `0`."
+                    "description": "The regular hours of operation. Note that if a place is always open (24 hours), the `close` field will not be set. Clients can rely on always open (24 hours) being represented as an `open` period containing `day` with value `0`, `hour` with value `0`, and `minute` with value `0`."
                 },
                 "regularSecondaryOpeningHours": {
                     "description": "Contains an array of entries for information about regular secondary hours of a business. Secondary hours are different from a business's main hours. For example, a restaurant can specify drive through hours or delivery hours as its secondary hours. This field populates the type subfield, which draws from a predefined list of opening hours types (such as DRIVE_THROUGH, PICKUP, or TAKEOUT) based on the types of the place.",
@@ -1311,6 +1317,10 @@
                 "takeout": {
                     "description": "Specifies if the business supports takeout.",
                     "type": "boolean"
+                },
+                "timeZone": {
+                    "$ref": "GoogleTypeTimeZone",
+                    "description": "IANA Time Zone Database time zone. For example \"America/New_York\"."
                 },
                 "types": {
                     "description": "A set of type tags for this result. For example, \"political\" and \"locality\". For the complete list of possible values, see Table A and Table B at https://developers.google.com/maps/documentation/places/web-service/place-types",
@@ -1699,7 +1709,7 @@
             "type": "object"
         },
         "GoogleMapsPlacesV1PlaceSubDestination": {
-            "description": "Place resource name and id of sub destinations that relate to the place. For example, different terminals are different destinations of an airport.",
+            "description": "Sub destinations are specific places associated with a main place. These provide more specific destinations for users who are searching for a large or complex place, like an airport, national park, university, or stadium. For example, sub destinations at an airport might include associated terminals and parking lots. Sub destinations return the place id and place resource name, which can be used in subsequent Place Details (New) requests to fetch richer details, including the sub destination's displayName and location.",
             "id": "GoogleMapsPlacesV1PlaceSubDestination",
             "properties": {
                 "id": {
@@ -2143,7 +2153,8 @@
                             "EV_CONNECTOR_TYPE_CCS_COMBO_2",
                             "EV_CONNECTOR_TYPE_TESLA",
                             "EV_CONNECTOR_TYPE_UNSPECIFIED_GB_T",
-                            "EV_CONNECTOR_TYPE_UNSPECIFIED_WALL_OUTLET"
+                            "EV_CONNECTOR_TYPE_UNSPECIFIED_WALL_OUTLET",
+                            "EV_CONNECTOR_TYPE_NACS"
                         ],
                         "enumDescriptions": [
                             "Unspecified connector.",
@@ -2155,7 +2166,8 @@
                             "Combined Charging System (AC and DC). Based on Type-2 Mennekes connector",
                             "The generic TESLA connector. This is NACS in the North America but can be non-NACS in other parts of the world (e.g. CCS Combo 2 (CCS2) or GB/T). This value is less representative of an actual connector type, and more represents the ability to charge a Tesla brand vehicle at a Tesla owned charging station.",
                             "GB/T type corresponds to the GB/T standard in China. This type covers all GB_T types.",
-                            "Unspecified wall outlet."
+                            "Unspecified wall outlet.",
+                            "The North American Charging System (NACS), standardized as SAE J3400."
                         ],
                         "type": "string"
                     },
@@ -2312,6 +2324,21 @@
                 "units": {
                     "description": "The whole units of the amount. For example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar.",
                     "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleTypeTimeZone": {
+            "description": "Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).",
+            "id": "GoogleTypeTimeZone",
+            "properties": {
+                "id": {
+                    "description": "IANA Time Zone Database time zone. For example \"America/New_York\".",
+                    "type": "string"
+                },
+                "version": {
+                    "description": "Optional. IANA Time Zone Database version number. For example \"2019a\".",
                     "type": "string"
                 }
             },
