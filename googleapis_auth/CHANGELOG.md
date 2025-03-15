@@ -1,4 +1,4 @@
-## 2.0.0-wip
+## 2.0.0
 
 - Removed deprecated `RefreshFailedException`.
 - Removed deprecated `auth.dart` library.

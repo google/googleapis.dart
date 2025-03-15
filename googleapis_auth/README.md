@@ -48,18 +48,10 @@ After the Client ID has been created, you can obtain access credentials via
 import 'package:googleapis_auth/auth_browser.dart';
 
 // Initialize the browser oauth2 flow functionality then use it to obtain credentials.
-Future<AccessCredentials> obtainCredentials() async {
-  final flow = await createImplicitBrowserFlow(
-    ClientId('....apps.googleusercontent.com'),
-    ['scope1', 'scope2'],
-  );
-
-  try {
-    return await flow.obtainAccessCredentialsViaUserConsent();
-  } finally {
-    flow.close();
-  }
-}
+Future<AccessCredentials> obtainCredentials() => requestAccessCredentials(
+  clientId: '....apps.googleusercontent.com',
+  scopes: ['scope1', 'scope2'],
+);
 ```
 
 or obtain an authenticated HTTP client via
